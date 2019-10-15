@@ -98,10 +98,20 @@ namespace SysEstoque.View
         #region TxtDataFinal_ValueChanged()
         private void TxtDataFinal_ValueChanged(object sender, Syncfusion.WinForms.Input.Events.DateTimeValueChangedEventArgs e)
         {
+            PicCarregando.Visible = true;
             TimerExecutaConsulta.Enabled = false;
             TimerExecutaConsulta.Enabled = true;
         }
-        #endregion 
+        #endregion
+
+        #region TxtBuscaNumeroAtividade_TextChanged
+        private void TxtBuscaNumeroAtividade_TextChanged(object sender, EventArgs e)
+        {
+            TimerExecutaConsulta.Enabled = false;
+            TimerExecutaConsulta.Enabled = true;
+            PicCarregando.Visible = true;
+        }
+        #endregion
 
         #region ListarAtividades()
         private void ListarAtividades()
@@ -142,7 +152,7 @@ namespace SysEstoque.View
             {
                 BllEstoqueAtividade estoqueAtividade = new BllEstoqueAtividade();
 
-                estoqueAtividade.Consultar(
+                estoqueAtividade.Consultar(TxtBuscaNumeroAtividade.Text,
                 CboTipo.Text, CboSituacao.Text, Convert.ToDateTime(TxtDataInicio.Value).ToString("dd-MM-yyyy"),
                 Convert.ToDateTime(TxtDataFinal.Value).ToString("dd-MM-yyyy"), numeroRegistros);
 
@@ -352,6 +362,6 @@ namespace SysEstoque.View
             LblDataLong.Text = DateTime.Now.ToLongDateString();
 
         }
-        #endregion 
+        #endregion
     }
 }

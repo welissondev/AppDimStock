@@ -247,10 +247,10 @@ namespace SysEstoque.Business
 
         #region Consultar()
         public void Consultar
-        (string tipo, string situacao, string dataInicio, string dataFinal, int numeroRegistro = 100)
+        (string numeroAtividade, string tipo, string situacao, string dataInicio, string dataFinal, int numeroRegistro = 100)
         {
             MdlEstoqueAtividade atividade = new MdlEstoqueAtividade();
-            Lista = atividade.Consultar(tipo, situacao, dataInicio, dataFinal, numeroRegistro);
+            Lista = atividade.Consultar(numeroAtividade, tipo, situacao, dataInicio, dataFinal, numeroRegistro);
         }
         #endregion 
 

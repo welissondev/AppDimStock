@@ -466,14 +466,15 @@ namespace SysEstoque.Model
 
         #region Consultar()
         public List<BllEstoqueAtividade> Consultar
-        (string tipo, string operacao, string dataInicio, string dataFinal, int numeroRegistros = 100)
+        (string numeroAtividade, string tipo, string operacao, string dataInicio, string dataFinal, int numeroRegistros = 100)
         {
             using (MdlAccessConnection connection = new MdlAccessConnection())
             {
                 var commandSQL = @"SELECT TOP " + numeroRegistros +
-                @" * From TBEstoqueAtividade WHERE Tipo LIKE @Tipo AND Situacao LIKE @Situacao AND Data >= @DataInicio AND Data <= @DataFinal";
+                @" * From TBEstoqueAtividade WHERE Id Like @NumeroAtividade Or Tipo LIKE @Tipo AND Situacao LIKE @Situacao AND Data >= @DataInicio AND Data <= @DataFinal";
 
                 var e = connection.Command.Parameters;
+                e.AddWithValue("@NumeroAtividade", string.Format("{0}", numeroAtividade));
                 e.AddWithValue("@Tipo", string.Format("{0}", tipo));
                 e.AddWithValue("@Situacao", string.Format("{0}", operacao));
                 e.AddWithValue("@DataInicio", string.Format("{0}", dataInicio));
