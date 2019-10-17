@@ -109,11 +109,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Auxiliary\AxlDataBasePath.cs" />
     <Compile Include="Auxiliary\AxlDataGridViewLealt.cs" />
     <Compile Include="Auxiliary\AxlException.cs" />
     <Compile Include="Auxiliary\AxlLogin.cs" />
-    <Compile Include="Auxiliary\AxlMessageBox.cs" />
     <Compile Include="Auxiliary\AxlPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -139,7 +137,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Auxiliary\AxlImage.cs" />
-    <Compile Include="Auxiliary\AxlNumeroAleatorio.cs" />
     <Compile Include="Relatorio\FrmEstoqueRelatorio.cs">
       <SubType>Form</SubType>
     </Compile>

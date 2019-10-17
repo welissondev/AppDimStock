@@ -837,6 +837,8 @@ namespace SysEstoque {
             
             private global::System.Data.DataColumn columnEstoqueMax;
             
+            private global::System.Data.DataColumn columnNome;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public TBEstoqueDataTable() {
@@ -936,6 +938,14 @@ namespace SysEstoque {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn NomeColumn {
+                get {
+                    return this.columnNome;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -971,7 +981,7 @@ namespace SysEstoque {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public TBEstoqueRow AddTBEstoqueRow(int Quantidade, decimal Valor, string Descricao, string Codigo, string Tamanho, string Referencia, int EstoqueMin, int EstoqueMax) {
+            public TBEstoqueRow AddTBEstoqueRow(int Quantidade, decimal Valor, string Descricao, string Codigo, string Tamanho, string Referencia, int EstoqueMin, int EstoqueMax, string Nome) {
                 TBEstoqueRow rowTBEstoqueRow = ((TBEstoqueRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Quantidade,
@@ -981,7 +991,8 @@ namespace SysEstoque {
                         Tamanho,
                         Referencia,
                         EstoqueMin,
-                        EstoqueMax};
+                        EstoqueMax,
+                        Nome};
                 rowTBEstoqueRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTBEstoqueRow);
                 return rowTBEstoqueRow;
@@ -1012,6 +1023,7 @@ namespace SysEstoque {
                 this.columnReferencia = base.Columns["Referencia"];
                 this.columnEstoqueMin = base.Columns["EstoqueMin"];
                 this.columnEstoqueMax = base.Columns["EstoqueMax"];
+                this.columnNome = base.Columns["Nome"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1033,10 +1045,13 @@ namespace SysEstoque {
                 base.Columns.Add(this.columnEstoqueMin);
                 this.columnEstoqueMax = new global::System.Data.DataColumn("EstoqueMax", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEstoqueMax);
+                this.columnNome = new global::System.Data.DataColumn("Nome", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNome);
                 this.columnDescricao.MaxLength = 536870910;
                 this.columnCodigo.MaxLength = 255;
                 this.columnTamanho.MaxLength = 255;
                 this.columnReferencia.MaxLength = 255;
+                this.columnNome.MaxLength = 255;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3402,6 +3417,22 @@ namespace SysEstoque {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Nome {
+                get {
+                    try {
+                        return ((string)(this[this.tableTBEstoque.NomeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'Nome\' na tabela \'TBEstoque\' é DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTBEstoque.NomeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsQuantidadeNull() {
                 return this.IsNull(this.tableTBEstoque.QuantidadeColumn);
             }
@@ -3494,6 +3525,18 @@ namespace SysEstoque {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetEstoqueMaxNull() {
                 this[this.tableTBEstoque.EstoqueMaxColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsNomeNull() {
+                return this.IsNull(this.tableTBEstoque.NomeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetNomeNull() {
+                this[this.tableTBEstoque.NomeColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -5311,6 +5354,7 @@ namespace SysEstoque.DbEstoqueDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("Referencia", "Referencia");
             tableMapping.ColumnMappings.Add("EstoqueMin", "EstoqueMin");
             tableMapping.ColumnMappings.Add("EstoqueMax", "EstoqueMax");
+            tableMapping.ColumnMappings.Add("Nome", "Nome");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -5327,7 +5371,7 @@ namespace SysEstoque.DbEstoqueDataSetTableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT TBProduto.Codigo, TBProduto.Tamanho, TBProduto.Referencia, TBProduto.Descricao, TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBEstoque.Quantidade, TBEstoque.Valor FROM TBEstoque INNER JOIN TBProduto On TBEstoque.IdProduto = TBProduto.Id WHERE Codigo Like '%' + ? AND Tamanho  Like '%' + ? AND Referencia Like '%' + ?  AND Descricao LIKE '%' + ? + '%' Order By Codigo,Tamanho, Referencia Asc";
+            this._commandCollection[0].CommandText = @"SELECT TBProduto.Codigo, TBProduto.Tamanho, TBProduto.Referencia, TBProduto.Descricao, TBProduto.Nome, TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBEstoque.Quantidade, TBEstoque.Valor FROM TBEstoque INNER JOIN TBProduto On TBEstoque.IdProduto = TBProduto.Id WHERE Codigo Like '%' + ? AND Tamanho  Like '%' + ? AND Referencia Like '%' + ?  AND Descricao LIKE '%' + ? + '%' Order By Codigo,Tamanho, Referencia Asc";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Codigo", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Codigo", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[0].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Tamanho", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Tamanho", global::System.Data.DataRowVersion.Current, false, null));

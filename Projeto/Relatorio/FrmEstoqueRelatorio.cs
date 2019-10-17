@@ -54,7 +54,7 @@ namespace SysEstoque.Relatorio
             {
                 this.tBEstoqueTableAdapter.Fill(this.dbEstoqueDataSet.TBEstoque, TxtBuscaCodigo.Text,
                 TxtBuscaTamanho.Text, TxtBuscarReferencia.Text, TxtBuscarDescricao.Text);
-                this.reportViewer1.RefreshReport();
+                this.RpvEstoque.RefreshReport();
             }
             catch (Exception ex)
             {
@@ -79,6 +79,21 @@ namespace SysEstoque.Relatorio
                 }
 
                 TxtBuscaCodigo.Select();
+            }
+            catch (Exception ex)
+            {
+                AxlException.Message.Show(ex);
+            }
+        }
+        #endregion
+
+        #region FrmEstoqueRelatorio_Resize()
+        private void FrmEstoqueRelatorio_Resize(object sender, EventArgs e)
+        {
+            try
+            {
+                // Centraliza image gif carregando no formulário
+                PicCarregando.Left = this.Width / 2 - PicCarregando.Width / 2;
             }
             catch (Exception ex)
             {
