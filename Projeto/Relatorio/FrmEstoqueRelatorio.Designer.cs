@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.tBEstoqueBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dbEstoqueDataSet = new SysEstoque.DbEstoqueDataSet();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.RpvEstoque = new Microsoft.Reporting.WinForms.ReportViewer();
             this.tBEstoqueTableAdapter = new SysEstoque.DbEstoqueDataSetTableAdapters.TBEstoqueTableAdapter();
             this.LblBuscaDescricao = new System.Windows.Forms.Label();
             this.LblBuscaReferencia = new System.Windows.Forms.Label();
@@ -64,20 +64,22 @@
             this.dbEstoqueDataSet.DataSetName = "DbEstoqueDataSet";
             this.dbEstoqueDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // reportViewer1
+            // RpvEstoque
             // 
-            this.reportViewer1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.reportViewer1.AutoSize = true;
-            reportDataSource1.Name = "TBEstoqueDataSet";
-            reportDataSource1.Value = this.tBEstoqueBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "SysEstoque.Relatorio.RelEstoques.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(12, 91);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(954, 534);
-            this.reportViewer1.TabIndex = 0;
+            this.RpvEstoque.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.RpvEstoque.AutoSize = true;
+            reportDataSource3.Name = "TBEstoqueDataSet";
+            reportDataSource3.Value = this.tBEstoqueBindingSource;
+            this.RpvEstoque.LocalReport.DataSources.Add(reportDataSource3);
+            this.RpvEstoque.LocalReport.ReportEmbeddedResource = "SysEstoque.Relatorio.RelEstoques.rdlc";
+            this.RpvEstoque.Location = new System.Drawing.Point(12, 91);
+            this.RpvEstoque.Margin = new System.Windows.Forms.Padding(0);
+            this.RpvEstoque.Name = "RpvEstoque";
+            this.RpvEstoque.ServerReport.BearerToken = null;
+            this.RpvEstoque.Size = new System.Drawing.Size(896, 534);
+            this.RpvEstoque.TabIndex = 0;
             // 
             // tBEstoqueTableAdapter
             // 
@@ -122,7 +124,7 @@
             // TxtBuscarReferencia
             // 
             this.TxtBuscarReferencia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtBuscarReferencia.BeforeTouchSize = new System.Drawing.Size(136, 29);
+            this.TxtBuscarReferencia.BeforeTouchSize = new System.Drawing.Size(208, 29);
             this.TxtBuscarReferencia.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.TxtBuscarReferencia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtBuscarReferencia.CanOverrideStyle = true;
@@ -149,7 +151,7 @@
             // TxtBuscaTamanho
             // 
             this.TxtBuscaTamanho.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtBuscaTamanho.BeforeTouchSize = new System.Drawing.Size(136, 29);
+            this.TxtBuscaTamanho.BeforeTouchSize = new System.Drawing.Size(208, 29);
             this.TxtBuscaTamanho.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.TxtBuscaTamanho.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtBuscaTamanho.CanOverrideStyle = true;
@@ -176,7 +178,7 @@
             // TxtBuscaCodigo
             // 
             this.TxtBuscaCodigo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtBuscaCodigo.BeforeTouchSize = new System.Drawing.Size(136, 29);
+            this.TxtBuscaCodigo.BeforeTouchSize = new System.Drawing.Size(208, 29);
             this.TxtBuscaCodigo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.TxtBuscaCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtBuscaCodigo.CanOverrideStyle = true;
@@ -203,7 +205,7 @@
             // TxtBuscarDescricao
             // 
             this.TxtBuscarDescricao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtBuscarDescricao.BeforeTouchSize = new System.Drawing.Size(136, 29);
+            this.TxtBuscarDescricao.BeforeTouchSize = new System.Drawing.Size(208, 29);
             this.TxtBuscarDescricao.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.TxtBuscarDescricao.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtBuscarDescricao.CanOverrideStyle = true;
@@ -236,7 +238,7 @@
             // 
             this.PicCarregando.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.PicCarregando.Image = global::SysEstoque.Properties.Resources.Load;
-            this.PicCarregando.Location = new System.Drawing.Point(391, 272);
+            this.PicCarregando.Location = new System.Drawing.Point(401, 277);
             this.PicCarregando.Name = "PicCarregando";
             this.PicCarregando.Size = new System.Drawing.Size(129, 137);
             this.PicCarregando.TabIndex = 141;
@@ -259,7 +261,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(978, 637);
+            this.ClientSize = new System.Drawing.Size(920, 637);
             this.Controls.Add(this.LblLimpar);
             this.Controls.Add(this.PicCarregando);
             this.Controls.Add(this.LblBuscaDescricao);
@@ -270,10 +272,11 @@
             this.Controls.Add(this.TxtBuscaTamanho);
             this.Controls.Add(this.TxtBuscaCodigo);
             this.Controls.Add(this.TxtBuscarDescricao);
-            this.Controls.Add(this.reportViewer1);
+            this.Controls.Add(this.RpvEstoque);
             this.Name = "FrmEstoqueRelatorio";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmEstoqueRelatorio_Load);
+            this.Resize += new System.EventHandler(this.FrmEstoqueRelatorio_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.tBEstoqueBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dbEstoqueDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtBuscarReferencia)).EndInit();
@@ -288,7 +291,7 @@
 
         #endregion
 
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private Microsoft.Reporting.WinForms.ReportViewer RpvEstoque;
         private DbEstoqueDataSet dbEstoqueDataSet;
         private System.Windows.Forms.BindingSource tBEstoqueBindingSource;
         private DbEstoqueDataSetTableAdapters.TBEstoqueTableAdapter tBEstoqueTableAdapter;
