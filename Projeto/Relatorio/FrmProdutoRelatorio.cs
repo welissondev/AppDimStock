@@ -99,5 +99,19 @@ namespace SysEstoque.View
         }
         #endregion
 
+        #region FrmProdutoRelatorio_Resize()
+        private void FrmProdutoRelatorio_Resize(object sender, EventArgs e)
+        {
+            try
+            {
+                // Centraliza image gif carregando no formulário
+                PicCarregando.Left = this.Width / 2 - PicCarregando.Width / 2;
+            }
+            catch (Exception ex)
+            {
+                AxlException.Message.Show(ex);
+            }
+        }
+        #endregion
     }
 }
