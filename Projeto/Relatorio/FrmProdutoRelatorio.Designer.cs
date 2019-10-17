@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.tBProdutoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dbEstoqueDataSet = new SysEstoque.DbEstoqueDataSet();
             this.TxtBuscarCodigo = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
@@ -67,7 +67,7 @@
             // TxtBuscarCodigo
             // 
             this.TxtBuscarCodigo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtBuscarCodigo.BeforeTouchSize = new System.Drawing.Size(136, 29);
+            this.TxtBuscarCodigo.BeforeTouchSize = new System.Drawing.Size(85, 29);
             this.TxtBuscarCodigo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.TxtBuscarCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtBuscarCodigo.CanOverrideStyle = true;
@@ -94,7 +94,7 @@
             // TxtBuscarTamanho
             // 
             this.TxtBuscarTamanho.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtBuscarTamanho.BeforeTouchSize = new System.Drawing.Size(136, 29);
+            this.TxtBuscarTamanho.BeforeTouchSize = new System.Drawing.Size(85, 29);
             this.TxtBuscarTamanho.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.TxtBuscarTamanho.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtBuscarTamanho.CanOverrideStyle = true;
@@ -121,7 +121,7 @@
             // TxtBuscarReferencia
             // 
             this.TxtBuscarReferencia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtBuscarReferencia.BeforeTouchSize = new System.Drawing.Size(136, 29);
+            this.TxtBuscarReferencia.BeforeTouchSize = new System.Drawing.Size(85, 29);
             this.TxtBuscarReferencia.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.TxtBuscarReferencia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtBuscarReferencia.CanOverrideStyle = true;
@@ -174,16 +174,17 @@
             // 
             // RelProdutos
             // 
-            this.RelProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            reportDataSource1.Name = "TBProdutosDataSet";
-            reportDataSource1.Value = this.tBProdutoBindingSource;
-            this.RelProdutos.LocalReport.DataSources.Add(reportDataSource1);
+            this.RelProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            reportDataSource3.Name = "TBProdutosDataSet";
+            reportDataSource3.Value = this.tBProdutoBindingSource;
+            this.RelProdutos.LocalReport.DataSources.Add(reportDataSource3);
             this.RelProdutos.LocalReport.ReportEmbeddedResource = "SysEstoque.Relatorio.RelProdutos.rdlc";
             this.RelProdutos.Location = new System.Drawing.Point(11, 69);
             this.RelProdutos.Name = "RelProdutos";
             this.RelProdutos.ServerReport.BearerToken = null;
-            this.RelProdutos.Size = new System.Drawing.Size(848, 513);
+            this.RelProdutos.Size = new System.Drawing.Size(941, 600);
             this.RelProdutos.TabIndex = 97;
             // 
             // tBProdutoTableAdapter
@@ -193,7 +194,7 @@
             // TxtBuscarDescricao
             // 
             this.TxtBuscarDescricao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtBuscarDescricao.BeforeTouchSize = new System.Drawing.Size(136, 29);
+            this.TxtBuscarDescricao.BeforeTouchSize = new System.Drawing.Size(85, 29);
             this.TxtBuscarDescricao.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.TxtBuscarDescricao.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtBuscarDescricao.CanOverrideStyle = true;
@@ -230,7 +231,7 @@
             // 
             this.PicCarregando.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.PicCarregando.Image = global::SysEstoque.Properties.Resources.Load;
-            this.PicCarregando.Location = new System.Drawing.Point(354, 246);
+            this.PicCarregando.Location = new System.Drawing.Point(437, 283);
             this.PicCarregando.Name = "PicCarregando";
             this.PicCarregando.Size = new System.Drawing.Size(129, 137);
             this.PicCarregando.TabIndex = 140;
@@ -258,7 +259,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(871, 594);
+            this.ClientSize = new System.Drawing.Size(964, 681);
             this.Controls.Add(this.LblLimpar);
             this.Controls.Add(this.PicCarregando);
             this.Controls.Add(this.TxtBuscarDescricao);
@@ -270,10 +271,12 @@
             this.Controls.Add(this.LblBuscarCodigo);
             this.Controls.Add(this.LblBuscarTamanho);
             this.Controls.Add(this.LblBuscarReferencia);
+            this.MinimumSize = new System.Drawing.Size(980, 720);
             this.Name = "FrmProdutoRelatorio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Relatório de Produtos";
             this.Load += new System.EventHandler(this.FrmProdutoRelatorio_Load);
+            this.Resize += new System.EventHandler(this.FrmProdutoRelatorio_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.tBProdutoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dbEstoqueDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtBuscarCodigo)).EndInit();
