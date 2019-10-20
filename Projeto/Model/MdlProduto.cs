@@ -184,14 +184,39 @@ namespace SysEstoque.Model
             {
 
                 var sqlFiltrar = @"SELECT TOP " + numeroDeRegistros + @" Id, Codigo, Nome, Referencia, Descricao, 
-                Tamanho, PrecoCusto, PrecoVenda, FotoNome From TBProduto WHERE Codigo LIKE @Codigo AND Tamanho LIKE @Tamanho
-                AND Referencia LIKE @Referencia AND Descricao LIKE @Descricao Order By Codigo, Tamanho, Referencia Asc";
+                Tamanho, PrecoCusto, PrecoVenda, FotoNome From TBProduto WHERE Descricao LIKE @Descricao";
+
+                //Para executar uma consulta dinâmica e exata, incluimos 
+                //essas condições nos filtros!
+                var criterio = "";
+
+                if (codigo != "")
+                    criterio += " AND Codigo LIKE @Codigo";
+
+                if (tamanho != "")
+                    criterio += " AND Tamanho LIKE @Tamanho";
+
+                if (referencia != "")
+                    criterio += " AND Referencia LIKE @Referencia";
+
+                if (descricao != "")
+                    criterio += " AND Descricao LIKE @Descricao";
+
+                sqlFiltrar += criterio + " Order By Codigo, Tamanho, Referencia Asc";
+
 
                 var e = connection.Command.Parameters;
-                e.AddWithValue("@Codigo", string.Format("%{0}", codigo));
-                e.AddWithValue("@Tamanho", string.Format("%{0}", tamanho));
-                e.AddWithValue("@Referencia", string.Format("%{0}", referencia));
                 e.AddWithValue("@Descricao", string.Format("%{0}%", descricao));
+
+                if (codigo != "")
+                    e.AddWithValue("@Codigo", string.Format("{0}", codigo));
+
+                if (tamanho != "")
+                    e.AddWithValue("@Tamanho", string.Format("{0}", tamanho));
+
+                if (referencia != "")
+                    e.AddWithValue("@Referencia", string.Format("{0}", referencia));
+                
 
                 using (OleDbDataReader dr = connection.ExecuteParameterQuery(sqlFiltrar))
                 {

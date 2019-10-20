@@ -1,9 +1,9 @@
-﻿using System;
+﻿using SysEstoque.Auxiliary;
+using SysEstoque.Business;
+using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Linq;
-using SysEstoque.Auxiliary;
-using SysEstoque.Business;
 
 namespace SysEstoque.Model
 {
@@ -242,18 +242,35 @@ namespace SysEstoque.Model
 
             using (MdlAccessConnection connection = new MdlAccessConnection())
             {
-
                 var sqlSelectEstoqueProduto = @"SELECT TOP " + numeroDeRegistros + @" TBEstoque.Id, TBEstoque.Quantidade, TBEstoque.Valor, 
                 TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, 
                 TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.PrecoCusto, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
-                TBEstoque.IdProduto = TBProduto.Id WHERE Codigo LIKE @Codigo AND Tamanho LIKE @Tamanho AND Referencia LIKE @Referencia
-                AND Descricao LIKE @Descricao Order By Codigo, Tamanho, Referencia Asc";
+                TBEstoque.IdProduto = TBProduto.Id WHERE Descricao LIKE @Descricao ";
+
+                var criterio = "";
+
+                if (codigo != "")
+                    criterio += " AND Codigo LIKE @Codigo ";
+
+                if (tamanho != "")
+                    criterio += " AND Tamanho LIKE @Tamanho ";
+
+                if (referencia != "")
+                    criterio += " AND Referencia LIKE @Referencia ";
+
+                sqlSelectEstoqueProduto += criterio + " Order By Codigo, Tamanho, Referencia Asc";
 
                 var e = connection.Command.Parameters;
-                e.AddWithValue("@Codigo", string.Format("%{0}", codigo));
-                e.AddWithValue("@Tamanho", string.Format("%{0}", tamanho));
-                e.AddWithValue("@Referencia", string.Format("%{0}", referencia));
-                e.AddWithValue("@Descricao", string.Format("%{0}%", descricao));
+                    e.AddWithValue("@Descricao", string.Format("%{0}%", descricao));
+
+                if (codigo != "")
+                    e.AddWithValue("@Codigo", string.Format("{0}", codigo));
+
+                if (tamanho != "")
+                    e.AddWithValue("@Tamanho", string.Format("{0}", tamanho));
+
+                if (referencia != "")
+                    e.AddWithValue("@Referencia", string.Format("{0}", referencia));
 
                 using (OleDbDataReader dr = connection.ExecuteParameterQuery(sqlSelectEstoqueProduto))
                 {
@@ -363,7 +380,7 @@ namespace SysEstoque.Model
         {
             bool adicionar = false;
 
-            if(estoqueAtividade.Destino != "")
+            if (estoqueAtividade.Destino != "")
             {
                 using (MdlAccessConnection connection = new MdlAccessConnection())
                 {
