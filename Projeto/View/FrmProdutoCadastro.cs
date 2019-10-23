@@ -156,10 +156,10 @@ namespace SysEstoque.View
                 return false;
             }
 
-            else if (TxtNome.Text == string.Empty)
+            else if (TxtFornecedor.Text == string.Empty)
             {
                 MessageBox.Show("Campo nome é obrigatório!", "OBRIGATÓRIO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                TxtNome.Select();
+                TxtFornecedor.Select();
                 return false;
             }
 
@@ -212,7 +212,7 @@ namespace SysEstoque.View
                         Codigo = TxtCodigo.Text,
                         Tamanho = TxtTamanho.Text,
                         Referencia = TxtReferencia.Text,
-                        Nome = TxtNome.Text,
+                        Fornecedor = TxtFornecedor.Text,
                         Descricao = TxtDescricao.Text,
                         EstoqueMin = Convert.ToInt32(TxtEstoqueMin.Text),
                         EstoqueMax = Convert.ToInt32(TxtEstoqueMax.Text),
@@ -262,7 +262,7 @@ namespace SysEstoque.View
                         Codigo = TxtCodigo.Text,
                         Tamanho = TxtTamanho.Text,
                         Referencia = TxtReferencia.Text,
-                        Nome = TxtNome.Text,
+                        Fornecedor = TxtFornecedor.Text,
                         Descricao = TxtDescricao.Text,
                         EstoqueMin = Convert.ToInt32(TxtEstoqueMin.Text),
                         EstoqueMax = Convert.ToInt32(TxtEstoqueMax.Text),

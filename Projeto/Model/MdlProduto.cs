@@ -30,11 +30,11 @@ namespace SysEstoque.Model
             {
                 using (connection.Transaction = connection.OpenConnection().BeginTransaction())
                 {
-                    var commandSQL = @"INSERT INTO TBProduto(Nome, Descricao, Codigo, Tamanho, Referencia, PrecoCusto, 
-                        PrecoVenda, EstoqueMin, EstoqueMax, CodigoBarras, FotoNome)VALUES(@Nome, @Descricao, @Codigo, @Tamanho, 
+                    var commandSQL = @"INSERT INTO TBProduto(Fornecedor, Descricao, Codigo, Tamanho, Referencia, PrecoCusto, 
+                        PrecoVenda, EstoqueMin, EstoqueMax, CodigoBarras, FotoNome)VALUES(@Fornecedor, @Descricao, @Codigo, @Tamanho, 
                         @Referencia, @PrecoCusto, @PrecoVenda, @EstoqueMin, @EstoqueMax, @CodigoBarras, @FotoNome)";
 
-                    connection.AddParameter("@Nome", OleDbType.VarChar, produto.Nome);
+                    connection.AddParameter("@Fornecedor", OleDbType.VarChar, produto.Fornecedor);
                     connection.AddParameter("@Descricao", OleDbType.VarChar, produto.Descricao);
                     connection.AddParameter("@Codigo", OleDbType.VarChar, produto.Codigo);
                     connection.AddParameter("@Tamanho", OleDbType.VarChar, produto.Tamanho);
@@ -76,11 +76,11 @@ namespace SysEstoque.Model
                 using (connection.Transaction = connection.OpenConnection().BeginTransaction())
                 {
 
-                    var commandSQL = @"UPDATE TBProduto Set Nome = @Nome, Descricao = @Descricao, Codigo = @Codigo, Tamanho = @Tamanho,
+                    var commandSQL = @"UPDATE TBProduto Set Fornecedor = @Fornecedor, Descricao = @Descricao, Codigo = @Codigo, Tamanho = @Tamanho,
                     Referencia = @Referencia , PrecoCusto = @PrecoCusto, PrecoVenda = @PrecoVenda, EstoqueMin = @EstoqueMin, EstoqueMax = @EstoqueMax, 
                     CodigoBarras = @CodigoBarras , FotoNome = @FotoNome Where Id = " + id;
 
-                    connection.AddParameter("@Nome", OleDbType.VarChar, produto.Nome);
+                    connection.AddParameter("@Fornecedor", OleDbType.VarChar, produto.Fornecedor);
                     connection.AddParameter("@Descricao", OleDbType.VarChar, produto.Descricao);
                     connection.AddParameter("@Codigo", OleDbType.VarChar, produto.Codigo);
                     connection.AddParameter("@Tamanho", OleDbType.VarChar, produto.Tamanho);
@@ -141,7 +141,7 @@ namespace SysEstoque.Model
         #region Listar()
         public List<BllProduto> Listar(int numeroDeRegistros = 100)
         {
-            var sql = @"SELECT TOP " + numeroDeRegistros + @" Id, Codigo, Nome, Referencia, Descricao, 
+            var sql = @"SELECT TOP " + numeroDeRegistros + @" Id, Codigo, Fornecedor, Referencia, Descricao, 
             Tamanho, PrecoCusto, PrecoVenda, FotoNome From TBProduto Order By Codigo, Tamanho, Referencia Asc";
 
             List<BllProduto> listaProdutos = new List<BllProduto>();
@@ -157,7 +157,7 @@ namespace SysEstoque.Model
                             Id = Convert.ToInt32(dr["Id"]),
                             Codigo = Convert.ToString(dr["Codigo"]),
                             Referencia = Convert.ToString(dr["Referencia"]),
-                            Nome = Convert.ToString(dr["Nome"]),
+                            Fornecedor = Convert.ToString(dr["Fornecedor"]),
                             Descricao = Convert.ToString(dr["Descricao"]),
                             Tamanho = Convert.ToString(dr["Tamanho"]),
                             PrecoCusto = Convert.ToDouble(dr["PrecoCusto"]),
@@ -183,7 +183,7 @@ namespace SysEstoque.Model
             using (MdlAccessConnection connection = new MdlAccessConnection())
             {
 
-                var sqlFiltrar = @"SELECT TOP " + numeroDeRegistros + @" Id, Codigo, Nome, Referencia, Descricao, 
+                var sqlFiltrar = @"SELECT TOP " + numeroDeRegistros + @" Id, Codigo, Fornecedor, Referencia, Descricao, 
                 Tamanho, PrecoCusto, PrecoVenda, FotoNome From TBProduto WHERE Descricao LIKE @Descricao";
 
                 //Para executar uma consulta dinâmica e exata, incluimos 
@@ -227,7 +227,7 @@ namespace SysEstoque.Model
                             Id = Convert.ToInt32(dr["Id"]),
                             Codigo = Convert.ToString(dr["Codigo"]),
                             Referencia = Convert.ToString(dr["Referencia"]),
-                            Nome = Convert.ToString(dr["Nome"]),
+                            Fornecedor = Convert.ToString(dr["Fornecedor"]),
                             Descricao = Convert.ToString(dr["Descricao"]),
                             Tamanho = Convert.ToString(dr["Tamanho"]),
                             PrecoCusto = Convert.ToDouble(dr["PrecoCusto"]),
@@ -248,7 +248,7 @@ namespace SysEstoque.Model
         public void VisualizarDados(int id)
         {
 
-            var sql = @"SELECT Id, Codigo, Referencia, CodigoBarras, Nome, Descricao, Tamanho, PrecoCusto,
+            var sql = @"SELECT Id, Codigo, Referencia, CodigoBarras, Fornecedor, Descricao, Tamanho, PrecoCusto,
                 PrecoVenda, EstoqueMin, EstoqueMax, FotoNome From TBProduto Where Id = " + id;
 
             using (MdlAccessConnection connection = new MdlAccessConnection())
@@ -261,7 +261,7 @@ namespace SysEstoque.Model
                         produto.Codigo = dr["Codigo"].ToString();
                         produto.Referencia = dr["Referencia"].ToString();
                         produto.CodigoBarras = dr["CodigoBarras"].ToString();
-                        produto.Nome = dr["Nome"].ToString();
+                        produto.Fornecedor = dr["Fornecedor"].ToString();
                         produto.Descricao = dr["Descricao"].ToString();
                         produto.Tamanho = dr["Tamanho"].ToString();
                         produto.PrecoCusto = Convert.ToDouble(dr["PrecoCusto"]);
@@ -292,7 +292,7 @@ namespace SysEstoque.Model
                         ListaProduto.Add("Id:" + dr["Id"].ToString());
                         ListaProduto.Add("Código:" + dr["Codigo"].ToString());
                         ListaProduto.Add("Referência:" + dr["Referencia"].ToString());
-                        ListaProduto.Add("Nome:" + dr["Nome"].ToString());
+                        ListaProduto.Add("Fornecedor:" + dr["Fornecedor"].ToString());
                         ListaProduto.Add("Descrição:" + dr["Descricao"].ToString());
                         ListaProduto.Add("Tamanho:" + dr["Tamanho"].ToString());
                         ListaProduto.Add("PreçoCusto:" + dr["PrecoCusto"].ToString());

@@ -214,7 +214,7 @@ namespace SysEstoque.View
                     Produto.Lista[item].Codigo,
                     Produto.Lista[item].Referencia,
                     Produto.Lista[item].Tamanho,
-                    Produto.Lista[item].Nome,
+                    Produto.Lista[item].Fornecedor,
                     Produto.Lista[item].Descricao,
                     Produto.Lista[item].PrecoCusto,
                     Produto.Lista[item].PrecoVenda,
@@ -250,7 +250,7 @@ namespace SysEstoque.View
                     produto.Lista[item].Codigo,
                     produto.Lista[item].Referencia,
                     produto.Lista[item].Tamanho,
-                    produto.Lista[item].Nome,
+                    produto.Lista[item].Fornecedor,
                     produto.Lista[item].Descricao,
                     produto.Lista[item].PrecoCusto,
                     produto.Lista[item].PrecoVenda,
@@ -295,7 +295,7 @@ namespace SysEstoque.View
                     frmProdutoAdd.TxtCodigo.Enabled = false;
                     frmProdutoAdd.TxtTamanho.Text = produto.Tamanho;
                     frmProdutoAdd.TxtReferencia.Text = produto.Referencia;
-                    frmProdutoAdd.TxtNome.Text = produto.Nome;
+                    frmProdutoAdd.TxtFornecedor.Text = produto.Fornecedor;
                     frmProdutoAdd.TxtDescricao.Text = produto.Descricao;
                     frmProdutoAdd.TxtEstoqueMin.Text = produto.EstoqueMin.ToString();
                     frmProdutoAdd.TxtEstoqueMax.Text = produto.EstoqueMax.ToString();
@@ -422,7 +422,7 @@ namespace SysEstoque.View
                 frmProdutoAdd.TxtCodigo.Text = produto.Codigo;
                 frmProdutoAdd.TxtTamanho.Text = produto.Tamanho;
                 frmProdutoAdd.TxtReferencia.Text = produto.Referencia;
-                frmProdutoAdd.TxtNome.Text = produto.Nome;
+                frmProdutoAdd.TxtFornecedor.Text = produto.Fornecedor;
                 frmProdutoAdd.TxtDescricao.Text = produto.Descricao;
                 frmProdutoAdd.TxtEstoqueMin.Text = produto.EstoqueMin.ToString();
                 frmProdutoAdd.TxtEstoqueMax.Text = produto.EstoqueMax.ToString();
@@ -515,7 +515,7 @@ namespace SysEstoque.View
                 DataGridViewTextBoxColumn CodigoColumn = new DataGridViewTextBoxColumn();
                 DataGridViewTextBoxColumn ReferenciaColumn = new DataGridViewTextBoxColumn();
                 DataGridViewTextBoxColumn TamanhoColumn = new DataGridViewTextBoxColumn();
-                DataGridViewTextBoxColumn NomeColumn = new DataGridViewTextBoxColumn();
+                DataGridViewTextBoxColumn FornecedorColumn = new DataGridViewTextBoxColumn();
                 DataGridViewTextBoxColumn DescricaoColumn = new DataGridViewTextBoxColumn();
                 DataGridViewTextBoxColumn PrecoCustoColumn = new DataGridViewTextBoxColumn();
                 DataGridViewTextBoxColumn PrecoVendaColumn = new DataGridViewTextBoxColumn();
@@ -561,10 +561,10 @@ namespace SysEstoque.View
                 dtg.Columns[3].ReadOnly = true;
                 dtg.Columns[3].Visible = true;
 
-                dtg.Columns.Add(NomeColumn);
+                dtg.Columns.Add(FornecedorColumn);
                 dtg.Columns[4].Width = 250;
-                dtg.Columns[4].Name = "NomeColumn";
-                dtg.Columns[4].HeaderText = "Nome";
+                dtg.Columns[4].Name = "FornecedorColumn";
+                dtg.Columns[4].HeaderText = "Fornecedor";
                 dtg.Columns[4].ReadOnly = true;
                 dtg.Columns[4].Visible = true;
                 dtg.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;

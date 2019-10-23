@@ -113,7 +113,7 @@ namespace SysEstoque.Business
 
         #region Get e Set
         public int Id { get; set; }
-        public string Nome { get; set; }
+        public string Fornecedor { get; set; }
         public string Descricao { get; set; }
         public string Codigo { get; set; }
         public string Tamanho { get; set; }
