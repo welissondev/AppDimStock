@@ -51,8 +51,8 @@
             this.TxtEstoqueMin = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
             this.TxtEstoqueMax = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
             this.TxtTamanho = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
-            this.TxtNome = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.LblNome = new System.Windows.Forms.Label();
+            this.TxtFornecedor = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.LblFornecedor = new System.Windows.Forms.Label();
             this.PanelHorizontalSuperior = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.LblDataLong = new System.Windows.Forms.Label();
             this.LblCaptionListaProduto = new System.Windows.Forms.Label();
@@ -67,7 +67,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.TxtEstoqueMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtEstoqueMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtTamanho)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtNome)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtFornecedor)).BeginInit();
             this.PanelHorizontalSuperior.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -469,40 +469,40 @@
             this.TxtTamanho.ThemeName = "Office2016White";
             this.TxtTamanho.ZeroColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             // 
-            // TxtNome
+            // TxtFornecedor
             // 
-            this.TxtNome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtNome.BeforeTouchSize = new System.Drawing.Size(114, 29);
-            this.TxtNome.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
-            this.TxtNome.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtNome.CanOverrideStyle = true;
-            this.TxtNome.CausesValidation = false;
-            this.TxtNome.CornerRadius = 4;
-            this.TxtNome.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.TxtNome.Font = new System.Drawing.Font("Arial Unicode MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtNome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.TxtNome.Location = new System.Drawing.Point(246, 222);
-            this.TxtNome.MaxLength = 2000;
-            this.TxtNome.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.TxtNome.MinimumSize = new System.Drawing.Size(16, 12);
-            this.TxtNome.Name = "TxtNome";
-            this.TxtNome.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Silver;
-            this.TxtNome.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
-            this.TxtNome.Size = new System.Drawing.Size(599, 29);
-            this.TxtNome.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016White;
-            this.TxtNome.TabIndex = 3;
-            this.TxtNome.Tag = "";
-            this.TxtNome.ThemeName = "Office2016White";
+            this.TxtFornecedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.TxtFornecedor.BeforeTouchSize = new System.Drawing.Size(114, 29);
+            this.TxtFornecedor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
+            this.TxtFornecedor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtFornecedor.CanOverrideStyle = true;
+            this.TxtFornecedor.CausesValidation = false;
+            this.TxtFornecedor.CornerRadius = 4;
+            this.TxtFornecedor.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.TxtFornecedor.Font = new System.Drawing.Font("Arial Unicode MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtFornecedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.TxtFornecedor.Location = new System.Drawing.Point(246, 222);
+            this.TxtFornecedor.MaxLength = 2000;
+            this.TxtFornecedor.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.TxtFornecedor.MinimumSize = new System.Drawing.Size(16, 12);
+            this.TxtFornecedor.Name = "TxtFornecedor";
+            this.TxtFornecedor.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Silver;
+            this.TxtFornecedor.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
+            this.TxtFornecedor.Size = new System.Drawing.Size(599, 29);
+            this.TxtFornecedor.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016White;
+            this.TxtFornecedor.TabIndex = 3;
+            this.TxtFornecedor.Tag = "";
+            this.TxtFornecedor.ThemeName = "Office2016White";
             // 
-            // LblNome
+            // LblFornecedor
             // 
-            this.LblNome.AutoSize = true;
-            this.LblNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblNome.Location = new System.Drawing.Point(246, 206);
-            this.LblNome.Name = "LblNome";
-            this.LblNome.Size = new System.Drawing.Size(48, 16);
-            this.LblNome.TabIndex = 81;
-            this.LblNome.Text = "Nome:";
+            this.LblFornecedor.AutoSize = true;
+            this.LblFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblFornecedor.Location = new System.Drawing.Point(246, 206);
+            this.LblFornecedor.Name = "LblFornecedor";
+            this.LblFornecedor.Size = new System.Drawing.Size(81, 16);
+            this.LblFornecedor.TabIndex = 81;
+            this.LblFornecedor.Text = "Fornecedor:";
             // 
             // PanelHorizontalSuperior
             // 
@@ -555,8 +555,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(964, 681);
             this.Controls.Add(this.PanelHorizontalSuperior);
-            this.Controls.Add(this.TxtNome);
-            this.Controls.Add(this.LblNome);
+            this.Controls.Add(this.TxtFornecedor);
+            this.Controls.Add(this.LblFornecedor);
             this.Controls.Add(this.TxtTamanho);
             this.Controls.Add(this.TxtEstoqueMin);
             this.Controls.Add(this.LblEstoqueMin);
@@ -590,7 +590,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.TxtEstoqueMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtEstoqueMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtTamanho)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtNome)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtFornecedor)).EndInit();
             this.PanelHorizontalSuperior.ResumeLayout(false);
             this.PanelHorizontalSuperior.PerformLayout();
             this.ResumeLayout(false);
@@ -621,8 +621,8 @@
         public Syncfusion.Windows.Forms.Tools.IntegerTextBox TxtEstoqueMin;
         public Syncfusion.Windows.Forms.Tools.IntegerTextBox TxtEstoqueMax;
         public Syncfusion.Windows.Forms.Tools.IntegerTextBox TxtTamanho;
-        public Syncfusion.Windows.Forms.Tools.TextBoxExt TxtNome;
-        private System.Windows.Forms.Label LblNome;
+        public Syncfusion.Windows.Forms.Tools.TextBoxExt TxtFornecedor;
+        private System.Windows.Forms.Label LblFornecedor;
         public SysEstoque.Auxiliary.AxlPictureBox PicFoto;
         private Bunifu.Framework.UI.BunifuGradientPanel PanelHorizontalSuperior;
         public System.Windows.Forms.Label LblDataLong;

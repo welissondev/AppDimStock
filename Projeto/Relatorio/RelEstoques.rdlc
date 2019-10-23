@@ -622,14 +622,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Nome">
+                    <Textbox Name="Fornecedor">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Nome.Value</Value>
+                              <Value>=Fields!Fornecedor.Value</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                               </Style>
@@ -638,7 +638,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Nome</rd:DefaultName>
+                      <rd:DefaultName>Fornecedor</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1256,8 +1256,8 @@ Sum(Fields!EstoqueMax.Value - Fields!Quantidade.Value))</Value>
           <DataField>EstoqueMax</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="Nome">
-          <DataField>Nome</DataField>
+        <Field Name="Fornecedor">
+          <DataField>Fornecedor</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>

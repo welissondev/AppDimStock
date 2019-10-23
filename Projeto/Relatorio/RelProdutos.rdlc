@@ -322,14 +322,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Nome">
+                    <Textbox Name="Fornecedor">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Nome.Value</Value>
+                              <Value>=Fields!Fornecedor.Value</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                               </Style>
@@ -340,7 +340,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Nome</rd:DefaultName>
+                      <rd:DefaultName>Fornecedor</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -736,14 +736,6 @@
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="Id">
-          <DataField>Id</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="Nome">
-          <DataField>Nome</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="Descricao">
           <DataField>Descricao</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -760,34 +752,18 @@
           <DataField>Referencia</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="PrecoCusto">
-          <DataField>PrecoCusto</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="PrecoVenda">
-          <DataField>PrecoVenda</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="EstoqueMin">
-          <DataField>EstoqueMin</DataField>
+        <Field Name="Id">
+          <DataField>Id</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="EstoqueMax">
-          <DataField>EstoqueMax</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="CodigoBarras">
-          <DataField>CodigoBarras</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="FotoNome">
-          <DataField>FotoNome</DataField>
+        <Field Name="Fornecedor">
+          <DataField>Fornecedor</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DbEstoqueDataSet</rd:DataSetName>
-        <rd:SchemaPath>C:\Git\SysControleEstoque\Projeto\DbEstoqueDataSet.xsd</rd:SchemaPath>
+        <rd:SchemaPath>C:\Git\SysEstoque\Projeto\DbEstoqueDataSet.xsd</rd:SchemaPath>
         <rd:TableName>TBProduto</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
