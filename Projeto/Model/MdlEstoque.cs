@@ -488,14 +488,33 @@ namespace SysEstoque.Model
             using (MdlAccessConnection connection = new MdlAccessConnection())
             {
                 var commandSQL = @"SELECT TOP " + numeroRegistros +
-                @" * From TBEstoqueAtividade WHERE Id Like @NumeroAtividade Or Tipo LIKE @Tipo AND Situacao LIKE @Situacao AND Data >= @DataInicio AND Data <= @DataFinal";
+                @" * From TBEstoqueAtividade WHERE Data >= @DataInicio AND Data <= @DataFinal";
+
+                var criterio = "";
+
+                if (numeroAtividade != "")
+                    criterio += " And Id LIKE @Id";
+
+                if (tipo != "")
+                    criterio += " And Tipo LIKE @Tipo";
+
+                if (operacao != "")
+                    criterio += " And Situacao LIKE @Situacao";
+
+                commandSQL += criterio;
 
                 var e = connection.Command.Parameters;
-                e.AddWithValue("@NumeroAtividade", string.Format("{0}", numeroAtividade));
-                e.AddWithValue("@Tipo", string.Format("{0}", tipo));
-                e.AddWithValue("@Situacao", string.Format("{0}", operacao));
-                e.AddWithValue("@DataInicio", string.Format("{0}", dataInicio));
-                e.AddWithValue("@DataFinal", string.Format("{0}", dataFinal));
+                    e.AddWithValue("@DataInicio", string.Format("{0}", dataInicio));
+                    e.AddWithValue("@DataFinal", string.Format("{0}", dataFinal));
+
+                if (numeroAtividade != "")
+                    e.AddWithValue("@Id", string.Format("{0}", numeroAtividade));
+
+                if (tipo != "")
+                    e.AddWithValue("@Tipo", string.Format("{0}", tipo));
+
+                if (operacao != "")
+                    e.AddWithValue("@Situacao", string.Format("{0}", operacao));
 
                 List<BllEstoqueAtividade> listaEstoqueAtividade = new List<BllEstoqueAtividade>();
 
