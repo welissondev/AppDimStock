@@ -53,6 +53,8 @@
             this.CboTipo = new Syncfusion.WinForms.ListView.SfComboBox();
             this.LblNumeroAtividade = new System.Windows.Forms.Label();
             this.TxtBuscaNumeroAtividade = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.label4 = new System.Windows.Forms.Label();
+            this.LblLimpar = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.GridListaAtividade)).BeginInit();
             this.PanelHorizontalSuperior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textBoxExt2)).BeginInit();
@@ -172,7 +174,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(535, 131);
+            this.label1.Location = new System.Drawing.Point(150, 131);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 156;
@@ -190,7 +192,7 @@
             this.textBoxExt2.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBoxExt2.Font = new System.Drawing.Font("Arial Unicode MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxExt2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.textBoxExt2.Location = new System.Drawing.Point(538, 147);
+            this.textBoxExt2.Location = new System.Drawing.Point(153, 147);
             this.textBoxExt2.MaxLength = 50;
             this.textBoxExt2.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.textBoxExt2.MinimumSize = new System.Drawing.Size(16, 12);
@@ -207,7 +209,7 @@
             // LblBuscaDataInicio
             // 
             this.LblBuscaDataInicio.AutoSize = true;
-            this.LblBuscaDataInicio.Location = new System.Drawing.Point(397, 131);
+            this.LblBuscaDataInicio.Location = new System.Drawing.Point(12, 131);
             this.LblBuscaDataInicio.Name = "LblBuscaDataInicio";
             this.LblBuscaDataInicio.Size = new System.Drawing.Size(61, 13);
             this.LblBuscaDataInicio.TabIndex = 153;
@@ -225,7 +227,7 @@
             this.TxtBuscaTamanho.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.TxtBuscaTamanho.Font = new System.Drawing.Font("Arial Unicode MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtBuscaTamanho.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.TxtBuscaTamanho.Location = new System.Drawing.Point(400, 147);
+            this.TxtBuscaTamanho.Location = new System.Drawing.Point(15, 147);
             this.TxtBuscaTamanho.MaxLength = 50;
             this.TxtBuscaTamanho.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.TxtBuscaTamanho.MinimumSize = new System.Drawing.Size(16, 12);
@@ -241,7 +243,7 @@
             // 
             // TxtDataInicio
             // 
-            this.TxtDataInicio.Location = new System.Drawing.Point(405, 149);
+            this.TxtDataInicio.Location = new System.Drawing.Point(20, 149);
             this.TxtDataInicio.Name = "TxtDataInicio";
             this.TxtDataInicio.Size = new System.Drawing.Size(123, 26);
             this.TxtDataInicio.Style.BorderColor = System.Drawing.Color.White;
@@ -255,7 +257,8 @@
             // 
             // TxtDataFinal
             // 
-            this.TxtDataFinal.Location = new System.Drawing.Point(544, 149);
+            this.TxtDataFinal.AllowDrop = true;
+            this.TxtDataFinal.Location = new System.Drawing.Point(159, 149);
             this.TxtDataFinal.Name = "TxtDataFinal";
             this.TxtDataFinal.Size = new System.Drawing.Size(122, 26);
             this.TxtDataFinal.Style.BorderColor = System.Drawing.Color.White;
@@ -295,7 +298,7 @@
             this.TxtTipo.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.TxtTipo.Font = new System.Drawing.Font("Arial Unicode MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtTipo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.TxtTipo.Location = new System.Drawing.Point(156, 148);
+            this.TxtTipo.Location = new System.Drawing.Point(291, 148);
             this.TxtTipo.MaxLength = 50;
             this.TxtTipo.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.TxtTipo.MinimumSize = new System.Drawing.Size(16, 12);
@@ -312,7 +315,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(153, 133);
+            this.label2.Location = new System.Drawing.Point(288, 133);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(31, 13);
             this.label2.TabIndex = 161;
@@ -321,7 +324,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(274, 132);
+            this.label3.Location = new System.Drawing.Point(409, 132);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 13);
             this.label3.TabIndex = 163;
@@ -339,7 +342,7 @@
             this.TxtSituacao.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.TxtSituacao.Font = new System.Drawing.Font("Arial Unicode MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtSituacao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.TxtSituacao.Location = new System.Drawing.Point(277, 148);
+            this.TxtSituacao.Location = new System.Drawing.Point(412, 148);
             this.TxtSituacao.MaxLength = 50;
             this.TxtSituacao.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.TxtSituacao.MinimumSize = new System.Drawing.Size(16, 12);
@@ -357,7 +360,7 @@
             // 
             this.CboSituacao.BackColor = System.Drawing.Color.White;
             this.CboSituacao.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.CboSituacao.Location = new System.Drawing.Point(285, 151);
+            this.CboSituacao.Location = new System.Drawing.Point(420, 151);
             this.CboSituacao.Name = "CboSituacao";
             this.CboSituacao.Size = new System.Drawing.Size(109, 24);
             this.CboSituacao.Style.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -366,12 +369,13 @@
             this.CboSituacao.Style.EditorStyle.BorderColor = System.Drawing.Color.White;
             this.CboSituacao.Style.EditorStyle.FocusedBorderColor = System.Drawing.Color.White;
             this.CboSituacao.TabIndex = 165;
+            this.CboSituacao.SelectedIndexChanged += new System.EventHandler(this.CboSituacao_SelectedIndexChanged);
             // 
             // CboTipo
             // 
             this.CboTipo.BackColor = System.Drawing.Color.White;
             this.CboTipo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.CboTipo.Location = new System.Drawing.Point(159, 150);
+            this.CboTipo.Location = new System.Drawing.Point(294, 150);
             this.CboTipo.Name = "CboTipo";
             this.CboTipo.Size = new System.Drawing.Size(115, 25);
             this.CboTipo.Style.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -379,11 +383,12 @@
             this.CboTipo.Style.EditorStyle.BackColor = System.Drawing.Color.White;
             this.CboTipo.Style.EditorStyle.FocusedBorderColor = System.Drawing.Color.White;
             this.CboTipo.TabIndex = 166;
+            this.CboTipo.SelectedIndexChanged += new System.EventHandler(this.CboTipo_SelectedIndexChanged);
             // 
             // LblNumeroAtividade
             // 
             this.LblNumeroAtividade.AutoSize = true;
-            this.LblNumeroAtividade.Location = new System.Drawing.Point(16, 131);
+            this.LblNumeroAtividade.Location = new System.Drawing.Point(562, 132);
             this.LblNumeroAtividade.Name = "LblNumeroAtividade";
             this.LblNumeroAtividade.Size = new System.Drawing.Size(66, 13);
             this.LblNumeroAtividade.TabIndex = 168;
@@ -401,7 +406,7 @@
             this.TxtBuscaNumeroAtividade.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.TxtBuscaNumeroAtividade.Font = new System.Drawing.Font("Arial Unicode MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtBuscaNumeroAtividade.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.TxtBuscaNumeroAtividade.Location = new System.Drawing.Point(19, 147);
+            this.TxtBuscaNumeroAtividade.Location = new System.Drawing.Point(565, 148);
             this.TxtBuscaNumeroAtividade.MaxLength = 50;
             this.TxtBuscaNumeroAtividade.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.TxtBuscaNumeroAtividade.MinimumSize = new System.Drawing.Size(16, 12);
@@ -416,12 +421,34 @@
             this.TxtBuscaNumeroAtividade.ThemeName = "Office2016Colorful";
             this.TxtBuscaNumeroAtividade.TextChanged += new System.EventHandler(this.TxtBuscaNumeroAtividade_TextChanged);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(538, 158);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(21, 13);
+            this.label4.TabIndex = 169;
+            this.label4.Text = "Ou";
+            // 
+            // LblLimpar
+            // 
+            this.LblLimpar.AutoSize = true;
+            this.LblLimpar.Location = new System.Drawing.Point(711, 157);
+            this.LblLimpar.Name = "LblLimpar";
+            this.LblLimpar.Size = new System.Drawing.Size(38, 13);
+            this.LblLimpar.TabIndex = 170;
+            this.LblLimpar.TabStop = true;
+            this.LblLimpar.Text = "Limpar";
+            this.LblLimpar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LblLimpar_LinkClicked);
+            // 
             // FrmEstoqueAtividadeLista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1023, 603);
+            this.Controls.Add(this.LblLimpar);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.LblNumeroAtividade);
             this.Controls.Add(this.TxtBuscaNumeroAtividade);
             this.Controls.Add(this.CboTipo);
@@ -484,5 +511,7 @@
         private Syncfusion.WinForms.ListView.SfComboBox CboTipo;
         private System.Windows.Forms.Label LblNumeroAtividade;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt TxtBuscaNumeroAtividade;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.LinkLabel LblLimpar;
     }
 }

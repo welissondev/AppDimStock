@@ -5,6 +5,8 @@ using SysEstoque.Auxiliary;
 using SysEstoque.Properties;
 using System.Linq;
 using System.Collections.Generic;
+using Syncfusion.Windows.Forms.Tools;
+using Syncfusion.WinForms.ListView;
 
 namespace SysEstoque.View
 {
@@ -33,7 +35,6 @@ namespace SysEstoque.View
         #region FrmEstoqueAtividadeLista_Load()
         private void FrmEstoqueAtividadeLista_Load(object sender, EventArgs e)
         {
-            ListarAtividades();
         }
         #endregion
 
@@ -104,12 +105,53 @@ namespace SysEstoque.View
         }
         #endregion
 
+        #region CboTipo_SelectedIndexChanged()
+        private void CboTipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PicCarregando.Visible = true;
+            TimerExecutaConsulta.Enabled = false;
+            TimerExecutaConsulta.Enabled = true;
+        }
+        #endregion
+
+        #region CboSituacao_SelectedIndexChanged()
+        private void CboSituacao_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PicCarregando.Visible = true;
+            TimerExecutaConsulta.Enabled = false;
+            TimerExecutaConsulta.Enabled = true;
+        }
+        #endregion
+
         #region TxtBuscaNumeroAtividade_TextChanged
         private void TxtBuscaNumeroAtividade_TextChanged(object sender, EventArgs e)
         {
             TimerExecutaConsulta.Enabled = false;
             TimerExecutaConsulta.Enabled = true;
             PicCarregando.Visible = true;
+        }
+        #endregion
+
+        #region LblLimpar_LinkClicked()
+        private void LblLimpar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                foreach (Control ctl in Controls)
+                {
+                    if (ctl.GetType() == typeof(TextBoxExt))
+                        ctl.Text = string.Empty;
+
+                    if (ctl.GetType() == typeof(SfComboBox))
+                        ctl.Text = string.Empty;
+                }
+
+                TxtBuscaNumeroAtividade.Select();
+            }
+            catch (Exception ex)
+            {
+                AxlException.Message.Show(ex);
+            }
         }
         #endregion
 
@@ -357,11 +399,25 @@ namespace SysEstoque.View
 
             PreencherComboBoxes();
 
+            //Defini o lealt do datagridviw
             AxlDataGridViewLealt.DefaultLayoutDarkblue(GridListaAtividade);
 
+            //Exibi a data atual para usuáio, no formato long
             LblDataLong.Text = DateTime.Now.ToLongDateString();
 
+            //Defini uma data inicial e final
+            var primeiroDia = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            var ultimoDia = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+
+            var dataInicial = primeiroDia;
+            var dataFinal = ultimoDia + "-" + DateTime.Now.Month + "-" + DateTime.Now.Year;
+
+            TxtDataInicio.Text = Convert.ToString(dataInicial);
+            TxtDataFinal.Text = Convert.ToString(dataFinal);
+
         }
+
         #endregion
+
     }
 }
