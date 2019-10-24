@@ -44,11 +44,15 @@
             this.TxtBuscarDescricao = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.TimerExecultaConsulta = new System.Windows.Forms.Timer(this.components);
             this.PanelHorizontalSuperior = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.BtnRelatorio = new Syncfusion.WinForms.Controls.SfButton();
             this.BtnAtualizar = new Syncfusion.WinForms.Controls.SfButton();
             this.LblDataLong = new System.Windows.Forms.Label();
             this.LblCaptionListaProduto = new System.Windows.Forms.Label();
             this.PicCarregando = new System.Windows.Forms.PictureBox();
-            this.BtnRelatorio = new Syncfusion.WinForms.Controls.SfButton();
+            this.CboResumo = new Syncfusion.WinForms.ListView.SfComboBox();
+            this.textBoxExt2 = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.LblResumo = new System.Windows.Forms.Label();
+            this.LblLimpar = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.GridListaEstoque)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CboQuantidadeDeRegistros)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBoxExt1)).BeginInit();
@@ -58,6 +62,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.TxtBuscarDescricao)).BeginInit();
             this.PanelHorizontalSuperior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicCarregando)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CboResumo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBoxExt2)).BeginInit();
             this.SuspendLayout();
             // 
             // GridListaEstoque
@@ -68,7 +74,7 @@
             this.GridListaEstoque.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridListaEstoque.Location = new System.Drawing.Point(28, 197);
             this.GridListaEstoque.Name = "GridListaEstoque";
-            this.GridListaEstoque.Size = new System.Drawing.Size(911, 459);
+            this.GridListaEstoque.Size = new System.Drawing.Size(1004, 459);
             this.GridListaEstoque.TabIndex = 70;
             this.GridListaEstoque.Layout += new System.Windows.Forms.LayoutEventHandler(this.GridListaEstoque_Layout);
             // 
@@ -76,7 +82,7 @@
             // 
             this.CboQuantidadeDeRegistros.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.CboQuantidadeDeRegistros.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CboQuantidadeDeRegistros.Location = new System.Drawing.Point(670, 166);
+            this.CboQuantidadeDeRegistros.Location = new System.Drawing.Point(701, 165);
             this.CboQuantidadeDeRegistros.Name = "CboQuantidadeDeRegistros";
             this.CboQuantidadeDeRegistros.Size = new System.Drawing.Size(174, 25);
             this.CboQuantidadeDeRegistros.Style.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -101,7 +107,7 @@
             this.textBoxExt1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.textBoxExt1.Font = new System.Drawing.Font("Arial Unicode MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxExt1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.textBoxExt1.Location = new System.Drawing.Point(668, 164);
+            this.textBoxExt1.Location = new System.Drawing.Point(699, 163);
             this.textBoxExt1.MaxLength = 50;
             this.textBoxExt1.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.textBoxExt1.MinimumSize = new System.Drawing.Size(16, 12);
@@ -118,7 +124,7 @@
             // LblNumeroDeRegistros
             // 
             this.LblNumeroDeRegistros.AutoSize = true;
-            this.LblNumeroDeRegistros.Location = new System.Drawing.Point(667, 148);
+            this.LblNumeroDeRegistros.Location = new System.Drawing.Point(698, 147);
             this.LblNumeroDeRegistros.Name = "LblNumeroDeRegistros";
             this.LblNumeroDeRegistros.Size = new System.Drawing.Size(107, 13);
             this.LblNumeroDeRegistros.TabIndex = 106;
@@ -127,7 +133,7 @@
             // LblBuscaDescricao
             // 
             this.LblBuscaDescricao.AutoSize = true;
-            this.LblBuscaDescricao.Location = new System.Drawing.Point(451, 148);
+            this.LblBuscaDescricao.Location = new System.Drawing.Point(484, 147);
             this.LblBuscaDescricao.Name = "LblBuscaDescricao";
             this.LblBuscaDescricao.Size = new System.Drawing.Size(112, 13);
             this.LblBuscaDescricao.TabIndex = 105;
@@ -136,7 +142,7 @@
             // LblBuscaReferencia
             // 
             this.LblBuscaReferencia.AutoSize = true;
-            this.LblBuscaReferencia.Location = new System.Drawing.Point(309, 148);
+            this.LblBuscaReferencia.Location = new System.Drawing.Point(375, 147);
             this.LblBuscaReferencia.Name = "LblBuscaReferencia";
             this.LblBuscaReferencia.Size = new System.Drawing.Size(62, 13);
             this.LblBuscaReferencia.TabIndex = 104;
@@ -145,7 +151,7 @@
             // LblBuscaTamanho
             // 
             this.LblBuscaTamanho.AutoSize = true;
-            this.LblBuscaTamanho.Location = new System.Drawing.Point(167, 148);
+            this.LblBuscaTamanho.Location = new System.Drawing.Point(272, 147);
             this.LblBuscaTamanho.Name = "LblBuscaTamanho";
             this.LblBuscaTamanho.Size = new System.Drawing.Size(55, 13);
             this.LblBuscaTamanho.TabIndex = 103;
@@ -154,7 +160,7 @@
             // LblBuscaCode
             // 
             this.LblBuscaCode.AutoSize = true;
-            this.LblBuscaCode.Location = new System.Drawing.Point(25, 148);
+            this.LblBuscaCode.Location = new System.Drawing.Point(160, 147);
             this.LblBuscaCode.Name = "LblBuscaCode";
             this.LblBuscaCode.Size = new System.Drawing.Size(83, 13);
             this.LblBuscaCode.TabIndex = 102;
@@ -172,7 +178,7 @@
             this.TxtBuscarReferencia.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.TxtBuscarReferencia.Font = new System.Drawing.Font("Arial Unicode MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtBuscarReferencia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.TxtBuscarReferencia.Location = new System.Drawing.Point(312, 164);
+            this.TxtBuscarReferencia.Location = new System.Drawing.Point(378, 163);
             this.TxtBuscarReferencia.MaxLength = 50;
             this.TxtBuscarReferencia.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.TxtBuscarReferencia.MinimumSize = new System.Drawing.Size(16, 12);
@@ -180,7 +186,7 @@
             this.TxtBuscarReferencia.Name = "TxtBuscarReferencia";
             this.TxtBuscarReferencia.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
             this.TxtBuscarReferencia.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
-            this.TxtBuscarReferencia.Size = new System.Drawing.Size(136, 29);
+            this.TxtBuscarReferencia.Size = new System.Drawing.Size(105, 29);
             this.TxtBuscarReferencia.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016Colorful;
             this.TxtBuscarReferencia.TabIndex = 98;
             this.TxtBuscarReferencia.Tag = "";
@@ -199,7 +205,7 @@
             this.TxtBuscaTamanho.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.TxtBuscaTamanho.Font = new System.Drawing.Font("Arial Unicode MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtBuscaTamanho.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.TxtBuscaTamanho.Location = new System.Drawing.Point(170, 164);
+            this.TxtBuscaTamanho.Location = new System.Drawing.Point(275, 163);
             this.TxtBuscaTamanho.MaxLength = 50;
             this.TxtBuscaTamanho.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.TxtBuscaTamanho.MinimumSize = new System.Drawing.Size(16, 12);
@@ -207,7 +213,7 @@
             this.TxtBuscaTamanho.Name = "TxtBuscaTamanho";
             this.TxtBuscaTamanho.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
             this.TxtBuscaTamanho.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
-            this.TxtBuscaTamanho.Size = new System.Drawing.Size(136, 29);
+            this.TxtBuscaTamanho.Size = new System.Drawing.Size(100, 29);
             this.TxtBuscaTamanho.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016Colorful;
             this.TxtBuscaTamanho.TabIndex = 97;
             this.TxtBuscaTamanho.Tag = "";
@@ -226,7 +232,7 @@
             this.TxtBuscaCodigo.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.TxtBuscaCodigo.Font = new System.Drawing.Font("Arial Unicode MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtBuscaCodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.TxtBuscaCodigo.Location = new System.Drawing.Point(28, 164);
+            this.TxtBuscaCodigo.Location = new System.Drawing.Point(163, 163);
             this.TxtBuscaCodigo.MaxLength = 50;
             this.TxtBuscaCodigo.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.TxtBuscaCodigo.MinimumSize = new System.Drawing.Size(16, 12);
@@ -234,7 +240,7 @@
             this.TxtBuscaCodigo.Name = "TxtBuscaCodigo";
             this.TxtBuscaCodigo.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
             this.TxtBuscaCodigo.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
-            this.TxtBuscaCodigo.Size = new System.Drawing.Size(136, 29);
+            this.TxtBuscaCodigo.Size = new System.Drawing.Size(109, 29);
             this.TxtBuscaCodigo.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016Colorful;
             this.TxtBuscaCodigo.TabIndex = 96;
             this.TxtBuscaCodigo.Tag = "";
@@ -253,7 +259,7 @@
             this.TxtBuscarDescricao.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.TxtBuscarDescricao.Font = new System.Drawing.Font("Arial Unicode MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtBuscarDescricao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.TxtBuscarDescricao.Location = new System.Drawing.Point(454, 164);
+            this.TxtBuscarDescricao.Location = new System.Drawing.Point(487, 163);
             this.TxtBuscarDescricao.MaxLength = 50;
             this.TxtBuscarDescricao.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.TxtBuscarDescricao.MinimumSize = new System.Drawing.Size(16, 12);
@@ -289,8 +295,32 @@
             this.PanelHorizontalSuperior.Location = new System.Drawing.Point(0, 0);
             this.PanelHorizontalSuperior.Name = "PanelHorizontalSuperior";
             this.PanelHorizontalSuperior.Quality = 10;
-            this.PanelHorizontalSuperior.Size = new System.Drawing.Size(964, 95);
+            this.PanelHorizontalSuperior.Size = new System.Drawing.Size(1057, 95);
             this.PanelHorizontalSuperior.TabIndex = 141;
+            // 
+            // BtnRelatorio
+            // 
+            this.BtnRelatorio.AccessibleName = "Button";
+            this.BtnRelatorio.BackColor = System.Drawing.Color.SeaGreen;
+            this.BtnRelatorio.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnRelatorio.ForeColor = System.Drawing.Color.White;
+            this.BtnRelatorio.Location = new System.Drawing.Point(103, 47);
+            this.BtnRelatorio.Name = "BtnRelatorio";
+            this.BtnRelatorio.Size = new System.Drawing.Size(80, 35);
+            this.BtnRelatorio.Style.BackColor = System.Drawing.Color.SeaGreen;
+            this.BtnRelatorio.Style.DisabledBackColor = System.Drawing.Color.SeaGreen;
+            this.BtnRelatorio.Style.DisabledForeColor = System.Drawing.Color.SeaGreen;
+            this.BtnRelatorio.Style.FocusedBackColor = System.Drawing.Color.SeaGreen;
+            this.BtnRelatorio.Style.FocusedForeColor = System.Drawing.Color.White;
+            this.BtnRelatorio.Style.ForeColor = System.Drawing.Color.White;
+            this.BtnRelatorio.Style.HoverBackColor = System.Drawing.Color.MediumSeaGreen;
+            this.BtnRelatorio.Style.HoverForeColor = System.Drawing.Color.Black;
+            this.BtnRelatorio.Style.PressedBackColor = System.Drawing.Color.SeaGreen;
+            this.BtnRelatorio.Style.PressedForeColor = System.Drawing.Color.White;
+            this.BtnRelatorio.TabIndex = 141;
+            this.BtnRelatorio.Text = "Relatório";
+            this.BtnRelatorio.UseVisualStyleBackColor = false;
+            this.BtnRelatorio.Click += new System.EventHandler(this.BrnRelatorio_Click);
             // 
             // BtnAtualizar
             // 
@@ -322,7 +352,7 @@
             this.LblDataLong.BackColor = System.Drawing.Color.Transparent;
             this.LblDataLong.Font = new System.Drawing.Font("Leelawadee UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblDataLong.ForeColor = System.Drawing.Color.White;
-            this.LblDataLong.Location = new System.Drawing.Point(395, 25);
+            this.LblDataLong.Location = new System.Drawing.Point(488, 25);
             this.LblDataLong.Name = "LblDataLong";
             this.LblDataLong.Size = new System.Drawing.Size(563, 40);
             this.LblDataLong.TabIndex = 139;
@@ -345,43 +375,84 @@
             // 
             this.PicCarregando.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.PicCarregando.Image = global::SysEstoque.Properties.Resources.Load;
-            this.PicCarregando.Location = new System.Drawing.Point(419, 356);
+            this.PicCarregando.Location = new System.Drawing.Point(465, 356);
             this.PicCarregando.Name = "PicCarregando";
             this.PicCarregando.Size = new System.Drawing.Size(129, 137);
             this.PicCarregando.TabIndex = 142;
             this.PicCarregando.TabStop = false;
             this.PicCarregando.Visible = false;
             // 
-            // BtnRelatorio
+            // CboResumo
             // 
-            this.BtnRelatorio.AccessibleName = "Button";
-            this.BtnRelatorio.BackColor = System.Drawing.Color.SeaGreen;
-            this.BtnRelatorio.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnRelatorio.ForeColor = System.Drawing.Color.White;
-            this.BtnRelatorio.Location = new System.Drawing.Point(103, 47);
-            this.BtnRelatorio.Name = "BtnRelatorio";
-            this.BtnRelatorio.Size = new System.Drawing.Size(80, 35);
-            this.BtnRelatorio.Style.BackColor = System.Drawing.Color.SeaGreen;
-            this.BtnRelatorio.Style.DisabledBackColor = System.Drawing.Color.SeaGreen;
-            this.BtnRelatorio.Style.DisabledForeColor = System.Drawing.Color.SeaGreen;
-            this.BtnRelatorio.Style.FocusedBackColor = System.Drawing.Color.SeaGreen;
-            this.BtnRelatorio.Style.FocusedForeColor = System.Drawing.Color.White;
-            this.BtnRelatorio.Style.ForeColor = System.Drawing.Color.White;
-            this.BtnRelatorio.Style.HoverBackColor = System.Drawing.Color.MediumSeaGreen;
-            this.BtnRelatorio.Style.HoverForeColor = System.Drawing.Color.Black;
-            this.BtnRelatorio.Style.PressedBackColor = System.Drawing.Color.SeaGreen;
-            this.BtnRelatorio.Style.PressedForeColor = System.Drawing.Color.White;
-            this.BtnRelatorio.TabIndex = 141;
-            this.BtnRelatorio.Text = "Relatório";
-            this.BtnRelatorio.UseVisualStyleBackColor = false;
-            this.BtnRelatorio.Click += new System.EventHandler(this.BrnRelatorio_Click);
+            this.CboResumo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CboResumo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CboResumo.Location = new System.Drawing.Point(30, 165);
+            this.CboResumo.Name = "CboResumo";
+            this.CboResumo.Size = new System.Drawing.Size(129, 25);
+            this.CboResumo.Style.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CboResumo.Style.EditorStyle.DisabledBorderColor = System.Drawing.Color.Transparent;
+            this.CboResumo.Style.EditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CboResumo.Style.ReadOnlyEditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CboResumo.TabIndex = 143;
+            this.CboResumo.ToolTipOption.ShadowVisible = false;
+            this.CboResumo.SelectedIndexChanged += new System.EventHandler(this.CboResumo_SelectedIndexChanged);
+            // 
+            // textBoxExt2
+            // 
+            this.textBoxExt2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.textBoxExt2.BeforeTouchSize = new System.Drawing.Size(208, 29);
+            this.textBoxExt2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
+            this.textBoxExt2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxExt2.CanOverrideStyle = true;
+            this.textBoxExt2.CausesValidation = false;
+            this.textBoxExt2.CornerRadius = 4;
+            this.textBoxExt2.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.textBoxExt2.Font = new System.Drawing.Font("Arial Unicode MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxExt2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.textBoxExt2.Location = new System.Drawing.Point(28, 163);
+            this.textBoxExt2.MaxLength = 50;
+            this.textBoxExt2.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
+            this.textBoxExt2.MinimumSize = new System.Drawing.Size(16, 12);
+            this.textBoxExt2.Multiline = true;
+            this.textBoxExt2.Name = "textBoxExt2";
+            this.textBoxExt2.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
+            this.textBoxExt2.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
+            this.textBoxExt2.Size = new System.Drawing.Size(132, 29);
+            this.textBoxExt2.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016Colorful;
+            this.textBoxExt2.TabIndex = 145;
+            this.textBoxExt2.Tag = "";
+            this.textBoxExt2.ThemeName = "Office2016Colorful";
+            // 
+            // LblResumo
+            // 
+            this.LblResumo.AutoSize = true;
+            this.LblResumo.Location = new System.Drawing.Point(27, 147);
+            this.LblResumo.Name = "LblResumo";
+            this.LblResumo.Size = new System.Drawing.Size(49, 13);
+            this.LblResumo.TabIndex = 144;
+            this.LblResumo.Text = "Resumo:";
+            // 
+            // LblLimpar
+            // 
+            this.LblLimpar.AutoSize = true;
+            this.LblLimpar.Location = new System.Drawing.Point(879, 171);
+            this.LblLimpar.Name = "LblLimpar";
+            this.LblLimpar.Size = new System.Drawing.Size(38, 13);
+            this.LblLimpar.TabIndex = 171;
+            this.LblLimpar.TabStop = true;
+            this.LblLimpar.Text = "Limpar";
+            this.LblLimpar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LblLimpar_LinkClicked);
             // 
             // FrmEstoqueLista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(964, 681);
+            this.ClientSize = new System.Drawing.Size(1057, 681);
+            this.Controls.Add(this.LblLimpar);
+            this.Controls.Add(this.CboResumo);
+            this.Controls.Add(this.textBoxExt2);
+            this.Controls.Add(this.LblResumo);
             this.Controls.Add(this.PicCarregando);
             this.Controls.Add(this.PanelHorizontalSuperior);
             this.Controls.Add(this.CboQuantidadeDeRegistros);
@@ -411,6 +482,8 @@
             this.PanelHorizontalSuperior.ResumeLayout(false);
             this.PanelHorizontalSuperior.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicCarregando)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CboResumo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBoxExt2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -437,5 +510,9 @@
         private System.Windows.Forms.PictureBox PicCarregando;
         private Syncfusion.WinForms.Controls.SfButton BtnAtualizar;
         private Syncfusion.WinForms.Controls.SfButton BtnRelatorio;
+        private Syncfusion.WinForms.ListView.SfComboBox CboResumo;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt textBoxExt2;
+        private System.Windows.Forms.Label LblResumo;
+        private System.Windows.Forms.LinkLabel LblLimpar;
     }
 }

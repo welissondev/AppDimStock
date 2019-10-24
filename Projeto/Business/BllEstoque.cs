@@ -97,22 +97,30 @@ namespace SysEstoque.Business
         }
         #endregion
 
+        #region FiltroDinamico()
+        public void FiltroDinamico(string codigo, string tamanho, string referencia, string descricao, int numeroDeRegistros = 100, string resumo = "")
+        {
+            MdlEstoqueProduto estoqueProduto = new MdlEstoqueProduto();
+            Lista = estoqueProduto.FiltroDinamico(codigo, tamanho, referencia, descricao, numeroDeRegistros, resumo);
+        }
+        #endregion
+
         #region ObterResumo()
         public string ObterResumo(int estoqueQuantidade, int estoqueMin, int estoqueMax)
         {
-            if (estoqueQuantidade == 0 || estoqueQuantidade < estoqueMin)
+            if (estoqueQuantidade > 0 && estoqueQuantidade >= estoqueMin && estoqueQuantidade <= estoqueMax)
             {
-                return "Baixo";
+                return "Ok";
             }
 
-            if (estoqueQuantidade > estoqueMax)
+            if (estoqueQuantidade > 0 && estoqueQuantidade > estoqueMax)
             {
                 return "Alto";
             }
 
-            if (estoqueQuantidade >= estoqueMin && estoqueQuantidade <= estoqueMax)
+            if (estoqueQuantidade == 0 || estoqueQuantidade < estoqueMin)
             {
-                return "Ok";
+                return "Baixo";
             }
 
             return "";
