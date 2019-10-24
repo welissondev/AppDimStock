@@ -301,6 +301,94 @@ namespace SysEstoque.Model
         }
         #endregion
 
+        #region FiltroDinamico()
+        public List<BllEstoqueProduto> FiltroDinamico(string codigo, string tamanho, string referencia, string descricao, 
+        int numeroDeRegistros = 100, string resumo = "")
+        {
+            List<BllEstoqueProduto> listaEstoqueProduto = new List<BllEstoqueProduto>();
+
+            var commandSQL = "";
+            var criterio = "";
+
+            using (MdlAccessConnection connection = new MdlAccessConnection())
+            {
+
+                if (resumo == "Ok")
+                    commandSQL = @"SELECT TOP " + numeroDeRegistros + @" TBEstoque.Id, TBEstoque.Quantidade, TBEstoque.Valor, 
+                    TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, 
+                    TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.PrecoCusto, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
+                    TBEstoque.IdProduto = TBProduto.Id WHERE EstoqueMin > 0 AND Quantidade >= EstoqueMin AND Quantidade <= EstoqueMax";
+
+                if (resumo == "Alto")
+                    commandSQL = @"SELECT TOP " + numeroDeRegistros + @" TBEstoque.Id, TBEstoque.Quantidade, TBEstoque.Valor, 
+                    TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, 
+                    TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.PrecoCusto, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
+                    TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade > 0 AND Quantidade > EstoqueMax";
+
+                if(resumo == "Baixo")
+                    commandSQL = @"SELECT TOP " + numeroDeRegistros + @" TBEstoque.Id, TBEstoque.Quantidade, TBEstoque.Valor, 
+                    TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, 
+                    TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.PrecoCusto, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
+                    TBEstoque.IdProduto = TBProduto.Id WHERE EstoqueMin <> 0 AND Quantidade < EstoqueMin";
+
+               
+                if (codigo != "")
+                    criterio += " AND Codigo LIKE @Codigo ";
+
+                if (tamanho != "")
+                    criterio += " AND Tamanho LIKE @Tamanho ";
+
+                if (referencia != "")
+                    criterio += " AND Referencia LIKE @Referencia ";
+
+                if (descricao != "")
+                    criterio += " AND Descricao LIKE @Descricao ";
+
+                commandSQL += criterio + " Order By Codigo, Tamanho, Referencia Asc";
+
+                var e = connection.Command.Parameters;
+
+                if (codigo != "")
+                    e.AddWithValue("@Codigo", string.Format("{0}", codigo));
+
+                if (tamanho != "")
+                    e.AddWithValue("@Tamanho", string.Format("{0}", tamanho));
+
+                if (referencia != "")
+                    e.AddWithValue("@Referencia", string.Format("{0}", referencia));
+
+                if (descricao != "")
+                    e.AddWithValue("@Descricao", string.Format("%{0}%", descricao));
+
+                using (OleDbDataReader dr = connection.ExecuteParameterQuery(commandSQL))
+                {
+                    while (dr.Read())
+                    {
+                        BllEstoqueProduto estoqueProduto = new BllEstoqueProduto
+                        {
+                            IdEstoque = Convert.ToInt32(dr["TBEstoque.Id"]),
+                            IdProduto = Convert.ToInt32(dr["TBProduto.Id"]),
+                            CodigoProduto = Convert.ToString(dr["Codigo"]),
+                            ReferenciaProduto = Convert.ToString(dr["Referencia"]),
+                            TamanhoProduto = Convert.ToString(dr["Tamanho"]),
+                            DescricaoProduto = Convert.ToString(dr["Descricao"]),
+                            EstoqueMin = Convert.ToInt32(dr["EstoqueMin"]),
+                            EstoqueMax = Convert.ToInt32(dr["EstoqueMax"]),
+                            QuantidadeEstoque = Convert.ToInt32(dr["Quantidade"]),
+                            ValorEstoque = Convert.ToDouble(dr["Valor"]),
+                            PrecoCustoProduto = Convert.ToDouble(dr["PrecoCusto"]),
+                            FotoNomeProduto = Convert.ToString(dr["FotoNome"]),
+                        };
+
+                        listaEstoqueProduto.Add(estoqueProduto);
+                    }
+                }
+
+                return listaEstoqueProduto;
+            }
+        }
+        #endregion
+
         #region Visualizar()
         public void Visualizar(int id)
         {

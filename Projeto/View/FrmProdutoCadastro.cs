@@ -156,13 +156,6 @@ namespace SysEstoque.View
                 return false;
             }
 
-            else if (TxtFornecedor.Text == string.Empty)
-            {
-                MessageBox.Show("Campo nome é obrigatório!", "OBRIGATÓRIO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                TxtFornecedor.Select();
-                return false;
-            }
-
             else if (TxtDescricao.Text == string.Empty)
             {
                 MessageBox.Show("Campo descrição é obrigatório!", "OBRIGATÓRIO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);

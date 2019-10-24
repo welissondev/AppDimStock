@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using System.IO;
-using System.Drawing;
-using Syncfusion.Windows.Forms.Tools;
-using SysEstoque.Business;
+﻿using Syncfusion.Windows.Forms.Tools;
 using SysEstoque.Auxiliary;
+using SysEstoque.Business;
 using SysEstoque.Properties;
 using SysEstoque.Relatorio;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
 
 namespace SysEstoque.View
 {
@@ -32,6 +32,7 @@ namespace SysEstoque.View
         {
             Listar();
             ListarNumeroDeRegistros();
+            ListarCboResumo();
             WindowState = FormWindowState.Maximized;
         }
         #endregion
@@ -39,6 +40,7 @@ namespace SysEstoque.View
         #region BtnAtualizar_Click()
         private void BtnAtualizar_Click(object sender, EventArgs e)
         {
+            ResetarControles();
             Listar();
         }
         #endregion
@@ -77,7 +79,24 @@ namespace SysEstoque.View
         {
             TimerExecultaConsulta.Enabled = false;
             PicCarregando.Visible = false;
-            Filtrar(TxtBuscaCodigo.Text, TxtBuscaTamanho.Text, TxtBuscarReferencia.Text, TxtBuscarDescricao.Text);
+
+            if(CboResumo.Text == "Todos")
+            {
+                Filtrar(TxtBuscaCodigo.Text, TxtBuscaTamanho.Text, TxtBuscarReferencia.Text, TxtBuscarDescricao.Text);
+            }
+            else
+            {
+                FiltroDinamico(TxtBuscaCodigo.Text, TxtBuscaTamanho.Text, TxtBuscarReferencia.Text, TxtBuscarDescricao.Text, CboResumo.Text);
+            }
+        }
+        #endregion
+
+        #region CboResumo_SelectedIndexChanged()
+        private void CboResumo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TimerExecultaConsulta.Enabled = false;
+            TimerExecultaConsulta.Enabled = true;
+            PicCarregando.Visible = true;
         }
         #endregion
 
@@ -118,6 +137,13 @@ namespace SysEstoque.View
         }
         #endregion 
 
+        #region LblLimpar_LinkClicked()
+        private void LblLimpar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ResetarControles();
+        }
+        #endregion
+
         #region ListarNumeroDeRegistros()
         private void ListarNumeroDeRegistros()
         {
@@ -132,6 +158,29 @@ namespace SysEstoque.View
 
             CboQuantidadeDeRegistros.DataSource = itens;
             CboQuantidadeDeRegistros.Text = "100 Registros";
+        }
+        #endregion
+
+        #region ListarCboResumo()
+        private void ListarCboResumo()
+        {
+            try
+            {
+                List<string> itens = new List<string>
+                {
+                    "Todos",
+                    "Alto",
+                    "Baixo",
+                    "Ok"
+                };
+
+                CboResumo.DataSource = itens;
+                CboResumo.Text = "Todos";
+            }
+            catch (Exception ex)
+            {
+                AxlException.Message.Show(ex);
+            }
         }
         #endregion
 
@@ -221,6 +270,49 @@ namespace SysEstoque.View
         }
         #endregion
 
+        #region FiltroDinamico()
+        private void FiltroDinamico(string codigo, string tamanho, string referencia, string descricao, string resumo)
+        {
+            try
+            {
+                BllEstoqueProduto estoqueProduto = new BllEstoqueProduto();
+
+                estoqueProduto.FiltroDinamico(codigo, tamanho, referencia, descricao, NumeroDeRegistros, resumo);
+
+                GridListaEstoque.Rows.Clear();
+
+                for (int item = 0; item < estoqueProduto.Lista.Count; item++)
+                {
+                    GridListaEstoque.Rows.Add(
+                    estoqueProduto.Lista[item].IdEstoque,
+                    estoqueProduto.Lista[item].IdProduto,
+                    estoqueProduto.Lista[item].CodigoProduto,
+                    estoqueProduto.Lista[item].ReferenciaProduto,
+                    estoqueProduto.Lista[item].TamanhoProduto,
+                    estoqueProduto.Lista[item].DescricaoProduto,
+                    estoqueProduto.Lista[item].EstoqueMin,
+                    estoqueProduto.Lista[item].EstoqueMax,
+                    estoqueProduto.Lista[item].QuantidadeEstoque,
+                    estoqueProduto.Lista[item].ValorEstoque
+                    );
+
+                    var diretorioFotoProduto = BllProdutoFoto.PegarCaminho() + estoqueProduto.Lista[item].FotoNomeProduto;
+                    ListarFotoNoGrid(GridListaEstoque, diretorioFotoProduto, item);
+
+                    ListarResumoNoGrid(GridListaEstoque, estoqueProduto, estoqueProduto.Lista, item);
+
+                    ListarResultadoNoGrid(GridListaEstoque, estoqueProduto, estoqueProduto.Lista, item);
+
+                    DefinirCorResumoNoGrid(GridListaEstoque, item);
+                }
+            }
+            catch (Exception ex)
+            {
+                AxlException.Message.Show(ex);
+            }
+        }
+        #endregion
+
         #region ChamarTodosResetes()
         private void ChamarTodosResetes()
         {
@@ -249,6 +341,7 @@ namespace SysEstoque.View
                 }
 
                 TxtBuscaCodigo.Select();
+                CboResumo.Text = "Todos";
             }
             catch (Exception ex)
             {
@@ -292,6 +385,15 @@ namespace SysEstoque.View
         #region DefinirCorResumoNoGrid()
         private void DefinirCorResumoNoGrid(DataGridView dataGrid, int item)
         {
+
+            if (dataGrid.Rows[item].Cells["ResumoColumn"].Value.ToString() == "Ok")
+            {
+                dataGrid.Rows[item].Cells["ResumoColumn"].Style.BackColor = Color.FromArgb(95, 190, 133);
+                dataGrid.Rows[item].Cells["ResumoColumn"].Style.SelectionBackColor = Color.FromArgb(95, 190, 133);
+                dataGrid.Rows[item].Cells["ResumoColumn"].Style.SelectionForeColor = Color.FromArgb(255, 255, 255);
+                dataGrid.Rows[item].Cells["ResumoColumn"].Style.ForeColor = Color.FromArgb(255, 255, 255);
+            }
+
             if (dataGrid.Rows[item].Cells["ResumoColumn"].Value.ToString() == "Alto")
             {
                 dataGrid.Rows[item].Cells["ResumoColumn"].Style.BackColor = Color.FromArgb(209, 73, 73);
@@ -299,14 +401,8 @@ namespace SysEstoque.View
                 dataGrid.Rows[item].Cells["ResumoColumn"].Style.SelectionForeColor = Color.FromArgb(255, 255, 255);
                 dataGrid.Rows[item].Cells["ResumoColumn"].Style.ForeColor = Color.FromArgb(255, 255, 255);
             }
-            else if (dataGrid.Rows[item].Cells["ResumoColumn"].Value.ToString() == "Ok")
-            {
-                dataGrid.Rows[item].Cells["ResumoColumn"].Style.BackColor = Color.FromArgb(95, 190, 133);
-                dataGrid.Rows[item].Cells["ResumoColumn"].Style.SelectionBackColor = Color.FromArgb(95, 190, 133);
-                dataGrid.Rows[item].Cells["ResumoColumn"].Style.SelectionForeColor = Color.FromArgb(255, 255, 255);
-                dataGrid.Rows[item].Cells["ResumoColumn"].Style.ForeColor = Color.FromArgb(255, 255, 255);
-            }
-            else if (dataGrid.Rows[item].Cells["ResumoColumn"].Value.ToString() == "Baixo")
+
+            if (dataGrid.Rows[item].Cells["ResumoColumn"].Value.ToString() == "Baixo")
             {
                 dataGrid.Rows[item].Cells["ResumoColumn"].Style.BackColor = Color.FromArgb(201, 181, 74);
                 dataGrid.Rows[item].Cells["ResumoColumn"].Style.SelectionBackColor = Color.FromArgb(201, 181, 74);
@@ -483,6 +579,7 @@ namespace SysEstoque.View
 
         }
         #endregion
+
     }
 
 }
