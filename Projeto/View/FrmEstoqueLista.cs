@@ -1,4 +1,5 @@
-﻿using Syncfusion.Windows.Forms.Tools;
+﻿using Microsoft.Reporting.WinForms;
+using Syncfusion.Windows.Forms.Tools;
 using SysEstoque.Auxiliary;
 using SysEstoque.Business;
 using SysEstoque.Properties;
@@ -7,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace SysEstoque.View
@@ -14,7 +16,7 @@ namespace SysEstoque.View
     public partial class FrmEstoqueLista : Form
     {
         #region Propriedades
-        public int NumeroDeRegistros = 100;
+        public int NumeroDeRegistros = 500;
         #endregion 
 
         #region FrmEstoqueLista()
@@ -50,13 +52,23 @@ namespace SysEstoque.View
         {
             try
             {
-                FrmEstoqueRelatorio frmEstoqueRelatorio = new FrmEstoqueRelatorio();
-                frmEstoqueRelatorio.TxtBuscaCodigo.Text = TxtBuscaCodigo.Text;
-                frmEstoqueRelatorio.TxtBuscaTamanho.Text = TxtBuscaTamanho.Text;
-                frmEstoqueRelatorio.TxtBuscarReferencia.Text = TxtBuscarReferencia.Text;
-                frmEstoqueRelatorio.TxtBuscarDescricao.Text = TxtBuscarDescricao.Text;
+                BllEstoqueProduto estoque = new BllEstoqueProduto();
+                FrmEstoqueRelatorio relatorio = new FrmEstoqueRelatorio();
 
-                frmEstoqueRelatorio.ShowDialog();
+                if (CboResumo.Text == "Todos")
+                {
+                    estoque.Filtrar(TxtBuscaCodigo.Text, TxtBuscaTamanho.Text, TxtBuscarReferencia.Text, TxtBuscarDescricao.Text, 500);
+                }
+                else
+                {
+                    estoque.FiltroDinamico(TxtBuscaCodigo.Text, TxtBuscaTamanho.Text, TxtBuscarReferencia.Text, TxtBuscarDescricao.Text, 500, CboResumo.Text);
+                }
+
+                relatorio.Show();
+                
+                relatorio.RpvEstoque.LocalReport.DataSources.Clear();
+                relatorio.RpvEstoque.LocalReport.DataSources.Add(new ReportDataSource("RpvEstoqueProdutoDts", estoque.Lista));
+                relatorio.RpvEstoque.RefreshReport();
             }
             catch (Exception ex)
             {
@@ -171,7 +183,8 @@ namespace SysEstoque.View
                     "Todos",
                     "Alto",
                     "Baixo",
-                    "Ok"
+                    "Ok",
+                    "Sem Resumo"
                 };
 
                 CboResumo.DataSource = itens;
@@ -217,7 +230,6 @@ namespace SysEstoque.View
                     ListarResultadoNoGrid(GridListaEstoque, estoqueProduto, estoqueProduto.Lista, item);
 
                     DefinirCorResumoNoGrid(GridListaEstoque, item);
-
                 }
             }
             catch (Exception ex)
@@ -406,6 +418,14 @@ namespace SysEstoque.View
             {
                 dataGrid.Rows[item].Cells["ResumoColumn"].Style.BackColor = Color.FromArgb(201, 181, 74);
                 dataGrid.Rows[item].Cells["ResumoColumn"].Style.SelectionBackColor = Color.FromArgb(201, 181, 74);
+                dataGrid.Rows[item].Cells["ResumoColumn"].Style.SelectionForeColor = Color.FromArgb(255, 255, 255);
+                dataGrid.Rows[item].Cells["ResumoColumn"].Style.ForeColor = Color.FromArgb(255, 255, 255);
+            }
+
+            if (dataGrid.Rows[item].Cells["ResumoColumn"].Value.ToString() == "???")
+            {
+                dataGrid.Rows[item].Cells["ResumoColumn"].Style.BackColor = Color.FromArgb(145, 145, 145);
+                dataGrid.Rows[item].Cells["ResumoColumn"].Style.SelectionBackColor = Color.FromArgb(145, 145, 145);
                 dataGrid.Rows[item].Cells["ResumoColumn"].Style.SelectionForeColor = Color.FromArgb(255, 255, 255);
                 dataGrid.Rows[item].Cells["ResumoColumn"].Style.ForeColor = Color.FromArgb(255, 255, 255);
             }
