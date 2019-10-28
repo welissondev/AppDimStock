@@ -67,6 +67,7 @@ namespace SysEstoque.Business
     {
         #region Get e Set
         public int IdEstoque { get; set; }
+        public string Fornecedor { get; set; }
         public int QuantidadeEstoque { get; set; }
         public double ValorEstoque { get; set; }
         public int EstoqueMin { get; set; }
@@ -106,24 +107,24 @@ namespace SysEstoque.Business
         #endregion
 
         #region ObterResumo()
-        public string ObterResumo(int estoqueQuantidade, int estoqueMin, int estoqueMax)
+        public string ObterResumo(int qtdEstoque, int estoqueMin, int estoqueMax)
         {
-            if (estoqueQuantidade > 0 && estoqueQuantidade >= estoqueMin && estoqueQuantidade <= estoqueMax)
+            if (qtdEstoque > 0 && qtdEstoque >= estoqueMin &&  qtdEstoque <= estoqueMax)
             {
                 return "Ok";
             }
 
-            if (estoqueQuantidade > 0 && estoqueQuantidade > estoqueMax)
+            if (qtdEstoque > estoqueMax)
             {
                 return "Alto";
             }
 
-            if (estoqueQuantidade == 0 || estoqueQuantidade < estoqueMin)
+            if (qtdEstoque < estoqueMin)
             {
                 return "Baixo";
             }
 
-            return "";
+            return "???";
         }
         #endregion
 
