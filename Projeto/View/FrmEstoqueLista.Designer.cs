@@ -449,11 +449,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1057, 681);
+            this.Controls.Add(this.PicCarregando);
             this.Controls.Add(this.LblLimpar);
             this.Controls.Add(this.CboResumo);
             this.Controls.Add(this.textBoxExt2);
             this.Controls.Add(this.LblResumo);
-            this.Controls.Add(this.PicCarregando);
             this.Controls.Add(this.PanelHorizontalSuperior);
             this.Controls.Add(this.CboQuantidadeDeRegistros);
             this.Controls.Add(this.textBoxExt1);

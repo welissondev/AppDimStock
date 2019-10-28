@@ -122,14 +122,6 @@
     <Compile Include="Business\BllNotificar.cs" />
     <Compile Include="Business\BllProduto.cs" />
     <Compile Include="Business\BllUsuario.cs" />
-    <Compile Include="DbEstoqueDataSet.cs">
-      <DependentUpon>DbEstoqueDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DbEstoqueDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DbEstoqueDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Model\MdlAccessConnection.cs" />
     <Compile Include="Model\MdlProduto.cs" />
     <Compile Include="Model\MdlEstoque.cs" />
@@ -268,17 +260,6 @@
     <EmbeddedResource Include="View\MDIPrincipal.resx">
       <DependentUpon>MDIPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="DbEstoqueDataSet.xsc">
-      <DependentUpon>DbEstoqueDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="DbEstoqueDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DbEstoqueDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DbEstoqueDataSet.xss">
-      <DependentUpon>DbEstoqueDataSet.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
@@ -289,6 +270,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="SysEstoque.Business.BllEstoqueProduto.datasource" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
