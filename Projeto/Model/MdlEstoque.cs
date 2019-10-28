@@ -195,7 +195,7 @@ namespace SysEstoque.Model
         #region Listar()
         public List<BllEstoqueProduto> Listar(int namberOfRecords = 100)
         {
-            var sqlSelecionarEstoqueProduto = @"Select TOP " + namberOfRecords + @" TBEstoque.Id, TBEstoque.Quantidade, TBEstoque.Valor, 
+            var sqlSelecionarEstoqueProduto = @"Select TOP " + namberOfRecords + @" TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
             TBProduto.Id, TBProduto.Descricao, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, TBProduto.EstoqueMin, 
             TBProduto.EstoqueMax, TBProduto.PrecoCusto, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON TBEstoque.IdProduto 
             = TBProduto.Id Order By Codigo, Tamanho, Referencia Asc";
@@ -213,6 +213,7 @@ namespace SysEstoque.Model
                         {
                             IdEstoque = Convert.ToInt32(dr["TBEstoque.Id"]),
                             IdProduto = Convert.ToInt32(dr["TBProduto.Id"]),
+                            Fornecedor = Convert.ToString(dr["Fornecedor"]),
                             CodigoProduto = Convert.ToString(dr["Codigo"]),
                             ReferenciaProduto = Convert.ToString(dr["Referencia"]),
                             TamanhoProduto = Convert.ToString(dr["Tamanho"]),
@@ -242,10 +243,10 @@ namespace SysEstoque.Model
 
             using (MdlAccessConnection connection = new MdlAccessConnection())
             {
-                var sqlSelectEstoqueProduto = @"SELECT TOP " + numeroDeRegistros + @" TBEstoque.Id, TBEstoque.Quantidade, TBEstoque.Valor, 
+                var sqlSelectEstoqueProduto = @"SELECT TOP " + numeroDeRegistros + @" TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
                 TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, 
                 TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.PrecoCusto, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
-                TBEstoque.IdProduto = TBProduto.Id WHERE Descricao LIKE @Descricao ";
+                TBEstoque.IdProduto = TBProduto.Id WHERE Descricao LIKE @Descricao";
 
                 var criterio = "";
 
@@ -280,6 +281,7 @@ namespace SysEstoque.Model
                         {
                             IdEstoque = Convert.ToInt32(dr["TBEstoque.Id"]),
                             IdProduto = Convert.ToInt32(dr["TBProduto.Id"]),
+                            Fornecedor = Convert.ToString(dr["Fornecedor"]),
                             CodigoProduto = Convert.ToString(dr["Codigo"]),
                             ReferenciaProduto = Convert.ToString(dr["Referencia"]),
                             TamanhoProduto = Convert.ToString(dr["Tamanho"]),
@@ -313,23 +315,29 @@ namespace SysEstoque.Model
             using (MdlAccessConnection connection = new MdlAccessConnection())
             {
 
-                if (resumo == "Ok")
-                    commandSQL = @"SELECT TOP " + numeroDeRegistros + @" TBEstoque.Id, TBEstoque.Quantidade, TBEstoque.Valor, 
+                if (resumo == "Sem Resumo")
+                    commandSQL = @"SELECT TOP " + numeroDeRegistros + @" TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
                     TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, 
                     TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.PrecoCusto, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
-                    TBEstoque.IdProduto = TBProduto.Id WHERE EstoqueMin > 0 AND Quantidade >= EstoqueMin AND Quantidade <= EstoqueMax";
+                    TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade = 0 AND EstoqueMax = 0 AND EstoqueMin = 0";
+
+                if (resumo == "Ok")
+                    commandSQL = @"SELECT TOP " + numeroDeRegistros + @" TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
+                    TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, 
+                    TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.PrecoCusto, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
+                    TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade > 0 AND Quantidade >= EstoqueMax AND Quantidade <= EstoqueMax";
 
                 if (resumo == "Alto")
-                    commandSQL = @"SELECT TOP " + numeroDeRegistros + @" TBEstoque.Id, TBEstoque.Quantidade, TBEstoque.Valor, 
+                    commandSQL = @"SELECT TOP " + numeroDeRegistros + @" TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
                     TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, 
                     TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.PrecoCusto, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
-                    TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade > 0 AND Quantidade > EstoqueMax";
+                    TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade > EstoqueMax";
 
-                if(resumo == "Baixo")
-                    commandSQL = @"SELECT TOP " + numeroDeRegistros + @" TBEstoque.Id, TBEstoque.Quantidade, TBEstoque.Valor, 
+                if (resumo == "Baixo")
+                    commandSQL = @"SELECT TOP " + numeroDeRegistros + @" TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
                     TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, 
                     TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.PrecoCusto, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
-                    TBEstoque.IdProduto = TBProduto.Id WHERE EstoqueMin <> 0 AND Quantidade < EstoqueMin";
+                    TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade < EstoqueMin";
 
                
                 if (codigo != "")
@@ -368,6 +376,7 @@ namespace SysEstoque.Model
                         {
                             IdEstoque = Convert.ToInt32(dr["TBEstoque.Id"]),
                             IdProduto = Convert.ToInt32(dr["TBProduto.Id"]),
+                            Fornecedor =  Convert.ToString(dr["Fornecedor"]),
                             CodigoProduto = Convert.ToString(dr["Codigo"]),
                             ReferenciaProduto = Convert.ToString(dr["Referencia"]),
                             TamanhoProduto = Convert.ToString(dr["Tamanho"]),
