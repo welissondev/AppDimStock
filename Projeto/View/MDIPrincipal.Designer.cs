@@ -40,7 +40,6 @@
             this.saidaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listaDeEstoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listaDeEstoqueToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.RelatorioEstoqueMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adicionarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listarDeUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,21 +73,21 @@
             // cadastrarToolStripMenuItem
             // 
             this.cadastrarToolStripMenuItem.Name = "cadastrarToolStripMenuItem";
-            this.cadastrarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cadastrarToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.cadastrarToolStripMenuItem.Text = "Cadastrar";
             this.cadastrarToolStripMenuItem.Click += new System.EventHandler(this.ProdutoAdicionarMenuItem_Click);
             // 
             // listaDeProdutosToolStripMenuItem
             // 
             this.listaDeProdutosToolStripMenuItem.Name = "listaDeProdutosToolStripMenuItem";
-            this.listaDeProdutosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.listaDeProdutosToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.listaDeProdutosToolStripMenuItem.Text = "Listar registros";
             this.listaDeProdutosToolStripMenuItem.Click += new System.EventHandler(this.ProdutoListaMenuItem_Click);
             // 
             // ProdutoRelatorioMenuItem
             // 
             this.ProdutoRelatorioMenuItem.Name = "ProdutoRelatorioMenuItem";
-            this.ProdutoRelatorioMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ProdutoRelatorioMenuItem.Size = new System.Drawing.Size(154, 22);
             this.ProdutoRelatorioMenuItem.Text = "Gerar relatórios";
             this.ProdutoRelatorioMenuItem.Click += new System.EventHandler(this.ProdutoRelatorioMenuItem_Click);
             // 
@@ -97,8 +96,7 @@
             this.Estoque.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.novaEntradaToolStripMenuItem,
             this.listaDeEstoqueToolStripMenuItem,
-            this.listaDeEstoqueToolStripMenuItem1,
-            this.RelatorioEstoqueMenuItem});
+            this.listaDeEstoqueToolStripMenuItem1});
             this.Estoque.Name = "Estoque";
             this.Estoque.Size = new System.Drawing.Size(61, 20);
             this.Estoque.Text = "Estoque";
@@ -140,13 +138,6 @@
             this.listaDeEstoqueToolStripMenuItem1.Text = "Listar registros";
             this.listaDeEstoqueToolStripMenuItem1.Click += new System.EventHandler(this.EstoqueListaMenuItem_Click);
             // 
-            // RelatorioEstoqueMenuItem
-            // 
-            this.RelatorioEstoqueMenuItem.Name = "RelatorioEstoqueMenuItem";
-            this.RelatorioEstoqueMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.RelatorioEstoqueMenuItem.Text = "Gerar Relatórios";
-            this.RelatorioEstoqueMenuItem.Click += new System.EventHandler(this.RelatorioEstoqueMenuItem_Click);
-            // 
             // usuárioToolStripMenuItem
             // 
             this.usuárioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -160,21 +151,21 @@
             // adicionarToolStripMenuItem
             // 
             this.adicionarToolStripMenuItem.Name = "adicionarToolStripMenuItem";
-            this.adicionarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.adicionarToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.adicionarToolStripMenuItem.Text = "Cadastrar";
             this.adicionarToolStripMenuItem.Click += new System.EventHandler(this.UsuarioCadastroMenuItem_Click);
             // 
             // listarDeUsuariosToolStripMenuItem
             // 
             this.listarDeUsuariosToolStripMenuItem.Name = "listarDeUsuariosToolStripMenuItem";
-            this.listarDeUsuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.listarDeUsuariosToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.listarDeUsuariosToolStripMenuItem.Text = "Listar registros";
             this.listarDeUsuariosToolStripMenuItem.Click += new System.EventHandler(this.UsuarioListaMenuItem_Click);
             // 
             // históricoToolStripMenuItem
             // 
             this.históricoToolStripMenuItem.Name = "históricoToolStripMenuItem";
-            this.históricoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.históricoToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.históricoToolStripMenuItem.Text = "Ver históricos";
             this.históricoToolStripMenuItem.Click += new System.EventHandler(this.UsuarioHistóricoMenuItem_Click);
             // 
@@ -212,7 +203,6 @@
         private System.Windows.Forms.ToolStripMenuItem listarDeUsuariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem históricoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ProdutoRelatorioMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem RelatorioEstoqueMenuItem;
     }
 }
 

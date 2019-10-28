@@ -233,11 +233,5 @@ namespace SysEstoque.View
             frm.Show();
         }
         #endregion
-
-        private void RelatorioEstoqueMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmEstoqueRelatorio frmEstoqueRelatorio = new FrmEstoqueRelatorio();
-            frmEstoqueRelatorio.Show();
-        }
     }
 }
