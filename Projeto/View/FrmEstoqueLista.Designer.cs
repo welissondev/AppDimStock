@@ -306,7 +306,7 @@
             this.BtnRelatorio.ForeColor = System.Drawing.Color.White;
             this.BtnRelatorio.Location = new System.Drawing.Point(103, 47);
             this.BtnRelatorio.Name = "BtnRelatorio";
-            this.BtnRelatorio.Size = new System.Drawing.Size(80, 35);
+            this.BtnRelatorio.Size = new System.Drawing.Size(83, 35);
             this.BtnRelatorio.Style.BackColor = System.Drawing.Color.SeaGreen;
             this.BtnRelatorio.Style.DisabledBackColor = System.Drawing.Color.SeaGreen;
             this.BtnRelatorio.Style.DisabledForeColor = System.Drawing.Color.SeaGreen;
