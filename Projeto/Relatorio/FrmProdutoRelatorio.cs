@@ -44,12 +44,12 @@ namespace SysEstoque.View
         {
             try
             {
-                TimerExecultaConsulta.Enabled = false;
-                PicCarregando.Visible = false;
+                //TimerExecultaConsulta.Enabled = false;
+                //PicCarregando.Visible = false;
 
-                this.tBProdutoTableAdapter.Fill(this.dbEstoqueDataSet.TBProduto, TxtBuscarCodigo.Text, TxtBuscarTamanho.Text,
-                TxtBuscarReferencia.Text, TxtBuscarDescricao.Text);
-                this.RelProdutos.RefreshReport();
+                //this.tBProdutoTableAdapter.Fill(this.dbEstoqueDataSet.TBProduto, TxtBuscarCodigo.Text, TxtBuscarTamanho.Text,
+                //TxtBuscarReferencia.Text, TxtBuscarDescricao.Text);
+                //this.RelProdutos.RefreshReport();
             }
             catch(Exception ex)
             {
@@ -88,9 +88,9 @@ namespace SysEstoque.View
         {
             try
             {
-                this.tBProdutoTableAdapter.Fill(this.dbEstoqueDataSet.TBProduto,
-                TxtBuscarCodigo.Text, TxtBuscarTamanho.Text, TxtBuscarReferencia.Text, TxtBuscarDescricao.Text);
-                this.RelProdutos.RefreshReport();
+                //this.tBProdutoTableAdapter.Fill(this.dbEstoqueDataSet.TBProduto,
+                //TxtBuscarCodigo.Text, TxtBuscarTamanho.Text, TxtBuscarReferencia.Text, TxtBuscarDescricao.Text);
+                //this.RelProdutos.RefreshReport();
             }
             catch(Exception ex)
             {

@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.tBProdutoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dbEstoqueDataSet = new SysEstoque.DbEstoqueDataSet();
             this.TxtBuscarCodigo = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.TxtBuscarTamanho = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.TxtBuscarReferencia = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
@@ -39,14 +38,12 @@
             this.LblBuscarTamanho = new System.Windows.Forms.Label();
             this.LblBuscarReferencia = new System.Windows.Forms.Label();
             this.RelProdutos = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.tBProdutoTableAdapter = new SysEstoque.DbEstoqueDataSetTableAdapters.TBProdutoTableAdapter();
             this.TxtBuscarDescricao = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.LblBuscarDescricao = new System.Windows.Forms.Label();
             this.PicCarregando = new System.Windows.Forms.PictureBox();
             this.TimerExecultaConsulta = new System.Windows.Forms.Timer(this.components);
             this.LblLimpar = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.tBProdutoBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbEstoqueDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtBuscarCodigo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtBuscarTamanho)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtBuscarReferencia)).BeginInit();
@@ -57,12 +54,10 @@
             // tBProdutoBindingSource
             // 
             this.tBProdutoBindingSource.DataMember = "TBProduto";
-            this.tBProdutoBindingSource.DataSource = this.dbEstoqueDataSet;
+
             // 
             // dbEstoqueDataSet
-            // 
-            this.dbEstoqueDataSet.DataSetName = "DbEstoqueDataSet";
-            this.dbEstoqueDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+
             // 
             // TxtBuscarCodigo
             // 
@@ -189,7 +184,7 @@
             // 
             // tBProdutoTableAdapter
             // 
-            this.tBProdutoTableAdapter.ClearBeforeFill = true;
+
             // 
             // TxtBuscarDescricao
             // 
@@ -278,7 +273,6 @@
             this.Load += new System.EventHandler(this.FrmProdutoRelatorio_Load);
             this.Resize += new System.EventHandler(this.FrmProdutoRelatorio_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.tBProdutoBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbEstoqueDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtBuscarCodigo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtBuscarTamanho)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtBuscarReferencia)).EndInit();
@@ -294,9 +288,7 @@
         private System.Windows.Forms.Label LblBuscarTamanho;
         private System.Windows.Forms.Label LblBuscarReferencia;
         private Microsoft.Reporting.WinForms.ReportViewer RelProdutos;
-        private DbEstoqueDataSet dbEstoqueDataSet;
         private System.Windows.Forms.BindingSource tBProdutoBindingSource;
-        private DbEstoqueDataSetTableAdapters.TBProdutoTableAdapter tBProdutoTableAdapter;
         private System.Windows.Forms.Label LblBuscarDescricao;
         public Syncfusion.Windows.Forms.Tools.TextBoxExt TxtBuscarCodigo;
         public Syncfusion.Windows.Forms.Tools.TextBoxExt TxtBuscarTamanho;
