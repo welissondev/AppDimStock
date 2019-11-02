@@ -12,7 +12,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <NuGetPackageImportStamp></NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <ShouldCreateLogs>True</ShouldCreateLogs>
     <AdvancedSettingsExpanded>False</AdvancedSettingsExpanded>
     <UpdateAssemblyVersion>True</UpdateAssemblyVersion>
@@ -24,7 +25,8 @@
     <InheritWinAppVersionFrom>None</InheritWinAppVersionFrom>
     <AssemblyFileVersionSettings>IncrementOnDemand.IncrementOnDemand.IncrementOnDemand.IncrementOnDemand</AssemblyFileVersionSettings>
     <AssemblyInfoVersionSettings>IncrementOnDemand.IncrementOnDemand.IncrementOnDemand.IncrementOnDemand</AssemblyInfoVersionSettings>
-    <AssemblyInfoVersionSemVerSettings></AssemblyInfoVersionSemVerSettings>
+    <AssemblyInfoVersionSemVerSettings>
+    </AssemblyInfoVersionSemVerSettings>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -129,14 +131,25 @@
     <Compile Include="Auxiliary\AxlListEstoqueItem.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Business\BllEstoque.cs" />
+    <Compile Include="Business\BllEstoqueDestino.cs" />
+    <Compile Include="Business\BllEstoqueItem.cs" />
+    <Compile Include="Business\BllEstoqueProduto.cs" />
+    <Compile Include="Business\BllEstoqueAtividade.cs" />
     <Compile Include="Business\BllNotificar.cs" />
     <Compile Include="Business\BllProduto.cs" />
+    <Compile Include="Business\BllProdutoFoto.cs" />
+    <Compile Include="Business\BllEstoque.cs" />
     <Compile Include="Business\BllUsuario.cs" />
+    <Compile Include="Business\BllUsuarioHistorico.cs" />
     <Compile Include="Model\MdlAccessConnection.cs" />
-    <Compile Include="Model\MdlProduto.cs" />
     <Compile Include="Model\MdlEstoque.cs" />
+    <Compile Include="Model\MdlEstoqueAtividade.cs" />
+    <Compile Include="Model\MdlEstoqueDestino.cs" />
+    <Compile Include="Model\MdlEstoqueItem.cs" />
+    <Compile Include="Model\MdlEstoqueProduto.cs" />
+    <Compile Include="Model\MdlProduto.cs" />
     <Compile Include="Model\MdlUsuario.cs" />
+    <Compile Include="Model\MdlUsuarioHistorico.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Auxiliary\AxlImage.cs" />
