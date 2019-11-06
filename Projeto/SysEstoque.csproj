@@ -159,6 +159,7 @@
     <Compile Include="Relatorio\FrmEstoqueRelatorio.Designer.cs">
       <DependentUpon>FrmEstoqueRelatorio.cs</DependentUpon>
     </Compile>
+    <Compile Include="Relatorio\RelEstoque.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Relatorio\FrmProdutoRelatorio.cs">
       <SubType>Form</SubType>
