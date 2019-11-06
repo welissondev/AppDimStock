@@ -1,6 +1,7 @@
 ﻿using SysEstoque.Model;
 using System;
 using System.Collections.Generic;
+using SysEstoque.Relatorio;
 
 namespace SysEstoque.Business
 {
@@ -97,6 +98,17 @@ namespace SysEstoque.Business
             MdlEstoqueProduto estoqueProduto = new MdlEstoqueProduto(this);
             estoqueProduto.Visualizar(id);
         }
-        #endregion 
+        #endregion
+
+        #region GerarRelatorio()
+        public void GerarRelatorio(string codigo, string tamanho, string referencia, string descricao, int numeroDeRegistros = 5000, string resumo = "Todos")
+        {
+            FiltroDinamico(codigo, tamanho, referencia, descricao, numeroDeRegistros, resumo);
+
+            RelEstoque relEstoque = new RelEstoque();
+            relEstoque.GerarRelatorio(Lista);
+        }
+        #endregion
+
     }
 }
