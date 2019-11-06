@@ -295,7 +295,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="SysEstoque.Business.BllEstoqueProduto.datasource" />
+    <None Include="DataSet\SysEstoque.Relatorio.RelEstoque.datasource" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

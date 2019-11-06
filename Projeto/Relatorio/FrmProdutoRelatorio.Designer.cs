@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.tBProdutoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TxtBuscarCodigo = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.TxtBuscarTamanho = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.TxtBuscarReferencia = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
@@ -43,7 +41,6 @@
             this.PicCarregando = new System.Windows.Forms.PictureBox();
             this.TimerExecultaConsulta = new System.Windows.Forms.Timer(this.components);
             this.LblLimpar = new System.Windows.Forms.LinkLabel();
-            ((System.ComponentModel.ISupportInitialize)(this.tBProdutoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtBuscarCodigo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtBuscarTamanho)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtBuscarReferencia)).BeginInit();
@@ -51,25 +48,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.PicCarregando)).BeginInit();
             this.SuspendLayout();
             // 
-            // tBProdutoBindingSource
-            // 
-            this.tBProdutoBindingSource.DataMember = "TBProduto";
-
-            // 
-            // dbEstoqueDataSet
-
-            // 
             // TxtBuscarCodigo
             // 
             this.TxtBuscarCodigo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtBuscarCodigo.BeforeTouchSize = new System.Drawing.Size(85, 29);
+            this.TxtBuscarCodigo.BeforeTouchSize = new System.Drawing.Size(136, 29);
             this.TxtBuscarCodigo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.TxtBuscarCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtBuscarCodigo.CanOverrideStyle = true;
             this.TxtBuscarCodigo.CausesValidation = false;
             this.TxtBuscarCodigo.CornerRadius = 4;
             this.TxtBuscarCodigo.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.TxtBuscarCodigo.Font = new System.Drawing.Font("Arial Unicode MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtBuscarCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtBuscarCodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.TxtBuscarCodigo.Location = new System.Drawing.Point(11, 34);
             this.TxtBuscarCodigo.MaxLength = 50;
@@ -89,14 +78,14 @@
             // TxtBuscarTamanho
             // 
             this.TxtBuscarTamanho.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtBuscarTamanho.BeforeTouchSize = new System.Drawing.Size(85, 29);
+            this.TxtBuscarTamanho.BeforeTouchSize = new System.Drawing.Size(136, 29);
             this.TxtBuscarTamanho.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.TxtBuscarTamanho.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtBuscarTamanho.CanOverrideStyle = true;
             this.TxtBuscarTamanho.CausesValidation = false;
             this.TxtBuscarTamanho.CornerRadius = 4;
             this.TxtBuscarTamanho.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.TxtBuscarTamanho.Font = new System.Drawing.Font("Arial Unicode MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtBuscarTamanho.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtBuscarTamanho.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.TxtBuscarTamanho.Location = new System.Drawing.Point(153, 34);
             this.TxtBuscarTamanho.MaxLength = 50;
@@ -116,14 +105,14 @@
             // TxtBuscarReferencia
             // 
             this.TxtBuscarReferencia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtBuscarReferencia.BeforeTouchSize = new System.Drawing.Size(85, 29);
+            this.TxtBuscarReferencia.BeforeTouchSize = new System.Drawing.Size(136, 29);
             this.TxtBuscarReferencia.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.TxtBuscarReferencia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtBuscarReferencia.CanOverrideStyle = true;
             this.TxtBuscarReferencia.CausesValidation = false;
             this.TxtBuscarReferencia.CornerRadius = 4;
             this.TxtBuscarReferencia.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.TxtBuscarReferencia.Font = new System.Drawing.Font("Arial Unicode MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtBuscarReferencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtBuscarReferencia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.TxtBuscarReferencia.Location = new System.Drawing.Point(295, 34);
             this.TxtBuscarReferencia.MaxLength = 50;
@@ -172,9 +161,6 @@
             this.RelProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            reportDataSource3.Name = "TBProdutosDataSet";
-            reportDataSource3.Value = this.tBProdutoBindingSource;
-            this.RelProdutos.LocalReport.DataSources.Add(reportDataSource3);
             this.RelProdutos.LocalReport.ReportEmbeddedResource = "SysEstoque.Relatorio.RelProdutos.rdlc";
             this.RelProdutos.Location = new System.Drawing.Point(11, 69);
             this.RelProdutos.Name = "RelProdutos";
@@ -182,21 +168,17 @@
             this.RelProdutos.Size = new System.Drawing.Size(941, 600);
             this.RelProdutos.TabIndex = 97;
             // 
-            // tBProdutoTableAdapter
-            // 
-
-            // 
             // TxtBuscarDescricao
             // 
             this.TxtBuscarDescricao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtBuscarDescricao.BeforeTouchSize = new System.Drawing.Size(85, 29);
+            this.TxtBuscarDescricao.BeforeTouchSize = new System.Drawing.Size(136, 29);
             this.TxtBuscarDescricao.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.TxtBuscarDescricao.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtBuscarDescricao.CanOverrideStyle = true;
             this.TxtBuscarDescricao.CausesValidation = false;
             this.TxtBuscarDescricao.CornerRadius = 4;
             this.TxtBuscarDescricao.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.TxtBuscarDescricao.Font = new System.Drawing.Font("Arial Unicode MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtBuscarDescricao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtBuscarDescricao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.TxtBuscarDescricao.Location = new System.Drawing.Point(437, 34);
             this.TxtBuscarDescricao.MaxLength = 50;
@@ -272,7 +254,6 @@
             this.Text = "Relatório de Produtos";
             this.Load += new System.EventHandler(this.FrmProdutoRelatorio_Load);
             this.Resize += new System.EventHandler(this.FrmProdutoRelatorio_Resize);
-            ((System.ComponentModel.ISupportInitialize)(this.tBProdutoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtBuscarCodigo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtBuscarTamanho)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtBuscarReferencia)).EndInit();
@@ -288,7 +269,6 @@
         private System.Windows.Forms.Label LblBuscarTamanho;
         private System.Windows.Forms.Label LblBuscarReferencia;
         private Microsoft.Reporting.WinForms.ReportViewer RelProdutos;
-        private System.Windows.Forms.BindingSource tBProdutoBindingSource;
         private System.Windows.Forms.Label LblBuscarDescricao;
         public Syncfusion.Windows.Forms.Tools.TextBoxExt TxtBuscarCodigo;
         public Syncfusion.Windows.Forms.Tools.TextBoxExt TxtBuscarTamanho;

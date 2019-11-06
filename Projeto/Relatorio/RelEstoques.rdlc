@@ -647,14 +647,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Fornecedor">
+                    <Textbox Name="FornecedorProduto">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Fornecedor.Value</Value>
+                              <Value>=Fields!FornecedorProduto.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
                               </Style>
@@ -663,7 +663,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Fornecedor</rd:DefaultName>
+                      <rd:DefaultName>FornecedorProduto</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -746,14 +746,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="QuantidadeEstoque">
+                    <Textbox Name="EstoqueQuant">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!QuantidadeEstoque.Value</Value>
+                              <Value>=Fields!EstoqueQuant.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
                               </Style>
@@ -762,7 +762,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>QuantidadeEstoque</rd:DefaultName>
+                      <rd:DefaultName>EstoqueQuant</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -779,14 +779,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="ValorEstoque">
+                    <Textbox Name="ValorEmEstoque">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!ValorEstoque.Value</Value>
+                              <Value>=Fields!ValorEmEstoque.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <Format>'R$'0.00;('R$'0.00)</Format>
@@ -796,7 +796,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>ValorEstoque</rd:DefaultName>
+                      <rd:DefaultName>ValorEmEstoque</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -814,16 +814,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox23">
+                    <Textbox Name="ResumoEstoque">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Switch(Fields!QuantidadeEstoque.Value &gt; 0 And Fields!QuantidadeEstoque.Value &gt;= Fields!EstoqueMin.Value and Fields!QuantidadeEstoque.Value &lt;= Fields!EstoqueMax.Value, "OK",
-Fields!QuantidadeEstoque.Value &gt; Fields!EstoqueMax.Value, "Alto", Fields!QuantidadeEstoque.Value &lt; Fields!EstoqueMax.Value, "Baixa", 
-Fields!QuantidadeEstoque.Value = 0 And Fields!EstoqueMin.Value = 0 And Fields!EstoqueMax.Value = 0, "???")</Value>
+                              <Value>=Fields!ResumoEstoque.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
                               </Style>
@@ -834,7 +832,7 @@ Fields!QuantidadeEstoque.Value = 0 And Fields!EstoqueMin.Value = 0 And Fields!Es
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox23</rd:DefaultName>
+                      <rd:DefaultName>ResumoEstoque</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -851,17 +849,14 @@ Fields!QuantidadeEstoque.Value = 0 And Fields!EstoqueMin.Value = 0 And Fields!Es
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox25">
+                    <Textbox Name="ResultadoEstoque">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Switch(Fields!QuantidadeEstoque.Value &lt; Fields!EstoqueMin.Value, "+" &amp; Sum(Fields!EstoqueMin.Value - Fields!QuantidadeEstoque.Value),
-Fields!QuantidadeEstoque.Value &gt; Fields!EstoqueMax.Value, "-" &amp; Sum(Fields!QuantidadeEstoque.Value - Fields!EstoqueMax.Value),
-Fields!QuantidadeEstoque.Value &gt;= Fields!EstoqueMin.Value and Fields!QuantidadeEstoque.Value &lt;= Fields!EstoqueMax.Value, 
-Sum(Fields!EstoqueMax.Value - Fields!QuantidadeEstoque.Value))</Value>
+                              <Value>=Fields!ResultadoEstoque.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
                               </Style>
@@ -872,7 +867,7 @@ Sum(Fields!EstoqueMax.Value - Fields!QuantidadeEstoque.Value))</Value>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox25</rd:DefaultName>
+                      <rd:DefaultName>ResultadoEstoque</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -916,9 +911,9 @@ Sum(Fields!EstoqueMax.Value - Fields!QuantidadeEstoque.Value))</Value>
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>RpvEstoqueProdutoDts</DataSetName>
-        <Top>3.48618cm</Top>
-        <Left>0.31751cm</Left>
+        <DataSetName>DsRelEstoque</DataSetName>
+        <Top>3.41562cm</Top>
+        <Left>0.28535cm</Left>
         <Height>1.33544cm</Height>
         <Width>26.25135cm</Width>
         <ZIndex>5</ZIndex>
@@ -1042,24 +1037,24 @@ Sum(Fields!EstoqueMax.Value - Fields!QuantidadeEstoque.Value))</Value>
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="SysEstoqueBusiness">
+    <DataSource Name="SysEstoqueRelatorio">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>33bd668c-2364-42b4-a667-05b20415331c</rd:DataSourceID>
+      <rd:DataSourceID>5b81ab48-4b9e-4691-a815-497d7d2dde3b</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="RpvEstoqueProdutoDts">
+    <DataSet Name="DsRelEstoque">
       <Query>
-        <DataSourceName>SysEstoqueBusiness</DataSourceName>
+        <DataSourceName>SysEstoqueRelatorio</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
         <Field Name="CodigoProduto">
           <DataField>CodigoProduto</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="DescricaoProduto">
           <DataField>DescricaoProduto</DataField>
@@ -1073,47 +1068,39 @@ Sum(Fields!EstoqueMax.Value - Fields!QuantidadeEstoque.Value))</Value>
           <DataField>EstoqueMin</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="Fornecedor">
-          <DataField>Fornecedor</DataField>
+        <Field Name="EstoqueQuant">
+          <DataField>EstoqueQuant</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="FornecedorProduto">
+          <DataField>FornecedorProduto</DataField>
           <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="FotoNomeProduto">
-          <DataField>FotoNomeProduto</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="IdEstoque">
-          <DataField>IdEstoque</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="IdProduto">
-          <DataField>IdProduto</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="PrecoCustoProduto">
-          <DataField>PrecoCustoProduto</DataField>
-          <rd:TypeName>System.Double</rd:TypeName>
-        </Field>
-        <Field Name="QuantidadeEstoque">
-          <DataField>QuantidadeEstoque</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="ReferenciaProduto">
           <DataField>ReferenciaProduto</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ResultadoEstoque">
+          <DataField>ResultadoEstoque</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ResumoEstoque">
+          <DataField>ResumoEstoque</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="TamanhoProduto">
           <DataField>TamanhoProduto</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="ValorEstoque">
-          <DataField>ValorEstoque</DataField>
+        <Field Name="ValorEmEstoque">
+          <DataField>ValorEmEstoque</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>SysEstoque.Business</rd:DataSetName>
-        <rd:TableName>BllEstoqueProduto</rd:TableName>
-        <rd:ObjectDataSourceType>SysEstoque.Business.BllEstoqueProduto, Controle de Estoque, Version=1.0.3.152, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:DataSetName>SysEstoque.Relatorio</rd:DataSetName>
+        <rd:TableName>RelEstoque</rd:TableName>
+        <rd:ObjectDataSourceType>SysEstoque.Relatorio.RelEstoque, Controle de Estoque, Version=1.0.3.153, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
