@@ -131,70 +131,78 @@ namespace SysEstoque.Model
         }
         #endregion
 
-        #region FiltroDinamico()
-        public List<BllEstoqueProduto> FiltroDinamico(string codigo, string tamanho, string referencia, string descricao,
-        int numeroDeRegistros = 100, string resumo = "")
+        #region ConsultaPorCriterioDeResumo()
+        public List<BllEstoqueProduto> ConsultaPorCriterioDeResumo(string codigo, string tamanho, 
+        string referencia, string descricao, string resumo = "")
         {
             List<BllEstoqueProduto> listaEstoqueProduto = new List<BllEstoqueProduto>();
 
             var commandSQL = "";
-            var criterio = "";
+            var criterioConsulta = "";
 
             using (MdlAccessConnection connection = new MdlAccessConnection())
             {
 
+                //Definine o sql para cada tipo de resumo escolhido pelo usuário
+                if(resumo == "Todos")
+                    commandSQL = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
+                    TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, 
+                    TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.PrecoCusto, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
+                    TBEstoque.IdProduto = TBProduto.Id WHERE Descricao LIKE @Descricao";
+
                 if (resumo == "Sem Resumo")
-                    commandSQL = @"SELECT TOP " + numeroDeRegistros + @" TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
+                    commandSQL = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
                     TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, 
                     TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.PrecoCusto, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade = 0 AND EstoqueMax = 0 AND EstoqueMin = 0";
 
                 if (resumo == "Ok")
-                    commandSQL = @"SELECT TOP " + numeroDeRegistros + @" TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
+                    commandSQL = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
                     TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, 
                     TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.PrecoCusto, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade > 0 AND Quantidade >= EstoqueMax AND Quantidade <= EstoqueMax";
 
                 if (resumo == "Alto")
-                    commandSQL = @"SELECT TOP " + numeroDeRegistros + @" TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
+                    commandSQL = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
                     TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, 
                     TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.PrecoCusto, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade > EstoqueMax";
 
                 if (resumo == "Baixo")
-                    commandSQL = @"SELECT TOP " + numeroDeRegistros + @" TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
+                    commandSQL = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
                     TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, 
                     TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.PrecoCusto, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade < EstoqueMin";
 
 
-                if (codigo != "")
-                    criterio += " AND Codigo LIKE @Codigo ";
-
-                if (tamanho != "")
-                    criterio += " AND Tamanho LIKE @Tamanho ";
-
-                if (referencia != "")
-                    criterio += " AND Referencia LIKE @Referencia ";
-
-                if (descricao != "")
-                    criterio += " AND Descricao LIKE @Descricao ";
-
-                commandSQL += criterio + " Order By Codigo, Tamanho, Referencia Asc";
-
-                var e = connection.Command.Parameters;
+                //Aqui concateno o sql de acordo com a busca
+                criterioConsulta += " AND Descricao LIKE @Descricao ";
 
                 if (codigo != "")
-                    e.AddWithValue("@Codigo", string.Format("{0}", codigo));
+                    criterioConsulta += " AND Codigo LIKE @Codigo ";
 
                 if (tamanho != "")
-                    e.AddWithValue("@Tamanho", string.Format("{0}", tamanho));
+                    criterioConsulta += " AND Tamanho LIKE @Tamanho ";
 
                 if (referencia != "")
-                    e.AddWithValue("@Referencia", string.Format("{0}", referencia));
+                    criterioConsulta += " AND Referencia LIKE @Referencia ";
 
-                if (descricao != "")
-                    e.AddWithValue("@Descricao", string.Format("%{0}%", descricao));
+       
+                commandSQL += criterioConsulta + " Order By Codigo, Tamanho, Referencia Asc";
+
+
+                //Aqui passamos os parametros para a consulta
+                connection.Command.Parameters.AddWithValue("@Descricao", string.Format("%{0}%", descricao));
+
+                if (codigo != "")
+                    connection.Command.Parameters.AddWithValue("@Codigo", string.Format("{0}", codigo));
+
+                if (tamanho != "")
+                    connection.Command.Parameters.AddWithValue("@Tamanho", string.Format("{0}", tamanho));
+
+                if (referencia != "")
+                    connection.Command.Parameters.AddWithValue("@Referencia", string.Format("{0}", referencia));
+
 
                 using (OleDbDataReader dr = connection.ExecuteParameterQuery(commandSQL))
                 {

@@ -1,6 +1,6 @@
-﻿using System;
+﻿using SysEstoque.Business;
+using System;
 using System.Collections.Generic;
-using SysEstoque.Business;
 
 namespace SysEstoque.Relatorio
 {
@@ -9,7 +9,7 @@ namespace SysEstoque.Relatorio
         #region Get e Set
         public int CodigoProduto { get; set; }
         public int TamanhoProduto { get; set; }
-        public int ReferenciaProduto{ get; set; }
+        public int ReferenciaProduto { get; set; }
         public string DescricaoProduto { get; set; }
         public string FornecedorProduto { get; set; }
         public int EstoqueMin { get; set; }
@@ -26,7 +26,7 @@ namespace SysEstoque.Relatorio
         {
             Lista = new List<RelEstoque>();
 
-            for(int i = 0; i < listaEstoque.Count; i++)
+            for (int i = 0; i < listaEstoque.Count; i++)
             {
                 RelEstoque relEstoque = new RelEstoque
                 {
@@ -39,13 +39,9 @@ namespace SysEstoque.Relatorio
                     EstoqueMax = listaEstoque[i].EstoqueMax,
                     EstoqueQuant = listaEstoque[i].QuantidadeEstoque,
                     ValorEmEstoque = listaEstoque[i].ValorEstoque,
+                    ResumoEstoque = ObterResumo(listaEstoque[i].QuantidadeEstoque, listaEstoque[i].EstoqueMin, listaEstoque[i].EstoqueMax),
+                    ResultadoEstoque = ObterResultado(listaEstoque[i].QuantidadeEstoque, listaEstoque[i].EstoqueMin, listaEstoque[i].EstoqueMax)
                 };
-
-                //Obtem o resumo
-                ResumoEstoque = ObterResumo(EstoqueQuant, EstoqueMin, EstoqueMax);
-
-                //Obtem o resultado
-                ResumoEstoque = ObterResultado(EstoqueQuant, EstoqueMin, EstoqueMax);
 
                 Lista.Add(relEstoque);
             }
@@ -96,5 +92,15 @@ namespace SysEstoque.Relatorio
         }
         #endregion
 
+        #region VerRelatorio()
+        public void VerRelatorio()
+        {
+            FrmEstoqueRelatorio view = new FrmEstoqueRelatorio();
+            view.RpvEstoque.LocalReport.DataSources.Clear();
+            view.RpvEstoque.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DsRelEstoque", Lista));
+            view.RpvEstoque.RefreshReport();
+            view.Show();
+        }
+        #endregion
     }
 }

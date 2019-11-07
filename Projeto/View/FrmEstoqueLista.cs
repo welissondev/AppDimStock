@@ -1,14 +1,11 @@
-﻿using Microsoft.Reporting.WinForms;
-using Syncfusion.Windows.Forms.Tools;
+﻿using Syncfusion.Windows.Forms.Tools;
 using SysEstoque.Auxiliary;
 using SysEstoque.Business;
 using SysEstoque.Properties;
-using SysEstoque.Relatorio;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace SysEstoque.View
@@ -16,7 +13,7 @@ namespace SysEstoque.View
     public partial class FrmEstoqueLista : Form
     {
         #region Propriedades
-        public int NumeroDeRegistros = 500;
+        public int NumeroDeRegistros = 10;
         #endregion 
 
         #region FrmEstoqueLista()
@@ -52,23 +49,10 @@ namespace SysEstoque.View
         {
             try
             {
-                BllEstoqueProduto estoque = new BllEstoqueProduto();
-                FrmEstoqueRelatorio relatorio = new FrmEstoqueRelatorio();
-
-                if (CboResumo.Text == "Todos")
-                {
-                    estoque.Filtrar(TxtBuscaCodigo.Text, TxtBuscaTamanho.Text, TxtBuscarReferencia.Text, TxtBuscarDescricao.Text, 500);
-                }
-                else
-                {
-                    estoque.FiltroDinamico(TxtBuscaCodigo.Text, TxtBuscaTamanho.Text, TxtBuscarReferencia.Text, TxtBuscarDescricao.Text, 500, CboResumo.Text);
-                }
-
-                relatorio.Show();
-                
-                relatorio.RpvEstoque.LocalReport.DataSources.Clear();
-                relatorio.RpvEstoque.LocalReport.DataSources.Add(new ReportDataSource("RpvEstoqueProdutoDts", estoque.Lista));
-                relatorio.RpvEstoque.RefreshReport();
+                var estoqueProduto = new BllEstoqueProduto();
+                estoqueProduto.GerarRelatorio(TxtBuscaCodigo.Text, TxtBuscaTamanho.Text, 
+                TxtBuscarReferencia.Text, TxtBuscarDescricao.Text, 
+                CboResumo.Text);
             }
             catch (Exception ex)
             {
@@ -94,11 +78,13 @@ namespace SysEstoque.View
 
             if(CboResumo.Text == "Todos")
             {
-                Filtrar(TxtBuscaCodigo.Text, TxtBuscaTamanho.Text, TxtBuscarReferencia.Text, TxtBuscarDescricao.Text);
+                Filtrar(TxtBuscaCodigo.Text, TxtBuscaTamanho.Text, 
+                TxtBuscarReferencia.Text, TxtBuscarDescricao.Text);
             }
             else
             {
-                FiltroDinamico(TxtBuscaCodigo.Text, TxtBuscaTamanho.Text, TxtBuscarReferencia.Text, TxtBuscarDescricao.Text, CboResumo.Text);
+                ConsultaPorCriterioDeResumo(TxtBuscaCodigo.Text, TxtBuscaTamanho.Text, 
+                TxtBuscarReferencia.Text, TxtBuscarDescricao.Text, CboResumo.Text);
             }
         }
         #endregion
@@ -282,14 +268,14 @@ namespace SysEstoque.View
         }
         #endregion
 
-        #region FiltroDinamico()
-        private void FiltroDinamico(string codigo, string tamanho, string referencia, string descricao, string resumo)
+        #region ConsultaPorCriterioDeResumo()
+        private void ConsultaPorCriterioDeResumo(string codigo, string tamanho, string referencia, string descricao, string resumo)
         {
             try
             {
-                BllEstoqueProduto estoqueProduto = new BllEstoqueProduto();
+                var estoqueProduto = new BllEstoqueProduto();
 
-                estoqueProduto.FiltroDinamico(codigo, tamanho, referencia, descricao, NumeroDeRegistros, resumo);
+                estoqueProduto.ConsultaPorCriterioDeResumo(codigo, tamanho, referencia, descricao, resumo);
 
                 GridListaEstoque.Rows.Clear();
 

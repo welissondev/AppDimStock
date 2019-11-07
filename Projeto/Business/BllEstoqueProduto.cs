@@ -40,11 +40,13 @@ namespace SysEstoque.Business
         }
         #endregion
 
-        #region FiltroDinamico()
-        public void FiltroDinamico(string codigo, string tamanho, string referencia, string descricao, int numeroDeRegistros = 100, string resumo = "")
+        #region ConsultaPorCriterioDeResumo()
+        public void ConsultaPorCriterioDeResumo(string codigo, string tamanho, string referencia, 
+        string descricao, string resumo = "")
         {
-            MdlEstoqueProduto estoqueProduto = new MdlEstoqueProduto();
-            Lista = estoqueProduto.FiltroDinamico(codigo, tamanho, referencia, descricao, numeroDeRegistros, resumo);
+            var estoqueProduto = new MdlEstoqueProduto();
+            Lista = estoqueProduto.ConsultaPorCriterioDeResumo(codigo, tamanho, referencia, 
+            descricao, resumo);
         }
         #endregion
 
@@ -101,12 +103,16 @@ namespace SysEstoque.Business
         #endregion
 
         #region GerarRelatorio()
-        public void GerarRelatorio(string codigo, string tamanho, string referencia, string descricao, int numeroDeRegistros = 5000, string resumo = "Todos")
+        public void GerarRelatorio(string codigo, string tamanho, string referencia, 
+        string descricao, string resumo = "")
         {
-            FiltroDinamico(codigo, tamanho, referencia, descricao, numeroDeRegistros, resumo);
 
-            RelEstoque relEstoque = new RelEstoque();
-            relEstoque.GerarRelatorio(Lista);
+            ConsultaPorCriterioDeResumo(codigo, tamanho, referencia,
+            descricao, resumo);
+
+            var relatorio = new RelEstoque();
+            relatorio.GerarRelatorio(Lista);
+            relatorio.VerRelatorio();
         }
         #endregion
 
