@@ -21,6 +21,7 @@ namespace SysEstoque.Business
         public string ReferenciaProduto { get; set; }
         public double PrecoCustoProduto { get; set; }
         public string FotoNomeProduto { get; set; }
+        public int RecordCount { get; set; }
         public List<BllEstoqueProduto> Lista { get; set; }
         #endregion 
 
