@@ -159,6 +159,27 @@ namespace SysEstoque.Model
 
             disposed = true;
         }
-        #endregion 
+        #endregion
+
+        #region ExecultaConsulta_Por_Paginacao()
+        public DataTable ExecultaConsulta_Por_Paginacao(string commandSQL, int startReg = 0, int maxReg = 10)
+        {
+            var dt = new DataTable();
+
+            OpenConnection();
+
+            Command.CommandText = commandSQL;
+            Command.Connection = connection;
+
+            var adapter = new OleDbDataAdapter
+            {
+                SelectCommand = Command
+            };
+
+            adapter.Fill(startReg, maxReg, dt);
+
+            return dt;
+        }
+        #endregion
     }
 }
