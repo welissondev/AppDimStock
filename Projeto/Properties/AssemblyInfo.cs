@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // As informações gerais sobre um assembly são controladas por
 // conjunto de atributos. Altere estes valores de atributo para modificar as informações
 // associadas a um assembly.
-[assembly: AssemblyTitle("SysEstoque")]
-[assembly: AssemblyDescription("Sistema para controle de estoque")]
+[assembly: AssemblyTitle("Sistema DimStock")]
+[assembly: AssemblyDescription("Programa desenvolvido para controle de estoque")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Diário Excel")]
-[assembly: AssemblyProduct("SysEstoque")]
+[assembly: AssemblyProduct("DimStock")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("Diário Excel")]
 [assembly: AssemblyCulture("")]

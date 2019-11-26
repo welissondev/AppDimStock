@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SysEstoque", "Projeto\SysEstoque.csproj", "{CD1D80E8-6865-4D64-86B8-CF4D05CE487B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DimStock", "Projeto\DimStock.csproj", "{CD1D80E8-6865-4D64-86B8-CF4D05CE487B}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Installer", "Installer\Installer.vdproj", "{AD119E5F-D577-425B-AFF5-D322F5C4DF9E}"
 EndProject

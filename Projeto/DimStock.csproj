@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{CD1D80E8-6865-4D64-86B8-CF4D05CE487B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>SysEstoque</RootNamespace>
-    <AssemblyName>Controle de Estoque</AssemblyName>
+    <RootNamespace>DimStock</RootNamespace>
+    <AssemblyName>DimStock</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -169,7 +169,6 @@
     <Compile Include="Relatorio\FrmProdutoRelatorio.Designer.cs">
       <DependentUpon>FrmProdutoRelatorio.cs</DependentUpon>
     </Compile>
-    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="View\FrmEstoqueAtividadeLista.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -333,21 +332,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Visualizar2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SqlServerTypes\readme.htm" />
-    <Content Include="SqlServerTypes\x64\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="stdole">

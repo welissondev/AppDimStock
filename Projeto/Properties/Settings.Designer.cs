@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SysEstoque.Properties {
+namespace DimStock.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -32,17 +32,6 @@ namespace SysEstoque.Properties {
             }
             set {
                 this["ValorNumerico"] = value;
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|\\Padrao\\dbestoque.mdb" +
-            "")]
-        public string dbestoqueConnectionString {
-            get {
-                return ((string)(this["dbestoqueConnectionString"]));
             }
         }
     }
