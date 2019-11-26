@@ -1,9 +1,9 @@
-﻿using SysEstoque.Business;
+﻿using DimStock.Business;
 using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
 
-namespace SysEstoque.Model
+namespace DimStock.Model
 {
     public class MdlEstoqueDestino
     {

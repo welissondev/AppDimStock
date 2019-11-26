@@ -1,9 +1,9 @@
-﻿using SysEstoque.Business;
+﻿using DimStock.Business;
 using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Linq;
 
-namespace SysEstoque.Model
+namespace DimStock.Model
 {
     public class MdlEstoque
     {

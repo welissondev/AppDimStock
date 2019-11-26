@@ -1037,7 +1037,7 @@
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="SysEstoqueRelatorio">
+    <DataSource Name="DimStockRelatorio">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
@@ -1048,7 +1048,7 @@
   <DataSets>
     <DataSet Name="DsRelEstoque">
       <Query>
-        <DataSourceName>SysEstoqueRelatorio</DataSourceName>
+        <DataSourceName>DimStockRelatorio</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
@@ -1098,9 +1098,9 @@
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>SysEstoque.Relatorio</rd:DataSetName>
+        <rd:DataSetName>DimStock.Relatorio</rd:DataSetName>
         <rd:TableName>RelEstoque</rd:TableName>
-        <rd:ObjectDataSourceType>SysEstoque.Relatorio.RelEstoque, Controle de Estoque, Version=1.0.3.153, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:ObjectDataSourceType>DimStock.Relatorio.RelEstoque, Controle de Estoque, Version=1.0.3.153, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>

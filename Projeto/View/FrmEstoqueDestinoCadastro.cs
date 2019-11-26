@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
-using SysEstoque.Auxiliary;
-using SysEstoque.Business;
+using DimStock.Auxiliary;
+using DimStock.Business;
 
-namespace SysEstoque.View
+namespace DimStock.View
 {
     public partial class FrmEstoqueDestinoCadastro : Form
     {

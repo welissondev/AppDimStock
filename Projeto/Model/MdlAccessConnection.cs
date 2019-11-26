@@ -3,7 +3,7 @@ using System.Data.OleDb;
 using System.Data;
 using System.Windows.Forms;
 
-namespace SysEstoque.Model
+namespace DimStock.Model
 {
     public class MdlAccessConnection : IDisposable
     {

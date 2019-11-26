@@ -1,4 +1,4 @@
-﻿namespace SysEstoque.View
+﻿namespace DimStock.View
 {
     partial class FrmProdutoLista
     {
@@ -107,7 +107,7 @@
             // PicCarregando
             // 
             this.PicCarregando.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.PicCarregando.Image = global::SysEstoque.Properties.Resources.Load;
+            this.PicCarregando.Image = global::DimStock.Properties.Resources.Load;
             this.PicCarregando.Location = new System.Drawing.Point(431, 365);
             this.PicCarregando.Name = "PicCarregando";
             this.PicCarregando.Size = new System.Drawing.Size(138, 131);

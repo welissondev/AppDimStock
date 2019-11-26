@@ -1,4 +1,4 @@
-﻿namespace SysEstoque.Business
+﻿namespace DimStock.Business
 {
     /// <summary>
     /// Uma classe statica que recebe uma resposta do model sobre á ultima operação solicitada!

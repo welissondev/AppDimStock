@@ -1,7 +1,7 @@
-﻿using SysEstoque.Model;
+﻿using DimStock.Model;
 using System.Collections.Generic;
 
-namespace SysEstoque.Business
+namespace DimStock.Business
 {
     public class BllEstoque
     {

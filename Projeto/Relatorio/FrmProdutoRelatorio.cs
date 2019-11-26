@@ -1,9 +1,9 @@
 ﻿using Syncfusion.Windows.Forms.Tools;
-using SysEstoque.Auxiliary;
+using DimStock.Auxiliary;
 using System;
 using System.Windows.Forms;
 
-namespace SysEstoque.View
+namespace DimStock.View
 {
     public partial class FrmProdutoRelatorio : Form
     {

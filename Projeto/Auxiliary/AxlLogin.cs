@@ -1,4 +1,4 @@
-﻿namespace SysEstoque.Auxiliary
+﻿namespace DimStock.Auxiliary
 {
 
     /// <summary>

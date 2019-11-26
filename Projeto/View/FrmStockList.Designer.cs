@@ -1,4 +1,4 @@
-﻿namespace SysEstoque.View
+﻿namespace DimStock.View
 {
     partial class FrmStockList
     {
@@ -382,7 +382,7 @@
             // ImgGifLoading
             // 
             this.ImgGifLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ImgGifLoading.Image = global::SysEstoque.Properties.Resources.Load;
+            this.ImgGifLoading.Image = global::DimStock.Properties.Resources.Load;
             this.ImgGifLoading.Location = new System.Drawing.Point(465, 356);
             this.ImgGifLoading.Name = "ImgGifLoading";
             this.ImgGifLoading.Size = new System.Drawing.Size(129, 137);

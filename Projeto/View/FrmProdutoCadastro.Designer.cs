@@ -1,4 +1,4 @@
-﻿namespace SysEstoque.View
+﻿namespace DimStock.View
 {
     partial class FrmProdutoCadastro
     {
@@ -42,7 +42,7 @@
             this.LblReferencia = new System.Windows.Forms.Label();
             this.LblTamanho = new System.Windows.Forms.Label();
             this.GbxFotoProduto = new System.Windows.Forms.GroupBox();
-            this.PicFoto = new SysEstoque.Auxiliary.AxlPictureBox();
+            this.PicFoto = new DimStock.Auxiliary.AxlPictureBox();
             this.BtnSalvar = new Syncfusion.WinForms.Controls.SfButton();
             this.TxtCodigo = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.LblCodigo = new System.Windows.Forms.Label();
@@ -307,7 +307,7 @@
             // 
             this.PicFoto.ArquivoDiretorioSelecionado = null;
             this.PicFoto.FotoNome = "";
-            this.PicFoto.Image = global::SysEstoque.Properties.Resources.FotoNothing;
+            this.PicFoto.Image = global::DimStock.Properties.Resources.FotoNothing;
             this.PicFoto.Location = new System.Drawing.Point(7, 14);
             this.PicFoto.Name = "PicFoto";
             this.PicFoto.Size = new System.Drawing.Size(176, 188);
@@ -623,7 +623,7 @@
         public Syncfusion.Windows.Forms.Tools.IntegerTextBox TxtTamanho;
         public Syncfusion.Windows.Forms.Tools.TextBoxExt TxtFornecedor;
         private System.Windows.Forms.Label LblFornecedor;
-        public SysEstoque.Auxiliary.AxlPictureBox PicFoto;
+        public DimStock.Auxiliary.AxlPictureBox PicFoto;
         private Bunifu.Framework.UI.BunifuGradientPanel PanelHorizontalSuperior;
         public System.Windows.Forms.Label LblDataLong;
         public System.Windows.Forms.Label LblCaptionListaProduto;

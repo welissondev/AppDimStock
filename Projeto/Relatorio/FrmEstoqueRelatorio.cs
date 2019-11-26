@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace SysEstoque.Relatorio
+namespace DimStock.Relatorio
 {
     public partial class FrmEstoqueRelatorio : Form
     {

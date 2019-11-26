@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 
 
-namespace SysEstoque.View
+namespace DimStock.View
 {
     static class Program
     {

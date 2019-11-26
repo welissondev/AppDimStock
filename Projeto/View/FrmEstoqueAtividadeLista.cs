@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Windows.Forms;
-using SysEstoque.Business;
-using SysEstoque.Auxiliary;
-using SysEstoque.Properties;
+using DimStock.Business;
+using DimStock.Auxiliary;
+using DimStock.Properties;
 using System.Linq;
 using System.Collections.Generic;
 using Syncfusion.Windows.Forms.Tools;
 using Syncfusion.WinForms.ListView;
 
-namespace SysEstoque.View
+namespace DimStock.View
 {
     public partial class FrmEstoqueAtividadeLista : Form
     {

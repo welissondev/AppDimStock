@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace SysEstoque.Auxiliary
+namespace DimStock.Auxiliary
 {
 
     public class AxlImage 

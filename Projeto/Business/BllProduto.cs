@@ -1,9 +1,9 @@
-﻿using SysEstoque.Auxiliary;
-using SysEstoque.Model;
+﻿using DimStock.Auxiliary;
+using DimStock.Model;
 using System;
 using System.Collections.Generic;
 
-namespace SysEstoque.Business
+namespace DimStock.Business
 {
     public class BllProduto
     {

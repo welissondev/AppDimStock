@@ -1,11 +1,11 @@
-﻿using SysEstoque.Auxiliary;
-using SysEstoque.Business;
+﻿using DimStock.Auxiliary;
+using DimStock.Business;
 using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Linq;
 
-namespace SysEstoque.Model
+namespace DimStock.Model
 {
     public class MdlEstoqueAtividade
     {

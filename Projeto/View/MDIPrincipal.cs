@@ -1,11 +1,11 @@
-﻿using SysEstoque.Auxiliary;
-using SysEstoque.Relatorio;
+﻿using DimStock.Auxiliary;
+using DimStock.Relatorio;
 using System;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace SysEstoque.View
+namespace DimStock.View
 {
     public partial class MDIPrincipal : Form
     {

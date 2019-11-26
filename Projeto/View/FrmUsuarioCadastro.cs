@@ -3,10 +3,10 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Bunifu.Framework.UI;
 using Syncfusion.Windows.Forms.Tools;
-using SysEstoque.Auxiliary;
-using SysEstoque.Business;
+using DimStock.Auxiliary;
+using DimStock.Business;
 
-namespace SysEstoque.View
+namespace DimStock.View
 {
     public partial class FrmUsuarioCadastro : Form
     {

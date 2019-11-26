@@ -1,7 +1,7 @@
-﻿using SysEstoque.Auxiliary;
+﻿using DimStock.Auxiliary;
 using System;
 
-namespace SysEstoque.Business
+namespace DimStock.Business
 {
     public static class BllProdutoFoto
     {

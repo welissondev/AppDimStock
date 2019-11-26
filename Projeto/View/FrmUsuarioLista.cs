@@ -1,10 +1,10 @@
-﻿using SysEstoque.Auxiliary;
+﻿using DimStock.Auxiliary;
 using System;
 using System.Windows.Forms;
-using SysEstoque.Business;
-using SysEstoque.Properties;
+using DimStock.Business;
+using DimStock.Properties;
 
-namespace SysEstoque.View
+namespace DimStock.View
 {
     public partial class FrmUsuarioLista : Form
     {

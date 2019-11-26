@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Linq;
-using SysEstoque.Auxiliary;
-using SysEstoque.Business;
+using DimStock.Auxiliary;
+using DimStock.Business;
 
-namespace SysEstoque.Model
+namespace DimStock.Model
 {
     public class MdlUsuario
     {

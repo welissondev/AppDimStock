@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SysEstoque.Auxiliary
+namespace DimStock.Auxiliary
 {
     public class AxlDataPagination
     {

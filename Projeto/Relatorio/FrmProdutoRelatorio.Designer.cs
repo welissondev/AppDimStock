@@ -1,4 +1,4 @@
-﻿namespace SysEstoque.View
+﻿namespace DimStock.View
 {
     partial class FrmProdutoRelatorio
     {
@@ -161,7 +161,7 @@
             this.RelProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.RelProdutos.LocalReport.ReportEmbeddedResource = "SysEstoque.Relatorio.RelProdutos.rdlc";
+            this.RelProdutos.LocalReport.ReportEmbeddedResource = "DimStock.Relatorio.RelProdutos.rdlc";
             this.RelProdutos.Location = new System.Drawing.Point(11, 69);
             this.RelProdutos.Name = "RelProdutos";
             this.RelProdutos.ServerReport.BearerToken = null;
@@ -207,7 +207,7 @@
             // PicCarregando
             // 
             this.PicCarregando.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.PicCarregando.Image = global::SysEstoque.Properties.Resources.Load;
+            this.PicCarregando.Image = global::DimStock.Properties.Resources.Load;
             this.PicCarregando.Location = new System.Drawing.Point(437, 283);
             this.PicCarregando.Name = "PicCarregando";
             this.PicCarregando.Size = new System.Drawing.Size(129, 137);

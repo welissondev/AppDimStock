@@ -1,10 +1,10 @@
 ﻿using System;
-using SysEstoque.Model;
+using DimStock.Model;
 using System.Collections.Generic;
-using SysEstoque.Relatorio;
+using DimStock.Relatorio;
 using System.Data;
 
-namespace SysEstoque.Business
+namespace DimStock.Business
 {
     public class BllStockProduct
     {

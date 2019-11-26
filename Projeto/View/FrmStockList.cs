@@ -1,14 +1,14 @@
 ﻿using System;
 using Syncfusion.Windows.Forms.Tools;
-using SysEstoque.Auxiliary;
-using SysEstoque.Business;
-using SysEstoque.Properties;
+using DimStock.Auxiliary;
+using DimStock.Business;
+using DimStock.Properties;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
-namespace SysEstoque.View
+namespace DimStock.View
 {
     public partial class FrmStockList : Form
     {

@@ -1,8 +1,8 @@
-﻿using SysEstoque.Business;
+﻿using DimStock.Business;
 using System;
 using System.Collections.Generic;
 
-namespace SysEstoque.Relatorio
+namespace DimStock.Relatorio
 {
     public class RelEstoque
     {

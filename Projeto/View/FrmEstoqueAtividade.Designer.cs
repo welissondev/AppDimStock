@@ -1,4 +1,4 @@
-﻿namespace SysEstoque.View
+﻿namespace DimStock.View
 {
     partial class FrmEstoqueAtividade
     {
@@ -61,7 +61,7 @@
             this.PicCarregando = new System.Windows.Forms.PictureBox();
             this.TxtTotalItens = new System.Windows.Forms.Label();
             this.LblTotalItens = new System.Windows.Forms.Label();
-            this.GridListaPrincipal = new SysEstoque.Auxiliary.AxlListEstoqueItem();
+            this.GridListaPrincipal = new DimStock.Auxiliary.AxlListEstoqueItem();
             this.BtnDeletarAtividade = new Syncfusion.WinForms.Controls.SfButton();
             this.BtnConfirmar = new Syncfusion.WinForms.Controls.SfButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -543,7 +543,7 @@
             // PicCarregando
             // 
             this.PicCarregando.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PicCarregando.Image = global::SysEstoque.Properties.Resources.Load;
+            this.PicCarregando.Image = global::DimStock.Properties.Resources.Load;
             this.PicCarregando.Location = new System.Drawing.Point(379, 121);
             this.PicCarregando.Name = "PicCarregando";
             this.PicCarregando.Size = new System.Drawing.Size(129, 137);

@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using SysEstoque.Business;
-using SysEstoque.Auxiliary;
-using SysEstoque.Properties;
+using DimStock.Business;
+using DimStock.Auxiliary;
+using DimStock.Properties;
 
-namespace SysEstoque.View
+namespace DimStock.View
 {
     public partial class FrmProdutoLista : Form
     {

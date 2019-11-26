@@ -1,4 +1,4 @@
-﻿namespace SysEstoque.Relatorio
+﻿namespace DimStock.Relatorio
 {
     partial class FrmEstoqueRelatorio
     {
@@ -44,7 +44,7 @@
             reportDataSource1.Name = "DsRelEstoque";
             reportDataSource1.Value = this.relEstoqueBindingSource;
             this.RpvEstoque.LocalReport.DataSources.Add(reportDataSource1);
-            this.RpvEstoque.LocalReport.ReportEmbeddedResource = "SysEstoque.Relatorio.RelEstoques.rdlc";
+            this.RpvEstoque.LocalReport.ReportEmbeddedResource = "DimStock.Relatorio.RelEstoques.rdlc";
             this.RpvEstoque.Location = new System.Drawing.Point(12, 9);
             this.RpvEstoque.Margin = new System.Windows.Forms.Padding(0);
             this.RpvEstoque.Name = "RpvEstoque";
@@ -54,7 +54,7 @@
             // 
             // relEstoqueBindingSource
             // 
-            this.relEstoqueBindingSource.DataSource = typeof(SysEstoque.Relatorio.RelEstoque);
+            this.relEstoqueBindingSource.DataSource = typeof(DimStock.Relatorio.RelEstoque);
             // 
             // FrmEstoqueRelatorio
             // 
