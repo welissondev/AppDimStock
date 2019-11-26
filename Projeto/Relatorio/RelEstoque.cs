@@ -22,7 +22,7 @@ namespace SysEstoque.Relatorio
         #endregion
 
         #region GerarRelatorio()
-        public void GerarRelatorio(List<BllEstoqueProduto> listaEstoque)
+        public void GerarRelatorio(List<BllStockProduct> listaEstoque)
         {
             Lista = new List<RelEstoque>();
 
@@ -30,17 +30,17 @@ namespace SysEstoque.Relatorio
             {
                 RelEstoque relEstoque = new RelEstoque
                 {
-                    CodigoProduto = Convert.ToInt32(listaEstoque[i].CodigoProduto),
-                    TamanhoProduto = Convert.ToInt32(listaEstoque[i].TamanhoProduto),
-                    ReferenciaProduto = Convert.ToInt32(listaEstoque[i].ReferenciaProduto),
-                    DescricaoProduto = listaEstoque[i].DescricaoProduto,
-                    FornecedorProduto = listaEstoque[i].Fornecedor,
-                    EstoqueMin = listaEstoque[i].EstoqueMin,
-                    EstoqueMax = listaEstoque[i].EstoqueMax,
-                    EstoqueQuant = listaEstoque[i].QuantidadeEstoque,
-                    ValorEmEstoque = listaEstoque[i].ValorEstoque,
-                    ResumoEstoque = ObterResumo(listaEstoque[i].QuantidadeEstoque, listaEstoque[i].EstoqueMin, listaEstoque[i].EstoqueMax),
-                    ResultadoEstoque = ObterResultado(listaEstoque[i].QuantidadeEstoque, listaEstoque[i].EstoqueMin, listaEstoque[i].EstoqueMax)
+                    CodigoProduto = Convert.ToInt32(listaEstoque[i].ProductCode),
+                    TamanhoProduto = Convert.ToInt32(listaEstoque[i].ProductSize),
+                    ReferenciaProduto = Convert.ToInt32(listaEstoque[i].ProductReference),
+                    DescricaoProduto = listaEstoque[i].ProductDescription,
+                    FornecedorProduto = listaEstoque[i].Supplier,
+                    EstoqueMin = listaEstoque[i].MinStock,
+                    EstoqueMax = listaEstoque[i].MaxStock,
+                    EstoqueQuant = listaEstoque[i].StockQuantity,
+                    ValorEmEstoque = listaEstoque[i].StockValue,
+                    ResumoEstoque = ObterResumo(listaEstoque[i].StockQuantity, listaEstoque[i].MinStock, listaEstoque[i].MaxStock),
+                    ResultadoEstoque = ObterResultado(listaEstoque[i].StockQuantity, listaEstoque[i].MinStock, listaEstoque[i].MaxStock)
                 };
 
                 Lista.Add(relEstoque);

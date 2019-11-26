@@ -52,7 +52,7 @@ namespace SysEstoque.Model
 
                 List<BllEstoqueItem> listaItens = new List<BllEstoqueItem>();
 
-                using (OleDbDataReader dr = connection.ExecuteQuery(sql))
+                using (OleDbDataReader dr = connection.QueryWithDataReader(sql))
                 {
                     while (dr.Read())
                     {

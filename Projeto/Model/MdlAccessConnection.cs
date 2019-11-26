@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Data.OleDb;
 using System.Data;
+using System.Windows.Forms;
 
 namespace SysEstoque.Model
 {
     public class MdlAccessConnection : IDisposable
     {
-        #region Propriedades 
+        #region Properties 
         private readonly OleDbConnection connection = new OleDbConnection(@"Provider = Microsoft.jet.oledb.4.0; Data Source =" + AppDomain.CurrentDomain.BaseDirectory.ToString() + @"Padrao\dbestoque.mdb;jet oledb:database password=#admin#");
         public OleDbCommand Command = new OleDbCommand();
         public OleDbParameter Parameter = new OleDbParameter();
@@ -14,8 +15,8 @@ namespace SysEstoque.Model
         private bool disposed = false;
         #endregion
 
-        #region Obter OledbConnection
-        public OleDbConnection OpenConnection()
+        #region Open()
+        public OleDbConnection Open()
         {
             try
             {
@@ -37,15 +38,22 @@ namespace SysEstoque.Model
         #region AddParameter()
         public void AddParameter(string name, OleDbType type, object value)
         {
-            OleDbParameter parametro = new OleDbParameter
+            var parameter = new OleDbParameter
             {
                 ParameterName = name,
                 OleDbType = type,
                 Value = value
             };
-            Command.Parameters.Add(parametro);
+            Command.Parameters.Add(parameter);
         }
         #endregion
+
+        #region ParameterClear()
+        public void ParameterClear()
+        {
+            Command.Parameters.Clear();
+        }
+        #endregion 
 
         #region ExecuteNonQuery()
         public int ExecuteNonQuery(string sql)
@@ -53,7 +61,7 @@ namespace SysEstoque.Model
             try
             {
                 Command.CommandText = sql;
-                Command.Connection = OpenConnection();
+                Command.Connection = Open();
                 return Command.ExecuteNonQuery();
             }
             catch (Exception)
@@ -69,7 +77,7 @@ namespace SysEstoque.Model
             try
             {
                 Command.CommandText = sql;
-                Command.Connection = OpenConnection();
+                Command.Connection = Open();
                 return  Command.ExecuteScalar().ToString();
             }
             catch (Exception)
@@ -79,13 +87,13 @@ namespace SysEstoque.Model
         }
         #endregion
 
-        #region ExecuteQuery()
-        public OleDbDataReader ExecuteQuery(string sql)
+        #region QueryWithDataReader()
+        public OleDbDataReader QueryWithDataReader(string sql)
         {
             try
             {
                 Command.CommandText = sql;
-                Command.Connection = OpenConnection();
+                Command.Connection = Open();
 
                 return Command.ExecuteReader();
             }
@@ -96,13 +104,34 @@ namespace SysEstoque.Model
         }
         #endregion
 
+        #region QueryWithDataTable()
+        public DataTable QueryWithDataTable(string commandSQL, int startReg = 0, int maxReg = 10)
+        {
+            var dt = new DataTable();
+
+            Open();
+
+            Command.CommandText = commandSQL;
+            Command.Connection = connection;
+
+            var adapter = new OleDbDataAdapter
+            {
+                SelectCommand = Command
+            };
+
+            adapter.Fill(startReg, maxReg, dt);
+
+            return dt;
+        }
+        #endregion
+
         #region ExecuteParameterQuery()
         public OleDbDataReader ExecuteParameterQuery(string sql)
         {
             try
             {
                 Command.CommandText = sql;
-                Command.Connection = OpenConnection();
+                Command.Connection = Open();
                 return Command.ExecuteReader();
             }
             catch (Exception)
@@ -129,13 +158,6 @@ namespace SysEstoque.Model
         }
         #endregion
 
-        #region ParameterClear()
-        public void ParameterClear()
-        {
-            Command.Parameters.Clear();
-        }
-        #endregion 
-
         #region Disposed
         public void Dispose()
         {
@@ -161,25 +183,5 @@ namespace SysEstoque.Model
         }
         #endregion
 
-        #region ExecultaConsulta_Por_Paginacao()
-        public DataTable ExecultaConsulta_Por_Paginacao(string commandSQL, int startReg = 0, int maxReg = 10)
-        {
-            var dt = new DataTable();
-
-            OpenConnection();
-
-            Command.CommandText = commandSQL;
-            Command.Connection = connection;
-
-            var adapter = new OleDbDataAdapter
-            {
-                SelectCommand = Command
-            };
-
-            adapter.Fill(startReg, maxReg, dt);
-
-            return dt;
-        }
-        #endregion
     }
 }

@@ -28,7 +28,7 @@ namespace SysEstoque.Model
         {
             using (MdlAccessConnection connection = new MdlAccessConnection())
             {
-                using (connection.Transaction = connection.OpenConnection().BeginTransaction())
+                using (connection.Transaction = connection.Open().BeginTransaction())
                 {
                     var commandSQL = @"INSERT INTO TBProduto(Fornecedor, Descricao, Codigo, Tamanho, Referencia, PrecoCusto, 
                         PrecoVenda, EstoqueMin, EstoqueMax, CodigoBarras, FotoNome)VALUES(@Fornecedor, @Descricao, @Codigo, @Tamanho, 
@@ -73,7 +73,7 @@ namespace SysEstoque.Model
         {
             using (MdlAccessConnection connection = new MdlAccessConnection())
             {
-                using (connection.Transaction = connection.OpenConnection().BeginTransaction())
+                using (connection.Transaction = connection.Open().BeginTransaction())
                 {
 
                     var commandSQL = @"UPDATE TBProduto Set Fornecedor = @Fornecedor, Descricao = @Descricao, Codigo = @Codigo, Tamanho = @Tamanho,
@@ -148,7 +148,7 @@ namespace SysEstoque.Model
 
             using (MdlAccessConnection connection = new MdlAccessConnection())
             {
-                using (OleDbDataReader dr = connection.ExecuteQuery(sql))
+                using (OleDbDataReader dr = connection.QueryWithDataReader(sql))
                 {
                     while (dr.Read())
                     {
@@ -253,7 +253,7 @@ namespace SysEstoque.Model
 
             using (MdlAccessConnection connection = new MdlAccessConnection())
             {
-                using (OleDbDataReader dr = connection.ExecuteQuery(sql))
+                using (OleDbDataReader dr = connection.QueryWithDataReader(sql))
                 {
                     while (dr.Read())
                     {
@@ -285,7 +285,7 @@ namespace SysEstoque.Model
 
                 List<string> ListaProduto = new List<string>();
 
-                using (OleDbDataReader dr = connection.ExecuteQuery(commandSQL))
+                using (OleDbDataReader dr = connection.QueryWithDataReader(commandSQL))
                 {
                     while (dr.Read())
                     {
@@ -315,7 +315,7 @@ namespace SysEstoque.Model
                 string commandSQL = @"SELECT Codigo FROM TBProduto WHERE Codigo LIKE '" + produto.Codigo + "'";
                 int cont = 0;
 
-                using (OleDbDataReader dr = connection.ExecuteQuery(commandSQL))
+                using (OleDbDataReader dr = connection.QueryWithDataReader(commandSQL))
                 {
                     while (dr.Read())
                     {

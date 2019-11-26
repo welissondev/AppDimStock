@@ -124,6 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Auxiliary\AxlDataGridViewLealt.cs" />
+    <Compile Include="Auxiliary\AxlDataPagination.cs" />
     <Compile Include="Auxiliary\AxlException.cs" />
     <Compile Include="Auxiliary\AxlLogin.cs" />
     <Compile Include="Auxiliary\AxlPictureBox.cs">
@@ -134,7 +135,7 @@
     </Compile>
     <Compile Include="Business\BllEstoqueDestino.cs" />
     <Compile Include="Business\BllEstoqueItem.cs" />
-    <Compile Include="Business\BllEstoqueProduto.cs" />
+    <Compile Include="Business\BllStockProduct.cs" />
     <Compile Include="Business\BllEstoqueAtividade.cs" />
     <Compile Include="Business\BllNotificar.cs" />
     <Compile Include="Business\BllProduto.cs" />
@@ -147,7 +148,7 @@
     <Compile Include="Model\MdlEstoqueAtividade.cs" />
     <Compile Include="Model\MdlEstoqueDestino.cs" />
     <Compile Include="Model\MdlEstoqueItem.cs" />
-    <Compile Include="Model\MdlEstoqueProduto.cs" />
+    <Compile Include="Model\MdlStockProduct.cs" />
     <Compile Include="Model\MdlProduto.cs" />
     <Compile Include="Model\MdlUsuario.cs" />
     <Compile Include="Model\MdlUsuarioHistorico.cs" />
@@ -193,11 +194,11 @@
     <Compile Include="View\FrmEstoqueAtividade.Designer.cs">
       <DependentUpon>FrmEstoqueAtividade.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\FrmEstoqueLista.cs">
+    <Compile Include="View\FrmStockList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\FrmEstoqueLista.Designer.cs">
-      <DependentUpon>FrmEstoqueLista.cs</DependentUpon>
+    <Compile Include="View\FrmStockList.Designer.cs">
+      <DependentUpon>FrmStockList.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FrmProdutoCadastro.cs">
       <SubType>Form</SubType>
@@ -265,8 +266,8 @@
     <EmbeddedResource Include="View\FrmEstoqueAtividade.resx">
       <DependentUpon>FrmEstoqueAtividade.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\FrmEstoqueLista.resx">
-      <DependentUpon>FrmEstoqueLista.cs</DependentUpon>
+    <EmbeddedResource Include="View\FrmStockList.resx">
+      <DependentUpon>FrmStockList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmProdutoCadastro.resx">
       <DependentUpon>FrmProdutoCadastro.cs</DependentUpon>
@@ -347,6 +348,17 @@
     <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

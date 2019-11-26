@@ -15,7 +15,7 @@ namespace SysEstoque.View
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmUsuarioLogin());
+            Application.Run(new FrmStockList());
         }
 
     }

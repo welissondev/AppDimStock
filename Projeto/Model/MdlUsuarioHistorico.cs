@@ -53,7 +53,7 @@ namespace SysEstoque.Model
 
             using (MdlAccessConnection connection = new MdlAccessConnection())
             {
-                using (OleDbDataReader dr = connection.ExecuteQuery(commandSQL))
+                using (OleDbDataReader dr = connection.QueryWithDataReader(commandSQL))
                 {
                     while (dr.Read())
                     {

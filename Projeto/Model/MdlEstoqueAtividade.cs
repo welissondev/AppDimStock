@@ -136,7 +136,7 @@ namespace SysEstoque.Model
 
                 List<BllEstoqueAtividade> listaEstoqueAtividade = new List<BllEstoqueAtividade>();
 
-                using (OleDbDataReader dr = connection.ExecuteQuery(sql))
+                using (OleDbDataReader dr = connection.QueryWithDataReader(sql))
                 {
                     while (dr.Read())
                     {
@@ -196,7 +196,7 @@ namespace SysEstoque.Model
 
                 List<BllEstoqueAtividade> listaEstoqueAtividade = new List<BllEstoqueAtividade>();
 
-                using (OleDbDataReader dr = connection.ExecuteQuery(commandSQL))
+                using (OleDbDataReader dr = connection.QueryWithDataReader(commandSQL))
                 {
                     while (dr.Read())
                     {
@@ -226,7 +226,7 @@ namespace SysEstoque.Model
 
             using (MdlAccessConnection connection = new MdlAccessConnection())
             {
-                using (OleDbDataReader dr = connection.ExecuteQuery(sql))
+                using (OleDbDataReader dr = connection.QueryWithDataReader(sql))
                 {
                     while (dr.Read())
                     {
@@ -252,7 +252,7 @@ namespace SysEstoque.Model
 
                 List<string> listaAtividade = new List<string>();
 
-                using (OleDbDataReader dr = connection.ExecuteQuery(commandSQL))
+                using (OleDbDataReader dr = connection.QueryWithDataReader(commandSQL))
                 {
                     while (dr.Read())
                     {

@@ -27,7 +27,7 @@ namespace SysEstoque.Model
 
             using (MdlAccessConnection connection = new MdlAccessConnection())
             {
-                using (connection.Transaction = connection.OpenConnection().BeginTransaction())
+                using (connection.Transaction = connection.Open().BeginTransaction())
                 {
                     for (int item = 0; item < listaEstoque.Count; item++)
                     {
@@ -62,7 +62,7 @@ namespace SysEstoque.Model
         {
             using (MdlAccessConnection connection = new MdlAccessConnection())
             {
-                using (connection.Transaction = connection.OpenConnection().BeginTransaction())
+                using (connection.Transaction = connection.Open().BeginTransaction())
                 {
                     for (int item = 0; item < listaEstoque.Count; item++)
                     {
@@ -129,7 +129,7 @@ namespace SysEstoque.Model
         {
             using (MdlAccessConnection connection = new MdlAccessConnection())
             {
-                using (connection.Transaction = connection.OpenConnection().BeginTransaction())
+                using (connection.Transaction = connection.Open().BeginTransaction())
                 {
                     for (int item = 0; item < listaEstoqueItem.Count; item++)
                     {
@@ -158,7 +158,7 @@ namespace SysEstoque.Model
 
                 List<string> listaEstoque = new List<string>();
 
-                using (OleDbDataReader dr = connection.ExecuteQuery(commandSQL))
+                using (OleDbDataReader dr = connection.QueryWithDataReader(commandSQL))
                 {
                     while (dr.Read())
                     {

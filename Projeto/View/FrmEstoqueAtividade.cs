@@ -234,26 +234,26 @@ namespace SysEstoque.View
         {
             try
             {
-                BllEstoqueProduto estoqueProduto = new BllEstoqueProduto();
+                BllStockProduct estoqueProduto = new BllStockProduct();
 
-                estoqueProduto.Filtrar(TxtBuscarCodigo.Text, TxtBuscarTamanho.Text,
+                estoqueProduto.Filter(TxtBuscarCodigo.Text, TxtBuscarTamanho.Text,
                 TxtBuscarReferencia.Text, TxtBuscarDescricao.Text, 100);
 
                 GridListaPrincipal.Columns.Clear();
 
                 DefinirColunasGridListaEstoque();
 
-                for (var item = 0; item < estoqueProduto.Lista.Count; item++)
+                for (var item = 0; item < estoqueProduto.ListOfRecords.Count; item++)
                 {
                     GridListaPrincipal.Rows.Add(
-                    estoqueProduto.Lista[item].IdEstoque,
-                    estoqueProduto.Lista[item].IdProduto,
-                    estoqueProduto.Lista[item].CodigoProduto,
-                    estoqueProduto.Lista[item].DescricaoProduto,
-                    estoqueProduto.Lista[item].PrecoCustoProduto
+                    estoqueProduto.ListOfRecords[item].StockId,
+                    estoqueProduto.ListOfRecords[item].ProductId,
+                    estoqueProduto.ListOfRecords[item].ProductCode,
+                    estoqueProduto.ListOfRecords[item].ProductDescription,
+                    estoqueProduto.ListOfRecords[item].ProductCostPrice
                     );
 
-                    var diretorioFotoProduto = BllProdutoFoto.PegarCaminho() + estoqueProduto.Lista[item].FotoNomeProduto;
+                    var diretorioFotoProduto = BllProdutoFoto.PegarCaminho() + estoqueProduto.ListOfRecords[item].ProductPhotoName;
                     if (BllProdutoFoto.EncontrarArquivo(diretorioFotoProduto).Equals(true))
                     {
                         using (FileStream file = new FileStream(diretorioFotoProduto, FileMode.Open, FileAccess.Read))
@@ -691,17 +691,17 @@ namespace SysEstoque.View
         #region GetEstoqueProduto()
         private void GetEstoqueProduto(int id)
         {
-            BllEstoqueProduto estoqueProduto = new BllEstoqueProduto();
-            estoqueProduto.Visualizar(id);
+            BllStockProduct estoqueProduto = new BllStockProduct();
+            estoqueProduto.ViewData(id);
 
-            TxtBuscarCodigo.Text = estoqueProduto.CodigoProduto;
-            TxtBuscarTamanho.Text = estoqueProduto.TamanhoProduto;
-            TxtBuscarReferencia.Text = estoqueProduto.ReferenciaProduto;
-            TxtBuscarDescricao.Text = estoqueProduto.DescricaoProduto;
-            TxtValorUnitario.Text = estoqueProduto.PrecoCustoProduto.ToString();
-            idProduto = estoqueProduto.IdProduto;
-            idEstoque = estoqueProduto.IdEstoque;
-            quantidadeEstoque = estoqueProduto.QuantidadeEstoque;
+            TxtBuscarCodigo.Text = estoqueProduto.ProductCode;
+            TxtBuscarTamanho.Text = estoqueProduto.ProductSize;
+            TxtBuscarReferencia.Text = estoqueProduto.ProductReference;
+            TxtBuscarDescricao.Text = estoqueProduto.ProductDescription;
+            TxtValorUnitario.Text = estoqueProduto.ProductCostPrice.ToString();
+            idProduto = estoqueProduto.ProductId;
+            idEstoque = estoqueProduto.StockId;
+            quantidadeEstoque = estoqueProduto.StockQuantity;
             TxtQuantidade.Text = "0";
             TxtQuantidade.Select();
 

@@ -71,7 +71,7 @@ namespace SysEstoque.Model
 
             using (MdlAccessConnection connection = new MdlAccessConnection())
             {
-                using (OleDbDataReader dr = connection.ExecuteQuery(commandSQL))
+                using (OleDbDataReader dr = connection.QueryWithDataReader(commandSQL))
                 {
                     while (dr.Read())
                     {
@@ -98,7 +98,7 @@ namespace SysEstoque.Model
 
             using (MdlAccessConnection connection = new MdlAccessConnection())
             {
-                using (OleDbDataReader dr = connection.ExecuteQuery(sql))
+                using (OleDbDataReader dr = connection.QueryWithDataReader(sql))
                 {
                     while (dr.Read())
                     {
@@ -121,7 +121,7 @@ namespace SysEstoque.Model
             {
                 connection.AddParameter("@Nome", OleDbType.VarChar, estoqueDestino.Nome);
 
-                using (OleDbDataReader dr = connection.ExecuteQuery(commandSQL))
+                using (OleDbDataReader dr = connection.QueryWithDataReader(commandSQL))
                 {
                     while (dr.Read())
                     {

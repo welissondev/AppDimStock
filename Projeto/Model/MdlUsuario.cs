@@ -192,7 +192,7 @@ namespace SysEstoque.Model
                 string commandSQL = @"SELECT Login FROM TBUsuario WHERE Login LIKE '" + usuario.Login + "'";
                 int cont = 0;
 
-                using (OleDbDataReader dr = connection.ExecuteQuery(commandSQL))
+                using (OleDbDataReader dr = connection.QueryWithDataReader(commandSQL))
                 {
                     while (dr.Read())
                     {
@@ -220,7 +220,7 @@ namespace SysEstoque.Model
 
                 List<BllUsuario> listaUsuario = new List<BllUsuario>();
 
-                using (OleDbDataReader dr = connection.ExecuteQuery(sql))
+                using (OleDbDataReader dr = connection.QueryWithDataReader(sql))
                 {
                     while (dr.Read())
                     {
@@ -280,7 +280,7 @@ namespace SysEstoque.Model
             {
                 var sql = @" SELECT * FROM TBUsuario WHERE Id = " + id;
 
-                using (OleDbDataReader dr = connection.ExecuteQuery(sql))
+                using (OleDbDataReader dr = connection.QueryWithDataReader(sql))
                 {
                     while (dr.Read())
                     {
@@ -310,7 +310,7 @@ namespace SysEstoque.Model
 
                 List<string> listaUsuario = new List<string>();
 
-                using (OleDbDataReader dr = connection.ExecuteQuery(commandSQL))
+                using (OleDbDataReader dr = connection.QueryWithDataReader(commandSQL))
                 {
                     while (dr.Read())
                     {

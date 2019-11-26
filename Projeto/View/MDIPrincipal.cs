@@ -106,7 +106,7 @@ namespace SysEstoque.View
         #region EstoqueListaMenuItem_Click()
         private void EstoqueListaMenuItem_Click(object sender, EventArgs e)
         {
-            FrmEstoqueLista frmEstoqueLista = new FrmEstoqueLista();
+            FrmStockList frmEstoqueLista = new FrmStockList();
             frmEstoqueLista.MdiParent = this;
             frmEstoqueLista.Show();
         }
