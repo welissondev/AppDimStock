@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace DimStock.Relatorio
+namespace DimStock.Report
 {
-    public partial class FrmEstoqueRelatorio : Form
+    public partial class FrmEstoqueReport : Form
     {
         #region Construtores
-        public FrmEstoqueRelatorio()
+        public FrmEstoqueReport()
         {
             InitializeComponent();
         }
         #endregion
 
-        #region FrmEstoqueRelatorio_Load()
-        private void FrmEstoqueRelatorio_Load(object sender, EventArgs e)
+        #region FrmEstoqueReport_Load()
+        private void FrmEstoqueReport_Load(object sender, EventArgs e)
         {
         }
         #endregion

@@ -1,5 +1,5 @@
 ﻿using DimStock.Auxiliary;
-using DimStock.Relatorio;
+using DimStock.Report;
 using System;
 using System.Drawing;
 using System.Linq;
@@ -224,10 +224,10 @@ namespace DimStock.View
         }
         #endregion
 
-        #region ProdutoRelatorioMenuItem_Click
-        private void ProdutoRelatorioMenuItem_Click(object sender, EventArgs e)
+        #region ProdutoReportMenuItem_Click
+        private void ProdutoReportMenuItem_Click(object sender, EventArgs e)
         {
-            FrmProdutoRelatorio frm = new FrmProdutoRelatorio();
+            FrmProdutoReport frm = new FrmProdutoReport();
             frm.MdiParent = this;
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();

@@ -1,7 +1,7 @@
 ﻿using System;
 using DimStock.Model;
 using System.Collections.Generic;
-using DimStock.Relatorio;
+using DimStock.Report;
 using System.Data;
 
 namespace DimStock.Business
@@ -149,8 +149,8 @@ namespace DimStock.Business
             description, resume);
 
             var report = new RelEstoque();
-            report.GerarRelatorio(ListOfRecords);
-            report.VerRelatorio();
+            report.GerarReport(ListOfRecords);
+            report.VerReport();
         }
         #endregion
     }

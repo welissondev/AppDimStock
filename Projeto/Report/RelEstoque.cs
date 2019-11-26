@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace DimStock.Relatorio
+namespace DimStock.Report
 {
     public class RelEstoque
     {
@@ -21,8 +21,8 @@ namespace DimStock.Relatorio
         public List<RelEstoque> Lista { get; set; }
         #endregion
 
-        #region GerarRelatorio()
-        public void GerarRelatorio(List<BllStockProduct> listaEstoque)
+        #region GerarReport()
+        public void GerarReport(List<BllStockProduct> listaEstoque)
         {
             Lista = new List<RelEstoque>();
 
@@ -92,10 +92,10 @@ namespace DimStock.Relatorio
         }
         #endregion
 
-        #region VerRelatorio()
-        public void VerRelatorio()
+        #region VerReport()
+        public void VerReport()
         {
-            FrmEstoqueRelatorio view = new FrmEstoqueRelatorio();
+            FrmEstoqueReport view = new FrmEstoqueReport();
             view.RpvEstoque.LocalReport.DataSources.Clear();
             view.RpvEstoque.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DsRelEstoque", Lista));
             view.RpvEstoque.RefreshReport();

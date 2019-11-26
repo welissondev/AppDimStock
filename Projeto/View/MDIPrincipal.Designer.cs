@@ -33,7 +33,7 @@
             this.produtoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listaDeProdutosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ProdutoRelatorioMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ProdutoReportMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Estoque = new System.Windows.Forms.ToolStripMenuItem();
             this.novaEntradaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.entradaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,7 +65,7 @@
             this.produtoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cadastrarToolStripMenuItem,
             this.listaDeProdutosToolStripMenuItem,
-            this.ProdutoRelatorioMenuItem});
+            this.ProdutoReportMenuItem});
             this.produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
             this.produtoToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.produtoToolStripMenuItem.Text = "Produto";
@@ -84,12 +84,12 @@
             this.listaDeProdutosToolStripMenuItem.Text = "Listar registros";
             this.listaDeProdutosToolStripMenuItem.Click += new System.EventHandler(this.ProdutoListaMenuItem_Click);
             // 
-            // ProdutoRelatorioMenuItem
+            // ProdutoReportMenuItem
             // 
-            this.ProdutoRelatorioMenuItem.Name = "ProdutoRelatorioMenuItem";
-            this.ProdutoRelatorioMenuItem.Size = new System.Drawing.Size(154, 22);
-            this.ProdutoRelatorioMenuItem.Text = "Gerar relatórios";
-            this.ProdutoRelatorioMenuItem.Click += new System.EventHandler(this.ProdutoRelatorioMenuItem_Click);
+            this.ProdutoReportMenuItem.Name = "ProdutoReportMenuItem";
+            this.ProdutoReportMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.ProdutoReportMenuItem.Text = "Gerar relatórios";
+            this.ProdutoReportMenuItem.Click += new System.EventHandler(this.ProdutoReportMenuItem_Click);
             // 
             // Estoque
             // 
@@ -202,7 +202,7 @@
         private System.Windows.Forms.ToolStripMenuItem adicionarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listarDeUsuariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem históricoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ProdutoRelatorioMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ProdutoReportMenuItem;
     }
 }
 

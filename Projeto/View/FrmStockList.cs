@@ -61,8 +61,8 @@ namespace DimStock.View
         }
         #endregion
 
-        #region BrnRelatorio_Click()
-        private void BrnRelatorio_Click(object sender, EventArgs e)
+        #region BrnReport_Click()
+        private void BrnReport_Click(object sender, EventArgs e)
         {
             try
             {

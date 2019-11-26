@@ -44,7 +44,7 @@
             this.TxtDescription = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.Timer = new System.Windows.Forms.Timer(this.components);
             this.PanelHorizontalSuperior = new Bunifu.Framework.UI.BunifuGradientPanel();
-            this.BtnRelatorio = new Syncfusion.WinForms.Controls.SfButton();
+            this.BtnReport = new Syncfusion.WinForms.Controls.SfButton();
             this.BtnAtualizar = new Syncfusion.WinForms.Controls.SfButton();
             this.LblDataLong = new System.Windows.Forms.Label();
             this.LblCaptionListaProduto = new System.Windows.Forms.Label();
@@ -291,7 +291,7 @@
             // 
             this.PanelHorizontalSuperior.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelHorizontalSuperior.BackgroundImage")));
             this.PanelHorizontalSuperior.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PanelHorizontalSuperior.Controls.Add(this.BtnRelatorio);
+            this.PanelHorizontalSuperior.Controls.Add(this.BtnReport);
             this.PanelHorizontalSuperior.Controls.Add(this.BtnAtualizar);
             this.PanelHorizontalSuperior.Controls.Add(this.LblDataLong);
             this.PanelHorizontalSuperior.Controls.Add(this.LblCaptionListaProduto);
@@ -306,29 +306,29 @@
             this.PanelHorizontalSuperior.Size = new System.Drawing.Size(1057, 95);
             this.PanelHorizontalSuperior.TabIndex = 141;
             // 
-            // BtnRelatorio
+            // BtnReport
             // 
-            this.BtnRelatorio.AccessibleName = "Button";
-            this.BtnRelatorio.BackColor = System.Drawing.Color.SeaGreen;
-            this.BtnRelatorio.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnRelatorio.ForeColor = System.Drawing.Color.White;
-            this.BtnRelatorio.Location = new System.Drawing.Point(103, 47);
-            this.BtnRelatorio.Name = "BtnRelatorio";
-            this.BtnRelatorio.Size = new System.Drawing.Size(83, 35);
-            this.BtnRelatorio.Style.BackColor = System.Drawing.Color.SeaGreen;
-            this.BtnRelatorio.Style.DisabledBackColor = System.Drawing.Color.SeaGreen;
-            this.BtnRelatorio.Style.DisabledForeColor = System.Drawing.Color.SeaGreen;
-            this.BtnRelatorio.Style.FocusedBackColor = System.Drawing.Color.SeaGreen;
-            this.BtnRelatorio.Style.FocusedForeColor = System.Drawing.Color.White;
-            this.BtnRelatorio.Style.ForeColor = System.Drawing.Color.White;
-            this.BtnRelatorio.Style.HoverBackColor = System.Drawing.Color.MediumSeaGreen;
-            this.BtnRelatorio.Style.HoverForeColor = System.Drawing.Color.Black;
-            this.BtnRelatorio.Style.PressedBackColor = System.Drawing.Color.SeaGreen;
-            this.BtnRelatorio.Style.PressedForeColor = System.Drawing.Color.White;
-            this.BtnRelatorio.TabIndex = 141;
-            this.BtnRelatorio.Text = "Relatório";
-            this.BtnRelatorio.UseVisualStyleBackColor = false;
-            this.BtnRelatorio.Click += new System.EventHandler(this.BrnRelatorio_Click);
+            this.BtnReport.AccessibleName = "Button";
+            this.BtnReport.BackColor = System.Drawing.Color.SeaGreen;
+            this.BtnReport.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnReport.ForeColor = System.Drawing.Color.White;
+            this.BtnReport.Location = new System.Drawing.Point(103, 47);
+            this.BtnReport.Name = "BtnReport";
+            this.BtnReport.Size = new System.Drawing.Size(83, 35);
+            this.BtnReport.Style.BackColor = System.Drawing.Color.SeaGreen;
+            this.BtnReport.Style.DisabledBackColor = System.Drawing.Color.SeaGreen;
+            this.BtnReport.Style.DisabledForeColor = System.Drawing.Color.SeaGreen;
+            this.BtnReport.Style.FocusedBackColor = System.Drawing.Color.SeaGreen;
+            this.BtnReport.Style.FocusedForeColor = System.Drawing.Color.White;
+            this.BtnReport.Style.ForeColor = System.Drawing.Color.White;
+            this.BtnReport.Style.HoverBackColor = System.Drawing.Color.MediumSeaGreen;
+            this.BtnReport.Style.HoverForeColor = System.Drawing.Color.Black;
+            this.BtnReport.Style.PressedBackColor = System.Drawing.Color.SeaGreen;
+            this.BtnReport.Style.PressedForeColor = System.Drawing.Color.White;
+            this.BtnReport.TabIndex = 141;
+            this.BtnReport.Text = "Relatório";
+            this.BtnReport.UseVisualStyleBackColor = false;
+            this.BtnReport.Click += new System.EventHandler(this.BrnReport_Click);
             // 
             // BtnAtualizar
             // 
@@ -594,7 +594,7 @@
         public System.Windows.Forms.Label LblCaptionListaProduto;
         private System.Windows.Forms.PictureBox ImgGifLoading;
         private Syncfusion.WinForms.Controls.SfButton BtnAtualizar;
-        private Syncfusion.WinForms.Controls.SfButton BtnRelatorio;
+        private Syncfusion.WinForms.Controls.SfButton BtnReport;
         private Syncfusion.WinForms.ListView.SfComboBox CboResume;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt textBoxExt2;
         private System.Windows.Forms.Label LblResumo;

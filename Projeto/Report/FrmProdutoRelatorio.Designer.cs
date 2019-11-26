@@ -1,6 +1,6 @@
 ﻿namespace DimStock.View
 {
-    partial class FrmProdutoRelatorio
+    partial class FrmProdutoReport
     {
         /// <summary>
         /// Required designer variable.
@@ -161,7 +161,7 @@
             this.RelProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.RelProdutos.LocalReport.ReportEmbeddedResource = "DimStock.Relatorio.RelProdutos.rdlc";
+            this.RelProdutos.LocalReport.ReportEmbeddedResource = "DimStock.Report.RelProdutos.rdlc";
             this.RelProdutos.Location = new System.Drawing.Point(11, 69);
             this.RelProdutos.Name = "RelProdutos";
             this.RelProdutos.ServerReport.BearerToken = null;
@@ -231,7 +231,7 @@
             this.LblLimpar.Text = "Limpar";
             this.LblLimpar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LblLimpar_LinkClicked);
             // 
-            // FrmProdutoRelatorio
+            // FrmProdutoReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -249,11 +249,11 @@
             this.Controls.Add(this.LblBuscarTamanho);
             this.Controls.Add(this.LblBuscarReferencia);
             this.MinimumSize = new System.Drawing.Size(980, 720);
-            this.Name = "FrmProdutoRelatorio";
+            this.Name = "FrmProdutoReport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Relatório de Produtos";
-            this.Load += new System.EventHandler(this.FrmProdutoRelatorio_Load);
-            this.Resize += new System.EventHandler(this.FrmProdutoRelatorio_Resize);
+            this.Load += new System.EventHandler(this.FrmProdutoReport_Load);
+            this.Resize += new System.EventHandler(this.FrmProdutoReport_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.TxtBuscarCodigo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtBuscarTamanho)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtBuscarReferencia)).EndInit();

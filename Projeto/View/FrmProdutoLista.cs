@@ -72,10 +72,10 @@ namespace DimStock.View
         }
         #endregion
 
-        #region BtnRelatorio_Click()
-        private void BtnRelatorio_Click(object sender, EventArgs e)
+        #region BtnReport_Click()
+        private void BtnReport_Click(object sender, EventArgs e)
         {
-            FrmProdutoRelatorio frm = new FrmProdutoRelatorio();
+            FrmProdutoReport frm = new FrmProdutoReport();
             frm.TxtBuscarCodigo.Text = TxtBuscarCodigo.Text;
             frm.TxtBuscarTamanho.Text = TxtBuscarTamanho.Text;
             frm.TxtBuscarReferencia.Text = TxtBuscarReferencia.Text;

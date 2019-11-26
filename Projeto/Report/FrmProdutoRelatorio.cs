@@ -5,20 +5,20 @@ using System.Windows.Forms;
 
 namespace DimStock.View
 {
-    public partial class FrmProdutoRelatorio : Form
+    public partial class FrmProdutoReport : Form
     {
 
         #region Construtores
-        public FrmProdutoRelatorio()
+        public FrmProdutoReport()
         {
             InitializeComponent();
         }
         #endregion
 
-        #region FrmProdutoRelatorio_Load()
-        private void FrmProdutoRelatorio_Load(object sender, EventArgs e)
+        #region FrmProdutoReport_Load()
+        private void FrmProdutoReport_Load(object sender, EventArgs e)
         {
-            ExibirRelatorio();
+            ExibirReport();
         }
         #endregion
 
@@ -26,7 +26,7 @@ namespace DimStock.View
         private void LblLimpar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             LimparBuscas();
-            ExibirRelatorio();
+            ExibirReport();
         }
         #endregion
 
@@ -83,8 +83,8 @@ namespace DimStock.View
         }
         #endregion
 
-        #region ExibirRelatorio()
-        private void ExibirRelatorio()
+        #region ExibirReport()
+        private void ExibirReport()
         {
             try
             {
@@ -99,8 +99,8 @@ namespace DimStock.View
         }
         #endregion
 
-        #region FrmProdutoRelatorio_Resize()
-        private void FrmProdutoRelatorio_Resize(object sender, EventArgs e)
+        #region FrmProdutoReport_Resize()
+        private void FrmProdutoReport_Resize(object sender, EventArgs e)
         {
             try
             {

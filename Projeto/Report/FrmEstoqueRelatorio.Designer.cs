@@ -1,6 +1,6 @@
-﻿namespace DimStock.Relatorio
+﻿namespace DimStock.Report
 {
-    partial class FrmEstoqueRelatorio
+    partial class FrmEstoqueReport
     {
         /// <summary>
         /// Required designer variable.
@@ -44,7 +44,7 @@
             reportDataSource1.Name = "DsRelEstoque";
             reportDataSource1.Value = this.relEstoqueBindingSource;
             this.RpvEstoque.LocalReport.DataSources.Add(reportDataSource1);
-            this.RpvEstoque.LocalReport.ReportEmbeddedResource = "DimStock.Relatorio.RelEstoques.rdlc";
+            this.RpvEstoque.LocalReport.ReportEmbeddedResource = "DimStock.Report.RelEstoques.rdlc";
             this.RpvEstoque.Location = new System.Drawing.Point(12, 9);
             this.RpvEstoque.Margin = new System.Windows.Forms.Padding(0);
             this.RpvEstoque.Name = "RpvEstoque";
@@ -54,18 +54,18 @@
             // 
             // relEstoqueBindingSource
             // 
-            this.relEstoqueBindingSource.DataSource = typeof(DimStock.Relatorio.RelEstoque);
+            this.relEstoqueBindingSource.DataSource = typeof(DimStock.Report.RelEstoque);
             // 
-            // FrmEstoqueRelatorio
+            // FrmEstoqueReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(920, 637);
             this.Controls.Add(this.RpvEstoque);
-            this.Name = "FrmEstoqueRelatorio";
+            this.Name = "FrmEstoqueReport";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.FrmEstoqueRelatorio_Load);
+            this.Load += new System.EventHandler(this.FrmEstoqueReport_Load);
             ((System.ComponentModel.ISupportInitialize)(this.relEstoqueBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
