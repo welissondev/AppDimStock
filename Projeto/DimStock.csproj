@@ -155,18 +155,18 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Auxiliary\AxlImage.cs" />
-    <Compile Include="Relatorio\FrmEstoqueRelatorio.cs">
+    <Compile Include="Report\FrmEstoqueRelatorio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Relatorio\FrmEstoqueRelatorio.Designer.cs">
+    <Compile Include="Report\FrmEstoqueRelatorio.Designer.cs">
       <DependentUpon>FrmEstoqueRelatorio.cs</DependentUpon>
     </Compile>
-    <Compile Include="Relatorio\RelEstoque.cs" />
+    <Compile Include="Report\RelEstoque.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="Relatorio\FrmProdutoRelatorio.cs">
+    <Compile Include="Report\FrmProdutoRelatorio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Relatorio\FrmProdutoRelatorio.Designer.cs">
+    <Compile Include="Report\FrmProdutoRelatorio.Designer.cs">
       <DependentUpon>FrmProdutoRelatorio.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FrmEstoqueAtividadeLista.cs">
@@ -245,12 +245,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Relatorio\FrmEstoqueRelatorio.resx">
+    <EmbeddedResource Include="Report\FrmEstoqueRelatorio.resx">
       <DependentUpon>FrmEstoqueRelatorio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Relatorio\RelEstoques.rdlc" />
-    <EmbeddedResource Include="Relatorio\RelProdutos.rdlc" />
-    <EmbeddedResource Include="Relatorio\FrmProdutoRelatorio.resx">
+    <EmbeddedResource Include="Report\RelEstoques.rdlc" />
+    <EmbeddedResource Include="Report\RelProdutos.rdlc" />
+    <EmbeddedResource Include="Report\FrmProdutoRelatorio.resx">
       <DependentUpon>FrmProdutoRelatorio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmEstoqueAtividadeLista.resx">
