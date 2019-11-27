@@ -54,7 +54,7 @@
             // 
             // relEstoqueBindingSource
             // 
-            this.relEstoqueBindingSource.DataSource = typeof(DimStock.Report.RelEstoque);
+            this.relEstoqueBindingSource.DataSource = typeof(DimStock.Report.ReportStockProduct);
             // 
             // FrmEstoqueReport
             // 

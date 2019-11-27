@@ -161,7 +161,7 @@
     <Compile Include="View\FrmReportView.Designer.cs">
       <DependentUpon>FrmReportView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Report\RelEstoque.cs" />
+    <Compile Include="Report\ReportStockProduct.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="View\FrmEstoqueAtividadeLista.cs">
       <SubType>Form</SubType>
@@ -242,7 +242,7 @@
     <EmbeddedResource Include="View\FrmReportView.resx">
       <DependentUpon>FrmReportView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report\RelEstoques.rdlc" />
+    <EmbeddedResource Include="Report\RpvStockProduct.rdlc" />
     <EmbeddedResource Include="Report\RelProdutos.rdlc" />
     <EmbeddedResource Include="View\FrmEstoqueAtividadeLista.resx">
       <DependentUpon>FrmEstoqueAtividadeLista.cs</DependentUpon>

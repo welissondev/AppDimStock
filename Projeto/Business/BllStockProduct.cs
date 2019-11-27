@@ -148,7 +148,7 @@ namespace DimStock.Business
             FetchData(code, size,reference,
             description, resume);
 
-            var report = new RelEstoque();
+            var report = new ReportStockProduct();
             report.GerarReport(ListOfRecords);
             report.VerReport();
         }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace DimStock.Report
 {
-    public class RelEstoque
+    public class ReportStockProduct
     {
         #region Get e Set
         public int CodigoProduto { get; set; }
@@ -18,17 +18,17 @@ namespace DimStock.Report
         public double ValorEmEstoque { get; set; }
         public string ResumoEstoque { get; set; }
         public string ResultadoEstoque { get; set; }
-        public List<RelEstoque> Lista { get; set; }
+        public List<ReportStockProduct> Lista { get; set; }
         #endregion
 
         #region GerarReport()
         public void GerarReport(List<BllStockProduct> listaEstoque)
         {
-            Lista = new List<RelEstoque>();
+            Lista = new List<ReportStockProduct>();
 
             for (int i = 0; i < listaEstoque.Count; i++)
             {
-                RelEstoque relEstoque = new RelEstoque
+                ReportStockProduct relEstoque = new ReportStockProduct
                 {
                     CodigoProduto = Convert.ToInt32(listaEstoque[i].ProductCode),
                     TamanhoProduto = Convert.ToInt32(listaEstoque[i].ProductSize),
