@@ -28,11 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.RpvEstoque = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.relEstoqueBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.relEstoqueBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // RpvEstoque
@@ -41,20 +37,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.RpvEstoque.AutoSize = true;
-            reportDataSource1.Name = "DsRelEstoque";
-            reportDataSource1.Value = this.relEstoqueBindingSource;
-            this.RpvEstoque.LocalReport.DataSources.Add(reportDataSource1);
-            this.RpvEstoque.LocalReport.ReportEmbeddedResource = "DimStock.Report.RelEstoques.rdlc";
+            this.RpvEstoque.LocalReport.ReportEmbeddedResource = "DimStock.Report.RpvStockProduct.rdlc";
             this.RpvEstoque.Location = new System.Drawing.Point(12, 9);
             this.RpvEstoque.Margin = new System.Windows.Forms.Padding(0);
             this.RpvEstoque.Name = "RpvEstoque";
             this.RpvEstoque.ServerReport.BearerToken = null;
             this.RpvEstoque.Size = new System.Drawing.Size(896, 616);
             this.RpvEstoque.TabIndex = 0;
-            // 
-            // relEstoqueBindingSource
-            // 
-            this.relEstoqueBindingSource.DataSource = typeof(DimStock.Report.ReportStockProduct);
             // 
             // FrmEstoqueReport
             // 
@@ -66,7 +55,6 @@
             this.Name = "FrmEstoqueReport";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmEstoqueReport_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.relEstoqueBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -74,6 +62,5 @@
 
         #endregion
         public Microsoft.Reporting.WinForms.ReportViewer RpvEstoque;
-        private System.Windows.Forms.BindingSource relEstoqueBindingSource;
     }
 }
