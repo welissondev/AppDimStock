@@ -75,12 +75,6 @@ namespace DimStock.View
         #region BtnReport_Click()
         private void BtnReport_Click(object sender, EventArgs e)
         {
-            FrmProdutoReport frm = new FrmProdutoReport();
-            frm.TxtBuscarCodigo.Text = TxtBuscarCodigo.Text;
-            frm.TxtBuscarTamanho.Text = TxtBuscarTamanho.Text;
-            frm.TxtBuscarReferencia.Text = TxtBuscarReferencia.Text;
-            frm.TxtBuscarDescricao.Text = TxtBuscarDescricao.Text;
-            frm.ShowDialog();
         }
         #endregion
 

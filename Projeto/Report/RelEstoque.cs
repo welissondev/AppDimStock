@@ -95,11 +95,11 @@ namespace DimStock.Report
         #region VerReport()
         public void VerReport()
         {
-            FrmEstoqueReport view = new FrmEstoqueReport();
-            view.RpvEstoque.LocalReport.DataSources.Clear();
-            view.RpvEstoque.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DsRelEstoque", Lista));
-            view.RpvEstoque.RefreshReport();
-            view.Show();
+            //FrmEstoqueReport view = new FrmEstoqueReport();
+            //view.RpvEstoque.LocalReport.DataSources.Clear();
+            //view.RpvEstoque.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DsRelEstoque", Lista));
+            //view.RpvEstoque.RefreshReport();
+            //view.Show();
         }
         #endregion
     }
