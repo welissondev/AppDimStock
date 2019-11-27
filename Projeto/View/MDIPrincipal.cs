@@ -227,10 +227,6 @@ namespace DimStock.View
         #region ProdutoReportMenuItem_Click
         private void ProdutoReportMenuItem_Click(object sender, EventArgs e)
         {
-            FrmProdutoReport frm = new FrmProdutoReport();
-            frm.MdiParent = this;
-            frm.WindowState = FormWindowState.Maximized;
-            frm.Show();
         }
         #endregion
     }

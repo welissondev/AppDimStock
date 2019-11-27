@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace DimStock.Report
+namespace DimStock.View
 {
     public partial class FrmEstoqueReport : Form
     {
