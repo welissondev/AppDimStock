@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
+using DimStock.Auxiliary;
 
 namespace DimStock.Model
 {
@@ -91,8 +92,7 @@ namespace DimStock.Model
         #endregion
 
         #region FetchData()
-        public DataTable FetchData(string code, string size, string reference,
-            string description, string resume = "Todos", int startReg = 0, int maxReg = 10)
+        public DataTable FetchData(AxlDataPagination dataPagination)
         {
             using (var con = new MdlAccessConnection())
             {
@@ -102,7 +102,7 @@ namespace DimStock.Model
 
                 #region Comandos-SQL
 
-                if (resume == "Todos")
+                if (stockProduct.StockResume == "Todos")
                 {
                     sqlCount = @"SELECT COUNT(TBEstoque.Id) From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE TBEstoque.Id > 0";
@@ -112,7 +112,7 @@ namespace DimStock.Model
                     TBEstoque.IdProduto = TBProduto.Id WHERE TBEstoque.Id > 0";
                 }
 
-                if (resume == "Sem Resumo")
+                if (stockProduct.StockResume == "Sem Resumo")
                 {
                     sqlCount = @"SELECT COUNT(TBEstoque.Id) From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade = 0 AND EstoqueMax = 0 AND EstoqueMin = 0";
@@ -123,7 +123,7 @@ namespace DimStock.Model
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade = 0 AND EstoqueMax = 0 AND EstoqueMin = 0";
                 }
 
-                if (resume == "Ok")
+                if (stockProduct.StockResume == "Ok")
                 {
                     sqlCount = @"SELECT COUNT(TBEstoque.Id) From TBProduto INNER JOIN TBEstoque ON 
                     TBProduto.Id = TBEstoque.IdProduto WHERE Quantidade > 0 AND Quantidade >= 
@@ -135,7 +135,7 @@ namespace DimStock.Model
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade > 0 AND Quantidade >= EstoqueMin AND Quantidade <= EstoqueMax";
                 }
 
-                if (resume == "Alto")
+                if (stockProduct.StockResume == "Alto")
                 {
                     sqlCount = @"SELECT COUNT(TBEstoque.Id) From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade > EstoqueMax";
@@ -146,7 +146,7 @@ namespace DimStock.Model
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade > EstoqueMax";
                 }
 
-                if (resume == "Baixo")
+                if (stockProduct.StockResume == "Baixo")
                 {
                     sqlCount = @"SELECT COUNT(TBEstoque.Id) From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade < EstoqueMin";
@@ -160,16 +160,16 @@ namespace DimStock.Model
 
                 #region Critério-de-consulta
 
-                if (description != string.Empty)
+                if (stockProduct.ProductDescription!= string.Empty)
                     criterion += " AND Descricao LIKE @Descricao";
 
-                if (code != string.Empty)
+                if (stockProduct.ProductCode != string.Empty)
                     criterion += " AND Codigo LIKE @Codigo ";
 
-                if (size != string.Empty)
+                if (stockProduct.ProductSize != string.Empty)
                     criterion += " AND Tamanho LIKE @Tamanho ";
 
-                if (reference != string.Empty)
+                if (stockProduct.ProductReference != string.Empty)
                     criterion += " AND Referencia LIKE @Referencia ";
 
                 sqlQuery += criterion +
@@ -182,25 +182,25 @@ namespace DimStock.Model
                 #region Critério-de-parametros
                 var p = con.Command.Parameters;
 
-                if (description != string.Empty)
-                    p.AddWithValue("@Descricao", string.Format("%{0}%", description));
+                if (stockProduct.ProductDescription != string.Empty)
+                    p.AddWithValue("@Descricao", string.Format("%{0}%", stockProduct.ProductDescription));
 
-                if (code != "")
-                    p.AddWithValue("@Codigo", string.Format("{0}", code));
+                if (stockProduct.ProductCode != "")
+                    p.AddWithValue("@Codigo", string.Format("{0}", stockProduct.ProductCode));
 
-                if (size != "")
-                    p.AddWithValue("@Tamanho", string.Format("{0}", size));
+                if (stockProduct.ProductSize != "")
+                    p.AddWithValue("@Tamanho", string.Format("{0}", stockProduct.ProductSize));
 
-                if (reference != "")
-                    p.AddWithValue("@Referencia", string.Format("{0}", reference));
+                if (stockProduct.ProductReference != "")
+                    p.AddWithValue("@Referencia", string.Format("{0}", stockProduct.ProductReference));
                 #endregion
 
                 #region Contagem-de-registros
-                stockProduct.RecordCount = Convert.ToInt32(con.ExecuteScalar(sqlCount));
+                dataPagination.RecordCount = Convert.ToInt32(con.ExecuteScalar(sqlCount));
                 #endregion
 
                 #region Preencher-Datatable
-                var dataTable = con.QueryWithDataTable(sqlQuery, startReg, maxReg);
+                var dataTable = con.QueryWithDataTable(sqlQuery, dataPagination.OffSetValue, dataPagination.PageSize);
                 #endregion
 
                 return dataTable;

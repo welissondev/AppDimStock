@@ -282,10 +282,15 @@ namespace DimStock.View
 
             try
             {
-                stockProduct.FetchData(TxtCode.Text, TxtSize.Text, TxtReference.Text, TxtDescription.Text,
-                CboResume.Text, dataPagination.OffSetValue, dataPagination.PageSize);
+                //Passar para objeto os critérios de
+                //consulta no banco de dados
+                stockProduct.ProductCode = TxtCode.Text;
+                stockProduct.ProductSize = TxtSize.Text;
+                stockProduct.ProductReference = TxtReference.Text;
+                stockProduct.ProductDescription = TxtDescription.Text;
+                stockProduct.StockResume = CboResume.Text;
 
-                dataPagination.RecordCount = stockProduct.RecordCount;
+                stockProduct.FetchData(dataPagination);
             }
             catch (Exception ex)
             {

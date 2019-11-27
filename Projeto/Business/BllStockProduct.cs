@@ -2,6 +2,7 @@
 using DimStock.Model;
 using System.Collections.Generic;
 using DimStock.Report;
+using DimStock.Auxiliary;
 using System.Data;
 
 namespace DimStock.Business
@@ -40,13 +41,11 @@ namespace DimStock.Business
         #endregion
 
         #region FetchData()
-        public void FetchData(string code, string size, string reference, string description,
-            string resume = "Todos", int startReg = 0, int maxReg = 10)
+        public void FetchData(AxlDataPagination dataPagination)
         {
             var stockProduct = new MdlStockProduct(this);
 
-            var dataTable = stockProduct.FetchData(code, size, reference,
-            description, resume, startReg, maxReg);
+            var dataTable = stockProduct.FetchData(dataPagination);
 
             PassTableDataToList(dataTable);
         }
