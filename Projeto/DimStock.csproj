@@ -278,6 +278,7 @@
       <DependentUpon>MDIPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="DataSources\DimStock.Report.ReportStockProduct.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -334,8 +335,6 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DataSet\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
