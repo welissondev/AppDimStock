@@ -139,19 +139,5 @@ namespace DimStock.Business
             stockProduct.ViewData(id);
         }
         #endregion
-
-        #region GenerateReport()
-        public void GenerateReport(string code, string size, string reference,
-        string description, string resume = "Todos")
-        {
-
-            FetchData(code, size,reference,
-            description, resume);
-
-            var report = new ReportStockProduct();
-            report.GerarReport(ListOfRecords);
-            report.VerReport();
-        }
-        #endregion
     }
 }

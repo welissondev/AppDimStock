@@ -522,7 +522,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!CodigoProduto.Value</Value>
+                              <Value />
                               <Style>
                                 <FontSize>9pt</FontSize>
                               </Style>
@@ -555,7 +555,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!TamanhoProduto.Value</Value>
+                              <Value />
                               <Style>
                                 <FontSize>9pt</FontSize>
                               </Style>
@@ -588,7 +588,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!ReferenciaProduto.Value</Value>
+                              <Value />
                               <Style>
                                 <FontSize>9pt</FontSize>
                               </Style>
@@ -621,7 +621,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!DescricaoProduto.Value</Value>
+                              <Value />
                               <Style>
                                 <FontSize>9pt</FontSize>
                               </Style>
@@ -654,7 +654,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!FornecedorProduto.Value</Value>
+                              <Value />
                               <Style>
                                 <FontSize>9pt</FontSize>
                               </Style>
@@ -687,7 +687,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!EstoqueMin.Value</Value>
+                              <Value />
                               <Style>
                                 <FontSize>9pt</FontSize>
                               </Style>
@@ -720,7 +720,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!EstoqueMax.Value</Value>
+                              <Value />
                               <Style>
                                 <FontSize>9pt</FontSize>
                               </Style>
@@ -753,7 +753,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!EstoqueQuant.Value</Value>
+                              <Value />
                               <Style>
                                 <FontSize>9pt</FontSize>
                               </Style>
@@ -786,7 +786,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!ValorEmEstoque.Value</Value>
+                              <Value />
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <Format>'R$'0.00;('R$'0.00)</Format>
@@ -821,7 +821,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!ResumoEstoque.Value</Value>
+                              <Value />
                               <Style>
                                 <FontSize>9pt</FontSize>
                               </Style>
@@ -856,7 +856,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!ResultadoEstoque.Value</Value>
+                              <Value />
                               <Style>
                                 <FontSize>9pt</FontSize>
                               </Style>

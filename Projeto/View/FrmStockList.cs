@@ -66,11 +66,6 @@ namespace DimStock.View
         {
             try
             {
-                var estoqueProduto = new BllStockProduct();
-
-                estoqueProduto.GenerateReport(TxtCode.Text, TxtSize.Text,
-                TxtReference.Text, TxtDescription.Text,
-                CboResume.Text);
             }
             catch (Exception ex)
             {
