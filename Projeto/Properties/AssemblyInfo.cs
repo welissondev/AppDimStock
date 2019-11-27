@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // conjunto de atributos. Altere estes valores de atributo para modificar as informações
 // associadas a um assembly.
 [assembly: AssemblyTitle("Sistema DimStock")]
-[assembly: AssemblyDescription("Programa desenvolvido para controle de estoque")]
+[assembly: AssemblyDescription("DimStock sistema para controle de estoque")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Diário Excel")]
 [assembly: AssemblyProduct("DimStock")]
@@ -33,7 +33,7 @@ using System.Runtime.InteropServices;
 // É possível especificar todos os valores ou usar como padrão os Números de Build e da Revisão
 // usando o "*" como mostrado abaixo:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.3.153")]
-[assembly: AssemblyFileVersion("1.0.3.153")]
+[assembly: AssemblyVersion("1.0.3.155")]
+[assembly: AssemblyFileVersion("1.0.3.155")]
 [assembly: NeutralResourcesLanguage("pt-BR")]
 
