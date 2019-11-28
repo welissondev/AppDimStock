@@ -600,21 +600,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="ProductSupplier">
+                    <Textbox Name="Supplier">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!ProductSupplier.Value</Value>
+                              <Value>=Fields!Supplier.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>ProductSupplier</rd:DefaultName>
+                      <rd:DefaultName>Supplier</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -660,21 +660,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="StockMin">
+                    <Textbox Name="MinStock">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!StockMin.Value</Value>
+                              <Value>=Fields!MinStock.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>StockMin</rd:DefaultName>
+                      <rd:DefaultName>MinStock</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -690,21 +690,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="StockMax">
+                    <Textbox Name="MaxStock">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!StockMax.Value</Value>
+                              <Value>=Fields!MaxStock.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>StockMax</rd:DefaultName>
+                      <rd:DefaultName>MaxStock</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -716,6 +716,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -867,11 +868,11 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>DataSet_StockProduct</DataSetName>
+        <DataSetName>DataSetStockProduct</DataSetName>
         <Top>4.2037cm</Top>
         <Left>0.31751cm</Left>
         <Height>1.2cm</Height>
-        <Width>26.25137cm</Width>
+        <Width>26.25138cm</Width>
         <ZIndex>5</ZIndex>
         <Style>
           <Border>
@@ -998,19 +999,27 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>1283919f-b6c7-43a8-b12a-9c5a0b20e153</rd:DataSourceID>
+      <rd:DataSourceID>796a4f9d-0db8-4ae0-8b59-b6c01c100a4e</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="DataSet_StockProduct">
+    <DataSet Name="DataSetStockProduct">
       <Query>
         <DataSourceName>DimStockReport</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
+        <Field Name="MaxStock">
+          <DataField>MaxStock</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="MinStock">
+          <DataField>MinStock</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
         <Field Name="ProductCode">
           <DataField>ProductCode</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="ProductDescription">
           <DataField>ProductDescription</DataField>
@@ -1018,23 +1027,11 @@
         </Field>
         <Field Name="ProductReference">
           <DataField>ProductReference</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="ProductSize">
           <DataField>ProductSize</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="ProductSupplier">
-          <DataField>ProductSupplier</DataField>
           <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="StockMax">
-          <DataField>StockMax</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="StockMin">
-          <DataField>StockMin</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="StockQuantity">
           <DataField>StockQuantity</DataField>
@@ -1051,6 +1048,10 @@
         <Field Name="StockValue">
           <DataField>StockValue</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="Supplier">
+          <DataField>Supplier</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
