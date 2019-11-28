@@ -61,11 +61,25 @@ namespace DimStock.View
         }
         #endregion
 
-        #region BrnReport_Click()
-        private void BrnReport_Click(object sender, EventArgs e)
+        #region BtnReport_Click()
+        private void BtnReport_Click(object sender, EventArgs e)
         {
             try
             {
+                var stockProduct = new BllStockProduct()
+                {
+                    ProductCode = TxtQueryByCode.Text,
+                    ProductSize = TxtQueryBySize.Text,
+                    ProductReference = TxtQueryByReference.Text,
+                    ProductDescription = TxtQueryByDescription.Text,
+                    StockResume = CboResume.Text
+                };
+
+                stockProduct.ListAll(); stockProduct.GenerateReport();
+
+                FrmReportView.ShowReport("DimStock.Report.RpvStockProduct.rdlc", true,
+                new Dictionary<string, object>() { { "DataSetStockProduct", 
+                stockProduct.ListOfRecords } });
             }
             catch (Exception ex)
             {
@@ -284,10 +298,10 @@ namespace DimStock.View
             {
                 //Passar para objeto os critérios de
                 //consulta no banco de dados
-                stockProduct.ProductCode = TxtCode.Text;
-                stockProduct.ProductSize = TxtSize.Text;
-                stockProduct.ProductReference = TxtReference.Text;
-                stockProduct.ProductDescription = TxtDescription.Text;
+                stockProduct.ProductCode = TxtQueryByCode.Text;
+                stockProduct.ProductSize = TxtQueryBySize.Text;
+                stockProduct.ProductReference = TxtQueryByReference.Text;
+                stockProduct.ProductDescription = TxtQueryByDescription.Text;
                 stockProduct.StockResume = CboResume.Text;
 
                 stockProduct.FetchData(dataPagination);
@@ -434,7 +448,7 @@ namespace DimStock.View
                         ctl.Text = string.Empty;
                 }
 
-                TxtCode.Select();
+                TxtQueryByCode.Select();
             }
             catch (Exception ex)
             {

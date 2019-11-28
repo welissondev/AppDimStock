@@ -278,7 +278,7 @@
       <DependentUpon>MDIPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
-    <None Include="DataSources\DimStock.Report.ReportStockProduct.datasource" />
+    <None Include="Properties\DataSources\DimStock.Report.ReportStockProduct.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
