@@ -25,7 +25,6 @@ namespace DimStock.Business
         public string ProductReference { get; set; }
         public double ProductCostPrice { get; set; }
         public string ProductPhotoName { get; set; }
-        public int RecordCount { get; set; }
         public List<BllStockProduct> ListOfRecords { get; set; }
         #endregion 
 
@@ -47,12 +46,24 @@ namespace DimStock.Business
 
             var dataTable = stockProduct.FetchData(dataPagination);
 
-            PassTableDataToList(dataTable);
+            PassDataTableToList(dataTable);
         }
         #endregion
 
-        #region  PassTableDataToList()
-        private void PassTableDataToList(DataTable dataTable)
+        #region ListAll()
+        public void ListAll()
+        {
+            var stockProduct = new MdlStockProduct(this);
+            ListOfRecords = stockProduct.ListAll();
+
+            SetResume();
+
+            SetResult();
+        }
+        #endregion
+
+        #region  PassDataTableToList()
+        private void PassDataTableToList(DataTable dataTable)
         {
             ListOfRecords = new List<BllStockProduct>();
 
@@ -136,6 +147,14 @@ namespace DimStock.Business
         {
             var stockProduct = new MdlStockProduct(this);
             stockProduct.ViewData(id);
+        }
+        #endregion
+
+        #region GenerateReport()
+        public void GenerateReport()
+        {
+            var reportStockProduct = new ReportStockProduct();
+            reportStockProduct.Generate(ListOfRecords);
         }
         #endregion
     }
