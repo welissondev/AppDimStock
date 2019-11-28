@@ -299,8 +299,6 @@ namespace DimStock.View
 
             try
             {
-                //Passar para objeto os critérios de
-                //consulta no banco de dados
                 stockProduct.ProductCode = TxtQueryByCode.Text;
                 stockProduct.ProductSize = TxtQueryBySize.Text;
                 stockProduct.ProductReference = TxtQueryByReference.Text;
