@@ -8,11 +8,13 @@ namespace DimStock.View
     public partial class FrmReportView : Form
     {
         #region Constructors
-        private FrmReportView(string path, bool isEmbeddedResource, Dictionary<string,
+        private FrmReportView(string path, string reportName, bool isEmbeddedResource, Dictionary<string,
         object> dataSources, Dictionary<string, object> reportParameters = null)
         {
 
             InitializeComponent();
+
+            RpvReportView.LocalReport.DisplayName = reportName;
 
             #region Path + isEmbeddedResource
             if (isEmbeddedResource)
@@ -60,10 +62,10 @@ namespace DimStock.View
         #endregion
 
         #region ShowReport()
-        public static void ShowReport(string path, bool isEmbeddedResource,
+        public static void ShowReport(string path, string reportName, bool isEmbeddedResource,
         Dictionary<string, object> dataSources, Dictionary<string, object> reportParameters = null)
         {
-            var frmReportView = new FrmReportView(path, isEmbeddedResource,
+            var frmReportView = new FrmReportView(path, reportName, isEmbeddedResource,
             dataSources, reportParameters);
 
             frmReportView.Show();

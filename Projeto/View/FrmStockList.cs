@@ -77,9 +77,12 @@ namespace DimStock.View
 
                 stockProduct.ListAll(); stockProduct.GenerateReport();
 
-                FrmReportView.ShowReport("DimStock.Report.RpvStockProduct.rdlc", true,
-                new Dictionary<string, object>() { { "DataSetStockProduct", 
-                stockProduct.ListOfRecords } });
+                var reportPath = "DimStock.Report.RpvStockProduct.rdlc";
+                var reportName = "Relatório de estoque";
+                var reportDataSet = "DataSetStockProduct";
+
+                FrmReportView.ShowReport(reportPath, reportName, true, new Dictionary<string, object>() 
+                { {reportDataSet, stockProduct.ListOfRecords } });
             }
             catch (Exception ex)
             {
