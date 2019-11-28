@@ -1,6 +1,6 @@
 ﻿namespace DimStock.View
 {
-    partial class FrmEstoqueReport
+    partial class FrmReportView
     {
         /// <summary>
         /// Required designer variable.
@@ -28,39 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.RpvEstoque = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.RpvReportView = new Microsoft.Reporting.WinForms.ReportViewer();
             this.SuspendLayout();
             // 
-            // RpvEstoque
+            // RpvReportView
             // 
-            this.RpvEstoque.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.RpvEstoque.AutoSize = true;
-            this.RpvEstoque.LocalReport.ReportEmbeddedResource = "DimStock.Report.RpvStockProduct.rdlc";
-            this.RpvEstoque.Location = new System.Drawing.Point(12, 9);
-            this.RpvEstoque.Margin = new System.Windows.Forms.Padding(0);
-            this.RpvEstoque.Name = "RpvEstoque";
-            this.RpvEstoque.ServerReport.BearerToken = null;
-            this.RpvEstoque.Size = new System.Drawing.Size(896, 616);
-            this.RpvEstoque.TabIndex = 0;
+            this.RpvReportView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RpvReportView.Location = new System.Drawing.Point(0, 0);
+            this.RpvReportView.Name = "RpvReportView";
+            this.RpvReportView.ServerReport.BearerToken = null;
+            this.RpvReportView.Size = new System.Drawing.Size(920, 637);
+            this.RpvReportView.TabIndex = 1;
             // 
-            // FrmEstoqueReport
+            // FrmReportView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(920, 637);
-            this.Controls.Add(this.RpvEstoque);
-            this.Name = "FrmEstoqueReport";
+            this.Controls.Add(this.RpvReportView);
+            this.Name = "FrmReportView";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.FrmEstoqueReport_Load);
+            this.Load += new System.EventHandler(this.FrmReportView_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        public Microsoft.Reporting.WinForms.ReportViewer RpvEstoque;
+        private Microsoft.Reporting.WinForms.ReportViewer RpvReportView;
     }
 }
