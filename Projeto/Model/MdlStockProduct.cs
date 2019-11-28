@@ -23,7 +23,7 @@ namespace DimStock.Model
         #endregion 
 
         #region Filter()
-        public List<BllStockProduct> Filter(string code, string size, string reference, 
+        public List<BllStockProduct> Filter(string code, string size, string reference,
             string description, int numberOfRecords = 100)
         {
 
@@ -160,7 +160,7 @@ namespace DimStock.Model
 
                 #region Critério-de-consulta
 
-                if (stockProduct.ProductDescription!= string.Empty)
+                if (stockProduct.ProductDescription != string.Empty)
                     criterion += " AND Descricao LIKE @Descricao";
 
                 if (stockProduct.ProductCode != string.Empty)
@@ -204,6 +204,146 @@ namespace DimStock.Model
                 #endregion
 
                 return dataTable;
+            }
+        }
+        #endregion
+
+        #region ListAll()
+        public List<BllStockProduct> ListAll()
+        {
+            using (var con = new MdlAccessConnection())
+            {
+                #region Variables
+                var sqlQuery = string.Empty;
+                var sqlCount = string.Empty;
+                var criterion = string.Empty;
+                #endregion
+
+                #region Comandos-SQL
+
+                if (stockProduct.StockResume == "Todos")
+                {
+                    sqlCount = @"SELECT COUNT(TBEstoque.Id) From TBProduto INNER JOIN TBEstoque ON 
+                    TBEstoque.IdProduto = TBProduto.Id WHERE TBEstoque.Id > 0";
+
+                    sqlQuery = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
+                    TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
+                    TBEstoque.IdProduto = TBProduto.Id WHERE TBEstoque.Id > 0";
+                }
+
+                if (stockProduct.StockResume == "Sem Resumo")
+                {
+                    sqlCount = @"SELECT COUNT(TBEstoque.Id) From TBProduto INNER JOIN TBEstoque ON 
+                    TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade = 0 AND EstoqueMax = 0 AND EstoqueMin = 0";
+
+                    sqlQuery = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
+                    TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, 
+                    TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
+                    TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade = 0 AND EstoqueMax = 0 AND EstoqueMin = 0";
+                }
+
+                if (stockProduct.StockResume == "Ok")
+                {
+                    sqlCount = @"SELECT COUNT(TBEstoque.Id) From TBProduto INNER JOIN TBEstoque ON 
+                    TBProduto.Id = TBEstoque.IdProduto WHERE Quantidade > 0 AND Quantidade >= 
+                    EstoqueMin AND Quantidade <= EstoqueMax";
+
+                    sqlQuery = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
+                    TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, 
+                    TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
+                    TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade > 0 AND Quantidade >= EstoqueMin AND Quantidade <= EstoqueMax";
+                }
+
+                if (stockProduct.StockResume == "Alto")
+                {
+                    sqlCount = @"SELECT COUNT(TBEstoque.Id) From TBProduto INNER JOIN TBEstoque ON 
+                    TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade > EstoqueMax";
+
+                    sqlQuery = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
+                    TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, 
+                    TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
+                    TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade > EstoqueMax";
+                }
+
+                if (stockProduct.StockResume == "Baixo")
+                {
+                    sqlCount = @"SELECT COUNT(TBEstoque.Id) From TBProduto INNER JOIN TBEstoque ON 
+                    TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade < EstoqueMin";
+
+                    sqlQuery = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
+                    TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, 
+                    TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
+                    TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade < EstoqueMin";
+                }
+                #endregion
+
+                #region Critério-de-consulta
+
+                if (stockProduct.ProductDescription != string.Empty)
+                    criterion += " AND Descricao LIKE @Descricao";
+
+                if (stockProduct.ProductCode != string.Empty)
+                    criterion += " AND Codigo LIKE @Codigo ";
+
+                if (stockProduct.ProductSize != string.Empty)
+                    criterion += " AND Tamanho LIKE @Tamanho ";
+
+                if (stockProduct.ProductReference != string.Empty)
+                    criterion += " AND Referencia LIKE @Referencia ";
+
+                sqlQuery += criterion +
+                " Order By Codigo, Tamanho, Referencia Asc";
+
+                sqlCount += criterion;
+
+                #endregion
+
+                #region Critério-de-parametros
+                var p = con.Command.Parameters;
+
+                if (stockProduct.ProductDescription != string.Empty)
+                    p.AddWithValue("@Descricao", string.Format("%{0}%", stockProduct.ProductDescription));
+
+                if (stockProduct.ProductCode != "")
+                    p.AddWithValue("@Codigo", string.Format("{0}", stockProduct.ProductCode));
+
+                if (stockProduct.ProductSize != "")
+                    p.AddWithValue("@Tamanho", string.Format("{0}", stockProduct.ProductSize));
+
+                if (stockProduct.ProductReference != "")
+                    p.AddWithValue("@Referencia", string.Format("{0}", stockProduct.ProductReference));
+                #endregion
+
+                #region while()
+                var listStockProduct = new List<BllStockProduct>();
+
+                using (var dr = con.QueryWithDataReader(sqlQuery))
+                {
+                    while (dr.Read())
+                    {
+                        var stockProduct = new BllStockProduct
+                        {
+                            StockId = Convert.ToInt32(dr["TBEstoque.Id"]),
+                            ProductId = Convert.ToInt32(dr["TBProduto.Id"]),
+                            Supplier = Convert.ToString(dr["Fornecedor"]),
+                            ProductCode = Convert.ToString(dr["Codigo"]),
+                            ProductReference = Convert.ToString(dr["Referencia"]),
+                            ProductSize = Convert.ToString(dr["Tamanho"]),
+                            ProductDescription = Convert.ToString(dr["Descricao"]),
+                            MinStock = Convert.ToInt32(dr["EstoqueMin"]),
+                            MaxStock = Convert.ToInt32(dr["EstoqueMax"]),
+                            StockQuantity = Convert.ToInt32(dr["Quantidade"]),
+                            StockValue = Convert.ToDouble(dr["Valor"]),
+                            ProductCostPrice = Convert.ToDouble(dr["PrecoCusto"]),
+                            ProductPhotoName = Convert.ToString(dr["FotoNome"]),
+                        };
+
+                        listStockProduct.Add(stockProduct);
+                    }
+
+                    return listStockProduct;
+                }
+                #endregion
             }
         }
         #endregion
