@@ -8,55 +8,74 @@ using DimStock.Business;
 
 namespace DimStock.View
 {
-    public partial class FrmUsuarioCadastro : Form
+    public partial class FrmUserRegister : Form
     {
+        #region Variables
         private readonly int id = 0;
+        #endregion
 
-        #region Construtores
-        public FrmUsuarioCadastro()
+        #region Constructs
+        public FrmUserRegister()
         {
             InitializeComponent();
 
-            LblDataLong.Text = DateTime.Now.ToLongDateString();
+            LblToDayIsDay.Text = DateTime.Now.ToLongDateString();
         }
 
-        public FrmUsuarioCadastro(int id)
+        public FrmUserRegister(int id)
         {
             InitializeComponent();
 
-            LblDataLong.Text = DateTime.Now.ToLongDateString();
+            LblToDayIsDay.Text = DateTime.Now.ToLongDateString();
 
             this.id = id;
         }
         #endregion
 
-        #region BtnNovaAtividade_Click()
-        private void BtnNovaAtividade_Click(object sender, EventArgs e)
+        #region Button
+
+        #region BtnNew_Click()
+        private void BtnNew_Click(object sender, EventArgs e)
         {
-            ReseteControles();
+            ResetControls();
         }
         #endregion 
 
-        #region BtnSalvar_Click()
-        private void BtnSalvar_Click(object sender, EventArgs e)
+        #region BtnSave_Click()
+        private void BtnSave_Click(object sender, EventArgs e)
         {
             if (id == 0)
             {
-                Registrar();
+                Register();
             }
             else
             {
-                Alterar();
+                Edit();
             }
+        }
+        #endregion
+
+        #endregion
+
+        #region CheckBox
+
+        #region ChkAllPermissions_OnChange()
+        private void ChkAllPermissions_OnChange(object sender, EventArgs e)
+        {
+            EnableAllPermissions();
         }
         #endregion 
 
-        #region ReseteControles()
-        private void ReseteControles()
+        #endregion 
+
+        #region Methods
+
+        #region ResetControls()
+        private void ResetControls()
         {
             try
             {
-                foreach (Control ctl in GbxPermissoes.Controls)
+                foreach (Control ctl in GbxEditPermission.Controls)
                 {
                     Application.DoEvents();
                     if (ctl is BunifuCheckbox)
@@ -71,7 +90,7 @@ namespace DimStock.View
                     }
                 }
 
-                TxtNome.Select();
+                TxtName.Select();
             }
             catch (Exception ex)
             {
@@ -80,21 +99,14 @@ namespace DimStock.View
         }
         #endregion
 
-        #region ChkPermissaoTodas_OnChange()
-        private void ChkPermissaoTodas_OnChange(object sender, EventArgs e)
-        {
-            AtivarTodasPermissoes();
-        }
-        #endregion 
-
-        #region AtivarTodasPermissoes()
-        private void AtivarTodasPermissoes()
+        #region EnableAllPermissions()
+        private void EnableAllPermissions()
         {
             try
             {
-                if (ChkPermissaoTodas.Checked == true)
+                if (ChkAllPermissions.Checked == true)
                 {
-                    foreach (Control ctl in GbxPermissoes.Controls)
+                    foreach (Control ctl in GbxEditPermission.Controls)
                     {
                         if (ctl is BunifuCheckbox)
                             ((BunifuCheckbox)ctl).Checked = true;
@@ -102,7 +114,7 @@ namespace DimStock.View
                 }
                 else
                 {
-                    foreach (Control ctl in GbxPermissoes.Controls)
+                    foreach (Control ctl in GbxEditPermission.Controls)
                     {
                         if (ctl is BunifuCheckbox)
                             ((BunifuCheckbox)ctl).Checked = false;
@@ -116,36 +128,36 @@ namespace DimStock.View
         }
         #endregion
 
-        #region Registrar()
-        private void Registrar()
+        #region Register()
+        private void Register()
         {
             try
             {
-                if (ValidarDadosEntrada() == true)
+                if (ValidateInputData() == true)
                 {
-                    BllUsuario usuario = new BllUsuario
+                    var user = new BllUser
                     {
-                        Nome = TxtNome.Text.TrimStart().TrimEnd(),
+                        YourName = TxtName.Text.TrimStart().TrimEnd(),
                         Email = TxtEmail.Text.TrimStart().TrimEnd(),
                         Login = TxtLogin.Text.Trim(),
-                        Senha = TxtSenha.Text.Trim(),
-                        PermissaoCadastrar = ChkPermissaoCadastrar.Checked,
-                        PermissaoEditar = ChkPermissaoEditar.Checked,
-                        PermissaoDeletar = ChkPermissaoDeletar.Checked,
-                        PermissaoVisualizar = ChkPermissaoVisualizar.Checked,
-                        PermissaoTodas = ChkPermissaoTodas.Checked
+                        PassWord = TxtPassWord.Text.Trim(),
+                        PermissionToRegister = ChkPermissionToRegister.Checked,
+                        PermissionToEdit = ChkPermissionToEdit.Checked,
+                        PermissionToDelete = ChkPermissionToDelete.Checked,
+                        PermissionToView = ChkPermissionToView.Checked,
+                        AllPermissions = ChkAllPermissions.Checked
                     };
 
-                    if (usuario.Registrar() == true)
+                    if (user.Register() == true)
                     {
-                        MessageBox.Show(BllNotificar.Message, "SUCESSO",
+                        MessageBox.Show(BllNotification.Message, "SUCESSO",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        ReseteControles();
+                        ResetControls();
                     }
                     else
                     {
-                        MessageBox.Show(BllNotificar.Message, "ATENÇÃO",
+                        MessageBox.Show(BllNotification.Message, "ATENÇÃO",
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
@@ -158,34 +170,34 @@ namespace DimStock.View
         }
         #endregion
 
-        #region Alterar()
-        private void Alterar()
+        #region Edit()
+        private void Edit()
         {
             try
             {
-                if (ValidarDadosEntrada() == true)
+                if (ValidateInputData() == true)
                 {
-                    BllUsuario usuario = new BllUsuario
+                    var user = new BllUser
                     {
-                        Nome = TxtNome.Text,
+                        YourName = TxtName.Text,
                         Email = TxtEmail.Text,
                         Login = TxtLogin.Text,
-                        Senha = TxtSenha.Text,
-                        PermissaoCadastrar = ChkPermissaoCadastrar.Checked,
-                        PermissaoEditar = ChkPermissaoEditar.Checked,
-                        PermissaoDeletar = ChkPermissaoDeletar.Checked,
-                        PermissaoVisualizar = ChkPermissaoVisualizar.Checked,
-                        PermissaoTodas = ChkPermissaoTodas.Checked
+                        PassWord = TxtPassWord.Text,
+                        PermissionToRegister = ChkPermissionToRegister.Checked,
+                        PermissionToEdit = ChkPermissionToEdit.Checked,
+                        PermissionToDelete = ChkPermissionToDelete.Checked,
+                        PermissionToView = ChkPermissionToView.Checked,
+                        AllPermissions = ChkAllPermissions.Checked
                     };
 
-                    if(usuario.Alterar(id) == true)
+                    if (user.Edit(id) == true)
                     {
-                        MessageBox.Show(BllNotificar.Message, "SUCESSO",
+                        MessageBox.Show(BllNotification.Message, "SUCESSO",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show(BllNotificar.Message, "ATENÇÃO",
+                        MessageBox.Show(BllNotification.Message, "ATENÇÃO",
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
@@ -197,15 +209,15 @@ namespace DimStock.View
         }
         #endregion
 
-        #region ValidarDadosEntrada()
-        private bool ValidarDadosEntrada()
+        #region ValidateInputData()
+        private bool ValidateInputData()
         {
-            if (TxtNome.Text == "")
+            if (TxtName.Text == "")
             {
                 MessageBox.Show("O nome é obrigatório!", "OBRIGATÓRIO",
                 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
-                TxtNome.Select();
+                TxtName.Select();
 
                 return false;
             }
@@ -220,7 +232,7 @@ namespace DimStock.View
                 return false;
             }
 
-            else if (ValidarEmail(TxtEmail.Text).Equals(false))
+            else if (ValidateEmail(TxtEmail.Text).Equals(false))
             {
                 MessageBox.Show("O email informado não é válido, verifique " +
                 "e tente novamente! ", "EMAIL INVÁLIDO", MessageBoxButtons.OK,
@@ -231,32 +243,32 @@ namespace DimStock.View
                 return false;
 
             }
-            else if (TxtSenha.Text == "")
+            else if (TxtPassWord.Text == "")
             {
                 MessageBox.Show("A senha é obrigatória!", "OBRIGATÓRIO",
                 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
-                TxtSenha.Select();
+                TxtPassWord.Select();
 
                 return false;
             }
 
-            else if (TxtConfirmarSenha.Text == "")
+            else if (TxtConfirmPassWord.Text == "")
             {
                 MessageBox.Show("Confirme a senha!", "OBRIGATÓRIO",
                 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
-                TxtConfirmarSenha.Select();
+                TxtConfirmPassWord.Select();
 
                 return false;
             }
 
-            else if (TxtConfirmarSenha.Text != TxtSenha.Text)
+            else if (TxtConfirmPassWord.Text != TxtPassWord.Text)
             {
                 MessageBox.Show("A senhas não conferem!", "NÃO CONFERE",
                 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
-                TxtConfirmarSenha.Select();
+                TxtConfirmPassWord.Select();
 
                 return false;
             }
@@ -267,10 +279,10 @@ namespace DimStock.View
         }
         #endregion
 
-        #region ValidarEmail()
-        private bool ValidarEmail(string email)
+        #region ValidateEmail()
+        private bool ValidateEmail(string email)
         {
-            Regex rg = new Regex(@"^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$");
+            var rg = new Regex(@"^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$");
 
             if (rg.IsMatch(email))
             {
@@ -282,5 +294,7 @@ namespace DimStock.View
             }
         }
         #endregion 
+
+        #endregion
     }
 }
