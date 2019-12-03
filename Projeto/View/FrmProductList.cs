@@ -83,7 +83,14 @@ namespace DimStock.View
         {
             try
             {
-                var product = new BllProduct();
+                var product = new BllProduct()
+                {
+                    Code = TxtQueryByCode.Text,
+                    Size = TxtQueryBySize.Text,
+                    Reference = TxtQueryByReference.Text,
+                    Description = TxtQueryByDescription.Text
+                };
+
                 product.ListAll(); product.GenerateReport();
 
                 var path = "DimStock.Report.RpvProduct.rdlc";
