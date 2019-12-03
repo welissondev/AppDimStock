@@ -230,7 +230,7 @@ namespace DimStock.View
 
                 var product = new BllProduct();
 
-                product.ListAll(NumberOfRecords);
+                product.ListAll();
 
                 GridProductList.Rows.Clear();
 

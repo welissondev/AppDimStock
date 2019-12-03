@@ -141,9 +141,9 @@ namespace DimStock.Model
         #endregion
 
         #region ListAll()
-        public List<BllProduct> ListAll(int numberOfRecords = 100)
+        public List<BllProduct> ListAll()
         {
-            var commandSQL = @"SELECT TOP " + numberOfRecords + @" Id, Codigo, Fornecedor, Referencia, Descricao, 
+            var commandSQL = @"SELECT Id, Codigo, Fornecedor, Referencia, Descricao, 
             Tamanho, PrecoCusto, PrecoVenda, FotoNome From TBProduto Order By Codigo, Tamanho, Referencia Asc";
 
             var productList = new List<BllProduct>();

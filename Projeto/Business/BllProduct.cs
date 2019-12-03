@@ -107,10 +107,10 @@ namespace DimStock.Business
         #endregion
 
         #region ListAll()
-        public void ListAll(int numeroDeRegistros = 100)
+        public void ListAll()
         {
             var product = new MdlProduct();
-            ListOfRecords = product.ListAll(numeroDeRegistros);
+            ListOfRecords = product.ListAll();
         }
         #endregion
 
