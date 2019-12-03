@@ -278,6 +278,7 @@
     <EmbeddedResource Include="View\MdlHomeScreen.resx">
       <DependentUpon>MdlHomeScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="DataSources\DimStock.Report.ReportProduct.datasource" />
     <None Include="packages.config" />
     <None Include="DataSources\DimStock.Report.ReportStockProduct.datasource" />
     <None Include="Properties\Settings.settings">

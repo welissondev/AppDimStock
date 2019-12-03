@@ -86,7 +86,7 @@ namespace DimStock.View
                 var product = new BllProduct();
                 product.ListAll(); product.GenerateReport();
 
-                var path = "DimStock.Report.RpvReportProduct.rdlc";
+                var path = "DimStock.Report.RpvProduct.rdlc";
                 var name = "Relatório de Produtos";
                 var dataset = "DataSetProduct";
 
