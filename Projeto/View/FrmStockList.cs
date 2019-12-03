@@ -18,7 +18,7 @@ namespace DimStock.View
 
         #region Constructors
 
-        #region FrmEstoqueLista()
+        #region FrmStockList()
         public FrmStockList()
         {
             InitializeComponent();
@@ -29,7 +29,6 @@ namespace DimStock.View
 
             LblDataLong.Text = DateTime.Now.ToLongDateString();
 
-            WindowState = FormWindowState.Maximized;
         }
         #endregion
 
@@ -37,14 +36,17 @@ namespace DimStock.View
 
         #region UserForm
 
-        #region FrmEstoqueLista_Load()
-        private void FrmEstoqueLista_Load(object sender, EventArgs e)
+        #region FrmStockList_Load()
+        private void FrmStockList_Load(object sender, EventArgs e)
         {
             ListItemsInSummary();
 
             ListItemsInPageSize();
 
             ListDataGrid(FetchData());
+
+            WindowState = FormWindowState.Maximized;
+
         }
         #endregion
 
@@ -173,7 +175,7 @@ namespace DimStock.View
         {
             try
             {
-                if (StockDataGrid.Columns[e.ColumnIndex].Name == "ResumoColumn")
+                if (GridStockList.Columns[e.ColumnIndex].Name == "stockResume")
                 {
                     if (e.Value.GetType() != typeof(DBNull))
                     {
@@ -221,7 +223,7 @@ namespace DimStock.View
         #region StockDataGrid_Layout()
         private void StockDataGrid_Layout(object sender, LayoutEventArgs e)
         {
-            AxlDataGridViewLealt.DefaultLayoutDarkblue(StockDataGrid);
+            AxlDataGridViewLealt.DefaultLayoutDarkblue(GridStockList);
         }
         #endregion
 
@@ -321,13 +323,13 @@ namespace DimStock.View
         {
             try
             {
-                StockDataGrid.Rows.Clear();
+                GridStockList.Rows.Clear();
 
                 var ls = listaDeEstoque;
 
                 for (int i = 0; i < listaDeEstoque.Count; i++)
                 {
-                    StockDataGrid.Rows.Add(
+                    GridStockList.Rows.Add(
                     ls[i].StockId,
                     ls[i].ProductId,
                     ls[i].ProductCode,
@@ -404,11 +406,11 @@ namespace DimStock.View
 
                 for (int i = 0; i < ls.Count; i++)
                 {
-                    if (BllProdutoFoto.EncontrarArquivo(ls[i].ProductPhotoName) == true)
+                    if (BllProductPhotho.FindFile(ls[i].ProductPhotoName) == true)
                     {
                         using (FileStream file = new FileStream(ls[i].ProductPhotoName, FileMode.Open, FileAccess.Read))
                         {
-                            StockDataGrid.Rows[i].Cells["ImgFotoColumn"].Value = Image.FromStream(file);
+                            GridStockList.Rows[i].Cells["photoName"].Value = Image.FromStream(file);
                         }
                     }
                 }
@@ -464,135 +466,133 @@ namespace DimStock.View
         {
             try
             {
-                var IdEstoqueColumn = new DataGridViewTextBoxColumn();
-                var IdProdutoColumn = new DataGridViewTextBoxColumn();
-                var CodigoColumn = new DataGridViewTextBoxColumn();
-                var ReferenciaColumn = new DataGridViewTextBoxColumn();
-                var TamanhoColumn = new DataGridViewTextBoxColumn();
-                var DescricaoColumn = new DataGridViewTextBoxColumn();
-                var EstoqueMinColumn = new DataGridViewTextBoxColumn();
-                var EstoqueMaxColumn = new DataGridViewTextBoxColumn();
-                var QuantidadeColumn = new DataGridViewTextBoxColumn();
-                var ValorColumn = new DataGridViewTextBoxColumn();
-                var ResumoColumn = new DataGridViewTextBoxColumn();
-                var ResultadoColumn = new DataGridViewTextBoxColumn();
-                var ImgFotoColumn = new DataGridViewImageColumn();
+                var stockId = new DataGridViewTextBoxColumn();
+                var productId = new DataGridViewTextBoxColumn();
+                var productCode = new DataGridViewTextBoxColumn();
+                var productSize = new DataGridViewTextBoxColumn();
+                var productReference = new DataGridViewTextBoxColumn();
+                var productDescription = new DataGridViewTextBoxColumn();
+                var minStock = new DataGridViewTextBoxColumn();
+                var maxStock = new DataGridViewTextBoxColumn();
+                var stockQuantity = new DataGridViewTextBoxColumn();
+                var stockValue = new DataGridViewTextBoxColumn();
+                var stockResume = new DataGridViewTextBoxColumn();
+                var stockResult = new DataGridViewTextBoxColumn();
+                var fothoName = new DataGridViewImageColumn();
 
-                var dtg = StockDataGrid;
+                var dataGrid = GridStockList;
 
-                dtg.Columns.Add(IdEstoqueColumn);
-                dtg.Columns[0].Name = "IdEstoqueColumn";
-                dtg.Columns[0].HeaderText = "ID";
-                dtg.Columns[0].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dtg.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dtg.Columns[0].Visible = false;
-                dtg.Columns[0].ReadOnly = true;
+                dataGrid.Columns.Add(stockId);
+                dataGrid.Columns[0].Name = "stockId";
+                dataGrid.Columns[0].HeaderText = "ID";
+                dataGrid.Columns[0].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[0].Visible = false;
+                dataGrid.Columns[0].ReadOnly = true;
 
-                dtg.Columns.Add(IdProdutoColumn);
-                dtg.Columns[1].Name = "IdProdutoColumn";
-                dtg.Columns[1].HeaderText = "ID PRODUTO";
-                dtg.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dtg.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dtg.Columns[1].Visible = false;
-                dtg.Columns[1].ReadOnly = true;
+                dataGrid.Columns.Add(productId);
+                dataGrid.Columns[1].Name = "productId";
+                dataGrid.Columns[1].HeaderText = "ID PRODUTO";
+                dataGrid.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[1].Visible = false;
+                dataGrid.Columns[1].ReadOnly = true;
 
-                dtg.Columns.Add(CodigoColumn);
-                dtg.Columns[2].Name = "CodigoColumn";
-                dtg.Columns[2].HeaderText = "CÓDIGO";
-                dtg.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dtg.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dtg.Columns[2].Visible = true;
-                dtg.Columns[2].ReadOnly = true;
-                dtg.Columns[2].Width = 80;
+                dataGrid.Columns.Add(productCode);
+                dataGrid.Columns[2].Name = "productCode";
+                dataGrid.Columns[2].HeaderText = "CÓDIGO";
+                dataGrid.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[2].Visible = true;
+                dataGrid.Columns[2].ReadOnly = true;
+                dataGrid.Columns[2].Width = 80;
 
-                dtg.Columns.Add(ReferenciaColumn);
-                dtg.Columns[3].Name = "ReferenciaColumn";
-                dtg.Columns[3].HeaderText = "REFERÊNCIA";
-                dtg.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dtg.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dtg.Columns[3].Visible = true;
-                dtg.Columns[3].ReadOnly = true;
-                dtg.Columns[3].Width = 80;
+                dataGrid.Columns.Add(productReference);
+                dataGrid.Columns[3].Name = "productReference";
+                dataGrid.Columns[3].HeaderText = "REFERÊNCIA";
+                dataGrid.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[3].Visible = true;
+                dataGrid.Columns[3].ReadOnly = true;
+                dataGrid.Columns[3].Width = 80;
 
-                dtg.Columns.Add(TamanhoColumn);
-                dtg.Columns[4].Name = "TamanhoColumn";
-                dtg.Columns[4].HeaderText = "TAMANHO";
-                dtg.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dtg.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dtg.Columns[4].Visible = true;
-                dtg.Columns[4].ReadOnly = true;
-                dtg.Columns[4].DisplayIndex = 3;
-                dtg.Columns[4].Width = 80;
+                dataGrid.Columns.Add(productSize);
+                dataGrid.Columns[4].Name = "productSize";
+                dataGrid.Columns[4].HeaderText = "TAMANHO";
+                dataGrid.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[4].Visible = true;
+                dataGrid.Columns[4].ReadOnly = true;
+                dataGrid.Columns[4].DisplayIndex = 3;
+                dataGrid.Columns[4].Width = 80;
 
-                dtg.Columns.Add(DescricaoColumn);
-                dtg.Columns[5].Width = 200;
-                dtg.Columns[5].Name = "DescricaoColumn";
-                dtg.Columns[5].HeaderText = "DESCRIÇÃO";
-                dtg.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dtg.Columns[5].ReadOnly = true;
+                dataGrid.Columns.Add(productDescription);
+                dataGrid.Columns[5].Width = 200;
+                dataGrid.Columns[5].Name = "productDescription";
+                dataGrid.Columns[5].HeaderText = "DESCRIÇÃO";
+                dataGrid.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dataGrid.Columns[5].ReadOnly = true;
 
-                dtg.Columns.Add(EstoqueMinColumn);
-                dtg.Columns[6].Width = 100;
-                dtg.Columns[6].Name = "EstoqueMinColumn";
-                dtg.Columns[6].HeaderText = "ESTOQUE MIN.";
-                dtg.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dtg.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dtg.Columns[6].ReadOnly = true;
+                dataGrid.Columns.Add(minStock);
+                dataGrid.Columns[6].Width = 100;
+                dataGrid.Columns[6].Name = "minStock";
+                dataGrid.Columns[6].HeaderText = "ESTOQUE MIN.";
+                dataGrid.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[6].ReadOnly = true;
 
-                dtg.Columns.Add(EstoqueMaxColumn);
-                dtg.Columns[7].Width = 100;
-                dtg.Columns[7].Name = "EstoqueMaxColumn";
-                dtg.Columns[7].HeaderText = "ESTOQUE MAX.";
-                dtg.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dtg.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dtg.Columns[7].ReadOnly = true;
+                dataGrid.Columns.Add(maxStock);
+                dataGrid.Columns[7].Width = 100;
+                dataGrid.Columns[7].Name = "maxStock";
+                dataGrid.Columns[7].HeaderText = "ESTOQUE MAX.";
+                dataGrid.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[7].ReadOnly = true;
 
-                dtg.Columns.Add(QuantidadeColumn);
-                dtg.Columns[8].Width = 100;
-                dtg.Columns[8].Name = "QuantidadeColumn";
-                dtg.Columns[8].HeaderText = "QTD. ESTOQUE";
-                dtg.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dtg.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dtg.Columns[8].ReadOnly = true;
+                dataGrid.Columns.Add(stockQuantity);
+                dataGrid.Columns[8].Width = 100;
+                dataGrid.Columns[8].Name = "stockQuantity";
+                dataGrid.Columns[8].HeaderText = "QTD. ESTOQUE";
+                dataGrid.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[8].ReadOnly = true;
 
-                dtg.Columns.Add(ValorColumn);
-                dtg.Columns[9].Width = 100;
-                dtg.Columns[9].Name = "ValorColumn";
-                dtg.Columns[9].HeaderText = "VALOR";
-                dtg.Columns[9].DefaultCellStyle.Format = "c2";
-                dtg.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                dtg.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                dtg.Columns[9].DisplayIndex = 6;
-                dtg.Columns[9].ReadOnly = true;
+                dataGrid.Columns.Add(stockValue);
+                dataGrid.Columns[9].Width = 100;
+                dataGrid.Columns[9].Name = "stockValue";
+                dataGrid.Columns[9].HeaderText = "VALOR";
+                dataGrid.Columns[9].DefaultCellStyle.Format = "c2";
+                dataGrid.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dataGrid.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dataGrid.Columns[9].DisplayIndex = 6;
+                dataGrid.Columns[9].ReadOnly = true;
 
-                dtg.Columns.Add(ResumoColumn);
-                dtg.Columns[10].Width = 100;
-                dtg.Columns[10].Name = "ResumoColumn";
-                dtg.Columns[10].HeaderText = "RESUMO";
-                dtg.Columns[10].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dtg.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dtg.Columns[10].ReadOnly = true;
+                dataGrid.Columns.Add(stockResume);
+                dataGrid.Columns[10].Width = 100;
+                dataGrid.Columns[10].Name = "stockResume";
+                dataGrid.Columns[10].HeaderText = "RESUMO";
+                dataGrid.Columns[10].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[10].ReadOnly = true;
 
-                dtg.Columns.Add(ResultadoColumn);
-                dtg.Columns[11].Width = 100;
-                dtg.Columns[11].Name = "ResultadoColumn";
-                dtg.Columns[11].HeaderText = "RESULTADO";
-                dtg.Columns[11].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dtg.Columns[11].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dtg.Columns[11].ReadOnly = true;
+                dataGrid.Columns.Add(stockResult);
+                dataGrid.Columns[11].Width = 100;
+                dataGrid.Columns[11].Name = "stockResult";
+                dataGrid.Columns[11].HeaderText = "RESULTADO";
+                dataGrid.Columns[11].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[11].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[11].ReadOnly = true;
 
-                dtg.Columns.Add(ImgFotoColumn);
-                ImgFotoColumn.Image = Resources.FotoNothing;
-                ImgFotoColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                dtg.Columns[12].Name = "ImgFotoColumn";
-                dtg.Columns[12].HeaderText = "FOTO";
-                dtg.Columns[12].Width = 40;
-                dtg.Columns[12].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dtg.Columns[12].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dtg.Columns[12].DisplayIndex = 0;
-                dtg.Columns[12].ReadOnly = true;
-
-
+                dataGrid.Columns.Add(fothoName);
+                fothoName.Image = Resources.FotoNothing;
+                fothoName.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                dataGrid.Columns[12].Name = "fothoName";
+                dataGrid.Columns[12].HeaderText = "FOTO";
+                dataGrid.Columns[12].Width = 40;
+                dataGrid.Columns[12].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[12].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[12].DisplayIndex = 0;
+                dataGrid.Columns[12].ReadOnly = true;
             }
             catch (Exception ex)
             {

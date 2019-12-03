@@ -29,7 +29,7 @@ namespace DimStock.Model
 
             List<BllStockProduct> listaEstoqueProduto = new List<BllStockProduct>();
 
-            using (MdlAccessConnection connection = new MdlAccessConnection())
+            using (MdlConnection connection = new MdlConnection())
             {
                 var sqlSelectEstoqueProduto = @"SELECT TOP " + numberOfRecords + @" TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
                 TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, 
@@ -94,9 +94,9 @@ namespace DimStock.Model
         #region FetchData()
         public DataTable FetchData(AxlDataPagination dataPagination)
         {
-            using (var con = new MdlAccessConnection())
+            using (var con = new MdlConnection())
             {
-                var sqlQuery = string.Empty;
+                var commandSQL = string.Empty;
                 var sqlCount = string.Empty;
                 var criterion = string.Empty;
 
@@ -107,7 +107,7 @@ namespace DimStock.Model
                     sqlCount = @"SELECT COUNT(TBEstoque.Id) From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE TBEstoque.Id > 0";
 
-                    sqlQuery = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
+                    commandSQL = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
                     TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE TBEstoque.Id > 0";
                 }
@@ -117,7 +117,7 @@ namespace DimStock.Model
                     sqlCount = @"SELECT COUNT(TBEstoque.Id) From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade = 0 AND EstoqueMax = 0 AND EstoqueMin = 0";
 
-                    sqlQuery = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
+                    commandSQL = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
                     TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, 
                     TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade = 0 AND EstoqueMax = 0 AND EstoqueMin = 0";
@@ -129,7 +129,7 @@ namespace DimStock.Model
                     TBProduto.Id = TBEstoque.IdProduto WHERE Quantidade > 0 AND Quantidade >= 
                     EstoqueMin AND Quantidade <= EstoqueMax";
 
-                    sqlQuery = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
+                    commandSQL = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
                     TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, 
                     TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade > 0 AND Quantidade >= EstoqueMin AND Quantidade <= EstoqueMax";
@@ -140,7 +140,7 @@ namespace DimStock.Model
                     sqlCount = @"SELECT COUNT(TBEstoque.Id) From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade > EstoqueMax";
 
-                    sqlQuery = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
+                    commandSQL = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
                     TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, 
                     TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade > EstoqueMax";
@@ -151,7 +151,7 @@ namespace DimStock.Model
                     sqlCount = @"SELECT COUNT(TBEstoque.Id) From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade < EstoqueMin";
 
-                    sqlQuery = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
+                    commandSQL = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
                     TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, 
                     TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade < EstoqueMin";
@@ -172,7 +172,7 @@ namespace DimStock.Model
                 if (stockProduct.ProductReference != string.Empty)
                     criterion += " AND Referencia LIKE @Referencia ";
 
-                sqlQuery += criterion +
+                commandSQL += criterion +
                 " Order By Codigo, Tamanho, Referencia Asc";
 
                 sqlCount += criterion;
@@ -200,7 +200,7 @@ namespace DimStock.Model
                 #endregion
 
                 #region Preencher-Datatable
-                var dataTable = con.QueryWithDataTable(sqlQuery, dataPagination.OffSetValue, dataPagination.PageSize);
+                var dataTable = con.QueryWithDataTable(commandSQL, dataPagination.OffSetValue, dataPagination.PageSize);
                 #endregion
 
                 return dataTable;
@@ -211,10 +211,10 @@ namespace DimStock.Model
         #region ListAll()
         public List<BllStockProduct> ListAll()
         {
-            using (var con = new MdlAccessConnection())
+            using (var con = new MdlConnection())
             {
                 #region Variables
-                var sqlQuery = string.Empty;
+                var commandSQL = string.Empty;
                 var sqlCount = string.Empty;
                 var criterion = string.Empty;
                 #endregion
@@ -226,7 +226,7 @@ namespace DimStock.Model
                     sqlCount = @"SELECT COUNT(TBEstoque.Id) From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE TBEstoque.Id > 0";
 
-                    sqlQuery = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
+                    commandSQL = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
                     TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE TBEstoque.Id > 0";
                 }
@@ -236,7 +236,7 @@ namespace DimStock.Model
                     sqlCount = @"SELECT COUNT(TBEstoque.Id) From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade = 0 AND EstoqueMax = 0 AND EstoqueMin = 0";
 
-                    sqlQuery = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
+                    commandSQL = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
                     TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, 
                     TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade = 0 AND EstoqueMax = 0 AND EstoqueMin = 0";
@@ -248,7 +248,7 @@ namespace DimStock.Model
                     TBProduto.Id = TBEstoque.IdProduto WHERE Quantidade > 0 AND Quantidade >= 
                     EstoqueMin AND Quantidade <= EstoqueMax";
 
-                    sqlQuery = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
+                    commandSQL = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
                     TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, 
                     TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade > 0 AND Quantidade >= EstoqueMin AND Quantidade <= EstoqueMax";
@@ -259,7 +259,7 @@ namespace DimStock.Model
                     sqlCount = @"SELECT COUNT(TBEstoque.Id) From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade > EstoqueMax";
 
-                    sqlQuery = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
+                    commandSQL = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
                     TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, 
                     TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade > EstoqueMax";
@@ -270,7 +270,7 @@ namespace DimStock.Model
                     sqlCount = @"SELECT COUNT(TBEstoque.Id) From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade < EstoqueMin";
 
-                    sqlQuery = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
+                    commandSQL = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
                     TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, 
                     TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade < EstoqueMin";
@@ -291,7 +291,7 @@ namespace DimStock.Model
                 if (stockProduct.ProductReference != string.Empty)
                     criterion += " AND Referencia LIKE @Referencia ";
 
-                sqlQuery += criterion +
+                commandSQL += criterion +
                 " Order By Codigo, Tamanho, Referencia Asc";
 
                 sqlCount += criterion;
@@ -317,7 +317,7 @@ namespace DimStock.Model
                 #region while()
                 var listStockProduct = new List<BllStockProduct>();
 
-                using (var dr = con.QueryWithDataReader(sqlQuery))
+                using (var dr = con.QueryWithDataReader(commandSQL))
                 {
                     while (dr.Read())
                     {
@@ -348,14 +348,14 @@ namespace DimStock.Model
         }
         #endregion
 
-        #region ViewData()
-        public void ViewData(int id)
+        #region GetRegistryData()
+        public void GetRegistryData(int id)
         {
 
             var sql = @"SELECT TBProduto.*, TBEstoque.* From TBProduto INNER JOIN TBEstoque ON TBProduto.Id = TBEstoque.IdProduto
             WHERE TBProduto.Id = " + id;
 
-            using (var con = new MdlAccessConnection())
+            using (var con = new MdlConnection())
             {
                 using (var dr = con.QueryWithDataReader(sql))
                 {

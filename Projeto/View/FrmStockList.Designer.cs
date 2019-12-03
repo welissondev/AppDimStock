@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmStockList));
-            this.StockDataGrid = new System.Windows.Forms.DataGridView();
+            this.GridStockList = new System.Windows.Forms.DataGridView();
             this.CboPageSize = new Syncfusion.WinForms.ListView.SfComboBox();
             this.textBoxExt1 = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.LblNumeroDeRegistros = new System.Windows.Forms.Label();
@@ -43,7 +43,7 @@
             this.TxtQueryByCode = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.TxtQueryByDescription = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.Timer = new System.Windows.Forms.Timer(this.components);
-            this.PanelHorizontalSuperior = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.PanelUpperHorizontal = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.BtnReport = new Syncfusion.WinForms.Controls.SfButton();
             this.BtnAtualizar = new Syncfusion.WinForms.Controls.SfButton();
             this.LblDataLong = new System.Windows.Forms.Label();
@@ -61,14 +61,14 @@
             this.NextPage = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.LblRecordsState = new System.Windows.Forms.ToolStripLabel();
-            ((System.ComponentModel.ISupportInitialize)(this.StockDataGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridStockList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CboPageSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBoxExt1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtQueryByReference)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtQueryBySize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtQueryByCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtQueryByDescription)).BeginInit();
-            this.PanelHorizontalSuperior.SuspendLayout();
+            this.PanelUpperHorizontal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImgGifLoading)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CboResume)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBoxExt2)).BeginInit();
@@ -76,18 +76,18 @@
             this.BindingNavigatorPaginacao.SuspendLayout();
             this.SuspendLayout();
             // 
-            // StockDataGrid
+            // GridStockList
             // 
-            this.StockDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.GridStockList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.StockDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.StockDataGrid.Location = new System.Drawing.Point(30, 197);
-            this.StockDataGrid.Name = "StockDataGrid";
-            this.StockDataGrid.Size = new System.Drawing.Size(1002, 426);
-            this.StockDataGrid.TabIndex = 70;
-            this.StockDataGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.StockDataGrid_CellFormatting);
-            this.StockDataGrid.Layout += new System.Windows.Forms.LayoutEventHandler(this.StockDataGrid_Layout);
+            this.GridStockList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridStockList.Location = new System.Drawing.Point(30, 197);
+            this.GridStockList.Name = "GridStockList";
+            this.GridStockList.Size = new System.Drawing.Size(1002, 426);
+            this.GridStockList.TabIndex = 70;
+            this.GridStockList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.StockDataGrid_CellFormatting);
+            this.GridStockList.Layout += new System.Windows.Forms.LayoutEventHandler(this.StockDataGrid_Layout);
             // 
             // CboPageSize
             // 
@@ -111,7 +111,7 @@
             // textBoxExt1
             // 
             this.textBoxExt1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.textBoxExt1.BeforeTouchSize = new System.Drawing.Size(208, 29);
+            this.textBoxExt1.BeforeTouchSize = new System.Drawing.Size(794, 26);
             this.textBoxExt1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.textBoxExt1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxExt1.CanOverrideStyle = true;
@@ -181,7 +181,7 @@
             // TxtQueryByReference
             // 
             this.TxtQueryByReference.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtQueryByReference.BeforeTouchSize = new System.Drawing.Size(208, 29);
+            this.TxtQueryByReference.BeforeTouchSize = new System.Drawing.Size(794, 26);
             this.TxtQueryByReference.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.TxtQueryByReference.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtQueryByReference.CanOverrideStyle = true;
@@ -207,7 +207,7 @@
             // TxtQueryBySize
             // 
             this.TxtQueryBySize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtQueryBySize.BeforeTouchSize = new System.Drawing.Size(208, 29);
+            this.TxtQueryBySize.BeforeTouchSize = new System.Drawing.Size(794, 26);
             this.TxtQueryBySize.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.TxtQueryBySize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtQueryBySize.CanOverrideStyle = true;
@@ -233,7 +233,7 @@
             // TxtQueryByCode
             // 
             this.TxtQueryByCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtQueryByCode.BeforeTouchSize = new System.Drawing.Size(208, 29);
+            this.TxtQueryByCode.BeforeTouchSize = new System.Drawing.Size(794, 26);
             this.TxtQueryByCode.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.TxtQueryByCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtQueryByCode.CanOverrideStyle = true;
@@ -259,7 +259,7 @@
             // TxtQueryByDescription
             // 
             this.TxtQueryByDescription.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtQueryByDescription.BeforeTouchSize = new System.Drawing.Size(208, 29);
+            this.TxtQueryByDescription.BeforeTouchSize = new System.Drawing.Size(794, 26);
             this.TxtQueryByDescription.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.TxtQueryByDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtQueryByDescription.CanOverrideStyle = true;
@@ -287,24 +287,24 @@
             this.Timer.Interval = 500;
             this.Timer.Tick += new System.EventHandler(this.Timer_Tick);
             // 
-            // PanelHorizontalSuperior
+            // PanelUpperHorizontal
             // 
-            this.PanelHorizontalSuperior.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelHorizontalSuperior.BackgroundImage")));
-            this.PanelHorizontalSuperior.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PanelHorizontalSuperior.Controls.Add(this.BtnReport);
-            this.PanelHorizontalSuperior.Controls.Add(this.BtnAtualizar);
-            this.PanelHorizontalSuperior.Controls.Add(this.LblDataLong);
-            this.PanelHorizontalSuperior.Controls.Add(this.LblCaptionListaProduto);
-            this.PanelHorizontalSuperior.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelHorizontalSuperior.GradientBottomLeft = System.Drawing.SystemColors.MenuHighlight;
-            this.PanelHorizontalSuperior.GradientBottomRight = System.Drawing.SystemColors.MenuHighlight;
-            this.PanelHorizontalSuperior.GradientTopLeft = System.Drawing.SystemColors.ControlText;
-            this.PanelHorizontalSuperior.GradientTopRight = System.Drawing.SystemColors.ControlText;
-            this.PanelHorizontalSuperior.Location = new System.Drawing.Point(0, 0);
-            this.PanelHorizontalSuperior.Name = "PanelHorizontalSuperior";
-            this.PanelHorizontalSuperior.Quality = 10;
-            this.PanelHorizontalSuperior.Size = new System.Drawing.Size(1057, 95);
-            this.PanelHorizontalSuperior.TabIndex = 141;
+            this.PanelUpperHorizontal.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelUpperHorizontal.BackgroundImage")));
+            this.PanelUpperHorizontal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PanelUpperHorizontal.Controls.Add(this.BtnReport);
+            this.PanelUpperHorizontal.Controls.Add(this.BtnAtualizar);
+            this.PanelUpperHorizontal.Controls.Add(this.LblDataLong);
+            this.PanelUpperHorizontal.Controls.Add(this.LblCaptionListaProduto);
+            this.PanelUpperHorizontal.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PanelUpperHorizontal.GradientBottomLeft = System.Drawing.SystemColors.MenuHighlight;
+            this.PanelUpperHorizontal.GradientBottomRight = System.Drawing.SystemColors.MenuHighlight;
+            this.PanelUpperHorizontal.GradientTopLeft = System.Drawing.SystemColors.ControlText;
+            this.PanelUpperHorizontal.GradientTopRight = System.Drawing.SystemColors.ControlText;
+            this.PanelUpperHorizontal.Location = new System.Drawing.Point(0, 0);
+            this.PanelUpperHorizontal.Name = "PanelUpperHorizontal";
+            this.PanelUpperHorizontal.Quality = 10;
+            this.PanelUpperHorizontal.Size = new System.Drawing.Size(1057, 95);
+            this.PanelUpperHorizontal.TabIndex = 141;
             // 
             // BtnReport
             // 
@@ -410,7 +410,7 @@
             // textBoxExt2
             // 
             this.textBoxExt2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.textBoxExt2.BeforeTouchSize = new System.Drawing.Size(208, 29);
+            this.textBoxExt2.BeforeTouchSize = new System.Drawing.Size(794, 26);
             this.textBoxExt2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.textBoxExt2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxExt2.CanOverrideStyle = true;
@@ -535,7 +535,7 @@
             this.Controls.Add(this.CboResume);
             this.Controls.Add(this.textBoxExt2);
             this.Controls.Add(this.LblResumo);
-            this.Controls.Add(this.PanelHorizontalSuperior);
+            this.Controls.Add(this.PanelUpperHorizontal);
             this.Controls.Add(this.CboPageSize);
             this.Controls.Add(this.textBoxExt1);
             this.Controls.Add(this.LblNumeroDeRegistros);
@@ -547,21 +547,21 @@
             this.Controls.Add(this.TxtQueryBySize);
             this.Controls.Add(this.TxtQueryByCode);
             this.Controls.Add(this.TxtQueryByDescription);
-            this.Controls.Add(this.StockDataGrid);
+            this.Controls.Add(this.GridStockList);
             this.MinimumSize = new System.Drawing.Size(980, 720);
             this.Name = "FrmStockList";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.FrmEstoqueLista_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.StockDataGrid)).EndInit();
+            this.Load += new System.EventHandler(this.FrmStockList_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.GridStockList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CboPageSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBoxExt1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtQueryByReference)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtQueryBySize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtQueryByCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtQueryByDescription)).EndInit();
-            this.PanelHorizontalSuperior.ResumeLayout(false);
-            this.PanelHorizontalSuperior.PerformLayout();
+            this.PanelUpperHorizontal.ResumeLayout(false);
+            this.PanelUpperHorizontal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImgGifLoading)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CboResume)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBoxExt2)).EndInit();
@@ -575,7 +575,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView StockDataGrid;
+        private System.Windows.Forms.DataGridView GridStockList;
         private Syncfusion.WinForms.ListView.SfComboBox CboPageSize;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt textBoxExt1;
         private System.Windows.Forms.Label LblNumeroDeRegistros;
@@ -588,7 +588,7 @@
         private Syncfusion.Windows.Forms.Tools.TextBoxExt TxtQueryByCode;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt TxtQueryByDescription;
         private System.Windows.Forms.Timer Timer;
-        private Bunifu.Framework.UI.BunifuGradientPanel PanelHorizontalSuperior;
+        private Bunifu.Framework.UI.BunifuGradientPanel PanelUpperHorizontal;
         public System.Windows.Forms.Label LblDataLong;
         public System.Windows.Forms.Label LblCaptionListaProduto;
         private System.Windows.Forms.PictureBox ImgGifLoading;

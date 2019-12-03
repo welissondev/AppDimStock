@@ -83,7 +83,7 @@ namespace DimStock.Business
                     StockQuantity = Convert.ToInt32(row["Quantidade"]),
                     StockValue = Convert.ToDouble(row["Valor"]),
                     ProductCostPrice = Convert.ToDouble(row["PrecoCusto"]),
-                    ProductPhotoName = BllProdutoFoto.PegarCaminho() 
+                    ProductPhotoName = BllProductPhotho.GetPeth() 
                     + Convert.ToString(row["FotoNome"]),
                 };
 
@@ -142,11 +142,11 @@ namespace DimStock.Business
         }
         #endregion
 
-        #region ViewData()
-        public void ViewData(int id)
+        #region GetRegistryData()
+        public void GetRegistryData(int id)
         {
             var stockProduct = new MdlStockProduct(this);
-            stockProduct.ViewData(id);
+            stockProduct.GetRegistryData(id);
         }
         #endregion
 
