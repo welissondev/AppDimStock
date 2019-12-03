@@ -1,6 +1,7 @@
-﻿using DimStock.Auxiliary;
+﻿using System;
+using DimStock.Auxiliary;
 using DimStock.Model;
-using System;
+using DimStock.Report;
 using System.Collections.Generic;
 using System.Data;
 
@@ -156,5 +157,15 @@ namespace DimStock.Business
             }
         }
         #endregion
+
+        #region GenerateReport()
+
+        public void GenerateReport()
+        {
+            var reportProduct = new ReportProduct();
+            reportProduct.Generate(ListOfRecords);
+        }
+
+        #endregion 
     }
 }
