@@ -81,6 +81,23 @@ namespace DimStock.View
         #region BtnGenerateReport_Click()
         private void BtnGenerateReport_Click(object sender, EventArgs e)
         {
+            try
+            {
+                var product = new BllProduct();
+                product.ListAll(); product.GenerateReport();
+
+                var path = "DimStock.Report.RpvReportProduct.rdlc";
+                var name = "Relatório de Produtos";
+                var dataset = "DataSetProduct";
+
+                FrmReportView.ShowReport(path, name, true, new Dictionary<string, object>()
+                {{dataset, product.ListOfRecords}});
+
+            }
+            catch (Exception ex)
+            {
+                AxlException.Message.Show(ex);
+            }
         }
         #endregion
 
