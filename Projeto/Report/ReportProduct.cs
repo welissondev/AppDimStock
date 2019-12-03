@@ -8,5 +8,6 @@ namespace DimStock.Report
 {
     public class ReportProduct
     {
+
     }
 }
