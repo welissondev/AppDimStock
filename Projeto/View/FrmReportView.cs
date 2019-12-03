@@ -14,16 +14,16 @@ namespace DimStock.View
 
             InitializeComponent();
 
-            RpvReportView.LocalReport.DisplayName = reportName;
+            RpvReportViewer.LocalReport.DisplayName = reportName;
 
             #region Path + isEmbeddedResource
             if (isEmbeddedResource)
             {
-                RpvReportView.LocalReport.ReportEmbeddedResource = path;
+                RpvReportViewer.LocalReport.ReportEmbeddedResource = path;
             }
             else
             {
-                RpvReportView.LocalReport.ReportPath = path;
+                RpvReportViewer.LocalReport.ReportPath = path;
             }
             #endregion
 
@@ -31,7 +31,7 @@ namespace DimStock.View
             foreach (var dataSource in dataSources)
             {
                 var reportDataSource = new ReportDataSource(dataSource.Key, dataSource.Value);
-                this.RpvReportView.LocalReport.DataSources.Add(reportDataSource);
+                this.RpvReportViewer.LocalReport.DataSources.Add(reportDataSource);
             }
             #endregion
 
@@ -46,7 +46,7 @@ namespace DimStock.View
                     reportParameterCollection.Add(reportParameter);
                 }
 
-                RpvReportView.LocalReport.SetParameters(reportParameterCollection);
+                RpvReportViewer.LocalReport.SetParameters(reportParameterCollection);
             }
             #endregion
 
@@ -57,7 +57,7 @@ namespace DimStock.View
         private void FrmReportView_Load(object sender, EventArgs e)
         {
 
-            RpvReportView.RefreshReport();
+            RpvReportViewer.RefreshReport();
         }
         #endregion
 

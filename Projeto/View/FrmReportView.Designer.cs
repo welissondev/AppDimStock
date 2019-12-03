@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.RpvReportView = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.RpvReportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
             this.SuspendLayout();
             // 
-            // RpvReportView
+            // RpvReportViewer
             // 
-            this.RpvReportView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.RpvReportView.Location = new System.Drawing.Point(0, 0);
-            this.RpvReportView.Name = "RpvReportView";
-            this.RpvReportView.ServerReport.BearerToken = null;
-            this.RpvReportView.Size = new System.Drawing.Size(920, 637);
-            this.RpvReportView.TabIndex = 1;
+            this.RpvReportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RpvReportViewer.Location = new System.Drawing.Point(0, 0);
+            this.RpvReportViewer.Name = "RpvReportViewer";
+            this.RpvReportViewer.ServerReport.BearerToken = null;
+            this.RpvReportViewer.Size = new System.Drawing.Size(920, 637);
+            this.RpvReportViewer.TabIndex = 1;
             // 
             // FrmReportView
             // 
@@ -46,7 +46,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(920, 637);
-            this.Controls.Add(this.RpvReportView);
+            this.Controls.Add(this.RpvReportViewer);
             this.Name = "FrmReportView";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmReportView_Load);
@@ -55,6 +55,6 @@
         }
 
         #endregion
-        private Microsoft.Reporting.WinForms.ReportViewer RpvReportView;
+        private Microsoft.Reporting.WinForms.ReportViewer RpvReportViewer;
     }
 }
