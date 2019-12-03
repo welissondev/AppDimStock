@@ -155,6 +155,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Auxiliary\AxlImage.cs" />
+    <Compile Include="Report\ReportProduct.cs" />
     <Compile Include="View\FrmReportView.cs">
       <SubType>Form</SubType>
     </Compile>
