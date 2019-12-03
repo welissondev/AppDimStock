@@ -109,7 +109,7 @@ namespace DimStock.Business
         #region ListAll()
         public void ListAll()
         {
-            var product = new MdlProduct();
+            var product = new MdlProduct(this);
             ListOfRecords = product.ListAll();
         }
         #endregion

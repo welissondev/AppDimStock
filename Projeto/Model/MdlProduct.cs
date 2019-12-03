@@ -143,13 +143,55 @@ namespace DimStock.Model
         #region ListAll()
         public List<BllProduct> ListAll()
         {
-            var commandSQL = @"SELECT Id, Codigo, Fornecedor, Referencia, Descricao, 
-            Tamanho, PrecoCusto, PrecoVenda, FotoNome From TBProduto Order By Codigo, Tamanho, Referencia Asc";
-
+            var criterion = string.Empty;
+            var commandSQL = string.Empty;
             var productList = new List<BllProduct>();
 
             using (var connection = new MdlConnection())
             {
+
+                #region SqlQuery
+                commandSQL = @"SELECT Id, Codigo, Fornecedor, Referencia, Descricao, 
+                Tamanho, PrecoCusto, PrecoVenda, FotoNome From TBProduto WHERE 
+                Id > 0 ";
+                #endregion
+
+                #region Critérios-de-consulta
+
+                if (product.Code != string.Empty)
+                    criterion += " AND Codigo = @Codigo ";
+
+                if (product.Size != string.Empty)
+                    criterion += " AND Tamanho = @Tamanho ";
+
+                if (product.Reference != string.Empty)
+                    criterion += " AND Referencia = @Referencia";
+
+                if (product.Description != string.Empty)
+                    criterion += " AND Descricao = @Descricao";
+
+                commandSQL += criterion + " Order By Codigo,Tamanho, Referencia Asc";
+
+                #endregion
+
+                #region Critérios-de-Parâmetro
+
+                var e = connection.Command.Parameters;
+
+                if (product.Code != string.Empty)
+                    e.AddWithValue("@Codigo", string.Format("{0}", product.Code));
+
+                if(product.Size != string.Empty)
+                    e.AddWithValue("@Tamanho", string.Format("{0}", product.Size));
+
+                if(product.Reference != string.Empty)
+                    e.AddWithValue("@Referencia", string.Format("{0}", product.Reference));
+
+                if(product.Description != string.Empty)
+                    e.AddWithValue("@Descricao", string.Format("%{0}%", product.Description));
+
+                #endregion 
+
                 using (var dataReader = connection.QueryWithDataReader(commandSQL))
                 {
                     while (dataReader.Read())
@@ -231,8 +273,8 @@ namespace DimStock.Model
                 dataPagination.RecordCount = Convert.ToInt32(connection.ExecuteScalar(sqlCount));
                 #endregion
 
-                var dataTable = connection.QueryWithDataTable(commandSQL, 
-                dataPagination.OffSetValue, 
+                var dataTable = connection.QueryWithDataTable(commandSQL,
+                dataPagination.OffSetValue,
                 dataPagination.PageSize);
 
                 return dataTable;
