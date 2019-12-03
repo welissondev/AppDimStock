@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Data.OleDb;
 using System.Data;
-using System.Windows.Forms;
 
 namespace DimStock.Model
 {
-    public class MdlAccessConnection : IDisposable
+    public class MdlConnection : IDisposable
     {
         #region Properties 
         private readonly OleDbConnection connection = new OleDbConnection(@"Provider = Microsoft.jet.oledb.4.0; Data Source =" + AppDomain.CurrentDomain.BaseDirectory.ToString() + @"Padrao\dbestoque.mdb;jet oledb:database password=#admin#");
