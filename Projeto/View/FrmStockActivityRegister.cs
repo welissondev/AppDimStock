@@ -272,10 +272,11 @@ namespace DimStock.View
                     ProductSize = TxtQueryBySize.Text,
                     ProductReference = TxtQueryByReference.Text,
                     ProductDescription = TxtQueryByDescription.Text,
-                    StockResume = "Todos"
+                    StockResume = "Todos",
+                    DataPagination = dataPagination
                 };
 
-                stockProduct.FetchData(dataPagination);
+                stockProduct.FetchData();
 
                 GridMain.Columns.Clear();
 

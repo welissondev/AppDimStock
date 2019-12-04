@@ -26,6 +26,7 @@ namespace DimStock.Business
         public double ProductCostPrice { get; set; }
         public string ProductPhotoName { get; set; }
         public List<BllStockProduct> ListOfRecords { get; set; }
+        public AxlDataPagination DataPagination { get; set; }
         #endregion 
 
         #region Filter()
@@ -40,11 +41,11 @@ namespace DimStock.Business
         #endregion
 
         #region FetchData()
-        public void FetchData(AxlDataPagination dataPagination)
+        public void FetchData()
         {
             var stockProduct = new MdlStockProduct(this);
 
-            var dataTable = stockProduct.FetchData(dataPagination);
+            var dataTable = stockProduct.FetchData();
 
             PassDataTableToList(dataTable);
         }
