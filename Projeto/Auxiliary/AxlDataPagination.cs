@@ -16,6 +16,7 @@ namespace DimStock.Auxiliary
         public int NumberOfPages { get => CountTotalPages(); }
         #endregion 
 
+        #region Methods
         #region CountTotalPages()
         private int CountTotalPages()
         {
@@ -25,6 +26,7 @@ namespace DimStock.Auxiliary
 
             return nunberOfPages;
         }
+        #endregion
         #endregion
     }
 }
