@@ -306,8 +306,9 @@ namespace DimStock.View
                 stockProduct.ProductReference = TxtQueryByReference.Text;
                 stockProduct.ProductDescription = TxtQueryByDescription.Text;
                 stockProduct.StockResume = CboResume.Text;
+                stockProduct.DataPagination = dataPagination;
 
-                stockProduct.FetchData(dataPagination);
+                stockProduct.FetchData();
             }
             catch (Exception ex)
             {

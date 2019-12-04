@@ -92,7 +92,7 @@ namespace DimStock.Model
         #endregion
 
         #region FetchData()
-        public DataTable FetchData(AxlDataPagination dataPagination)
+        public DataTable FetchData()
         {
             using (var con = new MdlConnection())
             {
@@ -196,11 +196,12 @@ namespace DimStock.Model
                 #endregion
 
                 #region Contagem-de-registros
-                dataPagination.RecordCount = Convert.ToInt32(con.ExecuteScalar(sqlCount));
+                stockProduct.DataPagination.RecordCount = Convert.ToInt32(con.ExecuteScalar(sqlCount));
                 #endregion
 
                 #region Preencher-Datatable
-                var dataTable = con.QueryWithDataTable(commandSQL, dataPagination.OffSetValue, dataPagination.PageSize);
+                var dataTable = con.QueryWithDataTable(commandSQL, 
+                stockProduct.DataPagination.OffSetValue, stockProduct.DataPagination.PageSize);
                 #endregion
 
                 return dataTable;

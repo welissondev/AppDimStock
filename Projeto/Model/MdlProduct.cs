@@ -1,5 +1,4 @@
-﻿using DimStock.Auxiliary;
-using DimStock.Business;
+﻿using DimStock.Business;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -219,7 +218,7 @@ namespace DimStock.Model
         #endregion
 
         #region FetchData()
-        public DataTable FetchData(AxlDataPagination dataPagination)
+        public DataTable FetchData()
         {
             var commandSQL = string.Empty;
             var sqlCount = string.Empty;
@@ -270,12 +269,12 @@ namespace DimStock.Model
                 #endregion
 
                 #region Contagem-de-registros
-                dataPagination.RecordCount = Convert.ToInt32(connection.ExecuteScalar(sqlCount));
+                product.DataPagination.RecordCount = Convert.ToInt32(connection.ExecuteScalar(sqlCount));
                 #endregion
 
                 var dataTable = connection.QueryWithDataTable(commandSQL,
-                dataPagination.OffSetValue,
-                dataPagination.PageSize);
+                product.DataPagination.OffSetValue,
+                product.DataPagination.PageSize);
 
                 return dataTable;
             }

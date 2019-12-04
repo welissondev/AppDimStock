@@ -299,10 +299,11 @@ namespace DimStock.View
                     Code = TxtQueryByCode.Text,
                     Size = TxtQueryBySize.Text,
                     Reference = TxtQueryByReference.Text,
-                    Description = TxtQueryByDescription.Text
+                    Description = TxtQueryByDescription.Text,
+                    DataPagination = dataPagination
                 };
 
-                product.FetchData(dataPagination);
+                product.FetchData();
 
                 GridProductList.Rows.Clear();
 

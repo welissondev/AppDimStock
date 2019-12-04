@@ -24,6 +24,7 @@ namespace DimStock.Business
         public string PhotoName { get; set; }
         public string FolderDirectoryOfPhothos { get => BllProductPhotho.GetPeth(); }
         public List<BllProduct> ListOfRecords { get; set; }
+        public AxlDataPagination DataPagination { get; set; }
         #endregion 
 
         #region Register()
@@ -123,11 +124,11 @@ namespace DimStock.Business
         #endregion
 
         #region FetchData()
-        public void FetchData(AxlDataPagination dataPagination)
+        public void FetchData()
         {
             var product = new MdlProduct(this);
 
-            var dataTable = product.FetchData(dataPagination);
+            var dataTable = product.FetchData();
 
             PassDataTableForList(dataTable);
         }
@@ -138,13 +139,13 @@ namespace DimStock.Business
         {
             ListOfRecords = new List<BllProduct>();
 
-            foreach(DataRow row in datatable.Rows)
+            foreach (DataRow row in datatable.Rows)
             {
                 var product = new BllProduct()
                 {
                     Id = Convert.ToInt32(row["Id"]),
                     Code = Convert.ToString(row["Codigo"]),
-                    Size =  Convert.ToString(row["Tamanho"]),
+                    Size = Convert.ToString(row["Tamanho"]),
                     Reference = Convert.ToString(row["Referencia"]),
                     Supplier = Convert.ToString(row["Fornecedor"]),
                     Description = Convert.ToString(row["Descricao"]),
