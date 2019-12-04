@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // As informações gerais sobre um assembly são controladas por
 // conjunto de atributos. Altere estes valores de atributo para modificar as informações
 // associadas a um assembly.
-[assembly: AssemblyTitle("SysEstoque")]
-[assembly: AssemblyDescription("Sistema para controle de estoque")]
+[assembly: AssemblyTitle("Sistema DimStock")]
+[assembly: AssemblyDescription("DimStock sistema para controle de estoque")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Diário Excel")]
-[assembly: AssemblyProduct("SysEstoque")]
+[assembly: AssemblyProduct("DimStock")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("Diário Excel")]
 [assembly: AssemblyCulture("")]
@@ -33,7 +33,7 @@ using System.Runtime.InteropServices;
 // É possível especificar todos os valores ou usar como padrão os Números de Build e da Revisão
 // usando o "*" como mostrado abaixo:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.3.153")]
-[assembly: AssemblyFileVersion("1.0.3.153")]
+[assembly: AssemblyVersion("1.0.3.156")]
+[assembly: AssemblyFileVersion("1.0.3.156")]
 [assembly: NeutralResourcesLanguage("pt-BR")]
 

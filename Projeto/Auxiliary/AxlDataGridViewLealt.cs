@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace SysEstoque.Auxiliary
+namespace DimStock.Auxiliary
 {
     public static class AxlDataGridViewLealt
     {

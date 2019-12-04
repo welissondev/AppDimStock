@@ -1,4 +1,4 @@
-﻿namespace SysEstoque.Auxiliary
+﻿namespace DimStock.Auxiliary
 {
 
     /// <summary>
@@ -6,12 +6,12 @@
     /// </summary>
     public static class AxlLogin 
     {
-        public static int Id;
-        public static string Nome;
+        public static int UserId;
+        public static string UserName;
         public static string Login;
-        public static bool PermissaoCadastrar;
-        public static bool PermissaoAlterar;
-        public static bool PermissaoDeletar;
-        public static bool PermissaoVisualizar;
+        public static bool PermissionToRegister;
+        public static bool PermissionToEdit;
+        public static bool PermissionToDelete;
+        public static bool PermissionToView;
     }
 }

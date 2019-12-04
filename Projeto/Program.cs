@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 
 
-namespace SysEstoque.View
+namespace DimStock.View
 {
     static class Program
     {
@@ -15,7 +15,7 @@ namespace SysEstoque.View
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmUsuarioLogin());
+            Application.Run(new FrmUserLogin());
         }
 
     }
