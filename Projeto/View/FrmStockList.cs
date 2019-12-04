@@ -248,7 +248,7 @@ namespace DimStock.View
         #region NextPage_Click()
         private void NextPage_Click(object sender, EventArgs e)
         {
-            if (dataPagination.CurrentPage < dataPagination.CountTotalPages())
+            if (dataPagination.CurrentPage < dataPagination.NumberOfPages)
             {
                 dataPagination.CurrentPage += 1;
                 dataPagination.OffSetValue += dataPagination.PageSize;
@@ -616,7 +616,7 @@ namespace DimStock.View
         #region SetInBadingNavigator()
         public void SetInBadingNavigator()
         {
-            var legend = " Página " + dataPagination.CurrentPage + " de " + dataPagination.CountTotalPages().ToString();
+            var legend = " Página " + dataPagination.CurrentPage + " de " + dataPagination.NumberOfPages;
             BindingNavigatorPaginacao.Items[2].Text = legend;
 
             legend = " Total de " + dataPagination.RecordCount + " registro(s)";
