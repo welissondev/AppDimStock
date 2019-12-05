@@ -23,8 +23,7 @@ namespace DimStock.View
         private int stockId;
         private int productId;
         private int stockQuantity;
-
-        AxlDataPagination dataPagination = new AxlDataPagination();
+        private AxlDataPagination dataPagination = new AxlDataPagination();
         #endregion
 
         #region Constructs
