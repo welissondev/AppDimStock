@@ -2,6 +2,7 @@
 using DimStock.Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,7 @@ namespace DimStock.Business
         public bool PermissionToView { get; set; }
         public bool AllPermissions { get; set; }
         public List<BllUser> ListOfRecords { get; set; }
+        public AxlDataPagination DataPagination { get; set; }
         #endregion
 
         #region Access()
@@ -121,12 +123,35 @@ namespace DimStock.Business
         #endregion
 
         #region FetchData()
-        public void FetchData(string query, int numberOfRecords)
+        public void FetchData()
         {
-            var user = new MdlUser();
-            ListOfRecords = user.FetchData(query, numberOfRecords);
+            var user = new MdlUser(this);
+            var dataTable = user.FetchData();
+
+            PassDataTableToList(dataTable);
         }
         #endregion
+
+        #region PassDataTableToList()
+
+        private void PassDataTableToList(DataTable dataTable)
+        {
+            ListOfRecords = new List<BllUser>();
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                var user = new BllUser()
+                {
+                    Id = Convert.ToInt32(row["Id"]),
+                    YourName = Convert.ToString(row["Login"]),
+                    Email = Convert.ToString(row["Email"])
+                };
+
+                ListOfRecords.Add(user);
+            }
+        }
+
+        #endregion 
 
         #region ViewData()
         public void ViewData(int id)
