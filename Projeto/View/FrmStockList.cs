@@ -77,14 +77,16 @@ namespace DimStock.View
                     StockResume = CboResume.Text
                 };
 
-                stockProduct.ListAll(); stockProduct.GenerateReport();
+                stockProduct.ListAll(); 
+                stockProduct.GenerateReport(stockProduct.ListOfRecords);
 
                 var reportPath = "DimStock.Report.RpvStockProduct.rdlc";
                 var reportName = "Relatório de estoque";
                 var reportDataSet = "DataSetStockProduct";
 
-                FrmReportView.ShowReport(reportPath, reportName, true, new Dictionary<string, object>() 
-                { {reportDataSet, stockProduct.ListOfRecords } });
+                FrmReportView.ShowReport(reportPath, reportName, true, 
+                new Dictionary<string, object>() { {reportDataSet, 
+                stockProduct.ListOfRecords } });
             }
             catch (Exception ex)
             {
