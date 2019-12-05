@@ -1,13 +1,13 @@
 ﻿using System;
 using DimStock.Auxiliary;
+using DimStock.Auxiliary.Interfaces;
 using DimStock.Model;
 using DimStock.Report;
 using System.Collections.Generic;
-using System.Data;
 
 namespace DimStock.Business
 {
-    public class BllProduct
+    public class BllProduct : IDefaultController
     {
         #region Get e Set
         public int Id { get; set; }
@@ -32,7 +32,7 @@ namespace DimStock.Business
         {
             var product = new MdlProduct(this);
 
-            if (product.Rigister() == true)
+            if (product.Register() == true)
             {
                 var historic = new BllUserHistoric()
                 {
@@ -53,12 +53,12 @@ namespace DimStock.Business
         }
         #endregion
 
-        #region Update()
-        public bool Update(int id)
+        #region Edit()
+        public bool Edit(int id)
         {
             var product = new MdlProduct(this);
 
-            if (product.Update(id) == true)
+            if (product.Edit(id) == true)
             {
                 var historic = new BllUserHistoric()
                 {
@@ -111,7 +111,7 @@ namespace DimStock.Business
         public void ListAll()
         {
             var product = new MdlProduct(this);
-            ListOfRecords = product.ListAll();
+            product.ListAll();
         }
         #endregion
 
@@ -127,35 +127,7 @@ namespace DimStock.Business
         public void FetchData()
         {
             var product = new MdlProduct(this);
-
-            var dataTable = product.FetchData();
-
-            PassDataTableForList(dataTable);
-        }
-        #endregion
-
-        #region PassDataTableForList()
-        public void PassDataTableForList(DataTable datatable)
-        {
-            ListOfRecords = new List<BllProduct>();
-
-            foreach (DataRow row in datatable.Rows)
-            {
-                var product = new BllProduct()
-                {
-                    Id = Convert.ToInt32(row["Id"]),
-                    Code = Convert.ToString(row["Codigo"]),
-                    Size = Convert.ToString(row["Tamanho"]),
-                    Reference = Convert.ToString(row["Referencia"]),
-                    Supplier = Convert.ToString(row["Fornecedor"]),
-                    Description = Convert.ToString(row["Descricao"]),
-                    CostPrice = Convert.ToDouble(row["PrecoCusto"]),
-                    SalePrice = Convert.ToDouble(row["PrecoVenda"]),
-                    PhotoName = Convert.ToString(row["FotoNome"])
-                };
-
-                ListOfRecords.Add(product);
-            }
+            product.FetchData();
         }
         #endregion
 

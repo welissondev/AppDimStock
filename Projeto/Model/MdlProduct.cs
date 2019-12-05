@@ -1,4 +1,5 @@
 ﻿using DimStock.Business;
+using DimStock.Auxiliary.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,25 +8,21 @@ using System.Linq;
 
 namespace DimStock.Model
 {
-    public class MdlProduct
+    public class MdlProduct : IDefaultController
     {
         #region Properties
         private readonly BllProduct product;
         #endregion 
 
         #region Constructs
-        public MdlProduct()
-        {
-        }
-
         public MdlProduct(BllProduct product)
         {
             this.product = product;
         }
         #endregion 
 
-        #region Rigister()
-        public bool Rigister()
+        #region Register()
+        public bool Register()
         {
             using (var connection = new MdlConnection())
             {
@@ -69,8 +66,8 @@ namespace DimStock.Model
         }
         #endregion
 
-        #region Update()
-        public bool Update(int id)
+        #region Edit()
+        public bool Edit(int id)
         {
             using (var con = new MdlConnection())
             {
@@ -140,7 +137,7 @@ namespace DimStock.Model
         #endregion
 
         #region ListAll()
-        public List<BllProduct> ListAll()
+        public void ListAll()
         {
             var criterion = string.Empty;
             var commandSQL = string.Empty;
@@ -180,13 +177,13 @@ namespace DimStock.Model
                 if (product.Code != string.Empty)
                     e.AddWithValue("@Codigo", string.Format("{0}", product.Code));
 
-                if(product.Size != string.Empty)
+                if (product.Size != string.Empty)
                     e.AddWithValue("@Tamanho", string.Format("{0}", product.Size));
 
-                if(product.Reference != string.Empty)
+                if (product.Reference != string.Empty)
                     e.AddWithValue("@Referencia", string.Format("{0}", product.Reference));
 
-                if(product.Description != string.Empty)
+                if (product.Description != string.Empty)
                     e.AddWithValue("@Descricao", string.Format("%{0}%", product.Description));
 
                 #endregion 
@@ -212,13 +209,13 @@ namespace DimStock.Model
                     }
                 }
 
-                return productList;
+                product.ListOfRecords = productList;
             }
         }
         #endregion
 
         #region FetchData()
-        public DataTable FetchData()
+        public void FetchData()
         {
             var commandSQL = string.Empty;
             var sqlCount = string.Empty;
@@ -276,7 +273,7 @@ namespace DimStock.Model
                 product.DataPagination.OffSetValue,
                 product.DataPagination.PageSize);
 
-                return dataTable;
+                PassDataTableToList(dataTable);
             }
         }
         #endregion
@@ -358,6 +355,33 @@ namespace DimStock.Model
                 }
                 return recordsFounds > 0;
             }
+        }
+        #endregion 
+
+        #region PassDataTableToList()
+        private void PassDataTableToList(DataTable dataTable)
+        {
+            var productList = new List<BllProduct>();
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                var product = new BllProduct()
+                {
+                    Id = Convert.ToInt32(row["Id"]),
+                    Code = Convert.ToString(row["Codigo"]),
+                    Size = Convert.ToString(row["Tamanho"]),
+                    Reference = Convert.ToString(row["Referencia"]),
+                    Supplier = Convert.ToString(row["Fornecedor"]),
+                    Description = Convert.ToString(row["Descricao"]),
+                    CostPrice = Convert.ToDouble(row["PrecoCusto"]),
+                    SalePrice = Convert.ToDouble(row["PrecoVenda"]),
+                    PhotoName = Convert.ToString(row["FotoNome"])
+                };
+
+                productList.Add(product);
+            }
+
+            product.ListOfRecords = productList;
         }
         #endregion 
     }
