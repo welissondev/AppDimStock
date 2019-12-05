@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace DimStock.Business
 {
-    public class BllProduct : IDefaultController
+    public class BllProduct : IDefaultController, IReportController<BllProduct>
     {
         #region Get e Set
         public int Id { get; set; }
@@ -133,10 +133,10 @@ namespace DimStock.Business
 
         #region GenerateReport()
 
-        public void GenerateReport()
+        public void GenerateReport(List<BllProduct> listOfRecords)
         {
             var reportProduct = new ReportProduct();
-            reportProduct.Generate(ListOfRecords);
+            reportProduct.GenerateReport(listOfRecords);
         }
 
         #endregion 

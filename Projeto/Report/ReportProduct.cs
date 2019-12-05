@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using DimStock.Business;
+using DimStock.Auxiliary.Interfaces;
 
 namespace DimStock.Report
 {
-    public class ReportProduct
+    public class ReportProduct : IReportController<BllProduct>
     {
 
         #region Get e Set
@@ -21,7 +22,7 @@ namespace DimStock.Report
 
         #region Methods
 
-        public void Generate(List<BllProduct> productList)
+        public void GenerateReport(List<BllProduct> productList)
         {
             ListOfRecords = new List<ReportProduct>();
 

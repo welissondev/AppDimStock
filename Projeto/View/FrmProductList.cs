@@ -91,7 +91,8 @@ namespace DimStock.View
                     Description = TxtQueryByDescription.Text
                 };
 
-                product.ListAll(); product.GenerateReport();
+                product.ListAll(); 
+                product.GenerateReport(product.ListOfRecords);
 
                 var path = "DimStock.Report.RpvProduct.rdlc";
                 var name = "Relatório de Produtos";
