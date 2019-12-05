@@ -183,13 +183,13 @@ namespace DimStock.View
 
         #region LabelLink
 
-        #region LblRegisterNew_LinkClicked()
-        private void LblRegisterNew_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        #region LblRegisterNew_StockDestination_LinkClicked()
+        private void LblRegisterNew_StockDestination_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             try
             {
-                var frm = new FrmStockDestinationRegister();
-                frm.ShowDialog();
+                var frmStockDestinationRegister = new FrmStockDestinationRegister();
+                frmStockDestinationRegister.ShowDialog();
             }
             catch (Exception ex)
             {
