@@ -295,13 +295,12 @@ namespace DimStock.View
         {
             try
             {
-                var product = new BllProduct
+                var product = new BllProduct(dataPagination)
                 {
-                    Code = TxtQueryByCode.Text,
-                    Size = TxtQueryBySize.Text,
-                    Reference = TxtQueryByReference.Text,
-                    Description = TxtQueryByDescription.Text,
-                    DataPagination = dataPagination
+                    QueryByCode = TxtQueryByCode.Text,
+                    QueryBySize = TxtQueryBySize.Text,
+                    QueryByReference = TxtQueryByReference.Text,
+                    QueryByDescription = TxtQueryByDescription.Text,
                 };
 
                 product.FetchData();

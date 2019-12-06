@@ -231,16 +231,16 @@ namespace DimStock.Model
                 #endregion
 
                 #region Condição-de-critério
-                if (product.Code != string.Empty)
+                if (product.QueryByCode != string.Empty)
                     criterion += " AND Codigo LIKE @Codigo";
 
-                if (product.Size != string.Empty)
+                if (product.QueryBySize != string.Empty)
                     criterion += " AND Tamanho LIKE @Tamanho";
 
-                if (product.Reference != string.Empty)
+                if (product.QueryByReference != string.Empty)
                     criterion += " AND Referencia LIKE @Referencia";
 
-                if (product.Description != string.Empty)
+                if (product.QueryByDescription!= string.Empty)
                     criterion += " AND Descricao LIKE @Descricao";
 
                 commandSQL += criterion + " Order By Codigo, Tamanho, Referencia Asc";
@@ -250,17 +250,21 @@ namespace DimStock.Model
 
                 var e = connection.Command.Parameters;
 
-                if (product.Code != string.Empty)
-                    e.AddWithValue("@Codigo", string.Format("{0}", product.Code));
+                if (product.QueryByCode != string.Empty)
+                    e.AddWithValue("@Codigo", string.Format("{0}", 
+                    product.QueryByCode));
 
-                if (product.Size != string.Empty)
-                    e.AddWithValue("@Tamanho", string.Format("{0}", product.Size));
+                if (product.QueryBySize != string.Empty)
+                    e.AddWithValue("@Tamanho", string.Format("{0}", 
+                    product.QueryBySize));
 
-                if (product.Reference != string.Empty)
-                    e.AddWithValue("@Referencia", string.Format("{0}", product.Reference));
+                if (product.QueryByReference != string.Empty)
+                    e.AddWithValue("@Referencia", string.Format("{0}", 
+                    product.QueryByReference));
 
-                if (product.Description != string.Empty)
-                    e.AddWithValue("@Descricao", string.Format("%{0}%", product.Description));
+                if (product.QueryByDescription!= string.Empty)
+                    e.AddWithValue("@Descricao", string.Format("%{0}%", 
+                    product.QueryByDescription));
 
                 #endregion
 

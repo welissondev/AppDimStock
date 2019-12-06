@@ -8,7 +8,18 @@ namespace DimStock.Business
 {
     public class BllProduct 
     {
-        #region Get e Set
+        #region Constructors
+
+        public BllProduct(){ }
+
+        public BllProduct(AxlDataPagination dataPagination)
+        {
+            DataPagination = dataPagination;
+        }
+
+        #endregion
+
+        #region BussinesProperties
         public int Id { get; set; }
         public string Code { get; set; }
         public string Size { get; set; }
@@ -23,8 +34,19 @@ namespace DimStock.Business
         public string PhotoName { get; set; }
         public string FolderDirectoryOfPhothos { get => BllProductPhotho.GetPeth(); }
         public List<BllProduct> ListOfRecords { get; set; }
-        public AxlDataPagination DataPagination { get; set; }
         #endregion 
+
+        #region QueryProperties
+
+        public string QueryByCode{get;set;}
+        public string QueryBySize{get;set;}
+        public string QueryByReference{get;set;}
+        public string QueryByDescription{get;set;}
+        public AxlDataPagination DataPagination { get; set; }
+
+        #endregion
+
+        #region Methods
 
         #region Register()
         public bool Register()
@@ -139,5 +161,7 @@ namespace DimStock.Business
         }
 
         #endregion 
+
+        #endregion
     }
 }
