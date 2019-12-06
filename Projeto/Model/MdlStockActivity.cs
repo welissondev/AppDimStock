@@ -236,8 +236,8 @@ namespace DimStock.Model
         }
         #endregion
 
-        #region GetActivityDetails()
-        public void GetActivityDetails(int id)
+        #region GetDetails()
+        public void GetDetails(int id)
         {
             var commandSQL = @"SELECT * FROM TBEstoqueAtividade WHERE Id = " + id;
 

@@ -135,7 +135,7 @@ namespace DimStock.Business
         public void GetActivityDetails(int id)
         {
             var stockActivity = new MdlStockActivity(this);
-            stockActivity.GetActivityDetails(id);
+            stockActivity.GetDetails(id);
         }
         #endregion 
     }
