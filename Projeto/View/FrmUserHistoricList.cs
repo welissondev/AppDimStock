@@ -9,6 +9,7 @@ namespace DimStock.View
     {
         #region Variables
         private int numberOfRecords = 100;
+        private AxlDataPagination dataPagination = new AxlDataPagination();
         #endregion 
 
         #region Constructs
@@ -122,9 +123,14 @@ namespace DimStock.View
         {
             try
             {
-                var historic = new BllUserHistoric();
-                historic.FetchData(TxtQueryByLogin.Text, Convert.ToDateTime(TxtStartDate.Value).ToString("dd-MM-yyyy"),
-                Convert.ToDateTime(TxtFinalDate.Value).ToString("dd-MM-yyyy"), numberOfRecords);
+                var historic = new BllUserHistoric(dataPagination)
+                {
+                    QueryByLogin = TxtQueryByLogin.Text,
+                    QueryByStartDate = Convert.ToDateTime(TxtStartDate.Value).ToString("dd-MM-yyyy"),
+                    QueryByFinalDate = Convert.ToDateTime(TxtFinalDate.Value).ToString("dd-MM-yyyy")
+                };
+
+                historic.FetchData();
 
                 GridHistoricList.Rows.Clear();
 
