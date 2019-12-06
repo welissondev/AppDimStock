@@ -1,6 +1,7 @@
 ﻿using DimStock.Business;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.OleDb;
 
 namespace DimStock.Model
@@ -78,42 +79,92 @@ namespace DimStock.Model
         #endregion
 
         #region FechData()
-        public List<BllUserHistoric> FechData(string login, string startDate, string finalDate, int numberOfRecords = 100)
+        public void FechData()
         {
-            var commandSQL = @"SELECT * FROM TBUsuarioHistorico WHERE Login LIKE @Login AND Data >= @Data1 AND Data <= @Data2";
-
-            var historicsList = new List<BllUserHistoric>();
+            var commandSQL = string.Empty;
+            var criterion = string.Empty;
 
             using (var connection = new MdlConnection())
             {
 
-                var e = connection.Command.Parameters;
-                e.AddWithValue("@Login", string.Format("%{0}%", login));
-                e.AddWithValue("@Data1", string.Format("{0}", startDate));
-                e.AddWithValue("@Data2", string.Format("{0}", finalDate));
+                var parameter = connection.Command.Parameters;
 
-                using (var dr = connection.ExecuteParameterQuery(commandSQL))
+                #region QueryPadrão
+
+                commandSQL = @"SELECT * FROM TBUsuarioHistorico WHERE Id > 0";
+
+                #endregion 
+
+                #region Ciretório + DataInicio e DataFinal
+
+                if(historic.QueryByStartDate != string.Empty && 
+                historic.QueryByFinalDate != string.Empty)
                 {
-                    while (dr.Read())
-                    {
-                        var historic = new BllUserHistoric
-                        {
-                            Id = Convert.ToInt32(dr["Id"]),
-                            Login = Convert.ToString(dr["Login"]),
-                            OperationType = Convert.ToString(dr["Operacao"]),
-                            Module = Convert.ToString(dr["Modulo"]),
-                            OperationDate = Convert.ToDateTime(dr["Data"]),
-                            OperationHour = Convert.ToString(dr["Hora"]),
-                            DataFromAffectedRecord = Convert.ToString(dr["DadosRegistroAfetado"])
-                        };
+                    criterion += " AND Data >= @StartDate And Data <= @FinalDate";
 
-                        historicsList.Add(historic);
-                    }
+                    parameter.AddWithValue("@StartDate", string.Format("{0}",
+                    historic.QueryByStartDate));
+
+                    parameter.AddWithValue("@FinalDate", string.Format("{0}",
+                    historic.QueryByFinalDate));
                 }
-            }
 
-            return historicsList;
+                #endregion
+
+                #region Critério + Login
+
+                if(historic.QueryByLogin != string.Empty)
+                {
+                    criterion += " AND Login LIKE @Login ";
+
+                    parameter.AddWithValue("@Login", string.Format("%{0}%",
+                    historic.QueryByLogin));
+                }
+
+                #endregion 
+
+                #region SqlCommand + Critério
+
+                commandSQL += criterion;
+
+                #endregion
+
+                #region DataTable
+
+                var dataTable = connection.QueryWithDataTable(commandSQL,
+                historic.DataPagination.OffSetValue,
+                historic.DataPagination.PageSize);
+
+                PassDataTableForList(dataTable);
+
+                #endregion 
+            }
         }
         #endregion
+
+        #region PassDataTableForList()
+        private void PassDataTableForList(DataTable dataTable)
+        {
+            var historicList = new List<BllUserHistoric>();
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                var historic = new BllUserHistoric
+                {
+                    Id = Convert.ToInt32(row["Id"]),
+                    Login = Convert.ToString(row["Login"]),
+                    OperationType = Convert.ToString(row["Operacao"]),
+                    Module = Convert.ToString(row["Modulo"]),
+                    OperationDate = Convert.ToDateTime(row["Data"]),
+                    OperationHour = Convert.ToString(row["Hora"]),
+                    DataFromAffectedRecord = Convert.ToString(row["DadosRegistroAfetado"])
+                };
+
+                historicList.Add(historic);
+            }
+
+            historic.ListOfRecords = historicList;
+        }
+        #endregion 
     }
 }

@@ -1,15 +1,24 @@
-﻿using DimStock.Model;
-using System;
+﻿using System;
+using DimStock.Model;
+using DimStock.Auxiliary;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DimStock.Business
 {
     public class BllUserHistoric
     {
-        #region Get e Set
+        #region Constructs
+
+        public BllUserHistoric() { }
+
+        public BllUserHistoric(AxlDataPagination dataPagination)
+        {
+            DataPagination = dataPagination;
+        }
+
+        #endregion 
+
+        #region BussinessProperties
         public int Id { get; set; }
         public string Login { get; set; }
         public int AffectedRegistryId { get; set; }
@@ -20,6 +29,15 @@ namespace DimStock.Business
         public string Module { get; set; }
         public List<BllUserHistoric> ListOfRecords { get; set; }
         #endregion
+
+        #region QueryProperties
+
+        public string QueryByLogin { get; set; }
+        public string QueryByStartDate { get; set; }
+        public string QueryByFinalDate { get; set; }
+        public AxlDataPagination DataPagination { get; set; }
+
+        #endregion 
 
         #region Register()
         public bool Register()
@@ -38,10 +56,10 @@ namespace DimStock.Business
         #endregion
 
         #region FetchData()
-        public void FetchData(string login, string startDate, string finalDate, int numberOfRecords = 100)
+        public void FetchData()
         {
-            var historic = new MdlUserHistoric();
-            ListOfRecords = historic.FechData(login, startDate, finalDate, numberOfRecords);
+            var historic = new MdlUserHistoric(this);
+            historic.FechData();
         }
         #endregion 
     }
