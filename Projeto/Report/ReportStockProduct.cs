@@ -1,10 +1,9 @@
 ﻿using DimStock.Business;
-using DimStock.Auxiliary.Interfaces;
 using System.Collections.Generic;
 
 namespace DimStock.Report
 {
-    public class ReportStockProduct : IReportController<BllStockProduct>
+    public class ReportStockProduct 
     {
         #region Get e Set
         public string ProductCode { get; set; }

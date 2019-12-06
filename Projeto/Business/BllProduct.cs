@@ -1,13 +1,12 @@
 ﻿using System;
 using DimStock.Auxiliary;
-using DimStock.Auxiliary.Interfaces;
 using DimStock.Model;
 using DimStock.Report;
 using System.Collections.Generic;
 
 namespace DimStock.Business
 {
-    public class BllProduct : IDefaultController, IReportController<BllProduct>
+    public class BllProduct 
     {
         #region Get e Set
         public int Id { get; set; }

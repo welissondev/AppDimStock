@@ -133,8 +133,6 @@
     <Compile Include="Auxiliary\AxlDataGridViewStockItem.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Auxiliary\Interfaces\IDefaultController.cs" />
-    <Compile Include="Auxiliary\Interfaces\IReportController.cs" />
     <Compile Include="Business\BllStockDestination.cs" />
     <Compile Include="Business\BllStockItem.cs" />
     <Compile Include="Business\BllStockProduct.cs" />

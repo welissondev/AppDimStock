@@ -1,5 +1,4 @@
 ﻿using DimStock.Business;
-using DimStock.Auxiliary.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,7 +7,7 @@ using System.Linq;
 
 namespace DimStock.Model
 {
-    public class MdlProduct : IDefaultController
+    public class MdlProduct 
     {
         #region Properties
         private readonly BllProduct product;

@@ -1,6 +1,5 @@
 ﻿using System;
 using DimStock.Model;
-using DimStock.Auxiliary.Interfaces;
 using System.Collections.Generic;
 using DimStock.Report;
 using DimStock.Auxiliary;
@@ -8,7 +7,7 @@ using System.Data;
 
 namespace DimStock.Business
 {
-    public class BllStockProduct : IReportController<BllStockProduct>
+    public class BllStockProduct 
     {
         #region Get e Set
         public int StockId { get; set; }
