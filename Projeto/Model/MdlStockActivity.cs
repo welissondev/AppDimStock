@@ -4,6 +4,7 @@ using DimStock.Business;
 using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Linq;
+using System.Data;
 
 namespace DimStock.Model
 {
@@ -159,60 +160,78 @@ namespace DimStock.Model
         #endregion
 
         #region FetchData()
-        public List<BllStockActivity> FetchData(string activityNumber, string type, string operation, 
-        string startDate, string finalDate, int numberOfRecords = 100)
+        public void FetchData()
         {
             using (var connection = new MdlConnection())
             {
-                var commandSQL = @"SELECT TOP " + numberOfRecords +
-                @" * From TBEstoqueAtividade WHERE Data >= @DataInicio AND Data <= @DataFinal";
+                #region Variáveis
+                var commandSQL = string.Empty;
+                var criterion = string.Empty;
+                var parameter = connection.Command.Parameters;
+                #endregion 
 
-                var criterion = "";
+                #region Consulta Padrão
+                commandSQL = @"SELECT * From TBEstoqueAtividade WHERE Id > 0 ";
+                #endregion
 
-                if (activityNumber != "")
-                    criterion += " And Id LIKE @Id";
+                #region Critério + DataInicial e DataFinal
 
-                if (type != "")
-                    criterion += " And Tipo LIKE @Tipo";
-
-                if (operation != "")
-                    criterion += " And Situacao LIKE @Situacao";
-
-                commandSQL += criterion;
-
-                var e = connection.Command.Parameters;
-                e.AddWithValue("@DataInicio", string.Format("{0}", startDate));
-                e.AddWithValue("@DataFinal", string.Format("{0}", finalDate));
-
-                if (activityNumber != "")
-                    e.AddWithValue("@Id", string.Format("{0}", activityNumber));
-
-                if (type != "")
-                    e.AddWithValue("@Tipo", string.Format("{0}", type));
-
-                if (operation != "")
-                    e.AddWithValue("@Situacao", string.Format("{0}", operation));
-
-                var listStockActivity = new List<BllStockActivity>();
-
-                using (var dr = connection.QueryWithDataReader(commandSQL))
+                if (stockActivity.QueryByStartDate != string.Empty
+                 && stockActivity.QueryByFinalDate != string.Empty)
                 {
-                    while (dr.Read())
-                    {
-                        var stockActivity = new BllStockActivity()
-                        {
-                            Id = Convert.ToInt32(dr["Id"]),
-                            Type = dr["Tipo"].ToString(),
-                            Date = Convert.ToDateTime(dr["Data"]),
-                            Hour = dr["Hora"].ToString(),
-                            Situation = dr["Situacao"].ToString(),
-                        };
+                    criterion += " AND Data >= @StartDate And Data <= @FinalDate";
 
-                        listStockActivity.Add(stockActivity);
-                    }
+                    parameter.AddWithValue("@StartDate", string.Format("{0}",
+                    stockActivity.QueryByStartDate));
+
+                    parameter.AddWithValue("@FinalDate", string.Format("{0}",
+                    stockActivity.QueryByFinalDate));
                 }
 
-                return listStockActivity;
+                #endregion
+
+                #region Critério + Tipo
+                if (stockActivity.QueryByType != string.Empty)
+                {
+                    criterion += " And Tipo LIKE @Type";
+
+                    parameter.AddWithValue("@Type", string.Format("{0}",
+                    stockActivity.QueryByType));
+                }
+                #endregion
+
+                #region Critério + Situação
+                if (stockActivity.QueryBySituation != string.Empty)
+                {
+                    criterion += " And Situacao LIKE @Situation";
+
+                    parameter.AddWithValue("@Situation", string.Format("{0}",
+                    stockActivity.QueryBySituation));
+
+                }
+                #endregion
+
+                #region Critério + Número da atividade
+                if (stockActivity.QueryByActivityNumber != string.Empty)
+                {
+                    criterion += " And Id LIKE @ActvityNumber";
+
+                    parameter.AddWithValue("@ActvityNumber", string.Format("{0}",
+                    stockActivity.QueryByActivityNumber));
+                }
+                #endregion
+
+                #region ComandoSQL + Critério
+                commandSQL += criterion;
+                #endregion
+
+                #region Preenche DataTable
+                var dataTable = connection.QueryWithDataTable(commandSQL,
+                stockActivity.DataPagination.OffSetValue,
+                stockActivity.DataPagination.PageSize);
+                #endregion 
+
+                PassDataTableToList(dataTable);
             }
         }
         #endregion
@@ -264,6 +283,29 @@ namespace DimStock.Model
 
                 return string.Join(" | ", affectedFieldList.Select(x => x.ToString()));
             }
+        }
+        #endregion
+
+        #region PassDataTableToList()
+        private void PassDataTableToList(DataTable dataTable)
+        {
+            var activityStockList = new List<BllStockActivity>();
+
+            foreach(DataRow row in dataTable.Rows)
+            {
+                var stockActivity = new BllStockActivity()
+                {
+                    Id = Convert.ToInt32(row["Id"]),
+                    Type = Convert.ToString(row["Tipo"]),
+                    Date = Convert.ToDateTime(row["Data"]),
+                    Hour = Convert.ToString(row["Hora"]),
+                    Situation = Convert.ToString(row["Situacao"])
+                };
+
+                activityStockList.Add(stockActivity);
+            }
+
+            stockActivity.ListOfRecords = activityStockList;
         }
         #endregion
     }

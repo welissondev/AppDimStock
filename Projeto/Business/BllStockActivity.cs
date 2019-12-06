@@ -8,7 +8,18 @@ namespace DimStock.Business
 {
     public class BllStockActivity
     {
-        #region Get e Set
+        #region Constructs
+
+        public BllStockActivity() { }
+
+        public BllStockActivity(AxlDataPagination dataPagination)
+        {
+            DataPagination = dataPagination;
+        }
+
+        #endregion 
+
+        #region BussinessProperties
         public int Id { get; set; }
         public string Type { get; set; }
         public DateTime Date { get; set; }
@@ -17,6 +28,17 @@ namespace DimStock.Business
         public string Destination { get; set; }
         public List<BllStockActivity> ListOfRecords { get; set; }
         #endregion
+
+        #region QueryProperties
+
+        public string QueryByStartDate { get; set; }
+        public string QueryByFinalDate { get; set; }
+        public string QueryByType { get; set; }
+        public string QueryBySituation { get; set; }
+        public string QueryByActivityNumber { get; set; }
+        public AxlDataPagination DataPagination { get; set; }
+
+        #endregion 
 
         #region Add()
         public bool Add()
@@ -60,7 +82,7 @@ namespace DimStock.Business
         {
             var deleteState = false;
 
-            var stockActivity = new MdlStockActivity();
+            var stockActivity = new MdlStockActivity(this);
             var dataFromAffectedRecord = stockActivity.GetDataFromAffectedRecord(id);
 
             var stockItem = new BllStockItem();
@@ -96,16 +118,16 @@ namespace DimStock.Business
         #region ListAll()
         public void ListAll(int numberOfRecords = 100)
         {
-            var stockActivity = new MdlStockActivity();
+            var stockActivity = new MdlStockActivity(this);
             ListOfRecords = stockActivity.ListAll(numberOfRecords);
         }
         #endregion
 
         #region FetchData()
-        public void FetchData(string activityNumber, string type, string situation, string startDate, string finalDate, int numberOfRecords = 100)
+        public void FetchData()
         {
-            var stockActivity = new MdlStockActivity();
-            ListOfRecords = stockActivity.FetchData(activityNumber, type, situation, startDate, finalDate, numberOfRecords);
+            var stockActivity = new MdlStockActivity(this);
+            stockActivity.FetchData();
         }
         #endregion 
 
