@@ -13,7 +13,6 @@ namespace DimStock.View
     public partial class FrmStockActivityList : Form
     {
         #region Variables
-        private readonly int numberOfRecords = 100;
         private AxlDataPagination dataPagination = new AxlDataPagination();
         #endregion 
 
