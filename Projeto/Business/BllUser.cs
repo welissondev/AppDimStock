@@ -11,7 +11,18 @@ namespace DimStock.Business
 {
     public class BllUser
     {
-        #region Get e Set 
+        #region Constructs
+
+        public BllUser() { }
+
+        public BllUser(AxlDataPagination dataPagination)
+        {
+            DataPagination = dataPagination;
+        }
+
+        #endregion 
+
+        #region BussinesProperties 
         public int Id { get; set; }
         public string YourName { get; set; }
         public string Email { get; set; }
@@ -23,8 +34,15 @@ namespace DimStock.Business
         public bool PermissionToView { get; set; }
         public bool AllPermissions { get; set; }
         public List<BllUser> ListOfRecords { get; set; }
-        public AxlDataPagination DataPagination { get; set; }
         #endregion
+
+        #region QueryProperties
+
+        public string QueryByName { get; set; }
+        public string QueryByEmail { get; set; }
+        public AxlDataPagination DataPagination { get; set; }
+
+        #endregion 
 
         #region Access()
         public bool Access()
@@ -126,32 +144,9 @@ namespace DimStock.Business
         public void FetchData()
         {
             var user = new MdlUser(this);
-            var dataTable = user.FetchData();
-
-            PassDataTableToList(dataTable);
+            user.FetchData();
         }
         #endregion
-
-        #region PassDataTableToList()
-
-        private void PassDataTableToList(DataTable dataTable)
-        {
-            ListOfRecords = new List<BllUser>();
-
-            foreach (DataRow row in dataTable.Rows)
-            {
-                var user = new BllUser()
-                {
-                    Id = Convert.ToInt32(row["Id"]),
-                    YourName = Convert.ToString(row["Login"]),
-                    Email = Convert.ToString(row["Email"])
-                };
-
-                ListOfRecords.Add(user);
-            }
-        }
-
-        #endregion 
 
         #region ViewData()
         public void ViewData(int id)

@@ -197,7 +197,7 @@ namespace DimStock.Model
                 {
                     while (dr.Read())
                     {
-                        usersFound +=1;
+                        usersFound += 1;
                     }
                 }
 
@@ -242,19 +242,21 @@ namespace DimStock.Model
         #endregion
 
         #region FetchData()
-        public DataTable FetchData()
+        public void FetchData()
         {
             using (var connection = new MdlConnection())
             {
                 var commandSQL = "SELECT * FROM TBUsuario WHERE Nome LIKE @Nome Or Email LIKE @Email";
 
-                var e = connection.Command.Parameters;
-                e.AddWithValue("@Nome", string.Format("%{0}%", user.YourName));
-                e.AddWithValue("@Email", string.Format("%{0}%", user.Email));
+                var parameter = connection.Command.Parameters;
+                parameter.AddWithValue("@Nome", string.Format("%{0}%", user.QueryByName));
+                parameter.AddWithValue("@Email", string.Format("%{0}%", user.QueryByEmail));
 
-                return connection.QueryWithDataTable(commandSQL, user.DataPagination.OffSetValue, 
+                var dataTable = connection.QueryWithDataTable(commandSQL,
+                user.DataPagination.OffSetValue,
                 user.DataPagination.PageSize);
 
+                PassDataTableToList(dataTable);
             }
         }
         #endregion
@@ -316,6 +318,29 @@ namespace DimStock.Model
             }
         }
         #endregion
+
+        #region PassDataTableToList()
+
+        private void PassDataTableToList(DataTable dataTable)
+        {
+            var userList = new List<BllUser>();
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                var user = new BllUser()
+                {
+                    Id = Convert.ToInt32(row["Id"]),
+                    YourName = Convert.ToString(row["Login"]),
+                    Email = Convert.ToString(row["Email"])
+                };
+
+                userList.Add(user);
+            }
+
+            user.ListOfRecords = userList;
+        }
+
+        #endregion 
 
     }
 }

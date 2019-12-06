@@ -215,12 +215,12 @@ namespace DimStock.View
             {
                 GridUserList.Rows.Clear();
 
-                var user = new BllUser()
+                var user = new BllUser(dataPagination)
                 {
-                    YourName = TxtQueryByUser.Text,
-                    Email = TxtQueryByUser.Text,
-                    DataPagination = dataPagination
+                    QueryByName = TxtQueryByUser.Text,
+                    QueryByEmail = TxtQueryByUser.Text,
                 };
+
                 user.FetchData();
 
                 for (int i = 0; i < user.ListOfRecords.Count; i++)
