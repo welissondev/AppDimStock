@@ -100,10 +100,10 @@ namespace DimStock.Model
         }
         #endregion 
 
-        #region UpdateSituation()
-        public bool UpdateSituation(MdlConnection connection, int activityId)
+        #region EditSituation()
+        public bool EditSituation(MdlConnection connection, int id)
         {
-            var commandSQL = @"UPDATE TBEstoqueAtividade Set Situacao = 'Finalizada' Where Id = " + activityId;
+            var commandSQL = @"UPDATE TBEstoqueAtividade Set Situacao = 'Finalizada' Where Id = " + id;
             var transactionState = false;
 
             if (connection.ExecuteTransaction(commandSQL) > 0)
@@ -115,7 +115,7 @@ namespace DimStock.Model
                     Module = "Atividade",
                     OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
                     OperationHour = DateTime.Now.ToString("HH:mm:ss"),
-                    DataFromAffectedRecord = GetAffectedFields(activityId)
+                    DataFromAffectedRecord = GetAffectedFields(id)
                 };
 
                 if (historic.Register() == true)
