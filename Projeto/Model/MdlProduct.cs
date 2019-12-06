@@ -153,42 +153,42 @@ namespace DimStock.Model
                 #endregion
 
                 #region Critério + Código
-                if (product.Code != string.Empty)
+                if (product.QueryByCode != string.Empty)
                 {
                     criterion += " AND Codigo = @Codigo ";
 
                     parameter.AddWithValue("@Codigo", string.Format("{0}",
-                    product.Code));
+                    product.QueryByCode));
                 }
                 #endregion    
 
                 #region Critério + Tamanho
-                if (product.Size != string.Empty)
+                if (product.QueryBySize!= string.Empty)
                 {
                     criterion += " AND Tamanho = @Tamanho ";
 
                     parameter.AddWithValue("@Tamanho", string.Format("{0}",
-                    product.Size));
+                    product.QueryBySize));
                 }
                 #endregion     
 
                 #region Critério + Referência
-                if (product.Reference != string.Empty)
+                if (product.QueryByReference != string.Empty)
                 {
                     criterion += " AND Referencia = @Referencia";
 
                     parameter.AddWithValue("@Referencia", string.Format("{0}",
-                    product.Reference));
+                    product.QueryByReference));
                 }
                 #endregion     
 
                 #region Critério + Descrição
-                if (product.Description != string.Empty)
+                if (product.QueryByDescription!= string.Empty)
                 {
-                    criterion += " AND Descricao = @Descricao";
+                    criterion += " AND Descricao LIKE @Descricao";
 
                     parameter.AddWithValue("@Descricao", string.Format("%{0}%",
-                    product.Description));
+                    product.QueryByDescription));
                 }
                 #endregion
 
