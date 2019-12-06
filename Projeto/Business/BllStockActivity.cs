@@ -56,7 +56,7 @@ namespace DimStock.Business
                     Module = "Atividade",
                     OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
                     OperationHour = DateTime.Now.ToString("HH:mm:ss"),
-                    DataFromAffectedRecord = stockActivity.GetDataFromAffectedRecord(Id)
+                    DataFromAffectedRecord = stockActivity.GetAffectedFields(Id)
                 };
 
                 if (historic.Register() == true)
@@ -83,7 +83,7 @@ namespace DimStock.Business
             var deleteState = false;
 
             var stockActivity = new MdlStockActivity(this);
-            var dataFromAffectedRecord = stockActivity.GetDataFromAffectedRecord(id);
+            var dataFromAffectedRecord = stockActivity.GetAffectedFields(id);
 
             var stockItem = new BllStockItem();
             stockItem.ListItem(id);

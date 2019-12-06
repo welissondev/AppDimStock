@@ -115,7 +115,7 @@ namespace DimStock.Model
                     Module = "Atividade",
                     OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
                     OperationHour = DateTime.Now.ToString("HH:mm:ss"),
-                    DataFromAffectedRecord = GetDataFromAffectedRecord(activityId)
+                    DataFromAffectedRecord = GetAffectedFields(activityId)
                 };
 
                 if (historic.Register() == true)
@@ -259,8 +259,8 @@ namespace DimStock.Model
         }
         #endregion
 
-        #region GetDataFromAffectedRecords()
-        public string GetDataFromAffectedRecord(int id)
+        #region GetAffectedFields()
+        public string GetAffectedFields(int id)
         {
             using (var connection = new MdlConnection())
             {
