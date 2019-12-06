@@ -129,13 +129,13 @@ namespace DimStock.Model
         #endregion
 
         #region ListAll()
-        public List<BllStockActivity> ListAll(int numberOfRecords = 100)
+        public void ListAll()
         {
             using (var connection = new MdlConnection())
             {
-                var commandSQL = @"SELECT TOP " + numberOfRecords + " * From TBEstoqueAtividade";
+                var commandSQL = @"SELECT * From TBEstoqueAtividade";
 
-                var listStockActivity = new List<BllStockActivity>();
+                var stockActivityList = new List<BllStockActivity>();
 
                 using (var dr = connection.QueryWithDataReader(commandSQL))
                 {
@@ -150,11 +150,11 @@ namespace DimStock.Model
                             Situation = dr["Situacao"].ToString(),
                         };
 
-                        listStockActivity.Add(stockActivity);
+                        stockActivityList.Add(stockActivity);
                     }
-                }
 
-                return listStockActivity;
+                    stockActivity.ListOfRecords = stockActivityList;
+                }
             }
         }
         #endregion

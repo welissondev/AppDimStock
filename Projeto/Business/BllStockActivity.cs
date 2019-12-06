@@ -116,10 +116,10 @@ namespace DimStock.Business
         #endregion
 
         #region ListAll()
-        public void ListAll(int numberOfRecords = 100)
+        public void ListAll()
         {
             var stockActivity = new MdlStockActivity(this);
-            ListOfRecords = stockActivity.ListAll(numberOfRecords);
+            stockActivity.ListAll();
         }
         #endregion
 

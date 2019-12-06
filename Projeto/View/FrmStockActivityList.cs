@@ -192,7 +192,7 @@ namespace DimStock.View
         {
             try
             {
-                var stockActivity = new BllStockActivity();
+                var stockActivity = new BllStockActivity(dataPagination);
                 stockActivity.ListAll();
 
                 GridActivityList.Rows.Clear();
