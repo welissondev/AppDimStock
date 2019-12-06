@@ -3,16 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
-using DimStock.Auxiliary;
 
 namespace DimStock.Model
 {
     public class MdlStockProduct
     {
-        #region Properties
-        private BllStockProduct stockProduct;
-        #endregion
-
         #region Constructors
         public MdlStockProduct() { }
 
@@ -21,6 +16,10 @@ namespace DimStock.Model
             this.stockProduct = stockProduct;
         }
         #endregion 
+
+        #region Properties
+        private BllStockProduct stockProduct;
+        #endregion
 
         #region Filter()
         public List<BllStockProduct> Filter(string code, string size, string reference,
@@ -102,7 +101,7 @@ namespace DimStock.Model
 
                 #region Comandos-SQL
 
-                if (stockProduct.StockResume == "Todos")
+                if (stockProduct.QueryByResume == "Todos")
                 {
                     sqlCount = @"SELECT COUNT(TBEstoque.Id) From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE TBEstoque.Id > 0";
@@ -112,7 +111,7 @@ namespace DimStock.Model
                     TBEstoque.IdProduto = TBProduto.Id WHERE TBEstoque.Id > 0";
                 }
 
-                if (stockProduct.StockResume == "Sem Resumo")
+                if (stockProduct.QueryByResume == "Sem Resumo")
                 {
                     sqlCount = @"SELECT COUNT(TBEstoque.Id) From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade = 0 AND EstoqueMax = 0 AND EstoqueMin = 0";
@@ -123,7 +122,7 @@ namespace DimStock.Model
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade = 0 AND EstoqueMax = 0 AND EstoqueMin = 0";
                 }
 
-                if (stockProduct.StockResume == "Ok")
+                if (stockProduct.QueryByResume == "Ok")
                 {
                     sqlCount = @"SELECT COUNT(TBEstoque.Id) From TBProduto INNER JOIN TBEstoque ON 
                     TBProduto.Id = TBEstoque.IdProduto WHERE Quantidade > 0 AND Quantidade >= 
@@ -135,7 +134,7 @@ namespace DimStock.Model
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade > 0 AND Quantidade >= EstoqueMin AND Quantidade <= EstoqueMax";
                 }
 
-                if (stockProduct.StockResume == "Alto")
+                if (stockProduct.QueryByResume == "Alto")
                 {
                     sqlCount = @"SELECT COUNT(TBEstoque.Id) From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade > EstoqueMax";
@@ -146,7 +145,7 @@ namespace DimStock.Model
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade > EstoqueMax";
                 }
 
-                if (stockProduct.StockResume == "Baixo")
+                if (stockProduct.QueryByResume == "Baixo")
                 {
                     sqlCount = @"SELECT COUNT(TBEstoque.Id) From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade < EstoqueMin";
@@ -160,17 +159,17 @@ namespace DimStock.Model
 
                 #region Critério-de-consulta
 
-                if (stockProduct.ProductDescription != string.Empty)
-                    criterion += " AND Descricao LIKE @Descricao";
-
-                if (stockProduct.ProductCode != string.Empty)
+                if (stockProduct.QueryByCode != string.Empty)
                     criterion += " AND Codigo LIKE @Codigo ";
 
-                if (stockProduct.ProductSize != string.Empty)
+                if (stockProduct.QueryBySize != string.Empty)
                     criterion += " AND Tamanho LIKE @Tamanho ";
 
-                if (stockProduct.ProductReference != string.Empty)
+                if (stockProduct.QueryByReference != string.Empty)
                     criterion += " AND Referencia LIKE @Referencia ";
+
+                if (stockProduct.QueryByDescription != string.Empty)
+                    criterion += " AND Descricao LIKE @Descricao";
 
                 commandSQL += criterion +
                 " Order By Codigo, Tamanho, Referencia Asc";
@@ -182,17 +181,22 @@ namespace DimStock.Model
                 #region Critério-de-parametros
                 var p = con.Command.Parameters;
 
-                if (stockProduct.ProductDescription != string.Empty)
-                    p.AddWithValue("@Descricao", string.Format("%{0}%", stockProduct.ProductDescription));
+                if (stockProduct.QueryByCode != string.Empty)
+                    p.AddWithValue("@Codigo", string.Format("{0}", 
+                    stockProduct.QueryByCode));
 
-                if (stockProduct.ProductCode != "")
-                    p.AddWithValue("@Codigo", string.Format("{0}", stockProduct.ProductCode));
+                if (stockProduct.QueryBySize != string.Empty)
+                    p.AddWithValue("@Tamanho", string.Format("{0}", 
+                    stockProduct.QueryBySize));
 
-                if (stockProduct.ProductSize != "")
-                    p.AddWithValue("@Tamanho", string.Format("{0}", stockProduct.ProductSize));
+                if (stockProduct.QueryByReference != string.Empty)
+                    p.AddWithValue("@Referencia", string.Format("{0}", 
+                    stockProduct.QueryByReference));
 
-                if (stockProduct.ProductReference != "")
-                    p.AddWithValue("@Referencia", string.Format("{0}", stockProduct.ProductReference));
+                if (stockProduct.QueryByDescription != string.Empty)
+                    p.AddWithValue("@Descricao", string.Format("%{0}%",
+                    stockProduct.QueryByDescription));
+
                 #endregion
 
                 #region Contagem-de-registros
@@ -200,8 +204,9 @@ namespace DimStock.Model
                 #endregion
 
                 #region Preencher-Datatable
-                var dataTable = con.QueryWithDataTable(commandSQL, 
-                stockProduct.DataPagination.OffSetValue, stockProduct.DataPagination.PageSize);
+                var dataTable = con.QueryWithDataTable(commandSQL,
+                stockProduct.DataPagination.OffSetValue, 
+                stockProduct.DataPagination.PageSize);
                 #endregion
 
                 return dataTable;
