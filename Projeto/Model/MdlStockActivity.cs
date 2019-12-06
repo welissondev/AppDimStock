@@ -23,8 +23,8 @@ namespace DimStock.Model
         }
         #endregion
 
-        #region Add()
-        public bool Add()
+        #region Register()
+        public bool Register()
         {
             bool addState = false;
 

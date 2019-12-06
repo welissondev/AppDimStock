@@ -40,14 +40,14 @@ namespace DimStock.Business
 
         #endregion 
 
-        #region Add()
-        public bool Add()
+        #region Register()
+        public bool Register()
         {
             var addState = false;
 
             var stockActivity = new MdlStockActivity(this);
 
-            if (stockActivity.Add() == true)
+            if (stockActivity.Register() == true)
             {
                 var historic = new BllUserHistoric
                 {

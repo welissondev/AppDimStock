@@ -632,7 +632,7 @@ namespace DimStock.View
             stockActivity.Hour = DateTime.Now.ToString("HH:mm:ss");
             stockActivity.Situation = "Em Aberto";
 
-            if (stockActivity.Add() == true)
+            if (stockActivity.Register() == true)
             {
                 activityState = true;
 
