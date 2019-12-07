@@ -2,6 +2,7 @@
 using DimStock.Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,18 @@ namespace DimStock.Business
 {
     public class BllUser
     {
-        #region Get e Set 
+        #region Constructs
+
+        public BllUser() { }
+
+        public BllUser(AxlDataPagination dataPagination)
+        {
+            DataPagination = dataPagination;
+        }
+
+        #endregion 
+
+        #region BussinesProperties 
         public int Id { get; set; }
         public string YourName { get; set; }
         public string Email { get; set; }
@@ -23,6 +35,14 @@ namespace DimStock.Business
         public bool AllPermissions { get; set; }
         public List<BllUser> ListOfRecords { get; set; }
         #endregion
+
+        #region QueryProperties
+
+        public string QueryByName { get; set; }
+        public string QueryByEmail { get; set; }
+        public AxlDataPagination DataPagination { get; set; }
+
+        #endregion 
 
         #region Access()
         public bool Access()
@@ -121,10 +141,10 @@ namespace DimStock.Business
         #endregion
 
         #region FetchData()
-        public void FetchData(string query, int numberOfRecords)
+        public void FetchData()
         {
-            var user = new MdlUser();
-            ListOfRecords = user.FetchData(query, numberOfRecords);
+            var user = new MdlUser(this);
+            user.FetchData();
         }
         #endregion
 

@@ -43,7 +43,7 @@ namespace DimStock.View
 
             ListItemsInPageSize();
 
-            ListDataGrid(FetchData());
+            FetchData();
 
             WindowState = FormWindowState.Maximized;
 
@@ -59,7 +59,7 @@ namespace DimStock.View
         {
             ResetControl();
             ConfigureDataPagination();
-            ListDataGrid(FetchData());
+            FetchData();
         }
         #endregion
 
@@ -77,14 +77,16 @@ namespace DimStock.View
                     StockResume = CboResume.Text
                 };
 
-                stockProduct.ListAll(); stockProduct.GenerateReport();
+                stockProduct.ListAll();
+                stockProduct.GenerateReport(stockProduct.ListOfRecords);
 
                 var reportPath = "DimStock.Report.RpvStockProduct.rdlc";
                 var reportName = "Relatório de estoque";
                 var reportDataSet = "DataSetStockProduct";
 
-                FrmReportView.ShowReport(reportPath, reportName, true, new Dictionary<string, object>() 
-                { {reportDataSet, stockProduct.ListOfRecords } });
+                FrmReportView.ShowReport(reportPath, reportName, true,
+                new Dictionary<string, object>() { {reportDataSet,
+                stockProduct.ListOfRecords } });
             }
             catch (Exception ex)
             {
@@ -114,7 +116,7 @@ namespace DimStock.View
         private void Timer_Tick(object sender, EventArgs e)
         {
             TimeStopSearch();
-            ListDataGrid(FetchData());
+            FetchData();
         }
         #endregion
 
@@ -295,57 +297,43 @@ namespace DimStock.View
         #region Methods
 
         #region FetchData()
-        private List<BllStockProduct> FetchData()
+        private void FetchData()
         {
-            var stockProduct = new BllStockProduct();
-
             try
             {
-                stockProduct.ProductCode = TxtQueryByCode.Text;
-                stockProduct.ProductSize = TxtQueryBySize.Text;
-                stockProduct.ProductReference = TxtQueryByReference.Text;
-                stockProduct.ProductDescription = TxtQueryByDescription.Text;
-                stockProduct.StockResume = CboResume.Text;
-                stockProduct.DataPagination = dataPagination;
+
+                var stockProduct = new BllStockProduct(dataPagination)
+                {
+                    QueryByCode = TxtQueryByCode.Text,
+                    QueryBySize = TxtQueryBySize.Text,
+                    QueryByReference = TxtQueryByReference.Text,
+                    QueryByDescription = TxtQueryByDescription.Text,
+                    QueryByResume = CboResume.Text
+                };
 
                 stockProduct.FetchData();
-            }
-            catch (Exception ex)
-            {
-                AxlException.Message.Show(ex);
-            }
 
-            return stockProduct.ListOfRecords;
-        }
-        #endregion
 
-        #region ListDataGrid()
-        private void ListDataGrid(List<BllStockProduct> listaDeEstoque)
-        {
-            try
-            {
                 GridStockList.Rows.Clear();
 
-                var ls = listaDeEstoque;
-
-                for (int i = 0; i < listaDeEstoque.Count; i++)
+                for (int i = 0; i < stockProduct.ListOfRecords.Count; i++)
                 {
                     GridStockList.Rows.Add(
-                    ls[i].StockId,
-                    ls[i].ProductId,
-                    ls[i].ProductCode,
-                    ls[i].ProductReference,
-                    ls[i].ProductSize,
-                    ls[i].ProductDescription,
-                    ls[i].MinStock,
-                    ls[i].MaxStock,
-                    ls[i].StockQuantity,
-                    ls[i].StockValue,
-                    ls[i].StockResume,
-                    ls[i].StockResult);
+                    stockProduct.ListOfRecords[i].StockId,
+                    stockProduct.ListOfRecords[i].ProductId,
+                    stockProduct.ListOfRecords[i].ProductCode,
+                    stockProduct.ListOfRecords[i].ProductReference,
+                    stockProduct.ListOfRecords[i].ProductSize,
+                    stockProduct.ListOfRecords[i].ProductDescription,
+                    stockProduct.ListOfRecords[i].MinStock,
+                    stockProduct.ListOfRecords[i].MaxStock,
+                    stockProduct.ListOfRecords[i].StockQuantity,
+                    stockProduct.ListOfRecords[i].StockValue,
+                    stockProduct.ListOfRecords[i].StockResume,
+                    stockProduct.ListOfRecords[i].StockResult);
                 }
 
-                SetPhoto(ls);
+                SetPhoto(stockProduct.ListOfRecords);
 
                 SetInBadingNavigator();
 

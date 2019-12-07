@@ -73,7 +73,7 @@
             this.LblFormTitle = new System.Windows.Forms.Label();
             this.BtnNew = new Syncfusion.WinForms.Controls.SfButton();
             this.CboStockDestination = new System.Windows.Forms.ComboBox();
-            this.LklRegisterNew = new System.Windows.Forms.LinkLabel();
+            this.LklRegisterNewStockDestination = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.TxtQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtTotalValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtUnitaryValue)).BeginInit();
@@ -576,8 +576,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.GridMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridMain.ListIsStock = false;
             this.GridMain.ListIsItem = false;
+            this.GridMain.ListIsStock = false;
             this.GridMain.Location = new System.Drawing.Point(21, 60);
             this.GridMain.Name = "GridMain";
             this.GridMain.Size = new System.Drawing.Size(861, 251);
@@ -777,16 +777,16 @@
             this.CboStockDestination.DropDown += new System.EventHandler(this.CboStockDestination_DropDown);
             this.CboStockDestination.SelectedIndexChanged += new System.EventHandler(this.CboStockDestination_SelectedIndexChanged);
             // 
-            // LklRegisterNew
+            // LklRegisterNewStockDestination
             // 
-            this.LklRegisterNew.AutoSize = true;
-            this.LklRegisterNew.Location = new System.Drawing.Point(320, 223);
-            this.LklRegisterNew.Name = "LklRegisterNew";
-            this.LklRegisterNew.Size = new System.Drawing.Size(81, 13);
-            this.LklRegisterNew.TabIndex = 146;
-            this.LklRegisterNew.TabStop = true;
-            this.LklRegisterNew.Text = "Cadastrar Novo";
-            this.LklRegisterNew.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LblRegisterNew_LinkClicked);
+            this.LklRegisterNewStockDestination.AutoSize = true;
+            this.LklRegisterNewStockDestination.Location = new System.Drawing.Point(320, 223);
+            this.LklRegisterNewStockDestination.Name = "LklRegisterNewStockDestination";
+            this.LklRegisterNewStockDestination.Size = new System.Drawing.Size(81, 13);
+            this.LklRegisterNewStockDestination.TabIndex = 146;
+            this.LklRegisterNewStockDestination.TabStop = true;
+            this.LklRegisterNewStockDestination.Text = "Cadastrar Novo";
+            this.LklRegisterNewStockDestination.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LblRegisterNew_StockDestination_LinkClicked);
             // 
             // FrmStockActivityRegister
             // 
@@ -794,7 +794,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(964, 681);
-            this.Controls.Add(this.LklRegisterNew);
+            this.Controls.Add(this.LklRegisterNewStockDestination);
             this.Controls.Add(this.CboStockDestination);
             this.Controls.Add(this.GbxGeneralInformation);
             this.Controls.Add(this.LblStockDestination);
@@ -869,6 +869,6 @@
         public Auxiliary.AxlDataGridViewStockItem GridMain;
         public System.Windows.Forms.Label LblStockDestination;
         private System.Windows.Forms.ComboBox CboStockDestination;
-        private System.Windows.Forms.LinkLabel LklRegisterNew;
+        private System.Windows.Forms.LinkLabel LklRegisterNewStockDestination;
     }
 }

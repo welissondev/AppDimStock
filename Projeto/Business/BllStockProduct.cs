@@ -9,7 +9,18 @@ namespace DimStock.Business
 {
     public class BllStockProduct
     {
-        #region Get e Set
+        #region Constructs
+
+        public BllStockProduct() { }
+
+        public BllStockProduct(AxlDataPagination dataPagination)
+        {
+            DataPagination = dataPagination;
+        }
+
+        #endregion
+
+        #region BussinesProperties
         public int StockId { get; set; }
         public string Supplier { get; set; }
         public int StockQuantity { get; set; }
@@ -26,16 +37,28 @@ namespace DimStock.Business
         public double ProductCostPrice { get; set; }
         public string ProductPhotoName { get; set; }
         public List<BllStockProduct> ListOfRecords { get; set; }
-        public AxlDataPagination DataPagination { get; set; }
         #endregion 
 
+        #region QueryProperties
+
+        public string QueryByCode { get; set; }
+        public string QueryBySize { get; set; }
+        public string QueryByReference { get; set; }
+        public string QueryByDescription { get; set; }
+        public string QueryByResume { get; set; }
+        public AxlDataPagination DataPagination { get; set; }
+
+        #endregion
+
+        #region Methods
+
         #region Filter()
-        public void Filter(string code, string size, string reference, 
+        public void Filter(string code, string size, string reference,
         string description, int numberOfRecords = 20)
         {
             var stockProduct = new MdlStockProduct();
 
-            ListOfRecords = stockProduct.Filter(code, size, reference, 
+            ListOfRecords = stockProduct.Filter(code, size, reference,
             description, numberOfRecords);
         }
         #endregion
@@ -84,7 +107,7 @@ namespace DimStock.Business
                     StockQuantity = Convert.ToInt32(row["Quantidade"]),
                     StockValue = Convert.ToDouble(row["Valor"]),
                     ProductCostPrice = Convert.ToDouble(row["PrecoCusto"]),
-                    ProductPhotoName = BllProductPhotho.GetPeth() 
+                    ProductPhotoName = BllProductPhotho.GetPeth()
                     + Convert.ToString(row["FotoNome"]),
                 };
 
@@ -132,12 +155,12 @@ namespace DimStock.Business
 
                 if (ls[i].StockQuantity > ls[i].MaxStock)
                     ls[i].StockResult = " - " + Convert.ToString(ls[i].StockQuantity - ls[i].MaxStock);
-                
-                if(ls[i].StockQuantity > 0 && ls[i].StockQuantity >= ls[i].MinStock && 
+
+                if (ls[i].StockQuantity > 0 && ls[i].StockQuantity >= ls[i].MinStock &&
                     ls[i].StockQuantity <= ls[i].MaxStock)
                     ls[i].StockResult = "OK";
 
-                if(ls[i].StockQuantity == 0 && ls[i].MinStock == 0 && ls[i].MaxStock == 0)
+                if (ls[i].StockQuantity == 0 && ls[i].MinStock == 0 && ls[i].MaxStock == 0)
                     ls[i].StockResult = "???";
             }
         }
@@ -152,11 +175,14 @@ namespace DimStock.Business
         #endregion
 
         #region GenerateReport()
-        public void GenerateReport()
+        public void GenerateReport(List<BllStockProduct> listOfRecords)
         {
             var reportStockProduct = new ReportStockProduct();
-            reportStockProduct.Generate(ListOfRecords);
+            reportStockProduct.GenerateReport(listOfRecords);
         }
         #endregion
+
+        #endregion
+
     }
 }

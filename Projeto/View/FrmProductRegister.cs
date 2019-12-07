@@ -255,7 +255,7 @@ namespace DimStock.View
                         PhotoName = PicProductPhoto.FotoNome,
                     };
 
-                    if (product.Update(id) == true)
+                    if (product.Edit(id) == true)
                     {
 
                         if (BllProductPhotho.FindFile(product.FolderDirectoryOfPhothos

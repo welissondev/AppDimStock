@@ -3,13 +3,23 @@ using DimStock.Auxiliary;
 using DimStock.Model;
 using DimStock.Report;
 using System.Collections.Generic;
-using System.Data;
 
 namespace DimStock.Business
 {
-    public class BllProduct
+    public class BllProduct 
     {
-        #region Get e Set
+        #region Constructors
+
+        public BllProduct(){ }
+
+        public BllProduct(AxlDataPagination dataPagination)
+        {
+            DataPagination = dataPagination;
+        }
+
+        #endregion
+
+        #region BussinesProperties
         public int Id { get; set; }
         public string Code { get; set; }
         public string Size { get; set; }
@@ -24,15 +34,26 @@ namespace DimStock.Business
         public string PhotoName { get; set; }
         public string FolderDirectoryOfPhothos { get => BllProductPhotho.GetPeth(); }
         public List<BllProduct> ListOfRecords { get; set; }
-        public AxlDataPagination DataPagination { get; set; }
         #endregion 
+
+        #region QueryProperties
+
+        public string QueryByCode{get;set;}
+        public string QueryBySize{get;set;}
+        public string QueryByReference{get;set;}
+        public string QueryByDescription{get;set;}
+        public AxlDataPagination DataPagination { get; set; }
+
+        #endregion
+
+        #region Methods
 
         #region Register()
         public bool Register()
         {
             var product = new MdlProduct(this);
 
-            if (product.Rigister() == true)
+            if (product.Register() == true)
             {
                 var historic = new BllUserHistoric()
                 {
@@ -53,12 +74,12 @@ namespace DimStock.Business
         }
         #endregion
 
-        #region Update()
-        public bool Update(int id)
+        #region Edit()
+        public bool Edit(int id)
         {
             var product = new MdlProduct(this);
 
-            if (product.Update(id) == true)
+            if (product.Edit(id) == true)
             {
                 var historic = new BllUserHistoric()
                 {
@@ -111,7 +132,7 @@ namespace DimStock.Business
         public void ListAll()
         {
             var product = new MdlProduct(this);
-            ListOfRecords = product.ListAll();
+            product.ListAll();
         }
         #endregion
 
@@ -127,46 +148,20 @@ namespace DimStock.Business
         public void FetchData()
         {
             var product = new MdlProduct(this);
-
-            var dataTable = product.FetchData();
-
-            PassDataTableForList(dataTable);
-        }
-        #endregion
-
-        #region PassDataTableForList()
-        public void PassDataTableForList(DataTable datatable)
-        {
-            ListOfRecords = new List<BllProduct>();
-
-            foreach (DataRow row in datatable.Rows)
-            {
-                var product = new BllProduct()
-                {
-                    Id = Convert.ToInt32(row["Id"]),
-                    Code = Convert.ToString(row["Codigo"]),
-                    Size = Convert.ToString(row["Tamanho"]),
-                    Reference = Convert.ToString(row["Referencia"]),
-                    Supplier = Convert.ToString(row["Fornecedor"]),
-                    Description = Convert.ToString(row["Descricao"]),
-                    CostPrice = Convert.ToDouble(row["PrecoCusto"]),
-                    SalePrice = Convert.ToDouble(row["PrecoVenda"]),
-                    PhotoName = Convert.ToString(row["FotoNome"])
-                };
-
-                ListOfRecords.Add(product);
-            }
+            product.FetchData();
         }
         #endregion
 
         #region GenerateReport()
 
-        public void GenerateReport()
+        public void GenerateReport(List<BllProduct> listOfRecords)
         {
             var reportProduct = new ReportProduct();
-            reportProduct.Generate(ListOfRecords);
+            reportProduct.GenerateReport(listOfRecords);
         }
 
         #endregion 
+
+        #endregion
     }
 }

@@ -4,7 +4,7 @@ using DimStock.Business;
 
 namespace DimStock.Report
 {
-    public class ReportProduct
+    public class ReportProduct 
     {
 
         #region Get e Set
@@ -21,7 +21,7 @@ namespace DimStock.Report
 
         #region Methods
 
-        public void Generate(List<BllProduct> productList)
+        public void GenerateReport(List<BllProduct> productList)
         {
             ListOfRecords = new List<ReportProduct>();
 

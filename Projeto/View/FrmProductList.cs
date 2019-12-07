@@ -83,22 +83,25 @@ namespace DimStock.View
         {
             try
             {
-                var product = new BllProduct()
+                var product = new BllProduct(dataPagination)
                 {
-                    Code = TxtQueryByCode.Text,
-                    Size = TxtQueryBySize.Text,
-                    Reference = TxtQueryByReference.Text,
-                    Description = TxtQueryByDescription.Text
+                    QueryByCode = TxtQueryByCode.Text,
+                    QueryBySize = TxtQueryBySize.Text,
+                    QueryByReference = TxtQueryByReference.Text,
+                    QueryByDescription = TxtQueryByDescription.Text
                 };
 
-                product.ListAll(); product.GenerateReport();
+                product.ListAll(); 
 
                 var path = "DimStock.Report.RpvProduct.rdlc";
                 var name = "Relatório de Produtos";
                 var dataset = "DataSetProduct";
 
-                FrmReportView.ShowReport(path, name, true, new Dictionary<string, object>()
-                {{dataset, product.ListOfRecords}});
+                product.GenerateReport(product.ListOfRecords);
+
+                FrmReportView.ShowReport(path, name, true, 
+                new Dictionary<string, object>() {{dataset, 
+                product.ListOfRecords}});
 
             }
             catch (Exception ex)
@@ -252,15 +255,16 @@ namespace DimStock.View
             try
             {
 
-                var product = new BllProduct()
+                var product = new BllProduct(dataPagination)
                 {
-                    Code = TxtQueryByCode.Text,
-                    Size = TxtQueryBySize.Text,
-                    Reference = TxtQueryByReference.Text,
-                    Description = TxtQueryByDescription.Text
+                    QueryByCode = TxtQueryByCode.Text,
+                    QueryBySize = TxtQueryBySize.Text,
+                    QueryByReference = TxtQueryByReference.Text,
+                    QueryByDescription = TxtQueryByDescription.Text
                 };
 
                 product.ListAll();
+
 
                 GridProductList.Rows.Clear();
 
@@ -294,13 +298,12 @@ namespace DimStock.View
         {
             try
             {
-                var product = new BllProduct
+                var product = new BllProduct(dataPagination)
                 {
-                    Code = TxtQueryByCode.Text,
-                    Size = TxtQueryBySize.Text,
-                    Reference = TxtQueryByReference.Text,
-                    Description = TxtQueryByDescription.Text,
-                    DataPagination = dataPagination
+                    QueryByCode = TxtQueryByCode.Text,
+                    QueryBySize = TxtQueryBySize.Text,
+                    QueryByReference = TxtQueryByReference.Text,
+                    QueryByDescription = TxtQueryByDescription.Text,
                 };
 
                 product.FetchData();

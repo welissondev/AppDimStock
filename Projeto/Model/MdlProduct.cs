@@ -14,18 +14,14 @@ namespace DimStock.Model
         #endregion 
 
         #region Constructs
-        public MdlProduct()
-        {
-        }
-
         public MdlProduct(BllProduct product)
         {
             this.product = product;
         }
         #endregion 
 
-        #region Rigister()
-        public bool Rigister()
+        #region Register()
+        public bool Register()
         {
             using (var connection = new MdlConnection())
             {
@@ -69,8 +65,8 @@ namespace DimStock.Model
         }
         #endregion
 
-        #region Update()
-        public bool Update(int id)
+        #region Edit()
+        public bool Edit(int id)
         {
             using (var con = new MdlConnection())
             {
@@ -140,57 +136,67 @@ namespace DimStock.Model
         #endregion
 
         #region ListAll()
-        public List<BllProduct> ListAll()
+        public void ListAll()
         {
-            var criterion = string.Empty;
-            var commandSQL = string.Empty;
-            var productList = new List<BllProduct>();
-
             using (var connection = new MdlConnection())
             {
-
-                #region SqlQuery
-                commandSQL = @"SELECT Id, Codigo, Fornecedor, Referencia, Descricao, 
-                Tamanho, PrecoCusto, PrecoVenda, FotoNome From TBProduto WHERE 
-                Id > 0 ";
+                #region Variáveis
+                var parameter = connection.Command.Parameters;
+                var criterion = string.Empty;
+                var commandSQL = string.Empty;
+                var productList = new List<BllProduct>();
                 #endregion
 
-                #region Critérios-de-consulta
+                #region ConsultaPadrão
+                commandSQL = @"SELECT Id, Codigo, Fornecedor, Referencia, Descricao, 
+                Tamanho, PrecoCusto, PrecoVenda, FotoNome From TBProduto WHERE Id > 0 ";
+                #endregion
 
-                if (product.Code != string.Empty)
+                #region Critério + Código
+                if (product.QueryByCode != string.Empty)
+                {
                     criterion += " AND Codigo = @Codigo ";
 
-                if (product.Size != string.Empty)
+                    parameter.AddWithValue("@Codigo", string.Format("{0}",
+                    product.QueryByCode));
+                }
+                #endregion    
+
+                #region Critério + Tamanho
+                if (product.QueryBySize!= string.Empty)
+                {
                     criterion += " AND Tamanho = @Tamanho ";
 
-                if (product.Reference != string.Empty)
+                    parameter.AddWithValue("@Tamanho", string.Format("{0}",
+                    product.QueryBySize));
+                }
+                #endregion     
+
+                #region Critério + Referência
+                if (product.QueryByReference != string.Empty)
+                {
                     criterion += " AND Referencia = @Referencia";
 
-                if (product.Description != string.Empty)
-                    criterion += " AND Descricao = @Descricao";
+                    parameter.AddWithValue("@Referencia", string.Format("{0}",
+                    product.QueryByReference));
+                }
+                #endregion     
 
-                commandSQL += criterion + " Order By Codigo,Tamanho, Referencia Asc";
+                #region Critério + Descrição
+                if (product.QueryByDescription!= string.Empty)
+                {
+                    criterion += " AND Descricao LIKE @Descricao";
 
+                    parameter.AddWithValue("@Descricao", string.Format("%{0}%",
+                    product.QueryByDescription));
+                }
                 #endregion
 
-                #region Critérios-de-Parâmetro
-
-                var e = connection.Command.Parameters;
-
-                if (product.Code != string.Empty)
-                    e.AddWithValue("@Codigo", string.Format("{0}", product.Code));
-
-                if(product.Size != string.Empty)
-                    e.AddWithValue("@Tamanho", string.Format("{0}", product.Size));
-
-                if(product.Reference != string.Empty)
-                    e.AddWithValue("@Referencia", string.Format("{0}", product.Reference));
-
-                if(product.Description != string.Empty)
-                    e.AddWithValue("@Descricao", string.Format("%{0}%", product.Description));
-
+                #region SQLCommand + Critério
+                commandSQL += criterion + " Order By Codigo,Tamanho, Referencia Asc";
                 #endregion 
 
+                #region PopularList
                 using (var dataReader = connection.QueryWithDataReader(commandSQL))
                 {
                     while (dataReader.Read())
@@ -210,15 +216,17 @@ namespace DimStock.Model
 
                         productList.Add(product);
                     }
-                }
 
-                return productList;
+                    product.ListOfRecords = productList;
+
+                }
+                #endregion
             }
         }
         #endregion
 
         #region FetchData()
-        public DataTable FetchData()
+        public void FetchData()
         {
             var commandSQL = string.Empty;
             var sqlCount = string.Empty;
@@ -226,7 +234,9 @@ namespace DimStock.Model
 
             using (var connection = new MdlConnection())
             {
-                #region Sql-query
+                var paramerter = connection.Command.Parameters;
+
+                #region ConsultaPadrão
                 commandSQL = @"SELECT Id, Codigo, Fornecedor, Referencia, Descricao, 
                 Tamanho, PrecoCusto, PrecoVenda, FotoNome From TBProduto WHERE Id > 0";
 
@@ -234,49 +244,62 @@ namespace DimStock.Model
 
                 #endregion
 
-                #region Condição-de-critério
-                if (product.Code != string.Empty)
+                #region Critério + Codigo
+                if (product.QueryByCode != string.Empty)
+                {
                     criterion += " AND Codigo LIKE @Codigo";
 
-                if (product.Size != string.Empty)
+                    paramerter.AddWithValue("@Codigo", string.Format("{0}",
+                    product.QueryByCode));
+                }
+                #endregion
+
+                #region Critério + Tamanho
+                if (product.QueryBySize != string.Empty)
+                {
                     criterion += " AND Tamanho LIKE @Tamanho";
 
-                if (product.Reference != string.Empty)
+                    paramerter.AddWithValue("@Tamanho", string.Format("{0}",
+                    product.QueryBySize));
+                }
+                #endregion
+
+                #region Critério + Referência
+                if (product.QueryByReference != string.Empty)
+                {
                     criterion += " AND Referencia LIKE @Referencia";
 
-                if (product.Description != string.Empty)
+                    paramerter.AddWithValue("@Referencia", string.Format("{0}",
+                    product.QueryByReference));
+                }
+                #endregion
+
+                #region Critério + Descrição
+                if (product.QueryByDescription != string.Empty)
+                {
                     criterion += " AND Descricao LIKE @Descricao";
 
+                    paramerter.AddWithValue("@Descricao", string.Format("%{0}%",
+                    product.QueryByDescription));
+                }
+                #endregion     
+
+                #region SQLCommand + critério
                 commandSQL += criterion + " Order By Codigo, Tamanho, Referencia Asc";
                 #endregion
 
-                #region Condição-de-parametros
-
-                var e = connection.Command.Parameters;
-
-                if (product.Code != string.Empty)
-                    e.AddWithValue("@Codigo", string.Format("{0}", product.Code));
-
-                if (product.Size != string.Empty)
-                    e.AddWithValue("@Tamanho", string.Format("{0}", product.Size));
-
-                if (product.Reference != string.Empty)
-                    e.AddWithValue("@Referencia", string.Format("{0}", product.Reference));
-
-                if (product.Description != string.Empty)
-                    e.AddWithValue("@Descricao", string.Format("%{0}%", product.Description));
-
+                #region RecordCount
+                product.DataPagination.RecordCount = Convert.ToInt32(
+                connection.ExecuteScalar(sqlCount));
                 #endregion
 
-                #region Contagem-de-registros
-                product.DataPagination.RecordCount = Convert.ToInt32(connection.ExecuteScalar(sqlCount));
-                #endregion
-
+                #region Popular DataTable
                 var dataTable = connection.QueryWithDataTable(commandSQL,
                 product.DataPagination.OffSetValue,
                 product.DataPagination.PageSize);
 
-                return dataTable;
+                PassDataTableToList(dataTable);
+                #endregion 
             }
         }
         #endregion
@@ -358,6 +381,33 @@ namespace DimStock.Model
                 }
                 return recordsFounds > 0;
             }
+        }
+        #endregion 
+
+        #region PassDataTableToList()
+        private void PassDataTableToList(DataTable dataTable)
+        {
+            var productList = new List<BllProduct>();
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                var product = new BllProduct()
+                {
+                    Id = Convert.ToInt32(row["Id"]),
+                    Code = Convert.ToString(row["Codigo"]),
+                    Size = Convert.ToString(row["Tamanho"]),
+                    Reference = Convert.ToString(row["Referencia"]),
+                    Supplier = Convert.ToString(row["Fornecedor"]),
+                    Description = Convert.ToString(row["Descricao"]),
+                    CostPrice = Convert.ToDouble(row["PrecoCusto"]),
+                    SalePrice = Convert.ToDouble(row["PrecoVenda"]),
+                    PhotoName = Convert.ToString(row["FotoNome"])
+                };
+
+                productList.Add(product);
+            }
+
+            product.ListOfRecords = productList;
         }
         #endregion 
     }

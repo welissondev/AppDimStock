@@ -13,7 +13,7 @@ namespace DimStock.View
     public partial class FrmStockActivityList : Form
     {
         #region Variables
-        private readonly int numberOfRecords = 100;
+        private AxlDataPagination dataPagination = new AxlDataPagination();
         #endregion 
 
         #region Constructs
@@ -191,7 +191,7 @@ namespace DimStock.View
         {
             try
             {
-                var stockActivity = new BllStockActivity();
+                var stockActivity = new BllStockActivity(dataPagination);
                 stockActivity.ListAll();
 
                 GridActivityList.Rows.Clear();
@@ -223,13 +223,19 @@ namespace DimStock.View
         {
             try
             {
-                var stockActivity = new BllStockActivity();
+                var stockActivity = new BllStockActivity(dataPagination)
+                {
+                    QueryByStartDate = Convert.ToDateTime(TxtQueryByStartDate.Value).ToString("dd-MM-yyyy"),
+                    QueryByFinalDate = Convert.ToDateTime(TxtQueryByFinalDate.Value).ToString("dd-MM-yyyy"),
+                    QueryByType = CboActivityType.Text,
+                    QueryByActivityNumber = TxtQueryByActvityNumber.Text,
+                    QueryBySituation = CboActivitySituation.Text
+                };
 
-                stockActivity.FetchData(TxtQueryByActvityNumber.Text,
-                CboActivityType.Text, CboActivitySituation.Text, Convert.ToDateTime(TxtQueryByStartDate.Value).ToString("dd-MM-yyyy"),
-                Convert.ToDateTime(TxtQueryByFinalDate.Value).ToString("dd-MM-yyyy"), numberOfRecords);
+                stockActivity.FetchData();
 
                 GridActivityList.Rows.Clear();
+
                 for (int i = 0; i < stockActivity.ListOfRecords.Count; i++)
                 {
                     GridActivityList.Rows.Add(

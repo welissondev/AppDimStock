@@ -23,8 +23,7 @@ namespace DimStock.View
         private int stockId;
         private int productId;
         private int stockQuantity;
-
-        AxlDataPagination dataPagination = new AxlDataPagination();
+        private AxlDataPagination dataPagination = new AxlDataPagination();
         #endregion
 
         #region Constructs
@@ -184,13 +183,13 @@ namespace DimStock.View
 
         #region LabelLink
 
-        #region LblRegisterNew_LinkClicked()
-        private void LblRegisterNew_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        #region LblRegisterNew_StockDestination_LinkClicked()
+        private void LblRegisterNew_StockDestination_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             try
             {
-                var frm = new FrmStockDestinationRegister();
-                frm.ShowDialog();
+                var frmStockDestinationRegister = new FrmStockDestinationRegister();
+                frmStockDestinationRegister.ShowDialog();
             }
             catch (Exception ex)
             {
@@ -266,14 +265,13 @@ namespace DimStock.View
         {
             try
             {
-                var stockProduct = new BllStockProduct()
+                var stockProduct = new BllStockProduct(dataPagination)
                 {
-                    ProductCode = TxtQueryByCode.Text,
-                    ProductSize = TxtQueryBySize.Text,
-                    ProductReference = TxtQueryByReference.Text,
-                    ProductDescription = TxtQueryByDescription.Text,
-                    StockResume = "Todos",
-                    DataPagination = dataPagination
+                    QueryByCode = TxtQueryByCode.Text,
+                    QueryBySize = TxtQueryBySize.Text,
+                    QueryByReference = TxtQueryByReference.Text,
+                    QueryByDescription = TxtQueryByDescription.Text,
+                    QueryByResume = "Todos",
                 };
 
                 stockProduct.FetchData();

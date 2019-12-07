@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.OleDb;
 using System.Linq;
 using DimStock.Auxiliary;
@@ -196,7 +197,7 @@ namespace DimStock.Model
                 {
                     while (dr.Read())
                     {
-                        usersFound +=1;
+                        usersFound += 1;
                     }
                 }
 
@@ -241,34 +242,21 @@ namespace DimStock.Model
         #endregion
 
         #region FetchData()
-        public List<BllUser> FetchData(string query, int numberOfRecords = 100)
+        public void FetchData()
         {
             using (var connection = new MdlConnection())
             {
-                var commandSQL = "SELECT TOP " + numberOfRecords + @" * FROM TBUsuario WHERE Nome LIKE @Nome Or Email LIKE @Email";
+                var commandSQL = "SELECT * FROM TBUsuario WHERE Nome LIKE @Nome Or Email LIKE @Email";
 
-                var e = connection.Command.Parameters;
-                e.AddWithValue("@Nome", string.Format("%{0}%", query));
-                e.AddWithValue("@Email", string.Format("%{0}%", query));
+                var parameter = connection.Command.Parameters;
+                parameter.AddWithValue("@Nome", string.Format("%{0}%", user.QueryByName));
+                parameter.AddWithValue("@Email", string.Format("%{0}%", user.QueryByEmail));
 
-                var usersList = new List<BllUser>();
+                var dataTable = connection.QueryWithDataTable(commandSQL,
+                user.DataPagination.OffSetValue,
+                user.DataPagination.PageSize);
 
-                using (var dr = connection.ExecuteParameterQuery(commandSQL))
-                {
-                    while (dr.Read())
-                    {
-                        var user = new BllUser()
-                        {
-                            Id = Convert.ToInt32(dr["id"]),
-                            YourName = Convert.ToString(dr["Nome"]),
-                            Email = Convert.ToString(dr["Email"])
-                        };
-
-                        usersList.Add(user);
-                    }
-
-                    return usersList;
-                }
+                PassDataTableToList(dataTable);
             }
         }
         #endregion
@@ -330,6 +318,29 @@ namespace DimStock.Model
             }
         }
         #endregion
+
+        #region PassDataTableToList()
+
+        private void PassDataTableToList(DataTable dataTable)
+        {
+            var userList = new List<BllUser>();
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                var user = new BllUser()
+                {
+                    Id = Convert.ToInt32(row["Id"]),
+                    YourName = Convert.ToString(row["Login"]),
+                    Email = Convert.ToString(row["Email"])
+                };
+
+                userList.Add(user);
+            }
+
+            user.ListOfRecords = userList;
+        }
+
+        #endregion 
 
     }
 }
