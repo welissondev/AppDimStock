@@ -100,8 +100,8 @@ namespace DimStock.Model
         }
         #endregion 
 
-        #region EditSituation()
-        public bool EditSituation(MdlConnection connection, int id)
+        #region ChangeSituation()
+        public bool ChangeSituation(MdlConnection connection, int id)
         {
             var commandSQL = @"UPDATE TBEstoqueAtividade Set Situacao = 'Finalizada' Where Id = " + id;
             var transactionState = false;

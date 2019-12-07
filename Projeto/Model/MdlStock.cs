@@ -45,7 +45,7 @@ namespace DimStock.Model
 
                     var stockActivity = new MdlStockActivity();
 
-                    if (stockActivity.EditSituation(connection, activityId) == true)
+                    if (stockActivity.ChangeSituation(connection, activityId) == true)
                     {
                         connection.Transaction.Commit();
                         transaction = true;
@@ -79,7 +79,7 @@ namespace DimStock.Model
                     }
 
                     var stockActivity = new MdlStockActivity();
-                    stockActivity.EditSituation(connection, activityId);
+                    stockActivity.ChangeSituation(connection, activityId);
 
                     connection.Transaction.Commit();
 
