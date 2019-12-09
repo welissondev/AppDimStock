@@ -72,9 +72,10 @@ namespace DimStock.View
 
         #region BtnUpdateList_Click()
         private void BtnUpdateList_Click(object sender, EventArgs e)
-        {
-            ConfigureDataPagination(); 
+        { 
             CallAllResets();
+            dataPagination.CurrentPage = 1;
+            dataPagination.OffSetValue = 0;
             TimerStartQuery();
         }
         #endregion
@@ -119,7 +120,8 @@ namespace DimStock.View
         #region StartTheQuery_ForTheSearchBox_KeyPress()
         private void StartTheQuery_ForTheSearchBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            ConfigureDataPagination();
+            dataPagination.OffSetValue = 0;
+            dataPagination.CurrentPage = 1;
             TimerStartQuery();
         }
 
