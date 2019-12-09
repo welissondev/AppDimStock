@@ -50,6 +50,14 @@
             this.BtnNew = new Syncfusion.WinForms.Controls.SfButton();
             this.LblTodayIsDay = new System.Windows.Forms.Label();
             this.LblFormTitle = new System.Windows.Forms.Label();
+            this.BindingPagination = new System.Windows.Forms.BindingNavigator(this.components);
+            this.BackPage = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.LblPaginationState = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.NextPage = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.LblRecordsState = new System.Windows.Forms.ToolStripLabel();
             ((System.ComponentModel.ISupportInitialize)(this.TxtQueryByDescription)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridProductList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImgGifLoading)).BeginInit();
@@ -59,6 +67,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.TxtQueryBySize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtQueryByCode)).BeginInit();
             this.PanelUpperHorizontal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BindingPagination)).BeginInit();
+            this.BindingPagination.SuspendLayout();
             this.SuspendLayout();
             // 
             // TxtQueryByDescription
@@ -96,7 +106,7 @@
             this.GridProductList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridProductList.Location = new System.Drawing.Point(17, 187);
             this.GridProductList.Name = "GridProductList";
-            this.GridProductList.Size = new System.Drawing.Size(935, 471);
+            this.GridProductList.Size = new System.Drawing.Size(935, 452);
             this.GridProductList.TabIndex = 69;
             this.GridProductList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridProductList_CellClick);
             this.GridProductList.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GridProductList_CellMouseDoubleClick);
@@ -405,12 +415,84 @@
             this.LblFormTitle.TabIndex = 138;
             this.LblFormTitle.Text = "Lista de Produtos";
             // 
+            // BindingPagination
+            // 
+            this.BindingPagination.AddNewItem = null;
+            this.BindingPagination.CountItem = null;
+            this.BindingPagination.DeleteItem = null;
+            this.BindingPagination.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.BindingPagination.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.BackPage,
+            this.toolStripSeparator1,
+            this.LblPaginationState,
+            this.toolStripSeparator2,
+            this.NextPage,
+            this.toolStripSeparator3,
+            this.LblRecordsState});
+            this.BindingPagination.Location = new System.Drawing.Point(0, 656);
+            this.BindingPagination.MoveFirstItem = null;
+            this.BindingPagination.MoveLastItem = null;
+            this.BindingPagination.MoveNextItem = null;
+            this.BindingPagination.MovePreviousItem = null;
+            this.BindingPagination.Name = "BindingPagination";
+            this.BindingPagination.PositionItem = null;
+            this.BindingPagination.Size = new System.Drawing.Size(964, 25);
+            this.BindingPagination.TabIndex = 178;
+            this.BindingPagination.Text = "bindingNavigator1";
+            // 
+            // BackPage
+            // 
+            this.BackPage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.BackPage.Image = ((System.Drawing.Image)(resources.GetObject("BackPage.Image")));
+            this.BackPage.Name = "BackPage";
+            this.BackPage.RightToLeftAutoMirrorImage = true;
+            this.BackPage.Size = new System.Drawing.Size(23, 22);
+            this.BackPage.Click += new System.EventHandler(this.BackPage_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // LblPaginationState
+            // 
+            this.LblPaginationState.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblPaginationState.Name = "LblPaginationState";
+            this.LblPaginationState.Size = new System.Drawing.Size(77, 22);
+            this.LblPaginationState.Text = "Página 0 de 0";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // NextPage
+            // 
+            this.NextPage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.NextPage.Image = ((System.Drawing.Image)(resources.GetObject("NextPage.Image")));
+            this.NextPage.Name = "NextPage";
+            this.NextPage.RightToLeftAutoMirrorImage = true;
+            this.NextPage.Size = new System.Drawing.Size(23, 22);
+            this.NextPage.Click += new System.EventHandler(this.NextPage_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // LblRecordsState
+            // 
+            this.LblRecordsState.Name = "LblRecordsState";
+            this.LblRecordsState.Size = new System.Drawing.Size(86, 22);
+            this.LblRecordsState.Text = "0 de 0 registros";
+            // 
             // FrmProductList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(964, 681);
+            this.Controls.Add(this.BindingPagination);
             this.Controls.Add(this.ImgGifLoading);
             this.Controls.Add(this.PanelUpperHorizontal);
             this.Controls.Add(this.CboPageSize);
@@ -441,6 +523,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.TxtQueryByCode)).EndInit();
             this.PanelUpperHorizontal.ResumeLayout(false);
             this.PanelUpperHorizontal.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BindingPagination)).EndInit();
+            this.BindingPagination.ResumeLayout(false);
+            this.BindingPagination.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -467,5 +552,13 @@
         private Syncfusion.WinForms.Controls.SfButton BtnNew;
         private Syncfusion.WinForms.Controls.SfButton BtnUpdateList;
         private Syncfusion.WinForms.Controls.SfButton BtnGenerateReport;
+        private System.Windows.Forms.BindingNavigator BindingPagination;
+        private System.Windows.Forms.ToolStripButton BackPage;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripLabel LblPaginationState;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton NextPage;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripLabel LblRecordsState;
     }
 }

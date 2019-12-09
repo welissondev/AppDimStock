@@ -91,7 +91,7 @@ namespace DimStock.View
                     QueryByDescription = TxtQueryByDescription.Text
                 };
 
-                product.ListAll(); 
+                product.ListAll();
 
                 var path = "DimStock.Report.RpvProduct.rdlc";
                 var name = "Relatório de Produtos";
@@ -99,8 +99,8 @@ namespace DimStock.View
 
                 product.GenerateReport(product.ListOfRecords);
 
-                FrmReportView.ShowReport(path, name, true, 
-                new Dictionary<string, object>() {{dataset, 
+                FrmReportView.ShowReport(path, name, true,
+                new Dictionary<string, object>() {{dataset,
                 product.ListOfRecords}});
 
             }
@@ -247,6 +247,39 @@ namespace DimStock.View
 
         #endregion
 
+        #region BadingNavigator
+
+        #region NextPage_Click()
+        private void NextPage_Click(object sender, EventArgs e)
+        {
+            if (dataPagination.CurrentPage < dataPagination.NumberOfPages)
+            {
+                dataPagination.CurrentPage += 1;
+                dataPagination.OffSetValue += dataPagination.PageSize;
+                TimeStartSearch();
+            }
+
+            SetInBadingNavigator();
+
+        }
+        #endregion 
+
+        #region BackPage_Click()
+        private void BackPage_Click(object sender, EventArgs e)
+        {
+            if (dataPagination.CurrentPage > 1)
+            {
+                dataPagination.CurrentPage -= 1;
+                dataPagination.OffSetValue -= dataPagination.PageSize;
+                TimeStartSearch();
+            }
+
+            SetInBadingNavigator();
+        }
+        #endregion
+
+        #endregion 
+
         #region Methods
 
         #region ListAll()
@@ -326,6 +359,8 @@ namespace DimStock.View
                     var photoDirectoryPath = product.FolderDirectoryOfPhothos + product.ListOfRecords[i].PhotoName;
                     ListPhothoInDataGrid(GridProductList, photoDirectoryPath, i);
                 }
+
+                SetInBadingNavigator();
             }
             catch (Exception ex)
             {
@@ -689,6 +724,37 @@ namespace DimStock.View
         {
             dataPagination.OffSetValue = 0;
             dataPagination.PageSize = 20;
+            dataPagination.CurrentPage = 1;
+        }
+        #endregion
+
+        #region SetInBadingNavigator()
+
+        private void SetInBadingNavigator()
+        {
+            var legend = " Página " + dataPagination.CurrentPage + " de " + dataPagination.NumberOfPages;
+            BindingPagination.Items[2].Text = legend;
+
+            legend = " Total de " + dataPagination.RecordCount + " registro(s)";
+            BindingPagination.Items[6].Text = legend;
+        }
+
+        #endregion 
+
+        #region TimeStartSearch()
+        private void TimeStartSearch()
+        {
+            ImgGifLoading.Visible = true;
+            TimerExecuteQuery.Enabled = false;
+            TimerExecuteQuery.Enabled = true;
+        }
+        #endregion
+
+        #region TimeStopSearch()
+        public void TimeStopSearch()
+        {
+            ImgGifLoading.Visible = false;
+            TimerExecuteQuery.Enabled = false;
         }
         #endregion
 
