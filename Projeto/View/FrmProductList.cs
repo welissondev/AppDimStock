@@ -151,6 +151,10 @@ namespace DimStock.View
                         dataPagination.PageSize = 100;
                         break;
                 }
+
+                dataPagination.OffSetValue = 0;
+                dataPagination.CurrentPage = 1;
+                TimerStartQuery();
             }
             catch (Exception ex)
             {
