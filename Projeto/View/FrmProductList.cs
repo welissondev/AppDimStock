@@ -14,7 +14,6 @@ namespace DimStock.View
     {
         #region Variables
         public int Id = 0;
-        public int NumberOfRecords = 20;
         private AxlDataPagination dataPagination = new AxlDataPagination();
         #endregion
 
