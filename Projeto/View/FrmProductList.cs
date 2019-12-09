@@ -73,10 +73,9 @@ namespace DimStock.View
         #region BtnUpdateList_Click()
         private void BtnUpdateList_Click(object sender, EventArgs e)
         {
-            FetchData(); 
             ConfigureDataPagination(); 
-            SetInBadingNavigator(); 
-            CallAllResets(); 
+            CallAllResets();
+            TimerStartQuery();
         }
         #endregion
 
@@ -120,9 +119,8 @@ namespace DimStock.View
         #region StartTheQuery_ForTheSearchBox_KeyPress()
         private void StartTheQuery_ForTheSearchBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            ImgGifLoading.Visible = true;
-            TimerExecuteQuery.Enabled = false;
-            TimerExecuteQuery.Enabled = true;
+            ConfigureDataPagination();
+            TimerStartQuery();
         }
 
         #endregion
@@ -168,8 +166,6 @@ namespace DimStock.View
         #region TimerExecuteQuery_Tick()
         private void TimerExecuteQuery_Tick(object sender, EventArgs e)
         {
-            ImgGifLoading.Visible = false;
-            TimerExecuteQuery.Enabled = false;
             FetchData();
         }
         #endregion 
@@ -258,11 +254,8 @@ namespace DimStock.View
             {
                 dataPagination.CurrentPage += 1;
                 dataPagination.OffSetValue += dataPagination.PageSize;
-                TimeStartSearch();
+                TimerStartQuery(); 
             }
-
-            SetInBadingNavigator();
-
         }
         #endregion 
 
@@ -273,10 +266,8 @@ namespace DimStock.View
             {
                 dataPagination.CurrentPage -= 1;
                 dataPagination.OffSetValue -= dataPagination.PageSize;
-                TimeStartSearch();
+                TimerStartQuery(); 
             }
-
-            SetInBadingNavigator();
         }
         #endregion
 
@@ -318,11 +309,16 @@ namespace DimStock.View
                     ListPhothoInDataGrid(GridProductList, photoDirectoryPath, i);
                 }
 
-                SetInBadingNavigator();
+                SetInBadingNavigator(dataPagination);
+    
             }
             catch (Exception ex)
             {
                 AxlException.Message.Show(ex);
+            }
+            finally
+            {
+                TimerStopQuery();
             }
         }
         #endregion
@@ -688,7 +684,7 @@ namespace DimStock.View
 
         #region SetInBadingNavigator()
 
-        private void SetInBadingNavigator()
+        private void SetInBadingNavigator(AxlDataPagination dataPagination)
         {
             var legend = " Página " + dataPagination.CurrentPage + " de " + dataPagination.NumberOfPages;
             BindingPagination.Items[2].Text = legend;
@@ -699,8 +695,8 @@ namespace DimStock.View
 
         #endregion 
 
-        #region TimeStartSearch()
-        private void TimeStartSearch()
+        #region TimerStartQuery()
+        private void TimerStartQuery()
         {
             ImgGifLoading.Visible = true;
             TimerExecuteQuery.Enabled = false;
@@ -708,8 +704,8 @@ namespace DimStock.View
         }
         #endregion
 
-        #region TimeStopSearch()
-        public void TimeStopSearch()
+        #region TimerStopQuery()
+        public void TimerStopQuery()
         {
             ImgGifLoading.Visible = false;
             TimerExecuteQuery.Enabled = false;
