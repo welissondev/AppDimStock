@@ -77,7 +77,7 @@
         <Top>2.36306cm</Top>
         <Left>10.15079cm</Left>
         <Height>0.6cm</Height>
-        <Width>9.57566cm</Width>
+        <Width>9.62857cm</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -111,7 +111,7 @@
         <rd:DefaultName>Textbox4</rd:DefaultName>
         <Top>3.13945cm</Top>
         <Height>0.68819cm</Height>
-        <Width>19.72645cm</Width>
+        <Width>19.77936cm</Width>
         <ZIndex>3</ZIndex>
         <Style>
           <Border>
@@ -128,7 +128,7 @@
         <Top>2.99834cm</Top>
         <Left>0.04245cm</Left>
         <Height>0cm</Height>
-        <Width>19.68399cm</Width>
+        <Width>19.7369cm</Width>
         <ZIndex>4</ZIndex>
         <Style>
           <Border>
@@ -142,22 +142,22 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.53076cm</Width>
+              <Width>1.53958cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.85934cm</Width>
+              <Width>1.86816cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.92763cm</Width>
+              <Width>1.93645cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>5.57225cm</Width>
+              <Width>5.58107cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>6.33646cm</Width>
+              <Width>6.34528cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>2.50882cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -173,8 +173,10 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Code</Value>
-                              <Style />
+                              <Value>COD.</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -186,6 +188,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -203,8 +206,10 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Size</Value>
-                              <Style />
+                              <Value>TAM.</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -216,6 +221,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -233,8 +239,10 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Reference</Value>
-                              <Style />
+                              <Value>REF.</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -246,6 +254,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -263,8 +272,10 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Supplier</Value>
-                              <Style />
+                              <Value>FORNECEDOR</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -276,6 +287,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -293,8 +305,10 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Description</Value>
-                              <Style />
+                              <Value>DESCRIÇÃO</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -306,6 +320,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -323,11 +338,15 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Cost Price</Value>
-                              <Style />
+                              <Value>CUSTO</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox16</rd:DefaultName>
@@ -336,6 +355,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -359,7 +379,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!Code.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -371,6 +393,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -389,7 +412,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!Size.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -401,6 +426,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -419,7 +445,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!Reference.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -431,6 +459,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -449,7 +478,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!Supplier.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -461,6 +492,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -479,7 +511,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!Description.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -491,6 +525,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -509,10 +544,14 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!CostPrice.Value</Value>
-                              <Style />
+                              <Style>
+                                <Format>'R$'0.00;('R$'0.00)</Format>
+                              </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>CostPrice</rd:DefaultName>
@@ -521,10 +560,12 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
+                        <rd:FormatSymbolCulture>pt-BR</rd:FormatSymbolCulture>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -547,6 +588,7 @@
           <TablixMembers>
             <TablixMember>
               <KeepWithGroup>After</KeepWithGroup>
+              <RepeatOnNewPage>true</RepeatOnNewPage>
             </TablixMember>
             <TablixMember>
               <Group Name="Detalhes" />
@@ -556,7 +598,7 @@
         <DataSetName>DataSetProduct</DataSetName>
         <Top>4.00403cm</Top>
         <Height>1.2cm</Height>
-        <Width>19.72644cm</Width>
+        <Width>19.77936cm</Width>
         <ZIndex>5</ZIndex>
         <Style>
           <Border>
@@ -565,14 +607,14 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>4.2428in</Height>
+    <Height>2.04883in</Height>
     <Style>
       <Border>
         <Style>None</Style>
       </Border>
     </Style>
   </Body>
-  <Width>7.77674in</Width>
+  <Width>7.78715in</Width>
   <Page>
     <PageFooter>
       <Height>1.48195cm</Height>
@@ -603,7 +645,7 @@
           <Top>0.44098cm</Top>
           <Left>14.30231cm</Left>
           <Height>0.6cm</Height>
-          <Width>5.45059cm</Width>
+          <Width>5.47705cm</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -649,7 +691,7 @@
         <Line Name="Line2">
           <Top>0.0882cm</Top>
           <Height>0cm</Height>
-          <Width>19.75291cm</Width>
+          <Width>19.77937cm</Width>
           <ZIndex>2</ZIndex>
           <Style>
             <Border>
