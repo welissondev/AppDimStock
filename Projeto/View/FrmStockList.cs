@@ -14,6 +14,7 @@ namespace DimStock.View
     {
         #region Properties
         private AxlDataPagination dataPagination = new AxlDataPagination();
+        private string selectedResumeType = "All";
         #endregion
 
         #region Constructors
@@ -127,6 +128,29 @@ namespace DimStock.View
         #region CboResume_SelectedIndexChanged()
         private void CboResume_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            var itemSelected = CboResume.SelectedIndex;
+
+            switch (itemSelected)
+            {
+                case 0:
+                    selectedResumeType = "All";
+                    break;
+                case 1:
+                    selectedResumeType = "High";
+                    break;
+                case 2:
+                    selectedResumeType = "Low";
+                    break;
+
+                case 3:
+                    selectedResumeType = "Ok";
+                    break;
+                case 4:
+                    selectedResumeType = "Nothing";
+                    break;
+            }
+
             dataPagination.OffSetValue = 0;
             dataPagination.CurrentPage = 1;
             TimeStartSearch();
@@ -308,7 +332,7 @@ namespace DimStock.View
                     QueryBySize = TxtQueryBySize.Text,
                     QueryByReference = TxtQueryByReference.Text,
                     QueryByDescription = TxtQueryByDescription.Text,
-                    QueryByResume = CboResume.Text
+                    QueryByResume = selectedResumeType
                 };
 
                 stockProduct.FetchData();
@@ -606,10 +630,10 @@ namespace DimStock.View
         public void SetInBadingNavigator()
         {
             var legend = " Página " + dataPagination.CurrentPage + " de " + dataPagination.NumberOfPages;
-            BindingNavigatorPaginacao.Items[2].Text = legend;
+            BindingPagination.Items[2].Text = legend;
 
             legend = " Total de " + dataPagination.RecordCount + " registro(s)";
-            BindingNavigatorPaginacao.Items[6].Text = legend;
+            BindingPagination.Items[6].Text = legend;
         }
         #endregion
 

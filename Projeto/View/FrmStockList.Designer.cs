@@ -53,7 +53,7 @@
             this.textBoxExt2 = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.LblResumo = new System.Windows.Forms.Label();
             this.LblLimpar = new System.Windows.Forms.LinkLabel();
-            this.BindingNavigatorPaginacao = new System.Windows.Forms.BindingNavigator(this.components);
+            this.BindingPagination = new System.Windows.Forms.BindingNavigator(this.components);
             this.BackPage = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.LblPaginationState = new System.Windows.Forms.ToolStripLabel();
@@ -72,8 +72,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ImgGifLoading)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CboResume)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBoxExt2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BindingNavigatorPaginacao)).BeginInit();
-            this.BindingNavigatorPaginacao.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BindingPagination)).BeginInit();
+            this.BindingPagination.SuspendLayout();
             this.SuspendLayout();
             // 
             // GridStockList
@@ -111,7 +111,7 @@
             // textBoxExt1
             // 
             this.textBoxExt1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.textBoxExt1.BeforeTouchSize = new System.Drawing.Size(794, 26);
+            this.textBoxExt1.BeforeTouchSize = new System.Drawing.Size(208, 29);
             this.textBoxExt1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.textBoxExt1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxExt1.CanOverrideStyle = true;
@@ -181,7 +181,7 @@
             // TxtQueryByReference
             // 
             this.TxtQueryByReference.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtQueryByReference.BeforeTouchSize = new System.Drawing.Size(794, 26);
+            this.TxtQueryByReference.BeforeTouchSize = new System.Drawing.Size(208, 29);
             this.TxtQueryByReference.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.TxtQueryByReference.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtQueryByReference.CanOverrideStyle = true;
@@ -207,7 +207,7 @@
             // TxtQueryBySize
             // 
             this.TxtQueryBySize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtQueryBySize.BeforeTouchSize = new System.Drawing.Size(794, 26);
+            this.TxtQueryBySize.BeforeTouchSize = new System.Drawing.Size(208, 29);
             this.TxtQueryBySize.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.TxtQueryBySize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtQueryBySize.CanOverrideStyle = true;
@@ -233,7 +233,7 @@
             // TxtQueryByCode
             // 
             this.TxtQueryByCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtQueryByCode.BeforeTouchSize = new System.Drawing.Size(794, 26);
+            this.TxtQueryByCode.BeforeTouchSize = new System.Drawing.Size(208, 29);
             this.TxtQueryByCode.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.TxtQueryByCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtQueryByCode.CanOverrideStyle = true;
@@ -259,7 +259,7 @@
             // TxtQueryByDescription
             // 
             this.TxtQueryByDescription.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtQueryByDescription.BeforeTouchSize = new System.Drawing.Size(794, 26);
+            this.TxtQueryByDescription.BeforeTouchSize = new System.Drawing.Size(208, 29);
             this.TxtQueryByDescription.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.TxtQueryByDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtQueryByDescription.CanOverrideStyle = true;
@@ -410,7 +410,7 @@
             // textBoxExt2
             // 
             this.textBoxExt2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.textBoxExt2.BeforeTouchSize = new System.Drawing.Size(794, 26);
+            this.textBoxExt2.BeforeTouchSize = new System.Drawing.Size(208, 29);
             this.textBoxExt2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.textBoxExt2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxExt2.CanOverrideStyle = true;
@@ -452,13 +452,13 @@
             this.LblLimpar.Text = "Limpar";
             this.LblLimpar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LblLimpar_LinkClicked);
             // 
-            // BindingNavigatorPaginacao
+            // BindingPagination
             // 
-            this.BindingNavigatorPaginacao.AddNewItem = null;
-            this.BindingNavigatorPaginacao.CountItem = null;
-            this.BindingNavigatorPaginacao.DeleteItem = null;
-            this.BindingNavigatorPaginacao.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BindingNavigatorPaginacao.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.BindingPagination.AddNewItem = null;
+            this.BindingPagination.CountItem = null;
+            this.BindingPagination.DeleteItem = null;
+            this.BindingPagination.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.BindingPagination.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.BackPage,
             this.toolStripSeparator1,
             this.LblPaginationState,
@@ -466,16 +466,16 @@
             this.NextPage,
             this.toolStripSeparator3,
             this.LblRecordsState});
-            this.BindingNavigatorPaginacao.Location = new System.Drawing.Point(0, 656);
-            this.BindingNavigatorPaginacao.MoveFirstItem = null;
-            this.BindingNavigatorPaginacao.MoveLastItem = null;
-            this.BindingNavigatorPaginacao.MoveNextItem = null;
-            this.BindingNavigatorPaginacao.MovePreviousItem = null;
-            this.BindingNavigatorPaginacao.Name = "BindingNavigatorPaginacao";
-            this.BindingNavigatorPaginacao.PositionItem = null;
-            this.BindingNavigatorPaginacao.Size = new System.Drawing.Size(1057, 25);
-            this.BindingNavigatorPaginacao.TabIndex = 177;
-            this.BindingNavigatorPaginacao.Text = "bindingNavigator1";
+            this.BindingPagination.Location = new System.Drawing.Point(0, 656);
+            this.BindingPagination.MoveFirstItem = null;
+            this.BindingPagination.MoveLastItem = null;
+            this.BindingPagination.MoveNextItem = null;
+            this.BindingPagination.MovePreviousItem = null;
+            this.BindingPagination.Name = "BindingPagination";
+            this.BindingPagination.PositionItem = null;
+            this.BindingPagination.Size = new System.Drawing.Size(1057, 25);
+            this.BindingPagination.TabIndex = 177;
+            this.BindingPagination.Text = "bindingNavigator1";
             // 
             // BackPage
             // 
@@ -529,7 +529,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1057, 681);
-            this.Controls.Add(this.BindingNavigatorPaginacao);
+            this.Controls.Add(this.BindingPagination);
             this.Controls.Add(this.ImgGifLoading);
             this.Controls.Add(this.LblLimpar);
             this.Controls.Add(this.CboResume);
@@ -565,9 +565,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.ImgGifLoading)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CboResume)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBoxExt2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BindingNavigatorPaginacao)).EndInit();
-            this.BindingNavigatorPaginacao.ResumeLayout(false);
-            this.BindingNavigatorPaginacao.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BindingPagination)).EndInit();
+            this.BindingPagination.ResumeLayout(false);
+            this.BindingPagination.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -598,7 +598,7 @@
         private Syncfusion.Windows.Forms.Tools.TextBoxExt textBoxExt2;
         private System.Windows.Forms.Label LblResumo;
         private System.Windows.Forms.LinkLabel LblLimpar;
-        private System.Windows.Forms.BindingNavigator BindingNavigatorPaginacao;
+        private System.Windows.Forms.BindingNavigator BindingPagination;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripLabel LblPaginationState;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;

@@ -101,7 +101,7 @@ namespace DimStock.Model
 
                 #region Comandos-SQL
 
-                if (stockProduct.QueryByResume == "Todos")
+                if (stockProduct.QueryByResume == "All")
                 {
                     sqlCount = @"SELECT COUNT(TBEstoque.Id) From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE TBEstoque.Id > 0";
@@ -111,7 +111,7 @@ namespace DimStock.Model
                     TBEstoque.IdProduto = TBProduto.Id WHERE TBEstoque.Id > 0";
                 }
 
-                if (stockProduct.QueryByResume == "Sem Resumo")
+                if (stockProduct.QueryByResume == "Nothing")
                 {
                     sqlCount = @"SELECT COUNT(TBEstoque.Id) From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade = 0 AND EstoqueMax = 0 AND EstoqueMin = 0";
@@ -134,7 +134,7 @@ namespace DimStock.Model
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade > 0 AND Quantidade >= EstoqueMin AND Quantidade <= EstoqueMax";
                 }
 
-                if (stockProduct.QueryByResume == "Alto")
+                if (stockProduct.QueryByResume == "High")
                 {
                     sqlCount = @"SELECT COUNT(TBEstoque.Id) From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade > EstoqueMax";
@@ -145,7 +145,7 @@ namespace DimStock.Model
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade > EstoqueMax";
                 }
 
-                if (stockProduct.QueryByResume == "Baixo")
+                if (stockProduct.QueryByResume == "Low")
                 {
                     sqlCount = @"SELECT COUNT(TBEstoque.Id) From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade < EstoqueMin";
