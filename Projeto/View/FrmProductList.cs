@@ -36,7 +36,7 @@ namespace DimStock.View
         #region FrmProductList_Load()
         private void FrmProductList_Load(object sender, EventArgs e)
         {
-            ListAll();
+            FetchData();
             ListPageSize();
             WindowState = FormWindowState.Maximized;
         }
@@ -74,7 +74,10 @@ namespace DimStock.View
         #region BtnUpdateList_Click()
         private void BtnUpdateList_Click(object sender, EventArgs e)
         {
-            ListAll(); CallAllResets();
+            FetchData(); 
+            ConfigureDataPagination(); 
+            SetInBadingNavigator(); 
+            CallAllResets(); 
         }
         #endregion
 
@@ -281,50 +284,6 @@ namespace DimStock.View
         #endregion 
 
         #region Methods
-
-        #region ListAll()
-        private void ListAll()
-        {
-            try
-            {
-
-                var product = new BllProduct(dataPagination)
-                {
-                    QueryByCode = TxtQueryByCode.Text,
-                    QueryBySize = TxtQueryBySize.Text,
-                    QueryByReference = TxtQueryByReference.Text,
-                    QueryByDescription = TxtQueryByDescription.Text
-                };
-
-                product.ListAll();
-
-
-                GridProductList.Rows.Clear();
-
-                for (int i = 0; i < product.ListOfRecords.Count; i++)
-                {
-                    GridProductList.Rows.Add(
-                    product.ListOfRecords[i].Id,
-                    product.ListOfRecords[i].Code,
-                    product.ListOfRecords[i].Reference,
-                    product.ListOfRecords[i].Size,
-                    product.ListOfRecords[i].Supplier,
-                    product.ListOfRecords[i].Description,
-                    product.ListOfRecords[i].CostPrice,
-                    product.ListOfRecords[i].SalePrice,
-                    product.ListOfRecords[i].PhotoName);
-
-                    var photoDirectoryPath = BllProductPhotho.GetPeth() + product.ListOfRecords[i].PhotoName;
-                    ListPhothoInDataGrid(GridProductList, photoDirectoryPath, i);
-                }
-            }
-            catch (Exception ex)
-            {
-                AxlException.Message.Show(ex);
-            }
-
-        }
-        #endregion
 
         #region FetchData()
         private void FetchData()
