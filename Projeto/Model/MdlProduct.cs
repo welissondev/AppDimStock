@@ -240,7 +240,7 @@ namespace DimStock.Model
                 commandSQL = @"SELECT Id, Codigo, Fornecedor, Referencia, Descricao, 
                 Tamanho, PrecoCusto, PrecoVenda, FotoNome From TBProduto WHERE Id > 0";
 
-                sqlCount = "SELECT COUNT(*) From TBProduto";
+                sqlCount = "SELECT COUNT(*) From TBProduto WHERE Id > 0";
 
                 #endregion
 
@@ -251,6 +251,8 @@ namespace DimStock.Model
 
                     paramerter.AddWithValue("@Codigo", string.Format("{0}",
                     product.QueryByCode));
+
+                    sqlCount += " AND Codigo LIKE @Codigo";
                 }
                 #endregion
 
@@ -261,6 +263,8 @@ namespace DimStock.Model
 
                     paramerter.AddWithValue("@Tamanho", string.Format("{0}",
                     product.QueryBySize));
+
+                    sqlCount += " AND Tamanho LIKE @Tamanho ";
                 }
                 #endregion
 
@@ -271,6 +275,9 @@ namespace DimStock.Model
 
                     paramerter.AddWithValue("@Referencia", string.Format("{0}",
                     product.QueryByReference));
+
+                    sqlCount += " AND Referencia LIKE @Referencia ";
+
                 }
                 #endregion
 
@@ -281,6 +288,8 @@ namespace DimStock.Model
 
                     paramerter.AddWithValue("@Descricao", string.Format("%{0}%",
                     product.QueryByDescription));
+
+                    sqlCount += " AND Descricao LIKE @Descricao ";
                 }
                 #endregion     
 
