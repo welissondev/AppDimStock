@@ -328,7 +328,7 @@ namespace DimStock.View
                 if (MessageBox.Show("Confirma essa operação?", "CONFIRME", MessageBoxButtons.YesNo,
                 MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
-                    int id = Convert.ToInt32(GridActivityList.CurrentRow.Cells["idColumn"].Value);
+                    int id = Convert.ToInt32(GridActivityList.CurrentRow.Cells["id"].Value);
 
                     var stockActivity = new BllStockActivity();
 
