@@ -3,7 +3,6 @@ using DimStock.Model;
 using System.Collections.Generic;
 using DimStock.Report;
 using DimStock.Auxiliary;
-using System.Data;
 
 namespace DimStock.Business
 {
@@ -41,13 +40,15 @@ namespace DimStock.Business
 
         #region QueryProperties
 
+        private string queryByResume = "All";
+
         public string QueryByCode { get; set; }
         public string QueryBySize { get; set; }
         public string QueryByReference { get; set; }
         public string QueryByDescription { get; set; }
-        public string QueryByResume { get; set; }
+        public string QueryByResume { get => queryByResume; set => queryByResume = value; }
         public AxlDataPagination DataPagination { get; set; }
-
+       
         #endregion
 
         #region Methods
@@ -68,9 +69,9 @@ namespace DimStock.Business
         {
             var stockProduct = new MdlStockProduct(this);
 
-            var dataTable = stockProduct.FetchData();
+            stockProduct.FetchData();
 
-            PassDataTableToList(dataTable);
+            SetResult(); SetResume();
         }
         #endregion
 
@@ -79,40 +80,6 @@ namespace DimStock.Business
         {
             var stockProduct = new MdlStockProduct(this);
             ListOfRecords = stockProduct.ListAll();
-
-            SetResume();
-
-            SetResult();
-        }
-        #endregion
-
-        #region  PassDataTableToList()
-        private void PassDataTableToList(DataTable dataTable)
-        {
-            ListOfRecords = new List<BllStockProduct>();
-
-            foreach (DataRow row in dataTable.Rows)
-            {
-                var stockProduct = new BllStockProduct()
-                {
-                    StockId = Convert.ToInt32(row["TBEstoque.Id"]),
-                    ProductId = Convert.ToInt32(row["TBProduto.Id"]),
-                    Supplier = Convert.ToString(row["Fornecedor"]),
-                    ProductCode = Convert.ToString(row["Codigo"]),
-                    ProductReference = Convert.ToString(row["Referencia"]),
-                    ProductSize = Convert.ToString(row["Tamanho"]),
-                    ProductDescription = Convert.ToString(row["Descricao"]),
-                    MinStock = Convert.ToInt32(row["EstoqueMin"]),
-                    MaxStock = Convert.ToInt32(row["EstoqueMax"]),
-                    StockQuantity = Convert.ToInt32(row["Quantidade"]),
-                    StockValue = Convert.ToDouble(row["Valor"]),
-                    ProductCostPrice = Convert.ToDouble(row["PrecoCusto"]),
-                    ProductPhotoName = BllProductPhotho.GetPeth()
-                    + Convert.ToString(row["FotoNome"]),
-                };
-
-                ListOfRecords.Add(stockProduct);
-            }
 
             SetResume();
 
