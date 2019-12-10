@@ -629,6 +629,9 @@ namespace DimStock.View
         #region SetInBadingNavigator()
         public void SetInBadingNavigator()
         {
+            if(dataPagination.RecordCount == 0)
+                dataPagination.CurrentPage = 0;
+
             var legend = " Página " + dataPagination.CurrentPage + " de " + dataPagination.NumberOfPages;
             BindingPagination.Items[2].Text = legend;
 
