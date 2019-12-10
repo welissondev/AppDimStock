@@ -271,7 +271,7 @@ namespace DimStock.View
                     QueryBySize = TxtQueryBySize.Text,
                     QueryByReference = TxtQueryByReference.Text,
                     QueryByDescription = TxtQueryByDescription.Text,
-                    QueryByResume = "Todos",
+                    QueryByResume = "All",
                 };
 
                 stockProduct.FetchData();
