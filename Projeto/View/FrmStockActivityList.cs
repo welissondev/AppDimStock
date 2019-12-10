@@ -482,7 +482,7 @@ namespace DimStock.View
                 CboActivitySituation.DataSource = situationList;
                 CboActivitySituation.Text = "Em Amberto";
 
-                
+
                 List<string> pageSizeList = new List<string>()
                 {
                     "20 Registros",
@@ -550,6 +550,9 @@ namespace DimStock.View
 
         private void SetInBadingNavigator(AxlDataPagination dataPagination)
         {
+            if (dataPagination.RecordCount == 0)
+                dataPagination.CurrentPage = 0;
+
             var legend = " Página " + dataPagination.CurrentPage + " de " + dataPagination.NumberOfPages;
             BindingPagination.Items[2].Text = legend;
 
