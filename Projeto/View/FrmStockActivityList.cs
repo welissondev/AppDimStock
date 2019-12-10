@@ -246,7 +246,7 @@ namespace DimStock.View
                     );
                 }
 
-                AxlDataGridViewLealt.SortcolumnDesc(GridActivityList, 0);
+                SetInBadingNavigator(dataPagination);
 
             }
             catch (Exception ex)
@@ -477,6 +477,19 @@ namespace DimStock.View
             dataPagination.CurrentPage = 1;
         }
         #endregion
+
+        #region SetInBadingNavigator()
+
+        private void SetInBadingNavigator(AxlDataPagination dataPagination)
+        {
+            var legend = " Página " + dataPagination.CurrentPage + " de " + dataPagination.NumberOfPages;
+            BindingPagination.Items[2].Text = legend;
+
+            legend = " Total de " + dataPagination.RecordCount + " registro(s)";
+            BindingPagination.Items[6].Text = legend;
+        }
+
+        #endregion 
 
         #endregion
     }
