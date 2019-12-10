@@ -381,7 +381,7 @@ namespace DimStock.View
             {
                 using (var file = new FileStream(photoDirectoryPath, FileMode.Open, FileAccess.Read))
                 {
-                    dataGridView.Rows[i].Cells["imagePhotho"].Value = Image.FromStream(file);
+                    dataGridView.Rows[i].Cells["pothoName"].Value = Image.FromStream(file);
                 }
             }
         }
@@ -553,7 +553,7 @@ namespace DimStock.View
                 var description = new DataGridViewTextBoxColumn();
                 var costPrice = new DataGridViewTextBoxColumn();
                 var salePrice = new DataGridViewTextBoxColumn();
-                var phothoName = new DataGridViewTextBoxColumn();
+                var pothoName = new DataGridViewTextBoxColumn();
                 var buttonEdit = new DataGridViewImageColumn();
                 var buttonDelete = new DataGridViewImageColumn();
                 var buttonReplicate = new DataGridViewImageColumn();
@@ -624,7 +624,7 @@ namespace DimStock.View
                 dataGrid.Columns[7].DefaultCellStyle.Format = "c2";
                 dataGrid.Columns[7].ReadOnly = true;
 
-                dataGrid.Columns.Add(phothoName);
+                dataGrid.Columns.Add(pothoName);
                 dataGrid.Columns[8].Name = "photoName";
                 dataGrid.Columns[8].HeaderText = "Nome da Foto";
                 dataGrid.Columns[8].ReadOnly = true;
