@@ -179,24 +179,6 @@ namespace DimStock.Model
 
                 #endregion
 
-                #region Critério + DataInicial e DataFinal
-
-                if (stockActivity.QueryByStartDate != string.Empty
-                 && stockActivity.QueryByFinalDate != string.Empty)
-                {
-                    criterion += @"AND Data >= @StartDate AND Data <= @FinalDate ";
-
-                    sqlCount += @"AND Data >= @StartDate AND Data <= @FinalDate ";
-
-                    parameter.AddWithValue("@StartDate", string.Format("{0}",
-                    stockActivity.QueryByStartDate));
-
-                    parameter.AddWithValue("@FinalDate", string.Format("{0}",
-                    stockActivity.QueryByFinalDate));
-                }
-
-                #endregion
-
                 #region Critério + Tipo
                 if (stockActivity.QueryByType != string.Empty)
                 {

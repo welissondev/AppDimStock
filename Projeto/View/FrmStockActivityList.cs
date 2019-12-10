@@ -13,6 +13,7 @@ namespace DimStock.View
     {
         #region Variables
         private AxlDataPagination dataPagination = new AxlDataPagination();
+        private string situation = "Open";
         #endregion 
 
         #region Constructs
@@ -251,8 +252,6 @@ namespace DimStock.View
             {
                 var stockActivity = new BllStockActivity(dataPagination)
                 {
-                    QueryByStartDate = Convert.ToDateTime(TxtQueryByStartDate.Value).ToString("dd-MM-yyyy"),
-                    QueryByFinalDate = Convert.ToDateTime(TxtQueryByFinalDate.Value).ToString("dd-MM-yyyy"),
                     QueryByType = CboActivityType.Text,
                     QueryByActivityNumber = TxtQueryByActvityNumber.Text,
                     QueryBySituation = CboActivitySituation.Text
@@ -466,15 +465,6 @@ namespace DimStock.View
             //Exibi a data atual para usuáio, no formato long
             LblToDayIsDay.Text = DateTime.Now.ToLongDateString();
 
-            //Defini uma data inicial e final
-            var firstDay = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-            var lastDay = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
-
-            var startDate = firstDay;
-            var finalDate = lastDay + "-" + DateTime.Now.Month + "-" + DateTime.Now.Year;
-
-            TxtQueryByStartDate.Text = Convert.ToString(startDate);
-            TxtQueryByFinalDate.Text = Convert.ToString(finalDate);
         }
 
         #endregion

@@ -35,12 +35,6 @@
             this.BtnUpdateList = new Syncfusion.WinForms.Controls.SfButton();
             this.LblToDayIsDay = new System.Windows.Forms.Label();
             this.LblFormTitle = new System.Windows.Forms.Label();
-            this.LblFinalDate = new System.Windows.Forms.Label();
-            this.textBoxExt2 = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.LblStartDate = new System.Windows.Forms.Label();
-            this.TxtBuscaTamanho = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.TxtQueryByStartDate = new Syncfusion.WinForms.Input.SfDateTimeEdit();
-            this.TxtQueryByFinalDate = new Syncfusion.WinForms.Input.SfDateTimeEdit();
             this.TimerExecuteQuery = new System.Windows.Forms.Timer(this.components);
             this.PicLoading = new System.Windows.Forms.PictureBox();
             this.TxtTipo = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
@@ -63,8 +57,6 @@
             this.LblRecordsState = new System.Windows.Forms.ToolStripLabel();
             ((System.ComponentModel.ISupportInitialize)(this.GridActivityList)).BeginInit();
             this.PanelUpperHorizontal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textBoxExt2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtBuscaTamanho)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicLoading)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtTipo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtSituacao)).BeginInit();
@@ -156,103 +148,6 @@
             this.LblFormTitle.TabIndex = 138;
             this.LblFormTitle.Text = "Lista Atividades No Estoque";
             // 
-            // LblFinalDate
-            // 
-            this.LblFinalDate.AutoSize = true;
-            this.LblFinalDate.Location = new System.Drawing.Point(150, 131);
-            this.LblFinalDate.Name = "LblFinalDate";
-            this.LblFinalDate.Size = new System.Drawing.Size(58, 13);
-            this.LblFinalDate.TabIndex = 156;
-            this.LblFinalDate.Text = "Data Final:";
-            // 
-            // textBoxExt2
-            // 
-            this.textBoxExt2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.textBoxExt2.BeforeTouchSize = new System.Drawing.Size(136, 29);
-            this.textBoxExt2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
-            this.textBoxExt2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxExt2.CanOverrideStyle = true;
-            this.textBoxExt2.CausesValidation = false;
-            this.textBoxExt2.CornerRadius = 4;
-            this.textBoxExt2.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textBoxExt2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxExt2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.textBoxExt2.Location = new System.Drawing.Point(153, 147);
-            this.textBoxExt2.MaxLength = 50;
-            this.textBoxExt2.MinimumSize = new System.Drawing.Size(16, 12);
-            this.textBoxExt2.Multiline = true;
-            this.textBoxExt2.Name = "textBoxExt2";
-            this.textBoxExt2.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
-            this.textBoxExt2.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
-            this.textBoxExt2.Size = new System.Drawing.Size(136, 29);
-            this.textBoxExt2.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016Colorful;
-            this.textBoxExt2.TabIndex = 155;
-            this.textBoxExt2.Tag = "";
-            this.textBoxExt2.ThemeName = "Office2016Colorful";
-            // 
-            // LblStartDate
-            // 
-            this.LblStartDate.AutoSize = true;
-            this.LblStartDate.Location = new System.Drawing.Point(12, 131);
-            this.LblStartDate.Name = "LblStartDate";
-            this.LblStartDate.Size = new System.Drawing.Size(61, 13);
-            this.LblStartDate.TabIndex = 153;
-            this.LblStartDate.Text = "Data Inicio:";
-            // 
-            // TxtBuscaTamanho
-            // 
-            this.TxtBuscaTamanho.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtBuscaTamanho.BeforeTouchSize = new System.Drawing.Size(136, 29);
-            this.TxtBuscaTamanho.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
-            this.TxtBuscaTamanho.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtBuscaTamanho.CanOverrideStyle = true;
-            this.TxtBuscaTamanho.CausesValidation = false;
-            this.TxtBuscaTamanho.CornerRadius = 4;
-            this.TxtBuscaTamanho.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.TxtBuscaTamanho.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtBuscaTamanho.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.TxtBuscaTamanho.Location = new System.Drawing.Point(15, 147);
-            this.TxtBuscaTamanho.MaxLength = 50;
-            this.TxtBuscaTamanho.MinimumSize = new System.Drawing.Size(16, 12);
-            this.TxtBuscaTamanho.Multiline = true;
-            this.TxtBuscaTamanho.Name = "TxtBuscaTamanho";
-            this.TxtBuscaTamanho.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
-            this.TxtBuscaTamanho.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
-            this.TxtBuscaTamanho.Size = new System.Drawing.Size(136, 29);
-            this.TxtBuscaTamanho.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016Colorful;
-            this.TxtBuscaTamanho.TabIndex = 152;
-            this.TxtBuscaTamanho.Tag = "";
-            this.TxtBuscaTamanho.ThemeName = "Office2016Colorful";
-            // 
-            // TxtQueryByStartDate
-            // 
-            this.TxtQueryByStartDate.Location = new System.Drawing.Point(20, 149);
-            this.TxtQueryByStartDate.Name = "TxtQueryByStartDate";
-            this.TxtQueryByStartDate.Size = new System.Drawing.Size(123, 26);
-            this.TxtQueryByStartDate.Style.BorderColor = System.Drawing.Color.White;
-            this.TxtQueryByStartDate.Style.DisabledForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.TxtQueryByStartDate.Style.FocusedBorderColor = System.Drawing.Color.White;
-            this.TxtQueryByStartDate.Style.ForeColor = System.Drawing.Color.Black;
-            this.TxtQueryByStartDate.Style.HoverBorderColor = System.Drawing.Color.White;
-            this.TxtQueryByStartDate.Style.UpDownForeColor = System.Drawing.Color.White;
-            this.TxtQueryByStartDate.TabIndex = 157;
-            this.TxtQueryByStartDate.ValueChanged += new Syncfusion.WinForms.Input.Events.DateTimeValueChangedEventHandler(this.TxtQueryByStartDate_ValueChanged);
-            // 
-            // TxtQueryByFinalDate
-            // 
-            this.TxtQueryByFinalDate.AllowDrop = true;
-            this.TxtQueryByFinalDate.Location = new System.Drawing.Point(159, 149);
-            this.TxtQueryByFinalDate.Name = "TxtQueryByFinalDate";
-            this.TxtQueryByFinalDate.Size = new System.Drawing.Size(122, 26);
-            this.TxtQueryByFinalDate.Style.BorderColor = System.Drawing.Color.White;
-            this.TxtQueryByFinalDate.Style.DisabledForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.TxtQueryByFinalDate.Style.FocusedBorderColor = System.Drawing.Color.White;
-            this.TxtQueryByFinalDate.Style.ForeColor = System.Drawing.Color.Black;
-            this.TxtQueryByFinalDate.Style.HoverBorderColor = System.Drawing.Color.White;
-            this.TxtQueryByFinalDate.Style.UpDownForeColor = System.Drawing.Color.White;
-            this.TxtQueryByFinalDate.TabIndex = 158;
-            this.TxtQueryByFinalDate.ValueChanged += new Syncfusion.WinForms.Input.Events.DateTimeValueChangedEventHandler(this.TxtQueryByFinalDate_ValueChanged);
-            // 
             // TimerExecuteQuery
             // 
             this.TimerExecuteQuery.Interval = 1000;
@@ -281,7 +176,7 @@
             this.TxtTipo.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.TxtTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtTipo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.TxtTipo.Location = new System.Drawing.Point(291, 148);
+            this.TxtTipo.Location = new System.Drawing.Point(17, 145);
             this.TxtTipo.MaxLength = 50;
             this.TxtTipo.MinimumSize = new System.Drawing.Size(16, 12);
             this.TxtTipo.Multiline = true;
@@ -297,7 +192,7 @@
             // LblActivityType
             // 
             this.LblActivityType.AutoSize = true;
-            this.LblActivityType.Location = new System.Drawing.Point(288, 133);
+            this.LblActivityType.Location = new System.Drawing.Point(14, 130);
             this.LblActivityType.Name = "LblActivityType";
             this.LblActivityType.Size = new System.Drawing.Size(31, 13);
             this.LblActivityType.TabIndex = 161;
@@ -306,7 +201,7 @@
             // LblActivitySituation
             // 
             this.LblActivitySituation.AutoSize = true;
-            this.LblActivitySituation.Location = new System.Drawing.Point(409, 132);
+            this.LblActivitySituation.Location = new System.Drawing.Point(135, 129);
             this.LblActivitySituation.Name = "LblActivitySituation";
             this.LblActivitySituation.Size = new System.Drawing.Size(52, 13);
             this.LblActivitySituation.TabIndex = 163;
@@ -324,7 +219,7 @@
             this.TxtSituacao.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.TxtSituacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtSituacao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.TxtSituacao.Location = new System.Drawing.Point(412, 148);
+            this.TxtSituacao.Location = new System.Drawing.Point(138, 145);
             this.TxtSituacao.MaxLength = 50;
             this.TxtSituacao.MinimumSize = new System.Drawing.Size(16, 12);
             this.TxtSituacao.Multiline = true;
@@ -341,7 +236,7 @@
             // 
             this.CboActivitySituation.BackColor = System.Drawing.Color.White;
             this.CboActivitySituation.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.CboActivitySituation.Location = new System.Drawing.Point(420, 151);
+            this.CboActivitySituation.Location = new System.Drawing.Point(146, 148);
             this.CboActivitySituation.Name = "CboActivitySituation";
             this.CboActivitySituation.Size = new System.Drawing.Size(109, 24);
             this.CboActivitySituation.Style.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -357,7 +252,7 @@
             // 
             this.CboActivityType.BackColor = System.Drawing.Color.White;
             this.CboActivityType.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.CboActivityType.Location = new System.Drawing.Point(294, 150);
+            this.CboActivityType.Location = new System.Drawing.Point(20, 147);
             this.CboActivityType.Name = "CboActivityType";
             this.CboActivityType.Size = new System.Drawing.Size(115, 25);
             this.CboActivityType.Style.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -371,7 +266,7 @@
             // LblActivityNumber
             // 
             this.LblActivityNumber.AutoSize = true;
-            this.LblActivityNumber.Location = new System.Drawing.Point(562, 132);
+            this.LblActivityNumber.Location = new System.Drawing.Point(288, 129);
             this.LblActivityNumber.Name = "LblActivityNumber";
             this.LblActivityNumber.Size = new System.Drawing.Size(66, 13);
             this.LblActivityNumber.TabIndex = 168;
@@ -389,7 +284,7 @@
             this.TxtQueryByActvityNumber.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.TxtQueryByActvityNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtQueryByActvityNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.TxtQueryByActvityNumber.Location = new System.Drawing.Point(565, 148);
+            this.TxtQueryByActvityNumber.Location = new System.Drawing.Point(291, 145);
             this.TxtQueryByActvityNumber.MaxLength = 50;
             this.TxtQueryByActvityNumber.MinimumSize = new System.Drawing.Size(16, 12);
             this.TxtQueryByActvityNumber.Multiline = true;
@@ -406,7 +301,7 @@
             // LblOu
             // 
             this.LblOu.AutoSize = true;
-            this.LblOu.Location = new System.Drawing.Point(538, 158);
+            this.LblOu.Location = new System.Drawing.Point(264, 155);
             this.LblOu.Name = "LblOu";
             this.LblOu.Size = new System.Drawing.Size(21, 13);
             this.LblOu.TabIndex = 169;
@@ -415,7 +310,7 @@
             // LblClear
             // 
             this.LblClear.AutoSize = true;
-            this.LblClear.Location = new System.Drawing.Point(711, 157);
+            this.LblClear.Location = new System.Drawing.Point(437, 154);
             this.LblClear.Name = "LblClear";
             this.LblClear.Size = new System.Drawing.Size(38, 13);
             this.LblClear.TabIndex = 170;
@@ -512,12 +407,6 @@
             this.Controls.Add(this.LblActivityType);
             this.Controls.Add(this.TxtTipo);
             this.Controls.Add(this.PicLoading);
-            this.Controls.Add(this.TxtQueryByFinalDate);
-            this.Controls.Add(this.TxtQueryByStartDate);
-            this.Controls.Add(this.LblFinalDate);
-            this.Controls.Add(this.textBoxExt2);
-            this.Controls.Add(this.LblStartDate);
-            this.Controls.Add(this.TxtBuscaTamanho);
             this.Controls.Add(this.PanelUpperHorizontal);
             this.Controls.Add(this.GridActivityList);
             this.Name = "FrmStockActivityList";
@@ -525,8 +414,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.GridActivityList)).EndInit();
             this.PanelUpperHorizontal.ResumeLayout(false);
             this.PanelUpperHorizontal.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textBoxExt2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtBuscaTamanho)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicLoading)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtTipo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtSituacao)).EndInit();
@@ -547,12 +434,6 @@
         private Bunifu.Framework.UI.BunifuGradientPanel PanelUpperHorizontal;
         public System.Windows.Forms.Label LblToDayIsDay;
         public System.Windows.Forms.Label LblFormTitle;
-        private System.Windows.Forms.Label LblFinalDate;
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt textBoxExt2;
-        private System.Windows.Forms.Label LblStartDate;
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt TxtBuscaTamanho;
-        private Syncfusion.WinForms.Input.SfDateTimeEdit TxtQueryByStartDate;
-        private Syncfusion.WinForms.Input.SfDateTimeEdit TxtQueryByFinalDate;
         private System.Windows.Forms.Timer TimerExecuteQuery;
         private System.Windows.Forms.PictureBox PicLoading;
         private Syncfusion.WinForms.Controls.SfButton BtnUpdateList;

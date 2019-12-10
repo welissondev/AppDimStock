@@ -31,8 +31,6 @@ namespace DimStock.Business
 
         #region QueryProperties
 
-        public string QueryByStartDate { get; set; }
-        public string QueryByFinalDate { get; set; }
         public string QueryByType { get; set; }
         public string QueryBySituation { get; set; }
         public string QueryByActivityNumber { get; set; }
