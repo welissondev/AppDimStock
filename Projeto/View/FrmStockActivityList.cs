@@ -42,6 +42,7 @@ namespace DimStock.View
         #region BtnUpdateList_Click()
         private void BtnUpdateList_Click(object sender, EventArgs e)
         {
+            CallAllResets();
             dataPagination.OffSetValue = 0;
             dataPagination.CurrentPage = 1;
             TimerStartQuery();
@@ -128,16 +129,7 @@ namespace DimStock.View
         {
             try
             {
-                foreach (Control ctl in Controls)
-                {
-                    if (ctl.GetType() == typeof(TextBoxExt))
-                        ctl.Text = string.Empty;
-
-                    if (ctl.GetType() == typeof(SfComboBox))
-                        ctl.Text = string.Empty;
-                }
-
-                TxtQueryByActvityNumber.Select();
+                CallAllResets();
             }
             catch (Exception ex)
             {
@@ -496,6 +488,52 @@ namespace DimStock.View
 
             legend = " Total de " + dataPagination.RecordCount + " registro(s)";
             BindingPagination.Items[6].Text = legend;
+        }
+
+        #endregion
+
+        #region ResetControls()
+
+        private void ResetControls()
+        {
+            try
+            {
+                foreach (Control ctl in Controls)
+                {
+                    if (ctl.GetType() == typeof(TextBoxExt))
+                        ctl.Text = string.Empty;
+
+                    if (ctl.GetType() == typeof(SfComboBox))
+                        ctl.Text = string.Empty;
+                }
+                
+                CboActivitySituation.Text = "Em Aberto";
+
+                TxtQueryByActvityNumber.Select();
+            }
+            catch (Exception ex)
+            {
+                AxlException.Message.Show(ex);
+            }
+        }
+
+        #endregion
+
+        #region ResetVariables()
+
+        private void ResetVariables()
+        {
+            situation = "Em Aberto";
+        }
+
+        #endregion
+
+        #region CallAllResets()
+
+        private void CallAllResets()
+        {
+            ResetControls();
+            ResetVariables();
         }
 
         #endregion
