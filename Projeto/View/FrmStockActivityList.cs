@@ -208,8 +208,6 @@ namespace DimStock.View
 
                 AxlDataGridViewLealt.SortcolumnDesc(GridActivityList, 0);
 
-                TxtTotalActivities.Text = Convert.ToString(stockActivity.ListOfRecords.Count());
-
             }
             catch (Exception ex)
             {
@@ -248,8 +246,6 @@ namespace DimStock.View
                 }
 
                 AxlDataGridViewLealt.SortcolumnDesc(GridActivityList, 0);
-
-                TxtTotalActivities.Text = Convert.ToString(stockActivity.ListOfRecords.Count());
 
             }
             catch (Exception ex)

@@ -35,8 +35,6 @@
             this.BtnUpdateList = new Syncfusion.WinForms.Controls.SfButton();
             this.LblToDayIsDay = new System.Windows.Forms.Label();
             this.LblFormTitle = new System.Windows.Forms.Label();
-            this.LblActivityQuantity = new System.Windows.Forms.Label();
-            this.TxtTotalActivities = new System.Windows.Forms.Label();
             this.LblFinalDate = new System.Windows.Forms.Label();
             this.textBoxExt2 = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.LblStartDate = new System.Windows.Forms.Label();
@@ -147,29 +145,6 @@
             this.LblFormTitle.Size = new System.Drawing.Size(424, 40);
             this.LblFormTitle.TabIndex = 138;
             this.LblFormTitle.Text = "Lista Atividades No Estoque";
-            // 
-            // LblActivityQuantity
-            // 
-            this.LblActivityQuantity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.LblActivityQuantity.AutoSize = true;
-            this.LblActivityQuantity.Font = new System.Drawing.Font("Calisto MT", 12F);
-            this.LblActivityQuantity.ForeColor = System.Drawing.Color.Black;
-            this.LblActivityQuantity.Location = new System.Drawing.Point(13, 549);
-            this.LblActivityQuantity.Name = "LblActivityQuantity";
-            this.LblActivityQuantity.Size = new System.Drawing.Size(149, 19);
-            this.LblActivityQuantity.TabIndex = 142;
-            this.LblActivityQuantity.Text = "Total de Atividades:";
-            // 
-            // TxtTotalActivities
-            // 
-            this.TxtTotalActivities.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.TxtTotalActivities.Font = new System.Drawing.Font("Calisto MT", 12F);
-            this.TxtTotalActivities.ForeColor = System.Drawing.Color.Black;
-            this.TxtTotalActivities.Location = new System.Drawing.Point(168, 549);
-            this.TxtTotalActivities.Name = "TxtTotalActivities";
-            this.TxtTotalActivities.Size = new System.Drawing.Size(149, 19);
-            this.TxtTotalActivities.TabIndex = 144;
-            this.TxtTotalActivities.Text = "Total de Atividades:";
             // 
             // LblFinalDate
             // 
@@ -461,8 +436,6 @@
             this.Controls.Add(this.textBoxExt2);
             this.Controls.Add(this.LblStartDate);
             this.Controls.Add(this.TxtBuscaTamanho);
-            this.Controls.Add(this.TxtTotalActivities);
-            this.Controls.Add(this.LblActivityQuantity);
             this.Controls.Add(this.PanelUpperHorizontal);
             this.Controls.Add(this.GridActivityList);
             this.Name = "FrmStockActivityList";
@@ -489,8 +462,6 @@
         private Bunifu.Framework.UI.BunifuGradientPanel PanelUpperHorizontal;
         public System.Windows.Forms.Label LblToDayIsDay;
         public System.Windows.Forms.Label LblFormTitle;
-        public System.Windows.Forms.Label LblActivityQuantity;
-        public System.Windows.Forms.Label TxtTotalActivities;
         private System.Windows.Forms.Label LblFinalDate;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt textBoxExt2;
         private System.Windows.Forms.Label LblStartDate;
