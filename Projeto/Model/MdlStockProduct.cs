@@ -240,12 +240,20 @@ namespace DimStock.Model
                 PassDataTableToList(dataTable);
 
                 #endregion 
+
+                #region SetResume()
+                SetResume(stockProduct.ListOfRecords);
+                #endregion 
+
+                #region SetResult()
+                SetResult(stockProduct.ListOfRecords);
+                #endregion
             }
         }
         #endregion
 
         #region ListAll()
-        public List<BllStockProduct> ListAll()
+        public void ListAll()
         {
             using (var con = new MdlConnection())
             {
@@ -253,6 +261,7 @@ namespace DimStock.Model
                 var commandSQL = string.Empty;
                 var sqlCount = string.Empty;
                 var criterion = string.Empty;
+                var stockProductList = new List<BllStockProduct>();
                 #endregion
 
                 #region Comandos-SQL
@@ -350,8 +359,7 @@ namespace DimStock.Model
                     p.AddWithValue("@Referencia", string.Format("{0}", stockProduct.ProductReference));
                 #endregion
 
-                #region while()
-                var listStockProduct = new List<BllStockProduct>();
+                #region FillListOfRecords()
 
                 using (var dr = con.QueryWithDataReader(commandSQL))
                 {
@@ -374,15 +382,75 @@ namespace DimStock.Model
                             ProductPhotoName = Convert.ToString(dr["FotoNome"]),
                         };
 
-                        listStockProduct.Add(stockProduct);
+                        stockProductList.Add(stockProduct);
                     }
 
-                    return listStockProduct;
+                    stockProduct.ListOfRecords = stockProductList;
                 }
+                #endregion
+
+                #region SetResume()
+                SetResume(stockProduct.ListOfRecords);
+                #endregion 
+
+                #region SetResult()
+                SetResult(stockProduct.ListOfRecords);
                 #endregion
             }
         }
         #endregion
+
+        #region SetResume()
+
+        public void SetResume(List<BllStockProduct> listOfRecords)
+        {
+            for (int i = 0; i < listOfRecords.Count; i++)
+            {
+                var listItem = listOfRecords[i];
+                var quantity = listItem.StockQuantity;
+                var minStock = listItem.MinStock;
+                var maxStock = listItem.MaxStock;
+
+                if (quantity> 0 && quantity >= minStock && quantity <= maxStock)
+                    listItem.StockResume = "OK";
+
+                if (quantity > maxStock)
+                    listItem.StockResume = "Alto";
+
+                if (quantity < minStock)
+                    listItem.StockResume = "Baixo";
+
+                if (quantity == 0 & minStock == 0 && maxStock == 0)
+                    listItem.StockResume = "???";
+            }
+        }
+
+        #endregion
+
+        #region SetResult()
+        public void SetResult(List<BllStockProduct> listOfRecords)
+        {
+            for (int i = 0; i < listOfRecords.Count; i++)
+            {
+                var listItem = listOfRecords[i];
+                var quantity = listItem.StockQuantity;
+                var minStock = listItem.MinStock;
+                var maxStock = listItem.MaxStock;
+
+                if (quantity < minStock)
+                    listItem.StockResult = " + " + Convert.ToString(minStock - quantity);
+
+                if (quantity > maxStock)
+                    listItem.StockResult  = " - " + Convert.ToString(quantity - maxStock);
+
+                if (quantity > 0 && quantity >= minStock && quantity <= maxStock)
+                    listItem.StockResult  = "OK";
+
+                if (quantity == 0 && minStock == 0 && maxStock == 0)
+                    listItem.StockResult  = "???";
+            }
+        }
+        #endregion 
 
         #region GetRegistryData()
         public void GetRegistryData(int id)

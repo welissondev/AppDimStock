@@ -1,5 +1,4 @@
-﻿using System;
-using DimStock.Model;
+﻿using DimStock.Model;
 using System.Collections.Generic;
 using DimStock.Report;
 using DimStock.Auxiliary;
@@ -68,10 +67,7 @@ namespace DimStock.Business
         public void FetchData()
         {
             var stockProduct = new MdlStockProduct(this);
-
             stockProduct.FetchData();
-
-            SetResult(); SetResume();
         }
         #endregion
 
@@ -79,57 +75,7 @@ namespace DimStock.Business
         public void ListAll()
         {
             var stockProduct = new MdlStockProduct(this);
-            ListOfRecords = stockProduct.ListAll();
-
-            SetResume();
-
-            SetResult();
-        }
-        #endregion
-
-        #region SetResume()
-        private void SetResume()
-        {
-            var ls = ListOfRecords;
-
-            for (int i = 0; i < ls.Count; i++)
-            {
-                if (ls[i].StockQuantity > 0 && ls[i].StockQuantity >=
-                    ls[i].MinStock && ls[i].StockQuantity <= ls[i].MaxStock)
-                    ls[i].StockResume = "OK";
-
-                if (ls[i].StockQuantity > ls[i].MaxStock)
-                    ls[i].StockResume = "Alto";
-
-                if (ls[i].StockQuantity < ls[i].MinStock)
-                    ls[i].StockResume = "Baixo";
-
-                if (ls[i].StockQuantity == 0 & ls[i].MinStock == 0 && ls[i].MaxStock == 0)
-                    ls[i].StockResume = "???";
-            }
-        }
-        #endregion
-
-        #region SetResult()
-        public void SetResult()
-        {
-            var ls = ListOfRecords;
-
-            for (int i = 0; i < ls.Count; i++)
-            {
-                if (ls[i].StockQuantity < ls[i].MinStock)
-                    ls[i].StockResult = " + " + Convert.ToString(ls[i].MinStock - ls[i].StockQuantity);
-
-                if (ls[i].StockQuantity > ls[i].MaxStock)
-                    ls[i].StockResult = " - " + Convert.ToString(ls[i].StockQuantity - ls[i].MaxStock);
-
-                if (ls[i].StockQuantity > 0 && ls[i].StockQuantity >= ls[i].MinStock &&
-                    ls[i].StockQuantity <= ls[i].MaxStock)
-                    ls[i].StockResult = "OK";
-
-                if (ls[i].StockQuantity == 0 && ls[i].MinStock == 0 && ls[i].MaxStock == 0)
-                    ls[i].StockResult = "???";
-            }
+            stockProduct.ListAll();
         }
         #endregion
 
