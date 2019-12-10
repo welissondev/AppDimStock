@@ -122,9 +122,14 @@ namespace DimStock.View
                 switch (itemSelected)
                 {
                     case 0:
+                        activitySituation = "";
+                        break;
+
+                    case 1:
                         activitySituation = "Em Aberto";
                         break;
-                    case 1:
+
+                    case 2:
                         activitySituation = "Finalizada";
                         break;
                 }
@@ -475,6 +480,7 @@ namespace DimStock.View
 
                 List<string> situationList = new List<string>()
                 {
+                    "Todos",
                     "Em Aberto",
                     "Finalizada"
                 };
