@@ -13,7 +13,7 @@ namespace DimStock.View
     {
         #region Variables
         private AxlDataPagination dataPagination = new AxlDataPagination();
-        private string activitySituation = "Em Aberto";
+        private string activitySituation = string.Empty;
         private string activityType = string.Empty;
         #endregion 
 
@@ -94,9 +94,14 @@ namespace DimStock.View
                 switch (itemSelected)
                 {
                     case 0:
+                        activityType = string.Empty;
+                        break;
+
+                    case 1:
                         activityType = "Entrada";
                         break;
-                    case 1:
+
+                    case 2:
                         activityType = "Saída";
                         break;
                 }
@@ -122,7 +127,7 @@ namespace DimStock.View
                 switch (itemSelected)
                 {
                     case 0:
-                        activitySituation = "";
+                        activitySituation = string.Empty;
                         break;
 
                     case 1:
@@ -295,7 +300,7 @@ namespace DimStock.View
             {
                 var stockActivity = new BllStockActivity(dataPagination)
                 {
-                    QueryByType = CboActivityType.Text,
+                    QueryByType = activityType,
                     QueryByActivityNumber = TxtQueryByActvityNumber.Text,
                     QueryBySituation = activitySituation
                 };
@@ -471,11 +476,13 @@ namespace DimStock.View
             {
                 List<string> typeList = new List<string>()
                 {
+                    "Todos",
                     "Entrada",
                     "Saída"
                 };
 
                 CboActivityType.DataSource = typeList;
+                CboActivityType.Text = "Todos";
 
 
                 List<string> situationList = new List<string>()
@@ -486,7 +493,7 @@ namespace DimStock.View
                 };
 
                 CboActivitySituation.DataSource = situationList;
-                CboActivitySituation.Text = "Em Amberto";
+                CboActivitySituation.Text = "Todos";
 
 
                 List<string> pageSizeList = new List<string>()
@@ -583,7 +590,8 @@ namespace DimStock.View
                         ctl.Text = string.Empty;
                 }
 
-                CboActivitySituation.Text = "Em Aberto";
+                CboActivitySituation.Text = "Todos";
+                CboActivityType.Text = "Todos";
                 CboPageSize.Text = dataPagination.PageSize + " Registros";
 
                 TxtQueryByActvityNumber.Select();
@@ -600,7 +608,7 @@ namespace DimStock.View
 
         private void ResetVariables()
         {
-            activitySituation = "Em Aberto";
+            activitySituation = string.Empty;
             activityType = string.Empty;
         }
 
