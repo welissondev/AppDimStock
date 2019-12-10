@@ -42,7 +42,9 @@ namespace DimStock.View
         #region BtnUpdateList_Click()
         private void BtnUpdateList_Click(object sender, EventArgs e)
         {
-            ListActivities();
+            dataPagination.OffSetValue = 0;
+            dataPagination.CurrentPage = 1;
+            TimerStartQuery();
         }
         #endregion
 
@@ -234,36 +236,6 @@ namespace DimStock.View
         #endregion 
 
         #region Methods
-
-        #region ListActivities()
-        private void ListActivities()
-        {
-            try
-            {
-                var stockActivity = new BllStockActivity(dataPagination);
-                stockActivity.ListAll();
-
-                GridActivityList.Rows.Clear();
-                for (int i = 0; i < stockActivity.ListOfRecords.Count; i++)
-                {
-                    GridActivityList.Rows.Add(
-                    stockActivity.ListOfRecords[i].Id,
-                    stockActivity.ListOfRecords[i].Type,
-                    stockActivity.ListOfRecords[i].Date,
-                    stockActivity.ListOfRecords[i].Hour,
-                    stockActivity.ListOfRecords[i].Situation
-                    );
-                }
-
-                AxlDataGridViewLealt.SortcolumnDesc(GridActivityList, 0);
-
-            }
-            catch (Exception ex)
-            {
-                AxlException.Message.Show(ex);
-            }
-        }
-        #endregion
 
         #region FetchData()
         public void FetchData()
