@@ -13,7 +13,8 @@ namespace DimStock.View
     {
         #region Variables
         private AxlDataPagination dataPagination = new AxlDataPagination();
-        private string situation = "Em Aberto";
+        private string activitySituation = "Em Aberto";
+        private string activityType = string.Empty;
         #endregion 
 
         #region Constructs
@@ -86,9 +87,28 @@ namespace DimStock.View
         #region CboActivityType_SelectedIndexChanged()
         private void CboActivityType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            PicLoading.Visible = true;
-            TimerExecuteQuery.Enabled = false;
-            TimerExecuteQuery.Enabled = true;
+            try
+            {
+                var itemSelected = CboActivityType.SelectedIndex;
+
+                switch (itemSelected)
+                {
+                    case 0:
+                        activityType = "Entrada";
+                        break;
+                    case 1:
+                        activityType = "Saída";
+                        break;
+                }
+
+                dataPagination.OffSetValue = 0;
+                dataPagination.CurrentPage = 1;
+                TimerStartQuery();
+            }
+            catch (Exception ex)
+            {
+                AxlException.Message.Show(ex);
+            }
         }
         #endregion
 
@@ -102,10 +122,10 @@ namespace DimStock.View
                 switch (itemSelected)
                 {
                     case 0:
-                        situation = "Em Aberto";
+                        activitySituation = "Em Aberto";
                         break;
                     case 1:
-                        situation = "Finalizada";
+                        activitySituation = "Finalizada";
                         break;
                 }
 
@@ -238,7 +258,7 @@ namespace DimStock.View
                 {
                     QueryByType = CboActivityType.Text,
                     QueryByActivityNumber = TxtQueryByActvityNumber.Text,
-                    QueryBySituation = situation
+                    QueryBySituation = activitySituation
                 };
 
                 stockActivity.FetchData();
@@ -506,7 +526,7 @@ namespace DimStock.View
                     if (ctl.GetType() == typeof(SfComboBox))
                         ctl.Text = string.Empty;
                 }
-                
+
                 CboActivitySituation.Text = "Em Aberto";
 
                 TxtQueryByActvityNumber.Select();
@@ -523,7 +543,8 @@ namespace DimStock.View
 
         private void ResetVariables()
         {
-            situation = "Em Aberto";
+            activitySituation = "Em Aberto";
+            activityType = string.Empty;
         }
 
         #endregion
