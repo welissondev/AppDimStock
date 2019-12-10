@@ -168,10 +168,15 @@ namespace DimStock.Model
                 var commandSQL = string.Empty;
                 var criterion = string.Empty;
                 var parameter = connection.Command.Parameters;
+                var sqlCount = string.Empty;
                 #endregion 
 
-                #region Consulta Padrão
+                #region Query Padrão
+
                 commandSQL = @"SELECT * From TBEstoqueAtividade WHERE Id > 0 ";
+
+                sqlCount = @"SELECT COUNT(*) FROM TBEstoqueAtividade WHERE Id > 0 ";
+
                 #endregion
 
                 #region Critério + DataInicial e DataFinal
@@ -179,7 +184,9 @@ namespace DimStock.Model
                 if (stockActivity.QueryByStartDate != string.Empty
                  && stockActivity.QueryByFinalDate != string.Empty)
                 {
-                    criterion += " AND Data >= @StartDate And Data <= @FinalDate";
+                    criterion += @"AND Data >= @StartDate AND Data <= @FinalDate ";
+
+                    sqlCount += @"AND Data >= @StartDate AND Data <= @FinalDate ";
 
                     parameter.AddWithValue("@StartDate", string.Format("{0}",
                     stockActivity.QueryByStartDate));
@@ -193,7 +200,9 @@ namespace DimStock.Model
                 #region Critério + Tipo
                 if (stockActivity.QueryByType != string.Empty)
                 {
-                    criterion += " And Tipo LIKE @Type";
+                    criterion += @"AND Tipo LIKE @Type ";
+
+                    sqlCount += @"AND Tipo LIKE @Type ";
 
                     parameter.AddWithValue("@Type", string.Format("{0}",
                     stockActivity.QueryByType));
@@ -203,7 +212,9 @@ namespace DimStock.Model
                 #region Critério + Situação
                 if (stockActivity.QueryBySituation != string.Empty)
                 {
-                    criterion += " And Situacao LIKE @Situation";
+                    criterion += @"AND Situacao LIKE @Situation ";
+
+                    sqlCount += @"AND Situacao LIKE @Situation ";
 
                     parameter.AddWithValue("@Situation", string.Format("{0}",
                     stockActivity.QueryBySituation));
@@ -214,7 +225,9 @@ namespace DimStock.Model
                 #region Critério + Número da atividade
                 if (stockActivity.QueryByActivityNumber != string.Empty)
                 {
-                    criterion += " And Id LIKE @ActvityNumber";
+                    criterion += @"AND Id LIKE @ActvityNumber ";
+
+                    sqlCount += @"AND Id LIKE @ActivityNumber ";
 
                     parameter.AddWithValue("@ActvityNumber", string.Format("{0}",
                     stockActivity.QueryByActivityNumber));
@@ -224,6 +237,13 @@ namespace DimStock.Model
                 #region ComandoSQL + Critério
                 commandSQL += criterion;
                 #endregion
+
+                #region RecordCount
+
+                stockActivity.DataPagination.RecordCount = Convert.ToInt32(
+                connection.ExecuteScalar(sqlCount));
+
+                #endregion 
 
                 #region Preenche DataTable
                 var dataTable = connection.QueryWithDataTable(commandSQL,
@@ -291,7 +311,7 @@ namespace DimStock.Model
         {
             var activityStockList = new List<BllStockActivity>();
 
-            foreach(DataRow row in dataTable.Rows)
+            foreach (DataRow row in dataTable.Rows)
             {
                 var stockActivity = new BllStockActivity()
                 {
