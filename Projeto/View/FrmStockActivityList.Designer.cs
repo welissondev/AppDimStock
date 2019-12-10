@@ -480,6 +480,7 @@
             this.NextPage.Name = "NextPage";
             this.NextPage.RightToLeftAutoMirrorImage = true;
             this.NextPage.Size = new System.Drawing.Size(23, 22);
+            this.NextPage.Click += new System.EventHandler(this.NextPage_Click);
             // 
             // toolStripSeparator3
             // 

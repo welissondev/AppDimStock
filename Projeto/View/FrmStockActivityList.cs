@@ -185,6 +185,22 @@ namespace DimStock.View
 
         #endregion
 
+        #region BadingNavigator
+
+        #region NextPage_Click()
+        private void NextPage_Click(object sender, EventArgs e)
+        {
+            if (dataPagination.CurrentPage < dataPagination.NumberOfPages)
+            {
+                dataPagination.CurrentPage += 1;
+                dataPagination.OffSetValue += dataPagination.PageSize;
+                TimerStartQuery();
+            }
+        }
+        #endregion 
+
+        #endregion 
+
         #region Methods
 
         #region ListActivities()
@@ -489,7 +505,7 @@ namespace DimStock.View
             BindingPagination.Items[6].Text = legend;
         }
 
-        #endregion 
+        #endregion
 
         #endregion
     }
