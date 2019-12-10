@@ -13,7 +13,7 @@ namespace DimStock.View
     {
         #region Variables
         private AxlDataPagination dataPagination = new AxlDataPagination();
-        private string situation = "Open";
+        private string situation = "Em Aberto";
         #endregion 
 
         #region Constructs
@@ -31,6 +31,7 @@ namespace DimStock.View
         private void FrmStockActivityList_Load(object sender, EventArgs e)
         {
             ConfigureDataPagination();
+            TimerStartQuery();
         }
         #endregion
 
@@ -91,9 +92,28 @@ namespace DimStock.View
         #region CboActivitySituation_SelectedIndexChanged()
         private void CboActivitySituation_SelectedIndexChanged(object sender, EventArgs e)
         {
-            PicLoading.Visible = true;
-            TimerExecuteQuery.Enabled = false;
-            TimerExecuteQuery.Enabled = true;
+            try
+            {
+                var itemSelected = CboActivitySituation.SelectedIndex;
+
+                switch (itemSelected)
+                {
+                    case 0:
+                        situation = "Em Aberto";
+                        break;
+                    case 1:
+                        situation = "Finalizada";
+                        break;
+                }
+
+                dataPagination.OffSetValue = 0;
+                dataPagination.CurrentPage = 1;
+                TimerStartQuery();
+            }
+            catch (Exception ex)
+            {
+                AxlException.Message.Show(ex);
+            }
         }
         #endregion
 
@@ -254,7 +274,7 @@ namespace DimStock.View
                 {
                     QueryByType = CboActivityType.Text,
                     QueryByActivityNumber = TxtQueryByActvityNumber.Text,
-                    QueryBySituation = CboActivitySituation.Text
+                    QueryBySituation = situation
                 };
 
                 stockActivity.FetchData();

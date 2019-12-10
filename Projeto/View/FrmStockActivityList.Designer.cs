@@ -167,7 +167,7 @@
             // TxtTipo
             // 
             this.TxtTipo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtTipo.BeforeTouchSize = new System.Drawing.Size(136, 29);
+            this.TxtTipo.BeforeTouchSize = new System.Drawing.Size(120, 29);
             this.TxtTipo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.TxtTipo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtTipo.CanOverrideStyle = true;
@@ -176,7 +176,7 @@
             this.TxtTipo.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.TxtTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtTipo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.TxtTipo.Location = new System.Drawing.Point(17, 145);
+            this.TxtTipo.Location = new System.Drawing.Point(143, 146);
             this.TxtTipo.MaxLength = 50;
             this.TxtTipo.MinimumSize = new System.Drawing.Size(16, 12);
             this.TxtTipo.Multiline = true;
@@ -192,7 +192,7 @@
             // LblActivityType
             // 
             this.LblActivityType.AutoSize = true;
-            this.LblActivityType.Location = new System.Drawing.Point(14, 130);
+            this.LblActivityType.Location = new System.Drawing.Point(140, 131);
             this.LblActivityType.Name = "LblActivityType";
             this.LblActivityType.Size = new System.Drawing.Size(31, 13);
             this.LblActivityType.TabIndex = 161;
@@ -201,7 +201,7 @@
             // LblActivitySituation
             // 
             this.LblActivitySituation.AutoSize = true;
-            this.LblActivitySituation.Location = new System.Drawing.Point(135, 129);
+            this.LblActivitySituation.Location = new System.Drawing.Point(17, 130);
             this.LblActivitySituation.Name = "LblActivitySituation";
             this.LblActivitySituation.Size = new System.Drawing.Size(52, 13);
             this.LblActivitySituation.TabIndex = 163;
@@ -210,7 +210,7 @@
             // TxtSituacao
             // 
             this.TxtSituacao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtSituacao.BeforeTouchSize = new System.Drawing.Size(136, 29);
+            this.TxtSituacao.BeforeTouchSize = new System.Drawing.Size(120, 29);
             this.TxtSituacao.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.TxtSituacao.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtSituacao.CanOverrideStyle = true;
@@ -219,7 +219,7 @@
             this.TxtSituacao.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.TxtSituacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtSituacao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.TxtSituacao.Location = new System.Drawing.Point(138, 145);
+            this.TxtSituacao.Location = new System.Drawing.Point(20, 146);
             this.TxtSituacao.MaxLength = 50;
             this.TxtSituacao.MinimumSize = new System.Drawing.Size(16, 12);
             this.TxtSituacao.Multiline = true;
@@ -236,7 +236,7 @@
             // 
             this.CboActivitySituation.BackColor = System.Drawing.Color.White;
             this.CboActivitySituation.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.CboActivitySituation.Location = new System.Drawing.Point(146, 148);
+            this.CboActivitySituation.Location = new System.Drawing.Point(28, 149);
             this.CboActivitySituation.Name = "CboActivitySituation";
             this.CboActivitySituation.Size = new System.Drawing.Size(109, 24);
             this.CboActivitySituation.Style.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -246,13 +246,14 @@
             this.CboActivitySituation.Style.EditorStyle.FocusedBorderColor = System.Drawing.Color.White;
             this.CboActivitySituation.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.CboActivitySituation.TabIndex = 165;
+            this.CboActivitySituation.Text = "Em Aberto";
             this.CboActivitySituation.SelectedIndexChanged += new System.EventHandler(this.CboActivitySituation_SelectedIndexChanged);
             // 
             // CboActivityType
             // 
             this.CboActivityType.BackColor = System.Drawing.Color.White;
             this.CboActivityType.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.CboActivityType.Location = new System.Drawing.Point(20, 147);
+            this.CboActivityType.Location = new System.Drawing.Point(146, 148);
             this.CboActivityType.Name = "CboActivityType";
             this.CboActivityType.Size = new System.Drawing.Size(115, 25);
             this.CboActivityType.Style.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -266,7 +267,7 @@
             // LblActivityNumber
             // 
             this.LblActivityNumber.AutoSize = true;
-            this.LblActivityNumber.Location = new System.Drawing.Point(288, 129);
+            this.LblActivityNumber.Location = new System.Drawing.Point(293, 129);
             this.LblActivityNumber.Name = "LblActivityNumber";
             this.LblActivityNumber.Size = new System.Drawing.Size(66, 13);
             this.LblActivityNumber.TabIndex = 168;
@@ -275,7 +276,7 @@
             // TxtQueryByActvityNumber
             // 
             this.TxtQueryByActvityNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtQueryByActvityNumber.BeforeTouchSize = new System.Drawing.Size(136, 29);
+            this.TxtQueryByActvityNumber.BeforeTouchSize = new System.Drawing.Size(120, 29);
             this.TxtQueryByActvityNumber.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.TxtQueryByActvityNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtQueryByActvityNumber.CanOverrideStyle = true;
@@ -284,7 +285,7 @@
             this.TxtQueryByActvityNumber.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.TxtQueryByActvityNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtQueryByActvityNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.TxtQueryByActvityNumber.Location = new System.Drawing.Point(291, 145);
+            this.TxtQueryByActvityNumber.Location = new System.Drawing.Point(296, 145);
             this.TxtQueryByActvityNumber.MaxLength = 50;
             this.TxtQueryByActvityNumber.MinimumSize = new System.Drawing.Size(16, 12);
             this.TxtQueryByActvityNumber.Multiline = true;
@@ -301,7 +302,7 @@
             // LblOu
             // 
             this.LblOu.AutoSize = true;
-            this.LblOu.Location = new System.Drawing.Point(264, 155);
+            this.LblOu.Location = new System.Drawing.Point(269, 155);
             this.LblOu.Name = "LblOu";
             this.LblOu.Size = new System.Drawing.Size(21, 13);
             this.LblOu.TabIndex = 169;
@@ -310,7 +311,7 @@
             // LblClear
             // 
             this.LblClear.AutoSize = true;
-            this.LblClear.Location = new System.Drawing.Point(437, 154);
+            this.LblClear.Location = new System.Drawing.Point(442, 154);
             this.LblClear.Name = "LblClear";
             this.LblClear.Size = new System.Drawing.Size(38, 13);
             this.LblClear.TabIndex = 170;
