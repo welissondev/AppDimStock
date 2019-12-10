@@ -168,7 +168,7 @@
             // textBoxExt2
             // 
             this.textBoxExt2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.textBoxExt2.BeforeTouchSize = new System.Drawing.Size(174, 29);
+            this.textBoxExt2.BeforeTouchSize = new System.Drawing.Size(136, 29);
             this.textBoxExt2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.textBoxExt2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxExt2.CanOverrideStyle = true;
@@ -202,7 +202,7 @@
             // TxtBuscaTamanho
             // 
             this.TxtBuscaTamanho.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtBuscaTamanho.BeforeTouchSize = new System.Drawing.Size(174, 29);
+            this.TxtBuscaTamanho.BeforeTouchSize = new System.Drawing.Size(136, 29);
             this.TxtBuscaTamanho.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.TxtBuscaTamanho.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtBuscaTamanho.CanOverrideStyle = true;
@@ -272,7 +272,7 @@
             // TxtTipo
             // 
             this.TxtTipo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtTipo.BeforeTouchSize = new System.Drawing.Size(174, 29);
+            this.TxtTipo.BeforeTouchSize = new System.Drawing.Size(136, 29);
             this.TxtTipo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.TxtTipo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtTipo.CanOverrideStyle = true;
@@ -315,7 +315,7 @@
             // TxtSituacao
             // 
             this.TxtSituacao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtSituacao.BeforeTouchSize = new System.Drawing.Size(174, 29);
+            this.TxtSituacao.BeforeTouchSize = new System.Drawing.Size(136, 29);
             this.TxtSituacao.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.TxtSituacao.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtSituacao.CanOverrideStyle = true;
@@ -380,7 +380,7 @@
             // TxtQueryByActvityNumber
             // 
             this.TxtQueryByActvityNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtQueryByActvityNumber.BeforeTouchSize = new System.Drawing.Size(174, 29);
+            this.TxtQueryByActvityNumber.BeforeTouchSize = new System.Drawing.Size(136, 29);
             this.TxtQueryByActvityNumber.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.TxtQueryByActvityNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtQueryByActvityNumber.CanOverrideStyle = true;
@@ -455,6 +455,7 @@
             this.BackPage.Name = "BackPage";
             this.BackPage.RightToLeftAutoMirrorImage = true;
             this.BackPage.Size = new System.Drawing.Size(23, 22);
+            this.BackPage.Click += new System.EventHandler(this.BackPage_Click);
             // 
             // toolStripSeparator1
             // 

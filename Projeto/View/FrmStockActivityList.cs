@@ -3,7 +3,6 @@ using System.Windows.Forms;
 using DimStock.Business;
 using DimStock.Auxiliary;
 using DimStock.Properties;
-using System.Linq;
 using System.Collections.Generic;
 using Syncfusion.Windows.Forms.Tools;
 using Syncfusion.WinForms.ListView;
@@ -194,6 +193,18 @@ namespace DimStock.View
             {
                 dataPagination.CurrentPage += 1;
                 dataPagination.OffSetValue += dataPagination.PageSize;
+                TimerStartQuery();
+            }
+        }
+        #endregion
+
+        #region BackPage_Click()
+        private void BackPage_Click(object sender, EventArgs e)
+        {
+            if (dataPagination.CurrentPage > 1)
+            {
+                dataPagination.CurrentPage -= 1;
+                dataPagination.OffSetValue -= dataPagination.PageSize;
                 TimerStartQuery();
             }
         }
