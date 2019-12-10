@@ -451,6 +451,23 @@ namespace DimStock.View
 
         #endregion
 
+        #region TimerStartQuery()
+        private void TimerStartQuery()
+        {
+            PicLoading.Visible = true;
+            TimerExecuteQuery.Enabled = false;
+            TimerExecuteQuery.Enabled = true;
+        }
+        #endregion
+
+        #region TimerStopQuery()
+        public void TimerStopQuery()
+        {
+            PicLoading.Visible = false;
+            TimerExecuteQuery.Enabled = false;
+        }
+        #endregion
+
         #endregion
     }
 }
