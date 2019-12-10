@@ -30,6 +30,7 @@ namespace DimStock.View
         #region FrmStockActivityList_Load()
         private void FrmStockActivityList_Load(object sender, EventArgs e)
         {
+            ConfigureDataPagination();
         }
         #endregion
 
@@ -465,6 +466,15 @@ namespace DimStock.View
         {
             PicLoading.Visible = false;
             TimerExecuteQuery.Enabled = false;
+        }
+        #endregion
+
+        #region ConfigureDataPagination()
+        private void ConfigureDataPagination()
+        {
+            dataPagination.OffSetValue = 0;
+            dataPagination.PageSize = 20;
+            dataPagination.CurrentPage = 1;
         }
         #endregion
 
