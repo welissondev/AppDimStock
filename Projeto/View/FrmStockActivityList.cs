@@ -140,6 +140,40 @@ namespace DimStock.View
         }
         #endregion
 
+        #region CboPageSize_SelectedIndexChanged()
+        private void CboPageSize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                var itemSelected = CboPageSize.SelectedIndex;
+
+                switch (itemSelected)
+                {
+                    case 0:
+                        dataPagination.PageSize = 20;
+                        break;
+                    case 1:
+                        dataPagination.PageSize = 30;
+                        break;
+                    case 2:
+                        dataPagination.PageSize = 70;
+                        break;
+                    case 3:
+                        dataPagination.PageSize = 100;
+                        break;
+                }
+
+                dataPagination.OffSetValue = 0;
+                dataPagination.CurrentPage = 1;
+                TimerStartQuery();
+            }
+            catch (Exception ex)
+            {
+                AxlException.Message.Show(ex);
+            }
+        }
+        #endregion 
+
         #endregion
 
         #region Label
@@ -430,22 +464,35 @@ namespace DimStock.View
         {
             try
             {
-                List<string> listaTipo = new List<string>()
+                List<string> typeList = new List<string>()
                 {
                     "Entrada",
                     "Saída"
                 };
 
-                CboActivityType.DataSource = listaTipo;
+                CboActivityType.DataSource = typeList;
 
 
-                List<string> listaSituacao = new List<string>()
+                List<string> situationList = new List<string>()
                 {
                     "Em Aberto",
                     "Finalizada"
                 };
 
-                CboActivitySituation.DataSource = listaSituacao;
+                CboActivitySituation.DataSource = situationList;
+                CboActivitySituation.Text = "Em Amberto";
+
+                
+                List<string> pageSizeList = new List<string>()
+                {
+                    "20 Registros",
+                    "30 Registros",
+                    "70 Registros",
+                    "100 Registros"
+                };
+
+                CboPageSize.DataSource = pageSizeList;
+                CboPageSize.Text = "20 Registros";
 
             }
             catch (Exception ex)
@@ -528,6 +575,7 @@ namespace DimStock.View
                 }
 
                 CboActivitySituation.Text = "Em Aberto";
+                CboPageSize.Text = dataPagination.PageSize + " Registros";
 
                 TxtQueryByActvityNumber.Select();
             }

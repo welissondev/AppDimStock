@@ -55,6 +55,9 @@
             this.NextPage = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.LblRecordsState = new System.Windows.Forms.ToolStripLabel();
+            this.CboPageSize = new Syncfusion.WinForms.ListView.SfComboBox();
+            this.TxtOcultNumberOfRecords = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.LblPageSize = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.GridActivityList)).BeginInit();
             this.PanelUpperHorizontal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicLoading)).BeginInit();
@@ -65,6 +68,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.TxtQueryByActvityNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BindingPagination)).BeginInit();
             this.BindingPagination.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CboPageSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtOcultNumberOfRecords)).BeginInit();
             this.SuspendLayout();
             // 
             // GridActivityList
@@ -167,7 +172,7 @@
             // TxtTipo
             // 
             this.TxtTipo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtTipo.BeforeTouchSize = new System.Drawing.Size(120, 29);
+            this.TxtTipo.BeforeTouchSize = new System.Drawing.Size(174, 29);
             this.TxtTipo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.TxtTipo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtTipo.CanOverrideStyle = true;
@@ -210,7 +215,7 @@
             // TxtSituacao
             // 
             this.TxtSituacao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtSituacao.BeforeTouchSize = new System.Drawing.Size(120, 29);
+            this.TxtSituacao.BeforeTouchSize = new System.Drawing.Size(174, 29);
             this.TxtSituacao.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.TxtSituacao.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtSituacao.CanOverrideStyle = true;
@@ -246,7 +251,6 @@
             this.CboActivitySituation.Style.EditorStyle.FocusedBorderColor = System.Drawing.Color.White;
             this.CboActivitySituation.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.CboActivitySituation.TabIndex = 165;
-            this.CboActivitySituation.Text = "Em Aberto";
             this.CboActivitySituation.SelectedIndexChanged += new System.EventHandler(this.CboActivitySituation_SelectedIndexChanged);
             // 
             // CboActivityType
@@ -276,7 +280,7 @@
             // TxtQueryByActvityNumber
             // 
             this.TxtQueryByActvityNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtQueryByActvityNumber.BeforeTouchSize = new System.Drawing.Size(120, 29);
+            this.TxtQueryByActvityNumber.BeforeTouchSize = new System.Drawing.Size(174, 29);
             this.TxtQueryByActvityNumber.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.TxtQueryByActvityNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtQueryByActvityNumber.CanOverrideStyle = true;
@@ -311,7 +315,7 @@
             // LblClear
             // 
             this.LblClear.AutoSize = true;
-            this.LblClear.Location = new System.Drawing.Point(442, 154);
+            this.LblClear.Location = new System.Drawing.Point(620, 155);
             this.LblClear.Name = "LblClear";
             this.LblClear.Size = new System.Drawing.Size(38, 13);
             this.LblClear.TabIndex = 170;
@@ -390,12 +394,66 @@
             this.LblRecordsState.Size = new System.Drawing.Size(86, 22);
             this.LblRecordsState.Text = "0 de 0 registros";
             // 
+            // CboPageSize
+            // 
+            this.CboPageSize.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CboPageSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CboPageSize.Location = new System.Drawing.Point(446, 149);
+            this.CboPageSize.Name = "CboPageSize";
+            this.CboPageSize.Size = new System.Drawing.Size(165, 25);
+            this.CboPageSize.Style.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CboPageSize.Style.EditorStyle.DisabledBorderColor = System.Drawing.Color.Transparent;
+            this.CboPageSize.Style.EditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CboPageSize.Style.ReadOnlyEditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CboPageSize.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.CboPageSize.Style.TokenStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CboPageSize.TabIndex = 180;
+            this.CboPageSize.ToolTipOption.ShadowVisible = false;
+            this.CboPageSize.SelectedIndexChanged += new System.EventHandler(this.CboPageSize_SelectedIndexChanged);
+            // 
+            // TxtOcultNumberOfRecords
+            // 
+            this.TxtOcultNumberOfRecords.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.TxtOcultNumberOfRecords.BeforeTouchSize = new System.Drawing.Size(174, 29);
+            this.TxtOcultNumberOfRecords.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
+            this.TxtOcultNumberOfRecords.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtOcultNumberOfRecords.CanOverrideStyle = true;
+            this.TxtOcultNumberOfRecords.CausesValidation = false;
+            this.TxtOcultNumberOfRecords.CornerRadius = 4;
+            this.TxtOcultNumberOfRecords.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.TxtOcultNumberOfRecords.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtOcultNumberOfRecords.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.TxtOcultNumberOfRecords.Location = new System.Drawing.Point(440, 146);
+            this.TxtOcultNumberOfRecords.MaxLength = 50;
+            this.TxtOcultNumberOfRecords.MinimumSize = new System.Drawing.Size(16, 12);
+            this.TxtOcultNumberOfRecords.Multiline = true;
+            this.TxtOcultNumberOfRecords.Name = "TxtOcultNumberOfRecords";
+            this.TxtOcultNumberOfRecords.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
+            this.TxtOcultNumberOfRecords.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
+            this.TxtOcultNumberOfRecords.Size = new System.Drawing.Size(174, 29);
+            this.TxtOcultNumberOfRecords.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016Colorful;
+            this.TxtOcultNumberOfRecords.TabIndex = 182;
+            this.TxtOcultNumberOfRecords.Tag = "";
+            this.TxtOcultNumberOfRecords.ThemeName = "Office2016Colorful";
+            // 
+            // LblPageSize
+            // 
+            this.LblPageSize.AutoSize = true;
+            this.LblPageSize.Location = new System.Drawing.Point(439, 132);
+            this.LblPageSize.Name = "LblPageSize";
+            this.LblPageSize.Size = new System.Drawing.Size(107, 13);
+            this.LblPageSize.TabIndex = 181;
+            this.LblPageSize.Text = "Registros por página:";
+            // 
             // FrmStockActivityList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1023, 603);
+            this.Controls.Add(this.CboPageSize);
+            this.Controls.Add(this.TxtOcultNumberOfRecords);
+            this.Controls.Add(this.LblPageSize);
             this.Controls.Add(this.BindingPagination);
             this.Controls.Add(this.LblClear);
             this.Controls.Add(this.LblOu);
@@ -424,6 +482,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.BindingPagination)).EndInit();
             this.BindingPagination.ResumeLayout(false);
             this.BindingPagination.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CboPageSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtOcultNumberOfRecords)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -456,5 +516,8 @@
         private System.Windows.Forms.ToolStripButton NextPage;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripLabel LblRecordsState;
+        private Syncfusion.WinForms.ListView.SfComboBox CboPageSize;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt TxtOcultNumberOfRecords;
+        private System.Windows.Forms.Label LblPageSize;
     }
 }
