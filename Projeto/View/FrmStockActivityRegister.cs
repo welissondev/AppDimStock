@@ -290,12 +290,12 @@ namespace DimStock.View
                     stockProduct.ListOfRecords[i].ProductCostPrice
                     );
 
-                    var photoDirectoryPath = BllProductPhotho.GetPeth() + stockProduct.ListOfRecords[i].ProductPhotoName;
-                    if (BllProductPhotho.FindFile(photoDirectoryPath).Equals(true))
+                    var photoPath = BllProductPhotho.GetPeth() + stockProduct.ListOfRecords[i].ProductPhotoName;
+                    if (BllProductPhotho.FindFile(photoPath).Equals(true))
                     {
-                        using (var file = new FileStream(photoDirectoryPath, FileMode.Open, FileAccess.Read))
+                        using (var file = new FileStream(photoPath, FileMode.Open, FileAccess.Read))
                         {
-                            GridMain.Rows[i].Cells["fotoProdutoColumn"].Value = Image.FromStream(file);
+                            GridMain.Rows[i].Cells["productPhoto"].Value = Image.FromStream(file);
                         }
                     }
                 }
@@ -360,7 +360,7 @@ namespace DimStock.View
                 var productCode = new DataGridViewTextBoxColumn();
                 var productDescription = new DataGridViewTextBoxColumn();
                 var productCostPrice = new DataGridViewTextBoxColumn();
-                var imgProduct = new DataGridViewImageColumn();
+                var productPhoto = new DataGridViewImageColumn();
 
                 var dataGrid = GridMain;
 
@@ -415,10 +415,10 @@ namespace DimStock.View
                 dataGrid.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 dataGrid.Columns[4].ReadOnly = true;
 
-                dataGrid.Columns.Add(imgProduct);
-                imgProduct.Image = Resources.FotoNothing;
-                imgProduct.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                dataGrid.Columns[5].Name = "imgProduct";
+                dataGrid.Columns.Add(productPhoto);
+                productPhoto.Image = Resources.FotoNothing;
+                productPhoto.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                dataGrid.Columns[5].Name = "productPhoto";
                 dataGrid.Columns[5].HeaderText = "FOTO";
                 dataGrid.Columns[5].Width = 40;
                 dataGrid.Columns[5].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
