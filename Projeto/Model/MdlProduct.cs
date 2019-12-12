@@ -204,11 +204,11 @@ namespace DimStock.Model
                         var product = new BllProduct
                         {
                             Id = Convert.ToInt32(dataReader["Id"]),
-                            Code = Convert.ToString(dataReader["Codigo"]),
-                            Reference = Convert.ToString(dataReader["Referencia"]),
+                            Code = Convert.ToInt32(dataReader["Codigo"]),
+                            Reference = Convert.ToInt32(dataReader["Referencia"]),
                             Supplier = Convert.ToString(dataReader["Fornecedor"]),
                             Description = Convert.ToString(dataReader["Descricao"]),
-                            Size = Convert.ToString(dataReader["Tamanho"]),
+                            Size = Convert.ToInt32(dataReader["Tamanho"]),
                             CostPrice = Convert.ToDouble(dataReader["PrecoCusto"]),
                             SalePrice = Convert.ToDouble(dataReader["PrecoVenda"]),
                             PhotoName = Convert.ToString(dataReader["FotoNome"])
@@ -326,12 +326,12 @@ namespace DimStock.Model
                     while (dataReader.Read())
                     {
                         product.Id = Convert.ToInt32(dataReader["Id"]);
-                        product.Code = dataReader["Codigo"].ToString();
-                        product.Reference = dataReader["Referencia"].ToString();
+                        product.Code = Convert.ToInt32(dataReader["Codigo"]);
+                        product.Reference = Convert.ToInt32(dataReader["Referencia"]);
                         product.BarCode = dataReader["CodigoBarras"].ToString();
                         product.Supplier = dataReader["Fornecedor"].ToString();
                         product.Description = dataReader["Descricao"].ToString();
-                        product.Size = dataReader["Tamanho"].ToString();
+                        product.Size = Convert.ToInt32(dataReader["Tamanho"]);
                         product.CostPrice = Convert.ToDouble(dataReader["PrecoCusto"]);
                         product.SalePrice = Convert.ToDouble(dataReader["PrecoVenda"]);
                         product.MinStock = Convert.ToInt32(dataReader["EstoqueMin"]);
@@ -403,9 +403,9 @@ namespace DimStock.Model
                 var product = new BllProduct()
                 {
                     Id = Convert.ToInt32(row["Id"]),
-                    Code = Convert.ToString(row["Codigo"]),
-                    Size = Convert.ToString(row["Tamanho"]),
-                    Reference = Convert.ToString(row["Referencia"]),
+                    Code = Convert.ToInt32(row["Codigo"]),
+                    Size = Convert.ToInt32(row["Tamanho"]),
+                    Reference = Convert.ToInt32(row["Referencia"]),
                     Supplier = Convert.ToString(row["Fornecedor"]),
                     Description = Convert.ToString(row["Descricao"]),
                     CostPrice = Convert.ToDouble(row["PrecoCusto"]),

@@ -192,9 +192,9 @@ namespace DimStock.View
                 {
                     var product = new BllProduct
                     {
-                        Code = TxtCode.Text,
-                        Size = TxtSize.Text,
-                        Reference = TxtReference.Text,
+                        Code = Convert.ToInt32(TxtCode.Text),
+                        Size = Convert.ToInt32(TxtSize.Text),
+                        Reference = Convert.ToInt32(TxtReference.Text),
                         Supplier = TxtSupplier.Text,
                         Description = TxtDescription.Text,
                         MinStock = Convert.ToInt32(TxtMinStock.Text),
@@ -242,9 +242,9 @@ namespace DimStock.View
                 {
                     var product = new BllProduct()
                     {
-                        Code = TxtCode.Text,
-                        Size = TxtSize.Text,
-                        Reference = TxtReference.Text,
+                        Code = Convert.ToInt32(TxtCode.Text),
+                        Size = Convert.ToInt32(TxtSize.Text),
+                        Reference = Convert.ToInt32(TxtReference.Text),
                         Supplier = TxtSupplier.Text,
                         Description = TxtDescription.Text,
                         MinStock = Convert.ToInt32(TxtMinStock.Text),

@@ -29,9 +29,9 @@ namespace DimStock.Report
             {
                 var reportProduct = new ReportProduct()
                 {
-                    Code = Convert.ToInt32(productList[i].Code),
-                    Size = Convert.ToInt32(productList[i].Size),
-                    Reference = Convert.ToInt32(productList[i].Reference),
+                    Code = productList[i].Code,
+                    Size = productList[i].Size,
+                    Reference = productList[i].Reference,
                     Supplier = productList[i].Supplier,
                     Description = productList[i].Description,
                     MinStock = productList[i].MinStock,

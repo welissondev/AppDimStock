@@ -343,9 +343,9 @@ namespace DimStock.View
                     product.ViewData(Id);
 
                     frmProductRegister.Id = Id;
-                    frmProductRegister.TxtCode.Text = product.Code;
-                    frmProductRegister.TxtSize.Text = product.Size;
-                    frmProductRegister.TxtReference.Text = product.Reference;
+                    frmProductRegister.TxtCode.Text = product.Code.ToString();
+                    frmProductRegister.TxtSize.Text = product.Size.ToString();
+                    frmProductRegister.TxtReference.Text = product.Reference.ToString();
                     frmProductRegister.TxtSupplier.Text = product.Supplier;
                     frmProductRegister.TxtDescription.Text = product.Description;
                     frmProductRegister.TxtMinStock.Text = product.MinStock.ToString();
@@ -464,9 +464,9 @@ namespace DimStock.View
 
                 product.ViewData(Id);
 
-                frmProductRegister.TxtCode.Text = product.Code;
-                frmProductRegister.TxtSize.Text = product.Size;
-                frmProductRegister.TxtReference.Text = product.Reference;
+                frmProductRegister.TxtCode.Text = product.Code.ToString();
+                frmProductRegister.TxtSize.Text = product.Size.ToString();
+                frmProductRegister.TxtReference.Text = product.Reference.ToString();
                 frmProductRegister.TxtSupplier.Text = product.Supplier;
                 frmProductRegister.TxtDescription.Text = product.Description;
                 frmProductRegister.TxtMinStock.Text = product.MinStock.ToString();

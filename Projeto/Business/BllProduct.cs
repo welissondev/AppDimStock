@@ -21,9 +21,9 @@ namespace DimStock.Business
 
         #region BussinesProperties
         public int Id { get; set; }
-        public string Code { get; set; }
-        public string Size { get; set; }
-        public string Reference { get; set; }
+        public int Code { get; set; }
+        public int Size { get; set; }
+        public int Reference { get; set; }
         public string Supplier { get; set; }
         public string Description { get; set; }
         public double CostPrice { get; set; }
