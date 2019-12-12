@@ -149,7 +149,7 @@ namespace DimStock.View
             {
                 if (GridDestinationList.Rows.Count > 0)
                 {
-                    id = Convert.ToInt32(GridDestinationList.CurrentRow.Cells["idColumn"].Value);
+                    id = Convert.ToInt32(GridDestinationList.CurrentRow.Cells["id"].Value);
 
                     var stockDestination = new BllStockDestination();
                     stockDestination.ViewData(id);
