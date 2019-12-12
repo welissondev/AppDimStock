@@ -779,9 +779,9 @@ namespace DimStock.View
 
             stockProduct.GetRegistryData(id);
 
-            TxtQueryByCode.Text = stockProduct.ProductCode;
-            TxtQueryBySize.Text = stockProduct.ProductSize;
-            TxtQueryByReference.Text = stockProduct.ProductReference;
+            TxtQueryByCode.Text = stockProduct.ProductCode.ToString();
+            TxtQueryBySize.Text = stockProduct.ProductSize.ToString();
+            TxtQueryByReference.Text = stockProduct.ProductReference.ToString();
             TxtQueryByDescription.Text = stockProduct.ProductDescription;
             TxtUnitaryValue.Text = stockProduct.ProductCostPrice.ToString();
             TxtQuantity.Text = "0";

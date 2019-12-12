@@ -6,9 +6,9 @@ namespace DimStock.Report
     public class ReportStockProduct 
     {
         #region Get e Set
-        public string ProductCode { get; set; }
-        public string ProductSize { get; set; }
-        public string ProductReference { get; set; }
+        public int ProductCode { get; set; }
+        public int ProductSize { get; set; }
+        public int ProductReference { get; set; }
         public string ProductDescription { get; set; }
         public string Supplier { get; set; }
         public int MinStock { get; set; }

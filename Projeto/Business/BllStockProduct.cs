@@ -28,10 +28,10 @@ namespace DimStock.Business
         public string StockResume { get; set; }
         public string StockResult { get; set; }
         public int ProductId { get; set; }
-        public string ProductCode { get; set; }
-        public string ProductSize { get; set; }
+        public int ProductCode { get; set; }
+        public int ProductSize { get; set; }
         public string ProductDescription { get; set; }
-        public string ProductReference { get; set; }
+        public int ProductReference { get; set; }
         public double ProductCostPrice { get; set; }
         public string ProductPhoto { get; set; }
         public List<BllStockProduct> ListOfRecords { get; set; }

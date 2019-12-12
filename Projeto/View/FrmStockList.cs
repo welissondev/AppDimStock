@@ -71,15 +71,17 @@ namespace DimStock.View
             {
                 var stockProduct = new BllStockProduct()
                 {
-                    ProductCode = TxtQueryByCode.Text,
-                    ProductSize = TxtQueryBySize.Text,
-                    ProductReference = TxtQueryByReference.Text,
-                    ProductDescription = TxtQueryByDescription.Text,
-                    StockResume = CboResume.Text
+                    QueryByCode = TxtQueryByCode.Text,
+                    QueryBySize = TxtQueryBySize.Text,
+                    QueryByReference = TxtQueryByReference.Text,
+                    QueryByDescription = TxtQueryByDescription.Text,
+                    QueryByResume = selectedResumeType
                 };
 
                 stockProduct.ListAll();
-                stockProduct.GenerateReport(stockProduct.ListOfRecords);
+
+                stockProduct.GenerateReport(
+                stockProduct.ListOfRecords);
 
                 var reportPath = "DimStock.Report.RpvStockProduct.rdlc";
                 var reportName = "Relatório de estoque";

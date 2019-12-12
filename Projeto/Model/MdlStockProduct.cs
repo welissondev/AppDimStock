@@ -69,9 +69,9 @@ namespace DimStock.Model
                             StockId = Convert.ToInt32(dr["TBEstoque.Id"]),
                             ProductId = Convert.ToInt32(dr["TBProduto.Id"]),
                             Supplier = Convert.ToString(dr["Fornecedor"]),
-                            ProductCode = Convert.ToString(dr["Codigo"]),
-                            ProductReference = Convert.ToString(dr["Referencia"]),
-                            ProductSize = Convert.ToString(dr["Tamanho"]),
+                            ProductCode = Convert.ToInt32(dr["Codigo"]),
+                            ProductReference = Convert.ToInt32(dr["Referencia"]),
+                            ProductSize = Convert.ToInt32(dr["Tamanho"]),
                             ProductDescription = Convert.ToString(dr["Descricao"]),
                             MinStock = Convert.ToInt32(dr["EstoqueMin"]),
                             MaxStock = Convert.ToInt32(dr["EstoqueMax"]),
@@ -256,124 +256,160 @@ namespace DimStock.Model
         #region ListAll()
         public void ListAll()
         {
-            using (var con = new MdlConnection())
+            using (var connection = new MdlConnection())
             {
                 #region Variables
-                var commandSQL = string.Empty;
+                var sqlQuery = string.Empty;
                 var sqlCount = string.Empty;
                 var criterion = string.Empty;
-                var stockProductList = new List<BllStockProduct>();
+                var parameter = connection.Command.Parameters;
+                var listOfRecords = new List<BllStockProduct>(); 
                 #endregion
 
-                #region Comandos-SQL
+                #region QueryByResume
 
-                if (stockProduct.StockResume == "Todos")
+                #region All
+                if (stockProduct.QueryByResume == "All")
                 {
                     sqlCount = @"SELECT COUNT(TBEstoque.Id) From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE TBEstoque.Id > 0";
 
-                    commandSQL = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
+                    sqlQuery = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
                     TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE TBEstoque.Id > 0";
                 }
+                #endregion 
 
-                if (stockProduct.StockResume == "Sem Resumo")
+                #region Nothing
+                if (stockProduct.QueryByResume == "Nothing")
                 {
                     sqlCount = @"SELECT COUNT(TBEstoque.Id) From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade = 0 AND EstoqueMax = 0 AND EstoqueMin = 0";
 
-                    commandSQL = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
+                    sqlQuery = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
                     TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, 
                     TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade = 0 AND EstoqueMax = 0 AND EstoqueMin = 0";
                 }
+                #endregion 
 
-                if (stockProduct.StockResume == "Ok")
+                #region Ok
+                if (stockProduct.QueryByResume == "Ok")
                 {
                     sqlCount = @"SELECT COUNT(TBEstoque.Id) From TBProduto INNER JOIN TBEstoque ON 
                     TBProduto.Id = TBEstoque.IdProduto WHERE Quantidade > 0 AND Quantidade >= 
                     EstoqueMin AND Quantidade <= EstoqueMax";
 
-                    commandSQL = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
+                    sqlQuery = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
                     TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, 
                     TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade > 0 AND Quantidade >= EstoqueMin AND Quantidade <= EstoqueMax";
                 }
+                #endregion
 
-                if (stockProduct.StockResume == "Alto")
+                #region High
+                if (stockProduct.QueryByResume == "High")
                 {
                     sqlCount = @"SELECT COUNT(TBEstoque.Id) From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade > EstoqueMax";
 
-                    commandSQL = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
+                    sqlQuery = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
                     TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, 
                     TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade > EstoqueMax";
                 }
+                #endregion 
 
-                if (stockProduct.StockResume == "Baixo")
+                #region Low
+                if (stockProduct.QueryByResume == "Low")
                 {
                     sqlCount = @"SELECT COUNT(TBEstoque.Id) From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade < EstoqueMin";
 
-                    commandSQL = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
+                    sqlQuery = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
                     TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, 
                     TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
                     TBEstoque.IdProduto = TBProduto.Id WHERE Quantidade < EstoqueMin";
                 }
                 #endregion
 
-                #region Critério-de-consulta
+                #endregion
 
-                if (stockProduct.ProductDescription != string.Empty)
+                #region QueryByCriterion
+
+                #region Criterion + QueryByDescription
+
+                if (stockProduct.QueryByDescription != string.Empty)
+                {
                     criterion += " AND Descricao LIKE @Descricao";
 
-                if (stockProduct.ProductCode != string.Empty)
+                    parameter.AddWithValue("@Descricao", string.Format("%{0}%",
+                    stockProduct.QueryByDescription));
+                }
+
+                #endregion 
+
+                #region Criterion + QueryByCode
+
+                if (stockProduct.QueryByCode != string.Empty)
+                {
                     criterion += " AND Codigo LIKE @Codigo ";
 
-                if (stockProduct.ProductSize != string.Empty)
+                    parameter.AddWithValue("@Codigo", string.Format("{0}", 
+                    stockProduct.QueryByCode));
+
+                }
+
+                #endregion
+
+                #region Criterion + QueryBySize
+
+                if (stockProduct.QueryBySize != string.Empty)
+                {
                     criterion += " AND Tamanho LIKE @Tamanho ";
 
-                if (stockProduct.ProductReference != string.Empty)
+                    parameter.AddWithValue("@Tamanho", string.Format("{0}", 
+                   stockProduct.QueryBySize));
+                }
+
+                #endregion
+
+                #region Criterion + QueryByReference
+
+                if (stockProduct.QueryByReference != string.Empty)
+                {
                     criterion += " AND Referencia LIKE @Referencia ";
 
-                commandSQL += criterion +
-                " Order By Codigo, Tamanho, Referencia Asc";
+                    parameter.AddWithValue("@Referencia", string.Format("{0}", 
+                    stockProduct.QueryByReference));
+                }
+
+                #endregion
+
+                #endregion
+
+                #region CommandAndCriterion
+
+                sqlQuery += criterion + @" Order By Codigo, Tamanho, Referencia Asc";
 
                 sqlCount += criterion;
 
                 #endregion
 
-                #region Critério-de-parametros
-                var p = con.Command.Parameters;
-
-                if (stockProduct.ProductDescription != string.Empty)
-                    p.AddWithValue("@Descricao", string.Format("%{0}%", stockProduct.ProductDescription));
-
-                if (stockProduct.ProductCode != "")
-                    p.AddWithValue("@Codigo", string.Format("{0}", stockProduct.ProductCode));
-
-                if (stockProduct.ProductSize != "")
-                    p.AddWithValue("@Tamanho", string.Format("{0}", stockProduct.ProductSize));
-
-                if (stockProduct.ProductReference != "")
-                    p.AddWithValue("@Referencia", string.Format("{0}", stockProduct.ProductReference));
-                #endregion
-
                 #region FillListOfRecords()
 
-                using (var dr = con.QueryWithDataReader(commandSQL))
+                using (var dr = connection.QueryWithDataReader(sqlQuery))
                 {
                     while (dr.Read())
                     {
-                        var stockProduct = new BllStockProduct
+                        var item = new BllStockProduct
                         {
                             StockId = Convert.ToInt32(dr["TBEstoque.Id"]),
                             ProductId = Convert.ToInt32(dr["TBProduto.Id"]),
                             Supplier = Convert.ToString(dr["Fornecedor"]),
-                            ProductCode = Convert.ToString(dr["Codigo"]),
-                            ProductReference = Convert.ToString(dr["Referencia"]),
-                            ProductSize = Convert.ToString(dr["Tamanho"]),
+                            ProductCode = Convert.ToInt32(dr["Codigo"]),
+                            ProductReference = Convert.ToInt32(dr["Referencia"]),
+                            ProductSize = Convert.ToInt32(dr["Tamanho"]),
                             ProductDescription = Convert.ToString(dr["Descricao"]),
                             MinStock = Convert.ToInt32(dr["EstoqueMin"]),
                             MaxStock = Convert.ToInt32(dr["EstoqueMax"]),
@@ -383,10 +419,10 @@ namespace DimStock.Model
                             ProductPhoto = Convert.ToString(dr["FotoNome"]),
                         };
 
-                        stockProductList.Add(stockProduct);
+                        listOfRecords.Add(item);
                     }
 
-                    stockProduct.ListOfRecords = stockProductList;
+                    stockProduct.ListOfRecords = listOfRecords;
                 }
                 #endregion
 
@@ -412,7 +448,7 @@ namespace DimStock.Model
                 var minStock = listItem.MinStock;
                 var maxStock = listItem.MaxStock;
 
-                if (quantity> 0 && quantity >= minStock && quantity <= maxStock)
+                if (quantity > 0 && quantity >= minStock && quantity <= maxStock)
                     listItem.StockResume = "OK";
 
                 if (quantity > maxStock)
@@ -442,13 +478,13 @@ namespace DimStock.Model
                     listItem.StockResult = " + " + Convert.ToString(minStock - quantity);
 
                 if (quantity > maxStock)
-                    listItem.StockResult  = " - " + Convert.ToString(quantity - maxStock);
+                    listItem.StockResult = " - " + Convert.ToString(quantity - maxStock);
 
                 if (quantity > 0 && quantity >= minStock && quantity <= maxStock)
-                    listItem.StockResult  = "OK";
+                    listItem.StockResult = "OK";
 
                 if (quantity == 0 && minStock == 0 && maxStock == 0)
-                    listItem.StockResult  = "???";
+                    listItem.StockResult = "???";
             }
         }
         #endregion 
@@ -468,10 +504,10 @@ namespace DimStock.Model
                     {
                         stockProduct.StockId = Convert.ToInt32(dr["TBEstoque.Id"]);
                         stockProduct.ProductId = Convert.ToInt32(dr["TBProduto.Id"]);
-                        stockProduct.ProductCode = Convert.ToString(dr["Codigo"]);
+                        stockProduct.ProductCode = Convert.ToInt32(dr["Codigo"]);
                         stockProduct.ProductDescription = dr["Descricao"].ToString();
-                        stockProduct.ProductReference = dr["Referencia"].ToString();
-                        stockProduct.ProductSize = dr["Tamanho"].ToString();
+                        stockProduct.ProductReference = Convert.ToInt32(dr["Referencia"]);
+                        stockProduct.ProductSize = Convert.ToInt32(dr["Tamanho"]);
                         stockProduct.ProductCostPrice = Convert.ToDouble(dr["PrecoCusto"]);
                         stockProduct.StockQuantity = Convert.ToInt32(dr["Quantidade"]);
                     }
@@ -493,9 +529,9 @@ namespace DimStock.Model
                     StockId = Convert.ToInt32(row["TBEstoque.Id"]),
                     ProductId = Convert.ToInt32(row["TBProduto.Id"]),
                     Supplier = Convert.ToString(row["Fornecedor"]),
-                    ProductCode = Convert.ToString(row["Codigo"]),
-                    ProductReference = Convert.ToString(row["Referencia"]),
-                    ProductSize = Convert.ToString(row["Tamanho"]),
+                    ProductCode = Convert.ToInt32(row["Codigo"]),
+                    ProductReference = Convert.ToInt32(row["Referencia"]),
+                    ProductSize = Convert.ToInt32(row["Tamanho"]),
                     ProductDescription = Convert.ToString(row["Descricao"]),
                     MinStock = Convert.ToInt32(row["EstoqueMin"]),
                     MaxStock = Convert.ToInt32(row["EstoqueMax"]),
