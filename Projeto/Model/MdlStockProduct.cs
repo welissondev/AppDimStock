@@ -78,7 +78,7 @@ namespace DimStock.Model
                             StockQuantity = Convert.ToInt32(dr["Quantidade"]),
                             StockValue = Convert.ToDouble(dr["Valor"]),
                             ProductCostPrice = Convert.ToDouble(dr["PrecoCusto"]),
-                            ProductPhotoName = Convert.ToString(dr["FotoNome"]),
+                            ProductPhoto = Convert.ToString(dr["FotoNome"]),
                         };
 
                         listaEstoqueProduto.Add(estoqueProduto);
@@ -111,8 +111,9 @@ namespace DimStock.Model
                     TBEstoque.IdProduto = TBProduto.Id WHERE TBEstoque.Id > 0";
 
                     commandSQL = @"SELECT TBEstoque.Id, TBProduto.Fornecedor, TBEstoque.Quantidade, TBEstoque.Valor, 
-                    TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, TBProduto.Tamanho, TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.FotoNome From TBProduto INNER JOIN TBEstoque ON 
-                    TBEstoque.IdProduto = TBProduto.Id WHERE TBEstoque.Id > 0";
+                    TBProduto.Id, TBProduto.Descricao, TBProduto.PrecoCusto, TBProduto.Codigo, TBProduto.Referencia, 
+                    TBProduto.Tamanho, TBProduto.EstoqueMin, TBProduto.EstoqueMax, TBProduto.FotoNome 
+                    From TBProduto INNER JOIN TBEstoque ON TBEstoque.IdProduto = TBProduto.Id WHERE TBEstoque.Id > 0";
 
                 }
                 #endregion
@@ -379,7 +380,7 @@ namespace DimStock.Model
                             StockQuantity = Convert.ToInt32(dr["Quantidade"]),
                             StockValue = Convert.ToDouble(dr["Valor"]),
                             ProductCostPrice = Convert.ToDouble(dr["PrecoCusto"]),
-                            ProductPhotoName = Convert.ToString(dr["FotoNome"]),
+                            ProductPhoto = Convert.ToString(dr["FotoNome"]),
                         };
 
                         stockProductList.Add(stockProduct);
@@ -501,7 +502,7 @@ namespace DimStock.Model
                     StockQuantity = Convert.ToInt32(row["Quantidade"]),
                     StockValue = Convert.ToDouble(row["Valor"]),
                     ProductCostPrice = Convert.ToDouble(row["PrecoCusto"]),
-                    ProductPhotoName = Convert.ToString(row["FotoNome"]),
+                    ProductPhoto = Convert.ToString(row["FotoNome"]),
                 };
 
                 stockProductList.Add(stockProduct);

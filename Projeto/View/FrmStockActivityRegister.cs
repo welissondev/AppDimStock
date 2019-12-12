@@ -290,7 +290,7 @@ namespace DimStock.View
                     stockProduct.ListOfRecords[i].ProductCostPrice
                     );
 
-                    var photoPath = BllProductPhotho.GetPeth() + stockProduct.ListOfRecords[i].ProductPhotoName;
+                    var photoPath = BllProductPhotho.GetPeth() + stockProduct.ListOfRecords[i].ProductPhoto;
                     if (BllProductPhotho.FindFile(photoPath).Equals(true))
                     {
                         using (var file = new FileStream(photoPath, FileMode.Open, FileAccess.Read))

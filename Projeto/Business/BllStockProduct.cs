@@ -33,7 +33,7 @@ namespace DimStock.Business
         public string ProductDescription { get; set; }
         public string ProductReference { get; set; }
         public double ProductCostPrice { get; set; }
-        public string ProductPhotoName { get; set; }
+        public string ProductPhoto { get; set; }
         public List<BllStockProduct> ListOfRecords { get; set; }
         #endregion 
 
