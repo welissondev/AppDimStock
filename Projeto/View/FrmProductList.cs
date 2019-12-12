@@ -344,7 +344,6 @@ namespace DimStock.View
 
                     frmProductRegister.Id = Id;
                     frmProductRegister.TxtCode.Text = product.Code;
-                    frmProductRegister.TxtCode.Enabled = false;
                     frmProductRegister.TxtSize.Text = product.Size;
                     frmProductRegister.TxtReference.Text = product.Reference;
                     frmProductRegister.TxtSupplier.Text = product.Supplier;
