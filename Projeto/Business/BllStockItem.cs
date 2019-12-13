@@ -11,6 +11,8 @@ namespace DimStock.Business
         public int ProductId { get; set; }
         public int StockActivityId { get; set; }
         public string ProductCode { get; set; }
+        public string ProductSize { get; set; }
+        public string ProductReference { get; set; }
         public string ProductDescription { get; set; }
         public int Quantity { get; set; }
         public double UnitaryValue { get; set; }
@@ -28,10 +30,10 @@ namespace DimStock.Business
         #endregion
 
         #region ListItem()
-        public void ListItem(int activityId)
+        public void ListItem(int id)
         {
             var stockItem = new MdlStockItem(this);
-            ListOfRecords = stockItem.ListItem(activityId);
+            ListOfRecords = stockItem.ListItem(id);
         }
         #endregion
 

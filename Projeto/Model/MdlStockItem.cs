@@ -42,36 +42,38 @@ namespace DimStock.Model
         #endregion
 
         #region ListItem()
-        public List<BllStockItem> ListItem(int stockActivityId)
+        public List<BllStockItem> ListItem(int id)
         {
             using (var connection = new MdlConnection())
             {
-                var commandSQL = @"SELECT TBEstoqueItem.*, TBProduto.Descricao, TBProduto.Codigo 
-                FROM TBEstoqueItem INNER JOIN TBProduto ON TBEstoqueItem.IdProduto = TBProduto.Id WHERE 
-                TBEstoqueItem.IdEstoqueAtividade LIKE '" + stockActivityId + "'";
+                var commandSQL = @"SELECT TBEstoqueItem.*, TBProduto.Descricao, TBProduto.Codigo, TBProduto.Tamanho,
+                TBProduto.Referencia FROM TBEstoqueItem INNER JOIN TBProduto ON TBEstoqueItem.IdProduto = TBProduto.Id WHERE 
+                TBEstoqueItem.IdEstoqueAtividade LIKE '" + id + "'";
 
-                var stockItemList = new List<BllStockItem>();
+                var itemList = new List<BllStockItem>();
 
                 using (var dr = connection.QueryWithDataReader(commandSQL))
                 {
                     while (dr.Read())
                     {
-                        var stockItem = new BllStockItem()
+                        var item = new BllStockItem()
                         {
                             Id = Convert.ToInt32(dr["Id"]),
                             StockId = Convert.ToInt32(dr["IdEstoque"]),
                             ProductCode = dr["Codigo"].ToString(),
+                            ProductSize = dr["Tamanho"].ToString(),
+                            ProductReference = dr["Referencia"].ToString(),
                             ProductDescription = dr["Descricao"].ToString(),
                             Quantity = Convert.ToInt32(dr["Quantidade"]),
                             UnitaryValue = Convert.ToDouble(dr["ValorUnitario"]),
                             TotalValue = Convert.ToDouble(dr["ValorTotal"])
                         };
 
-                        stockItemList.Add(stockItem);
+                        itemList.Add(item);
                     }
                 }
 
-                return stockItemList;
+                return itemList;
             }
         }
         #endregion
