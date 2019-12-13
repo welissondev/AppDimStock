@@ -34,6 +34,8 @@ namespace DimStock.View
             InitializeComponent();
 
             DefineColumns_InMainGrid_ForListItems();
+
+            AxlDataGridViewLealt.DefaultLayoutDarkblue(GridMain);
         }
         #endregion
 
@@ -286,6 +288,8 @@ namespace DimStock.View
                     stockProduct.ListOfRecords[i].StockId,
                     stockProduct.ListOfRecords[i].ProductId,
                     stockProduct.ListOfRecords[i].ProductCode,
+                    stockProduct.ListOfRecords[i].ProductSize,
+                    stockProduct.ListOfRecords[i].ProductReference,
                     stockProduct.ListOfRecords[i].ProductDescription,
                     stockProduct.ListOfRecords[i].ProductCostPrice
                     );
@@ -358,22 +362,14 @@ namespace DimStock.View
                 var stockId = new DataGridViewTextBoxColumn();
                 var productId = new DataGridViewTextBoxColumn();
                 var productCode = new DataGridViewTextBoxColumn();
+                var productSize = new DataGridViewTextBoxColumn();
+                var productReference = new DataGridViewTextBoxColumn();
                 var productDescription = new DataGridViewTextBoxColumn();
                 var productCostPrice = new DataGridViewTextBoxColumn();
                 var productPhoto = new DataGridViewImageColumn();
 
                 var dataGrid = GridMain;
-
                 dataGrid.ListIsStock = true;
-
-                if (ActivityType == "Entrada")
-                {
-                    AxlDataGridViewLealt.DefaultLayoutDarkblue(dataGrid);
-                }
-                else
-                {
-                    AxlDataGridViewLealt.DefaultLayoutDarkblue(dataGrid);
-                }
 
                 dataGrid.Columns.Add(stockId);
                 dataGrid.Columns[0].Width = 100;
@@ -394,37 +390,53 @@ namespace DimStock.View
                 dataGrid.Columns.Add(productCode);
                 dataGrid.Columns[2].Width = 80;
                 dataGrid.Columns[2].Name = "productCode";
-                dataGrid.Columns[2].HeaderText = "CÓDIGO PRODUTO";
+                dataGrid.Columns[2].HeaderText = "CÓD.";
                 dataGrid.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[2].ReadOnly = true;
 
-                dataGrid.Columns.Add(productDescription);
-                dataGrid.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dataGrid.Columns[3].Name = "productDescription";
-                dataGrid.Columns[3].HeaderText = "DESCRIÇÃO PRODUTO";
-                dataGrid.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                dataGrid.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dataGrid.Columns.Add(productSize);
+                dataGrid.Columns[3].Width = 80;
+                dataGrid.Columns[3].Name = "productSize";
+                dataGrid.Columns[3].HeaderText = "TAM.";
+                dataGrid.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[3].ReadOnly = true;
 
-                dataGrid.Columns.Add(productCostPrice);
-                dataGrid.Columns[4].Name = "productCostPrice";
-                dataGrid.Columns[4].HeaderText = "PREÇO CUSTO";
-                dataGrid.Columns[4].DefaultCellStyle.Format = "c2";
-                dataGrid.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                dataGrid.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dataGrid.Columns.Add(productReference);
+                dataGrid.Columns[4].Width = 80;
+                dataGrid.Columns[4].Name = "productReference";
+                dataGrid.Columns[4].HeaderText = "REF.";
+                dataGrid.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[4].ReadOnly = true;
+
+                dataGrid.Columns.Add(productDescription);
+                dataGrid.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dataGrid.Columns[5].Name = "productDescription";
+                dataGrid.Columns[5].HeaderText = "DESCRIÇÃO";
+                dataGrid.Columns[5].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dataGrid.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dataGrid.Columns[5].ReadOnly = true;
+
+                dataGrid.Columns.Add(productCostPrice);
+                dataGrid.Columns[6].Name = "productCostPrice";
+                dataGrid.Columns[6].HeaderText = "CUSTO";
+                dataGrid.Columns[6].DefaultCellStyle.Format = "c2";
+                dataGrid.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dataGrid.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dataGrid.Columns[6].ReadOnly = true;
 
                 dataGrid.Columns.Add(productPhoto);
                 productPhoto.Image = Resources.FotoNothing;
                 productPhoto.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                dataGrid.Columns[5].Name = "productPhoto";
-                dataGrid.Columns[5].HeaderText = "FOTO";
-                dataGrid.Columns[5].Width = 40;
-                dataGrid.Columns[5].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGrid.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGrid.Columns[5].DisplayIndex = 0;
-                dataGrid.Columns[5].ReadOnly = true;
+                dataGrid.Columns[7].Name = "productPhoto";
+                dataGrid.Columns[7].HeaderText = "FOTO";
+                dataGrid.Columns[7].Width = 40;
+                dataGrid.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[7].DisplayIndex = 0;
+                dataGrid.Columns[7].ReadOnly = true;
             }
             catch (Exception ex)
             {
