@@ -333,6 +333,8 @@ namespace DimStock.View
                     stockItem.ListOfRecords[i].Id,
                     stockItem.ListOfRecords[i].StockId,
                     stockItem.ListOfRecords[i].ProductCode,
+                    stockItem.ListOfRecords[i].ProductSize,
+                    stockItem.ListOfRecords[i].ProductReference,
                     stockItem.ListOfRecords[i].ProductDescription,
                     stockItem.ListOfRecords[i].Quantity,
                     stockItem.ListOfRecords[i].UnitaryValue,
@@ -453,6 +455,8 @@ namespace DimStock.View
                 var itemId = new DataGridViewTextBoxColumn();
                 var stockId = new DataGridViewTextBoxColumn();
                 var productCode = new DataGridViewTextBoxColumn();
+                var productSize = new DataGridViewTextBoxColumn();
+                var productReference = new DataGridViewTextBoxColumn();
                 var productDescription = new DataGridViewTextBoxColumn();
                 var stockQuantity = new DataGridViewTextBoxColumn();
                 var productCostPrice = new DataGridViewTextBoxColumn();
@@ -460,10 +464,7 @@ namespace DimStock.View
                 var btnDelete = new DataGridViewImageColumn();
 
                 var dataGrid = GridMain;
-
                 dataGrid.ListIsItem = true;
-
-                AxlDataGridViewLealt.DefaultLayoutDarkblue(dataGrid);
 
                 dataGrid.Columns.Add(itemId);
                 dataGrid.Columns[0].Width = 100;
@@ -486,53 +487,69 @@ namespace DimStock.View
                 dataGrid.Columns.Add(productCode);
                 dataGrid.Columns[2].Width = 80;
                 dataGrid.Columns[2].Name = "productCode";
-                dataGrid.Columns[2].HeaderText = "CÓDIGO PRODUTO";
+                dataGrid.Columns[2].HeaderText = "CÓD.";
                 dataGrid.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[2].ReadOnly = true;
 
-                dataGrid.Columns.Add(productDescription);
-                dataGrid.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dataGrid.Columns[3].Name = "productDescription";
-                dataGrid.Columns[3].HeaderText = "DESCRIÇÃO PRODUTO";
-                dataGrid.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                dataGrid.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dataGrid.Columns.Add(productSize);
+                dataGrid.Columns[3].Width = 80;
+                dataGrid.Columns[3].Name = "productSize";
+                dataGrid.Columns[3].HeaderText = "TAM.";
+                dataGrid.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[3].ReadOnly = true;
 
-                dataGrid.Columns.Add(stockQuantity);
-                dataGrid.Columns[4].Width = 50;
-                dataGrid.Columns[4].Name = "stockQuantity";
-                dataGrid.Columns[4].HeaderText = "QTD.";
-                dataGrid.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                dataGrid.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dataGrid.Columns.Add(productReference);
+                dataGrid.Columns[4].Width = 80;
+                dataGrid.Columns[4].Name = "productReference";
+                dataGrid.Columns[4].HeaderText = "REF.";
+                dataGrid.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[4].ReadOnly = true;
 
-                dataGrid.Columns.Add(productCostPrice);
-                dataGrid.Columns[5].Name = "productCostPrice";
-                dataGrid.Columns[5].HeaderText = "VALOR UNI.";
-                dataGrid.Columns[5].DefaultCellStyle.Format = "c2";
+                dataGrid.Columns.Add(productDescription);
+                dataGrid.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dataGrid.Columns[5].Name = "productDescription";
+                dataGrid.Columns[5].HeaderText = "DESCRIÇÃO";
                 dataGrid.Columns[5].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 dataGrid.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 dataGrid.Columns[5].ReadOnly = true;
 
-                dataGrid.Columns.Add(stockValue);
-                dataGrid.Columns[6].Name = "stockValue";
-                dataGrid.Columns[6].HeaderText = "VALOR TOTAL";
-                dataGrid.Columns[6].DefaultCellStyle.Format = "c2";
+                dataGrid.Columns.Add(stockQuantity);
+                dataGrid.Columns[6].Width = 50;
+                dataGrid.Columns[6].Name = "stockQuantity";
+                dataGrid.Columns[6].HeaderText = "QTD.";
                 dataGrid.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 dataGrid.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 dataGrid.Columns[6].ReadOnly = true;
 
+                dataGrid.Columns.Add(productCostPrice);
+                dataGrid.Columns[7].Name = "productCostPrice";
+                dataGrid.Columns[7].HeaderText = "VALOR UNI.";
+                dataGrid.Columns[7].DefaultCellStyle.Format = "c2";
+                dataGrid.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dataGrid.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dataGrid.Columns[7].ReadOnly = true;
+
+                dataGrid.Columns.Add(stockValue);
+                dataGrid.Columns[8].Name = "stockValue";
+                dataGrid.Columns[8].HeaderText = "TOTAL";
+                dataGrid.Columns[8].DefaultCellStyle.Format = "c2";
+                dataGrid.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dataGrid.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dataGrid.Columns[8].ReadOnly = true;
+
                 dataGrid.Columns.Add(btnDelete);
                 btnDelete.Image = Resources.deletar2;
                 btnDelete.ImageLayout = DataGridViewImageCellLayout.Normal;
-                dataGrid.Columns[7].Name = "btnDelete";
-                dataGrid.Columns[7].HeaderText = "";
-                dataGrid.Columns[7].Width = 40;
-                dataGrid.Columns[7].DisplayIndex = 0;
-                dataGrid.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGrid.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGrid.Columns[7].ReadOnly = true;
+                dataGrid.Columns[9].Name = "btnDelete";
+                dataGrid.Columns[9].HeaderText = "";
+                dataGrid.Columns[9].Width = 40;
+                dataGrid.Columns[9].DisplayIndex = 0;
+                dataGrid.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[9].ReadOnly = true;
 
             }
             catch (Exception ex)
