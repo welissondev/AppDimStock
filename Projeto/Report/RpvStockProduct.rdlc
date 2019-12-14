@@ -143,22 +143,22 @@
               <Width>1.35789cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>6.46509cm</Width>
+              <Width>6.71665cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>6.78054cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.75345cm</Width>
+              <Width>1.38303cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.64763cm</Width>
+              <Width>1.27721cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.77991cm</Width>
+              <Width>1.38303cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.15034cm</Width>
+              <Width>2.99412cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>1.67408cm</Width>
@@ -576,7 +576,9 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>ProductCode</rd:DefaultName>
@@ -609,7 +611,9 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>ProductSize</rd:DefaultName>
@@ -642,7 +646,9 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>ProductReference</rd:DefaultName>
@@ -840,7 +846,7 @@
                               <Value>=Fields!StockValue.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
-                                <Format>'R$'0.00;('R$'0.00)</Format>
+                                <Format>'R$'#,0.00;('R$'#,0.00)</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -968,7 +974,7 @@
         <DataSetName>DataSetStockProduct</DataSetName>
         <Top>3.38035cm</Top>
         <Height>1.2cm</Height>
-        <Width>28.64763cm</Width>
+        <Width>28.60526cm</Width>
         <ZIndex>5</ZIndex>
         <Style>
           <Border>

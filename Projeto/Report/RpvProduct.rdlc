@@ -151,13 +151,13 @@
               <Width>1.93645cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>5.58107cm</Width>
+              <Width>5.0519cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>6.34528cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.50882cm</Width>
+              <Width>3.03798cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -384,7 +384,9 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Code</rd:DefaultName>
@@ -417,7 +419,9 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Size</rd:DefaultName>
@@ -450,7 +454,9 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Reference</rd:DefaultName>
@@ -545,7 +551,7 @@
                             <TextRun>
                               <Value>=Fields!CostPrice.Value</Value>
                               <Style>
-                                <Format>'R$'0.00;('R$'0.00)</Format>
+                                <Format>'R$'#,0.00;('R$'#,0.00)</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -598,7 +604,7 @@
         <DataSetName>DataSetProduct</DataSetName>
         <Top>4.00403cm</Top>
         <Height>1.2cm</Height>
-        <Width>19.77936cm</Width>
+        <Width>19.77935cm</Width>
         <ZIndex>5</ZIndex>
         <Style>
           <Border>
