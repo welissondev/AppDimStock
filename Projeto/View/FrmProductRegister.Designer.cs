@@ -34,7 +34,6 @@
             this.TxtSalePrice = new Syncfusion.Windows.Forms.Tools.CurrencyTextBox();
             this.TxtCostPrice = new Syncfusion.Windows.Forms.Tools.CurrencyTextBox();
             this.TxtDescription = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.TxtReference = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.LblBarCode = new System.Windows.Forms.Label();
             this.LblSalePrice = new System.Windows.Forms.Label();
             this.LblCostPrice = new System.Windows.Forms.Label();
@@ -42,9 +41,7 @@
             this.LblReference = new System.Windows.Forms.Label();
             this.LblSize = new System.Windows.Forms.Label();
             this.GbxProductPhoto = new System.Windows.Forms.GroupBox();
-            this.PicProductPhoto = new DimStock.Auxiliary.AxlPictureBox();
             this.BtnSave = new Syncfusion.WinForms.Controls.SfButton();
-            this.TxtCode = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.LblCode = new System.Windows.Forms.Label();
             this.LblMinStock = new System.Windows.Forms.Label();
             this.LblMaxStock = new System.Windows.Forms.Label();
@@ -56,19 +53,22 @@
             this.PnlUpperHorizontal = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.LblTodayIsDay = new System.Windows.Forms.Label();
             this.LblFormTitle = new System.Windows.Forms.Label();
+            this.TxtCode = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
+            this.TxtReference = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
+            this.PicProductPhoto = new DimStock.Auxiliary.AxlPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.TxtBarCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtSalePrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtCostPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtDescription)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtReference)).BeginInit();
             this.GbxProductPhoto.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PicProductPhoto)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtMinStock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtMaxStock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtSupplier)).BeginInit();
             this.PnlUpperHorizontal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtCode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtReference)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicProductPhoto)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnClear
@@ -98,7 +98,7 @@
             // TxtBarCode
             // 
             this.TxtBarCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtBarCode.BeforeTouchSize = new System.Drawing.Size(114, 26);
+            this.TxtBarCode.BeforeTouchSize = new System.Drawing.Size(92, 26);
             this.TxtBarCode.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
             this.TxtBarCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtBarCode.CanOverrideStyle = true;
@@ -121,7 +121,7 @@
             // TxtSalePrice
             // 
             this.TxtSalePrice.BackGroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtSalePrice.BeforeTouchSize = new System.Drawing.Size(114, 26);
+            this.TxtSalePrice.BeforeTouchSize = new System.Drawing.Size(92, 26);
             this.TxtSalePrice.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
             this.TxtSalePrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtSalePrice.CanOverrideStyle = true;
@@ -151,7 +151,7 @@
             // TxtCostPrice
             // 
             this.TxtCostPrice.BackGroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtCostPrice.BeforeTouchSize = new System.Drawing.Size(114, 26);
+            this.TxtCostPrice.BeforeTouchSize = new System.Drawing.Size(92, 26);
             this.TxtCostPrice.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
             this.TxtCostPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtCostPrice.CanOverrideStyle = true;
@@ -181,7 +181,7 @@
             // TxtDescription
             // 
             this.TxtDescription.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtDescription.BeforeTouchSize = new System.Drawing.Size(114, 26);
+            this.TxtDescription.BeforeTouchSize = new System.Drawing.Size(92, 26);
             this.TxtDescription.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
             this.TxtDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtDescription.CanOverrideStyle = true;
@@ -201,30 +201,6 @@
             this.TxtDescription.TabIndex = 4;
             this.TxtDescription.Tag = "";
             this.TxtDescription.ThemeName = "Office2016White";
-            // 
-            // TxtReference
-            // 
-            this.TxtReference.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtReference.BeforeTouchSize = new System.Drawing.Size(114, 26);
-            this.TxtReference.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
-            this.TxtReference.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtReference.CanOverrideStyle = true;
-            this.TxtReference.CausesValidation = false;
-            this.TxtReference.CornerRadius = 4;
-            this.TxtReference.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.TxtReference.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtReference.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.TxtReference.Location = new System.Drawing.Point(484, 160);
-            this.TxtReference.MaxLength = 10;
-            this.TxtReference.MinimumSize = new System.Drawing.Size(16, 12);
-            this.TxtReference.Name = "TxtReference";
-            this.TxtReference.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Silver;
-            this.TxtReference.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
-            this.TxtReference.Size = new System.Drawing.Size(114, 26);
-            this.TxtReference.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016White;
-            this.TxtReference.TabIndex = 2;
-            this.TxtReference.Tag = "";
-            this.TxtReference.ThemeName = "Office2016White";
             // 
             // LblBarCode
             // 
@@ -298,20 +274,6 @@
             this.GbxProductPhoto.TabStop = false;
             this.GbxProductPhoto.Text = "Foto Produto";
             // 
-            // PicProductPhoto
-            // 
-            this.PicProductPhoto.ArquivoDiretorioSelecionado = null;
-            this.PicProductPhoto.FotoNome = "";
-            this.PicProductPhoto.Image = global::DimStock.Properties.Resources.FotoNothing;
-            this.PicProductPhoto.Location = new System.Drawing.Point(7, 14);
-            this.PicProductPhoto.Name = "PicProductPhoto";
-            this.PicProductPhoto.Size = new System.Drawing.Size(176, 188);
-            this.PicProductPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PicProductPhoto.TabIndex = 82;
-            this.PicProductPhoto.TabStop = false;
-            this.PicProductPhoto.UltimaFoto = "";
-            this.PicProductPhoto.Click += new System.EventHandler(this.PicProductPhoto_Click);
-            // 
             // BtnSave
             // 
             this.BtnSave.AccessibleName = "Button";
@@ -335,30 +297,6 @@
             this.BtnSave.Text = "Salvar";
             this.BtnSave.UseVisualStyleBackColor = false;
             this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
-            // 
-            // TxtCode
-            // 
-            this.TxtCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtCode.BeforeTouchSize = new System.Drawing.Size(114, 26);
-            this.TxtCode.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
-            this.TxtCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtCode.CanOverrideStyle = true;
-            this.TxtCode.CausesValidation = false;
-            this.TxtCode.CornerRadius = 4;
-            this.TxtCode.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.TxtCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.TxtCode.Location = new System.Drawing.Point(246, 160);
-            this.TxtCode.MaxLength = 20;
-            this.TxtCode.MinimumSize = new System.Drawing.Size(16, 12);
-            this.TxtCode.Name = "TxtCode";
-            this.TxtCode.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Silver;
-            this.TxtCode.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
-            this.TxtCode.Size = new System.Drawing.Size(112, 26);
-            this.TxtCode.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016White;
-            this.TxtCode.TabIndex = 0;
-            this.TxtCode.Tag = "";
-            this.TxtCode.ThemeName = "Office2016White";
             // 
             // LblCode
             // 
@@ -393,7 +331,7 @@
             // TxtMinStock
             // 
             this.TxtMinStock.BackGroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtMinStock.BeforeTouchSize = new System.Drawing.Size(114, 26);
+            this.TxtMinStock.BeforeTouchSize = new System.Drawing.Size(92, 26);
             this.TxtMinStock.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
             this.TxtMinStock.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtMinStock.CornerRadius = 4;
@@ -403,6 +341,7 @@
             this.TxtMinStock.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.TxtMinStock.IntegerValue = ((long)(0));
             this.TxtMinStock.Location = new System.Drawing.Point(246, 343);
+            this.TxtMinStock.MaxValue = ((long)(50000));
             this.TxtMinStock.MinimumSize = new System.Drawing.Size(12, 8);
             this.TxtMinStock.Name = "TxtMinStock";
             this.TxtMinStock.NumberGroupSeparator = "";
@@ -416,7 +355,7 @@
             // TxtMaxStock
             // 
             this.TxtMaxStock.BackGroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtMaxStock.BeforeTouchSize = new System.Drawing.Size(114, 26);
+            this.TxtMaxStock.BeforeTouchSize = new System.Drawing.Size(92, 26);
             this.TxtMaxStock.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
             this.TxtMaxStock.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtMaxStock.CornerRadius = 4;
@@ -425,6 +364,7 @@
             this.TxtMaxStock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.TxtMaxStock.IntegerValue = ((long)(0));
             this.TxtMaxStock.Location = new System.Drawing.Point(342, 343);
+            this.TxtMaxStock.MaxValue = ((long)(50000));
             this.TxtMaxStock.MinimumSize = new System.Drawing.Size(12, 8);
             this.TxtMaxStock.Name = "TxtMaxStock";
             this.TxtMaxStock.NumberGroupSeparator = "";
@@ -439,7 +379,7 @@
             // TxtSize
             // 
             this.TxtSize.BackGroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtSize.BeforeTouchSize = new System.Drawing.Size(114, 26);
+            this.TxtSize.BeforeTouchSize = new System.Drawing.Size(92, 26);
             this.TxtSize.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
             this.TxtSize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtSize.CornerRadius = 4;
@@ -448,8 +388,10 @@
             this.TxtSize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.TxtSize.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.TxtSize.IntegerValue = ((long)(0));
-            this.TxtSize.Location = new System.Drawing.Point(363, 160);
+            this.TxtSize.Location = new System.Drawing.Point(364, 160);
+            this.TxtSize.MaxValue = ((long)(100000));
             this.TxtSize.MinimumSize = new System.Drawing.Size(12, 8);
+            this.TxtSize.MinValue = ((long)(0));
             this.TxtSize.Name = "TxtSize";
             this.TxtSize.NegativeSign = "";
             this.TxtSize.NumberGroupSeparator = "";
@@ -457,13 +399,14 @@
             this.TxtSize.Size = new System.Drawing.Size(115, 26);
             this.TxtSize.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016White;
             this.TxtSize.TabIndex = 1;
+            this.TxtSize.Text = "0";
             this.TxtSize.ThemeName = "Office2016White";
             this.TxtSize.ZeroColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             // 
             // TxtSupplier
             // 
             this.TxtSupplier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TxtSupplier.BeforeTouchSize = new System.Drawing.Size(114, 26);
+            this.TxtSupplier.BeforeTouchSize = new System.Drawing.Size(92, 26);
             this.TxtSupplier.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
             this.TxtSupplier.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtSupplier.CanOverrideStyle = true;
@@ -538,19 +481,88 @@
             this.LblFormTitle.TabIndex = 138;
             this.LblFormTitle.Text = "Cadastro de Produtos";
             // 
+            // TxtCode
+            // 
+            this.TxtCode.BackGroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.TxtCode.BeforeTouchSize = new System.Drawing.Size(92, 26);
+            this.TxtCode.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
+            this.TxtCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtCode.CornerRadius = 4;
+            this.TxtCode.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.TxtCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.TxtCode.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.TxtCode.IntegerValue = ((long)(0));
+            this.TxtCode.Location = new System.Drawing.Point(249, 160);
+            this.TxtCode.MaxValue = ((long)(100000));
+            this.TxtCode.MinimumSize = new System.Drawing.Size(12, 8);
+            this.TxtCode.MinValue = ((long)(0));
+            this.TxtCode.Name = "TxtCode";
+            this.TxtCode.NegativeSign = "";
+            this.TxtCode.NumberGroupSeparator = "";
+            this.TxtCode.PositiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.TxtCode.Size = new System.Drawing.Size(111, 26);
+            this.TxtCode.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016White;
+            this.TxtCode.TabIndex = 0;
+            this.TxtCode.Text = "0";
+            this.TxtCode.ThemeName = "Office2016White";
+            this.TxtCode.ZeroColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            // 
+            // TxtReference
+            // 
+            this.TxtReference.BackGroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.TxtReference.BeforeTouchSize = new System.Drawing.Size(92, 26);
+            this.TxtReference.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
+            this.TxtReference.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtReference.CornerRadius = 4;
+            this.TxtReference.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.TxtReference.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtReference.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.TxtReference.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.TxtReference.IntegerValue = ((long)(0));
+            this.TxtReference.Location = new System.Drawing.Point(483, 160);
+            this.TxtReference.MaxValue = ((long)(100000));
+            this.TxtReference.MinimumSize = new System.Drawing.Size(12, 8);
+            this.TxtReference.MinValue = ((long)(0));
+            this.TxtReference.Name = "TxtReference";
+            this.TxtReference.NegativeSign = "";
+            this.TxtReference.NumberGroupSeparator = "";
+            this.TxtReference.PositiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.TxtReference.Size = new System.Drawing.Size(115, 26);
+            this.TxtReference.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016White;
+            this.TxtReference.TabIndex = 2;
+            this.TxtReference.Text = "0";
+            this.TxtReference.ThemeName = "Office2016White";
+            this.TxtReference.ZeroColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            // 
+            // PicProductPhoto
+            // 
+            this.PicProductPhoto.ArquivoDiretorioSelecionado = null;
+            this.PicProductPhoto.FotoNome = "";
+            this.PicProductPhoto.Image = global::DimStock.Properties.Resources.FotoNothing;
+            this.PicProductPhoto.Location = new System.Drawing.Point(7, 14);
+            this.PicProductPhoto.Name = "PicProductPhoto";
+            this.PicProductPhoto.Size = new System.Drawing.Size(176, 188);
+            this.PicProductPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PicProductPhoto.TabIndex = 82;
+            this.PicProductPhoto.TabStop = false;
+            this.PicProductPhoto.UltimaFoto = "";
+            this.PicProductPhoto.Click += new System.EventHandler(this.PicProductPhoto_Click);
+            // 
             // FrmProductRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(964, 681);
+            this.Controls.Add(this.TxtReference);
+            this.Controls.Add(this.TxtCode);
             this.Controls.Add(this.PnlUpperHorizontal);
             this.Controls.Add(this.TxtSupplier);
             this.Controls.Add(this.LblSupplier);
             this.Controls.Add(this.TxtSize);
             this.Controls.Add(this.TxtMinStock);
             this.Controls.Add(this.LblMinStock);
-            this.Controls.Add(this.TxtCode);
             this.Controls.Add(this.LblCode);
             this.Controls.Add(this.TxtBarCode);
             this.Controls.Add(this.TxtSalePrice);
@@ -563,7 +575,6 @@
             this.Controls.Add(this.TxtMaxStock);
             this.Controls.Add(this.LblMaxStock);
             this.Controls.Add(this.GbxProductPhoto);
-            this.Controls.Add(this.TxtReference);
             this.Controls.Add(this.LblReference);
             this.Controls.Add(this.LblSize);
             this.MinimumSize = new System.Drawing.Size(980, 720);
@@ -573,16 +584,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.TxtSalePrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtCostPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtDescription)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtReference)).EndInit();
             this.GbxProductPhoto.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.PicProductPhoto)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtMinStock)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtMaxStock)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtSupplier)).EndInit();
             this.PnlUpperHorizontal.ResumeLayout(false);
             this.PnlUpperHorizontal.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtCode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtReference)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicProductPhoto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -603,8 +614,6 @@
         public Syncfusion.Windows.Forms.Tools.CurrencyTextBox TxtSalePrice;
         public Syncfusion.Windows.Forms.Tools.CurrencyTextBox TxtCostPrice;
         public Syncfusion.Windows.Forms.Tools.TextBoxExt TxtDescription;
-        public Syncfusion.Windows.Forms.Tools.TextBoxExt TxtReference;
-        public Syncfusion.Windows.Forms.Tools.TextBoxExt TxtCode;
         private System.Windows.Forms.Label LblCode;
         private System.Windows.Forms.Label LblMinStock;
         private System.Windows.Forms.Label LblMaxStock;
@@ -617,5 +626,7 @@
         private Bunifu.Framework.UI.BunifuGradientPanel PnlUpperHorizontal;
         public System.Windows.Forms.Label LblTodayIsDay;
         public System.Windows.Forms.Label LblFormTitle;
+        public Syncfusion.Windows.Forms.Tools.IntegerTextBox TxtCode;
+        public Syncfusion.Windows.Forms.Tools.IntegerTextBox TxtReference;
     }
 }
