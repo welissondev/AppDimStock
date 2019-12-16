@@ -156,7 +156,7 @@ namespace DimStock.View
                 if (activitySituation == "Em Aberto")
                 {
                     var atividade = new BllStockActivity();
-                    atividade.Destination = ((ComboBox)sender).SelectedItem.ToString();
+                    atividade.StockDestination = ((ComboBox)sender).SelectedItem.ToString();
 
                     atividade.AddDestination(StockActivityId);
                 }
@@ -965,8 +965,8 @@ namespace DimStock.View
                 LblActivitySituation.Text = stockActivity.Situation;
 
                 ListStockDestinations();
-                if (stockActivity.Destination != "" || stockActivity.Destination != null)
-                    CboStockDestination.Text = stockActivity.Destination;
+                if (stockActivity.StockDestination != "" || stockActivity.StockDestination != null)
+                    CboStockDestination.Text = stockActivity.StockDestination;
 
                 //Passa para variáveis no scopo
                 StockActivityId = id;

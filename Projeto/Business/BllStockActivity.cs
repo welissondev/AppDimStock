@@ -25,7 +25,7 @@ namespace DimStock.Business
         public DateTime Date { get; set; }
         public string Hour { get; set; }
         public string Situation { get; set; }
-        public string Destination { get; set; }
+        public string StockDestination { get; set; }
         public List<BllStockActivity> ListOfRecords { get; set; }
         #endregion
 
