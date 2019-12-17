@@ -87,7 +87,6 @@
             this.GridStockList.Size = new System.Drawing.Size(1002, 426);
             this.GridStockList.TabIndex = 70;
             this.GridStockList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.StockDataGrid_CellFormatting);
-            this.GridStockList.Layout += new System.Windows.Forms.LayoutEventHandler(this.StockDataGrid_Layout);
             // 
             // CboPageSize
             // 

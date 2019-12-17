@@ -2,10 +2,8 @@
 using Syncfusion.Windows.Forms.Tools;
 using DimStock.Auxiliary;
 using DimStock.Business;
-using DimStock.Properties;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
 using System.Windows.Forms;
 
 namespace DimStock.View
@@ -29,6 +27,8 @@ namespace DimStock.View
             CreateColumnsInTheDataGrid();
 
             LblDataLong.Text = DateTime.Now.ToLongDateString();
+
+            AxlDataGridViewLealt.DefaultLayoutDarkblue(GridStockList);
 
         }
         #endregion
@@ -248,13 +248,6 @@ namespace DimStock.View
         }
         #endregion
 
-        #region StockDataGrid_Layout()
-        private void StockDataGrid_Layout(object sender, LayoutEventArgs e)
-        {
-            AxlDataGridViewLealt.DefaultLayoutDarkblue(GridStockList);
-        }
-        #endregion
-
         #endregion
 
         #region Label
@@ -359,8 +352,6 @@ namespace DimStock.View
                     stockProduct.ListOfRecords[i].StockResult);
                 }
 
-                SetPhoto(stockProduct.ListOfRecords);
-
                 SetInBadingNavigator();
 
             }
@@ -409,34 +400,6 @@ namespace DimStock.View
             {
                 AxlException.Message.Show(ex);
             }
-        }
-        #endregion
-
-        #region SetPhoto()
-        private void SetPhoto(List<BllStockProduct> listaDeRegistros)
-        {
-            try
-            {
-                var ls = listaDeRegistros;
-                
-                for (int i = 0; i < ls.Count; i++)
-                {
-                    var photoPath = BllProductPhotho.GetPeth() + ls[i].ProductPhoto;
-
-                    if (BllProductPhotho.FindFile(photoPath) == true)
-                    {
-                        using (FileStream file = new FileStream(photoPath, FileMode.Open, FileAccess.Read))
-                        {
-                            GridStockList.Rows[i].Cells["productPhoto"].Value = Image.FromStream(file);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                AxlException.Message.Show(ex);
-            }
-
         }
         #endregion
 
@@ -495,7 +458,6 @@ namespace DimStock.View
                 var stockValue = new DataGridViewTextBoxColumn();
                 var stockResume = new DataGridViewTextBoxColumn();
                 var stockResult = new DataGridViewTextBoxColumn();
-                var productPhoto = new DataGridViewImageColumn();
 
                 var dataGrid = GridStockList;
 
@@ -599,17 +561,6 @@ namespace DimStock.View
                 dataGrid.Columns[11].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[11].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[11].ReadOnly = true;
-
-                dataGrid.Columns.Add(productPhoto);
-                productPhoto.Image = Resources.FotoNothing;
-                productPhoto.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                dataGrid.Columns[12].Name = "productPhoto";
-                dataGrid.Columns[12].HeaderText = "FOTO";
-                dataGrid.Columns[12].Width = 40;
-                dataGrid.Columns[12].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGrid.Columns[12].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGrid.Columns[12].DisplayIndex = 0;
-                dataGrid.Columns[12].ReadOnly = true;
             }
             catch (Exception ex)
             {
