@@ -313,9 +313,9 @@ namespace DimStock.View
                 {
                     GridActivityList.Rows.Add(
                     stockActivity.ListOfRecords[i].Id,
-                    stockActivity.ListOfRecords[i].Type,
-                    stockActivity.ListOfRecords[i].Date,
-                    stockActivity.ListOfRecords[i].Hour,
+                    stockActivity.ListOfRecords[i].OperationType,
+                    stockActivity.ListOfRecords[i].OperationDate,
+                    stockActivity.ListOfRecords[i].OperationHour,
                     stockActivity.ListOfRecords[i].Situation
                     );
                 }

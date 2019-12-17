@@ -21,12 +21,12 @@ namespace DimStock.Business
         #region BussinessProperties
         public int Id { get; set; }
         public string Login { get; set; }
-        public int AffectedRegistryId { get; set; }
         public string DataFromAffectedRecord { get; set; }
         public string OperationType { get; set; }
         public DateTime OperationDate { get; set; }
         public string OperationHour { get; set; }
-        public string Module { get; set; }
+        public string OperationModule { get; set; }
+        public int AffectedRegistryId { get; set; }
         public List<BllUserHistoric> ListOfRecords { get; set; }
         #endregion
 
@@ -59,7 +59,7 @@ namespace DimStock.Business
         public void FetchData()
         {
             var historic = new MdlUserHistoric(this);
-            historic.FechData();
+            historic.FetchData();
         }
         #endregion 
     }

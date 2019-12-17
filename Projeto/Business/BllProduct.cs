@@ -59,7 +59,7 @@ namespace DimStock.Business
                 {
                     Login = AxlLogin.Login,
                     OperationType = "Cadastrou",
-                    Module = "Produto",
+                    OperationModule = "Produto",
                     OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
                     OperationHour = DateTime.Now.ToString("HH:mm:ss"),
                     DataFromAffectedRecord = product.GetDataFromAffectedRecord(Id)
@@ -85,7 +85,7 @@ namespace DimStock.Business
                 {
                     Login = AxlLogin.Login,
                     OperationType = "Editou",
-                    Module = "Produto",
+                    OperationModule = "Produto",
                     OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
                     OperationHour = DateTime.Now.ToString("HH:mm:ss"),
                     DataFromAffectedRecord = product.GetDataFromAffectedRecord(id)
@@ -113,7 +113,7 @@ namespace DimStock.Business
                 {
                     Login = AxlLogin.Login,
                     OperationType = "Deletou",
-                    Module = "Produto",
+                    OperationModule = "Produto",
                     OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
                     OperationHour = DateTime.Now.ToString("HH:mm:ss"),
                     DataFromAffectedRecord = registryDataDeletedByUser

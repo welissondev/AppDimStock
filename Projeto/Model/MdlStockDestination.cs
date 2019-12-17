@@ -25,11 +25,11 @@ namespace DimStock.Model
         {
             using (var connection = new MdlConnection())
             {
-                var commandSQL = @"INSERT INTO TBEstoqueDestino(Nome)VALUES(@Nome)";
+                var sqlCommand = @"INSERT INTO StockDestination(Location)VALUES(@Location)";
 
-                connection.AddParameter("@Nome", OleDbType.VarChar, stockDestination.Location);
+                connection.AddParameter("@Location", OleDbType.VarChar, stockDestination.Location);
 
-                return connection.ExecuteNonQuery(commandSQL) > 0;
+                return connection.ExecuteNonQuery(sqlCommand) > 0;
             }
         }
         #endregion
@@ -39,11 +39,12 @@ namespace DimStock.Model
         {
             using (var connection = new MdlConnection())
             {
-                var commandSQL = @"UPDATE TBEstoqueDestino SET Nome = @Nome WHERE Id = " + id;
+                var sqlCommand = @"UPDATE StockDestination SET Location = @Location WHERE Id = @Id";
 
-                connection.AddParameter("@Nome", OleDbType.VarChar, stockDestination.Location);
+                connection.AddParameter("@Location", OleDbType.VarChar, stockDestination.Location);
+                connection.AddParameter("@Id", OleDbType.Integer, id);
 
-                return connection.ExecuteNonQuery(commandSQL) > 0;
+                return connection.ExecuteNonQuery(sqlCommand) > 0;
 
             }
         }
@@ -52,58 +53,67 @@ namespace DimStock.Model
         #region Delete()
         public bool Delete(int id)
         {
+            var deleteState = false;
+
             using (var connection = new MdlConnection())
             {
-                var commandSQL = @"DELETE FROM TBEstoqueDestino Where Id =" + id;
+                var sqlCommand = @"DELETE FROM StockDestination Where Id = @Id";
 
-                return connection.ExecuteNonQuery(commandSQL) > 0;
+                connection.AddParameter("@Id", OleDbType.Integer, id);
+
+                if (connection.ExecuteNonQuery(sqlCommand) > 0)
+                {
+                    deleteState = true;
+                }
             }
+
+            return deleteState;
         }
         #endregion'
 
-        #region Listar()
+        #region ListAll()
         public List<BllStockDestination> ListAll()
         {
+            var destinationList = new List<BllStockDestination>();
 
-            var commandSQL = @"SELECT * From TBEstoqueDestino";
-
-            var stockDestinationList = new List<BllStockDestination>();
+            var sqlQuery = @"SELECT * From StockDestination";
 
             using (var connection = new MdlConnection())
             {
-                using (var dr = connection.QueryWithDataReader(commandSQL))
+                using (var reader = connection.QueryWithDataReader(sqlQuery))
                 {
-                    while (dr.Read())
+                    while (reader.Read())
                     {
                         var stockDestination = new BllStockDestination()
                         {
-                            Id = Convert.ToInt32(dr["Id"]),
-                            Location = Convert.ToString(dr["Nome"])
+                            Id = Convert.ToInt32(reader["Id"]),
+                            Location = Convert.ToString(reader["Location"])
                         };
 
-                        stockDestinationList.Add(stockDestination);
+                        destinationList.Add(stockDestination);
                     }
                 }
             }
 
-            return stockDestinationList;
-
+            return destinationList;
         }
         #endregion
 
         #region ViewData()
         public void ViewData(int id)
         {
-            var commandSQL = @"SELECT * FROM TBEstoqueDestino WHERE Id = " + id;
-
             using (var connection = new MdlConnection())
             {
-                using (var dr = connection.QueryWithDataReader(commandSQL))
+                var sqlQuery = @"SELECT * FROM StockDestination WHERE Id = @Id";
+
+                connection.AddParameter("@Id", OleDbType.Integer, id);
+
+                using (var reader = connection.QueryWithDataReader(sqlQuery))
                 {
-                    while (dr.Read())
+                    while (reader.Read())
                     {
-                        stockDestination.Id = Convert.ToInt32(dr["Id"]);
-                        stockDestination.Location = Convert.ToString(dr["Nome"]);
+                        stockDestination.Id = Convert.ToInt32(reader["Id"]);
+                        stockDestination.Location = Convert.ToString(reader["Location"]);
                     }
                 }
             }
@@ -113,15 +123,17 @@ namespace DimStock.Model
         #region CheckIfDestinationExists()
         public bool CheckIfDestinationExists()
         {
-            var commandSQL = @"SELECT Nome From TBEstoqueDestino WHERE Nome LIKE @Nome";
-
             var destinationsFound = 0;
 
             using (var connection = new MdlConnection())
             {
-                connection.AddParameter("@Nome", OleDbType.VarChar, stockDestination.Location);
+                var sqlQuery = @"SELECT Location From StockDestination WHERE 
+                Location LIKE @Location";
 
-                using (var dr = connection.QueryWithDataReader(commandSQL))
+                connection.AddParameter("@Location", OleDbType.VarChar, 
+                stockDestination.Location);
+
+                using (var dr = connection.QueryWithDataReader(sqlQuery))
                 {
                     while (dr.Read())
                     {

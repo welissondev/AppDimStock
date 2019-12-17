@@ -650,15 +650,15 @@ namespace DimStock.View
 
             if (ActivityType == "Entrada")
             {
-                stockActivity.Type = "Entrada";
+                stockActivity.OperationType = "Entrada";
             }
             else if (ActivityType == "Saída")
             {
-                stockActivity.Type = "Saída";
+                stockActivity.OperationType = "Saída";
             }
 
-            stockActivity.Date = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy"));
-            stockActivity.Hour = DateTime.Now.ToString("HH:mm:ss");
+            stockActivity.OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy"));
+            stockActivity.OperationHour = DateTime.Now.ToString("HH:mm:ss");
             stockActivity.Situation = "Em Aberto";
 
             if (stockActivity.Register() == true)
@@ -959,9 +959,9 @@ namespace DimStock.View
                 stockActivity.GetActivityDetails(id);
 
                 LblActivityNumber.Text = id.ToString();
-                LblActivityType.Text = stockActivity.Type;
-                LblActivityDate.Text = Convert.ToString(stockActivity.Date.ToString("dd-MM-yyyy"));
-                LblActivityHour.Text = stockActivity.Hour;
+                LblActivityType.Text = stockActivity.OperationType;
+                LblActivityDate.Text = Convert.ToString(stockActivity.OperationDate.ToString("dd-MM-yyyy"));
+                LblActivityHour.Text = stockActivity.OperationHour;
                 LblActivitySituation.Text = stockActivity.Situation;
 
                 ListStockDestinations();
@@ -970,10 +970,10 @@ namespace DimStock.View
 
                 //Passa para variáveis no scopo
                 StockActivityId = id;
-                ActivityType = stockActivity.Type;
+                ActivityType = stockActivity.OperationType;
                 activitySituation = stockActivity.Situation;
 
-                if (stockActivity.Type == "Entrada")
+                if (stockActivity.OperationType == "Entrada")
                 {
                     LblFormTitle.Text = "Entrada de Estoque";
                 }

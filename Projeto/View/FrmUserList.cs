@@ -161,7 +161,7 @@ namespace DimStock.View
                 {
                     GridUserList.Rows.Add(
                     user.ListOfRecords[i].Id,
-                    user.ListOfRecords[i].YourName,
+                    user.ListOfRecords[i].Name,
                     user.ListOfRecords[i].Email);
                 }
 
@@ -184,7 +184,7 @@ namespace DimStock.View
 
                 using (var frmUserRegister = new FrmUserRegister(user.Id))
                 {
-                    frmUserRegister.TxtName.Text = user.YourName;
+                    frmUserRegister.TxtName.Text = user.Name;
                     frmUserRegister.TxtEmail.Text = user.Email;
                     frmUserRegister.TxtEmail.Enabled = false;
                     frmUserRegister.TxtLogin.Text = user.Login;
@@ -227,7 +227,7 @@ namespace DimStock.View
                 {
                     GridUserList.Rows.Add(
                     user.ListOfRecords[i].Id,
-                    user.ListOfRecords[i].YourName,
+                    user.ListOfRecords[i].Name,
                     user.ListOfRecords[i].Email);
                 }
 

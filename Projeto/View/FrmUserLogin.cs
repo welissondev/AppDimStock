@@ -30,7 +30,7 @@ namespace DimStock.View
                 if (user.Access() == true)
                 {
                     AxlLogin.UserId = user.Id;
-                    AxlLogin.UserName = user.YourName;
+                    AxlLogin.UserName = user.Name;
                     AxlLogin.Login = user.Login;
                     AxlLogin.PermissionToRegister = user.PermissionToRegister;
                     AxlLogin.PermissionToEdit = user.PermissionToEdit;

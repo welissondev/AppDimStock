@@ -21,71 +21,77 @@ namespace DimStock.Model
         #endregion 
 
         #region AddEntries()
-        public bool AddEntries(List<BllStock> stockList, int activityId)
+        public bool AddEntries(List<BllStock> itemList, int activityId)
         {
-            var transaction = false;
+            var transactionState = false;
+            var sqlCommand = string.Empty;
 
             using (var connection = new MdlConnection())
-
             {
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
-                    for (int i = 0; i < stockList.Count; i++)
+                    for (int i = 0; i < itemList.Count; i++)
                     {
 
-                        var stockId = stockList[i].Id;
-                        var quantity = stockList[i].Quantity;
-                        var totalValue = stockList[i].TotalValue;
+                        var stockId = itemList[i].Id;
+                        var quantity = itemList[i].Quantity;
+                        var totalValue = itemList[i].TotalValue;
 
-                        var commandSQL = @"UPDATE TBEstoque Set Quantidade = Quantidade + '" + quantity +
-                        "', Valor = Valor + '" + totalValue + "' WHERE Id = " + stockId;
+                        sqlCommand = @"UPDATE Stock Set Quantity = Quantity + '" + quantity +
+                        "', TotalValue = TotalValue + '" + totalValue + "' WHERE Id = " + stockId;
 
-                        connection.ExecuteTransaction(commandSQL);
+                        connection.ExecuteTransaction(sqlCommand);
                     }
 
-                    var stockActivity = new MdlStockActivity();
+                    var activity = new MdlStockActivity();
 
-                    if (stockActivity.ChangeSituation(connection, activityId) == true)
+                    if (activity.ChangeSituation(connection, activityId) == true)
                     {
                         connection.Transaction.Commit();
-                        transaction = true;
+                        transactionState = true;
                         BllNotification.Message = "OK! todos os estoques foram adicionados!";
                     }
 
-                    return transaction;
+                    return transactionState;
                 }
             }
         }
         #endregion
 
         #region AddOutPuts()
-        public bool AddOutPuts(List<BllStock> stockList, int activityId)
+        public bool AddOutPuts(List<BllStock> itemList, int activityId)
         {
             using (var connection = new MdlConnection())
             {
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
-                    for (int i = 0; i < stockList.Count; i++)
+
+                    var transactionState = false;
+                    var sqlCommand = string.Empty;
+
+                    for (int i = 0; i < itemList.Count; i++)
                     {
 
-                        var stockId = stockList[i].Id;
-                        var quantity = stockList[i].Quantity;
-                        var totalValue = stockList[i].TotalValue;
+                        var stockId = itemList[i].Id;
+                        var quantity = itemList[i].Quantity;
+                        var totalValue = itemList[i].TotalValue;
 
-                        var commandSQL = @"UPDATE TBEstoque Set Quantidade = Quantidade - '" + quantity +
-                        "', Valor = Valor - '" + totalValue + "' WHERE Id = " + stockId;
+                        sqlCommand = @"UPDATE Stock Set Quantity = Quantity - '" + quantity + "' " +
+                        ", TotalValue = TotalValue - '" + totalValue + "' WHERE Id = " + stockId;
 
-                        connection.ExecuteTransaction(commandSQL);
+                        connection.ExecuteTransaction(sqlCommand);
                     }
 
-                    var stockActivity = new MdlStockActivity();
-                    stockActivity.ChangeSituation(connection, activityId);
+                    var activity = new MdlStockActivity();
 
-                    connection.Transaction.Commit();
+                    if (activity.ChangeSituation(connection, activityId) == true)
+                    {
+                        connection.Transaction.Commit();
+                        transactionState = true;
+                        BllNotification.Message = "Ok! Todos os estoques foram removidos!";
+                    }
 
-                    BllNotification.Message = "Ok! Todos os estoques foram removidos!";
-
-                    return true;
+                    return transactionState;
                 }
             }
         }
@@ -94,48 +100,60 @@ namespace DimStock.Model
         #region RelateProduct()
         public bool RelateProduct(MdlConnection connection, int productId)
         {
-            var commandSQL = @"INSERT INTO TBEstoque(IdProduto)VALUES(@IdProduto)";
-            var transaction = false;
+            var transactionState = false;
+
+            var sqlCommand = @"INSERT INTO Stock(ProductId)VALUES(@ProductId)";
 
             connection.ParameterClear();
-            connection.AddParameter("@IdProduto", OleDbType.Integer, productId);
+            connection.AddParameter("@ProductId", OleDbType.Integer, productId);
 
-            if (connection.ExecuteTransaction(commandSQL) > 0)
+            if (connection.ExecuteTransaction(sqlCommand) > 0)
             {
-                transaction = true;
+                transactionState = true;
             }
 
-            return transaction;
+            return transactionState;
         }
         #endregion
 
         #region UpdateValue()
         public bool UpdateValue(MdlConnection connection, double productCostPrice, int productId)
         {
-            var commandSQL = @"UPDATE TBEstoque Set Valor = '" + productCostPrice + "' * Quantidade WHERE IdProduto = " + productId;
-            var transaction = false;
+            var transactionState = false;
 
-            if (connection.ExecuteTransaction(commandSQL) > 0)
+            var sqlCommand = @"UPDATE Stock Set TotalValue = @ProductCostPrice * 
+            Quantity WHERE ProductId = @ProductId";
+
+            connection.ParameterClear();
+            connection.AddParameter("ProductCostPrice", OleDbType.Double, productCostPrice);
+            connection.AddParameter("@ProductId", OleDbType.Integer, productId);
+
+            if (connection.ExecuteTransaction(sqlCommand) > 0)
             {
-                transaction = true;
+                transactionState = true;
             }
 
-            return transaction;
+            return transactionState;
         }
         #endregion
 
         #region Reset()
-        public bool Reset(List<BllStockItem> stockItemList)
+        public bool Reset(List<BllStockItem> itemList)
         {
             using (var connection = new MdlConnection())
             {
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
-                    for (int i = 0; i < stockItemList.Count; i++)
+                    for (int i = 0; i < itemList.Count; i++)
                     {
-                        var commandSQL = @"UPDATE TBEstoque Set Quantidade = '0', Valor = '0' WHERE Id = " + stockItemList[i].StockId;
+                        var stockId = itemList[i].StockId;
 
-                        connection.ExecuteTransaction(commandSQL);
+                        var sqlCommand = @"UPDATE Stock Set TotalValue = '0' WHERE Id = @StockId";
+
+                        connection.ParameterClear();
+                        connection.AddParameter("@StockId", OleDbType.Integer, stockId);
+
+                        connection.ExecuteTransaction(sqlCommand);
                     }
 
                     connection.Transaction.Commit();
@@ -153,19 +171,20 @@ namespace DimStock.Model
         {
             using (var connection = new MdlConnection())
             {
-
-                var commandSQL = @"SELECT * From TBEstoque Where Id = " + id;
-
                 var affectedFieldList = new List<string>();
 
-                using (var dr = connection.QueryWithDataReader(commandSQL))
+                var sqlQuery = @"SELECT * From Stock Where Id = @Id";
+
+                connection.AddParameter("@Id", OleDbType.Integer, id);
+
+                using (var reader = connection.QueryWithDataReader(sqlQuery))
                 {
-                    while (dr.Read())
+                    while (reader.Read())
                     {
-                        affectedFieldList.Add("Id:" + dr["Id"].ToString());
-                        affectedFieldList.Add("IdProduto:" + dr["IdProduto"].ToString());
-                        affectedFieldList.Add("Quantidade:" + dr["Quantidade"].ToString());
-                        affectedFieldList.Add("Valor:" + dr["Valor"].ToString());
+                        affectedFieldList.Add("Id:" + reader["Id"].ToString());
+                        affectedFieldList.Add("IdProduto:" + reader["ProductId"].ToString());
+                        affectedFieldList.Add("Quantidade:" + reader["Quantity"].ToString());
+                        affectedFieldList.Add("Valor:" + reader["TotalValue"].ToString());
                     }
                 }
 

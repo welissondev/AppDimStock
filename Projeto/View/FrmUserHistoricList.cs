@@ -104,7 +104,7 @@ namespace DimStock.View
                     historic.ListOfRecords[i].Id,
                     historic.ListOfRecords[i].Login,
                     historic.ListOfRecords[i].OperationType,
-                    historic.ListOfRecords[i].Module,
+                    historic.ListOfRecords[i].OperationModule,
                     historic.ListOfRecords[i].OperationDate,
                     historic.ListOfRecords[i].OperationHour,
                     historic.ListOfRecords[i].DataFromAffectedRecord);
@@ -140,7 +140,7 @@ namespace DimStock.View
                     historic.ListOfRecords[i].Id,
                     historic.ListOfRecords[i].Login,
                     historic.ListOfRecords[i].OperationType,
-                    historic.ListOfRecords[i].Module,
+                    historic.ListOfRecords[i].OperationModule,
                     historic.ListOfRecords[i].OperationDate,
                     historic.ListOfRecords[i].OperationHour,
                     historic.ListOfRecords[i].DataFromAffectedRecord);

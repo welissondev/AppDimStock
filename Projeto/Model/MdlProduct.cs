@@ -27,39 +27,40 @@ namespace DimStock.Model
             {
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
-                    var commandSQL = @"INSERT INTO TBProduto(Fornecedor, Descricao, Codigo, Tamanho, Referencia, PrecoCusto, 
-                        PrecoVenda, EstoqueMin, EstoqueMax, CodigoBarras, FotoNome)VALUES(@Fornecedor, @Descricao, @Codigo, @Tamanho, 
-                        @Referencia, @PrecoCusto, @PrecoVenda, @EstoqueMin, @EstoqueMax, @CodigoBarras, @FotoNome)";
+                    var sqlCommand = @"INSERT INTO Product (Code, [Size], Reference, Supplier, 
+                    Description, CostPrice, SalePrice, MinStock, MaxStock, BarCode, PhotoName) VALUES
+                    (@Code, @Size, @Reference, @Supplier, @Description, @CostPrice, @SalePrice, 
+                    @MinStock, @MaxStock, @BarCode, @PhotoName)";
 
-                    connection.AddParameter("@Fornecedor", OleDbType.VarChar, product.Supplier);
-                    connection.AddParameter("@Descricao", OleDbType.VarChar, product.Description);
-                    connection.AddParameter("@Codigo", OleDbType.VarChar, product.Code);
-                    connection.AddParameter("@Tamanho", OleDbType.VarChar, product.Size);
-                    connection.AddParameter("@Referencia", OleDbType.VarChar, product.Reference);
-                    connection.AddParameter("@PrecoCusto", OleDbType.Double, product.CostPrice);
-                    connection.AddParameter("@PrecoVenda", OleDbType.Double, product.SalePrice);
-                    connection.AddParameter("@EstoqueMin", OleDbType.Integer, product.MinStock);
-                    connection.AddParameter("@EstoqueMax", OleDbType.Integer, product.MaxStock);
-                    connection.AddParameter("@CodigoBarras", OleDbType.VarChar, product.BarCode);
-                    connection.AddParameter("@FotoNome", OleDbType.VarChar, product.PhotoName);
+                    connection.AddParameter("@Code", OleDbType.Integer, product.Code);
+                    connection.AddParameter("@Size", OleDbType.Integer, product.Size);
+                    connection.AddParameter("@Reference", OleDbType.Integer, product.Reference);
+                    connection.AddParameter("@Supplier", OleDbType.VarChar, product.Supplier);
+                    connection.AddParameter("@Description", OleDbType.VarChar, product.Description);
+                    connection.AddParameter("@CostPrice", OleDbType.Double, product.CostPrice);
+                    connection.AddParameter("@SalePrice", OleDbType.Double, product.SalePrice);
+                    connection.AddParameter("@MinStock", OleDbType.Integer, product.MinStock);
+                    connection.AddParameter("@MaxStock", OleDbType.Integer, product.MaxStock);
+                    connection.AddParameter("@BarCode", OleDbType.VarChar, product.BarCode);
+                    connection.AddParameter("@PhotoName", OleDbType.VarChar, product.PhotoName);
 
-                    bool transaction = false;
+                    bool transactionState = false;
 
-                    if (connection.ExecuteTransaction(commandSQL) > 0)
+                    if (connection.ExecuteTransaction(sqlCommand) > 0)
                     {
-                        product.Id = Convert.ToInt32(connection.ExecuteScalar("SELECT MAX(Id) From TBProduto"));
+                        product.Id = Convert.ToInt32(connection.ExecuteScalar("SELECT MAX(Id) From Product"));
 
                         var stock = new MdlStock();
 
                         if (stock.RelateProduct(connection, product.Id) == true)
                         {
                             connection.Transaction.Commit();
-                            transaction = true;
+                            transactionState = true;
                             BllNotification.Message = "Produto cadastrado com sucesso!";
                         }
                     }
 
-                    return transaction;
+                    return transactionState;
                 }
             }
         }
@@ -68,45 +69,54 @@ namespace DimStock.Model
         #region Edit()
         public bool Edit(int id)
         {
-            using (var con = new MdlConnection())
+            using (var connection = new MdlConnection())
             {
-                using (con.Transaction = con.Open().BeginTransaction())
+                using (connection.Transaction = connection.Open().BeginTransaction())
                 {
+                    var sqlCommand = @"UPDATE Product Set Code = @Code, 
+                    [Size] = @Size, Reference = @Reference, Supplier = @Supplier, 
+                    Description = @Description, CostPrice = @CostPrice, SalePrice = @SalePrice, 
+                    MinStock = @MinStock, MaxStock = @MaxStock, BarCode = @BarCode, 
+                    PhotoName = @PhotoName WHERE Id = @Id";
 
-                    var commandSQL = @"UPDATE TBProduto Set Fornecedor = @Fornecedor, Descricao = @Descricao, Codigo = @Codigo, Tamanho = @Tamanho,
-                    Referencia = @Referencia , PrecoCusto = @PrecoCusto, PrecoVenda = @PrecoVenda, EstoqueMin = @EstoqueMin, EstoqueMax = @EstoqueMax, 
-                    CodigoBarras = @CodigoBarras , FotoNome = @FotoNome Where Id = " + id;
+                    connection.AddParameter("@Code", OleDbType.Integer, product.Code);
+                    connection.AddParameter("@Size", OleDbType.Integer, product.Size);
+                    connection.AddParameter("@Reference", OleDbType.Integer, product.Reference);
+                    connection.AddParameter("@Supplier", OleDbType.VarChar, product.Supplier);
+                    connection.AddParameter("@Description", OleDbType.VarChar, product.Description);
+                    connection.AddParameter("@CostPrice", OleDbType.Double, product.CostPrice);
+                    connection.AddParameter("@SalePrice", OleDbType.Double, product.SalePrice);
+                    connection.AddParameter("@MinStock", OleDbType.Integer, product.MinStock);
+                    connection.AddParameter("@MaxStock", OleDbType.Integer, product.MaxStock);
+                    connection.AddParameter("@BarCode", OleDbType.VarChar, product.BarCode);
+                    connection.AddParameter("@PhotoName", OleDbType.VarChar, product.PhotoName);
+                    connection.AddParameter("@Id", OleDbType.Integer, id);
 
-                    con.AddParameter("@Fornecedor", OleDbType.VarChar, product.Supplier);
-                    con.AddParameter("@Descricao", OleDbType.VarChar, product.Description);
-                    con.AddParameter("@Codigo", OleDbType.VarChar, product.Code);
-                    con.AddParameter("@Tamanho", OleDbType.VarChar, product.Size);
-                    con.AddParameter("@Referecia", OleDbType.VarChar, product.Reference);
-                    con.AddParameter("@PrecoCusto", OleDbType.Double, product.CostPrice);
-                    con.AddParameter("@PrecoVenda", OleDbType.Double, product.SalePrice);
-                    con.AddParameter("@EstoqueMin", OleDbType.Integer, product.MinStock);
-                    con.AddParameter("@EstoqueMax", OleDbType.Integer, product.MaxStock);
-                    con.AddParameter("@CodigoBarras", OleDbType.VarChar, product.BarCode);
-                    con.AddParameter("@FotoNome", OleDbType.VarChar, product.PhotoName);
+                    bool transactionState = false;
 
-                    bool transaction = false;
-
-                    if (con.ExecuteTransaction(commandSQL) > 0)
+                    if (connection.ExecuteTransaction(sqlCommand) > 0)
                     {
-                        var costPrice = Convert.ToDouble(con.ExecuteScalar(
-                        "SELECT precoCusto FROM TBProduto WHERE Id = " + id));
+                        var sqlQuery = @"SELECT CostPrice FROM 
+                        Product WHERE Id = @Id";
 
-                        MdlStock estoque = new MdlStock();
+                        connection.ParameterClear();
+                        connection.AddParameter("@Id",
+                        OleDbType.Integer, id);
 
-                        if (estoque.UpdateValue(con, costPrice, id) == true)
+                        var costPrice = Convert.ToDouble(
+                        connection.ExecuteScalar(sqlQuery));
+
+                        var stock = new MdlStock();
+
+                        if (stock.UpdateValue(connection, costPrice, id) == true)
                         {
-                            con.Transaction.Commit();
-                            transaction = true;
+                            connection.Transaction.Commit();
+                            transactionState = true;
                             BllNotification.Message = "Produto alterado com sucesso!";
                         }
                     };
 
-                    return transaction;
+                    return transactionState;
                 }
             }
         }
@@ -115,23 +125,28 @@ namespace DimStock.Model
         #region Delete()
         public bool Delete(int id)
         {
-            var exclusionState = false;
-
             using (var connection = new MdlConnection())
             {
-                if (connection.ExecuteNonQuery("DELETE From TBProduto WHERE Id = " + id) > 0)
+                var deleteState = false;
+                var sqlCommand = string.Empty;
+
+                sqlCommand = @"DELETE FROM Product WHERE Id = @Id";
+
+                connection.AddParameter("@Id", OleDbType.Integer, id);
+
+                if (connection.ExecuteNonQuery(sqlCommand) > 0)
                 {
                     BllNotification.Message = "Produto deletado com sucesso!";
-                    exclusionState = true;
+                    deleteState = true;
                 }
                 else
                 {
                     BllNotification.Message = @"Esse produto já foi deletado, 
                     atualize a lista de dados!";
                 }
-            }
 
-            return exclusionState;
+                return deleteState;
+            }
         }
         #endregion
 
@@ -140,85 +155,84 @@ namespace DimStock.Model
         {
             using (var connection = new MdlConnection())
             {
-                #region Variáveis
+                #region Variables
                 var parameter = connection.Command.Parameters;
                 var criterion = string.Empty;
-                var commandSQL = string.Empty;
+                var sqlQuery = string.Empty;
                 var productList = new List<BllProduct>();
                 #endregion
 
-                #region ConsultaPadrão
-                commandSQL = @"SELECT Id, Codigo, Fornecedor, Referencia, Descricao, 
-                Tamanho, PrecoCusto, PrecoVenda, FotoNome From TBProduto WHERE Id > 0 ";
+                #region DefaultQuery
+                sqlQuery = @"SELECT Id, Code, [Size], Reference, Supplier, Description, 
+                CostPrice, SalePrice, PhotoName FROM Product WHERE Id > 0";
                 #endregion
 
-                #region Critério + Código
+                #region Criterion + Code
                 if (product.QueryByCode != string.Empty)
                 {
-                    criterion += " AND Codigo = @Codigo ";
+                    criterion += " AND Code = @Code";
 
-                    parameter.AddWithValue("@Codigo", string.Format("{0}",
+                    parameter.AddWithValue("@Code", string.Format("{0}",
                     product.QueryByCode));
                 }
                 #endregion    
 
-                #region Critério + Tamanho
-                if (product.QueryBySize!= string.Empty)
+                #region Criterion + Size
+                if (product.QueryBySize != string.Empty)
                 {
-                    criterion += " AND Tamanho = @Tamanho ";
+                    criterion += " AND [Size] = @Size";
 
-                    parameter.AddWithValue("@Tamanho", string.Format("{0}",
+                    parameter.AddWithValue("@Size", string.Format("{0}",
                     product.QueryBySize));
                 }
                 #endregion     
 
-                #region Critério + Referência
+                #region Criterion + Reference
                 if (product.QueryByReference != string.Empty)
                 {
-                    criterion += " AND Referencia = @Referencia";
+                    criterion += " AND Reference = @Reference";
 
-                    parameter.AddWithValue("@Referencia", string.Format("{0}",
+                    parameter.AddWithValue("@Reference", string.Format("{0}",
                     product.QueryByReference));
                 }
                 #endregion     
 
-                #region Critério + Descrição
-                if (product.QueryByDescription!= string.Empty)
+                #region Criterion + Description
+                if (product.QueryByDescription != string.Empty)
                 {
-                    criterion += " AND Descricao LIKE @Descricao";
+                    criterion += " AND Description LIKE @Description";
 
-                    parameter.AddWithValue("@Descricao", string.Format("%{0}%",
+                    parameter.AddWithValue("@Description", string.Format("%{0}%",
                     product.QueryByDescription));
                 }
                 #endregion
 
-                #region SQLCommand + Critério
-                commandSQL += criterion + " Order By Codigo,Tamanho, Referencia Asc";
+                #region Criterion + SqlQuery 
+                sqlQuery += criterion + " Order By Code, [Size], Reference Asc";
                 #endregion 
 
-                #region PopularList
-                using (var dataReader = connection.QueryWithDataReader(commandSQL))
+                #region FillList
+                using (var reader = connection.QueryWithDataReader(sqlQuery))
                 {
-                    while (dataReader.Read())
+                    while (reader.Read())
                     {
                         var product = new BllProduct
                         {
-                            Id = Convert.ToInt32(dataReader["Id"]),
-                            Code = Convert.ToInt32(dataReader["Codigo"]),
-                            Reference = Convert.ToInt32(dataReader["Referencia"]),
-                            Supplier = Convert.ToString(dataReader["Fornecedor"]),
-                            Description = Convert.ToString(dataReader["Descricao"]),
-                            Size = Convert.ToInt32(dataReader["Tamanho"]),
-                            CostPrice = Convert.ToDouble(dataReader["PrecoCusto"]),
-                            SalePrice = Convert.ToDouble(dataReader["PrecoVenda"]),
-                            PhotoName = Convert.ToString(dataReader["FotoNome"])
+                            Id = Convert.ToInt32(reader["Id"]),
+                            Code = Convert.ToInt32(reader["Code"]),
+                            Reference = Convert.ToInt32(reader["Reference"]),
+                            Supplier = Convert.ToString(reader["Supplier"]),
+                            Description = Convert.ToString(reader["Description"]),
+                            Size = Convert.ToInt32(reader["Size"]),
+                            CostPrice = Convert.ToDouble(reader["CostPrice"]),
+                            SalePrice = Convert.ToDouble(reader["SalePrice"]),
+                            PhotoName = Convert.ToString(reader["PhotoName"])
                         };
 
                         productList.Add(product);
                     }
 
                     product.ListOfRecords = productList;
-
                 }
                 #endregion
             }
@@ -228,86 +242,94 @@ namespace DimStock.Model
         #region FetchData()
         public void FetchData()
         {
-            var commandSQL = string.Empty;
-            var sqlCount = string.Empty;
-            var criterion = string.Empty;
-
             using (var connection = new MdlConnection())
             {
-                var paramerter = connection.Command.Parameters;
+                #region Variables
+                var sqlQuery = string.Empty;
+                var sqlCount = string.Empty;
+                var criterion = string.Empty;
+                var parameter = connection.Command.Parameters;
+                #endregion
 
-                #region ConsultaPadrão
-                commandSQL = @"SELECT Id, Codigo, Fornecedor, Referencia, Descricao, 
-                Tamanho, PrecoCusto, PrecoVenda, FotoNome From TBProduto WHERE Id > 0";
+                #region DefaultQuery
 
-                sqlCount = "SELECT COUNT(*) From TBProduto WHERE Id > 0";
+                sqlQuery = @"SELECT Id, Code, [Size], Reference, Supplier, Description, 
+                CostPrice, SalePrice, PhotoName FROM Product WHERE Id > 0";
+
+                sqlCount = @"SELECT COUNT(*) FROM Product WHERE Id > 0";
 
                 #endregion
 
-                #region Critério + Codigo
+                #region QueryByCriterion
+
+                #region Criterion + Code
                 if (product.QueryByCode != string.Empty)
                 {
-                    criterion += " AND Codigo LIKE @Codigo";
+                    criterion += " AND Code LIKE @Code";
 
-                    paramerter.AddWithValue("@Codigo", string.Format("{0}",
+                    parameter.AddWithValue("@Code", string.Format("{0}",
                     product.QueryByCode));
-
-                    sqlCount += " AND Codigo LIKE @Codigo";
                 }
                 #endregion
 
-                #region Critério + Tamanho
+                #region Criterion + Size
                 if (product.QueryBySize != string.Empty)
                 {
-                    criterion += " AND Tamanho LIKE @Tamanho";
+                    criterion += " AND [Size] LIKE @Size";
 
-                    paramerter.AddWithValue("@Tamanho", string.Format("{0}",
+                    parameter.AddWithValue("@Size", string.Format("{0}",
                     product.QueryBySize));
-
-                    sqlCount += " AND Tamanho LIKE @Tamanho ";
                 }
                 #endregion
 
-                #region Critério + Referência
+                #region Criterion + Reference
                 if (product.QueryByReference != string.Empty)
                 {
-                    criterion += " AND Referencia LIKE @Referencia";
+                    criterion += " AND Reference LIKE @Reference";
 
-                    paramerter.AddWithValue("@Referencia", string.Format("{0}",
+                    parameter.AddWithValue("@Reference", string.Format("{0}",
                     product.QueryByReference));
-
-                    sqlCount += " AND Referencia LIKE @Referencia ";
-
                 }
                 #endregion
 
-                #region Critério + Descrição
+                #region Criterion + Description
                 if (product.QueryByDescription != string.Empty)
                 {
-                    criterion += " AND Descricao LIKE @Descricao";
+                    criterion += " AND Description LIKE @Description";
 
-                    paramerter.AddWithValue("@Descricao", string.Format("%{0}%",
+                    parameter.AddWithValue("@Description", string.Format("%{0}%",
                     product.QueryByDescription));
-
-                    sqlCount += " AND Descricao LIKE @Descricao ";
                 }
                 #endregion     
 
-                #region SQLCommand + critério
-                commandSQL += criterion + " Order By Codigo, Tamanho, Referencia Asc";
+                #region Criterion + SqlQuery
+                sqlQuery += criterion + " Order By [Code],[Size],[Reference]";
                 #endregion
 
-                #region RecordCount
-                product.DataPagination.RecordCount = Convert.ToInt32(
-                connection.ExecuteScalar(sqlCount));
+                #region Criterion + SqlCount
+
+                sqlCount += criterion;
+
+                #endregion 
+
+                #endregion 
+
+                #region SqlCount
+                product.DataPagination.RecordCount = Convert.ToInt32(connection.ExecuteScalar(sqlCount));
                 #endregion
 
-                #region Popular DataTable
-                var dataTable = connection.QueryWithDataTable(commandSQL,
+                #region FillDataTable
+
+                var dataTable = connection.QueryWithDataTable(sqlQuery,
                 product.DataPagination.OffSetValue,
                 product.DataPagination.PageSize);
 
+                #endregion 
+
+                #region PassDataTableToList
+
                 PassDataTableToList(dataTable);
+
                 #endregion 
             }
         }
@@ -316,27 +338,30 @@ namespace DimStock.Model
         #region ViewData()
         public void ViewData(int id)
         {
-            var commandSQL = @"SELECT Id, Codigo, Referencia, CodigoBarras, Fornecedor, Descricao, Tamanho, PrecoCusto,
-                PrecoVenda, EstoqueMin, EstoqueMax, FotoNome From TBProduto Where Id = " + id;
-
             using (var connection = new MdlConnection())
             {
-                using (var dataReader = connection.QueryWithDataReader(commandSQL))
+                var sqlQuery = @"SELECT Id, Code, [Size], Reference, Supplier, 
+                Description, MinStock, MaxStock, CostPrice, SalePrice, PhotoName, 
+                BarCode From Product Where Id = @Id ";
+
+                connection.AddParameter("@Id", OleDbType.Integer, id);
+
+                using (var reader = connection.QueryWithDataReader(sqlQuery))
                 {
-                    while (dataReader.Read())
+                    while (reader.Read())
                     {
-                        product.Id = Convert.ToInt32(dataReader["Id"]);
-                        product.Code = Convert.ToInt32(dataReader["Codigo"]);
-                        product.Reference = Convert.ToInt32(dataReader["Referencia"]);
-                        product.BarCode = dataReader["CodigoBarras"].ToString();
-                        product.Supplier = dataReader["Fornecedor"].ToString();
-                        product.Description = dataReader["Descricao"].ToString();
-                        product.Size = Convert.ToInt32(dataReader["Tamanho"]);
-                        product.CostPrice = Convert.ToDouble(dataReader["PrecoCusto"]);
-                        product.SalePrice = Convert.ToDouble(dataReader["PrecoVenda"]);
-                        product.MinStock = Convert.ToInt32(dataReader["EstoqueMin"]);
-                        product.MaxStock = Convert.ToInt32(dataReader["EstoqueMax"]);
-                        product.PhotoName = dataReader["FotoNome"].ToString();
+                        product.Id = Convert.ToInt32(reader["Id"]);
+                        product.Code = Convert.ToInt32(reader["Code"]);
+                        product.Size = Convert.ToInt32(reader["Size"]);
+                        product.Reference = Convert.ToInt32(reader["Reference"]);
+                        product.Supplier = Convert.ToString(reader["Supplier"]);
+                        product.Description = Convert.ToString(reader["Description"]);
+                        product.MinStock = Convert.ToInt32(reader["MinStock"]);
+                        product.MaxStock = Convert.ToInt32(reader["MaxStock"]);
+                        product.CostPrice = Convert.ToDouble(reader["CostPrice"]);
+                        product.SalePrice = Convert.ToDouble(reader["SalePrice"]);
+                        product.PhotoName = Convert.ToString(reader["PhotoName"]);
+                        product.BarCode = Convert.ToString(reader["BarCode"]);
                     }
                 }
             }
@@ -348,24 +373,26 @@ namespace DimStock.Model
         {
             using (var connection = new MdlConnection())
             {
-                var commandSQL = @"SELECT * From TBProduto Where Id = " + id;
-
                 var affectedFieldList = new List<string>();
 
-                using (var dataReader = connection.QueryWithDataReader(commandSQL))
+                var sqlQuery = @"SELECT * From Product Where Id = @Id ";
+
+                connection.AddParameter("Id", OleDbType.Integer, id);
+
+                using (var reader = connection.QueryWithDataReader(sqlQuery))
                 {
-                    while (dataReader.Read())
+                    while (reader.Read())
                     {
-                        affectedFieldList.Add("Id:" + dataReader["Id"].ToString());
-                        affectedFieldList.Add("Código:" + dataReader["Codigo"].ToString());
-                        affectedFieldList.Add("Referência:" + dataReader["Referencia"].ToString());
-                        affectedFieldList.Add("Fornecedor:" + dataReader["Fornecedor"].ToString());
-                        affectedFieldList.Add("Descrição:" + dataReader["Descricao"].ToString());
-                        affectedFieldList.Add("Tamanho:" + dataReader["Tamanho"].ToString());
-                        affectedFieldList.Add("PreçoCusto:" + dataReader["PrecoCusto"].ToString());
-                        affectedFieldList.Add("PreçoVenda:" + dataReader["PrecoVenda"].ToString());
-                        affectedFieldList.Add("CódigoBarras:" + dataReader["CodigoBarras"].ToString());
-                        affectedFieldList.Add("FotoNome:" + dataReader["FotoNome"].ToString());
+                        affectedFieldList.Add("Id:" + reader["Id"].ToString());
+                        affectedFieldList.Add("Código:" + reader["Code"].ToString());
+                        affectedFieldList.Add("Referência:" + reader["Reference"].ToString());
+                        affectedFieldList.Add("Fornecedor:" + reader["Supplier"].ToString());
+                        affectedFieldList.Add("Descrição:" + reader["Description"].ToString());
+                        affectedFieldList.Add("Tamanho:" + reader["Size"].ToString());
+                        affectedFieldList.Add("PreçoCusto:" + reader["CostPrice"].ToString());
+                        affectedFieldList.Add("PreçoVenda:" + reader["SalePrice"].ToString());
+                        affectedFieldList.Add("CódigoBarras:" + reader["BarCode"].ToString());
+                        affectedFieldList.Add("FotoNome:" + reader["PhotoName"].ToString());
                     }
                 }
 
@@ -379,15 +406,22 @@ namespace DimStock.Model
         {
             using (var connection = new MdlConnection())
             {
-                var commandSQL = @"SELECT Codigo FROM TBProduto WHERE Codigo LIKE '" + product.Code + "'";
-
                 var recordsFounds = 0;
+                var sqlQuery = string.Empty;
 
-                using (var dataReader = connection.QueryWithDataReader(commandSQL))
+                sqlQuery = @"SELECT Code FROM Product WHERE Code LIKE @Code";
+
+                connection.AddParameter("@Code", OleDbType.Integer, product.Code);
+
+                using (var reader = connection.QueryWithDataReader(sqlQuery))
                 {
-                    while (dataReader.Read())
-                        recordsFounds = +1;
+                    while (reader.Read())
+                    {
+                        recordsFounds += 1;
+                    }
+
                 }
+
                 return recordsFounds > 0;
             }
         }
@@ -403,14 +437,14 @@ namespace DimStock.Model
                 var product = new BllProduct()
                 {
                     Id = Convert.ToInt32(row["Id"]),
-                    Code = Convert.ToInt32(row["Codigo"]),
-                    Size = Convert.ToInt32(row["Tamanho"]),
-                    Reference = Convert.ToInt32(row["Referencia"]),
-                    Supplier = Convert.ToString(row["Fornecedor"]),
-                    Description = Convert.ToString(row["Descricao"]),
-                    CostPrice = Convert.ToDouble(row["PrecoCusto"]),
-                    SalePrice = Convert.ToDouble(row["PrecoVenda"]),
-                    PhotoName = Convert.ToString(row["FotoNome"])
+                    Code = Convert.ToInt32(row["Code"]),
+                    Size = Convert.ToInt32(row["Size"]),
+                    Reference = Convert.ToInt32(row["Reference"]),
+                    Supplier = Convert.ToString(row["Supplier"]),
+                    Description = Convert.ToString(row["Description"]),
+                    CostPrice = Convert.ToDouble(row["CostPrice"]),
+                    SalePrice = Convert.ToDouble(row["SalePrice"]),
+                    PhotoName = Convert.ToString(row["PhotoName"])
                 };
 
                 productList.Add(product);

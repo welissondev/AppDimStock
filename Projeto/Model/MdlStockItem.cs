@@ -8,7 +8,7 @@ namespace DimStock.Model
     public class MdlStockItem
     {
         #region Properties
-        private readonly BllStockItem stockItem;
+        private readonly BllStockItem item;
         #endregion 
 
         #region Constructs
@@ -16,7 +16,7 @@ namespace DimStock.Model
 
         public MdlStockItem(BllStockItem stockItem)
         {
-            this.stockItem = stockItem;
+            this.item = stockItem;
         }
         #endregion
 
@@ -25,18 +25,18 @@ namespace DimStock.Model
         {
             using (var connection = new MdlConnection())
             {
-                var commandSQL = @"INSERT INTO TBEstoqueItem(IdEstoqueAtividade, IdProduto, IdEstoque, 
-                Quantidade, ValorUnitario, ValorTotal)VALUES(@IdEstoqueAtividade, @IdProduto, @IdEstoque, 
-                @Quantidade, @ValorUnitario, @ValorTotal)";
+                var sqlCommand = @"INSERT INTO StockItem(StockActivityId, ProductId, StockId, 
+                Quantity, UnitaryValue, TotalValue)VALUES(@StockActivityId, @ProductId, @StockId, 
+                @Quantity, @UnitaryValue, @TotalValue)";
 
-                connection.AddParameter("@IdEstoqueMovimento", OleDbType.Integer, stockItem.StockActivityId);
-                connection.AddParameter("@IdProduto", OleDbType.Integer, stockItem.ProductId);
-                connection.AddParameter("@IdEstoque", OleDbType.Integer, stockItem.StockId);
-                connection.AddParameter("@Quantidade", OleDbType.Integer, stockItem.Quantity);
-                connection.AddParameter("@ValorUnitario", OleDbType.Double, stockItem.UnitaryValue);
-                connection.AddParameter("@ValorTotal", OleDbType.Double, stockItem.TotalValue);
+                connection.AddParameter("@StockActivityId", OleDbType.Integer, item.StockActivityId);
+                connection.AddParameter("@ProductId", OleDbType.Integer, item.ProductId);
+                connection.AddParameter("@StockId", OleDbType.Integer, item.StockId);
+                connection.AddParameter("@Quantity", OleDbType.Integer, item.Quantity);
+                connection.AddParameter("@UnitaryValue", OleDbType.Double, item.UnitaryValue);
+                connection.AddParameter("@TotalValue", OleDbType.Double, item.TotalValue);
 
-                connection.ExecuteNonQuery(commandSQL);
+                connection.ExecuteNonQuery(sqlCommand);
             }
         }
         #endregion
@@ -46,27 +46,29 @@ namespace DimStock.Model
         {
             using (var connection = new MdlConnection())
             {
-                var commandSQL = @"SELECT TBEstoqueItem.*, TBProduto.Descricao, TBProduto.Codigo, TBProduto.Tamanho,
-                TBProduto.Referencia FROM TBEstoqueItem INNER JOIN TBProduto ON TBEstoqueItem.IdProduto = TBProduto.Id WHERE 
-                TBEstoqueItem.IdEstoqueAtividade LIKE '" + id + "'";
+                var sqlQuery = @"SELECT StockItem.*, Product.Description, Product.Code, [Product.Size],
+                Product.Reference FROM StockItem INNER JOIN Product ON StockItem.ProductId = Product.Id WHERE 
+                StockItem.StockActivityId LIKE @Id ORDER BY Code";
+
+                connection.AddParameter("@Id", OleDbType.Integer, id);
 
                 var itemList = new List<BllStockItem>();
 
-                using (var dr = connection.QueryWithDataReader(commandSQL))
+                using (var dr = connection.QueryWithDataReader(sqlQuery))
                 {
                     while (dr.Read())
                     {
                         var item = new BllStockItem()
                         {
                             Id = Convert.ToInt32(dr["Id"]),
-                            StockId = Convert.ToInt32(dr["IdEstoque"]),
-                            ProductCode = dr["Codigo"].ToString(),
-                            ProductSize = dr["Tamanho"].ToString(),
-                            ProductReference = dr["Referencia"].ToString(),
-                            ProductDescription = dr["Descricao"].ToString(),
-                            Quantity = Convert.ToInt32(dr["Quantidade"]),
-                            UnitaryValue = Convert.ToDouble(dr["ValorUnitario"]),
-                            TotalValue = Convert.ToDouble(dr["ValorTotal"])
+                            StockId = Convert.ToInt32(dr["StockId"]),
+                            ProductCode = dr["Code"].ToString(),
+                            ProductSize = dr["Product.Size"].ToString(),
+                            ProductReference = dr["Reference"].ToString(),
+                            ProductDescription = dr["Description"].ToString(),
+                            Quantity = Convert.ToInt32(dr["Quantity"]),
+                            UnitaryValue = Convert.ToDouble(dr["UnitaryValue"]),
+                            TotalValue = Convert.ToDouble(dr["TotalValue"])
                         };
 
                         itemList.Add(item);
@@ -79,14 +81,23 @@ namespace DimStock.Model
         #endregion
 
         #region Delete()
-        public void Delete(int id)
+        public bool Delete(int id)
         {
+            var deleteState = false;
+
             using (var connection = new MdlConnection())
             {
-                var commandSQL = @"DELETE FROM TBEstoqueItem Where Id =" + id;
+                var sqlCommand = @"DELETE FROM StockItem Where Id = @Id";
 
-                connection.ExecuteNonQuery(commandSQL);
+                connection.AddParameter("Id", OleDbType.Integer, id);
+
+                if(connection.ExecuteNonQuery(sqlCommand) > 0)
+                {
+                    deleteState = true;
+                }
             }
+
+            return deleteState;
         }
         #endregion 
     }

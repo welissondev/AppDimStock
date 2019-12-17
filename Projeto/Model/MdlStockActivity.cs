@@ -11,7 +11,7 @@ namespace DimStock.Model
     public class MdlStockActivity
     {
         #region Properties
-        private readonly BllStockActivity stockActivity;
+        private readonly BllStockActivity activity;
         #endregion
 
         #region Constructs
@@ -19,37 +19,39 @@ namespace DimStock.Model
 
         public MdlStockActivity(BllStockActivity stockActivity)
         {
-            this.stockActivity = stockActivity;
+            this.activity = stockActivity;
         }
         #endregion
 
         #region Register()
         public bool Register()
         {
-            bool addState = false;
+            bool registerState = false;
 
             using (var connection = new MdlConnection())
             {
-                var commandSQL = @"INSERT INTO TBEstoqueAtividade(Tipo, Data, Hora, Situacao)
-                VALUES(@Tipo, @Data, @Hora, @Situacao)";
+                var sqlCommand = @"INSERT INTO StockActivity(OperationType, OperationDate, 
+                OperationHour, Situation)VALUES(@OperationType, @OperationDate, @OperationHour, 
+                @Situation)";
 
-                connection.AddParameter("@Tipo", OleDbType.VarChar, stockActivity.Type);
-                connection.AddParameter("@Data", OleDbType.Date, stockActivity.Date);
-                connection.AddParameter("@Hora", OleDbType.VarChar, stockActivity.Hour);
-                connection.AddParameter("@Situacao", OleDbType.VarChar, stockActivity.Situation);
+                connection.AddParameter("@OperationType", OleDbType.VarChar, activity.OperationType);
+                connection.AddParameter("@OperationDate", OleDbType.Date, activity.OperationDate);
+                connection.AddParameter("@OperationHour", OleDbType.VarChar, activity.OperationHour);
+                connection.AddParameter("@Situation", OleDbType.VarChar, activity.Situation);
 
-                if (connection.ExecuteNonQuery(commandSQL) > 0)
+                if (connection.ExecuteNonQuery(sqlCommand) > 0)
                 {
-                    stockActivity.Id = Convert.ToInt32(connection.ExecuteScalar(@"SELECT MAX(Id) FROM TBEstoqueAtividade"));
+                    activity.Id = Convert.ToInt32(connection.ExecuteScalar(
+                    @"SELECT MAX(Id) FROM StockActivity"));
 
-                    if (stockActivity.Id > 0)
+                    if (activity.Id > 0)
                     {
-                        addState = true;
+                        registerState = true;
                     }
 
                 }
 
-                return addState;
+                return registerState;
             }
         }
         #endregion
@@ -59,15 +61,20 @@ namespace DimStock.Model
         {
             bool addState = false;
 
-            if (stockActivity.Destination != "")
+            if (activity.StockDestination != string.Empty)
             {
                 using (var connection = new MdlConnection())
                 {
-                    var commandSQL = @"UPDATE TBEstoqueAtividade SET Destino = @Destino WHERE Id =" + id;
+                    var sqlCommand = @"UPDATE StockActivity SET StockDestination 
+                    = @StockDestination WHERE Id = @Id";
 
-                    connection.AddParameter("@Destino", OleDbType.VarChar, stockActivity.Destination);
+                    connection.AddParameter("@StockDestination", OleDbType.VarChar, activity.StockDestination);
+                    connection.AddParameter("@Id", OleDbType.Integer, id);
 
-                    addState = connection.ExecuteNonQuery(commandSQL) > 0;
+                    if(connection.ExecuteNonQuery(sqlCommand) > 0)
+                    {
+                        addState = true;
+                    }
                 }
             }
 
@@ -82,9 +89,11 @@ namespace DimStock.Model
 
             using (var connection = new MdlConnection())
             {
-                var commandSQL = @"DELETE FROM TBEstoqueAtividade WHERE Id = " + id;
+                var sqlCommand = @"DELETE FROM StockActivity WHERE Id = @Id" ;
 
-                if (connection.ExecuteNonQuery(commandSQL) > 0)
+                connection.AddParameter("@Id", OleDbType.Integer, id);
+
+                if (connection.ExecuteNonQuery(sqlCommand) > 0)
                 {
                     BllNotification.Message = "Atividade deletada com sucesso!";
                     deleteState = true;
@@ -103,16 +112,20 @@ namespace DimStock.Model
         #region ChangeSituation()
         public bool ChangeSituation(MdlConnection connection, int id)
         {
-            var commandSQL = @"UPDATE TBEstoqueAtividade Set Situacao = 'Finalizada' Where Id = " + id;
             var transactionState = false;
 
-            if (connection.ExecuteTransaction(commandSQL) > 0)
+            var sqlCommand = @"UPDATE StockActivity Set Situation = 'Finalizada' Where Id = @Id";
+
+            connection.ParameterClear();
+            connection.AddParameter("@Id", OleDbType.Integer, id);
+  
+            if (connection.ExecuteTransaction(sqlCommand) > 0)
             {
                 var historic = new BllUserHistoric()
                 {
                     Login = AxlLogin.Login,
                     OperationType = "Confirmou",
-                    Module = "Atividade",
+                    OperationModule = "Atividade",
                     OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
                     OperationHour = DateTime.Now.ToString("HH:mm:ss"),
                     DataFromAffectedRecord = GetAffectedFields(id)
@@ -133,27 +146,27 @@ namespace DimStock.Model
         {
             using (var connection = new MdlConnection())
             {
-                var commandSQL = @"SELECT * From TBEstoqueAtividade";
+                var sqlQuery = @"SELECT * From StockActivity";
 
-                var stockActivityList = new List<BllStockActivity>();
+                var activityList = new List<BllStockActivity>();
 
-                using (var dr = connection.QueryWithDataReader(commandSQL))
+                using (var reader = connection.QueryWithDataReader(sqlQuery))
                 {
-                    while (dr.Read())
+                    while (reader.Read())
                     {
                         var stockActivity = new BllStockActivity()
                         {
-                            Id = Convert.ToInt32(dr["Id"]),
-                            Type = dr["Tipo"].ToString(),
-                            Date = Convert.ToDateTime(dr["Data"]),
-                            Hour = dr["Hora"].ToString(),
-                            Situation = dr["Situacao"].ToString(),
+                            Id = Convert.ToInt32(reader["Id"]),
+                            OperationType = reader["OperationType"].ToString(),
+                            OperationDate = Convert.ToDateTime(reader["OperationDate"]),
+                            OperationHour = reader["OperationHour"].ToString(),
+                            Situation = reader["Situation"].ToString(),
                         };
 
-                        stockActivityList.Add(stockActivity);
+                        activityList.Add(stockActivity);
                     }
 
-                    stockActivity.ListOfRecords = stockActivityList;
+                    activity.ListOfRecords = activityList;
                 }
             }
         }
@@ -164,76 +177,82 @@ namespace DimStock.Model
         {
             using (var connection = new MdlConnection())
             {
-                #region Variáveis
-                var commandSQL = string.Empty;
+                #region Variables
+                var sqlQuery = string.Empty;
+                var sqlCount = string.Empty;
                 var criterion = string.Empty;
                 var parameter = connection.Command.Parameters;
-                var sqlCount = string.Empty;
                 #endregion 
 
-                #region Query Padrão
+                #region DefaultQuery
 
-                commandSQL = @"SELECT * From TBEstoqueAtividade WHERE Id > 0 ";
+                sqlQuery = @"SELECT * From StockActivity WHERE Id > 0 ";
 
-                sqlCount = @"SELECT COUNT(*) FROM TBEstoqueAtividade WHERE Id > 0 ";
+                sqlCount = @"SELECT COUNT(*) FROM StockActivity WHERE Id > 0 ";
 
                 #endregion
 
-                #region Critério + Tipo
-                if (stockActivity.QueryByType != string.Empty)
+                #region QueryByCriterion
+
+                #region Criterion + OperationType
+                if (activity.QueryByType != string.Empty)
                 {
-                    criterion += @"AND Tipo LIKE @Type ";
+                    criterion += @"AND OperationType LIKE @OperationType";
 
-                    sqlCount += @"AND Tipo LIKE @Type ";
-
-                    parameter.AddWithValue("@Type", string.Format("{0}",
-                    stockActivity.QueryByType));
+                    parameter.AddWithValue("@OperationType", string.Format("{0}",
+                    activity.QueryByType));
                 }
                 #endregion
 
-                #region Critério + Situação
-                if (stockActivity.QueryBySituation != string.Empty)
+                #region Criterion + Situation
+                if (activity.QueryBySituation != string.Empty)
                 {
-                    criterion += @"AND Situacao LIKE @Situation ";
-
-                    sqlCount += @"AND Situacao LIKE @Situation ";
+                    criterion += @"AND Situation LIKE @Situation ";
 
                     parameter.AddWithValue("@Situation", string.Format("{0}",
-                    stockActivity.QueryBySituation));
+                    activity.QueryBySituation));
 
                 }
                 #endregion
 
-                #region Critério + Número da atividade
-                if (stockActivity.QueryByActivityNumber != string.Empty)
+                #region Criterion + ActivityNumber
+                if (activity.QueryByActivityNumber != string.Empty)
                 {
                     criterion += @"AND Id LIKE @ActvityNumber ";
 
-                    sqlCount += @"AND Id LIKE @ActivityNumber ";
-
                     parameter.AddWithValue("@ActvityNumber", string.Format("{0}",
-                    stockActivity.QueryByActivityNumber));
+                    activity.QueryByActivityNumber));
                 }
                 #endregion
 
-                #region ComandoSQL + Critério
-                commandSQL += criterion;
+                #region Criterion + SqlCommand
+                sqlQuery += criterion + @" ORDER BY Id DESC";
                 #endregion
 
-                #region RecordCount
+                #region Criterion + SqlCount
 
-                stockActivity.DataPagination.RecordCount = Convert.ToInt32(
+                sqlCount += criterion;
+
+                #endregion 
+
+                #endregion
+
+                #region SqlCount
+
+                activity.DataPagination.RecordCount = Convert.ToInt32(
                 connection.ExecuteScalar(sqlCount));
 
                 #endregion 
 
-                #region Preenche DataTable
-                var dataTable = connection.QueryWithDataTable(commandSQL,
-                stockActivity.DataPagination.OffSetValue,
-                stockActivity.DataPagination.PageSize);
+                #region FillDataTable
+                var dataTable = connection.QueryWithDataTable(sqlQuery,
+                activity.DataPagination.OffSetValue,
+                activity.DataPagination.PageSize);
                 #endregion 
 
+                #region PassDataTableToList
                 PassDataTableToList(dataTable);
+                #endregion
             }
         }
         #endregion
@@ -241,20 +260,22 @@ namespace DimStock.Model
         #region GetDetails()
         public void GetDetails(int id)
         {
-            var commandSQL = @"SELECT * FROM TBEstoqueAtividade WHERE Id = " + id;
-
             using (var connection = new MdlConnection())
             {
-                using (var dr = connection.QueryWithDataReader(commandSQL))
+                var sqlQuery = @"SELECT * FROM StockActivity WHERE Id = @Id";
+
+                connection.AddParameter("Id", OleDbType.Integer, id);
+
+                using (var reader = connection.QueryWithDataReader(sqlQuery))
                 {
-                    while (dr.Read())
+                    while (reader.Read())
                     {
-                        stockActivity.Id = Convert.ToInt32(dr["Id"]);
-                        stockActivity.Type = Convert.ToString(dr["Tipo"]);
-                        stockActivity.Date = Convert.ToDateTime(dr["Data"]);
-                        stockActivity.Hour = Convert.ToString(dr["Hora"]);
-                        stockActivity.Situation = Convert.ToString(dr["Situacao"]);
-                        stockActivity.Destination = Convert.ToString(dr["Destino"]);
+                        activity.Id = Convert.ToInt32(reader["Id"]);
+                        activity.OperationType = Convert.ToString(reader["OperationType"]);
+                        activity.OperationDate = Convert.ToDateTime(reader["OperationDate"]);
+                        activity.OperationHour = Convert.ToString(reader["OperationHour"]);
+                        activity.Situation = Convert.ToString(reader["Situation"]);
+                        activity.StockDestination = Convert.ToString(reader["StockDestination"]);
                     }
                 }
             }
@@ -266,20 +287,21 @@ namespace DimStock.Model
         {
             using (var connection = new MdlConnection())
             {
-
-                var commandSQL = @"SELECT * From TBEstoqueAtividade Where Id = " + id;
-
                 var affectedFieldList = new List<string>();
 
-                using (var dr = connection.QueryWithDataReader(commandSQL))
+                var sqlQuery = @"SELECT * From StockActivity Where Id = @Id";
+
+                connection.AddParameter("@Id", OleDbType.Integer, id);
+
+                using (var reader = connection.QueryWithDataReader(sqlQuery))
                 {
-                    while (dr.Read())
+                    while (reader.Read())
                     {
-                        affectedFieldList.Add("Id:" + dr["Id"].ToString());
-                        affectedFieldList.Add("Tipo:" + dr["Tipo"].ToString());
-                        affectedFieldList.Add("Data:" + Convert.ToDateTime(dr["Data"]).ToString("dd-MM-yyyy"));
-                        affectedFieldList.Add("Hora:" + dr["Hora"].ToString());
-                        affectedFieldList.Add("Situacao:" + dr["Situacao"].ToString());
+                        affectedFieldList.Add("Id:" + reader["Id"].ToString());
+                        affectedFieldList.Add("Tipo:" + reader["OperationType"].ToString());
+                        affectedFieldList.Add("Data:" + Convert.ToDateTime(reader["OperationDate"]).ToString("dd-MM-yyyy"));
+                        affectedFieldList.Add("Hora:" + reader["OperationHour"].ToString());
+                        affectedFieldList.Add("Situacao:" + reader["Situation"].ToString());
                     }
                 }
 
@@ -291,23 +313,23 @@ namespace DimStock.Model
         #region PassDataTableToList()
         private void PassDataTableToList(DataTable dataTable)
         {
-            var activityStockList = new List<BllStockActivity>();
+            var activityList = new List<BllStockActivity>();
 
             foreach (DataRow row in dataTable.Rows)
             {
-                var stockActivity = new BllStockActivity()
+                var activity = new BllStockActivity()
                 {
                     Id = Convert.ToInt32(row["Id"]),
-                    Type = Convert.ToString(row["Tipo"]),
-                    Date = Convert.ToDateTime(row["Data"]),
-                    Hour = Convert.ToString(row["Hora"]),
-                    Situation = Convert.ToString(row["Situacao"])
+                    OperationType = Convert.ToString(row["OperationType"]),
+                    OperationDate = Convert.ToDateTime(row["OperationDate"]),
+                    OperationHour = Convert.ToString(row["OperationHour"]),
+                    Situation = Convert.ToString(row["Situation"])
                 };
 
-                activityStockList.Add(stockActivity);
+                activityList.Add(activity);
             }
 
-            stockActivity.ListOfRecords = activityStockList;
+            activity.ListOfRecords = activityList;
         }
         #endregion
     }

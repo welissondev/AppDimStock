@@ -21,9 +21,9 @@ namespace DimStock.Business
 
         #region BussinessProperties
         public int Id { get; set; }
-        public string Type { get; set; }
-        public DateTime Date { get; set; }
-        public string Hour { get; set; }
+        public string OperationType { get; set; }
+        public DateTime OperationDate { get; set; }
+        public string OperationHour { get; set; }
         public string Situation { get; set; }
         public string StockDestination { get; set; }
         public List<BllStockActivity> ListOfRecords { get; set; }
@@ -51,7 +51,7 @@ namespace DimStock.Business
                 {
                     Login = AxlLogin.Login,
                     OperationType = "Adicionou",
-                    Module = "Atividade",
+                    OperationModule = "Atividade",
                     OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
                     OperationHour = DateTime.Now.ToString("HH:mm:ss"),
                     DataFromAffectedRecord = stockActivity.GetAffectedFields(Id)
@@ -81,7 +81,7 @@ namespace DimStock.Business
             var deleteState = false;
 
             var stockActivity = new MdlStockActivity(this);
-            var dataFromAffectedRecord = stockActivity.GetAffectedFields(id);
+            var affectedFileds = stockActivity.GetAffectedFields(id);
 
             var stockItem = new BllStockItem();
             stockItem.ListItem(id);
@@ -96,10 +96,10 @@ namespace DimStock.Business
                     {
                         Login = AxlLogin.Login,
                         OperationType = "Deletou",
-                        Module = "Atividade",
+                        OperationModule = "Atividade",
                         OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
                         OperationHour = DateTime.Now.ToString("HH:mm:ss"),
-                        DataFromAffectedRecord = dataFromAffectedRecord
+                        DataFromAffectedRecord = affectedFileds
                     };
 
                     if (historic.Register() == true)

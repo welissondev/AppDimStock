@@ -29,17 +29,18 @@ namespace DimStock.Model
         {
             using (var connection = new MdlConnection())
             {
-                var commandSQL = @"INSERT INTO TBUsuarioHistorico(Login, Operacao, Modulo, Data, Hora, 
-                DadosRegistroAfetado)VALUES(@Login, @Operacao, @Modulo, @Data, @Hora, @DadosRegistroAfetado)";
+                var sqlCommand = @"INSERT INTO UserHistoric(Login, OperationType, OperationDate, OperationHour, 
+                OperationModule, DataFromAffectedRecord)VALUES(@Login, @OperationType, @OperationDate, @OperationHour, 
+                @Module, @DataFromAffectedRecord)";
 
                 connection.AddParameter("@Login", OleDbType.VarChar, historic.Login);
-                connection.AddParameter("@Operacao", OleDbType.VarChar, historic.OperationType);
-                connection.AddParameter("@Modulo", OleDbType.VarChar, historic.Module);
-                connection.AddParameter("@Data", OleDbType.Date, historic.OperationDate);
-                connection.AddParameter("@Hora", OleDbType.VarChar, historic.OperationHour);
-                connection.AddParameter("@DadosRegistroAfetado", OleDbType.VarChar, historic.DataFromAffectedRecord);
+                connection.AddParameter("@OperationType", OleDbType.VarChar, historic.OperationType);
+                connection.AddParameter("@OperationDate", OleDbType.Date, historic.OperationDate);
+                connection.AddParameter("@OperationHour", OleDbType.VarChar, historic.OperationHour);
+                connection.AddParameter("@OperationModule", OleDbType.VarChar, historic.OperationModule);
+                connection.AddParameter("@DataFromAffectedRecord", OleDbType.VarChar, historic.DataFromAffectedRecord);
 
-                return connection.ExecuteNonQuery(commandSQL) > 0;
+                return connection.ExecuteNonQuery(sqlCommand) > 0;
 
             }
         }
@@ -48,25 +49,25 @@ namespace DimStock.Model
         #region ListAll()
         public List<BllUserHistoric> ListAll(int numberOfRecords = 100)
         {
-            var commandSQL = @"SELECT TOP " + numberOfRecords + @" * FROM TBUsuarioHistorico";
+            var sqlQuery = @"SELECT TOP " + numberOfRecords + @" * FROM UserHistoric";
 
             var historicsList = new List<BllUserHistoric>();
 
             using (var connection = new MdlConnection())
             {
-                using (var dr = connection.QueryWithDataReader(commandSQL))
+                using (var reader = connection.QueryWithDataReader(sqlQuery))
                 {
-                    while (dr.Read())
+                    while (reader.Read())
                     {
                         var historic = new BllUserHistoric
                         {
-                            Id = Convert.ToInt32(dr["Id"]),
-                            Login = Convert.ToString(dr["Login"]),
-                            OperationType = Convert.ToString(dr["Operacao"]),
-                            Module = Convert.ToString(dr["Modulo"]),
-                            OperationDate = Convert.ToDateTime(dr["Data"]),
-                            OperationHour = Convert.ToString(dr["Hora"]),
-                            DataFromAffectedRecord = Convert.ToString(dr["DadosRegistroAfetado"])
+                            Id = Convert.ToInt32(reader["Id"]),
+                            Login = Convert.ToString(reader["Login"]),
+                            OperationType = Convert.ToString(reader["OperationType"]),
+                            OperationModule = Convert.ToString(reader["OperationModule"]),
+                            OperationDate = Convert.ToDateTime(reader["OperationDate"]),
+                            OperationHour = Convert.ToString(reader["OperationHour"]),
+                            DataFromAffectedRecord = Convert.ToString(reader["DataFromAffectedRecord"])
                         };
 
                         historicsList.Add(historic);
@@ -78,29 +79,29 @@ namespace DimStock.Model
         }
         #endregion
 
-        #region FechData()
-        public void FechData()
+        #region FetchData()
+        public void FetchData()
         {
-            var commandSQL = string.Empty;
-            var criterion = string.Empty;
-
             using (var connection = new MdlConnection())
             {
-
+                #region Variables
+                var sqlQuery = string.Empty;
+                var criterion = string.Empty;
                 var parameter = connection.Command.Parameters;
+                #endregion 
 
-                #region QueryPadrão
+                #region DefaultQuery
 
-                commandSQL = @"SELECT * FROM TBUsuarioHistorico WHERE Id > 0";
+                sqlQuery = @"SELECT * FROM UserHistoric WHERE Id > 0";
 
                 #endregion 
 
-                #region Ciretório + DataInicio e DataFinal
+                #region Criterion + OperationDate
 
-                if(historic.QueryByStartDate != string.Empty && 
-                historic.QueryByFinalDate != string.Empty)
+                if (historic.QueryByStartDate != string.Empty &&
+                    historic.QueryByFinalDate != string.Empty)
                 {
-                    criterion += " AND Data >= @StartDate And Data <= @FinalDate";
+                    criterion += " AND OperationDate >= @StartDate And OperationDate <= @FinalDate";
 
                     parameter.AddWithValue("@StartDate", string.Format("{0}",
                     historic.QueryByStartDate));
@@ -111,9 +112,9 @@ namespace DimStock.Model
 
                 #endregion
 
-                #region Critério + Login
+                #region Criterion + Login
 
-                if(historic.QueryByLogin != string.Empty)
+                if (historic.QueryByLogin != string.Empty)
                 {
                     criterion += " AND Login LIKE @Login ";
 
@@ -123,15 +124,15 @@ namespace DimStock.Model
 
                 #endregion 
 
-                #region SqlCommand + Critério
+                #region Criterion + SqlQuery
 
-                commandSQL += criterion;
+                sqlQuery += criterion;
 
                 #endregion
 
-                #region DataTable
+                #region FillDataTable
 
-                var dataTable = connection.QueryWithDataTable(commandSQL,
+                var dataTable = connection.QueryWithDataTable(sqlQuery,
                 historic.DataPagination.OffSetValue,
                 historic.DataPagination.PageSize);
 
@@ -153,11 +154,11 @@ namespace DimStock.Model
                 {
                     Id = Convert.ToInt32(row["Id"]),
                     Login = Convert.ToString(row["Login"]),
-                    OperationType = Convert.ToString(row["Operacao"]),
-                    Module = Convert.ToString(row["Modulo"]),
-                    OperationDate = Convert.ToDateTime(row["Data"]),
-                    OperationHour = Convert.ToString(row["Hora"]),
-                    DataFromAffectedRecord = Convert.ToString(row["DadosRegistroAfetado"])
+                    OperationType = Convert.ToString(row["OperationType"]),
+                    OperationModule = Convert.ToString(row["OperationModule"]),
+                    OperationDate = Convert.ToDateTime(row["OperationDate"]),
+                    OperationHour = Convert.ToString(row["OperationHour"]),
+                    DataFromAffectedRecord = Convert.ToString(row["DataFromAffectedRecord"])
                 };
 
                 historicList.Add(historic);

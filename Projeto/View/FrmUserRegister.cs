@@ -137,7 +137,7 @@ namespace DimStock.View
                 {
                     var user = new BllUser
                     {
-                        YourName = TxtName.Text.TrimStart().TrimEnd(),
+                        Name = TxtName.Text.TrimStart().TrimEnd(),
                         Email = TxtEmail.Text.TrimStart().TrimEnd(),
                         Login = TxtLogin.Text.Trim(),
                         PassWord = TxtPassWord.Text.Trim(),
@@ -179,7 +179,7 @@ namespace DimStock.View
                 {
                     var user = new BllUser
                     {
-                        YourName = TxtName.Text,
+                        Name = TxtName.Text,
                         Email = TxtEmail.Text,
                         Login = TxtLogin.Text,
                         PassWord = TxtPassWord.Text,

@@ -24,7 +24,7 @@ namespace DimStock.Business
 
         #region BussinesProperties 
         public int Id { get; set; }
-        public string YourName { get; set; }
+        public string Name { get; set; }
         public string Email { get; set; }
         public string Login { get; set; }
         public string PassWord { get; set; }
@@ -63,7 +63,7 @@ namespace DimStock.Business
                 {
                     Login = AxlLogin.Login,
                     OperationType = "Cadastrou",
-                    Module = "Usuário",
+                    OperationModule = "Usuário",
                     OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
                     OperationHour = DateTime.Now.ToString("HH:mm:ss"),
                     DataFromAffectedRecord = user.GetDataFromAffectedRecord(Id)
@@ -89,7 +89,7 @@ namespace DimStock.Business
                 {
                     Login = AxlLogin.Login,
                     OperationType = "Editou",
-                    Module = "Usuário",
+                    OperationModule = "Usuário",
                     OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
                     OperationHour = DateTime.Now.ToString("HH:mm:ss"),
                     DataFromAffectedRecord = user.GetDataFromAffectedRecord(id)
@@ -117,7 +117,7 @@ namespace DimStock.Business
                 {
                     Login = AxlLogin.Login,
                     OperationType = "Deletou",
-                    Module = "Usuário",
+                    OperationModule = "Usuário",
                     OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
                     OperationHour = DateTime.Now.ToString("HH:mm:ss"),
                     DataFromAffectedRecord = dataFromAffectedRecord
