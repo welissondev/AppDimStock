@@ -1,8 +1,6 @@
-﻿using Syncfusion.Windows.Forms.Tools;
-using System;
+﻿using System;
+using Syncfusion.Windows.Forms.Tools;
 using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
 using System.Windows.Forms;
 using DimStock.Business;
 using DimStock.Auxiliary;
@@ -308,11 +306,7 @@ namespace DimStock.View
                     product.ListOfRecords[i].Supplier,
                     product.ListOfRecords[i].Description,
                     product.ListOfRecords[i].CostPrice,
-                    product.ListOfRecords[i].SalePrice,
-                    product.ListOfRecords[i].PhotoName);
-
-                    var photoPath = product.FolderDirectoryOfPhothos + product.ListOfRecords[i].PhotoName;
-                    ListPhothoInDataGrid(GridProductList, photoPath, i);
+                    product.ListOfRecords[i].SalePrice);
                 }
 
                 SetInBadingNavigator(dataPagination);
@@ -372,19 +366,6 @@ namespace DimStock.View
             }
         }
         #endregion
-
-        #region ListPhothoInDataGrid()
-        private void ListPhothoInDataGrid(DataGridView dataGridView, string photoDirectoryPath, int i)
-        {
-            if (BllProductPhotho.FindFile(photoDirectoryPath) == true)
-            {
-                using (var file = new FileStream(photoDirectoryPath, FileMode.Open, FileAccess.Read))
-                {
-                    dataGridView.Rows[i].Cells["imagePhotho"].Value = Image.FromStream(file);
-                }
-            }
-        }
-        #endregion 
 
         #region ListPageSize()
         private void ListPageSize()
@@ -556,7 +537,6 @@ namespace DimStock.View
                 var buttonEdit = new DataGridViewImageColumn();
                 var buttonDelete = new DataGridViewImageColumn();
                 var buttonReplicate = new DataGridViewImageColumn();
-                var imagePhotho = new DataGridViewImageColumn();
 
                 var dataGrid = GridProductList;
 
@@ -629,44 +609,33 @@ namespace DimStock.View
                 dataGrid.Columns[8].ReadOnly = true;
                 dataGrid.Columns[8].Visible = false;
 
-                dataGrid.Columns.Add(imagePhotho);
-                imagePhotho.Image = Resources.FotoNothing;
-                imagePhotho.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                dataGrid.Columns[9].Name = "imagePhotho";
-                dataGrid.Columns[9].HeaderText = "Foto";
-                dataGrid.Columns[9].Width = 40;
-                dataGrid.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGrid.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGrid.Columns[9].DisplayIndex = 0;
-                dataGrid.Columns[9].ReadOnly = true;
-
                 dataGrid.Columns.Add(buttonReplicate);
                 buttonReplicate.Image = Resources.Duplicar;
                 buttonReplicate.ImageLayout = DataGridViewImageCellLayout.Normal;
-                dataGrid.Columns[10].Name = "buttonReplicate";
+                dataGrid.Columns[9].Name = "buttonReplicate";
+                dataGrid.Columns[9].HeaderText = "";
+                dataGrid.Columns[9].Width = 70;
+                dataGrid.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[9].ReadOnly = true;
+
+                dataGrid.Columns.Add(buttonEdit);
+                dataGrid.Columns[10].Name = "buttonEdit";
                 dataGrid.Columns[10].HeaderText = "";
                 dataGrid.Columns[10].Width = 70;
                 dataGrid.Columns[10].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[10].ReadOnly = true;
+                buttonEdit.ImageLayout = DataGridViewImageCellLayout.Normal;
+                buttonEdit.Image = Resources.Editar;
 
-                dataGrid.Columns.Add(buttonEdit);
-                dataGrid.Columns[11].Name = "buttonEdit";
+                dataGrid.Columns.Add(buttonDelete);
+                dataGrid.Columns[11].Name = "buttonDelete";
                 dataGrid.Columns[11].HeaderText = "";
                 dataGrid.Columns[11].Width = 70;
                 dataGrid.Columns[11].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[11].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[11].ReadOnly = true;
-                buttonEdit.ImageLayout = DataGridViewImageCellLayout.Normal;
-                buttonEdit.Image = Resources.Editar;
-
-                dataGrid.Columns.Add(buttonDelete);
-                dataGrid.Columns[12].Name = "buttonDelete";
-                dataGrid.Columns[12].HeaderText = "";
-                dataGrid.Columns[12].Width = 70;
-                dataGrid.Columns[12].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGrid.Columns[12].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGrid.Columns[12].ReadOnly = true;
                 buttonDelete.ImageLayout = DataGridViewImageCellLayout.Normal;
                 buttonDelete.Image = Resources.Deletar;
 
