@@ -293,15 +293,6 @@ namespace DimStock.View
                     stockProduct.ListOfRecords[i].ProductDescription,
                     stockProduct.ListOfRecords[i].ProductCostPrice
                     );
-
-                    var photoPath = BllProductPhotho.GetPeth() + stockProduct.ListOfRecords[i].ProductPhoto;
-                    if (BllProductPhotho.FindFile(photoPath).Equals(true))
-                    {
-                        using (var file = new FileStream(photoPath, FileMode.Open, FileAccess.Read))
-                        {
-                            GridMain.Rows[i].Cells["productPhoto"].Value = Image.FromStream(file);
-                        }
-                    }
                 }
 
                 GridMain.Visible = true;
@@ -368,7 +359,6 @@ namespace DimStock.View
                 var productReference = new DataGridViewTextBoxColumn();
                 var productDescription = new DataGridViewTextBoxColumn();
                 var productCostPrice = new DataGridViewTextBoxColumn();
-                var productPhoto = new DataGridViewImageColumn();
 
                 var dataGrid = GridMain;
                 dataGrid.ListIsStock = true;
@@ -428,17 +418,6 @@ namespace DimStock.View
                 dataGrid.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 dataGrid.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 dataGrid.Columns[6].ReadOnly = true;
-
-                dataGrid.Columns.Add(productPhoto);
-                productPhoto.Image = Resources.FotoNothing;
-                productPhoto.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                dataGrid.Columns[7].Name = "productPhoto";
-                dataGrid.Columns[7].HeaderText = "FOTO";
-                dataGrid.Columns[7].Width = 40;
-                dataGrid.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGrid.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGrid.Columns[7].DisplayIndex = 0;
-                dataGrid.Columns[7].ReadOnly = true;
             }
             catch (Exception ex)
             {
