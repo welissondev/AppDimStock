@@ -165,7 +165,7 @@ namespace DimStock.View
                     user.ListOfRecords[i].Email);
                 }
 
-                AxlDataGridViewLealt.SortcolumnDesc(GridUserList, 0);
+                AxlDataGridViewLealt.SortColumnDesc(GridUserList, 0);
             }
             catch (Exception ex)
             {
@@ -231,7 +231,7 @@ namespace DimStock.View
                     user.ListOfRecords[i].Email);
                 }
 
-                AxlDataGridViewLealt.SortcolumnDesc(GridUserList, 0);
+                AxlDataGridViewLealt.SortColumnDesc(GridUserList, 0);
             }
             catch (Exception ex)
             {
