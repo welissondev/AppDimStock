@@ -10,12 +10,14 @@ namespace DimStock.View
 {
     public partial class FrmProductList : Form
     {
+
         #region Variables
-        public int Id = 0;
+        public int ProductId = 0;
         private AxlDataPagination dataPagination = new AxlDataPagination();
         #endregion
 
         #region Constructs
+        
         public FrmProductList()
         {
             InitializeComponent();
@@ -26,20 +28,18 @@ namespace DimStock.View
 
             AxlDataGridViewLealt.DefaultLayoutDarkblue(GridProductList);
         }
+
         #endregion
 
         #region Form
 
-        #region FrmProductList_Load()
         private void FrmProductList_Load(object sender, EventArgs e)
         {
             FetchData();
             ListPageSize();
             WindowState = FormWindowState.Maximized;
         }
-        #endregion
-
-        #region FrmProductList_Resize()
+      
         private void FrmProductList_Resize(object sender, EventArgs e)
         {
             try
@@ -52,13 +52,11 @@ namespace DimStock.View
                 AxlException.Message.Show(ex);
             }
         }
-        #endregion 
-
+  
         #endregion
 
         #region Button
 
-        #region BtnNew_Click()
         private void BtnNew_Click(object sender, EventArgs e)
         {
             using (var frmProductRegister = new FrmProductRegister())
@@ -66,9 +64,7 @@ namespace DimStock.View
                 frmProductRegister.ShowDialog();
             }
         }
-        #endregion
-
-        #region BtnUpdateList_Click()
+                
         private void BtnUpdateList_Click(object sender, EventArgs e)
         { 
             CallAllResets();
@@ -76,9 +72,7 @@ namespace DimStock.View
             dataPagination.OffSetValue = 0;
             TimerStartQuery();
         }
-        #endregion
-
-        #region BtnGenerateReport_Click()
+        
         private void BtnGenerateReport_Click(object sender, EventArgs e)
         {
             try
@@ -109,13 +103,11 @@ namespace DimStock.View
                 AxlException.Message.Show(ex);
             }
         }
-        #endregion
-
+        
         #endregion
 
         #region TextBox
 
-        #region StartTheQuery_ForTheSearchBox_KeyPress()
         private void StartTheQuery_ForTheSearchBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             dataPagination.OffSetValue = 0;
@@ -125,11 +117,8 @@ namespace DimStock.View
 
         #endregion
 
-        #endregion
-
         #region ComboBox
 
-        #region CboPageSize_SelectedIndexChanged()
         private void CboPageSize_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -161,39 +150,26 @@ namespace DimStock.View
                 AxlException.Message.Show(ex);
             }
         }
-        #endregion
-
+        
         #endregion
 
         #region Timer
 
-        #region TimerExecuteQuery_Tick()
         private void TimerExecuteQuery_Tick(object sender, EventArgs e)
         {
             FetchData();
         }
-        #endregion 
-
+        
         #endregion
 
         #region DataGridView
 
-        #region GridProductList_Layout()
-        private void GridProductList_Layout(object sender, LayoutEventArgs e)
-        {
-
-        }
-        #endregion
-
-        #region GridProductList_RowPrePaint()
         private void GridProductList_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
             //Remove o focus do controle datagriview
             e.PaintParts = DataGridViewPaintParts.All ^ DataGridViewPaintParts.Focus;
         }
-        #endregion
-
-        #region GridProductList_CellClick()
+        
         private void GridProductList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (GridProductList.Rows.Count != 0)
@@ -216,9 +192,7 @@ namespace DimStock.View
                 ReplicateRecord();
             }
         }
-        #endregion
-
-        #region GridProductList_CellMouseMove()
+        
         private void GridProductList_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
         {
             try
@@ -238,20 +212,16 @@ namespace DimStock.View
                 AxlException.Message.Show(ex);
             }
         }
-        #endregion
-
-        #region GridProductList_CellMouseDoubleClick()
+        
         private void GridProductList_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             ViewData();
         }
-        #endregion
-
+       
         #endregion
 
         #region BadingNavigator
 
-        #region NextPage_Click()
         private void NextPage_Click(object sender, EventArgs e)
         {
             if (dataPagination.CurrentPage < dataPagination.NumberOfPages)
@@ -261,9 +231,7 @@ namespace DimStock.View
                 TimerStartQuery(); 
             }
         }
-        #endregion 
-
-        #region BackPage_Click()
+        
         private void BackPage_Click(object sender, EventArgs e)
         {
             if (dataPagination.CurrentPage > 1)
@@ -273,13 +241,11 @@ namespace DimStock.View
                 TimerStartQuery(); 
             }
         }
+
         #endregion
 
-        #endregion 
+        #region MethodsAxiliarys
 
-        #region Methods
-
-        #region FetchData()
         private void FetchData()
         {
             try
@@ -321,22 +287,20 @@ namespace DimStock.View
                 TimerStopQuery();
             }
         }
-        #endregion
 
-        #region ViewData()
         private void ViewData()
         {
             var frmProductRegister = new FrmProductRegister();
 
             try
             {
-                if (Id > 0)
+                if (ProductId > 0)
                 {
                     var product = new BllProduct();
 
-                    product.ViewData(Id);
+                    product.ViewData(ProductId);
 
-                    frmProductRegister.Id = Id;
+                    frmProductRegister.Id = ProductId;
                     frmProductRegister.TxtCode.Text = product.Code.ToString();
                     frmProductRegister.TxtSize.Text = product.Size.ToString();
                     frmProductRegister.TxtReference.Text = product.Reference.ToString();
@@ -365,9 +329,7 @@ namespace DimStock.View
                 frmProductRegister.Dispose();
             }
         }
-        #endregion
-
-        #region ListPageSize()
+        
         private void ListPageSize()
         {
 
@@ -382,16 +344,14 @@ namespace DimStock.View
             CboPageSize.DataSource = itens;
             CboPageSize.Text = "20 Registros";
         }
-        #endregion
-
-        #region Delete()
+        
         private void Delete()
         {
             try
             {
                 if (AxlLogin.PermissionToDelete == true)
                 {
-                    if (Id > 0)
+                    if (ProductId > 0)
                     {
                         if (MessageBox.Show("ATENÇÃO! Exluindo esse registro todas os dados como: Estoque, Entradas, Saidas e etc... " +
                         "também serão deletados, você confirma essa ação?", "IMPORTANTE", MessageBoxButtons.YesNo,
@@ -399,7 +359,7 @@ namespace DimStock.View
                         {
                             var product = new BllProduct();
 
-                            if (product.Delete(Id) == true)
+                            if (product.Delete(ProductId) == true)
                             {
                                 var photoDirectoryPath = BllProductPhotho.GetPeth() +
                                 Convert.ToString(GridProductList.CurrentRow.Cells["NomeFotoColumn"].Value);
@@ -431,9 +391,7 @@ namespace DimStock.View
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        #endregion
-
-        #region ReplicateRecord()
+        
         private void ReplicateRecord()
         {
 
@@ -443,7 +401,7 @@ namespace DimStock.View
             {
                 var product = new BllProduct();
 
-                product.ViewData(Id);
+                product.ViewData(ProductId);
 
                 frmProductRegister.TxtCode.Text = product.Code.ToString();
                 frmProductRegister.TxtSize.Text = product.Size.ToString();
@@ -467,30 +425,24 @@ namespace DimStock.View
                 frmProductRegister.Dispose();
             }
         }
-        #endregion
-
-        #region GetDataFromGridItems()
+        
         private void GetDataFromGridItems()
         {
             try
             {
-                Id = Convert.ToInt32(GridProductList.CurrentRow.Cells["id"].Value);
+                ProductId = Convert.ToInt32(GridProductList.CurrentRow.Cells["id"].Value);
             }
             catch (Exception ex)
             {
                 AxlException.Message.Show(ex);
             }
         }
-        #endregion
-
-        #region ResetVariables()
+        
         private void ResetVariables()
         {
-            Id = 0;
+            ProductId = 0;
         }
-        #endregion
-
-        #region ResetControls()
+        
         private void ResetControls()
         {
             try
@@ -508,19 +460,13 @@ namespace DimStock.View
                 AxlException.Message.Show(ex);
             }
         }
-
-        #endregion
-
-        #region CallAllResets()
+        
         private void CallAllResets()
         {
             ResetVariables();
             ResetControls();
         }
-
-        #endregion
-
-        #region DefineColumnsInTheDataGrid()
+       
         private void DefineColumnsInTheDataGrid()
         {
             try
@@ -645,19 +591,14 @@ namespace DimStock.View
                 AxlException.Message.Show(ex);
             }
         }
-        #endregion
-
-        #region ConfigureDataPagination()
+        
         private void ConfigureDataPagination()
         {
             dataPagination.OffSetValue = 0;
             dataPagination.PageSize = 20;
             dataPagination.CurrentPage = 1;
         }
-        #endregion
-
-        #region SetInBadingNavigator()
-
+        
         private void SetInBadingNavigator(AxlDataPagination dataPagination)
         {
             if(dataPagination.RecordCount == 0)
@@ -669,27 +610,22 @@ namespace DimStock.View
             legend = " Total de " + dataPagination.RecordCount + " registro(s)";
             BindingPagination.Items[6].Text = legend;
         }
-
-        #endregion 
-
-        #region TimerStartQuery()
+  
         private void TimerStartQuery()
         {
             ImgGifLoading.Visible = true;
             TimerExecuteQuery.Enabled = false;
             TimerExecuteQuery.Enabled = true;
         }
-        #endregion
-
-        #region TimerStopQuery()
+        
         public void TimerStopQuery()
         {
             ImgGifLoading.Visible = false;
             TimerExecuteQuery.Enabled = false;
         }
+        
         #endregion
 
-        #endregion
     }
 }
 

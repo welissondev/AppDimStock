@@ -112,7 +112,6 @@
             this.GridProductList.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GridProductList_CellMouseDoubleClick);
             this.GridProductList.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GridProductList_CellMouseMove);
             this.GridProductList.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.GridProductList_RowPrePaint);
-            this.GridProductList.Layout += new System.Windows.Forms.LayoutEventHandler(this.GridProductList_Layout);
             // 
             // ImgGifLoading
             // 
