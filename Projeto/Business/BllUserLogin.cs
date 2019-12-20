@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace DimStock.Business
 {
-    public class BllUser
+    public class BllUserLogin
     {
         #region Constructs
 
-        public BllUser() { }
+        public BllUserLogin() { }
 
-        public BllUser(AxlDataPagination dataPagination)
+        public BllUserLogin(AxlDataPagination dataPagination)
         {
             DataPagination = dataPagination;
         }
@@ -33,7 +33,7 @@ namespace DimStock.Business
         public bool PermissionToDelete { get; set; }
         public bool PermissionToView { get; set; }
         public bool AllPermissions { get; set; }
-        public List<BllUser> ListOfRecords { get; set; }
+        public List<BllUserLogin> ListOfRecords { get; set; }
         #endregion
 
         #region QueryProperties
@@ -47,7 +47,7 @@ namespace DimStock.Business
         #region Access()
         public bool Access()
         {
-            var user = new MdlUser(this);
+            var user = new MdlUserLogin(this);
             return user.Access();
         }
         #endregion 
@@ -55,7 +55,7 @@ namespace DimStock.Business
         #region Register()
         public bool Register()
         {
-            var user = new MdlUser(this);
+            var user = new MdlUserLogin(this);
 
             if (user.Register() == true)
             {
@@ -81,7 +81,7 @@ namespace DimStock.Business
         #region Edit()
         public bool Edit(int id)
         {
-            var user = new MdlUser(this);
+            var user = new MdlUserLogin(this);
 
             if (user.Edit(id) == true)
             {
@@ -107,7 +107,7 @@ namespace DimStock.Business
         #region Delete()
         public bool Delete(int id)
         {
-            var user = new MdlUser(this);
+            var user = new MdlUserLogin(this);
 
             var dataFromAffectedRecord = user.GetDataFromAffectedRecord(id);
 
@@ -135,7 +135,7 @@ namespace DimStock.Business
         #region ListAll()
         public void ListAll(int numberOfRecords = 100)
         {
-            var user = new MdlUser();
+            var user = new MdlUserLogin();
             ListOfRecords = user.ListAll(numberOfRecords);
         }
         #endregion
@@ -143,7 +143,7 @@ namespace DimStock.Business
         #region FetchData()
         public void FetchData()
         {
-            var user = new MdlUser(this);
+            var user = new MdlUserLogin(this);
             user.FetchData();
         }
         #endregion
@@ -151,7 +151,7 @@ namespace DimStock.Business
         #region ViewData()
         public void ViewData(int id)
         {
-            var user = new MdlUser(this);
+            var user = new MdlUserLogin(this);
             user.ViewData(id);
         }
         #endregion

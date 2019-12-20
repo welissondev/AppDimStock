@@ -12,35 +12,35 @@ namespace DimStock.Business
         public double TotalValue { get; set; }
         #endregion 
 
-        #region AddEntries()
-        public bool AddEntries(List<BllStock> stockList, int activityId)
+        #region Allocate()
+        public bool Allocate(List<BllStock> itemList, int stockMovementId)
         {
-            var transaction = false;
+            var transactionState = false;
 
             var stock = new MdlStock();
 
-            if (stock.AddEntries(stockList, activityId) == true)
+            if (stock.Allocate(itemList, stockMovementId) == true)
             {
-                transaction = true;
+                transactionState = true;
             }
 
-            return transaction;
+            return transactionState;
         }
         #endregion
 
-        #region AddOutPuts()
-        public bool AddOutPuts(List<BllStock> stockList, int activityId)
+        #region Deallocate()
+        public bool Deallocate(List<BllStock> itemList, int stockMovementId)
         {
-            var transaction = false;
+            var transactionState = false;
 
             var stock = new MdlStock();
 
-            if (stock.AddOutPuts(stockList, activityId) == true)
+            if (stock.Deallocate(itemList, stockMovementId) == true)
             {
-                transaction = true;
+                transactionState = true;
             }
 
-            return transaction;
+            return transactionState;
         }
         #endregion
 
@@ -59,6 +59,5 @@ namespace DimStock.Business
             return transaction;
         }
         #endregion 
-
     }
 }

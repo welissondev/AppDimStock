@@ -96,13 +96,13 @@ namespace DimStock.View
         {
             try
             {
-                var stockActivityRegister = new FrmStockActivityRegister();
-                stockActivityRegister.ActivityType = "Entrada";
-                stockActivityRegister.AddActivity();
-                stockActivityRegister.GetActivityDetails(stockActivityRegister.StockActivityId);
-                stockActivityRegister.MdiParent = this;
-                stockActivityRegister.WindowState = FormWindowState.Maximized;
-                stockActivityRegister.Show();
+                var view = new FrmStockMovementRegister();
+                view.OperationType.Text = "Entrada";
+                view.AddStockMovement();
+                view.GetStockMovementDetails(Convert.ToInt32(view.StockMovementId.Text));
+                view.MdiParent = this;
+                view.WindowState = FormWindowState.Maximized;
+                view.Show();
             }
             catch (Exception ex)
             {
@@ -116,13 +116,13 @@ namespace DimStock.View
         {
             try
             {
-                var stockActivityRegister = new FrmStockActivityRegister();
-                stockActivityRegister.ActivityType = "Saída";
-                stockActivityRegister.AddActivity();
-                stockActivityRegister.GetActivityDetails(stockActivityRegister.StockActivityId);
-                stockActivityRegister.MdiParent = this;
-                stockActivityRegister.WindowState = FormWindowState.Maximized;
-                stockActivityRegister.Show();
+                var view = new FrmStockMovementRegister();
+                view.OperationType.Text = "Saída";
+                view.AddStockMovement();
+                view.GetStockMovementDetails(Convert.ToInt32(view.StockMovementId.Text));
+                view.MdiParent = this;
+                view.WindowState = FormWindowState.Maximized;
+                view.Show();
             }
             catch (Exception ex)
             {
@@ -131,15 +131,15 @@ namespace DimStock.View
         }
         #endregion
 
-        #region MenuStock_ListActivities_Click()
-        private void MenuStock_ListActivities_Click(object sender, EventArgs e)
+        #region MenuStock_ListStockMovement_Click()
+        private void MenuStock_ListStockMovement_Click(object sender, EventArgs e)
         {
             try
             {
-                var stockActivityList = new FrmStockActivityList();
-                stockActivityList.WindowState = FormWindowState.Maximized;
-                stockActivityList.MdiParent = this;
-                stockActivityList.Show();
+                var frm = new FrmStockMovementList();
+                frm.WindowState = FormWindowState.Maximized;
+                frm.MdiParent = this;
+                frm.Show();
             }
             catch (Exception ex)
             {

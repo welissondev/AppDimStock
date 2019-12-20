@@ -21,7 +21,7 @@ namespace DimStock.View
         {
             try
             {
-                var user = new BllUser
+                var user = new BllUserLogin
                 {
                     Login = TxtLogin.Text,
                     PassWord = TxtPassWord.Text

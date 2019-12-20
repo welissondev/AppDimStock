@@ -20,8 +20,8 @@ namespace DimStock.Model
         }
         #endregion 
 
-        #region AddEntries()
-        public bool AddEntries(List<BllStock> itemList, int activityId)
+        #region Allocate()
+        public bool Allocate(List<BllStock> itemList, int movementId)
         {
             var transactionState = false;
             var sqlCommand = string.Empty;
@@ -43,9 +43,9 @@ namespace DimStock.Model
                         connection.ExecuteTransaction(sqlCommand);
                     }
 
-                    var activity = new MdlStockActivity();
+                    var stockMovement = new MdlStockMovement();
 
-                    if (activity.ChangeSituation(connection, activityId) == true)
+                    if (stockMovement.FianalizeOperation(connection, movementId) == true)
                     {
                         connection.Transaction.Commit();
                         transactionState = true;
@@ -58,8 +58,8 @@ namespace DimStock.Model
         }
         #endregion
 
-        #region AddOutPuts()
-        public bool AddOutPuts(List<BllStock> itemList, int activityId)
+        #region Deallocate()
+        public bool Deallocate(List<BllStock> itemList, int stockMovementId)
         {
             using (var connection = new MdlConnection())
             {
@@ -82,9 +82,9 @@ namespace DimStock.Model
                         connection.ExecuteTransaction(sqlCommand);
                     }
 
-                    var activity = new MdlStockActivity();
+                    var stockMovement = new MdlStockMovement();
 
-                    if (activity.ChangeSituation(connection, activityId) == true)
+                    if (stockMovement.FianalizeOperation(connection, stockMovementId) == true)
                     {
                         connection.Transaction.Commit();
                         transactionState = true;

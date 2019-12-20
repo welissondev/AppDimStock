@@ -20,16 +20,16 @@ namespace DimStock.Model
         }
         #endregion
 
-        #region Add()
-        public void Add()
+        #region Insert()
+        public void Insert()
         {
             using (var connection = new MdlConnection())
             {
-                var sqlCommand = @"INSERT INTO StockItem(StockActivityId, ProductId, StockId, 
-                Quantity, UnitaryValue, TotalValue)VALUES(@StockActivityId, @ProductId, @StockId, 
+                var sqlCommand = @"INSERT INTO StockItem(StockMovementId, ProductId, StockId, 
+                Quantity, UnitaryValue, TotalValue)VALUES(@StockMovementId, @ProductId, @StockId, 
                 @Quantity, @UnitaryValue, @TotalValue)";
 
-                connection.AddParameter("@StockActivityId", OleDbType.Integer, item.StockActivityId);
+                connection.AddParameter("@StockMovementId", OleDbType.Integer, item.StockMovementId);
                 connection.AddParameter("@ProductId", OleDbType.Integer, item.ProductId);
                 connection.AddParameter("@StockId", OleDbType.Integer, item.StockId);
                 connection.AddParameter("@Quantity", OleDbType.Integer, item.Quantity);
@@ -41,14 +41,35 @@ namespace DimStock.Model
         }
         #endregion
 
-        #region ListItem()
-        public List<BllStockItem> ListItem(int id)
+        #region Delete()
+        public bool Delete(int id)
+        {
+            var deleteState = false;
+
+            using (var connection = new MdlConnection())
+            {
+                var sqlCommand = @"DELETE FROM StockItem Where Id = @Id";
+
+                connection.AddParameter("Id", OleDbType.Integer, id);
+
+                if(connection.ExecuteNonQuery(sqlCommand) > 0)
+                {
+                    deleteState = true;
+                }
+            }
+
+            return deleteState;
+        }
+        #endregion 
+
+        #region List()
+        public List<BllStockItem> List(int id)
         {
             using (var connection = new MdlConnection())
             {
                 var sqlQuery = @"SELECT StockItem.*, Product.Description, Product.Code, [Product.Size],
                 Product.Reference FROM StockItem INNER JOIN Product ON StockItem.ProductId = Product.Id WHERE 
-                StockItem.StockActivityId LIKE @Id ORDER BY Code";
+                StockItem.StockMovementId LIKE @Id ORDER BY Code";
 
                 connection.AddParameter("@Id", OleDbType.Integer, id);
 
@@ -78,27 +99,6 @@ namespace DimStock.Model
                 return itemList;
             }
         }
-        #endregion
-
-        #region Delete()
-        public bool Delete(int id)
-        {
-            var deleteState = false;
-
-            using (var connection = new MdlConnection())
-            {
-                var sqlCommand = @"DELETE FROM StockItem Where Id = @Id";
-
-                connection.AddParameter("Id", OleDbType.Integer, id);
-
-                if(connection.ExecuteNonQuery(sqlCommand) > 0)
-                {
-                    deleteState = true;
-                }
-            }
-
-            return deleteState;
-        }
-        #endregion 
+        #endregion     
     }
 }

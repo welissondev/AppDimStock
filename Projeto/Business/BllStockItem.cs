@@ -9,7 +9,7 @@ namespace DimStock.Business
         public int Id { get; set; }
         public int StockId { get; set; }
         public int ProductId { get; set; }
-        public int StockActivityId { get; set; }
+        public int StockMovementId { get; set; }
         public string ProductCode { get; set; }
         public string ProductSize { get; set; }
         public string ProductReference { get; set; }
@@ -21,19 +21,19 @@ namespace DimStock.Business
         public List<BllStockItem> ListOfRecords { get; set; }
         #endregion
 
-        #region Add()
-        public void Add()
+        #region Register()
+        public void Register()
         {
             var stockItem = new MdlStockItem(this);
-            stockItem.Add();
+            stockItem.Insert();
         }
         #endregion
 
-        #region ListItem()
-        public void ListItem(int id)
+        #region List()
+        public void List(int id)
         {
             var stockItem = new MdlStockItem(this);
-            ListOfRecords = stockItem.ListItem(id);
+            ListOfRecords = stockItem.List(id);
         }
         #endregion
 

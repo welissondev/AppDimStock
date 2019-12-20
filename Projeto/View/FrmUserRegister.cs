@@ -135,7 +135,7 @@ namespace DimStock.View
             {
                 if (ValidateInputData() == true)
                 {
-                    var user = new BllUser
+                    var user = new BllUserLogin
                     {
                         Name = TxtName.Text.TrimStart().TrimEnd(),
                         Email = TxtEmail.Text.TrimStart().TrimEnd(),
@@ -177,7 +177,7 @@ namespace DimStock.View
             {
                 if (ValidateInputData() == true)
                 {
-                    var user = new BllUser
+                    var user = new BllUserLogin
                     {
                         Name = TxtName.Text,
                         Email = TxtEmail.Text,

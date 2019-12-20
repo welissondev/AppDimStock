@@ -6,13 +6,13 @@ using System.Collections.Generic;
 
 namespace DimStock.Business
 {
-    public class BllStockActivity
+    public class BllStockMovement
     {
         #region Constructs
 
-        public BllStockActivity() { }
+        public BllStockMovement() { }
 
-        public BllStockActivity(AxlDataPagination dataPagination)
+        public BllStockMovement(AxlDataPagination dataPagination)
         {
             DataPagination = dataPagination;
         }
@@ -24,16 +24,16 @@ namespace DimStock.Business
         public string OperationType { get; set; }
         public DateTime OperationDate { get; set; }
         public string OperationHour { get; set; }
-        public string Situation { get; set; }
-        public string StockDestination { get; set; }
-        public List<BllStockActivity> ListOfRecords { get; set; }
+        public string OperationSituation { get; set; }
+        public string StockDestinationLocation { get; set; }
+        public List<BllStockMovement> ListOfRecords { get; set; }
         #endregion
 
         #region QueryProperties
 
         public string QueryByType { get; set; }
         public string QueryBySituation { get; set; }
-        public string QueryByActivityNumber { get; set; }
+        public string QueryByMovimentId { get; set; }
         public AxlDataPagination DataPagination { get; set; }
 
         #endregion 
@@ -43,9 +43,9 @@ namespace DimStock.Business
         {
             var addState = false;
 
-            var stockActivity = new MdlStockActivity(this);
+            var stockMovement = new MdlStockMovement(this);
 
-            if (stockActivity.Register() == true)
+            if (stockMovement.Register() == true)
             {
                 var historic = new BllUserHistoric
                 {
@@ -54,7 +54,7 @@ namespace DimStock.Business
                     OperationModule = "Atividade",
                     OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
                     OperationHour = DateTime.Now.ToString("HH:mm:ss"),
-                    DataFromAffectedRecord = stockActivity.GetAffectedFields(Id)
+                    DataFromAffectedRecord = stockMovement.GetAffectedFields(Id)
                 };
 
                 if (historic.Register() == true)
@@ -70,8 +70,8 @@ namespace DimStock.Business
         #region AddDestination()
         public bool AddDestination(int id)
         {
-            var stockActivity = new MdlStockActivity(this);
-            return stockActivity.AddDestination(id);
+            var stockMovement = new MdlStockMovement(this);
+            return stockMovement.AddDestination(id);
         }
         #endregion
 
@@ -80,34 +80,30 @@ namespace DimStock.Business
         {
             var deleteState = false;
 
-            var stockActivity = new MdlStockActivity(this);
-            var affectedFileds = stockActivity.GetAffectedFields(id);
+            var stockMovement = new MdlStockMovement(this);
+            var affectedFileds = stockMovement.GetAffectedFields(id);
 
             var stockItem = new BllStockItem();
-            stockItem.ListItem(id);
+            stockItem.List(id);
 
-            var stock = new BllStock();
-
-            if (stock.Reset(stockItem.ListOfRecords) == true)
+            if (stockMovement.Delete(id) == true)
             {
-                if (stockActivity.Delete(id) == true)
+                var historic = new BllUserHistoric()
                 {
-                    var historic = new BllUserHistoric()
-                    {
-                        Login = AxlLogin.Login,
-                        OperationType = "Deletou",
-                        OperationModule = "Atividade",
-                        OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
-                        OperationHour = DateTime.Now.ToString("HH:mm:ss"),
-                        DataFromAffectedRecord = affectedFileds
-                    };
+                    Login = AxlLogin.Login,
+                    OperationType = "Deletou",
+                    OperationModule = "Atividade",
+                    OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
+                    OperationHour = DateTime.Now.ToString("HH:mm:ss"),
+                    DataFromAffectedRecord = affectedFileds
+                };
 
-                    if (historic.Register() == true)
-                    {
-                        deleteState = true;
-                    }
+                if (historic.Register() == true)
+                {
+                    deleteState = true;
                 }
             }
+
 
             return deleteState;
         }
@@ -116,24 +112,24 @@ namespace DimStock.Business
         #region ListAll()
         public void ListAll()
         {
-            var stockActivity = new MdlStockActivity(this);
-            stockActivity.ListAll();
+            var stockMovement = new MdlStockMovement(this);
+            stockMovement.ListAll();
         }
         #endregion
 
         #region FetchData()
         public void FetchData()
         {
-            var stockActivity = new MdlStockActivity(this);
-            stockActivity.FetchData();
+            var stockMovement = new MdlStockMovement(this);
+            stockMovement.FetchData();
         }
         #endregion 
 
-        #region GetActivityDetails()
-        public void GetActivityDetails(int id)
+        #region GetDetails()
+        public void GetDetails(int id)
         {
-            var stockActivity = new MdlStockActivity(this);
-            stockActivity.GetDetails(id);
+            var stockMovement = new MdlStockMovement(this);
+            stockMovement.GetDetails(id);
         }
         #endregion 
     }

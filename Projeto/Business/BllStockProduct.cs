@@ -79,11 +79,11 @@ namespace DimStock.Business
         }
         #endregion
 
-        #region GetRegistryData()
-        public void GetRegistryData(int id)
+        #region ViewDetails()
+        public void ViewDetails(int id)
         {
             var stockProduct = new MdlStockProduct(this);
-            stockProduct.GetRegistryData(id);
+            stockProduct.ViewDetails(id);
         }
         #endregion
 

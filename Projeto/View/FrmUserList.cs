@@ -154,7 +154,7 @@ namespace DimStock.View
             {
                 GridUserList.Rows.Clear();
 
-                var user = new BllUser();
+                var user = new BllUserLogin();
                 user.ListAll(numberOfRecords);
 
                 for (int i = 0; i < user.ListOfRecords.Count; i++)
@@ -179,7 +179,7 @@ namespace DimStock.View
         {
             try
             {
-                var user = new BllUser();
+                var user = new BllUserLogin();
                 user.ViewData(id);
 
                 using (var frmUserRegister = new FrmUserRegister(user.Id))
@@ -215,7 +215,7 @@ namespace DimStock.View
             {
                 GridUserList.Rows.Clear();
 
-                var user = new BllUser(dataPagination)
+                var user = new BllUserLogin(dataPagination)
                 {
                     QueryByName = TxtQueryByUser.Text,
                     QueryByEmail = TxtQueryByUser.Text,
@@ -248,7 +248,7 @@ namespace DimStock.View
                 if (MessageBox.Show("Confirma essa operação?", "CONFIRME", MessageBoxButtons.YesNo,
                     MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
-                    var user = new BllUser();
+                    var user = new BllUserLogin();
 
                     if (user.Delete(id) == true)
                     {

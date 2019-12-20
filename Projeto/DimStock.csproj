@@ -136,21 +136,21 @@
     <Compile Include="Business\BllStockDestination.cs" />
     <Compile Include="Business\BllStockItem.cs" />
     <Compile Include="Business\BllStockProduct.cs" />
-    <Compile Include="Business\BllStockActivity.cs" />
+    <Compile Include="Business\BllStockMovement.cs" />
     <Compile Include="Business\BllNotification.cs" />
     <Compile Include="Business\BllProduct.cs" />
     <Compile Include="Business\BllProductPhotho.cs" />
     <Compile Include="Business\BllStock.cs" />
-    <Compile Include="Business\BllUser.cs" />
+    <Compile Include="Business\BllUserLogin.cs" />
     <Compile Include="Business\BllUserHistoric.cs" />
     <Compile Include="Model\MdlConnection.cs" />
     <Compile Include="Model\MdlStock.cs" />
-    <Compile Include="Model\MdlStockActivity.cs" />
+    <Compile Include="Model\MdlStockMovement.cs" />
     <Compile Include="Model\MdlStockDestination.cs" />
     <Compile Include="Model\MdlStockItem.cs" />
     <Compile Include="Model\MdlStockProduct.cs" />
     <Compile Include="Model\MdlProduct.cs" />
-    <Compile Include="Model\MdlUser.cs" />
+    <Compile Include="Model\MdlUserLogin.cs" />
     <Compile Include="Model\MdlUserHistoric.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -164,11 +164,11 @@
     </Compile>
     <Compile Include="Report\ReportStockProduct.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="View\FrmStockActivityList.cs">
+    <Compile Include="View\FrmStockMovementList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\FrmStockActivityList.Designer.cs">
-      <DependentUpon>FrmStockActivityList.cs</DependentUpon>
+    <Compile Include="View\FrmStockMovementList.Designer.cs">
+      <DependentUpon>FrmStockMovementList.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FrmStockDestinationRegister.cs">
       <SubType>Form</SubType>
@@ -182,11 +182,11 @@
     <Compile Include="View\FrmProductList.designer.cs">
       <DependentUpon>FrmProductList.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\FrmStockActivityRegister.cs">
+    <Compile Include="View\FrmStockMovementRegister.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\FrmStockActivityRegister.Designer.cs">
-      <DependentUpon>FrmStockActivityRegister.cs</DependentUpon>
+    <Compile Include="View\FrmStockMovementRegister.Designer.cs">
+      <DependentUpon>FrmStockMovementRegister.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FrmStockList.cs">
       <SubType>Form</SubType>
@@ -245,8 +245,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report\RpvStockProduct.rdlc" />
     <EmbeddedResource Include="Report\RpvProduct.rdlc" />
-    <EmbeddedResource Include="View\FrmStockActivityList.resx">
-      <DependentUpon>FrmStockActivityList.cs</DependentUpon>
+    <EmbeddedResource Include="View\FrmStockMovementList.resx">
+      <DependentUpon>FrmStockMovementList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmStockDestinationRegister.resx">
       <DependentUpon>FrmStockDestinationRegister.cs</DependentUpon>
@@ -254,8 +254,8 @@
     <EmbeddedResource Include="View\FrmProductList.resx">
       <DependentUpon>FrmProductList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\FrmStockActivityRegister.resx">
-      <DependentUpon>FrmStockActivityRegister.cs</DependentUpon>
+    <EmbeddedResource Include="View\FrmStockMovementRegister.resx">
+      <DependentUpon>FrmStockMovementRegister.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmStockList.resx">
       <DependentUpon>FrmStockList.cs</DependentUpon>

@@ -8,19 +8,19 @@ using DimStock.Business;
 
 namespace DimStock.Model
 {
-    public class MdlUser
+    public class MdlUserLogin
     {
         #region Variables
-        private readonly BllUser user;
+        private readonly BllUserLogin user;
         #endregion
 
         #region Constructs
-        public MdlUser()
+        public MdlUserLogin()
         {
 
         }
 
-        public MdlUser(BllUser user)
+        public MdlUserLogin(BllUserLogin user)
         {
             this.user = user;
         }
@@ -230,19 +230,19 @@ namespace DimStock.Model
         #endregion 
 
         #region ListAll()
-        public List<BllUser> ListAll(int numberOfRecords = 100)
+        public List<BllUserLogin> ListAll(int numberOfRecords = 100)
         {
             using (var connection = new MdlConnection())
             {
                 var sqlQuery = "SELECT TOP " + numberOfRecords + @" Id, [Name], Email FROM UserLogin";
 
-                var usersList = new List<BllUser>();
+                var usersList = new List<BllUserLogin>();
 
                 using (var reader = connection.QueryWithDataReader(sqlQuery))
                 {
                     while (reader.Read())
                     {
-                        var user = new BllUser()
+                        var user = new BllUserLogin()
                         {
                             Id = Convert.ToInt32(reader["Id"]),
                             Name = Convert.ToString(reader["Name"]),
@@ -344,11 +344,11 @@ namespace DimStock.Model
 
         private void PassDataTableToList(DataTable dataTable)
         {
-            var userList = new List<BllUser>();
+            var userList = new List<BllUserLogin>();
 
             foreach (DataRow row in dataTable.Rows)
             {
-                var user = new BllUser()
+                var user = new BllUserLogin()
                 {
                     Id = Convert.ToInt32(row["Id"]),
                     Name = Convert.ToString(row["Login"]),

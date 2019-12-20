@@ -501,8 +501,8 @@ namespace DimStock.Model
         }
         #endregion 
 
-        #region GetRegistryData()
-        public void GetRegistryData(int id)
+        #region ViewDetails()
+        public void ViewDetails(int id)
         {
             using (var connection = new MdlConnection())
             {

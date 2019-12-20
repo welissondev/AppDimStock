@@ -36,7 +36,7 @@
             this.MenuStock_RegisterNew = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStock_Register_Entry = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStock_Register_Output = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuStock_ListActivities = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuStock_ListStockMovement = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStock_ListStocks = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuUser = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuUser_RegisterNew = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,7 +84,7 @@
             // 
             this.MenuStock.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuStock_RegisterNew,
-            this.MenuStock_ListActivities,
+            this.MenuStock_ListStockMovement,
             this.MenuStock_ListStocks});
             this.MenuStock.Name = "MenuStock";
             this.MenuStock.Size = new System.Drawing.Size(61, 20);
@@ -96,34 +96,34 @@
             this.MenuStock_Register_Entry,
             this.MenuStock_Register_Output});
             this.MenuStock_RegisterNew.Name = "MenuStock_RegisterNew";
-            this.MenuStock_RegisterNew.Size = new System.Drawing.Size(160, 22);
+            this.MenuStock_RegisterNew.Size = new System.Drawing.Size(185, 22);
             this.MenuStock_RegisterNew.Text = "Cadastrar Novo";
             // 
             // MenuStock_Register_Entry
             // 
             this.MenuStock_Register_Entry.Name = "MenuStock_Register_Entry";
-            this.MenuStock_Register_Entry.Size = new System.Drawing.Size(114, 22);
+            this.MenuStock_Register_Entry.Size = new System.Drawing.Size(180, 22);
             this.MenuStock_Register_Entry.Text = "Entrada";
             this.MenuStock_Register_Entry.Click += new System.EventHandler(this.MenuStock_RegisterNew_Entry_Click);
             // 
             // MenuStock_Register_Output
             // 
             this.MenuStock_Register_Output.Name = "MenuStock_Register_Output";
-            this.MenuStock_Register_Output.Size = new System.Drawing.Size(114, 22);
+            this.MenuStock_Register_Output.Size = new System.Drawing.Size(180, 22);
             this.MenuStock_Register_Output.Text = "Saída";
             this.MenuStock_Register_Output.Click += new System.EventHandler(this.MenuStock_RegisterNew_Output_Click);
             // 
-            // MenuStock_ListActivities
+            // MenuStock_ListStockMovement
             // 
-            this.MenuStock_ListActivities.Name = "MenuStock_ListActivities";
-            this.MenuStock_ListActivities.Size = new System.Drawing.Size(160, 22);
-            this.MenuStock_ListActivities.Text = "Listar Atividades";
-            this.MenuStock_ListActivities.Click += new System.EventHandler(this.MenuStock_ListActivities_Click);
+            this.MenuStock_ListStockMovement.Name = "MenuStock_ListStockMovement";
+            this.MenuStock_ListStockMovement.Size = new System.Drawing.Size(185, 22);
+            this.MenuStock_ListStockMovement.Text = "Listar Movimentação";
+            this.MenuStock_ListStockMovement.Click += new System.EventHandler(this.MenuStock_ListStockMovement_Click);
             // 
             // MenuStock_ListStocks
             // 
             this.MenuStock_ListStocks.Name = "MenuStock_ListStocks";
-            this.MenuStock_ListStocks.Size = new System.Drawing.Size(160, 22);
+            this.MenuStock_ListStocks.Size = new System.Drawing.Size(185, 22);
             this.MenuStock_ListStocks.Text = "Listar Estoques";
             this.MenuStock_ListStocks.Click += new System.EventHandler(this.MenuStock_ListStocks_Click);
             // 
@@ -178,7 +178,7 @@
         #endregion
         private System.Windows.Forms.ToolStripMenuItem MenuStock;
         private System.Windows.Forms.ToolStripMenuItem MenuStock_RegisterNew;
-        private System.Windows.Forms.ToolStripMenuItem MenuStock_ListActivities;
+        private System.Windows.Forms.ToolStripMenuItem MenuStock_ListStockMovement;
         private System.Windows.Forms.ToolStripMenuItem MenuStock_Register_Entry;
         private System.Windows.Forms.ToolStripMenuItem MenuStock_Register_Output;
         private System.Windows.Forms.ToolStripMenuItem MenuProduct;
