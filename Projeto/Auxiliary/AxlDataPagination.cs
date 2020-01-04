@@ -5,19 +5,20 @@ namespace DimStock.Auxiliary
     public class AxlDataPagination
     {
         #region PrivateProperties
-        private int pageSize = 100;
+        private int pageSize = 20;
+        private int currentPage = 1;
         #endregion 
 
         #region PublicProperties
         public int RecordCount { get; set; }
-        public int CurrentPage { get; set; }
+        public int CurrentPage { get => currentPage; set => currentPage = value; }
         public int OffSetValue { get; set; }
         public int PageSize { get => pageSize; set => pageSize = value; }
         public int NumberOfPages { get => CountTotalPages(); }
         #endregion 
 
         #region Methods
-        #region CountTotalPages()
+
         private int CountTotalPages()
         {
             var resultDivisionPage = (float)RecordCount / PageSize;
@@ -26,7 +27,7 @@ namespace DimStock.Auxiliary
 
             return nunberOfPages;
         }
-        #endregion
+
         #endregion
     }
 }

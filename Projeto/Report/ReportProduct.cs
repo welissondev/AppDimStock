@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using DimStock.Business;
 
 namespace DimStock.Report
@@ -21,7 +20,7 @@ namespace DimStock.Report
 
         #region Methods
 
-        public void GenerateReport(List<BllProduct> productList)
+        public void GenerateReport(List<ProductController> productList)
         {
             ListOfRecords = new List<ReportProduct>();
 

@@ -15,13 +15,13 @@ namespace DimStock.Report
         public int MaxStock { get; set; }
         public int StockQuantity { get; set; }
         public double StockValue { get; set; }
-        public string StockResume { get; set; }
+        public string StockSummary { get; set; }
         public string StockResult { get; set; }
         public List<ReportStockProduct> ListOfRecords { get; set; }
         #endregion
 
-        #region GenerateReport()
-        public void GenerateReport(List<BllStockProduct> listOfRecords)
+        #region Methods
+        public void GenerateReport(List<StockProductController> listOfRecords)
         {
             ListOfRecords = new List<ReportStockProduct>();
 
@@ -38,7 +38,7 @@ namespace DimStock.Report
                     MaxStock = listOfRecords[i].MaxStock,
                     StockQuantity = listOfRecords[i].StockQuantity,
                     StockValue = listOfRecords[i].StockValue,
-                    StockResume = listOfRecords[i].StockResume,
+                    StockSummary = listOfRecords[i].StockSummary,
                     StockResult = listOfRecords[i].StockResult
                 };
 

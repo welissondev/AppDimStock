@@ -873,14 +873,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="StockResume">
+                    <Textbox Name="StockResult1">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!StockResume.Value</Value>
+                              <Value>=Fields!StockResult.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
                               </Style>
@@ -891,7 +891,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>StockResume</rd:DefaultName>
+                      <rd:DefaultName>StockResult1</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -974,7 +974,7 @@
         <DataSetName>DataSetStockProduct</DataSetName>
         <Top>3.38035cm</Top>
         <Height>1.2cm</Height>
-        <Width>28.60526cm</Width>
+        <Width>28.60525cm</Width>
         <ZIndex>5</ZIndex>
         <Style>
           <Border>

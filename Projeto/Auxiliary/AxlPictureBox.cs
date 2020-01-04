@@ -4,29 +4,26 @@ namespace DimStock.Auxiliary
 {
     public class AxlPictureBox : PictureBox
     {
-        private string arquivoDiretorioSelecionado = "";
-        public string ArquivoDiretorioSelecionado
+        private string selectedDirectory = "";
+        public string SelectedDirectory
         {
-            get { return arquivoDiretorioSelecionado; }
-            set { arquivoDiretorioSelecionado = value; }
+            get { return selectedDirectory; }
+            set { selectedDirectory = value; }
         }
         
-        private string fotoNome = "";
-        public string FotoNome
+        private string identificationPhotoNumber = "";
+        public string IndentificationPhotoNumber
         {
-            get { return fotoNome; }
-            set { fotoNome = value; }
+            get { return identificationPhotoNumber; }
+            set { identificationPhotoNumber = value; }
         }
 
-        private string ultimaFoto = "";
+        private string pathOfLastSelectedPhoto = "";
 
-        /// <summary>
-        /// OldPhoto ou "Foto Antiga", guarda o caminho da última foto registrada na pasta diretório.
-        /// </summary>
-        public string UltimaFoto
+        public string PathOfLastSelectedPhoto
         {
-            get { return ultimaFoto; }
-            set { ultimaFoto = value; }
+            get { return pathOfLastSelectedPhoto; }
+            set { pathOfLastSelectedPhoto = value; }
         }
     }
 }
