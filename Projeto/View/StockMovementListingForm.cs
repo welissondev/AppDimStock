@@ -292,6 +292,8 @@ namespace DimStock.View
                     );
                 }
 
+                MovementStockDataList.ClearSelection();
+
                 PauseSearchTimer();
 
                 SetInBadingNavigator(dataPagination);

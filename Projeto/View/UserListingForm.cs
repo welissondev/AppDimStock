@@ -181,6 +181,8 @@ namespace DimStock.View
                     user.ListOfRecords[i].Email);
                 }
 
+                UserDataList.ClearSelection();
+
                 DataGridLealt.SortColumnDesc(UserDataList, 0);
             }
             catch (Exception ex)
@@ -210,6 +212,8 @@ namespace DimStock.View
                     user.ListOfRecords[i].Name,
                     user.ListOfRecords[i].Email);
                 }
+
+                UserDataList.ClearSelection();
 
                 DataGridLealt.SortColumnDesc(UserDataList, 0);
             }

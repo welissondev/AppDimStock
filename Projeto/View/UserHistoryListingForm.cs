@@ -89,6 +89,8 @@ namespace DimStock.View
                     historic.ListOfRecords[i].AffectedFields);
                 }
 
+                HistoryDataList.ClearSelection();
+
             }
             catch (Exception ex)
             {
@@ -123,6 +125,7 @@ namespace DimStock.View
                     historic.ListOfRecords[i].AffectedFields);
                 }
 
+                HistoryDataList.ClearSelection();
             }
             catch (Exception ex)
             {

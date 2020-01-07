@@ -287,6 +287,8 @@ namespace DimStock.View
                     );
                 }
 
+                MainDataList.ClearSelection();
+
                 MainDataList.Visible = true;
 
             }
@@ -478,6 +480,8 @@ namespace DimStock.View
                     stockItem.ListOfRecords[i].TotalValue
                     );
                 }
+
+                MainDataList.ClearSelection();
 
                 var totalValue = stockItem.ListOfRecords.Sum(x => x.TotalValue);
                 var totalItems = stockItem.ListOfRecords.Count;

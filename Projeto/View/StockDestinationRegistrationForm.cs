@@ -184,6 +184,8 @@ namespace DimStock.View
                     stockDestination.ListOfRecords[i].Id,
                     stockDestination.ListOfRecords[i].Location);
                 }
+
+                DestinationDataList.ClearSelection();
             }
             catch (Exception ex)
             {

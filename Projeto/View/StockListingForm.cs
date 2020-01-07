@@ -294,6 +294,8 @@ namespace DimStock.View
                     stockProduct.ListOfRecords[i].StockResult);
                 }
 
+                StockDataList.ClearSelection();
+
                 PauseSearchTimer();
 
                 SetInBadingNavigator(dataPagination);

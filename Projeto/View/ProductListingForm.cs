@@ -290,6 +290,8 @@ namespace DimStock.View
                     product.ListOfRecords[i].SalePrice);
                 }
 
+                ProductDataList.ClearSelection();
+
                 PauseSearchTimer();
 
                 SetInBadingNavigator(dataPagination);
