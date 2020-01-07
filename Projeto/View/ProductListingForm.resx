@@ -124,9 +124,8 @@
   <data name="PanelUpperHorizontal.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABKSURBVChTjcONCUBQAIXRuwbP3xaSkpKUTPNERIz+GcE9
-        dZQsL06l84NTYbpxKowXTmXDiVN5f+BU3u04VbQbTpXNilNVHfkf+QDlWbdTsfV04QAAAABJRU5ErkJg
-        gg==
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAXSURBVChTY3BwcPhPDB5ViBdTW6HDfwBswa6d82Z4HwAA
+        AABJRU5ErkJggg==
 </value>
   </data>
   <metadata name="BindingPagination.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

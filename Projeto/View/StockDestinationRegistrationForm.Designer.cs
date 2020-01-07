@@ -44,43 +44,42 @@
             this.DestinationLocationTitle.AutoSize = true;
             this.DestinationLocationTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DestinationLocationTitle.ForeColor = System.Drawing.Color.Black;
-            this.DestinationLocationTitle.Location = new System.Drawing.Point(43, 44);
+            this.DestinationLocationTitle.Location = new System.Drawing.Point(79, 51);
             this.DestinationLocationTitle.Name = "DestinationLocationTitle";
-            this.DestinationLocationTitle.Size = new System.Drawing.Size(137, 20);
+            this.DestinationLocationTitle.Size = new System.Drawing.Size(162, 20);
             this.DestinationLocationTitle.TabIndex = 144;
-            this.DestinationLocationTitle.Text = "Nome do destino: ";
+            this.DestinationLocationTitle.Text = "Descrição do destino:";
             // 
             // DestinationLocation
             // 
             this.DestinationLocation.BackColor = System.Drawing.Color.White;
-            this.DestinationLocation.BeforeTouchSize = new System.Drawing.Size(405, 26);
+            this.DestinationLocation.BeforeTouchSize = new System.Drawing.Size(374, 26);
             this.DestinationLocation.BorderColor = System.Drawing.Color.Silver;
             this.DestinationLocation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.DestinationLocation.CornerRadius = 4;
             this.DestinationLocation.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.DestinationLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DestinationLocation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.DestinationLocation.Location = new System.Drawing.Point(46, 66);
+            this.DestinationLocation.Location = new System.Drawing.Point(82, 73);
             this.DestinationLocation.MinimumSize = new System.Drawing.Size(14, 10);
             this.DestinationLocation.Name = "DestinationLocation";
-            this.DestinationLocation.Size = new System.Drawing.Size(405, 26);
+            this.DestinationLocation.Size = new System.Drawing.Size(374, 26);
             this.DestinationLocation.TabIndex = 143;
             this.DestinationLocation.ThemeName = "Default";
             // 
             // DestinationDataList
             // 
             this.DestinationDataList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DestinationDataList.Location = new System.Drawing.Point(46, 101);
+            this.DestinationDataList.Location = new System.Drawing.Point(82, 102);
             this.DestinationDataList.Name = "DestinationDataList";
-            this.DestinationDataList.Size = new System.Drawing.Size(446, 226);
+            this.DestinationDataList.Size = new System.Drawing.Size(546, 226);
             this.DestinationDataList.TabIndex = 145;
             this.DestinationDataList.DoubleClick += new System.EventHandler(this.DestinationDataList_DoubleClick);
             // 
             // RegisterNew
             // 
-            this.RegisterNew.Location = new System.Drawing.Point(498, 99);
+            this.RegisterNew.Location = new System.Drawing.Point(81, 334);
             this.RegisterNew.Name = "RegisterNew";
-            this.RegisterNew.Size = new System.Drawing.Size(75, 23);
+            this.RegisterNew.Size = new System.Drawing.Size(65, 35);
             this.RegisterNew.TabIndex = 146;
             this.RegisterNew.Text = "Cadastrar";
             this.RegisterNew.UseVisualStyleBackColor = true;
@@ -88,9 +87,9 @@
             // 
             // ChangeRegister
             // 
-            this.ChangeRegister.Location = new System.Drawing.Point(498, 128);
+            this.ChangeRegister.Location = new System.Drawing.Point(152, 334);
             this.ChangeRegister.Name = "ChangeRegister";
-            this.ChangeRegister.Size = new System.Drawing.Size(75, 23);
+            this.ChangeRegister.Size = new System.Drawing.Size(65, 35);
             this.ChangeRegister.TabIndex = 147;
             this.ChangeRegister.Text = "Editar";
             this.ChangeRegister.UseVisualStyleBackColor = true;
@@ -98,9 +97,9 @@
             // 
             // ExcludeRegister
             // 
-            this.ExcludeRegister.Location = new System.Drawing.Point(498, 157);
+            this.ExcludeRegister.Location = new System.Drawing.Point(223, 334);
             this.ExcludeRegister.Name = "ExcludeRegister";
-            this.ExcludeRegister.Size = new System.Drawing.Size(75, 23);
+            this.ExcludeRegister.Size = new System.Drawing.Size(65, 35);
             this.ExcludeRegister.TabIndex = 148;
             this.ExcludeRegister.Text = "Deletar";
             this.ExcludeRegister.UseVisualStyleBackColor = true;
@@ -108,9 +107,9 @@
             // 
             // UpdateDataList
             // 
-            this.UpdateDataList.Location = new System.Drawing.Point(498, 186);
+            this.UpdateDataList.Location = new System.Drawing.Point(294, 334);
             this.UpdateDataList.Name = "UpdateDataList";
-            this.UpdateDataList.Size = new System.Drawing.Size(75, 23);
+            this.UpdateDataList.Size = new System.Drawing.Size(65, 35);
             this.UpdateDataList.TabIndex = 149;
             this.UpdateDataList.Text = "Atualizar";
             this.UpdateDataList.UseVisualStyleBackColor = true;
@@ -121,7 +120,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(616, 366);
+            this.ClientSize = new System.Drawing.Size(712, 421);
             this.Controls.Add(this.UpdateDataList);
             this.Controls.Add(this.ExcludeRegister);
             this.Controls.Add(this.ChangeRegister);
@@ -129,9 +128,10 @@
             this.Controls.Add(this.DestinationDataList);
             this.Controls.Add(this.DestinationLocationTitle);
             this.Controls.Add(this.DestinationLocation);
+            this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(728, 460);
             this.Name = "StockDestinationRegistrationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Estoque destinos";
             this.Load += new System.EventHandler(this.StockDestinationRegistrationForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DestinationLocation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DestinationDataList)).EndInit();

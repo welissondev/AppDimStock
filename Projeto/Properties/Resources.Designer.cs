@@ -123,6 +123,26 @@ namespace DimStock.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap GigLoading {
+            get {
+                object obj = ResourceManager.GetObject("GigLoading", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Image_backGroud_UserLogin {
+            get {
+                object obj = ResourceManager.GetObject("Image-backGroud-UserLogin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Load {
             get {
                 object obj = ResourceManager.GetObject("Load", resourceCulture);
@@ -136,6 +156,16 @@ namespace DimStock.Properties {
         internal static System.Drawing.Bitmap SaidaEstoque {
             get {
                 object obj = ResourceManager.GetObject("SaidaEstoque", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap User_Login {
+            get {
+                object obj = ResourceManager.GetObject("User-Login", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

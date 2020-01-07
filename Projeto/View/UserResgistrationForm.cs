@@ -89,7 +89,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -116,7 +116,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
         
@@ -151,7 +151,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -174,7 +174,7 @@ namespace DimStock.View
                         AllPermissions = AllPermissons.Checked
                     };
 
-                    if (user.Change(id) == true)
+                    if (user.Edit(id) == true)
                     {
                         MessageBox.Show(NotificationController.Message, "SUCESSO",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -183,7 +183,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 

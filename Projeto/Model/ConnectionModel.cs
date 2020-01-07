@@ -4,7 +4,7 @@ using System.Data;
 
 namespace DimStock.Model
 {
-    public class MdlConnection : IDisposable
+    public class ConnectionModel : IDisposable
     {
         #region Properties 
         private readonly OleDbConnection connection = new OleDbConnection(@"Provider = Microsoft.jet.oledb.4.0; Data Source =" + AppDomain.CurrentDomain.BaseDirectory.ToString() + @"Padrao\dbestoque.mdb;jet oledb:database password=#admin#");
@@ -14,7 +14,8 @@ namespace DimStock.Model
         private bool disposed = false;
         #endregion
 
-        #region Open()
+        #region Methods
+
         public OleDbConnection Open()
         {
             try
@@ -32,9 +33,7 @@ namespace DimStock.Model
             }
 
         }
-        #endregion
 
-        #region AddParameter()
         public void AddParameter(string name, OleDbType type, object value)
         {
             var parameter = new OleDbParameter
@@ -45,16 +44,12 @@ namespace DimStock.Model
             };
             Command.Parameters.Add(parameter);
         }
-        #endregion
 
-        #region ParameterClear()
         public void ParameterClear()
         {
             Command.Parameters.Clear();
         }
-        #endregion 
 
-        #region ExecuteNonQuery()
         public int ExecuteNonQuery(string sql)
         {
             try
@@ -68,9 +63,7 @@ namespace DimStock.Model
                 throw;
             }
         }
-        #endregion
 
-        #region ExecuteScalar()
         public string ExecuteScalar(string sql)
         {
             try
@@ -84,9 +77,7 @@ namespace DimStock.Model
                 throw;
             }
         }
-        #endregion
 
-        #region QueryWithDataReader()
         public OleDbDataReader QueryWithDataReader(string sql)
         {
             try
@@ -101,16 +92,14 @@ namespace DimStock.Model
                 throw;
             }
         }
-        #endregion
 
-        #region QueryWithDataTable()
-        public DataTable QueryWithDataTable(string commandSQL, int startReg = 0, int maxReg = 10)
+        public DataTable QueryWithDataTable(string sql, int startReg = 0, int maxReg = 20)
         {
             var dt = new DataTable();
 
             Open();
 
-            Command.CommandText = commandSQL;
+            Command.CommandText = sql;
             Command.Connection = connection;
 
             var adapter = new OleDbDataAdapter
@@ -122,9 +111,7 @@ namespace DimStock.Model
 
             return dt;
         }
-        #endregion
 
-        #region ExecuteParameterQuery()
         public OleDbDataReader ExecuteParameterQuery(string sql)
         {
             try
@@ -138,14 +125,12 @@ namespace DimStock.Model
                 throw;
             }
         }
-        #endregion
 
-        #region ExecuteTransaction()
-        public int ExecuteTransaction(string commandSQL)
+        public int ExecuteTransaction(string sql)
         {
             try
             {
-                Command.CommandText = commandSQL;
+                Command.CommandText = sql;
                 Command.Connection = Transaction.Connection;
                 Command.Transaction = Transaction;
                 return Command.ExecuteNonQuery();
@@ -155,18 +140,13 @@ namespace DimStock.Model
                 throw;
             }
         }
-        #endregion
 
-        #region Disposed
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
 
-        #endregion
-
-        #region VirtualDispose()
         protected virtual void Dispose(bool disposing)
         {
             if (disposed)
@@ -180,7 +160,7 @@ namespace DimStock.Model
 
             disposed = true;
         }
-        #endregion
 
+        #endregion
     }
 }

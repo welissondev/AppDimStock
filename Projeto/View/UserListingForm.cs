@@ -9,7 +9,7 @@ namespace DimStock.View
     public partial class UserListingForm : Form
     {
         #region Variables
-        private AxlDataPagination dataPagination = new AxlDataPagination();
+        private DataPagination dataPagination = new DataPagination();
         #endregion
 
         #region Constructs
@@ -78,13 +78,13 @@ namespace DimStock.View
                         break;
 
                     case "edit":
-                        GetDetails(id);
+                        ViewDetails(id);
                         break;
                 }
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -113,7 +113,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -125,19 +125,19 @@ namespace DimStock.View
         {
             GifLoading.Visible = false;
             SearchTimer.Enabled = false;
-            FetchData();
+            SearchData();
         }
 
         #endregion
 
         #region MethodsAuxiliarys
 
-        public void GetDetails(int id)
+        private void ViewDetails(int id)
         {
             try
             {
                 var user = new UserController();
-                user.GetDetails(id);
+                user.ViewDetails(id);
 
                 using (var userLogin = new UserResgistrationForm(user.Id))
                 {
@@ -160,7 +160,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -181,15 +181,15 @@ namespace DimStock.View
                     user.ListOfRecords[i].Email);
                 }
 
-                AxlDataGridViewLealt.SortColumnDesc(UserDataList, 0);
+                DataGridLealt.SortColumnDesc(UserDataList, 0);
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
-        private void FetchData()
+        private void SearchData()
         {
             try
             {
@@ -201,7 +201,7 @@ namespace DimStock.View
                     SearchByEmail = SearchFields.Text,
                 };
 
-                user.FetchData();
+                user.SearchData();
 
                 for (int i = 0; i < user.ListOfRecords.Count; i++)
                 {
@@ -211,11 +211,11 @@ namespace DimStock.View
                     user.ListOfRecords[i].Email);
                 }
 
-                AxlDataGridViewLealt.SortColumnDesc(UserDataList, 0);
+                DataGridLealt.SortColumnDesc(UserDataList, 0);
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -238,7 +238,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -246,7 +246,7 @@ namespace DimStock.View
         {
             CreateColumnInTheDataList();
 
-            AxlDataGridViewLealt.DefaultLayoutDarkblue(UserDataList);
+            DataGridLealt.SetDefaultStyle(UserDataList);
 
             DayOfTheWeek.Text = DateTime.Now.ToLongDateString();
         }
@@ -310,7 +310,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 

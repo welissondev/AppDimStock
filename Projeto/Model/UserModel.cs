@@ -32,7 +32,7 @@ namespace DimStock.Model
         {
             var accessState = false;
 
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlQuery = @"SELECT * FROM UserLogin WHERE Login 
                 LIKE @Login AND [PassWord] = @PassWord";
@@ -72,7 +72,7 @@ namespace DimStock.Model
 
             if (CheckIfRegisterExists() == false)
             {
-                using (var connection = new MdlConnection())
+                using (var connection = new ConnectionModel())
                 {
                     var sqlCommand = @"INSERT INTO UserLogin([Name], Email, Login, [PassWord], 
                     PermissionToRegister, PermissionToEdit, PermissionToDelete, PermissionToView, 
@@ -91,8 +91,9 @@ namespace DimStock.Model
 
                     if (connection.ExecuteNonQuery(sqlCommand) > 0)
                     {
-                        user.Id = Convert.ToInt32(
-                        connection.ExecuteScalar("SELECT MAX(Id) FROM UserLogin"));
+                        connection.ParameterClear();
+                        user.Id = Convert.ToInt32(connection.ExecuteScalar(
+                        "SELECT MAX(Id) FROM UserLogin"));
 
                         if (user.Id > 0)
                         {
@@ -114,7 +115,7 @@ namespace DimStock.Model
         {
             var updateState = false;
 
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlCommand = @"UPDATE UserLogin Set [Name] = @Name, Email = @Email, 
                 Login = @Login, [PassWord] = @PassWord, PermissionToRegister = @PermissionToRegister, 
@@ -147,7 +148,7 @@ namespace DimStock.Model
         {
             var deleteState = false;
 
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
 
                 var sqlCommand = @"DELETE FROM UserLogin WHERE Id = @Id";
@@ -177,9 +178,9 @@ namespace DimStock.Model
             return deleteState;
         }
 
-        public void SelectAll()
+        public void ListData()
         {
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlQuery = "SELECT * FROM UserLogin";
 
@@ -204,9 +205,9 @@ namespace DimStock.Model
             }
         }
 
-        public void SelectCustom()
+        public void DataQuery()
         {
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlQuery = @"SELECT * FROM UserLogin WHERE [Name]  
                 LIKE @Name Or Email LIKE @Email";
@@ -219,13 +220,13 @@ namespace DimStock.Model
                 user.DataPagination.OffSetValue,
                 user.DataPagination.PageSize);
 
-                PassTableToList(dataTable);
+                PassDataTableToList(dataTable);
             }
         }
 
-        public void SelectFields(int id)
+        public void ViewDetails(int id)
         {
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlQuery = @"SELECT * FROM UserLogin WHERE Id = @Id";
 
@@ -252,7 +253,7 @@ namespace DimStock.Model
 
         public bool CheckCurrentRegister(int id)
         {
-            if (UserIdentity.Id == id)
+            if (LoginAssistant.Id == id)
             {
                 return true;
             }
@@ -264,7 +265,7 @@ namespace DimStock.Model
 
         public bool CheckIfRegisterExists()
         {
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 var userFound = 0;
 
@@ -294,7 +295,7 @@ namespace DimStock.Model
 
         public string GetAffectedFields(int id)
         {
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 var usersList = new List<string>();
 
@@ -322,7 +323,7 @@ namespace DimStock.Model
             }
         }
 
-        private void PassTableToList(DataTable dataTable)
+        private void PassDataTableToList(DataTable dataTable)
         {
             var userList = new List<UserController>();
 

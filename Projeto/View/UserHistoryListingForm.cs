@@ -8,7 +8,7 @@ namespace DimStock.View
     public partial class UserHistoryListingForm : Form
     {
         #region Variables
-        private AxlDataPagination dataPagination = new AxlDataPagination();
+        private DataPagination dataPagination = new DataPagination();
         #endregion 
 
         #region Constructs
@@ -23,7 +23,7 @@ namespace DimStock.View
 
         private void UserHistoryListingForm_Load(object sender, EventArgs e)
         {
-            FetchData();
+            SearchData();
         }
 
         #endregion
@@ -61,7 +61,7 @@ namespace DimStock.View
         {
             GifLoading.Visible = false;
             SearchTimer.Enabled = false;
-            FetchData();
+            SearchData();
         }
 
         #endregion
@@ -92,11 +92,11 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
-        public void FetchData()
+        public void SearchData()
         {
             try
             {
@@ -107,7 +107,7 @@ namespace DimStock.View
                     SearchByFinalDate = Convert.ToDateTime(FinalDate.Value).ToString("dd-MM-yyyy")
                 };
 
-                historic.FetchData();
+                historic.SearchData();
 
                 HistoryDataList.Rows.Clear();
 
@@ -126,7 +126,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -134,7 +134,7 @@ namespace DimStock.View
         {
             CreateColumnInTheDataList();
 
-            AxlDataGridViewLealt.DefaultLayoutDarkblue(HistoryDataList);
+            DataGridLealt.SetDefaultStyle(HistoryDataList);
 
             DayOfTheWeek.Text = DateTime.Now.ToLongDateString();
         }
@@ -195,7 +195,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
 
         }

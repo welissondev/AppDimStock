@@ -23,7 +23,7 @@ namespace DimStock.Model
         #region Methods
         public bool Insert()
         {
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
@@ -52,7 +52,7 @@ namespace DimStock.Model
 
                         var stock = new StockModel();
 
-                        if (stock.RelateProduct(connection, product.Id) == true)
+                        if (stock.InsertRelatedProduct(connection, product.Id) == true)
                         {
                             connection.Transaction.Commit();
                             transactionState = true;
@@ -67,7 +67,7 @@ namespace DimStock.Model
 
         public bool Update(int id)
         {
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
@@ -121,7 +121,7 @@ namespace DimStock.Model
 
         public bool Delete(int id)
         {
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 var deleteState = false;
                 var sqlCommand = string.Empty;
@@ -145,9 +145,70 @@ namespace DimStock.Model
             }
         }
 
-        public void SelectAll()
+        public void DataQuery()
         {
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
+            {
+                var sqlQuery = string.Empty;
+                var sqlCount = string.Empty;
+                var criterion = string.Empty;
+                var parameter = connection.Command.Parameters;
+
+                sqlQuery = @"SELECT Id, Code, [Size], Reference, Supplier, Description, 
+                CostPrice, SalePrice, PhotoName FROM Product WHERE Id > 0";
+
+                sqlCount = @"SELECT COUNT(*) FROM Product WHERE Id > 0";
+
+                if (product.SearchByCode != string.Empty)
+                {
+                    criterion += " AND Code LIKE @Code";
+
+                    parameter.AddWithValue("@Code", string.Format("{0}",
+                    product.SearchByCode));
+                }
+
+                if (product.SearchBySize != string.Empty)
+                {
+                    criterion += " AND [Size] LIKE @Size";
+
+                    parameter.AddWithValue("@Size", string.Format("{0}",
+                    product.SearchBySize));
+                }
+
+                if (product.SearchByReference != string.Empty)
+                {
+                    criterion += " AND Reference LIKE @Reference";
+
+                    parameter.AddWithValue("@Reference", string.Format("{0}",
+                    product.SearchByReference));
+                }
+
+                if (product.SearchByDescription != string.Empty)
+                {
+                    criterion += " AND Description LIKE @Description";
+
+                    parameter.AddWithValue("@Description", string.Format("%{0}%",
+                    product.SearchByDescription));
+                }
+
+                sqlQuery += criterion + " Order By [Code],[Size],[Reference]";
+
+                sqlCount += criterion;
+  
+                product.DataPagination.RecordCount = Convert.ToInt32(
+                connection.ExecuteScalar(sqlCount));
+                
+                var dataTable = connection.QueryWithDataTable(sqlQuery,
+                product.DataPagination.OffSetValue,
+                product.DataPagination.PageSize);
+
+                PassDataTableToList(dataTable);          
+            }
+        }
+
+        public void ListData()
+        {
+            using (var connection = new ConnectionModel())
             {
                 
                 var parameter = connection.Command.Parameters;
@@ -217,71 +278,10 @@ namespace DimStock.Model
                 
             }
         }
-
-        public void SelectCustom()
-        {
-            using (var connection = new MdlConnection())
-            {
-                var sqlQuery = string.Empty;
-                var sqlCount = string.Empty;
-                var criterion = string.Empty;
-                var parameter = connection.Command.Parameters;
-
-                sqlQuery = @"SELECT Id, Code, [Size], Reference, Supplier, Description, 
-                CostPrice, SalePrice, PhotoName FROM Product WHERE Id > 0";
-
-                sqlCount = @"SELECT COUNT(*) FROM Product WHERE Id > 0";
-
-                if (product.SearchByCode != string.Empty)
-                {
-                    criterion += " AND Code LIKE @Code";
-
-                    parameter.AddWithValue("@Code", string.Format("{0}",
-                    product.SearchByCode));
-                }
-
-                if (product.SearchBySize != string.Empty)
-                {
-                    criterion += " AND [Size] LIKE @Size";
-
-                    parameter.AddWithValue("@Size", string.Format("{0}",
-                    product.SearchBySize));
-                }
-
-                if (product.SearchByReference != string.Empty)
-                {
-                    criterion += " AND Reference LIKE @Reference";
-
-                    parameter.AddWithValue("@Reference", string.Format("{0}",
-                    product.SearchByReference));
-                }
-
-                if (product.SearchByDescription != string.Empty)
-                {
-                    criterion += " AND Description LIKE @Description";
-
-                    parameter.AddWithValue("@Description", string.Format("%{0}%",
-                    product.SearchByDescription));
-                }
-
-                sqlQuery += criterion + " Order By [Code],[Size],[Reference]";
-
-                sqlCount += criterion;
-  
-                product.DataPagination.RecordCount = Convert.ToInt32(
-                connection.ExecuteScalar(sqlCount));
-                
-                var dataTable = connection.QueryWithDataTable(sqlQuery,
-                product.DataPagination.OffSetValue,
-                product.DataPagination.PageSize);
-
-                PassTableToList(dataTable);          
-            }
-        }
        
-        public void SelectFields(int id)
+        public void ViewDetails(int id)
         {
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlQuery = @"SELECT Id, Code, [Size], Reference, Supplier, 
                 Description, MinStock, MaxStock, CostPrice, SalePrice, PhotoName, 
@@ -312,7 +312,7 @@ namespace DimStock.Model
         
         public string GetAffectedFields(int id)
         {
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 var affectedFieldList = new List<string>();
 
@@ -343,7 +343,7 @@ namespace DimStock.Model
 
         public bool CheckIfCodeExists()
         {
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 var recordsFounds = 0;
                 var sqlQuery = string.Empty;
@@ -365,7 +365,7 @@ namespace DimStock.Model
             }
         }
 
-        private void PassTableToList(DataTable dataTable)
+        private void PassDataTableToList(DataTable dataTable)
         {
             var productList = new List<ProductController>();
 

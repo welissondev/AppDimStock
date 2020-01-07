@@ -14,13 +14,13 @@ namespace DimStock.Business
 
         #region Methods
 
-        public bool Allocate(List<StockController> itemList, int stockMovementId)
+        public bool RegisterEntries(List<StockController> itemList, int stockMovementId)
         {
             var transactionState = false;
 
             var stock = new StockModel();
 
-            if (stock.Allocate(itemList, stockMovementId) == true)
+            if (stock.InsertEntries(itemList, stockMovementId) == true)
             {
                 transactionState = true;
             }
@@ -28,13 +28,13 @@ namespace DimStock.Business
             return transactionState;
         }
 
-        public bool Deallocate(List<StockController> itemList, int stockMovementId)
+        public bool RegisterRemovals(List<StockController> itemList, int stockMovementId)
         {
             var transactionState = false;
 
             var stock = new StockModel();
 
-            if (stock.Deallocate(itemList, stockMovementId) == true)
+            if (stock.InsertRemovals(itemList, stockMovementId) == true)
             {
                 transactionState = true;
             }

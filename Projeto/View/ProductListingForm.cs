@@ -13,7 +13,7 @@ namespace DimStock.View
 
         #region Variables
         public int Id = 0;
-        private AxlDataPagination dataPagination = new AxlDataPagination();
+        private DataPagination dataPagination = new DataPagination();
         private ProductPhothoController photoController = new ProductPhothoController();
         #endregion
 
@@ -45,7 +45,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -94,7 +94,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -141,7 +141,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -151,7 +151,7 @@ namespace DimStock.View
 
         private void SearchTimer_Tick(object sender, EventArgs e)
         {
-            FetchData();
+            SearchData();
         }
 
         #endregion
@@ -181,7 +181,7 @@ namespace DimStock.View
                         break;
 
                     case "change":
-                        GetDetails();
+                        ViewDetails();
                         break;
 
                     case "exclude":
@@ -220,13 +220,13 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
         private void ProductDataList_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            GetDetails();
+            ViewDetails();
         }
 
         #endregion
@@ -261,7 +261,7 @@ namespace DimStock.View
 
         #region MethodsAxiliarys
 
-        private void FetchData()
+        private void SearchData()
         {
             try
             {
@@ -273,7 +273,7 @@ namespace DimStock.View
                     SearchByDescription = SearchByDescription.Text,
                 };
 
-                product.FetchData();
+                product.SearchData();
 
                 ProductDataList.Rows.Clear();
 
@@ -298,11 +298,11 @@ namespace DimStock.View
             {
                 PauseSearchTimer();
 
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
-        private void GetDetails()
+        private void ViewDetails()
         {
             var userForm = new ProductRegistrationForm();
 
@@ -317,7 +317,7 @@ namespace DimStock.View
                 }
 
                 var product = new ProductController();
-                product.GetDetails(Id);
+                product.ViewDetails(Id);
 
                 userForm.Id = product.Id;
                 userForm.ProductCode.Text = product.Code.ToString();
@@ -336,7 +336,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
             finally
             {
@@ -365,7 +365,7 @@ namespace DimStock.View
             try
             {
                 var user = new UserController();
-                user.GetDetails(UserIdentity.Id);
+                user.ViewDetails(LoginAssistant.Id);
 
                 if (user.PermissionToDelete == false)
                 {
@@ -417,7 +417,7 @@ namespace DimStock.View
             {
                 var product = new ProductController();
 
-                product.GetDetails(Id);
+                product.ViewDetails(Id);
 
                 userForm.ProductCode.Text = product.Code.ToString();
                 userForm.ProductSize.Text = product.Size.ToString();
@@ -434,7 +434,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
             finally
             {
@@ -463,7 +463,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -475,18 +475,18 @@ namespace DimStock.View
 
         private void InitializeSettings()
         {
-            FormCaption.Text = @" Lista de Produtos";
+            FormCaption.Text = @"Lista de Produtos";
 
             DayOfTheWeek.Text = DateTime.Now.ToLongDateString();
 
-            AxlDataGridViewLealt.DefaultLayoutDarkblue(ProductDataList);
+            DataGridLealt.SetDefaultStyle(ProductDataList);
 
             FillAllComboBoxes();
 
             CreateColumnsInTheDataList();
         }
 
-        private void SetInBadingNavigator(AxlDataPagination dataPagination)
+        private void SetInBadingNavigator(DataPagination dataPagination)
         {
             if (dataPagination.RecordCount == 0)
                 dataPagination.CurrentPage = 0;
@@ -532,7 +532,7 @@ namespace DimStock.View
 
                 productDataList.Columns.Add(id);
                 productDataList.Columns[0].Name = "id";
-                productDataList.Columns[0].HeaderText = "Id";
+                productDataList.Columns[0].HeaderText = "ID";
                 productDataList.Columns[0].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 productDataList.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 productDataList.Columns[0].Visible = false;
@@ -541,7 +541,8 @@ namespace DimStock.View
                 productDataList.Columns.Add(code);
                 productDataList.Columns[1].Width = 80;
                 productDataList.Columns[1].Name = "code";
-                productDataList.Columns[1].HeaderText = "Código";
+                productDataList.Columns[1].HeaderText = "CÓD.";
+                productDataList.Columns[1].ToolTipText = "Código do produto";
                 productDataList.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 productDataList.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 productDataList.Columns[1].ReadOnly = true;
@@ -549,14 +550,16 @@ namespace DimStock.View
                 productDataList.Columns.Add(reference);
                 productDataList.Columns[2].Width = 80;
                 productDataList.Columns[2].Name = "reference";
-                productDataList.Columns[2].HeaderText = "Referência";
+                productDataList.Columns[2].HeaderText = "REF.";
+                productDataList.Columns[2].ToolTipText = "Número de referência do produto";
                 productDataList.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 productDataList.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 productDataList.Columns[2].ReadOnly = true;
 
                 productDataList.Columns.Add(size);
                 productDataList.Columns[3].Name = "size";
-                productDataList.Columns[3].HeaderText = "Tamanho";
+                productDataList.Columns[3].HeaderText = "TAM.";
+                productDataList.Columns[3].ToolTipText = "O tamanho do produto";
                 productDataList.Columns[3].Width = 80;
                 productDataList.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 productDataList.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -567,29 +570,29 @@ namespace DimStock.View
                 productDataList.Columns.Add(supplier);
                 productDataList.Columns[4].Width = 250;
                 productDataList.Columns[4].Name = "supplier";
-                productDataList.Columns[4].HeaderText = "Fornecedor";
+                productDataList.Columns[4].HeaderText = "FORNECEDOR";
                 productDataList.Columns[4].ReadOnly = true;
                 productDataList.Columns[4].Visible = true;
                 productDataList.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
                 productDataList.Columns.Add(description);
                 productDataList.Columns[5].Name = "description";
-                productDataList.Columns[5].HeaderText = "Descrição";
+                productDataList.Columns[5].HeaderText = "DESCRIÇÃO";
                 productDataList.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 productDataList.Columns[5].ReadOnly = true;
 
                 productDataList.Columns.Add(costPrice);
                 productDataList.Columns[6].Name = "costPrice";
-                productDataList.Columns[6].HeaderText = "Preço Custo";
-                productDataList.Columns[6].Width = 80;
+                productDataList.Columns[6].HeaderText = "PREÇO CUSTO";
+                productDataList.Columns[6].Width = 120;
                 productDataList.Columns[6].DefaultCellStyle.Format = "c2";
                 productDataList.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 productDataList.Columns[6].ReadOnly = true;
 
                 productDataList.Columns.Add(salePrice);
                 productDataList.Columns[7].Name = "salePrice";
-                productDataList.Columns[7].HeaderText = "Preço Venda";
-                productDataList.Columns[7].Width = 80;
+                productDataList.Columns[7].HeaderText = "PREÇO VENDA";
+                productDataList.Columns[7].Width = 120;
                 productDataList.Columns[7].DefaultCellStyle.Format = "c2";
                 productDataList.Columns[7].ReadOnly = true;
 
@@ -632,7 +635,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 

@@ -11,7 +11,7 @@ namespace DimStock.Business
 
         public StockProductController() { }
 
-        public StockProductController(AxlDataPagination dataPagination)
+        public StockProductController(DataPagination dataPagination)
         {
             DataPagination = dataPagination;
         }
@@ -46,7 +46,7 @@ namespace DimStock.Business
         public string SearchByReference { get; set; }
         public string SearchByDescription { get; set; }
         public string SearchBySummary { get => searchBySummary; set => searchBySummary = value; }
-        public AxlDataPagination DataPagination { get; set; }
+        public DataPagination DataPagination { get; set; }
 
         #endregion
 
@@ -55,19 +55,19 @@ namespace DimStock.Business
         public void ListData()
         {
             var stockProduct = new StockProductModel(this);
-            stockProduct.SelectAll();
+            stockProduct.ListData();
         }
 
-        public void FetchData()
+        public void SearchData()
         {
             var stockProduct = new StockProductModel(this);
-            stockProduct.SelectCustom();
+            stockProduct.DataQuery();
         }
 
-        public void GetDetails(int id)
+        public void ViewDetails(int id)
         {
             var stockProduct = new StockProductModel(this);
-            stockProduct.GetFields(id);
+            stockProduct.ViewDetails(id);
         }
 
         public void GenerateReport(List<StockProductController> listOfRecords)

@@ -24,7 +24,7 @@ namespace DimStock.Model
 
         public bool Insert()
         {
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlCommand = @"INSERT INTO StockDestination(Location)VALUES(@Location)";
 
@@ -36,7 +36,7 @@ namespace DimStock.Model
 
         public bool Update(int id)
         {
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlCommand = @"UPDATE StockDestination SET Location = @Location WHERE Id = @Id";
 
@@ -52,7 +52,7 @@ namespace DimStock.Model
         {
             var deleteState = false;
 
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlCommand = @"DELETE FROM StockDestination Where Id = @Id";
 
@@ -67,13 +67,13 @@ namespace DimStock.Model
             return deleteState;
         }
 
-        public void SelectAll()
+        public void ListData()
         {
             var destinationList = new List<StockDestinationController>();
 
             var sqlQuery = @"SELECT * From StockDestination";
 
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 using (var reader = connection.QueryWithDataReader(sqlQuery))
                 {
@@ -93,9 +93,9 @@ namespace DimStock.Model
             }
         }
 
-        public void GetFields(int id)
+        public void ViewDetails(int id)
         {
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlQuery = @"SELECT * FROM StockDestination WHERE Id = @Id";
 
@@ -116,7 +116,7 @@ namespace DimStock.Model
         {
             var destinationsFound = 0;
 
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlQuery = @"SELECT Location From StockDestination WHERE 
                 Location LIKE @Location";

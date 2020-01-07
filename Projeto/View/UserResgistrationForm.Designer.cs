@@ -72,7 +72,6 @@
             this.UserName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.UserName.CanOverrideStyle = true;
             this.UserName.CausesValidation = false;
-            this.UserName.CornerRadius = 4;
             this.UserName.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.UserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UserName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
@@ -84,17 +83,16 @@
             this.UserName.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Silver;
             this.UserName.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
             this.UserName.Size = new System.Drawing.Size(794, 26);
-            this.UserName.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016White;
             this.UserName.TabIndex = 0;
             this.UserName.Tag = "";
-            this.UserName.ThemeName = "Office2016White";
+            this.UserName.ThemeName = "Default";
             this.UserName.WordWrap = false;
             // 
             // NameTitle
             // 
             this.NameTitle.AutoSize = true;
             this.NameTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NameTitle.Location = new System.Drawing.Point(84, 153);
+            this.NameTitle.Location = new System.Drawing.Point(80, 152);
             this.NameTitle.Name = "NameTitle";
             this.NameTitle.Size = new System.Drawing.Size(48, 16);
             this.NameTitle.TabIndex = 83;
@@ -108,7 +106,6 @@
             this.Email.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Email.CanOverrideStyle = true;
             this.Email.CausesValidation = false;
-            this.Email.CornerRadius = 4;
             this.Email.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Email.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Email.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
@@ -120,17 +117,16 @@
             this.Email.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Silver;
             this.Email.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
             this.Email.Size = new System.Drawing.Size(794, 26);
-            this.Email.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016White;
             this.Email.TabIndex = 1;
             this.Email.Tag = "";
-            this.Email.ThemeName = "Office2016White";
+            this.Email.ThemeName = "Default";
             this.Email.WordWrap = false;
             // 
             // EmailTitle
             // 
             this.EmailTitle.AutoSize = true;
             this.EmailTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EmailTitle.Location = new System.Drawing.Point(84, 202);
+            this.EmailTitle.Location = new System.Drawing.Point(80, 204);
             this.EmailTitle.Name = "EmailTitle";
             this.EmailTitle.Size = new System.Drawing.Size(46, 16);
             this.EmailTitle.TabIndex = 85;
@@ -144,11 +140,10 @@
             this.Login.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Login.CanOverrideStyle = true;
             this.Login.CausesValidation = false;
-            this.Login.CornerRadius = 4;
             this.Login.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Login.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Login.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.Login.Location = new System.Drawing.Point(84, 279);
+            this.Login.Location = new System.Drawing.Point(84, 272);
             this.Login.MaxLength = 2000;
             this.Login.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Login.MinimumSize = new System.Drawing.Size(16, 12);
@@ -156,16 +151,15 @@
             this.Login.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Silver;
             this.Login.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
             this.Login.Size = new System.Drawing.Size(342, 26);
-            this.Login.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016White;
             this.Login.TabIndex = 2;
             this.Login.Tag = "";
-            this.Login.ThemeName = "Office2016White";
+            this.Login.ThemeName = "Default";
             // 
             // PassWordTitle
             // 
             this.PassWordTitle.AutoSize = true;
             this.PassWordTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PassWordTitle.Location = new System.Drawing.Point(84, 322);
+            this.PassWordTitle.Location = new System.Drawing.Point(80, 305);
             this.PassWordTitle.Name = "PassWordTitle";
             this.PassWordTitle.Size = new System.Drawing.Size(50, 16);
             this.PassWordTitle.TabIndex = 87;
@@ -179,11 +173,10 @@
             this.PassWord.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PassWord.CanOverrideStyle = true;
             this.PassWord.CausesValidation = false;
-            this.PassWord.CornerRadius = 4;
             this.PassWord.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.PassWord.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PassWord.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.PassWord.Location = new System.Drawing.Point(84, 341);
+            this.PassWord.Location = new System.Drawing.Point(84, 323);
             this.PassWord.MaxLength = 2000;
             this.PassWord.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.PassWord.MinimumSize = new System.Drawing.Size(16, 12);
@@ -192,16 +185,15 @@
             this.PassWord.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
             this.PassWord.PasswordChar = '*';
             this.PassWord.Size = new System.Drawing.Size(342, 26);
-            this.PassWord.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016White;
             this.PassWord.TabIndex = 3;
             this.PassWord.Tag = "";
-            this.PassWord.ThemeName = "Office2016White";
+            this.PassWord.ThemeName = "Default";
             // 
             // LoginTitle
             // 
             this.LoginTitle.AutoSize = true;
             this.LoginTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LoginTitle.Location = new System.Drawing.Point(84, 260);
+            this.LoginTitle.Location = new System.Drawing.Point(80, 253);
             this.LoginTitle.Name = "LoginTitle";
             this.LoginTitle.Size = new System.Drawing.Size(44, 16);
             this.LoginTitle.TabIndex = 89;
@@ -216,10 +208,10 @@
             this.PanelUpperHorizontal.Controls.Add(this.FormTitle);
             this.PanelUpperHorizontal.Controls.Add(this.RegisterNew);
             this.PanelUpperHorizontal.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelUpperHorizontal.GradientBottomLeft = System.Drawing.Color.Orchid;
-            this.PanelUpperHorizontal.GradientBottomRight = System.Drawing.Color.RoyalBlue;
-            this.PanelUpperHorizontal.GradientTopLeft = System.Drawing.Color.DarkBlue;
-            this.PanelUpperHorizontal.GradientTopRight = System.Drawing.SystemColors.ControlText;
+            this.PanelUpperHorizontal.GradientBottomLeft = System.Drawing.Color.Black;
+            this.PanelUpperHorizontal.GradientBottomRight = System.Drawing.Color.Black;
+            this.PanelUpperHorizontal.GradientTopLeft = System.Drawing.Color.Gray;
+            this.PanelUpperHorizontal.GradientTopRight = System.Drawing.Color.Gray;
             this.PanelUpperHorizontal.Location = new System.Drawing.Point(0, 0);
             this.PanelUpperHorizontal.Name = "PanelUpperHorizontal";
             this.PanelUpperHorizontal.Quality = 10;
@@ -229,21 +221,21 @@
             // Save
             // 
             this.Save.AccessibleName = "Button";
-            this.Save.BackColor = System.Drawing.Color.SeaGreen;
+            this.Save.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.Save.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Save.ForeColor = System.Drawing.Color.White;
             this.Save.Location = new System.Drawing.Point(100, 51);
             this.Save.Name = "Save";
             this.Save.Size = new System.Drawing.Size(80, 35);
-            this.Save.Style.BackColor = System.Drawing.Color.SeaGreen;
-            this.Save.Style.DisabledBackColor = System.Drawing.Color.SeaGreen;
-            this.Save.Style.DisabledForeColor = System.Drawing.Color.SeaGreen;
-            this.Save.Style.FocusedBackColor = System.Drawing.Color.SeaGreen;
+            this.Save.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.Save.Style.DisabledBackColor = System.Drawing.Color.MediumSeaGreen;
+            this.Save.Style.DisabledForeColor = System.Drawing.Color.MediumSeaGreen;
+            this.Save.Style.FocusedBackColor = System.Drawing.Color.MediumSeaGreen;
             this.Save.Style.FocusedForeColor = System.Drawing.Color.White;
             this.Save.Style.ForeColor = System.Drawing.Color.White;
             this.Save.Style.HoverBackColor = System.Drawing.Color.MediumSeaGreen;
             this.Save.Style.HoverForeColor = System.Drawing.Color.Black;
-            this.Save.Style.PressedBackColor = System.Drawing.Color.SeaGreen;
+            this.Save.Style.PressedBackColor = System.Drawing.Color.MediumSeaGreen;
             this.Save.Style.PressedForeColor = System.Drawing.Color.White;
             this.Save.TabIndex = 5;
             this.Save.Text = "Salvar";
@@ -278,21 +270,21 @@
             // RegisterNew
             // 
             this.RegisterNew.AccessibleName = "Button";
-            this.RegisterNew.BackColor = System.Drawing.Color.SeaGreen;
+            this.RegisterNew.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.RegisterNew.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RegisterNew.ForeColor = System.Drawing.Color.White;
             this.RegisterNew.Location = new System.Drawing.Point(17, 51);
             this.RegisterNew.Name = "RegisterNew";
             this.RegisterNew.Size = new System.Drawing.Size(80, 35);
-            this.RegisterNew.Style.BackColor = System.Drawing.Color.SeaGreen;
-            this.RegisterNew.Style.DisabledBackColor = System.Drawing.Color.SeaGreen;
-            this.RegisterNew.Style.DisabledForeColor = System.Drawing.Color.SeaGreen;
-            this.RegisterNew.Style.FocusedBackColor = System.Drawing.Color.SeaGreen;
+            this.RegisterNew.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.RegisterNew.Style.DisabledBackColor = System.Drawing.Color.MediumSeaGreen;
+            this.RegisterNew.Style.DisabledForeColor = System.Drawing.Color.MediumSeaGreen;
+            this.RegisterNew.Style.FocusedBackColor = System.Drawing.Color.MediumSeaGreen;
             this.RegisterNew.Style.FocusedForeColor = System.Drawing.Color.White;
             this.RegisterNew.Style.ForeColor = System.Drawing.Color.White;
             this.RegisterNew.Style.HoverBackColor = System.Drawing.Color.MediumSeaGreen;
             this.RegisterNew.Style.HoverForeColor = System.Drawing.Color.Black;
-            this.RegisterNew.Style.PressedBackColor = System.Drawing.Color.SeaGreen;
+            this.RegisterNew.Style.PressedBackColor = System.Drawing.Color.MediumSeaGreen;
             this.RegisterNew.Style.PressedForeColor = System.Drawing.Color.White;
             this.RegisterNew.TabIndex = 137;
             this.RegisterNew.Text = "Novo";
@@ -311,12 +303,12 @@
             this.FrameEditPermission.Controls.Add(this.PermissionToRegisterTitle);
             this.FrameEditPermission.Controls.Add(this.PermissionToEdit);
             this.FrameEditPermission.Controls.Add(this.PermissionToRegister);
-            this.FrameEditPermission.Location = new System.Drawing.Point(81, 466);
+            this.FrameEditPermission.Location = new System.Drawing.Point(81, 416);
             this.FrameEditPermission.Name = "FrameEditPermission";
             this.FrameEditPermission.Size = new System.Drawing.Size(794, 79);
             this.FrameEditPermission.TabIndex = 141;
             this.FrameEditPermission.TabStop = false;
-            this.FrameEditPermission.Text = "Permissões ";
+            this.FrameEditPermission.Text = "Permissões do usuário";
             // 
             // PermissionToViewTitle
             // 
@@ -437,11 +429,10 @@
             this.PassWordConfirmation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PassWordConfirmation.CanOverrideStyle = true;
             this.PassWordConfirmation.CausesValidation = false;
-            this.PassWordConfirmation.CornerRadius = 4;
             this.PassWordConfirmation.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.PassWordConfirmation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PassWordConfirmation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.PassWordConfirmation.Location = new System.Drawing.Point(84, 398);
+            this.PassWordConfirmation.Location = new System.Drawing.Point(84, 374);
             this.PassWordConfirmation.MaxLength = 2000;
             this.PassWordConfirmation.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.PassWordConfirmation.MinimumSize = new System.Drawing.Size(16, 12);
@@ -450,16 +441,15 @@
             this.PassWordConfirmation.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
             this.PassWordConfirmation.PasswordChar = '*';
             this.PassWordConfirmation.Size = new System.Drawing.Size(342, 26);
-            this.PassWordConfirmation.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016White;
             this.PassWordConfirmation.TabIndex = 4;
             this.PassWordConfirmation.Tag = "";
-            this.PassWordConfirmation.ThemeName = "Office2016White";
+            this.PassWordConfirmation.ThemeName = "Default";
             // 
             // PassWordConfirmationTitle
             // 
             this.PassWordConfirmationTitle.AutoSize = true;
             this.PassWordConfirmationTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PassWordConfirmationTitle.Location = new System.Drawing.Point(84, 379);
+            this.PassWordConfirmationTitle.Location = new System.Drawing.Point(80, 356);
             this.PassWordConfirmationTitle.Name = "PassWordConfirmationTitle";
             this.PassWordConfirmationTitle.Size = new System.Drawing.Size(110, 16);
             this.PassWordConfirmationTitle.TabIndex = 142;

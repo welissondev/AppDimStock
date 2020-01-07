@@ -12,7 +12,7 @@ namespace DimStock.Business
 
         public ProductController() { }
 
-        public ProductController(AxlDataPagination dataPagination)
+        public ProductController(DataPagination dataPagination)
         {
             DataPagination = dataPagination;
         }
@@ -41,7 +41,7 @@ namespace DimStock.Business
         public string SearchBySize { get; set; }
         public string SearchByReference { get; set; }
         public string SearchByDescription { get; set; }
-        public AxlDataPagination DataPagination { get; set; }
+        public DataPagination DataPagination { get; set; }
 
         #endregion
 
@@ -56,7 +56,7 @@ namespace DimStock.Business
             {
                 var historic = new UserHistoryController()
                 {
-                    Login = UserIdentity.Login,
+                    Login = LoginAssistant.Login,
                     OperationType = "Cadastrou",
                     OperationModule = "Produto",
                     OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
@@ -72,7 +72,7 @@ namespace DimStock.Business
             return registerState;
         }
 
-        public bool Change(int id)
+        public bool Edit(int id)
         {
             var product = new ProductModel(this);
             var editState = false;
@@ -81,7 +81,7 @@ namespace DimStock.Business
             {
                 var historic = new UserHistoryController()
                 {
-                    Login = UserIdentity.Login,
+                    Login = LoginAssistant.Login,
                     OperationType = "Editou",
                     OperationModule = "Produto",
                     OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
@@ -107,7 +107,7 @@ namespace DimStock.Business
             {
                 var historic = new UserHistoryController()
                 {
-                    Login = UserIdentity.Login,
+                    Login = LoginAssistant.Login,
                     OperationType = "Deletou",
                     OperationModule = "Produto",
                     OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
@@ -125,19 +125,19 @@ namespace DimStock.Business
         public void ListData()
         {
             var product = new ProductModel(this);
-            product.SelectAll();
+            product.ListData();
         }
 
-        public void FetchData()
+        public void SearchData()
         {
             var product = new ProductModel(this);
-            product.SelectCustom();
+            product.DataQuery();
         }
 
-        public void GetDetails(int id)
+        public void ViewDetails(int id)
         {
             var product = new ProductModel(this);
-            product.SelectFields(id);
+            product.ViewDetails(id);
         }
 
         public void GenerateReport(List<ProductController> listOfRecords)

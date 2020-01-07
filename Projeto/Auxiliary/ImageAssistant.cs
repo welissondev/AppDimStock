@@ -3,7 +3,7 @@
 namespace DimStock.Auxiliary
 {
 
-    public class AxlImage 
+    public class ImageAssistant 
     {
 
         #region Get e Set
@@ -11,6 +11,7 @@ namespace DimStock.Auxiliary
         #endregion
 
         #region Methods
+
         public void OpenFileDialog()
         {
             using (OpenFileDialog openFile = new OpenFileDialog())    
@@ -48,6 +49,7 @@ namespace DimStock.Auxiliary
             return System.IO.File.Exists(dir).Equals(true);
 
         }
+
         #endregion
     }
 }

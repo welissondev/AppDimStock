@@ -86,10 +86,10 @@
             this.PanelUpperHorizontal.Controls.Add(this.DayOfTheWeek);
             this.PanelUpperHorizontal.Controls.Add(this.FormCaption);
             this.PanelUpperHorizontal.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelUpperHorizontal.GradientBottomLeft = System.Drawing.SystemColors.MenuHighlight;
-            this.PanelUpperHorizontal.GradientBottomRight = System.Drawing.SystemColors.MenuHighlight;
-            this.PanelUpperHorizontal.GradientTopLeft = System.Drawing.SystemColors.ControlText;
-            this.PanelUpperHorizontal.GradientTopRight = System.Drawing.SystemColors.ControlText;
+            this.PanelUpperHorizontal.GradientBottomLeft = System.Drawing.Color.Black;
+            this.PanelUpperHorizontal.GradientBottomRight = System.Drawing.Color.Black;
+            this.PanelUpperHorizontal.GradientTopLeft = System.Drawing.Color.Gray;
+            this.PanelUpperHorizontal.GradientTopRight = System.Drawing.Color.Gray;
             this.PanelUpperHorizontal.Location = new System.Drawing.Point(0, 0);
             this.PanelUpperHorizontal.Name = "PanelUpperHorizontal";
             this.PanelUpperHorizontal.Quality = 10;
@@ -99,22 +99,22 @@
             // UpdateDataList
             // 
             this.UpdateDataList.AccessibleName = "Button";
-            this.UpdateDataList.BackColor = System.Drawing.Color.SeaGreen;
+            this.UpdateDataList.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.UpdateDataList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UpdateDataList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpdateDataList.ForeColor = System.Drawing.Color.White;
             this.UpdateDataList.Location = new System.Drawing.Point(19, 52);
             this.UpdateDataList.Name = "UpdateDataList";
             this.UpdateDataList.Size = new System.Drawing.Size(80, 35);
-            this.UpdateDataList.Style.BackColor = System.Drawing.Color.SeaGreen;
-            this.UpdateDataList.Style.DisabledBackColor = System.Drawing.Color.SeaGreen;
-            this.UpdateDataList.Style.DisabledForeColor = System.Drawing.Color.SeaGreen;
-            this.UpdateDataList.Style.FocusedBackColor = System.Drawing.Color.SeaGreen;
+            this.UpdateDataList.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.UpdateDataList.Style.DisabledBackColor = System.Drawing.Color.MediumSeaGreen;
+            this.UpdateDataList.Style.DisabledForeColor = System.Drawing.Color.MediumSeaGreen;
+            this.UpdateDataList.Style.FocusedBackColor = System.Drawing.Color.MediumSeaGreen;
             this.UpdateDataList.Style.FocusedForeColor = System.Drawing.Color.White;
             this.UpdateDataList.Style.ForeColor = System.Drawing.Color.White;
             this.UpdateDataList.Style.HoverBackColor = System.Drawing.Color.MediumSeaGreen;
             this.UpdateDataList.Style.HoverForeColor = System.Drawing.Color.White;
-            this.UpdateDataList.Style.PressedBackColor = System.Drawing.Color.SeaGreen;
+            this.UpdateDataList.Style.PressedBackColor = System.Drawing.Color.MediumSeaGreen;
             this.UpdateDataList.Style.PressedForeColor = System.Drawing.Color.White;
             this.UpdateDataList.TabIndex = 140;
             this.UpdateDataList.Text = "Atualizar";
@@ -131,7 +131,7 @@
             this.DayOfTheWeek.Name = "DayOfTheWeek";
             this.DayOfTheWeek.Size = new System.Drawing.Size(457, 40);
             this.DayOfTheWeek.TabIndex = 139;
-            this.DayOfTheWeek.Text = "Entrada de Estoque";
+            this.DayOfTheWeek.Text = "DayOfTheWeek";
             this.DayOfTheWeek.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // FormCaption
@@ -154,10 +154,11 @@
             // GifLoading
             // 
             this.GifLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.GifLoading.Image = global::DimStock.Properties.Resources.Load;
-            this.GifLoading.Location = new System.Drawing.Point(446, 299);
+            this.GifLoading.Image = global::DimStock.Properties.Resources.GigLoading;
+            this.GifLoading.Location = new System.Drawing.Point(430, 282);
             this.GifLoading.Name = "GifLoading";
-            this.GifLoading.Size = new System.Drawing.Size(129, 137);
+            this.GifLoading.Size = new System.Drawing.Size(169, 167);
+            this.GifLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.GifLoading.TabIndex = 159;
             this.GifLoading.TabStop = false;
             this.GifLoading.Visible = false;

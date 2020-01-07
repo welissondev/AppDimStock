@@ -14,9 +14,9 @@ namespace DimStock.View
         }
         #endregion
 
-        #region Button
+        #region Buttons
 
-        private void SingnIn_Click(object sender, EventArgs e)
+        private void Access_Click(object sender, EventArgs e)
         {
             try
             {
@@ -26,16 +26,16 @@ namespace DimStock.View
                     PassWord = PassWord.Text
                 };
 
-                if (user.SignIn() == false)
+                if (user.Access() == false)
                 {
                     MessageBox.Show(NotificationController.Message, "NÃO ENCONTRADO",
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
 
-                UserIdentity.Id = user.Id;
-                UserIdentity.Name = user.Name;
-                UserIdentity.Login = user.Login;
+                LoginAssistant.Id = user.Id;
+                LoginAssistant.Name = user.Name;
+                LoginAssistant.Login = user.Login;
 
                 Hide();
                 using (var homeScreen = new HomeScreenForm())
@@ -47,8 +47,13 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
+        }
+
+        private void Exit_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
         #endregion

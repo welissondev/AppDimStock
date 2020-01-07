@@ -123,14 +123,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Auxiliary\AxlDataGridViewLealt.cs" />
-    <Compile Include="Auxiliary\AxlDataPagination.cs" />
-    <Compile Include="Auxiliary\AxlException.cs" />
-    <Compile Include="Auxiliary\UserIdentity.cs" />
-    <Compile Include="Auxiliary\AxlPictureBox.cs">
+    <Compile Include="Auxiliary\DataGridLealt.cs" />
+    <Compile Include="Auxiliary\DataPagination.cs" />
+    <Compile Include="Auxiliary\ExceptionAssistant.cs" />
+    <Compile Include="Auxiliary\LoginAssistant.cs" />
+    <Compile Include="Auxiliary\CustomPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Auxiliary\AxlDataGridViewStockItem.cs">
+    <Compile Include="Auxiliary\CustomDataGridViewOne.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Business\StockDestinationController.cs" />
@@ -143,7 +143,7 @@
     <Compile Include="Business\StockController.cs" />
     <Compile Include="Business\UserController.cs" />
     <Compile Include="Business\UserHistoryController.cs" />
-    <Compile Include="Model\MdlConnection.cs" />
+    <Compile Include="Model\ConnectionModel.cs" />
     <Compile Include="Model\StockModel.cs" />
     <Compile Include="Model\StockMovementModel.cs" />
     <Compile Include="Model\StockDestinationModel.cs" />
@@ -154,7 +154,7 @@
     <Compile Include="Model\UserHistoryModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Auxiliary\AxlImage.cs" />
+    <Compile Include="Auxiliary\ImageAssistant.cs" />
     <Compile Include="Report\ReportProduct.cs" />
     <Compile Include="View\ReportViewForm.cs">
       <SubType>Form</SubType>
@@ -337,6 +337,14 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\User-Login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image-backGroud-UserLogin.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GigLoading.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -37,7 +37,7 @@ namespace DimStock.View
         private void RegisterNew_Click(object sender, EventArgs e)
         {
             var user = new UserController();
-            user.GetDetails(UserIdentity.Id);
+            user.ViewDetails(LoginAssistant.Id);
 
             if (Id == 0)
             {
@@ -60,7 +60,7 @@ namespace DimStock.View
                     return;
                 }
 
-                Change();
+                Edit();
             };
         }
 
@@ -90,7 +90,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -140,11 +140,11 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
-        private void Change()
+        private void Edit()
         {
             try
             {
@@ -168,7 +168,7 @@ namespace DimStock.View
                     PhotoName = ProductPhoto.IndentificationPhotoNumber,
                 };
 
-                if (product.Change(Id) == false)
+                if (product.Edit(Id) == false)
                 {
                     MessageBox.Show(NotificationController.Message, "ERROR",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -194,7 +194,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -277,7 +277,7 @@ namespace DimStock.View
 
         private bool UploadPhoto()
         {
-            var picture = new AxlImage();
+            var picture = new ImageAssistant();
             var uploadState = false;
 
             picture.OpenFileDialog();
@@ -357,7 +357,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 

@@ -22,24 +22,28 @@ namespace DimStock.Model
 
         #region Methods
 
-        public bool Allocate(List<StockController> itemList, int stockMovementId)
+        public bool InsertEntries(List<StockController> itemList, int stockMovementId)
         {
             var transactionState = false;
             var sqlCommand = string.Empty;
 
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
                     for (int i = 0; i < itemList.Count; i++)
                     {
-
                         var stockId = itemList[i].Id;
                         var quantity = itemList[i].Quantity;
                         var totalValue = itemList[i].TotalValue;
 
-                        sqlCommand = @"UPDATE Stock Set Quantity = Quantity + '" + quantity +
-                        "', TotalValue = TotalValue + '" + totalValue + "' WHERE Id = " + stockId;
+                        sqlCommand = @"UPDATE Stock Set Quantity = Quantity + @Quantity, 
+                        TotalValue = TotalValue + @TotalValue WHERE Id = @Id";
+
+                        connection.ParameterClear();
+                        connection.AddParameter("@Quantity", OleDbType.Integer, quantity);
+                        connection.AddParameter("@TotalValue", OleDbType.Double, totalValue);
+                        connection.AddParameter("@Id", OleDbType.Integer, stockId);
 
                         connection.ExecuteTransaction(sqlCommand);
                     }
@@ -58,9 +62,9 @@ namespace DimStock.Model
             }
         }
 
-        public bool Deallocate(List<StockController> itemList, int stockMovementId)
+        public bool InsertRemovals(List<StockController> itemList, int stockMovementId)
         {
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
@@ -75,8 +79,13 @@ namespace DimStock.Model
                         var quantity = itemList[i].Quantity;
                         var totalValue = itemList[i].TotalValue;
 
-                        sqlCommand = @"UPDATE Stock Set Quantity = Quantity - '" + quantity + "' " +
-                        ", TotalValue = TotalValue - '" + totalValue + "' WHERE Id = " + stockId;
+                        sqlCommand = @"UPDATE Stock Set Quantity = Quantity - @Quantity, 
+                        TotalValue = TotalValue - @TotalValue WHERE Id = @Id";
+
+                        connection.ParameterClear();
+                        connection.AddParameter("@Quantity", OleDbType.Integer, quantity);
+                        connection.AddParameter("@TotalValue", OleDbType.Double, totalValue);
+                        connection.AddParameter("@Id", OleDbType.Integer, stockId);
 
                         connection.ExecuteTransaction(sqlCommand);
                     }
@@ -95,7 +104,7 @@ namespace DimStock.Model
             }
         }
 
-        public bool RelateProduct(MdlConnection connection, int productId)
+        public bool InsertRelatedProduct(ConnectionModel connection, int productId)
         {
             var transactionState = false;
 
@@ -112,7 +121,7 @@ namespace DimStock.Model
             return transactionState;
         }
 
-        public bool UpdateValue(MdlConnection connection, double productCostPrice, int productId)
+        public bool UpdateValue(ConnectionModel connection, double productCostPrice, int productId)
         {
             var transactionState = false;
 
@@ -133,7 +142,7 @@ namespace DimStock.Model
 
         public bool Reset(List<StockItemController> itemList)
         {
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
@@ -160,7 +169,7 @@ namespace DimStock.Model
 
         public string GetAffectedFields(int id)
         {
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 var affectedFieldList = new List<string>();
 

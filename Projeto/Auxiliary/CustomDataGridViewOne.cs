@@ -2,7 +2,7 @@
 
 namespace DimStock.Auxiliary
 {
-    public class AxlDataGridViewStockItem : DataGridView
+    public class CustomDataGridViewOne : DataGridView
     {
 
         private bool listIsStock;

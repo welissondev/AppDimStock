@@ -4,7 +4,7 @@
     /// <summary>
     /// Uma classe axiliar statica que guarda os estados de um usuário logado
     /// </summary>
-    public static class UserIdentity 
+    public static class LoginAssistant 
     {
         public static int Id;
         public static string Name;

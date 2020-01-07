@@ -62,7 +62,6 @@
             this.TotalItems = new System.Windows.Forms.Label();
             this.ClearQueryFields = new System.Windows.Forms.LinkLabel();
             this.GifLoading = new System.Windows.Forms.PictureBox();
-            this.MainDataList = new DimStock.Auxiliary.AxlDataGridViewStockItem();
             this.Delete = new Syncfusion.WinForms.Controls.SfButton();
             this.Confirm = new Syncfusion.WinForms.Controls.SfButton();
             this.GrupBoxGeneralInformation = new System.Windows.Forms.GroupBox();
@@ -70,11 +69,12 @@
             this.OperationType = new System.Windows.Forms.Label();
             this.LblStockDestination = new System.Windows.Forms.Label();
             this.PanelUpperHorinzontal = new Bunifu.Framework.UI.BunifuGradientPanel();
-            this.TodayIsDay = new System.Windows.Forms.Label();
+            this.DayOfTheWeek = new System.Windows.Forms.Label();
             this.FormTitle = new System.Windows.Forms.Label();
             this.AddNew = new Syncfusion.WinForms.Controls.SfButton();
             this.StockDestinationList = new System.Windows.Forms.ComboBox();
             this.AddNewStockDestination = new System.Windows.Forms.LinkLabel();
+            this.MainDataList = new DimStock.Auxiliary.CustomDataGridViewOne();
             ((System.ComponentModel.ISupportInitialize)(this.Quantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TotalValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UnitaryValue)).BeginInit();
@@ -85,9 +85,9 @@
             this.CardMain.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GifLoading)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MainDataList)).BeginInit();
             this.GrupBoxGeneralInformation.SuspendLayout();
             this.PanelUpperHorinzontal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MainDataList)).BeginInit();
             this.SuspendLayout();
             // 
             // QueryTimer
@@ -535,7 +535,7 @@
             this.groupBox1.Controls.Add(this.SubTotalTitle);
             this.groupBox1.Controls.Add(this.TitleOfTotalItems);
             this.groupBox1.Controls.Add(this.TotalItems);
-            this.groupBox1.Location = new System.Drawing.Point(21, 314);
+            this.groupBox1.Location = new System.Drawing.Point(21, 308);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(861, 50);
             this.groupBox1.TabIndex = 142;
@@ -578,29 +578,14 @@
             // GifLoading
             // 
             this.GifLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.GifLoading.Image = global::DimStock.Properties.Resources.Load;
-            this.GifLoading.Location = new System.Drawing.Point(379, 124);
+            this.GifLoading.Image = global::DimStock.Properties.Resources.GigLoading;
+            this.GifLoading.Location = new System.Drawing.Point(372, 104);
             this.GifLoading.Name = "GifLoading";
-            this.GifLoading.Size = new System.Drawing.Size(129, 137);
+            this.GifLoading.Size = new System.Drawing.Size(188, 172);
+            this.GifLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.GifLoading.TabIndex = 139;
             this.GifLoading.TabStop = false;
             this.GifLoading.Visible = false;
-            // 
-            // MainDataList
-            // 
-            this.MainDataList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.MainDataList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.MainDataList.ListIsItem = false;
-            this.MainDataList.ListIsStock = false;
-            this.MainDataList.Location = new System.Drawing.Point(21, 60);
-            this.MainDataList.Name = "MainDataList";
-            this.MainDataList.Size = new System.Drawing.Size(861, 262);
-            this.MainDataList.TabIndex = 141;
-            this.MainDataList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MainDataList_CellClick);
-            this.MainDataList.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.MainDataList_RowPrePaint);
-            this.MainDataList.DoubleClick += new System.EventHandler(this.MainDataList_DoubleClick);
             // 
             // Delete
             // 
@@ -610,13 +595,13 @@
             this.Delete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Delete.ForeColor = System.Drawing.Color.White;
-            this.Delete.Location = new System.Drawing.Point(98, 47);
+            this.Delete.Location = new System.Drawing.Point(99, 47);
             this.Delete.Name = "Delete";
             this.Delete.Size = new System.Drawing.Size(80, 35);
             this.Delete.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.Delete.Style.DisabledBackColor = System.Drawing.Color.SeaGreen;
-            this.Delete.Style.DisabledForeColor = System.Drawing.Color.SeaGreen;
-            this.Delete.Style.FocusedBackColor = System.Drawing.Color.SeaGreen;
+            this.Delete.Style.DisabledBackColor = System.Drawing.Color.MediumSeaGreen;
+            this.Delete.Style.DisabledForeColor = System.Drawing.Color.MediumSeaGreen;
+            this.Delete.Style.FocusedBackColor = System.Drawing.Color.MediumSeaGreen;
             this.Delete.Style.FocusedForeColor = System.Drawing.Color.White;
             this.Delete.Style.ForeColor = System.Drawing.Color.White;
             this.Delete.Style.HoverBackColor = System.Drawing.Color.MediumSeaGreen;
@@ -636,13 +621,13 @@
             this.Confirm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Confirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Confirm.ForeColor = System.Drawing.Color.White;
-            this.Confirm.Location = new System.Drawing.Point(179, 47);
+            this.Confirm.Location = new System.Drawing.Point(181, 47);
             this.Confirm.Name = "Confirm";
             this.Confirm.Size = new System.Drawing.Size(80, 35);
             this.Confirm.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.Confirm.Style.DisabledBackColor = System.Drawing.Color.SeaGreen;
-            this.Confirm.Style.DisabledForeColor = System.Drawing.Color.SeaGreen;
-            this.Confirm.Style.FocusedBackColor = System.Drawing.Color.SeaGreen;
+            this.Confirm.Style.DisabledBackColor = System.Drawing.Color.MediumSeaGreen;
+            this.Confirm.Style.DisabledForeColor = System.Drawing.Color.MediumSeaGreen;
+            this.Confirm.Style.FocusedBackColor = System.Drawing.Color.MediumSeaGreen;
             this.Confirm.Style.FocusedForeColor = System.Drawing.Color.White;
             this.Confirm.Style.ForeColor = System.Drawing.Color.White;
             this.Confirm.Style.HoverBackColor = System.Drawing.Color.MediumSeaGreen;
@@ -714,34 +699,34 @@
             // 
             this.PanelUpperHorinzontal.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelUpperHorinzontal.BackgroundImage")));
             this.PanelUpperHorinzontal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PanelUpperHorinzontal.Controls.Add(this.TodayIsDay);
+            this.PanelUpperHorinzontal.Controls.Add(this.DayOfTheWeek);
             this.PanelUpperHorinzontal.Controls.Add(this.FormTitle);
             this.PanelUpperHorinzontal.Controls.Add(this.AddNew);
             this.PanelUpperHorinzontal.Controls.Add(this.Confirm);
             this.PanelUpperHorinzontal.Controls.Add(this.Delete);
             this.PanelUpperHorinzontal.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelUpperHorinzontal.GradientBottomLeft = System.Drawing.SystemColors.WindowFrame;
-            this.PanelUpperHorinzontal.GradientBottomRight = System.Drawing.SystemColors.Desktop;
-            this.PanelUpperHorinzontal.GradientTopLeft = System.Drawing.Color.LightSlateGray;
-            this.PanelUpperHorinzontal.GradientTopRight = System.Drawing.SystemColors.GradientActiveCaption;
+            this.PanelUpperHorinzontal.GradientBottomLeft = System.Drawing.Color.Black;
+            this.PanelUpperHorinzontal.GradientBottomRight = System.Drawing.Color.Black;
+            this.PanelUpperHorinzontal.GradientTopLeft = System.Drawing.Color.Gray;
+            this.PanelUpperHorinzontal.GradientTopRight = System.Drawing.Color.Gray;
             this.PanelUpperHorinzontal.Location = new System.Drawing.Point(0, 0);
             this.PanelUpperHorinzontal.Name = "PanelUpperHorinzontal";
             this.PanelUpperHorinzontal.Quality = 10;
             this.PanelUpperHorinzontal.Size = new System.Drawing.Size(964, 97);
             this.PanelUpperHorinzontal.TabIndex = 139;
             // 
-            // TodayIsDay
+            // DayOfTheWeek
             // 
-            this.TodayIsDay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.TodayIsDay.BackColor = System.Drawing.Color.Transparent;
-            this.TodayIsDay.Font = new System.Drawing.Font("Leelawadee UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TodayIsDay.ForeColor = System.Drawing.Color.White;
-            this.TodayIsDay.Location = new System.Drawing.Point(467, 23);
-            this.TodayIsDay.Name = "TodayIsDay";
-            this.TodayIsDay.Size = new System.Drawing.Size(494, 40);
-            this.TodayIsDay.TabIndex = 139;
-            this.TodayIsDay.Text = "Entrada de Estoque";
-            this.TodayIsDay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.DayOfTheWeek.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DayOfTheWeek.BackColor = System.Drawing.Color.Transparent;
+            this.DayOfTheWeek.Font = new System.Drawing.Font("Leelawadee UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DayOfTheWeek.ForeColor = System.Drawing.Color.White;
+            this.DayOfTheWeek.Location = new System.Drawing.Point(467, 23);
+            this.DayOfTheWeek.Name = "DayOfTheWeek";
+            this.DayOfTheWeek.Size = new System.Drawing.Size(494, 40);
+            this.DayOfTheWeek.TabIndex = 139;
+            this.DayOfTheWeek.Text = "DayOfTheWeek";
+            this.DayOfTheWeek.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // FormTitle
             // 
@@ -766,9 +751,9 @@
             this.AddNew.Name = "AddNew";
             this.AddNew.Size = new System.Drawing.Size(80, 35);
             this.AddNew.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.AddNew.Style.DisabledBackColor = System.Drawing.Color.SeaGreen;
-            this.AddNew.Style.DisabledForeColor = System.Drawing.Color.SeaGreen;
-            this.AddNew.Style.FocusedBackColor = System.Drawing.Color.SeaGreen;
+            this.AddNew.Style.DisabledBackColor = System.Drawing.Color.MediumSeaGreen;
+            this.AddNew.Style.DisabledForeColor = System.Drawing.Color.MediumSeaGreen;
+            this.AddNew.Style.FocusedBackColor = System.Drawing.Color.MediumSeaGreen;
             this.AddNew.Style.FocusedForeColor = System.Drawing.Color.White;
             this.AddNew.Style.ForeColor = System.Drawing.Color.White;
             this.AddNew.Style.HoverBackColor = System.Drawing.Color.MediumSeaGreen;
@@ -805,6 +790,22 @@
             this.AddNewStockDestination.Text = "Cadastrar Novo";
             this.AddNewStockDestination.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.AddNewStockDestination_LinkClicked);
             // 
+            // MainDataList
+            // 
+            this.MainDataList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MainDataList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.MainDataList.ListIsItem = false;
+            this.MainDataList.ListIsStock = false;
+            this.MainDataList.Location = new System.Drawing.Point(21, 60);
+            this.MainDataList.Name = "MainDataList";
+            this.MainDataList.Size = new System.Drawing.Size(861, 248);
+            this.MainDataList.TabIndex = 141;
+            this.MainDataList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MainDataList_CellClick);
+            this.MainDataList.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.MainDataList_RowPrePaint);
+            this.MainDataList.DoubleClick += new System.EventHandler(this.MainDataList_DoubleClick);
+            // 
             // StockMovimentRegistrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -832,11 +833,11 @@
             this.CardMain.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GifLoading)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MainDataList)).EndInit();
             this.GrupBoxGeneralInformation.ResumeLayout(false);
             this.GrupBoxGeneralInformation.PerformLayout();
             this.PanelUpperHorinzontal.ResumeLayout(false);
             this.PanelUpperHorinzontal.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MainDataList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -880,10 +881,10 @@
         private System.Windows.Forms.GroupBox GrupBoxGeneralInformation;
         public System.Windows.Forms.Label OperationTypeTitle;
         public System.Windows.Forms.Label OperationType;
-        public System.Windows.Forms.Label TodayIsDay;
+        public System.Windows.Forms.Label DayOfTheWeek;
         private System.Windows.Forms.LinkLabel ClearQueryFields;
         private Syncfusion.WinForms.Controls.SfButton Delete;
-        public Auxiliary.AxlDataGridViewStockItem MainDataList;
+        public Auxiliary.CustomDataGridViewOne MainDataList;
         public System.Windows.Forms.Label LblStockDestination;
         private System.Windows.Forms.ComboBox StockDestinationList;
         private System.Windows.Forms.LinkLabel AddNewStockDestination;

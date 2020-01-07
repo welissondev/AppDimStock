@@ -72,15 +72,15 @@
             // SearchByDescription
             // 
             this.SearchByDescription.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SearchByDescription.BeforeTouchSize = new System.Drawing.Size(235, 27);
-            this.SearchByDescription.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
+            this.SearchByDescription.BeforeTouchSize = new System.Drawing.Size(90, 27);
+            this.SearchByDescription.BorderColor = System.Drawing.Color.DarkGray;
             this.SearchByDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SearchByDescription.CanOverrideStyle = true;
             this.SearchByDescription.CausesValidation = false;
             this.SearchByDescription.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.SearchByDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchByDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.SearchByDescription.Location = new System.Drawing.Point(311, 152);
+            this.SearchByDescription.Location = new System.Drawing.Point(308, 152);
             this.SearchByDescription.MaxLength = 50;
             this.SearchByDescription.Metrocolor = System.Drawing.Color.DodgerBlue;
             this.SearchByDescription.MinimumSize = new System.Drawing.Size(16, 12);
@@ -102,7 +102,7 @@
             this.ProductDataList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ProductDataList.Location = new System.Drawing.Point(16, 185);
             this.ProductDataList.Name = "ProductDataList";
-            this.ProductDataList.Size = new System.Drawing.Size(936, 454);
+            this.ProductDataList.Size = new System.Drawing.Size(936, 468);
             this.ProductDataList.TabIndex = 69;
             this.ProductDataList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductDataList_CellClick);
             this.ProductDataList.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ProductDataList_CellMouseDoubleClick);
@@ -112,24 +112,41 @@
             // GifLoading
             // 
             this.GifLoading.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.GifLoading.Image = global::DimStock.Properties.Resources.Load;
-            this.GifLoading.Location = new System.Drawing.Point(431, 365);
+            this.GifLoading.Image = global::DimStock.Properties.Resources.GigLoading;
+            this.GifLoading.Location = new System.Drawing.Point(399, 325);
             this.GifLoading.Name = "GifLoading";
-            this.GifLoading.Size = new System.Drawing.Size(138, 131);
+            this.GifLoading.Size = new System.Drawing.Size(177, 174);
+            this.GifLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.GifLoading.TabIndex = 85;
             this.GifLoading.TabStop = false;
             this.GifLoading.Visible = false;
             // 
             // RecordsByPage
             // 
+            this.RecordsByPage.BackColor = System.Drawing.Color.White;
+            this.RecordsByPage.CanOverrideStyle = true;
             this.RecordsByPage.DropDownStyle = Syncfusion.WinForms.ListView.Enums.DropDownStyle.DropDownList;
             this.RecordsByPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RecordsByPage.Location = new System.Drawing.Point(552, 152);
+            this.RecordsByPage.Location = new System.Drawing.Point(549, 152);
             this.RecordsByPage.Name = "RecordsByPage";
             this.RecordsByPage.Size = new System.Drawing.Size(136, 27);
-            this.RecordsByPage.Style.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.RecordsByPage.Style.EditorStyle.DisabledBorderColor = System.Drawing.Color.Transparent;
+            this.RecordsByPage.Style.DropDownButtonStyle.BackColor = System.Drawing.Color.White;
+            this.RecordsByPage.Style.DropDownButtonStyle.DisabledBackColor = System.Drawing.Color.White;
+            this.RecordsByPage.Style.DropDownButtonStyle.DisabledForeColor = System.Drawing.Color.White;
+            this.RecordsByPage.Style.DropDownButtonStyle.FocusedBackColor = System.Drawing.Color.White;
+            this.RecordsByPage.Style.DropDownButtonStyle.HoverBackColor = System.Drawing.Color.White;
+            this.RecordsByPage.Style.DropDownButtonStyle.PressedBackColor = System.Drawing.Color.White;
+            this.RecordsByPage.Style.DropDownStyle.BorderColor = System.Drawing.Color.Gray;
+            this.RecordsByPage.Style.DropDownStyle.GripperForeColor = System.Drawing.Color.White;
+            this.RecordsByPage.Style.EditorStyle.BackColor = System.Drawing.Color.White;
+            this.RecordsByPage.Style.EditorStyle.BorderColor = System.Drawing.Color.DarkGray;
+            this.RecordsByPage.Style.EditorStyle.DisabledBackColor = System.Drawing.Color.White;
+            this.RecordsByPage.Style.EditorStyle.DisabledBorderColor = System.Drawing.Color.DarkGray;
+            this.RecordsByPage.Style.EditorStyle.FocusedBorderColor = System.Drawing.Color.DarkGray;
             this.RecordsByPage.Style.EditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RecordsByPage.Style.ReadOnlyEditorStyle.BorderColor = System.Drawing.Color.DarkGray;
+            this.RecordsByPage.Style.ReadOnlyEditorStyle.DisabledBackColor = System.Drawing.Color.Gray;
+            this.RecordsByPage.Style.ReadOnlyEditorStyle.FocusedBorderColor = System.Drawing.Color.Gray;
             this.RecordsByPage.Style.ReadOnlyEditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RecordsByPage.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.RecordsByPage.Style.TokenStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -140,65 +157,65 @@
             // TitleRecordsByPage
             // 
             this.TitleRecordsByPage.AutoSize = true;
-            this.TitleRecordsByPage.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TitleRecordsByPage.Location = new System.Drawing.Point(549, 138);
+            this.TitleRecordsByPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.TitleRecordsByPage.Location = new System.Drawing.Point(546, 138);
             this.TitleRecordsByPage.Name = "TitleRecordsByPage";
-            this.TitleRecordsByPage.Size = new System.Drawing.Size(146, 13);
+            this.TitleRecordsByPage.Size = new System.Drawing.Size(109, 13);
             this.TitleRecordsByPage.TabIndex = 91;
-            this.TitleRecordsByPage.Text = "REGISTROS POR PÁGINA:";
+            this.TitleRecordsByPage.Text = "Registros Por Página:";
             // 
             // TitleSearchByDescription
             // 
             this.TitleSearchByDescription.AutoSize = true;
-            this.TitleSearchByDescription.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TitleSearchByDescription.Location = new System.Drawing.Point(308, 136);
+            this.TitleSearchByDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.TitleSearchByDescription.Location = new System.Drawing.Point(305, 136);
             this.TitleSearchByDescription.Name = "TitleSearchByDescription";
-            this.TitleSearchByDescription.Size = new System.Drawing.Size(74, 13);
+            this.TitleSearchByDescription.Size = new System.Drawing.Size(58, 13);
             this.TitleSearchByDescription.TabIndex = 90;
-            this.TitleSearchByDescription.Text = "DESCRIÇÃO:";
+            this.TitleSearchByDescription.Text = "Descrição:";
             // 
             // TitleSearchByReference
             // 
             this.TitleSearchByReference.AutoSize = true;
-            this.TitleSearchByReference.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TitleSearchByReference.Location = new System.Drawing.Point(212, 136);
+            this.TitleSearchByReference.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.TitleSearchByReference.Location = new System.Drawing.Point(210, 136);
             this.TitleSearchByReference.Name = "TitleSearchByReference";
-            this.TitleSearchByReference.Size = new System.Drawing.Size(74, 13);
+            this.TitleSearchByReference.Size = new System.Drawing.Size(62, 13);
             this.TitleSearchByReference.TabIndex = 89;
-            this.TitleSearchByReference.Text = "REFERÊNCIA";
+            this.TitleSearchByReference.Text = "Referência:";
             // 
             // TitleSearchBySize
             // 
             this.TitleSearchBySize.AutoSize = true;
-            this.TitleSearchBySize.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TitleSearchBySize.Location = new System.Drawing.Point(112, 136);
+            this.TitleSearchBySize.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.TitleSearchBySize.Location = new System.Drawing.Point(111, 136);
             this.TitleSearchBySize.Name = "TitleSearchBySize";
-            this.TitleSearchBySize.Size = new System.Drawing.Size(66, 13);
+            this.TitleSearchBySize.Size = new System.Drawing.Size(55, 13);
             this.TitleSearchBySize.TabIndex = 88;
-            this.TitleSearchBySize.Text = "TAMANHO:";
+            this.TitleSearchBySize.Text = "Tamanho:";
             // 
             // TitleSearchByCode
             // 
             this.TitleSearchByCode.AutoSize = true;
-            this.TitleSearchByCode.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TitleSearchByCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.TitleSearchByCode.Location = new System.Drawing.Point(13, 136);
             this.TitleSearchByCode.Name = "TitleSearchByCode";
-            this.TitleSearchByCode.Size = new System.Drawing.Size(51, 13);
+            this.TitleSearchByCode.Size = new System.Drawing.Size(43, 13);
             this.TitleSearchByCode.TabIndex = 87;
-            this.TitleSearchByCode.Text = "CÓDIGO";
+            this.TitleSearchByCode.Text = "Código:";
             // 
             // SearchByReference
             // 
             this.SearchByReference.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SearchByReference.BeforeTouchSize = new System.Drawing.Size(235, 27);
-            this.SearchByReference.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
+            this.SearchByReference.BeforeTouchSize = new System.Drawing.Size(90, 27);
+            this.SearchByReference.BorderColor = System.Drawing.Color.DarkGray;
             this.SearchByReference.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SearchByReference.CanOverrideStyle = true;
             this.SearchByReference.CausesValidation = false;
             this.SearchByReference.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.SearchByReference.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchByReference.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.SearchByReference.Location = new System.Drawing.Point(215, 152);
+            this.SearchByReference.Location = new System.Drawing.Point(213, 152);
             this.SearchByReference.MaxLength = 50;
             this.SearchByReference.Metrocolor = System.Drawing.Color.DodgerBlue;
             this.SearchByReference.MinimumSize = new System.Drawing.Size(16, 12);
@@ -215,15 +232,15 @@
             // SearchBySize
             // 
             this.SearchBySize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SearchBySize.BeforeTouchSize = new System.Drawing.Size(235, 27);
-            this.SearchBySize.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
+            this.SearchBySize.BeforeTouchSize = new System.Drawing.Size(90, 27);
+            this.SearchBySize.BorderColor = System.Drawing.Color.DarkGray;
             this.SearchBySize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SearchBySize.CanOverrideStyle = true;
             this.SearchBySize.CausesValidation = false;
             this.SearchBySize.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.SearchBySize.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchBySize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.SearchBySize.Location = new System.Drawing.Point(115, 152);
+            this.SearchBySize.Location = new System.Drawing.Point(114, 152);
             this.SearchBySize.MaxLength = 50;
             this.SearchBySize.Metrocolor = System.Drawing.Color.DodgerBlue;
             this.SearchBySize.MinimumSize = new System.Drawing.Size(16, 12);
@@ -240,8 +257,8 @@
             // SearchByCode
             // 
             this.SearchByCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SearchByCode.BeforeTouchSize = new System.Drawing.Size(235, 27);
-            this.SearchByCode.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
+            this.SearchByCode.BeforeTouchSize = new System.Drawing.Size(90, 27);
+            this.SearchByCode.BorderColor = System.Drawing.Color.DarkGray;
             this.SearchByCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SearchByCode.CanOverrideStyle = true;
             this.SearchByCode.CausesValidation = false;
@@ -277,10 +294,10 @@
             this.PanelUpperHorizontal.Controls.Add(this.UpdateDataList);
             this.PanelUpperHorizontal.Controls.Add(this.RegisterNew);
             this.PanelUpperHorizontal.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelUpperHorizontal.GradientBottomLeft = System.Drawing.SystemColors.MenuHighlight;
-            this.PanelUpperHorizontal.GradientBottomRight = System.Drawing.Color.RoyalBlue;
-            this.PanelUpperHorizontal.GradientTopLeft = System.Drawing.SystemColors.ControlText;
-            this.PanelUpperHorizontal.GradientTopRight = System.Drawing.SystemColors.InactiveCaptionText;
+            this.PanelUpperHorizontal.GradientBottomLeft = System.Drawing.Color.Black;
+            this.PanelUpperHorizontal.GradientBottomRight = System.Drawing.Color.Black;
+            this.PanelUpperHorizontal.GradientTopLeft = System.Drawing.Color.Gray;
+            this.PanelUpperHorizontal.GradientTopRight = System.Drawing.Color.Gray;
             this.PanelUpperHorizontal.Location = new System.Drawing.Point(0, 0);
             this.PanelUpperHorizontal.Name = "PanelUpperHorizontal";
             this.PanelUpperHorizontal.Quality = 10;
@@ -306,7 +323,7 @@
             this.FormCaption.BackColor = System.Drawing.Color.Transparent;
             this.FormCaption.Font = new System.Drawing.Font("Cambria", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormCaption.ForeColor = System.Drawing.Color.White;
-            this.FormCaption.Location = new System.Drawing.Point(8, 0);
+            this.FormCaption.Location = new System.Drawing.Point(4, 1);
             this.FormCaption.Name = "FormCaption";
             this.FormCaption.Size = new System.Drawing.Size(272, 40);
             this.FormCaption.TabIndex = 144;
@@ -315,21 +332,21 @@
             // GenerateReport
             // 
             this.GenerateReport.AccessibleName = "Button";
-            this.GenerateReport.BackColor = System.Drawing.Color.SeaGreen;
+            this.GenerateReport.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.GenerateReport.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GenerateReport.ForeColor = System.Drawing.Color.White;
             this.GenerateReport.Location = new System.Drawing.Point(179, 44);
             this.GenerateReport.Name = "GenerateReport";
             this.GenerateReport.Size = new System.Drawing.Size(80, 35);
-            this.GenerateReport.Style.BackColor = System.Drawing.Color.SeaGreen;
-            this.GenerateReport.Style.DisabledBackColor = System.Drawing.Color.SeaGreen;
-            this.GenerateReport.Style.DisabledForeColor = System.Drawing.Color.SeaGreen;
-            this.GenerateReport.Style.FocusedBackColor = System.Drawing.Color.SeaGreen;
+            this.GenerateReport.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.GenerateReport.Style.DisabledBackColor = System.Drawing.Color.MediumSeaGreen;
+            this.GenerateReport.Style.DisabledForeColor = System.Drawing.Color.MediumSeaGreen;
+            this.GenerateReport.Style.FocusedBackColor = System.Drawing.Color.MediumSeaGreen;
             this.GenerateReport.Style.FocusedForeColor = System.Drawing.Color.White;
             this.GenerateReport.Style.ForeColor = System.Drawing.Color.White;
             this.GenerateReport.Style.HoverBackColor = System.Drawing.Color.MediumSeaGreen;
             this.GenerateReport.Style.HoverForeColor = System.Drawing.Color.Black;
-            this.GenerateReport.Style.PressedBackColor = System.Drawing.Color.SeaGreen;
+            this.GenerateReport.Style.PressedBackColor = System.Drawing.Color.MediumSeaGreen;
             this.GenerateReport.Style.PressedForeColor = System.Drawing.Color.White;
             this.GenerateReport.TabIndex = 143;
             this.GenerateReport.Text = "Relatório";
@@ -339,21 +356,21 @@
             // UpdateDataList
             // 
             this.UpdateDataList.AccessibleName = "Button";
-            this.UpdateDataList.BackColor = System.Drawing.Color.SeaGreen;
+            this.UpdateDataList.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.UpdateDataList.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpdateDataList.ForeColor = System.Drawing.Color.White;
             this.UpdateDataList.Location = new System.Drawing.Point(96, 44);
             this.UpdateDataList.Name = "UpdateDataList";
             this.UpdateDataList.Size = new System.Drawing.Size(80, 35);
-            this.UpdateDataList.Style.BackColor = System.Drawing.Color.SeaGreen;
-            this.UpdateDataList.Style.DisabledBackColor = System.Drawing.Color.SeaGreen;
-            this.UpdateDataList.Style.DisabledForeColor = System.Drawing.Color.SeaGreen;
-            this.UpdateDataList.Style.FocusedBackColor = System.Drawing.Color.SeaGreen;
+            this.UpdateDataList.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.UpdateDataList.Style.DisabledBackColor = System.Drawing.Color.MediumSeaGreen;
+            this.UpdateDataList.Style.DisabledForeColor = System.Drawing.Color.MediumSeaGreen;
+            this.UpdateDataList.Style.FocusedBackColor = System.Drawing.Color.MediumSeaGreen;
             this.UpdateDataList.Style.FocusedForeColor = System.Drawing.Color.White;
             this.UpdateDataList.Style.ForeColor = System.Drawing.Color.White;
             this.UpdateDataList.Style.HoverBackColor = System.Drawing.Color.MediumSeaGreen;
             this.UpdateDataList.Style.HoverForeColor = System.Drawing.Color.Black;
-            this.UpdateDataList.Style.PressedBackColor = System.Drawing.Color.SeaGreen;
+            this.UpdateDataList.Style.PressedBackColor = System.Drawing.Color.MediumSeaGreen;
             this.UpdateDataList.Style.PressedForeColor = System.Drawing.Color.White;
             this.UpdateDataList.TabIndex = 142;
             this.UpdateDataList.Text = "Atualizar";
@@ -363,21 +380,21 @@
             // RegisterNew
             // 
             this.RegisterNew.AccessibleName = "Button";
-            this.RegisterNew.BackColor = System.Drawing.Color.SeaGreen;
+            this.RegisterNew.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.RegisterNew.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RegisterNew.ForeColor = System.Drawing.Color.White;
             this.RegisterNew.Location = new System.Drawing.Point(13, 44);
             this.RegisterNew.Name = "RegisterNew";
             this.RegisterNew.Size = new System.Drawing.Size(80, 35);
-            this.RegisterNew.Style.BackColor = System.Drawing.Color.SeaGreen;
-            this.RegisterNew.Style.DisabledBackColor = System.Drawing.Color.SeaGreen;
-            this.RegisterNew.Style.DisabledForeColor = System.Drawing.Color.SeaGreen;
-            this.RegisterNew.Style.FocusedBackColor = System.Drawing.Color.SeaGreen;
+            this.RegisterNew.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.RegisterNew.Style.DisabledBackColor = System.Drawing.Color.MediumSeaGreen;
+            this.RegisterNew.Style.DisabledForeColor = System.Drawing.Color.MediumSeaGreen;
+            this.RegisterNew.Style.FocusedBackColor = System.Drawing.Color.MediumSeaGreen;
             this.RegisterNew.Style.FocusedForeColor = System.Drawing.Color.White;
             this.RegisterNew.Style.ForeColor = System.Drawing.Color.White;
             this.RegisterNew.Style.HoverBackColor = System.Drawing.Color.MediumSeaGreen;
             this.RegisterNew.Style.HoverForeColor = System.Drawing.Color.Black;
-            this.RegisterNew.Style.PressedBackColor = System.Drawing.Color.SeaGreen;
+            this.RegisterNew.Style.PressedBackColor = System.Drawing.Color.MediumSeaGreen;
             this.RegisterNew.Style.PressedForeColor = System.Drawing.Color.White;
             this.RegisterNew.TabIndex = 141;
             this.RegisterNew.Text = "Novo";
@@ -459,10 +476,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.AliceBlue;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(964, 681);
-            this.Controls.Add(this.BindingPagination);
             this.Controls.Add(this.GifLoading);
+            this.Controls.Add(this.BindingPagination);
             this.Controls.Add(this.PanelUpperHorizontal);
             this.Controls.Add(this.RecordsByPage);
             this.Controls.Add(this.SearchByDescription);

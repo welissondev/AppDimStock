@@ -14,13 +14,13 @@ namespace DimStock.Business
 
         public string GetIndentificationNumber()
         {
-            var image = new AxlImage();
+            var image = new ImageAssistant();
             return image.GenerateGuidCode();
         }
 
         public void CopyToDirectory(string source, string path)
         {
-            AxlImage image = new AxlImage();
+            ImageAssistant image = new ImageAssistant();
 
             if (FindInDirectory(source) == true && FindInDirectory(path) == false)
             {
@@ -31,7 +31,7 @@ namespace DimStock.Business
 
         public bool FindInDirectory(string path)
         {
-            var image = new AxlImage();
+            var image = new ImageAssistant();
 
             var fileFound = image.CheckFileInDirectory(path);
 
@@ -40,7 +40,7 @@ namespace DimStock.Business
 
         public void DeleteFromDirectory(string path)
         {
-            var image = new AxlImage();
+            var image = new ImageAssistant();
 
             if (FindInDirectory(path) == true)
                 image.DeleteFromDirectory(path);

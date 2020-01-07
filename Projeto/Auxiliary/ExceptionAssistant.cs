@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace DimStock.Auxiliary
 {
-    public static class AxlException
+    public static class ExceptionAssistant
     {
         public static class Message
         {

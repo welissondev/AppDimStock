@@ -23,22 +23,22 @@ namespace DimStock.Business
 
         #region Methods
 
-        public void Add()
+        public bool Register()
         {
             var stockItem = new StockItemModel(this);
-            stockItem.Insert();
+            return stockItem.Insert();
         }
 
-        public void ListItens(int id)
+        public void ListData(int id)
         {
             var stockItem = new StockItemModel(this);
-            stockItem.SelectAll(id);
+            stockItem.ListData(id);
         }
 
-        public void Exclude(int id)
+        public bool Exclude(int id)
         {
             var stockItem = new StockItemModel();
-            stockItem.Delete(id);
+            return stockItem.Delete(id);
         }
 
         #endregion

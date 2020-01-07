@@ -12,7 +12,7 @@ namespace DimStock.Business
 
         public StockMovementController() { }
 
-        public StockMovementController(AxlDataPagination dataPagination)
+        public StockMovementController(DataPagination dataPagination)
         {
             DataPagination = dataPagination;
         }
@@ -34,7 +34,7 @@ namespace DimStock.Business
         public string SearchByType { get; set; }
         public string SearchBySituation { get; set; }
         public string SearchByMovimentId { get; set; }
-        public AxlDataPagination DataPagination { get; set; }
+        public DataPagination DataPagination { get; set; }
 
         #endregion 
 
@@ -50,7 +50,7 @@ namespace DimStock.Business
             {
                 var historic = new UserHistoryController
                 {
-                    Login = UserIdentity.Login,
+                    Login = LoginAssistant.Login,
                     OperationType = "Adicionou",
                     OperationModule = "Atividade",
                     OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
@@ -81,13 +81,13 @@ namespace DimStock.Business
             var affectedFileds = stockMovement.GetAffectedFields(id);
 
             var stockItem = new StockItemController();
-            stockItem.ListItens(id);
+            stockItem.ListData(id);
 
             if (stockMovement.Delete(id) == true)
             {
                 var historic = new UserHistoryController()
                 {
-                    Login = UserIdentity.Login,
+                    Login = LoginAssistant.Login,
                     OperationType = "Deletou",
                     OperationModule = "Atividade",
                     OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
@@ -108,19 +108,19 @@ namespace DimStock.Business
         public void ListData()
         {
             var stockMovement = new StockMovementModel(this);
-            stockMovement.SelectAll();
+            stockMovement.ListData();
         }
 
-        public void FetchData()
+        public void SearchData()
         {
             var stockMovement = new StockMovementModel(this);
-            stockMovement.SelectCustom();
+            stockMovement.DataQuery();
         }
 
-        public void GetDetails(int id)
+        public void ViewDetails(int id)
         {
             var stockMovement = new StockMovementModel(this);
-            stockMovement.GetFields(id);
+            stockMovement.ViewDetails(id);
         }
 
         #endregion

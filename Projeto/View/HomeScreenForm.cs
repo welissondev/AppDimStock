@@ -107,7 +107,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
         #endregion
@@ -127,7 +127,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
         #endregion
@@ -144,7 +144,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
         #endregion
@@ -164,7 +164,7 @@ namespace DimStock.View
             try
             {
                 var user = new UserController();
-                user.GetDetails(UserIdentity.Id);
+                user.ViewDetails(LoginAssistant.Id);
 
                 if (user.PermissionToView == true)
                 {
@@ -181,7 +181,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
         #endregion
@@ -192,7 +192,7 @@ namespace DimStock.View
             try
             {
                 var user = new UserController();
-                user.GetDetails(UserIdentity.Id);
+                user.ViewDetails(LoginAssistant.Id);
 
                 if (user.PermissionToView == true)
                 {
@@ -209,7 +209,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
         #endregion
@@ -220,7 +220,7 @@ namespace DimStock.View
             try
             {
                 var user = new UserController();
-                user.GetDetails(UserIdentity.Id);
+                user.ViewDetails(LoginAssistant.Id);
 
                 if (user.PermissionToView == true)
                 {
@@ -238,7 +238,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
         #endregion

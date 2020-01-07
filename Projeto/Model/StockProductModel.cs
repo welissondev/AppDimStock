@@ -23,17 +23,15 @@ namespace DimStock.Model
 
         #region Methods
 
-        public void SelectAll()
+        public void ListData()
         {
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlQuery = string.Empty;
                 var sqlCount = string.Empty;
                 var criterion = string.Empty;
                 var parameter = connection.Command.Parameters;
                 var listOfRecords = new List<StockProductController>();
-
-                #region QueryByResume
 
                 if (stockProduct.SearchBySummary == "All")
                 {
@@ -96,10 +94,6 @@ namespace DimStock.Model
                     Quantity < MinStock";
                 }
 
-                #endregion
-
-                #region QueryByCriterion
-
                 if (stockProduct.SearchByDescription != string.Empty)
                 {
                     criterion += " AND Description LIKE @Description";
@@ -132,8 +126,6 @@ namespace DimStock.Model
                     parameter.AddWithValue("@Reference", string.Format("{0}",
                     stockProduct.SearchByReference));
                 }
-
-                #endregion
 
                 sqlQuery += criterion + @" Order By Code, 
                 [Product.Size], Reference Asc";
@@ -173,16 +165,14 @@ namespace DimStock.Model
             }
         }
 
-        public void SelectCustom()
+        public void DataQuery()
         {
-            using (var con = new MdlConnection())
+            using (var con = new ConnectionModel())
             {
                 var sqlQuery = string.Empty;
                 var sqlCount = string.Empty;
                 var criterion = string.Empty;
                 var parameter = con.Command.Parameters;
-
-                #region QueryByResume
 
                 if (stockProduct.SearchBySummary == "All")
                 {
@@ -243,10 +233,6 @@ namespace DimStock.Model
                     Stock.ProductId = Product.Id WHERE Quantity < MinStock";
                 }
 
-                #endregion
-
-                #region QueryByCriterion
-
                 if (stockProduct.SearchByCode != string.Empty)
                 {
                     criterion += " AND Code LIKE @Code";
@@ -279,8 +265,6 @@ namespace DimStock.Model
                     stockProduct.SearchByDescription));
                 }
 
-                #endregion
-
                 sqlQuery += criterion + " Order By Code, " +
                 "[Product.Size], Reference Asc";
 
@@ -293,7 +277,7 @@ namespace DimStock.Model
                 stockProduct.DataPagination.OffSetValue,
                 stockProduct.DataPagination.PageSize);
 
-                PassTableToList(dataTable);
+                PassDataTableToList(dataTable);
 
                 SetSummary(stockProduct.ListOfRecords);
 
@@ -301,9 +285,9 @@ namespace DimStock.Model
             }
         }
 
-        public void GetFields(int id)
+        public void ViewDetails(int id)
         {
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlQuery = @"SELECT Product.*, Stock.* From Product INNER JOIN 
                 Stock ON Product.Id = Stock.ProductId WHERE Product.Id = @Id";
@@ -373,7 +357,7 @@ namespace DimStock.Model
             }
         }
 
-        private void PassTableToList(DataTable dataTable)
+        private void PassDataTableToList(DataTable dataTable)
         {
             var stockProductList = new List<StockProductController>();
 

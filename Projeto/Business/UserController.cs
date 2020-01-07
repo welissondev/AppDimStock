@@ -11,7 +11,7 @@ namespace DimStock.Business
 
         public UserController() { }
 
-        public UserController(AxlDataPagination dataPagination)
+        public UserController(DataPagination dataPagination)
         {
             DataPagination = dataPagination;
         }
@@ -36,13 +36,13 @@ namespace DimStock.Business
 
         public string SearchByName { get; set; }
         public string SearchByEmail { get; set; }
-        public AxlDataPagination DataPagination { get; set; }
+        public DataPagination DataPagination { get; set; }
 
         #endregion 
 
         #region Methods
 
-        public bool SignIn()
+        public bool Access()
         {
             var user = new UserModel(this);
             return user.Access();
@@ -56,7 +56,7 @@ namespace DimStock.Business
             {
                 var historic = new UserHistoryController()
                 {
-                    Login = UserIdentity.Login,
+                    Login = LoginAssistant.Login,
                     OperationType = "Cadastrou",
                     OperationModule = "Usuário",
                     OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
@@ -72,7 +72,7 @@ namespace DimStock.Business
             }
         }
 
-        public bool Change(int id)
+        public bool Edit(int id)
         {
             var user = new UserModel(this);
 
@@ -80,7 +80,7 @@ namespace DimStock.Business
             {
                 var historic = new UserHistoryController()
                 {
-                    Login = UserIdentity.Login,
+                    Login = LoginAssistant.Login,
                     OperationType = "Editou",
                     OperationModule = "Usuário",
                     OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
@@ -106,7 +106,7 @@ namespace DimStock.Business
             {
                 var historic = new UserHistoryController()
                 {
-                    Login = UserIdentity.Login,
+                    Login = LoginAssistant.Login,
                     OperationType = "Deletou",
                     OperationModule = "Usuário",
                     OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
@@ -125,19 +125,19 @@ namespace DimStock.Business
         public void ListData()
         {
             var user = new UserModel(this);
-            user.SelectAll();
+            user.ListData();
         }
 
-        public void FetchData()
+        public void SearchData()
         {
             var user = new UserModel(this);
-            user.SelectCustom();
+            user.DataQuery();
         }
 
-        public void GetDetails(int id)
+        public void ViewDetails(int id)
         {
             var user = new UserModel(this);
-            user.SelectFields(id);
+            user.ViewDetails(id);
         }
 
         #endregion

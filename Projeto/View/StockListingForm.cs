@@ -11,7 +11,7 @@ namespace DimStock.View
     public partial class StockListingForm : Form
     {
         #region Properties
-        private AxlDataPagination dataPagination = new AxlDataPagination();
+        private DataPagination dataPagination = new DataPagination();
         private string selectedSummary = "All";
         #endregion
 
@@ -72,7 +72,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -94,7 +94,7 @@ namespace DimStock.View
         private void SearchTimer_Tick(object sender, EventArgs e)
         {
             PauseSearchTimer();
-            FetchData();
+            SearchData();
         }
 
         #endregion
@@ -160,7 +160,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -212,7 +212,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -260,7 +260,7 @@ namespace DimStock.View
 
         #region MethodsAuxiliarys
 
-        private void FetchData()
+        private void SearchData()
         {
             try
             {
@@ -273,7 +273,7 @@ namespace DimStock.View
                     SearchBySummary = selectedSummary
                 };
 
-                stockProduct.FetchData();
+                stockProduct.SearchData();
 
                 StockDataList.Rows.Clear();
 
@@ -303,7 +303,7 @@ namespace DimStock.View
             {
                 PauseSearchTimer();
 
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -362,7 +362,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -372,12 +372,12 @@ namespace DimStock.View
 
             DayOfTheWeek.Text = DateTime.Now.ToLongDateString();
 
-            AxlDataGridViewLealt.DefaultLayoutDarkblue(StockDataList);
+            DataGridLealt.SetDefaultStyle(StockDataList);
 
             FillAllComboBoxes();
         }
 
-        private void SetInBadingNavigator(AxlDataPagination dataPagination)
+        private void SetInBadingNavigator(DataPagination dataPagination)
         {
             if (dataPagination.RecordCount == 0)
                 dataPagination.CurrentPage = 0;
@@ -439,7 +439,7 @@ namespace DimStock.View
 
                 dataGrid.Columns.Add(productCode);
                 dataGrid.Columns[2].Name = "productCode";
-                dataGrid.Columns[2].HeaderText = "CÓDIGO";
+                dataGrid.Columns[2].HeaderText = "CÓD.";
                 dataGrid.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[2].Visible = true;
@@ -448,7 +448,7 @@ namespace DimStock.View
 
                 dataGrid.Columns.Add(productReference);
                 dataGrid.Columns[3].Name = "productReference";
-                dataGrid.Columns[3].HeaderText = "REFERÊNCIA";
+                dataGrid.Columns[3].HeaderText = "REF.";
                 dataGrid.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[3].Visible = true;
@@ -457,7 +457,7 @@ namespace DimStock.View
 
                 dataGrid.Columns.Add(productSize);
                 dataGrid.Columns[4].Name = "productSize";
-                dataGrid.Columns[4].HeaderText = "TAMANHO";
+                dataGrid.Columns[4].HeaderText = "TAM.";
                 dataGrid.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[4].Visible = true;
@@ -473,31 +473,31 @@ namespace DimStock.View
                 dataGrid.Columns[5].ReadOnly = true;
 
                 dataGrid.Columns.Add(minStock);
-                dataGrid.Columns[6].Width = 100;
+                dataGrid.Columns[6].Width = 70;
                 dataGrid.Columns[6].Name = "minStock";
-                dataGrid.Columns[6].HeaderText = "ESTOQUE MIN.";
+                dataGrid.Columns[6].HeaderText = "MIN.";
                 dataGrid.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[6].ReadOnly = true;
 
                 dataGrid.Columns.Add(maxStock);
-                dataGrid.Columns[7].Width = 100;
+                dataGrid.Columns[7].Width = 70;
                 dataGrid.Columns[7].Name = "maxStock";
-                dataGrid.Columns[7].HeaderText = "ESTOQUE MAX.";
+                dataGrid.Columns[7].HeaderText = "MAX.";
                 dataGrid.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[7].ReadOnly = true;
 
                 dataGrid.Columns.Add(stockQuantity);
-                dataGrid.Columns[8].Width = 100;
+                dataGrid.Columns[8].Width = 70;
                 dataGrid.Columns[8].Name = "stockQuantity";
-                dataGrid.Columns[8].HeaderText = "QTD. ESTOQUE";
+                dataGrid.Columns[8].HeaderText = "QTD.";
                 dataGrid.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[8].ReadOnly = true;
 
                 dataGrid.Columns.Add(stockValue);
-                dataGrid.Columns[9].Width = 100;
+                dataGrid.Columns[9].Width = 120;
                 dataGrid.Columns[9].Name = "stockValue";
                 dataGrid.Columns[9].HeaderText = "VALOR";
                 dataGrid.Columns[9].DefaultCellStyle.Format = "c2";
@@ -507,28 +507,31 @@ namespace DimStock.View
                 dataGrid.Columns[9].ReadOnly = true;
 
                 dataGrid.Columns.Add(stockSummary);
-                dataGrid.Columns[10].Width = 100;
+                dataGrid.Columns[10].Width = 80;
                 dataGrid.Columns[10].Name = "stockSummary";
                 dataGrid.Columns[10].HeaderText = "RESUMO";
                 dataGrid.Columns[10].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[10].ReadOnly = true;
+                dataGrid.Columns[10].DisplayIndex = 0;
 
                 dataGrid.Columns.Add(stockResult);
-                dataGrid.Columns[11].Width = 100;
+                dataGrid.Columns[11].Width = 80;
                 dataGrid.Columns[11].Name = "stockResult";
                 dataGrid.Columns[11].HeaderText = "RESULTADO";
                 dataGrid.Columns[11].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[11].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[11].ReadOnly = true;
+                dataGrid.Columns[11].DisplayIndex = 1;
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
 
         }
 
         #endregion
+
     }
 }

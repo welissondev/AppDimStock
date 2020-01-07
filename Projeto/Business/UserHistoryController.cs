@@ -11,7 +11,7 @@ namespace DimStock.Business
 
         public UserHistoryController() { }
 
-        public UserHistoryController(AxlDataPagination dataPagination)
+        public UserHistoryController(DataPagination dataPagination)
         {
             DataPagination = dataPagination;
         }
@@ -34,7 +34,7 @@ namespace DimStock.Business
         public string SearchByLogin { get; set; }
         public string SearchByStartDate { get; set; }
         public string SearchByFinalDate { get; set; }
-        public AxlDataPagination DataPagination { get; set; }
+        public DataPagination DataPagination { get; set; }
 
         #endregion 
 
@@ -49,13 +49,13 @@ namespace DimStock.Business
         public void ListData()
         {
             var historic = new UserHistoryModel(this);
-            historic.SelectAll();
+            historic.ListData();
         }
 
-        public void FetchData()
+        public void SearchData()
         {
             var historic = new UserHistoryModel(this);
-            historic.SelectCustom();
+            historic.DataQuery();
         }
 
         #endregion 

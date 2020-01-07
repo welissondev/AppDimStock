@@ -22,9 +22,9 @@ namespace DimStock.Model
 
         #region Methods
 
-        public void Insert()
+        public bool Insert()
         {
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlCommand = @"INSERT INTO StockItem(StockMovementId, ProductId, StockId, 
                 Quantity, UnitaryValue, TotalValue)VALUES(@StockMovementId, @ProductId, @StockId, 
@@ -37,7 +37,7 @@ namespace DimStock.Model
                 connection.AddParameter("@UnitaryValue", OleDbType.Double, StockItem.UnitaryValue);
                 connection.AddParameter("@TotalValue", OleDbType.Double, StockItem.TotalValue);
 
-                connection.ExecuteNonQuery(sqlCommand);
+                return connection.ExecuteNonQuery(sqlCommand) > 0;
             }
         }
 
@@ -45,7 +45,7 @@ namespace DimStock.Model
         {
             var deleteState = false;
 
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlCommand = @"DELETE FROM StockItem Where Id = @Id";
 
@@ -60,9 +60,9 @@ namespace DimStock.Model
             return deleteState;
         }
 
-        public void SelectAll(int id)
+        public void ListData(int id)
         {
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlQuery = @"SELECT StockItem.*, Product.Description, Product.Code, [Product.Size],
                 Product.Reference FROM StockItem INNER JOIN Product ON StockItem.ProductId = Product.Id WHERE 

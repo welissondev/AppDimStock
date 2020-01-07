@@ -35,7 +35,7 @@ namespace DimStock.Business
             return transaction;
         }
 
-        public bool Change(int id)
+        public bool Edit(int id)
         {
             var stockDestination = new StockDestinationModel(this);
 
@@ -72,13 +72,13 @@ namespace DimStock.Business
         public void ListData()
         {
             var stockDestination = new StockDestinationModel(this);
-            stockDestination.SelectAll();
+            stockDestination.ListData();
         }
 
-        public void GetDetails(int id)
+        public void ViewDetails(int id)
         {
             var stockDestination = new StockDestinationModel(this);
-            stockDestination.GetFields(id);
+            stockDestination.ViewDetails(id);
         }
 
         #endregion

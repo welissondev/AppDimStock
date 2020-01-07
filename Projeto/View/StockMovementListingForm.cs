@@ -13,7 +13,7 @@ namespace DimStock.View
     {
         #region Variables
 
-        private AxlDataPagination dataPagination = new AxlDataPagination();
+        private DataPagination dataPagination = new DataPagination();
         private string selectedSituation = string.Empty;
         private string selectedType = string.Empty;
 
@@ -89,7 +89,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -120,7 +120,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -152,7 +152,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -169,7 +169,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -200,7 +200,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -231,7 +231,7 @@ namespace DimStock.View
         private void SearchTimer_Tick(object sender, EventArgs e)
         {
             StartSearchTimer();
-            FetchData();
+            SearchData();
         }
 
         #endregion
@@ -266,7 +266,7 @@ namespace DimStock.View
 
         #region MethodsAxiliarys
 
-        private void FetchData()
+        private void SearchData()
         {
             try
             {
@@ -277,7 +277,7 @@ namespace DimStock.View
                     SearchBySituation = selectedSituation
                 };
 
-                stockMovement.FetchData();
+                stockMovement.SearchData();
 
                 MovementStockDataList.Rows.Clear();
 
@@ -300,7 +300,7 @@ namespace DimStock.View
             catch (Exception ex)
             {
                 PauseSearchTimer();
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -329,7 +329,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -342,13 +342,13 @@ namespace DimStock.View
 
                 var stockMoviment = new StockMovimentRegistrationForm();
                 stockMoviment.GetStockMovementDetails(id);
-                stockMoviment.ListItems();
+                stockMoviment.ListStockItems();
                 stockMoviment.ShowDialog();
 
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -392,7 +392,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -404,7 +404,7 @@ namespace DimStock.View
             FillAllComboBox();
 
             //Defini o lealt do datagridviw
-            AxlDataGridViewLealt.DefaultLayoutDarkblue(MovementStockDataList);
+            DataGridLealt.SetDefaultStyle(MovementStockDataList);
 
             //Exibi a data atual para usuáio, no formato long
             DayOfTheWeek.Text = DateTime.Now.ToLongDateString();
@@ -424,7 +424,7 @@ namespace DimStock.View
             SearchTimer.Enabled = false;
         }
 
-        private void SetInBadingNavigator(AxlDataPagination dataPagination)
+        private void SetInBadingNavigator(DataPagination dataPagination)
         {
             if (dataPagination.RecordCount == 0)
                 dataPagination.CurrentPage = 0;
@@ -459,7 +459,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -556,7 +556,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 

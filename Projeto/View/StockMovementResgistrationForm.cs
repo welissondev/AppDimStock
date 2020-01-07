@@ -20,7 +20,7 @@ namespace DimStock.View
         #endregion
 
         #region Variables
-        private AxlDataPagination dataPagination = new AxlDataPagination();
+        private DataPagination dataPagination = new DataPagination();
         #endregion
 
         #region Constructs
@@ -45,7 +45,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -64,7 +64,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -79,8 +79,8 @@ namespace DimStock.View
             {
                 if (CheckDataToAddItem() == true)
                 {
-                    RegisterItem();
-                    ListItems();
+                    RegisterStockItem();
+                    ListStockItems();
                     ClearSearchFields();
                 }
             }
@@ -92,12 +92,12 @@ namespace DimStock.View
             {
                 case "Entrada":
 
-                    AllocateStock(); 
+                    RegisterStockEntries();
                     break;
 
                 case "Saída":
 
-                    DeallocateStock(); 
+                    RegisterStockRemovals();
                     break;
             }
         }
@@ -144,7 +144,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -156,7 +156,7 @@ namespace DimStock.View
         {
             GifLoading.Visible = false;
             QueryTimer.Enabled = false;
-            StockProductFetchData();
+            SearchStock();
         }
 
         #endregion
@@ -172,7 +172,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -180,7 +180,7 @@ namespace DimStock.View
         {
             ClearSearchFields();
             ResetControl();
-            ListItems();
+            ListStockItems();
         }
 
         #endregion
@@ -194,12 +194,12 @@ namespace DimStock.View
                 if (MainDataList.ListIsStock.Equals(true))
                 {
                     ProductId = Convert.ToInt32(MainDataList.CurrentRow.Cells["productId"].Value);
-                    GetStockProductDetails(ProductId);
+                    GetStockDetails(ProductId);
                 }
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -217,7 +217,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -230,48 +230,6 @@ namespace DimStock.View
         #endregion
 
         #region MethodsAuxiliarys
-
-        public void ListItems()
-        {
-            try
-            {
-                var item = new StockItemController();
-                item.ListItens(Convert.ToInt32(StockMovementId.Text));
-
-                MainDataList.Columns.Clear();
-
-                CreateColumnForStockList();
-
-                for (int i = 0; i < item.ListOfRecords.Count; i++)
-                {
-                    MainDataList.Rows.Add(
-                    item.ListOfRecords[i].Id,
-                    item.ListOfRecords[i].StockId,
-                    item.ListOfRecords[i].ProductCode,
-                    item.ListOfRecords[i].ProductSize,
-                    item.ListOfRecords[i].ProductReference,
-                    item.ListOfRecords[i].ProductDescription,
-                    item.ListOfRecords[i].Quantity,
-                    item.ListOfRecords[i].UnitaryValue,
-                    item.ListOfRecords[i].TotalValue
-                    );
-                }
-
-                var totalValue = item.ListOfRecords.Sum(x => x.TotalValue);
-                var totalItems = item.ListOfRecords.Count;
-
-                SubTotal.Text = totalValue.ToString("c2");
-                TotalItems.Text = totalItems.ToString();
-
-                if(OperationSituation.Text == "Finalizada")
-                    MainDataList.Columns["delete"].Visible = false;
-
-            }
-            catch (Exception ex)
-            {
-                AxlException.Message.Show(ex);
-            }
-        }
 
         private List<StockController> GetItems()
         {
@@ -297,7 +255,7 @@ namespace DimStock.View
             return itemList;
         }
 
-        private void StockProductFetchData()
+        private void SearchStock()
         {
             try
             {
@@ -310,7 +268,7 @@ namespace DimStock.View
                     SearchBySummary = "All",
                 };
 
-                stockProduct.FetchData();
+                stockProduct.SearchData();
 
                 MainDataList.Columns.Clear();
 
@@ -334,7 +292,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -356,14 +314,14 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
-        private void GetStockProductDetails(int id)
+        private void GetStockDetails(int id)
         {
             var stockProduct = new StockProductController();
-            stockProduct.GetDetails(id);
+            stockProduct.ViewDetails(id);
 
             QueryByCode.Text = stockProduct.ProductCode.ToString();
             QueryBySize.Text = stockProduct.ProductSize.ToString();
@@ -375,7 +333,7 @@ namespace DimStock.View
             StockQuantity = stockProduct.StockQuantity;
             Quantity.Select();
 
-            ListItems();
+            ListStockItems();
         }
 
         public void GetStockMovementDetails(int id)
@@ -383,7 +341,7 @@ namespace DimStock.View
             try
             {
                 var stockMovement = new StockMovementController();
-                stockMovement.GetDetails(id);
+                stockMovement.ViewDetails(id);
 
                 StockMovementId.Text = id.ToString();
                 OperationType.Text = stockMovement.OperationType;
@@ -396,7 +354,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -451,11 +409,11 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
-        private void AllocateStock()
+        private void RegisterStockEntries()
         {
             if (CheckDataToAddStock() == true)
             {
@@ -464,7 +422,7 @@ namespace DimStock.View
                 {
                     var stock = new StockController();
 
-                    if (stock.Allocate(GetItems(), Convert.ToInt32(StockMovementId.Text)) == true)
+                    if (stock.RegisterEntries(GetItems(), Convert.ToInt32(StockMovementId.Text)) == true)
                     {
                         MessageBox.Show(NotificationController.Message, "SUCESSO", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
@@ -475,7 +433,7 @@ namespace DimStock.View
             }
         }
 
-        private void DeallocateStock()
+        private void RegisterStockRemovals()
         {
             if (CheckDataToAddStock() == true)
             {
@@ -484,7 +442,7 @@ namespace DimStock.View
                 {
                     var stock = new StockController();
 
-                    if (stock.Deallocate(GetItems(), Convert.ToInt32(StockMovementId.Text)) == true)
+                    if (stock.RegisterRemovals(GetItems(), Convert.ToInt32(StockMovementId.Text)) == true)
                     {
                         MessageBox.Show(NotificationController.Message, "SUCESSO", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
@@ -495,7 +453,49 @@ namespace DimStock.View
             }
         }
 
-        private void RegisterItem()
+        public void ListStockItems()
+        {
+            try
+            {
+                var stockItem = new StockItemController();
+                stockItem.ListData(Convert.ToInt32(StockMovementId.Text));
+
+                MainDataList.Columns.Clear();
+
+                CreateColumnForStockList();
+
+                for (int i = 0; i < stockItem.ListOfRecords.Count; i++)
+                {
+                    MainDataList.Rows.Add(
+                    stockItem.ListOfRecords[i].Id,
+                    stockItem.ListOfRecords[i].StockId,
+                    stockItem.ListOfRecords[i].ProductCode,
+                    stockItem.ListOfRecords[i].ProductSize,
+                    stockItem.ListOfRecords[i].ProductReference,
+                    stockItem.ListOfRecords[i].ProductDescription,
+                    stockItem.ListOfRecords[i].Quantity,
+                    stockItem.ListOfRecords[i].UnitaryValue,
+                    stockItem.ListOfRecords[i].TotalValue
+                    );
+                }
+
+                var totalValue = stockItem.ListOfRecords.Sum(x => x.TotalValue);
+                var totalItems = stockItem.ListOfRecords.Count;
+
+                SubTotal.Text = totalValue.ToString("c2");
+                TotalItems.Text = totalItems.ToString();
+
+                if (OperationSituation.Text == "Finalizada")
+                    MainDataList.Columns["delete"].Visible = false;
+
+            }
+            catch (Exception ex)
+            {
+                ExceptionAssistant.Message.Show(ex);
+            }
+        }
+
+        private void RegisterStockItem()
         {
             try
             {
@@ -509,17 +509,12 @@ namespace DimStock.View
                     TotalValue = Convert.ToDouble(TotalValue.DecimalValue)
                 };
 
-                stockItem.Add();
+                stockItem.Register();
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
-        }
-
-        private double CalculateTotal(int quantity, double unitaryValue)
-        {
-            return quantity * unitaryValue;
         }
 
         private void ExcludeItem(int id)
@@ -529,7 +524,7 @@ namespace DimStock.View
                 var item = new StockItemController();
                 item.Exclude(id);
 
-                ListItems();
+                ListStockItems();
             }
         }
 
@@ -625,9 +620,14 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
                 return false;
             }
+        }
+
+        private double CalculateTotal(int quantity, double unitaryValue)
+        {
+            return quantity * unitaryValue;
         }
 
         private void ClearSearchFields()
@@ -648,7 +648,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -671,9 +671,7 @@ namespace DimStock.View
 
             ResetControl();
 
-            AxlDataGridViewLealt.DefaultLayoutDarkblue(MainDataList);
-
-            TodayIsDay.Text = DateTime.Now.ToLongDateString();
+            DayOfTheWeek.Text = DateTime.Now.ToLongDateString();
         }
 
         private void CreateColumnForItemList()
@@ -690,6 +688,8 @@ namespace DimStock.View
 
                 var mainDataList = MainDataList;
                 mainDataList.ListIsStock = true;
+
+                DataGridLealt.SetDefaultStyle(mainDataList);
 
                 mainDataList.Columns.Add(stockId);
                 mainDataList.Columns[0].Width = 100;
@@ -749,7 +749,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -768,97 +768,99 @@ namespace DimStock.View
                 var stockTotalValue = new DataGridViewTextBoxColumn();
                 var delete = new DataGridViewImageColumn();
 
-                var dataGrid = MainDataList;
-                dataGrid.ListIsItem = true;
+                var mainDataList = MainDataList;
+                mainDataList.ListIsItem = true;
 
-                dataGrid.Columns.Add(itemId);
-                dataGrid.Columns[0].Width = 100;
-                dataGrid.Columns[0].Name = "itemId";
-                dataGrid.Columns[0].HeaderText = "ID ITEM";
-                dataGrid.Columns[0].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                dataGrid.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                dataGrid.Columns[0].ReadOnly = true;
-                dataGrid.Columns[0].Visible = false;
+                DataGridLealt.DefineStyleItem(mainDataList);
 
-                dataGrid.Columns.Add(stockId);
-                dataGrid.Columns[1].Width = 100;
-                dataGrid.Columns[1].Name = "stockId";
-                dataGrid.Columns[1].HeaderText = "ID ESTOQUE";
-                dataGrid.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                dataGrid.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                dataGrid.Columns[1].ReadOnly = true;
-                dataGrid.Columns[1].Visible = false;
+                mainDataList.Columns.Add(itemId);
+                mainDataList.Columns[0].Width = 100;
+                mainDataList.Columns[0].Name = "itemId";
+                mainDataList.Columns[0].HeaderText = "ID ITEM";
+                mainDataList.Columns[0].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                mainDataList.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                mainDataList.Columns[0].ReadOnly = true;
+                mainDataList.Columns[0].Visible = false;
 
-                dataGrid.Columns.Add(productCode);
-                dataGrid.Columns[2].Width = 80;
-                dataGrid.Columns[2].Name = "productCode";
-                dataGrid.Columns[2].HeaderText = "CÓD.";
-                dataGrid.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGrid.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGrid.Columns[2].ReadOnly = true;
+                mainDataList.Columns.Add(stockId);
+                mainDataList.Columns[1].Width = 100;
+                mainDataList.Columns[1].Name = "stockId";
+                mainDataList.Columns[1].HeaderText = "ID ESTOQUE";
+                mainDataList.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                mainDataList.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                mainDataList.Columns[1].ReadOnly = true;
+                mainDataList.Columns[1].Visible = false;
 
-                dataGrid.Columns.Add(productSize);
-                dataGrid.Columns[3].Width = 80;
-                dataGrid.Columns[3].Name = "productSize";
-                dataGrid.Columns[3].HeaderText = "TAM.";
-                dataGrid.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGrid.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGrid.Columns[3].ReadOnly = true;
+                mainDataList.Columns.Add(productCode);
+                mainDataList.Columns[2].Width = 80;
+                mainDataList.Columns[2].Name = "productCode";
+                mainDataList.Columns[2].HeaderText = "CÓD.";
+                mainDataList.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                mainDataList.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                mainDataList.Columns[2].ReadOnly = true;
 
-                dataGrid.Columns.Add(productReference);
-                dataGrid.Columns[4].Width = 80;
-                dataGrid.Columns[4].Name = "productReference";
-                dataGrid.Columns[4].HeaderText = "REF.";
-                dataGrid.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGrid.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGrid.Columns[4].ReadOnly = true;
+                mainDataList.Columns.Add(productSize);
+                mainDataList.Columns[3].Width = 80;
+                mainDataList.Columns[3].Name = "productSize";
+                mainDataList.Columns[3].HeaderText = "TAM.";
+                mainDataList.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                mainDataList.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                mainDataList.Columns[3].ReadOnly = true;
 
-                dataGrid.Columns.Add(productDescription);
-                dataGrid.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dataGrid.Columns[5].Name = "productDescription";
-                dataGrid.Columns[5].HeaderText = "DESCRIÇÃO";
-                dataGrid.Columns[5].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                dataGrid.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                dataGrid.Columns[5].ReadOnly = true;
+                mainDataList.Columns.Add(productReference);
+                mainDataList.Columns[4].Width = 80;
+                mainDataList.Columns[4].Name = "productReference";
+                mainDataList.Columns[4].HeaderText = "REF.";
+                mainDataList.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                mainDataList.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                mainDataList.Columns[4].ReadOnly = true;
 
-                dataGrid.Columns.Add(stockQuantity);
-                dataGrid.Columns[6].Width = 50;
-                dataGrid.Columns[6].Name = "stockQuantity";
-                dataGrid.Columns[6].HeaderText = "QTD.";
-                dataGrid.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                dataGrid.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                dataGrid.Columns[6].ReadOnly = true;
+                mainDataList.Columns.Add(productDescription);
+                mainDataList.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                mainDataList.Columns[5].Name = "productDescription";
+                mainDataList.Columns[5].HeaderText = "DESCRIÇÃO";
+                mainDataList.Columns[5].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                mainDataList.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                mainDataList.Columns[5].ReadOnly = true;
 
-                dataGrid.Columns.Add(productCostPrice);
-                dataGrid.Columns[7].Name = "productCostPrice";
-                dataGrid.Columns[7].HeaderText = "VALOR UNI.";
-                dataGrid.Columns[7].DefaultCellStyle.Format = "c2";
-                dataGrid.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                dataGrid.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                dataGrid.Columns[7].ReadOnly = true;
+                mainDataList.Columns.Add(stockQuantity);
+                mainDataList.Columns[6].Width = 50;
+                mainDataList.Columns[6].Name = "stockQuantity";
+                mainDataList.Columns[6].HeaderText = "QTD.";
+                mainDataList.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                mainDataList.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                mainDataList.Columns[6].ReadOnly = true;
 
-                dataGrid.Columns.Add(stockTotalValue);
-                dataGrid.Columns[8].Name = "stockTotalValue";
-                dataGrid.Columns[8].HeaderText = "TOTAL";
-                dataGrid.Columns[8].DefaultCellStyle.Format = "c2";
-                dataGrid.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                dataGrid.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                dataGrid.Columns[8].ReadOnly = true;
+                mainDataList.Columns.Add(productCostPrice);
+                mainDataList.Columns[7].Name = "productCostPrice";
+                mainDataList.Columns[7].HeaderText = "VALOR UNI.";
+                mainDataList.Columns[7].DefaultCellStyle.Format = "c2";
+                mainDataList.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                mainDataList.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                mainDataList.Columns[7].ReadOnly = true;
 
-                dataGrid.Columns.Add(delete);
+                mainDataList.Columns.Add(stockTotalValue);
+                mainDataList.Columns[8].Name = "stockTotalValue";
+                mainDataList.Columns[8].HeaderText = "TOTAL";
+                mainDataList.Columns[8].DefaultCellStyle.Format = "c2";
+                mainDataList.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                mainDataList.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                mainDataList.Columns[8].ReadOnly = true;
+
+                mainDataList.Columns.Add(delete);
                 delete.Image = Resources.deletar2;
                 delete.ImageLayout = DataGridViewImageCellLayout.Normal;
-                dataGrid.Columns[9].Name = "delete";
-                dataGrid.Columns[9].HeaderText = "";
-                dataGrid.Columns[9].Width = 40;
-                dataGrid.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGrid.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGrid.Columns[9].ReadOnly = true;
+                mainDataList.Columns[9].Name = "delete";
+                mainDataList.Columns[9].HeaderText = "";
+                mainDataList.Columns[9].Width = 40;
+                mainDataList.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                mainDataList.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                mainDataList.Columns[9].ReadOnly = true;
 
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 

@@ -29,7 +29,7 @@ namespace DimStock.Model
         {
             bool registerState = false;
 
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlCommand = @"INSERT INTO StockMovement(OperationType, OperationDate, 
                 OperationHour, OperationSituation)VALUES(@OperationType, @OperationDate, @OperationHour, 
@@ -62,7 +62,7 @@ namespace DimStock.Model
 
             if (stockMovement.StockDestinationLocation != string.Empty)
             {
-                using (var connection = new MdlConnection())
+                using (var connection = new ConnectionModel())
                 {
                     var sqlCommand = @"UPDATE StockMovement SET StockDestinationLocation
                     = @StockDestinationLocation WHERE Id = @Id";
@@ -84,7 +84,7 @@ namespace DimStock.Model
         {
             bool deleteState = false;
 
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlCommand = @"DELETE FROM StockMovement WHERE Id = @Id" ;
 
@@ -105,7 +105,7 @@ namespace DimStock.Model
             return deleteState;
         }
 
-        public bool FianalizeOperation(MdlConnection connection, int id)
+        public bool FianalizeOperation(ConnectionModel connection, int id)
         {
             var transactionState = false;
 
@@ -118,7 +118,7 @@ namespace DimStock.Model
             {
                 var historic = new UserHistoryController()
                 {
-                    Login = UserIdentity.Login,
+                    Login = LoginAssistant.Login,
                     OperationType = "Confirmou",
                     OperationModule = "Atividade",
                     OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
@@ -135,9 +135,9 @@ namespace DimStock.Model
             return transactionState;
         }
 
-        public void SelectAll()
+        public void ListData()
         {
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlQuery = @"SELECT * From StockMovement";
 
@@ -164,9 +164,9 @@ namespace DimStock.Model
             }
         }
 
-        public void SelectCustom()
+        public void DataQuery()
         {
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlQuery = string.Empty;
                 var sqlCount = string.Empty;
@@ -214,14 +214,14 @@ namespace DimStock.Model
                 stockMovement.DataPagination.OffSetValue,
                 stockMovement.DataPagination.PageSize);
 
-                PassTableToList(dataTable);
+                PassDataTableToList(dataTable);
 
             }
         }
 
-        public void GetFields(int id)
+        public void ViewDetails(int id)
         {
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlQuery = @"SELECT * FROM StockMovement WHERE Id = @Id";
 
@@ -244,7 +244,7 @@ namespace DimStock.Model
 
         public string GetAffectedFields(int id)
         {
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 var affectedFieldList = new List<string>();
 
@@ -268,7 +268,7 @@ namespace DimStock.Model
             }
         }
 
-        private void PassTableToList(DataTable dataTable)
+        private void PassDataTableToList(DataTable dataTable)
         {
             var stockMovementsList = new List<StockMovementController>();
 

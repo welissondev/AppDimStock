@@ -28,7 +28,7 @@ namespace DimStock.Model
 
         public bool Insert()
         {
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlCommand = @"INSERT INTO UserHistoric(Login, OperationType, OperationDate, OperationHour, 
                 OperationModule, AffectedFields)VALUES(@Login, @OperationType, @OperationDate, @OperationHour, 
@@ -46,13 +46,13 @@ namespace DimStock.Model
             }
         }
 
-        public void SelectAll()
+        public void ListData()
         {
             var sqlQuery = @"SELECT * FROM UserHistoric";
 
             var historicList = new List<UserHistoryController>();
 
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
                 using (var reader = connection.QueryWithDataReader(sqlQuery))
                 {
@@ -78,23 +78,15 @@ namespace DimStock.Model
 
         }
 
-        public void SelectCustom()
+        public void DataQuery()
         {
-            using (var connection = new MdlConnection())
+            using (var connection = new ConnectionModel())
             {
-                #region Variables
                 var sqlQuery = string.Empty;
                 var criterion = string.Empty;
                 var parameter = connection.Command.Parameters;
-                #endregion 
-
-                #region DefaultQuery
 
                 sqlQuery = @"SELECT * FROM UserHistoric WHERE Id > 0";
-
-                #endregion 
-
-                #region Criterion + OperationDate
 
                 if (historic.SearchByStartDate != string.Empty &&
                     historic.SearchByFinalDate != string.Empty)
@@ -108,10 +100,6 @@ namespace DimStock.Model
                     historic.SearchByFinalDate));
                 }
 
-                #endregion
-
-                #region Criterion + Login
-
                 if (historic.SearchByLogin != string.Empty)
                 {
                     criterion += " AND Login LIKE @Login ";
@@ -120,27 +108,18 @@ namespace DimStock.Model
                     historic.SearchByLogin));
                 }
 
-                #endregion 
-
-                #region Criterion + SqlQuery
-
                 sqlQuery += criterion;
-
-                #endregion
-
-                #region FillDataTable
 
                 var dataTable = connection.QueryWithDataTable(sqlQuery,
                 historic.DataPagination.OffSetValue,
                 historic.DataPagination.PageSize);
 
-                PassTableForList(dataTable);
+                PassDataTableForList(dataTable);
 
-                #endregion 
             }
         }
 
-        private void PassTableForList(DataTable dataTable)
+        private void PassDataTableForList(DataTable dataTable)
         {
             var historicList = new List<UserHistoryController>();
 

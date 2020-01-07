@@ -58,7 +58,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -78,7 +78,7 @@ namespace DimStock.View
                     Location = DestinationLocation.Text.TrimStart().TrimEnd()
                 };
 
-                if (stockDestination.Change(id) == true)
+                if (stockDestination.Edit(id) == true)
                 {
                     MessageBox.Show(NotificationController.Message, "SUCESSO",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -86,7 +86,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -112,7 +112,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -131,11 +131,11 @@ namespace DimStock.View
         {
             try
             {
-                GetDetails();
+                ViewDetails();
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -156,14 +156,14 @@ namespace DimStock.View
             return true;
         }
 
-        private void GetDetails()
+        private void ViewDetails()
         {
             if (DestinationDataList.Rows.Count > 0)
             {
                 id = Convert.ToInt32(DestinationDataList.CurrentRow.Cells["id"].Value);
 
                 var stockDestination = new StockDestinationController();
-                stockDestination.GetDetails(id);
+                stockDestination.ViewDetails(id);
 
                 DestinationLocation.Text = stockDestination.Location;
             }
@@ -187,7 +187,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -199,7 +199,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -211,7 +211,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
@@ -221,11 +221,11 @@ namespace DimStock.View
             ResetVariables();
         }
 
-        public void InitializeSettings()
+        private void InitializeSettings()
         {
             CreateColumnInTheDataList();
 
-            AxlDataGridViewLealt.DefaultLayoutDarkblue(DestinationDataList);
+            DataGridLealt.SetDefaultStyle(DestinationDataList);
 
         }
 
@@ -257,7 +257,7 @@ namespace DimStock.View
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionAssistant.Message.Show(ex);
             }
         }
 
