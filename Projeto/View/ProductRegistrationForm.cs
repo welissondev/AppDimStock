@@ -181,12 +181,12 @@ namespace DimStock.View
 
                 //Apaga a foto atual do diretório, caso a foto do produto
                 //seja alterada
-                if (photoController.FindInDirectory(photoPath) == true)
+                if (photoController.FindInDirectory(photoPath) == false)
                     photoController.DeleteFromDirectory(
                     ProductPhoto.PathOfLastSelectedPhoto);
 
                 photoController.CopyToDirectory(ProductPhoto.SelectedDirectory,
-                photoController.GetDirectoryPeth() + product.PhotoName);
+                photoPath);
 
                 MessageBox.Show(NotificationController.Message, "SUCESSO",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -313,6 +313,7 @@ namespace DimStock.View
                 ProductPhoto.Image = Image.FromStream(fileStream);
                 ProductPhoto.SelectedDirectory = photoPath;
                 ProductPhoto.PathOfLastSelectedPhoto = photoPath;
+                ProductPhoto.IndentificationPhotoNumber = photoIdNumber;
 
                 if (newIdNumber == true)
                 {

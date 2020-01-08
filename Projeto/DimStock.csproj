@@ -133,6 +133,7 @@
     <Compile Include="Auxiliary\CustomDataGridViewOne.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Business\Connection.cs" />
     <Compile Include="Business\StockDestinationController.cs" />
     <Compile Include="Business\StockItemController.cs" />
     <Compile Include="Business\StockProductController.cs" />
@@ -149,7 +150,6 @@
     <Compile Include="Model\StockDestinationModel.cs" />
     <Compile Include="Model\StockItemModel.cs" />
     <Compile Include="Model\StockProductModel.cs" />
-    <Compile Include="Model\ProductModel.cs" />
     <Compile Include="Model\UserModel.cs" />
     <Compile Include="Model\UserHistoryModel.cs" />
     <Compile Include="Program.cs" />

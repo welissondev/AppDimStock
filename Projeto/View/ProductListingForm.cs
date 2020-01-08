@@ -383,7 +383,7 @@ namespace DimStock.View
                 {
                     var product = new ProductController();
 
-                    if (product.Exclude(Id) == false)
+                    if (product.Delete(Id) == false)
                     {
                         MessageBox.Show(NotificationController.Message, "ATENÇÃO",
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
