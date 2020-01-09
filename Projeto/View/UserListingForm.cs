@@ -233,7 +233,7 @@ namespace DimStock.View
                 {
                     var user = new UserController();
 
-                    if (user.Exclude(id) == true)
+                    if (user.Delete(id) == true)
                     {
                         MessageBox.Show(NotificationController.Message, "SUCESSO",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
