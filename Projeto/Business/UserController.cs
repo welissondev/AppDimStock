@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
 using DimStock.Auxiliary;
-using DimStock.Model;
 
 namespace DimStock.Business
 {
@@ -267,7 +266,7 @@ namespace DimStock.Business
 
         public bool CheckIfRegisterExists()
         {
-            using (var connection = new ConnectionModel())
+            using (var connection = new Connection())
             {
                 var userFound = 0;
 

@@ -1,5 +1,4 @@
-﻿using DimStock.Model;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using DimStock.Report;
 using DimStock.Auxiliary;
 using System;
@@ -319,7 +318,7 @@ namespace DimStock.Business
 
         public void ViewDetails(int id)
         {
-            using (var connection = new ConnectionModel())
+            using (var connection = new Connection())
             {
                 var sqlQuery = @"SELECT Product.*, Stock.* From Product INNER JOIN 
                 Stock ON Product.Id = Stock.ProductId WHERE Product.Id = @Id";

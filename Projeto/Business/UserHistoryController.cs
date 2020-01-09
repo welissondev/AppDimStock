@@ -1,5 +1,4 @@
 ﻿using System;
-using DimStock.Model;
 using DimStock.Auxiliary;
 using System.Collections.Generic;
 using System.Data.OleDb;
