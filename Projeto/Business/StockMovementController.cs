@@ -2,7 +2,8 @@
 using DimStock.Model;
 using System;
 using System.Collections.Generic;
-
+using System.Data;
+using System.Data.OleDb;
 
 namespace DimStock.Business
 {
@@ -42,85 +43,229 @@ namespace DimStock.Business
 
         public bool Register()
         {
-            var addState = false;
+            bool registerState = false;
 
-            var stockMovement = new StockMovementModel(this);
-
-            if (stockMovement.Insert() == true)
+            using (var connection = new Connection())
             {
-                var historic = new UserHistoryController
-                {
-                    Login = LoginAssistant.Login,
-                    OperationType = "Adicionou",
-                    OperationModule = "Atividade",
-                    OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
-                    OperationHour = DateTime.Now.ToString("HH:mm:ss"),
-                    AffectedFields = stockMovement.GetAffectedFields(Id)
-                };
+                var sqlCommand = @"INSERT INTO StockMovement(OperationType, OperationDate, 
+                OperationHour, OperationSituation)VALUES(@OperationType, @OperationDate, @OperationHour, 
+                @OperationSituation)";
 
-                if (historic.Register() == true)
+                connection.AddParameter("@OperationType", OleDbType.VarChar, OperationType);
+                connection.AddParameter("@OperationDate", OleDbType.Date, OperationDate);
+                connection.AddParameter("@OperationHour", OleDbType.VarChar, OperationHour);
+                connection.AddParameter("@OperationSituation", OleDbType.VarChar, OperationSituation);
+
+                if (connection.ExecuteNonQuery(sqlCommand) > 0)
                 {
-                    addState = true;
+                    Id = Convert.ToInt32(connection.ExecuteScalar(
+                    @"SELECT MAX(Id) FROM StockMovement"));
+
+                    if (Id > 0)
+                    {
+                        registerState = true;
+                    }
+
                 }
-            }
 
-            return addState;
+                return registerState;
+            }
         }
 
         public bool SetDestination(int id)
         {
-            var stockMovement = new StockMovementModel(this);
-            return stockMovement.SetDestination(id);
-        }
+            bool setDestinationState = false;
 
-        public bool Exclude(int id)
-        {
-            var deleteState = false;
-
-            var stockMovement = new StockMovementModel(this);
-            var affectedFileds = stockMovement.GetAffectedFields(id);
-
-            var stockItem = new StockItemController();
-            stockItem.ListData(id);
-
-            if (stockMovement.Delete(id) == true)
+            if (StockDestinationLocation != string.Empty)
             {
-                var historic = new UserHistoryController()
+                using (var connection = new Connection())
                 {
-                    Login = LoginAssistant.Login,
-                    OperationType = "Deletou",
-                    OperationModule = "Atividade",
-                    OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
-                    OperationHour = DateTime.Now.ToString("HH:mm:ss"),
-                    AffectedFields = affectedFileds
-                };
+                    var sqlCommand = @"UPDATE StockMovement SET StockDestinationLocation
+                    = @StockDestinationLocation WHERE Id = @Id";
 
-                if (historic.Register() == true)
-                {
-                    deleteState = true;
+                    connection.AddParameter("@StockDestinationLocation", 
+                    OleDbType.VarChar, StockDestinationLocation);
+                    connection.AddParameter("@Id", OleDbType.Integer, id);
+
+                    if(connection.ExecuteNonQuery(sqlCommand) > 0)
+                    {
+                        setDestinationState = true;
+                    }
                 }
             }
 
+            return setDestinationState;
+        }
+
+        public bool FinalizeOperation(Connection connection, int id)
+        {
+            var transactionState = false;
+
+            var sqlCommand = @"UPDATE StockMovement Set OperationSituation 
+            = 'Finalizada' Where Id = @Id";
+
+            connection.ParameterClear();
+            connection.AddParameter("@Id", OleDbType.Integer, id);
+
+            if (connection.ExecuteTransaction(sqlCommand) > 0)
+            {
+               transactionState = true;
+            }
+
+            return transactionState;
+        }
+
+        public bool Delete(int id)
+        {
+            bool deleteState = false;
+
+            using (var connection = new Connection())
+            {
+                var sqlCommand = @"DELETE FROM StockMovement WHERE Id = @Id" ;
+
+                connection.AddParameter("@Id", OleDbType.Integer, id);
+
+                if (connection.ExecuteNonQuery(sqlCommand) > 0)
+                {
+                    NotificationController.Message = "Deletado com sucesso!";
+                    deleteState = true;
+                }
+                else
+                {
+                    NotificationController.Message = "Esse registro já foi deletado, " +
+                    "atualize a lista de registros!";
+                }
+            }
 
             return deleteState;
         }
 
         public void ListData()
         {
-            var stockMovement = new StockMovementModel(this);
-            stockMovement.ListData();
+            using (var connection = new Connection())
+            {
+                var sqlQuery = @"SELECT * From StockMovement";
+
+                var stockMovementsList = new List<StockMovementController>();
+
+                using (var reader = connection.QueryWithDataReader(sqlQuery))
+                {
+                    while (reader.Read())
+                    {
+                        var stockMovement = new StockMovementController()
+                        {
+                            Id = Convert.ToInt32(reader["Id"]),
+                            OperationType = reader["OperationType"].ToString(),
+                            OperationDate = Convert.ToDateTime(reader["OperationDate"]),
+                            OperationHour = reader["OperationHour"].ToString(),
+                            OperationSituation = reader["OperationSituation"].ToString(),
+                        };
+
+                        stockMovementsList.Add(stockMovement);
+                    }
+
+                    ListOfRecords = stockMovementsList;
+                }
+            }
         }
 
         public void SearchData()
         {
-            var stockMovement = new StockMovementModel(this);
-            stockMovement.DataQuery();
+            using (var connection = new Connection())
+            {
+                var sqlQuery = string.Empty;
+                var sqlCount = string.Empty;
+                var criterion = string.Empty;
+                var parameter = connection.Command.Parameters;
+
+                sqlQuery = @"SELECT * From StockMovement 
+                WHERE Id > 0 ";
+
+                sqlCount = @"SELECT COUNT(*) FROM StockMovement 
+                WHERE Id > 0 ";
+
+                if (SearchByType != string.Empty)
+                {
+                    criterion += @" AND OperationType LIKE @OperationType";
+
+                    parameter.AddWithValue("@OperationType", string.Format("{0}",
+                    SearchByType));
+                }
+
+                if (SearchBySituation != string.Empty)
+                {
+                    criterion += @" AND OperationSituation LIKE @OperationSituation";
+
+                    parameter.AddWithValue("@OperationSituation", string.Format("{0}",
+                    SearchBySituation));
+                }
+
+                if (SearchByMovimentId != string.Empty)
+                {
+                    criterion += @" AND Id LIKE @MovimentId ";
+
+                    parameter.AddWithValue("@MovimentId", string.Format("{0}",
+                    SearchByMovimentId));
+                }
+
+                sqlQuery += criterion + @" ORDER BY Id DESC";
+
+                sqlCount += criterion;
+
+                DataPagination.RecordCount = Convert.ToInt32(
+                connection.ExecuteScalar(sqlCount));
+
+                var dataTable = connection.QueryWithDataTable(sqlQuery,
+                DataPagination.OffSetValue,
+                DataPagination.PageSize);
+
+                PassDataTableToList(dataTable);
+
+            }
         }
 
         public void ViewDetails(int id)
         {
-            var stockMovement = new StockMovementModel(this);
-            stockMovement.ViewDetails(id);
+            using (var connection = new Connection())
+            {
+                var sqlQuery = @"SELECT * FROM StockMovement WHERE Id = @Id";
+
+                connection.AddParameter("Id", OleDbType.Integer, id);
+
+                using (var reader = connection.QueryWithDataReader(sqlQuery))
+                {
+                    while (reader.Read())
+                    {
+                        Id = Convert.ToInt32(reader["Id"]);
+                        OperationType = Convert.ToString(reader["OperationType"]);
+                        OperationDate = Convert.ToDateTime(reader["OperationDate"]);
+                        OperationHour = Convert.ToString(reader["OperationHour"]);
+                        OperationSituation = Convert.ToString(reader["OperationSituation"]);
+                        StockDestinationLocation = Convert.ToString(reader["StockDestinationLocation"]);
+                    }
+                }
+            }
+        }
+
+        public void PassDataTableToList(DataTable dataTable)
+        {
+            var stockMovementsList = new List<StockMovementController>();
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                var stockMovement = new StockMovementController()
+                {
+                    Id = Convert.ToInt32(row["Id"]),
+                    OperationType = Convert.ToString(row["OperationType"]),
+                    OperationDate = Convert.ToDateTime(row["OperationDate"]),
+                    OperationHour = Convert.ToString(row["OperationHour"]),
+                    OperationSituation = Convert.ToString(row["OperationSituation"])
+                };
+
+                stockMovementsList.Add(stockMovement);
+            }
+
+            ListOfRecords = stockMovementsList;
         }
 
         #endregion

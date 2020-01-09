@@ -1,5 +1,7 @@
 ﻿using DimStock.Model;
+using System;
 using System.Collections.Generic;
+using System.Data.OleDb;
 
 namespace DimStock.Business
 {
@@ -17,19 +19,25 @@ namespace DimStock.Business
         {
             var transaction = false;
 
-            var stockDestination = new StockDestinationModel(this);
-
-            if (stockDestination.CheckIfDestinationExists() == false)
+            using (var connection = new Connection())
             {
-                if (stockDestination.Insert() == true)
+                if (CheckIfDestinationExists() == true)
+                {
+                    NotificationController.Message = "Esse destino já existe, cadastre outro!";
+                    return transaction;
+                }
+
+                var sqlCommand = @"INSERT INTO StockDestination
+                (Location)VALUES(@Location)";
+
+                connection.AddParameter("@Location",
+                OleDbType.VarChar, Location);
+
+                if (connection.ExecuteNonQuery(sqlCommand) > 0)
                 {
                     transaction = true;
                     NotificationController.Message = "Cadastrado com sucesso!";
                 }
-            }
-            else
-            {
-                NotificationController.Message = "Esse destino já existe, cadastre outro!";
             }
 
             return transaction;
@@ -37,33 +45,47 @@ namespace DimStock.Business
 
         public bool Edit(int id)
         {
-            var stockDestination = new StockDestinationModel(this);
-
             var transaction = false;
 
-            if (stockDestination.Update(id) == true)
+            using (var connection = new Connection())
             {
-                NotificationController.Message = "Editado com sucesso!";
-                transaction = true;
+                var sqlCommand = @"UPDATE StockDestination SET 
+                Location = @Location WHERE Id = @Id";
+
+                connection.AddParameter("@Location", OleDbType.VarChar, Location);
+                connection.AddParameter("@Id", OleDbType.Integer, id);
+
+                if (connection.ExecuteNonQuery(sqlCommand) > 0)
+                {
+                    NotificationController.Message = "Editado com sucesso!";
+                    transaction = true;
+                }
             }
 
             return transaction;
         }
 
-        public bool Exclude(int id)
+        public bool Delete(int id)
         {
-            var stockDestination = new StockDestinationModel(this);
-
             bool transaction = false;
 
-            if (stockDestination.Delete(id) == true)
+            using (var connection = new Connection())
             {
-                NotificationController.Message = "Deletado com sucesso!";
-                transaction = true;
-            }
-            else
-            {
-                NotificationController.Message = "Esse registro já foi deletado, atualize a lista de dados!";
+                var sqlCommand = @"DELETE FROM StockDestination 
+                WHERE Id = @Id";
+
+                connection.AddParameter("@Id", OleDbType.Integer, id);
+
+                if (connection.ExecuteNonQuery(sqlCommand) > 0)
+                {
+                    NotificationController.Message = "Deletado com sucesso!";
+                    transaction = true;
+                }
+                else
+                {
+                    NotificationController.Message = "Esse registro já foi " +
+                    "deletado, atualize a lista de dados!";
+                }
             }
 
             return transaction;
@@ -71,14 +93,72 @@ namespace DimStock.Business
 
         public void ListData()
         {
-            var stockDestination = new StockDestinationModel(this);
-            stockDestination.ListData();
+            var destinationList = new List<StockDestinationController>();
+
+            var sqlQuery = @"SELECT * From StockDestination";
+
+            using (var connection = new Connection())
+            {
+                using (var reader = connection.QueryWithDataReader(sqlQuery))
+                {
+                    while (reader.Read())
+                    {
+                        var stockDestination = new StockDestinationController()
+                        {
+                            Id = Convert.ToInt32(reader["Id"]),
+                            Location = Convert.ToString(reader["Location"])
+                        };
+
+                        destinationList.Add(stockDestination);
+                    }
+                }
+
+                ListOfRecords = destinationList;
+            }
         }
 
         public void ViewDetails(int id)
         {
-            var stockDestination = new StockDestinationModel(this);
-            stockDestination.ViewDetails(id);
+            using (var connection = new Connection())
+            {
+                var sqlQuery = @"SELECT * FROM StockDestination 
+                WHERE Id = @Id";
+
+                connection.AddParameter("@Id", OleDbType.Integer, id);
+
+                using (var reader = connection.QueryWithDataReader(sqlQuery))
+                {
+                    while (reader.Read())
+                    {
+                        Id = Convert.ToInt32(reader["Id"]);
+                        Location = Convert.ToString(reader["Location"]);
+                    }
+                }
+            }
+        }
+
+        public bool CheckIfDestinationExists()
+        {
+            var destinationsFound = 0;
+
+            using (var connection = new Connection())
+            {
+                var sqlQuery = @"SELECT Location From StockDestination 
+                WHERE Location LIKE @Location";
+
+                connection.AddParameter("@Location",
+                OleDbType.VarChar, Location);
+
+                using (var reader = connection.QueryWithDataReader(sqlQuery))
+                {
+                    while (reader.Read())
+                    {
+                        destinationsFound += 1;
+                    }
+                }
+            }
+
+            return destinationsFound > 0;
         }
 
         #endregion

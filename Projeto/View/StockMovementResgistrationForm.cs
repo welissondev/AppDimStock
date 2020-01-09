@@ -401,7 +401,7 @@ namespace DimStock.View
                     {
                         var stockMovement = new StockMovementController();
 
-                        if (stockMovement.Exclude(Convert.ToInt32(StockMovementId.Text)) == true)
+                        if (stockMovement.Delete(Convert.ToInt32(StockMovementId.Text)) == true)
                         {
                             MessageBox.Show(NotificationController.Message, "SUCESSO",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -460,7 +460,7 @@ namespace DimStock.View
             try
             {
                 var stockItem = new StockItemController();
-                stockItem.ListData(Convert.ToInt32(StockMovementId.Text));
+                stockItem.ListItem(Convert.ToInt32(StockMovementId.Text));
 
                 MainDataList.Columns.Clear();
 
@@ -513,7 +513,7 @@ namespace DimStock.View
                     TotalValue = Convert.ToDouble(TotalValue.DecimalValue)
                 };
 
-                stockItem.Register();
+                stockItem.Add();
             }
             catch (Exception ex)
             {
@@ -526,7 +526,7 @@ namespace DimStock.View
             if (OperationSituation.Text != "Finalizada")
             {
                 var item = new StockItemController();
-                item.Exclude(id);
+                item.Remove(id);
 
                 ListStockItems();
             }

@@ -103,7 +103,7 @@ namespace DimStock.View
 
                 var stockDestination = new StockDestinationController();
 
-                if (stockDestination.Exclude(id) == true)
+                if (stockDestination.Delete(id) == true)
                 {
                     MessageBox.Show(NotificationController.Message, "SUCESSO",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);

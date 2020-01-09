@@ -145,11 +145,6 @@
     <Compile Include="Business\UserController.cs" />
     <Compile Include="Business\UserHistoryController.cs" />
     <Compile Include="Model\ConnectionModel.cs" />
-    <Compile Include="Model\StockModel.cs" />
-    <Compile Include="Model\StockMovementModel.cs" />
-    <Compile Include="Model\StockDestinationModel.cs" />
-    <Compile Include="Model\StockItemModel.cs" />
-    <Compile Include="Model\StockProductModel.cs" />
     <Compile Include="Model\UserModel.cs" />
     <Compile Include="Model\UserHistoryModel.cs" />
     <Compile Include="Program.cs" />

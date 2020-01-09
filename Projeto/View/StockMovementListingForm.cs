@@ -317,7 +317,7 @@ namespace DimStock.View
 
                     var stockMovement = new StockMovementController();
 
-                    if (stockMovement.Exclude(id) == true)
+                    if (stockMovement.Delete(id) == true)
                     {
                         MessageBox.Show(NotificationController.Message, "SUCESSO",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
