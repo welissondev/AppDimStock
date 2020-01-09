@@ -163,7 +163,7 @@ namespace DimStock.View
         {
             try
             {
-                var user = new UserController();
+                var user = new UserLogin();
                 user.ViewDetails(LoginAssistant.Id);
 
                 if (user.PermissionToView == true)
@@ -191,7 +191,7 @@ namespace DimStock.View
         {
             try
             {
-                var user = new UserController();
+                var user = new UserLogin();
                 user.ViewDetails(LoginAssistant.Id);
 
                 if (user.PermissionToView == true)
@@ -219,7 +219,7 @@ namespace DimStock.View
         {
             try
             {
-                var user = new UserController();
+                var user = new UserLogin();
                 user.ViewDetails(LoginAssistant.Id);
 
                 if (user.PermissionToView == true)

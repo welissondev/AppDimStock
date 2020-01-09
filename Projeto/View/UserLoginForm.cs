@@ -20,7 +20,7 @@ namespace DimStock.View
         {
             try
             {
-                var user = new UserController
+                var user = new UserLogin
                 {
                     Login = Login.Text,
                     PassWord = PassWord.Text
@@ -28,7 +28,7 @@ namespace DimStock.View
 
                 if (user.Access() == false)
                 {
-                    MessageBox.Show(NotificationController.Message, "NÃO ENCONTRADO",
+                    MessageBox.Show(Notification.Message, "NÃO ENCONTRADO",
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }

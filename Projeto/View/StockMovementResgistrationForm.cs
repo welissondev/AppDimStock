@@ -134,7 +134,7 @@ namespace DimStock.View
             {
                 if (OperationSituation.Text == "Em Aberto")
                 {
-                    var stockMovement = new StockMovementController
+                    var stockMovement = new StockMovement
                     {
                         StockDestinationLocation = ((ComboBox)sender).SelectedItem.ToString()
                     };
@@ -231,9 +231,9 @@ namespace DimStock.View
 
         #region MethodsAuxiliarys
 
-        private List<StockController> GetItems()
+        private List<Stock> GetItems()
         {
-            var itemList = new List<StockController>();
+            var itemList = new List<Stock>();
 
             for (int i = 0; i < MainDataList.Rows.Count; i++)
             {
@@ -242,7 +242,7 @@ namespace DimStock.View
                 var totalValue = MainDataList.Rows[i].Cells["stockTotalValue"].Value;
                 totalValue.ToString().Replace("R$", "").Replace("$", "");
 
-                var stock = new StockController()
+                var stock = new Stock()
                 {
                     Id = Convert.ToInt32(id),
                     Quantity = Convert.ToInt32(quantity),
@@ -259,7 +259,7 @@ namespace DimStock.View
         {
             try
             {
-                var stockProduct = new StockProductController(dataPagination)
+                var stockProduct = new StockProduct(dataPagination)
                 {
                     SearchByCode = QueryByCode.Text,
                     SearchBySize = QueryBySize.Text,
@@ -302,7 +302,7 @@ namespace DimStock.View
         {
             try
             {
-                var destination = new StockDestinationController();
+                var destination = new StockDestination();
                 destination.ListData();
 
                 var destinationList = new List<string>();
@@ -322,7 +322,7 @@ namespace DimStock.View
 
         private void GetStockDetails(int id)
         {
-            var stockProduct = new StockProductController();
+            var stockProduct = new StockProduct();
             stockProduct.ViewDetails(id);
 
             QueryByCode.Text = stockProduct.ProductCode.ToString();
@@ -342,7 +342,7 @@ namespace DimStock.View
         {
             try
             {
-                var stockMovement = new StockMovementController();
+                var stockMovement = new StockMovement();
                 stockMovement.ViewDetails(id);
 
                 StockMovementId.Text = id.ToString();
@@ -362,7 +362,7 @@ namespace DimStock.View
 
         public bool RegisterStockMovement()
         {
-            var stockMovement = new StockMovementController();
+            var stockMovement = new StockMovement();
             var addState = false;
 
             switch (OperationType.Text)
@@ -399,11 +399,11 @@ namespace DimStock.View
                     if (MessageBox.Show("Confirma essa operação?", "CONFIRME", MessageBoxButtons.YesNo,
                         MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                     {
-                        var stockMovement = new StockMovementController();
+                        var stockMovement = new StockMovement();
 
                         if (stockMovement.Delete(Convert.ToInt32(StockMovementId.Text)) == true)
                         {
-                            MessageBox.Show(NotificationController.Message, "SUCESSO",
+                            MessageBox.Show(Notification.Message, "SUCESSO",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
@@ -422,11 +422,11 @@ namespace DimStock.View
                 if (MessageBox.Show("Confirma essa operação?", "CONFIRME", MessageBoxButtons.YesNo,
                  MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
-                    var stock = new StockController();
+                    var stock = new Stock();
 
                     if (stock.RegisterEntries(GetItems(), Convert.ToInt32(StockMovementId.Text)) == true)
                     {
-                        MessageBox.Show(NotificationController.Message, "SUCESSO", MessageBoxButtons.OK,
+                        MessageBox.Show(Notification.Message, "SUCESSO", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
 
                         OperationSituation.Text = "Finalizada";
@@ -442,11 +442,11 @@ namespace DimStock.View
                 if (MessageBox.Show("Confirma essa operação?", "CONFIRME", MessageBoxButtons.YesNo,
                  MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
-                    var stock = new StockController();
+                    var stock = new Stock();
 
                     if (stock.RegisterRemovals(GetItems(), Convert.ToInt32(StockMovementId.Text)) == true)
                     {
-                        MessageBox.Show(NotificationController.Message, "SUCESSO", MessageBoxButtons.OK,
+                        MessageBox.Show(Notification.Message, "SUCESSO", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
 
                         OperationSituation.Text = "Finalizada";
@@ -459,7 +459,7 @@ namespace DimStock.View
         {
             try
             {
-                var stockItem = new StockItemController();
+                var stockItem = new StockItem();
                 stockItem.ListItem(Convert.ToInt32(StockMovementId.Text));
 
                 MainDataList.Columns.Clear();
@@ -503,7 +503,7 @@ namespace DimStock.View
         {
             try
             {
-                var stockItem = new StockItemController()
+                var stockItem = new StockItem()
                 {
                     StockMovementId = Convert.ToInt32(StockMovementId.Text),
                     StockId = StockId,
@@ -525,7 +525,7 @@ namespace DimStock.View
         {
             if (OperationSituation.Text != "Finalizada")
             {
-                var item = new StockItemController();
+                var item = new StockItem();
                 item.Remove(id);
 
                 ListStockItems();

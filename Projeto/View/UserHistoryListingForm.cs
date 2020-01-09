@@ -72,7 +72,7 @@ namespace DimStock.View
         {
             try
             {
-                var historic = new UserHistoryController();
+                var historic = new UserHistory();
                 historic.ListData();
 
                 HistoryDataList.Rows.Clear();
@@ -102,7 +102,7 @@ namespace DimStock.View
         {
             try
             {
-                var historic = new UserHistoryController(dataPagination)
+                var historic = new UserHistory(dataPagination)
                 {
                     SearchByLogin = SearchByLogin.Text,
                     SearchByStartDate = Convert.ToDateTime(StartDate.Value).ToString("dd-MM-yyyy"),

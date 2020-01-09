@@ -7,13 +7,13 @@ using System.Data;
 
 namespace DimStock.Business
 {
-    public class ProductController
+    public class Product
     {
         #region Constructors
 
-        public ProductController() { }
+        public Product() { }
 
-        public ProductController(DataPagination dataPagination)
+        public Product(DataPagination dataPagination)
         {
             DataPagination = dataPagination;
         }
@@ -33,7 +33,7 @@ namespace DimStock.Business
         public int MaxStock { get; set; }
         public string BarCode { get; set; }
         public string PhotoName { get; set; }
-        public List<ProductController> ListOfRecords { get; set; }
+        public List<Product> ListOfRecords { get; set; }
         #endregion 
 
         #region SearchProperties
@@ -77,13 +77,13 @@ namespace DimStock.Business
                     {
                         Id = Convert.ToInt32(connection.ExecuteScalar("SELECT MAX(Id) From Product"));
 
-                        var stock = new StockController();
+                        var stock = new Stock();
 
                         if (stock.RegisterRelatedProduct(connection, Id) == true)
                         {
                             connection.Transaction.Commit();
                             transactionState = true;
-                            NotificationController.Message = "Produto cadastrado com sucesso!";
+                            Notification.Message = "Produto cadastrado com sucesso!";
                         }
                     }
 
@@ -131,13 +131,13 @@ namespace DimStock.Business
                         var costPrice = Convert.ToDouble(
                         connection.ExecuteScalar(sqlQuery));
 
-                        var stock = new StockController();
+                        var stock = new Stock();
 
                         if (stock.UpdateValue(connection, costPrice, id) == true)
                         {
                             connection.Transaction.Commit();
                             transactionState = true;
-                            NotificationController.Message = "Produto alterado com sucesso!";
+                            Notification.Message = "Produto alterado com sucesso!";
                         }
                     };
 
@@ -159,12 +159,12 @@ namespace DimStock.Business
 
                 if (connection.ExecuteNonQuery(sqlCommand) > 0)
                 {
-                    NotificationController.Message = "Produto deletado com sucesso!";
+                    Notification.Message = "Produto deletado com sucesso!";
                     deleteState = true;
                 }
                 else
                 {
-                    NotificationController.Message = @"Esse produto já foi deletado, 
+                    Notification.Message = @"Esse produto já foi deletado, 
                     atualize a lista de dados!";
                 }
 
@@ -180,7 +180,7 @@ namespace DimStock.Business
                 var parameter = connection.Command.Parameters;
                 var criterion = string.Empty;
                 var sqlQuery = string.Empty;
-                var productList = new List<ProductController>();
+                var productList = new List<Product>();
 
                 sqlQuery = @"SELECT Id, Code, [Size], Reference, Supplier, Description, 
                 CostPrice, SalePrice, PhotoName FROM Product WHERE Id > 0";
@@ -223,7 +223,7 @@ namespace DimStock.Business
                 {
                     while (reader.Read())
                     {
-                        var product = new ProductController
+                        var product = new Product
                         {
                             Id = Convert.ToInt32(reader["Id"]),
                             Code = Convert.ToInt32(reader["Code"]),
@@ -337,7 +337,7 @@ namespace DimStock.Business
             }
         }
 
-        public void GenerateReport(List<ProductController> listOfRecords)
+        public void GenerateReport(List<Product> listOfRecords)
         {
             var product = new ReportProduct();
             product.GenerateReport(listOfRecords);
@@ -345,11 +345,11 @@ namespace DimStock.Business
 
         public void PassDataTableToList(DataTable dataTable)
         {
-            var productList = new List<ProductController>();
+            var productList = new List<Product>();
 
             foreach (DataRow row in dataTable.Rows)
             {
-                var product = new ProductController()
+                var product = new Product()
                 {
                     Id = Convert.ToInt32(row["Id"]),
                     Code = Convert.ToInt32(row["Code"]),

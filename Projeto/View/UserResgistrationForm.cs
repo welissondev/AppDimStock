@@ -126,7 +126,7 @@ namespace DimStock.View
             {
                 if (ValidadeData() == true)
                 {
-                    var user = new UserController
+                    var user = new UserLogin
                     {
                         Name = UserName.Text.TrimStart().TrimEnd(),
                         Email = Email.Text.TrimStart().TrimEnd(),
@@ -141,7 +141,7 @@ namespace DimStock.View
 
                     if (user.Register() == true)
                     {
-                        MessageBox.Show(NotificationController.Message, "SUCESSO",
+                        MessageBox.Show(Notification.Message, "SUCESSO",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         ResetControls();
@@ -161,7 +161,7 @@ namespace DimStock.View
             {
                 if (ValidadeData() == true)
                 {
-                    var user = new UserController
+                    var user = new UserLogin
                     {
                         Name = UserName.Text,
                         Email = Email.Text,
@@ -176,7 +176,7 @@ namespace DimStock.View
 
                     if (user.Edit(id) == true)
                     {
-                        MessageBox.Show(NotificationController.Message, "SUCESSO",
+                        MessageBox.Show(Notification.Message, "SUCESSO",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }

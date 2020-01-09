@@ -136,7 +136,7 @@ namespace DimStock.View
         {
             try
             {
-                var user = new UserController();
+                var user = new UserLogin();
                 user.ViewDetails(id);
 
                 using (var userLogin = new UserResgistrationForm(user.Id))
@@ -170,7 +170,7 @@ namespace DimStock.View
             {
                 UserDataList.Rows.Clear();
 
-                var user = new UserController(dataPagination);
+                var user = new UserLogin(dataPagination);
                 user.ListData();
 
                 for (int i = 0; i < user.ListOfRecords.Count; i++)
@@ -197,7 +197,7 @@ namespace DimStock.View
             {
                 UserDataList.Rows.Clear();
 
-                var user = new UserController(dataPagination)
+                var user = new UserLogin(dataPagination)
                 {
                     SearchByName = SearchFields.Text,
                     SearchByEmail = SearchFields.Text,
@@ -231,11 +231,11 @@ namespace DimStock.View
                     MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
-                    var user = new UserController();
+                    var user = new UserLogin();
 
                     if (user.Delete(id) == true)
                     {
-                        MessageBox.Show(NotificationController.Message, "SUCESSO",
+                        MessageBox.Show(Notification.Message, "SUCESSO",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }

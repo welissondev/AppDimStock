@@ -7,13 +7,13 @@ using System.Data.OleDb;
 
 namespace DimStock.Business
 {
-    public class StockProductController
+    public class StockProduct
     {
         #region Constructs
 
-        public StockProductController() { }
+        public StockProduct() { }
 
-        public StockProductController(DataPagination dataPagination)
+        public StockProduct(DataPagination dataPagination)
         {
             DataPagination = dataPagination;
         }
@@ -36,7 +36,7 @@ namespace DimStock.Business
         public int ProductReference { get; set; }
         public double ProductCostPrice { get; set; }
         public string ProductPhoto { get; set; }
-        public List<StockProductController> ListOfRecords { get; set; }
+        public List<StockProduct> ListOfRecords { get; set; }
         #endregion 
 
         #region SearchProperties
@@ -62,7 +62,7 @@ namespace DimStock.Business
                 var sqlCount = string.Empty;
                 var criterion = string.Empty;
                 var parameter = connection.Command.Parameters;
-                var listOfRecords = new List<StockProductController>();
+                var listOfRecords = new List<StockProduct>();
 
                 if (SearchBySummary == "All")
                 {
@@ -167,7 +167,7 @@ namespace DimStock.Business
                 {
                     while (reader.Read())
                     {
-                        var stockProduct = new StockProductController
+                        var stockProduct = new StockProduct
                         {
                             StockId = Convert.ToInt32(reader["Stock.Id"]),
                             ProductId = Convert.ToInt32(reader["Product.Id"]),
@@ -342,13 +342,13 @@ namespace DimStock.Business
             }
         }
 
-        public void GenerateReport(List<StockProductController> listOfRecords)
+        public void GenerateReport(List<StockProduct> listOfRecords)
         {
             var stockProduct = new ReportStockProduct();
             stockProduct.GenerateReport(listOfRecords);
         }
 
-        public void SetSummary(List<StockProductController> listOfRecords)
+        public void SetSummary(List<StockProduct> listOfRecords)
         {
             for (int i = 0; i < listOfRecords.Count; i++)
             {
@@ -371,7 +371,7 @@ namespace DimStock.Business
             }
         }
 
-        public void SetResult(List<StockProductController> listOfRecords)
+        public void SetResult(List<StockProduct> listOfRecords)
         {
             for (int i = 0; i < listOfRecords.Count; i++)
             {
@@ -396,11 +396,11 @@ namespace DimStock.Business
 
         public void PassDataTableToList(DataTable dataTable)
         {
-            var stockProductList = new List<StockProductController>();
+            var stockProductList = new List<StockProduct>();
 
             foreach (DataRow row in dataTable.Rows)
             {
-                var stockProduct = new StockProductController
+                var stockProduct = new StockProduct
                 {
                     StockId = Convert.ToInt32(row["Stock.Id"]),
                     ProductId = Convert.ToInt32(row["Product.Id"]),

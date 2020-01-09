@@ -3,7 +3,7 @@ using System.Data.OleDb;
 
 namespace DimStock.Business
 {
-    public class StockController
+    public class Stock
     {
         #region Get e Set
         public int Id { get; set; }
@@ -14,7 +14,7 @@ namespace DimStock.Business
 
         #region Methods
 
-        public bool RegisterEntries(List<StockController> itemList, int stockMovementId)
+        public bool RegisterEntries(List<Stock> itemList, int stockMovementId)
         {
             var transactionState = false;
             var sqlCommand = string.Empty;
@@ -40,13 +40,13 @@ namespace DimStock.Business
                         connection.ExecuteTransaction(sqlCommand);
                     }
 
-                    var stockMovement = new StockMovementController();
+                    var stockMovement = new StockMovement();
 
                     if (stockMovement.FinalizeOperation(connection, stockMovementId) == true)
                     {
                         connection.Transaction.Commit();
                         transactionState = true;
-                        NotificationController.Message = "OK! todos os estoques foram adicionados!";
+                        Notification.Message = "OK! todos os estoques foram adicionados!";
                     }
 
                     return transactionState;
@@ -54,7 +54,7 @@ namespace DimStock.Business
             }
         }
 
-        public bool RegisterRemovals(List<StockController> itemList, int stockMovementId)
+        public bool RegisterRemovals(List<Stock> itemList, int stockMovementId)
         {
             using (var connection = new Connection())
             {
@@ -82,13 +82,13 @@ namespace DimStock.Business
                         connection.ExecuteTransaction(sqlCommand);
                     }
 
-                    var stockMovement = new StockMovementController();
+                    var stockMovement = new StockMovement();
 
                     if (stockMovement.FinalizeOperation(connection, stockMovementId) == true)
                     {
                         connection.Transaction.Commit();
                         transactionState = true;
-                        NotificationController.Message = "Ok! Todos os estoques foram removidos!";
+                        Notification.Message = "Ok! Todos os estoques foram removidos!";
                     }
 
                     return transactionState;
@@ -132,7 +132,7 @@ namespace DimStock.Business
             return transactionState;
         }
 
-        public bool Reset(List<StockItemController> itemList)
+        public bool Reset(List<StockItem> itemList)
         {
              using (var connection = new Connection())
             {
@@ -152,7 +152,7 @@ namespace DimStock.Business
 
                     connection.Transaction.Commit();
 
-                    NotificationController.Message = "Ok! Todos os estoques foram removidos!";
+                    Notification.Message = "Ok! Todos os estoques foram removidos!";
 
                     return true;
                 }

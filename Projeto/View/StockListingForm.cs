@@ -48,7 +48,7 @@ namespace DimStock.View
         {
             try
             {
-                var stockProduct = new StockProductController()
+                var stockProduct = new StockProduct()
                 {
                     SearchByCode = SearchByCode.Text,
                     SearchBySize = SearchBySize.Text,
@@ -62,7 +62,7 @@ namespace DimStock.View
                 stockProduct.GenerateReport(
                 stockProduct.ListOfRecords);
 
-                var path = "DimStock.Report.RpvStockProduct.rdlc";
+                var path = "DimStock.Report.StockProduct.rdlc";
                 var description = "Relatório de estoque";
                 var dataSet = "DataSetStockProduct";
 
@@ -264,7 +264,7 @@ namespace DimStock.View
         {
             try
             {
-                var stockProduct = new StockProductController(dataPagination)
+                var stockProduct = new StockProduct(dataPagination)
                 {
                     SearchByCode = SearchByCode.Text,
                     SearchBySize = SearchBySize.Text,

@@ -134,16 +134,16 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Business\Connection.cs" />
-    <Compile Include="Business\StockDestinationController.cs" />
-    <Compile Include="Business\StockItemController.cs" />
-    <Compile Include="Business\StockProductController.cs" />
-    <Compile Include="Business\StockMovementController.cs" />
-    <Compile Include="Business\NotificationController.cs" />
-    <Compile Include="Business\ProductController.cs" />
-    <Compile Include="Business\ProductPhothoController.cs" />
-    <Compile Include="Business\StockController.cs" />
-    <Compile Include="Business\UserController.cs" />
-    <Compile Include="Business\UserHistoryController.cs" />
+    <Compile Include="Business\StockDestination.cs" />
+    <Compile Include="Business\StockItem.cs" />
+    <Compile Include="Business\StockProduct.cs" />
+    <Compile Include="Business\StockMovement.cs" />
+    <Compile Include="Business\Notification.cs" />
+    <Compile Include="Business\Product.cs" />
+    <Compile Include="Business\ProductPhoto.cs" />
+    <Compile Include="Business\Stock.cs" />
+    <Compile Include="Business\UserLogin.cs" />
+    <Compile Include="Business\UserHistory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Auxiliary\ImageAssistant.cs" />
@@ -235,8 +235,8 @@
     <EmbeddedResource Include="View\ReportViewForm.resx">
       <DependentUpon>ReportViewForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report\RpvStockProduct.rdlc" />
-    <EmbeddedResource Include="Report\RpvProduct.rdlc" />
+    <EmbeddedResource Include="Report\StockProduct.rdlc" />
+    <EmbeddedResource Include="Report\Product.rdlc" />
     <EmbeddedResource Include="View\StockMovementListingForm.resx">
       <DependentUpon>StockMovementListingForm.cs</DependentUpon>
     </EmbeddedResource>

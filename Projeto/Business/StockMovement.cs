@@ -6,13 +6,13 @@ using System.Data.OleDb;
 
 namespace DimStock.Business
 {
-    public class StockMovementController
+    public class StockMovement
     {
         #region Constructs
 
-        public StockMovementController() { }
+        public StockMovement() { }
 
-        public StockMovementController(DataPagination dataPagination)
+        public StockMovement(DataPagination dataPagination)
         {
             DataPagination = dataPagination;
         }
@@ -26,7 +26,7 @@ namespace DimStock.Business
         public string OperationHour { get; set; }
         public string OperationSituation { get; set; }
         public string StockDestinationLocation { get; set; }
-        public List<StockMovementController> ListOfRecords { get; set; }
+        public List<StockMovement> ListOfRecords { get; set; }
         #endregion
 
         #region SearchProperties
@@ -126,12 +126,12 @@ namespace DimStock.Business
 
                 if (connection.ExecuteNonQuery(sqlCommand) > 0)
                 {
-                    NotificationController.Message = "Deletado com sucesso!";
+                    Notification.Message = "Deletado com sucesso!";
                     deleteState = true;
                 }
                 else
                 {
-                    NotificationController.Message = "Esse registro já foi deletado, " +
+                    Notification.Message = "Esse registro já foi deletado, " +
                     "atualize a lista de registros!";
                 }
             }
@@ -145,13 +145,13 @@ namespace DimStock.Business
             {
                 var sqlQuery = @"SELECT * From StockMovement";
 
-                var stockMovementsList = new List<StockMovementController>();
+                var stockMovementsList = new List<StockMovement>();
 
                 using (var reader = connection.QueryWithDataReader(sqlQuery))
                 {
                     while (reader.Read())
                     {
-                        var stockMovement = new StockMovementController()
+                        var stockMovement = new StockMovement()
                         {
                             Id = Convert.ToInt32(reader["Id"]),
                             OperationType = reader["OperationType"].ToString(),
@@ -248,11 +248,11 @@ namespace DimStock.Business
 
         public void PassDataTableToList(DataTable dataTable)
         {
-            var stockMovementsList = new List<StockMovementController>();
+            var stockMovementsList = new List<StockMovement>();
 
             foreach (DataRow row in dataTable.Rows)
             {
-                var stockMovement = new StockMovementController()
+                var stockMovement = new StockMovement()
                 {
                     Id = Convert.ToInt32(row["Id"]),
                     OperationType = Convert.ToString(row["OperationType"]),

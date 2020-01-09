@@ -14,7 +14,7 @@ namespace DimStock.View
         #region Variables
         public int Id = 0;
         private DataPagination dataPagination = new DataPagination();
-        private ProductPhothoController photoController = new ProductPhothoController();
+        private ProductPhoto photoController = new ProductPhoto();
         #endregion
 
         #region Constructs
@@ -71,7 +71,7 @@ namespace DimStock.View
         {
             try
             {
-                var product = new ProductController(dataPagination)
+                var product = new Product(dataPagination)
                 {
                     SearchByCode = SearchByCode.Text,
                     SearchBySize = SearchBySize.Text,
@@ -81,7 +81,7 @@ namespace DimStock.View
 
                 product.ListData();
 
-                var path = "DimStock.Report.RpvProduct.rdlc";
+                var path = "DimStock.Report.Product.rdlc";
                 var description = "Relatório de Produtos";
                 var dataset = "DataSetProduct";
 
@@ -265,7 +265,7 @@ namespace DimStock.View
         {
             try
             {
-                var product = new ProductController(dataPagination)
+                var product = new Product(dataPagination)
                 {
                     SearchByCode = SearchByCode.Text,
                     SearchBySize = SearchBySize.Text,
@@ -318,7 +318,7 @@ namespace DimStock.View
                     return;
                 }
 
-                var product = new ProductController();
+                var product = new Product();
                 product.ViewDetails(Id);
 
                 userForm.Id = product.Id;
@@ -366,7 +366,7 @@ namespace DimStock.View
         {
             try
             {
-                var user = new UserController();
+                var user = new UserLogin();
                 user.ViewDetails(LoginAssistant.Id);
 
                 if (user.PermissionToDelete == false)
@@ -381,11 +381,11 @@ namespace DimStock.View
                     MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
-                    var product = new ProductController();
+                    var product = new Product();
 
                     if (product.Delete(Id) == false)
                     {
-                        MessageBox.Show(NotificationController.Message, "ATENÇÃO",
+                        MessageBox.Show(Notification.Message, "ATENÇÃO",
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                         return;
@@ -397,7 +397,7 @@ namespace DimStock.View
 
                     photoController.DeleteFromDirectory(photoPath);
 
-                    MessageBox.Show(NotificationController.Message, "SUCESSO",
+                    MessageBox.Show(Notification.Message, "SUCESSO",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     CallAllResets();
@@ -417,7 +417,7 @@ namespace DimStock.View
 
             try
             {
-                var product = new ProductController();
+                var product = new Product();
 
                 product.ViewDetails(Id);
 

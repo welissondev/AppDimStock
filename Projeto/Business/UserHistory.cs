@@ -6,13 +6,13 @@ using System.Data;
 
 namespace DimStock.Business
 {
-    public class UserHistoryController
+    public class UserHistory
     {
         #region Constructs
 
-        public UserHistoryController() { }
+        public UserHistory() { }
 
-        public UserHistoryController(DataPagination dataPagination)
+        public UserHistory(DataPagination dataPagination)
         {
             DataPagination = dataPagination;
         }
@@ -27,7 +27,7 @@ namespace DimStock.Business
         public DateTime OperationDate { get; set; }
         public string OperationHour { get; set; }
         public string OperationModule { get; set; }
-        public List<UserHistoryController> ListOfRecords { get; set; }
+        public List<UserHistory> ListOfRecords { get; set; }
         #endregion
 
         #region SearchProperties
@@ -64,7 +64,7 @@ namespace DimStock.Business
         {
             var sqlQuery = @"SELECT * FROM UserHistoric";
 
-            var historicList = new List<UserHistoryController>();
+            var historicList = new List<UserHistory>();
 
             using (var connection = new Connection())
             {
@@ -72,7 +72,7 @@ namespace DimStock.Business
                 {
                     while (reader.Read())
                     {
-                        var historic = new UserHistoryController
+                        var historic = new UserHistory
                         {
                             Id = Convert.ToInt32(reader["Id"]),
                             Login = Convert.ToString(reader["Login"]),
@@ -133,11 +133,11 @@ namespace DimStock.Business
 
         private void PassDataTableForList(DataTable dataTable)
         {
-            var historicList = new List<UserHistoryController>();
+            var historicList = new List<UserHistory>();
 
             foreach (DataRow row in dataTable.Rows)
             {
-                var historic = new UserHistoryController
+                var historic = new UserHistory
                 {
                     Id = Convert.ToInt32(row["Id"]),
                     Login = Convert.ToString(row["Login"]),

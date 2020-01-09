@@ -4,12 +4,12 @@ using System.Data.OleDb;
 
 namespace DimStock.Business
 {
-    public class StockDestinationController
+    public class StockDestination
     {
         #region Get e Set
         public int Id { get; set; }
         public string Location { get; set; }
-        public List<StockDestinationController> ListOfRecords { get; set; }
+        public List<StockDestination> ListOfRecords { get; set; }
         #endregion
 
         #region Methods
@@ -22,7 +22,7 @@ namespace DimStock.Business
             {
                 if (CheckIfDestinationExists() == true)
                 {
-                    NotificationController.Message = "Esse destino já existe, cadastre outro!";
+                    Notification.Message = "Esse destino já existe, cadastre outro!";
                     return transaction;
                 }
 
@@ -35,7 +35,7 @@ namespace DimStock.Business
                 if (connection.ExecuteNonQuery(sqlCommand) > 0)
                 {
                     transaction = true;
-                    NotificationController.Message = "Cadastrado com sucesso!";
+                    Notification.Message = "Cadastrado com sucesso!";
                 }
             }
 
@@ -56,7 +56,7 @@ namespace DimStock.Business
 
                 if (connection.ExecuteNonQuery(sqlCommand) > 0)
                 {
-                    NotificationController.Message = "Editado com sucesso!";
+                    Notification.Message = "Editado com sucesso!";
                     transaction = true;
                 }
             }
@@ -77,12 +77,12 @@ namespace DimStock.Business
 
                 if (connection.ExecuteNonQuery(sqlCommand) > 0)
                 {
-                    NotificationController.Message = "Deletado com sucesso!";
+                    Notification.Message = "Deletado com sucesso!";
                     transaction = true;
                 }
                 else
                 {
-                    NotificationController.Message = "Esse registro já foi " +
+                    Notification.Message = "Esse registro já foi " +
                     "deletado, atualize a lista de dados!";
                 }
             }
@@ -92,7 +92,7 @@ namespace DimStock.Business
 
         public void ListData()
         {
-            var destinationList = new List<StockDestinationController>();
+            var destinationList = new List<StockDestination>();
 
             var sqlQuery = @"SELECT * From StockDestination";
 
@@ -102,7 +102,7 @@ namespace DimStock.Business
                 {
                     while (reader.Read())
                     {
-                        var stockDestination = new StockDestinationController()
+                        var stockDestination = new StockDestination()
                         {
                             Id = Convert.ToInt32(reader["Id"]),
                             Location = Convert.ToString(reader["Location"])

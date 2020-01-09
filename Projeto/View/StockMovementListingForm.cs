@@ -270,7 +270,7 @@ namespace DimStock.View
         {
             try
             {
-                var stockMovement = new StockMovementController(dataPagination)
+                var stockMovement = new StockMovement(dataPagination)
                 {
                     SearchByType = selectedType,
                     SearchByMovimentId = SearchByStockMovimentId.Text,
@@ -315,16 +315,16 @@ namespace DimStock.View
                 {
                     int id = Convert.ToInt32(MovementStockDataList.CurrentRow.Cells["id"].Value);
 
-                    var stockMovement = new StockMovementController();
+                    var stockMovement = new StockMovement();
 
                     if (stockMovement.Delete(id) == true)
                     {
-                        MessageBox.Show(NotificationController.Message, "SUCESSO",
+                        MessageBox.Show(Notification.Message, "SUCESSO",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show(NotificationController.Message, "ATENÇÃO",
+                        MessageBox.Show(Notification.Message, "ATENÇÃO",
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }

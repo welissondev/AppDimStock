@@ -42,7 +42,7 @@ namespace DimStock.View
                     return;
                 }
 
-                var stockDestination = new StockDestinationController
+                var stockDestination = new StockDestination
                 {
                     Location = DestinationLocation.Text.TrimStart().TrimEnd()
                 };
@@ -50,7 +50,7 @@ namespace DimStock.View
                 if (stockDestination.Register() == true)
                 {
 
-                    MessageBox.Show(NotificationController.Message, "SUCESSO",
+                    MessageBox.Show(Notification.Message, "SUCESSO",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     CallAllReset();
@@ -73,14 +73,14 @@ namespace DimStock.View
                     return;
                 }
 
-                var stockDestination = new StockDestinationController
+                var stockDestination = new StockDestination
                 {
                     Location = DestinationLocation.Text.TrimStart().TrimEnd()
                 };
 
                 if (stockDestination.Edit(id) == true)
                 {
-                    MessageBox.Show(NotificationController.Message, "SUCESSO",
+                    MessageBox.Show(Notification.Message, "SUCESSO",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
@@ -101,11 +101,11 @@ namespace DimStock.View
                     return;
                 }
 
-                var stockDestination = new StockDestinationController();
+                var stockDestination = new StockDestination();
 
                 if (stockDestination.Delete(id) == true)
                 {
-                    MessageBox.Show(NotificationController.Message, "SUCESSO",
+                    MessageBox.Show(Notification.Message, "SUCESSO",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CallAllReset();
                 }
@@ -162,7 +162,7 @@ namespace DimStock.View
             {
                 id = Convert.ToInt32(DestinationDataList.CurrentRow.Cells["id"].Value);
 
-                var stockDestination = new StockDestinationController();
+                var stockDestination = new StockDestination();
                 stockDestination.ViewDetails(id);
 
                 DestinationLocation.Text = stockDestination.Location;
@@ -173,7 +173,7 @@ namespace DimStock.View
         {
             try
             {
-                var stockDestination = new StockDestinationController();
+                var stockDestination = new StockDestination();
                 stockDestination.ListData();
 
                 DestinationDataList.Rows.Clear();

@@ -17,7 +17,7 @@ namespace DimStock.View
 
         #region Variables
 
-        private ProductPhothoController photoController = new ProductPhothoController();
+        private ProductPhoto photoController = new ProductPhoto();
 
         #endregion 
 
@@ -36,7 +36,7 @@ namespace DimStock.View
 
         private void RegisterNew_Click(object sender, EventArgs e)
         {
-            var user = new UserController();
+            var user = new UserLogin();
             user.ViewDetails(LoginAssistant.Id);
 
             if (Id == 0)
@@ -107,7 +107,7 @@ namespace DimStock.View
                     return;
                 }
 
-                var product = new ProductController
+                var product = new Product
                 {
                     Code = Convert.ToInt32(ProductCode.Text),
                     Size = Convert.ToInt32(ProductSize.Text),
@@ -124,7 +124,7 @@ namespace DimStock.View
 
                 if (product.Register() == false)
                 {
-                    MessageBox.Show(NotificationController.Message, "ERROR",
+                    MessageBox.Show(Notification.Message, "ERROR",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     return;
@@ -133,7 +133,7 @@ namespace DimStock.View
                 photoController.CopyToDirectory(ProductPhoto.SelectedDirectory,
                 photoController.GetDirectoryPeth() + product.PhotoName);
 
-                MessageBox.Show(NotificationController.Message, "SUCESSO",
+                MessageBox.Show(Notification.Message, "SUCESSO",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 CallAllResets();
@@ -153,7 +153,7 @@ namespace DimStock.View
                     return;
                 }
 
-                var product = new ProductController()
+                var product = new Product()
                 {
                     Code = Convert.ToInt32(ProductCode.Text),
                     Size = Convert.ToInt32(ProductSize.Text),
@@ -170,7 +170,7 @@ namespace DimStock.View
 
                 if (product.Edit(Id) == false)
                 {
-                    MessageBox.Show(NotificationController.Message, "ERROR",
+                    MessageBox.Show(Notification.Message, "ERROR",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     return;
@@ -188,7 +188,7 @@ namespace DimStock.View
                 photoController.CopyToDirectory(ProductPhoto.SelectedDirectory,
                 photoPath);
 
-                MessageBox.Show(NotificationController.Message, "SUCESSO",
+                MessageBox.Show(Notification.Message, "SUCESSO",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }

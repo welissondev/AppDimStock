@@ -6,13 +6,13 @@ using DimStock.Auxiliary;
 
 namespace DimStock.Business
 {
-    public class UserController
+    public class UserLogin
     {
         #region Constructs
 
-        public UserController() { }
+        public UserLogin() { }
 
-        public UserController(DataPagination dataPagination)
+        public UserLogin(DataPagination dataPagination)
         {
             DataPagination = dataPagination;
         }
@@ -30,7 +30,7 @@ namespace DimStock.Business
         public bool PermissionToDelete { get; set; }
         public bool PermissionToView { get; set; }
         public bool AllPermissions { get; set; }
-        public List<UserController> ListOfRecords { get; set; }
+        public List<UserLogin> ListOfRecords { get; set; }
         #endregion
 
         #region SearchProperties
@@ -75,7 +75,7 @@ namespace DimStock.Business
 
             if (accessState == false)
             {
-                NotificationController.Message = "Usuário não encontrado!";
+                Notification.Message = "Usuário não encontrado!";
             }
 
             return accessState;
@@ -112,7 +112,7 @@ namespace DimStock.Business
 
                         if (Id > 0)
                         {
-                            NotificationController.Message = "Dados registrados com sucesso!";
+                            Notification.Message = "Dados registrados com sucesso!";
                             registerState = true;
                         }
                     }
@@ -151,7 +151,7 @@ namespace DimStock.Business
 
                 if (connection.ExecuteNonQuery(sqlCommand) > 0)
                 {
-                    NotificationController.Message = "Dados alterados com sucesso!";
+                    Notification.Message = "Dados alterados com sucesso!";
                     editState = true;
                 }
             }
@@ -171,7 +171,7 @@ namespace DimStock.Business
 
                 if (CheckCurrentRegister(id) == false)
                 {
-                    NotificationController.Message = "Você não pode deletar seu " +
+                    Notification.Message = "Você não pode deletar seu " +
                     "próprio registro de usuário!";
 
                     return deleteState;
@@ -180,11 +180,11 @@ namespace DimStock.Business
                 if (connection.ExecuteNonQuery(sqlCommand) > 0)
                 {
                     deleteState = true;
-                    NotificationController.Message = "Dados deletados com sucesso!";
+                    Notification.Message = "Dados deletados com sucesso!";
                 }
                 else
                 {
-                    NotificationController.Message = "Esse registro já foi deletado," +
+                    Notification.Message = "Esse registro já foi deletado," +
                     "atualize a lista de dados!";
                 }
             }
@@ -198,13 +198,13 @@ namespace DimStock.Business
             {
                 var sqlQuery = "SELECT * FROM UserLogin";
 
-                var userList = new List<UserController>();
+                var userList = new List<UserLogin>();
 
                 using (var reader = connection.QueryWithDataReader(sqlQuery))
                 {
                     while (reader.Read())
                     {
-                        var userLogin = new UserController()
+                        var userLogin = new UserLogin()
                         {
                             Id = Convert.ToInt32(reader["Id"]),
                             Name = Convert.ToString(reader["Name"]),
@@ -286,7 +286,7 @@ namespace DimStock.Business
 
                 if (userFound > 0)
                 {
-                    NotificationController.Message = "Já existe um usuário com o login [" + Login + "]. " +
+                    Notification.Message = "Já existe um usuário com o login [" + Login + "]. " +
                     "Por favor, informe outro nome de login!";
                 }
 
@@ -308,11 +308,11 @@ namespace DimStock.Business
 
         public void PassDataTableToList(DataTable dataTable)
         {
-            var userList = new List<UserController>();
+            var userList = new List<UserLogin>();
 
             foreach (DataRow row in dataTable.Rows)
             {
-                var userLogin = new UserController()
+                var userLogin = new UserLogin()
                 {
                     Id = Convert.ToInt32(row["Id"]),
                     Name = Convert.ToString(row["Login"]),

@@ -4,7 +4,7 @@ using System.Data.OleDb;
 
 namespace DimStock.Business
 {
-    public class StockItemController
+    public class StockItem
     {
         #region Get e Set
         public int Id { get; set; }
@@ -19,7 +19,7 @@ namespace DimStock.Business
         public double UnitaryValue { get; set; }
         public double TotalValue { get; set; }
         public double SubTotal { get; set; }
-        public List<StockItemController> ListOfRecords { get; set; }
+        public List<StockItem> ListOfRecords { get; set; }
         #endregion
 
         #region Methods
@@ -72,13 +72,13 @@ namespace DimStock.Business
 
                 connection.AddParameter("@Id", OleDbType.Integer, id);
 
-                var itemList = new List<StockItemController>();
+                var itemList = new List<StockItem>();
 
                 using (var dr = connection.QueryWithDataReader(sqlQuery))
                 {
                     while (dr.Read())
                     {
-                        var item = new StockItemController()
+                        var item = new StockItem()
                         {
                             Id = Convert.ToInt32(dr["Id"]),
                             StockId = Convert.ToInt32(dr["StockId"]),

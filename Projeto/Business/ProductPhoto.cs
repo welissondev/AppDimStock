@@ -3,7 +3,7 @@ using System;
 
 namespace DimStock.Business
 {
-    public class ProductPhothoController
+    public class ProductPhoto
     {
         public string GetDirectoryPeth()
         {
