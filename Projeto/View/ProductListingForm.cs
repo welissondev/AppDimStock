@@ -14,7 +14,7 @@ namespace DimStock.View
         #region Variables
         public int Id = 0;
         private DataPagination dataPagination = new DataPagination();
-        private ProductPhoto photoController = new ProductPhoto();
+        private ProductPhoto productPhoto = new ProductPhoto();
         #endregion
 
         #region Constructs
@@ -391,11 +391,11 @@ namespace DimStock.View
                         return;
                     }
 
-                    var photoPath = photoController.GetDirectoryPeth() +
+                    var photoPath = productPhoto.GetDirectoryPeth() +
                     Convert.ToString(ProductDataList.CurrentRow.Cells
                     ["photoName"].Value);
 
-                    photoController.DeleteFromDirectory(photoPath);
+                    productPhoto.DeleteFromDirectory(photoPath);
 
                     MessageBox.Show(Notification.Message, "SUCESSO",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -17,7 +17,7 @@ namespace DimStock.View
 
         #region Variables
 
-        private ProductPhoto photoController = new ProductPhoto();
+        private ProductPhoto productPhoto = new ProductPhoto();
 
         #endregion 
 
@@ -79,7 +79,7 @@ namespace DimStock.View
             {
                 if (UploadPhoto() == false)
                 {
-                    if (photoController.FindInDirectory(photoController.GetDirectoryPeth() +
+                    if (productPhoto.FindInDirectory(productPhoto.GetDirectoryPeth() +
                         ProductPhoto.IndentificationPhotoNumber).Equals(false))
                     {
                         ProductPhoto.IndentificationPhotoNumber = "";
@@ -130,8 +130,8 @@ namespace DimStock.View
                     return;
                 }
 
-                photoController.CopyToDirectory(ProductPhoto.SelectedDirectory,
-                photoController.GetDirectoryPeth() + product.PhotoName);
+                productPhoto.CopyToDirectory(ProductPhoto.SelectedDirectory,
+                productPhoto.GetDirectoryPeth() + product.PhotoName);
 
                 MessageBox.Show(Notification.Message, "SUCESSO",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -176,16 +176,16 @@ namespace DimStock.View
                     return;
                 }
 
-                var photoPath = photoController.GetDirectoryPeth()
+                var photoPath = productPhoto.GetDirectoryPeth()
                 + product.PhotoName;
 
                 //Apaga a foto atual do diretório, caso a foto do produto
                 //seja alterada
-                if (photoController.FindInDirectory(photoPath) == false)
-                    photoController.DeleteFromDirectory(
+                if (productPhoto.FindInDirectory(photoPath) == false)
+                    productPhoto.DeleteFromDirectory(
                     ProductPhoto.PathOfLastSelectedPhoto);
 
-                photoController.CopyToDirectory(ProductPhoto.SelectedDirectory,
+                productPhoto.CopyToDirectory(ProductPhoto.SelectedDirectory,
                 photoPath);
 
                 MessageBox.Show(Notification.Message, "SUCESSO",
@@ -288,7 +288,7 @@ namespace DimStock.View
                 FileMode.Open, FileAccess.Read))
                 {
                     ProductPhoto.Image = Image.FromStream(fileStream);
-                    ProductPhoto.IndentificationPhotoNumber = photoController.GetIndentificationNumber() + ".jpg";
+                    ProductPhoto.IndentificationPhotoNumber = productPhoto.GetIndentificationNumber() + ".jpg";
                     ProductPhoto.SelectedDirectory = picture.DirectoryFile;
 
                     uploadState = true;
@@ -300,9 +300,9 @@ namespace DimStock.View
 
         public void ReloadPhoto(string photoIdNumber, bool newIdNumber = false)
         {
-            var photoPath = photoController.GetDirectoryPeth() + photoIdNumber;
+            var photoPath = productPhoto.GetDirectoryPeth() + photoIdNumber;
 
-            if (photoController.FindInDirectory(photoPath) == false)
+            if (productPhoto.FindInDirectory(photoPath) == false)
             {
                 ProductPhoto.Image = Resources.FotoNothing;
                 return;
@@ -317,7 +317,7 @@ namespace DimStock.View
 
                 if (newIdNumber == true)
                 {
-                    photoIdNumber = photoController.GetIndentificationNumber() + ".jpg";
+                    photoIdNumber = productPhoto.GetIndentificationNumber() + ".jpg";
                     ProductPhoto.IndentificationPhotoNumber = photoIdNumber;
                 }
 
