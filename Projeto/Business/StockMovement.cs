@@ -3,11 +3,16 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
+using System.Linq;
 
 namespace DimStock.Business
 {
     public class StockMovement
     {
+        #region Properties
+        private Connection connectionTransaction;
+        #endregion
+
         #region Constructs
 
         public StockMovement() { }
@@ -15,6 +20,11 @@ namespace DimStock.Business
         public StockMovement(DataPagination dataPagination)
         {
             DataPagination = dataPagination;
+        }
+
+        public StockMovement(Connection connection)
+        {
+            this.connectionTransaction = connection;
         }
 
         #endregion 
@@ -47,25 +57,19 @@ namespace DimStock.Business
             using (var connection = new Connection())
             {
                 var sqlCommand = @"INSERT INTO StockMovement(OperationType, OperationDate, 
-                OperationHour, OperationSituation)VALUES(@OperationType, @OperationDate, @OperationHour, 
-                @OperationSituation)";
+                OperationHour, OperationSituation)VALUES(@OperationType, @OperationDate, 
+                @OperationHour, @OperationSituation)";
 
                 connection.AddParameter("@OperationType", OleDbType.VarChar, OperationType);
                 connection.AddParameter("@OperationDate", OleDbType.Date, OperationDate);
                 connection.AddParameter("@OperationHour", OleDbType.VarChar, OperationHour);
                 connection.AddParameter("@OperationSituation", OleDbType.VarChar, OperationSituation);
 
-                if (connection.ExecuteNonQuery(sqlCommand) > 0)
-                {
-                    Id = Convert.ToInt32(connection.ExecuteScalar(
-                    @"SELECT MAX(Id) FROM StockMovement"));
+                registerState = connection.ExecuteNonQuery(sqlCommand) > 0;
 
-                    if (Id > 0)
-                    {
-                        registerState = true;
-                    }
-
-                }
+                //Seleciona o id da ultima movimentação inserida
+                Id = Convert.ToInt32(connection.ExecuteScalar(
+                @"SELECT MAX(Id) FROM StockMovement"));
 
                 return registerState;
             }
@@ -82,11 +86,11 @@ namespace DimStock.Business
                     var sqlCommand = @"UPDATE StockMovement SET StockDestinationLocation
                     = @StockDestinationLocation WHERE Id = @Id";
 
-                    connection.AddParameter("@StockDestinationLocation", 
+                    connection.AddParameter("@StockDestinationLocation",
                     OleDbType.VarChar, StockDestinationLocation);
                     connection.AddParameter("@Id", OleDbType.Integer, id);
 
-                    if(connection.ExecuteNonQuery(sqlCommand) > 0)
+                    if (connection.ExecuteNonQuery(sqlCommand) > 0)
                     {
                         setDestinationState = true;
                     }
@@ -96,22 +100,18 @@ namespace DimStock.Business
             return setDestinationState;
         }
 
-        public bool FinalizeOperation(Connection connection, int id)
+        public bool FinalizeOperation(int id)
         {
             var transactionState = false;
 
             var sqlCommand = @"UPDATE StockMovement Set OperationSituation 
             = 'Finalizada' Where Id = @Id";
 
-            connection.ParameterClear();
-            connection.AddParameter("@Id", OleDbType.Integer, id);
+            connectionTransaction.ParameterClear();
+            connectionTransaction.AddParameter("@Id", OleDbType.Integer, id);
 
-            if (connection.ExecuteTransaction(sqlCommand) > 0)
-            {
-               transactionState = true;
-            }
-
-            return transactionState;
+            return transactionState = connectionTransaction.ExecuteTransaction(
+            sqlCommand) > 0;
         }
 
         public bool Delete(int id)
@@ -120,7 +120,7 @@ namespace DimStock.Business
 
             using (var connection = new Connection())
             {
-                var sqlCommand = @"DELETE FROM StockMovement WHERE Id = @Id" ;
+                var sqlCommand = @"DELETE FROM StockMovement WHERE Id = @Id";
 
                 connection.AddParameter("@Id", OleDbType.Integer, id);
 
@@ -265,6 +265,31 @@ namespace DimStock.Business
             }
 
             ListOfRecords = stockMovementsList;
+        }
+
+        public string GetDataFromAffectedFields(int id, Connection connection)
+        {
+            var sqlQuery = @"SELECT * FROM StockMovement WHERE Id = @Id";
+
+            connection.ParameterClear();
+            connection.AddParameter("@Id", OleDbType.Integer, id);
+
+            var affectedFieldList = new List<string>();
+
+            using (var reader = connection.QueryWithDataReader(sqlQuery))
+            {
+                while (reader.Read())
+                {
+                    affectedFieldList.Add("Id:" + reader["Id"].ToString());
+                    affectedFieldList.Add("Tipo:" + reader["OperationType"].ToString());
+                    affectedFieldList.Add("Data:" + Convert.ToDateTime(reader["OperationDate"]).ToString("dd-MM-yyyy"));
+                    affectedFieldList.Add("Hora:" + reader["OperationHour"].ToString());
+                    affectedFieldList.Add("Situação:" + reader["OperationSituation"].ToString());
+                    affectedFieldList.Add("LocalDestino:" + reader["StockDestinationLocation"].ToString());
+                }
+            }
+
+            return string.Join(" | ", affectedFieldList.Select(x => x.ToString()));
         }
 
         #endregion

@@ -352,7 +352,10 @@ namespace DimStock.View
                 OperationSituation.Text = stockMovement.OperationSituation;
 
                 if (stockMovement.StockDestinationLocation != string.Empty)
+                {
+                    FillStockDestinations();
                     StockDestinationList.Text = stockMovement.StockDestinationLocation;
+                }
             }
             catch (Exception ex)
             {
@@ -670,8 +673,6 @@ namespace DimStock.View
         private void InitializeSettings()
         {
             CreateColumnForStockList();
-
-            FillStockDestinations();
 
             ResetControl();
 

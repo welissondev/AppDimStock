@@ -1,19 +1,23 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.OleDb;
+using DimStock.Auxiliary;
 
 namespace DimStock.Business
 {
     public class Stock
     {
-        private Connection connection;
+        #region Properties
+        private Connection connectionTransaction;
+        #endregion
 
         #region Contructs
 
-        public Stock(){}
+        public Stock() { }
 
         public Stock(Connection connection)
         {
-            this.connection = connection;
+            this.connectionTransaction = connection;
         }
 
         #endregion 
@@ -53,17 +57,30 @@ namespace DimStock.Business
                         connection.ExecuteTransaction(sqlCommand);
                     }
 
-                    var stockMovement = new StockMovement();
+                    //Fianaliza a operação
+                    var stockMovement = new StockMovement(connection);
+                    transactionState = stockMovement.FinalizeOperation(
+                    stockMovementId);
 
-                    if (stockMovement.FinalizeOperation(connection, stockMovementId) == true)
+                    //Registra o histórico do usuário
+                    var userHistory = new UserHistory(connection)
                     {
-                        connection.Transaction.Commit();
-                        transactionState = true;
-                        Notification.Message = "OK! todos os estoques foram adicionados!";
-                    }
+                        Login = LoginAssistant.Login,
+                        OperationType = "Entrada",
+                        OperationModule = "Estoque",
+                        OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
+                        OperationHour = DateTime.Now.ToString("HH:mm:ss"),
+                        AffectedFields = stockMovement.GetDataFromAffectedFields(stockMovementId, connection)
+                    };
+                    transactionState = userHistory.Register();
 
-                    return transactionState;
+                    //Finalza o transação
+                    connection.Transaction.Commit();
+
+                    Notification.Message = "Ok, todos os estoques foram cadastrados!";
                 }
+
+                return transactionState;
             }
         }
 
@@ -71,12 +88,11 @@ namespace DimStock.Business
         {
             using (var connection = new Connection())
             {
+                var transactionState = false;
+                var sqlCommand = string.Empty;
+
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
-
-                    var transactionState = false;
-                    var sqlCommand = string.Empty;
-
                     for (int i = 0; i < itemList.Count; i++)
                     {
 
@@ -95,17 +111,29 @@ namespace DimStock.Business
                         connection.ExecuteTransaction(sqlCommand);
                     }
 
-                    var stockMovement = new StockMovement();
+                    //Finaliza a operação
+                    var stockMovement = new StockMovement(connection);
+                    transactionState = stockMovement.FinalizeOperation(stockMovementId);
 
-                    if (stockMovement.FinalizeOperation(connection, stockMovementId) == true)
+                    //Registra o histórico do usuário
+                    var userHistory = new UserHistory(connection)
                     {
-                        connection.Transaction.Commit();
-                        transactionState = true;
-                        Notification.Message = "Ok! Todos os estoques foram removidos!";
-                    }
+                        Login = LoginAssistant.Login,
+                        OperationType = "Saída",
+                        OperationModule = "Estoque",
+                        OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
+                        OperationHour = DateTime.Now.ToString("HH:mm:ss"),
+                        AffectedFields = stockMovement.GetDataFromAffectedFields(stockMovementId, connection)
+                    };
+                    transactionState = userHistory.Register();
 
-                    return transactionState;
+                    //Finaliza a transação
+                    connection.Transaction.Commit();
+
+                    Notification.Message = "Ok! Todos os estoques foram retirados!";
                 }
+
+                return transactionState;
             }
         }
 
@@ -115,10 +143,10 @@ namespace DimStock.Business
 
             var sqlCommand = @"INSERT INTO Stock(ProductId)VALUES(@ProductId)";
 
-            connection.ParameterClear();
-            connection.AddParameter("@ProductId", OleDbType.Integer, id);
+            connectionTransaction.ParameterClear();
+            connectionTransaction.AddParameter("@ProductId", OleDbType.Integer, id);
 
-            if (connection.ExecuteTransaction(sqlCommand) > 0)
+            if (connectionTransaction.ExecuteTransaction(sqlCommand) > 0)
             {
                 transactionState = true;
             }
@@ -133,16 +161,16 @@ namespace DimStock.Business
             var sqlCommand = @"UPDATE Stock Set TotalValue = @ProductCostPrice * 
             Quantity WHERE ProductId = @ProductId";
 
-            connection.ParameterClear();
-            connection.AddParameter("ProductCostPrice", OleDbType.Double, productCostPrice);
-            connection.AddParameter("@ProductId", OleDbType.Integer, productId);
+            connectionTransaction.ParameterClear();
+            connectionTransaction.AddParameter("ProductCostPrice", OleDbType.Double, productCostPrice);
+            connectionTransaction.AddParameter("@ProductId", OleDbType.Integer, productId);
 
-            return transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
+            return transactionState = connectionTransaction.ExecuteTransaction(sqlCommand) > 0;
         }
 
         public bool Reset(List<StockItem> itemList)
         {
-             using (var connection = new Connection())
+            using (var connection = new Connection())
             {
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
