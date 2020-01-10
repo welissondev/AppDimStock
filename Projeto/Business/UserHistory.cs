@@ -8,13 +8,23 @@ namespace DimStock.Business
 {
     public class UserHistory
     {
+
+        private Connection connection;
+
         #region Constructs
 
-        public UserHistory() { }
+        public UserHistory()
+        {
+        }
 
         public UserHistory(DataPagination dataPagination)
         {
             DataPagination = dataPagination;
+        }
+
+        public UserHistory(Connection connection)
+        {
+            this.connection = connection;
         }
 
         #endregion 
@@ -22,7 +32,7 @@ namespace DimStock.Business
         #region BussinessProperties
         public int Id { get; set; }
         public string Login { get; set; }
-        public string AffectedFields{ get; set; }
+        public string AffectedFields { get; set; }
         public string OperationType { get; set; }
         public DateTime OperationDate { get; set; }
         public string OperationHour { get; set; }
@@ -43,21 +53,20 @@ namespace DimStock.Business
 
         public bool Register()
         {
-            using (var connection = new Connection())
-            {
-                var sqlCommand = @"INSERT INTO UserHistoric(Login, OperationType, OperationDate, OperationHour, 
-                OperationModule, AffectedFields)VALUES(@Login, @OperationType, @OperationDate, @OperationHour, 
-                @Module, @AffectedFields)";
+            var sqlCommand = @"INSERT INTO UserHistoric(Login, OperationType, OperationDate, OperationHour, 
+            OperationModule, AffectedFields)VALUES(@Login, @OperationType, @OperationDate, @OperationHour, 
+            @Module, @AffectedFields)";
 
-                connection.AddParameter("@Login", OleDbType.VarChar, Login);
-                connection.AddParameter("@OperationType", OleDbType.VarChar, OperationType);
-                connection.AddParameter("@OperationDate", OleDbType.Date, OperationDate);
-                connection.AddParameter("@OperationHour", OleDbType.VarChar, OperationHour);
-                connection.AddParameter("@OperationModule", OleDbType.VarChar, OperationModule);
-                connection.AddParameter("@AffectedFields", OleDbType.VarChar, AffectedFields);
 
-                return connection.ExecuteNonQuery(sqlCommand) > 0;
-            }
+            connection.ParameterClear();
+            connection.AddParameter("@Login", OleDbType.VarChar, Login);
+            connection.AddParameter("@OperationType", OleDbType.VarChar, OperationType);
+            connection.AddParameter("@OperationDate", OleDbType.Date, OperationDate);
+            connection.AddParameter("@OperationHour", OleDbType.VarChar, OperationHour);
+            connection.AddParameter("@OperationModule", OleDbType.VarChar, OperationModule);
+            connection.AddParameter("@AffectedFields", OleDbType.VarChar, AffectedFields);
+
+            return connection.ExecuteTransaction(sqlCommand) > 0;
         }
 
         public void ListData()

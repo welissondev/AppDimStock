@@ -4,6 +4,7 @@ using DimStock.Report;
 using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Data;
+using System.Linq;
 
 namespace DimStock.Business
 {
@@ -52,6 +53,8 @@ namespace DimStock.Business
         {
             using (var connection = new Connection())
             {
+                bool transactionState = false;
+
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
                     var sqlCommand = @"INSERT INTO Product (Code, [Size], Reference, Supplier, 
@@ -71,24 +74,37 @@ namespace DimStock.Business
                     connection.AddParameter("@BarCode", OleDbType.VarChar, BarCode);
                     connection.AddParameter("@PhotoName", OleDbType.VarChar, PhotoName);
 
-                    bool transactionState = false;
+                    transactionState = connection.ExecuteTransaction(
+                    sqlCommand) > 0;
 
-                    if (connection.ExecuteTransaction(sqlCommand) > 0)
+                    //Pegar id do último registro inserido
+                    Id = Convert.ToInt32(connection.ExecuteScalar(
+                    "SELECT MAX(Id) From Product"));
+
+                    //Relacionar o produto ao stock
+                    var stock = new Stock(connection);
+                    transactionState = stock.AddRelatedProduct(Id);
+
+                    //Registrar histórico do usuário
+                    var userHistory = new UserHistory(connection)
                     {
-                        Id = Convert.ToInt32(connection.ExecuteScalar("SELECT MAX(Id) From Product"));
+                        Login = LoginAssistant.Login,
+                        OperationType = "Cadastrou",
+                        OperationModule = "Produto",
+                        OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
+                        OperationHour = DateTime.Now.ToString("HH:mm:ss"),
+                        AffectedFields = GetDataFromAffectedFields(Id, connection)
+                    };
 
-                        var stock = new Stock();
+                    transactionState = userHistory.Register();
 
-                        if (stock.RegisterRelatedProduct(connection, Id) == true)
-                        {
-                            connection.Transaction.Commit();
-                            transactionState = true;
-                            Notification.Message = "Produto cadastrado com sucesso!";
-                        }
-                    }
+                    //Fianalizar transação
+                    connection.Transaction.Commit();
 
-                    return transactionState;
+                    Notification.Message = "Produto cadastrado com sucesso!";
                 }
+
+                return transactionState;
             }
         }
 
@@ -96,6 +112,10 @@ namespace DimStock.Business
         {
             using (var connection = new Connection())
             {
+                bool transactionState = false;
+
+                var affectedFields = GetDataFromAffectedFields(id, connection); 
+
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
                     var sqlCommand = @"UPDATE Product Set Code = @Code, 
@@ -117,58 +137,90 @@ namespace DimStock.Business
                     connection.AddParameter("@PhotoName", OleDbType.VarChar, PhotoName);
                     connection.AddParameter("@Id", OleDbType.Integer, id);
 
-                    bool transactionState = false;
+                    transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
 
-                    if (connection.ExecuteTransaction(sqlCommand) > 0)
+                    //Seleciona o preço de custo do produto
+                    var sqlQuery = @"SELECT CostPrice FROM 
+                    Product WHERE Id = @Id";
+
+                    connection.ParameterClear();
+                    connection.AddParameter("@Id",
+                    OleDbType.Integer, id);
+
+                    var costPrice = Convert.ToDouble(
+                    connection.ExecuteScalar(sqlQuery));
+
+                    //Atualiza o valor no estoque
+                    var stock = new Stock(connection);
+                    transactionState = stock.UpdateValue(
+                    costPrice, id);
+
+                    //Registrar histórico do usuário
+                    var userHistory = new UserHistory(connection)
                     {
-                        var sqlQuery = @"SELECT CostPrice FROM 
-                        Product WHERE Id = @Id";
-
-                        connection.ParameterClear();
-                        connection.AddParameter("@Id",
-                        OleDbType.Integer, id);
-
-                        var costPrice = Convert.ToDouble(
-                        connection.ExecuteScalar(sqlQuery));
-
-                        var stock = new Stock();
-
-                        if (stock.UpdateValue(connection, costPrice, id) == true)
-                        {
-                            connection.Transaction.Commit();
-                            transactionState = true;
-                            Notification.Message = "Produto alterado com sucesso!";
-                        }
+                        Login = LoginAssistant.Login,
+                        OperationType = "Editou",
+                        OperationModule = "Produto",
+                        OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
+                        OperationHour = DateTime.Now.ToString("HH:mm:ss"),
+                        AffectedFields = affectedFields
                     };
+                    transactionState = userHistory.Register();
 
-                    return transactionState;
+                    //Fianaliza a transação
+                    connection.Transaction.Commit();
+
+                    Notification.Message = "Produto alterado com sucesso!";
                 }
+
+                return transactionState;
             }
         }
 
         public bool Delete(int id)
         {
+            if (CheckIfResgistrationExits(id) == false)
+            {
+                Notification.Message = "Esse registro já foi excluido, " +
+               "atualize a lista de dados!";
+
+                return false;
+            }
+
             using (var connection = new Connection())
             {
-                var deleteState = false;
                 var sqlCommand = string.Empty;
+                var transactionState = false;
 
-                sqlCommand = @"DELETE FROM Product WHERE Id = @Id";
+                //Pega campos afetados
+                var affectedFields = GetDataFromAffectedFields(id, connection);
 
-                connection.AddParameter("@Id", OleDbType.Integer, id);
-
-                if (connection.ExecuteNonQuery(sqlCommand) > 0)
+                using (connection.Transaction = connection.Open().BeginTransaction())
                 {
+                    sqlCommand = @"DELETE FROM Product WHERE Id = @Id";
+                    connection.AddParameter("@Id", OleDbType.Integer, id);
+
+                    transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
+
+                    //Registrar histórico do usuário
+                    var userHistory = new UserHistory(connection)
+                    {
+                        Login = LoginAssistant.Login,
+                        OperationType = "Deletou",
+                        OperationModule = "Produto",
+                        OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
+                        OperationHour = DateTime.Now.ToString("HH:mm:ss"),
+                        AffectedFields = affectedFields
+                    };
+                    transactionState = userHistory.Register();
+
+                    //Fianaliza transação
+                    connection.Transaction.Commit();
+
                     Notification.Message = "Produto deletado com sucesso!";
-                    deleteState = true;
-                }
-                else
-                {
-                    Notification.Message = @"Esse produto já foi deletado, 
-                    atualize a lista de dados!";
                 }
 
-                return deleteState;
+                return transactionState;
             }
         }
 
@@ -176,7 +228,6 @@ namespace DimStock.Business
         {
             using (var connection = new Connection())
             {
-
                 var parameter = connection.Command.Parameters;
                 var criterion = string.Empty;
                 var sqlQuery = string.Empty;
@@ -241,7 +292,6 @@ namespace DimStock.Business
 
                     ListOfRecords = productList;
                 }
-
             }
         }
 
@@ -366,6 +416,54 @@ namespace DimStock.Business
             }
 
             ListOfRecords = productList;
+        }
+
+        public string GetDataFromAffectedFields(int id, Connection connection)
+        {
+            var affectedFieldList = new List<string>();
+
+            var commandSQL = @"SELECT * From Product Where Id = @Id";
+            connection.AddParameter("@Id", OleDbType.Integer, id);
+
+            using (var dataReader = connection.QueryWithDataReader(commandSQL))
+            {
+                while (dataReader.Read())
+                {
+                    affectedFieldList.Add("Id:" + dataReader["Id"].ToString());
+                    affectedFieldList.Add("Código:" + dataReader["Code"].ToString());
+                    affectedFieldList.Add("Tamanho:" + dataReader["Size"].ToString());
+                    affectedFieldList.Add("Referência:" + dataReader["Reference"].ToString());
+                    affectedFieldList.Add("Descrição:" + dataReader["Description"].ToString());
+                    affectedFieldList.Add("Fornecedor:" + dataReader["Supplier"].ToString());
+                    affectedFieldList.Add("PreçoCusto:" + dataReader["CostPrice"].ToString());
+                    affectedFieldList.Add("PreçoVenda:" + dataReader["SalePrice"].ToString());
+                    affectedFieldList.Add("CódigoBarras:" + dataReader["BarCode"].ToString());
+                    affectedFieldList.Add("FotoNome:" + dataReader["PhotoName"].ToString());
+                }
+            }
+
+            return string.Join(" | ", affectedFieldList.Select(x => x.ToString()));
+        }
+
+        public bool CheckIfResgistrationExits(int id)
+        {
+            using (var connection = new Connection())
+            {
+                var sqlQuery = "SELECT Id FROM Product WHERE Id = @Id";
+                var recordsFound = 0;
+
+                connection.AddParameter("Id", OleDbType.Integer, id);
+
+                using (var reader = connection.QueryWithDataReader(sqlQuery))
+                {
+                    while (reader.Read())
+                    {
+                        recordsFound += 1;
+                    }
+                }
+
+                return recordsFound > 0;
+            }
         }
 
         #endregion

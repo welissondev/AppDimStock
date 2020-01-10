@@ -185,7 +185,7 @@ namespace DimStock.View
                         break;
 
                     case "exclude":
-                        Exclude();
+                        Delete();
                         break;
                 }
             }
@@ -362,7 +362,7 @@ namespace DimStock.View
 
         }
 
-        private void Exclude()
+        private void Delete()
         {
             try
             {

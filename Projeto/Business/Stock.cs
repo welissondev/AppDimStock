@@ -5,6 +5,19 @@ namespace DimStock.Business
 {
     public class Stock
     {
+        private Connection connection;
+
+        #region Contructs
+
+        public Stock(){}
+
+        public Stock(Connection connection)
+        {
+            this.connection = connection;
+        }
+
+        #endregion 
+
         #region Get e Set
         public int Id { get; set; }
         public int ProductId { get; set; }
@@ -96,7 +109,7 @@ namespace DimStock.Business
             }
         }
 
-        public bool RegisterRelatedProduct(Connection connection, int id)
+        public bool AddRelatedProduct(int id)
         {
             var transactionState = false;
 
@@ -113,7 +126,7 @@ namespace DimStock.Business
             return transactionState;
         }
 
-        public bool UpdateValue(Connection connection, double productCostPrice, int productId)
+        public bool UpdateValue(double productCostPrice, int productId)
         {
             var transactionState = false;
 
@@ -124,12 +137,7 @@ namespace DimStock.Business
             connection.AddParameter("ProductCostPrice", OleDbType.Double, productCostPrice);
             connection.AddParameter("@ProductId", OleDbType.Integer, productId);
 
-            if (connection.ExecuteTransaction(sqlCommand) > 0)
-            {
-                transactionState = true;
-            }
-
-            return transactionState;
+            return transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
         }
 
         public bool Reset(List<StockItem> itemList)
