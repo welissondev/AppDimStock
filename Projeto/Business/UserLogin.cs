@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
+using System.Linq;
 using DimStock.Auxiliary;
 
 namespace DimStock.Business
@@ -83,11 +84,16 @@ namespace DimStock.Business
 
         public bool Register()
         {
-            var registerState = false;
-
-            if (CheckIfRegisterExists() == false)
+            if (CheckIfLoginExists() == true)
             {
-                using (var connection = new Connection())
+                return false;
+            }
+
+            using (var connection = new Connection())
+            {
+                var transactionState = false;
+
+                using (connection.Transaction = connection.Open().BeginTransaction())
                 {
                     var sqlCommand = @"INSERT INTO UserLogin([Name], Email, Login, [PassWord], 
                     PermissionToRegister, PermissionToEdit, PermissionToDelete, PermissionToView, 
@@ -104,92 +110,139 @@ namespace DimStock.Business
                     connection.AddParameter("@PermissionToView", OleDbType.Boolean, PermissionToView);
                     connection.AddParameter("@AllPermissions", OleDbType.Boolean, AllPermissions);
 
-                    if (connection.ExecuteNonQuery(sqlCommand) > 0)
-                    {
-                        connection.ParameterClear();
-                        Id = Convert.ToInt32(connection.ExecuteScalar(
-                        "SELECT MAX(Id) FROM UserLogin"));
+                    transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
 
-                        if (Id > 0)
-                        {
-                            Notification.Message = "Dados registrados com sucesso!";
-                            registerState = true;
-                        }
-                    }
+                    //Seleciona ultimo ID inserido
+                    Id = Convert.ToInt32(connection.ExecuteScalar(
+                    "SELECT MAX(Id) FROM UserLogin"));
+
+                    //Registra histórico do usuário
+                    var userHistory = new UserHistory(connection)
+                    {
+                        Login = LoginAssistant.Login,
+                        OperationType = "Cadastrou",
+                        OperationModule = "Usuário",
+                        OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
+                        OperationHour = DateTime.Now.ToString("HH:mm:ss"),
+                        AffectedFields = GetDataFromAffectedFields(Id, connection)
+                    };
+                    transactionState = userHistory.Register();
+
+                    //Finaliza a transação
+                    connection.Transaction.Commit();
+
+                    Notification.Message = "Usuário cadastado com sucesso!";
                 }
 
-                return registerState;
-            }
-            else
-            {
-                return registerState;
+                return transactionState;
             }
         }
 
         public bool Edit(int id)
         {
-            var editState = false;
-
             using (var connection = new Connection())
             {
-                var sqlCommand = @"UPDATE UserLogin Set [Name] = @Name, Email = @Email, 
-                Login = @Login, [PassWord] = @PassWord, PermissionToRegister = @PermissionToRegister, 
-                PermissionToEdit = @PermissionToEdit, PermissionToDelete = @PermissionToDelete, 
-                PermissionToView = @PermissionToView, AllPermissions = @AllPermissions 
-                WHERE Id = @Id";
+                var transactionState = false;
 
-                connection.AddParameter("@Name", OleDbType.VarChar, Name);
-                connection.AddParameter("@Email", OleDbType.VarChar, Email);
-                connection.AddParameter("@Login", OleDbType.VarChar, Login);
-                connection.AddParameter("@PassWord", OleDbType.VarChar, PassWord);
-                connection.AddParameter("@PermissionToRegister", OleDbType.Boolean, PermissionToRegister);
-                connection.AddParameter("@PermissionToEdit", OleDbType.Boolean, PermissionToEdit);
-                connection.AddParameter("@PermissionToDelete", OleDbType.Boolean, PermissionToDelete);
-                connection.AddParameter("@PermissionToView", OleDbType.Boolean, PermissionToView);
-                connection.AddParameter("@AllPermissions", OleDbType.Boolean, AllPermissions);
-                connection.AddParameter("@Id", OleDbType.Integer, id);
+                var affectedFields = GetDataFromAffectedFields(id, connection);
 
-                if (connection.ExecuteNonQuery(sqlCommand) > 0)
+                using (connection.Transaction = connection.Open().BeginTransaction())
                 {
-                    Notification.Message = "Dados alterados com sucesso!";
-                    editState = true;
-                }
-            }
+                    var sqlCommand = @"UPDATE UserLogin Set [Name] = @Name, Email = @Email, 
+                    Login = @Login, [PassWord] = @PassWord, PermissionToRegister = @PermissionToRegister, 
+                    PermissionToEdit = @PermissionToEdit, PermissionToDelete = @PermissionToDelete, 
+                    PermissionToView = @PermissionToView, AllPermissions = @AllPermissions 
+                    WHERE Id = @Id";
 
-            return editState;
+                    connection.ParameterClear();
+                    connection.AddParameter("@Name", OleDbType.VarChar, Name);
+                    connection.AddParameter("@Email", OleDbType.VarChar, Email);
+                    connection.AddParameter("@Login", OleDbType.VarChar, Login);
+                    connection.AddParameter("@PassWord", OleDbType.VarChar, PassWord);
+                    connection.AddParameter("@PermissionToRegister", OleDbType.Boolean, PermissionToRegister);
+                    connection.AddParameter("@PermissionToEdit", OleDbType.Boolean, PermissionToEdit);
+                    connection.AddParameter("@PermissionToDelete", OleDbType.Boolean, PermissionToDelete);
+                    connection.AddParameter("@PermissionToView", OleDbType.Boolean, PermissionToView);
+                    connection.AddParameter("@AllPermissions", OleDbType.Boolean, AllPermissions);
+                    connection.AddParameter("@Id", OleDbType.Integer, id);
+
+                    transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
+
+                    //Registra histórico do usuário
+                    var userHistory = new UserHistory(connection)
+                    {
+                        Login = LoginAssistant.Login,
+                        OperationType = "Editou",
+                        OperationModule = "Usuário",
+                        OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
+                        OperationHour = DateTime.Now.ToString("HH:mm:ss"),
+                        AffectedFields = affectedFields
+                    };
+                    transactionState = userHistory.Register();
+
+                    //Finaliza a transação
+                    connection.Transaction.Commit();
+
+                    Notification.Message = "Usuário alterado com sucesso!";
+                }
+
+                return transactionState;
+            }
         }
 
         public bool Delete(int id)
         {
-            var deleteState = false;
+            if (CheckIfResgisterExists(id) == false)
+            {
+                Notification.Message = "Esse registro já foi excluido " +
+                "atualize a lista de dados";
+
+                return false;
+            }
+
+            if (CheckCurrentRegister(id) == true)
+            {
+                Notification.Message = "Você não pode deletar seu " +
+                "próprio registro de usuário!";
+
+                return false;
+            }
 
             using (var connection = new Connection())
             {
-                var sqlCommand = @"DELETE FROM UserLogin WHERE Id = @Id";
+                var transactionState = false;
 
-                connection.AddParameter("@Id", OleDbType.Integer, id);
+                var affectedFields = GetDataFromAffectedFields(id, connection);
 
-                if (CheckCurrentRegister(id) == false)
+                using (connection.Transaction = connection.Open().BeginTransaction())
                 {
-                    Notification.Message = "Você não pode deletar seu " +
-                    "próprio registro de usuário!";
+                    var sqlCommand = @"DELETE FROM UserLogin WHERE Id = @Id";
 
-                    return deleteState;
+                    connection.ParameterClear();
+                    connection.AddParameter("@Id", OleDbType.Integer, id);
+
+                    transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
+
+                    //Registra histórico do usuário
+                    var userHistory = new UserHistory(connection)
+                    {
+                        Login = LoginAssistant.Login,
+                        OperationType = "Deletou",
+                        OperationModule = "Usuário",
+                        OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
+                        OperationHour = DateTime.Now.ToString("HH:mm:ss"),
+                        AffectedFields = affectedFields
+                    };
+                    transactionState = userHistory.Register();
+
+                    //Finaliza a transação
+                    connection.Transaction.Commit();
+
+                    Notification.Message = "Usuário excluido com sucesso!";
                 }
 
-                if (connection.ExecuteNonQuery(sqlCommand) > 0)
-                {
-                    deleteState = true;
-                    Notification.Message = "Dados deletados com sucesso!";
-                }
-                else
-                {
-                    Notification.Message = "Esse registro já foi deletado," +
-                    "atualize a lista de dados!";
-                }
+                return transactionState;
             }
-
-            return deleteState;
         }
 
         public void ListData()
@@ -264,7 +317,7 @@ namespace DimStock.Business
             }
         }
 
-        public bool CheckIfRegisterExists()
+        public bool CheckIfLoginExists()
         {
             using (var connection = new Connection())
             {
@@ -306,6 +359,28 @@ namespace DimStock.Business
             }
         }
 
+        public bool CheckIfResgisterExists(int id)
+        {
+            using (var connection = new Connection())
+            {
+                var sqlQuery = "SELECT Id FROM UserLogin WHERE Id = @Id";
+                var recordsFound = 0;
+
+                connection.ParameterClear();
+                connection.AddParameter("Id", OleDbType.Integer, id);
+
+                using (var reader = connection.QueryWithDataReader(sqlQuery))
+                {
+                    while (reader.Read())
+                    {
+                        recordsFound += 1;
+                    }
+                }
+
+                return recordsFound > 0;
+            }
+        }
+
         public void PassDataTableToList(DataTable dataTable)
         {
             var userList = new List<UserLogin>();
@@ -323,6 +398,35 @@ namespace DimStock.Business
             }
 
             ListOfRecords = userList;
+        }
+
+        public string GetDataFromAffectedFields(int id, Connection connection)
+        {
+            var usersList = new List<string>();
+
+            var sqlQuery = @"SELECT * FROM UserLogin WHERE Id = @Id";
+
+            connection.ParameterClear();
+            connection.AddParameter("@Id", OleDbType.Integer, id);
+
+            using (var reader = connection.QueryWithDataReader(sqlQuery))
+            {
+                while (reader.Read())
+                {
+                    usersList.Add("Id:" + reader["Id"].ToString());
+                    usersList.Add("Nome:" + reader["Name"].ToString());
+                    usersList.Add("Email:" + reader["Email"].ToString());
+                    usersList.Add("Login:" + reader["Login"].ToString());
+                    usersList.Add("Senha:" + reader["PassWord"].ToString());
+                    usersList.Add("PermissãoCadastrar:" + reader["PermissionToRegister"].ToString().Replace("True", "Sím").Replace("False", "Não"));
+                    usersList.Add("PermissãoEditar:" + reader["PermissionToEdit"].ToString().Replace("True", "Sím").Replace("False", "Não"));
+                    usersList.Add("PermissãoDeletar:" + reader["PermissionToDelete"].ToString().Replace("True", "Sím").Replace("False", "Não"));
+                    usersList.Add("PermissãoTodas:" + reader["AllPermissions"].ToString().Replace("True", "Sím").Replace("False", "Não"));
+                    usersList.Add("PermissãoVisualizar:" + reader["PermissionToView"].ToString().Replace("True", "Sím").Replace("False", "Não"));
+                }
+            }
+
+            return string.Join(" | ", usersList.Select(x => x.ToString()));
         }
 
         #endregion

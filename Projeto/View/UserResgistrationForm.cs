@@ -146,6 +146,11 @@ namespace DimStock.View
 
                         ResetControls();
                     }
+                    else
+                    {
+                        MessageBox.Show(Notification.Message, "AVISO",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
 
             }

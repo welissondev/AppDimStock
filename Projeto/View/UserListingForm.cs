@@ -238,6 +238,11 @@ namespace DimStock.View
                         MessageBox.Show(Notification.Message, "SUCESSO",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
+                    else
+                    {
+                        MessageBox.Show(Notification.Message, "AVISO",
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
                 }
             }
             catch (Exception ex)
