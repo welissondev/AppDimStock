@@ -124,6 +124,7 @@ namespace DimStock.Business
                     MinStock = @MinStock, MaxStock = @MaxStock, BarCode = @BarCode, 
                     PhotoName = @PhotoName WHERE Id = @Id";
 
+                    connection.ParameterClear();
                     connection.AddParameter("@Code", OleDbType.Integer, Code);
                     connection.AddParameter("@Size", OleDbType.Integer, Size);
                     connection.AddParameter("@Reference", OleDbType.Integer, Reference);
