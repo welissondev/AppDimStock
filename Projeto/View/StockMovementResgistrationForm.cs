@@ -397,14 +397,20 @@ namespace DimStock.View
         {
             try
             {
-                if (Convert.ToInt32(StockMovementId.Text) > 0 && OperationSituation.Text == "Finalizada")
+                if (Convert.ToInt32(StockMovementId.Text) > 0 
+                && OperationSituation.Text == "Finalizada")
                 {
-                    if (MessageBox.Show("Confirma essa operação?", "CONFIRME", MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                    if (MessageBox.Show("Confirma essa operação?", "CONFIRME", 
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, 
+                    MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                     {
-                        var stockMovement = new StockMovement();
+                        var stockMovement = new StockMovement
+                        {
+                            OperationType = OperationType.Text
+                        };
 
-                        if (stockMovement.Delete(Convert.ToInt32(StockMovementId.Text)) == true)
+                        if (stockMovement.Delete(Convert.ToInt32(
+                        StockMovementId.Text)) == true)
                         {
                             MessageBox.Show(Notification.Message, "SUCESSO",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -447,7 +453,7 @@ namespace DimStock.View
                 {
                     var stock = new Stock();
 
-                    if (stock.RegisterRemovals(GetItems(), Convert.ToInt32(StockMovementId.Text)) == true)
+                    if (stock.RegisterOutputs(GetItems(), Convert.ToInt32(StockMovementId.Text)) == true)
                     {
                         MessageBox.Show(Notification.Message, "SUCESSO", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);

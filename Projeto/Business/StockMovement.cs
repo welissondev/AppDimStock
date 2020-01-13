@@ -116,27 +116,75 @@ namespace DimStock.Business
 
         public bool Delete(int id)
         {
-            bool deleteState = false;
+            if (CheckIfRegisterExists(id) == false)
+            {
+                Notification.Message = "Esse registro já foi " +
+                "excluido, atualize a lista de dados!";
+
+                return false;
+            }
+
+            var stockItem = new StockItem();
+            stockItem.ListItem(id);
+
+            var transactionState = false;
 
             using (var connection = new Connection())
             {
-                var sqlCommand = @"DELETE FROM StockMovement WHERE Id = @Id";
+                var affectedFields = GetAffectedFields(id, connection);
 
-                connection.AddParameter("@Id", OleDbType.Integer, id);
-
-                if (connection.ExecuteNonQuery(sqlCommand) > 0)
+                using (connection.Transaction = 
+                connection.Open().BeginTransaction())
                 {
+                    var sqlCommand = @"DELETE FROM StockMovement 
+                    WHERE Id = @Id";
+
+                    connection.ParameterClear();
+                    connection.AddParameter("@Id", 
+                    OleDbType.Integer, id);
+
+                    transactionState = connection.ExecuteTransaction(
+                    sqlCommand) > 0;
+
+                    if (stockItem.ListOfRecords.Count > 0)
+                    {
+                        //Remove o estoque
+                        var stok = new Stock(connection);
+
+                        switch (OperationType)
+                        {
+                            case "Entrada":
+                                transactionState = stok.CancelEntries(
+                                stockItem.ListOfRecords);
+                                break;
+
+                            case "Saída":
+                                transactionState = stok.CancelOutputs(
+                                stockItem.ListOfRecords);
+                                break;
+                        }
+                    }
+
+                    //Registra o histórico do usuário
+                    var userHistory = new UserHistory(connection)
+                    {
+                        Login = LoginAssistant.Login,
+                        OperationType = "Deletou",
+                        OperationModule = "Estoque",
+                        OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
+                        OperationHour = DateTime.Now.ToString("HH:mm:ss"),
+                        AffectedFields = affectedFields
+                    };
+                    transactionState = userHistory.Register();
+
+                    //Finaliza o transação
+                    connection.Transaction.Commit();
+
                     Notification.Message = "Deletado com sucesso!";
-                    deleteState = true;
                 }
-                else
-                {
-                    Notification.Message = "Esse registro já foi deletado, " +
-                    "atualize a lista de registros!";
-                }
-            }
 
-            return deleteState;
+                return transactionState;
+            }
         }
 
         public void ListData()
@@ -267,7 +315,7 @@ namespace DimStock.Business
             ListOfRecords = stockMovementsList;
         }
 
-        public string GetDataFromAffectedFields(int id, Connection connection)
+        public string GetAffectedFields(int id, Connection connection)
         {
             var sqlQuery = @"SELECT * FROM StockMovement WHERE Id = @Id";
 
@@ -290,6 +338,27 @@ namespace DimStock.Business
             }
 
             return string.Join(" | ", affectedFieldList.Select(x => x.ToString()));
+        }
+
+        public bool CheckIfRegisterExists(int id)
+        {
+            using (var connection = new Connection())
+            {
+                var sqlQuery = "SELECT Id FROM StockMovement WHERE Id = @Id";
+                var recordsFound = 0;
+
+                connection.AddParameter("Id", OleDbType.Integer, id);
+
+                using (var reader = connection.QueryWithDataReader(sqlQuery))
+                {
+                    while (reader.Read())
+                    {
+                        recordsFound += 1;
+                    }
+                }
+
+                return recordsFound > 0;
+            }
         }
 
         #endregion

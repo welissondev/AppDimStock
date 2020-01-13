@@ -8,7 +8,7 @@ namespace DimStock.Business
     public class Stock
     {
         #region Properties
-        private Connection connectionTransaction;
+        private Connection connection;
         #endregion
 
         #region Contructs
@@ -17,7 +17,7 @@ namespace DimStock.Business
 
         public Stock(Connection connection)
         {
-            this.connectionTransaction = connection;
+            this.connection = connection;
         }
 
         #endregion 
@@ -70,7 +70,7 @@ namespace DimStock.Business
                         OperationModule = "Estoque",
                         OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
                         OperationHour = DateTime.Now.ToString("HH:mm:ss"),
-                        AffectedFields = stockMovement.GetDataFromAffectedFields(stockMovementId, connection)
+                        AffectedFields = stockMovement.GetAffectedFields(stockMovementId, connection)
                     };
                     transactionState = userHistory.Register();
 
@@ -84,7 +84,7 @@ namespace DimStock.Business
             }
         }
 
-        public bool RegisterRemovals(List<Stock> itemList, int stockMovementId)
+        public bool RegisterOutputs(List<Stock> itemList, int stockMovementId)
         {
             using (var connection = new Connection())
             {
@@ -123,7 +123,7 @@ namespace DimStock.Business
                         OperationModule = "Estoque",
                         OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
                         OperationHour = DateTime.Now.ToString("HH:mm:ss"),
-                        AffectedFields = stockMovement.GetDataFromAffectedFields(stockMovementId, connection)
+                        AffectedFields = stockMovement.GetAffectedFields(stockMovementId, connection)
                     };
                     transactionState = userHistory.Register();
 
@@ -137,16 +137,68 @@ namespace DimStock.Business
             }
         }
 
-        public bool AddRelatedProduct(int id)
+        public bool CancelEntries(List<StockItem> stockItems)
+        {
+            var transactionState = false;
+
+            var sqlCommand = string.Empty;
+
+            for (int i = 0; i < stockItems.Count; i++)
+            {
+                var stockId = stockItems[i].StockId;
+                var quantity = stockItems[i].Quantity;
+                var totalValue = stockItems[i].TotalValue;
+
+                sqlCommand = @"UPDATE Stock Set Quantity = Quantity - @Quantity, 
+                TotalValue = TotalValue - @TotalValue WHERE Id = @Id";
+
+                connection.ParameterClear();
+                connection.AddParameter("@Quantity", OleDbType.Integer, quantity);
+                connection.AddParameter("@TotalValue", OleDbType.Double, totalValue);
+                connection.AddParameter("@Id", OleDbType.Integer, stockId);
+
+                transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
+            }
+
+            return transactionState;
+        }
+
+        public bool CancelOutputs(List<StockItem> stockItems)
+        {
+            var transactionState = false;
+
+            var sqlCommand = string.Empty;
+
+            for (int i = 0; i < stockItems.Count; i++)
+            {
+                var stockId = stockItems[i].StockId;
+                var quantity = stockItems[i].Quantity;
+                var totalValue = stockItems[i].TotalValue;
+
+                sqlCommand = @"UPDATE Stock Set Quantity = Quantity + @Quantity, 
+                    TotalValue = TotalValue + @TotalValue WHERE Id = @Id";
+
+                connection.ParameterClear();
+                connection.AddParameter("@Quantity", OleDbType.Integer, quantity);
+                connection.AddParameter("@TotalValue", OleDbType.Double, totalValue);
+                connection.AddParameter("@Id", OleDbType.Integer, stockId);
+
+                transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
+            }
+
+            return transactionState;
+        }
+
+        public bool RelateProduct(int id)
         {
             var transactionState = false;
 
             var sqlCommand = @"INSERT INTO Stock(ProductId)VALUES(@ProductId)";
 
-            connectionTransaction.ParameterClear();
-            connectionTransaction.AddParameter("@ProductId", OleDbType.Integer, id);
+            connection.ParameterClear();
+            connection.AddParameter("@ProductId", OleDbType.Integer, id);
 
-            if (connectionTransaction.ExecuteTransaction(sqlCommand) > 0)
+            if (connection.ExecuteTransaction(sqlCommand) > 0)
             {
                 transactionState = true;
             }
@@ -161,38 +213,11 @@ namespace DimStock.Business
             var sqlCommand = @"UPDATE Stock Set TotalValue = @ProductCostPrice * 
             Quantity WHERE ProductId = @ProductId";
 
-            connectionTransaction.ParameterClear();
-            connectionTransaction.AddParameter("ProductCostPrice", OleDbType.Double, productCostPrice);
-            connectionTransaction.AddParameter("@ProductId", OleDbType.Integer, productId);
+            connection.ParameterClear();
+            connection.AddParameter("ProductCostPrice", OleDbType.Double, productCostPrice);
+            connection.AddParameter("@ProductId", OleDbType.Integer, productId);
 
-            return transactionState = connectionTransaction.ExecuteTransaction(sqlCommand) > 0;
-        }
-
-        public bool Reset(List<StockItem> itemList)
-        {
-            using (var connection = new Connection())
-            {
-                using (connection.Transaction = connection.Open().BeginTransaction())
-                {
-                    for (int i = 0; i < itemList.Count; i++)
-                    {
-                        var stockId = itemList[i].StockId;
-
-                        var sqlCommand = @"UPDATE Stock Set TotalValue = '0' WHERE Id = @StockId";
-
-                        connection.ParameterClear();
-                        connection.AddParameter("@StockId", OleDbType.Integer, stockId);
-
-                        connection.ExecuteTransaction(sqlCommand);
-                    }
-
-                    connection.Transaction.Commit();
-
-                    Notification.Message = "Ok! Todos os estoques foram removidos!";
-
-                    return true;
-                }
-            }
+            return transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
         }
 
         #endregion

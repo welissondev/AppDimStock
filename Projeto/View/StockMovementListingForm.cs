@@ -310,12 +310,22 @@ namespace DimStock.View
         {
             try
             {
-                if (MessageBox.Show("Confirma essa operação?", "CONFIRME", MessageBoxButtons.YesNo,
-                MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                if (MessageBox.Show("Confirma essa operação?", "CONFIRME", 
+                MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, 
+                MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
-                    int id = Convert.ToInt32(MovementStockDataList.CurrentRow.Cells["id"].Value);
+                    int id = Convert.ToInt32(
+                    MovementStockDataList.CurrentRow.Cells[
+                    "id"].Value);
 
-                    var stockMovement = new StockMovement();
+                    var operationType = Convert.ToString(
+                    MovementStockDataList.CurrentRow.Cells[
+                    "operationType"].Value);
+
+                    var stockMovement = new StockMovement
+                    {
+                        OperationType = operationType
+                    };
 
                     if (stockMovement.Delete(id) == true)
                     {

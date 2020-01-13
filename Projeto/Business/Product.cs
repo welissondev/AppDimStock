@@ -83,7 +83,7 @@ namespace DimStock.Business
 
                     //Relacionar o produto ao stock
                     var stock = new Stock(connection);
-                    transactionState = stock.AddRelatedProduct(Id);
+                    transactionState = stock.RelateProduct(Id);
 
                     //Registrar histórico do usuário
                     var userHistory = new UserHistory(connection)
