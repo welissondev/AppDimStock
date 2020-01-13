@@ -10,7 +10,7 @@ namespace DimStock.Business
     public class StockMovement
     {
         #region Properties
-        private Connection connectionTransaction;
+        private Connection connection;
         #endregion
 
         #region Constructs
@@ -24,7 +24,7 @@ namespace DimStock.Business
 
         public StockMovement(Connection connection)
         {
-            this.connectionTransaction = connection;
+            this.connection = connection;
         }
 
         #endregion 
@@ -107,10 +107,10 @@ namespace DimStock.Business
             var sqlCommand = @"UPDATE StockMovement Set OperationSituation 
             = 'Finalizada' Where Id = @Id";
 
-            connectionTransaction.ParameterClear();
-            connectionTransaction.AddParameter("@Id", OleDbType.Integer, id);
+            connection.ParameterClear();
+            connection.AddParameter("@Id", OleDbType.Integer, id);
 
-            return transactionState = connectionTransaction.ExecuteTransaction(
+            return transactionState = connection.ExecuteTransaction(
             sqlCommand) > 0;
         }
 
