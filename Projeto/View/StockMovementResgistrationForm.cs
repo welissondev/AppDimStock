@@ -57,10 +57,8 @@ namespace DimStock.View
         {
             try
             {
-                if (RegisterStockMovement() == true)
-                {
-                    GetStockMovementDetails(Convert.ToInt32(StockMovementId.Text));
-                }
+                ContextMenuStrip.Show();
+                ContextMenuStrip.Location = MousePosition;
             }
             catch (Exception ex)
             {
@@ -109,8 +107,8 @@ namespace DimStock.View
         private void ShearchFields_KeyPress(object sender, KeyPressEventArgs e)
         {
             GifLoading.Visible = true;
-            QueryTimer.Enabled = false;
-            QueryTimer.Enabled = true;
+            SearchTimer.Enabled = false;
+            SearchTimer.Enabled = true;
         }
 
         private void Quantity_KeyPress(object sender, KeyPressEventArgs e)
@@ -152,10 +150,10 @@ namespace DimStock.View
 
         #region Timer
 
-        private void QueryTimer_Tick(object sender, EventArgs e)
+        private void SearchTimer_Tick(object sender, EventArgs e)
         {
             GifLoading.Visible = false;
-            QueryTimer.Enabled = false;
+            SearchTimer.Enabled = false;
             SearchStock();
         }
 
@@ -225,6 +223,26 @@ namespace DimStock.View
         {
             //Remove o focus do controle datagriview
             e.PaintParts = DataGridViewPaintParts.All ^ DataGridViewPaintParts.Focus;
+        }
+
+        #endregion
+
+        #region ToolStripMenu
+
+        private void MovementEntrie_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OperationType.Text = "Entrada";
+            RegisterStockMovement();
+            GetStockMovementDetails(Convert.ToInt32(StockMovementId.Text));
+            ListStockItems();
+        }
+
+        private void MovementOutPut_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OperationType.Text = "Saída";
+            RegisterStockMovement();
+            GetStockMovementDetails(Convert.ToInt32(StockMovementId.Text));
+            ListStockItems();
         }
 
         #endregion
@@ -397,11 +415,11 @@ namespace DimStock.View
         {
             try
             {
-                if (Convert.ToInt32(StockMovementId.Text) > 0 
+                if (Convert.ToInt32(StockMovementId.Text) > 0
                 && OperationSituation.Text == "Finalizada")
                 {
-                    if (MessageBox.Show("Confirma essa operação?", "CONFIRME", 
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, 
+                    if (MessageBox.Show("Confirma essa operação?", "CONFIRME",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                     {
                         var stockMovement = new StockMovement

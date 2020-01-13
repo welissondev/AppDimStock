@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StockMovimentRegistrationForm));
-            this.QueryTimer = new System.Windows.Forms.Timer(this.components);
+            this.SearchTimer = new System.Windows.Forms.Timer(this.components);
             this.SubTotalTitle = new System.Windows.Forms.Label();
             this.SubTotal = new System.Windows.Forms.Label();
             this.AddItem = new Syncfusion.WinForms.Controls.SfButton();
@@ -62,6 +62,7 @@
             this.TotalItems = new System.Windows.Forms.Label();
             this.ClearQueryFields = new System.Windows.Forms.LinkLabel();
             this.GifLoading = new System.Windows.Forms.PictureBox();
+            this.MainDataList = new DimStock.Auxiliary.CustomDataGridViewOne();
             this.Delete = new Syncfusion.WinForms.Controls.SfButton();
             this.Confirm = new Syncfusion.WinForms.Controls.SfButton();
             this.GrupBoxGeneralInformation = new System.Windows.Forms.GroupBox();
@@ -74,7 +75,9 @@
             this.AddNew = new Syncfusion.WinForms.Controls.SfButton();
             this.StockDestinationList = new System.Windows.Forms.ComboBox();
             this.AddNewStockDestination = new System.Windows.Forms.LinkLabel();
-            this.MainDataList = new DimStock.Auxiliary.CustomDataGridViewOne();
+            this.ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.MovementEntrie_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MovementOutPut_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.Quantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TotalValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UnitaryValue)).BeginInit();
@@ -85,15 +88,16 @@
             this.CardMain.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GifLoading)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MainDataList)).BeginInit();
             this.GrupBoxGeneralInformation.SuspendLayout();
             this.PanelUpperHorinzontal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MainDataList)).BeginInit();
+            this.ContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
-            // QueryTimer
+            // SearchTimer
             // 
-            this.QueryTimer.Interval = 1000;
-            this.QueryTimer.Tick += new System.EventHandler(this.QueryTimer_Tick);
+            this.SearchTimer.Interval = 1000;
+            this.SearchTimer.Tick += new System.EventHandler(this.SearchTimer_Tick);
             // 
             // SubTotalTitle
             // 
@@ -587,6 +591,22 @@
             this.GifLoading.TabStop = false;
             this.GifLoading.Visible = false;
             // 
+            // MainDataList
+            // 
+            this.MainDataList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MainDataList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.MainDataList.ListIsItem = false;
+            this.MainDataList.ListIsStock = false;
+            this.MainDataList.Location = new System.Drawing.Point(21, 60);
+            this.MainDataList.Name = "MainDataList";
+            this.MainDataList.Size = new System.Drawing.Size(861, 248);
+            this.MainDataList.TabIndex = 141;
+            this.MainDataList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MainDataList_CellClick);
+            this.MainDataList.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.MainDataList_RowPrePaint);
+            this.MainDataList.DoubleClick += new System.EventHandler(this.MainDataList_DoubleClick);
+            // 
             // Delete
             // 
             this.Delete.AccessibleName = "Button";
@@ -790,21 +810,27 @@
             this.AddNewStockDestination.Text = "Cadastrar Novo";
             this.AddNewStockDestination.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.AddNewStockDestination_LinkClicked);
             // 
-            // MainDataList
+            // ContextMenuStrip
             // 
-            this.MainDataList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.MainDataList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.MainDataList.ListIsItem = false;
-            this.MainDataList.ListIsStock = false;
-            this.MainDataList.Location = new System.Drawing.Point(21, 60);
-            this.MainDataList.Name = "MainDataList";
-            this.MainDataList.Size = new System.Drawing.Size(861, 248);
-            this.MainDataList.TabIndex = 141;
-            this.MainDataList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MainDataList_CellClick);
-            this.MainDataList.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.MainDataList_RowPrePaint);
-            this.MainDataList.DoubleClick += new System.EventHandler(this.MainDataList_DoubleClick);
+            this.ContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MovementEntrie_ToolStripMenuItem,
+            this.MovementOutPut_ToolStripMenuItem});
+            this.ContextMenuStrip.Name = "ContextMenuStrip";
+            this.ContextMenuStrip.Size = new System.Drawing.Size(115, 48);
+            // 
+            // MovementEntrie_ToolStripMenuItem
+            // 
+            this.MovementEntrie_ToolStripMenuItem.Name = "MovementEntrie_ToolStripMenuItem";
+            this.MovementEntrie_ToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.MovementEntrie_ToolStripMenuItem.Text = "Entrada";
+            this.MovementEntrie_ToolStripMenuItem.Click += new System.EventHandler(this.MovementEntrie_ToolStripMenuItem_Click);
+            // 
+            // MovementOutPut_ToolStripMenuItem
+            // 
+            this.MovementOutPut_ToolStripMenuItem.Name = "MovementOutPut_ToolStripMenuItem";
+            this.MovementOutPut_ToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.MovementOutPut_ToolStripMenuItem.Text = "Saída";
+            this.MovementOutPut_ToolStripMenuItem.Click += new System.EventHandler(this.MovementOutPut_ToolStripMenuItem_Click);
             // 
             // StockMovimentRegistrationForm
             // 
@@ -833,18 +859,19 @@
             this.CardMain.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GifLoading)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MainDataList)).EndInit();
             this.GrupBoxGeneralInformation.ResumeLayout(false);
             this.GrupBoxGeneralInformation.PerformLayout();
             this.PanelUpperHorinzontal.ResumeLayout(false);
             this.PanelUpperHorinzontal.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MainDataList)).EndInit();
+            this.ContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Timer QueryTimer;
+        private System.Windows.Forms.Timer SearchTimer;
         private System.Windows.Forms.Label SubTotalTitle;
         private System.Windows.Forms.Label SubTotal;
         private System.Windows.Forms.Label OperationHourTitle;
@@ -889,5 +916,8 @@
         private System.Windows.Forms.ComboBox StockDestinationList;
         private System.Windows.Forms.LinkLabel AddNewStockDestination;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ContextMenuStrip ContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem MovementEntrie_ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MovementOutPut_ToolStripMenuItem;
     }
 }
