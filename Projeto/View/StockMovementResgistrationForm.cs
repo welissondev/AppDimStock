@@ -234,6 +234,7 @@ namespace DimStock.View
             OperationType.Text = "Entrada";
             RegisterStockMovement();
             GetStockMovementDetails(Convert.ToInt32(StockMovementId.Text));
+            ResetControl();
             ListStockItems();
         }
 
@@ -242,6 +243,7 @@ namespace DimStock.View
             OperationType.Text = "Saída";
             RegisterStockMovement();
             GetStockMovementDetails(Convert.ToInt32(StockMovementId.Text));
+            ResetControl();
             ListStockItems();
         }
 
@@ -691,6 +693,9 @@ namespace DimStock.View
             SubTotal.Text = "R$0,00";
             Quantity.Text = "0";
             QueryByCode.Select();
+
+            var itemList = new List<string>();
+            StockDestinationList.DataSource = itemList;
         }
 
         private void InitializeSettings()
