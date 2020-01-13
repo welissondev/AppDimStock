@@ -206,6 +206,7 @@ namespace DimStock.Business
                             OperationDate = Convert.ToDateTime(reader["OperationDate"]),
                             OperationHour = reader["OperationHour"].ToString(),
                             OperationSituation = reader["OperationSituation"].ToString(),
+                            StockDestinationLocation = reader["StockDestinationLocation"].ToString(),
                         };
 
                         stockMovementsList.Add(stockMovement);
@@ -306,7 +307,8 @@ namespace DimStock.Business
                     OperationType = Convert.ToString(row["OperationType"]),
                     OperationDate = Convert.ToDateTime(row["OperationDate"]),
                     OperationHour = Convert.ToString(row["OperationHour"]),
-                    OperationSituation = Convert.ToString(row["OperationSituation"])
+                    OperationSituation = Convert.ToString(row["OperationSituation"]),
+                    StockDestinationLocation = row["StockDestinationLocation"].ToString(),
                 };
 
                 stockMovementsList.Add(stockMovement);

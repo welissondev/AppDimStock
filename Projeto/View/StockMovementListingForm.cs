@@ -284,11 +284,12 @@ namespace DimStock.View
                 for (int i = 0; i < stockMovement.ListOfRecords.Count; i++)
                 {
                     MovementStockDataList.Rows.Add(
-                    stockMovement.ListOfRecords[i].Id,
+                    stockMovement.ListOfRecords[i].OperationSituation,
                     stockMovement.ListOfRecords[i].OperationType,
+                    stockMovement.ListOfRecords[i].Id,
                     stockMovement.ListOfRecords[i].OperationDate,
                     stockMovement.ListOfRecords[i].OperationHour,
-                    stockMovement.ListOfRecords[i].OperationSituation
+                    stockMovement.ListOfRecords[i].StockDestinationLocation
                     );
                 }
 
@@ -310,8 +311,8 @@ namespace DimStock.View
         {
             try
             {
-                if (MessageBox.Show("Confirma essa operação?", "CONFIRME", 
-                MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, 
+                if (MessageBox.Show("Confirma essa operação?", "CONFIRME",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation,
                 MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
                     int id = Convert.ToInt32(
@@ -498,18 +499,18 @@ namespace DimStock.View
                 var operationDate = new DataGridViewTextBoxColumn();
                 var operationHour = new DataGridViewTextBoxColumn();
                 var operationSituation = new DataGridViewTextBoxColumn();
+                var stockDestinationLocation = new DataGridViewTextBoxColumn();
                 var viewDetails = new DataGridViewImageColumn();
                 var exclude = new DataGridViewImageColumn();
 
                 var stockMovementList = MovementStockDataList;
 
-                stockMovementList.Columns.Add(id);
-                stockMovementList.Columns[0].Name = "id";
-                stockMovementList.Columns[0].HeaderText = "ID";
-                stockMovementList.Columns[0].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                stockMovementList.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                stockMovementList.Columns[0].Visible = false;
+                stockMovementList.Columns.Add(operationSituation);
+                stockMovementList.Columns[0].Width = 100;
+                stockMovementList.Columns[0].Name = "operationSituation";
+                stockMovementList.Columns[0].HeaderText = "SITUAÇÃO";
                 stockMovementList.Columns[0].ReadOnly = true;
+                stockMovementList.Columns[0].Visible = true;
 
                 stockMovementList.Columns.Add(operationType);
                 stockMovementList.Columns[1].Width = 100;
@@ -519,49 +520,56 @@ namespace DimStock.View
                 stockMovementList.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 stockMovementList.Columns[1].ReadOnly = true;
 
-                stockMovementList.Columns.Add(operationDate);
-                stockMovementList.Columns[2].Width = 100;
-                stockMovementList.Columns[2].Name = "operationDate";
-                stockMovementList.Columns[2].HeaderText = "DATA";
-                stockMovementList.Columns[2].DefaultCellStyle.Format = "dd-MM-yyyy";
+                stockMovementList.Columns.Add(id);
+                stockMovementList.Columns[2].Name = "id";
+                stockMovementList.Columns[2].HeaderText = "NÚMERO";
                 stockMovementList.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 stockMovementList.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                stockMovementList.Columns[2].Visible = true;
                 stockMovementList.Columns[2].ReadOnly = true;
 
-                stockMovementList.Columns.Add(operationHour);
-                stockMovementList.Columns[3].Name = "operationHour";
-                stockMovementList.Columns[3].HeaderText = "HÓRA";
+                stockMovementList.Columns.Add(operationDate);
                 stockMovementList.Columns[3].Width = 100;
+                stockMovementList.Columns[3].Name = "operationDate";
+                stockMovementList.Columns[3].HeaderText = "DATA";
+                stockMovementList.Columns[3].DefaultCellStyle.Format = "dd-MM-yyyy";
                 stockMovementList.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 stockMovementList.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                stockMovementList.Columns[3].DisplayIndex = 2;
                 stockMovementList.Columns[3].ReadOnly = true;
-                stockMovementList.Columns[3].Visible = true;
 
-                stockMovementList.Columns.Add(operationSituation);
+                stockMovementList.Columns.Add(operationHour);
+                stockMovementList.Columns[4].Name = "operationHour";
+                stockMovementList.Columns[4].HeaderText = "HÓRA";
                 stockMovementList.Columns[4].Width = 100;
-                stockMovementList.Columns[4].Name = "operationSituation";
-                stockMovementList.Columns[4].HeaderText = "SITUAÇÃO";
+                stockMovementList.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                stockMovementList.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 stockMovementList.Columns[4].ReadOnly = true;
                 stockMovementList.Columns[4].Visible = true;
 
-                stockMovementList.Columns.Add(viewDetails);
-                stockMovementList.Columns[5].Name = "viewDetails";
-                stockMovementList.Columns[5].HeaderText = "";
-                stockMovementList.Columns[5].Width = 70;
-                stockMovementList.Columns[5].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                stockMovementList.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                stockMovementList.Columns.Add(stockDestinationLocation);
+                stockMovementList.Columns[5].Width = 250;
+                stockMovementList.Columns[5].Name = "stockDestinationLocation";
+                stockMovementList.Columns[5].HeaderText = "DESTINO";
                 stockMovementList.Columns[5].ReadOnly = true;
-                viewDetails.ImageLayout = DataGridViewImageCellLayout.Normal;
-                viewDetails.Image = Resources.Visualizar2;
+                stockMovementList.Columns[5].Visible = true;
 
-                stockMovementList.Columns.Add(exclude);
-                stockMovementList.Columns[6].Name = "exclude";
+                stockMovementList.Columns.Add(viewDetails);
+                stockMovementList.Columns[6].Name = "viewDetails";
                 stockMovementList.Columns[6].HeaderText = "";
                 stockMovementList.Columns[6].Width = 70;
                 stockMovementList.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 stockMovementList.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 stockMovementList.Columns[6].ReadOnly = true;
+                viewDetails.ImageLayout = DataGridViewImageCellLayout.Normal;
+                viewDetails.Image = Resources.Visualizar2;
+
+                stockMovementList.Columns.Add(exclude);
+                stockMovementList.Columns[7].Name = "exclude";
+                stockMovementList.Columns[7].HeaderText = "";
+                stockMovementList.Columns[7].Width = 70;
+                stockMovementList.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                stockMovementList.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                stockMovementList.Columns[7].ReadOnly = true;
                 exclude.ImageLayout = DataGridViewImageCellLayout.Normal;
                 exclude.Image = Resources.Deletar;
 
