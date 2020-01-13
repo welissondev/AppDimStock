@@ -415,8 +415,7 @@ namespace DimStock.View
         {
             try
             {
-                if (Convert.ToInt32(StockMovementId.Text) > 0
-                && OperationSituation.Text == "Finalizada")
+                if (Convert.ToInt32(StockMovementId.Text) > 0)
                 {
                     if (MessageBox.Show("Confirma essa operação?", "CONFIRME",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation,
