@@ -168,7 +168,7 @@ namespace DimStock.Business
                     //Registra o histórico do usuário
                     var userHistory = new UserHistory(connection)
                     {
-                        Login = LoginAssistant.Login,
+                        UserId = LoginAssistant.Id,
                         OperationType = "Deletou",
                         OperationModule = "Estoque",
                         OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),

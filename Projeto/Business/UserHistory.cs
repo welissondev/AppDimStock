@@ -32,6 +32,7 @@ namespace DimStock.Business
 
         #region BussinessProperties
         public int Id { get; set; }
+        public int UserId { get; set; }
         public string Login { get; set; }
         public string AffectedFields { get; set; }
         public string OperationType { get; set; }
@@ -54,13 +55,13 @@ namespace DimStock.Business
 
         public bool Register()
         {
-            var sqlCommand = @"INSERT INTO UserHistoric(Login, OperationType, OperationDate, OperationHour, 
-            OperationModule, AffectedFields)VALUES(@Login, @OperationType, @OperationDate, @OperationHour, 
+            var sqlCommand = @"INSERT INTO UserHistory(UserId, OperationType, OperationDate, OperationHour, 
+            OperationModule, AffectedFields)VALUES(@UserId, @OperationType, @OperationDate, @OperationHour, 
             @Module, @AffectedFields)";
 
 
             connection.ParameterClear();
-            connection.AddParameter("@Login", OleDbType.VarChar, Login);
+            connection.AddParameter("@UserId", OleDbType.VarChar, UserId);
             connection.AddParameter("@OperationType", OleDbType.VarChar, OperationType);
             connection.AddParameter("@OperationDate", OleDbType.Date, OperationDate);
             connection.AddParameter("@OperationHour", OleDbType.VarChar, OperationHour);
@@ -72,7 +73,8 @@ namespace DimStock.Business
 
         public void ListData()
         {
-            var sqlQuery = @"SELECT * FROM UserHistoric";
+            var sqlQuery = @"SELECT [User].*, UserHistory.* FROM UserHistory 
+            INNER JOIN [User] ON User.Id = UserHistory.UserId";
 
             var historicList = new List<UserHistory>();
 
@@ -84,7 +86,8 @@ namespace DimStock.Business
                     {
                         var historic = new UserHistory
                         {
-                            Id = Convert.ToInt32(reader["Id"]),
+                            Id = Convert.ToInt32(reader["UserHistory.Id"]),
+                            UserId = Convert.ToInt32(reader["UserId"]),
                             Login = Convert.ToString(reader["Login"]),
                             OperationType = Convert.ToString(reader["OperationType"]),
                             OperationModule = Convert.ToString(reader["OperationModule"]),
@@ -110,14 +113,16 @@ namespace DimStock.Business
                 var criterion = string.Empty;
                 var parameter = connection.Command.Parameters;
 
-                sqlQuery = @"SELECT * FROM UserHistoric WHERE Id > 0 ";
-                 
-                sqlCount = @"SELECT COUNT(*) FROM UserHistoric WHERE Id > 0 ";
+                sqlQuery = @"SELECT [User].*, UserHistory.* FROM UserHistory 
+                INNER JOIN [User] ON User.Id = UserHistory.UserId WHERE User.Id > 0 ";
+
+                sqlCount = @"SELECT COUNT(*) FROM UserHistory WHERE Id > 0 ";
 
                 if (SearchByStartDate != string.Empty &&
                     SearchByFinalDate != string.Empty)
                 {
-                    criterion += " AND OperationDate >= @StartDate And OperationDate <= @FinalDate";
+                    criterion += " AND OperationDate >= @StartDate " +
+                    "And OperationDate <= @FinalDate";
 
                     parameter.AddWithValue("@StartDate", string.Format("{0}",
                     SearchByStartDate));
@@ -134,7 +139,7 @@ namespace DimStock.Business
                     SearchByLogin));
                 }
 
-                sqlQuery += criterion;
+                sqlQuery += criterion + " ORDER BY UserHistory.Id Asc";
 
                 sqlCount += criterion;
 
@@ -157,7 +162,7 @@ namespace DimStock.Business
             {
                 var historic = new UserHistory
                 {
-                    Id = Convert.ToInt32(row["Id"]),
+                    Id = Convert.ToInt32(row["UserHistory.Id"]),
                     Login = Convert.ToString(row["Login"]),
                     OperationType = Convert.ToString(row["OperationType"]),
                     OperationModule = Convert.ToString(row["OperationModule"]),

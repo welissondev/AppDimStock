@@ -224,10 +224,12 @@ namespace DimStock.View
 
                 if (user.PermissionToView == true)
                 {
-                    var userHistoricList = new UserHistoryListingForm();
-                    userHistoricList.WindowState = FormWindowState.Maximized;
-                    userHistoricList.MdiParent = this;
-                    userHistoricList.Show();
+                    var UserHistoryList = new UserHistoryListingForm
+                    {
+                        WindowState = FormWindowState.Maximized,
+                        MdiParent = this
+                    };
+                    UserHistoryList.Show();
                 }
                 else
                 {

@@ -143,9 +143,7 @@ namespace DimStock.View
                 {
                     userLogin.UserName.Text = user.Name;
                     userLogin.Email.Text = user.Email;
-                    userLogin.Email.Enabled = false;
                     userLogin.Login.Text = user.Login;
-                    userLogin.Login.Enabled = false;
                     userLogin.PassWord.Text = user.PassWord;
                     userLogin.PassWordConfirmation.Text = user.PassWord;
                     userLogin.PermissionToRegister.Checked = user.PermissionToRegister;

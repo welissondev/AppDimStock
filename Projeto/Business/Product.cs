@@ -88,7 +88,7 @@ namespace DimStock.Business
                     //Registrar histórico do usuário
                     var userHistory = new UserHistory(connection)
                     {
-                        Login = LoginAssistant.Login,
+                        UserId = LoginAssistant.Id,
                         OperationType = "Cadastrou",
                         OperationModule = "Produto",
                         OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
@@ -159,7 +159,7 @@ namespace DimStock.Business
                     //Registrar histórico do usuário
                     var userHistory = new UserHistory(connection)
                     {
-                        Login = LoginAssistant.Login,
+                        UserId = LoginAssistant.Id,
                         OperationType = "Editou",
                         OperationModule = "Produto",
                         OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
@@ -206,7 +206,7 @@ namespace DimStock.Business
                     //Registrar histórico do usuário
                     var userHistory = new UserHistory(connection)
                     {
-                        Login = LoginAssistant.Login,
+                        UserId = LoginAssistant.Id,
                         OperationType = "Deletou",
                         OperationModule = "Produto",
                         OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),

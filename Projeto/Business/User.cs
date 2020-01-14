@@ -114,12 +114,12 @@ namespace DimStock.Business
 
                     //Seleciona ultimo ID inserido
                     Id = Convert.ToInt32(connection.ExecuteScalar(
-                    "SELECT MAX(Id) FROM User"));
+                    "SELECT MAX(Id) FROM [User]"));
 
                     //Registra histórico do usuário
                     var userHistory = new UserHistory(connection)
                     {
-                        Login = LoginAssistant.Login,
+                        UserId = LoginAssistant.Id,
                         OperationType = "Cadastrou",
                         OperationModule = "Usuário",
                         OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
@@ -171,7 +171,7 @@ namespace DimStock.Business
                     //Registra histórico do usuário
                     var userHistory = new UserHistory(connection)
                     {
-                        Login = LoginAssistant.Login,
+                        UserId = LoginAssistant.Id,
                         OperationType = "Editou",
                         OperationModule = "Usuário",
                         OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
@@ -226,7 +226,7 @@ namespace DimStock.Business
                     //Registra histórico do usuário
                     var userHistory = new UserHistory(connection)
                     {
-                        Login = LoginAssistant.Login,
+                        UserId = LoginAssistant.Id,
                         OperationType = "Deletou",
                         OperationModule = "Usuário",
                         OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
