@@ -127,7 +127,7 @@
     <Compile Include="Auxiliary\DataPagination.cs" />
     <Compile Include="Auxiliary\ExceptionAssistant.cs" />
     <Compile Include="Auxiliary\LoginAssistant.cs" />
-    <Compile Include="Auxiliary\CustomPictureBox.cs">
+    <Compile Include="Auxiliary\CustomPictureBoxOne.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Auxiliary\CustomDataGridViewOne.cs">
@@ -142,7 +142,7 @@
     <Compile Include="Business\Product.cs" />
     <Compile Include="Business\ProductPhoto.cs" />
     <Compile Include="Business\Stock.cs" />
-    <Compile Include="Business\UserLogin.cs" />
+    <Compile Include="Business\User.cs" />
     <Compile Include="Business\UserHistory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

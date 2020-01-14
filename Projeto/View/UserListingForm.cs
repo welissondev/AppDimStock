@@ -74,7 +74,7 @@ namespace DimStock.View
                 switch (columnName)
                 {
                     case "delete":
-                        Exclude(id);
+                        Delete(id);
                         break;
 
                     case "edit":
@@ -136,7 +136,7 @@ namespace DimStock.View
         {
             try
             {
-                var user = new UserLogin();
+                var user = new User();
                 user.ViewDetails(id);
 
                 using (var userLogin = new UserResgistrationForm(user.Id))
@@ -170,7 +170,7 @@ namespace DimStock.View
             {
                 UserDataList.Rows.Clear();
 
-                var user = new UserLogin(dataPagination);
+                var user = new User(dataPagination);
                 user.ListData();
 
                 for (int i = 0; i < user.ListOfRecords.Count; i++)
@@ -197,7 +197,7 @@ namespace DimStock.View
             {
                 UserDataList.Rows.Clear();
 
-                var user = new UserLogin(dataPagination)
+                var user = new User(dataPagination)
                 {
                     SearchByName = SearchFields.Text,
                     SearchByEmail = SearchFields.Text,
@@ -223,7 +223,7 @@ namespace DimStock.View
             }
         }
 
-        private void Exclude(int id)
+        private void Delete(int id)
         {
             try
             {
@@ -231,7 +231,7 @@ namespace DimStock.View
                     MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
-                    var user = new UserLogin();
+                    var user = new User();
 
                     if (user.Delete(id) == true)
                     {

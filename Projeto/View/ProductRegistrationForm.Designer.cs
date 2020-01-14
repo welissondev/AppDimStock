@@ -41,7 +41,7 @@
             this.ReferenceTitle = new System.Windows.Forms.Label();
             this.SizeTitle = new System.Windows.Forms.Label();
             this.FrameProductPhoto = new System.Windows.Forms.GroupBox();
-            this.ProductPhoto = new DimStock.Auxiliary.CustomPictureBox();
+            this.ProductPhoto = new DimStock.Auxiliary.CustomPictureBoxOne();
             this.RegisterNew = new Syncfusion.WinForms.Controls.SfButton();
             this.CodeTitle = new System.Windows.Forms.Label();
             this.MinStockTitle = new System.Windows.Forms.Label();
@@ -621,7 +621,7 @@
         public Syncfusion.Windows.Forms.Tools.IntegerTextBox ProductSize;
         public Syncfusion.Windows.Forms.Tools.TextBoxExt Supplier;
         private System.Windows.Forms.Label SupplierTitle;
-        public DimStock.Auxiliary.CustomPictureBox ProductPhoto;
+        public DimStock.Auxiliary.CustomPictureBoxOne ProductPhoto;
         private Bunifu.Framework.UI.BunifuGradientPanel PanelUpperHorizontal;
         public System.Windows.Forms.Label DayOfTheWeek;
         public System.Windows.Forms.Label FormCaption;

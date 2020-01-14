@@ -36,7 +36,7 @@ namespace DimStock.View
 
         private void RegisterNew_Click(object sender, EventArgs e)
         {
-            var user = new UserLogin();
+            var user = new User();
             user.ViewDetails(LoginAssistant.Id);
 
             if (Id == 0)

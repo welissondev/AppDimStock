@@ -126,7 +126,7 @@ namespace DimStock.View
             {
                 if (ValidadeData() == true)
                 {
-                    var user = new UserLogin
+                    var user = new User
                     {
                         Name = UserName.Text.TrimStart().TrimEnd(),
                         Email = Email.Text.TrimStart().TrimEnd(),
@@ -166,7 +166,7 @@ namespace DimStock.View
             {
                 if (ValidadeData() == true)
                 {
-                    var user = new UserLogin
+                    var user = new User
                     {
                         Name = UserName.Text,
                         Email = Email.Text,

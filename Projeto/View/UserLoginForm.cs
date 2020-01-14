@@ -16,17 +16,17 @@ namespace DimStock.View
 
         #region Buttons
 
-        private void Access_Click(object sender, EventArgs e)
+        private void SignIn_Click(object sender, EventArgs e)
         {
             try
             {
-                var user = new UserLogin
+                var user = new User
                 {
                     Login = Login.Text,
                     PassWord = PassWord.Text
                 };
 
-                if (user.Access() == false)
+                if (user.SignIn() == false)
                 {
                     MessageBox.Show(Notification.Message, "NÃO ENCONTRADO",
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);

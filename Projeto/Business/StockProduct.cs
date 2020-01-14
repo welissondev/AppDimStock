@@ -308,7 +308,7 @@ namespace DimStock.Business
                 DataPagination.OffSetValue,
                 DataPagination.PageSize);
 
-                PassDataTableToList(dataTable);
+                PassToList(dataTable);
 
                 SetSummary(ListOfRecords);
 
@@ -394,7 +394,7 @@ namespace DimStock.Business
             }
         }
 
-        public void PassDataTableToList(DataTable dataTable)
+        public void PassToList(DataTable dataTable)
         {
             var stockProductList = new List<StockProduct>();
 

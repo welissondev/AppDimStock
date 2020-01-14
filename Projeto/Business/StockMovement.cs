@@ -125,7 +125,7 @@ namespace DimStock.Business
             }
 
             var stockItem = new StockItem();
-            stockItem.ListItem(id);
+            stockItem.ListItems(id);
 
             var transactionState = false;
 
@@ -154,12 +154,12 @@ namespace DimStock.Business
                         switch (OperationType)
                         {
                             case "Entrada":
-                                transactionState = stok.CancelEntries(
+                                transactionState = stok.RemoveEntries(
                                 stockItem.ListOfRecords);
                                 break;
 
                             case "Saída":
-                                transactionState = stok.CancelOutputs(
+                                transactionState = stok.RemoveOutputs(
                                 stockItem.ListOfRecords);
                                 break;
                         }

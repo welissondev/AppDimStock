@@ -31,16 +31,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserLoginForm));
             this.PassWord = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.Login = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.Access = new Syncfusion.WinForms.Controls.SfButton();
+            this.SignIn = new Syncfusion.WinForms.Controls.SfButton();
             this.Exit = new Syncfusion.WinForms.Controls.SfButton();
             this.PictureBackGroudUserLogin = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.bunifuCards1 = new Bunifu.Framework.UI.BunifuCards();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PassWord)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Login)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBackGroudUserLogin)).BeginInit();
@@ -93,30 +93,30 @@
             this.Login.Tag = "";
             this.Login.ThemeName = "Default";
             // 
-            // Access
+            // SignIn
             // 
-            this.Access.AccessibleName = "Button";
-            this.Access.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Access.BackColor = System.Drawing.Color.SteelBlue;
-            this.Access.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Access.Font = new System.Drawing.Font("Segoe UI Semibold", 11F);
-            this.Access.ForeColor = System.Drawing.Color.White;
-            this.Access.Location = new System.Drawing.Point(32, 184);
-            this.Access.Name = "Access";
-            this.Access.Size = new System.Drawing.Size(95, 35);
-            this.Access.Style.BackColor = System.Drawing.Color.SteelBlue;
-            this.Access.Style.DisabledBackColor = System.Drawing.Color.SteelBlue;
-            this.Access.Style.DisabledForeColor = System.Drawing.Color.SteelBlue;
-            this.Access.Style.FocusedBackColor = System.Drawing.Color.SteelBlue;
-            this.Access.Style.FocusedForeColor = System.Drawing.Color.White;
-            this.Access.Style.ForeColor = System.Drawing.Color.White;
-            this.Access.Style.HoverBackColor = System.Drawing.Color.SteelBlue;
-            this.Access.Style.HoverForeColor = System.Drawing.Color.White;
-            this.Access.Style.PressedForeColor = System.Drawing.Color.White;
-            this.Access.TabIndex = 138;
-            this.Access.Text = "Entrar";
-            this.Access.UseVisualStyleBackColor = false;
-            this.Access.Click += new System.EventHandler(this.Access_Click);
+            this.SignIn.AccessibleName = "Button";
+            this.SignIn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SignIn.BackColor = System.Drawing.Color.SteelBlue;
+            this.SignIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SignIn.Font = new System.Drawing.Font("Segoe UI Semibold", 11F);
+            this.SignIn.ForeColor = System.Drawing.Color.White;
+            this.SignIn.Location = new System.Drawing.Point(32, 184);
+            this.SignIn.Name = "SignIn";
+            this.SignIn.Size = new System.Drawing.Size(95, 35);
+            this.SignIn.Style.BackColor = System.Drawing.Color.SteelBlue;
+            this.SignIn.Style.DisabledBackColor = System.Drawing.Color.SteelBlue;
+            this.SignIn.Style.DisabledForeColor = System.Drawing.Color.SteelBlue;
+            this.SignIn.Style.FocusedBackColor = System.Drawing.Color.SteelBlue;
+            this.SignIn.Style.FocusedForeColor = System.Drawing.Color.White;
+            this.SignIn.Style.ForeColor = System.Drawing.Color.White;
+            this.SignIn.Style.HoverBackColor = System.Drawing.Color.SteelBlue;
+            this.SignIn.Style.HoverForeColor = System.Drawing.Color.White;
+            this.SignIn.Style.PressedForeColor = System.Drawing.Color.White;
+            this.SignIn.TabIndex = 138;
+            this.SignIn.Text = "Entrar";
+            this.SignIn.UseVisualStyleBackColor = false;
+            this.SignIn.Click += new System.EventHandler(this.SignIn_Click);
             // 
             // Exit
             // 
@@ -192,7 +192,7 @@
             this.bunifuCards1.Controls.Add(this.label2);
             this.bunifuCards1.Controls.Add(this.label1);
             this.bunifuCards1.Controls.Add(this.Exit);
-            this.bunifuCards1.Controls.Add(this.Access);
+            this.bunifuCards1.Controls.Add(this.SignIn);
             this.bunifuCards1.Controls.Add(this.PassWord);
             this.bunifuCards1.Controls.Add(this.Login);
             this.bunifuCards1.LeftSahddow = false;
@@ -221,19 +221,19 @@
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(943, 112);
             this.bunifuGradientPanel1.TabIndex = 144;
             // 
-            // label3
+            // label5
             // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label3.Location = new System.Drawing.Point(318, 22);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(302, 22);
-            this.label3.TabIndex = 142;
-            this.label3.Text = "Desenvolvido por Welisson Silva";
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label5.Location = new System.Drawing.Point(346, 68);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(239, 22);
+            this.label5.TabIndex = 144;
+            this.label5.Text = "Contato: (28) 98115-7531";
             // 
             // label4
             // 
@@ -249,19 +249,19 @@
             this.label4.TabIndex = 143;
             this.label4.Text = "Site: www.diarioexcel.com.br";
             // 
-            // label5
+            // label3
             // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label5.Location = new System.Drawing.Point(346, 68);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(239, 22);
-            this.label5.TabIndex = 144;
-            this.label5.Text = "Contato: (28) 98115-7531";
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label3.Location = new System.Drawing.Point(318, 22);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(302, 22);
+            this.label3.TabIndex = 142;
+            this.label3.Text = "Desenvolvido por Welisson Silva";
             // 
             // UserLoginForm
             // 
@@ -291,7 +291,7 @@
 
         public Syncfusion.Windows.Forms.Tools.TextBoxExt PassWord;
         public Syncfusion.Windows.Forms.Tools.TextBoxExt Login;
-        private Syncfusion.WinForms.Controls.SfButton Access;
+        private Syncfusion.WinForms.Controls.SfButton SignIn;
         private Syncfusion.WinForms.Controls.SfButton Exit;
         private System.Windows.Forms.PictureBox PictureBackGroudUserLogin;
         private System.Windows.Forms.Label label1;

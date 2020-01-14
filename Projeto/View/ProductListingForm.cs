@@ -180,11 +180,11 @@ namespace DimStock.View
                         ReplicateRegistration();
                         break;
 
-                    case "change":
+                    case "edit":
                         ViewDetails();
                         break;
 
-                    case "exclude":
+                    case "delete":
                         Delete();
                         break;
                 }
@@ -205,11 +205,11 @@ namespace DimStock.View
 
                 switch (columnName)
                 {
-                    case "change":
+                    case "edit":
                         ProductDataList.Cursor = handCursor;
                         break;
 
-                    case "exclude":
+                    case "delete":
                         ProductDataList.Cursor = handCursor;
                         break;
 
@@ -366,7 +366,7 @@ namespace DimStock.View
         {
             try
             {
-                var user = new UserLogin();
+                var user = new User();
                 user.ViewDetails(LoginAssistant.Id);
 
                 if (user.PermissionToDelete == false)
@@ -526,8 +526,8 @@ namespace DimStock.View
                 var costPrice = new DataGridViewTextBoxColumn();
                 var salePrice = new DataGridViewTextBoxColumn();
                 var photoName = new DataGridViewTextBoxColumn();
-                var change = new DataGridViewImageColumn();
-                var exclude = new DataGridViewImageColumn();
+                var edit = new DataGridViewImageColumn();
+                var delete = new DataGridViewImageColumn();
                 var replicate = new DataGridViewImageColumn();
 
                 var productDataList = ProductDataList;
@@ -614,25 +614,25 @@ namespace DimStock.View
                 productDataList.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 productDataList.Columns[9].ReadOnly = true;
 
-                productDataList.Columns.Add(change);
-                productDataList.Columns[10].Name = "change";
+                productDataList.Columns.Add(edit);
+                productDataList.Columns[10].Name = "edit";
                 productDataList.Columns[10].HeaderText = "";
                 productDataList.Columns[10].Width = 70;
                 productDataList.Columns[10].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 productDataList.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 productDataList.Columns[10].ReadOnly = true;
-                change.ImageLayout = DataGridViewImageCellLayout.Normal;
-                change.Image = Resources.Editar;
+                edit.ImageLayout = DataGridViewImageCellLayout.Normal;
+                edit.Image = Resources.Editar;
 
-                productDataList.Columns.Add(exclude);
-                productDataList.Columns[11].Name = "exclude";
+                productDataList.Columns.Add(delete);
+                productDataList.Columns[11].Name = "delete";
                 productDataList.Columns[11].HeaderText = "";
                 productDataList.Columns[11].Width = 70;
                 productDataList.Columns[11].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 productDataList.Columns[11].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 productDataList.Columns[11].ReadOnly = true;
-                exclude.ImageLayout = DataGridViewImageCellLayout.Normal;
-                exclude.Image = Resources.Deletar;
+                delete.ImageLayout = DataGridViewImageCellLayout.Normal;
+                delete.Image = Resources.Deletar;
 
             }
             catch (Exception ex)

@@ -5,7 +5,6 @@ namespace DimStock.Report
 {
     public class ReportProduct 
     {
-
         #region Get e Set
         public int Code { get; set; }
         public int Size { get; set; }
@@ -43,6 +42,5 @@ namespace DimStock.Report
         }
 
         #endregion 
-
     }
 }

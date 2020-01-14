@@ -193,7 +193,7 @@ namespace DimStock.View
                         MovementStockDataList.Cursor = Cursors.Hand;
                         break;
 
-                    case "exclude":
+                    case "delete":
                         MovementStockDataList.Cursor = Cursors.Hand;
                         break;
                 }
@@ -217,8 +217,8 @@ namespace DimStock.View
                         GetStockMovementDetails();
                         break;
 
-                    case "exclude":
-                        Exclude();
+                    case "delete":
+                        Delete();
                         break;
                 }
             }
@@ -307,7 +307,7 @@ namespace DimStock.View
             }
         }
 
-        private void Exclude()
+        private void Delete()
         {
             try
             {
@@ -501,7 +501,7 @@ namespace DimStock.View
                 var operationSituation = new DataGridViewTextBoxColumn();
                 var stockDestinationLocation = new DataGridViewTextBoxColumn();
                 var viewDetails = new DataGridViewImageColumn();
-                var exclude = new DataGridViewImageColumn();
+                var delete = new DataGridViewImageColumn();
 
                 var stockMovementList = MovementStockDataList;
 
@@ -563,15 +563,15 @@ namespace DimStock.View
                 viewDetails.ImageLayout = DataGridViewImageCellLayout.Normal;
                 viewDetails.Image = Resources.Visualizar2;
 
-                stockMovementList.Columns.Add(exclude);
-                stockMovementList.Columns[7].Name = "exclude";
+                stockMovementList.Columns.Add(delete);
+                stockMovementList.Columns[7].Name = "delete";
                 stockMovementList.Columns[7].HeaderText = "";
                 stockMovementList.Columns[7].Width = 70;
                 stockMovementList.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 stockMovementList.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 stockMovementList.Columns[7].ReadOnly = true;
-                exclude.ImageLayout = DataGridViewImageCellLayout.Normal;
-                exclude.Image = Resources.Deletar;
+                delete.ImageLayout = DataGridViewImageCellLayout.Normal;
+                delete.Image = Resources.Deletar;
 
             }
             catch (Exception ex)

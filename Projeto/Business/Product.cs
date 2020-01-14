@@ -93,7 +93,7 @@ namespace DimStock.Business
                         OperationModule = "Produto",
                         OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
                         OperationHour = DateTime.Now.ToString("HH:mm:ss"),
-                        AffectedFields = GetDataFromAffectedFields(Id, connection)
+                        AffectedFields = GetAffectedFields(Id, connection)
                     };
 
                     transactionState = userHistory.Register();
@@ -114,7 +114,7 @@ namespace DimStock.Business
             {
                 bool transactionState = false;
 
-                var affectedFields = GetDataFromAffectedFields(id, connection); 
+                var affectedFields = GetAffectedFields(id, connection); 
 
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
@@ -180,7 +180,7 @@ namespace DimStock.Business
 
         public bool Delete(int id)
         {
-            if (CheckIfResgistrationExits(id) == false)
+            if (CheckIfRegisterExists(id) == false)
             {
                 Notification.Message = "Esse registro já foi excluido, " +
                "atualize a lista de dados!";
@@ -194,7 +194,7 @@ namespace DimStock.Business
                 var transactionState = false;
 
                 //Pega campos afetados
-                var affectedFields = GetDataFromAffectedFields(id, connection);
+                var affectedFields = GetAffectedFields(id, connection);
 
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
@@ -353,7 +353,7 @@ namespace DimStock.Business
                 DataPagination.OffSetValue,
                 DataPagination.PageSize);
 
-                PassDataTableToList(dataTable);
+                PassToList(dataTable);
             }
         }
 
@@ -394,7 +394,7 @@ namespace DimStock.Business
             product.GenerateReport(listOfRecords);
         }
 
-        public void PassDataTableToList(DataTable dataTable)
+        public void PassToList(DataTable dataTable)
         {
             var productList = new List<Product>();
 
@@ -419,7 +419,7 @@ namespace DimStock.Business
             ListOfRecords = productList;
         }
 
-        public string GetDataFromAffectedFields(int id, Connection connection)
+        public string GetAffectedFields(int id, Connection connection)
         {
             var affectedFieldList = new List<string>();
 
@@ -446,7 +446,7 @@ namespace DimStock.Business
             return string.Join(" | ", affectedFieldList.Select(x => x.ToString()));
         }
 
-        public bool CheckIfResgistrationExits(int id)
+        public bool CheckIfRegisterExists(int id)
         {
             using (var connection = new Connection())
             {

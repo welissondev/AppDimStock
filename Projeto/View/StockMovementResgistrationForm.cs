@@ -68,7 +68,7 @@ namespace DimStock.View
 
         private void Delete_Click(object sender, EventArgs e)
         {
-            ExcludeStockMovement();
+            DeleteStockMovement();
         }
 
         private void AddItem_Click(object sender, EventArgs e)
@@ -77,7 +77,7 @@ namespace DimStock.View
             {
                 if (CheckDataToAddItem() == true)
                 {
-                    RegisterStockItem();
+                    AddStockItem();
                     ListStockItems();
                     ClearSearchFields();
                 }
@@ -90,12 +90,12 @@ namespace DimStock.View
             {
                 case "Entrada":
 
-                    RegisterStockEntries();
+                    AddStockEntries();
                     break;
 
                 case "Saída":
 
-                    RegisterStockRemovals();
+                    AddStockOutputs();
                     break;
             }
         }
@@ -113,7 +113,7 @@ namespace DimStock.View
 
         private void Quantity_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TotalValue.Text = CalculateTotal(Convert.ToInt32(Quantity.Text),
+            TotalValue.Text = Calculate(Convert.ToInt32(Quantity.Text),
             Convert.ToDouble(UnitaryValue.DecimalValue)).ToString();
         }
 
@@ -210,7 +210,7 @@ namespace DimStock.View
                 if (columnName == "delete")
                 {
                     int id = Convert.ToInt32(MainDataList.CurrentRow.Cells["itemId"].Value);
-                    ExcludeItem(id);
+                    RemoveItem(id);
                 }
             }
             catch (Exception ex)
@@ -413,7 +413,7 @@ namespace DimStock.View
             return addState;
         }
 
-        private void ExcludeStockMovement()
+        private void DeleteStockMovement()
         {
             try
             {
@@ -443,7 +443,7 @@ namespace DimStock.View
             }
         }
 
-        private void RegisterStockEntries()
+        private void AddStockEntries()
         {
             if (CheckDataToAddStock() == true)
             {
@@ -452,7 +452,7 @@ namespace DimStock.View
                 {
                     var stock = new Stock();
 
-                    if (stock.RegisterEntries(GetItems(), Convert.ToInt32(StockMovementId.Text)) == true)
+                    if (stock.AddEntries(GetItems(), Convert.ToInt32(StockMovementId.Text)) == true)
                     {
                         MessageBox.Show(Notification.Message, "SUCESSO", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
@@ -463,7 +463,7 @@ namespace DimStock.View
             }
         }
 
-        private void RegisterStockRemovals()
+        private void AddStockOutputs()
         {
             if (CheckDataToAddStock() == true)
             {
@@ -472,7 +472,7 @@ namespace DimStock.View
                 {
                     var stock = new Stock();
 
-                    if (stock.RegisterOutputs(GetItems(), Convert.ToInt32(StockMovementId.Text)) == true)
+                    if (stock.AddOutputs(GetItems(), Convert.ToInt32(StockMovementId.Text)) == true)
                     {
                         MessageBox.Show(Notification.Message, "SUCESSO", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
@@ -488,7 +488,7 @@ namespace DimStock.View
             try
             {
                 var stockItem = new StockItem();
-                stockItem.ListItem(Convert.ToInt32(StockMovementId.Text));
+                stockItem.ListItems(Convert.ToInt32(StockMovementId.Text));
 
                 MainDataList.Columns.Clear();
 
@@ -527,7 +527,7 @@ namespace DimStock.View
             }
         }
 
-        private void RegisterStockItem()
+        private void AddStockItem()
         {
             try
             {
@@ -549,12 +549,12 @@ namespace DimStock.View
             }
         }
 
-        private void ExcludeItem(int id)
+        private void RemoveItem(int id)
         {
             if (OperationSituation.Text != "Finalizada")
             {
-                var item = new StockItem();
-                item.Remove(id);
+                var stockItem = new StockItem();
+                stockItem.Remove(id);
 
                 ListStockItems();
             }
@@ -657,7 +657,7 @@ namespace DimStock.View
             }
         }
 
-        private double CalculateTotal(int quantity, double unitaryValue)
+        private double Calculate(int quantity, double unitaryValue)
         {
             return quantity * unitaryValue;
         }

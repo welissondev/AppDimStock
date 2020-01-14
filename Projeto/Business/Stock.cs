@@ -31,7 +31,7 @@ namespace DimStock.Business
 
         #region Methods
 
-        public bool RegisterEntries(List<Stock> itemList, int stockMovementId)
+        public bool AddEntries(List<Stock> itemList, int stockMovementId)
         {
             var transactionState = false;
             var sqlCommand = string.Empty;
@@ -84,7 +84,7 @@ namespace DimStock.Business
             }
         }
 
-        public bool RegisterOutputs(List<Stock> itemList, int stockMovementId)
+        public bool AddOutputs(List<Stock> itemList, int stockMovementId)
         {
             using (var connection = new Connection())
             {
@@ -137,7 +137,7 @@ namespace DimStock.Business
             }
         }
 
-        public bool CancelEntries(List<StockItem> stockItems)
+        public bool RemoveEntries(List<StockItem> stockItems)
         {
             var transactionState = false;
 
@@ -163,7 +163,7 @@ namespace DimStock.Business
             return transactionState;
         }
 
-        public bool CancelOutputs(List<StockItem> stockItems)
+        public bool RemoveOutputs(List<StockItem> stockItems)
         {
             var transactionState = false;
 

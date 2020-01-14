@@ -8,8 +8,9 @@ namespace DimStock.Business
 {
     public class UserHistory
     {
-
+        #region Properties
         private Connection connection;
+        #endregion
 
         #region Constructs
 
@@ -136,11 +137,11 @@ namespace DimStock.Business
                 DataPagination.OffSetValue,
                 DataPagination.PageSize);
 
-                PassDataTableForList(dataTable);
+                PassForList(dataTable);
             }
         }
 
-        private void PassDataTableForList(DataTable dataTable)
+        public void PassForList(DataTable dataTable)
         {
             var historicList = new List<UserHistory>();
 

@@ -7,13 +7,13 @@ using DimStock.Auxiliary;
 
 namespace DimStock.Business
 {
-    public class UserLogin
+    public class User
     {
         #region Constructs
 
-        public UserLogin() { }
+        public User() { }
 
-        public UserLogin(DataPagination dataPagination)
+        public User(DataPagination dataPagination)
         {
             DataPagination = dataPagination;
         }
@@ -31,7 +31,7 @@ namespace DimStock.Business
         public bool PermissionToDelete { get; set; }
         public bool PermissionToView { get; set; }
         public bool AllPermissions { get; set; }
-        public List<UserLogin> ListOfRecords { get; set; }
+        public List<User> ListOfRecords { get; set; }
         #endregion
 
         #region SearchProperties
@@ -44,13 +44,13 @@ namespace DimStock.Business
 
         #region Methods
 
-        public bool Access()
+        public bool SignIn()
         {
             var accessState = false;
 
             using (var connection = new Connection())
             {
-                var sqlQuery = @"SELECT * FROM UserLogin WHERE Login 
+                var sqlQuery = @"SELECT * FROM [User] WHERE Login 
                 LIKE @Login AND [PassWord] = @PassWord";
 
                 var paramerter = connection.Command.Parameters;
@@ -95,7 +95,7 @@ namespace DimStock.Business
 
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
-                    var sqlCommand = @"INSERT INTO UserLogin([Name], Email, Login, [PassWord], 
+                    var sqlCommand = @"INSERT INTO [User]([Name], Email, Login, [PassWord], 
                     PermissionToRegister, PermissionToEdit, PermissionToDelete, PermissionToView, 
                     AllPermissions)VALUES(@Name, @Email, @Login, @PassWord, @PermissionToRegister, 
                     @PermissionToEdit, @PermissionToDelete, @PermissionToView, @AllPermissions)";
@@ -114,7 +114,7 @@ namespace DimStock.Business
 
                     //Seleciona ultimo ID inserido
                     Id = Convert.ToInt32(connection.ExecuteScalar(
-                    "SELECT MAX(Id) FROM UserLogin"));
+                    "SELECT MAX(Id) FROM User"));
 
                     //Registra histórico do usuário
                     var userHistory = new UserHistory(connection)
@@ -124,7 +124,7 @@ namespace DimStock.Business
                         OperationModule = "Usuário",
                         OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
                         OperationHour = DateTime.Now.ToString("HH:mm:ss"),
-                        AffectedFields = GetDataFromAffectedFields(Id, connection)
+                        AffectedFields = GetAffectedFields(Id, connection)
                     };
                     transactionState = userHistory.Register();
 
@@ -144,11 +144,11 @@ namespace DimStock.Business
             {
                 var transactionState = false;
 
-                var affectedFields = GetDataFromAffectedFields(id, connection);
+                var affectedFields = GetAffectedFields(id, connection);
 
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
-                    var sqlCommand = @"UPDATE UserLogin Set [Name] = @Name, Email = @Email, 
+                    var sqlCommand = @"UPDATE [User] Set [Name] = @Name, Email = @Email, 
                     Login = @Login, [PassWord] = @PassWord, PermissionToRegister = @PermissionToRegister, 
                     PermissionToEdit = @PermissionToEdit, PermissionToDelete = @PermissionToDelete, 
                     PermissionToView = @PermissionToView, AllPermissions = @AllPermissions 
@@ -212,11 +212,11 @@ namespace DimStock.Business
             {
                 var transactionState = false;
 
-                var affectedFields = GetDataFromAffectedFields(id, connection);
+                var affectedFields = GetAffectedFields(id, connection);
 
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
-                    var sqlCommand = @"DELETE FROM UserLogin WHERE Id = @Id";
+                    var sqlCommand = @"DELETE FROM [User] WHERE Id = @Id";
 
                     connection.ParameterClear();
                     connection.AddParameter("@Id", OleDbType.Integer, id);
@@ -249,22 +249,22 @@ namespace DimStock.Business
         {
             using (var connection = new Connection())
             {
-                var sqlQuery = "SELECT * FROM UserLogin";
+                var sqlQuery = "SELECT * FROM [User]";
 
-                var userList = new List<UserLogin>();
+                var userList = new List<User>();
 
                 using (var reader = connection.QueryWithDataReader(sqlQuery))
                 {
                     while (reader.Read())
                     {
-                        var userLogin = new UserLogin()
+                        var User = new User()
                         {
                             Id = Convert.ToInt32(reader["Id"]),
                             Name = Convert.ToString(reader["Name"]),
                             Email = Convert.ToString(reader["Email"])
                         };
 
-                        userList.Add(userLogin);
+                        userList.Add(User);
                     }
 
                     ListOfRecords = userList;
@@ -276,7 +276,7 @@ namespace DimStock.Business
         {
             using (var connection = new Connection())
             {
-                var sqlQuery = @"SELECT * FROM UserLogin WHERE [Name]  
+                var sqlQuery = @"SELECT * FROM [User] WHERE [Name]  
                 LIKE @Name Or Email LIKE @Email";
 
                 var parameter = connection.Command.Parameters;
@@ -286,7 +286,7 @@ namespace DimStock.Business
                 var dataTable = connection.QueryWithDataTable(sqlQuery,
                 DataPagination.OffSetValue, DataPagination.PageSize);
 
-                PassDataTableToList(dataTable);
+                PassToList(dataTable);
             }
         }
 
@@ -294,7 +294,7 @@ namespace DimStock.Business
         {
             using (var connection = new Connection())
             {
-                var sqlQuery = @"SELECT * FROM UserLogin WHERE Id = @Id";
+                var sqlQuery = @"SELECT * FROM [User] WHERE Id = @Id";
 
                 connection.AddParameter("@Id", OleDbType.Integer, id);
 
@@ -323,7 +323,7 @@ namespace DimStock.Business
             {
                 var userFound = 0;
 
-                var sqlQuery = @"SELECT Login FROM UserLogin 
+                var sqlQuery = @"SELECT Login FROM [User] 
                 WHERE Login LIKE @Login";
 
                 connection.AddParameter("@Login",
@@ -363,7 +363,7 @@ namespace DimStock.Business
         {
             using (var connection = new Connection())
             {
-                var sqlQuery = "SELECT Id FROM UserLogin WHERE Id = @Id";
+                var sqlQuery = "SELECT Id FROM [User] WHERE Id = @Id";
                 var recordsFound = 0;
 
                 connection.ParameterClear();
@@ -381,30 +381,30 @@ namespace DimStock.Business
             }
         }
 
-        public void PassDataTableToList(DataTable dataTable)
+        public void PassToList(DataTable dataTable)
         {
-            var userList = new List<UserLogin>();
+            var userList = new List<User>();
 
             foreach (DataRow row in dataTable.Rows)
             {
-                var userLogin = new UserLogin()
+                var User = new User()
                 {
                     Id = Convert.ToInt32(row["Id"]),
                     Name = Convert.ToString(row["Login"]),
                     Email = Convert.ToString(row["Email"])
                 };
 
-                userList.Add(userLogin);
+                userList.Add(User);
             }
 
             ListOfRecords = userList;
         }
 
-        public string GetDataFromAffectedFields(int id, Connection connection)
+        public string GetAffectedFields(int id, Connection connection)
         {
             var usersList = new List<string>();
 
-            var sqlQuery = @"SELECT * FROM UserLogin WHERE Id = @Id";
+            var sqlQuery = @"SELECT * FROM [User] WHERE Id = @Id";
 
             connection.ParameterClear();
             connection.AddParameter("@Id", OleDbType.Integer, id);

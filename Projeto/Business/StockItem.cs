@@ -62,7 +62,7 @@ namespace DimStock.Business
             return deleteState;
         }
 
-        public void ListItem(int id)
+        public void ListItems(int id)
         {
             using (var connection = new Connection())
             {

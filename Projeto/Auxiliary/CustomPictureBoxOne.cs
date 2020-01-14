@@ -2,7 +2,7 @@
 
 namespace DimStock.Auxiliary
 {
-    public class CustomPictureBox : PictureBox
+    public class CustomPictureBoxOne : PictureBox
     {
         private string selectedDirectory = "";
         public string SelectedDirectory

@@ -68,7 +68,7 @@ namespace DimStock.View
 
         #region MethodsAxiliarys
 
-        public void ListData()
+        private void ListData()
         {
             try
             {
@@ -98,7 +98,7 @@ namespace DimStock.View
             }
         }
 
-        public void SearchData()
+        private void SearchData()
         {
             try
             {
@@ -133,7 +133,7 @@ namespace DimStock.View
             }
         }
 
-        public void InitializeSettings()
+        private void InitializeSettings()
         {
             CreateColumnInTheDataList();
 
