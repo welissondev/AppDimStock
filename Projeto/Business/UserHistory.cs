@@ -106,10 +106,13 @@ namespace DimStock.Business
             using (var connection = new Connection())
             {
                 var sqlQuery = string.Empty;
+                var sqlCount = string.Empty;
                 var criterion = string.Empty;
                 var parameter = connection.Command.Parameters;
 
-                sqlQuery = @"SELECT * FROM UserHistoric WHERE Id > 0";
+                sqlQuery = @"SELECT * FROM UserHistoric WHERE Id > 0 ";
+                 
+                sqlCount = @"SELECT COUNT(*) FROM UserHistoric WHERE Id > 0 ";
 
                 if (SearchByStartDate != string.Empty &&
                     SearchByFinalDate != string.Empty)
@@ -132,6 +135,11 @@ namespace DimStock.Business
                 }
 
                 sqlQuery += criterion;
+
+                sqlCount += criterion;
+
+                DataPagination.RecordCount = Convert.ToInt32(
+                connection.ExecuteScalar(sqlCount));
 
                 var dataTable = connection.QueryWithDataTable(sqlQuery,
                 DataPagination.OffSetValue,

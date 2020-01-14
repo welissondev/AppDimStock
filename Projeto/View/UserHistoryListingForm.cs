@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using DimStock.Auxiliary;
 using DimStock.Business;
+using Syncfusion.Windows.Forms.Tools;
 
 namespace DimStock.View
 {
@@ -23,7 +25,8 @@ namespace DimStock.View
 
         private void UserHistoryListingForm_Load(object sender, EventArgs e)
         {
-            SearchData();
+            StartSearchTimer();
+            WindowState = FormWindowState.Maximized;
         }
 
         #endregion
@@ -32,7 +35,8 @@ namespace DimStock.View
 
         private void UpdateDataList_Click(object sender, EventArgs e)
         {
-            ListData();
+            CallAllResets();
+            StartSearchTimer();
         }
 
         #endregion
@@ -55,6 +59,42 @@ namespace DimStock.View
 
         #endregion 
 
+        #region ComboBox
+
+        private void RecordsByPage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                var itemSelected = RecordsByPage.SelectedIndex;
+
+                switch (itemSelected)
+                {
+                    case 0:
+                        dataPagination.PageSize = 20;
+                        break;
+                    case 1:
+                        dataPagination.PageSize = 30;
+                        break;
+                    case 2:
+                        dataPagination.PageSize = 70;
+                        break;
+                    case 3:
+                        dataPagination.PageSize = 100;
+                        break;
+                }
+
+                dataPagination.OffSetValue = 0;
+                dataPagination.CurrentPage = 1;
+                StartSearchTimer();
+            }
+            catch (Exception ex)
+            {
+                ExceptionAssistant.Message.Show(ex);
+            }
+        }
+
+        #endregion
+
         #region Timer
 
         private void SearchTimer_Tick(object sender, EventArgs e)
@@ -66,13 +106,41 @@ namespace DimStock.View
 
         #endregion
 
+        #region BadingNavigator
+
+        private void NextPage_Click(object sender, EventArgs e)
+        {
+            if (dataPagination.CurrentPage < dataPagination.NumberOfPages)
+            {
+                dataPagination.CurrentPage += 1;
+                dataPagination.OffSetValue += dataPagination.PageSize;
+                StartSearchTimer();
+            }
+
+            SetInBadingNavigator(dataPagination);
+        }
+
+        private void BackPage_Click(object sender, EventArgs e)
+        {
+            if (dataPagination.CurrentPage > 1)
+            {
+                dataPagination.CurrentPage -= 1;
+                dataPagination.OffSetValue -= dataPagination.PageSize;
+                StartSearchTimer();
+            }
+
+            SetInBadingNavigator(dataPagination);
+        }
+
+        #endregion
+
         #region MethodsAxiliarys
 
         private void ListData()
         {
             try
             {
-                var historic = new UserHistory();
+                var historic = new UserHistory(dataPagination);
                 historic.ListData();
 
                 HistoryDataList.Rows.Clear();
@@ -90,6 +158,10 @@ namespace DimStock.View
                 }
 
                 HistoryDataList.ClearSelection();
+
+                PauseSearchTimer();
+
+                SetInBadingNavigator(dataPagination);
 
             }
             catch (Exception ex)
@@ -126,6 +198,10 @@ namespace DimStock.View
                 }
 
                 HistoryDataList.ClearSelection();
+
+                PauseSearchTimer();
+
+                SetInBadingNavigator(dataPagination);
             }
             catch (Exception ex)
             {
@@ -140,6 +216,90 @@ namespace DimStock.View
             DataGridLealt.SetDefaultStyle(HistoryDataList);
 
             DayOfTheWeek.Text = DateTime.Now.ToLongDateString();
+
+            FillAllComboBoxes();
+
+            var startDate = new DateTime(DateTime.Today.Year, 
+            DateTime.Today.Month, 1);
+
+            var finalDate = new DateTime(DateTime.Today.Year, 
+            DateTime.Today.Month, DateTime.DaysInMonth(DateTime.Today.Year, 
+            DateTime.Today.Month));
+
+            StartDate.Text = startDate.ToString();
+
+            FinalDate.Text = finalDate.ToString();
+        }
+
+        private void FillAllComboBoxes()
+        {
+
+            var itemList = new List<string>
+            {
+                "20 Registros",
+                "30 Registros",
+                "70 Registros",
+                "100 Registros"
+            };
+
+            RecordsByPage.DataSource = itemList;
+            RecordsByPage.Text = "20 Registros";
+
+        }
+
+        private void ResetControls()
+        {
+            try
+            {
+                foreach (Control ctl in Controls)
+                {
+                    if (ctl.GetType() == typeof(TextBoxExt))
+                        ctl.Text = string.Empty;
+                }
+
+                SearchByLogin.Select();
+            }
+            catch (Exception ex)
+            {
+                ExceptionAssistant.Message.Show(ex);
+            }
+        }
+
+        private void ResetVariables()
+        {
+            dataPagination.OffSetValue = 0;
+            dataPagination.CurrentPage = 1;
+        }
+
+        private void CallAllResets()
+        {
+            ResetVariables();
+            ResetControls();
+        }
+
+        private void SetInBadingNavigator(DataPagination dataPagination)
+        {
+            if (dataPagination.RecordCount == 0)
+                dataPagination.CurrentPage = 0;
+
+            var legend = " Página " + dataPagination.CurrentPage + " de " + dataPagination.NumberOfPages;
+            BindingPagination.Items[2].Text = legend;
+
+            legend = " Total de " + dataPagination.RecordCount + " registro(s)";
+            BindingPagination.Items[6].Text = legend;
+        }
+
+        private void StartSearchTimer()
+        {
+            GifLoading.Visible = true;
+            SearchTimer.Enabled = false;
+            SearchTimer.Enabled = true;
+        }
+
+        private void PauseSearchTimer()
+        {
+            GifLoading.Visible = false;
+            SearchTimer.Enabled = false;
         }
 
         private void CreateColumnInTheDataList()
