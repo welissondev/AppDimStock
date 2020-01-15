@@ -28,7 +28,7 @@ namespace DimStock.View
 
                 if (user.SignIn() == false)
                 {
-                    MessageBox.Show(Notification.Message, "NÃO ENCONTRADO",
+                    MessageBox.Show(MessageNotifier.Message, "NÃO ENCONTRADO",
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }

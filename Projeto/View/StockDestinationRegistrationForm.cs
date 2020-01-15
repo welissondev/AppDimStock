@@ -50,7 +50,7 @@ namespace DimStock.View
                 if (stockDestination.Register() == true)
                 {
 
-                    MessageBox.Show(Notification.Message, "SUCESSO",
+                    MessageBox.Show(MessageNotifier.Message, "SUCESSO",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     CallAllReset();
@@ -80,7 +80,7 @@ namespace DimStock.View
 
                 if (stockDestination.Edit(id) == true)
                 {
-                    MessageBox.Show(Notification.Message, "SUCESSO",
+                    MessageBox.Show(MessageNotifier.Message, "SUCESSO",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
@@ -105,7 +105,7 @@ namespace DimStock.View
 
                 if (stockDestination.Delete(id) == true)
                 {
-                    MessageBox.Show(Notification.Message, "SUCESSO",
+                    MessageBox.Show(MessageNotifier.Message, "SUCESSO",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CallAllReset();
                 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
+using DimStock.Auxiliary;
 
 namespace DimStock.Business
 {
@@ -22,7 +23,7 @@ namespace DimStock.Business
             {
                 if (CheckIfDestinationExists() == true)
                 {
-                    Notification.Message = "Esse destino já existe, cadastre outro!";
+                    MessageNotifier.Message = "Esse destino já existe, cadastre outro!";
                     return transaction;
                 }
 
@@ -35,7 +36,7 @@ namespace DimStock.Business
                 if (connection.ExecuteNonQuery(sqlCommand) > 0)
                 {
                     transaction = true;
-                    Notification.Message = "Cadastrado com sucesso!";
+                    MessageNotifier.Message = "Cadastrado com sucesso!";
                 }
             }
 
@@ -56,7 +57,7 @@ namespace DimStock.Business
 
                 if (connection.ExecuteNonQuery(sqlCommand) > 0)
                 {
-                    Notification.Message = "Editado com sucesso!";
+                    MessageNotifier.Message = "Editado com sucesso!";
                     transaction = true;
                 }
             }
@@ -77,12 +78,12 @@ namespace DimStock.Business
 
                 if (connection.ExecuteNonQuery(sqlCommand) > 0)
                 {
-                    Notification.Message = "Deletado com sucesso!";
+                    MessageNotifier.Message = "Deletado com sucesso!";
                     transaction = true;
                 }
                 else
                 {
-                    Notification.Message = "Esse registro já foi " +
+                    MessageNotifier.Message = "Esse registro já foi " +
                     "deletado, atualize a lista de dados!";
                 }
             }

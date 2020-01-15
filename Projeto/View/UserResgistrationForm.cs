@@ -141,15 +141,15 @@ namespace DimStock.View
 
                     if (user.Register() == true)
                     {
-                        MessageBox.Show(Notification.Message, "SUCESSO",
+                        MessageBox.Show(MessageNotifier.Message, "SUCESSO",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         ResetControls();
                     }
                     else
                     {
-                        MessageBox.Show(Notification.Message, "AVISO",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(MessageNotifier.Message, "AVISO",
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
 
@@ -181,8 +181,13 @@ namespace DimStock.View
 
                     if (user.Edit(id) == true)
                     {
-                        MessageBox.Show(Notification.Message, "SUCESSO",
+                        MessageBox.Show(MessageNotifier.Message, "SUCESSO",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show(MessageNotifier.Message, "AVISO",
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
             }
@@ -212,18 +217,6 @@ namespace DimStock.View
                 Email.Select();
 
                 return false;
-            }
-
-            else if (ValidateEmail(Email.Text).Equals(false))
-            {
-                MessageBox.Show("O email informado não é válido, verifique " +
-                "e tente novamente! ", "EMAIL INVÁLIDO", MessageBoxButtons.OK,
-                MessageBoxIcon.Exclamation);
-
-                Email.Select();
-
-                return false;
-
             }
 
             else if (PassWord.Text == "")
@@ -261,20 +254,6 @@ namespace DimStock.View
                 return true;
             }
         }
-
-        private bool ValidateEmail(string email)
-        {
-            var regex = new Regex(@"^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$");
-
-            if (regex.IsMatch(email))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        } 
 
         private void InitializeSettings()
         {

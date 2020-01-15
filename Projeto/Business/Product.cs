@@ -101,7 +101,7 @@ namespace DimStock.Business
                     //Fianalizar transação
                     connection.Transaction.Commit();
 
-                    Notification.Message = "Produto cadastrado com sucesso!";
+                    MessageNotifier.Message = "Produto cadastrado com sucesso!";
                 }
 
                 return transactionState;
@@ -171,7 +171,7 @@ namespace DimStock.Business
                     //Fianaliza a transação
                     connection.Transaction.Commit();
 
-                    Notification.Message = "Produto alterado com sucesso!";
+                    MessageNotifier.Message = "Produto alterado com sucesso!";
                 }
 
                 return transactionState;
@@ -182,7 +182,7 @@ namespace DimStock.Business
         {
             if (CheckIfRegisterExists(id) == false)
             {
-                Notification.Message = "Esse registro já foi excluido, " +
+                MessageNotifier.Message = "Esse registro já foi excluido, " +
                "atualize a lista de dados!";
 
                 return false;
@@ -218,7 +218,7 @@ namespace DimStock.Business
                     //Fianaliza transação
                     connection.Transaction.Commit();
 
-                    Notification.Message = "Produto deletado com sucesso!";
+                    MessageNotifier.Message = "Produto deletado com sucesso!";
                 }
 
                 return transactionState;

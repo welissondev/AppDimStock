@@ -124,7 +124,7 @@ namespace DimStock.View
 
                 if (product.Register() == false)
                 {
-                    MessageBox.Show(Notification.Message, "ERROR",
+                    MessageBox.Show(MessageNotifier.Message, "ERROR",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     return;
@@ -133,7 +133,7 @@ namespace DimStock.View
                 productPhoto.CopyToDirectory(ProductPhoto.SelectedDirectory,
                 productPhoto.GetDirectoryPeth() + product.PhotoName);
 
-                MessageBox.Show(Notification.Message, "SUCESSO",
+                MessageBox.Show(MessageNotifier.Message, "SUCESSO",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 CallAllResets();
@@ -170,7 +170,7 @@ namespace DimStock.View
 
                 if (product.Edit(Id) == false)
                 {
-                    MessageBox.Show(Notification.Message, "ERROR",
+                    MessageBox.Show(MessageNotifier.Message, "ERROR",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     return;
@@ -188,7 +188,7 @@ namespace DimStock.View
                 productPhoto.CopyToDirectory(ProductPhoto.SelectedDirectory,
                 photoPath);
 
-                MessageBox.Show(Notification.Message, "SUCESSO",
+                MessageBox.Show(MessageNotifier.Message, "SUCESSO",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }

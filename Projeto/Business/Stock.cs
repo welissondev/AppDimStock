@@ -77,7 +77,7 @@ namespace DimStock.Business
                     //Finalza o transação
                     connection.Transaction.Commit();
 
-                    Notification.Message = "Ok, todos os estoques foram cadastrados!";
+                    MessageNotifier.Message = "Ok, todos os estoques foram cadastrados!";
                 }
 
                 return transactionState;
@@ -130,7 +130,7 @@ namespace DimStock.Business
                     //Finaliza a transação
                     connection.Transaction.Commit();
 
-                    Notification.Message = "Ok! Todos os estoques foram retirados!";
+                    MessageNotifier.Message = "Ok! Todos os estoques foram retirados!";
                 }
 
                 return transactionState;

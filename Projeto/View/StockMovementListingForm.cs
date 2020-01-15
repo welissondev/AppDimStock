@@ -330,12 +330,12 @@ namespace DimStock.View
 
                     if (stockMovement.Delete(id) == true)
                     {
-                        MessageBox.Show(Notification.Message, "SUCESSO",
+                        MessageBox.Show(MessageNotifier.Message, "SUCESSO",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show(Notification.Message, "ATENÇÃO",
+                        MessageBox.Show(MessageNotifier.Message, "ATENÇÃO",
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }

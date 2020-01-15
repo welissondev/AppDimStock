@@ -431,7 +431,7 @@ namespace DimStock.View
                         if (stockMovement.Delete(Convert.ToInt32(
                         StockMovementId.Text)) == true)
                         {
-                            MessageBox.Show(Notification.Message, "SUCESSO",
+                            MessageBox.Show(MessageNotifier.Message, "SUCESSO",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
@@ -454,7 +454,7 @@ namespace DimStock.View
 
                     if (stock.AddEntries(GetItems(), Convert.ToInt32(StockMovementId.Text)) == true)
                     {
-                        MessageBox.Show(Notification.Message, "SUCESSO", MessageBoxButtons.OK,
+                        MessageBox.Show(MessageNotifier.Message, "SUCESSO", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
 
                         OperationSituation.Text = "Finalizada";
@@ -474,7 +474,7 @@ namespace DimStock.View
 
                     if (stock.AddOutputs(GetItems(), Convert.ToInt32(StockMovementId.Text)) == true)
                     {
-                        MessageBox.Show(Notification.Message, "SUCESSO", MessageBoxButtons.OK,
+                        MessageBox.Show(MessageNotifier.Message, "SUCESSO", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
 
                         OperationSituation.Text = "Finalizada";

@@ -385,7 +385,7 @@ namespace DimStock.View
 
                     if (product.Delete(Id) == false)
                     {
-                        MessageBox.Show(Notification.Message, "ATENÇÃO",
+                        MessageBox.Show(MessageNotifier.Message, "ATENÇÃO",
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                         return;
@@ -397,7 +397,7 @@ namespace DimStock.View
 
                     productPhoto.DeleteFromDirectory(photoPath);
 
-                    MessageBox.Show(Notification.Message, "SUCESSO",
+                    MessageBox.Show(MessageNotifier.Message, "SUCESSO",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     CallAllResets();

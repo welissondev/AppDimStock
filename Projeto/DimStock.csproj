@@ -125,6 +125,7 @@
   <ItemGroup>
     <Compile Include="Auxiliary\DataGridLealt.cs" />
     <Compile Include="Auxiliary\DataPagination.cs" />
+    <Compile Include="Auxiliary\EmailAdderess.cs" />
     <Compile Include="Auxiliary\ExceptionAssistant.cs" />
     <Compile Include="Auxiliary\LoginAssistant.cs" />
     <Compile Include="Auxiliary\CustomPictureBoxOne.cs">
@@ -138,7 +139,7 @@
     <Compile Include="Business\StockItem.cs" />
     <Compile Include="Business\StockProduct.cs" />
     <Compile Include="Business\StockMovement.cs" />
-    <Compile Include="Business\Notification.cs" />
+    <Compile Include="Auxiliary\MessageNotifier.cs" />
     <Compile Include="Business\Product.cs" />
     <Compile Include="Business\ProductPhoto.cs" />
     <Compile Include="Business\Stock.cs" />

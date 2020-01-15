@@ -118,7 +118,7 @@ namespace DimStock.Business
         {
             if (CheckIfRegisterExists(id) == false)
             {
-                Notification.Message = "Esse registro já foi " +
+                MessageNotifier.Message = "Esse registro já foi " +
                 "excluido, atualize a lista de dados!";
 
                 return false;
@@ -180,7 +180,7 @@ namespace DimStock.Business
                     //Finaliza o transação
                     connection.Transaction.Commit();
 
-                    Notification.Message = "Deletado com sucesso!";
+                    MessageNotifier.Message = "Deletado com sucesso!";
                 }
 
                 return transactionState;

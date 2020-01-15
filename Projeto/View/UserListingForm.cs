@@ -233,12 +233,12 @@ namespace DimStock.View
 
                     if (user.Delete(id) == true)
                     {
-                        MessageBox.Show(Notification.Message, "SUCESSO",
+                        MessageBox.Show(MessageNotifier.Message, "SUCESSO",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show(Notification.Message, "AVISO",
+                        MessageBox.Show(MessageNotifier.Message, "AVISO",
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }

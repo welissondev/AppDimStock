@@ -76,7 +76,7 @@ namespace DimStock.Business
 
             if (accessState == false)
             {
-                Notification.Message = "Usuário não encontrado!";
+                MessageNotifier.Message = "Usuário não encontrado!";
             }
 
             return accessState;
@@ -85,9 +85,10 @@ namespace DimStock.Business
         public bool Register()
         {
             if (CheckIfLoginExists() == true)
-            {
                 return false;
-            }
+
+            if (ValidateEmail(Email) == false)
+                return false;
 
             using (var connection = new Connection())
             {
@@ -131,7 +132,7 @@ namespace DimStock.Business
                     //Finaliza a transação
                     connection.Transaction.Commit();
 
-                    Notification.Message = "Usuário cadastado com sucesso!";
+                    MessageNotifier.Message = "Usuário cadastado com sucesso!";
                 }
 
                 return transactionState;
@@ -140,6 +141,9 @@ namespace DimStock.Business
 
         public bool Edit(int id)
         {
+            if (ValidateEmail(Email) == false)
+                return false;
+
             using (var connection = new Connection())
             {
                 var transactionState = false;
@@ -183,7 +187,7 @@ namespace DimStock.Business
                     //Finaliza a transação
                     connection.Transaction.Commit();
 
-                    Notification.Message = "Usuário alterado com sucesso!";
+                    MessageNotifier.Message = "Usuário alterado com sucesso!";
                 }
 
                 return transactionState;
@@ -194,7 +198,7 @@ namespace DimStock.Business
         {
             if (CheckIfResgisterExists(id) == false)
             {
-                Notification.Message = "Esse registro já foi excluido " +
+                MessageNotifier.Message = "Esse registro já foi excluido " +
                 "atualize a lista de dados";
 
                 return false;
@@ -202,7 +206,7 @@ namespace DimStock.Business
 
             if (CheckCurrentRegister(id) == true)
             {
-                Notification.Message = "Você não pode deletar seu " +
+                MessageNotifier.Message = "Você não pode deletar seu " +
                 "próprio registro de usuário!";
 
                 return false;
@@ -238,7 +242,7 @@ namespace DimStock.Business
                     //Finaliza a transação
                     connection.Transaction.Commit();
 
-                    Notification.Message = "Usuário excluido com sucesso!";
+                    MessageNotifier.Message = "Usuário excluido com sucesso!";
                 }
 
                 return transactionState;
@@ -317,6 +321,17 @@ namespace DimStock.Business
             }
         }
 
+        public bool ValidateEmail(string email)
+        {
+            var validation = EmailAdderess.Validate(email);
+
+            if (validation == false)
+                MessageNotifier.Message = "O endereço de e-mail " +
+                "informado não é válido!";
+
+            return validation;
+        }
+
         public bool CheckIfLoginExists()
         {
             using (var connection = new Connection())
@@ -339,8 +354,9 @@ namespace DimStock.Business
 
                 if (userFound > 0)
                 {
-                    Notification.Message = "Já existe um usuário com o login [" + Login + "]. " +
-                    "Por favor, informe outro nome de login!";
+                    MessageNotifier.Message = "Já existe um usuário " +
+                    "com o login |" + Login + "|. Por favor, informe " +
+                    "outro nome de login!";
                 }
 
                 return userFound > 0;
