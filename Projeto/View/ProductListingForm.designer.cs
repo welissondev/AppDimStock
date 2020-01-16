@@ -496,6 +496,7 @@
             this.Name = "ProductListingForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ProductListingForm_FormClosed);
             this.Load += new System.EventHandler(this.ProductListingForm_Load);
             this.Resize += new System.EventHandler(this.ProductListingForm_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.SearchByDescription)).EndInit();

@@ -67,7 +67,7 @@
             // UserName
             // 
             this.UserName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.UserName.BeforeTouchSize = new System.Drawing.Size(794, 26);
+            this.UserName.BeforeTouchSize = new System.Drawing.Size(342, 26);
             this.UserName.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
             this.UserName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.UserName.CanOverrideStyle = true;
@@ -101,7 +101,7 @@
             // Email
             // 
             this.Email.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.Email.BeforeTouchSize = new System.Drawing.Size(794, 26);
+            this.Email.BeforeTouchSize = new System.Drawing.Size(342, 26);
             this.Email.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
             this.Email.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Email.CanOverrideStyle = true;
@@ -135,7 +135,7 @@
             // Login
             // 
             this.Login.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.Login.BeforeTouchSize = new System.Drawing.Size(794, 26);
+            this.Login.BeforeTouchSize = new System.Drawing.Size(342, 26);
             this.Login.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
             this.Login.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Login.CanOverrideStyle = true;
@@ -168,7 +168,7 @@
             // PassWord
             // 
             this.PassWord.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.PassWord.BeforeTouchSize = new System.Drawing.Size(794, 26);
+            this.PassWord.BeforeTouchSize = new System.Drawing.Size(342, 26);
             this.PassWord.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
             this.PassWord.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PassWord.CanOverrideStyle = true;
@@ -424,7 +424,7 @@
             // PassWordConfirmation
             // 
             this.PassWordConfirmation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.PassWordConfirmation.BeforeTouchSize = new System.Drawing.Size(794, 26);
+            this.PassWordConfirmation.BeforeTouchSize = new System.Drawing.Size(342, 26);
             this.PassWordConfirmation.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
             this.PassWordConfirmation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PassWordConfirmation.CanOverrideStyle = true;
@@ -476,6 +476,7 @@
             this.MinimumSize = new System.Drawing.Size(980, 720);
             this.Name = "UserResgistrationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UserResgistrationForm_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.UserName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Email)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Login)).EndInit();

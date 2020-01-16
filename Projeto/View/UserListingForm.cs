@@ -8,13 +8,20 @@ namespace DimStock.View
 {
     public partial class UserListingForm : Form
     {
+
+        #region Get & Set
+
+        public static UserListingForm Form { get; set; }
+
+        #endregion
+
         #region Variables
         private DataPagination dataPagination = new DataPagination();
         #endregion
 
         #region Constructs
 
-        public UserListingForm()
+        private UserListingForm()
         {
             InitializeComponent();
             InitializeSettings();
@@ -29,16 +36,18 @@ namespace DimStock.View
             ListData();
         }
 
+        private void UserListingForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Form = null;
+        }
+
         #endregion
 
         #region Button
 
         private void RegisterNew_Click(object sender, EventArgs e)
         {
-            using (var userForm = new UserResgistrationForm())
-            {
-                userForm.ShowDialog();
-            }
+            UserResgistrationForm.Init();
         }
 
         private void UpdateDataList_Click(object sender, EventArgs e)
@@ -78,7 +87,8 @@ namespace DimStock.View
                         break;
 
                     case "edit":
-                        ViewDetails(id);
+                        UserResgistrationForm.Init();
+                        UserResgistrationForm.Form.ViewDetails(id);
                         break;
                 }
             }
@@ -132,33 +142,24 @@ namespace DimStock.View
 
         #region MethodsAuxiliarys
 
-        private void ViewDetails(int id)
+        public static void Init()
         {
-            try
+            if (Form == null)
             {
-                var user = new User();
-                user.ViewDetails(id);
-
-                using (var userLogin = new UserResgistrationForm(user.Id))
+                var productForm = new UserListingForm
                 {
-                    userLogin.UserName.Text = user.Name;
-                    userLogin.Email.Text = user.Email;
-                    userLogin.Login.Text = user.Login;
-                    userLogin.PassWord.Text = user.PassWord;
-                    userLogin.PassWordConfirmation.Text = user.PassWord;
-                    userLogin.PermissionToRegister.Checked = user.PermissionToRegister;
-                    userLogin.PermissionToEdit.Checked = user.PermissionToEdit;
-                    userLogin.PermissionToDelete.Checked = user.PermissionToDelete;
-                    userLogin.PermissionToView.Checked = user.PermissionToView;
-                    userLogin.AllPermissons.Checked = user.AllPermissions;
+                    WindowState = FormWindowState.Maximized,
+                    MdiParent = HomeScreenForm.Form
+                };
+                productForm.Show();
 
-                    userLogin.ShowDialog();
-                }
-
+                Form = productForm;
             }
-            catch (Exception ex)
+            else
             {
-                ExceptionAssistant.Message.Show(ex);
+                Form.WindowState = FormWindowState.Maximized;
+                Form.MdiParent = HomeScreenForm.Form;
+                Form.Show();
             }
         }
 
@@ -321,6 +322,6 @@ namespace DimStock.View
             }
         }
 
-        #endregion 
+        #endregion
     }
 }

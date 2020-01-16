@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Bunifu.Framework.UI;
 using Syncfusion.Windows.Forms.Tools;
@@ -10,26 +9,32 @@ namespace DimStock.View
 {
     public partial class UserResgistrationForm : Form
     {
+        #region Get & Set
+
+        public static UserResgistrationForm Form { get; set; }
+
+        #endregion
+
         #region Variables
         private int id = 0;
         #endregion
 
         #region Constructs
 
-        public UserResgistrationForm()
+        private UserResgistrationForm()
         {
             InitializeComponent();
 
             InitializeSettings();
         }
 
-        public UserResgistrationForm(int id)
+        #endregion
+
+        #region Form
+
+        private void UserResgistrationForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            InitializeComponent();
-
-            InitializeSettings();
-
-            this.id = id;
+            Form = null;
         }
 
         #endregion
@@ -65,6 +70,27 @@ namespace DimStock.View
         #endregion 
 
         #region Methods
+
+        public static void Init()
+        {
+            if (Form == null)
+            {
+                var form = new UserResgistrationForm
+                {
+                    WindowState = FormWindowState.Maximized,
+                    MdiParent = HomeScreenForm.Form
+                };
+                form.Show();
+
+                Form = form;
+            }
+            else
+            {
+                Form.WindowState = FormWindowState.Maximized;
+                Form.MdiParent = HomeScreenForm.Form;
+                Form.Show();
+            }
+        }
 
         private void ResetControls()
         {
@@ -119,7 +145,7 @@ namespace DimStock.View
                 ExceptionAssistant.Message.Show(ex);
             }
         }
-        
+
         private void Register()
         {
             try
@@ -190,6 +216,30 @@ namespace DimStock.View
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                ExceptionAssistant.Message.Show(ex);
+            }
+        }
+
+        public void ViewDetails(int id)
+        {
+            try
+            {
+                var user = new User();
+                user.ViewDetails(id);
+
+                Form.UserName.Text = user.Name;
+                Form.Email.Text = user.Email;
+                Form.Login.Text = user.Login;
+                Form.PassWord.Text = user.PassWord;
+                Form.PassWordConfirmation.Text = user.PassWord;
+                Form.PermissionToRegister.Checked = user.PermissionToRegister;
+                Form.PermissionToEdit.Checked = user.PermissionToEdit;
+                Form.PermissionToDelete.Checked = user.PermissionToDelete;
+                Form.PermissionToView.Checked = user.PermissionToView;
+                Form.AllPermissons.Checked = user.AllPermissions;
             }
             catch (Exception ex)
             {

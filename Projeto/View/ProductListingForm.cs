@@ -11,15 +11,23 @@ namespace DimStock.View
     public partial class ProductListingForm : Form
     {
 
+        #region Get & Set
+
+        public static ProductListingForm Form { get; set; }
+
+        #endregion
+
         #region Variables
+
         public int Id = 0;
         private DataPagination dataPagination = new DataPagination();
         private ProductPhoto productPhoto = new ProductPhoto();
+
         #endregion
 
         #region Constructs
 
-        public ProductListingForm()
+        private ProductListingForm()
         {
             InitializeComponent();
 
@@ -49,16 +57,18 @@ namespace DimStock.View
             }
         }
 
+        private void ProductListingForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Form = null;
+        }
+
         #endregion
 
         #region Button
 
         private void RegisterNew_Click(object sender, EventArgs e)
         {
-            using (var userForm = new ProductRegistrationForm())
-            {
-                userForm.ShowDialog();
-            }
+            ProductRegistrationForm.Init();
         }
 
         private void UpdateDataList_Click(object sender, EventArgs e)
@@ -260,6 +270,27 @@ namespace DimStock.View
         #endregion
 
         #region MethodsAxiliarys
+
+        public static void Init()
+        {
+            if (Form == null)
+            {
+                var productForm = new ProductListingForm
+                {
+                    WindowState = FormWindowState.Maximized,
+                    MdiParent = HomeScreenForm.Form
+                };
+                productForm.Show();
+
+                Form = productForm;
+            }
+            else
+            {
+                Form.WindowState = FormWindowState.Maximized;
+                Form.MdiParent = HomeScreenForm.Form;
+                Form.Show();
+            }
+        }
 
         private void SearchData()
         {
@@ -642,7 +673,6 @@ namespace DimStock.View
         }
 
         #endregion
-
     }
 }
 

@@ -9,12 +9,18 @@ namespace DimStock.View
 {
     public partial class UserHistoryListingForm : Form
     {
+        #region Get & Set
+
+        public static UserHistoryListingForm Form { get; set; }
+
+        #endregion
+
         #region Variables
         private DataPagination dataPagination = new DataPagination();
         #endregion 
 
         #region Constructs
-        public UserHistoryListingForm()
+        private UserHistoryListingForm()
         {
             InitializeComponent();
             InitializeSettings();
@@ -27,6 +33,11 @@ namespace DimStock.View
         {
             StartSearchTimer();
             WindowState = FormWindowState.Maximized;
+        }
+
+        private void UserHistoryListingForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Form = null;
         }
 
         #endregion
@@ -136,6 +147,27 @@ namespace DimStock.View
 
         #region MethodsAxiliarys
 
+        public static void Init()
+        {
+            if (Form == null)
+            {
+                var productForm = new UserHistoryListingForm
+                {
+                    WindowState = FormWindowState.Maximized,
+                    MdiParent = HomeScreenForm.Form
+                };
+                productForm.Show();
+
+                Form = productForm;
+            }
+            else
+            {
+                Form.WindowState = FormWindowState.Maximized;
+                Form.MdiParent = HomeScreenForm.Form;
+                Form.Show();
+            }
+        }
+
         private void ListData()
         {
             try
@@ -219,11 +251,11 @@ namespace DimStock.View
 
             FillAllComboBoxes();
 
-            var startDate = new DateTime(DateTime.Today.Year, 
+            var startDate = new DateTime(DateTime.Today.Year,
             DateTime.Today.Month, 1);
 
-            var finalDate = new DateTime(DateTime.Today.Year, 
-            DateTime.Today.Month, DateTime.DaysInMonth(DateTime.Today.Year, 
+            var finalDate = new DateTime(DateTime.Today.Year,
+            DateTime.Today.Month, DateTime.DaysInMonth(DateTime.Today.Year,
             DateTime.Today.Month));
 
             StartDate.Text = startDate.ToString();

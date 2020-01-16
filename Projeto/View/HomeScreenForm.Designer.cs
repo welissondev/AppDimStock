@@ -102,14 +102,14 @@
             // MenuStock_Register_Entry
             // 
             this.MenuStock_Register_Entry.Name = "MenuStock_Register_Entry";
-            this.MenuStock_Register_Entry.Size = new System.Drawing.Size(180, 22);
+            this.MenuStock_Register_Entry.Size = new System.Drawing.Size(114, 22);
             this.MenuStock_Register_Entry.Text = "Entrada";
             this.MenuStock_Register_Entry.Click += new System.EventHandler(this.MenuStock_RegisterNew_Entry_Click);
             // 
             // MenuStock_Register_Output
             // 
             this.MenuStock_Register_Output.Name = "MenuStock_Register_Output";
-            this.MenuStock_Register_Output.Size = new System.Drawing.Size(180, 22);
+            this.MenuStock_Register_Output.Size = new System.Drawing.Size(114, 22);
             this.MenuStock_Register_Output.Text = "Saída";
             this.MenuStock_Register_Output.Click += new System.EventHandler(this.MenuStock_RegisterNew_Output_Click);
             // 
@@ -140,25 +140,25 @@
             // MenuUser_RegisterNew
             // 
             this.MenuUser_RegisterNew.Name = "MenuUser_RegisterNew";
-            this.MenuUser_RegisterNew.Size = new System.Drawing.Size(180, 22);
+            this.MenuUser_RegisterNew.Size = new System.Drawing.Size(158, 22);
             this.MenuUser_RegisterNew.Text = "Cadastrar Novo";
             this.MenuUser_RegisterNew.Click += new System.EventHandler(this.MenuUser_RegisterNew_Click);
             // 
             // MenuUser_ListUsers
             // 
             this.MenuUser_ListUsers.Name = "MenuUser_ListUsers";
-            this.MenuUser_ListUsers.Size = new System.Drawing.Size(180, 22);
+            this.MenuUser_ListUsers.Size = new System.Drawing.Size(158, 22);
             this.MenuUser_ListUsers.Text = "Listar Usuarios";
             this.MenuUser_ListUsers.Click += new System.EventHandler(this.MenuUser_ListUsers_Click);
             // 
             // MenuUser_ListHistorics
             // 
             this.MenuUser_ListHistorics.Name = "MenuUser_ListHistorics";
-            this.MenuUser_ListHistorics.Size = new System.Drawing.Size(180, 22);
+            this.MenuUser_ListHistorics.Size = new System.Drawing.Size(158, 22);
             this.MenuUser_ListHistorics.Text = "Listar Históricos";
             this.MenuUser_ListHistorics.Click += new System.EventHandler(this.MenuUser_ListHistorics_Click);
             // 
-            // MdlHomeScreen
+            // HomeScreenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -167,8 +167,9 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.MenuStrip;
             this.MinimumSize = new System.Drawing.Size(980, 720);
-            this.Name = "MdlHomeScreen";
+            this.Name = "HomeScreenForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.HomeScreenForm_Load);
             this.MenuStrip.ResumeLayout(false);
             this.MenuStrip.PerformLayout();
             this.ResumeLayout(false);

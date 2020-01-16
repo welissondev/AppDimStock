@@ -1,6 +1,6 @@
 ﻿namespace DimStock.View
 {
-    partial class StockMovimentRegistrationForm
+    partial class StockMovementRegistrationForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StockMovimentRegistrationForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StockMovementRegistrationForm));
             this.SearchTimer = new System.Windows.Forms.Timer(this.components);
             this.SubTotalTitle = new System.Windows.Forms.Label();
             this.SubTotal = new System.Windows.Forms.Label();
@@ -847,6 +847,7 @@
             this.MinimumSize = new System.Drawing.Size(980, 720);
             this.Name = "StockMovimentRegistrationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.StockMovimentRegistrationForm_FormClosed);
             this.Resize += new System.EventHandler(this.StockMovementResgistrationForm_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.Quantity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TotalValue)).EndInit();

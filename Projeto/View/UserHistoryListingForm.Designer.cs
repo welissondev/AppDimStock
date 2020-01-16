@@ -85,7 +85,7 @@
             // SearchByLogin
             // 
             this.SearchByLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SearchByLogin.BeforeTouchSize = new System.Drawing.Size(90, 27);
+            this.SearchByLogin.BeforeTouchSize = new System.Drawing.Size(136, 27);
             this.SearchByLogin.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.SearchByLogin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SearchByLogin.CanOverrideStyle = true;
@@ -373,6 +373,7 @@
             this.MinimumSize = new System.Drawing.Size(980, 720);
             this.Name = "UserHistoryListingForm";
             this.ShowIcon = false;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UserHistoryListingForm_FormClosed);
             this.Load += new System.EventHandler(this.UserHistoryListingForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.HistoryDataList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SearchByLogin)).EndInit();

@@ -374,6 +374,7 @@
             this.Controls.Add(this.PanelUpperHorizontal);
             this.Controls.Add(this.MovementStockDataList);
             this.Name = "StockMovementListingForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.StockMovementListingForm_FormClosed);
             this.Load += new System.EventHandler(this.StockMovementListingForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.MovementStockDataList)).EndInit();
             this.PanelUpperHorizontal.ResumeLayout(false);

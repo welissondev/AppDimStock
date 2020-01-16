@@ -9,24 +9,34 @@ namespace DimStock.View
 {
     public partial class HomeScreenForm : Form
     {
+        #region  Get & Set
+
+        public static HomeScreenForm Form { get; set; }
+
+        #endregion
+
         #region Properties
+
         private int childFormNumber = 0;
+
         #endregion 
 
         #region Contructs
 
-        #region MDIPrincipal
         public HomeScreenForm()
         {
             InitializeComponent();
         }
-        #endregion
 
         #endregion
 
         #region UserForm
 
-        #region ShowNewForm()
+        private void HomeScreenForm_Load(object sender, EventArgs e)
+        {
+            Form = this;
+        }
+
         private void ShowNewForm(object sender, EventArgs e)
         {
             Form childForm = new Form
@@ -36,9 +46,7 @@ namespace DimStock.View
             };
             childForm.Show();
         }
-        #endregion
 
-        #region OnLoad()
         protected override void OnLoad(EventArgs e)
         {
             //Remove o 3d do mdiform e modifica a cor de fundo
@@ -67,98 +75,64 @@ namespace DimStock.View
                 this.Close();
             }
         }
-        #endregion
 
         #endregion
 
         #region MenuStrip
 
-        #region MenuProduct_RegisterNew_Click()
         private void MenuProduct_RegisterNew_Click(object sender, EventArgs e)
         {
-            var productRegister = new ProductRegistrationForm();
-            productRegister.MdiParent = this;
-            productRegister.WindowState = FormWindowState.Maximized;
-            productRegister.Show();
+            ProductRegistrationForm.Init();
         }
-        #endregion
 
-        #region MenuProduct_ListProducts_Click()
         private void MenuProduct_ListProducts_Click(object sender, EventArgs e)
         {
-            var productList = new ProductListingForm();
-            productList.MdiParent = this;
-            productList.Show();
+            ProductListingForm.Init();
         }
-        #endregion
 
-        #region MenuStock_RegisterNew_Entry_Click()
         private void MenuStock_RegisterNew_Entry_Click(object sender, EventArgs e)
         {
             try
             {
-                var view = new StockMovimentRegistrationForm();
-                view.OperationType.Text = "Entrada";
-                view.RegisterStockMovement();
-                view.GetStockMovementDetails(Convert.ToInt32(view.StockMovementId.Text));
-                view.MdiParent = this;
-                view.WindowState = FormWindowState.Maximized;
-                view.Show();
+                StockMovementRegistrationForm.Init();
+                StockMovementRegistrationForm.InitializeNewMovement("Entrada");
             }
             catch (Exception ex)
             {
                 ExceptionAssistant.Message.Show(ex);
             }
         }
-        #endregion
 
-        #region MenuStock_RegisterNew_Output_Click()
         private void MenuStock_RegisterNew_Output_Click(object sender, EventArgs e)
         {
             try
             {
-                var view = new StockMovimentRegistrationForm();
-                view.OperationType.Text = "Saída";
-                view.RegisterStockMovement();
-                view.GetStockMovementDetails(Convert.ToInt32(view.StockMovementId.Text));
-                view.MdiParent = this;
-                view.WindowState = FormWindowState.Maximized;
-                view.Show();
+                StockMovementRegistrationForm.Init();
+                StockMovementRegistrationForm.InitializeNewMovement("Saída");
             }
             catch (Exception ex)
             {
                 ExceptionAssistant.Message.Show(ex);
             }
         }
-        #endregion
 
-        #region MenuStock_ListStockMovement_Click()
         private void MenuStock_ListStockMovement_Click(object sender, EventArgs e)
         {
             try
             {
-                var frm = new StockMovementListingForm();
-                frm.WindowState = FormWindowState.Maximized;
-                frm.MdiParent = this;
-                frm.Show();
+                StockMovementListingForm.Init();
             }
             catch (Exception ex)
             {
                 ExceptionAssistant.Message.Show(ex);
             }
         }
-        #endregion
 
-        #region MenuStock_ListStocks_Click()
         private void MenuStock_ListStocks_Click(object sender, EventArgs e)
         {
-            var stockList = new StockListingForm();
-            stockList.MdiParent = this;
-            stockList.Show();
+           StockListingForm.Init();
         }
-        #endregion
 
-        #region MenuUser_RegisterNew_Click()
         private void MenuUser_RegisterNew_Click(object sender, EventArgs e)
         {
             try
@@ -168,15 +142,13 @@ namespace DimStock.View
 
                 if (user.PermissionToView == true)
                 {
-                    UserResgistrationForm frm = new UserResgistrationForm();
-                    frm.WindowState = FormWindowState.Maximized;
-                    frm.MdiParent = this;
-                    frm.Show();
+                    UserResgistrationForm.Init();
                 }
                 else
                 {
                     MessageBox.Show("Apenas administradores podem acessar " +
-                    "essa ária!", "ACESSO NEGADO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    "essa ária!", "ACESSO NEGADO", MessageBoxButtons.OK, 
+                    MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
@@ -184,9 +156,7 @@ namespace DimStock.View
                 ExceptionAssistant.Message.Show(ex);
             }
         }
-        #endregion
 
-        #region MenuUser_ListUsers_Click()
         private void MenuUser_ListUsers_Click(object sender, EventArgs e)
         {
             try
@@ -196,15 +166,13 @@ namespace DimStock.View
 
                 if (user.PermissionToView == true)
                 {
-                    var userList = new UserListingForm();
-                    userList.WindowState = FormWindowState.Maximized;
-                    userList.MdiParent = this;
-                    userList.Show();
+                    UserListingForm.Init();
                 }
                 else
                 {
-                    MessageBox.Show("Apenas administradores podem acessar " +
-                    "essa ária!", "ACESSO NEGADO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Você não tem permissão para acessar " +
+                    "essa ária!", "ACESSO NEGADO", MessageBoxButtons.OK, 
+                    MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
@@ -212,9 +180,7 @@ namespace DimStock.View
                 ExceptionAssistant.Message.Show(ex);
             }
         }
-        #endregion
 
-        #region MenuUser_ListHistorics_Click()
         private void MenuUser_ListHistorics_Click(object sender, EventArgs e)
         {
             try
@@ -224,17 +190,13 @@ namespace DimStock.View
 
                 if (user.PermissionToView == true)
                 {
-                    var UserHistoryList = new UserHistoryListingForm
-                    {
-                        WindowState = FormWindowState.Maximized,
-                        MdiParent = this
-                    };
-                    UserHistoryList.Show();
+                    UserHistoryListingForm.Init();
                 }
                 else
                 {
-                    MessageBox.Show("Apenas administradores podem acessar " +
-                    "essa ária!", "ACESSO NEGADO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Você não tem permissão para acessar " +
+                    "essa ária!", "ACESSO NEGADO", MessageBoxButtons.OK, 
+                    MessageBoxIcon.Error);
                 }
 
             }
@@ -243,7 +205,6 @@ namespace DimStock.View
                 ExceptionAssistant.Message.Show(ex);
             }
         }
-        #endregion
 
         #endregion
     }

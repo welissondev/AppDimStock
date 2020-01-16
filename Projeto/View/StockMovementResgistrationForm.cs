@@ -9,13 +9,14 @@ using System.Windows.Forms;
 
 namespace DimStock.View
 {
-    public partial class StockMovimentRegistrationForm : Form
+    public partial class StockMovementRegistrationForm : Form
     {
         #region Get e Set
 
         public int StockId { get; set; }
         public int StockQuantity { get; set; }
         public int ProductId { get; set; }
+        public static StockMovementRegistrationForm Form { get; set; }
 
         #endregion
 
@@ -25,7 +26,7 @@ namespace DimStock.View
 
         #region Constructs
 
-        public StockMovimentRegistrationForm()
+        private StockMovementRegistrationForm()
         {
             InitializeComponent();
 
@@ -47,6 +48,11 @@ namespace DimStock.View
             {
                 ExceptionAssistant.Message.Show(ex);
             }
+        }
+
+        private void StockMovimentRegistrationForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Form = null;
         }
 
         #endregion
@@ -163,15 +169,7 @@ namespace DimStock.View
 
         private void AddNewStockDestination_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            try
-            {
-                var destinationRegister = new StockDestinationRegistrationForm();
-                destinationRegister.ShowDialog();
-            }
-            catch (Exception ex)
-            {
-                ExceptionAssistant.Message.Show(ex);
-            }
+            StockDestinationRegistrationForm.Init();
         }
 
         private void ClearQueryFields_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -231,8 +229,7 @@ namespace DimStock.View
 
         private void MovementEntrie_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OperationType.Text = "Entrada";
-            RegisterStockMovement();
+            InitializeNewMovement("Entrada");
             GetStockMovementDetails(Convert.ToInt32(StockMovementId.Text));
             ResetControl();
             ListStockItems();
@@ -240,8 +237,7 @@ namespace DimStock.View
 
         private void MovementOutPut_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OperationType.Text = "Saída";
-            RegisterStockMovement();
+            InitializeNewMovement("Saída");
             GetStockMovementDetails(Convert.ToInt32(StockMovementId.Text));
             ResetControl();
             ListStockItems();
@@ -250,6 +246,27 @@ namespace DimStock.View
         #endregion
 
         #region MethodsAuxiliarys
+
+        public static void Init()
+        {
+            if (Form == null)
+            {
+                var form = new StockMovementRegistrationForm
+                {
+                    WindowState = FormWindowState.Maximized,
+                    MdiParent = HomeScreenForm.Form
+                };
+                form.Show();
+
+                Form = form;
+            }
+            else
+            {
+                Form.WindowState = FormWindowState.Maximized;
+                Form.MdiParent = HomeScreenForm.Form;
+                Form.Show();
+            }
+        }
 
         private List<Stock> GetItems()
         {
@@ -383,19 +400,20 @@ namespace DimStock.View
             }
         }
 
-        public bool RegisterStockMovement()
+        public static void InitializeNewMovement(string operationType)
         {
             var stockMovement = new StockMovement();
-            var addState = false;
 
-            switch (OperationType.Text)
+            Form.OperationType.Text = operationType;
+
+            switch (Form.OperationType.Text)
             {
                 case "Entrada":
-                    stockMovement.OperationType = OperationType.Text;
+                    stockMovement.OperationType = Form.OperationType.Text;
                     break;
 
                 case "Saída":
-                    stockMovement.OperationType = OperationType.Text;
+                    stockMovement.OperationType = Form.OperationType.Text;
                     break;
             }
 
@@ -403,14 +421,9 @@ namespace DimStock.View
             stockMovement.OperationHour = DateTime.Now.ToString("HH:mm:ss");
             stockMovement.OperationSituation = "Em Aberto";
 
-            if (stockMovement.Register() == true)
-            {
-                addState = true;
+            stockMovement.InitializeNew();
 
-                StockMovementId.Text = stockMovement.Id.ToString();
-            }
-
-            return addState;
+            Form.GetStockMovementDetails(stockMovement.Id);
         }
 
         private void DeleteStockMovement()

@@ -11,8 +11,12 @@ namespace DimStock.View
 {
     public partial class ProductRegistrationForm : Form
     {
-        #region GetSet
+        #region Get & Set
+
         public int Id { get; set; }
+
+        public static ProductRegistrationForm Form { get; set; }
+
         #endregion
 
         #region Variables
@@ -28,6 +32,15 @@ namespace DimStock.View
             InitializeComponent();
 
             InitializeSettings();
+        }
+
+        #endregion
+
+        #region Form
+
+        private void ProductRegistrationForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Form = null;
         }
 
         #endregion
@@ -97,6 +110,27 @@ namespace DimStock.View
         #endregion
 
         #region MethodsAuxiliarys
+
+        public static void Init()
+        {
+            if (Form == null)
+            {
+                var productRegistration = new ProductRegistrationForm
+                {
+                    WindowState = FormWindowState.Maximized,
+                    MdiParent = HomeScreenForm.Form
+                };
+                productRegistration.Show();
+
+                Form = productRegistration;
+            }
+            else
+            {
+                Form.WindowState = FormWindowState.Maximized;
+                Form.MdiParent = HomeScreenForm.Form;
+                Form.Show();
+            }
+        }
 
         private void Register()
         {

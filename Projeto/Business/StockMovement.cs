@@ -50,7 +50,7 @@ namespace DimStock.Business
 
         #region Methods
 
-        public bool Register()
+        public bool InitializeNew()
         {
             bool registerState = false;
 
