@@ -75,7 +75,7 @@
             this.AddNew = new Syncfusion.WinForms.Controls.SfButton();
             this.StockDestinationList = new System.Windows.Forms.ComboBox();
             this.AddNewStockDestination = new System.Windows.Forms.LinkLabel();
-            this.ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.StockMovementMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MovementEntrie_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MovementOutPut_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.Quantity)).BeginInit();
@@ -91,7 +91,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MainDataList)).BeginInit();
             this.GrupBoxGeneralInformation.SuspendLayout();
             this.PanelUpperHorinzontal.SuspendLayout();
-            this.ContextMenuStrip.SuspendLayout();
+            this.StockMovementMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // SearchTimer
@@ -810,29 +810,29 @@
             this.AddNewStockDestination.Text = "Cadastrar Novo";
             this.AddNewStockDestination.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.AddNewStockDestination_LinkClicked);
             // 
-            // ContextMenuStrip
+            // StockMovementMenuStrip
             // 
-            this.ContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.StockMovementMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MovementEntrie_ToolStripMenuItem,
             this.MovementOutPut_ToolStripMenuItem});
-            this.ContextMenuStrip.Name = "ContextMenuStrip";
-            this.ContextMenuStrip.Size = new System.Drawing.Size(115, 48);
+            this.StockMovementMenuStrip.Name = "ContextMenuStrip";
+            this.StockMovementMenuStrip.Size = new System.Drawing.Size(181, 70);
             // 
             // MovementEntrie_ToolStripMenuItem
             // 
             this.MovementEntrie_ToolStripMenuItem.Name = "MovementEntrie_ToolStripMenuItem";
-            this.MovementEntrie_ToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.MovementEntrie_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.MovementEntrie_ToolStripMenuItem.Text = "Entrada";
             this.MovementEntrie_ToolStripMenuItem.Click += new System.EventHandler(this.MovementEntrie_ToolStripMenuItem_Click);
             // 
             // MovementOutPut_ToolStripMenuItem
             // 
             this.MovementOutPut_ToolStripMenuItem.Name = "MovementOutPut_ToolStripMenuItem";
-            this.MovementOutPut_ToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.MovementOutPut_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.MovementOutPut_ToolStripMenuItem.Text = "Saída";
             this.MovementOutPut_ToolStripMenuItem.Click += new System.EventHandler(this.MovementOutPut_ToolStripMenuItem_Click);
             // 
-            // StockMovimentRegistrationForm
+            // StockMovementRegistrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -845,7 +845,7 @@
             this.Controls.Add(this.PanelUpperHorinzontal);
             this.Controls.Add(this.CardMain);
             this.MinimumSize = new System.Drawing.Size(980, 720);
-            this.Name = "StockMovimentRegistrationForm";
+            this.Name = "StockMovementRegistrationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.StockMovimentRegistrationForm_FormClosed);
             this.Resize += new System.EventHandler(this.StockMovementResgistrationForm_Resize);
@@ -865,7 +865,7 @@
             this.GrupBoxGeneralInformation.PerformLayout();
             this.PanelUpperHorinzontal.ResumeLayout(false);
             this.PanelUpperHorinzontal.PerformLayout();
-            this.ContextMenuStrip.ResumeLayout(false);
+            this.StockMovementMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -917,7 +917,7 @@
         private System.Windows.Forms.ComboBox StockDestinationList;
         private System.Windows.Forms.LinkLabel AddNewStockDestination;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ContextMenuStrip ContextMenuStrip;
+        private System.Windows.Forms.ContextMenuStrip StockMovementMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem MovementEntrie_ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem MovementOutPut_ToolStripMenuItem;
     }

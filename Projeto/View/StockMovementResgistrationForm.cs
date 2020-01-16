@@ -63,8 +63,8 @@ namespace DimStock.View
         {
             try
             {
-                ContextMenuStrip.Show();
-                ContextMenuStrip.Location = MousePosition;
+                StockMovementMenuStrip.Show();
+                StockMovementMenuStrip.Location = MousePosition;
             }
             catch (Exception ex)
             {

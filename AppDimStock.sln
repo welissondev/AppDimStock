@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DimStock", "Projeto\DimStock.csproj", "{CD1D80E8-6865-4D64-86B8-CF4D05CE487B}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Installer", "Installer\Installer.vdproj", "{2E368CA4-42FE-493F-8EAB-B22C4CF4D96E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,14 @@ Global
 		{CD1D80E8-6865-4D64-86B8-CF4D05CE487B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CD1D80E8-6865-4D64-86B8-CF4D05CE487B}.Release|x86.ActiveCfg = Release|x86
 		{CD1D80E8-6865-4D64-86B8-CF4D05CE487B}.Release|x86.Build.0 = Release|x86
+		{2E368CA4-42FE-493F-8EAB-B22C4CF4D96E}.Debug|Any CPU.ActiveCfg = Debug
+		{2E368CA4-42FE-493F-8EAB-B22C4CF4D96E}.Debug|Any CPU.Build.0 = Debug
+		{2E368CA4-42FE-493F-8EAB-B22C4CF4D96E}.Debug|x86.ActiveCfg = Debug
+		{2E368CA4-42FE-493F-8EAB-B22C4CF4D96E}.Debug|x86.Build.0 = Debug
+		{2E368CA4-42FE-493F-8EAB-B22C4CF4D96E}.Release|Any CPU.ActiveCfg = Release
+		{2E368CA4-42FE-493F-8EAB-B22C4CF4D96E}.Release|Any CPU.Build.0 = Release
+		{2E368CA4-42FE-493F-8EAB-B22C4CF4D96E}.Release|x86.ActiveCfg = Release
+		{2E368CA4-42FE-493F-8EAB-B22C4CF4D96E}.Release|x86.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
