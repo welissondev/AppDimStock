@@ -230,6 +230,7 @@ namespace DimStock.View
                 var user = new User();
                 user.ViewDetails(id);
 
+                Form.id = id;
                 Form.UserName.Text = user.Name;
                 Form.Email.Text = user.Email;
                 Form.Login.Text = user.Login;
