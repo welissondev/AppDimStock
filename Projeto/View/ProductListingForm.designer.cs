@@ -43,9 +43,6 @@
             this.SearchBySize = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.SearchByCode = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.SearchTimer = new System.Windows.Forms.Timer(this.components);
-            this.PanelUpperHorizontal = new Bunifu.Framework.UI.BunifuGradientPanel();
-            this.DayOfTheWeek = new System.Windows.Forms.Label();
-            this.FormCaption = new System.Windows.Forms.Label();
             this.GenerateReport = new Syncfusion.WinForms.Controls.SfButton();
             this.UpdateDataList = new Syncfusion.WinForms.Controls.SfButton();
             this.RegisterNew = new Syncfusion.WinForms.Controls.SfButton();
@@ -64,7 +61,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.SearchByReference)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SearchBySize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SearchByCode)).BeginInit();
-            this.PanelUpperHorizontal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BindingPagination)).BeginInit();
             this.BindingPagination.SuspendLayout();
             this.SuspendLayout();
@@ -80,7 +76,7 @@
             this.SearchByDescription.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.SearchByDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchByDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.SearchByDescription.Location = new System.Drawing.Point(308, 152);
+            this.SearchByDescription.Location = new System.Drawing.Point(309, 108);
             this.SearchByDescription.MaxLength = 50;
             this.SearchByDescription.Metrocolor = System.Drawing.Color.DodgerBlue;
             this.SearchByDescription.MinimumSize = new System.Drawing.Size(16, 12);
@@ -100,9 +96,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ProductDataList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ProductDataList.Location = new System.Drawing.Point(16, 185);
+            this.ProductDataList.Location = new System.Drawing.Point(16, 150);
             this.ProductDataList.Name = "ProductDataList";
-            this.ProductDataList.Size = new System.Drawing.Size(952, 507);
+            this.ProductDataList.Size = new System.Drawing.Size(936, 503);
             this.ProductDataList.TabIndex = 69;
             this.ProductDataList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductDataList_CellClick);
             this.ProductDataList.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ProductDataList_CellMouseDoubleClick);
@@ -113,7 +109,7 @@
             // 
             this.GifLoading.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.GifLoading.Image = global::DimStock.Properties.Resources.GigLoading;
-            this.GifLoading.Location = new System.Drawing.Point(415, 345);
+            this.GifLoading.Location = new System.Drawing.Point(405, 283);
             this.GifLoading.Name = "GifLoading";
             this.GifLoading.Size = new System.Drawing.Size(177, 174);
             this.GifLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -127,7 +123,7 @@
             this.RecordsByPage.CanOverrideStyle = true;
             this.RecordsByPage.DropDownStyle = Syncfusion.WinForms.ListView.Enums.DropDownStyle.DropDownList;
             this.RecordsByPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RecordsByPage.Location = new System.Drawing.Point(549, 152);
+            this.RecordsByPage.Location = new System.Drawing.Point(550, 108);
             this.RecordsByPage.Name = "RecordsByPage";
             this.RecordsByPage.Size = new System.Drawing.Size(136, 27);
             this.RecordsByPage.Style.DropDownButtonStyle.BackColor = System.Drawing.Color.White;
@@ -158,7 +154,7 @@
             // 
             this.TitleRecordsByPage.AutoSize = true;
             this.TitleRecordsByPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.TitleRecordsByPage.Location = new System.Drawing.Point(546, 138);
+            this.TitleRecordsByPage.Location = new System.Drawing.Point(547, 94);
             this.TitleRecordsByPage.Name = "TitleRecordsByPage";
             this.TitleRecordsByPage.Size = new System.Drawing.Size(109, 13);
             this.TitleRecordsByPage.TabIndex = 91;
@@ -168,7 +164,7 @@
             // 
             this.TitleSearchByDescription.AutoSize = true;
             this.TitleSearchByDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.TitleSearchByDescription.Location = new System.Drawing.Point(305, 136);
+            this.TitleSearchByDescription.Location = new System.Drawing.Point(306, 92);
             this.TitleSearchByDescription.Name = "TitleSearchByDescription";
             this.TitleSearchByDescription.Size = new System.Drawing.Size(58, 13);
             this.TitleSearchByDescription.TabIndex = 90;
@@ -178,7 +174,7 @@
             // 
             this.TitleSearchByReference.AutoSize = true;
             this.TitleSearchByReference.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.TitleSearchByReference.Location = new System.Drawing.Point(210, 136);
+            this.TitleSearchByReference.Location = new System.Drawing.Point(211, 92);
             this.TitleSearchByReference.Name = "TitleSearchByReference";
             this.TitleSearchByReference.Size = new System.Drawing.Size(62, 13);
             this.TitleSearchByReference.TabIndex = 89;
@@ -188,7 +184,7 @@
             // 
             this.TitleSearchBySize.AutoSize = true;
             this.TitleSearchBySize.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.TitleSearchBySize.Location = new System.Drawing.Point(111, 136);
+            this.TitleSearchBySize.Location = new System.Drawing.Point(112, 92);
             this.TitleSearchBySize.Name = "TitleSearchBySize";
             this.TitleSearchBySize.Size = new System.Drawing.Size(55, 13);
             this.TitleSearchBySize.TabIndex = 88;
@@ -198,7 +194,7 @@
             // 
             this.TitleSearchByCode.AutoSize = true;
             this.TitleSearchByCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.TitleSearchByCode.Location = new System.Drawing.Point(13, 136);
+            this.TitleSearchByCode.Location = new System.Drawing.Point(14, 92);
             this.TitleSearchByCode.Name = "TitleSearchByCode";
             this.TitleSearchByCode.Size = new System.Drawing.Size(43, 13);
             this.TitleSearchByCode.TabIndex = 87;
@@ -215,7 +211,7 @@
             this.SearchByReference.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.SearchByReference.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchByReference.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.SearchByReference.Location = new System.Drawing.Point(213, 152);
+            this.SearchByReference.Location = new System.Drawing.Point(214, 108);
             this.SearchByReference.MaxLength = 50;
             this.SearchByReference.Metrocolor = System.Drawing.Color.DodgerBlue;
             this.SearchByReference.MinimumSize = new System.Drawing.Size(16, 12);
@@ -240,7 +236,7 @@
             this.SearchBySize.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.SearchBySize.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchBySize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.SearchBySize.Location = new System.Drawing.Point(114, 152);
+            this.SearchBySize.Location = new System.Drawing.Point(115, 108);
             this.SearchBySize.MaxLength = 50;
             this.SearchBySize.Metrocolor = System.Drawing.Color.DodgerBlue;
             this.SearchBySize.MinimumSize = new System.Drawing.Size(16, 12);
@@ -265,7 +261,7 @@
             this.SearchByCode.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.SearchByCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchByCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.SearchByCode.Location = new System.Drawing.Point(16, 152);
+            this.SearchByCode.Location = new System.Drawing.Point(17, 108);
             this.SearchByCode.MaxLength = 50;
             this.SearchByCode.Metrocolor = System.Drawing.Color.DodgerBlue;
             this.SearchByCode.MinimumSize = new System.Drawing.Size(16, 12);
@@ -284,58 +280,13 @@
             this.SearchTimer.Interval = 500;
             this.SearchTimer.Tick += new System.EventHandler(this.SearchTimer_Tick);
             // 
-            // PanelUpperHorizontal
-            // 
-            this.PanelUpperHorizontal.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelUpperHorizontal.BackgroundImage")));
-            this.PanelUpperHorizontal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PanelUpperHorizontal.Controls.Add(this.DayOfTheWeek);
-            this.PanelUpperHorizontal.Controls.Add(this.FormCaption);
-            this.PanelUpperHorizontal.Controls.Add(this.GenerateReport);
-            this.PanelUpperHorizontal.Controls.Add(this.UpdateDataList);
-            this.PanelUpperHorizontal.Controls.Add(this.RegisterNew);
-            this.PanelUpperHorizontal.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelUpperHorizontal.GradientBottomLeft = System.Drawing.Color.Black;
-            this.PanelUpperHorizontal.GradientBottomRight = System.Drawing.Color.Black;
-            this.PanelUpperHorizontal.GradientTopLeft = System.Drawing.Color.Gray;
-            this.PanelUpperHorizontal.GradientTopRight = System.Drawing.Color.Gray;
-            this.PanelUpperHorizontal.Location = new System.Drawing.Point(0, 0);
-            this.PanelUpperHorizontal.Name = "PanelUpperHorizontal";
-            this.PanelUpperHorizontal.Quality = 10;
-            this.PanelUpperHorizontal.Size = new System.Drawing.Size(980, 93);
-            this.PanelUpperHorizontal.TabIndex = 140;
-            // 
-            // DayOfTheWeek
-            // 
-            this.DayOfTheWeek.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.DayOfTheWeek.BackColor = System.Drawing.Color.Transparent;
-            this.DayOfTheWeek.Font = new System.Drawing.Font("Leelawadee UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DayOfTheWeek.ForeColor = System.Drawing.Color.White;
-            this.DayOfTheWeek.Location = new System.Drawing.Point(409, 21);
-            this.DayOfTheWeek.Name = "DayOfTheWeek";
-            this.DayOfTheWeek.Size = new System.Drawing.Size(563, 40);
-            this.DayOfTheWeek.TabIndex = 145;
-            this.DayOfTheWeek.Text = "DayOfTheWeek";
-            this.DayOfTheWeek.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // FormCaption
-            // 
-            this.FormCaption.AutoSize = true;
-            this.FormCaption.BackColor = System.Drawing.Color.Transparent;
-            this.FormCaption.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormCaption.ForeColor = System.Drawing.Color.White;
-            this.FormCaption.Location = new System.Drawing.Point(12, 9);
-            this.FormCaption.Name = "FormCaption";
-            this.FormCaption.Size = new System.Drawing.Size(187, 24);
-            this.FormCaption.TabIndex = 144;
-            this.FormCaption.Text = "Lista de Produtos";
-            // 
             // GenerateReport
             // 
             this.GenerateReport.AccessibleName = "Button";
             this.GenerateReport.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.GenerateReport.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GenerateReport.ForeColor = System.Drawing.Color.White;
-            this.GenerateReport.Location = new System.Drawing.Point(179, 44);
+            this.GenerateReport.Location = new System.Drawing.Point(182, 28);
             this.GenerateReport.Name = "GenerateReport";
             this.GenerateReport.Size = new System.Drawing.Size(80, 35);
             this.GenerateReport.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
@@ -359,7 +310,7 @@
             this.UpdateDataList.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.UpdateDataList.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpdateDataList.ForeColor = System.Drawing.Color.White;
-            this.UpdateDataList.Location = new System.Drawing.Point(96, 44);
+            this.UpdateDataList.Location = new System.Drawing.Point(99, 28);
             this.UpdateDataList.Name = "UpdateDataList";
             this.UpdateDataList.Size = new System.Drawing.Size(80, 35);
             this.UpdateDataList.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
@@ -383,7 +334,7 @@
             this.RegisterNew.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.RegisterNew.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RegisterNew.ForeColor = System.Drawing.Color.White;
-            this.RegisterNew.Location = new System.Drawing.Point(13, 44);
+            this.RegisterNew.Location = new System.Drawing.Point(16, 28);
             this.RegisterNew.Name = "RegisterNew";
             this.RegisterNew.Size = new System.Drawing.Size(80, 35);
             this.RegisterNew.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
@@ -415,14 +366,14 @@
             this.NextPage,
             this.toolStripSeparator3,
             this.LblRecordsState});
-            this.BindingPagination.Location = new System.Drawing.Point(0, 695);
+            this.BindingPagination.Location = new System.Drawing.Point(0, 656);
             this.BindingPagination.MoveFirstItem = null;
             this.BindingPagination.MoveLastItem = null;
             this.BindingPagination.MoveNextItem = null;
             this.BindingPagination.MovePreviousItem = null;
             this.BindingPagination.Name = "BindingPagination";
             this.BindingPagination.PositionItem = null;
-            this.BindingPagination.Size = new System.Drawing.Size(980, 25);
+            this.BindingPagination.Size = new System.Drawing.Size(964, 25);
             this.BindingPagination.TabIndex = 178;
             this.BindingPagination.Text = "bindingNavigator1";
             // 
@@ -477,10 +428,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(980, 720);
+            this.ClientSize = new System.Drawing.Size(964, 681);
+            this.Controls.Add(this.GenerateReport);
+            this.Controls.Add(this.UpdateDataList);
             this.Controls.Add(this.GifLoading);
+            this.Controls.Add(this.RegisterNew);
             this.Controls.Add(this.BindingPagination);
-            this.Controls.Add(this.PanelUpperHorizontal);
             this.Controls.Add(this.RecordsByPage);
             this.Controls.Add(this.SearchByDescription);
             this.Controls.Add(this.ProductDataList);
@@ -506,8 +459,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.SearchByReference)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SearchBySize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SearchByCode)).EndInit();
-            this.PanelUpperHorizontal.ResumeLayout(false);
-            this.PanelUpperHorizontal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BindingPagination)).EndInit();
             this.BindingPagination.ResumeLayout(false);
             this.BindingPagination.PerformLayout();
@@ -530,7 +481,6 @@
         private System.Windows.Forms.Timer SearchTimer;
         private System.Windows.Forms.PictureBox GifLoading;
         private Syncfusion.WinForms.ListView.SfComboBox RecordsByPage;
-        private Bunifu.Framework.UI.BunifuGradientPanel PanelUpperHorizontal;
         private Syncfusion.WinForms.Controls.SfButton RegisterNew;
         private Syncfusion.WinForms.Controls.SfButton UpdateDataList;
         private Syncfusion.WinForms.Controls.SfButton GenerateReport;
@@ -542,7 +492,5 @@
         private System.Windows.Forms.ToolStripButton NextPage;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripLabel LblRecordsState;
-        public System.Windows.Forms.Label DayOfTheWeek;
-        public System.Windows.Forms.Label FormCaption;
     }
 }

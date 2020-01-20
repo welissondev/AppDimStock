@@ -135,7 +135,6 @@
     <Compile Include="Auxiliary\CustomDataGridViewOne.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Auxiliary\XButtonRemover.cs" />
     <Compile Include="Business\Connection.cs" />
     <Compile Include="Business\StockDestination.cs" />
     <Compile Include="Business\StockItem.cs" />

@@ -483,10 +483,6 @@ namespace DimStock.View
 
         private void InitializeSettings()
         {
-            FormCaption.Text = @"Lista de Produtos";
-
-            DayOfTheWeek.Text = DateTime.Now.ToLongDateString();
-
             DataGridLealt.SetDefaultStyle(ProductDataList);
 
             FillAllComboBoxes();

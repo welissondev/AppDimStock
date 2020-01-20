@@ -30,7 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeScreenForm));
-            this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.PanelMenuTop = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.MainMenu_Support = new System.Windows.Forms.LinkLabel();
             this.label4 = new System.Windows.Forms.Label();
             this.MainMenu_Supplier = new System.Windows.Forms.LinkLabel();
             this.label3 = new System.Windows.Forms.Label();
@@ -53,42 +55,70 @@
             this.MenuUser_RegisterNew = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuUser_ListUsers = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuUser_ListHistory = new System.Windows.Forms.ToolStripMenuItem();
-            this.label5 = new System.Windows.Forms.Label();
-            this.MainMenu_Support = new System.Windows.Forms.LinkLabel();
-            this.bunifuGradientPanel1.SuspendLayout();
+            this.PanelMenuTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.ContextMenu_Product.SuspendLayout();
             this.ContextMenu_Stock.SuspendLayout();
             this.ContextMenu_User.SuspendLayout();
             this.SuspendLayout();
             // 
-            // bunifuGradientPanel1
+            // PanelMenuTop
             // 
-            this.bunifuGradientPanel1.AutoSize = true;
-            this.bunifuGradientPanel1.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
-            this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bunifuGradientPanel1.Controls.Add(this.label5);
-            this.bunifuGradientPanel1.Controls.Add(this.MainMenu_Support);
-            this.bunifuGradientPanel1.Controls.Add(this.label4);
-            this.bunifuGradientPanel1.Controls.Add(this.MainMenu_Supplier);
-            this.bunifuGradientPanel1.Controls.Add(this.label3);
-            this.bunifuGradientPanel1.Controls.Add(this.label2);
-            this.bunifuGradientPanel1.Controls.Add(this.MainMenu_User);
-            this.bunifuGradientPanel1.Controls.Add(this.MainMenu_Stock);
-            this.bunifuGradientPanel1.Controls.Add(this.MainMenu_Product);
-            this.bunifuGradientPanel1.Controls.Add(this.pictureBox1);
-            this.bunifuGradientPanel1.Controls.Add(this.label1);
-            this.bunifuGradientPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(117)))), ((int)(((byte)(192)))));
-            this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(117)))), ((int)(((byte)(192)))));
-            this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(117)))), ((int)(((byte)(192)))));
-            this.bunifuGradientPanel1.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(117)))), ((int)(((byte)(192)))));
-            this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, 0);
-            this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
-            this.bunifuGradientPanel1.Quality = 10;
-            this.bunifuGradientPanel1.Size = new System.Drawing.Size(964, 60);
-            this.bunifuGradientPanel1.TabIndex = 6;
+            this.PanelMenuTop.AutoSize = true;
+            this.PanelMenuTop.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.PanelMenuTop.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelMenuTop.BackgroundImage")));
+            this.PanelMenuTop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PanelMenuTop.Controls.Add(this.label5);
+            this.PanelMenuTop.Controls.Add(this.MainMenu_Support);
+            this.PanelMenuTop.Controls.Add(this.label4);
+            this.PanelMenuTop.Controls.Add(this.MainMenu_Supplier);
+            this.PanelMenuTop.Controls.Add(this.label3);
+            this.PanelMenuTop.Controls.Add(this.label2);
+            this.PanelMenuTop.Controls.Add(this.MainMenu_User);
+            this.PanelMenuTop.Controls.Add(this.MainMenu_Stock);
+            this.PanelMenuTop.Controls.Add(this.MainMenu_Product);
+            this.PanelMenuTop.Controls.Add(this.pictureBox1);
+            this.PanelMenuTop.Controls.Add(this.label1);
+            this.PanelMenuTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PanelMenuTop.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(117)))), ((int)(((byte)(192)))));
+            this.PanelMenuTop.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(117)))), ((int)(((byte)(192)))));
+            this.PanelMenuTop.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(117)))), ((int)(((byte)(192)))));
+            this.PanelMenuTop.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(117)))), ((int)(((byte)(192)))));
+            this.PanelMenuTop.Location = new System.Drawing.Point(0, 0);
+            this.PanelMenuTop.Name = "PanelMenuTop";
+            this.PanelMenuTop.Quality = 10;
+            this.PanelMenuTop.Size = new System.Drawing.Size(964, 60);
+            this.PanelMenuTop.TabIndex = 6;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(797, 25);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(9, 13);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "|";
+            // 
+            // MainMenu_Support
+            // 
+            this.MainMenu_Support.ActiveLinkColor = System.Drawing.Color.LightSkyBlue;
+            this.MainMenu_Support.AutoEllipsis = true;
+            this.MainMenu_Support.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(117)))), ((int)(((byte)(192)))));
+            this.MainMenu_Support.DisabledLinkColor = System.Drawing.Color.White;
+            this.MainMenu_Support.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MainMenu_Support.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.MainMenu_Support.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.MainMenu_Support.LinkColor = System.Drawing.Color.White;
+            this.MainMenu_Support.Location = new System.Drawing.Point(807, 0);
+            this.MainMenu_Support.Name = "MainMenu_Support";
+            this.MainMenu_Support.Size = new System.Drawing.Size(100, 59);
+            this.MainMenu_Support.TabIndex = 15;
+            this.MainMenu_Support.TabStop = true;
+            this.MainMenu_Support.Text = "Suporte";
+            this.MainMenu_Support.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.MainMenu_Support.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             // 
             // label4
             // 
@@ -324,50 +354,20 @@
             this.MenuUser_ListHistory.Text = "Listar Históricos";
             this.MenuUser_ListHistory.Click += new System.EventHandler(this.MenuUser_ListHistory_Click);
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(797, 25);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(9, 13);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "|";
-            // 
-            // MainMenu_Support
-            // 
-            this.MainMenu_Support.ActiveLinkColor = System.Drawing.Color.LightSkyBlue;
-            this.MainMenu_Support.AutoEllipsis = true;
-            this.MainMenu_Support.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(117)))), ((int)(((byte)(192)))));
-            this.MainMenu_Support.DisabledLinkColor = System.Drawing.Color.White;
-            this.MainMenu_Support.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MainMenu_Support.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.MainMenu_Support.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.MainMenu_Support.LinkColor = System.Drawing.Color.White;
-            this.MainMenu_Support.Location = new System.Drawing.Point(807, 0);
-            this.MainMenu_Support.Name = "MainMenu_Support";
-            this.MainMenu_Support.Size = new System.Drawing.Size(100, 59);
-            this.MainMenu_Support.TabIndex = 15;
-            this.MainMenu_Support.TabStop = true;
-            this.MainMenu_Support.Text = "Suporte";
-            this.MainMenu_Support.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.MainMenu_Support.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            // 
             // HomeScreenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(964, 681);
-            this.Controls.Add(this.bunifuGradientPanel1);
+            this.Controls.Add(this.PanelMenuTop);
             this.IsMdiContainer = true;
             this.MinimumSize = new System.Drawing.Size(980, 720);
             this.Name = "HomeScreenForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.HomeScreenForm_Load);
-            this.bunifuGradientPanel1.ResumeLayout(false);
-            this.bunifuGradientPanel1.PerformLayout();
+            this.PanelMenuTop.ResumeLayout(false);
+            this.PanelMenuTop.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ContextMenu_Product.ResumeLayout(false);
             this.ContextMenu_Stock.ResumeLayout(false);
@@ -377,7 +377,7 @@
 
         }
         #endregion
-        private Bunifu.Framework.UI.BunifuGradientPanel bunifuGradientPanel1;
+        private Bunifu.Framework.UI.BunifuGradientPanel PanelMenuTop;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ContextMenuStrip ContextMenu_Product;

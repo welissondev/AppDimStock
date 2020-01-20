@@ -214,8 +214,6 @@ namespace DimStock.View
 
             DataGridLealt.SetDefaultStyle(HistoryDataList);
 
-            DayOfTheWeek.Text = DateTime.Now.ToLongDateString();
-
             FillAllComboBoxes();
 
             var startDate = new DateTime(DateTime.Today.Year,

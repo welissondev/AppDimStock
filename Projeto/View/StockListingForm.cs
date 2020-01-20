@@ -371,8 +371,6 @@ namespace DimStock.View
         {
             CreateColumnInTheDataList();
 
-            DayOfTheWeek.Text = DateTime.Now.ToLongDateString();
-
             DataGridLealt.SetDefaultStyle(StockDataList);
 
             FillAllComboBoxes();

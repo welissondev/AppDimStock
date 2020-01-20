@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StockMovementRegistrationForm));
             this.SearchTimer = new System.Windows.Forms.Timer(this.components);
             this.SubTotalTitle = new System.Windows.Forms.Label();
             this.SubTotal = new System.Windows.Forms.Label();
@@ -62,22 +61,19 @@
             this.TotalItems = new System.Windows.Forms.Label();
             this.ClearQueryFields = new System.Windows.Forms.LinkLabel();
             this.GifLoading = new System.Windows.Forms.PictureBox();
-            this.MainDataList = new DimStock.Auxiliary.CustomDataGridViewOne();
             this.Delete = new Syncfusion.WinForms.Controls.SfButton();
             this.Confirm = new Syncfusion.WinForms.Controls.SfButton();
             this.GrupBoxGeneralInformation = new System.Windows.Forms.GroupBox();
             this.OperationTypeTitle = new System.Windows.Forms.Label();
             this.OperationType = new System.Windows.Forms.Label();
             this.LblStockDestination = new System.Windows.Forms.Label();
-            this.PanelUpperHorinzontal = new Bunifu.Framework.UI.BunifuGradientPanel();
-            this.DayOfTheWeek = new System.Windows.Forms.Label();
-            this.FormTitle = new System.Windows.Forms.Label();
             this.AddNew = new Syncfusion.WinForms.Controls.SfButton();
             this.StockDestinationList = new System.Windows.Forms.ComboBox();
             this.AddNewStockDestination = new System.Windows.Forms.LinkLabel();
             this.StockMovementMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MovementEntrie_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MovementOutPut_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MainDataList = new DimStock.Auxiliary.CustomDataGridViewOne();
             ((System.ComponentModel.ISupportInitialize)(this.Quantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TotalValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UnitaryValue)).BeginInit();
@@ -88,10 +84,9 @@
             this.CardMain.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GifLoading)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MainDataList)).BeginInit();
             this.GrupBoxGeneralInformation.SuspendLayout();
-            this.PanelUpperHorinzontal.SuspendLayout();
             this.StockMovementMenuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MainDataList)).BeginInit();
             this.SuspendLayout();
             // 
             // SearchTimer
@@ -150,7 +145,7 @@
             // Quantity
             // 
             this.Quantity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Quantity.BeforeTouchSize = new System.Drawing.Size(200, 26);
+            this.Quantity.BeforeTouchSize = new System.Drawing.Size(78, 26);
             this.Quantity.BorderColor = System.Drawing.Color.DarkGray;
             this.Quantity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Quantity.Cursor = System.Windows.Forms.Cursors.Arrow;
@@ -187,7 +182,7 @@
             // TotalValue
             // 
             this.TotalValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.TotalValue.BeforeTouchSize = new System.Drawing.Size(200, 26);
+            this.TotalValue.BeforeTouchSize = new System.Drawing.Size(78, 26);
             this.TotalValue.BorderColor = System.Drawing.Color.DarkGray;
             this.TotalValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TotalValue.Cursor = System.Windows.Forms.Cursors.Arrow;
@@ -225,7 +220,7 @@
             // UnitaryValue
             // 
             this.UnitaryValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.UnitaryValue.BeforeTouchSize = new System.Drawing.Size(200, 26);
+            this.UnitaryValue.BeforeTouchSize = new System.Drawing.Size(78, 26);
             this.UnitaryValue.BorderColor = System.Drawing.Color.DarkGray;
             this.UnitaryValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.UnitaryValue.Cursor = System.Windows.Forms.Cursors.Arrow;
@@ -295,7 +290,7 @@
             this.QueryByDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.QueryByDescription.BackColor = System.Drawing.Color.White;
-            this.QueryByDescription.BeforeTouchSize = new System.Drawing.Size(200, 26);
+            this.QueryByDescription.BeforeTouchSize = new System.Drawing.Size(78, 26);
             this.QueryByDescription.BorderColor = System.Drawing.Color.DarkGray;
             this.QueryByDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.QueryByDescription.CanOverrideStyle = true;
@@ -331,7 +326,7 @@
             // QueryByCode
             // 
             this.QueryByCode.BackColor = System.Drawing.Color.White;
-            this.QueryByCode.BeforeTouchSize = new System.Drawing.Size(200, 26);
+            this.QueryByCode.BeforeTouchSize = new System.Drawing.Size(78, 26);
             this.QueryByCode.BorderColor = System.Drawing.Color.DarkGray;
             this.QueryByCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.QueryByCode.CanOverrideStyle = true;
@@ -357,7 +352,7 @@
             // QueryByReference
             // 
             this.QueryByReference.BackColor = System.Drawing.Color.White;
-            this.QueryByReference.BeforeTouchSize = new System.Drawing.Size(200, 26);
+            this.QueryByReference.BeforeTouchSize = new System.Drawing.Size(78, 26);
             this.QueryByReference.BorderColor = System.Drawing.Color.DarkGray;
             this.QueryByReference.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.QueryByReference.CanOverrideStyle = true;
@@ -383,7 +378,7 @@
             // QueryBySize
             // 
             this.QueryBySize.BackColor = System.Drawing.Color.White;
-            this.QueryBySize.BeforeTouchSize = new System.Drawing.Size(200, 26);
+            this.QueryBySize.BeforeTouchSize = new System.Drawing.Size(78, 26);
             this.QueryBySize.BorderColor = System.Drawing.Color.DarkGray;
             this.QueryBySize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.QueryBySize.CanOverrideStyle = true;
@@ -591,31 +586,14 @@
             this.GifLoading.TabStop = false;
             this.GifLoading.Visible = false;
             // 
-            // MainDataList
-            // 
-            this.MainDataList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.MainDataList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.MainDataList.ListIsItem = false;
-            this.MainDataList.ListIsStock = false;
-            this.MainDataList.Location = new System.Drawing.Point(21, 60);
-            this.MainDataList.Name = "MainDataList";
-            this.MainDataList.Size = new System.Drawing.Size(877, 287);
-            this.MainDataList.TabIndex = 141;
-            this.MainDataList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MainDataList_CellClick);
-            this.MainDataList.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.MainDataList_RowPrePaint);
-            this.MainDataList.DoubleClick += new System.EventHandler(this.MainDataList_DoubleClick);
-            // 
             // Delete
             // 
             this.Delete.AccessibleName = "Button";
-            this.Delete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.Delete.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.Delete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Delete.ForeColor = System.Drawing.Color.White;
-            this.Delete.Location = new System.Drawing.Point(99, 47);
+            this.Delete.Location = new System.Drawing.Point(111, 24);
             this.Delete.Name = "Delete";
             this.Delete.Size = new System.Drawing.Size(80, 35);
             this.Delete.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
@@ -636,12 +614,11 @@
             // Confirm
             // 
             this.Confirm.AccessibleName = "Button";
-            this.Confirm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.Confirm.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.Confirm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Confirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Confirm.ForeColor = System.Drawing.Color.White;
-            this.Confirm.Location = new System.Drawing.Point(181, 47);
+            this.Confirm.Location = new System.Drawing.Point(193, 24);
             this.Confirm.Name = "Confirm";
             this.Confirm.Size = new System.Drawing.Size(80, 35);
             this.Confirm.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
@@ -715,51 +692,6 @@
             this.LblStockDestination.TabIndex = 142;
             this.LblStockDestination.Text = "Destino:";
             // 
-            // PanelUpperHorinzontal
-            // 
-            this.PanelUpperHorinzontal.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelUpperHorinzontal.BackgroundImage")));
-            this.PanelUpperHorinzontal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PanelUpperHorinzontal.Controls.Add(this.DayOfTheWeek);
-            this.PanelUpperHorinzontal.Controls.Add(this.FormTitle);
-            this.PanelUpperHorinzontal.Controls.Add(this.AddNew);
-            this.PanelUpperHorinzontal.Controls.Add(this.Confirm);
-            this.PanelUpperHorinzontal.Controls.Add(this.Delete);
-            this.PanelUpperHorinzontal.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelUpperHorinzontal.GradientBottomLeft = System.Drawing.Color.Black;
-            this.PanelUpperHorinzontal.GradientBottomRight = System.Drawing.Color.Black;
-            this.PanelUpperHorinzontal.GradientTopLeft = System.Drawing.Color.Gray;
-            this.PanelUpperHorinzontal.GradientTopRight = System.Drawing.Color.Gray;
-            this.PanelUpperHorinzontal.Location = new System.Drawing.Point(0, 0);
-            this.PanelUpperHorinzontal.Name = "PanelUpperHorinzontal";
-            this.PanelUpperHorinzontal.Quality = 10;
-            this.PanelUpperHorinzontal.Size = new System.Drawing.Size(980, 97);
-            this.PanelUpperHorinzontal.TabIndex = 139;
-            // 
-            // DayOfTheWeek
-            // 
-            this.DayOfTheWeek.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.DayOfTheWeek.BackColor = System.Drawing.Color.Transparent;
-            this.DayOfTheWeek.Font = new System.Drawing.Font("Leelawadee UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DayOfTheWeek.ForeColor = System.Drawing.Color.White;
-            this.DayOfTheWeek.Location = new System.Drawing.Point(483, 23);
-            this.DayOfTheWeek.Name = "DayOfTheWeek";
-            this.DayOfTheWeek.Size = new System.Drawing.Size(494, 40);
-            this.DayOfTheWeek.TabIndex = 139;
-            this.DayOfTheWeek.Text = "DayOfTheWeek";
-            this.DayOfTheWeek.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // FormTitle
-            // 
-            this.FormTitle.AutoSize = true;
-            this.FormTitle.BackColor = System.Drawing.Color.Transparent;
-            this.FormTitle.Font = new System.Drawing.Font("Cambria", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormTitle.ForeColor = System.Drawing.Color.White;
-            this.FormTitle.Location = new System.Drawing.Point(12, 4);
-            this.FormTitle.Name = "FormTitle";
-            this.FormTitle.Size = new System.Drawing.Size(399, 40);
-            this.FormTitle.TabIndex = 138;
-            this.FormTitle.Text = "Movimentação de estoque";
-            // 
             // AddNew
             // 
             this.AddNew.AccessibleName = "Button";
@@ -767,7 +699,7 @@
             this.AddNew.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.AddNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddNew.ForeColor = System.Drawing.Color.White;
-            this.AddNew.Location = new System.Drawing.Point(17, 47);
+            this.AddNew.Location = new System.Drawing.Point(29, 24);
             this.AddNew.Name = "AddNew";
             this.AddNew.Size = new System.Drawing.Size(80, 35);
             this.AddNew.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
@@ -832,17 +764,35 @@
             this.MovementOutPut_ToolStripMenuItem.Text = "Saída";
             this.MovementOutPut_ToolStripMenuItem.Click += new System.EventHandler(this.MovementOutPut_ToolStripMenuItem_Click);
             // 
+            // MainDataList
+            // 
+            this.MainDataList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MainDataList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.MainDataList.ListIsItem = false;
+            this.MainDataList.ListIsStock = false;
+            this.MainDataList.Location = new System.Drawing.Point(21, 60);
+            this.MainDataList.Name = "MainDataList";
+            this.MainDataList.Size = new System.Drawing.Size(877, 287);
+            this.MainDataList.TabIndex = 141;
+            this.MainDataList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MainDataList_CellClick);
+            this.MainDataList.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.MainDataList_RowPrePaint);
+            this.MainDataList.DoubleClick += new System.EventHandler(this.MainDataList_DoubleClick);
+            // 
             // StockMovementRegistrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(980, 720);
+            this.Controls.Add(this.AddNew);
+            this.Controls.Add(this.Confirm);
+            this.Controls.Add(this.Delete);
             this.Controls.Add(this.AddNewStockDestination);
             this.Controls.Add(this.StockDestinationList);
             this.Controls.Add(this.GrupBoxGeneralInformation);
             this.Controls.Add(this.LblStockDestination);
-            this.Controls.Add(this.PanelUpperHorinzontal);
             this.Controls.Add(this.CardMain);
             this.MinimumSize = new System.Drawing.Size(980, 720);
             this.Name = "StockMovementRegistrationForm";
@@ -859,12 +809,10 @@
             this.CardMain.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GifLoading)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MainDataList)).EndInit();
             this.GrupBoxGeneralInformation.ResumeLayout(false);
             this.GrupBoxGeneralInformation.PerformLayout();
-            this.PanelUpperHorinzontal.ResumeLayout(false);
-            this.PanelUpperHorinzontal.PerformLayout();
             this.StockMovementMenuStrip.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.MainDataList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -903,12 +851,9 @@
         private Syncfusion.WinForms.Controls.SfButton Confirm;
         private Syncfusion.WinForms.Controls.SfButton AddNew;
         public System.Windows.Forms.Label StockMovementIdTitle;
-        private Bunifu.Framework.UI.BunifuGradientPanel PanelUpperHorinzontal;
-        public System.Windows.Forms.Label FormTitle;
         private System.Windows.Forms.GroupBox GrupBoxGeneralInformation;
         public System.Windows.Forms.Label OperationTypeTitle;
         public System.Windows.Forms.Label OperationType;
-        public System.Windows.Forms.Label DayOfTheWeek;
         private System.Windows.Forms.LinkLabel ClearQueryFields;
         private Syncfusion.WinForms.Controls.SfButton Delete;
         public Auxiliary.CustomDataGridViewOne MainDataList;

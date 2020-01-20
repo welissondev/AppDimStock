@@ -243,8 +243,6 @@ namespace DimStock.View
             CreateColumnInTheDataList();
 
             DataGridLealt.SetDefaultStyle(UserDataList);
-
-            DayOfTheWeek.Text = DateTime.Now.ToLongDateString();
         }
 
         private void CreateColumnInTheDataList()

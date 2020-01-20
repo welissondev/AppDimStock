@@ -695,8 +695,6 @@ namespace DimStock.View
             CreateColumnForStockList();
 
             ResetControl();
-
-            DayOfTheWeek.Text = DateTime.Now.ToLongDateString();
         }
 
         private void CreateColumnForItemList()

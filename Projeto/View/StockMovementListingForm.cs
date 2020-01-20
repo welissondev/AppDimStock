@@ -425,9 +425,6 @@ namespace DimStock.View
             //Defini o lealt do datagridviw
             DataGridLealt.SetDefaultStyle(MovementStockDataList);
 
-            //Exibi a data atual para usuáio, no formato long
-            DayOfTheWeek.Text = DateTime.Now.ToLongDateString();
-
         }
 
         private void StartSearchTimer()

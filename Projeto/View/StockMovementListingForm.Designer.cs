@@ -31,10 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StockMovementListingForm));
             this.MovementStockDataList = new System.Windows.Forms.DataGridView();
-            this.PanelUpperHorizontal = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.UpdateDataList = new Syncfusion.WinForms.Controls.SfButton();
-            this.DayOfTheWeek = new System.Windows.Forms.Label();
-            this.FormCaption = new System.Windows.Forms.Label();
             this.SearchTimer = new System.Windows.Forms.Timer(this.components);
             this.GifLoading = new System.Windows.Forms.PictureBox();
             this.OperationTypeTitle = new System.Windows.Forms.Label();
@@ -55,7 +52,6 @@
             this.RecordsByPage = new Syncfusion.WinForms.ListView.SfComboBox();
             this.RecordsOfPageTitle = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.MovementStockDataList)).BeginInit();
-            this.PanelUpperHorizontal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GifLoading)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OperationSituation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OperationType)).BeginInit();
@@ -71,30 +67,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MovementStockDataList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.MovementStockDataList.Location = new System.Drawing.Point(19, 181);
+            this.MovementStockDataList.Location = new System.Drawing.Point(19, 139);
             this.MovementStockDataList.Name = "MovementStockDataList";
-            this.MovementStockDataList.Size = new System.Drawing.Size(992, 365);
+            this.MovementStockDataList.Size = new System.Drawing.Size(992, 407);
             this.MovementStockDataList.TabIndex = 0;
             this.MovementStockDataList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MovementStockDataList_CellClick);
             this.MovementStockDataList.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.MovementStockDataList_CellMouseMove);
-            // 
-            // PanelUpperHorizontal
-            // 
-            this.PanelUpperHorizontal.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelUpperHorizontal.BackgroundImage")));
-            this.PanelUpperHorizontal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PanelUpperHorizontal.Controls.Add(this.UpdateDataList);
-            this.PanelUpperHorizontal.Controls.Add(this.DayOfTheWeek);
-            this.PanelUpperHorizontal.Controls.Add(this.FormCaption);
-            this.PanelUpperHorizontal.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelUpperHorizontal.GradientBottomLeft = System.Drawing.Color.Black;
-            this.PanelUpperHorizontal.GradientBottomRight = System.Drawing.Color.Black;
-            this.PanelUpperHorizontal.GradientTopLeft = System.Drawing.Color.Gray;
-            this.PanelUpperHorizontal.GradientTopRight = System.Drawing.Color.Gray;
-            this.PanelUpperHorizontal.Location = new System.Drawing.Point(0, 0);
-            this.PanelUpperHorizontal.Name = "PanelUpperHorizontal";
-            this.PanelUpperHorizontal.Quality = 10;
-            this.PanelUpperHorizontal.Size = new System.Drawing.Size(1023, 101);
-            this.PanelUpperHorizontal.TabIndex = 141;
             // 
             // UpdateDataList
             // 
@@ -103,7 +81,7 @@
             this.UpdateDataList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UpdateDataList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpdateDataList.ForeColor = System.Drawing.Color.White;
-            this.UpdateDataList.Location = new System.Drawing.Point(19, 52);
+            this.UpdateDataList.Location = new System.Drawing.Point(21, 25);
             this.UpdateDataList.Name = "UpdateDataList";
             this.UpdateDataList.Size = new System.Drawing.Size(80, 35);
             this.UpdateDataList.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
@@ -121,31 +99,6 @@
             this.UpdateDataList.UseVisualStyleBackColor = false;
             this.UpdateDataList.Click += new System.EventHandler(this.UpdateDataList_Click);
             // 
-            // DayOfTheWeek
-            // 
-            this.DayOfTheWeek.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.DayOfTheWeek.BackColor = System.Drawing.Color.Transparent;
-            this.DayOfTheWeek.Font = new System.Drawing.Font("Leelawadee UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DayOfTheWeek.ForeColor = System.Drawing.Color.White;
-            this.DayOfTheWeek.Location = new System.Drawing.Point(554, 27);
-            this.DayOfTheWeek.Name = "DayOfTheWeek";
-            this.DayOfTheWeek.Size = new System.Drawing.Size(457, 40);
-            this.DayOfTheWeek.TabIndex = 139;
-            this.DayOfTheWeek.Text = "DayOfTheWeek";
-            this.DayOfTheWeek.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // FormCaption
-            // 
-            this.FormCaption.AutoSize = true;
-            this.FormCaption.BackColor = System.Drawing.Color.Transparent;
-            this.FormCaption.Font = new System.Drawing.Font("Cambria", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormCaption.ForeColor = System.Drawing.Color.White;
-            this.FormCaption.Location = new System.Drawing.Point(12, 9);
-            this.FormCaption.Name = "FormCaption";
-            this.FormCaption.Size = new System.Drawing.Size(536, 40);
-            this.FormCaption.TabIndex = 138;
-            this.FormCaption.Text = "Lista de movimentações no estoque";
-            // 
             // SearchTimer
             // 
             this.SearchTimer.Interval = 1000;
@@ -155,7 +108,7 @@
             // 
             this.GifLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.GifLoading.Image = global::DimStock.Properties.Resources.GigLoading;
-            this.GifLoading.Location = new System.Drawing.Point(430, 282);
+            this.GifLoading.Location = new System.Drawing.Point(432, 259);
             this.GifLoading.Name = "GifLoading";
             this.GifLoading.Size = new System.Drawing.Size(169, 167);
             this.GifLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -166,7 +119,7 @@
             // OperationTypeTitle
             // 
             this.OperationTypeTitle.AutoSize = true;
-            this.OperationTypeTitle.Location = new System.Drawing.Point(126, 132);
+            this.OperationTypeTitle.Location = new System.Drawing.Point(128, 90);
             this.OperationTypeTitle.Name = "OperationTypeTitle";
             this.OperationTypeTitle.Size = new System.Drawing.Size(31, 13);
             this.OperationTypeTitle.TabIndex = 161;
@@ -175,7 +128,7 @@
             // OperationSituationTitle
             // 
             this.OperationSituationTitle.AutoSize = true;
-            this.OperationSituationTitle.Location = new System.Drawing.Point(16, 132);
+            this.OperationSituationTitle.Location = new System.Drawing.Point(18, 90);
             this.OperationSituationTitle.Name = "OperationSituationTitle";
             this.OperationSituationTitle.Size = new System.Drawing.Size(52, 13);
             this.OperationSituationTitle.TabIndex = 163;
@@ -185,7 +138,7 @@
             // 
             this.OperationSituation.BackColor = System.Drawing.Color.White;
             this.OperationSituation.DropDownStyle = Syncfusion.WinForms.ListView.Enums.DropDownStyle.DropDownList;
-            this.OperationSituation.Location = new System.Drawing.Point(19, 148);
+            this.OperationSituation.Location = new System.Drawing.Point(21, 106);
             this.OperationSituation.Name = "OperationSituation";
             this.OperationSituation.Size = new System.Drawing.Size(109, 27);
             this.OperationSituation.Style.DropDownButtonStyle.DisabledForeColor = System.Drawing.Color.White;
@@ -201,7 +154,7 @@
             // 
             this.OperationType.BackColor = System.Drawing.Color.White;
             this.OperationType.DropDownStyle = Syncfusion.WinForms.ListView.Enums.DropDownStyle.DropDownList;
-            this.OperationType.Location = new System.Drawing.Point(132, 148);
+            this.OperationType.Location = new System.Drawing.Point(134, 106);
             this.OperationType.Name = "OperationType";
             this.OperationType.Size = new System.Drawing.Size(115, 27);
             this.OperationType.Style.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -216,7 +169,7 @@
             // StockMovementIdTitle
             // 
             this.StockMovementIdTitle.AutoSize = true;
-            this.StockMovementIdTitle.Location = new System.Drawing.Point(247, 132);
+            this.StockMovementIdTitle.Location = new System.Drawing.Point(249, 90);
             this.StockMovementIdTitle.Name = "StockMovementIdTitle";
             this.StockMovementIdTitle.Size = new System.Drawing.Size(98, 13);
             this.StockMovementIdTitle.TabIndex = 168;
@@ -233,7 +186,7 @@
             this.SearchByStockMovimentId.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.SearchByStockMovimentId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchByStockMovimentId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.SearchByStockMovimentId.Location = new System.Drawing.Point(250, 148);
+            this.SearchByStockMovimentId.Location = new System.Drawing.Point(252, 106);
             this.SearchByStockMovimentId.MaxLength = 50;
             this.SearchByStockMovimentId.MinimumSize = new System.Drawing.Size(16, 12);
             this.SearchByStockMovimentId.Multiline = true;
@@ -249,7 +202,7 @@
             // ClearSearchFields
             // 
             this.ClearSearchFields.AutoSize = true;
-            this.ClearSearchFields.Location = new System.Drawing.Point(561, 155);
+            this.ClearSearchFields.Location = new System.Drawing.Point(563, 113);
             this.ClearSearchFields.Name = "ClearSearchFields";
             this.ClearSearchFields.Size = new System.Drawing.Size(38, 13);
             this.ClearSearchFields.TabIndex = 170;
@@ -332,7 +285,7 @@
             // 
             this.RecordsByPage.DropDownStyle = Syncfusion.WinForms.ListView.Enums.DropDownStyle.DropDownList;
             this.RecordsByPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RecordsByPage.Location = new System.Drawing.Point(389, 148);
+            this.RecordsByPage.Location = new System.Drawing.Point(391, 106);
             this.RecordsByPage.Name = "RecordsByPage";
             this.RecordsByPage.Size = new System.Drawing.Size(165, 27);
             this.RecordsByPage.Style.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -348,7 +301,7 @@
             // RecordsOfPageTitle
             // 
             this.RecordsOfPageTitle.AutoSize = true;
-            this.RecordsOfPageTitle.Location = new System.Drawing.Point(386, 132);
+            this.RecordsOfPageTitle.Location = new System.Drawing.Point(388, 90);
             this.RecordsOfPageTitle.Name = "RecordsOfPageTitle";
             this.RecordsOfPageTitle.Size = new System.Drawing.Size(107, 13);
             this.RecordsOfPageTitle.TabIndex = 181;
@@ -360,6 +313,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1023, 603);
+            this.Controls.Add(this.UpdateDataList);
             this.Controls.Add(this.RecordsByPage);
             this.Controls.Add(this.RecordsOfPageTitle);
             this.Controls.Add(this.BindingPagination);
@@ -371,13 +325,10 @@
             this.Controls.Add(this.OperationSituationTitle);
             this.Controls.Add(this.OperationTypeTitle);
             this.Controls.Add(this.GifLoading);
-            this.Controls.Add(this.PanelUpperHorizontal);
             this.Controls.Add(this.MovementStockDataList);
             this.Name = "StockMovementListingForm";
             this.Load += new System.EventHandler(this.StockMovementListingForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.MovementStockDataList)).EndInit();
-            this.PanelUpperHorizontal.ResumeLayout(false);
-            this.PanelUpperHorizontal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GifLoading)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OperationSituation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OperationType)).EndInit();
@@ -394,9 +345,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView MovementStockDataList;
-        private Bunifu.Framework.UI.BunifuGradientPanel PanelUpperHorizontal;
-        public System.Windows.Forms.Label DayOfTheWeek;
-        public System.Windows.Forms.Label FormCaption;
         private System.Windows.Forms.Timer SearchTimer;
         private System.Windows.Forms.PictureBox GifLoading;
         private Syncfusion.WinForms.Controls.SfButton UpdateDataList;

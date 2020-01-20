@@ -18,8 +18,6 @@ namespace DimStock.View
         public UserResgistrationForm()
         {
             InitializeComponent();
-
-            InitializeSettings();
         }
 
         #endregion
@@ -268,11 +266,6 @@ namespace DimStock.View
             {
                 return true;
             }
-        }
-
-        private void InitializeSettings()
-        {
-            DayOfTheWeek.Text = DateTime.Now.ToLongDateString();
         }
 
         #endregion

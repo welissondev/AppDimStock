@@ -39,10 +39,7 @@
             this.FinalDate = new Syncfusion.WinForms.Input.SfDateTimeEdit();
             this.SearchTimer = new System.Windows.Forms.Timer(this.components);
             this.GifLoading = new System.Windows.Forms.PictureBox();
-            this.PanelUpperHorizontal = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.UpdateDataList = new Syncfusion.WinForms.Controls.SfButton();
-            this.DayOfTheWeek = new System.Windows.Forms.Label();
-            this.FormCaption = new System.Windows.Forms.Label();
             this.BindingPagination = new System.Windows.Forms.BindingNavigator(this.components);
             this.BackPage = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -56,7 +53,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.HistoryDataList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SearchByLogin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GifLoading)).BeginInit();
-            this.PanelUpperHorizontal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BindingPagination)).BeginInit();
             this.BindingPagination.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RecordsByPage)).BeginInit();
@@ -68,15 +64,15 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.HistoryDataList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.HistoryDataList.Location = new System.Drawing.Point(29, 190);
+            this.HistoryDataList.Location = new System.Drawing.Point(29, 146);
             this.HistoryDataList.Name = "HistoryDataList";
-            this.HistoryDataList.Size = new System.Drawing.Size(907, 464);
+            this.HistoryDataList.Size = new System.Drawing.Size(907, 508);
             this.HistoryDataList.TabIndex = 145;
             // 
             // SearchTitleByLogin
             // 
             this.SearchTitleByLogin.AutoSize = true;
-            this.SearchTitleByLogin.Location = new System.Drawing.Point(26, 143);
+            this.SearchTitleByLogin.Location = new System.Drawing.Point(27, 99);
             this.SearchTitleByLogin.Name = "SearchTitleByLogin";
             this.SearchTitleByLogin.Size = new System.Drawing.Size(72, 13);
             this.SearchTitleByLogin.TabIndex = 147;
@@ -93,7 +89,7 @@
             this.SearchByLogin.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.SearchByLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchByLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.SearchByLogin.Location = new System.Drawing.Point(29, 157);
+            this.SearchByLogin.Location = new System.Drawing.Point(30, 113);
             this.SearchByLogin.MaxLength = 50;
             this.SearchByLogin.MinimumSize = new System.Drawing.Size(16, 12);
             this.SearchByLogin.Multiline = true;
@@ -108,7 +104,7 @@
             // 
             // StartDate
             // 
-            this.StartDate.Location = new System.Drawing.Point(168, 157);
+            this.StartDate.Location = new System.Drawing.Point(169, 113);
             this.StartDate.Name = "StartDate";
             this.StartDate.Size = new System.Drawing.Size(124, 27);
             this.StartDate.Style.BorderColor = System.Drawing.Color.Silver;
@@ -123,7 +119,7 @@
             // StartDateTitle
             // 
             this.StartDateTitle.AutoSize = true;
-            this.StartDateTitle.Location = new System.Drawing.Point(165, 143);
+            this.StartDateTitle.Location = new System.Drawing.Point(166, 99);
             this.StartDateTitle.Name = "StartDateTitle";
             this.StartDateTitle.Size = new System.Drawing.Size(61, 13);
             this.StartDateTitle.TabIndex = 144;
@@ -132,7 +128,7 @@
             // FinalDateTitle
             // 
             this.FinalDateTitle.AutoSize = true;
-            this.FinalDateTitle.Location = new System.Drawing.Point(292, 143);
+            this.FinalDateTitle.Location = new System.Drawing.Point(293, 99);
             this.FinalDateTitle.Name = "FinalDateTitle";
             this.FinalDateTitle.Size = new System.Drawing.Size(58, 13);
             this.FinalDateTitle.TabIndex = 150;
@@ -140,7 +136,7 @@
             // 
             // FinalDate
             // 
-            this.FinalDate.Location = new System.Drawing.Point(295, 157);
+            this.FinalDate.Location = new System.Drawing.Point(296, 113);
             this.FinalDate.Name = "FinalDate";
             this.FinalDate.Size = new System.Drawing.Size(121, 27);
             this.FinalDate.Style.BorderColor = System.Drawing.Color.Silver;
@@ -170,32 +166,13 @@
             this.GifLoading.TabStop = false;
             this.GifLoading.Visible = false;
             // 
-            // PanelUpperHorizontal
-            // 
-            this.PanelUpperHorizontal.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.PanelUpperHorizontal.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelUpperHorizontal.BackgroundImage")));
-            this.PanelUpperHorizontal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PanelUpperHorizontal.Controls.Add(this.UpdateDataList);
-            this.PanelUpperHorizontal.Controls.Add(this.DayOfTheWeek);
-            this.PanelUpperHorizontal.Controls.Add(this.FormCaption);
-            this.PanelUpperHorizontal.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelUpperHorizontal.GradientBottomLeft = System.Drawing.Color.Black;
-            this.PanelUpperHorizontal.GradientBottomRight = System.Drawing.Color.Black;
-            this.PanelUpperHorizontal.GradientTopLeft = System.Drawing.Color.Gray;
-            this.PanelUpperHorizontal.GradientTopRight = System.Drawing.Color.Gray;
-            this.PanelUpperHorizontal.Location = new System.Drawing.Point(0, 0);
-            this.PanelUpperHorizontal.Name = "PanelUpperHorizontal";
-            this.PanelUpperHorizontal.Quality = 10;
-            this.PanelUpperHorizontal.Size = new System.Drawing.Size(964, 95);
-            this.PanelUpperHorizontal.TabIndex = 140;
-            // 
             // UpdateDataList
             // 
             this.UpdateDataList.AccessibleName = "Button";
             this.UpdateDataList.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.UpdateDataList.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpdateDataList.ForeColor = System.Drawing.Color.White;
-            this.UpdateDataList.Location = new System.Drawing.Point(17, 47);
+            this.UpdateDataList.Location = new System.Drawing.Point(29, 35);
             this.UpdateDataList.Name = "UpdateDataList";
             this.UpdateDataList.Size = new System.Drawing.Size(80, 35);
             this.UpdateDataList.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
@@ -212,31 +189,6 @@
             this.UpdateDataList.Text = "Atualizar";
             this.UpdateDataList.UseVisualStyleBackColor = false;
             this.UpdateDataList.Click += new System.EventHandler(this.UpdateDataList_Click);
-            // 
-            // DayOfTheWeek
-            // 
-            this.DayOfTheWeek.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.DayOfTheWeek.BackColor = System.Drawing.Color.Transparent;
-            this.DayOfTheWeek.Font = new System.Drawing.Font("Leelawadee UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DayOfTheWeek.ForeColor = System.Drawing.Color.White;
-            this.DayOfTheWeek.Location = new System.Drawing.Point(467, 23);
-            this.DayOfTheWeek.Name = "DayOfTheWeek";
-            this.DayOfTheWeek.Size = new System.Drawing.Size(494, 40);
-            this.DayOfTheWeek.TabIndex = 139;
-            this.DayOfTheWeek.Text = "DayOfTheWeek";
-            this.DayOfTheWeek.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // FormCaption
-            // 
-            this.FormCaption.AutoSize = true;
-            this.FormCaption.BackColor = System.Drawing.Color.Transparent;
-            this.FormCaption.Font = new System.Drawing.Font("Cambria", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormCaption.ForeColor = System.Drawing.Color.White;
-            this.FormCaption.Location = new System.Drawing.Point(10, 4);
-            this.FormCaption.Name = "FormCaption";
-            this.FormCaption.Size = new System.Drawing.Size(444, 40);
-            this.FormCaption.TabIndex = 138;
-            this.FormCaption.Text = "Lista De Histórico Do Usuário";
             // 
             // BindingPagination
             // 
@@ -315,7 +267,7 @@
             this.RecordsByPage.CanOverrideStyle = true;
             this.RecordsByPage.DropDownStyle = Syncfusion.WinForms.ListView.Enums.DropDownStyle.DropDownList;
             this.RecordsByPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RecordsByPage.Location = new System.Drawing.Point(419, 157);
+            this.RecordsByPage.Location = new System.Drawing.Point(420, 113);
             this.RecordsByPage.Name = "RecordsByPage";
             this.RecordsByPage.Size = new System.Drawing.Size(136, 27);
             this.RecordsByPage.Style.DropDownButtonStyle.BackColor = System.Drawing.Color.White;
@@ -346,7 +298,7 @@
             // 
             this.TitleRecordsByPage.AutoSize = true;
             this.TitleRecordsByPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.TitleRecordsByPage.Location = new System.Drawing.Point(416, 143);
+            this.TitleRecordsByPage.Location = new System.Drawing.Point(417, 99);
             this.TitleRecordsByPage.Name = "TitleRecordsByPage";
             this.TitleRecordsByPage.Size = new System.Drawing.Size(109, 13);
             this.TitleRecordsByPage.TabIndex = 181;
@@ -358,6 +310,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(964, 681);
+            this.Controls.Add(this.UpdateDataList);
             this.Controls.Add(this.RecordsByPage);
             this.Controls.Add(this.TitleRecordsByPage);
             this.Controls.Add(this.BindingPagination);
@@ -369,17 +322,13 @@
             this.Controls.Add(this.SearchByLogin);
             this.Controls.Add(this.HistoryDataList);
             this.Controls.Add(this.StartDateTitle);
-            this.Controls.Add(this.PanelUpperHorizontal);
             this.MinimumSize = new System.Drawing.Size(980, 720);
             this.Name = "UserHistoryListingForm";
             this.ShowIcon = false;
-
             this.Load += new System.EventHandler(this.UserHistoryListingForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.HistoryDataList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SearchByLogin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GifLoading)).EndInit();
-            this.PanelUpperHorizontal.ResumeLayout(false);
-            this.PanelUpperHorizontal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BindingPagination)).EndInit();
             this.BindingPagination.ResumeLayout(false);
             this.BindingPagination.PerformLayout();
@@ -390,10 +339,6 @@
         }
 
         #endregion
-
-        private Bunifu.Framework.UI.BunifuGradientPanel PanelUpperHorizontal;
-        public System.Windows.Forms.Label DayOfTheWeek;
-        public System.Windows.Forms.Label FormCaption;
         private System.Windows.Forms.DataGridView HistoryDataList;
         private System.Windows.Forms.Label SearchTitleByLogin;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt SearchByLogin;

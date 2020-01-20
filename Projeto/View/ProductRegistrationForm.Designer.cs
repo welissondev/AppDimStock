@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductRegistrationForm));
             this.ClearFields = new Syncfusion.WinForms.Controls.SfButton();
             this.BarCode = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.SalePrice = new Syncfusion.Windows.Forms.Tools.CurrencyTextBox();
@@ -51,9 +50,6 @@
             this.ProductSize = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
             this.Supplier = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.SupplierTitle = new System.Windows.Forms.Label();
-            this.PanelUpperHorizontal = new Bunifu.Framework.UI.BunifuGradientPanel();
-            this.DayOfTheWeek = new System.Windows.Forms.Label();
-            this.FormCaption = new System.Windows.Forms.Label();
             this.ProductCode = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
             this.ProductReference = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.BarCode)).BeginInit();
@@ -66,7 +62,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.MaxStock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Supplier)).BeginInit();
-            this.PanelUpperHorizontal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProductCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductReference)).BeginInit();
             this.SuspendLayout();
@@ -77,7 +72,7 @@
             this.ClearFields.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.ClearFields.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClearFields.ForeColor = System.Drawing.Color.White;
-            this.ClearFields.Location = new System.Drawing.Point(102, 47);
+            this.ClearFields.Location = new System.Drawing.Point(160, 45);
             this.ClearFields.Name = "ClearFields";
             this.ClearFields.Size = new System.Drawing.Size(80, 35);
             this.ClearFields.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
@@ -107,7 +102,7 @@
             this.BarCode.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.BarCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BarCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.BarCode.Location = new System.Drawing.Point(249, 486);
+            this.BarCode.Location = new System.Drawing.Point(285, 458);
             this.BarCode.MaxLength = 50;
             this.BarCode.MinimumSize = new System.Drawing.Size(16, 12);
             this.BarCode.Name = "BarCode";
@@ -135,7 +130,7 @@
             131072});
             this.SalePrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SalePrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.SalePrice.Location = new System.Drawing.Point(249, 430);
+            this.SalePrice.Location = new System.Drawing.Point(285, 402);
             this.SalePrice.MinimumSize = new System.Drawing.Size(16, 12);
             this.SalePrice.Name = "SalePrice";
             this.SalePrice.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Managed;
@@ -165,7 +160,7 @@
             131072});
             this.CostPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CostPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.CostPrice.Location = new System.Drawing.Point(249, 373);
+            this.CostPrice.Location = new System.Drawing.Point(285, 345);
             this.CostPrice.MinimumSize = new System.Drawing.Size(16, 12);
             this.CostPrice.Name = "CostPrice";
             this.CostPrice.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Managed;
@@ -190,7 +185,7 @@
             this.Description.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Description.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Description.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.Description.Location = new System.Drawing.Point(249, 265);
+            this.Description.Location = new System.Drawing.Point(285, 237);
             this.Description.MaxLength = 2000;
             this.Description.MinimumSize = new System.Drawing.Size(16, 12);
             this.Description.Name = "Description";
@@ -206,7 +201,7 @@
             // 
             this.BarCodeTitle.AutoSize = true;
             this.BarCodeTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BarCodeTitle.Location = new System.Drawing.Point(246, 468);
+            this.BarCodeTitle.Location = new System.Drawing.Point(282, 440);
             this.BarCodeTitle.Name = "BarCodeTitle";
             this.BarCodeTitle.Size = new System.Drawing.Size(117, 16);
             this.BarCodeTitle.TabIndex = 64;
@@ -216,7 +211,7 @@
             // 
             this.SalePriceTitle.AutoSize = true;
             this.SalePriceTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SalePriceTitle.Location = new System.Drawing.Point(246, 413);
+            this.SalePriceTitle.Location = new System.Drawing.Point(282, 385);
             this.SalePriceTitle.Name = "SalePriceTitle";
             this.SalePriceTitle.Size = new System.Drawing.Size(90, 16);
             this.SalePriceTitle.TabIndex = 63;
@@ -226,7 +221,7 @@
             // 
             this.CostPriceTitle.AutoSize = true;
             this.CostPriceTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CostPriceTitle.Location = new System.Drawing.Point(246, 356);
+            this.CostPriceTitle.Location = new System.Drawing.Point(282, 328);
             this.CostPriceTitle.Name = "CostPriceTitle";
             this.CostPriceTitle.Size = new System.Drawing.Size(84, 16);
             this.CostPriceTitle.TabIndex = 62;
@@ -236,7 +231,7 @@
             // 
             this.DescriptionTitle.AutoSize = true;
             this.DescriptionTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DescriptionTitle.Location = new System.Drawing.Point(246, 248);
+            this.DescriptionTitle.Location = new System.Drawing.Point(282, 220);
             this.DescriptionTitle.Name = "DescriptionTitle";
             this.DescriptionTitle.Size = new System.Drawing.Size(73, 16);
             this.DescriptionTitle.TabIndex = 61;
@@ -246,7 +241,7 @@
             // 
             this.ReferenceTitle.AutoSize = true;
             this.ReferenceTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ReferenceTitle.Location = new System.Drawing.Point(481, 144);
+            this.ReferenceTitle.Location = new System.Drawing.Point(517, 116);
             this.ReferenceTitle.Name = "ReferenceTitle";
             this.ReferenceTitle.Size = new System.Drawing.Size(77, 16);
             this.ReferenceTitle.TabIndex = 60;
@@ -256,7 +251,7 @@
             // 
             this.SizeTitle.AutoSize = true;
             this.SizeTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SizeTitle.Location = new System.Drawing.Point(360, 144);
+            this.SizeTitle.Location = new System.Drawing.Point(396, 116);
             this.SizeTitle.Name = "SizeTitle";
             this.SizeTitle.Size = new System.Drawing.Size(69, 16);
             this.SizeTitle.TabIndex = 59;
@@ -267,7 +262,7 @@
             this.FrameProductPhoto.BackColor = System.Drawing.Color.White;
             this.FrameProductPhoto.Controls.Add(this.ProductPhoto);
             this.FrameProductPhoto.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.FrameProductPhoto.Location = new System.Drawing.Point(41, 142);
+            this.FrameProductPhoto.Location = new System.Drawing.Point(77, 127);
             this.FrameProductPhoto.Name = "FrameProductPhoto";
             this.FrameProductPhoto.Size = new System.Drawing.Size(189, 210);
             this.FrameProductPhoto.TabIndex = 75;
@@ -293,7 +288,7 @@
             this.RegisterNew.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.RegisterNew.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RegisterNew.ForeColor = System.Drawing.Color.White;
-            this.RegisterNew.Location = new System.Drawing.Point(19, 47);
+            this.RegisterNew.Location = new System.Drawing.Point(77, 45);
             this.RegisterNew.Name = "RegisterNew";
             this.RegisterNew.Size = new System.Drawing.Size(80, 35);
             this.RegisterNew.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
@@ -315,7 +310,7 @@
             // 
             this.CodeTitle.AutoSize = true;
             this.CodeTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CodeTitle.Location = new System.Drawing.Point(246, 144);
+            this.CodeTitle.Location = new System.Drawing.Point(282, 116);
             this.CodeTitle.Name = "CodeTitle";
             this.CodeTitle.Size = new System.Drawing.Size(55, 16);
             this.CodeTitle.TabIndex = 76;
@@ -325,7 +320,7 @@
             // 
             this.MinStockTitle.AutoSize = true;
             this.MinStockTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MinStockTitle.Location = new System.Drawing.Point(246, 302);
+            this.MinStockTitle.Location = new System.Drawing.Point(282, 274);
             this.MinStockTitle.Name = "MinStockTitle";
             this.MinStockTitle.Size = new System.Drawing.Size(85, 16);
             this.MinStockTitle.TabIndex = 80;
@@ -335,7 +330,7 @@
             // 
             this.MaxStockTitle.AutoSize = true;
             this.MaxStockTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MaxStockTitle.Location = new System.Drawing.Point(340, 302);
+            this.MaxStockTitle.Location = new System.Drawing.Point(376, 274);
             this.MaxStockTitle.Name = "MaxStockTitle";
             this.MaxStockTitle.Size = new System.Drawing.Size(89, 16);
             this.MaxStockTitle.TabIndex = 79;
@@ -353,7 +348,7 @@
             this.MinStock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.MinStock.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.MinStock.IntegerValue = ((long)(0));
-            this.MinStock.Location = new System.Drawing.Point(249, 318);
+            this.MinStock.Location = new System.Drawing.Point(285, 290);
             this.MinStock.MaxValue = ((long)(50000));
             this.MinStock.MinimumSize = new System.Drawing.Size(12, 8);
             this.MinStock.Name = "MinStock";
@@ -378,7 +373,7 @@
             this.MaxStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MaxStock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.MaxStock.IntegerValue = ((long)(0));
-            this.MaxStock.Location = new System.Drawing.Point(343, 318);
+            this.MaxStock.Location = new System.Drawing.Point(379, 290);
             this.MaxStock.MaxValue = ((long)(50000));
             this.MaxStock.MinimumSize = new System.Drawing.Size(12, 8);
             this.MaxStock.Name = "MaxStock";
@@ -405,7 +400,7 @@
             this.ProductSize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.ProductSize.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.ProductSize.IntegerValue = ((long)(0));
-            this.ProductSize.Location = new System.Drawing.Point(364, 160);
+            this.ProductSize.Location = new System.Drawing.Point(400, 132);
             this.ProductSize.MaxValue = ((long)(100000));
             this.ProductSize.MinimumSize = new System.Drawing.Size(12, 8);
             this.ProductSize.MinValue = ((long)(0));
@@ -431,7 +426,7 @@
             this.Supplier.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Supplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Supplier.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.Supplier.Location = new System.Drawing.Point(249, 211);
+            this.Supplier.Location = new System.Drawing.Point(285, 183);
             this.Supplier.MaxLength = 2000;
             this.Supplier.MinimumSize = new System.Drawing.Size(16, 12);
             this.Supplier.Name = "Supplier";
@@ -447,55 +442,11 @@
             // 
             this.SupplierTitle.AutoSize = true;
             this.SupplierTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SupplierTitle.Location = new System.Drawing.Point(246, 195);
+            this.SupplierTitle.Location = new System.Drawing.Point(282, 167);
             this.SupplierTitle.Name = "SupplierTitle";
             this.SupplierTitle.Size = new System.Drawing.Size(81, 16);
             this.SupplierTitle.TabIndex = 81;
             this.SupplierTitle.Text = "Fornecedor:";
-            // 
-            // PanelUpperHorizontal
-            // 
-            this.PanelUpperHorizontal.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelUpperHorizontal.BackgroundImage")));
-            this.PanelUpperHorizontal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PanelUpperHorizontal.Controls.Add(this.DayOfTheWeek);
-            this.PanelUpperHorizontal.Controls.Add(this.FormCaption);
-            this.PanelUpperHorizontal.Controls.Add(this.ClearFields);
-            this.PanelUpperHorizontal.Controls.Add(this.RegisterNew);
-            this.PanelUpperHorizontal.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelUpperHorizontal.GradientBottomLeft = System.Drawing.Color.Black;
-            this.PanelUpperHorizontal.GradientBottomRight = System.Drawing.Color.Black;
-            this.PanelUpperHorizontal.GradientTopLeft = System.Drawing.Color.Gray;
-            this.PanelUpperHorizontal.GradientTopRight = System.Drawing.Color.Gray;
-            this.PanelUpperHorizontal.Location = new System.Drawing.Point(0, 0);
-            this.PanelUpperHorizontal.Name = "PanelUpperHorizontal";
-            this.PanelUpperHorizontal.Quality = 10;
-            this.PanelUpperHorizontal.Size = new System.Drawing.Size(964, 99);
-            this.PanelUpperHorizontal.TabIndex = 141;
-            // 
-            // DayOfTheWeek
-            // 
-            this.DayOfTheWeek.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.DayOfTheWeek.BackColor = System.Drawing.Color.Transparent;
-            this.DayOfTheWeek.Font = new System.Drawing.Font("Leelawadee UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DayOfTheWeek.ForeColor = System.Drawing.Color.White;
-            this.DayOfTheWeek.Location = new System.Drawing.Point(402, 26);
-            this.DayOfTheWeek.Name = "DayOfTheWeek";
-            this.DayOfTheWeek.Size = new System.Drawing.Size(556, 40);
-            this.DayOfTheWeek.TabIndex = 139;
-            this.DayOfTheWeek.Text = "DayOfTheWeek";
-            this.DayOfTheWeek.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // FormCaption
-            // 
-            this.FormCaption.AutoSize = true;
-            this.FormCaption.BackColor = System.Drawing.Color.Transparent;
-            this.FormCaption.Font = new System.Drawing.Font("Cambria", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormCaption.ForeColor = System.Drawing.Color.White;
-            this.FormCaption.Location = new System.Drawing.Point(10, 8);
-            this.FormCaption.Name = "FormCaption";
-            this.FormCaption.Size = new System.Drawing.Size(332, 40);
-            this.FormCaption.TabIndex = 138;
-            this.FormCaption.Text = "Cadastro de Produtos";
             // 
             // ProductCode
             // 
@@ -509,7 +460,7 @@
             this.ProductCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.ProductCode.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.ProductCode.IntegerValue = ((long)(0));
-            this.ProductCode.Location = new System.Drawing.Point(249, 160);
+            this.ProductCode.Location = new System.Drawing.Point(285, 132);
             this.ProductCode.MaxValue = ((long)(100000));
             this.ProductCode.MinimumSize = new System.Drawing.Size(12, 8);
             this.ProductCode.MinValue = ((long)(0));
@@ -534,7 +485,7 @@
             this.ProductReference.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.ProductReference.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.ProductReference.IntegerValue = ((long)(0));
-            this.ProductReference.Location = new System.Drawing.Point(483, 160);
+            this.ProductReference.Location = new System.Drawing.Point(519, 132);
             this.ProductReference.MaxValue = ((long)(100000));
             this.ProductReference.MinimumSize = new System.Drawing.Size(12, 8);
             this.ProductReference.MinValue = ((long)(0));
@@ -552,11 +503,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.AliceBlue;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(964, 681);
             this.Controls.Add(this.ProductReference);
+            this.Controls.Add(this.ClearFields);
+            this.Controls.Add(this.RegisterNew);
             this.Controls.Add(this.ProductCode);
-            this.Controls.Add(this.PanelUpperHorizontal);
             this.Controls.Add(this.Supplier);
             this.Controls.Add(this.SupplierTitle);
             this.Controls.Add(this.ProductSize);
@@ -589,8 +541,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.MaxStock)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Supplier)).EndInit();
-            this.PanelUpperHorizontal.ResumeLayout(false);
-            this.PanelUpperHorizontal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProductCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductReference)).EndInit();
             this.ResumeLayout(false);
@@ -622,9 +572,6 @@
         public Syncfusion.Windows.Forms.Tools.TextBoxExt Supplier;
         private System.Windows.Forms.Label SupplierTitle;
         public DimStock.Auxiliary.CustomPictureBoxOne ProductPhoto;
-        private Bunifu.Framework.UI.BunifuGradientPanel PanelUpperHorizontal;
-        public System.Windows.Forms.Label DayOfTheWeek;
-        public System.Windows.Forms.Label FormCaption;
         public Syncfusion.Windows.Forms.Tools.IntegerTextBox ProductCode;
         public Syncfusion.Windows.Forms.Tools.IntegerTextBox ProductReference;
     }

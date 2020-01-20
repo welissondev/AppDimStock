@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserResgistrationForm));
             this.UserName = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.NameTitle = new System.Windows.Forms.Label();
             this.Email = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
@@ -37,10 +36,7 @@
             this.PassWordTitle = new System.Windows.Forms.Label();
             this.PassWord = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.LoginTitle = new System.Windows.Forms.Label();
-            this.PanelUpperHorizontal = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.Save = new Syncfusion.WinForms.Controls.SfButton();
-            this.DayOfTheWeek = new System.Windows.Forms.Label();
-            this.FormTitle = new System.Windows.Forms.Label();
             this.RegisterNew = new Syncfusion.WinForms.Controls.SfButton();
             this.FrameEditPermission = new System.Windows.Forms.GroupBox();
             this.PermissionToViewTitle = new System.Windows.Forms.Label();
@@ -59,7 +55,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Email)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Login)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PassWord)).BeginInit();
-            this.PanelUpperHorizontal.SuspendLayout();
             this.FrameEditPermission.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PassWordConfirmation)).BeginInit();
             this.SuspendLayout();
@@ -199,32 +194,13 @@
             this.LoginTitle.TabIndex = 89;
             this.LoginTitle.Text = "Login:";
             // 
-            // PanelUpperHorizontal
-            // 
-            this.PanelUpperHorizontal.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelUpperHorizontal.BackgroundImage")));
-            this.PanelUpperHorizontal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PanelUpperHorizontal.Controls.Add(this.Save);
-            this.PanelUpperHorizontal.Controls.Add(this.DayOfTheWeek);
-            this.PanelUpperHorizontal.Controls.Add(this.FormTitle);
-            this.PanelUpperHorizontal.Controls.Add(this.RegisterNew);
-            this.PanelUpperHorizontal.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelUpperHorizontal.GradientBottomLeft = System.Drawing.Color.Black;
-            this.PanelUpperHorizontal.GradientBottomRight = System.Drawing.Color.Black;
-            this.PanelUpperHorizontal.GradientTopLeft = System.Drawing.Color.Gray;
-            this.PanelUpperHorizontal.GradientTopRight = System.Drawing.Color.Gray;
-            this.PanelUpperHorizontal.Location = new System.Drawing.Point(0, 0);
-            this.PanelUpperHorizontal.Name = "PanelUpperHorizontal";
-            this.PanelUpperHorizontal.Quality = 10;
-            this.PanelUpperHorizontal.Size = new System.Drawing.Size(964, 100);
-            this.PanelUpperHorizontal.TabIndex = 140;
-            // 
             // Save
             // 
             this.Save.AccessibleName = "Button";
             this.Save.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.Save.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Save.ForeColor = System.Drawing.Color.White;
-            this.Save.Location = new System.Drawing.Point(100, 51);
+            this.Save.Location = new System.Drawing.Point(169, 51);
             this.Save.Name = "Save";
             this.Save.Size = new System.Drawing.Size(80, 35);
             this.Save.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
@@ -242,38 +218,13 @@
             this.Save.UseVisualStyleBackColor = false;
             this.Save.Click += new System.EventHandler(this.Save_Click);
             // 
-            // DayOfTheWeek
-            // 
-            this.DayOfTheWeek.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.DayOfTheWeek.BackColor = System.Drawing.Color.Transparent;
-            this.DayOfTheWeek.Font = new System.Drawing.Font("Leelawadee UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DayOfTheWeek.ForeColor = System.Drawing.Color.White;
-            this.DayOfTheWeek.Location = new System.Drawing.Point(497, 26);
-            this.DayOfTheWeek.Name = "DayOfTheWeek";
-            this.DayOfTheWeek.Size = new System.Drawing.Size(455, 40);
-            this.DayOfTheWeek.TabIndex = 139;
-            this.DayOfTheWeek.Text = "TheOfTheWeek";
-            this.DayOfTheWeek.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // FormTitle
-            // 
-            this.FormTitle.AutoSize = true;
-            this.FormTitle.BackColor = System.Drawing.Color.Transparent;
-            this.FormTitle.Font = new System.Drawing.Font("Cambria", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormTitle.ForeColor = System.Drawing.Color.White;
-            this.FormTitle.Location = new System.Drawing.Point(10, 8);
-            this.FormTitle.Name = "FormTitle";
-            this.FormTitle.Size = new System.Drawing.Size(331, 40);
-            this.FormTitle.TabIndex = 138;
-            this.FormTitle.Text = "Cadastro De Usuários";
-            // 
             // RegisterNew
             // 
             this.RegisterNew.AccessibleName = "Button";
             this.RegisterNew.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.RegisterNew.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RegisterNew.ForeColor = System.Drawing.Color.White;
-            this.RegisterNew.Location = new System.Drawing.Point(17, 51);
+            this.RegisterNew.Location = new System.Drawing.Point(86, 51);
             this.RegisterNew.Name = "RegisterNew";
             this.RegisterNew.Size = new System.Drawing.Size(80, 35);
             this.RegisterNew.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
@@ -461,10 +412,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(964, 681);
+            this.Controls.Add(this.Save);
+            this.Controls.Add(this.RegisterNew);
             this.Controls.Add(this.PassWordConfirmation);
             this.Controls.Add(this.PassWordConfirmationTitle);
             this.Controls.Add(this.FrameEditPermission);
-            this.Controls.Add(this.PanelUpperHorizontal);
             this.Controls.Add(this.PassWord);
             this.Controls.Add(this.LoginTitle);
             this.Controls.Add(this.Login);
@@ -476,14 +428,10 @@
             this.MinimumSize = new System.Drawing.Size(980, 720);
             this.Name = "UserResgistrationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-
-
             ((System.ComponentModel.ISupportInitialize)(this.UserName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Email)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Login)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PassWord)).EndInit();
-            this.PanelUpperHorizontal.ResumeLayout(false);
-            this.PanelUpperHorizontal.PerformLayout();
             this.FrameEditPermission.ResumeLayout(false);
             this.FrameEditPermission.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PassWordConfirmation)).EndInit();
@@ -502,10 +450,7 @@
         private System.Windows.Forms.Label PassWordTitle;
         public Syncfusion.Windows.Forms.Tools.TextBoxExt PassWord;
         private System.Windows.Forms.Label LoginTitle;
-        private Bunifu.Framework.UI.BunifuGradientPanel PanelUpperHorizontal;
         private Syncfusion.WinForms.Controls.SfButton Save;
-        public System.Windows.Forms.Label DayOfTheWeek;
-        public System.Windows.Forms.Label FormTitle;
         private Syncfusion.WinForms.Controls.SfButton RegisterNew;
         private System.Windows.Forms.Label AllPermissionsTitle;
         private System.Windows.Forms.Label PermissionToDeleteTile;
