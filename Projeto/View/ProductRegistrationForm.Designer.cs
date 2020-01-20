@@ -72,7 +72,7 @@
             this.ClearFields.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.ClearFields.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClearFields.ForeColor = System.Drawing.Color.White;
-            this.ClearFields.Location = new System.Drawing.Point(160, 45);
+            this.ClearFields.Location = new System.Drawing.Point(807, 510);
             this.ClearFields.Name = "ClearFields";
             this.ClearFields.Size = new System.Drawing.Size(80, 35);
             this.ClearFields.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
@@ -288,7 +288,7 @@
             this.RegisterNew.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.RegisterNew.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RegisterNew.ForeColor = System.Drawing.Color.White;
-            this.RegisterNew.Location = new System.Drawing.Point(77, 45);
+            this.RegisterNew.Location = new System.Drawing.Point(724, 510);
             this.RegisterNew.Name = "RegisterNew";
             this.RegisterNew.Size = new System.Drawing.Size(80, 35);
             this.RegisterNew.Style.BackColor = System.Drawing.Color.MediumSeaGreen;

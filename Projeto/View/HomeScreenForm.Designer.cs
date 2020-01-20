@@ -55,11 +55,14 @@
             this.MenuUser_RegisterNew = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuUser_ListUsers = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuUser_ListHistory = new System.Windows.Forms.ToolStripMenuItem();
+            this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.FormNovigationDescription = new System.Windows.Forms.Label();
             this.PanelMenuTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.ContextMenu_Product.SuspendLayout();
             this.ContextMenu_Stock.SuspendLayout();
             this.ContextMenu_User.SuspendLayout();
+            this.bunifuGradientPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // PanelMenuTop
@@ -354,12 +357,41 @@
             this.MenuUser_ListHistory.Text = "Listar Históricos";
             this.MenuUser_ListHistory.Click += new System.EventHandler(this.MenuUser_ListHistory_Click);
             // 
+            // bunifuGradientPanel1
+            // 
+            this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
+            this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.FormNovigationDescription);
+            this.bunifuGradientPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.Black;
+            this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.Black;
+            this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.Gray;
+            this.bunifuGradientPanel1.GradientTopRight = System.Drawing.Color.Gray;
+            this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, 60);
+            this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
+            this.bunifuGradientPanel1.Quality = 10;
+            this.bunifuGradientPanel1.Size = new System.Drawing.Size(964, 48);
+            this.bunifuGradientPanel1.TabIndex = 8;
+            // 
+            // FormNovigationDescription
+            // 
+            this.FormNovigationDescription.AutoSize = true;
+            this.FormNovigationDescription.BackColor = System.Drawing.Color.Transparent;
+            this.FormNovigationDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormNovigationDescription.ForeColor = System.Drawing.Color.White;
+            this.FormNovigationDescription.Location = new System.Drawing.Point(12, 10);
+            this.FormNovigationDescription.Name = "FormNovigationDescription";
+            this.FormNovigationDescription.Size = new System.Drawing.Size(115, 25);
+            this.FormNovigationDescription.TabIndex = 0;
+            this.FormNovigationDescription.Text = "Tela Inicial";
+            // 
             // HomeScreenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(964, 681);
+            this.Controls.Add(this.bunifuGradientPanel1);
             this.Controls.Add(this.PanelMenuTop);
             this.IsMdiContainer = true;
             this.MinimumSize = new System.Drawing.Size(980, 720);
@@ -372,6 +404,8 @@
             this.ContextMenu_Product.ResumeLayout(false);
             this.ContextMenu_Stock.ResumeLayout(false);
             this.ContextMenu_User.ResumeLayout(false);
+            this.bunifuGradientPanel1.ResumeLayout(false);
+            this.bunifuGradientPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -402,6 +436,8 @@
         private System.Windows.Forms.ToolStripMenuItem MenuUser_ListHistory;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.LinkLabel MainMenu_Support;
+        private Bunifu.Framework.UI.BunifuGradientPanel bunifuGradientPanel1;
+        private System.Windows.Forms.Label FormNovigationDescription;
     }
 }
 

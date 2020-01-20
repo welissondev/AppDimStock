@@ -92,6 +92,8 @@ namespace DimStock.View
             };
 
             form.Show();
+
+            FormNovigationDescription.Text = "Cadastro De Produtos";
         }
 
         private void MenuProduct_ListProduct_Click(object sender, EventArgs e)
@@ -106,6 +108,8 @@ namespace DimStock.View
             };
 
             form.Show();
+
+            FormNovigationDescription.Text = "Lista De Produtos";
         }
 
         private void MenuStock_RegisterNew_Entrie_Click(object sender, EventArgs e)
@@ -122,6 +126,8 @@ namespace DimStock.View
             form.Show();
 
             form.InitializeNewMovement("Entrada");
+
+            FormNovigationDescription.Text = "Cadastro de Estoques";
         }
 
         private void MenuStock_RegisterNew_Output_Click(object sender, EventArgs e)
@@ -137,6 +143,8 @@ namespace DimStock.View
             form.Show();
 
             form.InitializeNewMovement("Saída");
+
+            FormNovigationDescription.Text = "Cadastro De Estoque";
         }
 
         private void MenuStock_ListMovements_Click(object sender, EventArgs e)
@@ -151,6 +159,8 @@ namespace DimStock.View
             };
 
             form.Show();
+
+            FormNovigationDescription.Text = "Lista De Movimentações";
         }
 
         private void MenuStock_ListStocks_Click(object sender, EventArgs e)
@@ -165,6 +175,8 @@ namespace DimStock.View
             };
 
             form.Show();
+
+            FormNovigationDescription.Text = "Lista De Estoque";
         }
 
         private void MenuUser_RegisterNew_Click(object sender, EventArgs e)
@@ -184,6 +196,8 @@ namespace DimStock.View
                 };
 
                 form.Show();
+
+                FormNovigationDescription.Text = "Cadastro De Usuários";
             }
             else
             {
@@ -210,6 +224,8 @@ namespace DimStock.View
                 };
 
                 form.Show();
+
+                FormNovigationDescription.Text = "Lista De Usuários";
             }
             else
             {
@@ -236,6 +252,8 @@ namespace DimStock.View
                 };
 
                 form.Show();
+
+                FormNovigationDescription.Text = "Lista De Históricos";
             }
             else
             {
