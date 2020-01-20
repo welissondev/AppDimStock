@@ -215,7 +215,6 @@
             this.Controls.Add(this.PanelUpperHorizontal);
             this.Name = "UserListingForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UserListingForm_FormClosed);
             this.Load += new System.EventHandler(this.UserListingForm_Load);
             this.PanelUpperHorizontal.ResumeLayout(false);
             this.PanelUpperHorizontal.PerformLayout();

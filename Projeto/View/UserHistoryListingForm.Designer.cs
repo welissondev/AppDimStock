@@ -373,7 +373,7 @@
             this.MinimumSize = new System.Drawing.Size(980, 720);
             this.Name = "UserHistoryListingForm";
             this.ShowIcon = false;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UserHistoryListingForm_FormClosed);
+
             this.Load += new System.EventHandler(this.UserHistoryListingForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.HistoryDataList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SearchByLogin)).EndInit();

@@ -9,19 +9,13 @@ namespace DimStock.View
     public partial class UserListingForm : Form
     {
 
-        #region Get & Set
-
-        public static UserListingForm Form { get; set; }
-
-        #endregion
-
         #region Variables
         private DataPagination dataPagination = new DataPagination();
         #endregion
 
         #region Constructs
 
-        private UserListingForm()
+        public UserListingForm()
         {
             InitializeComponent();
             InitializeSettings();
@@ -36,18 +30,21 @@ namespace DimStock.View
             ListData();
         }
 
-        private void UserListingForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Form = null;
-        }
-
         #endregion
 
         #region Button
 
         private void RegisterNew_Click(object sender, EventArgs e)
         {
-            UserResgistrationForm.Init();
+            var form = new UserResgistrationForm()
+            {
+                FormBorderStyle = FormBorderStyle.Sizable,
+                MaximizeBox = false,
+                MinimizeBox = false,
+                ShowInTaskbar = false
+            };
+
+            form.ShowDialog();
         }
 
         private void UpdateDataList_Click(object sender, EventArgs e)
@@ -83,12 +80,24 @@ namespace DimStock.View
                 switch (columnName)
                 {
                     case "delete":
+
                         Delete(id);
                         break;
 
                     case "edit":
-                        UserResgistrationForm.Init();
-                        UserResgistrationForm.Form.ViewDetails(id);
+
+                        var form = new UserResgistrationForm()
+                        {
+                            FormBorderStyle = FormBorderStyle.Sizable,
+                            MaximizeBox = false,
+                            MinimizeBox = false,
+                            ShowInTaskbar = false
+                        };
+
+                        form.ViewDetails(id);
+
+                        form.ShowDialog();
+
                         break;
                 }
             }
@@ -141,27 +150,6 @@ namespace DimStock.View
         #endregion
 
         #region MethodsAuxiliarys
-
-        public static void Init()
-        {
-            if (Form == null)
-            {
-                var productForm = new UserListingForm
-                {
-                    WindowState = FormWindowState.Maximized,
-                    MdiParent = HomeScreenForm.Form
-                };
-                productForm.Show();
-
-                Form = productForm;
-            }
-            else
-            {
-                Form.WindowState = FormWindowState.Maximized;
-                Form.MdiParent = HomeScreenForm.Form;
-                Form.Show();
-            }
-        }
 
         private void ListData()
         {

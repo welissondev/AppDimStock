@@ -102,7 +102,7 @@
             this.ProductDataList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ProductDataList.Location = new System.Drawing.Point(16, 185);
             this.ProductDataList.Name = "ProductDataList";
-            this.ProductDataList.Size = new System.Drawing.Size(936, 468);
+            this.ProductDataList.Size = new System.Drawing.Size(952, 507);
             this.ProductDataList.TabIndex = 69;
             this.ProductDataList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductDataList_CellClick);
             this.ProductDataList.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ProductDataList_CellMouseDoubleClick);
@@ -113,7 +113,7 @@
             // 
             this.GifLoading.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.GifLoading.Image = global::DimStock.Properties.Resources.GigLoading;
-            this.GifLoading.Location = new System.Drawing.Point(399, 325);
+            this.GifLoading.Location = new System.Drawing.Point(415, 345);
             this.GifLoading.Name = "GifLoading";
             this.GifLoading.Size = new System.Drawing.Size(177, 174);
             this.GifLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -301,7 +301,7 @@
             this.PanelUpperHorizontal.Location = new System.Drawing.Point(0, 0);
             this.PanelUpperHorizontal.Name = "PanelUpperHorizontal";
             this.PanelUpperHorizontal.Quality = 10;
-            this.PanelUpperHorizontal.Size = new System.Drawing.Size(964, 93);
+            this.PanelUpperHorizontal.Size = new System.Drawing.Size(980, 93);
             this.PanelUpperHorizontal.TabIndex = 140;
             // 
             // DayOfTheWeek
@@ -310,7 +310,7 @@
             this.DayOfTheWeek.BackColor = System.Drawing.Color.Transparent;
             this.DayOfTheWeek.Font = new System.Drawing.Font("Leelawadee UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DayOfTheWeek.ForeColor = System.Drawing.Color.White;
-            this.DayOfTheWeek.Location = new System.Drawing.Point(393, 21);
+            this.DayOfTheWeek.Location = new System.Drawing.Point(409, 21);
             this.DayOfTheWeek.Name = "DayOfTheWeek";
             this.DayOfTheWeek.Size = new System.Drawing.Size(563, 40);
             this.DayOfTheWeek.TabIndex = 145;
@@ -321,11 +321,11 @@
             // 
             this.FormCaption.AutoSize = true;
             this.FormCaption.BackColor = System.Drawing.Color.Transparent;
-            this.FormCaption.Font = new System.Drawing.Font("Cambria", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormCaption.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormCaption.ForeColor = System.Drawing.Color.White;
-            this.FormCaption.Location = new System.Drawing.Point(4, 1);
+            this.FormCaption.Location = new System.Drawing.Point(12, 9);
             this.FormCaption.Name = "FormCaption";
-            this.FormCaption.Size = new System.Drawing.Size(272, 40);
+            this.FormCaption.Size = new System.Drawing.Size(187, 24);
             this.FormCaption.TabIndex = 144;
             this.FormCaption.Text = "Lista de Produtos";
             // 
@@ -415,14 +415,14 @@
             this.NextPage,
             this.toolStripSeparator3,
             this.LblRecordsState});
-            this.BindingPagination.Location = new System.Drawing.Point(0, 656);
+            this.BindingPagination.Location = new System.Drawing.Point(0, 695);
             this.BindingPagination.MoveFirstItem = null;
             this.BindingPagination.MoveLastItem = null;
             this.BindingPagination.MoveNextItem = null;
             this.BindingPagination.MovePreviousItem = null;
             this.BindingPagination.Name = "BindingPagination";
             this.BindingPagination.PositionItem = null;
-            this.BindingPagination.Size = new System.Drawing.Size(964, 25);
+            this.BindingPagination.Size = new System.Drawing.Size(980, 25);
             this.BindingPagination.TabIndex = 178;
             this.BindingPagination.Text = "bindingNavigator1";
             // 
@@ -477,7 +477,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(964, 681);
+            this.ClientSize = new System.Drawing.Size(980, 720);
             this.Controls.Add(this.GifLoading);
             this.Controls.Add(this.BindingPagination);
             this.Controls.Add(this.PanelUpperHorizontal);
@@ -492,11 +492,11 @@
             this.Controls.Add(this.TitleSearchBySize);
             this.Controls.Add(this.TitleSearchByDescription);
             this.Controls.Add(this.TitleSearchByReference);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(980, 720);
             this.Name = "ProductListingForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ProductListingForm_FormClosed);
             this.Load += new System.EventHandler(this.ProductListingForm_Load);
             this.Resize += new System.EventHandler(this.ProductListingForm_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.SearchByDescription)).EndInit();

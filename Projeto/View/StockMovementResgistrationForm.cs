@@ -16,7 +16,6 @@ namespace DimStock.View
         public int StockId { get; set; }
         public int StockQuantity { get; set; }
         public int ProductId { get; set; }
-        public static StockMovementRegistrationForm Form { get; set; }
 
         #endregion
 
@@ -26,7 +25,7 @@ namespace DimStock.View
 
         #region Constructs
 
-        private StockMovementRegistrationForm()
+        public StockMovementRegistrationForm()
         {
             InitializeComponent();
 
@@ -48,11 +47,6 @@ namespace DimStock.View
             {
                 ExceptionAssistant.Message.Show(ex);
             }
-        }
-
-        private void StockMovimentRegistrationForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Form = null;
         }
 
         #endregion
@@ -169,7 +163,15 @@ namespace DimStock.View
 
         private void AddNewStockDestination_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            StockDestinationRegistrationForm.Init();
+            var form = new StockDestinationRegistrationForm()
+            {
+                FormBorderStyle = FormBorderStyle.FixedDialog,
+                ShowInTaskbar = false,
+                MaximizeBox = false,
+                MinimizeBox = false
+            };
+
+            form.ShowDialog();
         }
 
         private void ClearQueryFields_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -230,43 +232,16 @@ namespace DimStock.View
         private void MovementEntrie_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             InitializeNewMovement("Entrada");
-            GetStockMovementDetails(Convert.ToInt32(StockMovementId.Text));
-            ResetControl();
-            ListStockItems();
         }
 
         private void MovementOutPut_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             InitializeNewMovement("Saída");
-            GetStockMovementDetails(Convert.ToInt32(StockMovementId.Text));
-            ResetControl();
-            ListStockItems();
         }
 
         #endregion
 
         #region MethodsAuxiliarys
-
-        public static void Init()
-        {
-            if (Form == null)
-            {
-                var form = new StockMovementRegistrationForm
-                {
-                    WindowState = FormWindowState.Maximized,
-                    MdiParent = HomeScreenForm.Form
-                };
-                form.Show();
-
-                Form = form;
-            }
-            else
-            {
-                Form.WindowState = FormWindowState.Maximized;
-                Form.MdiParent = HomeScreenForm.Form;
-                Form.Show();
-            }
-        }
 
         private List<Stock> GetItems()
         {
@@ -400,20 +375,20 @@ namespace DimStock.View
             }
         }
 
-        public static void InitializeNewMovement(string operationType)
+        public void InitializeNewMovement(string operationType)
         {
             var stockMovement = new StockMovement();
 
-            Form.OperationType.Text = operationType;
+            OperationType.Text = operationType;
 
-            switch (Form.OperationType.Text)
+            switch (OperationType.Text)
             {
                 case "Entrada":
-                    stockMovement.OperationType = Form.OperationType.Text;
+                    stockMovement.OperationType = OperationType.Text;
                     break;
 
                 case "Saída":
-                    stockMovement.OperationType = Form.OperationType.Text;
+                    stockMovement.OperationType = OperationType.Text;
                     break;
             }
 
@@ -423,7 +398,11 @@ namespace DimStock.View
 
             stockMovement.InitializeNew();
 
-            Form.GetStockMovementDetails(stockMovement.Id);
+            GetStockMovementDetails(stockMovement.Id);
+
+            ResetControl();
+
+            ListStockItems();
         }
 
         private void DeleteStockMovement()

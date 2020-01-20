@@ -163,6 +163,16 @@ namespace DimStock.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap StockLogo {
+            get {
+                object obj = ResourceManager.GetObject("StockLogo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap User_Login {
             get {
                 object obj = ResourceManager.GetObject("User-Login", resourceCulture);

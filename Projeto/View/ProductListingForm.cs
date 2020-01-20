@@ -11,12 +11,6 @@ namespace DimStock.View
     public partial class ProductListingForm : Form
     {
 
-        #region Get & Set
-
-        public static ProductListingForm Form { get; set; }
-
-        #endregion
-
         #region Variables
 
         public int Id = 0;
@@ -27,7 +21,7 @@ namespace DimStock.View
 
         #region Constructs
 
-        private ProductListingForm()
+        public ProductListingForm()
         {
             InitializeComponent();
 
@@ -41,7 +35,6 @@ namespace DimStock.View
         private void ProductListingForm_Load(object sender, EventArgs e)
         {
             StartSearchTimer();
-            WindowState = FormWindowState.Maximized;
         }
 
         private void ProductListingForm_Resize(object sender, EventArgs e)
@@ -57,18 +50,21 @@ namespace DimStock.View
             }
         }
 
-        private void ProductListingForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Form = null;
-        }
-
         #endregion
 
         #region Button
 
         private void RegisterNew_Click(object sender, EventArgs e)
         {
-            ProductRegistrationForm.Init();
+            var form = new ProductRegistrationForm()
+            {
+                FormBorderStyle = FormBorderStyle.FixedDialog,
+                ShowInTaskbar = false,
+                MaximizeBox = false,
+                MinimizeBox = false
+            };
+
+            form.ShowDialog();
         }
 
         private void UpdateDataList_Click(object sender, EventArgs e)
@@ -270,27 +266,6 @@ namespace DimStock.View
         #endregion
 
         #region MethodsAxiliarys
-
-        public static void Init()
-        {
-            if (Form == null)
-            {
-                var productForm = new ProductListingForm
-                {
-                    WindowState = FormWindowState.Maximized,
-                    MdiParent = HomeScreenForm.Form
-                };
-                productForm.Show();
-
-                Form = productForm;
-            }
-            else
-            {
-                Form.WindowState = FormWindowState.Maximized;
-                Form.MdiParent = HomeScreenForm.Form;
-                Form.Show();
-            }
-        }
 
         private void SearchData()
         {

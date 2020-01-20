@@ -127,6 +127,7 @@
     <Compile Include="Auxiliary\DataPagination.cs" />
     <Compile Include="Auxiliary\EmailAdderess.cs" />
     <Compile Include="Auxiliary\ExceptionAssistant.cs" />
+    <Compile Include="Auxiliary\FormAssistant.cs" />
     <Compile Include="Auxiliary\LoginAssistant.cs" />
     <Compile Include="Auxiliary\CustomPictureBoxOne.cs">
       <SubType>Component</SubType>
@@ -134,6 +135,7 @@
     <Compile Include="Auxiliary\CustomDataGridViewOne.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Auxiliary\XButtonRemover.cs" />
     <Compile Include="Business\Connection.cs" />
     <Compile Include="Business\StockDestination.cs" />
     <Compile Include="Business\StockItem.cs" />
@@ -338,6 +340,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\GigLoading.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\StockLogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

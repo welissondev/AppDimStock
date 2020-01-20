@@ -476,7 +476,8 @@
             this.MinimumSize = new System.Drawing.Size(980, 720);
             this.Name = "UserResgistrationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UserResgistrationForm_FormClosed);
+
+
             ((System.ComponentModel.ISupportInitialize)(this.UserName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Email)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Login)).EndInit();

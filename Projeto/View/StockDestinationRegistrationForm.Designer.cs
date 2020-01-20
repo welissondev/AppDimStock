@@ -199,7 +199,6 @@
             this.MinimumSize = new System.Drawing.Size(728, 460);
             this.Name = "StockDestinationRegistrationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.StockDestinationRegistrationForm_FormClosed);
             this.Load += new System.EventHandler(this.StockDestinationRegistrationForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DestinationLocation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DestinationDataList)).EndInit();

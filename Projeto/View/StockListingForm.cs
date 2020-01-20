@@ -10,12 +10,6 @@ namespace DimStock.View
 {
     public partial class StockListingForm : Form
     {
-        #region Get & Set
-
-        public static StockListingForm Form { get; set; }
-
-        #endregion
-
         #region Properties
         private DataPagination dataPagination = new DataPagination();
         private string selectedSummary = "All";
@@ -23,7 +17,7 @@ namespace DimStock.View
 
         #region Constructors
 
-        private StockListingForm()
+        public StockListingForm()
         {
             InitializeComponent();
 
@@ -37,12 +31,6 @@ namespace DimStock.View
         private void StockListingForm_Load(object sender, EventArgs e)
         {
             StartSearchTimer();
-            WindowState = FormWindowState.Maximized;
-        }
-
-        private void StockListingForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Form = null;
         }
 
         #endregion
@@ -270,27 +258,6 @@ namespace DimStock.View
         #endregion
 
         #region MethodsAuxiliarys
-
-        public static void Init()
-        {
-            if (Form == null)
-            {
-                var productForm = new StockListingForm
-                {
-                    WindowState = FormWindowState.Maximized,
-                    MdiParent = HomeScreenForm.Form
-                };
-                productForm.Show();
-
-                Form = productForm;
-            }
-            else
-            {
-                Form.WindowState = FormWindowState.Maximized;
-                Form.MdiParent = HomeScreenForm.Form;
-                Form.Show();
-            }
-        }
 
         private void SearchData()
         {

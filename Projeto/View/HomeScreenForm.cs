@@ -82,128 +82,189 @@ namespace DimStock.View
 
         private void MenuProduct_RegisterNew_Click(object sender, EventArgs e)
         {
-            ProductRegistrationForm.Init();
+            FormAssistant.CloseAllForms();
+
+            var form = new ProductRegistrationForm()
+            {
+                MdiParent = this,
+                FormBorderStyle = FormBorderStyle.None,
+                Dock = DockStyle.Fill,
+            };
+
+            form.Show();
         }
 
-        private void MenuProduct_ListProducts_Click(object sender, EventArgs e)
+        private void MenuProduct_ListProduct_Click(object sender, EventArgs e)
         {
-            ProductListingForm.Init();
+            FormAssistant.CloseAllForms();
+
+            var form = new ProductListingForm()
+            {
+                MdiParent = this,
+                FormBorderStyle = FormBorderStyle.None,
+                Dock = DockStyle.Fill,
+            };
+
+            form.Show();
         }
 
-        private void MenuStock_RegisterNew_Entry_Click(object sender, EventArgs e)
+        private void MenuStock_RegisterNew_Entrie_Click(object sender, EventArgs e)
         {
-            try
+            FormAssistant.CloseAllForms();
+
+            var form = new StockMovementRegistrationForm()
             {
-                StockMovementRegistrationForm.Init();
-                StockMovementRegistrationForm.InitializeNewMovement("Entrada");
-            }
-            catch (Exception ex)
-            {
-                ExceptionAssistant.Message.Show(ex);
-            }
+                MdiParent = this,
+                FormBorderStyle = FormBorderStyle.None,
+                Dock = DockStyle.Fill
+            };
+
+            form.Show();
+
+            form.InitializeNewMovement("Entrada");
         }
 
         private void MenuStock_RegisterNew_Output_Click(object sender, EventArgs e)
         {
-            try
+            FormAssistant.CloseAllForms();
+
+            var form = new StockMovementRegistrationForm()
             {
-                StockMovementRegistrationForm.Init();
-                StockMovementRegistrationForm.InitializeNewMovement("Saída");
-            }
-            catch (Exception ex)
-            {
-                ExceptionAssistant.Message.Show(ex);
-            }
+                MdiParent = this,
+                FormBorderStyle = FormBorderStyle.None,
+                Dock = DockStyle.Fill
+            };
+            form.Show();
+
+            form.InitializeNewMovement("Saída");
         }
 
-        private void MenuStock_ListStockMovement_Click(object sender, EventArgs e)
+        private void MenuStock_ListMovements_Click(object sender, EventArgs e)
         {
-            try
+            FormAssistant.CloseAllForms();
+
+            var form = new StockMovementListingForm()
             {
-                StockMovementListingForm.Init();
-            }
-            catch (Exception ex)
-            {
-                ExceptionAssistant.Message.Show(ex);
-            }
+                MdiParent = this,
+                FormBorderStyle = FormBorderStyle.None,
+                Dock = DockStyle.Fill,
+            };
+
+            form.Show();
         }
 
         private void MenuStock_ListStocks_Click(object sender, EventArgs e)
         {
-           StockListingForm.Init();
+            FormAssistant.CloseAllForms();
+
+            var form = new StockListingForm()
+            {
+                MdiParent = this,
+                FormBorderStyle = FormBorderStyle.None,
+                Dock = DockStyle.Fill,
+            };
+
+            form.Show();
         }
 
         private void MenuUser_RegisterNew_Click(object sender, EventArgs e)
         {
-            try
-            {
-                var user = new User();
-                user.ViewDetails(LoginAssistant.Id);
+            var user = new User();
+            user.ViewDetails(LoginAssistant.Id);
 
-                if (user.PermissionToView == true)
-                {
-                    UserResgistrationForm.Init();
-                }
-                else
-                {
-                    MessageBox.Show("Apenas administradores podem acessar " +
-                    "essa ária!", "ACESSO NEGADO", MessageBoxButtons.OK, 
-                    MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
+            if (user.PermissionToView == true)
             {
-                ExceptionAssistant.Message.Show(ex);
+                FormAssistant.CloseAllForms();
+
+                var form = new UserResgistrationForm()
+                {
+                    MdiParent = this,
+                    FormBorderStyle = FormBorderStyle.None,
+                    Dock = DockStyle.Fill,
+                };
+
+                form.Show();
+            }
+            else
+            {
+                MessageBox.Show("Apenas administradores podem acessar " +
+                "essa ária!", "ACESSO NEGADO", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
             }
         }
 
         private void MenuUser_ListUsers_Click(object sender, EventArgs e)
         {
-            try
-            {
-                var user = new User();
-                user.ViewDetails(LoginAssistant.Id);
+            var user = new User();
+            user.ViewDetails(LoginAssistant.Id);
 
-                if (user.PermissionToView == true)
-                {
-                    UserListingForm.Init();
-                }
-                else
-                {
-                    MessageBox.Show("Você não tem permissão para acessar " +
-                    "essa ária!", "ACESSO NEGADO", MessageBoxButtons.OK, 
-                    MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
+            if (user.PermissionToView == true)
             {
-                ExceptionAssistant.Message.Show(ex);
+                FormAssistant.CloseAllForms();
+
+                var form = new UserListingForm()
+                {
+                    MdiParent = this,
+                    FormBorderStyle = FormBorderStyle.None,
+                    Dock = DockStyle.Fill,
+                };
+
+                form.Show();
+            }
+            else
+            {
+                MessageBox.Show("Você não tem permissão para acessar " +
+                "essa ária!", "ACESSO NEGADO", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
             }
         }
 
-        private void MenuUser_ListHistorics_Click(object sender, EventArgs e)
+        private void MenuUser_ListHistory_Click(object sender, EventArgs e)
         {
-            try
-            {
-                var user = new User();
-                user.ViewDetails(LoginAssistant.Id);
+            var user = new User();
+            user.ViewDetails(LoginAssistant.Id);
 
-                if (user.PermissionToView == true)
-                {
-                    UserHistoryListingForm.Init();
-                }
-                else
-                {
-                    MessageBox.Show("Você não tem permissão para acessar " +
-                    "essa ária!", "ACESSO NEGADO", MessageBoxButtons.OK, 
-                    MessageBoxIcon.Error);
-                }
-
-            }
-            catch (Exception ex)
+            if (user.PermissionToView == true)
             {
-                ExceptionAssistant.Message.Show(ex);
+                FormAssistant.CloseAllForms();
+
+                var form = new UserHistoryListingForm()
+                {
+                    MdiParent = this,
+                    FormBorderStyle = FormBorderStyle.None,
+                    Dock = DockStyle.Fill,
+                };
+
+                form.Show();
             }
+            else
+            {
+                MessageBox.Show("Você não tem permissão para acessar " +
+                "essa ária!", "ACESSO NEGADO", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+            }
+        }
+
+        #endregion
+
+        #region LabelLink
+
+        private void MainMenu_Product_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ContextMenu_Product.Show();
+            ContextMenu_Product.Location = MousePosition;
+        }
+
+        private void MainMenu_Stock_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ContextMenu_Stock.Show();
+            ContextMenu_Stock.Location = MousePosition;
+        }
+
+        private void MainMenu_User_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ContextMenu_User.Show();
+            ContextMenu_User.Location = MousePosition;
         }
 
         #endregion

@@ -61,10 +61,13 @@ namespace DimStock.View
         public static void ShowReport(string path, string reportName, bool isEmbeddedResource,
         Dictionary<string, object> dataSources, Dictionary<string, object> reportParameters = null)
         {
-            var report = new ReportViewForm(path, reportName, isEmbeddedResource,
-            dataSources, reportParameters);
+            var form = new ReportViewForm(path, reportName, isEmbeddedResource,
+            dataSources, reportParameters)
+            {
+                ShowInTaskbar = false
+            };
 
-            report.Show();
+            form.Show();
         }
 
         #endregion

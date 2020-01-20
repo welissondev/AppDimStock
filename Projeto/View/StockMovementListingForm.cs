@@ -11,12 +11,6 @@ namespace DimStock.View
 {
     public partial class StockMovementListingForm : Form
     {
-        #region Get & Set
-
-        public static StockMovementListingForm Form { get; set; }
-
-        #endregion
-
         #region Variables
 
         private DataPagination dataPagination = new DataPagination();
@@ -27,7 +21,7 @@ namespace DimStock.View
 
         #region Constructs
 
-        private StockMovementListingForm()
+        public StockMovementListingForm()
         {
             InitializeComponent();
 
@@ -41,11 +35,6 @@ namespace DimStock.View
         private void StockMovementListingForm_Load(object sender, EventArgs e)
         {
             StartSearchTimer();
-        }
-
-        private void StockMovementListingForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Form = null;
         }
 
         #endregion
@@ -277,27 +266,6 @@ namespace DimStock.View
 
         #region MethodsAxiliarys
 
-        public static void Init()
-        {
-            if (Form == null)
-            {
-                var form = new StockMovementListingForm
-                {
-                    WindowState = FormWindowState.Maximized,
-                    MdiParent = HomeScreenForm.Form
-                };
-                form.Show();
-
-                Form = form;
-            }
-            else
-            {
-                Form.WindowState = FormWindowState.Maximized;
-                Form.MdiParent = HomeScreenForm.Form;
-                Form.Show();
-            }
-        }
-
         private void SearchData()
         {
             try
@@ -385,11 +353,17 @@ namespace DimStock.View
                 int id = Convert.ToInt32(
                 MovementStockDataList.CurrentRow.Cells["id"].Value);
 
-                StockMovementRegistrationForm.Init();
-                StockMovementRegistrationForm.Form.GetStockMovementDetails(id);
-                StockMovementRegistrationForm.Form.ListStockItems();
-                StockMovementRegistrationForm.Form.Show();
+                var form = new StockMovementRegistrationForm()
+                {
+                    FormBorderStyle = FormBorderStyle.FixedDialog,
+                    ShowInTaskbar = false,
+                    MaximizeBox = false,
+                    MinimizeBox = false
+                };
 
+                form.GetStockMovementDetails(id);
+                form.ListStockItems();
+                form.ShowDialog();
             }
             catch (Exception ex)
             {

@@ -485,8 +485,6 @@
             this.MinimumSize = new System.Drawing.Size(980, 720);
             this.Name = "StockListingForm";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.StockListingForm_FormClosed);
             this.Load += new System.EventHandler(this.StockListingForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.StockDataList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SearchByReference)).EndInit();

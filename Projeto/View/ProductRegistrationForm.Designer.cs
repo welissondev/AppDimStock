@@ -579,7 +579,6 @@
             this.MinimumSize = new System.Drawing.Size(980, 720);
             this.Name = "ProductRegistrationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ProductRegistrationForm_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.BarCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SalePrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CostPrice)).EndInit();

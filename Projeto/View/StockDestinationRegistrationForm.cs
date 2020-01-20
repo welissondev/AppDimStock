@@ -8,12 +8,6 @@ namespace DimStock.View
     public partial class StockDestinationRegistrationForm : Form
     {
 
-        #region Get & Set
-
-        public static StockDestinationRegistrationForm Form { get; set; }
-
-        #endregion
-
         #region Variables
 
         private int id = 0;
@@ -36,11 +30,6 @@ namespace DimStock.View
         private void StockDestinationRegistrationForm_Load(object sender, EventArgs e)
         {
             ListData();
-        }
-
-        private void StockDestinationRegistrationForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Form = null;
         }
 
         #endregion
@@ -157,25 +146,6 @@ namespace DimStock.View
 
         #region Methods
 
-        public static void Init()
-        {
-            if (Form == null)
-            {
-                var form = new StockDestinationRegistrationForm
-                {
-                    MdiParent = HomeScreenForm.Form
-                };
-                form.Show();
-
-                Form = form;
-            }
-            else
-            {
-                Form.MdiParent = HomeScreenForm.Form;
-                Form.Show();
-            }
-        }
-
         private bool ValidateData()
         {
             if (DestinationLocation.Text == "" || DestinationLocation.Text == null)
@@ -261,7 +231,6 @@ namespace DimStock.View
             CreateColumnInTheDataList();
 
             DataGridLealt.SetDefaultStyle(DestinationDataList);
-
         }
 
         private void CreateColumnInTheDataList()

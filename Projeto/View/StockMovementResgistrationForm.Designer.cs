@@ -129,7 +129,7 @@
             this.AddItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddItem.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
             this.AddItem.ForeColor = System.Drawing.Color.White;
-            this.AddItem.Location = new System.Drawing.Point(843, 28);
+            this.AddItem.Location = new System.Drawing.Point(859, 28);
             this.AddItem.Name = "AddItem";
             this.AddItem.Size = new System.Drawing.Size(39, 26);
             this.AddItem.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
@@ -150,14 +150,14 @@
             // Quantity
             // 
             this.Quantity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Quantity.BeforeTouchSize = new System.Drawing.Size(78, 26);
+            this.Quantity.BeforeTouchSize = new System.Drawing.Size(200, 26);
             this.Quantity.BorderColor = System.Drawing.Color.DarkGray;
             this.Quantity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Quantity.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Quantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Quantity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.Quantity.IntegerValue = ((long)(0));
-            this.Quantity.Location = new System.Drawing.Point(640, 28);
+            this.Quantity.Location = new System.Drawing.Point(656, 28);
             this.Quantity.MaxValue = ((long)(50000));
             this.Quantity.Metrocolor = System.Drawing.Color.Green;
             this.Quantity.MinimumSize = new System.Drawing.Size(14, 10);
@@ -178,7 +178,7 @@
             this.LblTotalValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LblTotalValue.AutoSize = true;
             this.LblTotalValue.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTotalValue.Location = new System.Drawing.Point(708, 11);
+            this.LblTotalValue.Location = new System.Drawing.Point(724, 11);
             this.LblTotalValue.Name = "LblTotalValue";
             this.LblTotalValue.Size = new System.Drawing.Size(37, 15);
             this.LblTotalValue.TabIndex = 135;
@@ -187,7 +187,7 @@
             // TotalValue
             // 
             this.TotalValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.TotalValue.BeforeTouchSize = new System.Drawing.Size(78, 26);
+            this.TotalValue.BeforeTouchSize = new System.Drawing.Size(200, 26);
             this.TotalValue.BorderColor = System.Drawing.Color.DarkGray;
             this.TotalValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TotalValue.Cursor = System.Windows.Forms.Cursors.Arrow;
@@ -199,7 +199,7 @@
             this.TotalValue.Enabled = false;
             this.TotalValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TotalValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.TotalValue.Location = new System.Drawing.Point(711, 28);
+            this.TotalValue.Location = new System.Drawing.Point(727, 28);
             this.TotalValue.Metrocolor = System.Drawing.Color.Green;
             this.TotalValue.MinimumSize = new System.Drawing.Size(14, 10);
             this.TotalValue.Name = "TotalValue";
@@ -216,7 +216,7 @@
             this.LblUnitaryValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LblUnitaryValue.AutoSize = true;
             this.LblUnitaryValue.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblUnitaryValue.Location = new System.Drawing.Point(507, 11);
+            this.LblUnitaryValue.Location = new System.Drawing.Point(523, 11);
             this.LblUnitaryValue.Name = "LblUnitaryValue";
             this.LblUnitaryValue.Size = new System.Drawing.Size(60, 15);
             this.LblUnitaryValue.TabIndex = 133;
@@ -225,7 +225,7 @@
             // UnitaryValue
             // 
             this.UnitaryValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.UnitaryValue.BeforeTouchSize = new System.Drawing.Size(78, 26);
+            this.UnitaryValue.BeforeTouchSize = new System.Drawing.Size(200, 26);
             this.UnitaryValue.BorderColor = System.Drawing.Color.DarkGray;
             this.UnitaryValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.UnitaryValue.Cursor = System.Windows.Forms.Cursors.Arrow;
@@ -237,7 +237,7 @@
             this.UnitaryValue.Enabled = false;
             this.UnitaryValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UnitaryValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.UnitaryValue.Location = new System.Drawing.Point(510, 28);
+            this.UnitaryValue.Location = new System.Drawing.Point(526, 28);
             this.UnitaryValue.Metrocolor = System.Drawing.Color.Green;
             this.UnitaryValue.MinimumSize = new System.Drawing.Size(14, 10);
             this.UnitaryValue.Name = "UnitaryValue";
@@ -254,7 +254,7 @@
             this.LblQuantity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LblQuantity.AutoSize = true;
             this.LblQuantity.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblQuantity.Location = new System.Drawing.Point(639, 11);
+            this.LblQuantity.Location = new System.Drawing.Point(655, 11);
             this.LblQuantity.Name = "LblQuantity";
             this.LblQuantity.Size = new System.Drawing.Size(45, 15);
             this.LblQuantity.TabIndex = 131;
@@ -295,7 +295,7 @@
             this.QueryByDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.QueryByDescription.BackColor = System.Drawing.Color.White;
-            this.QueryByDescription.BeforeTouchSize = new System.Drawing.Size(78, 26);
+            this.QueryByDescription.BeforeTouchSize = new System.Drawing.Size(200, 26);
             this.QueryByDescription.BorderColor = System.Drawing.Color.DarkGray;
             this.QueryByDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.QueryByDescription.CanOverrideStyle = true;
@@ -311,7 +311,7 @@
             this.QueryByDescription.Name = "QueryByDescription";
             this.QueryByDescription.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
             this.QueryByDescription.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
-            this.QueryByDescription.Size = new System.Drawing.Size(184, 26);
+            this.QueryByDescription.Size = new System.Drawing.Size(200, 26);
             this.QueryByDescription.TabIndex = 3;
             this.QueryByDescription.Tag = "";
             this.QueryByDescription.ThemeName = "Default";
@@ -331,7 +331,7 @@
             // QueryByCode
             // 
             this.QueryByCode.BackColor = System.Drawing.Color.White;
-            this.QueryByCode.BeforeTouchSize = new System.Drawing.Size(78, 26);
+            this.QueryByCode.BeforeTouchSize = new System.Drawing.Size(200, 26);
             this.QueryByCode.BorderColor = System.Drawing.Color.DarkGray;
             this.QueryByCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.QueryByCode.CanOverrideStyle = true;
@@ -357,7 +357,7 @@
             // QueryByReference
             // 
             this.QueryByReference.BackColor = System.Drawing.Color.White;
-            this.QueryByReference.BeforeTouchSize = new System.Drawing.Size(78, 26);
+            this.QueryByReference.BeforeTouchSize = new System.Drawing.Size(200, 26);
             this.QueryByReference.BorderColor = System.Drawing.Color.DarkGray;
             this.QueryByReference.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.QueryByReference.CanOverrideStyle = true;
@@ -383,7 +383,7 @@
             // QueryBySize
             // 
             this.QueryBySize.BackColor = System.Drawing.Color.White;
-            this.QueryBySize.BeforeTouchSize = new System.Drawing.Size(78, 26);
+            this.QueryBySize.BeforeTouchSize = new System.Drawing.Size(200, 26);
             this.QueryBySize.BorderColor = System.Drawing.Color.DarkGray;
             this.QueryBySize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.QueryBySize.CanOverrideStyle = true;
@@ -527,7 +527,7 @@
             this.CardMain.Name = "CardMain";
             this.CardMain.RightSahddow = true;
             this.CardMain.ShadowDepth = 20;
-            this.CardMain.Size = new System.Drawing.Size(902, 381);
+            this.CardMain.Size = new System.Drawing.Size(918, 420);
             this.CardMain.TabIndex = 136;
             // 
             // groupBox1
@@ -539,9 +539,9 @@
             this.groupBox1.Controls.Add(this.SubTotalTitle);
             this.groupBox1.Controls.Add(this.TitleOfTotalItems);
             this.groupBox1.Controls.Add(this.TotalItems);
-            this.groupBox1.Location = new System.Drawing.Point(21, 308);
+            this.groupBox1.Location = new System.Drawing.Point(21, 347);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(861, 50);
+            this.groupBox1.Size = new System.Drawing.Size(877, 50);
             this.groupBox1.TabIndex = 142;
             this.groupBox1.TabStop = false;
             // 
@@ -583,7 +583,7 @@
             // 
             this.GifLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.GifLoading.Image = global::DimStock.Properties.Resources.GigLoading;
-            this.GifLoading.Location = new System.Drawing.Point(372, 104);
+            this.GifLoading.Location = new System.Drawing.Point(380, 124);
             this.GifLoading.Name = "GifLoading";
             this.GifLoading.Size = new System.Drawing.Size(188, 172);
             this.GifLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -601,7 +601,7 @@
             this.MainDataList.ListIsStock = false;
             this.MainDataList.Location = new System.Drawing.Point(21, 60);
             this.MainDataList.Name = "MainDataList";
-            this.MainDataList.Size = new System.Drawing.Size(861, 248);
+            this.MainDataList.Size = new System.Drawing.Size(877, 287);
             this.MainDataList.TabIndex = 141;
             this.MainDataList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MainDataList_CellClick);
             this.MainDataList.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.MainDataList_RowPrePaint);
@@ -676,7 +676,7 @@
             this.GrupBoxGeneralInformation.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GrupBoxGeneralInformation.Location = new System.Drawing.Point(31, 108);
             this.GrupBoxGeneralInformation.Name = "GrupBoxGeneralInformation";
-            this.GrupBoxGeneralInformation.Size = new System.Drawing.Size(902, 96);
+            this.GrupBoxGeneralInformation.Size = new System.Drawing.Size(918, 96);
             this.GrupBoxGeneralInformation.TabIndex = 140;
             this.GrupBoxGeneralInformation.TabStop = false;
             this.GrupBoxGeneralInformation.Text = "INFORMAÇÕES GERAIS";
@@ -732,7 +732,7 @@
             this.PanelUpperHorinzontal.Location = new System.Drawing.Point(0, 0);
             this.PanelUpperHorinzontal.Name = "PanelUpperHorinzontal";
             this.PanelUpperHorinzontal.Quality = 10;
-            this.PanelUpperHorinzontal.Size = new System.Drawing.Size(964, 97);
+            this.PanelUpperHorinzontal.Size = new System.Drawing.Size(980, 97);
             this.PanelUpperHorinzontal.TabIndex = 139;
             // 
             // DayOfTheWeek
@@ -741,7 +741,7 @@
             this.DayOfTheWeek.BackColor = System.Drawing.Color.Transparent;
             this.DayOfTheWeek.Font = new System.Drawing.Font("Leelawadee UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DayOfTheWeek.ForeColor = System.Drawing.Color.White;
-            this.DayOfTheWeek.Location = new System.Drawing.Point(467, 23);
+            this.DayOfTheWeek.Location = new System.Drawing.Point(483, 23);
             this.DayOfTheWeek.Name = "DayOfTheWeek";
             this.DayOfTheWeek.Size = new System.Drawing.Size(494, 40);
             this.DayOfTheWeek.TabIndex = 139;
@@ -816,19 +816,19 @@
             this.MovementEntrie_ToolStripMenuItem,
             this.MovementOutPut_ToolStripMenuItem});
             this.StockMovementMenuStrip.Name = "ContextMenuStrip";
-            this.StockMovementMenuStrip.Size = new System.Drawing.Size(181, 70);
+            this.StockMovementMenuStrip.Size = new System.Drawing.Size(115, 48);
             // 
             // MovementEntrie_ToolStripMenuItem
             // 
             this.MovementEntrie_ToolStripMenuItem.Name = "MovementEntrie_ToolStripMenuItem";
-            this.MovementEntrie_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.MovementEntrie_ToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.MovementEntrie_ToolStripMenuItem.Text = "Entrada";
             this.MovementEntrie_ToolStripMenuItem.Click += new System.EventHandler(this.MovementEntrie_ToolStripMenuItem_Click);
             // 
             // MovementOutPut_ToolStripMenuItem
             // 
             this.MovementOutPut_ToolStripMenuItem.Name = "MovementOutPut_ToolStripMenuItem";
-            this.MovementOutPut_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.MovementOutPut_ToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.MovementOutPut_ToolStripMenuItem.Text = "Saída";
             this.MovementOutPut_ToolStripMenuItem.Click += new System.EventHandler(this.MovementOutPut_ToolStripMenuItem_Click);
             // 
@@ -837,7 +837,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(964, 681);
+            this.ClientSize = new System.Drawing.Size(980, 720);
             this.Controls.Add(this.AddNewStockDestination);
             this.Controls.Add(this.StockDestinationList);
             this.Controls.Add(this.GrupBoxGeneralInformation);
@@ -847,7 +847,6 @@
             this.MinimumSize = new System.Drawing.Size(980, 720);
             this.Name = "StockMovementRegistrationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.StockMovimentRegistrationForm_FormClosed);
             this.Resize += new System.EventHandler(this.StockMovementResgistrationForm_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.Quantity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TotalValue)).EndInit();

@@ -9,18 +9,12 @@ namespace DimStock.View
 {
     public partial class UserHistoryListingForm : Form
     {
-        #region Get & Set
-
-        public static UserHistoryListingForm Form { get; set; }
-
-        #endregion
-
         #region Variables
         private DataPagination dataPagination = new DataPagination();
         #endregion 
 
         #region Constructs
-        private UserHistoryListingForm()
+        public UserHistoryListingForm()
         {
             InitializeComponent();
             InitializeSettings();
@@ -32,12 +26,6 @@ namespace DimStock.View
         private void UserHistoryListingForm_Load(object sender, EventArgs e)
         {
             StartSearchTimer();
-            WindowState = FormWindowState.Maximized;
-        }
-
-        private void UserHistoryListingForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Form = null;
         }
 
         #endregion
@@ -146,27 +134,6 @@ namespace DimStock.View
         #endregion
 
         #region MethodsAxiliarys
-
-        public static void Init()
-        {
-            if (Form == null)
-            {
-                var productForm = new UserHistoryListingForm
-                {
-                    WindowState = FormWindowState.Maximized,
-                    MdiParent = HomeScreenForm.Form
-                };
-                productForm.Show();
-
-                Form = productForm;
-            }
-            else
-            {
-                Form.WindowState = FormWindowState.Maximized;
-                Form.MdiParent = HomeScreenForm.Form;
-                Form.Show();
-            }
-        }
 
         private void ListData()
         {
