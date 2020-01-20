@@ -108,7 +108,7 @@
             // 
             this.GifLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.GifLoading.Image = global::DimStock.Properties.Resources.GigLoading;
-            this.GifLoading.Location = new System.Drawing.Point(432, 259);
+            this.GifLoading.Location = new System.Drawing.Point(447, 249);
             this.GifLoading.Name = "GifLoading";
             this.GifLoading.Size = new System.Drawing.Size(169, 167);
             this.GifLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -313,6 +313,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1023, 603);
+            this.Controls.Add(this.GifLoading);
             this.Controls.Add(this.UpdateDataList);
             this.Controls.Add(this.RecordsByPage);
             this.Controls.Add(this.RecordsOfPageTitle);
@@ -324,7 +325,6 @@
             this.Controls.Add(this.OperationSituation);
             this.Controls.Add(this.OperationSituationTitle);
             this.Controls.Add(this.OperationTypeTitle);
-            this.Controls.Add(this.GifLoading);
             this.Controls.Add(this.MovementStockDataList);
             this.Name = "StockMovementListingForm";
             this.Load += new System.EventHandler(this.StockMovementListingForm_Load);

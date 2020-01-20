@@ -230,7 +230,6 @@ namespace DimStock.View
 
         private void SearchTimer_Tick(object sender, EventArgs e)
         {
-            StartSearchTimer();
             SearchData();
         }
 
