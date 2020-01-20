@@ -35,6 +35,7 @@ namespace DimStock.View
         private void HomeScreenForm_Load(object sender, EventArgs e)
         {
             Form = this;
+            DayOfTheWeek.Text = DateTime.Now.ToLongDateString();
         }
 
         private void ShowNewForm(object sender, EventArgs e)
@@ -74,6 +75,11 @@ namespace DimStock.View
                 ex.GetType();
                 this.Close();
             }
+        }
+
+        private void MainMenu_Exit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Close();
         }
 
         #endregion

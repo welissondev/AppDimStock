@@ -502,8 +502,8 @@ namespace DimStock.View
                 var operationHour = new DataGridViewTextBoxColumn();
                 var operationSituation = new DataGridViewTextBoxColumn();
                 var stockDestinationLocation = new DataGridViewTextBoxColumn();
-                var viewDetails = new DataGridViewImageColumn();
-                var delete = new DataGridViewImageColumn();
+                var viewDetails = new DataGridViewButtonColumn();
+                var delete = new DataGridViewButtonColumn();
 
                 var stockMovementList = MovementStockDataList;
 
@@ -555,6 +555,9 @@ namespace DimStock.View
                 stockMovementList.Columns[5].ReadOnly = true;
                 stockMovementList.Columns[5].Visible = true;
 
+                viewDetails.Text = "Visualizar";
+                viewDetails.UseColumnTextForButtonValue = true;
+                viewDetails.FlatStyle = FlatStyle.Popup;
                 stockMovementList.Columns.Add(viewDetails);
                 stockMovementList.Columns[6].Name = "viewDetails";
                 stockMovementList.Columns[6].HeaderText = "";
@@ -562,9 +565,10 @@ namespace DimStock.View
                 stockMovementList.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 stockMovementList.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 stockMovementList.Columns[6].ReadOnly = true;
-                viewDetails.ImageLayout = DataGridViewImageCellLayout.Normal;
-                viewDetails.Image = Resources.Visualizar2;
 
+                delete.Text = "Deletar";
+                delete.UseColumnTextForButtonValue = true;
+                delete.FlatStyle = FlatStyle.Popup;
                 stockMovementList.Columns.Add(delete);
                 stockMovementList.Columns[7].Name = "delete";
                 stockMovementList.Columns[7].HeaderText = "";
@@ -572,8 +576,6 @@ namespace DimStock.View
                 stockMovementList.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 stockMovementList.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 stockMovementList.Columns[7].ReadOnly = true;
-                delete.ImageLayout = DataGridViewImageCellLayout.Normal;
-                delete.Image = Resources.Deletar;
 
             }
             catch (Exception ex)

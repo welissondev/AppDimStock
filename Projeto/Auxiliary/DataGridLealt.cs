@@ -18,11 +18,11 @@ namespace DimStock.Auxiliary
             datagrid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             datagrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 
-            datagrid.ColumnHeadersHeight = 40;
+            datagrid.ColumnHeadersHeight = 30;
             datagrid.RowsDefaultCellStyle.ForeColor = Color.FromArgb(86, 86, 86);
             datagrid.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(206, 237, 248);
             datagrid.RowsDefaultCellStyle.SelectionForeColor = Color.FromArgb(86, 86, 86);
-            datagrid.RowTemplate.MinimumHeight = 40;
+            datagrid.RowTemplate.MinimumHeight = 30;
             datagrid.RowsDefaultCellStyle.Font = new Font("Arial", 9.0F);
             datagrid.AllowUserToAddRows = false;
             datagrid.BorderStyle = BorderStyle.None;
@@ -41,21 +41,21 @@ namespace DimStock.Auxiliary
         {
             datagrid.EnableHeadersVisualStyles = false;
             datagrid.GridColor = Color.DarkGray;
-            datagrid.CellBorderStyle = DataGridViewCellBorderStyle.RaisedVertical;
+            datagrid.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
             datagrid.BackgroundColor = Color.White;
             datagrid.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
             datagrid.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 255, 255);
             datagrid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 255, 255);  
-            datagrid.ColumnHeadersDefaultCellStyle.Font = new Font("Calisto MT", 10.0F, FontStyle.Bold);
+            datagrid.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 9.0F, FontStyle.Bold);
             datagrid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             datagrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 
-            datagrid.ColumnHeadersHeight = 40;
+            datagrid.ColumnHeadersHeight = 30;
             datagrid.RowsDefaultCellStyle.ForeColor = Color.FromArgb(86, 86, 86);
             datagrid.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(206, 237, 248);
             datagrid.RowsDefaultCellStyle.SelectionForeColor = Color.FromArgb(86, 86, 86);
-            datagrid.RowsDefaultCellStyle.Font = new Font("Calisto MT", 10.0F);
-            datagrid.RowTemplate.MinimumHeight = 40;
+            datagrid.RowsDefaultCellStyle.Font = new Font("Arial", 9.0F);
+            datagrid.RowTemplate.MinimumHeight = 30;
             datagrid.AllowUserToAddRows = false;
             datagrid.BorderStyle = BorderStyle.Fixed3D;
             datagrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;

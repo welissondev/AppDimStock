@@ -339,6 +339,7 @@ namespace DimStock.View
                 userForm.SalePrice.Text = product.SalePrice.ToString();
                 userForm.BarCode.Text = product.BarCode;
                 userForm.ReloadPhoto(product.PhotoName);
+                userForm.ShowInTaskbar = false;
                 userForm.ShowDialog();
 
             }
@@ -438,6 +439,7 @@ namespace DimStock.View
                 userForm.SalePrice.Text = product.SalePrice.ToString();
                 userForm.BarCode.Text = product.BarCode;
                 userForm.ReloadPhoto(product.PhotoName, true);
+                userForm.ShowInTaskbar = false;
                 userForm.ShowDialog();
             }
             catch (Exception ex)
@@ -528,9 +530,9 @@ namespace DimStock.View
                 var costPrice = new DataGridViewTextBoxColumn();
                 var salePrice = new DataGridViewTextBoxColumn();
                 var photoName = new DataGridViewTextBoxColumn();
-                var edit = new DataGridViewImageColumn();
-                var delete = new DataGridViewImageColumn();
-                var replicate = new DataGridViewImageColumn();
+                var edit = new DataGridViewButtonColumn();
+                var delete = new DataGridViewButtonColumn();
+                var replicate = new DataGridViewButtonColumn();
 
                 var productDataList = ProductDataList;
 
@@ -606,9 +608,10 @@ namespace DimStock.View
                 productDataList.Columns[8].ReadOnly = true;
                 productDataList.Columns[8].Visible = false;
 
+                replicate.Text = "Replicar";
+                replicate.FlatStyle = FlatStyle.Popup;
+                replicate.UseColumnTextForButtonValue = true;
                 productDataList.Columns.Add(replicate);
-                replicate.Image = Resources.Duplicar;
-                replicate.ImageLayout = DataGridViewImageCellLayout.Normal;
                 productDataList.Columns[9].Name = "replicate";
                 productDataList.Columns[9].HeaderText = "";
                 productDataList.Columns[9].Width = 70;
@@ -616,6 +619,9 @@ namespace DimStock.View
                 productDataList.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 productDataList.Columns[9].ReadOnly = true;
 
+                edit.Text = "Editar";
+                edit.UseColumnTextForButtonValue = true;
+                edit.FlatStyle = FlatStyle.Popup;
                 productDataList.Columns.Add(edit);
                 productDataList.Columns[10].Name = "edit";
                 productDataList.Columns[10].HeaderText = "";
@@ -623,9 +629,10 @@ namespace DimStock.View
                 productDataList.Columns[10].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 productDataList.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 productDataList.Columns[10].ReadOnly = true;
-                edit.ImageLayout = DataGridViewImageCellLayout.Normal;
-                edit.Image = Resources.Editar;
 
+                delete.Text = "Deletar";
+                delete.UseColumnTextForButtonValue = true;
+                delete.FlatStyle = FlatStyle.Popup;
                 productDataList.Columns.Add(delete);
                 productDataList.Columns[11].Name = "delete";
                 productDataList.Columns[11].HeaderText = "";
@@ -633,9 +640,6 @@ namespace DimStock.View
                 productDataList.Columns[11].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 productDataList.Columns[11].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 productDataList.Columns[11].ReadOnly = true;
-                delete.ImageLayout = DataGridViewImageCellLayout.Normal;
-                delete.Image = Resources.Deletar;
-
             }
             catch (Exception ex)
             {

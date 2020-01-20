@@ -789,7 +789,7 @@ namespace DimStock.View
                 var stockQuantity = new DataGridViewTextBoxColumn();
                 var productCostPrice = new DataGridViewTextBoxColumn();
                 var stockTotalValue = new DataGridViewTextBoxColumn();
-                var delete = new DataGridViewImageColumn();
+                var delete = new DataGridViewButtonColumn();
 
                 var mainDataList = MainDataList;
                 mainDataList.ListIsItem = true;
@@ -870,12 +870,13 @@ namespace DimStock.View
                 mainDataList.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 mainDataList.Columns[8].ReadOnly = true;
 
+                delete.Text = "Remover";
+                delete.FlatStyle = FlatStyle.Popup;
+                delete.UseColumnTextForButtonValue = true;
                 mainDataList.Columns.Add(delete);
-                delete.Image = Resources.deletar2;
-                delete.ImageLayout = DataGridViewImageCellLayout.Normal;
                 mainDataList.Columns[9].Name = "delete";
                 mainDataList.Columns[9].HeaderText = "";
-                mainDataList.Columns[9].Width = 40;
+                mainDataList.Columns[9].Width = 80;
                 mainDataList.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 mainDataList.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 mainDataList.Columns[9].ReadOnly = true;

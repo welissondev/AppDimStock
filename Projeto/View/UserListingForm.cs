@@ -252,8 +252,8 @@ namespace DimStock.View
                 var id = new DataGridViewTextBoxColumn();
                 var userName = new DataGridViewTextBoxColumn();
                 var email = new DataGridViewTextBoxColumn();
-                var edit = new DataGridViewImageColumn();
-                var delete = new DataGridViewImageColumn();
+                var edit = new DataGridViewButtonColumn();
+                var delete = new DataGridViewButtonColumn();
 
                 var dataGrid = UserDataList;
 
@@ -280,10 +280,11 @@ namespace DimStock.View
                 dataGrid.Columns[2].ReadOnly = true;
                 dataGrid.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
+                edit.Text = "Editar";
+                edit.FlatStyle = FlatStyle.Popup;
+                edit.UseColumnTextForButtonValue = true;
                 dataGrid.Columns.Add(edit);
-                edit.Image = Resources.Editar;
                 edit.ToolTipText = "edit";
-                edit.ImageLayout = DataGridViewImageCellLayout.Normal;
                 dataGrid.Columns[3].Name = "edit";
                 dataGrid.Columns[3].HeaderText = "";
                 dataGrid.Columns[3].Width = 70;
@@ -291,10 +292,11 @@ namespace DimStock.View
                 dataGrid.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[3].ReadOnly = true;
 
+                delete.Text = "Deletar";
+                delete.FlatStyle = FlatStyle.Popup;
+                delete.UseColumnTextForButtonValue = true;
                 dataGrid.Columns.Add(delete);
                 delete.ToolTipText = "delete";
-                delete.Image = Resources.Deletar;
-                delete.ImageLayout = DataGridViewImageCellLayout.Normal;
                 dataGrid.Columns[4].Name = "delete";
                 dataGrid.Columns[4].HeaderText = "";
                 dataGrid.Columns[4].Width = 70;
