@@ -150,6 +150,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Auxiliary\ImageAssistant.cs" />
     <Compile Include="Report\ReportProduct.cs" />
+    <Compile Include="View\DatabasePathDesfinationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DatabasePathDesfinationForm.Designer.cs">
+      <DependentUpon>DatabasePathDesfinationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ReportViewForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -234,6 +240,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\DatabasePathDesfinationForm.resx">
+      <DependentUpon>DatabasePathDesfinationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\ReportViewForm.resx">
       <DependentUpon>ReportViewForm.cs</DependentUpon>
     </EmbeddedResource>
