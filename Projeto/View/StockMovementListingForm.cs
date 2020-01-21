@@ -41,6 +41,13 @@ namespace DimStock.View
 
         #region Button
 
+
+        private void AddNew_Click(object sender, EventArgs e)
+        {
+            StockMovementMenuStrip.Show();
+            StockMovementMenuStrip.Location = MousePosition;
+        }
+
         private void UpdateDataList_Click(object sender, EventArgs e)
         {
             CallAllResets();
@@ -259,6 +266,32 @@ namespace DimStock.View
             }
 
             SetInBadingNavigator(dataPagination);
+        }
+
+        #endregion
+
+        #region MenuStrip
+
+        private void MovementEntrie_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new StockMovementRegistrationForm()
+            {
+                MinimizeBox = false,
+                ShowInTaskbar = false
+            };
+            form.InitializeNewMovement("Entrada");
+            form.ShowDialog();
+        }
+
+        private void MovementOutPut_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new StockMovementRegistrationForm()
+            {
+                MinimizeBox = false,
+                ShowInTaskbar = false
+            };
+            form.InitializeNewMovement("Saída");
+            form.ShowDialog();
         }
 
         #endregion

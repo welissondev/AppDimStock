@@ -51,6 +51,10 @@
             this.LblRecordsState = new System.Windows.Forms.ToolStripLabel();
             this.RecordsByPage = new Syncfusion.WinForms.ListView.SfComboBox();
             this.RecordsOfPageTitle = new System.Windows.Forms.Label();
+            this.AddNew = new Syncfusion.WinForms.Controls.SfButton();
+            this.StockMovementMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.MovementEntrie_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MovementOutPut_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.MovementStockDataList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GifLoading)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OperationSituation)).BeginInit();
@@ -59,6 +63,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.BindingPagination)).BeginInit();
             this.BindingPagination.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RecordsByPage)).BeginInit();
+            this.StockMovementMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // MovementStockDataList
@@ -67,9 +72,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MovementStockDataList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.MovementStockDataList.Location = new System.Drawing.Point(19, 139);
+            this.MovementStockDataList.Location = new System.Drawing.Point(21, 139);
             this.MovementStockDataList.Name = "MovementStockDataList";
-            this.MovementStockDataList.Size = new System.Drawing.Size(992, 407);
+            this.MovementStockDataList.Size = new System.Drawing.Size(990, 407);
             this.MovementStockDataList.TabIndex = 0;
             this.MovementStockDataList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MovementStockDataList_CellClick);
             this.MovementStockDataList.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.MovementStockDataList_CellMouseMove);
@@ -81,7 +86,7 @@
             this.UpdateDataList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UpdateDataList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpdateDataList.ForeColor = System.Drawing.Color.White;
-            this.UpdateDataList.Location = new System.Drawing.Point(21, 25);
+            this.UpdateDataList.Location = new System.Drawing.Point(106, 26);
             this.UpdateDataList.Name = "UpdateDataList";
             this.UpdateDataList.Size = new System.Drawing.Size(80, 35);
             this.UpdateDataList.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
@@ -178,7 +183,7 @@
             // SearchByStockMovimentId
             // 
             this.SearchByStockMovimentId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SearchByStockMovimentId.BeforeTouchSize = new System.Drawing.Size(136, 27);
+            this.SearchByStockMovimentId.BeforeTouchSize = new System.Drawing.Size(78, 26);
             this.SearchByStockMovimentId.BorderColor = System.Drawing.Color.DarkGray;
             this.SearchByStockMovimentId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SearchByStockMovimentId.CanOverrideStyle = true;
@@ -307,12 +312,60 @@
             this.RecordsOfPageTitle.TabIndex = 181;
             this.RecordsOfPageTitle.Text = "Registros por página:";
             // 
+            // AddNew
+            // 
+            this.AddNew.AccessibleName = "Button";
+            this.AddNew.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.AddNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddNew.ForeColor = System.Drawing.Color.White;
+            this.AddNew.Location = new System.Drawing.Point(24, 26);
+            this.AddNew.Name = "AddNew";
+            this.AddNew.Size = new System.Drawing.Size(80, 35);
+            this.AddNew.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.AddNew.Style.DisabledBackColor = System.Drawing.Color.MediumSeaGreen;
+            this.AddNew.Style.DisabledForeColor = System.Drawing.Color.MediumSeaGreen;
+            this.AddNew.Style.FocusedBackColor = System.Drawing.Color.MediumSeaGreen;
+            this.AddNew.Style.FocusedForeColor = System.Drawing.Color.White;
+            this.AddNew.Style.ForeColor = System.Drawing.Color.White;
+            this.AddNew.Style.HoverBackColor = System.Drawing.Color.MediumSeaGreen;
+            this.AddNew.Style.HoverForeColor = System.Drawing.Color.Black;
+            this.AddNew.Style.PressedBackColor = System.Drawing.Color.White;
+            this.AddNew.Style.PressedForeColor = System.Drawing.Color.White;
+            this.AddNew.TabIndex = 182;
+            this.AddNew.Text = "Nova";
+            this.AddNew.UseVisualStyleBackColor = false;
+            this.AddNew.Click += new System.EventHandler(this.AddNew_Click);
+            // 
+            // StockMovementMenuStrip
+            // 
+            this.StockMovementMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MovementEntrie_ToolStripMenuItem,
+            this.MovementOutPut_ToolStripMenuItem});
+            this.StockMovementMenuStrip.Name = "ContextMenuStrip";
+            this.StockMovementMenuStrip.Size = new System.Drawing.Size(115, 48);
+            // 
+            // MovementEntrie_ToolStripMenuItem
+            // 
+            this.MovementEntrie_ToolStripMenuItem.Name = "MovementEntrie_ToolStripMenuItem";
+            this.MovementEntrie_ToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.MovementEntrie_ToolStripMenuItem.Text = "Entrada";
+            this.MovementEntrie_ToolStripMenuItem.Click += new System.EventHandler(this.MovementEntrie_ToolStripMenuItem_Click);
+            // 
+            // MovementOutPut_ToolStripMenuItem
+            // 
+            this.MovementOutPut_ToolStripMenuItem.Name = "MovementOutPut_ToolStripMenuItem";
+            this.MovementOutPut_ToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.MovementOutPut_ToolStripMenuItem.Text = "Saída";
+            this.MovementOutPut_ToolStripMenuItem.Click += new System.EventHandler(this.MovementOutPut_ToolStripMenuItem_Click);
+            // 
             // StockMovementListingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1023, 603);
+            this.Controls.Add(this.AddNew);
             this.Controls.Add(this.GifLoading);
             this.Controls.Add(this.UpdateDataList);
             this.Controls.Add(this.RecordsByPage);
@@ -337,6 +390,7 @@
             this.BindingPagination.ResumeLayout(false);
             this.BindingPagination.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RecordsByPage)).EndInit();
+            this.StockMovementMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -365,5 +419,9 @@
         private System.Windows.Forms.ToolStripLabel LblRecordsState;
         private Syncfusion.WinForms.ListView.SfComboBox RecordsByPage;
         private System.Windows.Forms.Label RecordsOfPageTitle;
+        private Syncfusion.WinForms.Controls.SfButton AddNew;
+        private System.Windows.Forms.ContextMenuStrip StockMovementMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem MovementEntrie_ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MovementOutPut_ToolStripMenuItem;
     }
 }
