@@ -74,7 +74,7 @@
             this.MovementStockDataList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.MovementStockDataList.Location = new System.Drawing.Point(21, 139);
             this.MovementStockDataList.Name = "MovementStockDataList";
-            this.MovementStockDataList.Size = new System.Drawing.Size(990, 407);
+            this.MovementStockDataList.Size = new System.Drawing.Size(960, 407);
             this.MovementStockDataList.TabIndex = 0;
             this.MovementStockDataList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MovementStockDataList_CellClick);
             this.MovementStockDataList.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.MovementStockDataList_CellMouseMove);
@@ -111,9 +111,9 @@
             // 
             // GifLoading
             // 
-            this.GifLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.GifLoading.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.GifLoading.Image = global::DimStock.Properties.Resources.GigLoading;
-            this.GifLoading.Location = new System.Drawing.Point(447, 249);
+            this.GifLoading.Location = new System.Drawing.Point(401, 256);
             this.GifLoading.Name = "GifLoading";
             this.GifLoading.Size = new System.Drawing.Size(169, 167);
             this.GifLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -183,7 +183,7 @@
             // SearchByStockMovimentId
             // 
             this.SearchByStockMovimentId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SearchByStockMovimentId.BeforeTouchSize = new System.Drawing.Size(78, 26);
+            this.SearchByStockMovimentId.BeforeTouchSize = new System.Drawing.Size(136, 27);
             this.SearchByStockMovimentId.BorderColor = System.Drawing.Color.DarkGray;
             this.SearchByStockMovimentId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SearchByStockMovimentId.CanOverrideStyle = true;
@@ -236,7 +236,7 @@
             this.BindingPagination.MovePreviousItem = null;
             this.BindingPagination.Name = "BindingPagination";
             this.BindingPagination.PositionItem = null;
-            this.BindingPagination.Size = new System.Drawing.Size(1023, 25);
+            this.BindingPagination.Size = new System.Drawing.Size(993, 25);
             this.BindingPagination.TabIndex = 179;
             this.BindingPagination.Text = "bindingNavigator1";
             // 
@@ -364,7 +364,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1023, 603);
+            this.ClientSize = new System.Drawing.Size(993, 603);
             this.Controls.Add(this.AddNew);
             this.Controls.Add(this.GifLoading);
             this.Controls.Add(this.UpdateDataList);
