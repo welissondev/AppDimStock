@@ -82,6 +82,65 @@ namespace DimStock.Business
             return accessState;
         }
 
+        public bool CreateNewLogin()
+        {
+
+            if (ValidateEmail(Email) == false)
+                return false;
+
+            using (var connection = new Connection())
+            {
+                var createState = false;
+
+                var sqlCommand = @"INSERT INTO [User]([Name], Email, Login, [PassWord], 
+                PermissionToRegister, PermissionToEdit, PermissionToDelete, PermissionToView, 
+                AllPermissions)VALUES(@Name, @Email, @Login, @PassWord, @PermissionToRegister, 
+                @PermissionToEdit, @PermissionToDelete, @PermissionToView, @AllPermissions)";
+
+                connection.AddParameter("@Name", OleDbType.VarChar, Name);
+                connection.AddParameter("@Email", OleDbType.VarChar, Email);
+                connection.AddParameter("@Login", OleDbType.VarChar, Login);
+                connection.AddParameter("@PassWord", OleDbType.VarChar, PassWord);
+                connection.AddParameter("@PermissionToRegister", OleDbType.Boolean, true);
+                connection.AddParameter("@PermissionToEdit", OleDbType.Boolean, true);
+                connection.AddParameter("@PermissionToDelete", OleDbType.Boolean, true);
+                connection.AddParameter("@PermissionToView", OleDbType.Boolean, true);
+                connection.AddParameter("@AllPermissions", OleDbType.Boolean, true);
+
+                createState = connection.ExecuteNonQuery(sqlCommand) > 0;
+
+                CreateDefaultLogin(connection);
+
+                return createState;
+            }
+        }
+
+        private void CreateDefaultLogin(Connection connection)
+        {
+            Login = "Admin";
+
+            if(CheckIfLoginExists() == true)
+                return;
+
+            connection.ParameterClear();
+            var sqlCommand = @"INSERT INTO [User]([Name], Email, Login, [PassWord], 
+            PermissionToRegister, PermissionToEdit, PermissionToDelete, PermissionToView, 
+            AllPermissions)VALUES(@Name, @Email, @Login, @PassWord, @PermissionToRegister, 
+            @PermissionToEdit, @PermissionToDelete, @PermissionToView, @AllPermissions)";
+
+            connection.AddParameter("@Name", OleDbType.VarChar, "AdminUser");
+            connection.AddParameter("@Email", OleDbType.VarChar, "Admin@admin.com");
+            connection.AddParameter("@Login", OleDbType.VarChar, "Admin");
+            connection.AddParameter("@PassWord", OleDbType.VarChar, "Admin");
+            connection.AddParameter("@PermissionToRegister", OleDbType.Boolean, true);
+            connection.AddParameter("@PermissionToEdit", OleDbType.Boolean, true);
+            connection.AddParameter("@PermissionToDelete", OleDbType.Boolean, true);
+            connection.AddParameter("@PermissionToView", OleDbType.Boolean, true);
+            connection.AddParameter("@AllPermissions", OleDbType.Boolean, true);
+
+            connection.ExecuteNonQuery(sqlCommand);
+        }
+
         public bool Register()
         {
             if (CheckIfLoginExists() == true)
