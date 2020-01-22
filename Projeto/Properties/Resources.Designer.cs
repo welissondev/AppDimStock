@@ -133,6 +133,26 @@ namespace DimStock.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icon_new_bussines_settigs {
+            get {
+                object obj = ResourceManager.GetObject("icon-new-bussines-settigs", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_restoure_bussines_settings {
+            get {
+                object obj = ResourceManager.GetObject("icon-restoure-bussines-settings", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Image_backGroud_UserLogin {
             get {
                 object obj = ResourceManager.GetObject("Image-backGroud-UserLogin", resourceCulture);

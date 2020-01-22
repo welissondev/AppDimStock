@@ -1,5 +1,5 @@
 ﻿using DimStock.Auxiliary;
-using System;
+using DimStock.Properties;
 
 namespace DimStock.Business
 {
@@ -7,7 +7,7 @@ namespace DimStock.Business
     {
         public string GetDirectoryPeth()
         {
-            var peth = AppDomain.CurrentDomain.BaseDirectory.ToString() + @"Images\FotoProdutos\";
+            var peth = Settings.Default.ProductPhotosDirectory + @"\ProductPhotos\";
 
             return peth;
         }

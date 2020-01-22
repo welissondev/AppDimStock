@@ -293,7 +293,8 @@ namespace DimStock.View
                     product.ListOfRecords[i].Supplier,
                     product.ListOfRecords[i].Description,
                     product.ListOfRecords[i].CostPrice,
-                    product.ListOfRecords[i].SalePrice);
+                    product.ListOfRecords[i].SalePrice,
+                    product.ListOfRecords[i].PhotoName);
                 }
 
                 ProductDataList.ClearSelection();
