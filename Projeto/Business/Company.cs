@@ -29,7 +29,7 @@ namespace DimStock.Business
                 bool registerState = false;
 
                 var sqlCommand = @"INSERT INTO Company([Name], CPF_CNPJ, RG_IE, Address, 
-                District, City, [State], Cep, StrieetNumber)VALUES(@Name, @CPF_CNPJ, @RG_IE, 
+                District, City, State, Cep, StrieetNumber)VALUES(@Name, @CPF_CNPJ, @RG_IE, 
                 @Address, @District, @City, @State, @Cep, @StrieetNumber)";
 
                 connection.AddParameter("@Name", OleDbType.VarChar, Name);
