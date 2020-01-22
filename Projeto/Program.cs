@@ -15,7 +15,7 @@ namespace DimStock.View
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainConfigurationForm());
+            Application.Run(new CompanyRegistrationForm());
         }
 
     }

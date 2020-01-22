@@ -135,6 +135,7 @@
     <Compile Include="Auxiliary\CustomDataGridViewOne.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Business\Company.cs" />
     <Compile Include="Business\Connection.cs" />
     <Compile Include="Business\StockDestination.cs" />
     <Compile Include="Business\StockItem.cs" />
@@ -179,12 +180,6 @@
     </Compile>
     <Compile Include="ViewSettings\MainConfigurationForm.Designer.cs">
       <DependentUpon>MainConfigurationForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\ApplicationConfigurationForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\ApplicationConfigurationForm.Designer.cs">
-      <DependentUpon>ApplicationConfigurationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\ReportViewForm.cs">
       <SubType>Form</SubType>
@@ -284,9 +279,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewSettings\MainConfigurationForm.resx">
       <DependentUpon>MainConfigurationForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\ApplicationConfigurationForm.resx">
-      <DependentUpon>ApplicationConfigurationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ReportViewForm.resx">
       <DependentUpon>ReportViewForm.cs</DependentUpon>

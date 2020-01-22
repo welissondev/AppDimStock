@@ -405,6 +405,7 @@
             this.SalvarSettings.TabIndex = 190;
             this.SalvarSettings.Text = "Salvar";
             this.SalvarSettings.UseVisualStyleBackColor = false;
+            this.SalvarSettings.Click += new System.EventHandler(this.SalvarSettings_Click);
             // 
             // CompanyName
             // 
