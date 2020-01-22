@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DimStock.Business;
 using DimStock.Auxiliary;
+using DimStock.View;
 
 namespace DimStock.ViewSettings
 {
@@ -23,6 +24,36 @@ namespace DimStock.ViewSettings
         {
             try
             {
+                if (UserName.Text == string.Empty)
+                {
+                    MessageBox.Show("Informe um nome de usuário!");
+                    return;
+                }
+
+                if (Login.Text == string.Empty)
+                {
+                    MessageBox.Show("Informe um login de acesso!");
+                    return;
+                }
+
+                if (PassWord.Text == string.Empty)
+                {
+                    MessageBox.Show("Informe uma senha!");
+                    return;
+                }
+
+                if (PassWordConfirmation.Text == string.Empty)
+                {
+                    MessageBox.Show("Confirme a senha!");
+                    return;
+                }
+
+                if (PassWord.Text != PassWordConfirmation.Text)
+                {
+                    MessageBox.Show("As senhas não conferem!");
+                    return;
+                }
+
                 var user = new User()
                 {
                     Name = UserName.Text,
@@ -31,9 +62,17 @@ namespace DimStock.ViewSettings
                     PassWord = PassWord.Text,
                 };
 
-                if(user.CreateNewLogin() == false)
+                if (user.CreateNewLogin() == false)
                 {
                     MessageBox.Show(MessageNotifier.Message);
+                    return;
+                }
+
+                Hide();
+                using (var userLogin = new UserLoginForm())
+                {
+                    userLogin.Closed += (s, args) => Close();
+                    userLogin.ShowDialog();
                 }
             }
             catch (Exception ex)
