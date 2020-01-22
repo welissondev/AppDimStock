@@ -69,8 +69,8 @@
             // RestoureConfiguration
             // 
             this.RestoureConfiguration.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.RestoureConfiguration.BackColor = System.Drawing.Color.SeaGreen;
-            this.RestoureConfiguration.color = System.Drawing.Color.SeaGreen;
+            this.RestoureConfiguration.BackColor = System.Drawing.Color.SteelBlue;
+            this.RestoureConfiguration.color = System.Drawing.Color.SteelBlue;
             this.RestoureConfiguration.colorActive = System.Drawing.Color.RoyalBlue;
             this.RestoureConfiguration.Cursor = System.Windows.Forms.Cursors.Hand;
             this.RestoureConfiguration.Font = new System.Drawing.Font("Century Gothic", 15.75F);
@@ -90,8 +90,8 @@
             // 
             this.StartNewConfiguration.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.StartNewConfiguration.AutoSize = true;
-            this.StartNewConfiguration.BackColor = System.Drawing.Color.SeaGreen;
-            this.StartNewConfiguration.color = System.Drawing.Color.SeaGreen;
+            this.StartNewConfiguration.BackColor = System.Drawing.Color.SteelBlue;
+            this.StartNewConfiguration.color = System.Drawing.Color.SteelBlue;
             this.StartNewConfiguration.colorActive = System.Drawing.Color.RoyalBlue;
             this.StartNewConfiguration.Cursor = System.Windows.Forms.Cursors.Hand;
             this.StartNewConfiguration.Font = new System.Drawing.Font("Century Gothic", 15.75F);
@@ -106,6 +106,7 @@
             this.StartNewConfiguration.Name = "StartNewConfiguration";
             this.StartNewConfiguration.Size = new System.Drawing.Size(128, 129);
             this.StartNewConfiguration.TabIndex = 9;
+            this.StartNewConfiguration.Click += new System.EventHandler(this.StartNewConfiguration_Click);
             // 
             // FormNovigationDescription
             // 
@@ -137,6 +138,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(732, 521);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);

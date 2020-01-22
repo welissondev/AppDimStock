@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-
+using DimStock.ViewSettings;
 
 
 namespace DimStock.View
@@ -15,7 +15,7 @@ namespace DimStock.View
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ApplicationConfigurationForm());
+            Application.Run(new MainConfigurationForm());
         }
 
     }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DimStock.Auxiliary;
 
 namespace DimStock.ViewSettings
 {
@@ -15,6 +16,21 @@ namespace DimStock.ViewSettings
         public ConfigurationDefinationForm()
         {
             InitializeComponent();
+        }
+
+        private void StartNewConfiguration_Click(object sender, EventArgs e)
+        {
+            FormAssistant.CloseAllForms();
+
+            var form = new DirectoryDefinationForm
+            {
+                MdiParent = MainConfigurationForm.He,
+                Dock = DockStyle.Fill,
+                FormBorderStyle = FormBorderStyle.None,
+                ShowInTaskbar = false
+            };
+
+            form.Show();
         }
     }
 }
