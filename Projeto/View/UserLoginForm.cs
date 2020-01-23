@@ -68,7 +68,7 @@ namespace DimStock.View
 
         private bool CheckAppConfigurationState()
         {
-            return Settings.Default.ApplicationConfigurationState.Equals(true);
+            return Settings.Default.AppSettingsState.Equals(true);
         }
 
         private void UserLoginForm_Load(object sender, EventArgs e)

@@ -1,14 +1,7 @@
 ﻿using DimStock.Properties;
 using DimStock.Auxiliary;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DimStock.ViewSettings
@@ -54,16 +47,14 @@ namespace DimStock.ViewSettings
 
         private void SaveDefaultDirectory(string path)
         {
-            Settings.Default.ApplicationFileDirectory = path;
-            Settings.Default.ProductPhotosDirectory = path;
-            Settings.Default.CompanyLogoDirectory = path;
+            Settings.Default.MainAppDirectory = path;
             Settings.Default.Save();
         }
 
         private void CopyDataBaseToSelectedPath()
         {
             var directorySource = AppDomain.CurrentDomain.BaseDirectory.ToString() + @"Padrao\dimstock-database.mdb";
-            var directoryPath = Settings.Default.ApplicationFileDirectory + @"\dimstock-database.mdb";
+            var directoryPath = Settings.Default.MainAppDirectory + @"\dimstock-database.mdb";
 
             if (CheckIfFileExists(directoryPath) == false)
             {
@@ -74,29 +65,29 @@ namespace DimStock.ViewSettings
         private void CreateFoldersInDirectory()
         {
             //Cria pasta de backUp do banco de dados
-            var folderDataBaseBackUp = Settings.Default.ApplicationFileDirectory + @"\DataBaseBackUp";
+            var folderDataBaseBackUp = Settings.Default.MainAppDirectory + @"\DataBaseBackUp";
 
             if (CheckIfDirectoryExists(folderDataBaseBackUp) == false)
             {
-                var root = new DirectoryInfo(Settings.Default.ApplicationFileDirectory);
+                var root = new DirectoryInfo(Settings.Default.MainAppDirectory);
                 root.CreateSubdirectory("DataBaseBackUp");
             }
 
             //Cria pasta de fotos dos produtos
-            var folderProductPhotos = Settings.Default.ApplicationFileDirectory + @"\ProductPhotos";
+            var folderProductPhotos = Settings.Default.MainAppDirectory + @"\ProductPhotos";
 
             if (CheckIfDirectoryExists(folderProductPhotos) == false)
             {
-                var root = new DirectoryInfo(Settings.Default.ApplicationFileDirectory);
+                var root = new DirectoryInfo(Settings.Default.MainAppDirectory);
                 root.CreateSubdirectory("ProductPhotos");
             }
 
             //Cria pasta de fotos das logos da empresa
-            var folderCompanyLogo = Settings.Default.ApplicationFileDirectory + @"\CompanyLogo";
+            var folderCompanyLogo = Settings.Default.MainAppDirectory + @"\CompanyLogo";
 
             if (CheckIfDirectoryExists(folderCompanyLogo) == false)
             {
-                var root = new DirectoryInfo(Settings.Default.ApplicationFileDirectory);
+                var root = new DirectoryInfo(Settings.Default.MainAppDirectory);
                 root.CreateSubdirectory("CompanyLogo");
             }
         }
@@ -130,7 +121,7 @@ namespace DimStock.ViewSettings
 
         private void FinalizeSettings()
         {
-            Settings.Default.ApplicationConfigurationState = true;
+            Settings.Default.AppSettingsState = true;
             Settings.Default.Save();
         }
     }

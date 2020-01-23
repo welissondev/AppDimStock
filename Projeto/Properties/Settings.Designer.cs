@@ -26,48 +26,24 @@ namespace DimStock.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string ApplicationFileDirectory {
+        public string MainAppDirectory {
             get {
-                return ((string)(this["ApplicationFileDirectory"]));
+                return ((string)(this["MainAppDirectory"]));
             }
             set {
-                this["ApplicationFileDirectory"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string ProductPhotosDirectory {
-            get {
-                return ((string)(this["ProductPhotosDirectory"]));
-            }
-            set {
-                this["ProductPhotosDirectory"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string CompanyLogoDirectory {
-            get {
-                return ((string)(this["CompanyLogoDirectory"]));
-            }
-            set {
-                this["CompanyLogoDirectory"] = value;
+                this["MainAppDirectory"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool ApplicationConfigurationState {
+        public bool AppSettingsState {
             get {
-                return ((bool)(this["ApplicationConfigurationState"]));
+                return ((bool)(this["AppSettingsState"]));
             }
             set {
-                this["ApplicationConfigurationState"] = value;
+                this["AppSettingsState"] = value;
             }
         }
     }

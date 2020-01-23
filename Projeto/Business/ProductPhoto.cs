@@ -7,7 +7,7 @@ namespace DimStock.Business
     {
         public string GetDirectoryPeth()
         {
-            var peth = Settings.Default.ProductPhotosDirectory + @"\ProductPhotos\";
+            var peth = Settings.Default.MainAppDirectory + @"\ProductPhotos\";
 
             return peth;
         }

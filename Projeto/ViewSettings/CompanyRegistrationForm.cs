@@ -25,7 +25,7 @@ namespace DimStock.ViewSettings
             {
                 var company = new Company
                 {
-                    Name = CompanyName.Text,
+                    Name = Company.Text,
                     CPF_CNPJ = CPF_CNPJ.Text,
                     RG_IE = RG_IE.Text,
                     Address = Address.Text,

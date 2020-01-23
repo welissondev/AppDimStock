@@ -76,7 +76,7 @@ namespace DimStock.ViewSettings
 
                 MainConfigurationForm.He.Close();
 
-                Settings.Default.ApplicationConfigurationState = true;
+                Settings.Default.AppSettingsState = true;
                 Settings.Default.Save();
             }
             catch (Exception ex)

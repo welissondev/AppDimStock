@@ -47,7 +47,7 @@
             this.CPF_CNPJ = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.label8 = new System.Windows.Forms.Label();
             this.SalvarSettings = new Syncfusion.WinForms.Controls.SfButton();
-            this.CompanyName = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.Company = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -59,7 +59,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Address)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RG_IE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CPF_CNPJ)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CompanyName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Company)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -83,7 +83,7 @@
             this.panel1.Controls.Add(this.CPF_CNPJ);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.SalvarSettings);
-            this.panel1.Controls.Add(this.CompanyName);
+            this.panel1.Controls.Add(this.Company);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Location = new System.Drawing.Point(31, 3);
@@ -407,28 +407,28 @@
             this.SalvarSettings.UseVisualStyleBackColor = false;
             this.SalvarSettings.Click += new System.EventHandler(this.SalvarSettings_Click);
             // 
-            // CompanyName
+            // Company
             // 
-            this.CompanyName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.CompanyName.BeforeTouchSize = new System.Drawing.Size(542, 27);
-            this.CompanyName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CompanyName.CanOverrideStyle = true;
-            this.CompanyName.CausesValidation = false;
-            this.CompanyName.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.CompanyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CompanyName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.CompanyName.Location = new System.Drawing.Point(131, 201);
-            this.CompanyName.MaxLength = 50;
-            this.CompanyName.Metrocolor = System.Drawing.Color.DodgerBlue;
-            this.CompanyName.MinimumSize = new System.Drawing.Size(16, 12);
-            this.CompanyName.Multiline = true;
-            this.CompanyName.Name = "CompanyName";
-            this.CompanyName.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
-            this.CompanyName.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
-            this.CompanyName.Size = new System.Drawing.Size(542, 27);
-            this.CompanyName.TabIndex = 189;
-            this.CompanyName.Tag = "";
-            this.CompanyName.ThemeName = "Default";
+            this.Company.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.Company.BeforeTouchSize = new System.Drawing.Size(542, 27);
+            this.Company.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Company.CanOverrideStyle = true;
+            this.Company.CausesValidation = false;
+            this.Company.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.Company.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Company.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.Company.Location = new System.Drawing.Point(131, 201);
+            this.Company.MaxLength = 50;
+            this.Company.Metrocolor = System.Drawing.Color.DodgerBlue;
+            this.Company.MinimumSize = new System.Drawing.Size(16, 12);
+            this.Company.Multiline = true;
+            this.Company.Name = "Company";
+            this.Company.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
+            this.Company.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
+            this.Company.Size = new System.Drawing.Size(542, 27);
+            this.Company.TabIndex = 189;
+            this.Company.Tag = "";
+            this.Company.ThemeName = "Default";
             // 
             // label6
             // 
@@ -474,7 +474,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Address)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RG_IE)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CPF_CNPJ)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CompanyName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Company)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -500,7 +500,7 @@
         private Syncfusion.Windows.Forms.Tools.TextBoxExt CPF_CNPJ;
         private System.Windows.Forms.Label label8;
         private Syncfusion.WinForms.Controls.SfButton SalvarSettings;
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt CompanyName;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt Company;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
     }

@@ -9,7 +9,7 @@ namespace DimStock.Business
     {
         #region Properties 
 
-        private readonly OleDbConnection connection = new OleDbConnection(@"Provider = Microsoft.jet.oledb.4.0; Data Source =" + Settings.Default.ApplicationFileDirectory + @"\dimstock-database.mdb;jet oledb:database password=#admin#");
+        private readonly OleDbConnection connection = new OleDbConnection(@"Provider = Microsoft.jet.oledb.4.0; Data Source =" + Settings.Default.MainAppDirectory + @"\dimstock-database.mdb;jet oledb:database password=#admin#");
         public OleDbCommand Command = new OleDbCommand();
         public OleDbParameter Parameter = new OleDbParameter();
         public OleDbTransaction Transaction;
