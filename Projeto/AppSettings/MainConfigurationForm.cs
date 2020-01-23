@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DimStock.Auxiliary;
-using DimStock.ViewSettings;
+using DimStock.AppSettings;
 
-namespace DimStock.ViewSettings
+namespace DimStock.AppSettings
 {
     public partial class MainConfigurationForm : Form
     {

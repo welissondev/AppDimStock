@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DimStock.Auxiliary;
 
-namespace DimStock.ViewSettings
+namespace DimStock.AppSettings
 {
     public partial class ConfigurationDefinationForm : Form
     {

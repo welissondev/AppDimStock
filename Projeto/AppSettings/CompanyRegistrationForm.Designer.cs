@@ -1,4 +1,4 @@
-﻿namespace DimStock.ViewSettings
+﻿namespace DimStock.AppSettings
 {
     partial class CompanyRegistrationForm
     {

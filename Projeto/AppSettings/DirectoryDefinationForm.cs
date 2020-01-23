@@ -4,7 +4,7 @@ using System;
 using System.IO;
 using System.Windows.Forms;
 
-namespace DimStock.ViewSettings
+namespace DimStock.AppSettings
 {
     public partial class DirectoryDefinationForm : Form
     {

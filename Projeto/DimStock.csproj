@@ -154,34 +154,34 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Auxiliary\ImageAssistant.cs" />
     <Compile Include="Report\ReportProduct.cs" />
-    <Compile Include="ViewSettings\CompanyRegistrationForm.cs">
+    <Compile Include="AppSettings\CompanyRegistrationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ViewSettings\CompanyRegistrationForm.Designer.cs">
+    <Compile Include="AppSettings\CompanyRegistrationForm.Designer.cs">
       <DependentUpon>CompanyRegistrationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewSettings\ConfigurationDefinationForm.cs">
+    <Compile Include="AppSettings\ConfigurationDefinationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ViewSettings\ConfigurationDefinationForm.Designer.cs">
+    <Compile Include="AppSettings\ConfigurationDefinationForm.Designer.cs">
       <DependentUpon>ConfigurationDefinationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewSettings\DirectoryDefinationForm.cs">
+    <Compile Include="AppSettings\DirectoryDefinationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ViewSettings\DirectoryDefinationForm.Designer.cs">
+    <Compile Include="AppSettings\DirectoryDefinationForm.Designer.cs">
       <DependentUpon>DirectoryDefinationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewSettings\LoginRegistrationForm.cs">
+    <Compile Include="AppSettings\LoginRegistrationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ViewSettings\LoginRegistrationForm.Designer.cs">
+    <Compile Include="AppSettings\LoginRegistrationForm.Designer.cs">
       <DependentUpon>LoginRegistrationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewSettings\MainConfigurationForm.cs">
+    <Compile Include="AppSettings\MainConfigurationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ViewSettings\MainConfigurationForm.Designer.cs">
+    <Compile Include="AppSettings\MainConfigurationForm.Designer.cs">
       <DependentUpon>MainConfigurationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\ReportViewForm.cs">
@@ -268,19 +268,19 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ViewSettings\CompanyRegistrationForm.resx">
+    <EmbeddedResource Include="AppSettings\CompanyRegistrationForm.resx">
       <DependentUpon>CompanyRegistrationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ViewSettings\ConfigurationDefinationForm.resx">
+    <EmbeddedResource Include="AppSettings\ConfigurationDefinationForm.resx">
       <DependentUpon>ConfigurationDefinationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ViewSettings\DirectoryDefinationForm.resx">
+    <EmbeddedResource Include="AppSettings\DirectoryDefinationForm.resx">
       <DependentUpon>DirectoryDefinationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ViewSettings\LoginRegistrationForm.resx">
+    <EmbeddedResource Include="AppSettings\LoginRegistrationForm.resx">
       <DependentUpon>LoginRegistrationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ViewSettings\MainConfigurationForm.resx">
+    <EmbeddedResource Include="AppSettings\MainConfigurationForm.resx">
       <DependentUpon>MainConfigurationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ReportViewForm.resx">

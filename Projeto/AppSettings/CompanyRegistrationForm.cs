@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using DimStock.Business;
 using DimStock.Auxiliary;
 
-namespace DimStock.ViewSettings
+namespace DimStock.AppSettings
 {
     public partial class CompanyRegistrationForm : Form
     {

@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using DimStock.Auxiliary;
 using DimStock.Business;
 using DimStock.Properties;
-using DimStock.ViewSettings;
+using DimStock.AppSettings;
 
 namespace DimStock.View
 {

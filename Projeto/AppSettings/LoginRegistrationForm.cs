@@ -12,7 +12,7 @@ using DimStock.Auxiliary;
 using DimStock.View;
 using DimStock.Properties;
 
-namespace DimStock.ViewSettings
+namespace DimStock.AppSettings
 {
     public partial class LoginRegistrationForm : Form
     {
