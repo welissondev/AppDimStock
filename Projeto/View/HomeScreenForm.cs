@@ -77,11 +77,6 @@ namespace DimStock.View
             }
         }
 
-        private void MainMenu_Exit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Close();
-        }
-
         #endregion
 
         #region MenuStrip
@@ -289,6 +284,11 @@ namespace DimStock.View
         {
             ContextMenu_User.Show();
             ContextMenu_User.Location = MousePosition;
+        }
+
+        private void MainMenu_Exit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Close();
         }
 
         #endregion

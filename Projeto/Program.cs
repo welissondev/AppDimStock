@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using DimStock.ViewSettings;
-
 
 namespace DimStock.View
 {
