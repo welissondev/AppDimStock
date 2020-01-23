@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace DimStock.UserForm
+namespace DimStock.UserForms
 {
     static class Program
     {
