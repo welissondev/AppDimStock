@@ -58,5 +58,17 @@ namespace DimStock.Properties {
                 this["CompanyLogoDirectory"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ApplicationConfigurationState {
+            get {
+                return ((bool)(this["ApplicationConfigurationState"]));
+            }
+            set {
+                this["ApplicationConfigurationState"] = value;
+            }
+        }
     }
 }

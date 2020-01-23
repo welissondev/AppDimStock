@@ -62,7 +62,7 @@ namespace DimStock.ViewSettings
 
         private void CopyDataBaseToSelectedPath()
         {
-            var directorySource = AppDomain.CurrentDomain.BaseDirectory.ToString() + @"Padrao\dbestoque.mdb";
+            var directorySource = AppDomain.CurrentDomain.BaseDirectory.ToString() + @"Padrao\dimstock-database.mdb";
             var directoryPath = Settings.Default.ApplicationFileDirectory + @"\dimstock-database.mdb";
 
             if (CheckIfFileExists(directoryPath) == false)
@@ -126,6 +126,12 @@ namespace DimStock.ViewSettings
 
                 return string.Empty;
             }
+        }
+
+        private void FinalizeSettings()
+        {
+            Settings.Default.ApplicationConfigurationState = true;
+            Settings.Default.Save();
         }
     }
 }
