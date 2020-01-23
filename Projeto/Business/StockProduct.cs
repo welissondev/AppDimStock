@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using DimStock.Report;
+using DimStock.Reports;
 using DimStock.Auxiliarys;
 using System;
 using System.Data;

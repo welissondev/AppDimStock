@@ -1,7 +1,7 @@
 ﻿using DimStock.Business;
 using System.Collections.Generic;
 
-namespace DimStock.Report
+namespace DimStock.Reports
 {
     public class ReportStockProduct 
     {

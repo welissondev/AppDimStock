@@ -153,7 +153,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Auxiliarys\ImageAssistant.cs" />
-    <Compile Include="Report\ReportProduct.cs" />
+    <Compile Include="Reports\ReportProduct.cs" />
     <Compile Include="UserForm\AppConfigCompanyRegistrationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,7 +184,7 @@
     <Compile Include="UserForm\AppConfigHomeScreem.Designer.cs">
       <DependentUpon>AppConfigHomeScreem.cs</DependentUpon>
     </Compile>
-    <Compile Include="Report\ReportStockProduct.cs" />
+    <Compile Include="Reports\ReportStockProduct.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="UserForm\HomeScreenForm.cs">
       <SubType>Form</SubType>
@@ -283,8 +283,8 @@
     <EmbeddedResource Include="UserForm\AppConfigHomeScreem.resx">
       <DependentUpon>AppConfigHomeScreem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report\StockProduct.rdlc" />
-    <EmbeddedResource Include="Report\Product.rdlc" />
+    <EmbeddedResource Include="Reports\StockProduct.rdlc" />
+    <EmbeddedResource Include="Reports\Product.rdlc" />
     <EmbeddedResource Include="UserForm\HomeScreenForm.resx">
       <DependentUpon>HomeScreenForm.cs</DependentUpon>
     </EmbeddedResource>
