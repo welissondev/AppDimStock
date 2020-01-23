@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DimStock.Business;
 using DimStock.Auxiliary;
 using DimStock.View;
+using DimStock.Properties;
 
 namespace DimStock.ViewSettings
 {
@@ -68,12 +69,15 @@ namespace DimStock.ViewSettings
                     return;
                 }
 
-                Hide();
-                using (var userLogin = new UserLoginForm())
-                {
-                    userLogin.Closed += (s, args) => Close();
-                    userLogin.ShowDialog();
-                }
+                Close();
+
+               
+                UserLoginForm.He.Show();
+
+                MainConfigurationForm.He.Close();
+
+                Settings.Default.ApplicationConfigurationState = true;
+                Settings.Default.Save();
             }
             catch (Exception ex)
             {

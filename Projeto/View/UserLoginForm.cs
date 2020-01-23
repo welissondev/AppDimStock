@@ -2,6 +2,8 @@
 using System.Windows.Forms;
 using DimStock.Auxiliary;
 using DimStock.Business;
+using DimStock.Properties;
+using DimStock.ViewSettings;
 
 namespace DimStock.View
 {
@@ -12,6 +14,12 @@ namespace DimStock.View
         {
             InitializeComponent();
         }
+        #endregion
+
+        #region Get e Set
+
+        public static UserLoginForm He { get; set; }
+
         #endregion
 
         #region Buttons
@@ -57,5 +65,22 @@ namespace DimStock.View
         }
 
         #endregion
+
+        private bool CheckAppConfigurationState()
+        {
+            return Settings.Default.ApplicationConfigurationState.Equals(true);
+        }
+
+        private void UserLoginForm_Load(object sender, EventArgs e)
+        {
+            He = this;
+
+            if(CheckAppConfigurationState() == false)
+            {
+                Hide();
+                var form = new MainConfigurationForm();
+                form.Show();
+            }
+        }
     }
 }

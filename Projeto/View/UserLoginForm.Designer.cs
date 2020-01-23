@@ -276,6 +276,7 @@
             this.Name = "UserLoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.UserLoginForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PassWord)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Login)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBackGroudUserLogin)).EndInit();
