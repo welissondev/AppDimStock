@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using DimStock.Report;
-using DimStock.Auxiliary;
+using DimStock.Auxiliarys;
 using System;
 using System.Data;
 using System.Data.OleDb;

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DimStock.Business;
-using DimStock.Auxiliary;
+using DimStock.Auxiliarys;
 
 namespace DimStock.UserForm
 {

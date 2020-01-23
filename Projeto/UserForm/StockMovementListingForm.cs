@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using DimStock.Business;
-using DimStock.Auxiliary;
+using DimStock.Auxiliarys;
 using DimStock.Properties;
 using System.Collections.Generic;
 using Syncfusion.Windows.Forms.Tools;

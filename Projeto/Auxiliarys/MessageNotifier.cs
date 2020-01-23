@@ -1,4 +1,4 @@
-﻿namespace DimStock.Auxiliary
+﻿namespace DimStock.Auxiliarys
 {
     /// <summary>
     /// Uma classe statica que recebe uma resposta do model sobre á ultima operação solicitada!

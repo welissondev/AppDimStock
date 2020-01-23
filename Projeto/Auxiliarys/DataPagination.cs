@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DimStock.Auxiliary
+namespace DimStock.Auxiliarys
 {
     public class DataPagination
     {

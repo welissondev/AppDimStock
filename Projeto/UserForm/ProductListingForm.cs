@@ -3,7 +3,7 @@ using Syncfusion.Windows.Forms.Tools;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using DimStock.Business;
-using DimStock.Auxiliary;
+using DimStock.Auxiliarys;
 using DimStock.Properties;
 
 namespace DimStock.UserForm

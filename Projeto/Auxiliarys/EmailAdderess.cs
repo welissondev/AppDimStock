@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace DimStock.Auxiliary
+namespace DimStock.Auxiliarys
 {
     public static class EmailAdderess
     {

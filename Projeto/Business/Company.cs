@@ -4,7 +4,7 @@ using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DimStock.Auxiliary;
+using DimStock.Auxiliarys;
 
 namespace DimStock.Business
 {

@@ -1,5 +1,5 @@
 ﻿using DimStock.Properties;
-using DimStock.Auxiliary;
+using DimStock.Auxiliarys;
 using System;
 using System.IO;
 using System.Windows.Forms;

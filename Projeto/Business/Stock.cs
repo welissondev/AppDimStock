@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
-using DimStock.Auxiliary;
+using DimStock.Auxiliarys;
 
 namespace DimStock.Business
 {

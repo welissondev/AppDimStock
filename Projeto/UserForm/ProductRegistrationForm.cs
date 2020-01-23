@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using Syncfusion.Windows.Forms.Tools;
 using DimStock.Business;
-using DimStock.Auxiliary;
+using DimStock.Auxiliarys;
 using DimStock.Properties;
 using System.IO;
 

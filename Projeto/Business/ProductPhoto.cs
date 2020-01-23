@@ -1,4 +1,4 @@
-﻿using DimStock.Auxiliary;
+﻿using DimStock.Auxiliarys;
 using DimStock.Properties;
 
 namespace DimStock.Business

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DimStock.Auxiliary;
+using DimStock.Auxiliarys;
 using DimStock.UserForm;
 
 namespace DimStock.UserForm

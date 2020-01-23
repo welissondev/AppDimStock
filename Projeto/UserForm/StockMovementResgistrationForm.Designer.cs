@@ -73,7 +73,7 @@
             this.StockMovementMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MovementEntrie_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MovementOutPut_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MainDataList = new DimStock.Auxiliary.CustomDataGridViewOne();
+            this.MainDataList = new DimStock.Auxiliarys.CustomDataGridViewOne();
             ((System.ComponentModel.ISupportInitialize)(this.Quantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TotalValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UnitaryValue)).BeginInit();
@@ -856,7 +856,7 @@
         public System.Windows.Forms.Label OperationType;
         private System.Windows.Forms.LinkLabel ClearQueryFields;
         private Syncfusion.WinForms.Controls.SfButton Delete;
-        public Auxiliary.CustomDataGridViewOne MainDataList;
+        public Auxiliarys.CustomDataGridViewOne MainDataList;
         public System.Windows.Forms.Label LblStockDestination;
         private System.Windows.Forms.ComboBox StockDestinationList;
         private System.Windows.Forms.LinkLabel AddNewStockDestination;

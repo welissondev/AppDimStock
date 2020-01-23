@@ -40,7 +40,7 @@
             this.ReferenceTitle = new System.Windows.Forms.Label();
             this.SizeTitle = new System.Windows.Forms.Label();
             this.FrameProductPhoto = new System.Windows.Forms.GroupBox();
-            this.ProductPhoto = new DimStock.Auxiliary.CustomPictureBoxOne();
+            this.ProductPhoto = new DimStock.Auxiliarys.CustomPictureBoxOne();
             this.RegisterNew = new Syncfusion.WinForms.Controls.SfButton();
             this.CodeTitle = new System.Windows.Forms.Label();
             this.MinStockTitle = new System.Windows.Forms.Label();
@@ -571,7 +571,7 @@
         public Syncfusion.Windows.Forms.Tools.IntegerTextBox ProductSize;
         public Syncfusion.Windows.Forms.Tools.TextBoxExt Supplier;
         private System.Windows.Forms.Label SupplierTitle;
-        public DimStock.Auxiliary.CustomPictureBoxOne ProductPhoto;
+        public DimStock.Auxiliarys.CustomPictureBoxOne ProductPhoto;
         public Syncfusion.Windows.Forms.Tools.IntegerTextBox ProductCode;
         public Syncfusion.Windows.Forms.Tools.IntegerTextBox ProductReference;
     }

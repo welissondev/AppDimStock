@@ -126,16 +126,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Auxiliary\DataGridLealt.cs" />
-    <Compile Include="Auxiliary\DataPagination.cs" />
-    <Compile Include="Auxiliary\EmailAdderess.cs" />
-    <Compile Include="Auxiliary\ExceptionAssistant.cs" />
-    <Compile Include="Auxiliary\FormAssistant.cs" />
-    <Compile Include="Auxiliary\LoginAssistant.cs" />
-    <Compile Include="Auxiliary\CustomPictureBoxOne.cs">
+    <Compile Include="Auxiliarys\DataGridLealt.cs" />
+    <Compile Include="Auxiliarys\DataPagination.cs" />
+    <Compile Include="Auxiliarys\EmailAdderess.cs" />
+    <Compile Include="Auxiliarys\ExceptionAssistant.cs" />
+    <Compile Include="Auxiliarys\FormAssistant.cs" />
+    <Compile Include="Auxiliarys\LoginAssistant.cs" />
+    <Compile Include="Auxiliarys\CustomPictureBoxOne.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Auxiliary\CustomDataGridViewOne.cs">
+    <Compile Include="Auxiliarys\CustomDataGridViewOne.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Business\Company.cs" />
@@ -144,7 +144,7 @@
     <Compile Include="Business\StockItem.cs" />
     <Compile Include="Business\StockProduct.cs" />
     <Compile Include="Business\StockMovement.cs" />
-    <Compile Include="Auxiliary\MessageNotifier.cs" />
+    <Compile Include="Auxiliarys\MessageNotifier.cs" />
     <Compile Include="Business\Product.cs" />
     <Compile Include="Business\ProductPhoto.cs" />
     <Compile Include="Business\Stock.cs" />
@@ -152,37 +152,37 @@
     <Compile Include="Business\UserHistory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Auxiliary\ImageAssistant.cs" />
+    <Compile Include="Auxiliarys\ImageAssistant.cs" />
     <Compile Include="Report\ReportProduct.cs" />
-    <Compile Include="UserForm\CompanyRegistrationForm.cs">
+    <Compile Include="UserForm\AppConfigCompanyRegistrationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserForm\CompanyRegistrationForm.Designer.cs">
-      <DependentUpon>CompanyRegistrationForm.cs</DependentUpon>
+    <Compile Include="UserForm\AppConfigCompanyRegistrationForm.Designer.cs">
+      <DependentUpon>AppConfigCompanyRegistrationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserForm\ConfigurationDefinationForm.cs">
+    <Compile Include="UserForm\AppConfigDefinationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserForm\ConfigurationDefinationForm.Designer.cs">
-      <DependentUpon>ConfigurationDefinationForm.cs</DependentUpon>
+    <Compile Include="UserForm\AppConfigDefinationForm.Designer.cs">
+      <DependentUpon>AppConfigDefinationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserForm\DirectoryDefinationForm.cs">
+    <Compile Include="UserForm\AppConfigDirectoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserForm\DirectoryDefinationForm.Designer.cs">
-      <DependentUpon>DirectoryDefinationForm.cs</DependentUpon>
+    <Compile Include="UserForm\AppConfigDirectoryForm.Designer.cs">
+      <DependentUpon>AppConfigDirectoryForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserForm\LoginRegistrationForm.cs">
+    <Compile Include="UserForm\AppConfigUserRegistrationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserForm\LoginRegistrationForm.Designer.cs">
-      <DependentUpon>LoginRegistrationForm.cs</DependentUpon>
+    <Compile Include="UserForm\AppConfigUserRegistrationForm.Designer.cs">
+      <DependentUpon>AppConfigUserRegistrationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserForm\MainConfigurationForm.cs">
+    <Compile Include="UserForm\AppConfigHomeScreem.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserForm\MainConfigurationForm.Designer.cs">
-      <DependentUpon>MainConfigurationForm.cs</DependentUpon>
+    <Compile Include="UserForm\AppConfigHomeScreem.Designer.cs">
+      <DependentUpon>AppConfigHomeScreem.cs</DependentUpon>
     </Compile>
     <Compile Include="Report\ReportStockProduct.cs" />
     <Compile Include="Settings.cs" />
@@ -268,20 +268,20 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UserForm\CompanyRegistrationForm.resx">
-      <DependentUpon>CompanyRegistrationForm.cs</DependentUpon>
+    <EmbeddedResource Include="UserForm\AppConfigCompanyRegistrationForm.resx">
+      <DependentUpon>AppConfigCompanyRegistrationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserForm\ConfigurationDefinationForm.resx">
-      <DependentUpon>ConfigurationDefinationForm.cs</DependentUpon>
+    <EmbeddedResource Include="UserForm\AppConfigDefinationForm.resx">
+      <DependentUpon>AppConfigDefinationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserForm\DirectoryDefinationForm.resx">
-      <DependentUpon>DirectoryDefinationForm.cs</DependentUpon>
+    <EmbeddedResource Include="UserForm\AppConfigDirectoryForm.resx">
+      <DependentUpon>AppConfigDirectoryForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserForm\LoginRegistrationForm.resx">
-      <DependentUpon>LoginRegistrationForm.cs</DependentUpon>
+    <EmbeddedResource Include="UserForm\AppConfigUserRegistrationForm.resx">
+      <DependentUpon>AppConfigUserRegistrationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserForm\MainConfigurationForm.resx">
-      <DependentUpon>MainConfigurationForm.cs</DependentUpon>
+    <EmbeddedResource Include="UserForm\AppConfigHomeScreem.resx">
+      <DependentUpon>AppConfigHomeScreem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\StockProduct.rdlc" />
     <EmbeddedResource Include="Report\Product.rdlc" />

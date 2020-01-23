@@ -1,4 +1,4 @@
-﻿namespace DimStock.Auxiliary
+﻿namespace DimStock.Auxiliarys
 {
 
     /// <summary>

@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using Bunifu.Framework.UI;
 using Syncfusion.Windows.Forms.Tools;
-using DimStock.Auxiliary;
+using DimStock.Auxiliarys;
 using DimStock.Business;
 
 namespace DimStock.UserForm

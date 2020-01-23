@@ -1,5 +1,5 @@
 ﻿using Syncfusion.Windows.Forms.Tools;
-using DimStock.Auxiliary;
+using DimStock.Auxiliarys;
 using DimStock.Business;
 using DimStock.Properties;
 using System;

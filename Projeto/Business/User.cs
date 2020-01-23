@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
 using System.Linq;
-using DimStock.Auxiliary;
+using DimStock.Auxiliarys;
 
 namespace DimStock.Business
 {

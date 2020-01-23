@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace DimStock.Auxiliary
+namespace DimStock.Auxiliarys
 {
     public static class ExceptionAssistant
     {

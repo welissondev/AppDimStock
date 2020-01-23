@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using DimStock.Auxiliary;
+using DimStock.Auxiliarys;
 using DimStock.Business;
 
 namespace DimStock.UserForm

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DimStock.Auxiliary
+namespace DimStock.Auxiliarys
 {
     public static class FormAssistant
     {
