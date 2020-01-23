@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using Microsoft.Reporting.WinForms;
 
-namespace DimStock.View
+namespace DimStock.UserForm
 {
     public partial class ReportViewForm : Form
     {

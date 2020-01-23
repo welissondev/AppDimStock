@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace DimStock.View
+namespace DimStock.UserForm
 {
     public partial class StockListingForm : Form
     {

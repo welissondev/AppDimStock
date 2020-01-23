@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace DimStock.View
+namespace DimStock.UserForm
 {
     public partial class StockMovementRegistrationForm : Form
     {

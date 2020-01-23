@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using Syncfusion.Windows.Forms.Tools;
 using Syncfusion.WinForms.ListView;
 
-namespace DimStock.View
+namespace DimStock.UserForm
 {
     public partial class StockMovementListingForm : Form
     {

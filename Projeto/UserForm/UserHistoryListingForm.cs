@@ -5,7 +5,7 @@ using DimStock.Auxiliary;
 using DimStock.Business;
 using Syncfusion.Windows.Forms.Tools;
 
-namespace DimStock.View
+namespace DimStock.UserForm
 {
     public partial class UserHistoryListingForm : Form
     {

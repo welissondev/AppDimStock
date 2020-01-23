@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using DimStock.Auxiliary;
 using DimStock.Business;
 
-namespace DimStock.View
+namespace DimStock.UserForm
 {
     public partial class StockDestinationRegistrationForm : Form
     {

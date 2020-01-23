@@ -5,7 +5,7 @@ using DimStock.Business;
 using DimStock.Properties;
 using DimStock.AppSettings;
 
-namespace DimStock.View
+namespace DimStock.UserForm
 {
     public partial class UserLoginForm : Form
     {

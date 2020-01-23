@@ -5,7 +5,7 @@ using Syncfusion.Windows.Forms.Tools;
 using DimStock.Auxiliary;
 using DimStock.Business;
 
-namespace DimStock.View
+namespace DimStock.UserForm
 {
     public partial class UserResgistrationForm : Form
     {

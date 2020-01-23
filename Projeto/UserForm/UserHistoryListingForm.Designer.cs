@@ -1,4 +1,4 @@
-﻿namespace DimStock.View
+﻿namespace DimStock.UserForm
 {
     partial class UserHistoryListingForm
     {

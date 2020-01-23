@@ -7,7 +7,7 @@ using DimStock.Auxiliary;
 using DimStock.Properties;
 using System.IO;
 
-namespace DimStock.View
+namespace DimStock.UserForm
 {
     public partial class ProductRegistrationForm : Form
     {

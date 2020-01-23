@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DimStock.Business;
 using DimStock.Auxiliary;
-using DimStock.View;
+using DimStock.UserForm;
 using DimStock.Properties;
 
 namespace DimStock.AppSettings

@@ -6,7 +6,7 @@ using DimStock.Business;
 using DimStock.Auxiliary;
 using DimStock.Properties;
 
-namespace DimStock.View
+namespace DimStock.UserForm
 {
     public partial class ProductListingForm : Form
     {
