@@ -10,11 +10,11 @@ using System.Windows.Forms;
 using DimStock.Business;
 using DimStock.Auxiliary;
 
-namespace DimStock.AppSettings
+namespace DimStock.UserForm
 {
-    public partial class CompanyRegistrationForm : Form
+    public partial class AppConfigCompanyRegistrationForm : Form
     {
-        public CompanyRegistrationForm()
+        public AppConfigCompanyRegistrationForm()
         {
             InitializeComponent();
         }
@@ -38,9 +38,9 @@ namespace DimStock.AppSettings
 
                 if (company.Register() == true)
                 {
-                    var form = new LoginRegistrationForm()
+                    var form = new AppConfigUserRegistrationForm()
                     {
-                        MdiParent = MainConfigurationForm.He,
+                        MdiParent = AppConfigHomeScreem.He,
                         FormBorderStyle = FormBorderStyle.None,
                         Dock = DockStyle.Fill,
                         ShowInTaskbar = false

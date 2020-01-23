@@ -4,11 +4,11 @@ using System;
 using System.IO;
 using System.Windows.Forms;
 
-namespace DimStock.AppSettings
+namespace DimStock.UserForm
 {
-    public partial class DirectoryDefinationForm : Form
+    public partial class AppConfigDirectoryForm : Form
     {
-        public DirectoryDefinationForm()
+        public AppConfigDirectoryForm()
         {
             InitializeComponent();
         }
@@ -29,9 +29,9 @@ namespace DimStock.AppSettings
                 CreateFoldersInDirectory();
 
                 FormAssistant.CloseAllForms();
-                var form = new CompanyRegistrationForm()
+                var form = new AppConfigCompanyRegistrationForm()
                 {
-                    MdiParent = MainConfigurationForm.He,
+                    MdiParent = AppConfigHomeScreem.He,
                     FormBorderStyle = FormBorderStyle.None,
                     Dock = DockStyle.Fill,
                     ShowInTaskbar = false

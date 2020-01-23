@@ -12,11 +12,11 @@ using DimStock.Auxiliary;
 using DimStock.UserForm;
 using DimStock.Properties;
 
-namespace DimStock.AppSettings
+namespace DimStock.UserForm
 {
-    public partial class LoginRegistrationForm : Form
+    public partial class AppConfigUserRegistrationForm : Form
     {
-        public LoginRegistrationForm()
+        public AppConfigUserRegistrationForm()
         {
             InitializeComponent();
         }
@@ -74,7 +74,7 @@ namespace DimStock.AppSettings
                
                 UserLoginForm.He.Show();
 
-                MainConfigurationForm.He.Close();
+                AppConfigHomeScreem.He.Close();
 
                 Settings.Default.AppSettingsState = true;
                 Settings.Default.Save();

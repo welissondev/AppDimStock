@@ -1,6 +1,6 @@
-﻿namespace DimStock.AppSettings
+﻿namespace DimStock.UserForm
 {
-    partial class ConfigurationDefinationForm
+    partial class AppConfigDefinationForm
     {
         /// <summary>
         /// Required designer variable.

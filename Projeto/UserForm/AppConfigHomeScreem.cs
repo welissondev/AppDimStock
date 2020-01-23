@@ -8,15 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DimStock.Auxiliary;
-using DimStock.AppSettings;
+using DimStock.UserForm;
 
-namespace DimStock.AppSettings
+namespace DimStock.UserForm
 {
-    public partial class MainConfigurationForm : Form
+    public partial class AppConfigHomeScreem : Form
     {
-        public static MainConfigurationForm He {get;set;}
+        public static AppConfigHomeScreem He {get;set;}
 
-        public MainConfigurationForm()
+        public AppConfigHomeScreem()
         {
             InitializeComponent();
         }
@@ -27,7 +27,7 @@ namespace DimStock.AppSettings
 
             this.WindowState = FormWindowState.Maximized;
 
-            var form = new ConfigurationDefinationForm
+            var form = new AppConfigDefinationForm
             {
                 FormBorderStyle = FormBorderStyle.None,
                 MdiParent = this,

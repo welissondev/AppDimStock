@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using DimStock.Auxiliary;
 using DimStock.Business;
 using DimStock.Properties;
-using DimStock.AppSettings;
+using DimStock.UserForm;
 
 namespace DimStock.UserForm
 {
@@ -78,7 +78,7 @@ namespace DimStock.UserForm
             if(CheckAppConfigurationState() == false)
             {
                 Hide();
-                var form = new MainConfigurationForm();
+                var form = new AppConfigHomeScreem();
                 form.Show();
             }
         }

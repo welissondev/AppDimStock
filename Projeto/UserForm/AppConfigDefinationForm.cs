@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DimStock.Auxiliary;
 
-namespace DimStock.AppSettings
+namespace DimStock.UserForm
 {
-    public partial class ConfigurationDefinationForm : Form
+    public partial class AppConfigDefinationForm : Form
     {
-        public ConfigurationDefinationForm()
+        public AppConfigDefinationForm()
         {
             InitializeComponent();
         }
@@ -22,9 +22,9 @@ namespace DimStock.AppSettings
         {
             FormAssistant.CloseAllForms();
 
-            var form = new DirectoryDefinationForm
+            var form = new AppConfigDirectoryForm
             {
-                MdiParent = MainConfigurationForm.He,
+                MdiParent = AppConfigHomeScreem.He,
                 Dock = DockStyle.Fill,
                 FormBorderStyle = FormBorderStyle.None,
                 ShowInTaskbar = false

@@ -1,6 +1,6 @@
-﻿namespace DimStock.AppSettings
+﻿namespace DimStock.UserForm
 {
-    partial class LoginRegistrationForm
+    partial class AppConfigUserRegistrationForm
     {
         /// <summary>
         /// Required designer variable.
