@@ -67,6 +67,12 @@ namespace DimStock.UserForms
         private void UserLoginForm_Load(object sender, EventArgs e)
         {
             He = this;
+
+            if (AppConfigDirectory.GetAppSettingsState() == false)
+            {
+                Hide();
+                AppConfigForm.ShowForm();
+            }
         }
 
         public static void ShowForm()

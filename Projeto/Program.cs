@@ -1,7 +1,5 @@
-﻿using DimStock.Properties;
-using System;
+﻿using System;
 using System.Windows.Forms;
-using DimStock.Business;
 
 namespace DimStock.UserForms
 {
@@ -17,10 +15,7 @@ namespace DimStock.UserForms
 
             Application.SetCompatibleTextRenderingDefault(false);
 
-
-            Application.Run(new AppConfigForm());
-
+            Application.Run(new UserLoginForm());
         }
-
     }
 }
