@@ -33,7 +33,7 @@ namespace DimStock.Business
         {
             var photo = new AxlFile();
 
-            var fileFound = photo.CheckIfExtits(path);
+            var fileFound = photo.CheckIfExists(path);
 
             return fileFound;
         }
@@ -42,7 +42,7 @@ namespace DimStock.Business
         {
             var photo = new AxlFile();
 
-            if (photo.CheckIfExtits(path) == true)
+            if (photo.CheckIfExists(path) == true)
                 photo.DeleteFromDirectory(path);
         }
     }

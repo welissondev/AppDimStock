@@ -63,6 +63,12 @@
             this.Company = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.PageCompanyLogo = new System.Windows.Forms.TabPage();
+            this.ChooseLogo = new Syncfusion.WinForms.Controls.SfButton();
+            this.CompanyLogoPath = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.CompanyLogoImage = new System.Windows.Forms.PictureBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.PageLogin = new System.Windows.Forms.TabPage();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -77,12 +83,6 @@
             this.EmailTitle = new System.Windows.Forms.Label();
             this.UserName = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.NameTitle = new System.Windows.Forms.Label();
-            this.PageCompanyLogo = new System.Windows.Forms.TabPage();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.LogoImage = new System.Windows.Forms.PictureBox();
-            this.ChooseLogo = new Syncfusion.WinForms.Controls.SfButton();
-            this.LogoPath = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.MainTabControl.SuspendLayout();
             this.PageConfigType.SuspendLayout();
             this.PageChooseDirectory.SuspendLayout();
@@ -97,15 +97,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.RG_IE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CPF_CNPJ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Company)).BeginInit();
+            this.PageCompanyLogo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CompanyLogoPath)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CompanyLogoImage)).BeginInit();
             this.PageLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PassWordConfirmation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PassWord)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Login)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Email)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserName)).BeginInit();
-            this.PageCompanyLogo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.LogoImage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.LogoPath)).BeginInit();
             this.SuspendLayout();
             // 
             // MainTabControl
@@ -116,7 +116,7 @@
             this.MainTabControl.Controls.Add(this.PageCompany);
             this.MainTabControl.Controls.Add(this.PageCompanyLogo);
             this.MainTabControl.Controls.Add(this.PageLogin);
-            this.MainTabControl.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MainTabControl.Font = new System.Drawing.Font("Corbel", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainTabControl.Location = new System.Drawing.Point(37, 9);
             this.MainTabControl.Name = "MainTabControl";
             this.MainTabControl.SelectedIndex = 0;
@@ -134,7 +134,7 @@
             this.PageConfigType.Location = new System.Drawing.Point(4, 27);
             this.PageConfigType.Name = "PageConfigType";
             this.PageConfigType.Padding = new System.Windows.Forms.Padding(3);
-            this.PageConfigType.Size = new System.Drawing.Size(888, 828);
+            this.PageConfigType.Size = new System.Drawing.Size(888, 644);
             this.PageConfigType.TabIndex = 0;
             this.PageConfigType.Text = "TIPO";
             this.PageConfigType.UseVisualStyleBackColor = true;
@@ -292,7 +292,7 @@
             // 
             this.DataBasePath.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.DataBasePath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.DataBasePath.BeforeTouchSize = new System.Drawing.Size(497, 27);
+            this.DataBasePath.BeforeTouchSize = new System.Drawing.Size(609, 26);
             this.DataBasePath.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.DataBasePath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.DataBasePath.CanOverrideStyle = true;
@@ -377,7 +377,7 @@
             // 
             this.StrieetNumber.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.StrieetNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.StrieetNumber.BeforeTouchSize = new System.Drawing.Size(497, 27);
+            this.StrieetNumber.BeforeTouchSize = new System.Drawing.Size(609, 26);
             this.StrieetNumber.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.StrieetNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.StrieetNumber.CanOverrideStyle = true;
@@ -416,7 +416,7 @@
             // 
             this.Cep.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Cep.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.Cep.BeforeTouchSize = new System.Drawing.Size(497, 27);
+            this.Cep.BeforeTouchSize = new System.Drawing.Size(609, 26);
             this.Cep.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.Cep.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Cep.CanOverrideStyle = true;
@@ -455,7 +455,7 @@
             // 
             this.State.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.State.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.State.BeforeTouchSize = new System.Drawing.Size(497, 27);
+            this.State.BeforeTouchSize = new System.Drawing.Size(609, 26);
             this.State.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.State.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.State.CanOverrideStyle = true;
@@ -494,7 +494,7 @@
             // 
             this.City.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.City.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.City.BeforeTouchSize = new System.Drawing.Size(497, 27);
+            this.City.BeforeTouchSize = new System.Drawing.Size(609, 26);
             this.City.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.City.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.City.CanOverrideStyle = true;
@@ -533,7 +533,7 @@
             // 
             this.District.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.District.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.District.BeforeTouchSize = new System.Drawing.Size(497, 27);
+            this.District.BeforeTouchSize = new System.Drawing.Size(609, 26);
             this.District.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.District.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.District.CanOverrideStyle = true;
@@ -572,7 +572,7 @@
             // 
             this.Address.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Address.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.Address.BeforeTouchSize = new System.Drawing.Size(497, 27);
+            this.Address.BeforeTouchSize = new System.Drawing.Size(609, 26);
             this.Address.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.Address.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Address.CanOverrideStyle = true;
@@ -611,7 +611,7 @@
             // 
             this.RG_IE.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.RG_IE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.RG_IE.BeforeTouchSize = new System.Drawing.Size(497, 27);
+            this.RG_IE.BeforeTouchSize = new System.Drawing.Size(609, 26);
             this.RG_IE.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.RG_IE.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.RG_IE.CanOverrideStyle = true;
@@ -650,7 +650,7 @@
             // 
             this.CPF_CNPJ.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.CPF_CNPJ.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.CPF_CNPJ.BeforeTouchSize = new System.Drawing.Size(497, 27);
+            this.CPF_CNPJ.BeforeTouchSize = new System.Drawing.Size(609, 26);
             this.CPF_CNPJ.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.CPF_CNPJ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CPF_CNPJ.CanOverrideStyle = true;
@@ -714,7 +714,7 @@
             // 
             this.Company.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Company.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.Company.BeforeTouchSize = new System.Drawing.Size(497, 27);
+            this.Company.BeforeTouchSize = new System.Drawing.Size(609, 26);
             this.Company.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.Company.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Company.CanOverrideStyle = true;
@@ -762,6 +762,111 @@
             this.label7.Text = "Esses dados serão arquivados no seu banco de dados, serão mantidos apenas para fi" +
     "ns de configuração no sistema";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // PageCompanyLogo
+            // 
+            this.PageCompanyLogo.Controls.Add(this.ChooseLogo);
+            this.PageCompanyLogo.Controls.Add(this.CompanyLogoPath);
+            this.PageCompanyLogo.Controls.Add(this.CompanyLogoImage);
+            this.PageCompanyLogo.Controls.Add(this.label19);
+            this.PageCompanyLogo.Controls.Add(this.label20);
+            this.PageCompanyLogo.Location = new System.Drawing.Point(4, 27);
+            this.PageCompanyLogo.Name = "PageCompanyLogo";
+            this.PageCompanyLogo.Padding = new System.Windows.Forms.Padding(3);
+            this.PageCompanyLogo.Size = new System.Drawing.Size(888, 644);
+            this.PageCompanyLogo.TabIndex = 4;
+            this.PageCompanyLogo.Text = "LOGO";
+            this.PageCompanyLogo.UseVisualStyleBackColor = true;
+            // 
+            // ChooseLogo
+            // 
+            this.ChooseLogo.AccessibleName = "Button";
+            this.ChooseLogo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ChooseLogo.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.ChooseLogo.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChooseLogo.ForeColor = System.Drawing.Color.White;
+            this.ChooseLogo.Location = new System.Drawing.Point(656, 457);
+            this.ChooseLogo.Name = "ChooseLogo";
+            this.ChooseLogo.Size = new System.Drawing.Size(49, 27);
+            this.ChooseLogo.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.ChooseLogo.Style.DisabledBackColor = System.Drawing.Color.MediumSeaGreen;
+            this.ChooseLogo.Style.DisabledForeColor = System.Drawing.Color.MediumSeaGreen;
+            this.ChooseLogo.Style.FocusedBackColor = System.Drawing.Color.MediumSeaGreen;
+            this.ChooseLogo.Style.FocusedForeColor = System.Drawing.Color.White;
+            this.ChooseLogo.Style.ForeColor = System.Drawing.Color.White;
+            this.ChooseLogo.Style.HoverBackColor = System.Drawing.Color.MediumSeaGreen;
+            this.ChooseLogo.Style.HoverForeColor = System.Drawing.Color.Black;
+            this.ChooseLogo.Style.PressedBackColor = System.Drawing.Color.MediumSeaGreen;
+            this.ChooseLogo.Style.PressedForeColor = System.Drawing.Color.White;
+            this.ChooseLogo.TabIndex = 214;
+            this.ChooseLogo.Text = "Add";
+            this.ChooseLogo.UseVisualStyleBackColor = false;
+            this.ChooseLogo.Click += new System.EventHandler(this.ChooseLogo_Click);
+            // 
+            // CompanyLogoPath
+            // 
+            this.CompanyLogoPath.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.CompanyLogoPath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.CompanyLogoPath.BeforeTouchSize = new System.Drawing.Size(609, 26);
+            this.CompanyLogoPath.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
+            this.CompanyLogoPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CompanyLogoPath.CanOverrideStyle = true;
+            this.CompanyLogoPath.CausesValidation = false;
+            this.CompanyLogoPath.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.CompanyLogoPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CompanyLogoPath.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.CompanyLogoPath.Location = new System.Drawing.Point(159, 457);
+            this.CompanyLogoPath.MaxLength = 50;
+            this.CompanyLogoPath.Metrocolor = System.Drawing.Color.DodgerBlue;
+            this.CompanyLogoPath.MinimumSize = new System.Drawing.Size(16, 12);
+            this.CompanyLogoPath.Multiline = true;
+            this.CompanyLogoPath.Name = "CompanyLogoPath";
+            this.CompanyLogoPath.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
+            this.CompanyLogoPath.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
+            this.CompanyLogoPath.Size = new System.Drawing.Size(497, 27);
+            this.CompanyLogoPath.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016Colorful;
+            this.CompanyLogoPath.TabIndex = 213;
+            this.CompanyLogoPath.Tag = "";
+            this.CompanyLogoPath.ThemeName = "Office2016Colorful";
+            this.CompanyLogoPath.ThemesEnabled = false;
+            // 
+            // CompanyLogoImage
+            // 
+            this.CompanyLogoImage.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.CompanyLogoImage.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.CompanyLogoImage.Location = new System.Drawing.Point(336, 248);
+            this.CompanyLogoImage.Name = "CompanyLogoImage";
+            this.CompanyLogoImage.Size = new System.Drawing.Size(172, 174);
+            this.CompanyLogoImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.CompanyLogoImage.TabIndex = 212;
+            this.CompanyLogoImage.TabStop = false;
+            // 
+            // label19
+            // 
+            this.label19.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label19.BackColor = System.Drawing.Color.Transparent;
+            this.label19.Font = new System.Drawing.Font("Arial Rounded MT Bold", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label19.Location = new System.Drawing.Point(103, 130);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(640, 49);
+            this.label19.TabIndex = 210;
+            this.label19.Text = "Insira Sua Logo";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label20
+            // 
+            this.label20.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label20.BackColor = System.Drawing.Color.Transparent;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label20.Location = new System.Drawing.Point(180, 169);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(525, 54);
+            this.label20.TabIndex = 211;
+            this.label20.Text = "Defina uma logo marca do tipo .jpeg, caso você não definir um logo o sistema usar" +
+    "á a logomarca padrão do aplicativo\r\n";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // PageLogin
             // 
@@ -842,7 +947,7 @@
             // 
             this.PassWordConfirmation.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.PassWordConfirmation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.PassWordConfirmation.BeforeTouchSize = new System.Drawing.Size(497, 27);
+            this.PassWordConfirmation.BeforeTouchSize = new System.Drawing.Size(609, 26);
             this.PassWordConfirmation.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.PassWordConfirmation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PassWordConfirmation.CanOverrideStyle = true;
@@ -879,7 +984,7 @@
             // 
             this.PassWord.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.PassWord.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.PassWord.BeforeTouchSize = new System.Drawing.Size(497, 27);
+            this.PassWord.BeforeTouchSize = new System.Drawing.Size(609, 26);
             this.PassWord.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.PassWord.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PassWord.CanOverrideStyle = true;
@@ -916,7 +1021,7 @@
             // 
             this.Login.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Login.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.Login.BeforeTouchSize = new System.Drawing.Size(497, 27);
+            this.Login.BeforeTouchSize = new System.Drawing.Size(609, 26);
             this.Login.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.Login.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Login.CanOverrideStyle = true;
@@ -952,7 +1057,7 @@
             // 
             this.Email.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Email.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.Email.BeforeTouchSize = new System.Drawing.Size(497, 27);
+            this.Email.BeforeTouchSize = new System.Drawing.Size(609, 26);
             this.Email.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.Email.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Email.CanOverrideStyle = true;
@@ -989,7 +1094,7 @@
             // 
             this.UserName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.UserName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.UserName.BeforeTouchSize = new System.Drawing.Size(497, 27);
+            this.UserName.BeforeTouchSize = new System.Drawing.Size(609, 26);
             this.UserName.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.UserName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.UserName.CanOverrideStyle = true;
@@ -1022,109 +1127,6 @@
             this.NameTitle.TabIndex = 191;
             this.NameTitle.Text = "Nome:";
             // 
-            // PageCompanyLogo
-            // 
-            this.PageCompanyLogo.Controls.Add(this.ChooseLogo);
-            this.PageCompanyLogo.Controls.Add(this.LogoPath);
-            this.PageCompanyLogo.Controls.Add(this.LogoImage);
-            this.PageCompanyLogo.Controls.Add(this.label19);
-            this.PageCompanyLogo.Controls.Add(this.label20);
-            this.PageCompanyLogo.Location = new System.Drawing.Point(4, 27);
-            this.PageCompanyLogo.Name = "PageCompanyLogo";
-            this.PageCompanyLogo.Padding = new System.Windows.Forms.Padding(3);
-            this.PageCompanyLogo.Size = new System.Drawing.Size(888, 644);
-            this.PageCompanyLogo.TabIndex = 4;
-            this.PageCompanyLogo.Text = "LOGO";
-            this.PageCompanyLogo.UseVisualStyleBackColor = true;
-            // 
-            // label19
-            // 
-            this.label19.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label19.BackColor = System.Drawing.Color.Transparent;
-            this.label19.Font = new System.Drawing.Font("Arial Rounded MT Bold", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label19.Location = new System.Drawing.Point(103, 130);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(640, 49);
-            this.label19.TabIndex = 210;
-            this.label19.Text = "Insira Sua Logo";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label20
-            // 
-            this.label20.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label20.BackColor = System.Drawing.Color.Transparent;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label20.Location = new System.Drawing.Point(180, 169);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(525, 54);
-            this.label20.TabIndex = 211;
-            this.label20.Text = "Defina uma logo marca do tipo .jpeg, caso você não definir um logo o sistema usar" +
-    "á a logomarca padrão do aplicativo\r\n";
-            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // LogoImage
-            // 
-            this.LogoImage.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.LogoImage.BackColor = System.Drawing.SystemColors.Control;
-            this.LogoImage.Location = new System.Drawing.Point(336, 248);
-            this.LogoImage.Name = "LogoImage";
-            this.LogoImage.Size = new System.Drawing.Size(172, 174);
-            this.LogoImage.TabIndex = 212;
-            this.LogoImage.TabStop = false;
-            // 
-            // ChooseLogo
-            // 
-            this.ChooseLogo.AccessibleName = "Button";
-            this.ChooseLogo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ChooseLogo.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.ChooseLogo.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ChooseLogo.ForeColor = System.Drawing.Color.White;
-            this.ChooseLogo.Location = new System.Drawing.Point(656, 457);
-            this.ChooseLogo.Name = "ChooseLogo";
-            this.ChooseLogo.Size = new System.Drawing.Size(49, 27);
-            this.ChooseLogo.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.ChooseLogo.Style.DisabledBackColor = System.Drawing.Color.MediumSeaGreen;
-            this.ChooseLogo.Style.DisabledForeColor = System.Drawing.Color.MediumSeaGreen;
-            this.ChooseLogo.Style.FocusedBackColor = System.Drawing.Color.MediumSeaGreen;
-            this.ChooseLogo.Style.FocusedForeColor = System.Drawing.Color.White;
-            this.ChooseLogo.Style.ForeColor = System.Drawing.Color.White;
-            this.ChooseLogo.Style.HoverBackColor = System.Drawing.Color.MediumSeaGreen;
-            this.ChooseLogo.Style.HoverForeColor = System.Drawing.Color.Black;
-            this.ChooseLogo.Style.PressedBackColor = System.Drawing.Color.MediumSeaGreen;
-            this.ChooseLogo.Style.PressedForeColor = System.Drawing.Color.White;
-            this.ChooseLogo.TabIndex = 214;
-            this.ChooseLogo.Text = "Add";
-            this.ChooseLogo.UseVisualStyleBackColor = false;
-            // 
-            // LogoPath
-            // 
-            this.LogoPath.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.LogoPath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.LogoPath.BeforeTouchSize = new System.Drawing.Size(497, 27);
-            this.LogoPath.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
-            this.LogoPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LogoPath.CanOverrideStyle = true;
-            this.LogoPath.CausesValidation = false;
-            this.LogoPath.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.LogoPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogoPath.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.LogoPath.Location = new System.Drawing.Point(159, 457);
-            this.LogoPath.MaxLength = 50;
-            this.LogoPath.Metrocolor = System.Drawing.Color.DodgerBlue;
-            this.LogoPath.MinimumSize = new System.Drawing.Size(16, 12);
-            this.LogoPath.Multiline = true;
-            this.LogoPath.Name = "LogoPath";
-            this.LogoPath.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
-            this.LogoPath.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
-            this.LogoPath.Size = new System.Drawing.Size(497, 27);
-            this.LogoPath.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016Colorful;
-            this.LogoPath.TabIndex = 213;
-            this.LogoPath.Tag = "";
-            this.LogoPath.ThemeName = "Office2016Colorful";
-            this.LogoPath.ThemesEnabled = false;
-            // 
             // AppConfigForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1151,6 +1153,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.RG_IE)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CPF_CNPJ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Company)).EndInit();
+            this.PageCompanyLogo.ResumeLayout(false);
+            this.PageCompanyLogo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CompanyLogoPath)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CompanyLogoImage)).EndInit();
             this.PageLogin.ResumeLayout(false);
             this.PageLogin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PassWordConfirmation)).EndInit();
@@ -1158,10 +1164,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Login)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Email)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserName)).EndInit();
-            this.PageCompanyLogo.ResumeLayout(false);
-            this.PageCompanyLogo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.LogoImage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.LogoPath)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1219,8 +1221,8 @@
         private System.Windows.Forms.Label NameTitle;
         private System.Windows.Forms.TabPage PageCompanyLogo;
         private Syncfusion.WinForms.Controls.SfButton ChooseLogo;
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt LogoPath;
-        private System.Windows.Forms.PictureBox LogoImage;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt CompanyLogoPath;
+        private System.Windows.Forms.PictureBox CompanyLogoImage;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
     }

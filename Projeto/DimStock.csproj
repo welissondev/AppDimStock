@@ -128,6 +128,7 @@
   <ItemGroup>
     <Compile Include="Auxiliarys\AxlDataGridLealt.cs" />
     <Compile Include="Auxiliarys\AxlDataPagination.cs" />
+    <Compile Include="Auxiliarys\AxlDirectory.cs" />
     <Compile Include="Auxiliarys\AxlEmailAdderess.cs" />
     <Compile Include="Auxiliarys\AxlException.cs" />
     <Compile Include="Auxiliarys\AxlMdiForm.cs" />

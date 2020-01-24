@@ -1,93 +1,73 @@
 ﻿using System;
 using DimStock.Properties;
-using System.IO;
-using System.Windows.Forms;
+using DimStock.Auxiliarys;
+using System.Collections.Generic;
 
 namespace DimStock.Business
 {
     public class AppConfig
     {
-        public string SelectPath()
+        public void TransferDataBaseToMainDirectory()
         {
-            using (var dialog = new FolderBrowserDialog())
-            {
-                DialogResult result = dialog.ShowDialog();
-                if (result == DialogResult.OK)
-                {
-                    return dialog.SelectedPath;
-                }
+            var sourcePath = AppDomain.CurrentDomain.BaseDirectory.ToString() + 
+            @"Padrao\dimstock-database.mdb";
+            
+            var destPath = Settings.Default.MainAppDirectory + 
+            @"\dimstock-database.mdb";
 
-                return string.Empty;
-            }
+            var dataBase = new AxlFile();
+
+            if (dataBase.CheckIfExists(destPath) == false)
+                dataBase.CopyFromDirectory(sourcePath, destPath);
         }
 
-        public void SavePath(string path)
+        public void TransferCompanyLogoToMainDirectory(string sourcePath)
+        {
+            var destPath = GetMainAppDirectory() + @"CompanyLogo\CompanyLogo.jpg";
+
+            var logoImage = new AxlFile();
+
+            if (logoImage.CheckIfExists(destPath) == false)
+                logoImage.CopyFromDirectory(sourcePath, destPath);
+        }
+
+        public void CreateFoldersInTheMainDirectory()
+        {
+            var directory = new AxlDirectory();
+
+            var listFolders = new List<string>()
+            {
+                "DataBaseBackUp",
+                "ProductPhotos",
+                "CompanyLogo"
+            };
+
+            var rootDirectory = GetMainAppDirectory();
+
+            directory.CreateFoldersList(
+            rootDirectory, listFolders);
+        }
+
+        public static bool GetAppSettingsState()
+        {
+            return Settings.Default.AppSettingsState;
+        }
+
+        public static string GetMainAppDirectory()
+        {
+            return Settings.Default.MainAppDirectory;
+        }
+
+        public void SaveAsMainDirectory(string path)
         {
             Settings.Default.MainAppDirectory = path;
             Settings.Default.Save();
-        }
-
-        public void TransferDataBase()
-        {
-            var copyFrom = AppDomain.CurrentDomain.BaseDirectory.ToString() + @"Padrao\dimstock-database.mdb";
-
-            var TransferTo = Settings.Default.MainAppDirectory + @"\dimstock-database.mdb";
-
-            if (CheckIfFileExists(TransferTo) == false)
-            {
-                File.Copy(copyFrom, TransferTo);
-            }
-        }
-
-        public void CreateFolders()
-        {
-            //Cria pasta de backUp do banco de dados
-            var folderDataBaseBackUp = Settings.Default.MainAppDirectory + @"\DataBaseBackUp";
-
-            if (CheckIfDirectoryExists(folderDataBaseBackUp) == false)
-            {
-                var root = new DirectoryInfo(Settings.Default.MainAppDirectory);
-                root.CreateSubdirectory("DataBaseBackUp");
-            }
-
-            //Cria pasta de fotos dos produtos
-            var folderProductPhotos = Settings.Default.MainAppDirectory + @"\ProductPhotos";
-
-            if (CheckIfDirectoryExists(folderProductPhotos) == false)
-            {
-                var root = new DirectoryInfo(Settings.Default.MainAppDirectory);
-                root.CreateSubdirectory("ProductPhotos");
-            }
-
-            //Cria pasta de fotos das logos da empresa
-            var folderCompanyLogo = Settings.Default.MainAppDirectory + @"\CompanyLogo";
-
-            if (CheckIfDirectoryExists(folderCompanyLogo) == false)
-            {
-                var root = new DirectoryInfo(Settings.Default.MainAppDirectory);
-                root.CreateSubdirectory("CompanyLogo");
-            }
-        }
-
-        public bool CheckIfDirectoryExists(string directoryPath)
-        {
-            return Directory.Exists(directoryPath).Equals(true);
-        }
-
-        public bool CheckIfFileExists(string directoryFile)
-        {
-            return File.Exists(directoryFile).Equals(true);
         }
 
         public static void FinalizeSettings()
         {
             Settings.Default.AppSettingsState = true;
             Settings.Default.Save();
-        }
-
-        public static bool GetAppSettingsState()
-        {
-            return Settings.Default.AppSettingsState;
         }
     }
 }

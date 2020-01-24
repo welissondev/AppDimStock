@@ -13,7 +13,7 @@ namespace DimStock.Auxiliarys
 
         #region Methods
 
-        public string GetDirectoryPath()
+        public string SelectPath()
         {
             using (OpenFileDialog openFile = new OpenFileDialog())
             {
@@ -43,7 +43,7 @@ namespace DimStock.Auxiliarys
             File.Delete(path);
         }
 
-        public bool CheckIfExtits(string path)
+        public bool CheckIfExists(string path)
         {
             return File.Exists(path).Equals(true);
 

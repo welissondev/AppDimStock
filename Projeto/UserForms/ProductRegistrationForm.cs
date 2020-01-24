@@ -280,7 +280,7 @@ namespace DimStock.UserForms
             var picture = new AxlFile();
             var uploadState = false;
 
-            picture.GetDirectoryPath();
+            picture.SelectPath();
 
             if (picture.DirectoryPath != string.Empty)
             {

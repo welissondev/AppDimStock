@@ -20,21 +20,17 @@ namespace DimStock.UserForms
 
         private void ChooseDirectory_Click(object sender, EventArgs e)
         {
-            var appConfig = new AppConfig();
+            var folder = new AxlDirectory();
 
-            var path = appConfig.SelectPath();
-
+            var path = folder.SelectPath();
+            
             if (path == string.Empty)
-            {
-                MessageBox.Show("Você não selecionou o diretório!");
                 return;
-            }
 
-            appConfig.SavePath(path);
-
-            appConfig.TransferDataBase();
-
-            appConfig.CreateFolders();
+            var app = new AppConfig();
+            app.SaveAsMainDirectory(path);
+            app.TransferDataBaseToMainDirectory();
+            app.CreateFoldersInTheMainDirectory();
 
             MainTabControl.SelectTab("PageCompany");
         }
@@ -63,8 +59,26 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
+        }
+
+        private void ChooseLogo_Click(object sender, EventArgs e)
+        {
+            var image = new AxlFile();
+
+            var path = image.SelectPath();
+
+            if (path == string.Empty)
+                return;
+
+            CompanyLogoImage.ImageLocation = path;
+            CompanyLogoPath.Text = path;
+
+            var app = new AppConfig();
+            app.TransferCompanyLogoToMainDirectory(path);
+
+            MainTabControl.SelectTab("PageLogin");
         }
 
         private void SaveUserData_Click(object sender, EventArgs e)
@@ -111,7 +125,7 @@ namespace DimStock.UserForms
 
                 if (user.CreateNewLogin() == false)
                 {
-                    MessageBox.Show(MessageNotifier.Message);
+                    MessageBox.Show(AxlMessageNotifier.Message);
                     return;
                 }
 
@@ -119,7 +133,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -132,6 +146,5 @@ namespace DimStock.UserForms
 
             form.Show();
         }
-
     }
 }
