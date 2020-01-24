@@ -17,16 +17,9 @@ namespace DimStock.UserForms
 
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //Settings.Default.Reset();
 
-            if (AppConfigDirectory.GetAppSettingsState() == false)
-            {
-                Application.Run(new AppConfigHomeScreenForm());
-            }
-            else
-            {
-                Application.Run(new UserLoginForm());
-            }
+            Application.Run(new AppConfigForm());
+
         }
 
     }

@@ -161,6 +161,12 @@
     <Compile Include="UserForms\AppConfigCompanyRegistrationForm.Designer.cs">
       <DependentUpon>AppConfigCompanyRegistrationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserForms\AppConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForms\AppConfigForm.Designer.cs">
+      <DependentUpon>AppConfigForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserForms\AppConfigHomeScreenForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -277,6 +283,9 @@
     </Compile>
     <EmbeddedResource Include="UserForms\AppConfigCompanyRegistrationForm.resx">
       <DependentUpon>AppConfigCompanyRegistrationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\AppConfigForm.resx">
+      <DependentUpon>AppConfigForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserForms\AppConfigHomeScreenForm.resx">
       <DependentUpon>AppConfigHomeScreenForm.cs</DependentUpon>
