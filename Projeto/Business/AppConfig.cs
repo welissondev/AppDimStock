@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace DimStock.Business
 {
-    public class AppConfigDirectory
+    public class AppConfig
     {
         public string SelectPath()
         {

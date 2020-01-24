@@ -19,9 +19,9 @@ namespace DimStock.UserForms
 
         private void ChooseDirectory_Click(object sender, EventArgs e)
         {
-            var configDirectory = new AppConfigDirectory();
+            var appConfig = new AppConfig();
 
-            var path = configDirectory.SelectPath();
+            var path = appConfig.SelectPath();
 
             if (path == string.Empty)
             {
@@ -29,11 +29,11 @@ namespace DimStock.UserForms
                 return;
             }
 
-            configDirectory.SavePath(path);
+            appConfig.SavePath(path);
 
-            configDirectory.TransferDataBase();
+            appConfig.TransferDataBase();
 
-            configDirectory.CreateFolders();
+            appConfig.CreateFolders();
 
             MainTabControl.SelectTab("PageCompany");
         }
@@ -113,6 +113,8 @@ namespace DimStock.UserForms
                     MessageBox.Show(MessageNotifier.Message);
                     return;
                 }
+
+                AppConfig.FinalizeSettings();
 
                 UserLoginForm.He.Show();
             }

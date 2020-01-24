@@ -68,7 +68,7 @@ namespace DimStock.UserForms
         {
             He = this;
 
-            if (AppConfigDirectory.GetAppSettingsState() == false)
+            if (AppConfig.GetAppSettingsState() == false)
             {
                 Hide();
                 AppConfigForm.ShowForm();
