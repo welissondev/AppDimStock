@@ -10,7 +10,7 @@ namespace DimStock.UserForms
     {
 
         #region Variables
-        private DataPagination dataPagination = new DataPagination();
+        private AxlDataPagination dataPagination = new AxlDataPagination();
         #endregion
 
         #region Constructs
@@ -103,7 +103,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -132,7 +132,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -170,11 +170,11 @@ namespace DimStock.UserForms
 
                 UserDataList.ClearSelection();
 
-                DataGridLealt.SortColumnDesc(UserDataList, 0);
+                AxlDataGridLealt.SortColumnDesc(UserDataList, 0);
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -202,11 +202,11 @@ namespace DimStock.UserForms
 
                 UserDataList.ClearSelection();
 
-                DataGridLealt.SortColumnDesc(UserDataList, 0);
+                AxlDataGridLealt.SortColumnDesc(UserDataList, 0);
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -222,19 +222,19 @@ namespace DimStock.UserForms
 
                     if (user.Delete(id) == true)
                     {
-                        MessageBox.Show(MessageNotifier.Message, "SUCESSO",
+                        MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show(MessageNotifier.Message, "AVISO",
+                        MessageBox.Show(AxlMessageNotifier.Message, "AVISO",
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -242,7 +242,7 @@ namespace DimStock.UserForms
         {
             CreateColumnInTheDataList();
 
-            DataGridLealt.SetDefaultStyle(UserDataList);
+            AxlDataGridLealt.SetDefaultStyle(UserDataList);
         }
 
         private void CreateColumnInTheDataList()
@@ -306,7 +306,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 

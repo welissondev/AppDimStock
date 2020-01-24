@@ -23,7 +23,7 @@ namespace DimStock.Business
             {
                 if (CheckIfDestinationExists() == true)
                 {
-                    MessageNotifier.Message = "Esse destino já existe, cadastre outro!";
+                    AxlMessageNotifier.Message = "Esse destino já existe, cadastre outro!";
                     return transaction;
                 }
 
@@ -36,7 +36,7 @@ namespace DimStock.Business
                 if (connection.ExecuteNonQuery(sqlCommand) > 0)
                 {
                     transaction = true;
-                    MessageNotifier.Message = "Cadastrado com sucesso!";
+                    AxlMessageNotifier.Message = "Cadastrado com sucesso!";
                 }
             }
 
@@ -57,7 +57,7 @@ namespace DimStock.Business
 
                 if (connection.ExecuteNonQuery(sqlCommand) > 0)
                 {
-                    MessageNotifier.Message = "Editado com sucesso!";
+                    AxlMessageNotifier.Message = "Editado com sucesso!";
                     transaction = true;
                 }
             }
@@ -78,12 +78,12 @@ namespace DimStock.Business
 
                 if (connection.ExecuteNonQuery(sqlCommand) > 0)
                 {
-                    MessageNotifier.Message = "Deletado com sucesso!";
+                    AxlMessageNotifier.Message = "Deletado com sucesso!";
                     transaction = true;
                 }
                 else
                 {
-                    MessageNotifier.Message = "Esse registro já foi " +
+                    AxlMessageNotifier.Message = "Esse registro já foi " +
                     "deletado, atualize a lista de dados!";
                 }
             }

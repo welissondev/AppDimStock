@@ -10,7 +10,7 @@ namespace DimStock.UserForms
     public partial class UserHistoryListingForm : Form
     {
         #region Variables
-        private DataPagination dataPagination = new DataPagination();
+        private AxlDataPagination dataPagination = new AxlDataPagination();
         #endregion 
 
         #region Constructs
@@ -88,7 +88,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -165,7 +165,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -204,7 +204,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -212,7 +212,7 @@ namespace DimStock.UserForms
         {
             CreateColumnInTheDataList();
 
-            DataGridLealt.SetDefaultStyle(HistoryDataList);
+            AxlDataGridLealt.SetDefaultStyle(HistoryDataList);
 
             FillAllComboBoxes();
 
@@ -258,7 +258,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -274,7 +274,7 @@ namespace DimStock.UserForms
             ResetControls();
         }
 
-        private void SetInBadingNavigator(DataPagination dataPagination)
+        private void SetInBadingNavigator(AxlDataPagination dataPagination)
         {
             if (dataPagination.RecordCount == 0)
                 dataPagination.CurrentPage = 0;
@@ -355,7 +355,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
 
         }

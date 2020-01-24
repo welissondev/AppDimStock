@@ -13,7 +13,7 @@ namespace DimStock.Business
 
         public StockProduct() { }
 
-        public StockProduct(DataPagination dataPagination)
+        public StockProduct(AxlDataPagination dataPagination)
         {
             DataPagination = dataPagination;
         }
@@ -48,7 +48,7 @@ namespace DimStock.Business
         public string SearchByReference { get; set; }
         public string SearchByDescription { get; set; }
         public string SearchBySummary { get => searchBySummary; set => searchBySummary = value; }
-        public DataPagination DataPagination { get; set; }
+        public AxlDataPagination DataPagination { get; set; }
 
         #endregion
 

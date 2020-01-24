@@ -44,7 +44,7 @@ namespace DimStock.Business
 
                 registerState = connection.ExecuteNonQuery(sqlCommand) > 0;
 
-                MessageNotifier.Message = "Cadastrado com sucesso!";
+                AxlMessageNotifier.Message = "Cadastrado com sucesso!";
 
                 return registerState;
             }

@@ -13,7 +13,7 @@ namespace DimStock.UserForms
     {
         #region Variables
 
-        private DataPagination dataPagination = new DataPagination();
+        private AxlDataPagination dataPagination = new AxlDataPagination();
         private string selectedSituation = string.Empty;
         private string selectedType = string.Empty;
 
@@ -96,7 +96,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -127,7 +127,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -159,7 +159,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -176,7 +176,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -207,7 +207,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -335,7 +335,7 @@ namespace DimStock.UserForms
             catch (Exception ex)
             {
                 PauseSearchTimer();
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -362,19 +362,19 @@ namespace DimStock.UserForms
 
                     if (stockMovement.Delete(id) == true)
                     {
-                        MessageBox.Show(MessageNotifier.Message, "SUCESSO",
+                        MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show(MessageNotifier.Message, "ATENÇÃO",
+                        MessageBox.Show(AxlMessageNotifier.Message, "ATENÇÃO",
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -399,7 +399,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -443,7 +443,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -455,7 +455,7 @@ namespace DimStock.UserForms
             FillAllComboBox();
 
             //Defini o lealt do datagridviw
-            DataGridLealt.SetDefaultStyle(MovementStockDataList);
+            AxlDataGridLealt.SetDefaultStyle(MovementStockDataList);
 
         }
 
@@ -472,7 +472,7 @@ namespace DimStock.UserForms
             SearchTimer.Enabled = false;
         }
 
-        private void SetInBadingNavigator(DataPagination dataPagination)
+        private void SetInBadingNavigator(AxlDataPagination dataPagination)
         {
             if (dataPagination.RecordCount == 0)
                 dataPagination.CurrentPage = 0;
@@ -507,7 +507,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -613,7 +613,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 

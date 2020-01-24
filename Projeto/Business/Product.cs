@@ -14,7 +14,7 @@ namespace DimStock.Business
 
         public Product() { }
 
-        public Product(DataPagination dataPagination)
+        public Product(AxlDataPagination dataPagination)
         {
             DataPagination = dataPagination;
         }
@@ -43,7 +43,7 @@ namespace DimStock.Business
         public string SearchBySize { get; set; }
         public string SearchByReference { get; set; }
         public string SearchByDescription { get; set; }
-        public DataPagination DataPagination { get; set; }
+        public AxlDataPagination DataPagination { get; set; }
 
         #endregion
 
@@ -88,7 +88,7 @@ namespace DimStock.Business
                     //Registrar histórico do usuário
                     var userHistory = new UserHistory(connection)
                     {
-                        UserId = LoginAssistant.Id,
+                        UserId = AxlLogin.Id,
                         OperationType = "Cadastrou",
                         OperationModule = "Produto",
                         OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
@@ -101,7 +101,7 @@ namespace DimStock.Business
                     //Fianalizar transação
                     connection.Transaction.Commit();
 
-                    MessageNotifier.Message = "Produto cadastrado com sucesso!";
+                    AxlMessageNotifier.Message = "Produto cadastrado com sucesso!";
                 }
 
                 return transactionState;
@@ -159,7 +159,7 @@ namespace DimStock.Business
                     //Registrar histórico do usuário
                     var userHistory = new UserHistory(connection)
                     {
-                        UserId = LoginAssistant.Id,
+                        UserId = AxlLogin.Id,
                         OperationType = "Editou",
                         OperationModule = "Produto",
                         OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
@@ -171,7 +171,7 @@ namespace DimStock.Business
                     //Fianaliza a transação
                     connection.Transaction.Commit();
 
-                    MessageNotifier.Message = "Produto alterado com sucesso!";
+                    AxlMessageNotifier.Message = "Produto alterado com sucesso!";
                 }
 
                 return transactionState;
@@ -182,7 +182,7 @@ namespace DimStock.Business
         {
             if (CheckIfRegisterExists(id) == false)
             {
-                MessageNotifier.Message = "Esse registro já foi excluido, " +
+                AxlMessageNotifier.Message = "Esse registro já foi excluido, " +
                "atualize a lista de dados!";
 
                 return false;
@@ -206,7 +206,7 @@ namespace DimStock.Business
                     //Registrar histórico do usuário
                     var userHistory = new UserHistory(connection)
                     {
-                        UserId = LoginAssistant.Id,
+                        UserId = AxlLogin.Id,
                         OperationType = "Deletou",
                         OperationModule = "Produto",
                         OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
@@ -218,7 +218,7 @@ namespace DimStock.Business
                     //Fianaliza transação
                     connection.Transaction.Commit();
 
-                    MessageNotifier.Message = "Produto deletado com sucesso!";
+                    AxlMessageNotifier.Message = "Produto deletado com sucesso!";
                 }
 
                 return transactionState;

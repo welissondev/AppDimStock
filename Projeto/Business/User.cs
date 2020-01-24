@@ -13,7 +13,7 @@ namespace DimStock.Business
 
         public User() { }
 
-        public User(DataPagination dataPagination)
+        public User(AxlDataPagination dataPagination)
         {
             DataPagination = dataPagination;
         }
@@ -38,7 +38,7 @@ namespace DimStock.Business
 
         public string SearchByName { get; set; }
         public string SearchByEmail { get; set; }
-        public DataPagination DataPagination { get; set; }
+        public AxlDataPagination DataPagination { get; set; }
 
         #endregion 
 
@@ -76,7 +76,7 @@ namespace DimStock.Business
 
             if (accessState == false)
             {
-                MessageNotifier.Message = "Usuário não encontrado!";
+                AxlMessageNotifier.Message = "Usuário não encontrado!";
             }
 
             return accessState;
@@ -179,7 +179,7 @@ namespace DimStock.Business
                     //Registra histórico do usuário
                     var userHistory = new UserHistory(connection)
                     {
-                        UserId = LoginAssistant.Id,
+                        UserId = AxlLogin.Id,
                         OperationType = "Cadastrou",
                         OperationModule = "Usuário",
                         OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
@@ -191,7 +191,7 @@ namespace DimStock.Business
                     //Finaliza a transação
                     connection.Transaction.Commit();
 
-                    MessageNotifier.Message = "Usuário cadastado com sucesso!";
+                    AxlMessageNotifier.Message = "Usuário cadastado com sucesso!";
                 }
 
                 return transactionState;
@@ -234,7 +234,7 @@ namespace DimStock.Business
                     //Registra histórico do usuário
                     var userHistory = new UserHistory(connection)
                     {
-                        UserId = LoginAssistant.Id,
+                        UserId = AxlLogin.Id,
                         OperationType = "Editou",
                         OperationModule = "Usuário",
                         OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
@@ -246,7 +246,7 @@ namespace DimStock.Business
                     //Finaliza a transação
                     connection.Transaction.Commit();
 
-                    MessageNotifier.Message = "Usuário alterado com sucesso!";
+                    AxlMessageNotifier.Message = "Usuário alterado com sucesso!";
                 }
 
                 return transactionState;
@@ -257,7 +257,7 @@ namespace DimStock.Business
         {
             if (CheckIfResgisterExists(id) == false)
             {
-                MessageNotifier.Message = "Esse registro já foi excluido " +
+                AxlMessageNotifier.Message = "Esse registro já foi excluido " +
                 "atualize a lista de dados";
 
                 return false;
@@ -265,7 +265,7 @@ namespace DimStock.Business
 
             if (CheckCurrentRegister(id) == true)
             {
-                MessageNotifier.Message = "Você não pode deletar seu " +
+                AxlMessageNotifier.Message = "Você não pode deletar seu " +
                 "próprio registro de usuário!";
 
                 return false;
@@ -289,7 +289,7 @@ namespace DimStock.Business
                     //Registra histórico do usuário
                     var userHistory = new UserHistory(connection)
                     {
-                        UserId = LoginAssistant.Id,
+                        UserId = AxlLogin.Id,
                         OperationType = "Deletou",
                         OperationModule = "Usuário",
                         OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
@@ -301,7 +301,7 @@ namespace DimStock.Business
                     //Finaliza a transação
                     connection.Transaction.Commit();
 
-                    MessageNotifier.Message = "Usuário excluido com sucesso!";
+                    AxlMessageNotifier.Message = "Usuário excluido com sucesso!";
                 }
 
                 return transactionState;
@@ -382,10 +382,10 @@ namespace DimStock.Business
 
         public bool ValidateEmail(string email)
         {
-            var validation = EmailAdderess.Validate(email);
+            var validation = AxlEmailAdderess.Validate(email);
 
             if (validation == false)
-                MessageNotifier.Message = "O endereço de e-mail " +
+                AxlMessageNotifier.Message = "O endereço de e-mail " +
                 "informado não é válido!";
 
             return validation;
@@ -413,7 +413,7 @@ namespace DimStock.Business
 
                 if (userFound > 0)
                 {
-                    MessageNotifier.Message = "Já existe um usuário " +
+                    AxlMessageNotifier.Message = "Já existe um usuário " +
                     "com o login |" + Login + "|. Por favor, informe " +
                     "outro nome de login!";
                 }
@@ -424,7 +424,7 @@ namespace DimStock.Business
 
         public bool CheckCurrentRegister(int id)
         {
-            if (LoginAssistant.Id == id)
+            if (AxlLogin.Id == id)
             {
                 return true;
             }

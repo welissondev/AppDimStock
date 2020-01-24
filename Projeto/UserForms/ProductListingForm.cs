@@ -14,7 +14,7 @@ namespace DimStock.UserForms
         #region Variables
 
         public int Id = 0;
-        private DataPagination dataPagination = new DataPagination();
+        private AxlDataPagination dataPagination = new AxlDataPagination();
         private ProductPhoto productPhoto = new ProductPhoto();
 
         #endregion
@@ -46,7 +46,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -100,7 +100,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -147,7 +147,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -226,7 +226,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -307,7 +307,7 @@ namespace DimStock.UserForms
             {
                 PauseSearchTimer();
 
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -346,7 +346,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
             finally
             {
@@ -375,7 +375,7 @@ namespace DimStock.UserForms
             try
             {
                 var user = new User();
-                user.ViewDetails(LoginAssistant.Id);
+                user.ViewDetails(AxlLogin.Id);
 
                 if (user.PermissionToDelete == false)
                 {
@@ -393,7 +393,7 @@ namespace DimStock.UserForms
 
                     if (product.Delete(Id) == false)
                     {
-                        MessageBox.Show(MessageNotifier.Message, "ATENÇÃO",
+                        MessageBox.Show(AxlMessageNotifier.Message, "ATENÇÃO",
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                         return;
@@ -405,7 +405,7 @@ namespace DimStock.UserForms
 
                     productPhoto.DeleteFromDirectory(photoPath);
 
-                    MessageBox.Show(MessageNotifier.Message, "SUCESSO",
+                    MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     CallAllResets();
@@ -445,7 +445,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
             finally
             {
@@ -474,7 +474,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -486,14 +486,14 @@ namespace DimStock.UserForms
 
         private void InitializeSettings()
         {
-            DataGridLealt.SetDefaultStyle(ProductDataList);
+            AxlDataGridLealt.SetDefaultStyle(ProductDataList);
 
             FillAllComboBoxes();
 
             CreateColumnsInTheDataList();
         }
 
-        private void SetInBadingNavigator(DataPagination dataPagination)
+        private void SetInBadingNavigator(AxlDataPagination dataPagination)
         {
             if (dataPagination.RecordCount == 0)
                 dataPagination.CurrentPage = 0;
@@ -644,7 +644,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 

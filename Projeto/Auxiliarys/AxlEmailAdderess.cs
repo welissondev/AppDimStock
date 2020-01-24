@@ -2,7 +2,7 @@
 
 namespace DimStock.Auxiliarys
 {
-    public static class EmailAdderess
+    public static class AxlEmailAdderess
     {
         public static bool Validate(string email)
         {

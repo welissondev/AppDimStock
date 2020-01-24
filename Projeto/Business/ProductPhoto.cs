@@ -12,38 +12,38 @@ namespace DimStock.Business
             return peth;
         }
 
-        public string GetIndentificationNumber()
+        public string GetNumberId()
         {
-            var image = new ImageAssistant();
-            return image.GenerateGuidCode();
+            var photo = new AxlFile();
+            return photo.GetNumberId();
         }
 
-        public void CopyToDirectory(string source, string path)
+        public void CopyFromDirectory(string sourcePath, string destPath)
         {
-            ImageAssistant image = new ImageAssistant();
+            var photo = new AxlFile();
 
-            if (FindInDirectory(source) == true && FindInDirectory(path) == false)
+            if (CheckIfExtits(sourcePath) == true && CheckIfExtits(destPath) == false)
             {
-                image.CopyToDirectory(source,path);
+                photo.CopyFromDirectory(sourcePath,destPath);
             }
 
         }
 
-        public bool FindInDirectory(string path)
+        public bool CheckIfExtits(string path)
         {
-            var image = new ImageAssistant();
+            var photo = new AxlFile();
 
-            var fileFound = image.CheckFileInDirectory(path);
+            var fileFound = photo.CheckIfExtits(path);
 
             return fileFound;
         }
 
         public void DeleteFromDirectory(string path)
         {
-            var image = new ImageAssistant();
+            var photo = new AxlFile();
 
-            if (FindInDirectory(path) == true)
-                image.DeleteFromDirectory(path);
+            if (photo.CheckIfExtits(path) == true)
+                photo.DeleteFromDirectory(path);
         }
     }
 }

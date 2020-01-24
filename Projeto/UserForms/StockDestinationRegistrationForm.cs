@@ -53,7 +53,7 @@ namespace DimStock.UserForms
                 if (stockDestination.Register() == true)
                 {
 
-                    MessageBox.Show(MessageNotifier.Message, "SUCESSO",
+                    MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     CallAllReset();
@@ -61,7 +61,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -83,13 +83,13 @@ namespace DimStock.UserForms
 
                 if (stockDestination.Edit(id) == true)
                 {
-                    MessageBox.Show(MessageNotifier.Message, "SUCESSO",
+                    MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -108,14 +108,14 @@ namespace DimStock.UserForms
 
                 if (stockDestination.Delete(id) == true)
                 {
-                    MessageBox.Show(MessageNotifier.Message, "SUCESSO",
+                    MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CallAllReset();
                 }
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -138,7 +138,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -192,7 +192,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -204,7 +204,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -216,7 +216,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -230,7 +230,7 @@ namespace DimStock.UserForms
         {
             CreateColumnInTheDataList();
 
-            DataGridLealt.SetDefaultStyle(DestinationDataList);
+            AxlDataGridLealt.SetDefaultStyle(DestinationDataList);
         }
 
         private void CreateColumnInTheDataList()
@@ -261,7 +261,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 

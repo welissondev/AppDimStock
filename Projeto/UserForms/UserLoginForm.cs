@@ -34,14 +34,14 @@ namespace DimStock.UserForms
 
                 if (user.SignIn() == false)
                 {
-                    MessageBox.Show(MessageNotifier.Message, "NÃO ENCONTRADO",
+                    MessageBox.Show(AxlMessageNotifier.Message, "NÃO ENCONTRADO",
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
 
-                LoginAssistant.Id = user.Id;
-                LoginAssistant.Name = user.Name;
-                LoginAssistant.Login = user.Login;
+                AxlLogin.Id = user.Id;
+                AxlLogin.Name = user.Name;
+                AxlLogin.Login = user.Login;
 
                 Hide();
                 using (var homeScreen = new HomeScreenForm())
@@ -53,7 +53,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 

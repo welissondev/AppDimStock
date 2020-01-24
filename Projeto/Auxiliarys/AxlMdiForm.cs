@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace DimStock.Auxiliarys
 {
-    public static class FormAssistant
+    public static class AxlMdiForm
     {
 
         public static void CloseAllForms()

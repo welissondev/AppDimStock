@@ -11,7 +11,7 @@ namespace DimStock.UserForms
     public partial class StockListingForm : Form
     {
         #region Properties
-        private DataPagination dataPagination = new DataPagination();
+        private AxlDataPagination dataPagination = new AxlDataPagination();
         private string selectedSummary = "All";
         #endregion
 
@@ -71,7 +71,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -159,7 +159,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -211,7 +211,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -304,7 +304,7 @@ namespace DimStock.UserForms
             {
                 PauseSearchTimer();
 
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -363,7 +363,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -371,12 +371,12 @@ namespace DimStock.UserForms
         {
             CreateColumnInTheDataList();
 
-            DataGridLealt.SetDefaultStyle(StockDataList);
+            AxlDataGridLealt.SetDefaultStyle(StockDataList);
 
             FillAllComboBoxes();
         }
 
-        private void SetInBadingNavigator(DataPagination dataPagination)
+        private void SetInBadingNavigator(AxlDataPagination dataPagination)
         {
             if (dataPagination.RecordCount == 0)
                 dataPagination.CurrentPage = 0;
@@ -525,7 +525,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
 
         }

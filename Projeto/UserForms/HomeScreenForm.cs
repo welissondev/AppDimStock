@@ -83,7 +83,7 @@ namespace DimStock.UserForms
 
         private void MenuProduct_RegisterNew_Click(object sender, EventArgs e)
         {
-            FormAssistant.CloseAllForms();
+            AxlMdiForm.CloseAllForms();
 
             var form = new ProductRegistrationForm()
             {
@@ -99,7 +99,7 @@ namespace DimStock.UserForms
 
         private void MenuProduct_ListProduct_Click(object sender, EventArgs e)
         {
-            FormAssistant.CloseAllForms();
+            AxlMdiForm.CloseAllForms();
 
             var form = new ProductListingForm()
             {
@@ -115,7 +115,7 @@ namespace DimStock.UserForms
 
         private void MenuStock_RegisterNew_Entrie_Click(object sender, EventArgs e)
         {
-            FormAssistant.CloseAllForms();
+            AxlMdiForm.CloseAllForms();
 
             var form = new StockMovementRegistrationForm()
             {
@@ -133,7 +133,7 @@ namespace DimStock.UserForms
 
         private void MenuStock_RegisterNew_Output_Click(object sender, EventArgs e)
         {
-            FormAssistant.CloseAllForms();
+            AxlMdiForm.CloseAllForms();
 
             var form = new StockMovementRegistrationForm()
             {
@@ -150,7 +150,7 @@ namespace DimStock.UserForms
 
         private void MenuStock_ListMovements_Click(object sender, EventArgs e)
         {
-            FormAssistant.CloseAllForms();
+            AxlMdiForm.CloseAllForms();
 
             var form = new StockMovementListingForm()
             {
@@ -166,7 +166,7 @@ namespace DimStock.UserForms
 
         private void MenuStock_ListStocks_Click(object sender, EventArgs e)
         {
-            FormAssistant.CloseAllForms();
+            AxlMdiForm.CloseAllForms();
 
             var form = new StockListingForm()
             {
@@ -183,11 +183,11 @@ namespace DimStock.UserForms
         private void MenuUser_RegisterNew_Click(object sender, EventArgs e)
         {
             var user = new User();
-            user.ViewDetails(LoginAssistant.Id);
+            user.ViewDetails(AxlLogin.Id);
 
             if (user.PermissionToView == true)
             {
-                FormAssistant.CloseAllForms();
+                AxlMdiForm.CloseAllForms();
 
                 var form = new UserResgistrationForm()
                 {
@@ -211,11 +211,11 @@ namespace DimStock.UserForms
         private void MenuUser_ListUsers_Click(object sender, EventArgs e)
         {
             var user = new User();
-            user.ViewDetails(LoginAssistant.Id);
+            user.ViewDetails(AxlLogin.Id);
 
             if (user.PermissionToView == true)
             {
-                FormAssistant.CloseAllForms();
+                AxlMdiForm.CloseAllForms();
 
                 var form = new UserListingForm()
                 {
@@ -239,11 +239,11 @@ namespace DimStock.UserForms
         private void MenuUser_ListHistory_Click(object sender, EventArgs e)
         {
             var user = new User();
-            user.ViewDetails(LoginAssistant.Id);
+            user.ViewDetails(AxlLogin.Id);
 
             if (user.PermissionToView == true)
             {
-                FormAssistant.CloseAllForms();
+                AxlMdiForm.CloseAllForms();
 
                 var form = new UserHistoryListingForm()
                 {

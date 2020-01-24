@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace DimStock.Auxiliarys
 {
-    public static class DataGridLealt
+    public static class AxlDataGridLealt
     {
         public static void SetDefaultStyle(DataGridView datagrid)
         {

@@ -18,7 +18,7 @@ namespace DimStock.Business
         {
         }
 
-        public UserHistory(DataPagination dataPagination)
+        public UserHistory(AxlDataPagination dataPagination)
         {
             DataPagination = dataPagination;
         }
@@ -47,7 +47,7 @@ namespace DimStock.Business
         public string SearchByLogin { get; set; }
         public string SearchByStartDate { get; set; }
         public string SearchByFinalDate { get; set; }
-        public DataPagination DataPagination { get; set; }
+        public AxlDataPagination DataPagination { get; set; }
 
         #endregion 
 

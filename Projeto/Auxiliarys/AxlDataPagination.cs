@@ -2,7 +2,7 @@
 
 namespace DimStock.Auxiliarys
 {
-    public class DataPagination
+    public class AxlDataPagination
     {
         #region PrivateProperties
         private int pageSize = 20;

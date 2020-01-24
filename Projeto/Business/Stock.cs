@@ -65,7 +65,7 @@ namespace DimStock.Business
                     //Registra o histórico do usuário
                     var userHistory = new UserHistory(connection)
                     {
-                        UserId = LoginAssistant.Id,
+                        UserId = AxlLogin.Id,
                         OperationType = "Entrada",
                         OperationModule = "Estoque",
                         OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
@@ -77,7 +77,7 @@ namespace DimStock.Business
                     //Finalza o transação
                     connection.Transaction.Commit();
 
-                    MessageNotifier.Message = "Ok, todos os estoques foram cadastrados!";
+                    AxlMessageNotifier.Message = "Ok, todos os estoques foram cadastrados!";
                 }
 
                 return transactionState;
@@ -118,7 +118,7 @@ namespace DimStock.Business
                     //Registra o histórico do usuário
                     var userHistory = new UserHistory(connection)
                     {
-                        UserId = LoginAssistant.Id,
+                        UserId = AxlLogin.Id,
                         OperationType = "Saída",
                         OperationModule = "Estoque",
                         OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
@@ -130,7 +130,7 @@ namespace DimStock.Business
                     //Finaliza a transação
                     connection.Transaction.Commit();
 
-                    MessageNotifier.Message = "Ok! Todos os estoques foram retirados!";
+                    AxlMessageNotifier.Message = "Ok! Todos os estoques foram retirados!";
                 }
 
                 return transactionState;

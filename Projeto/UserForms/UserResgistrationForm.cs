@@ -77,7 +77,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -104,7 +104,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -129,14 +129,14 @@ namespace DimStock.UserForms
 
                     if (user.Register() == true)
                     {
-                        MessageBox.Show(MessageNotifier.Message, "SUCESSO",
+                        MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         ResetControls();
                     }
                     else
                     {
-                        MessageBox.Show(MessageNotifier.Message, "AVISO",
+                        MessageBox.Show(AxlMessageNotifier.Message, "AVISO",
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
@@ -144,7 +144,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -169,19 +169,19 @@ namespace DimStock.UserForms
 
                     if (user.Edit(id) == true)
                     {
-                        MessageBox.Show(MessageNotifier.Message, "SUCESSO",
+                        MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show(MessageNotifier.Message, "AVISO",
+                        MessageBox.Show(AxlMessageNotifier.Message, "AVISO",
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -206,7 +206,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 

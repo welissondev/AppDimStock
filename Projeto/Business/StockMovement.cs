@@ -17,7 +17,7 @@ namespace DimStock.Business
 
         public StockMovement() { }
 
-        public StockMovement(DataPagination dataPagination)
+        public StockMovement(AxlDataPagination dataPagination)
         {
             DataPagination = dataPagination;
         }
@@ -44,7 +44,7 @@ namespace DimStock.Business
         public string SearchByType { get; set; }
         public string SearchBySituation { get; set; }
         public string SearchByMovimentId { get; set; }
-        public DataPagination DataPagination { get; set; }
+        public AxlDataPagination DataPagination { get; set; }
 
         #endregion 
 
@@ -118,7 +118,7 @@ namespace DimStock.Business
         {
             if (CheckIfRegisterExists(id) == false)
             {
-                MessageNotifier.Message = "Esse registro já foi " +
+                AxlMessageNotifier.Message = "Esse registro já foi " +
                 "excluido, atualize a lista de dados!";
 
                 return false;
@@ -168,7 +168,7 @@ namespace DimStock.Business
                     //Registra o histórico do usuário
                     var userHistory = new UserHistory(connection)
                     {
-                        UserId = LoginAssistant.Id,
+                        UserId = AxlLogin.Id,
                         OperationType = "Deletou",
                         OperationModule = "Estoque",
                         OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
@@ -180,7 +180,7 @@ namespace DimStock.Business
                     //Finaliza o transação
                     connection.Transaction.Commit();
 
-                    MessageNotifier.Message = "Deletado com sucesso!";
+                    AxlMessageNotifier.Message = "Deletado com sucesso!";
                 }
 
                 return transactionState;

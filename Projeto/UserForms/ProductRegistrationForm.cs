@@ -37,7 +37,7 @@ namespace DimStock.UserForms
         private void RegisterNew_Click(object sender, EventArgs e)
         {
             var user = new User();
-            user.ViewDetails(LoginAssistant.Id);
+            user.ViewDetails(AxlLogin.Id);
 
             if (Id == 0)
             {
@@ -79,7 +79,7 @@ namespace DimStock.UserForms
             {
                 if (UploadPhoto() == false)
                 {
-                    if (productPhoto.FindInDirectory(productPhoto.GetDirectoryPeth() +
+                    if (productPhoto.CheckIfExtits(productPhoto.GetDirectoryPeth() +
                         ProductPhoto.IndentificationPhotoNumber).Equals(false))
                     {
                         ProductPhoto.IndentificationPhotoNumber = "";
@@ -90,7 +90,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -124,23 +124,23 @@ namespace DimStock.UserForms
 
                 if (product.Register() == false)
                 {
-                    MessageBox.Show(MessageNotifier.Message, "ERROR",
+                    MessageBox.Show(AxlMessageNotifier.Message, "ERROR",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     return;
                 }
 
-                productPhoto.CopyToDirectory(ProductPhoto.SelectedDirectory,
+                productPhoto.CopyFromDirectory(ProductPhoto.SelectedDirectory,
                 productPhoto.GetDirectoryPeth() + product.PhotoName);
 
-                MessageBox.Show(MessageNotifier.Message, "SUCESSO",
+                MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 CallAllResets();
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -170,7 +170,7 @@ namespace DimStock.UserForms
 
                 if (product.Edit(Id) == false)
                 {
-                    MessageBox.Show(MessageNotifier.Message, "ERROR",
+                    MessageBox.Show(AxlMessageNotifier.Message, "ERROR",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     return;
@@ -181,20 +181,20 @@ namespace DimStock.UserForms
 
                 //Apaga a foto atual do diretório, caso a foto do produto
                 //seja alterada
-                if (productPhoto.FindInDirectory(photoPath) == false)
+                if (productPhoto.CheckIfExtits(photoPath) == false)
                     productPhoto.DeleteFromDirectory(
                     ProductPhoto.PathOfLastSelectedPhoto);
 
-                productPhoto.CopyToDirectory(ProductPhoto.SelectedDirectory,
+                productPhoto.CopyFromDirectory(ProductPhoto.SelectedDirectory,
                 photoPath);
 
-                MessageBox.Show(MessageNotifier.Message, "SUCESSO",
+                MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 
@@ -277,19 +277,19 @@ namespace DimStock.UserForms
 
         private bool UploadPhoto()
         {
-            var picture = new ImageAssistant();
+            var picture = new AxlFile();
             var uploadState = false;
 
-            picture.OpenFileDialog();
+            picture.GetDirectoryPath();
 
-            if (picture.DirectoryFile != string.Empty)
+            if (picture.DirectoryPath != string.Empty)
             {
-                using (var fileStream = new FileStream(picture.DirectoryFile,
+                using (var fileStream = new FileStream(picture.DirectoryPath,
                 FileMode.Open, FileAccess.Read))
                 {
                     ProductPhoto.Image = Image.FromStream(fileStream);
-                    ProductPhoto.IndentificationPhotoNumber = productPhoto.GetIndentificationNumber() + ".jpg";
-                    ProductPhoto.SelectedDirectory = picture.DirectoryFile;
+                    ProductPhoto.IndentificationPhotoNumber = productPhoto.GetNumberId() + ".jpg";
+                    ProductPhoto.SelectedDirectory = picture.DirectoryPath;
 
                     uploadState = true;
                 }
@@ -302,7 +302,7 @@ namespace DimStock.UserForms
         {
             var photoPath = productPhoto.GetDirectoryPeth() + photoIdNumber;
 
-            if (productPhoto.FindInDirectory(photoPath) == false)
+            if (productPhoto.CheckIfExtits(photoPath) == false)
             {
                 ProductPhoto.Image = Resources.FotoNothing;
                 return;
@@ -317,7 +317,7 @@ namespace DimStock.UserForms
 
                 if (newIdNumber == true)
                 {
-                    photoIdNumber = productPhoto.GetIndentificationNumber() + ".jpg";
+                    photoIdNumber = productPhoto.GetNumberId() + ".jpg";
                     ProductPhoto.IndentificationPhotoNumber = photoIdNumber;
                 }
 
@@ -353,7 +353,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                ExceptionAssistant.Message.Show(ex);
+                AxlException.Message.Show(ex);
             }
         }
 

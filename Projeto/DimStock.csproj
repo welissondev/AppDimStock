@@ -126,12 +126,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Auxiliarys\DataGridLealt.cs" />
-    <Compile Include="Auxiliarys\DataPagination.cs" />
-    <Compile Include="Auxiliarys\EmailAdderess.cs" />
-    <Compile Include="Auxiliarys\ExceptionAssistant.cs" />
-    <Compile Include="Auxiliarys\FormAssistant.cs" />
-    <Compile Include="Auxiliarys\LoginAssistant.cs" />
+    <Compile Include="Auxiliarys\AxlDataGridLealt.cs" />
+    <Compile Include="Auxiliarys\AxlDataPagination.cs" />
+    <Compile Include="Auxiliarys\AxlEmailAdderess.cs" />
+    <Compile Include="Auxiliarys\AxlException.cs" />
+    <Compile Include="Auxiliarys\AxlMdiForm.cs" />
+    <Compile Include="Auxiliarys\AxlLogin.cs" />
     <Compile Include="Auxiliarys\CustomPictureBoxOne.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -145,7 +145,7 @@
     <Compile Include="Business\StockItem.cs" />
     <Compile Include="Business\StockProduct.cs" />
     <Compile Include="Business\StockMovement.cs" />
-    <Compile Include="Auxiliarys\MessageNotifier.cs" />
+    <Compile Include="Auxiliarys\AxlMessageNotifier.cs" />
     <Compile Include="Business\Product.cs" />
     <Compile Include="Business\ProductPhoto.cs" />
     <Compile Include="Business\Stock.cs" />
@@ -153,7 +153,7 @@
     <Compile Include="Business\UserHistory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Auxiliarys\ImageAssistant.cs" />
+    <Compile Include="Auxiliarys\AxlFile.cs" />
     <Compile Include="Reports\ReportProduct.cs" />
     <Compile Include="UserForms\AppConfigForm.cs">
       <SubType>Form</SubType>
