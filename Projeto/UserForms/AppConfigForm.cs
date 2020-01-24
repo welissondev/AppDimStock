@@ -12,6 +12,7 @@ namespace DimStock.UserForms
             InitializeComponent();
         }
 
+        //Eventos para nova configuração da aplicação
         private void StartNewConfiguration_Click(object sender, EventArgs e)
         {
             MainTabControl.SelectTab("PageChooseDirectory");
@@ -115,8 +116,6 @@ namespace DimStock.UserForms
                 }
 
                 AppConfig.FinalizeSettings();
-
-                UserLoginForm.He.Show();
             }
             catch (Exception ex)
             {
@@ -126,9 +125,13 @@ namespace DimStock.UserForms
 
         public static void ShowForm()
         {
-            var form = new AppConfigForm();
+            var form = new AppConfigForm()
+            {
+                WindowState = FormWindowState.Maximized
+            };
 
             form.Show();
         }
+
     }
 }
