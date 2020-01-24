@@ -132,10 +132,10 @@
     <Compile Include="Auxiliarys\AxlException.cs" />
     <Compile Include="Auxiliarys\AxlMdiForm.cs" />
     <Compile Include="Auxiliarys\AxlLogin.cs" />
-    <Compile Include="Auxiliarys\CustomPictureBoxOne.cs">
+    <Compile Include="Controls\CustomPictureBoxOne.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Auxiliarys\CustomDataGridViewOne.cs">
+    <Compile Include="Controls\CustomDataGridViewOne.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Business\AppConfig.cs" />

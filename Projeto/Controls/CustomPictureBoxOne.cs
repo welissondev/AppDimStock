@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace DimStock.Auxiliarys
+namespace DimStock.Controls
 {
     public class CustomPictureBoxOne : PictureBox
     {
