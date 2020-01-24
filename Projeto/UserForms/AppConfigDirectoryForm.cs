@@ -1,8 +1,6 @@
-﻿using DimStock.Properties;
-using DimStock.Auxiliarys;
-using System;
-using System.IO;
+﻿using System;
 using System.Windows.Forms;
+using DimStock.Business;
 
 namespace DimStock.UserForms
 {
@@ -17,27 +15,22 @@ namespace DimStock.UserForms
         {
             try
             {
-                var selectedDirectory = SelectDirectoryFolder();
+                var appConfig = new AppConfigDirectory();
 
-                if (selectedDirectory == string.Empty)
+                var path = appConfig.SelectPath();
+
+                if (path == string.Empty)
                     return;
 
-                SaveDefaultDirectory(selectedDirectory);
+                appConfig.SavePath(path);
 
-                CopyDataBaseToSelectedPath();
+                appConfig.TransferDataBase();
 
-                CreateFoldersInDirectory();
+                appConfig.CreateFolders();
 
-                FormAssistant.CloseAllForms();
-                var form = new AppConfigCompanyRegistrationForm()
-                {
-                    MdiParent = AppConfigHomeScreem.He,
-                    FormBorderStyle = FormBorderStyle.None,
-                    Dock = DockStyle.Fill,
-                    ShowInTaskbar = false
-                };
+                AppConfigCompanyRegistrationForm.ShowForm();
 
-                form.Show();
+                Close();
             }
             catch (Exception ex)
             {
@@ -45,84 +38,17 @@ namespace DimStock.UserForms
             }
         }
 
-        private void SaveDefaultDirectory(string path)
+        public static void SowForm()
         {
-            Settings.Default.MainAppDirectory = path;
-            Settings.Default.Save();
-        }
-
-        private void CopyDataBaseToSelectedPath()
-        {
-            var directorySource = AppDomain.CurrentDomain.BaseDirectory.ToString() + @"Padrao\dimstock-database.mdb";
-            var directoryPath = Settings.Default.MainAppDirectory + @"\dimstock-database.mdb";
-
-            if (CheckIfFileExists(directoryPath) == false)
+            var form = new AppConfigDirectoryForm()
             {
-                System.IO.File.Copy(directorySource, directoryPath);
-            }
-        }
+                MdiParent = AppConfigHomeScreenForm.He,
+                FormBorderStyle = FormBorderStyle.None,
+                Dock = DockStyle.Fill,
+                ShowInTaskbar = false
+            };
 
-        private void CreateFoldersInDirectory()
-        {
-            //Cria pasta de backUp do banco de dados
-            var folderDataBaseBackUp = Settings.Default.MainAppDirectory + @"\DataBaseBackUp";
-
-            if (CheckIfDirectoryExists(folderDataBaseBackUp) == false)
-            {
-                var root = new DirectoryInfo(Settings.Default.MainAppDirectory);
-                root.CreateSubdirectory("DataBaseBackUp");
-            }
-
-            //Cria pasta de fotos dos produtos
-            var folderProductPhotos = Settings.Default.MainAppDirectory + @"\ProductPhotos";
-
-            if (CheckIfDirectoryExists(folderProductPhotos) == false)
-            {
-                var root = new DirectoryInfo(Settings.Default.MainAppDirectory);
-                root.CreateSubdirectory("ProductPhotos");
-            }
-
-            //Cria pasta de fotos das logos da empresa
-            var folderCompanyLogo = Settings.Default.MainAppDirectory + @"\CompanyLogo";
-
-            if (CheckIfDirectoryExists(folderCompanyLogo) == false)
-            {
-                var root = new DirectoryInfo(Settings.Default.MainAppDirectory);
-                root.CreateSubdirectory("CompanyLogo");
-            }
-        }
-
-        private bool CheckIfDirectoryExists(string directoryPath)
-        {
-            return Directory.Exists(directoryPath).Equals(true);
-        }
-
-        private bool CheckIfFileExists(string directoryFile)
-        {
-            return File.Exists(directoryFile).Equals(true);
-        }
-
-        private string SelectDirectoryFolder()
-        {
-            using (var dialog = new FolderBrowserDialog())
-            {
-                DialogResult result = dialog.ShowDialog();
-                if (result == DialogResult.OK)
-                {
-                    string selectedPath = dialog.SelectedPath;
-                    fieldDataBasePath.Text = selectedPath;
-
-                    return selectedPath;
-                }
-
-                return string.Empty;
-            }
-        }
-
-        private void FinalizeSettings()
-        {
-            Settings.Default.AppSettingsState = true;
-            Settings.Default.Save();
+            form.Show();
         }
     }
 }

@@ -2,8 +2,6 @@
 using System.Windows.Forms;
 using DimStock.Auxiliarys;
 using DimStock.Business;
-using DimStock.Properties;
-using DimStock.UserForms;
 
 namespace DimStock.UserForms
 {
@@ -66,21 +64,15 @@ namespace DimStock.UserForms
 
         #endregion
 
-        private bool CheckAppConfigurationState()
-        {
-            return Settings.Default.AppSettingsState.Equals(true);
-        }
-
         private void UserLoginForm_Load(object sender, EventArgs e)
         {
             He = this;
+        }
 
-            if(CheckAppConfigurationState() == false)
-            {
-                Hide();
-                var form = new AppConfigHomeScreem();
-                form.Show();
-            }
+        public static void ShowForm()
+        {
+            var form = new UserLoginForm();
+            form.Show();
         }
     }
 }

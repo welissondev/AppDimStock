@@ -11,7 +11,7 @@ namespace DimStock.UserForms
     {
         #region  Get & Set
 
-        public static HomeScreenForm Form { get; set; }
+        public static HomeScreenForm He { get; set; }
 
         #endregion
 
@@ -34,7 +34,7 @@ namespace DimStock.UserForms
 
         private void HomeScreenForm_Load(object sender, EventArgs e)
         {
-            Form = this;
+            He = this;
             DayOfTheWeek.Text = DateTime.Now.ToLongDateString();
         }
 

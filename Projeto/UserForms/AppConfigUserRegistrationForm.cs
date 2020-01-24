@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DimStock.Business;
 using DimStock.Auxiliarys;
-using DimStock.UserForms;
-using DimStock.Properties;
 
 namespace DimStock.UserForms
 {
@@ -69,20 +60,27 @@ namespace DimStock.UserForms
                     return;
                 }
 
+                AppConfigFinalizationForm.ShowForm();
+
                 Close();
-
-               
-                UserLoginForm.He.Show();
-
-                AppConfigHomeScreem.He.Close();
-
-                Settings.Default.AppSettingsState = true;
-                Settings.Default.Save();
             }
             catch (Exception ex)
             {
                 ExceptionAssistant.Message.Show(ex);
             }
+        }
+
+        public static void ShowForm()
+        {
+            var form = new AppConfigUserRegistrationForm()
+            {
+                MdiParent = AppConfigHomeScreenForm.He,
+                FormBorderStyle = FormBorderStyle.None,
+                Dock = DockStyle.Fill,
+                ShowInTaskbar = false
+            };
+
+            form.Show();
         }
     }
 }

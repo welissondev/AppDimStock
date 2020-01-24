@@ -1,6 +1,6 @@
 ﻿namespace DimStock.UserForms
 {
-    partial class AppConfigDefinationForm
+    partial class AppConfigTypeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -44,7 +44,7 @@
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label3.Location = new System.Drawing.Point(379, 315);
+            this.label3.Location = new System.Drawing.Point(380, 328);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(128, 60);
             this.label3.TabIndex = 12;
@@ -59,7 +59,7 @@
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(194, 315);
+            this.label2.Location = new System.Drawing.Point(195, 328);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(128, 60);
             this.label2.TabIndex = 11;
@@ -69,9 +69,9 @@
             // RestoureConfiguration
             // 
             this.RestoureConfiguration.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.RestoureConfiguration.BackColor = System.Drawing.Color.SteelBlue;
-            this.RestoureConfiguration.color = System.Drawing.Color.SteelBlue;
-            this.RestoureConfiguration.colorActive = System.Drawing.Color.RoyalBlue;
+            this.RestoureConfiguration.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.RestoureConfiguration.color = System.Drawing.Color.MediumSeaGreen;
+            this.RestoureConfiguration.colorActive = System.Drawing.Color.SeaGreen;
             this.RestoureConfiguration.Cursor = System.Windows.Forms.Cursors.Hand;
             this.RestoureConfiguration.Font = new System.Drawing.Font("Century Gothic", 15.75F);
             this.RestoureConfiguration.ForeColor = System.Drawing.Color.White;
@@ -80,7 +80,7 @@
             this.RestoureConfiguration.ImageZoom = 50;
             this.RestoureConfiguration.LabelPosition = 41;
             this.RestoureConfiguration.LabelText = "";
-            this.RestoureConfiguration.Location = new System.Drawing.Point(379, 210);
+            this.RestoureConfiguration.Location = new System.Drawing.Point(380, 223);
             this.RestoureConfiguration.Margin = new System.Windows.Forms.Padding(6);
             this.RestoureConfiguration.Name = "RestoureConfiguration";
             this.RestoureConfiguration.Size = new System.Drawing.Size(128, 129);
@@ -90,9 +90,9 @@
             // 
             this.StartNewConfiguration.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.StartNewConfiguration.AutoSize = true;
-            this.StartNewConfiguration.BackColor = System.Drawing.Color.SteelBlue;
-            this.StartNewConfiguration.color = System.Drawing.Color.SteelBlue;
-            this.StartNewConfiguration.colorActive = System.Drawing.Color.RoyalBlue;
+            this.StartNewConfiguration.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.StartNewConfiguration.color = System.Drawing.Color.MediumSeaGreen;
+            this.StartNewConfiguration.colorActive = System.Drawing.Color.SeaGreen;
             this.StartNewConfiguration.Cursor = System.Windows.Forms.Cursors.Hand;
             this.StartNewConfiguration.Font = new System.Drawing.Font("Century Gothic", 15.75F);
             this.StartNewConfiguration.ForeColor = System.Drawing.Color.White;
@@ -101,7 +101,7 @@
             this.StartNewConfiguration.ImageZoom = 50;
             this.StartNewConfiguration.LabelPosition = 41;
             this.StartNewConfiguration.LabelText = "";
-            this.StartNewConfiguration.Location = new System.Drawing.Point(194, 210);
+            this.StartNewConfiguration.Location = new System.Drawing.Point(195, 223);
             this.StartNewConfiguration.Margin = new System.Windows.Forms.Padding(6);
             this.StartNewConfiguration.Name = "StartNewConfiguration";
             this.StartNewConfiguration.Size = new System.Drawing.Size(128, 129);
@@ -112,11 +112,11 @@
             // 
             this.FormNovigationDescription.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.FormNovigationDescription.BackColor = System.Drawing.Color.Transparent;
-            this.FormNovigationDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormNovigationDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormNovigationDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.FormNovigationDescription.Location = new System.Drawing.Point(42, 117);
+            this.FormNovigationDescription.Location = new System.Drawing.Point(32, 96);
             this.FormNovigationDescription.Name = "FormNovigationDescription";
-            this.FormNovigationDescription.Size = new System.Drawing.Size(637, 33);
+            this.FormNovigationDescription.Size = new System.Drawing.Size(637, 42);
             this.FormNovigationDescription.TabIndex = 7;
             this.FormNovigationDescription.Text = "Seja Bem Vindo!";
             this.FormNovigationDescription.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -127,14 +127,15 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(48, 148);
+            this.label1.Location = new System.Drawing.Point(98, 138);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(631, 27);
+            this.label1.Size = new System.Drawing.Size(520, 53);
             this.label1.TabIndex = 8;
-            this.label1.Text = "Escolha uma opção para proceguir com a instalação";
+            this.label1.Text = "Antes de começar, precisamos fazer algumas configurações. Selecione uma das opçõe" +
+    "s a seguir:\r\n";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // ConfigurationDefinationForm
+            // AppConfigTypeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -146,7 +147,7 @@
             this.Controls.Add(this.StartNewConfiguration);
             this.Controls.Add(this.FormNovigationDescription);
             this.Controls.Add(this.label1);
-            this.Name = "ConfigurationDefinationForm";
+            this.Name = "AppConfigTypeForm";
             this.Text = "ConfigurationDefinationForm";
             this.ResumeLayout(false);
             this.PerformLayout();

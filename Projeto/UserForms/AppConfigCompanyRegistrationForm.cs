@@ -38,21 +38,27 @@ namespace DimStock.UserForms
 
                 if (company.Register() == true)
                 {
-                    var form = new AppConfigUserRegistrationForm()
-                    {
-                        MdiParent = AppConfigHomeScreem.He,
-                        FormBorderStyle = FormBorderStyle.None,
-                        Dock = DockStyle.Fill,
-                        ShowInTaskbar = false
-                    };
-
-                    form.Show();
+                    AppConfigUserRegistrationForm.ShowForm();
+                    Close();
                 }
             }
             catch (Exception ex)
             {
                 ExceptionAssistant.Message.Show(ex);
             }
+        }
+
+        public static void ShowForm()
+        {
+            var form = new AppConfigCompanyRegistrationForm()
+            {
+                MdiParent = AppConfigHomeScreenForm.He,
+                FormBorderStyle = FormBorderStyle.None,
+                Dock = DockStyle.Fill,
+                ShowInTaskbar = false
+            };
+
+            form.Show();
         }
     }
 }
