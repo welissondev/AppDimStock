@@ -35,7 +35,8 @@ namespace DimStock.Auxiliarys
 
         public void CopyFromDirectory(string sourcePath, string destPath, bool overwrite = true)
         {
-            File.Copy(sourcePath, destPath, overwrite);
+            if (CheckIfExists(sourcePath) == true)
+                File.Copy(sourcePath, destPath, overwrite);
         }
 
         public void DeleteFromDirectory(string path)

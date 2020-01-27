@@ -23,7 +23,7 @@ namespace DimStock.Business
 
         public void TransferCompanyLogoToMainDirectory(string sourcePath)
         {
-            var destPath = GetMainAppDirectory() + @"CompanyLogo\CompanyLogo.jpg";
+            var destPath = GetMainAppDirectory() + @"\CompanyLogo\CompanyLogo.jpg";
 
             var logoImage = new AxlFile();
 
