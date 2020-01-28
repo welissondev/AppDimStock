@@ -139,7 +139,7 @@
     <Compile Include="Controls\CustomDataGridViewOne.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Business\AppConfig.cs" />
+    <Compile Include="Business\AppSetting.cs" />
     <Compile Include="Business\Company.cs" />
     <Compile Include="Business\Connection.cs" />
     <Compile Include="Business\StockDestination.cs" />
@@ -156,11 +156,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Auxiliarys\AxlFile.cs" />
     <Compile Include="Reports\ReportProduct.cs" />
-    <Compile Include="UserForms\AppConfigForm.cs">
+    <Compile Include="UserForms\AppSettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserForms\AppConfigForm.Designer.cs">
-      <DependentUpon>AppConfigForm.cs</DependentUpon>
+    <Compile Include="UserForms\AppSettingsForm.Designer.cs">
+      <DependentUpon>AppSettingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\ReportStockProduct.cs" />
     <Compile Include="Settings.cs" />
@@ -246,8 +246,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UserForms\AppConfigForm.resx">
-      <DependentUpon>AppConfigForm.cs</DependentUpon>
+    <EmbeddedResource Include="UserForms\AppSettingsForm.resx">
+      <DependentUpon>AppSettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\StockProduct.rdlc" />
     <EmbeddedResource Include="Reports\Product.rdlc" />

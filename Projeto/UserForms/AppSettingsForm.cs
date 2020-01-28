@@ -1,16 +1,19 @@
 ﻿using DimStock.Auxiliarys;
 using DimStock.Business;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace DimStock.UserForms
 {
-    public partial class AppConfigForm : Form
+    public partial class AppSettingsForm : Form
     {
-        AppConfig app = new AppConfig();
+        private AppSetting appSetting = new AppSetting();
 
-        public AppConfigForm()
+        public AppSettingsForm()
         {
             InitializeComponent();
 
@@ -53,6 +56,44 @@ namespace DimStock.UserForms
             }
         }
 
+        private void ChooseBackup_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var folderBackup = new AxlDirectory();
+
+                var path = folderBackup.SelectPath();
+
+                if (path == string.Empty)
+                    return;
+
+                BackupPath.Text = path;
+
+                var fileList = folderBackup.ListFile(path
+                + @"\DataBaseBackUp");
+
+                ListviewBackup.Items.Clear();
+
+                for (int i = 0; i < fileList.Count; i++)
+                {
+                    var item = new ListViewItem(fileList[i]);
+                    ListviewBackup.Items.Add(item);
+                }
+
+                appSetting.SaveAsMainDirectory(path);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ocorreu um erro ao importar o backup, verifique " +
+                "se você não esta selecionando o subdiretório da pasta raiz. " +
+                "Você deve selecionar o diretório raiz, e deixar que o sistema " +
+                "importe as subpastas do diretório automaticamente",
+                "Erro Ao Importar");
+
+                BackupPath.Text = string.Empty;
+            }
+        }
+
         private void NextPage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             try
@@ -73,19 +114,21 @@ namespace DimStock.UserForms
                             if (MainDirectoryPath.Text == string.Empty)
                                 return;
 
-                            app.SaveAsMainDirectory(MainDirectoryPath.Text);
+                            appSetting.SaveAsMainDirectory(
+                            MainDirectoryPath.Text);
 
-                            app.TransferDataBaseToMainDirectory();
+                            appSetting.TransferDataBaseToMainDirectory();
 
-                            app.CreateFoldersInTheMainDirectory();
+                            appSetting.CreateFoldersInTheMainDirectory();
 
-                            MainTabControl.SelectTab("PageCompanyLogo");
+                            MainTabControl.SelectTab(
+                            "PageCompanyLogo");
 
                             break;
 
                         case "PageCompanyLogo":
 
-                            app.TransferCompanyLogoToMainDirectory(
+                            appSetting.TransferCompanyLogoToMainDirectory(
                             CompanyLogoImage.ImageLocation);
 
                             MainTabControl.SelectTab("PageLogin");
@@ -99,18 +142,50 @@ namespace DimStock.UserForms
                                 MainTabControl.SelectTab("PageFinalize");
 
                                 NextPage.Visible = false;
-
                                 BackPage.Visible = false;
 
                                 Await(18000);
-
                                 LabelPageFinalizeTitle.Text = "Salvo Com Sucesso!";
-
                                 LabelPageFinalizeSubTitle.Text = "Reiniciando o sistema...";
-
                                 Await(8000);
 
-                                AppConfig.FinalizeSettings();
+                                AppSetting.FinalizeConfiguration();
+
+                                Application.Restart();
+                            }
+
+                            break;
+                    }
+                }
+
+                if (CheckBoxRestoureBackup.Checked == true)
+                {
+                    switch (MainTabControl.SelectedTab.Name)
+                    {
+                        case "PageConfigType":
+
+                            MainTabControl.SelectTab("PageBackUp");
+                            BackPage.Visible = true;
+
+                            break;
+
+                        case "PageBackUp":
+
+                            if (ImportBackUp() == true)
+                            {
+                                MainTabControl.SelectTab("PageFinalize");
+
+                                NextPage.Visible = false;
+                                BackPage.Visible = false;
+
+                                LabelPageFinalizeTitle.Text = "Ok, Aguarde Um Instante";
+                                LabelPageFinalizeSubTitle.Text = "Estamos importando seus dados...";
+                                Await(18000);
+                                LabelPageFinalizeTitle.Text = "Importado Com Sucesso!";
+                                LabelPageFinalizeSubTitle.Text = "Reiniciando o sistema...";
+                                Await(8000);
+
+                                AppSetting.FinalizeConfiguration();
 
                                 Application.Restart();
                             }
@@ -145,6 +220,19 @@ namespace DimStock.UserForms
 
 
                     case "PageChooseDirectory":
+
+                        MainTabControl.SelectTab("PageConfigType");
+                        BackPage.Visible = false;
+
+                        break;
+                }
+            }
+
+            if (CheckBoxRestoureBackup.Checked == true)
+            {
+                switch (MainTabControl.SelectedTab.Name)
+                {
+                    case "PageBackUp":
 
                         MainTabControl.SelectTab("PageConfigType");
                         BackPage.Visible = false;
@@ -213,6 +301,42 @@ namespace DimStock.UserForms
                 MessageBox.Show(AxlMessageNotifier.Message);
                 return false;
             }
+
+            return true;
+        }
+
+        private bool ImportBackUp()
+        {
+            if (ListviewBackup.Items.Count == 0)
+            {
+                MessageBox.Show("Não foi encontrado arquivos de backup " +
+                "a serem restaurados no diretório raiz. Gere um novo" +
+                "backup ou faça uma nova configuração!", "Não Encontrado");
+
+                return false;
+            }
+
+            var itemSelected = false;
+            var dataBaseName = string.Empty;
+
+            for (int i = 0; i < ListviewBackup.Items.Count; i++)
+            {
+                if (ListviewBackup.Items[i].Selected == true)
+                {
+                    dataBaseName = ListviewBackup.Items[i].Text;
+                    itemSelected = true;
+                }
+            }
+
+            if (itemSelected == false)
+            {
+                MessageBox.Show("Selecione um item da lista!",
+                "ITEM NÃO SELECIONADO");
+
+                return itemSelected;
+            }
+
+            appSetting.ImportBackUp(dataBaseName);
 
             return true;
         }

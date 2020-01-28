@@ -42,5 +42,21 @@ namespace DimStock.Auxiliarys
                     CreateNewFolder(rootDirectory, folderName);
             }
         }
+
+        public List<string> ListFile(string rootDirectory)
+        {
+            var folder = new DirectoryInfo(rootDirectory);
+
+            FileInfo[] files = folder.GetFiles("*.*");
+
+            var list = new List<string>();
+
+            foreach (FileInfo fileinfo in files)
+            {
+                list.Add(fileinfo.Name);
+            }
+
+            return list;
+        }
     }
 }

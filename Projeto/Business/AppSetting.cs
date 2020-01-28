@@ -5,14 +5,14 @@ using System.Collections.Generic;
 
 namespace DimStock.Business
 {
-    public class AppConfig
+    public class AppSetting
     {
         public void TransferDataBaseToMainDirectory()
         {
-            var sourcePath = AppDomain.CurrentDomain.BaseDirectory.ToString() + 
+            var sourcePath = AppDomain.CurrentDomain.BaseDirectory.ToString() +
             @"Padrao\dimstock-database.mdb";
-            
-            var destPath = Settings.Default.MainAppDirectory + 
+
+            var destPath = Settings.Default.MainAppDirectory +
             @"\dimstock-database.mdb";
 
             var dataBase = new AxlFile();
@@ -29,6 +29,17 @@ namespace DimStock.Business
 
             if (logoImage.CheckIfExists(destPath) == false)
                 logoImage.CopyFromDirectory(sourcePath, destPath);
+        }
+
+        public void ImportBackUp(string dataBaseBackUpName)
+        {
+            var sourcePath = GetMainAppDirectory() + @"\DataBaseBackUp\" + dataBaseBackUpName;
+
+            var destPath = GetMainAppDirectory() + @"\dimstock-database.mdb";
+
+            var backup = new AxlFile();
+
+            backup.CopyFromDirectory(sourcePath, destPath);
         }
 
         public void CreateFoldersInTheMainDirectory()
@@ -64,7 +75,7 @@ namespace DimStock.Business
             Settings.Default.Save();
         }
 
-        public static void FinalizeSettings()
+        public static void FinalizeConfiguration()
         {
             Settings.Default.AppSettingsState = true;
             Settings.Default.Save();

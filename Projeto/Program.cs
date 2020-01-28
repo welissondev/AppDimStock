@@ -17,14 +17,14 @@ namespace DimStock.UserForms
 
             Application.SetCompatibleTextRenderingDefault(false);
 
-            if (AppConfig.GetAppSettingsState() == true)
+            if (AppSetting.GetAppSettingsState() == true)
             {
                 Application.Run(new UserLoginForm());
                 Settings.Default.Reset();
             }
             else
             {
-                Application.Run(new AppConfigForm());
+                Application.Run(new AppSettingsForm());
             }
         }
     }

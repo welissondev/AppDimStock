@@ -1,6 +1,6 @@
 ﻿namespace DimStock.UserForms
 {
-    partial class AppConfigForm
+    partial class AppSettingsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,8 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            BunifuAnimatorNS.Animation animation10 = new BunifuAnimatorNS.Animation();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AppConfigForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AppSettingsForm));
             this.MainTabControl = new System.Windows.Forms.TabControl();
             this.PageConfigType = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
@@ -64,10 +63,17 @@
             this.EmailTitle = new System.Windows.Forms.Label();
             this.UserName = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.NameTitle = new System.Windows.Forms.Label();
+            this.PageBackUp = new System.Windows.Forms.TabPage();
+            this.ListviewBackup = new System.Windows.Forms.ListView();
+            this.FileList = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.ChooseBackup = new Syncfusion.Windows.Forms.ButtonAdv();
+            this.BackupPath = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.PageFinalize = new System.Windows.Forms.TabPage();
+            this.Loading = new System.Windows.Forms.PictureBox();
             this.LabelPageFinalizeSubTitle = new System.Windows.Forms.Label();
             this.LabelPageFinalizeTitle = new System.Windows.Forms.Label();
-            this.Loading = new System.Windows.Forms.PictureBox();
             this.NextPage = new System.Windows.Forms.LinkLabel();
             this.BackPage = new System.Windows.Forms.LinkLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -75,7 +81,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.CloseAssistant = new Bunifu.Framework.UI.BunifuThinButton2();
             this.bunifuSeparator2 = new Bunifu.Framework.UI.BunifuSeparator();
-            this.Transition = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.MainTabControl.SuspendLayout();
             this.PageConfigType.SuspendLayout();
             this.PageChooseDirectory.SuspendLayout();
@@ -89,6 +94,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.Login)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Email)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserName)).BeginInit();
+            this.PageBackUp.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BackupPath)).BeginInit();
             this.PageFinalize.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Loading)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -101,13 +108,13 @@
             this.MainTabControl.Controls.Add(this.PageChooseDirectory);
             this.MainTabControl.Controls.Add(this.PageCompanyLogo);
             this.MainTabControl.Controls.Add(this.PageLogin);
+            this.MainTabControl.Controls.Add(this.PageBackUp);
             this.MainTabControl.Controls.Add(this.PageFinalize);
-            this.Transition.SetDecoration(this.MainTabControl, BunifuAnimatorNS.DecorationType.None);
             this.MainTabControl.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainTabControl.Location = new System.Drawing.Point(176, 161);
             this.MainTabControl.Name = "MainTabControl";
             this.MainTabControl.SelectedIndex = 0;
-            this.MainTabControl.Size = new System.Drawing.Size(589, 458);
+            this.MainTabControl.Size = new System.Drawing.Size(617, 458);
             this.MainTabControl.TabIndex = 0;
             // 
             // PageConfigType
@@ -117,21 +124,19 @@
             this.PageConfigType.Controls.Add(this.CheckBoxRestoureBackup);
             this.PageConfigType.Controls.Add(this.label21);
             this.PageConfigType.Controls.Add(this.label22);
-            this.Transition.SetDecoration(this.PageConfigType, BunifuAnimatorNS.DecorationType.None);
             this.PageConfigType.Location = new System.Drawing.Point(4, 28);
             this.PageConfigType.Name = "PageConfigType";
             this.PageConfigType.Padding = new System.Windows.Forms.Padding(3);
-            this.PageConfigType.Size = new System.Drawing.Size(581, 426);
+            this.PageConfigType.Size = new System.Drawing.Size(609, 426);
             this.PageConfigType.TabIndex = 0;
-            this.PageConfigType.Text = "AMBIENTE";
+            this.PageConfigType.Text = "Ambiente";
             this.PageConfigType.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.Transition.SetDecoration(this.label1, BunifuAnimatorNS.DecorationType.None);
             this.label1.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label1.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label1.Location = new System.Drawing.Point(63, 108);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(421, 48);
@@ -145,7 +150,6 @@
             this.CheckBoxNewConfiguration.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CheckBoxNewConfiguration.BackColor = System.Drawing.Color.Transparent;
-            this.Transition.SetDecoration(this.CheckBoxNewConfiguration, BunifuAnimatorNS.DecorationType.None);
             this.CheckBoxNewConfiguration.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
             this.CheckBoxNewConfiguration.FlatAppearance.CheckedBackColor = System.Drawing.Color.MediumSeaGreen;
             this.CheckBoxNewConfiguration.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumSeaGreen;
@@ -154,7 +158,7 @@
             this.CheckBoxNewConfiguration.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.CheckBoxNewConfiguration.Location = new System.Drawing.Point(65, 275);
             this.CheckBoxNewConfiguration.Name = "CheckBoxNewConfiguration";
-            this.CheckBoxNewConfiguration.Size = new System.Drawing.Size(403, 25);
+            this.CheckBoxNewConfiguration.Size = new System.Drawing.Size(431, 25);
             this.CheckBoxNewConfiguration.TabIndex = 1;
             this.CheckBoxNewConfiguration.Text = "Opção B: Não tenho um backup, desejo fazer uma nova configuração\r\n\r\n\r\n";
             this.CheckBoxNewConfiguration.UseCompatibleTextRendering = true;
@@ -165,7 +169,6 @@
             this.CheckBoxRestoureBackup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CheckBoxRestoureBackup.BackColor = System.Drawing.Color.Transparent;
-            this.Transition.SetDecoration(this.CheckBoxRestoureBackup, BunifuAnimatorNS.DecorationType.None);
             this.CheckBoxRestoureBackup.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
             this.CheckBoxRestoureBackup.FlatAppearance.CheckedBackColor = System.Drawing.Color.MediumSeaGreen;
             this.CheckBoxRestoureBackup.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumSeaGreen;
@@ -174,7 +177,7 @@
             this.CheckBoxRestoureBackup.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.CheckBoxRestoureBackup.Location = new System.Drawing.Point(65, 248);
             this.CheckBoxRestoureBackup.Name = "CheckBoxRestoureBackup";
-            this.CheckBoxRestoureBackup.Size = new System.Drawing.Size(403, 25);
+            this.CheckBoxRestoureBackup.Size = new System.Drawing.Size(431, 25);
             this.CheckBoxRestoureBackup.TabIndex = 0;
             this.CheckBoxRestoureBackup.Text = "Opção A: Já tenho um backup pronto para ser restaurado\r\n";
             this.CheckBoxRestoureBackup.UseCompatibleTextRendering = true;
@@ -183,7 +186,6 @@
             // label21
             // 
             this.label21.BackColor = System.Drawing.Color.Transparent;
-            this.Transition.SetDecoration(this.label21, BunifuAnimatorNS.DecorationType.None);
             this.label21.Font = new System.Drawing.Font("Calibri", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.ForeColor = System.Drawing.Color.MediumAquamarine;
             this.label21.Location = new System.Drawing.Point(59, 62);
@@ -196,7 +198,6 @@
             // label22
             // 
             this.label22.BackColor = System.Drawing.Color.Transparent;
-            this.Transition.SetDecoration(this.label22, BunifuAnimatorNS.DecorationType.None);
             this.label22.Font = new System.Drawing.Font("Calibri Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label22.Location = new System.Drawing.Point(62, 162);
@@ -214,20 +215,18 @@
             this.PageChooseDirectory.Controls.Add(this.label6);
             this.PageChooseDirectory.Controls.Add(this.ChooseMainDirectory);
             this.PageChooseDirectory.Controls.Add(this.MainDirectoryPath);
-            this.Transition.SetDecoration(this.PageChooseDirectory, BunifuAnimatorNS.DecorationType.None);
             this.PageChooseDirectory.Location = new System.Drawing.Point(4, 28);
             this.PageChooseDirectory.Name = "PageChooseDirectory";
             this.PageChooseDirectory.Padding = new System.Windows.Forms.Padding(3);
-            this.PageChooseDirectory.Size = new System.Drawing.Size(581, 426);
+            this.PageChooseDirectory.Size = new System.Drawing.Size(609, 426);
             this.PageChooseDirectory.TabIndex = 1;
-            this.PageChooseDirectory.Text = "DIRETÓRIO";
+            this.PageChooseDirectory.Text = "Diretório";
             this.PageChooseDirectory.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Transition.SetDecoration(this.label4, BunifuAnimatorNS.DecorationType.None);
             this.label4.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label4.Location = new System.Drawing.Point(61, 119);
@@ -242,7 +241,6 @@
             // 
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.Transition.SetDecoration(this.label5, BunifuAnimatorNS.DecorationType.None);
             this.label5.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label5.Font = new System.Drawing.Font("Calibri", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.MediumAquamarine;
@@ -257,7 +255,6 @@
             // 
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.Transition.SetDecoration(this.label6, BunifuAnimatorNS.DecorationType.None);
             this.label6.Font = new System.Drawing.Font("Calibri Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label6.Location = new System.Drawing.Point(61, 166);
@@ -277,7 +274,6 @@
             this.ChooseMainDirectory.BeforeTouchSize = new System.Drawing.Size(37, 27);
             this.ChooseMainDirectory.ButtonType = Syncfusion.Windows.Forms.Tools.ButtonTypes.Browse;
             this.ChooseMainDirectory.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.Transition.SetDecoration(this.ChooseMainDirectory, BunifuAnimatorNS.DecorationType.None);
             this.ChooseMainDirectory.KeepFocusRectangle = false;
             this.ChooseMainDirectory.Location = new System.Drawing.Point(467, 260);
             this.ChooseMainDirectory.Name = "ChooseMainDirectory";
@@ -292,13 +288,12 @@
             // 
             this.MainDirectoryPath.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.MainDirectoryPath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.MainDirectoryPath.BeforeTouchSize = new System.Drawing.Size(440, 26);
+            this.MainDirectoryPath.BeforeTouchSize = new System.Drawing.Size(438, 27);
             this.MainDirectoryPath.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.MainDirectoryPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.MainDirectoryPath.CanOverrideStyle = true;
             this.MainDirectoryPath.CausesValidation = false;
             this.MainDirectoryPath.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.Transition.SetDecoration(this.MainDirectoryPath, BunifuAnimatorNS.DecorationType.None);
             this.MainDirectoryPath.Enabled = false;
             this.MainDirectoryPath.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainDirectoryPath.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
@@ -323,20 +318,18 @@
             this.PageCompanyLogo.Controls.Add(this.label7);
             this.PageCompanyLogo.Controls.Add(this.label8);
             this.PageCompanyLogo.Controls.Add(this.label9);
-            this.Transition.SetDecoration(this.PageCompanyLogo, BunifuAnimatorNS.DecorationType.None);
             this.PageCompanyLogo.Location = new System.Drawing.Point(4, 28);
             this.PageCompanyLogo.Name = "PageCompanyLogo";
             this.PageCompanyLogo.Padding = new System.Windows.Forms.Padding(3);
-            this.PageCompanyLogo.Size = new System.Drawing.Size(581, 426);
+            this.PageCompanyLogo.Size = new System.Drawing.Size(609, 426);
             this.PageCompanyLogo.TabIndex = 4;
-            this.PageCompanyLogo.Text = "LOGO";
+            this.PageCompanyLogo.Text = "Logomarca";
             this.PageCompanyLogo.UseVisualStyleBackColor = true;
             // 
             // FrameProductPhoto
             // 
             this.FrameProductPhoto.BackColor = System.Drawing.Color.White;
             this.FrameProductPhoto.Controls.Add(this.CompanyLogoImage);
-            this.Transition.SetDecoration(this.FrameProductPhoto, BunifuAnimatorNS.DecorationType.None);
             this.FrameProductPhoto.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.FrameProductPhoto.Location = new System.Drawing.Point(69, 199);
             this.FrameProductPhoto.Name = "FrameProductPhoto";
@@ -348,7 +341,6 @@
             // 
             this.CompanyLogoImage.BackColor = System.Drawing.Color.White;
             this.CompanyLogoImage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Transition.SetDecoration(this.CompanyLogoImage, BunifuAnimatorNS.DecorationType.None);
             this.CompanyLogoImage.Image = global::DimStock.Properties.Resources.StockLogo;
             this.CompanyLogoImage.Location = new System.Drawing.Point(7, 16);
             this.CompanyLogoImage.Name = "CompanyLogoImage";
@@ -361,9 +353,8 @@
             // label7
             // 
             this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.Transition.SetDecoration(this.label7, BunifuAnimatorNS.DecorationType.None);
             this.label7.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label7.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label7.Location = new System.Drawing.Point(67, 109);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(334, 27);
@@ -375,7 +366,6 @@
             // 
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.Transition.SetDecoration(this.label8, BunifuAnimatorNS.DecorationType.None);
             this.label8.Font = new System.Drawing.Font("Calibri", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.MediumAquamarine;
             this.label8.Location = new System.Drawing.Point(61, 62);
@@ -388,7 +378,6 @@
             // label9
             // 
             this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.Transition.SetDecoration(this.label9, BunifuAnimatorNS.DecorationType.None);
             this.label9.Font = new System.Drawing.Font("Calibri Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label9.Location = new System.Drawing.Point(67, 142);
@@ -414,21 +403,19 @@
             this.PageLogin.Controls.Add(this.EmailTitle);
             this.PageLogin.Controls.Add(this.UserName);
             this.PageLogin.Controls.Add(this.NameTitle);
-            this.Transition.SetDecoration(this.PageLogin, BunifuAnimatorNS.DecorationType.None);
             this.PageLogin.Location = new System.Drawing.Point(4, 28);
             this.PageLogin.Name = "PageLogin";
             this.PageLogin.Padding = new System.Windows.Forms.Padding(3);
-            this.PageLogin.Size = new System.Drawing.Size(581, 426);
+            this.PageLogin.Size = new System.Drawing.Size(609, 426);
             this.PageLogin.TabIndex = 3;
-            this.PageLogin.Text = "USER";
+            this.PageLogin.Text = "Usuário";
             this.PageLogin.UseVisualStyleBackColor = true;
             // 
             // label10
             // 
             this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.Transition.SetDecoration(this.label10, BunifuAnimatorNS.DecorationType.None);
             this.label10.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label10.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label10.Location = new System.Drawing.Point(62, 84);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(334, 22);
@@ -439,7 +426,6 @@
             // label11
             // 
             this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.Transition.SetDecoration(this.label11, BunifuAnimatorNS.DecorationType.None);
             this.label11.Font = new System.Drawing.Font("Calibri", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.MediumAquamarine;
             this.label11.Location = new System.Drawing.Point(56, 36);
@@ -452,7 +438,6 @@
             // label12
             // 
             this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.Transition.SetDecoration(this.label12, BunifuAnimatorNS.DecorationType.None);
             this.label12.Font = new System.Drawing.Font("Calibri Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label12.Location = new System.Drawing.Point(62, 113);
@@ -466,13 +451,12 @@
             // PassWordConfirmation
             // 
             this.PassWordConfirmation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.PassWordConfirmation.BeforeTouchSize = new System.Drawing.Size(440, 26);
+            this.PassWordConfirmation.BeforeTouchSize = new System.Drawing.Size(438, 27);
             this.PassWordConfirmation.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.PassWordConfirmation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PassWordConfirmation.CanOverrideStyle = true;
             this.PassWordConfirmation.CausesValidation = false;
             this.PassWordConfirmation.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.Transition.SetDecoration(this.PassWordConfirmation, BunifuAnimatorNS.DecorationType.None);
             this.PassWordConfirmation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PassWordConfirmation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.PassWordConfirmation.Location = new System.Drawing.Point(402, 288);
@@ -491,7 +475,6 @@
             // 
             // PassWordConfirmationTitle
             // 
-            this.Transition.SetDecoration(this.PassWordConfirmationTitle, BunifuAnimatorNS.DecorationType.None);
             this.PassWordConfirmationTitle.Font = new System.Drawing.Font("Calibri Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PassWordConfirmationTitle.Location = new System.Drawing.Point(398, 269);
             this.PassWordConfirmationTitle.Name = "PassWordConfirmationTitle";
@@ -502,13 +485,12 @@
             // PassWord
             // 
             this.PassWord.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.PassWord.BeforeTouchSize = new System.Drawing.Size(440, 26);
+            this.PassWord.BeforeTouchSize = new System.Drawing.Size(438, 27);
             this.PassWord.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.PassWord.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PassWord.CanOverrideStyle = true;
             this.PassWord.CausesValidation = false;
             this.PassWord.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.Transition.SetDecoration(this.PassWord, BunifuAnimatorNS.DecorationType.None);
             this.PassWord.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PassWord.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.PassWord.Location = new System.Drawing.Point(287, 288);
@@ -527,7 +509,6 @@
             // 
             // LoginTitle
             // 
-            this.Transition.SetDecoration(this.LoginTitle, BunifuAnimatorNS.DecorationType.None);
             this.LoginTitle.Font = new System.Drawing.Font("Calibri Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoginTitle.Location = new System.Drawing.Point(62, 269);
             this.LoginTitle.Name = "LoginTitle";
@@ -538,13 +519,12 @@
             // Login
             // 
             this.Login.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.Login.BeforeTouchSize = new System.Drawing.Size(440, 26);
+            this.Login.BeforeTouchSize = new System.Drawing.Size(438, 27);
             this.Login.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.Login.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Login.CanOverrideStyle = true;
             this.Login.CausesValidation = false;
             this.Login.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.Transition.SetDecoration(this.Login, BunifuAnimatorNS.DecorationType.None);
             this.Login.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Login.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.Login.Location = new System.Drawing.Point(66, 288);
@@ -562,7 +542,6 @@
             // 
             // PassWordTitle
             // 
-            this.Transition.SetDecoration(this.PassWordTitle, BunifuAnimatorNS.DecorationType.None);
             this.PassWordTitle.Font = new System.Drawing.Font("Calibri Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PassWordTitle.Location = new System.Drawing.Point(283, 270);
             this.PassWordTitle.Name = "PassWordTitle";
@@ -573,13 +552,12 @@
             // Email
             // 
             this.Email.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.Email.BeforeTouchSize = new System.Drawing.Size(440, 26);
+            this.Email.BeforeTouchSize = new System.Drawing.Size(438, 27);
             this.Email.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.Email.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Email.CanOverrideStyle = true;
             this.Email.CausesValidation = false;
             this.Email.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.Transition.SetDecoration(this.Email, BunifuAnimatorNS.DecorationType.None);
             this.Email.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Email.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.Email.Location = new System.Drawing.Point(66, 237);
@@ -598,7 +576,6 @@
             // 
             // EmailTitle
             // 
-            this.Transition.SetDecoration(this.EmailTitle, BunifuAnimatorNS.DecorationType.None);
             this.EmailTitle.Font = new System.Drawing.Font("Calibri Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EmailTitle.Location = new System.Drawing.Point(62, 220);
             this.EmailTitle.Name = "EmailTitle";
@@ -609,13 +586,12 @@
             // UserName
             // 
             this.UserName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.UserName.BeforeTouchSize = new System.Drawing.Size(440, 26);
+            this.UserName.BeforeTouchSize = new System.Drawing.Size(438, 27);
             this.UserName.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.UserName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.UserName.CanOverrideStyle = true;
             this.UserName.CausesValidation = false;
             this.UserName.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.Transition.SetDecoration(this.UserName, BunifuAnimatorNS.DecorationType.None);
             this.UserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UserName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.UserName.Location = new System.Drawing.Point(66, 185);
@@ -634,7 +610,6 @@
             // 
             // NameTitle
             // 
-            this.Transition.SetDecoration(this.NameTitle, BunifuAnimatorNS.DecorationType.None);
             this.NameTitle.Font = new System.Drawing.Font("Calibri Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NameTitle.Location = new System.Drawing.Point(62, 168);
             this.NameTitle.Name = "NameTitle";
@@ -642,26 +617,151 @@
             this.NameTitle.TabIndex = 191;
             this.NameTitle.Text = "Nome:";
             // 
+            // PageBackUp
+            // 
+            this.PageBackUp.Controls.Add(this.ListviewBackup);
+            this.PageBackUp.Controls.Add(this.label13);
+            this.PageBackUp.Controls.Add(this.label14);
+            this.PageBackUp.Controls.Add(this.ChooseBackup);
+            this.PageBackUp.Controls.Add(this.BackupPath);
+            this.PageBackUp.Location = new System.Drawing.Point(4, 28);
+            this.PageBackUp.Name = "PageBackUp";
+            this.PageBackUp.Size = new System.Drawing.Size(609, 426);
+            this.PageBackUp.TabIndex = 6;
+            this.PageBackUp.Text = "BackUp";
+            this.PageBackUp.UseVisualStyleBackColor = true;
+            // 
+            // ListviewBackup
+            // 
+            this.ListviewBackup.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.ListviewBackup.BackColor = System.Drawing.Color.Gainsboro;
+            this.ListviewBackup.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ListviewBackup.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.FileList});
+            this.ListviewBackup.FullRowSelect = true;
+            this.ListviewBackup.GridLines = true;
+            this.ListviewBackup.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.ListviewBackup.HideSelection = false;
+            this.ListviewBackup.HotTracking = true;
+            this.ListviewBackup.HoverSelection = true;
+            this.ListviewBackup.Location = new System.Drawing.Point(68, 161);
+            this.ListviewBackup.MultiSelect = false;
+            this.ListviewBackup.Name = "ListviewBackup";
+            this.ListviewBackup.Size = new System.Drawing.Size(438, 177);
+            this.ListviewBackup.Sorting = System.Windows.Forms.SortOrder.Descending;
+            this.ListviewBackup.TabIndex = 210;
+            this.ListviewBackup.UseCompatibleStateImageBehavior = false;
+            this.ListviewBackup.View = System.Windows.Forms.View.Details;
+            // 
+            // FileList
+            // 
+            this.FileList.Text = "Lista de Arquivos";
+            this.FileList.Width = 360;
+            // 
+            // label13
+            // 
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label13.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label13.Location = new System.Drawing.Point(65, 81);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(424, 48);
+            this.label13.TabIndex = 209;
+            this.label13.Text = "Por favor, selecione o diretório raiz que contem todos os arquivos do programa co" +
+    "mo pastas, fotos e o backup\r\n\r\n\r\n\r\n\r\n\r\n";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label14
+            // 
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.label14.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label14.Font = new System.Drawing.Font("Calibri", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.MediumAquamarine;
+            this.label14.Location = new System.Drawing.Point(65, 36);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(453, 41);
+            this.label14.TabIndex = 207;
+            this.label14.Text = "BackUp";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // ChooseBackup
+            // 
+            this.ChooseBackup.Appearance = Syncfusion.Windows.Forms.ButtonAppearance.Office2016White;
+            this.ChooseBackup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
+            this.ChooseBackup.BeforeTouchSize = new System.Drawing.Size(37, 27);
+            this.ChooseBackup.ButtonType = Syncfusion.Windows.Forms.Tools.ButtonTypes.Browse;
+            this.ChooseBackup.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.ChooseBackup.KeepFocusRectangle = false;
+            this.ChooseBackup.Location = new System.Drawing.Point(469, 132);
+            this.ChooseBackup.Name = "ChooseBackup";
+            this.ChooseBackup.Size = new System.Drawing.Size(37, 27);
+            this.ChooseBackup.TabIndex = 156;
+            this.ChooseBackup.Text = "buttonAdv1";
+            this.ChooseBackup.ThemeName = "Office2016White";
+            this.ChooseBackup.UseVisualStyle = true;
+            this.ChooseBackup.Click += new System.EventHandler(this.ChooseBackup_Click);
+            // 
+            // BackupPath
+            // 
+            this.BackupPath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.BackupPath.BeforeTouchSize = new System.Drawing.Size(438, 27);
+            this.BackupPath.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
+            this.BackupPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.BackupPath.CanOverrideStyle = true;
+            this.BackupPath.CausesValidation = false;
+            this.BackupPath.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.BackupPath.Enabled = false;
+            this.BackupPath.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BackupPath.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.BackupPath.Location = new System.Drawing.Point(68, 132);
+            this.BackupPath.MaxLength = 50;
+            this.BackupPath.Metrocolor = System.Drawing.Color.DodgerBlue;
+            this.BackupPath.MinimumSize = new System.Drawing.Size(16, 12);
+            this.BackupPath.Multiline = true;
+            this.BackupPath.Name = "BackupPath";
+            this.BackupPath.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
+            this.BackupPath.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
+            this.BackupPath.Size = new System.Drawing.Size(438, 27);
+            this.BackupPath.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016Colorful;
+            this.BackupPath.TabIndex = 155;
+            this.BackupPath.Tag = "";
+            this.BackupPath.ThemeName = "Office2016Colorful";
+            this.BackupPath.ThemesEnabled = false;
+            // 
             // PageFinalize
             // 
             this.PageFinalize.Controls.Add(this.Loading);
             this.PageFinalize.Controls.Add(this.LabelPageFinalizeSubTitle);
             this.PageFinalize.Controls.Add(this.LabelPageFinalizeTitle);
-            this.Transition.SetDecoration(this.PageFinalize, BunifuAnimatorNS.DecorationType.None);
             this.PageFinalize.Location = new System.Drawing.Point(4, 28);
             this.PageFinalize.Name = "PageFinalize";
-            this.PageFinalize.Size = new System.Drawing.Size(581, 426);
+            this.PageFinalize.Size = new System.Drawing.Size(609, 426);
             this.PageFinalize.TabIndex = 5;
-            this.PageFinalize.Text = "FINALIZAR";
+            this.PageFinalize.Text = "Finalize";
             this.PageFinalize.UseVisualStyleBackColor = true;
+            // 
+            // Loading
+            // 
+            this.Loading.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Loading.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.Loading.Image = global::DimStock.Properties.Resources.GigLoading;
+            this.Loading.Location = new System.Drawing.Point(230, 165);
+            this.Loading.Name = "Loading";
+            this.Loading.Size = new System.Drawing.Size(123, 126);
+            this.Loading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Loading.TabIndex = 213;
+            this.Loading.TabStop = false;
+            this.Loading.Visible = false;
             // 
             // LabelPageFinalizeSubTitle
             // 
+            this.LabelPageFinalizeSubTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.LabelPageFinalizeSubTitle.BackColor = System.Drawing.Color.Transparent;
-            this.Transition.SetDecoration(this.LabelPageFinalizeSubTitle, BunifuAnimatorNS.DecorationType.None);
             this.LabelPageFinalizeSubTitle.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelPageFinalizeSubTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.LabelPageFinalizeSubTitle.Location = new System.Drawing.Point(103, 111);
+            this.LabelPageFinalizeSubTitle.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.LabelPageFinalizeSubTitle.Location = new System.Drawing.Point(117, 121);
             this.LabelPageFinalizeSubTitle.Name = "LabelPageFinalizeSubTitle";
             this.LabelPageFinalizeSubTitle.Size = new System.Drawing.Size(334, 22);
             this.LabelPageFinalizeSubTitle.TabIndex = 223;
@@ -670,39 +770,24 @@
             // 
             // LabelPageFinalizeTitle
             // 
+            this.LabelPageFinalizeTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.LabelPageFinalizeTitle.BackColor = System.Drawing.Color.Transparent;
-            this.Transition.SetDecoration(this.LabelPageFinalizeTitle, BunifuAnimatorNS.DecorationType.None);
             this.LabelPageFinalizeTitle.Font = new System.Drawing.Font("Calibri", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelPageFinalizeTitle.ForeColor = System.Drawing.Color.MediumAquamarine;
-            this.LabelPageFinalizeTitle.Location = new System.Drawing.Point(97, 67);
+            this.LabelPageFinalizeTitle.Location = new System.Drawing.Point(111, 77);
             this.LabelPageFinalizeTitle.Name = "LabelPageFinalizeTitle";
             this.LabelPageFinalizeTitle.Size = new System.Drawing.Size(424, 41);
             this.LabelPageFinalizeTitle.TabIndex = 221;
             this.LabelPageFinalizeTitle.Text = "Ok, Aguarde Um Instante";
             this.LabelPageFinalizeTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // Loading
-            // 
-            this.Loading.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.Loading.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.Transition.SetDecoration(this.Loading, BunifuAnimatorNS.DecorationType.None);
-            this.Loading.Image = global::DimStock.Properties.Resources.GigLoading;
-            this.Loading.Location = new System.Drawing.Point(217, 156);
-            this.Loading.Name = "Loading";
-            this.Loading.Size = new System.Drawing.Size(123, 126);
-            this.Loading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Loading.TabIndex = 213;
-            this.Loading.TabStop = false;
-            this.Loading.Visible = false;
-            // 
             // NextPage
             // 
             this.NextPage.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.NextPage.AutoSize = true;
-            this.Transition.SetDecoration(this.NextPage, BunifuAnimatorNS.DecorationType.None);
             this.NextPage.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NextPage.LinkColor = System.Drawing.Color.SteelBlue;
-            this.NextPage.Location = new System.Drawing.Point(605, 552);
+            this.NextPage.Location = new System.Drawing.Point(605, 554);
             this.NextPage.Name = "NextPage";
             this.NextPage.Size = new System.Drawing.Size(84, 19);
             this.NextPage.TabIndex = 204;
@@ -714,7 +799,6 @@
             // 
             this.BackPage.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.BackPage.AutoSize = true;
-            this.Transition.SetDecoration(this.BackPage, BunifuAnimatorNS.DecorationType.None);
             this.BackPage.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BackPage.LinkColor = System.Drawing.Color.SteelBlue;
             this.BackPage.Location = new System.Drawing.Point(244, 554);
@@ -732,7 +816,6 @@
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BackgroundImage = global::DimStock.Properties.Resources.StockLogo;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Transition.SetDecoration(this.pictureBox1, BunifuAnimatorNS.DecorationType.None);
             this.pictureBox1.Location = new System.Drawing.Point(429, 30);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(75, 72);
@@ -743,7 +826,6 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.Transition.SetDecoration(this.label2, BunifuAnimatorNS.DecorationType.None);
             this.label2.Font = new System.Drawing.Font("Calibri", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.MediumAquamarine;
             this.label2.Location = new System.Drawing.Point(260, 89);
@@ -757,9 +839,8 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.Transition.SetDecoration(this.label3, BunifuAnimatorNS.DecorationType.None);
             this.label3.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label3.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label3.Location = new System.Drawing.Point(282, 117);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(378, 41);
@@ -779,7 +860,6 @@
             this.CloseAssistant.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CloseAssistant.BackgroundImage")));
             this.CloseAssistant.ButtonText = "Fechar";
             this.CloseAssistant.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Transition.SetDecoration(this.CloseAssistant, BunifuAnimatorNS.DecorationType.None);
             this.CloseAssistant.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CloseAssistant.ForeColor = System.Drawing.Color.SeaGreen;
             this.CloseAssistant.IdleBorderThickness = 1;
@@ -787,10 +867,10 @@
             this.CloseAssistant.IdleFillColor = System.Drawing.Color.White;
             this.CloseAssistant.IdleForecolor = System.Drawing.Color.Gray;
             this.CloseAssistant.IdleLineColor = System.Drawing.Color.Gray;
-            this.CloseAssistant.Location = new System.Drawing.Point(385, 543);
+            this.CloseAssistant.Location = new System.Drawing.Point(391, 543);
             this.CloseAssistant.Margin = new System.Windows.Forms.Padding(5);
             this.CloseAssistant.Name = "CloseAssistant";
-            this.CloseAssistant.Size = new System.Drawing.Size(149, 41);
+            this.CloseAssistant.Size = new System.Drawing.Size(160, 41);
             this.CloseAssistant.TabIndex = 208;
             this.CloseAssistant.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.CloseAssistant.Click += new System.EventHandler(this.CloseAssistant_Click);
@@ -799,7 +879,6 @@
             // 
             this.bunifuSeparator2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.bunifuSeparator2.BackColor = System.Drawing.Color.Transparent;
-            this.Transition.SetDecoration(this.bunifuSeparator2, BunifuAnimatorNS.DecorationType.None);
             this.bunifuSeparator2.ForeColor = System.Drawing.Color.White;
             this.bunifuSeparator2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.bunifuSeparator2.LineThickness = 1;
@@ -811,28 +890,7 @@
             this.bunifuSeparator2.Transparency = 150;
             this.bunifuSeparator2.Vertical = false;
             // 
-            // Transition
-            // 
-            this.Transition.AnimationType = BunifuAnimatorNS.AnimationType.VertSlide;
-            this.Transition.Cursor = null;
-            animation10.AnimateOnlyDifferences = true;
-            animation10.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation10.BlindCoeff")));
-            animation10.LeafCoeff = 0F;
-            animation10.MaxTime = 1F;
-            animation10.MinTime = 0F;
-            animation10.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation10.MosaicCoeff")));
-            animation10.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation10.MosaicShift")));
-            animation10.MosaicSize = 0;
-            animation10.Padding = new System.Windows.Forms.Padding(0);
-            animation10.RotateCoeff = 0F;
-            animation10.RotateLimit = 0F;
-            animation10.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation10.ScaleCoeff")));
-            animation10.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation10.SlideCoeff")));
-            animation10.TimeCoeff = 0F;
-            animation10.TransparencyCoeff = 0F;
-            this.Transition.DefaultAnimation = animation10;
-            // 
-            // AppConfigForm
+            // AppSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -846,10 +904,9 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.BackPage);
             this.Controls.Add(this.MainTabControl);
-            this.Transition.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimumSize = new System.Drawing.Size(959, 667);
-            this.Name = "AppConfigForm";
+            this.Name = "AppSettingsForm";
             this.Text = "AppConfigForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.MainTabControl.ResumeLayout(false);
@@ -867,6 +924,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.Login)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Email)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserName)).EndInit();
+            this.PageBackUp.ResumeLayout(false);
+            this.PageBackUp.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BackupPath)).EndInit();
             this.PageFinalize.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Loading)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -921,6 +981,12 @@
         private System.Windows.Forms.GroupBox FrameProductPhoto;
         private System.Windows.Forms.Label LabelPageFinalizeSubTitle;
         private System.Windows.Forms.Label LabelPageFinalizeTitle;
-        private BunifuAnimatorNS.BunifuTransition Transition;
+        private System.Windows.Forms.TabPage PageBackUp;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private Syncfusion.Windows.Forms.ButtonAdv ChooseBackup;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt BackupPath;
+        private System.Windows.Forms.ListView ListviewBackup;
+        private System.Windows.Forms.ColumnHeader FileList;
     }
 }
