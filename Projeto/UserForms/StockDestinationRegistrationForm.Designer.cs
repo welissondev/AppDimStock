@@ -76,6 +76,7 @@
             this.DestinationDataList.Name = "DestinationDataList";
             this.DestinationDataList.Size = new System.Drawing.Size(688, 262);
             this.DestinationDataList.TabIndex = 145;
+            this.DestinationDataList.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DestinationDataList_CellMouseEnter);
             this.DestinationDataList.DoubleClick += new System.EventHandler(this.DestinationDataList_DoubleClick);
             // 
             // RegisterNew

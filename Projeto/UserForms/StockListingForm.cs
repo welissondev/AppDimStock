@@ -215,6 +215,14 @@ namespace DimStock.UserForms
             }
         }
 
+        private void StockDataList_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                StockDataList.Rows[e.RowIndex].Selected = true;
+            }
+        }
+
         #endregion
 
         #region LabelLink

@@ -204,6 +204,14 @@ namespace DimStock.UserForms
             }
         }
 
+        private void MovementStockDataList_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                MovementStockDataList.Rows[e.RowIndex].Selected = true;
+            }
+        }
+
         #endregion
 
         #region Timer
@@ -595,5 +603,6 @@ namespace DimStock.UserForms
         }
 
         #endregion
+
     }
 }

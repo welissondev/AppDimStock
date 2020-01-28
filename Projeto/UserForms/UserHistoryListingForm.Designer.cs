@@ -68,6 +68,7 @@
             this.HistoryDataList.Name = "HistoryDataList";
             this.HistoryDataList.Size = new System.Drawing.Size(907, 508);
             this.HistoryDataList.TabIndex = 145;
+            this.HistoryDataList.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.HistoryDataList_CellMouseEnter);
             // 
             // SearchTitleByLogin
             // 

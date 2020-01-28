@@ -225,6 +225,14 @@ namespace DimStock.UserForms
             e.PaintParts = DataGridViewPaintParts.All ^ DataGridViewPaintParts.Focus;
         }
 
+        private void MainDataList_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                MainDataList.Rows[e.RowIndex].Selected = true;
+            }
+        }
+
         #endregion
 
         #region ToolStripMenu

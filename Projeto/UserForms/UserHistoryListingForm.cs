@@ -105,6 +105,18 @@ namespace DimStock.UserForms
 
         #endregion
 
+        #region DataGridView
+
+        private void HistoryDataList_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                HistoryDataList.Rows[e.RowIndex].Selected = true;
+            }
+        }
+
+        #endregion
+
         #region BadingNavigator
 
         private void NextPage_Click(object sender, EventArgs e)

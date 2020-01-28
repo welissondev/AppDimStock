@@ -79,6 +79,7 @@
             this.StockDataList.Size = new System.Drawing.Size(1002, 463);
             this.StockDataList.TabIndex = 70;
             this.StockDataList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.StockDataList_CellFormatting);
+            this.StockDataList.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.StockDataList_CellMouseEnter);
             // 
             // TitleRecordsByPage
             // 

@@ -23,13 +23,12 @@ namespace DimStock.Auxiliarys
             datagrid.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(206, 237, 248);
             datagrid.RowsDefaultCellStyle.SelectionForeColor = Color.FromArgb(86, 86, 86);
             datagrid.RowTemplate.MinimumHeight = 30;
-            datagrid.RowsDefaultCellStyle.Font = new Font("Arial", 9.0F);
+            datagrid.RowsDefaultCellStyle.Font = new Font("Calibri Light", 10.0F);
             datagrid.AllowUserToAddRows = false;
             datagrid.BorderStyle = BorderStyle.None;
             datagrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             datagrid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             
-
             datagrid.MultiSelect = false;
             datagrid.RowHeadersVisible = false;
             datagrid.ColumnHeadersVisible = true;
@@ -54,7 +53,7 @@ namespace DimStock.Auxiliarys
             datagrid.RowsDefaultCellStyle.ForeColor = Color.FromArgb(86, 86, 86);
             datagrid.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(206, 237, 248);
             datagrid.RowsDefaultCellStyle.SelectionForeColor = Color.FromArgb(86, 86, 86);
-            datagrid.RowsDefaultCellStyle.Font = new Font("Arial", 9.0F);
+            datagrid.RowsDefaultCellStyle.Font = new Font("Calibri Light", 10.0F);
             datagrid.RowTemplate.MinimumHeight = 30;
             datagrid.AllowUserToAddRows = false;
             datagrid.BorderStyle = BorderStyle.Fixed3D;

@@ -61,6 +61,7 @@
             this.TotalItems = new System.Windows.Forms.Label();
             this.ClearQueryFields = new System.Windows.Forms.LinkLabel();
             this.GifLoading = new System.Windows.Forms.PictureBox();
+            this.MainDataList = new DimStock.Controls.CustomDataGridViewOne();
             this.Delete = new Syncfusion.WinForms.Controls.SfButton();
             this.Confirm = new Syncfusion.WinForms.Controls.SfButton();
             this.GrupBoxGeneralInformation = new System.Windows.Forms.GroupBox();
@@ -73,7 +74,6 @@
             this.StockMovementMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MovementEntrie_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MovementOutPut_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MainDataList = new DimStock.Controls.CustomDataGridViewOne();
             ((System.ComponentModel.ISupportInitialize)(this.Quantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TotalValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UnitaryValue)).BeginInit();
@@ -84,9 +84,9 @@
             this.CardMain.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GifLoading)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MainDataList)).BeginInit();
             this.GrupBoxGeneralInformation.SuspendLayout();
             this.StockMovementMenuStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MainDataList)).BeginInit();
             this.SuspendLayout();
             // 
             // SearchTimer
@@ -586,6 +586,23 @@
             this.GifLoading.TabStop = false;
             this.GifLoading.Visible = false;
             // 
+            // MainDataList
+            // 
+            this.MainDataList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MainDataList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.MainDataList.ListIsItem = false;
+            this.MainDataList.ListIsStock = false;
+            this.MainDataList.Location = new System.Drawing.Point(21, 60);
+            this.MainDataList.Name = "MainDataList";
+            this.MainDataList.Size = new System.Drawing.Size(877, 287);
+            this.MainDataList.TabIndex = 141;
+            this.MainDataList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MainDataList_CellClick);
+            this.MainDataList.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.MainDataList_CellMouseEnter);
+            this.MainDataList.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.MainDataList_RowPrePaint);
+            this.MainDataList.DoubleClick += new System.EventHandler(this.MainDataList_DoubleClick);
+            // 
             // Delete
             // 
             this.Delete.AccessibleName = "Button";
@@ -764,22 +781,6 @@
             this.MovementOutPut_ToolStripMenuItem.Text = "Saída";
             this.MovementOutPut_ToolStripMenuItem.Click += new System.EventHandler(this.MovementOutPut_ToolStripMenuItem_Click);
             // 
-            // MainDataList
-            // 
-            this.MainDataList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.MainDataList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.MainDataList.ListIsItem = false;
-            this.MainDataList.ListIsStock = false;
-            this.MainDataList.Location = new System.Drawing.Point(21, 60);
-            this.MainDataList.Name = "MainDataList";
-            this.MainDataList.Size = new System.Drawing.Size(877, 287);
-            this.MainDataList.TabIndex = 141;
-            this.MainDataList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MainDataList_CellClick);
-            this.MainDataList.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.MainDataList_RowPrePaint);
-            this.MainDataList.DoubleClick += new System.EventHandler(this.MainDataList_DoubleClick);
-            // 
             // StockMovementRegistrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -809,10 +810,10 @@
             this.CardMain.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GifLoading)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MainDataList)).EndInit();
             this.GrupBoxGeneralInformation.ResumeLayout(false);
             this.GrupBoxGeneralInformation.PerformLayout();
             this.StockMovementMenuStrip.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.MainDataList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

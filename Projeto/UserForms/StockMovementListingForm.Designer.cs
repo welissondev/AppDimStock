@@ -77,7 +77,7 @@
             this.MovementStockDataList.Size = new System.Drawing.Size(960, 407);
             this.MovementStockDataList.TabIndex = 0;
             this.MovementStockDataList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MovementStockDataList_CellClick);
-            
+            this.MovementStockDataList.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.MovementStockDataList_CellMouseEnter);
             // 
             // UpdateDataList
             // 

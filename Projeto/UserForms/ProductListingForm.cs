@@ -201,6 +201,14 @@ namespace DimStock.UserForms
             ViewDetails();
         }
 
+        private void ProductDataList_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                ProductDataList.Rows[e.RowIndex].Selected = true;
+            }
+        }
+
         #endregion
 
         #region BadingNavigator
