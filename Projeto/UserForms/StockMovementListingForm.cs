@@ -4,6 +4,7 @@ using Syncfusion.Windows.Forms.Tools;
 using Syncfusion.WinForms.ListView;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace DimStock.UserForms
@@ -182,33 +183,6 @@ namespace DimStock.UserForms
         #endregion
 
         #region DataGridView
-
-        private void MovementStockDataList_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            try
-            {
-                var columnName = MovementStockDataList.Columns[
-                e.ColumnIndex].Name;
-
-                var defaultCursor = Cursors.Arrow;
-                MovementStockDataList.Cursor = defaultCursor;
-
-                switch (columnName)
-                {
-                    case "viewDetails":
-                        MovementStockDataList.Cursor = Cursors.Hand;
-                        break;
-
-                    case "delete":
-                        MovementStockDataList.Cursor = Cursors.Hand;
-                        break;
-                }
-            }
-            catch (Exception ex)
-            {
-                AxlException.Message.Show(ex);
-            }
-        }
 
         private void MovementStockDataList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -534,8 +508,8 @@ namespace DimStock.UserForms
                 var operationHour = new DataGridViewTextBoxColumn();
                 var operationSituation = new DataGridViewTextBoxColumn();
                 var stockDestinationLocation = new DataGridViewTextBoxColumn();
-                var viewDetails = new DataGridViewButtonColumn();
-                var delete = new DataGridViewButtonColumn();
+                var viewDetails = new DataGridViewLinkColumn();
+                var delete = new DataGridViewLinkColumn();
 
                 var stockMovementList = MovementStockDataList;
 
@@ -588,8 +562,10 @@ namespace DimStock.UserForms
                 stockMovementList.Columns[5].Visible = true;
 
                 viewDetails.Text = "Visualizar";
-                viewDetails.UseColumnTextForButtonValue = true;
-                viewDetails.FlatStyle = FlatStyle.Popup;
+                viewDetails.TrackVisitedState = false;
+                viewDetails.UseColumnTextForLinkValue = true;
+                viewDetails.LinkColor = Color.Black;
+                viewDetails.ActiveLinkColor = Color.MediumAquamarine;
                 stockMovementList.Columns.Add(viewDetails);
                 stockMovementList.Columns[6].Name = "viewDetails";
                 stockMovementList.Columns[6].HeaderText = "";
@@ -599,8 +575,10 @@ namespace DimStock.UserForms
                 stockMovementList.Columns[6].ReadOnly = true;
 
                 delete.Text = "Deletar";
-                delete.UseColumnTextForButtonValue = true;
-                delete.FlatStyle = FlatStyle.Popup;
+                delete.TrackVisitedState = false;
+                delete.UseColumnTextForLinkValue = true;
+                delete.LinkColor = Color.Black;
+                delete.ActiveLinkColor = Color.MediumAquamarine;
                 stockMovementList.Columns.Add(delete);
                 stockMovementList.Columns[7].Name = "delete";
                 stockMovementList.Columns[7].HeaderText = "";

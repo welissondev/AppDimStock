@@ -1,6 +1,7 @@
 ﻿using DimStock.Auxiliarys;
 using DimStock.Business;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace DimStock.UserForms
@@ -96,35 +97,6 @@ namespace DimStock.UserForms
 
                         form.ShowDialog();
 
-                        break;
-                }
-            }
-            catch (Exception ex)
-            {
-                AxlException.Message.Show(ex);
-            }
-        }
-
-        private void UserDataList_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            try
-            {
-                var columnName = UserDataList.Columns
-                [e.ColumnIndex].Name;
-
-                var arrowCursor = Cursors.Arrow;
-                var handCursor = Cursors.Hand;
-
-                UserDataList.Cursor = arrowCursor;
-
-                switch (columnName)
-                {
-                    case "edit":
-                        UserDataList.Cursor = handCursor;
-                        break;
-
-                    case "delete":
-                        UserDataList.Cursor = handCursor;
                         break;
                 }
             }
@@ -250,8 +222,8 @@ namespace DimStock.UserForms
                 var id = new DataGridViewTextBoxColumn();
                 var userName = new DataGridViewTextBoxColumn();
                 var email = new DataGridViewTextBoxColumn();
-                var edit = new DataGridViewButtonColumn();
-                var delete = new DataGridViewButtonColumn();
+                var edit = new DataGridViewLinkColumn();
+                var delete = new DataGridViewLinkColumn();
 
                 var dataGrid = UserDataList;
 
@@ -279,8 +251,10 @@ namespace DimStock.UserForms
                 dataGrid.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
                 edit.Text = "Editar";
-                edit.FlatStyle = FlatStyle.Popup;
-                edit.UseColumnTextForButtonValue = true;
+                edit.TrackVisitedState = false;
+                edit.UseColumnTextForLinkValue = true;
+                edit.LinkColor = Color.Black;
+                edit.ActiveLinkColor = Color.MediumAquamarine;
                 dataGrid.Columns.Add(edit);
                 edit.ToolTipText = "edit";
                 dataGrid.Columns[3].Name = "edit";
@@ -291,8 +265,10 @@ namespace DimStock.UserForms
                 dataGrid.Columns[3].ReadOnly = true;
 
                 delete.Text = "Deletar";
-                delete.FlatStyle = FlatStyle.Popup;
-                delete.UseColumnTextForButtonValue = true;
+                delete.TrackVisitedState = false;
+                delete.UseColumnTextForLinkValue = true;
+                delete.LinkColor = Color.Black;
+                delete.ActiveLinkColor = Color.MediumAquamarine;
                 dataGrid.Columns.Add(delete);
                 delete.ToolTipText = "delete";
                 dataGrid.Columns[4].Name = "delete";

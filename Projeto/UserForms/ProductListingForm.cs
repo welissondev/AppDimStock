@@ -3,6 +3,7 @@ using DimStock.Business;
 using Syncfusion.Windows.Forms.Tools;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace DimStock.UserForms
@@ -192,39 +193,6 @@ namespace DimStock.UserForms
                         Delete();
                         break;
                 }
-            }
-        }
-
-        private void ProductDataList_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            try
-            {
-                var columnName = ProductDataList.Columns[
-                e.ColumnIndex].Name;
-
-                var arrowCursor = Cursors.Arrow;
-                var handCursor = Cursors.Hand;
-
-                ProductDataList.Cursor = arrowCursor;
-
-                switch (columnName)
-                {
-                    case "edit":
-                        ProductDataList.Cursor = handCursor;
-                        break;
-
-                    case "delete":
-                        ProductDataList.Cursor = handCursor;
-                        break;
-
-                    case "replicate":
-                        ProductDataList.Cursor = handCursor;
-                        break;
-                }
-            }
-            catch (Exception ex)
-            {
-                AxlException.Message.Show(ex);
             }
         }
 
@@ -529,9 +497,9 @@ namespace DimStock.UserForms
                 var costPrice = new DataGridViewTextBoxColumn();
                 var salePrice = new DataGridViewTextBoxColumn();
                 var photoName = new DataGridViewTextBoxColumn();
-                var edit = new DataGridViewButtonColumn();
-                var delete = new DataGridViewButtonColumn();
-                var replicate = new DataGridViewButtonColumn();
+                var edit = new DataGridViewLinkColumn();
+                var delete = new DataGridViewLinkColumn();
+                var replicate = new DataGridViewLinkColumn();
 
                 var productDataList = ProductDataList;
 
@@ -608,8 +576,10 @@ namespace DimStock.UserForms
                 productDataList.Columns[8].Visible = false;
 
                 replicate.Text = "Replicar";
-                replicate.FlatStyle = FlatStyle.Popup;
-                replicate.UseColumnTextForButtonValue = true;
+                replicate.TrackVisitedState = false;
+                replicate.UseColumnTextForLinkValue = true;
+                replicate.LinkColor = Color.Black;
+                replicate.ActiveLinkColor = Color.MediumAquamarine;
                 productDataList.Columns.Add(replicate);
                 productDataList.Columns[9].Name = "replicate";
                 productDataList.Columns[9].HeaderText = "";
@@ -619,8 +589,10 @@ namespace DimStock.UserForms
                 productDataList.Columns[9].ReadOnly = true;
 
                 edit.Text = "Editar";
-                edit.UseColumnTextForButtonValue = true;
-                edit.FlatStyle = FlatStyle.Popup;
+                edit.TrackVisitedState = false;
+                edit.UseColumnTextForLinkValue = true;
+                edit.LinkColor = Color.Black;
+                edit.ActiveLinkColor = Color.MediumAquamarine;
                 productDataList.Columns.Add(edit);
                 productDataList.Columns[10].Name = "edit";
                 productDataList.Columns[10].HeaderText = "";
@@ -630,8 +602,10 @@ namespace DimStock.UserForms
                 productDataList.Columns[10].ReadOnly = true;
 
                 delete.Text = "Deletar";
-                delete.UseColumnTextForButtonValue = true;
-                delete.FlatStyle = FlatStyle.Popup;
+                delete.TrackVisitedState = false;
+                delete.UseColumnTextForLinkValue = true;
+                delete.LinkColor = Color.Black;
+                delete.ActiveLinkColor = Color.MediumAquamarine;
                 productDataList.Columns.Add(delete);
                 productDataList.Columns[11].Name = "delete";
                 productDataList.Columns[11].HeaderText = "";

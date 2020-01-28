@@ -102,7 +102,7 @@
             this.ProductDataList.TabIndex = 69;
             this.ProductDataList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductDataList_CellClick);
             this.ProductDataList.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ProductDataList_CellMouseDoubleClick);
-            this.ProductDataList.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ProductDataList_CellMouseMove);
+            
             this.ProductDataList.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.ProductDataList_RowPrePaint);
             // 
             // GifLoading

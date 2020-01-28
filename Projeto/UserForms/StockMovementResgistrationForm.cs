@@ -3,6 +3,7 @@ using DimStock.Business;
 using Syncfusion.Windows.Forms.Tools;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -788,7 +789,7 @@ namespace DimStock.UserForms
                 var stockQuantity = new DataGridViewTextBoxColumn();
                 var productCostPrice = new DataGridViewTextBoxColumn();
                 var stockTotalValue = new DataGridViewTextBoxColumn();
-                var delete = new DataGridViewButtonColumn();
+                var delete = new DataGridViewLinkColumn();
 
                 var mainDataList = MainDataList;
                 mainDataList.ListIsItem = true;
@@ -869,9 +870,11 @@ namespace DimStock.UserForms
                 mainDataList.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 mainDataList.Columns[8].ReadOnly = true;
 
-                delete.Text = "Remover";
-                delete.FlatStyle = FlatStyle.Popup;
-                delete.UseColumnTextForButtonValue = true;
+                delete.Text = "Deletar";
+                delete.TrackVisitedState = false;
+                delete.UseColumnTextForLinkValue = true;
+                delete.LinkColor = Color.Black;
+                delete.ActiveLinkColor = Color.MediumAquamarine;
                 mainDataList.Columns.Add(delete);
                 mainDataList.Columns[9].Name = "delete";
                 mainDataList.Columns[9].HeaderText = "";

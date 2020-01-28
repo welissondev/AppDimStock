@@ -100,7 +100,7 @@
             this.UserDataList.Size = new System.Drawing.Size(980, 481);
             this.UserDataList.TabIndex = 142;
             this.UserDataList.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.UserDataList_CellMouseClick);
-            this.UserDataList.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.UserDataList_CellMouseMove);
+            
             // 
             // GifLoading
             // 
