@@ -87,7 +87,7 @@ namespace DimStock.UserForms
 
                 product.ListData();
 
-                var path = "DimStock.Report.Product.rdlc";
+                var path = "DimStock.Reports.Product.rdlc";
                 var description = "Relatório de Produtos";
                 var dataset = "DataSetProduct";
 

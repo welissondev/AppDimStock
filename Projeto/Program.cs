@@ -1,5 +1,4 @@
 ﻿using DimStock.Business;
-using DimStock.Properties;
 using System;
 using System.Windows.Forms;
 
@@ -20,7 +19,6 @@ namespace DimStock.UserForms
             if (AppSetting.GetAppSettingsState() == true)
             {
                 Application.Run(new UserLoginForm());
-                Settings.Default.Reset();
             }
             else
             {

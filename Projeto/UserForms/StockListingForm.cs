@@ -61,7 +61,7 @@ namespace DimStock.UserForms
                 stockProduct.GenerateReport(
                 stockProduct.ListOfRecords);
 
-                var path = "DimStock.Report.StockProduct.rdlc";
+                var path = "DimStock.Reports.StockProduct.rdlc";
                 var description = "Relatório de estoque";
                 var dataSet = "DataSetStockProduct";
 

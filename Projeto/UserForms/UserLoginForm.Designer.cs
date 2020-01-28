@@ -150,7 +150,7 @@
             this.PictureBackGroudUserLogin.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PictureBackGroudUserLogin.Location = new System.Drawing.Point(0, 0);
             this.PictureBackGroudUserLogin.Name = "PictureBackGroudUserLogin";
-            this.PictureBackGroudUserLogin.Size = new System.Drawing.Size(943, 628);
+            this.PictureBackGroudUserLogin.Size = new System.Drawing.Size(959, 667);
             this.PictureBackGroudUserLogin.TabIndex = 140;
             this.PictureBackGroudUserLogin.TabStop = false;
             // 
@@ -196,7 +196,7 @@
             this.bunifuCards1.Controls.Add(this.PassWord);
             this.bunifuCards1.Controls.Add(this.Login);
             this.bunifuCards1.LeftSahddow = false;
-            this.bunifuCards1.Location = new System.Drawing.Point(340, 119);
+            this.bunifuCards1.Location = new System.Drawing.Point(348, 138);
             this.bunifuCards1.Name = "bunifuCards1";
             this.bunifuCards1.RightSahddow = true;
             this.bunifuCards1.ShadowDepth = 20;
@@ -215,10 +215,10 @@
             this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.Black;
             this.bunifuGradientPanel1.GradientTopRight = System.Drawing.SystemColors.WindowText;
-            this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, 516);
+            this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, 555);
             this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
             this.bunifuGradientPanel1.Quality = 10;
-            this.bunifuGradientPanel1.Size = new System.Drawing.Size(943, 112);
+            this.bunifuGradientPanel1.Size = new System.Drawing.Size(959, 112);
             this.bunifuGradientPanel1.TabIndex = 144;
             // 
             // label5
@@ -229,7 +229,7 @@
             this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label5.Location = new System.Drawing.Point(346, 68);
+            this.label5.Location = new System.Drawing.Point(354, 68);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(239, 22);
             this.label5.TabIndex = 144;
@@ -243,7 +243,7 @@
             this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.Location = new System.Drawing.Point(328, 44);
+            this.label4.Location = new System.Drawing.Point(336, 44);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(279, 22);
             this.label4.TabIndex = 143;
@@ -257,7 +257,7 @@
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label3.Location = new System.Drawing.Point(318, 22);
+            this.label3.Location = new System.Drawing.Point(326, 22);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(302, 22);
             this.label3.TabIndex = 142;
@@ -272,6 +272,7 @@
             this.Controls.Add(this.bunifuGradientPanel1);
             this.Controls.Add(this.bunifuCards1);
             this.Controls.Add(this.PictureBackGroudUserLogin);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimumSize = new System.Drawing.Size(959, 667);
             this.Name = "UserLoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
