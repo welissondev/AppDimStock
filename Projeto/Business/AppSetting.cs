@@ -31,6 +31,30 @@ namespace DimStock.Business
                 logoImage.CopyFromDirectory(sourcePath, destPath);
         }
 
+        public void SaveBackup()
+        {
+            var backup = new AxlFile();
+
+            var day = DateTime.Now.Day;
+            var month = DateTime.Now.Month;
+            var year = DateTime.Now.Year;
+
+            var hor = DateTime.Now.Hour;
+            var min = DateTime.Now.Minute;
+            var sec = DateTime.Now.Second;
+
+            var date = day + "." + month + "." + year;
+
+            var hour = hor + "." + min + "." + sec;
+
+            var sourcePath = GetMainAppDirectory() + @"\dimstock-database.mdb";
+
+            var destPath = GetMainAppDirectory() + @"\DataBaseBackUp\dimStockBackup " 
+            + date + " " + hour + ".mdb";
+
+            backup.CopyFromDirectory(sourcePath, destPath);
+        }
+
         public void ImportBackUp(string dataBaseBackUpName)
         {
             var sourcePath = GetMainAppDirectory() + @"\DataBaseBackUp\" + dataBaseBackUpName;

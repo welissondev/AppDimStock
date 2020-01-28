@@ -264,6 +264,22 @@ namespace DimStock.UserForms
             }
         }
 
+        private void MenuSettings_Backup_Click(object sender, EventArgs e)
+        {
+            AxlMdiForm.CloseAllForms();
+
+            var form = new BackupSaveForm()
+            {
+                MdiParent = this,
+                FormBorderStyle = FormBorderStyle.None,
+                Dock = DockStyle.Fill,
+            };
+
+            form.Show();
+
+            FormNovigationDescription.Text = "Configurações";
+        }
+
         #endregion
 
         #region LabelLink
@@ -286,11 +302,13 @@ namespace DimStock.UserForms
             ContextMenu_User.Location = MousePosition;
         }
 
-        private void MainMenu_Exit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void MainMenu_Settings_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Close();
+            ContextMenu_Settings.Show();
+            ContextMenu_Settings.Location = MousePosition;
         }
 
         #endregion
+
     }
 }

@@ -169,6 +169,12 @@
     </Compile>
     <Compile Include="Reports\ReportStockProduct.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="UserForms\BackupSaveForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForms\BackupSaveForm.Designer.cs">
+      <DependentUpon>BackupSaveForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserForms\HomeScreenForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -251,6 +257,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\StockProduct.rdlc" />
     <EmbeddedResource Include="Reports\Product.rdlc" />
+    <EmbeddedResource Include="UserForms\BackupSaveForm.resx">
+      <DependentUpon>BackupSaveForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserForms\HomeScreenForm.resx">
       <DependentUpon>HomeScreenForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -118,33 +118,20 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="PanelMenuTop.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="GenerateBackup.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAXSURBVChTY+ApPfCfGDyqEC+mtsID/wGcD+EB+/CdugAA
-        AABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAAKAAAAApCAYAAACycCI9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJbSURBVHhe7dyxaxpRHMBxx4wdO3bMn9CxY8eOGbP0vygo
+        HqenJyqddHBxcVCyBStC0amTiIg4CJUgRaiESzBU0OHy+11eLEWaNsG7W74feBDi6fTl3b3znQkAAAAA
+        AKCSyeSJjLN8Pn+Zy+WGmUxmlUqlfAbjqaGdaC/SzVfp51zGK5PU/5M3vc9ms9eNRuN2PB778/nc9zzP
+        B/5FO9FeptOp32q11o7jeLZtfzRpPU1rdV33olareev12nwk8HKbzcZvNps3MiN+k75em9QOaXxy0NVg
+        MNia9wJHM5vN/GKxeCWdvTHJ/UlnPuJDmPTUrNeHJrnf9JpPT7vmOCA07Xb7TtYXKZPew2pXFxxc8yEK
+        u93OL5fL19Ld6WOA57paMa8Doev3+zuZ9EpBgHq/RpfMQFSWy6XvOM73IEAp8cdqtTIvAeHT03A6nd4F
+        AVqW9Uvv1QBR0m9NggD1DyBqBIhYESBiRYCIFQEiVgSIWBEgYkWAiNU+QL0jrXemgSjtA9Q9/Gy3R9T2
+        AepWad2tCkRF9x7oHoQgQMuyPnU6Hb4MRmSGw6HujG4GAeoe/UKh4HEdiKjU6/Ub6e5DEKCS03Ch2+2y
+        KRWhG41GW9d1v5j0Hui2fJkFx4vFwhwGHJ8+9iGT3U/p7fBhdfnnaalUkutDNqfi+DS+SqWiz4K8M8kd
+        khff6rPBvV6PRQmOZjKZbM3M9/f4HslBJ7JC+VytVj1drfC0HF5Cd9nrz7roz7vI5V1funreb8RorbpU
+        tm37Vm8aMhjPGfqoh8x6l9LRmUkKAAAAAOKUSNwDwoPPGjwRWHEAAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="ContextMenu_Product.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>25, 15</value>
-  </metadata>
-  <metadata name="ContextMenu_Stock.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>198, 15</value>
-  </metadata>
-  <metadata name="ContextMenu_User.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>358, 15</value>
-  </metadata>
-  <data name="bunifuGradientPanel1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAXSURBVChTY3BwcPhPDB5ViBdTW6HDfwBswa6d82Z4HwAA
-        AABJRU5ErkJggg==
-</value>
-  </data>
-  <metadata name="ContextMenu_Settings.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>513, 15</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>51</value>
-  </metadata>
 </root>
