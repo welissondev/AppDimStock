@@ -121,7 +121,7 @@
             this.MainMenu_Settings.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenu_Settings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.MainMenu_Settings.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.MainMenu_Settings.LinkColor = System.Drawing.Color.White;
+            this.MainMenu_Settings.LinkColor = System.Drawing.Color.AliceBlue;
             this.MainMenu_Settings.Location = new System.Drawing.Point(807, 0);
             this.MainMenu_Settings.Name = "MainMenu_Settings";
             this.MainMenu_Settings.Size = new System.Drawing.Size(128, 59);
@@ -152,7 +152,7 @@
             this.MainMenu_Support.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenu_Support.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.MainMenu_Support.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.MainMenu_Support.LinkColor = System.Drawing.Color.White;
+            this.MainMenu_Support.LinkColor = System.Drawing.Color.AliceBlue;
             this.MainMenu_Support.Location = new System.Drawing.Point(701, 0);
             this.MainMenu_Support.Name = "MainMenu_Support";
             this.MainMenu_Support.Size = new System.Drawing.Size(100, 59);
@@ -182,7 +182,7 @@
             this.MainMenu_Supplier.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenu_Supplier.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.MainMenu_Supplier.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.MainMenu_Supplier.LinkColor = System.Drawing.Color.White;
+            this.MainMenu_Supplier.LinkColor = System.Drawing.Color.AliceBlue;
             this.MainMenu_Supplier.Location = new System.Drawing.Point(584, 0);
             this.MainMenu_Supplier.Name = "MainMenu_Supplier";
             this.MainMenu_Supplier.Size = new System.Drawing.Size(100, 59);
@@ -223,7 +223,7 @@
             this.MainMenu_User.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenu_User.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.MainMenu_User.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.MainMenu_User.LinkColor = System.Drawing.Color.White;
+            this.MainMenu_User.LinkColor = System.Drawing.Color.AliceBlue;
             this.MainMenu_User.Location = new System.Drawing.Point(468, 0);
             this.MainMenu_User.Name = "MainMenu_User";
             this.MainMenu_User.Size = new System.Drawing.Size(100, 59);
@@ -243,7 +243,7 @@
             this.MainMenu_Stock.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenu_Stock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.MainMenu_Stock.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.MainMenu_Stock.LinkColor = System.Drawing.Color.White;
+            this.MainMenu_Stock.LinkColor = System.Drawing.Color.AliceBlue;
             this.MainMenu_Stock.Location = new System.Drawing.Point(362, 0);
             this.MainMenu_Stock.Name = "MainMenu_Stock";
             this.MainMenu_Stock.Size = new System.Drawing.Size(100, 59);
@@ -263,7 +263,7 @@
             this.MainMenu_Product.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenu_Product.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.MainMenu_Product.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.MainMenu_Product.LinkColor = System.Drawing.Color.White;
+            this.MainMenu_Product.LinkColor = System.Drawing.Color.AliceBlue;
             this.MainMenu_Product.Location = new System.Drawing.Point(256, 0);
             this.MainMenu_Product.Name = "MainMenu_Product";
             this.MainMenu_Product.Size = new System.Drawing.Size(100, 59);
@@ -403,23 +403,23 @@
             this.bunifuGradientPanel1.Controls.Add(this.DayOfTheWeek);
             this.bunifuGradientPanel1.Controls.Add(this.FormNovigationDescription);
             this.bunifuGradientPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.Black;
-            this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.Black;
-            this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.Gray;
-            this.bunifuGradientPanel1.GradientTopRight = System.Drawing.Color.Gray;
+            this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.DimGray;
+            this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.SystemColors.Desktop;
+            this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.SystemColors.Desktop;
+            this.bunifuGradientPanel1.GradientTopRight = System.Drawing.SystemColors.Desktop;
             this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, 60);
             this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
             this.bunifuGradientPanel1.Quality = 10;
-            this.bunifuGradientPanel1.Size = new System.Drawing.Size(964, 32);
+            this.bunifuGradientPanel1.Size = new System.Drawing.Size(964, 42);
             this.bunifuGradientPanel1.TabIndex = 0;
             // 
             // DayOfTheWeek
             // 
             this.DayOfTheWeek.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.DayOfTheWeek.BackColor = System.Drawing.Color.Transparent;
-            this.DayOfTheWeek.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DayOfTheWeek.Font = new System.Drawing.Font("Calibri Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DayOfTheWeek.ForeColor = System.Drawing.Color.White;
-            this.DayOfTheWeek.Location = new System.Drawing.Point(510, -1);
+            this.DayOfTheWeek.Location = new System.Drawing.Point(510, 3);
             this.DayOfTheWeek.Name = "DayOfTheWeek";
             this.DayOfTheWeek.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.DayOfTheWeek.Size = new System.Drawing.Size(451, 33);
@@ -430,9 +430,9 @@
             // FormNovigationDescription
             // 
             this.FormNovigationDescription.BackColor = System.Drawing.Color.Transparent;
-            this.FormNovigationDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormNovigationDescription.Font = new System.Drawing.Font("Calibri Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormNovigationDescription.ForeColor = System.Drawing.Color.White;
-            this.FormNovigationDescription.Location = new System.Drawing.Point(2, -1);
+            this.FormNovigationDescription.Location = new System.Drawing.Point(4, 3);
             this.FormNovigationDescription.Name = "FormNovigationDescription";
             this.FormNovigationDescription.Size = new System.Drawing.Size(359, 33);
             this.FormNovigationDescription.TabIndex = 0;
