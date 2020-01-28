@@ -1,13 +1,12 @@
-﻿using System;
-using System.Windows.Forms;
-using DimStock.Auxiliarys;
+﻿using DimStock.Auxiliarys;
 using DimStock.Business;
+using System;
+using System.Windows.Forms;
 
 namespace DimStock.UserForms
 {
     public partial class StockDestinationRegistrationForm : Form
     {
-
         #region Variables
 
         private int id = 0;

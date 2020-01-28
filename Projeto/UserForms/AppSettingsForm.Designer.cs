@@ -341,7 +341,7 @@
             // 
             this.CompanyLogoImage.BackColor = System.Drawing.Color.White;
             this.CompanyLogoImage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.CompanyLogoImage.Image = global::DimStock.Properties.Resources.StockLogo;
+            this.CompanyLogoImage.Image = global::DimStock.Properties.Resources.DimStockLogoType;
             this.CompanyLogoImage.Location = new System.Drawing.Point(7, 16);
             this.CompanyLogoImage.Name = "CompanyLogoImage";
             this.CompanyLogoImage.Size = new System.Drawing.Size(106, 96);
@@ -746,7 +746,7 @@
             // 
             this.Loading.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Loading.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.Loading.Image = global::DimStock.Properties.Resources.GigLoading;
+            this.Loading.Image = global::DimStock.Properties.Resources.Loading;
             this.Loading.Location = new System.Drawing.Point(230, 165);
             this.Loading.Name = "Loading";
             this.Loading.Size = new System.Drawing.Size(123, 126);
@@ -814,7 +814,7 @@
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImage = global::DimStock.Properties.Resources.StockLogo;
+            this.pictureBox1.BackgroundImage = global::DimStock.Properties.Resources.DimStockLogoType;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Location = new System.Drawing.Point(429, 30);
             this.pictureBox1.Name = "pictureBox1";

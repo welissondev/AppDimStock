@@ -1,7 +1,7 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using Microsoft.Reporting.WinForms;
+using System;
 using System.Collections.Generic;
-using Microsoft.Reporting.WinForms;
+using System.Windows.Forms;
 
 namespace DimStock.UserForms
 {

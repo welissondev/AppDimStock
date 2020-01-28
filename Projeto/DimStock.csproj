@@ -155,6 +155,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Auxiliarys\AxlFile.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Reports\ReportProduct.cs" />
     <Compile Include="UserForms\AppSettingsForm.cs">
       <SubType>Form</SubType>
@@ -238,14 +243,9 @@
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="UserForms\AppSettingsForm.resx">
       <DependentUpon>AppSettingsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -309,33 +309,6 @@
     <None Include="Resources\FotoNothing.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Visualizar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Deletar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Editar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Load.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\EntradaEstoque.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Duplicar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\SaidaEstoque.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\deletar2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Visualizar2.png" />
-  </ItemGroup>
-  <ItemGroup>
     <COMReference Include="stdole">
       <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
       <VersionMajor>2</VersionMajor>
@@ -347,22 +320,13 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\User-Login.png" />
+    <None Include="Resources\BackGroudUserLogin.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Image-backGroud-UserLogin.jpg" />
+    <None Include="Resources\Loading.gif" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\GigLoading.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\StockLogo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icon-new-bussines-settigs.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icon-restoure-bussines-settings.png" />
+    <None Include="Resources\DimStockLogoType.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

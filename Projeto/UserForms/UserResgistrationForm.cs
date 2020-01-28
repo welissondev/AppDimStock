@@ -1,9 +1,9 @@
-﻿using System;
-using System.Windows.Forms;
-using Bunifu.Framework.UI;
-using Syncfusion.Windows.Forms.Tools;
+﻿using Bunifu.Framework.UI;
 using DimStock.Auxiliarys;
 using DimStock.Business;
+using Syncfusion.Windows.Forms.Tools;
+using System;
+using System.Windows.Forms;
 
 namespace DimStock.UserForms
 {

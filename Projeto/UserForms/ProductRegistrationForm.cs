@@ -1,11 +1,11 @@
-﻿using System;
-using System.Drawing;
-using System.Windows.Forms;
-using Syncfusion.Windows.Forms.Tools;
+﻿using DimStock.Auxiliarys;
 using DimStock.Business;
-using DimStock.Auxiliarys;
 using DimStock.Properties;
+using Syncfusion.Windows.Forms.Tools;
+using System;
+using System.Drawing;
 using System.IO;
+using System.Windows.Forms;
 
 namespace DimStock.UserForms
 {

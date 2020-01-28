@@ -1,9 +1,9 @@
-﻿using System;
-using DimStock.Auxiliarys;
+﻿using DimStock.Auxiliarys;
 using DimStock.Reports;
+using System;
 using System.Collections.Generic;
-using System.Data.OleDb;
 using System.Data;
+using System.Data.OleDb;
 using System.Linq;
 
 namespace DimStock.Business

@@ -1,6 +1,6 @@
-﻿using System;
+﻿using DimStock.Auxiliarys;
 using DimStock.Properties;
-using DimStock.Auxiliarys;
+using System;
 using System.Collections.Generic;
 
 namespace DimStock.Business

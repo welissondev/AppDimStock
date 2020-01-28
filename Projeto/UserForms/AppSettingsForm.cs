@@ -1,17 +1,20 @@
 ﻿using DimStock.Auxiliarys;
 using DimStock.Business;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace DimStock.UserForms
 {
     public partial class AppSettingsForm : Form
     {
+        #region Properties
+
         private AppSetting appSetting = new AppSetting();
+
+        #endregion
+
+        #region Constructs
 
         public AppSettingsForm()
         {
@@ -21,6 +24,10 @@ namespace DimStock.UserForms
             MainTabControl.ItemSize = new Size(0, 1);
             MainTabControl.SizeMode = TabSizeMode.Fixed;
         }
+
+        #endregion
+
+        #region Button
 
         private void ChooseMainDirectory_Click(object sender, EventArgs e)
         {
@@ -32,28 +39,6 @@ namespace DimStock.UserForms
                 return;
 
             MainDirectoryPath.Text = path;
-        }
-
-        private void CompanyLogoImage_Click(object sender, EventArgs e)
-        {
-            var logoType = new AxlFile();
-
-            var path = logoType.SelectPath();
-
-            if (path == string.Empty)
-                return;
-
-            CompanyLogoImage.ImageLocation = path;
-        }
-
-        private void CloseAssistant_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Tem certeza que deseja finalizar?", "IMPORTANTE",
-            MessageBoxButtons.YesNo, MessageBoxIcon.None,
-            MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-            {
-                Close();
-            }
         }
 
         private void ChooseBackup_Click(object sender, EventArgs e)
@@ -93,6 +78,36 @@ namespace DimStock.UserForms
                 BackupPath.Text = string.Empty;
             }
         }
+
+        private void CloseAssistant_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Tem certeza que deseja finalizar?", "IMPORTANTE",
+            MessageBoxButtons.YesNo, MessageBoxIcon.None,
+            MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            {
+                Close();
+            }
+        }
+
+        #endregion
+
+        #region PictureBox
+
+        private void CompanyLogoImage_Click(object sender, EventArgs e)
+        {
+            var logoType = new AxlFile();
+
+            var path = logoType.SelectPath();
+
+            if (path == string.Empty)
+                return;
+
+            CompanyLogoImage.ImageLocation = path;
+        }
+
+        #endregion
+
+        #region LabelLink
 
         private void NextPage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -242,6 +257,10 @@ namespace DimStock.UserForms
             }
         }
 
+        #endregion
+
+        #region MethodsAuxiliarys
+        
         private void Await(int time)
         {
             Loading.Visible = true;
@@ -340,5 +359,7 @@ namespace DimStock.UserForms
 
             return true;
         }
+
+        #endregion
     }
 }

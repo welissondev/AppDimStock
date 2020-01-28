@@ -1,14 +1,12 @@
 ﻿using DimStock.Auxiliarys;
+using DimStock.Business;
 using System;
 using System.Windows.Forms;
-using DimStock.Business;
-using DimStock.Properties;
 
 namespace DimStock.UserForms
 {
     public partial class UserListingForm : Form
     {
-
         #region Variables
         private AxlDataPagination dataPagination = new AxlDataPagination();
         #endregion

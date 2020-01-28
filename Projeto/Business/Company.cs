@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DimStock.Auxiliarys;
 using System.Data.OleDb;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DimStock.Auxiliarys;
 
 namespace DimStock.Business
 {
     public class Company
     {
+        #region Get & Set
         public int Id { get; set; }
         public string Name { get; set; }
         public string CPF_CNPJ { get; set; }
@@ -20,7 +16,9 @@ namespace DimStock.Business
         public string State { get; set; }
         public string Cep { get; set; }
         public string StrieetNumber { get; set; }
+        #endregion
 
+        #region Methods
 
         public bool Register()
         {
@@ -50,5 +48,6 @@ namespace DimStock.Business
             }
         }
 
+        #endregion
     }
 }

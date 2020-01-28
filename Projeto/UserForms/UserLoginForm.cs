@@ -1,7 +1,7 @@
-﻿using System;
-using System.Windows.Forms;
-using DimStock.Auxiliarys;
+﻿using DimStock.Auxiliarys;
 using DimStock.Business;
+using System;
+using System.Windows.Forms;
 
 namespace DimStock.UserForms
 {
@@ -17,6 +17,15 @@ namespace DimStock.UserForms
         #region Get e Set
 
         public static UserLoginForm He { get; set; }
+
+        #endregion
+
+        #region UserForm
+
+        private void UserLoginForm_Load(object sender, EventArgs e)
+        {
+            He = this;
+        }
 
         #endregion
 
@@ -64,15 +73,14 @@ namespace DimStock.UserForms
 
         #endregion
 
-        private void UserLoginForm_Load(object sender, EventArgs e)
-        {
-            He = this;
-        }
+        #region MethodsAuxiliarys
 
         public static void ShowForm()
         {
             var form = new UserLoginForm();
             form.Show();
         }
+
+        #endregion
     }
 }

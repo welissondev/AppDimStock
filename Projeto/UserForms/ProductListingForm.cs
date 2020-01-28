@@ -1,16 +1,14 @@
-﻿using System;
+﻿using DimStock.Auxiliarys;
+using DimStock.Business;
 using Syncfusion.Windows.Forms.Tools;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using DimStock.Business;
-using DimStock.Auxiliarys;
-using DimStock.Properties;
 
 namespace DimStock.UserForms
 {
     public partial class ProductListingForm : Form
     {
-
         #region Variables
 
         public int Id = 0;

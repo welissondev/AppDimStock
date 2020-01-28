@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using DimStock.Business;
+﻿using DimStock.Business;
+using System.Collections.Generic;
 
 namespace DimStock.Reports
 {

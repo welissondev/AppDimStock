@@ -145,7 +145,7 @@
             // 
             // PictureBackGroudUserLogin
             // 
-            this.PictureBackGroudUserLogin.BackgroundImage = global::DimStock.Properties.Resources.Image_backGroud_UserLogin;
+            this.PictureBackGroudUserLogin.BackgroundImage = global::DimStock.Properties.Resources.BackGroudUserLogin;
             this.PictureBackGroudUserLogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PictureBackGroudUserLogin.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PictureBackGroudUserLogin.Location = new System.Drawing.Point(0, 0);

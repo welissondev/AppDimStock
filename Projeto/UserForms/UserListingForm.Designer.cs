@@ -105,7 +105,7 @@
             // GifLoading
             // 
             this.GifLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.GifLoading.Image = global::DimStock.Properties.Resources.GigLoading;
+            this.GifLoading.Image = global::DimStock.Properties.Resources.Loading;
             this.GifLoading.Location = new System.Drawing.Point(455, 303);
             this.GifLoading.Name = "GifLoading";
             this.GifLoading.Size = new System.Drawing.Size(194, 198);

@@ -1,7 +1,7 @@
-﻿using System;
+﻿using DimStock.Properties;
+using System;
 using System.Data;
 using System.Data.OleDb;
-using DimStock.Properties;
 
 namespace DimStock.Business
 {
@@ -67,6 +67,35 @@ namespace DimStock.Business
             }
         }
 
+        public OleDbDataReader ExecuteParameterQuery(string sql)
+        {
+            try
+            {
+                Command.CommandText = sql;
+                Command.Connection = Open();
+                return Command.ExecuteReader();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public int ExecuteTransaction(string sql)
+        {
+            try
+            {
+                Command.CommandText = sql;
+                Command.Connection = Transaction.Connection;
+                Command.Transaction = Transaction;
+                return Command.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public string ExecuteScalar(string sql)
         {
             try
@@ -113,35 +142,6 @@ namespace DimStock.Business
             adapter.Fill(startReg, maxReg, dt);
 
             return dt;
-        }
-
-        public OleDbDataReader ExecuteParameterQuery(string sql)
-        {
-            try
-            {
-                Command.CommandText = sql;
-                Command.Connection = Open();
-                return Command.ExecuteReader();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-        public int ExecuteTransaction(string sql)
-        {
-            try
-            {
-                Command.CommandText = sql;
-                Command.Connection = Transaction.Connection;
-                Command.Transaction = Transaction;
-                return Command.ExecuteNonQuery();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
         }
 
         public void Dispose()

@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using DimStock.Auxiliarys;
+﻿using DimStock.Auxiliarys;
 using DimStock.Business;
 using Syncfusion.Windows.Forms.Tools;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace DimStock.UserForms
 {
