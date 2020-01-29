@@ -66,7 +66,7 @@ namespace DimStock.UserForms
             }
         }
 
-        private void Exit_Click(object sender, EventArgs e)
+        private void Exists_Click(object sender, EventArgs e)
         {
             Close();
         }

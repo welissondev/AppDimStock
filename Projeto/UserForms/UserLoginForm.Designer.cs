@@ -31,12 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserLoginForm));
             this.PassWord = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.Login = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.SignIn = new Syncfusion.WinForms.Controls.SfButton();
-            this.Exit = new Syncfusion.WinForms.Controls.SfButton();
             this.PictureBackGroudUserLogin = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.bunifuCards1 = new Bunifu.Framework.UI.BunifuCards();
+            this.Exists = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.SignIn = new Bunifu.Framework.UI.BunifuThinButton2();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -51,97 +51,49 @@
             // PassWord
             // 
             this.PassWord.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PassWord.BackColor = System.Drawing.Color.White;
-            this.PassWord.BeforeTouchSize = new System.Drawing.Size(192, 26);
-            this.PassWord.BorderColor = System.Drawing.Color.DarkGray;
+            this.PassWord.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.PassWord.BeforeTouchSize = new System.Drawing.Size(192, 27);
+            this.PassWord.BorderColor = System.Drawing.Color.Silver;
             this.PassWord.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PassWord.CanOverrideStyle = true;
             this.PassWord.CausesValidation = false;
             this.PassWord.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.PassWord.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PassWord.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.PassWord.Location = new System.Drawing.Point(33, 142);
+            this.PassWord.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PassWord.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.PassWord.Location = new System.Drawing.Point(32, 147);
             this.PassWord.MaxLength = 50;
             this.PassWord.MinimumSize = new System.Drawing.Size(16, 12);
             this.PassWord.Name = "PassWord";
             this.PassWord.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
             this.PassWord.PasswordChar = '*';
-            this.PassWord.Size = new System.Drawing.Size(192, 26);
-            this.PassWord.TabIndex = 92;
+            this.PassWord.Size = new System.Drawing.Size(192, 27);
+            this.PassWord.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016Colorful;
+            this.PassWord.TabIndex = 1;
             this.PassWord.Tag = "";
-            this.PassWord.ThemeName = "Default";
+            this.PassWord.ThemeName = "Office2016Colorful";
             // 
             // Login
             // 
             this.Login.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Login.BackColor = System.Drawing.Color.White;
-            this.Login.BeforeTouchSize = new System.Drawing.Size(192, 26);
-            this.Login.BorderColor = System.Drawing.Color.DarkGray;
+            this.Login.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.Login.BeforeTouchSize = new System.Drawing.Size(192, 27);
+            this.Login.BorderColor = System.Drawing.Color.Silver;
             this.Login.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Login.CanOverrideStyle = true;
             this.Login.CausesValidation = false;
             this.Login.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.Login.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Login.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.Login.Location = new System.Drawing.Point(33, 84);
+            this.Login.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Login.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.Login.Location = new System.Drawing.Point(32, 89);
             this.Login.MaxLength = 50;
             this.Login.MinimumSize = new System.Drawing.Size(16, 12);
             this.Login.Name = "Login";
             this.Login.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
-            this.Login.Size = new System.Drawing.Size(192, 26);
-            this.Login.TabIndex = 90;
+            this.Login.Size = new System.Drawing.Size(192, 27);
+            this.Login.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016Colorful;
+            this.Login.TabIndex = 0;
             this.Login.Tag = "";
-            this.Login.ThemeName = "Default";
-            // 
-            // SignIn
-            // 
-            this.SignIn.AccessibleName = "Button";
-            this.SignIn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.SignIn.BackColor = System.Drawing.Color.SteelBlue;
-            this.SignIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SignIn.Font = new System.Drawing.Font("Segoe UI Semibold", 11F);
-            this.SignIn.ForeColor = System.Drawing.Color.White;
-            this.SignIn.Location = new System.Drawing.Point(32, 184);
-            this.SignIn.Name = "SignIn";
-            this.SignIn.Size = new System.Drawing.Size(95, 35);
-            this.SignIn.Style.BackColor = System.Drawing.Color.SteelBlue;
-            this.SignIn.Style.DisabledBackColor = System.Drawing.Color.SteelBlue;
-            this.SignIn.Style.DisabledForeColor = System.Drawing.Color.SteelBlue;
-            this.SignIn.Style.FocusedBackColor = System.Drawing.Color.SteelBlue;
-            this.SignIn.Style.FocusedForeColor = System.Drawing.Color.White;
-            this.SignIn.Style.ForeColor = System.Drawing.Color.White;
-            this.SignIn.Style.HoverBackColor = System.Drawing.Color.SteelBlue;
-            this.SignIn.Style.HoverForeColor = System.Drawing.Color.White;
-            this.SignIn.Style.PressedForeColor = System.Drawing.Color.White;
-            this.SignIn.TabIndex = 138;
-            this.SignIn.Text = "Entrar";
-            this.SignIn.UseVisualStyleBackColor = false;
-            this.SignIn.Click += new System.EventHandler(this.SignIn_Click);
-            // 
-            // Exit
-            // 
-            this.Exit.AccessibleName = "Button";
-            this.Exit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Exit.BackColor = System.Drawing.Color.SteelBlue;
-            this.Exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Exit.Font = new System.Drawing.Font("Segoe UI Semibold", 11F);
-            this.Exit.ForeColor = System.Drawing.Color.White;
-            this.Exit.Location = new System.Drawing.Point(130, 184);
-            this.Exit.Name = "Exit";
-            this.Exit.Size = new System.Drawing.Size(95, 35);
-            this.Exit.Style.BackColor = System.Drawing.Color.SteelBlue;
-            this.Exit.Style.DisabledBackColor = System.Drawing.Color.SteelBlue;
-            this.Exit.Style.DisabledForeColor = System.Drawing.Color.SteelBlue;
-            this.Exit.Style.FocusedBackColor = System.Drawing.Color.SteelBlue;
-            this.Exit.Style.FocusedForeColor = System.Drawing.Color.White;
-            this.Exit.Style.ForeColor = System.Drawing.Color.White;
-            this.Exit.Style.HoverBackColor = System.Drawing.Color.SteelBlue;
-            this.Exit.Style.HoverForeColor = System.Drawing.Color.White;
-            this.Exit.Style.PressedForeColor = System.Drawing.Color.White;
-            this.Exit.TabIndex = 139;
-            this.Exit.Text = "Sair";
-            this.Exit.UseVisualStyleBackColor = false;
-            this.Exit.Click += new System.EventHandler(this.Exit_Click);
+            this.Login.ThemeName = "Office2016Colorful";
             // 
             // PictureBackGroudUserLogin
             // 
@@ -160,11 +112,11 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(28, 61);
+            this.label1.Location = new System.Drawing.Point(27, 65);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 22);
+            this.label1.Size = new System.Drawing.Size(56, 23);
             this.label1.TabIndex = 141;
             this.label1.Text = "Login:";
             // 
@@ -174,11 +126,11 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(28, 120);
+            this.label2.Location = new System.Drawing.Point(27, 123);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 22);
+            this.label2.Size = new System.Drawing.Size(62, 23);
             this.label2.TabIndex = 142;
             this.label2.Text = "Senha:";
             // 
@@ -188,11 +140,11 @@
             this.bunifuCards1.BackColor = System.Drawing.Color.White;
             this.bunifuCards1.BorderRadius = 5;
             this.bunifuCards1.BottomSahddow = true;
-            this.bunifuCards1.color = System.Drawing.Color.SteelBlue;
+            this.bunifuCards1.color = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(117)))), ((int)(((byte)(192)))));
+            this.bunifuCards1.Controls.Add(this.Exists);
+            this.bunifuCards1.Controls.Add(this.SignIn);
             this.bunifuCards1.Controls.Add(this.label2);
             this.bunifuCards1.Controls.Add(this.label1);
-            this.bunifuCards1.Controls.Add(this.Exit);
-            this.bunifuCards1.Controls.Add(this.SignIn);
             this.bunifuCards1.Controls.Add(this.PassWord);
             this.bunifuCards1.Controls.Add(this.Login);
             this.bunifuCards1.LeftSahddow = false;
@@ -202,6 +154,58 @@
             this.bunifuCards1.ShadowDepth = 20;
             this.bunifuCards1.Size = new System.Drawing.Size(257, 293);
             this.bunifuCards1.TabIndex = 143;
+            // 
+            // Exists
+            // 
+            this.Exists.ActiveBorderThickness = 1;
+            this.Exists.ActiveCornerRadius = 5;
+            this.Exists.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.Exists.ActiveForecolor = System.Drawing.Color.White;
+            this.Exists.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.Exists.BackColor = System.Drawing.Color.White;
+            this.Exists.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Exists.BackgroundImage")));
+            this.Exists.ButtonText = "Sair";
+            this.Exists.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Exists.Font = new System.Drawing.Font("Calibri Light", 14F);
+            this.Exists.ForeColor = System.Drawing.Color.SeaGreen;
+            this.Exists.IdleBorderThickness = 1;
+            this.Exists.IdleCornerRadius = 5;
+            this.Exists.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(117)))), ((int)(((byte)(192)))));
+            this.Exists.IdleForecolor = System.Drawing.Color.White;
+            this.Exists.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(117)))), ((int)(((byte)(192)))));
+            this.Exists.Location = new System.Drawing.Point(129, 183);
+            this.Exists.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.Exists.Name = "Exists";
+            this.Exists.Size = new System.Drawing.Size(95, 45);
+            this.Exists.TabIndex = 3;
+            this.Exists.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Exists.Click += new System.EventHandler(this.Exists_Click);
+            // 
+            // SignIn
+            // 
+            this.SignIn.ActiveBorderThickness = 1;
+            this.SignIn.ActiveCornerRadius = 5;
+            this.SignIn.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.SignIn.ActiveForecolor = System.Drawing.Color.White;
+            this.SignIn.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.SignIn.BackColor = System.Drawing.Color.White;
+            this.SignIn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SignIn.BackgroundImage")));
+            this.SignIn.ButtonText = "Entrar";
+            this.SignIn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SignIn.Font = new System.Drawing.Font("Calibri Light", 14F);
+            this.SignIn.ForeColor = System.Drawing.Color.SeaGreen;
+            this.SignIn.IdleBorderThickness = 1;
+            this.SignIn.IdleCornerRadius = 5;
+            this.SignIn.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(117)))), ((int)(((byte)(192)))));
+            this.SignIn.IdleForecolor = System.Drawing.Color.White;
+            this.SignIn.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(117)))), ((int)(((byte)(192)))));
+            this.SignIn.Location = new System.Drawing.Point(31, 183);
+            this.SignIn.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.SignIn.Name = "SignIn";
+            this.SignIn.Size = new System.Drawing.Size(92, 45);
+            this.SignIn.TabIndex = 2;
+            this.SignIn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.SignIn.Click += new System.EventHandler(this.SignIn_Click);
             // 
             // bunifuGradientPanel1
             // 
@@ -224,51 +228,51 @@
             // label5
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label5.Location = new System.Drawing.Point(354, 68);
+            this.label5.Location = new System.Drawing.Point(328, 67);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(239, 22);
+            this.label5.Size = new System.Drawing.Size(302, 22);
             this.label5.TabIndex = 144;
             this.label5.Text = "Contato: (28) 98115-7531";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label4
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.Location = new System.Drawing.Point(336, 44);
+            this.label4.Location = new System.Drawing.Point(328, 45);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(279, 22);
+            this.label4.Size = new System.Drawing.Size(302, 22);
             this.label4.TabIndex = 143;
             this.label4.Text = "Site: www.diarioexcel.com.br";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label3
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label3.Location = new System.Drawing.Point(326, 22);
+            this.label3.Location = new System.Drawing.Point(328, 23);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(302, 22);
             this.label3.TabIndex = 142;
             this.label3.Text = "Desenvolvido por Welisson Silva";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // UserLoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(943, 628);
+            this.ClientSize = new System.Drawing.Size(959, 667);
             this.Controls.Add(this.bunifuGradientPanel1);
             this.Controls.Add(this.bunifuCards1);
             this.Controls.Add(this.PictureBackGroudUserLogin);
@@ -284,7 +288,6 @@
             this.bunifuCards1.ResumeLayout(false);
             this.bunifuCards1.PerformLayout();
             this.bunifuGradientPanel1.ResumeLayout(false);
-            this.bunifuGradientPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -293,8 +296,6 @@
 
         public Syncfusion.Windows.Forms.Tools.TextBoxExt PassWord;
         public Syncfusion.Windows.Forms.Tools.TextBoxExt Login;
-        private Syncfusion.WinForms.Controls.SfButton SignIn;
-        private Syncfusion.WinForms.Controls.SfButton Exit;
         private System.Windows.Forms.PictureBox PictureBackGroudUserLogin;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -303,5 +304,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
+        private Bunifu.Framework.UI.BunifuThinButton2 Exists;
+        private Bunifu.Framework.UI.BunifuThinButton2 SignIn;
     }
 }
