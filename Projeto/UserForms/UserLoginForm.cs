@@ -52,13 +52,9 @@ namespace DimStock.UserForms
                 AxlLogin.Name = user.Name;
                 AxlLogin.Login = user.Login;
 
-                Hide();
-                using (var homeScreen = new HomeScreenForm())
-                {
-                    homeScreen.Closed += (s, args) => Close();
-                    homeScreen.ShowDialog();
-                }
-
+                HomeScreenForm.He.Show();
+                
+                Close();
             }
             catch (Exception ex)
             {
@@ -69,6 +65,7 @@ namespace DimStock.UserForms
         private void Exists_Click(object sender, EventArgs e)
         {
             Close();
+            HomeScreenForm.He.Close();
         }
 
         #endregion

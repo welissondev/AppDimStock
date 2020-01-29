@@ -428,6 +428,7 @@
             this.ClientSize = new System.Drawing.Size(964, 704);
             this.Controls.Add(this.bunifuGradientPanel1);
             this.Controls.Add(this.PanelMenuTop);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MinimumSize = new System.Drawing.Size(980, 720);
             this.Name = "HomeScreenForm";

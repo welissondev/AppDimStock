@@ -37,6 +37,10 @@ namespace DimStock.UserForms
         {
             He = this;
             DayOfTheWeek.Text = DateTime.Now.ToLongDateString();
+            
+            Hide();
+
+            UserLoginForm.ShowForm();
         }
 
         private void ShowNewForm(object sender, EventArgs e)
