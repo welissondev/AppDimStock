@@ -39,7 +39,6 @@
             this.FinalDate = new Syncfusion.WinForms.Input.SfDateTimeEdit();
             this.SearchTimer = new System.Windows.Forms.Timer(this.components);
             this.GifLoading = new System.Windows.Forms.PictureBox();
-            this.UpdateDataList = new Syncfusion.WinForms.Controls.SfButton();
             this.BindingPagination = new System.Windows.Forms.BindingNavigator(this.components);
             this.BackPage = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -50,6 +49,7 @@
             this.LblRecordsState = new System.Windows.Forms.ToolStripLabel();
             this.RecordsByPage = new Syncfusion.WinForms.ListView.SfComboBox();
             this.TitleRecordsByPage = new System.Windows.Forms.Label();
+            this.DataList = new Bunifu.Framework.UI.BunifuThinButton2();
             ((System.ComponentModel.ISupportInitialize)(this.HistoryDataList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SearchByLogin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GifLoading)).BeginInit();
@@ -167,30 +167,6 @@
             this.GifLoading.TabStop = false;
             this.GifLoading.Visible = false;
             // 
-            // UpdateDataList
-            // 
-            this.UpdateDataList.AccessibleName = "Button";
-            this.UpdateDataList.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.UpdateDataList.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpdateDataList.ForeColor = System.Drawing.Color.White;
-            this.UpdateDataList.Location = new System.Drawing.Point(29, 35);
-            this.UpdateDataList.Name = "UpdateDataList";
-            this.UpdateDataList.Size = new System.Drawing.Size(80, 35);
-            this.UpdateDataList.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.UpdateDataList.Style.DisabledBackColor = System.Drawing.Color.MediumSeaGreen;
-            this.UpdateDataList.Style.DisabledForeColor = System.Drawing.Color.MediumSeaGreen;
-            this.UpdateDataList.Style.FocusedBackColor = System.Drawing.Color.MediumSeaGreen;
-            this.UpdateDataList.Style.FocusedForeColor = System.Drawing.Color.White;
-            this.UpdateDataList.Style.ForeColor = System.Drawing.Color.White;
-            this.UpdateDataList.Style.HoverBackColor = System.Drawing.Color.MediumSeaGreen;
-            this.UpdateDataList.Style.HoverForeColor = System.Drawing.Color.Black;
-            this.UpdateDataList.Style.PressedBackColor = System.Drawing.Color.SeaGreen;
-            this.UpdateDataList.Style.PressedForeColor = System.Drawing.Color.White;
-            this.UpdateDataList.TabIndex = 140;
-            this.UpdateDataList.Text = "Atualizar";
-            this.UpdateDataList.UseVisualStyleBackColor = false;
-            this.UpdateDataList.Click += new System.EventHandler(this.UpdateDataList_Click);
-            // 
             // BindingPagination
             // 
             this.BindingPagination.AddNewItem = null;
@@ -305,13 +281,39 @@
             this.TitleRecordsByPage.TabIndex = 181;
             this.TitleRecordsByPage.Text = "Registros Por Página:";
             // 
+            // DataList
+            // 
+            this.DataList.ActiveBorderThickness = 1;
+            this.DataList.ActiveCornerRadius = 10;
+            this.DataList.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.DataList.ActiveForecolor = System.Drawing.Color.White;
+            this.DataList.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.DataList.BackColor = System.Drawing.Color.White;
+            this.DataList.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DataList.BackgroundImage")));
+            this.DataList.ButtonText = "Listar";
+            this.DataList.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DataList.Font = new System.Drawing.Font("Calibri Light", 14F);
+            this.DataList.ForeColor = System.Drawing.Color.SeaGreen;
+            this.DataList.IdleBorderThickness = 1;
+            this.DataList.IdleCornerRadius = 10;
+            this.DataList.IdleFillColor = System.Drawing.Color.MediumAquamarine;
+            this.DataList.IdleForecolor = System.Drawing.Color.White;
+            this.DataList.IdleLineColor = System.Drawing.Color.MediumAquamarine;
+            this.DataList.Location = new System.Drawing.Point(29, 25);
+            this.DataList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.DataList.Name = "DataList";
+            this.DataList.Size = new System.Drawing.Size(97, 43);
+            this.DataList.TabIndex = 218;
+            this.DataList.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.DataList.Click += new System.EventHandler(this.DataList_Click);
+            // 
             // UserHistoryListingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(964, 681);
-            this.Controls.Add(this.UpdateDataList);
+            this.Controls.Add(this.DataList);
             this.Controls.Add(this.RecordsByPage);
             this.Controls.Add(this.TitleRecordsByPage);
             this.Controls.Add(this.BindingPagination);
@@ -349,7 +351,6 @@
         private Syncfusion.WinForms.Input.SfDateTimeEdit FinalDate;
         private System.Windows.Forms.Timer SearchTimer;
         private System.Windows.Forms.PictureBox GifLoading;
-        private Syncfusion.WinForms.Controls.SfButton UpdateDataList;
         private System.Windows.Forms.BindingNavigator BindingPagination;
         private System.Windows.Forms.ToolStripButton BackPage;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -360,5 +361,6 @@
         private System.Windows.Forms.ToolStripLabel LblRecordsState;
         private Syncfusion.WinForms.ListView.SfComboBox RecordsByPage;
         private System.Windows.Forms.Label TitleRecordsByPage;
+        private Bunifu.Framework.UI.BunifuThinButton2 DataList;
     }
 }

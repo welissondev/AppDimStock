@@ -33,10 +33,8 @@
             this.PanelMenuTop = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.label6 = new System.Windows.Forms.Label();
             this.MainMenu_Settings = new System.Windows.Forms.LinkLabel();
-            this.label5 = new System.Windows.Forms.Label();
             this.MainMenu_Support = new System.Windows.Forms.LinkLabel();
             this.label4 = new System.Windows.Forms.Label();
-            this.MainMenu_Supplier = new System.Windows.Forms.LinkLabel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.MainMenu_User = new System.Windows.Forms.LinkLabel();
@@ -79,10 +77,8 @@
             this.PanelMenuTop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PanelMenuTop.Controls.Add(this.label6);
             this.PanelMenuTop.Controls.Add(this.MainMenu_Settings);
-            this.PanelMenuTop.Controls.Add(this.label5);
             this.PanelMenuTop.Controls.Add(this.MainMenu_Support);
             this.PanelMenuTop.Controls.Add(this.label4);
-            this.PanelMenuTop.Controls.Add(this.MainMenu_Supplier);
             this.PanelMenuTop.Controls.Add(this.label3);
             this.PanelMenuTop.Controls.Add(this.label2);
             this.PanelMenuTop.Controls.Add(this.MainMenu_User);
@@ -106,7 +102,7 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(797, 25);
+            this.label6.Location = new System.Drawing.Point(676, 25);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(9, 13);
             this.label6.TabIndex = 18;
@@ -122,7 +118,7 @@
             this.MainMenu_Settings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.MainMenu_Settings.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.MainMenu_Settings.LinkColor = System.Drawing.Color.AliceBlue;
-            this.MainMenu_Settings.Location = new System.Drawing.Point(807, 0);
+            this.MainMenu_Settings.Location = new System.Drawing.Point(686, 0);
             this.MainMenu_Settings.Name = "MainMenu_Settings";
             this.MainMenu_Settings.Size = new System.Drawing.Size(128, 59);
             this.MainMenu_Settings.TabIndex = 17;
@@ -131,17 +127,6 @@
             this.MainMenu_Settings.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.MainMenu_Settings.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.MainMenu_Settings.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.MainMenu_Settings_LinkClicked);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(691, 25);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(9, 13);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "|";
             // 
             // MainMenu_Support
             // 
@@ -153,7 +138,7 @@
             this.MainMenu_Support.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.MainMenu_Support.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.MainMenu_Support.LinkColor = System.Drawing.Color.AliceBlue;
-            this.MainMenu_Support.Location = new System.Drawing.Point(701, 0);
+            this.MainMenu_Support.Location = new System.Drawing.Point(580, 0);
             this.MainMenu_Support.Name = "MainMenu_Support";
             this.MainMenu_Support.Size = new System.Drawing.Size(100, 59);
             this.MainMenu_Support.TabIndex = 15;
@@ -172,25 +157,6 @@
             this.label4.Size = new System.Drawing.Size(9, 13);
             this.label4.TabIndex = 14;
             this.label4.Text = "|";
-            // 
-            // MainMenu_Supplier
-            // 
-            this.MainMenu_Supplier.ActiveLinkColor = System.Drawing.Color.LightSkyBlue;
-            this.MainMenu_Supplier.AutoEllipsis = true;
-            this.MainMenu_Supplier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(117)))), ((int)(((byte)(192)))));
-            this.MainMenu_Supplier.DisabledLinkColor = System.Drawing.Color.White;
-            this.MainMenu_Supplier.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MainMenu_Supplier.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.MainMenu_Supplier.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.MainMenu_Supplier.LinkColor = System.Drawing.Color.AliceBlue;
-            this.MainMenu_Supplier.Location = new System.Drawing.Point(584, 0);
-            this.MainMenu_Supplier.Name = "MainMenu_Supplier";
-            this.MainMenu_Supplier.Size = new System.Drawing.Size(100, 59);
-            this.MainMenu_Supplier.TabIndex = 13;
-            this.MainMenu_Supplier.TabStop = true;
-            this.MainMenu_Supplier.Text = "Fornecedor";
-            this.MainMenu_Supplier.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.MainMenu_Supplier.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             // 
             // label3
             // 
@@ -289,11 +255,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Calibri", 27.75F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(56, 12);
+            this.label1.Location = new System.Drawing.Point(53, 5);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(151, 33);
+            this.label1.Size = new System.Drawing.Size(165, 45);
             this.label1.TabIndex = 0;
             this.label1.Text = "DimStock";
             // 
@@ -434,7 +400,7 @@
             this.FormNovigationDescription.ForeColor = System.Drawing.Color.White;
             this.FormNovigationDescription.Location = new System.Drawing.Point(4, 3);
             this.FormNovigationDescription.Name = "FormNovigationDescription";
-            this.FormNovigationDescription.Size = new System.Drawing.Size(359, 33);
+            this.FormNovigationDescription.Size = new System.Drawing.Size(535, 33);
             this.FormNovigationDescription.TabIndex = 0;
             this.FormNovigationDescription.Text = "Tela Inicial";
             this.FormNovigationDescription.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -491,7 +457,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.LinkLabel MainMenu_Supplier;
         private System.Windows.Forms.ContextMenuStrip ContextMenu_Stock;
         private System.Windows.Forms.ToolStripMenuItem MenuStock_RegisterNew;
         private System.Windows.Forms.ToolStripMenuItem MenuStock_RegisterNew_Entrie;
@@ -502,15 +467,14 @@
         private System.Windows.Forms.ToolStripMenuItem MenuUser_RegisterNew;
         private System.Windows.Forms.ToolStripMenuItem MenuUser_ListUsers;
         private System.Windows.Forms.ToolStripMenuItem MenuUser_ListHistory;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.LinkLabel MainMenu_Support;
         private Bunifu.Framework.UI.BunifuGradientPanel bunifuGradientPanel1;
-        private System.Windows.Forms.Label FormNovigationDescription;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.LinkLabel MainMenu_Settings;
         private System.Windows.Forms.Label DayOfTheWeek;
         private System.Windows.Forms.ContextMenuStrip ContextMenu_Settings;
         private System.Windows.Forms.ToolStripMenuItem MenuSettings_Backup;
+        public System.Windows.Forms.Label FormNovigationDescription;
     }
 }
 

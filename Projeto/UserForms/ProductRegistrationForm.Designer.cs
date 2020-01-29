@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ClearFields = new Syncfusion.WinForms.Controls.SfButton();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductRegistrationForm));
             this.BarCode = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.SalePrice = new Syncfusion.Windows.Forms.Tools.CurrencyTextBox();
             this.CostPrice = new Syncfusion.Windows.Forms.Tools.CurrencyTextBox();
@@ -40,8 +40,7 @@
             this.ReferenceTitle = new System.Windows.Forms.Label();
             this.SizeTitle = new System.Windows.Forms.Label();
             this.FrameProductPhoto = new System.Windows.Forms.GroupBox();
-            this.ProductPhoto = new DimStock.Controls.CustomPictureBoxOne();
-            this.RegisterNew = new Syncfusion.WinForms.Controls.SfButton();
+            this.ImageProduct = new DimStock.Controls.CustomPictureBoxOne();
             this.CodeTitle = new System.Windows.Forms.Label();
             this.MinStockTitle = new System.Windows.Forms.Label();
             this.MaxStockTitle = new System.Windows.Forms.Label();
@@ -52,12 +51,14 @@
             this.SupplierTitle = new System.Windows.Forms.Label();
             this.ProductCode = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
             this.ProductReference = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
+            this.ClearFields = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.Save = new Bunifu.Framework.UI.BunifuThinButton2();
             ((System.ComponentModel.ISupportInitialize)(this.BarCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SalePrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CostPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Description)).BeginInit();
             this.FrameProductPhoto.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ProductPhoto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ImageProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinStock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxStock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductSize)).BeginInit();
@@ -65,30 +66,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ProductCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductReference)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ClearFields
-            // 
-            this.ClearFields.AccessibleName = "Button";
-            this.ClearFields.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.ClearFields.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClearFields.ForeColor = System.Drawing.Color.White;
-            this.ClearFields.Location = new System.Drawing.Point(807, 510);
-            this.ClearFields.Name = "ClearFields";
-            this.ClearFields.Size = new System.Drawing.Size(80, 35);
-            this.ClearFields.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.ClearFields.Style.DisabledBackColor = System.Drawing.Color.MediumSeaGreen;
-            this.ClearFields.Style.DisabledForeColor = System.Drawing.Color.MediumSeaGreen;
-            this.ClearFields.Style.FocusedBackColor = System.Drawing.Color.MediumSeaGreen;
-            this.ClearFields.Style.FocusedForeColor = System.Drawing.Color.White;
-            this.ClearFields.Style.ForeColor = System.Drawing.Color.White;
-            this.ClearFields.Style.HoverBackColor = System.Drawing.Color.MediumSeaGreen;
-            this.ClearFields.Style.HoverForeColor = System.Drawing.Color.Black;
-            this.ClearFields.Style.PressedBackColor = System.Drawing.Color.MediumSeaGreen;
-            this.ClearFields.Style.PressedForeColor = System.Drawing.Color.White;
-            this.ClearFields.TabIndex = 11;
-            this.ClearFields.Text = "Limpar";
-            this.ClearFields.UseVisualStyleBackColor = false;
-            this.ClearFields.Click += new System.EventHandler(this.ClearFields_Click);
             // 
             // BarCode
             // 
@@ -260,7 +237,7 @@
             // FrameProductPhoto
             // 
             this.FrameProductPhoto.BackColor = System.Drawing.Color.White;
-            this.FrameProductPhoto.Controls.Add(this.ProductPhoto);
+            this.FrameProductPhoto.Controls.Add(this.ImageProduct);
             this.FrameProductPhoto.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.FrameProductPhoto.Location = new System.Drawing.Point(77, 127);
             this.FrameProductPhoto.Name = "FrameProductPhoto";
@@ -268,43 +245,19 @@
             this.FrameProductPhoto.TabIndex = 75;
             this.FrameProductPhoto.TabStop = false;
             // 
-            // ProductPhoto
+            // ImageProduct
             // 
-            this.ProductPhoto.Image = global::DimStock.Properties.Resources.FotoNothing;
-            this.ProductPhoto.IndentificationPhotoNumber = "";
-            this.ProductPhoto.Location = new System.Drawing.Point(7, 14);
-            this.ProductPhoto.Name = "ProductPhoto";
-            this.ProductPhoto.PathOfLastSelectedPhoto = "";
-            this.ProductPhoto.SelectedDirectory = null;
-            this.ProductPhoto.Size = new System.Drawing.Size(176, 188);
-            this.ProductPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ProductPhoto.TabIndex = 82;
-            this.ProductPhoto.TabStop = false;
-            this.ProductPhoto.Click += new System.EventHandler(this.ProductPhoto_Click);
-            // 
-            // RegisterNew
-            // 
-            this.RegisterNew.AccessibleName = "Button";
-            this.RegisterNew.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.RegisterNew.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RegisterNew.ForeColor = System.Drawing.Color.White;
-            this.RegisterNew.Location = new System.Drawing.Point(724, 510);
-            this.RegisterNew.Name = "RegisterNew";
-            this.RegisterNew.Size = new System.Drawing.Size(80, 35);
-            this.RegisterNew.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.RegisterNew.Style.DisabledBackColor = System.Drawing.Color.MediumSeaGreen;
-            this.RegisterNew.Style.DisabledForeColor = System.Drawing.Color.MediumSeaGreen;
-            this.RegisterNew.Style.FocusedBackColor = System.Drawing.Color.MediumSeaGreen;
-            this.RegisterNew.Style.FocusedForeColor = System.Drawing.Color.White;
-            this.RegisterNew.Style.ForeColor = System.Drawing.Color.White;
-            this.RegisterNew.Style.HoverBackColor = System.Drawing.Color.MediumSeaGreen;
-            this.RegisterNew.Style.HoverForeColor = System.Drawing.Color.Black;
-            this.RegisterNew.Style.PressedBackColor = System.Drawing.Color.MediumSeaGreen;
-            this.RegisterNew.Style.PressedForeColor = System.Drawing.Color.White;
-            this.RegisterNew.TabIndex = 10;
-            this.RegisterNew.Text = "Salvar";
-            this.RegisterNew.UseVisualStyleBackColor = false;
-            this.RegisterNew.Click += new System.EventHandler(this.RegisterNew_Click);
+            this.ImageProduct.Image = global::DimStock.Properties.Resources.FotoNothing;
+            this.ImageProduct.IndentificationPhotoNumber = "";
+            this.ImageProduct.Location = new System.Drawing.Point(7, 14);
+            this.ImageProduct.Name = "ImageProduct";
+            this.ImageProduct.PathOfLastSelectedPhoto = "";
+            this.ImageProduct.SelectedDirectory = null;
+            this.ImageProduct.Size = new System.Drawing.Size(176, 188);
+            this.ImageProduct.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ImageProduct.TabIndex = 82;
+            this.ImageProduct.TabStop = false;
+            this.ImageProduct.Click += new System.EventHandler(this.ImageProduct_Click);
             // 
             // CodeTitle
             // 
@@ -499,15 +452,67 @@
             this.ProductReference.ThemesEnabled = false;
             this.ProductReference.ZeroColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             // 
+            // ClearFields
+            // 
+            this.ClearFields.ActiveBorderThickness = 1;
+            this.ClearFields.ActiveCornerRadius = 10;
+            this.ClearFields.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.ClearFields.ActiveForecolor = System.Drawing.Color.White;
+            this.ClearFields.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.ClearFields.BackColor = System.Drawing.Color.White;
+            this.ClearFields.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ClearFields.BackgroundImage")));
+            this.ClearFields.ButtonText = "Limpar";
+            this.ClearFields.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ClearFields.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClearFields.ForeColor = System.Drawing.Color.SeaGreen;
+            this.ClearFields.IdleBorderThickness = 1;
+            this.ClearFields.IdleCornerRadius = 10;
+            this.ClearFields.IdleFillColor = System.Drawing.Color.MediumAquamarine;
+            this.ClearFields.IdleForecolor = System.Drawing.Color.White;
+            this.ClearFields.IdleLineColor = System.Drawing.Color.MediumAquamarine;
+            this.ClearFields.Location = new System.Drawing.Point(383, 499);
+            this.ClearFields.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ClearFields.Name = "ClearFields";
+            this.ClearFields.Size = new System.Drawing.Size(97, 43);
+            this.ClearFields.TabIndex = 213;
+            this.ClearFields.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ClearFields.Click += new System.EventHandler(this.ClearFields_Click_1);
+            // 
+            // Save
+            // 
+            this.Save.ActiveBorderThickness = 1;
+            this.Save.ActiveCornerRadius = 10;
+            this.Save.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.Save.ActiveForecolor = System.Drawing.Color.White;
+            this.Save.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.Save.BackColor = System.Drawing.Color.White;
+            this.Save.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Save.BackgroundImage")));
+            this.Save.ButtonText = "Salvar";
+            this.Save.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Save.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Save.ForeColor = System.Drawing.Color.SeaGreen;
+            this.Save.IdleBorderThickness = 1;
+            this.Save.IdleCornerRadius = 10;
+            this.Save.IdleFillColor = System.Drawing.Color.MediumAquamarine;
+            this.Save.IdleForecolor = System.Drawing.Color.White;
+            this.Save.IdleLineColor = System.Drawing.Color.MediumAquamarine;
+            this.Save.Location = new System.Drawing.Point(284, 499);
+            this.Save.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Save.Name = "Save";
+            this.Save.Size = new System.Drawing.Size(97, 43);
+            this.Save.TabIndex = 212;
+            this.Save.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Save.Click += new System.EventHandler(this.Save_Click);
+            // 
             // ProductRegistrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(964, 681);
-            this.Controls.Add(this.ProductReference);
             this.Controls.Add(this.ClearFields);
-            this.Controls.Add(this.RegisterNew);
+            this.Controls.Add(this.Save);
+            this.Controls.Add(this.ProductReference);
             this.Controls.Add(this.ProductCode);
             this.Controls.Add(this.Supplier);
             this.Controls.Add(this.SupplierTitle);
@@ -536,7 +541,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.CostPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Description)).EndInit();
             this.FrameProductPhoto.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ProductPhoto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ImageProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinStock)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxStock)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductSize)).EndInit();
@@ -549,9 +554,6 @@
         }
 
         #endregion
-
-        private Syncfusion.WinForms.Controls.SfButton ClearFields;
-        private Syncfusion.WinForms.Controls.SfButton RegisterNew;
         private System.Windows.Forms.Label BarCodeTitle;
         private System.Windows.Forms.Label SalePriceTitle;
         private System.Windows.Forms.Label CostPriceTitle;
@@ -571,8 +573,10 @@
         public Syncfusion.Windows.Forms.Tools.IntegerTextBox ProductSize;
         public Syncfusion.Windows.Forms.Tools.TextBoxExt Supplier;
         private System.Windows.Forms.Label SupplierTitle;
-        public DimStock.Controls.CustomPictureBoxOne ProductPhoto;
+        public DimStock.Controls.CustomPictureBoxOne ImageProduct;
         public Syncfusion.Windows.Forms.Tools.IntegerTextBox ProductCode;
         public Syncfusion.Windows.Forms.Tools.IntegerTextBox ProductReference;
+        private Bunifu.Framework.UI.BunifuThinButton2 ClearFields;
+        private Bunifu.Framework.UI.BunifuThinButton2 Save;
     }
 }

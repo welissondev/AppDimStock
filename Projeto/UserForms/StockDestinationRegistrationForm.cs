@@ -35,7 +35,7 @@ namespace DimStock.UserForms
 
         #region Button
 
-        private void RegisterNew_Click(object sender, EventArgs e)
+        private void Save_Click(object sender, EventArgs e)
         {
             try
             {
@@ -64,7 +64,7 @@ namespace DimStock.UserForms
             }
         }
 
-        private void ChangeRegister_Click(object sender, EventArgs e)
+        private void Edit_Click(object sender, EventArgs e)
         {
             try
             {
@@ -92,7 +92,7 @@ namespace DimStock.UserForms
             }
         }
 
-        private void ExcludeRegister_Click(object sender, EventArgs e)
+        private void Delete_Click(object sender, EventArgs e)
         {
             try
             {
@@ -118,7 +118,7 @@ namespace DimStock.UserForms
             }
         }
 
-        private void UpdateDataList_Click(object sender, EventArgs e)
+        private void DataList_Click(object sender, EventArgs e)
         {
             ListData();
 

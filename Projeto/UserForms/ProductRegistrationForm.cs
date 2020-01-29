@@ -34,7 +34,7 @@ namespace DimStock.UserForms
 
         #region Button
 
-        private void RegisterNew_Click(object sender, EventArgs e)
+        private void Save_Click(object sender, EventArgs e)
         {
             var user = new User();
             user.ViewDetails(AxlLogin.Id);
@@ -64,7 +64,7 @@ namespace DimStock.UserForms
             };
         }
 
-        private void ClearFields_Click(object sender, EventArgs e)
+        private void ClearFields_Click_1(object sender, EventArgs e)
         {
             CallAllResets();
         }
@@ -73,18 +73,18 @@ namespace DimStock.UserForms
 
         #region PictureBox
 
-        private void ProductPhoto_Click(object sender, EventArgs e)
+        private void ImageProduct_Click(object sender, EventArgs e)
         {
             try
             {
                 if (UploadPhoto() == false)
                 {
                     if (productPhoto.CheckIfExtits(productPhoto.GetDirectoryPeth() +
-                        ProductPhoto.IndentificationPhotoNumber).Equals(false))
+                        ImageProduct.IndentificationPhotoNumber).Equals(false))
                     {
-                        ProductPhoto.IndentificationPhotoNumber = "";
-                        ProductPhoto.SelectedDirectory = "";
-                        ProductPhoto.Image = Resources.FotoNothing;
+                        ImageProduct.IndentificationPhotoNumber = "";
+                        ImageProduct.SelectedDirectory = "";
+                        ImageProduct.Image = Resources.FotoNothing;
                     }
                 }
             }
@@ -119,7 +119,7 @@ namespace DimStock.UserForms
                     CostPrice = Convert.ToDouble(CostPrice.DecimalValue),
                     SalePrice = Convert.ToDouble(SalePrice.DecimalValue),
                     BarCode = BarCode.Text,
-                    PhotoName = ProductPhoto.IndentificationPhotoNumber
+                    PhotoName = ImageProduct.IndentificationPhotoNumber
                 };
 
                 if (product.Register() == false)
@@ -130,7 +130,7 @@ namespace DimStock.UserForms
                     return;
                 }
 
-                productPhoto.CopyFromDirectory(ProductPhoto.SelectedDirectory,
+                productPhoto.CopyFromDirectory(ImageProduct.SelectedDirectory,
                 productPhoto.GetDirectoryPeth() + product.PhotoName);
 
                 MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
@@ -165,7 +165,7 @@ namespace DimStock.UserForms
                     CostPrice = Convert.ToDouble(CostPrice.DecimalValue),
                     SalePrice = Convert.ToDouble(SalePrice.DecimalValue),
                     BarCode = BarCode.Text,
-                    PhotoName = ProductPhoto.IndentificationPhotoNumber,
+                    PhotoName = ImageProduct.IndentificationPhotoNumber,
                 };
 
                 if (product.Edit(Id) == false)
@@ -183,9 +183,9 @@ namespace DimStock.UserForms
                 //seja alterada
                 if (productPhoto.CheckIfExtits(photoPath) == false)
                     productPhoto.DeleteFromDirectory(
-                    ProductPhoto.PathOfLastSelectedPhoto);
+                    ImageProduct.PathOfLastSelectedPhoto);
 
-                productPhoto.CopyFromDirectory(ProductPhoto.SelectedDirectory,
+                productPhoto.CopyFromDirectory(ImageProduct.SelectedDirectory,
                 photoPath);
 
                 MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
@@ -287,9 +287,9 @@ namespace DimStock.UserForms
                 using (var fileStream = new FileStream(picture.DirectoryPath,
                 FileMode.Open, FileAccess.Read))
                 {
-                    ProductPhoto.Image = Image.FromStream(fileStream);
-                    ProductPhoto.IndentificationPhotoNumber = productPhoto.GetNumberId() + ".jpg";
-                    ProductPhoto.SelectedDirectory = picture.DirectoryPath;
+                    ImageProduct.Image = Image.FromStream(fileStream);
+                    ImageProduct.IndentificationPhotoNumber = productPhoto.GetNumberId() + ".jpg";
+                    ImageProduct.SelectedDirectory = picture.DirectoryPath;
 
                     uploadState = true;
                 }
@@ -304,21 +304,21 @@ namespace DimStock.UserForms
 
             if (productPhoto.CheckIfExtits(photoPath) == false)
             {
-                ProductPhoto.Image = Resources.FotoNothing;
+                ImageProduct.Image = Resources.FotoNothing;
                 return;
             }
 
             using (var fileStream = new FileStream(photoPath, FileMode.Open, FileAccess.Read))
             {
-                ProductPhoto.Image = Image.FromStream(fileStream);
-                ProductPhoto.SelectedDirectory = photoPath;
-                ProductPhoto.PathOfLastSelectedPhoto = photoPath;
-                ProductPhoto.IndentificationPhotoNumber = photoIdNumber;
+                ImageProduct.Image = Image.FromStream(fileStream);
+                ImageProduct.SelectedDirectory = photoPath;
+                ImageProduct.PathOfLastSelectedPhoto = photoPath;
+                ImageProduct.IndentificationPhotoNumber = photoIdNumber;
 
                 if (newIdNumber == true)
                 {
                     photoIdNumber = productPhoto.GetNumberId() + ".jpg";
-                    ProductPhoto.IndentificationPhotoNumber = photoIdNumber;
+                    ImageProduct.IndentificationPhotoNumber = photoIdNumber;
                 }
 
             }
@@ -344,10 +344,10 @@ namespace DimStock.UserForms
                     }
                 }
 
-                ProductPhoto.Image = Resources.FotoNothing;
-                ProductPhoto.IndentificationPhotoNumber = string.Empty;
-                ProductPhoto.SelectedDirectory = string.Empty;
-                ProductPhoto.PathOfLastSelectedPhoto = string.Empty;
+                ImageProduct.Image = Resources.FotoNothing;
+                ImageProduct.IndentificationPhotoNumber = string.Empty;
+                ImageProduct.SelectedDirectory = string.Empty;
+                ImageProduct.PathOfLastSelectedPhoto = string.Empty;
 
                 ProductCode.Select();
             }

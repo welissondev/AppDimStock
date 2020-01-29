@@ -53,7 +53,7 @@ namespace DimStock.UserForms
 
         #region Button
 
-        private void RegisterNew_Click(object sender, EventArgs e)
+        private void NewRegister_Click(object sender, EventArgs e)
         {
             var form = new ProductRegistrationForm()
             {
@@ -66,13 +66,13 @@ namespace DimStock.UserForms
             form.ShowDialog();
         }
 
-        private void UpdateDataList_Click(object sender, EventArgs e)
+        private void DataList_Click(object sender, EventArgs e)
         {
             CallAllResets();
             StartSearchTimer();
         }
 
-        private void GenerateReport_Click(object sender, EventArgs e)
+        private void GenerateReport_Click_1(object sender, EventArgs e)
         {
             try
             {

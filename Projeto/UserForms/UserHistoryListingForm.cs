@@ -32,7 +32,7 @@ namespace DimStock.UserForms
 
         #region Button
 
-        private void UpdateDataList_Click(object sender, EventArgs e)
+        private void DataList_Click(object sender, EventArgs e)
         {
             CallAllResets();
             StartSearchTimer();

@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StockDestinationRegistrationForm));
             this.DestinationLocationTitle = new System.Windows.Forms.Label();
             this.DestinationLocation = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.DestinationDataList = new System.Windows.Forms.DataGridView();
-            this.RegisterNew = new System.Windows.Forms.Button();
-            this.ChangeRegister = new System.Windows.Forms.Button();
-            this.ExcludeRegister = new System.Windows.Forms.Button();
-            this.UpdateDataList = new System.Windows.Forms.Button();
+            this.Edit = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.Save = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.DataList = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.Delete = new Bunifu.Framework.UI.BunifuThinButton2();
             ((System.ComponentModel.ISupportInitialize)(this.DestinationLocation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DestinationDataList)).BeginInit();
             this.SuspendLayout();
@@ -44,7 +45,7 @@
             this.DestinationLocationTitle.AutoSize = true;
             this.DestinationLocationTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DestinationLocationTitle.ForeColor = System.Drawing.Color.Black;
-            this.DestinationLocationTitle.Location = new System.Drawing.Point(9, 96);
+            this.DestinationLocationTitle.Location = new System.Drawing.Point(29, 48);
             this.DestinationLocationTitle.Name = "DestinationLocationTitle";
             this.DestinationLocationTitle.Size = new System.Drawing.Size(162, 20);
             this.DestinationLocationTitle.TabIndex = 144;
@@ -59,7 +60,7 @@
             this.DestinationLocation.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.DestinationLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DestinationLocation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.DestinationLocation.Location = new System.Drawing.Point(12, 118);
+            this.DestinationLocation.Location = new System.Drawing.Point(32, 70);
             this.DestinationLocation.MinimumSize = new System.Drawing.Size(14, 10);
             this.DestinationLocation.Name = "DestinationLocation";
             this.DestinationLocation.Size = new System.Drawing.Size(400, 26);
@@ -72,80 +73,132 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DestinationDataList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DestinationDataList.Location = new System.Drawing.Point(12, 147);
+            this.DestinationDataList.Location = new System.Drawing.Point(32, 99);
             this.DestinationDataList.Name = "DestinationDataList";
-            this.DestinationDataList.Size = new System.Drawing.Size(688, 262);
+            this.DestinationDataList.Size = new System.Drawing.Size(649, 226);
             this.DestinationDataList.TabIndex = 145;
             this.DestinationDataList.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DestinationDataList_CellMouseEnter);
             this.DestinationDataList.DoubleClick += new System.EventHandler(this.DestinationDataList_DoubleClick);
             // 
-            // RegisterNew
+            // Edit
             // 
-            this.RegisterNew.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.RegisterNew.FlatAppearance.BorderSize = 0;
-            this.RegisterNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RegisterNew.ForeColor = System.Drawing.Color.White;
-            this.RegisterNew.Location = new System.Drawing.Point(16, 30);
-            this.RegisterNew.Name = "RegisterNew";
-            this.RegisterNew.Size = new System.Drawing.Size(80, 35);
-            this.RegisterNew.TabIndex = 146;
-            this.RegisterNew.Text = "Cadastrar";
-            this.RegisterNew.UseVisualStyleBackColor = false;
-            this.RegisterNew.Click += new System.EventHandler(this.RegisterNew_Click);
+            this.Edit.ActiveBorderThickness = 1;
+            this.Edit.ActiveCornerRadius = 10;
+            this.Edit.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.Edit.ActiveForecolor = System.Drawing.Color.White;
+            this.Edit.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.Edit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Edit.BackColor = System.Drawing.Color.White;
+            this.Edit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Edit.BackgroundImage")));
+            this.Edit.ButtonText = "Editar";
+            this.Edit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Edit.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Edit.ForeColor = System.Drawing.Color.SeaGreen;
+            this.Edit.IdleBorderThickness = 1;
+            this.Edit.IdleCornerRadius = 10;
+            this.Edit.IdleFillColor = System.Drawing.Color.MediumAquamarine;
+            this.Edit.IdleForecolor = System.Drawing.Color.White;
+            this.Edit.IdleLineColor = System.Drawing.Color.MediumAquamarine;
+            this.Edit.Location = new System.Drawing.Point(131, 335);
+            this.Edit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Edit.Name = "Edit";
+            this.Edit.Size = new System.Drawing.Size(97, 43);
+            this.Edit.TabIndex = 215;
+            this.Edit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Edit.Click += new System.EventHandler(this.Edit_Click);
             // 
-            // ChangeRegister
+            // Save
             // 
-            this.ChangeRegister.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.ChangeRegister.FlatAppearance.BorderSize = 0;
-            this.ChangeRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ChangeRegister.ForeColor = System.Drawing.Color.White;
-            this.ChangeRegister.Location = new System.Drawing.Point(102, 30);
-            this.ChangeRegister.Name = "ChangeRegister";
-            this.ChangeRegister.Size = new System.Drawing.Size(80, 35);
-            this.ChangeRegister.TabIndex = 147;
-            this.ChangeRegister.Text = "Editar";
-            this.ChangeRegister.UseVisualStyleBackColor = false;
-            this.ChangeRegister.Click += new System.EventHandler(this.ChangeRegister_Click);
+            this.Save.ActiveBorderThickness = 1;
+            this.Save.ActiveCornerRadius = 10;
+            this.Save.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.Save.ActiveForecolor = System.Drawing.Color.White;
+            this.Save.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.Save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Save.BackColor = System.Drawing.Color.White;
+            this.Save.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Save.BackgroundImage")));
+            this.Save.ButtonText = "Salvar";
+            this.Save.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Save.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Save.ForeColor = System.Drawing.Color.SeaGreen;
+            this.Save.IdleBorderThickness = 1;
+            this.Save.IdleCornerRadius = 10;
+            this.Save.IdleFillColor = System.Drawing.Color.MediumAquamarine;
+            this.Save.IdleForecolor = System.Drawing.Color.White;
+            this.Save.IdleLineColor = System.Drawing.Color.MediumAquamarine;
+            this.Save.Location = new System.Drawing.Point(32, 335);
+            this.Save.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Save.Name = "Save";
+            this.Save.Size = new System.Drawing.Size(97, 43);
+            this.Save.TabIndex = 214;
+            this.Save.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Save.Click += new System.EventHandler(this.Save_Click);
             // 
-            // ExcludeRegister
+            // DataList
             // 
-            this.ExcludeRegister.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.ExcludeRegister.FlatAppearance.BorderSize = 0;
-            this.ExcludeRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ExcludeRegister.ForeColor = System.Drawing.Color.White;
-            this.ExcludeRegister.Location = new System.Drawing.Point(188, 30);
-            this.ExcludeRegister.Name = "ExcludeRegister";
-            this.ExcludeRegister.Size = new System.Drawing.Size(80, 35);
-            this.ExcludeRegister.TabIndex = 148;
-            this.ExcludeRegister.Text = "Deletar";
-            this.ExcludeRegister.UseVisualStyleBackColor = false;
-            this.ExcludeRegister.Click += new System.EventHandler(this.ExcludeRegister_Click);
+            this.DataList.ActiveBorderThickness = 1;
+            this.DataList.ActiveCornerRadius = 10;
+            this.DataList.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.DataList.ActiveForecolor = System.Drawing.Color.White;
+            this.DataList.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.DataList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.DataList.BackColor = System.Drawing.Color.White;
+            this.DataList.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DataList.BackgroundImage")));
+            this.DataList.ButtonText = "Listar";
+            this.DataList.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DataList.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DataList.ForeColor = System.Drawing.Color.SeaGreen;
+            this.DataList.IdleBorderThickness = 1;
+            this.DataList.IdleCornerRadius = 10;
+            this.DataList.IdleFillColor = System.Drawing.Color.MediumAquamarine;
+            this.DataList.IdleForecolor = System.Drawing.Color.White;
+            this.DataList.IdleLineColor = System.Drawing.Color.MediumAquamarine;
+            this.DataList.Location = new System.Drawing.Point(330, 335);
+            this.DataList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.DataList.Name = "DataList";
+            this.DataList.Size = new System.Drawing.Size(97, 43);
+            this.DataList.TabIndex = 217;
+            this.DataList.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.DataList.Click += new System.EventHandler(this.DataList_Click);
             // 
-            // UpdateDataList
+            // Delete
             // 
-            this.UpdateDataList.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.UpdateDataList.FlatAppearance.BorderSize = 0;
-            this.UpdateDataList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UpdateDataList.ForeColor = System.Drawing.Color.White;
-            this.UpdateDataList.Location = new System.Drawing.Point(274, 30);
-            this.UpdateDataList.Name = "UpdateDataList";
-            this.UpdateDataList.Size = new System.Drawing.Size(80, 35);
-            this.UpdateDataList.TabIndex = 149;
-            this.UpdateDataList.Text = "Atualizar";
-            this.UpdateDataList.UseVisualStyleBackColor = false;
-            this.UpdateDataList.Click += new System.EventHandler(this.UpdateDataList_Click);
+            this.Delete.ActiveBorderThickness = 1;
+            this.Delete.ActiveCornerRadius = 10;
+            this.Delete.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.Delete.ActiveForecolor = System.Drawing.Color.White;
+            this.Delete.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.Delete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Delete.BackColor = System.Drawing.Color.White;
+            this.Delete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Delete.BackgroundImage")));
+            this.Delete.ButtonText = "Deletar";
+            this.Delete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Delete.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Delete.ForeColor = System.Drawing.Color.SeaGreen;
+            this.Delete.IdleBorderThickness = 1;
+            this.Delete.IdleCornerRadius = 10;
+            this.Delete.IdleFillColor = System.Drawing.Color.MediumAquamarine;
+            this.Delete.IdleForecolor = System.Drawing.Color.White;
+            this.Delete.IdleLineColor = System.Drawing.Color.MediumAquamarine;
+            this.Delete.Location = new System.Drawing.Point(231, 335);
+            this.Delete.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Delete.Name = "Delete";
+            this.Delete.Size = new System.Drawing.Size(97, 43);
+            this.Delete.TabIndex = 216;
+            this.Delete.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Delete.Click += new System.EventHandler(this.Delete_Click);
             // 
             // StockDestinationRegistrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(712, 421);
-            this.Controls.Add(this.UpdateDataList);
-            this.Controls.Add(this.ExcludeRegister);
-            this.Controls.Add(this.ChangeRegister);
+            this.ClientSize = new System.Drawing.Size(712, 441);
+            this.Controls.Add(this.DataList);
+            this.Controls.Add(this.Delete);
+            this.Controls.Add(this.Edit);
+            this.Controls.Add(this.Save);
             this.Controls.Add(this.DestinationDataList);
-            this.Controls.Add(this.RegisterNew);
             this.Controls.Add(this.DestinationLocationTitle);
             this.Controls.Add(this.DestinationLocation);
             this.MaximizeBox = false;
@@ -165,9 +218,9 @@
         public System.Windows.Forms.Label DestinationLocationTitle;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt DestinationLocation;
         private System.Windows.Forms.DataGridView DestinationDataList;
-        private System.Windows.Forms.Button RegisterNew;
-        private System.Windows.Forms.Button ChangeRegister;
-        private System.Windows.Forms.Button ExcludeRegister;
-        private System.Windows.Forms.Button UpdateDataList;
+        private Bunifu.Framework.UI.BunifuThinButton2 Edit;
+        private Bunifu.Framework.UI.BunifuThinButton2 Save;
+        private Bunifu.Framework.UI.BunifuThinButton2 DataList;
+        private Bunifu.Framework.UI.BunifuThinButton2 Delete;
     }
 }

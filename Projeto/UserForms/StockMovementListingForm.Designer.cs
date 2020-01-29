@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StockMovementListingForm));
             this.MovementStockDataList = new System.Windows.Forms.DataGridView();
-            this.UpdateDataList = new Syncfusion.WinForms.Controls.SfButton();
             this.SearchTimer = new System.Windows.Forms.Timer(this.components);
             this.GifLoading = new System.Windows.Forms.PictureBox();
             this.OperationTypeTitle = new System.Windows.Forms.Label();
@@ -51,10 +50,11 @@
             this.LblRecordsState = new System.Windows.Forms.ToolStripLabel();
             this.RecordsByPage = new Syncfusion.WinForms.ListView.SfComboBox();
             this.RecordsOfPageTitle = new System.Windows.Forms.Label();
-            this.AddNew = new Syncfusion.WinForms.Controls.SfButton();
             this.StockMovementMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MovementEntrie_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MovementOutPut_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.RegisterNew = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.DataList = new Bunifu.Framework.UI.BunifuThinButton2();
             ((System.ComponentModel.ISupportInitialize)(this.MovementStockDataList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GifLoading)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OperationSituation)).BeginInit();
@@ -79,31 +79,6 @@
             this.MovementStockDataList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MovementStockDataList_CellClick);
             this.MovementStockDataList.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.MovementStockDataList_CellMouseEnter);
             // 
-            // UpdateDataList
-            // 
-            this.UpdateDataList.AccessibleName = "Button";
-            this.UpdateDataList.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.UpdateDataList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UpdateDataList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpdateDataList.ForeColor = System.Drawing.Color.White;
-            this.UpdateDataList.Location = new System.Drawing.Point(106, 26);
-            this.UpdateDataList.Name = "UpdateDataList";
-            this.UpdateDataList.Size = new System.Drawing.Size(80, 35);
-            this.UpdateDataList.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.UpdateDataList.Style.DisabledBackColor = System.Drawing.Color.MediumSeaGreen;
-            this.UpdateDataList.Style.DisabledForeColor = System.Drawing.Color.MediumSeaGreen;
-            this.UpdateDataList.Style.FocusedBackColor = System.Drawing.Color.MediumSeaGreen;
-            this.UpdateDataList.Style.FocusedForeColor = System.Drawing.Color.White;
-            this.UpdateDataList.Style.ForeColor = System.Drawing.Color.White;
-            this.UpdateDataList.Style.HoverBackColor = System.Drawing.Color.MediumSeaGreen;
-            this.UpdateDataList.Style.HoverForeColor = System.Drawing.Color.White;
-            this.UpdateDataList.Style.PressedBackColor = System.Drawing.Color.MediumSeaGreen;
-            this.UpdateDataList.Style.PressedForeColor = System.Drawing.Color.White;
-            this.UpdateDataList.TabIndex = 140;
-            this.UpdateDataList.Text = "Atualizar";
-            this.UpdateDataList.UseVisualStyleBackColor = false;
-            this.UpdateDataList.Click += new System.EventHandler(this.UpdateDataList_Click);
-            // 
             // SearchTimer
             // 
             this.SearchTimer.Interval = 1000;
@@ -113,7 +88,7 @@
             // 
             this.GifLoading.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.GifLoading.Image = global::DimStock.Properties.Resources.Loading;
-            this.GifLoading.Location = new System.Drawing.Point(401, 256);
+            this.GifLoading.Location = new System.Drawing.Point(412, 267);
             this.GifLoading.Name = "GifLoading";
             this.GifLoading.Size = new System.Drawing.Size(169, 167);
             this.GifLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -312,31 +287,6 @@
             this.RecordsOfPageTitle.TabIndex = 181;
             this.RecordsOfPageTitle.Text = "Registros por página:";
             // 
-            // AddNew
-            // 
-            this.AddNew.AccessibleName = "Button";
-            this.AddNew.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.AddNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddNew.ForeColor = System.Drawing.Color.White;
-            this.AddNew.Location = new System.Drawing.Point(24, 26);
-            this.AddNew.Name = "AddNew";
-            this.AddNew.Size = new System.Drawing.Size(80, 35);
-            this.AddNew.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.AddNew.Style.DisabledBackColor = System.Drawing.Color.MediumSeaGreen;
-            this.AddNew.Style.DisabledForeColor = System.Drawing.Color.MediumSeaGreen;
-            this.AddNew.Style.FocusedBackColor = System.Drawing.Color.MediumSeaGreen;
-            this.AddNew.Style.FocusedForeColor = System.Drawing.Color.White;
-            this.AddNew.Style.ForeColor = System.Drawing.Color.White;
-            this.AddNew.Style.HoverBackColor = System.Drawing.Color.MediumSeaGreen;
-            this.AddNew.Style.HoverForeColor = System.Drawing.Color.Black;
-            this.AddNew.Style.PressedBackColor = System.Drawing.Color.White;
-            this.AddNew.Style.PressedForeColor = System.Drawing.Color.White;
-            this.AddNew.TabIndex = 182;
-            this.AddNew.Text = "Nova";
-            this.AddNew.UseVisualStyleBackColor = false;
-            this.AddNew.Click += new System.EventHandler(this.AddNew_Click);
-            // 
             // StockMovementMenuStrip
             // 
             this.StockMovementMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -359,15 +309,67 @@
             this.MovementOutPut_ToolStripMenuItem.Text = "Saída";
             this.MovementOutPut_ToolStripMenuItem.Click += new System.EventHandler(this.MovementOutPut_ToolStripMenuItem_Click);
             // 
+            // RegisterNew
+            // 
+            this.RegisterNew.ActiveBorderThickness = 1;
+            this.RegisterNew.ActiveCornerRadius = 10;
+            this.RegisterNew.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.RegisterNew.ActiveForecolor = System.Drawing.Color.White;
+            this.RegisterNew.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.RegisterNew.BackColor = System.Drawing.Color.White;
+            this.RegisterNew.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RegisterNew.BackgroundImage")));
+            this.RegisterNew.ButtonText = "Nova";
+            this.RegisterNew.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.RegisterNew.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RegisterNew.ForeColor = System.Drawing.Color.SeaGreen;
+            this.RegisterNew.IdleBorderThickness = 1;
+            this.RegisterNew.IdleCornerRadius = 10;
+            this.RegisterNew.IdleFillColor = System.Drawing.Color.MediumAquamarine;
+            this.RegisterNew.IdleForecolor = System.Drawing.Color.White;
+            this.RegisterNew.IdleLineColor = System.Drawing.Color.MediumAquamarine;
+            this.RegisterNew.Location = new System.Drawing.Point(20, 19);
+            this.RegisterNew.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.RegisterNew.Name = "RegisterNew";
+            this.RegisterNew.Size = new System.Drawing.Size(97, 43);
+            this.RegisterNew.TabIndex = 216;
+            this.RegisterNew.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.RegisterNew.Click += new System.EventHandler(this.RegisterNew_Click);
+            // 
+            // DataList
+            // 
+            this.DataList.ActiveBorderThickness = 1;
+            this.DataList.ActiveCornerRadius = 10;
+            this.DataList.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.DataList.ActiveForecolor = System.Drawing.Color.White;
+            this.DataList.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.DataList.BackColor = System.Drawing.Color.White;
+            this.DataList.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DataList.BackgroundImage")));
+            this.DataList.ButtonText = "Listar";
+            this.DataList.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DataList.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DataList.ForeColor = System.Drawing.Color.SeaGreen;
+            this.DataList.IdleBorderThickness = 1;
+            this.DataList.IdleCornerRadius = 10;
+            this.DataList.IdleFillColor = System.Drawing.Color.MediumAquamarine;
+            this.DataList.IdleForecolor = System.Drawing.Color.White;
+            this.DataList.IdleLineColor = System.Drawing.Color.MediumAquamarine;
+            this.DataList.Location = new System.Drawing.Point(119, 19);
+            this.DataList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.DataList.Name = "DataList";
+            this.DataList.Size = new System.Drawing.Size(97, 43);
+            this.DataList.TabIndex = 217;
+            this.DataList.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.DataList.Click += new System.EventHandler(this.DataList_Click);
+            // 
             // StockMovementListingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(993, 603);
-            this.Controls.Add(this.AddNew);
+            this.Controls.Add(this.DataList);
+            this.Controls.Add(this.RegisterNew);
             this.Controls.Add(this.GifLoading);
-            this.Controls.Add(this.UpdateDataList);
             this.Controls.Add(this.RecordsByPage);
             this.Controls.Add(this.RecordsOfPageTitle);
             this.Controls.Add(this.BindingPagination);
@@ -401,7 +403,6 @@
         private System.Windows.Forms.DataGridView MovementStockDataList;
         private System.Windows.Forms.Timer SearchTimer;
         private System.Windows.Forms.PictureBox GifLoading;
-        private Syncfusion.WinForms.Controls.SfButton UpdateDataList;
         private System.Windows.Forms.Label OperationTypeTitle;
         private System.Windows.Forms.Label OperationSituationTitle;
         private Syncfusion.WinForms.ListView.SfComboBox OperationSituation;
@@ -419,9 +420,10 @@
         private System.Windows.Forms.ToolStripLabel LblRecordsState;
         private Syncfusion.WinForms.ListView.SfComboBox RecordsByPage;
         private System.Windows.Forms.Label RecordsOfPageTitle;
-        private Syncfusion.WinForms.Controls.SfButton AddNew;
         private System.Windows.Forms.ContextMenuStrip StockMovementMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem MovementEntrie_ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem MovementOutPut_ToolStripMenuItem;
+        private Bunifu.Framework.UI.BunifuThinButton2 RegisterNew;
+        private Bunifu.Framework.UI.BunifuThinButton2 DataList;
     }
 }

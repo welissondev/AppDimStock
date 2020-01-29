@@ -41,14 +41,13 @@ namespace DimStock.UserForms
 
         #region Button
 
-
-        private void AddNew_Click(object sender, EventArgs e)
+        private void RegisterNew_Click(object sender, EventArgs e)
         {
             StockMovementMenuStrip.Show();
             StockMovementMenuStrip.Location = MousePosition;
         }
 
-        private void UpdateDataList_Click(object sender, EventArgs e)
+        private void DataList_Click(object sender, EventArgs e)
         {
             CallAllResets();
             StartSearchTimer();
@@ -257,22 +256,26 @@ namespace DimStock.UserForms
         {
             var form = new StockMovementRegistrationForm()
             {
-                MinimizeBox = false,
+                MdiParent = HomeScreenForm.He,
+                FormBorderStyle = FormBorderStyle.None,
+                Dock = DockStyle.Fill,
                 ShowInTaskbar = false
             };
             form.InitializeNewMovement("Entrada");
-            form.ShowDialog();
+            form.Show();
         }
 
         private void MovementOutPut_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = new StockMovementRegistrationForm()
             {
-                MinimizeBox = false,
+                MdiParent = HomeScreenForm.He,
+                FormBorderStyle = FormBorderStyle.None,
+                Dock = DockStyle.Fill,
                 ShowInTaskbar = false
             };
             form.InitializeNewMovement("Saída");
-            form.ShowDialog();
+            form.Show();
         }
 
         #endregion
@@ -368,15 +371,20 @@ namespace DimStock.UserForms
 
                 var form = new StockMovementRegistrationForm()
                 {
-                    FormBorderStyle = FormBorderStyle.FixedDialog,
+                    MdiParent = HomeScreenForm.He,
+                    FormBorderStyle = FormBorderStyle.None,
+                    Dock = DockStyle.Fill,
                     ShowInTaskbar = false,
-                    MaximizeBox = false,
-                    MinimizeBox = false
+                    MaximizeBox = true,
+                    MinimizeBox = false,
                 };
 
                 form.GetStockMovementDetails(id);
                 form.ListStockItems();
-                form.ShowDialog();
+                form.Show();
+
+                HomeScreenForm.He.FormNovigationDescription.Text = 
+                @"Cadastro De Movimentações"; 
             }
             catch (Exception ex)
             {
@@ -603,6 +611,5 @@ namespace DimStock.UserForms
         }
 
         #endregion
-
     }
 }

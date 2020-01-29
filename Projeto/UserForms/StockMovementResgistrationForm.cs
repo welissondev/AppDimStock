@@ -53,7 +53,7 @@ namespace DimStock.UserForms
 
         #region Button
 
-        private void AddNew_Click(object sender, EventArgs e)
+        private void RegisterNew_Click(object sender, EventArgs e)
         {
             try
             {
@@ -63,6 +63,22 @@ namespace DimStock.UserForms
             catch (Exception ex)
             {
                 AxlException.Message.Show(ex);
+            }
+        }
+
+        private void Confirm_Click(object sender, EventArgs e)
+        {
+            switch (OperationType.Text)
+            {
+                case "Entrada":
+
+                    AddStockEntries();
+                    break;
+
+                case "Saída":
+
+                    AddStockOutputs();
+                    break;
             }
         }
 
@@ -84,20 +100,9 @@ namespace DimStock.UserForms
             }
         }
 
-        private void Confirm_Click(object sender, EventArgs e)
+        private void CloseForm_Click(object sender, EventArgs e)
         {
-            switch (OperationType.Text)
-            {
-                case "Entrada":
-
-                    AddStockEntries();
-                    break;
-
-                case "Saída":
-
-                    AddStockOutputs();
-                    break;
-            }
+            Close();
         }
 
         #endregion
@@ -144,6 +149,12 @@ namespace DimStock.UserForms
             {
                 AxlException.Message.Show(ex);
             }
+        }
+
+        private void StockDestinationList_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((Char.IsLetter(e.KeyChar)) || (Char.IsWhiteSpace(e.KeyChar)))
+                e.Handled = true;
         }
 
         #endregion
@@ -890,6 +901,7 @@ namespace DimStock.UserForms
                 mainDataList.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 mainDataList.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 mainDataList.Columns[9].ReadOnly = true;
+                mainDataList.Columns[9].DisplayIndex = 0;
 
             }
             catch (Exception ex)

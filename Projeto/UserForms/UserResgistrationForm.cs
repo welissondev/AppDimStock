@@ -24,7 +24,7 @@ namespace DimStock.UserForms
 
         #region Button
 
-        private void RegisterNew_Click(object sender, EventArgs e)
+        private void ClearFields_Click(object sender, EventArgs e)
         {
             ResetControls();
         }
