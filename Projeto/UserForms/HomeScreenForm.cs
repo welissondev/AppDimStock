@@ -1,6 +1,7 @@
 ﻿using DimStock.Auxiliarys;
 using DimStock.Business;
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -302,6 +303,19 @@ namespace DimStock.UserForms
             ContextMenu_User.Location = MousePosition;
         }
 
+        private void MainMenu_Support_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                string url = "https://diarioexcel.com.br/contato-diario-excel/";
+                Process.Start(url);
+            }
+            catch (Exception ex)
+            {
+                AxlException.Message.Show(ex);
+            }
+        }
+
         private void MainMenu_Settings_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             ContextMenu_Settings.Show();
@@ -309,6 +323,5 @@ namespace DimStock.UserForms
         }
 
         #endregion
-
     }
 }

@@ -146,6 +146,7 @@
             this.MainMenu_Support.Text = "Suporte";
             this.MainMenu_Support.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.MainMenu_Support.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.MainMenu_Support.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.MainMenu_Support_LinkClicked);
             // 
             // label4
             // 

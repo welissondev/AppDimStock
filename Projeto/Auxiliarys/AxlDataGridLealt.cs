@@ -9,7 +9,7 @@ namespace DimStock.Auxiliarys
         {
             datagrid.EnableHeadersVisualStyles = false;
             datagrid.GridColor = Color.DarkGray;
-            datagrid.CellBorderStyle = DataGridViewCellBorderStyle.Single;
+            datagrid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             datagrid.BackgroundColor = Color.White;
             datagrid.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
             datagrid.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 255, 255);
