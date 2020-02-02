@@ -9,7 +9,7 @@ namespace DimStock.Business
     {
         public void TransferDataBaseToMainDirectory()
         {
-            var sourcePath = AppDomain.CurrentDomain.BaseDirectory.ToString() +
+            var sourcePath = GetDirectoryOfExe() +
             @"Padrao\dimstock-database.mdb";
 
             var destPath = Settings.Default.MainAppDirectory +
@@ -91,6 +91,11 @@ namespace DimStock.Business
         public static string GetMainAppDirectory()
         {
             return Settings.Default.MainAppDirectory;
+        }
+
+        public static string GetDirectoryOfExe()
+        {
+            return AppDomain.CurrentDomain.BaseDirectory.ToString();
         }
 
         public void SaveAsMainDirectory(string path)
