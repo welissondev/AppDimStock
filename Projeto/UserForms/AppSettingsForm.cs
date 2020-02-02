@@ -143,8 +143,18 @@ namespace DimStock.UserForms
 
                         case "PageCompanyLogo":
 
-                            appSetting.TransferCompanyLogoToMainDirectory(
-                            CompanyLogoImage.ImageLocation);
+                            if (CompanyLogoImage.ImageLocation == null)
+                            {
+                                var path = AppSetting.GetDirectoryOfExe() + 
+                                @"Resources\DimStockLogoType.png";
+                                
+                                appSetting.TransferCompanyLogoToMainDirectory(path);
+                            }
+                            else
+                            {
+                                appSetting.TransferCompanyLogoToMainDirectory(
+                                CompanyLogoImage.ImageLocation);
+                            }
 
                             MainTabControl.SelectTab("PageLogin");
 
@@ -260,7 +270,7 @@ namespace DimStock.UserForms
         #endregion
 
         #region MethodsAuxiliarys
-        
+
         private void Await(int time)
         {
             Loading.Visible = true;
@@ -329,8 +339,8 @@ namespace DimStock.UserForms
             if (ListviewBackup.Items.Count == 0)
             {
                 MessageBox.Show("Não foi encontrado arquivos de backup " +
-                "a serem restaurados no diretório raiz. Gere um novo" +
-                "backup ou faça uma nova configuração!", "Não Encontrado");
+                "a serem restaurados no diretório raiz. Gere um novo " +
+                "backup ou faça uma nova configuração!", "BackUp Não Encontrado");
 
                 return false;
             }

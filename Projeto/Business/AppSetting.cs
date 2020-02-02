@@ -28,7 +28,8 @@ namespace DimStock.Business
             var logoImage = new AxlFile();
 
             if (logoImage.CheckIfExists(destPath) == false)
-                logoImage.CopyFromDirectory(sourcePath, destPath);
+                logoImage.CopyFromDirectory(
+                sourcePath, destPath);
         }
 
         public void SaveBackup()
