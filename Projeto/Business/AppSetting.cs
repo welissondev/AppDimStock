@@ -10,7 +10,7 @@ namespace DimStock.Business
         public void TransferDataBaseToMainDirectory()
         {
             var sourcePath = GetDirectoryOfExe() +
-            @"Padrao\dimstock-database.mdb";
+            @"Resources\dimstock-database.mdb";
 
             var destPath = Settings.Default.MainAppDirectory +
             @"\dimstock-database.mdb";
