@@ -28,17 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.RpvReportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.ReportViewControl = new Microsoft.Reporting.WinForms.ReportViewer();
             this.SuspendLayout();
             // 
-            // RpvReportViewer
+            // ReportViewControl
             // 
-            this.RpvReportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.RpvReportViewer.Location = new System.Drawing.Point(0, 0);
-            this.RpvReportViewer.Name = "RpvReportViewer";
-            this.RpvReportViewer.ServerReport.BearerToken = null;
-            this.RpvReportViewer.Size = new System.Drawing.Size(920, 637);
-            this.RpvReportViewer.TabIndex = 1;
+            this.ReportViewControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ReportViewControl.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ReportViewControl.LocalReport.EnableExternalImages = true;
+            this.ReportViewControl.Location = new System.Drawing.Point(12, 12);
+            this.ReportViewControl.Name = "ReportViewControl";
+            this.ReportViewControl.ServerReport.BearerToken = null;
+            this.ReportViewControl.Size = new System.Drawing.Size(896, 613);
+            this.ReportViewControl.TabIndex = 1;
             // 
             // ReportViewForm
             // 
@@ -46,17 +50,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(920, 637);
-            this.Controls.Add(this.RpvReportViewer);
+            this.Controls.Add(this.ReportViewControl);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ReportViewForm";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmReportView_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private Microsoft.Reporting.WinForms.ReportViewer RpvReportViewer;
+        private Microsoft.Reporting.WinForms.ReportViewer ReportViewControl;
     }
 }
