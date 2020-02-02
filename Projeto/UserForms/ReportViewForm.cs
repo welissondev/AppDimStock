@@ -57,17 +57,22 @@ namespace DimStock.UserForms
             ReportViewControl.RefreshReport();
         }
 
+        private void CloseForm_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
         #endregion
 
         #region Methods
 
-        public static void ShowReport(string path, string reportName, 
-        bool isEmbeddedResource, Dictionary<string, object> dataSources, 
+        public static void ShowReport(string path, string reportName,
+        bool isEmbeddedResource, Dictionary<string, object> dataSources,
         Dictionary<string, object> reportParameters = null)
         {
             var form = new ReportViewForm(path, reportName,
             isEmbeddedResource, dataSources, reportParameters)
-            {                
+            {
                 MdiParent = HomeScreenForm.He,
                 FormBorderStyle = FormBorderStyle.None,
                 Dock = DockStyle.Fill,

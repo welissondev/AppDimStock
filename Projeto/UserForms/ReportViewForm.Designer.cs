@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportViewForm));
             this.ReportViewControl = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.CloseForm = new Bunifu.Framework.UI.BunifuThinButton2();
             this.SuspendLayout();
             // 
             // ReportViewControl
@@ -37,12 +39,40 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ReportViewControl.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ReportViewControl.DocumentMapWidth = 125;
             this.ReportViewControl.LocalReport.EnableExternalImages = true;
             this.ReportViewControl.Location = new System.Drawing.Point(12, 12);
             this.ReportViewControl.Name = "ReportViewControl";
             this.ReportViewControl.ServerReport.BearerToken = null;
-            this.ReportViewControl.Size = new System.Drawing.Size(896, 613);
+            this.ReportViewControl.Size = new System.Drawing.Size(896, 560);
             this.ReportViewControl.TabIndex = 1;
+            // 
+            // CloseForm
+            // 
+            this.CloseForm.ActiveBorderThickness = 1;
+            this.CloseForm.ActiveCornerRadius = 10;
+            this.CloseForm.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.CloseForm.ActiveForecolor = System.Drawing.Color.White;
+            this.CloseForm.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.CloseForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.CloseForm.BackColor = System.Drawing.Color.White;
+            this.CloseForm.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CloseForm.BackgroundImage")));
+            this.CloseForm.ButtonText = "Sair";
+            this.CloseForm.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CloseForm.Font = new System.Drawing.Font("Calibri Light", 14F);
+            this.CloseForm.ForeColor = System.Drawing.Color.SeaGreen;
+            this.CloseForm.IdleBorderThickness = 1;
+            this.CloseForm.IdleCornerRadius = 10;
+            this.CloseForm.IdleFillColor = System.Drawing.Color.MediumAquamarine;
+            this.CloseForm.IdleForecolor = System.Drawing.Color.White;
+            this.CloseForm.IdleLineColor = System.Drawing.Color.MediumAquamarine;
+            this.CloseForm.Location = new System.Drawing.Point(11, 580);
+            this.CloseForm.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.CloseForm.Name = "CloseForm";
+            this.CloseForm.Size = new System.Drawing.Size(97, 43);
+            this.CloseForm.TabIndex = 221;
+            this.CloseForm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.CloseForm.Click += new System.EventHandler(this.CloseForm_Click);
             // 
             // ReportViewForm
             // 
@@ -50,6 +80,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(920, 637);
+            this.Controls.Add(this.CloseForm);
             this.Controls.Add(this.ReportViewControl);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -61,5 +92,6 @@
 
         #endregion
         private Microsoft.Reporting.WinForms.ReportViewer ReportViewControl;
+        private Bunifu.Framework.UI.BunifuThinButton2 CloseForm;
     }
 }
