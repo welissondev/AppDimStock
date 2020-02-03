@@ -117,17 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="FotoNothing" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FotoNothing.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Loading" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Loading.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BackGroudUserLogin" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BackGroudUserLogin.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="DimStockLogoType" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DimStockLogoType.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="CloseAssistant.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAKAAAAApCAYAAACycCI9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAH2SURBVHhe7dytbkIxAEDhPToCgUAgEAgEAoFA8AAkCB4A
+        gUAgEAgEAoFAILqcQm9GgJts47bmfEmTZX/qpO29a/cVpIIMUEUZoIoyQBVlgCrKAFVUbYDX6zWs1+sw
+        nU7DaDQKvV4vtFoth6N20Am9TCaTsFqtwuVyuRf17G2A2+02/iLiI8LdbhdOp9P9q9J7dEIvm80mzGaz
+        2BEhvvIUILXyQ+PxOJzP5/tnpb+ra+ohQL5xMBi8rVX6D1bV4XD4sJI+BEilxqcmsTSzP0yqAKmTKVJq
+        2nw+D8vlMn4cA+Rpl42iez7lQG9s9Y7H4y1All2WXykXZkBmwhgg72t4ZJZyORwOcRaMAfb7/TgdSrmw
+        DLfb7VuAnU6n9m211AT+ahID5AMpNwNUUQaoogxQRRmgijJAFWWAKsoAVVQVIG+keTMt5VQFyEkYj9sr
+        typAzgFyHlDKhbMHnEGIAaajMVIu6QhgDJDllxrdByqXdAQwBojFYhGH1LR01xxVgMx+XBbZ7/f3z0if
+        x7UPVtt0/K8KEGwM01l96dOIj0mOm3HJQ4BgBiTCdGtJ+gT2e8x8P+PDU4BgOeapmFp5WvG2nP6CZTbt
+        93joeHXq/mWACbXyqNztduNLQ4fjN4OrHul/C71TG6DUNANUUQaoogxQRRmgCgrhG6E1FeR+3eHRAAAA
+        AElFTkSuQmCC
+</value>
   </data>
 </root>
