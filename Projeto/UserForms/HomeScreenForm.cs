@@ -131,7 +131,7 @@ namespace DimStock.UserForms
 
             form.Show();
 
-            form.InitializeNewMovement("Entrada");
+            form.StartNewOperation("Entrada");
 
             FormNovigationDescription.Text = "Cadastro de Estoques";
         }
@@ -148,7 +148,7 @@ namespace DimStock.UserForms
             };
             form.Show();
 
-            form.InitializeNewMovement("Saída");
+            form.StartNewOperation("Saída");
 
             FormNovigationDescription.Text = "Cadastro De Estoque";
         }

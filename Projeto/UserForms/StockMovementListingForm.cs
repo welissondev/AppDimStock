@@ -261,7 +261,7 @@ namespace DimStock.UserForms
                 Dock = DockStyle.Fill,
                 ShowInTaskbar = false
             };
-            form.InitializeNewMovement("Entrada");
+            form.StartNewOperation("Entrada");
             form.Show();
         }
 
@@ -274,7 +274,7 @@ namespace DimStock.UserForms
                 Dock = DockStyle.Fill,
                 ShowInTaskbar = false
             };
-            form.InitializeNewMovement("Saída");
+            form.StartNewOperation("Saída");
             form.Show();
         }
 
@@ -304,7 +304,7 @@ namespace DimStock.UserForms
                     stockMovement.ListOfRecords[i].OperationType,
                     stockMovement.ListOfRecords[i].Id,
                     stockMovement.ListOfRecords[i].OperationDate,
-                    stockMovement.ListOfRecords[i].OperationHour,
+                    Convert.ToString(stockMovement.ListOfRecords[i].OperationHour.ToString("hh:mm:ss")),
                     stockMovement.ListOfRecords[i].StockDestinationLocation
                     );
                 }

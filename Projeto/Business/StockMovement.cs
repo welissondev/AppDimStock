@@ -33,7 +33,7 @@ namespace DimStock.Business
         public int Id { get; set; }
         public string OperationType { get; set; }
         public DateTime OperationDate { get; set; }
-        public string OperationHour { get; set; }
+        public DateTime OperationHour { get; set; }
         public string OperationSituation { get; set; }
         public string StockDestinationLocation { get; set; }
         public List<StockMovement> ListOfRecords { get; set; }
@@ -50,20 +50,16 @@ namespace DimStock.Business
 
         #region Methods
 
-        public bool InitializeNew()
+        public bool StartNewOperation(string operationType)
         {
             bool registerState = false;
 
             using (var connection = new Connection())
             {
-                var sqlCommand = @"INSERT INTO StockMovement(OperationType, OperationDate, 
-                OperationHour, OperationSituation)VALUES(@OperationType, @OperationDate, 
-                @OperationHour, @OperationSituation)";
+                var sqlCommand = @"INSERT INTO StockMovement(OperationType)
+                VALUES(@OperationType)";
 
-                connection.AddParameter("@OperationType", OleDbType.VarChar, OperationType);
-                connection.AddParameter("@OperationDate", OleDbType.Date, OperationDate);
-                connection.AddParameter("@OperationHour", OleDbType.VarChar, OperationHour);
-                connection.AddParameter("@OperationSituation", OleDbType.VarChar, OperationSituation);
+                connection.AddParameter("@OperationType", OleDbType.VarChar, operationType);
 
                 registerState = connection.ExecuteNonQuery(sqlCommand) > 0;
 
@@ -204,7 +200,7 @@ namespace DimStock.Business
                             Id = Convert.ToInt32(reader["Id"]),
                             OperationType = reader["OperationType"].ToString(),
                             OperationDate = Convert.ToDateTime(reader["OperationDate"]),
-                            OperationHour = reader["OperationHour"].ToString(),
+                            OperationHour = Convert.ToDateTime(reader["OperationHour"]),
                             OperationSituation = reader["OperationSituation"].ToString(),
                             StockDestinationLocation = reader["StockDestinationLocation"].ToString(),
                         };
@@ -287,7 +283,7 @@ namespace DimStock.Business
                         Id = Convert.ToInt32(reader["Id"]);
                         OperationType = Convert.ToString(reader["OperationType"]);
                         OperationDate = Convert.ToDateTime(reader["OperationDate"]);
-                        OperationHour = Convert.ToString(reader["OperationHour"]);
+                        OperationHour = Convert.ToDateTime(reader["OperationHour"]);
                         OperationSituation = Convert.ToString(reader["OperationSituation"]);
                         StockDestinationLocation = Convert.ToString(reader["StockDestinationLocation"]);
                     }
@@ -306,7 +302,7 @@ namespace DimStock.Business
                     Id = Convert.ToInt32(row["Id"]),
                     OperationType = Convert.ToString(row["OperationType"]),
                     OperationDate = Convert.ToDateTime(row["OperationDate"]),
-                    OperationHour = Convert.ToString(row["OperationHour"]),
+                    OperationHour = Convert.ToDateTime(row["OperationHour"]),
                     OperationSituation = Convert.ToString(row["OperationSituation"]),
                     StockDestinationLocation = row["StockDestinationLocation"].ToString(),
                 };

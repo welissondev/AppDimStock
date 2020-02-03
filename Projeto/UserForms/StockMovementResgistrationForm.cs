@@ -250,12 +250,12 @@ namespace DimStock.UserForms
 
         private void MovementEntrie_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            InitializeNewMovement("Entrada");
+            StartNewOperation("Entrada");
         }
 
         private void MovementOutPut_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            InitializeNewMovement("Saída");
+            StartNewOperation("Saída");
         }
 
         #endregion
@@ -379,7 +379,7 @@ namespace DimStock.UserForms
                 StockMovementId.Text = id.ToString();
                 OperationType.Text = stockMovement.OperationType;
                 OperationDate.Text = Convert.ToString(stockMovement.OperationDate.ToString("dd-MM-yyyy"));
-                OperationHour.Text = stockMovement.OperationHour;
+                OperationHour.Text = Convert.ToString(stockMovement.OperationHour.ToString("hh:mm:ss"));
                 OperationSituation.Text = stockMovement.OperationSituation;
 
                 if (stockMovement.StockDestinationLocation != string.Empty)
@@ -394,28 +394,11 @@ namespace DimStock.UserForms
             }
         }
 
-        public void InitializeNewMovement(string operationType)
+        public void StartNewOperation(string operationType)
         {
             var stockMovement = new StockMovement();
 
-            OperationType.Text = operationType;
-
-            switch (OperationType.Text)
-            {
-                case "Entrada":
-                    stockMovement.OperationType = OperationType.Text;
-                    break;
-
-                case "Saída":
-                    stockMovement.OperationType = OperationType.Text;
-                    break;
-            }
-
-            stockMovement.OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy"));
-            stockMovement.OperationHour = DateTime.Now.ToString("HH:mm:ss");
-            stockMovement.OperationSituation = "Em Aberto";
-
-            stockMovement.InitializeNew();
+            stockMovement.StartNewOperation(operationType);
 
             GetStockMovementDetails(stockMovement.Id);
 
