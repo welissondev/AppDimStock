@@ -1,9 +1,8 @@
-﻿using System;
+﻿using DimStock.Business;
+using System;
 using System.Windows.Forms;
 
-
-
-namespace DimStock.View
+namespace DimStock.UserForms
 {
     static class Program
     {
@@ -14,9 +13,17 @@ namespace DimStock.View
         static void Main()
         {
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmUserLogin());
-        }
 
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            if (AppSetting.GetAppSettingsState() == true)
+            {
+                Application.Run(new HomeScreenForm());
+            }
+            else
+            {
+                Application.Run(new AppSettingsForm());
+            }
+        }
     }
 }

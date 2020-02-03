@@ -63,9 +63,9 @@ namespace DimStock.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Deletar {
+        internal static System.Drawing.Bitmap BackGroudUserLogin {
             get {
-                object obj = ResourceManager.GetObject("Deletar", resourceCulture);
+                object obj = ResourceManager.GetObject("BackGroudUserLogin", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,39 +73,9 @@ namespace DimStock.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap deletar2 {
+        internal static System.Drawing.Bitmap DimStockLogoType {
             get {
-                object obj = ResourceManager.GetObject("deletar2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Duplicar {
-            get {
-                object obj = ResourceManager.GetObject("Duplicar", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Editar {
-            get {
-                object obj = ResourceManager.GetObject("Editar", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap EntradaEstoque {
-            get {
-                object obj = ResourceManager.GetObject("EntradaEstoque", resourceCulture);
+                object obj = ResourceManager.GetObject("DimStockLogoType", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,39 +93,9 @@ namespace DimStock.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Load {
+        internal static System.Drawing.Bitmap Loading {
             get {
-                object obj = ResourceManager.GetObject("Load", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap SaidaEstoque {
-            get {
-                object obj = ResourceManager.GetObject("SaidaEstoque", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Visualizar {
-            get {
-                object obj = ResourceManager.GetObject("Visualizar", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Visualizar2 {
-            get {
-                object obj = ResourceManager.GetObject("Visualizar2", resourceCulture);
+                object obj = ResourceManager.GetObject("Loading", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

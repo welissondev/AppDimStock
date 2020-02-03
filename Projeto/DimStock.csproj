@@ -68,6 +68,12 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>DimStock.UserForms.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu_UI_v1.5.3, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -123,160 +129,175 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Auxiliary\AxlDataGridViewLealt.cs" />
-    <Compile Include="Auxiliary\AxlDataPagination.cs" />
-    <Compile Include="Auxiliary\AxlException.cs" />
-    <Compile Include="Auxiliary\AxlLogin.cs" />
-    <Compile Include="Auxiliary\AxlPictureBox.cs">
+    <Compile Include="Auxiliarys\AxlDataGridLealt.cs" />
+    <Compile Include="Auxiliarys\AxlDataPagination.cs" />
+    <Compile Include="Auxiliarys\AxlDirectory.cs" />
+    <Compile Include="Auxiliarys\AxlEmailAdderess.cs" />
+    <Compile Include="Auxiliarys\AxlException.cs" />
+    <Compile Include="Auxiliarys\AxlMdiForm.cs" />
+    <Compile Include="Auxiliarys\AxlLogin.cs" />
+    <Compile Include="Controls\CustomPictureBoxOne.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Auxiliary\AxlDataGridViewStockItem.cs">
+    <Compile Include="Controls\CustomDataGridViewOne.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Business\BllStockDestination.cs" />
-    <Compile Include="Business\BllStockItem.cs" />
-    <Compile Include="Business\BllStockProduct.cs" />
-    <Compile Include="Business\BllStockActivity.cs" />
-    <Compile Include="Business\BllNotification.cs" />
-    <Compile Include="Business\BllProduct.cs" />
-    <Compile Include="Business\BllProductPhotho.cs" />
-    <Compile Include="Business\BllStock.cs" />
-    <Compile Include="Business\BllUser.cs" />
-    <Compile Include="Business\BllUserHistoric.cs" />
-    <Compile Include="Model\MdlConnection.cs" />
-    <Compile Include="Model\MdlStock.cs" />
-    <Compile Include="Model\MdlStockActivity.cs" />
-    <Compile Include="Model\MdlStockDestination.cs" />
-    <Compile Include="Model\MdlStockItem.cs" />
-    <Compile Include="Model\MdlStockProduct.cs" />
-    <Compile Include="Model\MdlProduct.cs" />
-    <Compile Include="Model\MdlUser.cs" />
-    <Compile Include="Model\MdlUserHistoric.cs" />
+    <Compile Include="Business\AppSetting.cs" />
+    <Compile Include="Business\Company.cs" />
+    <Compile Include="Business\Connection.cs" />
+    <Compile Include="Business\StockDestination.cs" />
+    <Compile Include="Business\StockItem.cs" />
+    <Compile Include="Business\StockProduct.cs" />
+    <Compile Include="Business\StockMovement.cs" />
+    <Compile Include="Auxiliarys\AxlMessageNotifier.cs" />
+    <Compile Include="Business\Product.cs" />
+    <Compile Include="Business\ProductPhoto.cs" />
+    <Compile Include="Business\Stock.cs" />
+    <Compile Include="Business\User.cs" />
+    <Compile Include="Business\UserHistory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Auxiliary\AxlImage.cs" />
-    <Compile Include="Report\ReportProduct.cs" />
-    <Compile Include="View\FrmReportView.cs">
+    <Compile Include="Auxiliarys\AxlFile.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReportProduct.cs" />
+    <Compile Include="UserForms\AppSettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\FrmReportView.Designer.cs">
-      <DependentUpon>FrmReportView.cs</DependentUpon>
+    <Compile Include="UserForms\AppSettingsForm.Designer.cs">
+      <DependentUpon>AppSettingsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Report\ReportStockProduct.cs" />
+    <Compile Include="Reports\ReportStockProduct.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="View\FrmStockActivityList.cs">
+    <Compile Include="UserForms\BackupSaveForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\FrmStockActivityList.Designer.cs">
-      <DependentUpon>FrmStockActivityList.cs</DependentUpon>
+    <Compile Include="UserForms\BackupSaveForm.Designer.cs">
+      <DependentUpon>BackupSaveForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\FrmStockDestinationRegister.cs">
+    <Compile Include="UserForms\HomeScreenForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\FrmStockDestinationRegister.Designer.cs">
-      <DependentUpon>FrmStockDestinationRegister.cs</DependentUpon>
+    <Compile Include="UserForms\HomeScreenForm.Designer.cs">
+      <DependentUpon>HomeScreenForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\FrmProductList.cs">
+    <Compile Include="UserForms\ProductListingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\FrmProductList.designer.cs">
-      <DependentUpon>FrmProductList.cs</DependentUpon>
+    <Compile Include="UserForms\ProductListingForm.designer.cs">
+      <DependentUpon>ProductListingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\FrmStockActivityRegister.cs">
+    <Compile Include="UserForms\ProductRegistrationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\FrmStockActivityRegister.Designer.cs">
-      <DependentUpon>FrmStockActivityRegister.cs</DependentUpon>
+    <Compile Include="UserForms\ProductRegistrationForm.Designer.cs">
+      <DependentUpon>ProductRegistrationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\FrmStockList.cs">
+    <Compile Include="UserForms\ReportViewForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\FrmStockList.Designer.cs">
-      <DependentUpon>FrmStockList.cs</DependentUpon>
+    <Compile Include="UserForms\ReportViewForm.Designer.cs">
+      <DependentUpon>ReportViewForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\FrmProductRegister.cs">
+    <Compile Include="UserForms\StockDestinationRegistrationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\FrmProductRegister.Designer.cs">
-      <DependentUpon>FrmProductRegister.cs</DependentUpon>
+    <Compile Include="UserForms\StockDestinationRegistrationForm.Designer.cs">
+      <DependentUpon>StockDestinationRegistrationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\FrmUserRegister.cs">
+    <Compile Include="UserForms\StockListingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\FrmUserRegister.Designer.cs">
-      <DependentUpon>FrmUserRegister.cs</DependentUpon>
+    <Compile Include="UserForms\StockListingForm.Designer.cs">
+      <DependentUpon>StockListingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\FrmUserHistoricList.cs">
+    <Compile Include="UserForms\StockMovementListingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\FrmUserHistoricList.Designer.cs">
-      <DependentUpon>FrmUserHistoricList.cs</DependentUpon>
+    <Compile Include="UserForms\StockMovementListingForm.Designer.cs">
+      <DependentUpon>StockMovementListingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\FrmUserList.cs">
+    <Compile Include="UserForms\StockMovementResgistrationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\FrmUserList.Designer.cs">
-      <DependentUpon>FrmUserList.cs</DependentUpon>
+    <Compile Include="UserForms\StockMovementResgistrationForm.Designer.cs">
+      <DependentUpon>StockMovementResgistrationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\FrmUserLogin.cs">
+    <Compile Include="UserForms\UserHistoryListingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\FrmUserLogin.Designer.cs">
-      <DependentUpon>FrmUserLogin.cs</DependentUpon>
+    <Compile Include="UserForms\UserHistoryListingForm.Designer.cs">
+      <DependentUpon>UserHistoryListingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\MdlHomeScreen.cs">
+    <Compile Include="UserForms\UserListingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\MdlHomeScreen.Designer.cs">
-      <DependentUpon>MdlHomeScreen.cs</DependentUpon>
+    <Compile Include="UserForms\UserListingForm.Designer.cs">
+      <DependentUpon>UserListingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForms\UserLoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForms\UserLoginForm.Designer.cs">
+      <DependentUpon>UserLoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForms\UserResgistrationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForms\UserResgistrationForm.Designer.cs">
+      <DependentUpon>UserResgistrationForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <EmbeddedResource Include="View\FrmReportView.resx">
-      <DependentUpon>FrmReportView.cs</DependentUpon>
+    <EmbeddedResource Include="UserForms\AppSettingsForm.resx">
+      <DependentUpon>AppSettingsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report\RpvStockProduct.rdlc" />
-    <EmbeddedResource Include="Report\RpvProduct.rdlc" />
-    <EmbeddedResource Include="View\FrmStockActivityList.resx">
-      <DependentUpon>FrmStockActivityList.cs</DependentUpon>
+    <EmbeddedResource Include="Reports\StockProduct.rdlc" />
+    <EmbeddedResource Include="Reports\Product.rdlc" />
+    <EmbeddedResource Include="UserForms\BackupSaveForm.resx">
+      <DependentUpon>BackupSaveForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\FrmStockDestinationRegister.resx">
-      <DependentUpon>FrmStockDestinationRegister.cs</DependentUpon>
+    <EmbeddedResource Include="UserForms\HomeScreenForm.resx">
+      <DependentUpon>HomeScreenForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\FrmProductList.resx">
-      <DependentUpon>FrmProductList.cs</DependentUpon>
+    <EmbeddedResource Include="UserForms\ProductListingForm.resx">
+      <DependentUpon>ProductListingForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\FrmStockActivityRegister.resx">
-      <DependentUpon>FrmStockActivityRegister.cs</DependentUpon>
+    <EmbeddedResource Include="UserForms\ProductRegistrationForm.resx">
+      <DependentUpon>ProductRegistrationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\FrmStockList.resx">
-      <DependentUpon>FrmStockList.cs</DependentUpon>
+    <EmbeddedResource Include="UserForms\ReportViewForm.resx">
+      <DependentUpon>ReportViewForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\FrmProductRegister.resx">
-      <DependentUpon>FrmProductRegister.cs</DependentUpon>
+    <EmbeddedResource Include="UserForms\StockDestinationRegistrationForm.resx">
+      <DependentUpon>StockDestinationRegistrationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\FrmUserHistoricList.resx">
-      <DependentUpon>FrmUserHistoricList.cs</DependentUpon>
+    <EmbeddedResource Include="UserForms\StockListingForm.resx">
+      <DependentUpon>StockListingForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\FrmUserRegister.resx">
-      <DependentUpon>FrmUserRegister.cs</DependentUpon>
+    <EmbeddedResource Include="UserForms\StockMovementListingForm.resx">
+      <DependentUpon>StockMovementListingForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\FrmUserList.resx">
-      <DependentUpon>FrmUserList.cs</DependentUpon>
+    <EmbeddedResource Include="UserForms\StockMovementResgistrationForm.resx">
+      <DependentUpon>StockMovementResgistrationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\FrmUserLogin.resx">
-      <DependentUpon>FrmUserLogin.cs</DependentUpon>
+    <EmbeddedResource Include="UserForms\UserHistoryListingForm.resx">
+      <DependentUpon>UserHistoryListingForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\MdlHomeScreen.resx">
-      <DependentUpon>MdlHomeScreen.cs</DependentUpon>
+    <EmbeddedResource Include="UserForms\UserListingForm.resx">
+      <DependentUpon>UserListingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\UserLoginForm.resx">
+      <DependentUpon>UserLoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\UserResgistrationForm.resx">
+      <DependentUpon>UserResgistrationForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="DataSources\DimStock.Report.ReportProduct.datasource" />
     <None Include="packages.config" />
@@ -300,33 +321,6 @@
     <None Include="Resources\FotoNothing.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Visualizar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Deletar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Editar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Load.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\EntradaEstoque.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Duplicar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\SaidaEstoque.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\deletar2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Visualizar2.png" />
-  </ItemGroup>
-  <ItemGroup>
     <COMReference Include="stdole">
       <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
       <VersionMajor>2</VersionMajor>
@@ -337,6 +331,14 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\BackGroudUserLogin.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Loading.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DimStockLogoType.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

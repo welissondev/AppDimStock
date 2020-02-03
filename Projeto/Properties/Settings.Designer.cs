@@ -25,13 +25,25 @@ namespace DimStock.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int ValorNumerico {
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string MainAppDirectory {
             get {
-                return ((int)(this["ValorNumerico"]));
+                return ((string)(this["MainAppDirectory"]));
             }
             set {
-                this["ValorNumerico"] = value;
+                this["MainAppDirectory"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AppSettingsState {
+            get {
+                return ((bool)(this["AppSettingsState"]));
+            }
+            set {
+                this["AppSettingsState"] = value;
             }
         }
     }
