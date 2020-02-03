@@ -102,7 +102,7 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(676, 25);
+            this.label6.Location = new System.Drawing.Point(681, 25);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(9, 13);
             this.label6.TabIndex = 18;
@@ -118,7 +118,7 @@
             this.MainMenu_Settings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.MainMenu_Settings.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.MainMenu_Settings.LinkColor = System.Drawing.Color.AliceBlue;
-            this.MainMenu_Settings.Location = new System.Drawing.Point(686, 0);
+            this.MainMenu_Settings.Location = new System.Drawing.Point(701, 0);
             this.MainMenu_Settings.Name = "MainMenu_Settings";
             this.MainMenu_Settings.Size = new System.Drawing.Size(128, 59);
             this.MainMenu_Settings.TabIndex = 17;
