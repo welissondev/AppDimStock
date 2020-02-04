@@ -146,7 +146,7 @@
     <Compile Include="Business\Company.cs" />
     <Compile Include="Business\Connection.cs" />
     <Compile Include="Business\StockDestination.cs" />
-    <Compile Include="Business\StockItem.cs" />
+    <Compile Include="Business\StockMovementItem.cs" />
     <Compile Include="Business\StockProduct.cs" />
     <Compile Include="Business\StockMovement.cs" />
     <Compile Include="Auxiliarys\AxlMessageNotifier.cs" />

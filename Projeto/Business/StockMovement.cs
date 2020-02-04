@@ -120,7 +120,7 @@ namespace DimStock.Business
                 return false;
             }
 
-            var stockItem = new StockItem();
+            var stockItem = new StockMovementItem();
             stockItem.ListItems(id);
 
             var transactionState = false;

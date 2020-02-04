@@ -193,7 +193,7 @@ namespace DimStock.UserForms
                 switch (columnName)
                 {
                     case "viewDetails":
-                        GetStockMovementDetails();
+                        ViewMovementDetails();
                         break;
 
                     case "delete":
@@ -362,7 +362,7 @@ namespace DimStock.UserForms
             }
         }
 
-        private void GetStockMovementDetails()
+        private void ViewMovementDetails()
         {
             try
             {
@@ -379,12 +379,11 @@ namespace DimStock.UserForms
                     MinimizeBox = false,
                 };
 
-                form.GetStockMovementDetails(id);
-                form.ListStockItems();
+                form.ViewMovementDetails(id);
                 form.Show();
 
-                HomeScreenForm.He.FormNovigationDescription.Text = 
-                @"Cadastro De Movimentações"; 
+                HomeScreenForm.He.FormNovigationDescription.Text =
+                @"Cadastro De Movimentações";
             }
             catch (Exception ex)
             {

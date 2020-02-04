@@ -4,7 +4,7 @@ using System.Data.OleDb;
 
 namespace DimStock.Business
 {
-    public class StockItem
+    public class StockMovementItem
     {
         #region Get e Set
         public int Id { get; set; }
@@ -19,7 +19,7 @@ namespace DimStock.Business
         public double UnitaryValue { get; set; }
         public double TotalValue { get; set; }
         public double SubTotal { get; set; }
-        public List<StockItem> ListOfRecords { get; set; }
+        public List<StockMovementItem> ListOfRecords { get; set; }
         #endregion
 
         #region Methods
@@ -28,7 +28,7 @@ namespace DimStock.Business
         {
             using (var connection = new Connection())
             {
-                var sqlCommand = @"INSERT INTO StockItem(StockMovementId, ProductId, StockId, 
+                var sqlCommand = @"INSERT INTO StockMovementItem(StockMovementId, ProductId, StockId, 
                 Quantity, UnitaryValue, TotalValue)VALUES(@StockMovementId, @ProductId, @StockId, 
                 @Quantity, @UnitaryValue, @TotalValue)";
 
@@ -49,7 +49,7 @@ namespace DimStock.Business
 
             using (var connection = new Connection())
             {
-                var sqlCommand = @"DELETE FROM StockItem Where Id = @Id";
+                var sqlCommand = @"DELETE FROM StockMovementItem Where Id = @Id";
 
                 connection.AddParameter("Id", OleDbType.Integer, id);
 
@@ -66,19 +66,19 @@ namespace DimStock.Business
         {
             using (var connection = new Connection())
             {
-                var sqlQuery = @"SELECT StockItem.*, Product.Description, Product.Code, [Product.Size],
-                Product.Reference FROM StockItem INNER JOIN Product ON StockItem.ProductId = Product.Id WHERE 
-                StockItem.StockMovementId LIKE @Id ORDER BY Code";
+                var sqlQuery = @"SELECT StockMovementItem.*, Product.Description, Product.Code, [Product.Size],
+                Product.Reference FROM StockMovementItem INNER JOIN Product ON StockMovementItem.ProductId = Product.Id WHERE 
+                StockMovementItem.StockMovementId LIKE @Id ORDER BY Code";
 
                 connection.AddParameter("@Id", OleDbType.Integer, id);
 
-                var itemList = new List<StockItem>();
+                var itemList = new List<StockMovementItem>();
 
                 using (var dr = connection.QueryWithDataReader(sqlQuery))
                 {
                     while (dr.Read())
                     {
-                        var item = new StockItem()
+                        var item = new StockMovementItem()
                         {
                             Id = Convert.ToInt32(dr["Id"]),
                             StockId = Convert.ToInt32(dr["StockId"]),

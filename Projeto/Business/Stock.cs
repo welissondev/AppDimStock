@@ -137,7 +137,7 @@ namespace DimStock.Business
             }
         }
 
-        public bool RemoveEntries(List<StockItem> stockItems)
+        public bool RemoveEntries(List<StockMovementItem> stockItems)
         {
             var transactionState = false;
 
@@ -163,7 +163,7 @@ namespace DimStock.Business
             return transactionState;
         }
 
-        public bool RemoveOutputs(List<StockItem> stockItems)
+        public bool RemoveOutputs(List<StockMovementItem> stockItems)
         {
             var transactionState = false;
 
