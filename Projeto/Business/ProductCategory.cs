@@ -32,10 +32,10 @@ namespace DimStock.Business
                     sqlCommand = @"INSERT INTO ProductCategory
                     (Description)VALUES(@Description)";
 
-                    connection.AddParameter("@Description", 
+                    connection.AddParameter("@Description",
                     OleDbType.VarChar, Description);
 
-                    registerState = 
+                    registerState =
                     connection.ExecuteTransaction(
                     sqlCommand) > 0;
 
@@ -74,22 +74,22 @@ namespace DimStock.Business
 
             using (var connection = new Connection())
             {
-                var affectedFields = 
+                var affectedFields =
                 GetAffectedFields(id, connection);
 
-                using (connection.Transaction = 
+                using (connection.Transaction =
                 connection.Open().BeginTransaction())
                 {
                     sqlCommand = @"UPDATE ProductCategory SET 
                     Description = @Description WHERE Id = @Id";
 
-                    connection.AddParameter("@Description", 
+                    connection.AddParameter("@Description",
                     OleDbType.VarChar, Description);
-                    
-                    connection.AddParameter("@Id", 
+
+                    connection.AddParameter("@Id",
                     OleDbType.Integer, id);
 
-                    modifyState = 
+                    modifyState =
                     connection.ExecuteTransaction(
                     sqlCommand) > 0;
 
@@ -118,7 +118,46 @@ namespace DimStock.Business
 
         public bool Delete(int id)
         {
-            return false;
+            var deleteState = false;
+            var sqlCommand = string.Empty;
+
+            using (var connection = new Connection())
+            {
+                var affectedFields =
+                GetAffectedFields(id, connection);
+
+                using (connection.Transaction =
+                connection.Open().BeginTransaction())
+                {
+                    sqlCommand = @"DELETE FROM ProductCategory 
+                    WHERE Id = @Id";
+
+                    connection.AddParameter("@Id",
+                    OleDbType.Integer, id);
+
+                    deleteState =
+                    connection.ExecuteTransaction(
+                    sqlCommand) > 0;
+
+                    //Registrar histórico do usuário
+                    var userHistory = new UserHistory(connection)
+                    {
+                        UserId = AxlLogin.Id,
+                        OperationType = "Deletou",
+                        OperationModule = "Produto Categoria",
+                        OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
+                        OperationHour = DateTime.Now.ToString("HH:mm:ss"),
+                        AffectedFields = affectedFields
+                    };
+                    deleteState = userHistory.Register();
+
+                    //Finalizar transação
+                    connection.Transaction.Commit();
+
+                    AxlMessageNotifier.Message = "Categoria " +
+                    "deletada com sucesso!";
+                }
+            }
         }
 
         public void SearchData()
