@@ -69,7 +69,51 @@ namespace DimStock.Business
 
         public bool Modify(int id)
         {
-            return false;
+            var modifyState = false;
+            var sqlCommand = string.Empty;
+
+            using (var connection = new Connection())
+            {
+                var affectedFields = 
+                GetAffectedFields(id, connection);
+
+                using (connection.Transaction = 
+                connection.Open().BeginTransaction())
+                {
+                    sqlCommand = @"UPDATE ProductCategory SET 
+                    Description = @Description WHERE Id = @Id";
+
+                    connection.AddParameter("@Description", 
+                    OleDbType.VarChar, Description);
+                    
+                    connection.AddParameter("@Id", 
+                    OleDbType.Integer, id);
+
+                    modifyState = 
+                    connection.ExecuteTransaction(
+                    sqlCommand) > 0;
+
+                    //Registrar histórico do usuário
+                    var userHistory = new UserHistory(connection)
+                    {
+                        UserId = AxlLogin.Id,
+                        OperationType = "Editou",
+                        OperationModule = "Produto Categoria",
+                        OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
+                        OperationHour = DateTime.Now.ToString("HH:mm:ss"),
+                        AffectedFields = affectedFields
+                    };
+                    modifyState = userHistory.Register();
+
+                    //Finalizar transação
+                    connection.Transaction.Commit();
+
+                    AxlMessageNotifier.Message = "Categoria " +
+                    "editada com sucesso!";
+                }
+
+                return modifyState;
+            }
         }
 
         public bool Delete(int id)
