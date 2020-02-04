@@ -1,5 +1,6 @@
 ﻿using DimStock.Auxiliarys;
 using DimStock.Business;
+using Syncfusion.Windows.Forms.Tools;
 using System;
 using System.Windows.Forms;
 
@@ -18,7 +19,7 @@ namespace DimStock.UserForms
         {
             try
             {
-                if(Id > 0)
+                if (Id > 0)
                 {
                     Modify();
                 }
@@ -35,7 +36,7 @@ namespace DimStock.UserForms
 
         private void ClearFields_Click(object sender, EventArgs e)
         {
-            Description.Text = string.Empty;
+            CallAllResets();
         }
 
         private void Register()
@@ -78,6 +79,35 @@ namespace DimStock.UserForms
                 MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void ResetVariables()
+        {
+            Id = 0;
+        }
+
+        private void ResetControls()
+        {
+            try
+            {
+                foreach (Control ctl in Controls)
+                {
+                    if (ctl.GetType() == typeof(TextBoxExt))
+                        ctl.Text = string.Empty;
+                }
+
+                Description.Select();
+            }
+            catch (Exception ex)
+            {
+                AxlException.Message.Show(ex);
+            }
+        }
+
+        private void CallAllResets()
+        {
+            ResetVariables();
+            ResetControls();
         }
 
         private bool ValidateData()
