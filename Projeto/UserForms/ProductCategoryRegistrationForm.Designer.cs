@@ -39,7 +39,7 @@
             // Description
             // 
             this.Description.BackColor = System.Drawing.Color.White;
-            this.Description.BeforeTouchSize = new System.Drawing.Size(342, 26);
+            this.Description.BeforeTouchSize = new System.Drawing.Size(504, 26);
             this.Description.BorderColor = System.Drawing.Color.DarkGray;
             this.Description.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Description.CanOverrideStyle = true;
@@ -94,6 +94,7 @@
             this.Save.Size = new System.Drawing.Size(97, 43);
             this.Save.TabIndex = 224;
             this.Save.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Save.Click += new System.EventHandler(this.Save_Click);
             // 
             // ClearFields
             // 
@@ -119,6 +120,7 @@
             this.ClearFields.Size = new System.Drawing.Size(97, 43);
             this.ClearFields.TabIndex = 223;
             this.ClearFields.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ClearFields.Click += new System.EventHandler(this.ClearFields_Click);
             // 
             // ProductCategoryRegistrationForm
             // 
