@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.OleDb;
 using System.Linq;
 using DimStock.Auxiliarys;
@@ -157,12 +158,48 @@ namespace DimStock.Business
                     AxlMessageNotifier.Message = "Categoria " +
                     "deletada com sucesso!";
                 }
+
+                return deleteState;
             }
         }
 
         public void SearchData()
         {
+            using (var connection = new Connection())
+            {
+                var sqlQuery = string.Empty;
+                var sqlCount = string.Empty;
+                var criterion = string.Empty;
+                var parameter = connection.Command.Parameters;
 
+                sqlQuery = @"SELECT * FROM ProductCategory 
+                WHERE Id > 0 ";
+
+                sqlCount = @"SELECT COUNT(*) FROM ProductCategory 
+                WHERE Id > 0 ";
+
+                if (Description != string.Empty)
+                {
+                    criterion += @" AND Description LIKE @Description ";
+
+                    parameter.AddWithValue("@Description", 
+                    Description);
+                }
+
+                sqlQuery += criterion + @"ORDER BY Description";
+
+                sqlCount += criterion;
+
+                DataPagination.RecordCount = 
+                Convert.ToInt32(connection.ExecuteScalar(
+                sqlCount));
+
+                var dataTable = connection.QueryWithDataTable(
+                sqlQuery, DataPagination.OffSetValue,
+                DataPagination.PageSize);
+
+                PassToList(dataTable);
+            }
         }
 
         public string GetAffectedFields(int id, Connection connection)
@@ -182,6 +219,24 @@ namespace DimStock.Business
             }
 
             return string.Join(" | ", affectedFieldList.Select(x => x.ToString()));
+        }
+
+        public void PassToList(DataTable dataTable)
+        {
+            var categoryList = new List<ProductCategory>();
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                var category = new ProductCategory()
+                {
+                    Id = Convert.ToInt32(row["Id"]),
+                    Description = Convert.ToString(row["Description"]),
+                };
+
+                categoryList.Add(category);
+            }
+
+            ListOfRecords = categoryList;
         }
     }
 }
