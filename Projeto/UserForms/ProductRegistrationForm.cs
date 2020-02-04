@@ -71,6 +71,22 @@ namespace DimStock.UserForms
 
         #endregion
 
+        #region LabelLink
+
+        private void AddNewProductCategory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var categoryForm = new ProductCategoryRegistrationForm()
+            {
+                ShowInTaskbar = false,
+                MaximizeBox = false,
+                MinimizeBox = false
+            };
+
+            categoryForm.ShowDialog();
+        }
+
+        #endregion
+
         #region PictureBox
 
         private void ImageProduct_Click(object sender, EventArgs e)
