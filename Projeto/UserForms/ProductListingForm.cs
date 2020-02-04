@@ -303,6 +303,8 @@ namespace DimStock.UserForms
                 product.ViewDetails(Id);
 
                 userForm.Id = product.Id;
+                userForm.CategoryId = product.CategoryId;
+                userForm.BoxProductCategoryList.Text = product.CategoryDescription.ToString();
                 userForm.ProductCode.Text = product.Code.ToString();
                 userForm.ProductSize.Text = product.Size.ToString();
                 userForm.ProductReference.Text = product.Reference.ToString();

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductRegistrationForm));
             this.BarCode = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.SalePrice = new Syncfusion.Windows.Forms.Tools.CurrencyTextBox();
@@ -55,6 +56,10 @@
             this.AddNewProductCategory = new System.Windows.Forms.LinkLabel();
             this.BoxProductCategoryList = new System.Windows.Forms.ComboBox();
             this.LblStockDestination = new System.Windows.Forms.Label();
+            this.ListviewCategory = new System.Windows.Forms.ListView();
+            this.ColumnProductCategory = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.SearchTimer = new System.Windows.Forms.Timer(this.components);
+            this.ColumnCategoryId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ImageProduct = new DimStock.Controls.CustomPictureBoxOne();
             ((System.ComponentModel.ISupportInitialize)(this.BarCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SalePrice)).BeginInit();
@@ -503,7 +508,7 @@
             this.AddNewProductCategory.Size = new System.Drawing.Size(96, 17);
             this.AddNewProductCategory.TabIndex = 216;
             this.AddNewProductCategory.TabStop = true;
-            this.AddNewProductCategory.Text = "Cadastrar Novo";
+            this.AddNewProductCategory.Text = "Cadastrar Nova";
             this.AddNewProductCategory.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.AddNewProductCategory_LinkClicked);
             // 
             // BoxProductCategoryList
@@ -515,6 +520,8 @@
             this.BoxProductCategoryList.Name = "BoxProductCategoryList";
             this.BoxProductCategoryList.Size = new System.Drawing.Size(601, 26);
             this.BoxProductCategoryList.TabIndex = 215;
+            this.BoxProductCategoryList.Click += new System.EventHandler(this.BoxProductCategoryList_Click);
+            this.BoxProductCategoryList.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BoxProductCategoryList_KeyPress);
             // 
             // LblStockDestination
             // 
@@ -526,6 +533,46 @@
             this.LblStockDestination.Size = new System.Drawing.Size(68, 17);
             this.LblStockDestination.TabIndex = 214;
             this.LblStockDestination.Text = "Categoria:";
+            // 
+            // ListviewCategory
+            // 
+            this.ListviewCategory.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.ListviewCategory.BackColor = System.Drawing.Color.White;
+            this.ListviewCategory.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ListviewCategory.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ColumnCategoryId,
+            this.ColumnProductCategory});
+            this.ListviewCategory.Font = new System.Drawing.Font("Calibri Light", 12.25F);
+            this.ListviewCategory.FullRowSelect = true;
+            this.ListviewCategory.GridLines = true;
+            this.ListviewCategory.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.ListviewCategory.HideSelection = false;
+            this.ListviewCategory.HotTracking = true;
+            this.ListviewCategory.HoverSelection = true;
+            this.ListviewCategory.Location = new System.Drawing.Point(288, 210);
+            this.ListviewCategory.MultiSelect = false;
+            this.ListviewCategory.Name = "ListviewCategory";
+            this.ListviewCategory.Size = new System.Drawing.Size(601, 10);
+            this.ListviewCategory.Sorting = System.Windows.Forms.SortOrder.Descending;
+            this.ListviewCategory.TabIndex = 218;
+            this.ListviewCategory.UseCompatibleStateImageBehavior = false;
+            this.ListviewCategory.View = System.Windows.Forms.View.Details;
+            this.ListviewCategory.Visible = false;
+            this.ListviewCategory.DoubleClick += new System.EventHandler(this.ListviewCategory_DoubleClick);
+            // 
+            // ColumnProductCategory
+            // 
+            this.ColumnProductCategory.Text = "";
+            this.ColumnProductCategory.Width = 580;
+            // 
+            // SearchTimer
+            // 
+            this.SearchTimer.Interval = 500;
+            this.SearchTimer.Tick += new System.EventHandler(this.SearchTimer_Tick);
+            // 
+            // ColumnCategoryId
+            // 
+            this.ColumnCategoryId.Width = 0;
             // 
             // ImageProduct
             // 
@@ -547,6 +594,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(983, 681);
+            this.Controls.Add(this.ListviewCategory);
             this.Controls.Add(this.AddNewProductCategory);
             this.Controls.Add(this.BoxProductCategoryList);
             this.Controls.Add(this.LblStockDestination);
@@ -619,7 +667,11 @@
         private Bunifu.Framework.UI.BunifuThinButton2 ClearFields;
         private Bunifu.Framework.UI.BunifuThinButton2 Save;
         private System.Windows.Forms.LinkLabel AddNewProductCategory;
-        private System.Windows.Forms.ComboBox BoxProductCategoryList;
         public System.Windows.Forms.Label LblStockDestination;
+        private System.Windows.Forms.ListView ListviewCategory;
+        private System.Windows.Forms.ColumnHeader ColumnProductCategory;
+        private System.Windows.Forms.Timer SearchTimer;
+        private System.Windows.Forms.ColumnHeader ColumnCategoryId;
+        public System.Windows.Forms.ComboBox BoxProductCategoryList;
     }
 }

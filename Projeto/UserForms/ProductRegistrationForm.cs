@@ -3,6 +3,7 @@ using DimStock.Business;
 using DimStock.Properties;
 using Syncfusion.Windows.Forms.Tools;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -15,11 +16,15 @@ namespace DimStock.UserForms
 
         public int Id { get; set; }
 
+        public int CategoryId { get; set; }
+
         #endregion
 
         #region Variables
 
         private ProductPhoto productPhoto = new ProductPhoto();
+
+        private AxlDataPagination dataPagination = new AxlDataPagination();
 
         #endregion 
 
@@ -71,6 +76,54 @@ namespace DimStock.UserForms
 
         #endregion
 
+        #region ListBox
+
+        private void ListviewCategory_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                CategoryId = Convert.ToInt32(ListviewCategory.
+                SelectedItems[0].SubItems[0].Text);
+
+                BoxProductCategoryList.Text = ListviewCategory.
+                SelectedItems[0].SubItems[1].Text;
+
+                ListviewCategory.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                AxlException.Message.Show(ex);
+            }
+        }
+
+        #endregion
+
+        #region ComboBox
+
+        private void BoxProductCategoryList_Click(object sender, EventArgs e)
+        {
+            if (ListviewCategory.Visible == false)
+            {
+                if (BoxProductCategoryList.Text == string.Empty)
+                {
+                    ListviewCategory.Visible = true;
+                    BoxProductCategoryList.DroppedDown = false;
+                    StartSearchTimer();
+                }
+            }
+            else
+            {
+                ListviewCategory.Visible = false;
+            }
+        }
+
+        private void BoxProductCategoryList_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            StartSearchTimer();
+        }
+
+        #endregion
+
         #region LabelLink
 
         private void AddNewProductCategory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -112,6 +165,15 @@ namespace DimStock.UserForms
 
         #endregion
 
+        #region Timer
+
+        private void SearchTimer_Tick(object sender, EventArgs e)
+        {
+            FillBoxCategory();
+        }
+
+        #endregion
+
         #region MethodsAuxiliarys
 
         private void Register()
@@ -125,6 +187,7 @@ namespace DimStock.UserForms
 
                 var product = new Product
                 {
+                    CategoryId = CategoryId,
                     Code = Convert.ToInt32(ProductCode.Text),
                     Size = Convert.ToInt32(ProductSize.Text),
                     Reference = Convert.ToInt32(ProductReference.Text),
@@ -171,6 +234,7 @@ namespace DimStock.UserForms
 
                 var product = new Product()
                 {
+                    CategoryId = CategoryId,
                     Code = Convert.ToInt32(ProductCode.Text),
                     Size = Convert.ToInt32(ProductSize.Text),
                     Reference = Convert.ToInt32(ProductReference.Text),
@@ -243,6 +307,16 @@ namespace DimStock.UserForms
                 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                 ProductReference.Select();
+
+                return false;
+            }
+
+            if (CategoryId == 0)
+            {
+                MessageBox.Show("Informe a categoria do produto!", "OBRIGATÓRIO",
+                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                BoxProductCategoryList.Select();
 
                 return false;
             }
@@ -376,12 +450,54 @@ namespace DimStock.UserForms
         private void ResetVariables()
         {
             Id = 0;
+            CategoryId = 0;
         }
 
         private void CallAllResets()
         {
             ResetControls();
             ResetVariables();
+        }
+
+        public void FillBoxCategory()
+        {
+            try
+            {
+                var category = new ProductCategory(dataPagination)
+                {
+                    Description = BoxProductCategoryList.Text
+                };
+                category.SearchData();
+
+                ListviewCategory.Items.Clear();
+                ListviewCategory.Height = 250;
+                ListviewCategory.Visible = true;
+
+                foreach (var item in category.ListOfRecords)
+                {
+                    ListviewCategory.Items.Add(new ListViewItem(
+                    new string[] { item.Id.ToString(),
+                    item.Description}));
+                }
+
+                PauseSearchTimer();
+            }
+            catch (Exception ex)
+            {
+                PauseSearchTimer();
+                AxlException.Message.Show(ex);
+            }
+        }
+
+        private void StartSearchTimer()
+        {
+            SearchTimer.Enabled = false;
+            SearchTimer.Enabled = true;
+        }
+
+        private void PauseSearchTimer()
+        {
+            SearchTimer.Enabled = false;
         }
 
         #endregion

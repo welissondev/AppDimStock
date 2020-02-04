@@ -221,6 +221,46 @@ namespace DimStock.Business
             }
         }
 
+        public void ListData()
+        {
+            using (var connection = new Connection())
+            {
+                var parameter = connection.Command.Parameters;
+                var criterion = string.Empty;
+                var sqlQuery = string.Empty;
+                var categoryList = new List<ProductCategory>();
+
+                sqlQuery = @"SELECT * FROM ProductCategory 
+                WHERE Id > 0 ";
+
+                if (Description != string.Empty)
+                {
+                    criterion += " AND Description LIKE @Description ";
+
+                    parameter.AddWithValue("@Description", string.Format("%{0}%",
+                    Description));
+                }
+
+                sqlQuery += criterion + @"ORDER BY Description";
+
+                using (var reader = connection.QueryWithDataReader(sqlQuery))
+                {
+                    while (reader.Read())
+                    {
+                        var category = new ProductCategory
+                        {
+                            Id = Convert.ToInt32(reader["Id"]),
+                            Description = Convert.ToString(reader["Description"])
+                        };
+
+                        categoryList.Add(category);
+                    }
+
+                    ListOfRecords = categoryList;
+                }
+            }
+        }
+
         public string GetAffectedFields(int id, Connection connection)
         {
             var affectedFieldList = new List<string>();

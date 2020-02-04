@@ -23,6 +23,8 @@ namespace DimStock.Business
 
         #region BussinesProperties
         public int Id { get; set; }
+        public int CategoryId { get; set; }
+        public string CategoryDescription { get; set; }
         public int Code { get; set; }
         public int Size { get; set; }
         public int Reference { get; set; }
@@ -81,6 +83,8 @@ namespace DimStock.Business
                     Id = Convert.ToInt32(connection.ExecuteScalar(
                     "SELECT MAX(Id) From Product"));
 
+                    transactionState = RelateCategory(Id, connection);
+
                     //Relacionar o produto ao stock
                     var stock = new Stock(connection);
                     transactionState = stock.RelateProduct(Id);
@@ -114,7 +118,7 @@ namespace DimStock.Business
             {
                 bool transactionState = false;
 
-                var affectedFields = GetAffectedFields(id, connection); 
+                var affectedFields = GetAffectedFields(id, connection);
 
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
@@ -155,6 +159,8 @@ namespace DimStock.Business
                     var stock = new Stock(connection);
                     transactionState = stock.UpdateValue(
                     costPrice, id);
+
+                    transactionState = RelateCategory(id, connection);
 
                     //Registrar histórico do usuário
                     var userHistory = new UserHistory(connection)
@@ -223,6 +229,22 @@ namespace DimStock.Business
 
                 return transactionState;
             }
+        }
+
+        public bool RelateCategory(int productId, Connection connection)
+        {
+            var sqlCommand = @"UPDATE Product SET 
+            ProductCategoryId = @ProductCategoryId WHERE Id = @ProductId";
+
+            connection.ParameterClear();
+
+            connection.AddParameter("@ProductCategoryId",
+            OleDbType.Integer, CategoryId);
+
+            connection.AddParameter("@ProductId",
+            OleDbType.Integer, productId);
+
+            return connection.ExecuteTransaction(sqlCommand) > 0;
         }
 
         public void ListData()
@@ -361,9 +383,9 @@ namespace DimStock.Business
         {
             using (var connection = new Connection())
             {
-                var sqlQuery = @"SELECT Id, Code, [Size], Reference, Supplier, 
-                Description, MinStock, MaxStock, CostPrice, SalePrice, PhotoName, 
-                BarCode From Product Where Id = @Id ";
+                var sqlQuery = @"SELECT Product.*, ProductCategory.* FROM Product
+                left join ProductCategory ON Product.ProductCategoryId = ProductCategory.Id
+                WHERE Product.Id = @Id ";
 
                 connection.AddParameter("@Id", OleDbType.Integer, id);
 
@@ -371,12 +393,14 @@ namespace DimStock.Business
                 {
                     while (reader.Read())
                     {
-                        Id = Convert.ToInt32(reader["Id"]);
+                        Id = Convert.ToInt32(reader["Product.Id"]);
+                        CategoryId = Convert.ToInt32(reader.IsDBNull(1) ? null : reader["ProductCategory.Id"]);
+                        CategoryDescription = Convert.ToString(reader.IsDBNull(2) ? null : reader["ProductCategory.Description"]);
                         Code = Convert.ToInt32(reader["Code"]);
                         Size = Convert.ToInt32(reader["Size"]);
                         Reference = Convert.ToInt32(reader["Reference"]);
                         Supplier = Convert.ToString(reader["Supplier"]);
-                        Description = Convert.ToString(reader["Description"]);
+                        Description = Convert.ToString(reader["Product.Description"]);
                         MinStock = Convert.ToInt32(reader["MinStock"]);
                         MaxStock = Convert.ToInt32(reader["MaxStock"]);
                         CostPrice = Convert.ToDouble(reader["CostPrice"]);
