@@ -163,6 +163,26 @@ namespace DimStock.Business
             }
         }
 
+        public void ViewDetails(int id)
+        {
+            using (var connection = new Connection())
+            {
+                var sqlQuery = @"SELECT Id, Description From 
+                ProductCategory Where Id = @Id ";
+
+                connection.AddParameter("@Id", OleDbType.Integer, id);
+
+                using (var reader = connection.QueryWithDataReader(sqlQuery))
+                {
+                    while (reader.Read())
+                    {
+                        Id = Convert.ToInt32(reader["Id"]);
+                        Description = Convert.ToString(reader["Description"]);
+                    }
+                }
+            }
+        }
+
         public void SearchData()
         {
             using (var connection = new Connection())
@@ -182,7 +202,7 @@ namespace DimStock.Business
                 {
                     criterion += @" AND Description LIKE @Description ";
 
-                    parameter.AddWithValue("@Description", 
+                    parameter.AddWithValue("@Description",
                     Description);
                 }
 
@@ -190,7 +210,7 @@ namespace DimStock.Business
 
                 sqlCount += criterion;
 
-                DataPagination.RecordCount = 
+                DataPagination.RecordCount =
                 Convert.ToInt32(connection.ExecuteScalar(
                 sqlCount));
 
