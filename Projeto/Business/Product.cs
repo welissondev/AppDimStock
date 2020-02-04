@@ -424,6 +424,8 @@ namespace DimStock.Business
             var affectedFieldList = new List<string>();
 
             var commandSQL = @"SELECT * From Product Where Id = @Id";
+
+            connection.ParameterClear();
             connection.AddParameter("@Id", OleDbType.Integer, id);
 
             using (var dataReader = connection.QueryWithDataReader(commandSQL))
