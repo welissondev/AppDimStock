@@ -136,6 +136,7 @@
     <Compile Include="Auxiliarys\AxlException.cs" />
     <Compile Include="Auxiliarys\AxlMdiForm.cs" />
     <Compile Include="Auxiliarys\AxlLogin.cs" />
+    <Compile Include="Auxiliarys\AxlPageWeb.cs" />
     <Compile Include="Business\ProductCategory.cs" />
     <Compile Include="Controls\CustomPictureBoxOne.cs">
       <SubType>Component</SubType>
