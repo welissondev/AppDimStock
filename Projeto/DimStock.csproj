@@ -185,6 +185,12 @@
     <Compile Include="UserForms\HomeScreenForm.Designer.cs">
       <DependentUpon>HomeScreenForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserForms\ProductCategoryListingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForms\ProductCategoryListingForm.Designer.cs">
+      <DependentUpon>ProductCategoryListingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserForms\ProductCategoryRegistrationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -272,6 +278,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserForms\HomeScreenForm.resx">
       <DependentUpon>HomeScreenForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\ProductCategoryListingForm.resx">
+      <DependentUpon>ProductCategoryListingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserForms\ProductCategoryRegistrationForm.resx">
       <DependentUpon>ProductCategoryRegistrationForm.cs</DependentUpon>

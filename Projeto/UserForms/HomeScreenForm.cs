@@ -134,6 +134,22 @@ namespace DimStock.UserForms
             FormNovigationDescription.Text = "Lista De Produtos";
         }
 
+        private void MenuProduct_ListRegisters_Category_Click(object sender, EventArgs e)
+        {
+            AxlMdiForm.CloseAllForms();
+
+            var form = new ProductCategoryListingForm()
+            {
+                MdiParent = this,
+                FormBorderStyle = FormBorderStyle.None,
+                Dock = DockStyle.Fill,
+            };
+
+            form.Show();
+
+            FormNovigationDescription.Text = "Lista De Categorias";
+        }
+
         private void MenuStock_RegisterNew_Entrie_Click(object sender, EventArgs e)
         {
             AxlMdiForm.CloseAllForms();

@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DimStock.Auxiliarys;
+﻿using DimStock.Auxiliarys;
 using DimStock.Business;
+using System;
+using System.Windows.Forms;
 
 namespace DimStock.UserForms
 {
     public partial class ProductCategoryRegistrationForm : Form
     {
+        public int Id = 0;
+
         public ProductCategoryRegistrationForm()
         {
             InitializeComponent();
@@ -23,23 +18,13 @@ namespace DimStock.UserForms
         {
             try
             {
-                if (ValidateData() == true)
+                if(Id > 0)
                 {
-                    var category = new ProductCategory()
-                    {
-                        Description = Description.Text
-                    };
-
-                    if (category.Register() == false)
-                    {
-                        MessageBox.Show(AxlMessageNotifier.Message, "ERRO");
-                        return;
-                    }
-
-                    MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    Description.Text = string.Empty;
+                    Modify();
+                }
+                else
+                {
+                    Register();
                 }
             }
             catch (Exception ex)
@@ -51,6 +36,48 @@ namespace DimStock.UserForms
         private void ClearFields_Click(object sender, EventArgs e)
         {
             Description.Text = string.Empty;
+        }
+
+        private void Register()
+        {
+            if (ValidateData() == true)
+            {
+                var category = new ProductCategory()
+                {
+                    Description = Description.Text
+                };
+
+                if (category.Register() == false)
+                {
+                    MessageBox.Show(AxlMessageNotifier.Message, "ERRO");
+                    return;
+                }
+
+                MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                Description.Text = string.Empty;
+            }
+        }
+
+        private void Modify()
+        {
+            if (ValidateData() == true)
+            {
+                var category = new ProductCategory()
+                {
+                    Description = Description.Text
+                };
+
+                if (category.Modify(Id) == false)
+                {
+                    MessageBox.Show(AxlMessageNotifier.Message, "ERRO");
+                    return;
+                }
+
+                MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private bool ValidateData()

@@ -283,7 +283,7 @@
             this.MenuProduct_RegisterNew_Product,
             this.MenuProduct_RegisterNew_Category});
             this.MenuProduct_RegisterNew.Name = "MenuProduct_RegisterNew";
-            this.MenuProduct_RegisterNew.Size = new System.Drawing.Size(161, 22);
+            this.MenuProduct_RegisterNew.Size = new System.Drawing.Size(180, 22);
             this.MenuProduct_RegisterNew.Text = "Cadastrar Novo";
             // 
             // MenuProduct_RegisterNew_Product
@@ -308,7 +308,6 @@
             this.MenuProduct_ListRegisters.Name = "MenuProduct_ListRegisters";
             this.MenuProduct_ListRegisters.Size = new System.Drawing.Size(180, 22);
             this.MenuProduct_ListRegisters.Text = "Listar Registros";
-  
             // 
             // MenuProduct_ListRegisters_Product
             // 
@@ -322,6 +321,7 @@
             this.MenuProduct_ListRegisters_Category.Name = "MenuProduct_ListRegisters_Category";
             this.MenuProduct_ListRegisters_Category.Size = new System.Drawing.Size(180, 22);
             this.MenuProduct_ListRegisters_Category.Text = "Categorias";
+            this.MenuProduct_ListRegisters_Category.Click += new System.EventHandler(this.MenuProduct_ListRegisters_Category_Click);
             // 
             // ContextMenu_Stock
             // 

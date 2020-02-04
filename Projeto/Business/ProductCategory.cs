@@ -54,7 +54,6 @@ namespace DimStock.Business
                         OperationHour = DateTime.Now.ToString("HH:mm:ss"),
                         AffectedFields = GetAffectedFields(Id, connection)
                     };
-
                     registerState = userHistory.Register();
 
                     //Finalizar transação
@@ -203,7 +202,7 @@ namespace DimStock.Business
                     criterion += @" AND Description LIKE @Description ";
 
                     parameter.AddWithValue("@Description",
-                    Description);
+                    string.Format("%{0}%", Description));
                 }
 
                 sqlQuery += criterion + @"ORDER BY Description";
@@ -227,6 +226,8 @@ namespace DimStock.Business
             var affectedFieldList = new List<string>();
 
             var commandSQL = @"SELECT * From ProductCategory Where Id = @Id";
+
+            connection.ParameterClear();
             connection.AddParameter("@Id", OleDbType.Integer, id);
 
             using (var dataReader = connection.QueryWithDataReader(commandSQL))

@@ -88,7 +88,7 @@
             this.Save.IdleFillColor = System.Drawing.Color.MediumAquamarine;
             this.Save.IdleForecolor = System.Drawing.Color.White;
             this.Save.IdleLineColor = System.Drawing.Color.MediumAquamarine;
-            this.Save.Location = new System.Drawing.Point(131, 106);
+            this.Save.Location = new System.Drawing.Point(32, 106);
             this.Save.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Save.Name = "Save";
             this.Save.Size = new System.Drawing.Size(97, 43);
@@ -114,7 +114,7 @@
             this.ClearFields.IdleFillColor = System.Drawing.Color.MediumAquamarine;
             this.ClearFields.IdleForecolor = System.Drawing.Color.White;
             this.ClearFields.IdleLineColor = System.Drawing.Color.MediumAquamarine;
-            this.ClearFields.Location = new System.Drawing.Point(32, 106);
+            this.ClearFields.Location = new System.Drawing.Point(133, 106);
             this.ClearFields.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ClearFields.Name = "ClearFields";
             this.ClearFields.Size = new System.Drawing.Size(97, 43);
