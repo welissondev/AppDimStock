@@ -74,7 +74,7 @@
             this.SearchByDescription.CanOverrideStyle = true;
             this.SearchByDescription.CausesValidation = false;
             this.SearchByDescription.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.SearchByDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchByDescription.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchByDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.SearchByDescription.Location = new System.Drawing.Point(309, 108);
             this.SearchByDescription.MaxLength = 50;
@@ -98,7 +98,7 @@
             this.ProductDataList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ProductDataList.Location = new System.Drawing.Point(16, 150);
             this.ProductDataList.Name = "ProductDataList";
-            this.ProductDataList.Size = new System.Drawing.Size(936, 503);
+            this.ProductDataList.Size = new System.Drawing.Size(900, 373);
             this.ProductDataList.TabIndex = 69;
             this.ProductDataList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductDataList_CellClick);
             this.ProductDataList.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ProductDataList_CellMouseDoubleClick);
@@ -109,9 +109,9 @@
             // 
             this.GifLoading.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.GifLoading.Image = global::DimStock.Properties.Resources.Loading;
-            this.GifLoading.Location = new System.Drawing.Point(405, 283);
+            this.GifLoading.Location = new System.Drawing.Point(390, 269);
             this.GifLoading.Name = "GifLoading";
-            this.GifLoading.Size = new System.Drawing.Size(177, 174);
+            this.GifLoading.Size = new System.Drawing.Size(135, 135);
             this.GifLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.GifLoading.TabIndex = 85;
             this.GifLoading.TabStop = false;
@@ -122,10 +122,10 @@
             this.RecordsByPage.BackColor = System.Drawing.Color.White;
             this.RecordsByPage.CanOverrideStyle = true;
             this.RecordsByPage.DropDownStyle = Syncfusion.WinForms.ListView.Enums.DropDownStyle.DropDownList;
-            this.RecordsByPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RecordsByPage.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RecordsByPage.Location = new System.Drawing.Point(550, 108);
             this.RecordsByPage.Name = "RecordsByPage";
-            this.RecordsByPage.Size = new System.Drawing.Size(136, 27);
+            this.RecordsByPage.Size = new System.Drawing.Size(157, 27);
             this.RecordsByPage.Style.DropDownButtonStyle.BackColor = System.Drawing.Color.White;
             this.RecordsByPage.Style.DropDownButtonStyle.DisabledBackColor = System.Drawing.Color.White;
             this.RecordsByPage.Style.DropDownButtonStyle.DisabledForeColor = System.Drawing.Color.White;
@@ -139,13 +139,13 @@
             this.RecordsByPage.Style.EditorStyle.DisabledBackColor = System.Drawing.Color.White;
             this.RecordsByPage.Style.EditorStyle.DisabledBorderColor = System.Drawing.Color.DarkGray;
             this.RecordsByPage.Style.EditorStyle.FocusedBorderColor = System.Drawing.Color.DarkGray;
-            this.RecordsByPage.Style.EditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RecordsByPage.Style.EditorStyle.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RecordsByPage.Style.ReadOnlyEditorStyle.BorderColor = System.Drawing.Color.DarkGray;
             this.RecordsByPage.Style.ReadOnlyEditorStyle.DisabledBackColor = System.Drawing.Color.Gray;
             this.RecordsByPage.Style.ReadOnlyEditorStyle.FocusedBorderColor = System.Drawing.Color.Gray;
-            this.RecordsByPage.Style.ReadOnlyEditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RecordsByPage.Style.ReadOnlyEditorStyle.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RecordsByPage.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.RecordsByPage.Style.TokenStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RecordsByPage.Style.TokenStyle.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RecordsByPage.TabIndex = 6;
             this.RecordsByPage.ToolTipOption.ShadowVisible = false;
             this.RecordsByPage.SelectedIndexChanged += new System.EventHandler(this.RecordsByPage_SelectedIndexChanged);
@@ -153,50 +153,50 @@
             // TitleRecordsByPage
             // 
             this.TitleRecordsByPage.AutoSize = true;
-            this.TitleRecordsByPage.Font = new System.Drawing.Font("Calibri Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TitleRecordsByPage.Location = new System.Drawing.Point(547, 93);
+            this.TitleRecordsByPage.Font = new System.Drawing.Font("Calibri Light", 11F);
+            this.TitleRecordsByPage.Location = new System.Drawing.Point(547, 90);
             this.TitleRecordsByPage.Name = "TitleRecordsByPage";
-            this.TitleRecordsByPage.Size = new System.Drawing.Size(116, 15);
+            this.TitleRecordsByPage.Size = new System.Drawing.Size(134, 18);
             this.TitleRecordsByPage.TabIndex = 91;
             this.TitleRecordsByPage.Text = "Registros Por Página:";
             // 
             // TitleSearchByDescription
             // 
             this.TitleSearchByDescription.AutoSize = true;
-            this.TitleSearchByDescription.Font = new System.Drawing.Font("Calibri Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TitleSearchByDescription.Location = new System.Drawing.Point(306, 91);
+            this.TitleSearchByDescription.Font = new System.Drawing.Font("Calibri Light", 11F);
+            this.TitleSearchByDescription.Location = new System.Drawing.Point(306, 90);
             this.TitleSearchByDescription.Name = "TitleSearchByDescription";
-            this.TitleSearchByDescription.Size = new System.Drawing.Size(61, 15);
+            this.TitleSearchByDescription.Size = new System.Drawing.Size(69, 18);
             this.TitleSearchByDescription.TabIndex = 90;
             this.TitleSearchByDescription.Text = "Descrição:";
             // 
             // TitleSearchByReference
             // 
             this.TitleSearchByReference.AutoSize = true;
-            this.TitleSearchByReference.Font = new System.Drawing.Font("Calibri Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TitleSearchByReference.Location = new System.Drawing.Point(211, 91);
+            this.TitleSearchByReference.Font = new System.Drawing.Font("Calibri Light", 11F);
+            this.TitleSearchByReference.Location = new System.Drawing.Point(211, 90);
             this.TitleSearchByReference.Name = "TitleSearchByReference";
-            this.TitleSearchByReference.Size = new System.Drawing.Size(65, 15);
+            this.TitleSearchByReference.Size = new System.Drawing.Size(74, 18);
             this.TitleSearchByReference.TabIndex = 89;
             this.TitleSearchByReference.Text = "Referência:";
             // 
             // TitleSearchBySize
             // 
             this.TitleSearchBySize.AutoSize = true;
-            this.TitleSearchBySize.Font = new System.Drawing.Font("Calibri Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TitleSearchBySize.Location = new System.Drawing.Point(112, 91);
+            this.TitleSearchBySize.Font = new System.Drawing.Font("Calibri Light", 11F);
+            this.TitleSearchBySize.Location = new System.Drawing.Point(112, 90);
             this.TitleSearchBySize.Name = "TitleSearchBySize";
-            this.TitleSearchBySize.Size = new System.Drawing.Size(58, 15);
+            this.TitleSearchBySize.Size = new System.Drawing.Size(68, 18);
             this.TitleSearchBySize.TabIndex = 88;
             this.TitleSearchBySize.Text = "Tamanho:";
             // 
             // TitleSearchByCode
             // 
             this.TitleSearchByCode.AutoSize = true;
-            this.TitleSearchByCode.Font = new System.Drawing.Font("Calibri Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TitleSearchByCode.Location = new System.Drawing.Point(14, 91);
+            this.TitleSearchByCode.Font = new System.Drawing.Font("Calibri Light", 11F);
+            this.TitleSearchByCode.Location = new System.Drawing.Point(14, 90);
             this.TitleSearchByCode.Name = "TitleSearchByCode";
-            this.TitleSearchByCode.Size = new System.Drawing.Size(47, 15);
+            this.TitleSearchByCode.Size = new System.Drawing.Size(54, 18);
             this.TitleSearchByCode.TabIndex = 87;
             this.TitleSearchByCode.Text = "Código:";
             // 
@@ -209,7 +209,7 @@
             this.SearchByReference.CanOverrideStyle = true;
             this.SearchByReference.CausesValidation = false;
             this.SearchByReference.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.SearchByReference.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchByReference.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchByReference.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.SearchByReference.Location = new System.Drawing.Point(214, 108);
             this.SearchByReference.MaxLength = 50;
@@ -234,7 +234,7 @@
             this.SearchBySize.CanOverrideStyle = true;
             this.SearchBySize.CausesValidation = false;
             this.SearchBySize.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.SearchBySize.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchBySize.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchBySize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.SearchBySize.Location = new System.Drawing.Point(115, 108);
             this.SearchBySize.MaxLength = 50;
@@ -259,7 +259,7 @@
             this.SearchByCode.CanOverrideStyle = true;
             this.SearchByCode.CausesValidation = false;
             this.SearchByCode.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.SearchByCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchByCode.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchByCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.SearchByCode.Location = new System.Drawing.Point(17, 108);
             this.SearchByCode.MaxLength = 50;
@@ -286,6 +286,7 @@
             this.BindingPagination.CountItem = null;
             this.BindingPagination.DeleteItem = null;
             this.BindingPagination.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.BindingPagination.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BindingPagination.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.BackPage,
             this.toolStripSeparator1,
@@ -294,14 +295,14 @@
             this.NextPage,
             this.toolStripSeparator3,
             this.LblRecordsState});
-            this.BindingPagination.Location = new System.Drawing.Point(0, 656);
+            this.BindingPagination.Location = new System.Drawing.Point(0, 526);
             this.BindingPagination.MoveFirstItem = null;
             this.BindingPagination.MoveLastItem = null;
             this.BindingPagination.MoveNextItem = null;
             this.BindingPagination.MovePreviousItem = null;
             this.BindingPagination.Name = "BindingPagination";
             this.BindingPagination.PositionItem = null;
-            this.BindingPagination.Size = new System.Drawing.Size(964, 25);
+            this.BindingPagination.Size = new System.Drawing.Size(928, 25);
             this.BindingPagination.TabIndex = 178;
             this.BindingPagination.Text = "bindingNavigator1";
             // 
@@ -321,9 +322,9 @@
             // 
             // LblPaginationState
             // 
-            this.LblPaginationState.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblPaginationState.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblPaginationState.Name = "LblPaginationState";
-            this.LblPaginationState.Size = new System.Drawing.Size(77, 22);
+            this.LblPaginationState.Size = new System.Drawing.Size(97, 22);
             this.LblPaginationState.Text = "Página 0 de 0";
             // 
             // toolStripSeparator2
@@ -348,7 +349,7 @@
             // LblRecordsState
             // 
             this.LblRecordsState.Name = "LblRecordsState";
-            this.LblRecordsState.Size = new System.Drawing.Size(86, 22);
+            this.LblRecordsState.Size = new System.Drawing.Size(110, 22);
             this.LblRecordsState.Text = "0 de 0 registros";
             // 
             // NewRegister
@@ -362,13 +363,13 @@
             this.NewRegister.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("NewRegister.BackgroundImage")));
             this.NewRegister.ButtonText = "Novo";
             this.NewRegister.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.NewRegister.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NewRegister.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NewRegister.ForeColor = System.Drawing.Color.SeaGreen;
             this.NewRegister.IdleBorderThickness = 1;
             this.NewRegister.IdleCornerRadius = 10;
-            this.NewRegister.IdleFillColor = System.Drawing.Color.MediumAquamarine;
+            this.NewRegister.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
             this.NewRegister.IdleForecolor = System.Drawing.Color.White;
-            this.NewRegister.IdleLineColor = System.Drawing.Color.MediumAquamarine;
+            this.NewRegister.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
             this.NewRegister.Location = new System.Drawing.Point(13, 22);
             this.NewRegister.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.NewRegister.Name = "NewRegister";
@@ -388,13 +389,13 @@
             this.DataList.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DataList.BackgroundImage")));
             this.DataList.ButtonText = "Listar";
             this.DataList.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.DataList.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DataList.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DataList.ForeColor = System.Drawing.Color.SeaGreen;
             this.DataList.IdleBorderThickness = 1;
             this.DataList.IdleCornerRadius = 10;
-            this.DataList.IdleFillColor = System.Drawing.Color.MediumAquamarine;
+            this.DataList.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
             this.DataList.IdleForecolor = System.Drawing.Color.White;
-            this.DataList.IdleLineColor = System.Drawing.Color.MediumAquamarine;
+            this.DataList.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
             this.DataList.Location = new System.Drawing.Point(112, 22);
             this.DataList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DataList.Name = "DataList";
@@ -414,13 +415,13 @@
             this.GenerateReport.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("GenerateReport.BackgroundImage")));
             this.GenerateReport.ButtonText = "Relatório";
             this.GenerateReport.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.GenerateReport.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GenerateReport.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GenerateReport.ForeColor = System.Drawing.Color.SeaGreen;
             this.GenerateReport.IdleBorderThickness = 1;
             this.GenerateReport.IdleCornerRadius = 10;
-            this.GenerateReport.IdleFillColor = System.Drawing.Color.MediumAquamarine;
+            this.GenerateReport.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
             this.GenerateReport.IdleForecolor = System.Drawing.Color.White;
-            this.GenerateReport.IdleLineColor = System.Drawing.Color.MediumAquamarine;
+            this.GenerateReport.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
             this.GenerateReport.Location = new System.Drawing.Point(211, 22);
             this.GenerateReport.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.GenerateReport.Name = "GenerateReport";
@@ -434,7 +435,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(964, 681);
+            this.ClientSize = new System.Drawing.Size(928, 551);
             this.Controls.Add(this.GenerateReport);
             this.Controls.Add(this.DataList);
             this.Controls.Add(this.NewRegister);
@@ -453,7 +454,7 @@
             this.Controls.Add(this.TitleSearchByReference);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(980, 720);
+            this.MinimumSize = new System.Drawing.Size(944, 590);
             this.Name = "ProductListingForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.ProductListingForm_Load);

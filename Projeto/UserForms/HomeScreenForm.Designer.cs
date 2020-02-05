@@ -44,7 +44,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ContextMenu_Product = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MenuProduct_RegisterNew = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuProduct_ListProduct = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuProduct_RegisterNew_Product = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuProduct_RegisterNew_Category = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuProduct_ListRegisters = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuProduct_ListRegisters_Product = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuProduct_ListRegisters_Category = new System.Windows.Forms.ToolStripMenuItem();
             this.ContextMenu_Stock = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MenuStock_RegisterNew = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStock_RegisterNew_Entrie = new System.Windows.Forms.ToolStripMenuItem();
@@ -94,7 +98,7 @@
             this.PanelMenuTop.Location = new System.Drawing.Point(0, 0);
             this.PanelMenuTop.Name = "PanelMenuTop";
             this.PanelMenuTop.Quality = 10;
-            this.PanelMenuTop.Size = new System.Drawing.Size(964, 60);
+            this.PanelMenuTop.Size = new System.Drawing.Size(944, 60);
             this.PanelMenuTop.TabIndex = 1;
             // 
             // label6
@@ -268,24 +272,56 @@
             // 
             this.ContextMenu_Product.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuProduct_RegisterNew,
-            this.MenuProduct_ListProduct});
+            this.MenuProduct_ListRegisters});
             this.ContextMenu_Product.Name = "ContextMenu_Product";
             this.ContextMenu_Product.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.ContextMenu_Product.Size = new System.Drawing.Size(157, 48);
             // 
             // MenuProduct_RegisterNew
             // 
+            this.MenuProduct_RegisterNew.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuProduct_RegisterNew_Product,
+            this.MenuProduct_RegisterNew_Category});
             this.MenuProduct_RegisterNew.Name = "MenuProduct_RegisterNew";
             this.MenuProduct_RegisterNew.Size = new System.Drawing.Size(156, 22);
             this.MenuProduct_RegisterNew.Text = "Cadastrar Novo";
-            this.MenuProduct_RegisterNew.Click += new System.EventHandler(this.MenuProduct_RegisterNew_Click);
             // 
-            // MenuProduct_ListProduct
+            // MenuProduct_RegisterNew_Product
             // 
-            this.MenuProduct_ListProduct.Name = "MenuProduct_ListProduct";
-            this.MenuProduct_ListProduct.Size = new System.Drawing.Size(156, 22);
-            this.MenuProduct_ListProduct.Text = "Listar Produtos";
-            this.MenuProduct_ListProduct.Click += new System.EventHandler(this.MenuProduct_ListProduct_Click);
+            this.MenuProduct_RegisterNew_Product.Name = "MenuProduct_RegisterNew_Product";
+            this.MenuProduct_RegisterNew_Product.Size = new System.Drawing.Size(125, 22);
+            this.MenuProduct_RegisterNew_Product.Text = "Produto";
+            this.MenuProduct_RegisterNew_Product.Click += new System.EventHandler(this.MenuProduct_RegisterNew_Product_Click);
+            // 
+            // MenuProduct_RegisterNew_Category
+            // 
+            this.MenuProduct_RegisterNew_Category.Name = "MenuProduct_RegisterNew_Category";
+            this.MenuProduct_RegisterNew_Category.Size = new System.Drawing.Size(125, 22);
+            this.MenuProduct_RegisterNew_Category.Text = "Categoria";
+            this.MenuProduct_RegisterNew_Category.Click += new System.EventHandler(this.MenuProduct_RegisterNew_Category_Click);
+            // 
+            // MenuProduct_ListRegisters
+            // 
+            this.MenuProduct_ListRegisters.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuProduct_ListRegisters_Product,
+            this.MenuProduct_ListRegisters_Category});
+            this.MenuProduct_ListRegisters.Name = "MenuProduct_ListRegisters";
+            this.MenuProduct_ListRegisters.Size = new System.Drawing.Size(156, 22);
+            this.MenuProduct_ListRegisters.Text = "Listar Registros";
+            // 
+            // MenuProduct_ListRegisters_Product
+            // 
+            this.MenuProduct_ListRegisters_Product.Name = "MenuProduct_ListRegisters_Product";
+            this.MenuProduct_ListRegisters_Product.Size = new System.Drawing.Size(130, 22);
+            this.MenuProduct_ListRegisters_Product.Text = "Produtos";
+            this.MenuProduct_ListRegisters_Product.Click += new System.EventHandler(this.MenuProduct_ListRegisters_Product_Click);
+            // 
+            // MenuProduct_ListRegisters_Category
+            // 
+            this.MenuProduct_ListRegisters_Category.Name = "MenuProduct_ListRegisters_Category";
+            this.MenuProduct_ListRegisters_Category.Size = new System.Drawing.Size(130, 22);
+            this.MenuProduct_ListRegisters_Category.Text = "Categorias";
+            this.MenuProduct_ListRegisters_Category.Click += new System.EventHandler(this.MenuProduct_ListRegisters_Category_Click);
             // 
             // ContextMenu_Stock
             // 
@@ -377,7 +413,7 @@
             this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, 60);
             this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
             this.bunifuGradientPanel1.Quality = 10;
-            this.bunifuGradientPanel1.Size = new System.Drawing.Size(964, 42);
+            this.bunifuGradientPanel1.Size = new System.Drawing.Size(944, 31);
             this.bunifuGradientPanel1.TabIndex = 0;
             // 
             // DayOfTheWeek
@@ -386,7 +422,7 @@
             this.DayOfTheWeek.BackColor = System.Drawing.Color.Transparent;
             this.DayOfTheWeek.Font = new System.Drawing.Font("Calibri Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DayOfTheWeek.ForeColor = System.Drawing.Color.White;
-            this.DayOfTheWeek.Location = new System.Drawing.Point(510, 3);
+            this.DayOfTheWeek.Location = new System.Drawing.Point(490, -2);
             this.DayOfTheWeek.Name = "DayOfTheWeek";
             this.DayOfTheWeek.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.DayOfTheWeek.Size = new System.Drawing.Size(451, 33);
@@ -399,7 +435,7 @@
             this.FormNovigationDescription.BackColor = System.Drawing.Color.Transparent;
             this.FormNovigationDescription.Font = new System.Drawing.Font("Calibri Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormNovigationDescription.ForeColor = System.Drawing.Color.White;
-            this.FormNovigationDescription.Location = new System.Drawing.Point(4, 3);
+            this.FormNovigationDescription.Location = new System.Drawing.Point(4, -2);
             this.FormNovigationDescription.Name = "FormNovigationDescription";
             this.FormNovigationDescription.Size = new System.Drawing.Size(535, 33);
             this.FormNovigationDescription.TabIndex = 0;
@@ -425,12 +461,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(964, 704);
+            this.ClientSize = new System.Drawing.Size(944, 681);
             this.Controls.Add(this.bunifuGradientPanel1);
             this.Controls.Add(this.PanelMenuTop);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
-            this.MinimumSize = new System.Drawing.Size(980, 720);
+            this.MinimumSize = new System.Drawing.Size(960, 720);
             this.Name = "HomeScreenForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.HomeScreenForm_Load);
@@ -452,7 +488,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ContextMenuStrip ContextMenu_Product;
         private System.Windows.Forms.ToolStripMenuItem MenuProduct_RegisterNew;
-        private System.Windows.Forms.ToolStripMenuItem MenuProduct_ListProduct;
+        private System.Windows.Forms.ToolStripMenuItem MenuProduct_ListRegisters;
         private System.Windows.Forms.LinkLabel MainMenu_Product;
         private System.Windows.Forms.LinkLabel MainMenu_User;
         private System.Windows.Forms.LinkLabel MainMenu_Stock;
@@ -477,6 +513,10 @@
         private System.Windows.Forms.ContextMenuStrip ContextMenu_Settings;
         private System.Windows.Forms.ToolStripMenuItem MenuSettings_Backup;
         public System.Windows.Forms.Label FormNovigationDescription;
+        private System.Windows.Forms.ToolStripMenuItem MenuProduct_RegisterNew_Product;
+        private System.Windows.Forms.ToolStripMenuItem MenuProduct_RegisterNew_Category;
+        private System.Windows.Forms.ToolStripMenuItem MenuProduct_ListRegisters_Product;
+        private System.Windows.Forms.ToolStripMenuItem MenuProduct_ListRegisters_Category;
     }
 }
 

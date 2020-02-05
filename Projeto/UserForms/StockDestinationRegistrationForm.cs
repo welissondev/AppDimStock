@@ -263,6 +263,7 @@ namespace DimStock.UserForms
                 dataGrid.Columns[1].HeaderText = "DESTINO";
                 dataGrid.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 dataGrid.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dataGrid.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dataGrid.Columns[1].ReadOnly = true;
 
             }

@@ -84,7 +84,7 @@ namespace DimStock.UserForms
 
         private void Delete_Click(object sender, EventArgs e)
         {
-            DeleteStockMovement();
+            DeleteMovement();
         }
 
         private void AddItem_Click(object sender, EventArgs e)
@@ -128,7 +128,7 @@ namespace DimStock.UserForms
 
         private void StockDestinationList_DropDown(object sender, EventArgs e)
         {
-            FillStockDestinations();
+            FillAllComboBox();
         }
 
         private void StockDestinationList_SelectedIndexChanged(object sender, EventArgs e)
@@ -165,7 +165,7 @@ namespace DimStock.UserForms
         {
             GifLoading.Visible = false;
             SearchTimer.Enabled = false;
-            SearchStock();
+            SearchStockData();
         }
 
         #endregion
@@ -203,7 +203,7 @@ namespace DimStock.UserForms
                 if (MainDataList.ListIsStock.Equals(true))
                 {
                     ProductId = Convert.ToInt32(MainDataList.CurrentRow.Cells["productId"].Value);
-                    GetStockDetails(ProductId);
+                    ViewStockDetails(ProductId);
                 }
             }
             catch (Exception ex)
@@ -250,47 +250,23 @@ namespace DimStock.UserForms
 
         private void MovementEntrie_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            InitializeNewMovement("Entrada");
+            StartNewOperation("Entrada");
         }
 
         private void MovementOutPut_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            InitializeNewMovement("Saída");
+            StartNewOperation("Saída");
         }
 
         #endregion
 
         #region MethodsAuxiliarys
 
-        private List<Stock> GetItems()
-        {
-            var itemList = new List<Stock>();
-
-            for (int i = 0; i < MainDataList.Rows.Count; i++)
-            {
-                var id = MainDataList.Rows[i].Cells["stockId"].Value;
-                var quantity = MainDataList.Rows[i].Cells["stockQuantity"].Value;
-                var totalValue = MainDataList.Rows[i].Cells["stockTotalValue"].Value;
-                totalValue.ToString().Replace("R$", "").Replace("$", "");
-
-                var stock = new Stock()
-                {
-                    Id = Convert.ToInt32(id),
-                    Quantity = Convert.ToInt32(quantity),
-                    TotalValue = Convert.ToDouble(totalValue)
-                };
-
-                itemList.Add(stock);
-            }
-
-            return itemList;
-        }
-
-        private void SearchStock()
+        private void SearchStockData()
         {
             try
             {
-                var stockProduct = new StockProduct(dataPagination)
+                var stock = new StockProduct(dataPagination)
                 {
                     SearchByCode = QueryByCode.Text,
                     SearchBySize = QueryBySize.Text,
@@ -299,29 +275,26 @@ namespace DimStock.UserForms
                     SearchBySummary = "All",
                 };
 
-                stockProduct.SearchData();
+                stock.SearchData();
 
                 MainDataList.Columns.Clear();
 
                 CreateColumnForItemList();
 
-                for (var i = 0; i < stockProduct.ListOfRecords.Count; i++)
+                for (var i = 0; i < stock.ListOfRecords.Count; i++)
                 {
                     MainDataList.Rows.Add(
-                    stockProduct.ListOfRecords[i].StockId,
-                    stockProduct.ListOfRecords[i].ProductId,
-                    stockProduct.ListOfRecords[i].ProductCode,
-                    stockProduct.ListOfRecords[i].ProductSize,
-                    stockProduct.ListOfRecords[i].ProductReference,
-                    stockProduct.ListOfRecords[i].ProductDescription,
-                    stockProduct.ListOfRecords[i].ProductCostPrice
+                    stock.ListOfRecords[i].StockId,
+                    stock.ListOfRecords[i].ProductId,
+                    stock.ListOfRecords[i].ProductCode,
+                    stock.ListOfRecords[i].ProductSize,
+                    stock.ListOfRecords[i].ProductReference,
+                    stock.ListOfRecords[i].ProductDescription,
+                    stock.ListOfRecords[i].ProductCostPrice
                     );
                 }
-
                 MainDataList.ClearSelection();
-
                 MainDataList.Visible = true;
-
             }
             catch (Exception ex)
             {
@@ -329,7 +302,7 @@ namespace DimStock.UserForms
             }
         }
 
-        public void FillStockDestinations()
+        private void FillAllComboBox()
         {
             try
             {
@@ -351,42 +324,46 @@ namespace DimStock.UserForms
             }
         }
 
-        private void GetStockDetails(int id)
+        private void ViewStockDetails(int id)
         {
-            var stockProduct = new StockProduct();
-            stockProduct.ViewDetails(id);
+            var stock = new StockProduct();
+            stock.ViewDetails(id);
 
-            QueryByCode.Text = stockProduct.ProductCode.ToString();
-            QueryBySize.Text = stockProduct.ProductSize.ToString();
-            QueryByReference.Text = stockProduct.ProductReference.ToString();
-            QueryByDescription.Text = stockProduct.ProductDescription;
-            UnitaryValue.Text = stockProduct.ProductCostPrice.ToString();
-            ProductId = stockProduct.ProductId;
-            StockId = stockProduct.StockId;
-            StockQuantity = stockProduct.StockQuantity;
+            QueryByCode.Text = stock.ProductCode.ToString();
+            QueryBySize.Text = stock.ProductSize.ToString();
+            QueryByReference.Text = stock.ProductReference.ToString();
+            QueryByDescription.Text = stock.ProductDescription;
+            UnitaryValue.Text = stock.ProductCostPrice.ToString();
+            ProductId = stock.ProductId;
+            StockId = stock.StockId;
+            StockQuantity = stock.StockQuantity;
             Quantity.Select();
 
             ListStockItems();
         }
 
-        public void GetStockMovementDetails(int id)
+        public void ViewMovementDetails(int id)
         {
             try
             {
-                var stockMovement = new StockMovement();
-                stockMovement.ViewDetails(id);
+                var movement = new StockMovement();
+                movement.ViewDetails(id);
 
                 StockMovementId.Text = id.ToString();
-                OperationType.Text = stockMovement.OperationType;
-                OperationDate.Text = Convert.ToString(stockMovement.OperationDate.ToString("dd-MM-yyyy"));
-                OperationHour.Text = stockMovement.OperationHour;
-                OperationSituation.Text = stockMovement.OperationSituation;
+                OperationType.Text = movement.OperationType;
+                OperationDate.Text = Convert.ToString(movement.OperationDate.ToString("dd-MM-yyyy"));
+                OperationHour.Text = Convert.ToString(movement.OperationHour.ToString("hh:mm:ss"));
+                OperationSituation.Text = movement.OperationSituation;
 
-                if (stockMovement.StockDestinationLocation != string.Empty)
+                if (movement.StockDestinationLocation != string.Empty)
                 {
-                    FillStockDestinations();
-                    StockDestinationList.Text = stockMovement.StockDestinationLocation;
+                    FillAllComboBox();
+
+                    StockDestinationList.Text =
+                    movement.StockDestinationLocation;
                 }
+
+                ListStockItems();
             }
             catch (Exception ex)
             {
@@ -394,37 +371,20 @@ namespace DimStock.UserForms
             }
         }
 
-        public void InitializeNewMovement(string operationType)
+        public void StartNewOperation(string operationType)
         {
             var stockMovement = new StockMovement();
 
-            OperationType.Text = operationType;
+            stockMovement.StartNewOperation(operationType);
 
-            switch (OperationType.Text)
-            {
-                case "Entrada":
-                    stockMovement.OperationType = OperationType.Text;
-                    break;
-
-                case "Saída":
-                    stockMovement.OperationType = OperationType.Text;
-                    break;
-            }
-
-            stockMovement.OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy"));
-            stockMovement.OperationHour = DateTime.Now.ToString("HH:mm:ss");
-            stockMovement.OperationSituation = "Em Aberto";
-
-            stockMovement.InitializeNew();
-
-            GetStockMovementDetails(stockMovement.Id);
+            ViewMovementDetails(stockMovement.Id);
 
             ResetControl();
 
             ListStockItems();
         }
 
-        private void DeleteStockMovement()
+        private void DeleteMovement()
         {
             try
             {
@@ -434,12 +394,12 @@ namespace DimStock.UserForms
                     MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                     {
-                        var stockMovement = new StockMovement
+                        var movement = new StockMovement
                         {
                             OperationType = OperationType.Text
                         };
 
-                        if (stockMovement.Delete(Convert.ToInt32(
+                        if (movement.Delete(Convert.ToInt32(
                         StockMovementId.Text)) == true)
                         {
                             MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
@@ -494,43 +454,66 @@ namespace DimStock.UserForms
             }
         }
 
-        public void ListStockItems()
+        private List<Stock> GetItems()
+        {
+            var itemList = new List<Stock>();
+
+            for (int i = 0; i < MainDataList.Rows.Count; i++)
+            {
+                var id = MainDataList.Rows[i].Cells["stockId"].Value;
+                var quantity = MainDataList.Rows[i].Cells["stockQuantity"].Value;
+                var totalValue = MainDataList.Rows[i].Cells["stockTotalValue"].Value;
+
+                totalValue.ToString().Replace("R$", "").Replace("$", "");
+
+                var stock = new Stock()
+                {
+                    Id = Convert.ToInt32(id),
+                    Quantity = Convert.ToInt32(quantity),
+                    TotalValue = Convert.ToDouble(totalValue)
+                };
+
+                itemList.Add(stock);
+            }
+
+            return itemList;
+        }
+
+        private void ListStockItems()
         {
             try
             {
-                var stockItem = new StockItem();
-                stockItem.ListItems(Convert.ToInt32(StockMovementId.Text));
+                var item = new StockMovementItem();
+                item.ListItems(Convert.ToInt32(StockMovementId.Text));
 
                 MainDataList.Columns.Clear();
 
                 CreateColumnForStockList();
 
-                for (int i = 0; i < stockItem.ListOfRecords.Count; i++)
+                for (int i = 0; i < item.ListOfRecords.Count; i++)
                 {
                     MainDataList.Rows.Add(
-                    stockItem.ListOfRecords[i].Id,
-                    stockItem.ListOfRecords[i].StockId,
-                    stockItem.ListOfRecords[i].ProductCode,
-                    stockItem.ListOfRecords[i].ProductSize,
-                    stockItem.ListOfRecords[i].ProductReference,
-                    stockItem.ListOfRecords[i].ProductDescription,
-                    stockItem.ListOfRecords[i].Quantity,
-                    stockItem.ListOfRecords[i].UnitaryValue,
-                    stockItem.ListOfRecords[i].TotalValue
+                    item.ListOfRecords[i].Id,
+                    item.ListOfRecords[i].StockId,
+                    item.ListOfRecords[i].ProductCode,
+                    item.ListOfRecords[i].ProductSize,
+                    item.ListOfRecords[i].ProductReference,
+                    item.ListOfRecords[i].ProductDescription,
+                    item.ListOfRecords[i].Quantity,
+                    item.ListOfRecords[i].UnitaryValue,
+                    item.ListOfRecords[i].TotalValue
                     );
                 }
-
                 MainDataList.ClearSelection();
-
-                var totalValue = stockItem.ListOfRecords.Sum(x => x.TotalValue);
-                var totalItems = stockItem.ListOfRecords.Count;
-
-                SubTotal.Text = totalValue.ToString("c2");
-                TotalItems.Text = totalItems.ToString();
 
                 if (OperationSituation.Text == "Finalizada")
                     MainDataList.Columns["delete"].Visible = false;
 
+                var totalValue = item.ListOfRecords.Sum(x => x.TotalValue);
+                var totalItems = item.ListOfRecords.Count;
+
+                SubTotal.Text = totalValue.ToString("c2");
+                TotalItems.Text = totalItems.ToString();
             }
             catch (Exception ex)
             {
@@ -542,7 +525,7 @@ namespace DimStock.UserForms
         {
             try
             {
-                var stockItem = new StockItem()
+                var item = new StockMovementItem()
                 {
                     StockMovementId = Convert.ToInt32(StockMovementId.Text),
                     StockId = StockId,
@@ -552,7 +535,7 @@ namespace DimStock.UserForms
                     TotalValue = Convert.ToDouble(TotalValue.DecimalValue)
                 };
 
-                stockItem.Add();
+                item.Add();
             }
             catch (Exception ex)
             {
@@ -564,8 +547,8 @@ namespace DimStock.UserForms
         {
             if (OperationSituation.Text != "Finalizada")
             {
-                var stockItem = new StockItem();
-                stockItem.Remove(id);
+                var item = new StockMovementItem();
+                item.Remove(id);
 
                 ListStockItems();
             }
