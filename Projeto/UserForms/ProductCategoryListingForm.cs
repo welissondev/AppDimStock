@@ -385,10 +385,10 @@ namespace DimStock.UserForms
                 categoryDataList.Columns[0].Visible = false;
                 categoryDataList.Columns[0].ReadOnly = true;
 
+                description.Width = 600;
                 categoryDataList.Columns.Add(description);
                 categoryDataList.Columns[1].Name = "description";
                 categoryDataList.Columns[1].HeaderText = "DESCRIÇÃO";
-                categoryDataList.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 categoryDataList.Columns[1].ReadOnly = true;
 
                 edit.Text = "Editar";

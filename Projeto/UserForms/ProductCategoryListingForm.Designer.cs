@@ -143,9 +143,9 @@
             // 
             // GifLoading
             // 
-            this.GifLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.GifLoading.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.GifLoading.Image = global::DimStock.Properties.Resources.Loading;
-            this.GifLoading.Location = new System.Drawing.Point(392, 249);
+            this.GifLoading.Location = new System.Drawing.Point(353, 252);
             this.GifLoading.Name = "GifLoading";
             this.GifLoading.Size = new System.Drawing.Size(135, 135);
             this.GifLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
