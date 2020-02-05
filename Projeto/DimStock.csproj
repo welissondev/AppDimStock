@@ -38,6 +38,17 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <ShouldCreateLogs>True</ShouldCreateLogs>
+    <AdvancedSettingsExpanded>False</AdvancedSettingsExpanded>
+    <UpdateAssemblyVersion>True</UpdateAssemblyVersion>
+    <UpdateAssemblyFileVersion>True</UpdateAssemblyFileVersion>
+    <UpdateAssemblyInfoVersion>True</UpdateAssemblyInfoVersion>
+    <AssemblyVersionSettings>IncrementOnDemand.IncrementOnDemand.IncrementOnDemand.IncrementWithResetOnIncrease</AssemblyVersionSettings>
+    <AssemblyFileVersionSettings>IncrementOnDemand.IncrementOnDemand.IncrementOnDemand.IncrementWithResetOnIncrease</AssemblyFileVersionSettings>
+    <AssemblyInfoVersionSettings>IncrementOnDemand.IncrementOnDemand.IncrementOnDemand.IncrementWithResetOnIncrease</AssemblyInfoVersionSettings>
+    <UpdatePackageVersion>False</UpdatePackageVersion>
+    <AssemblyInfoVersionType>SettingsVersion</AssemblyInfoVersionType>
+    <InheritWinAppVersionFrom>None</InheritWinAppVersionFrom>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -136,6 +147,8 @@
     <Compile Include="Auxiliarys\AxlException.cs" />
     <Compile Include="Auxiliarys\AxlMdiForm.cs" />
     <Compile Include="Auxiliarys\AxlLogin.cs" />
+    <Compile Include="Auxiliarys\AxlPageWeb.cs" />
+    <Compile Include="Business\ProductCategory.cs" />
     <Compile Include="Controls\CustomPictureBoxOne.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -146,7 +159,7 @@
     <Compile Include="Business\Company.cs" />
     <Compile Include="Business\Connection.cs" />
     <Compile Include="Business\StockDestination.cs" />
-    <Compile Include="Business\StockItem.cs" />
+    <Compile Include="Business\StockMovementItem.cs" />
     <Compile Include="Business\StockProduct.cs" />
     <Compile Include="Business\StockMovement.cs" />
     <Compile Include="Auxiliarys\AxlMessageNotifier.cs" />
@@ -183,6 +196,18 @@
     </Compile>
     <Compile Include="UserForms\HomeScreenForm.Designer.cs">
       <DependentUpon>HomeScreenForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForms\ProductCategoryListingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForms\ProductCategoryListingForm.Designer.cs">
+      <DependentUpon>ProductCategoryListingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForms\ProductCategoryRegistrationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForms\ProductCategoryRegistrationForm.Designer.cs">
+      <DependentUpon>ProductCategoryRegistrationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UserForms\ProductListingForm.cs">
       <SubType>Form</SubType>
@@ -265,6 +290,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserForms\HomeScreenForm.resx">
       <DependentUpon>HomeScreenForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\ProductCategoryListingForm.resx">
+      <DependentUpon>ProductCategoryListingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\ProductCategoryRegistrationForm.resx">
+      <DependentUpon>ProductCategoryRegistrationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserForms\ProductListingForm.resx">
       <DependentUpon>ProductListingForm.cs</DependentUpon>

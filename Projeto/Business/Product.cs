@@ -23,6 +23,8 @@ namespace DimStock.Business
 
         #region BussinesProperties
         public int Id { get; set; }
+        public int CategoryId { get; set; }
+        public string CategoryDescription { get; set; }
         public int Code { get; set; }
         public int Size { get; set; }
         public int Reference { get; set; }
@@ -57,11 +59,13 @@ namespace DimStock.Business
 
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
-                    var sqlCommand = @"INSERT INTO Product (Code, [Size], Reference, Supplier, 
-                    Description, CostPrice, SalePrice, MinStock, MaxStock, BarCode, PhotoName) VALUES
-                    (@Code, @Size, @Reference, @Supplier, @Description, @CostPrice, @SalePrice, 
-                    @MinStock, @MaxStock, @BarCode, @PhotoName)";
+                    var sqlCommand = @"INSERT INTO Product 
+                    (ProductCategoryId, Code, [Size], Reference, Supplier, Description, CostPrice, 
+                    SalePrice, MinStock, MaxStock, BarCode, PhotoName) VALUES (@ProductCategoryId, @Code, 
+                    @Size, @Reference, @Supplier, @Description, @CostPrice, @SalePrice, @MinStock, 
+                    @MaxStock, @BarCode, @PhotoName)";
 
+                    connection.AddParameter("@ProductCategoryId", OleDbType.Integer, CategoryId);
                     connection.AddParameter("@Code", OleDbType.Integer, Code);
                     connection.AddParameter("@Size", OleDbType.Integer, Size);
                     connection.AddParameter("@Reference", OleDbType.Integer, Reference);
@@ -77,13 +81,16 @@ namespace DimStock.Business
                     transactionState = connection.ExecuteTransaction(
                     sqlCommand) > 0;
 
+
                     //Pegar id do último registro inserido
                     Id = Convert.ToInt32(connection.ExecuteScalar(
                     "SELECT MAX(Id) From Product"));
 
+
                     //Relacionar o produto ao stock
                     var stock = new Stock(connection);
                     transactionState = stock.RelateProduct(Id);
+
 
                     //Registrar histórico do usuário
                     var userHistory = new UserHistory(connection)
@@ -95,8 +102,8 @@ namespace DimStock.Business
                         OperationHour = DateTime.Now.ToString("HH:mm:ss"),
                         AffectedFields = GetAffectedFields(Id, connection)
                     };
-
                     transactionState = userHistory.Register();
+
 
                     //Fianalizar transação
                     connection.Transaction.Commit();
@@ -114,17 +121,18 @@ namespace DimStock.Business
             {
                 bool transactionState = false;
 
-                var affectedFields = GetAffectedFields(id, connection); 
+                var affectedFields = GetAffectedFields(id, connection);
 
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
-                    var sqlCommand = @"UPDATE Product Set Code = @Code, 
+                    var sqlCommand = @"UPDATE Product Set ProductCategoryId = @ProductCategoryId, Code = @Code, 
                     [Size] = @Size, Reference = @Reference, Supplier = @Supplier, 
                     Description = @Description, CostPrice = @CostPrice, SalePrice = @SalePrice, 
                     MinStock = @MinStock, MaxStock = @MaxStock, BarCode = @BarCode, 
                     PhotoName = @PhotoName WHERE Id = @Id";
 
                     connection.ParameterClear();
+                    connection.AddParameter("@ProductCategoryId", OleDbType.Integer, CategoryId);
                     connection.AddParameter("@Code", OleDbType.Integer, Code);
                     connection.AddParameter("@Size", OleDbType.Integer, Size);
                     connection.AddParameter("@Reference", OleDbType.Integer, Reference);
@@ -140,7 +148,7 @@ namespace DimStock.Business
 
                     transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
 
-                    //Seleciona o preço de custo do produto
+                    //Seleciona preço de costo do produto
                     var sqlQuery = @"SELECT CostPrice FROM 
                     Product WHERE Id = @Id";
 
@@ -361,9 +369,9 @@ namespace DimStock.Business
         {
             using (var connection = new Connection())
             {
-                var sqlQuery = @"SELECT Id, Code, [Size], Reference, Supplier, 
-                Description, MinStock, MaxStock, CostPrice, SalePrice, PhotoName, 
-                BarCode From Product Where Id = @Id ";
+                var sqlQuery = @"SELECT Product.*, ProductCategory.* FROM Product
+                left join ProductCategory ON Product.ProductCategoryId = ProductCategory.Id
+                WHERE Product.Id = @Id ";
 
                 connection.AddParameter("@Id", OleDbType.Integer, id);
 
@@ -371,12 +379,21 @@ namespace DimStock.Business
                 {
                     while (reader.Read())
                     {
-                        Id = Convert.ToInt32(reader["Id"]);
+                        Id = Convert.ToInt32(reader["Product.Id"]);
+
+                        if (!reader.IsDBNull(1))
+                            CategoryId = Convert.ToInt32(
+                            reader["ProductCategory.Id"]);
+
+                        if (!reader.IsDBNull(2))
+                            CategoryDescription = Convert.ToString(
+                            reader["ProductCategory.Description"]);
+
                         Code = Convert.ToInt32(reader["Code"]);
                         Size = Convert.ToInt32(reader["Size"]);
                         Reference = Convert.ToInt32(reader["Reference"]);
                         Supplier = Convert.ToString(reader["Supplier"]);
-                        Description = Convert.ToString(reader["Description"]);
+                        Description = Convert.ToString(reader["Product.Description"]);
                         MinStock = Convert.ToInt32(reader["MinStock"]);
                         MaxStock = Convert.ToInt32(reader["MaxStock"]);
                         CostPrice = Convert.ToDouble(reader["CostPrice"]);
@@ -424,6 +441,8 @@ namespace DimStock.Business
             var affectedFieldList = new List<string>();
 
             var commandSQL = @"SELECT * From Product Where Id = @Id";
+
+            connection.ParameterClear();
             connection.AddParameter("@Id", OleDbType.Integer, id);
 
             using (var dataReader = connection.QueryWithDataReader(commandSQL))

@@ -1,6 +1,6 @@
 ﻿namespace DimStock.UserForms
 {
-    partial class UserHistoryListingForm
+    partial class ProductCategoryListingForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,16 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserHistoryListingForm));
-            this.HistoryDataList = new System.Windows.Forms.DataGridView();
-            this.SearchTitleByLogin = new System.Windows.Forms.Label();
-            this.SearchByLogin = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.StartDate = new Syncfusion.WinForms.Input.SfDateTimeEdit();
-            this.StartDateTitle = new System.Windows.Forms.Label();
-            this.FinalDateTitle = new System.Windows.Forms.Label();
-            this.FinalDate = new Syncfusion.WinForms.Input.SfDateTimeEdit();
-            this.SearchTimer = new System.Windows.Forms.Timer(this.components);
-            this.GifLoading = new System.Windows.Forms.PictureBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductCategoryListingForm));
+            this.CategoryDataList = new System.Windows.Forms.DataGridView();
             this.BindingPagination = new System.Windows.Forms.BindingNavigator(this.components);
             this.BackPage = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -47,130 +39,35 @@
             this.NextPage = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.LblRecordsState = new System.Windows.Forms.ToolStripLabel();
+            this.GifLoading = new System.Windows.Forms.PictureBox();
             this.RecordsByPage = new Syncfusion.WinForms.ListView.SfComboBox();
+            this.SearchByDescription = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.TitleRecordsByPage = new System.Windows.Forms.Label();
+            this.TitleSearchByDescription = new System.Windows.Forms.Label();
             this.DataList = new Bunifu.Framework.UI.BunifuThinButton2();
-            ((System.ComponentModel.ISupportInitialize)(this.HistoryDataList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SearchByLogin)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GifLoading)).BeginInit();
+            this.NewRegister = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.SearchTimer = new System.Windows.Forms.Timer(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.CategoryDataList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BindingPagination)).BeginInit();
             this.BindingPagination.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GifLoading)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RecordsByPage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SearchByDescription)).BeginInit();
             this.SuspendLayout();
             // 
-            // HistoryDataList
+            // CategoryDataList
             // 
-            this.HistoryDataList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.CategoryDataList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.HistoryDataList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.HistoryDataList.Location = new System.Drawing.Point(29, 146);
-            this.HistoryDataList.Name = "HistoryDataList";
-            this.HistoryDataList.Size = new System.Drawing.Size(871, 377);
-            this.HistoryDataList.TabIndex = 145;
-            this.HistoryDataList.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.HistoryDataList_CellMouseEnter);
-            // 
-            // SearchTitleByLogin
-            // 
-            this.SearchTitleByLogin.AutoSize = true;
-            this.SearchTitleByLogin.Font = new System.Drawing.Font("Calibri Light", 11F);
-            this.SearchTitleByLogin.Location = new System.Drawing.Point(27, 94);
-            this.SearchTitleByLogin.Name = "SearchTitleByLogin";
-            this.SearchTitleByLogin.Size = new System.Drawing.Size(87, 18);
-            this.SearchTitleByLogin.TabIndex = 147;
-            this.SearchTitleByLogin.Text = "Buscar Login:";
-            // 
-            // SearchByLogin
-            // 
-            this.SearchByLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SearchByLogin.BeforeTouchSize = new System.Drawing.Size(243, 27);
-            this.SearchByLogin.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
-            this.SearchByLogin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SearchByLogin.CanOverrideStyle = true;
-            this.SearchByLogin.CausesValidation = false;
-            this.SearchByLogin.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.SearchByLogin.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchByLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.SearchByLogin.Location = new System.Drawing.Point(30, 113);
-            this.SearchByLogin.MaxLength = 50;
-            this.SearchByLogin.MinimumSize = new System.Drawing.Size(16, 12);
-            this.SearchByLogin.Multiline = true;
-            this.SearchByLogin.Name = "SearchByLogin";
-            this.SearchByLogin.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
-            this.SearchByLogin.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
-            this.SearchByLogin.Size = new System.Drawing.Size(243, 27);
-            this.SearchByLogin.TabIndex = 146;
-            this.SearchByLogin.Tag = "";
-            this.SearchByLogin.ThemeName = "Default";
-            this.SearchByLogin.TextChanged += new System.EventHandler(this.SearchByLogin_TextChanged);
-            // 
-            // StartDate
-            // 
-            this.StartDate.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StartDate.Location = new System.Drawing.Point(276, 113);
-            this.StartDate.Name = "StartDate";
-            this.StartDate.Size = new System.Drawing.Size(124, 27);
-            this.StartDate.Style.BorderColor = System.Drawing.Color.Silver;
-            this.StartDate.Style.FocusedBorderColor = System.Drawing.Color.DarkGray;
-            this.StartDate.Style.ForeColor = System.Drawing.Color.Black;
-            this.StartDate.Style.HoverBorderColor = System.Drawing.Color.Silver;
-            this.StartDate.Style.UpDownForeColor = System.Drawing.Color.White;
-            this.StartDate.Style.UpDownHoverForeColor = System.Drawing.Color.White;
-            this.StartDate.Style.WatermarkForeColor = System.Drawing.Color.White;
-            this.StartDate.TabIndex = 148;
-            // 
-            // StartDateTitle
-            // 
-            this.StartDateTitle.AutoSize = true;
-            this.StartDateTitle.Font = new System.Drawing.Font("Calibri Light", 11F);
-            this.StartDateTitle.Location = new System.Drawing.Point(273, 94);
-            this.StartDateTitle.Name = "StartDateTitle";
-            this.StartDateTitle.Size = new System.Drawing.Size(75, 18);
-            this.StartDateTitle.TabIndex = 144;
-            this.StartDateTitle.Text = "Data Inicio:";
-            // 
-            // FinalDateTitle
-            // 
-            this.FinalDateTitle.AutoSize = true;
-            this.FinalDateTitle.Font = new System.Drawing.Font("Calibri Light", 11F);
-            this.FinalDateTitle.Location = new System.Drawing.Point(400, 94);
-            this.FinalDateTitle.Name = "FinalDateTitle";
-            this.FinalDateTitle.Size = new System.Drawing.Size(71, 18);
-            this.FinalDateTitle.TabIndex = 150;
-            this.FinalDateTitle.Text = "Data Final:";
-            // 
-            // FinalDate
-            // 
-            this.FinalDate.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FinalDate.Location = new System.Drawing.Point(403, 113);
-            this.FinalDate.Name = "FinalDate";
-            this.FinalDate.Size = new System.Drawing.Size(121, 27);
-            this.FinalDate.Style.BorderColor = System.Drawing.Color.Silver;
-            this.FinalDate.Style.DisabledForeColor = System.Drawing.Color.White;
-            this.FinalDate.Style.FocusedBorderColor = System.Drawing.Color.DarkGray;
-            this.FinalDate.Style.HoverBorderColor = System.Drawing.Color.Silver;
-            this.FinalDate.Style.UpDownForeColor = System.Drawing.Color.White;
-            this.FinalDate.Style.UpDownHoverForeColor = System.Drawing.Color.White;
-            this.FinalDate.Style.WatermarkForeColor = System.Drawing.Color.White;
-            this.FinalDate.TabIndex = 151;
-            this.FinalDate.ValueChanged += new Syncfusion.WinForms.Input.Events.DateTimeValueChangedEventHandler(this.FinalDate_ValueChanged);
-            // 
-            // SearchTimer
-            // 
-            this.SearchTimer.Interval = 1000;
-            this.SearchTimer.Tick += new System.EventHandler(this.SearchTimer_Tick);
-            // 
-            // GifLoading
-            // 
-            this.GifLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.GifLoading.Image = global::DimStock.Properties.Resources.Loading;
-            this.GifLoading.Location = new System.Drawing.Point(403, 259);
-            this.GifLoading.Name = "GifLoading";
-            this.GifLoading.Size = new System.Drawing.Size(135, 135);
-            this.GifLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.GifLoading.TabIndex = 152;
-            this.GifLoading.TabStop = false;
-            this.GifLoading.Visible = false;
+            this.CategoryDataList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CategoryDataList.Location = new System.Drawing.Point(12, 133);
+            this.CategoryDataList.Name = "CategoryDataList";
+            this.CategoryDataList.Size = new System.Drawing.Size(904, 390);
+            this.CategoryDataList.TabIndex = 0;
+            this.CategoryDataList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CategoryDataList_CellClick);
+            this.CategoryDataList.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.CategoryDataList_CellMouseEnter);
+            this.CategoryDataList.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.CategoryDataList_RowPrePaint);
             // 
             // BindingPagination
             // 
@@ -244,15 +141,27 @@
             this.LblRecordsState.Size = new System.Drawing.Size(110, 22);
             this.LblRecordsState.Text = "0 de 0 registros";
             // 
+            // GifLoading
+            // 
+            this.GifLoading.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.GifLoading.Image = global::DimStock.Properties.Resources.Loading;
+            this.GifLoading.Location = new System.Drawing.Point(353, 252);
+            this.GifLoading.Name = "GifLoading";
+            this.GifLoading.Size = new System.Drawing.Size(135, 135);
+            this.GifLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.GifLoading.TabIndex = 180;
+            this.GifLoading.TabStop = false;
+            this.GifLoading.Visible = false;
+            // 
             // RecordsByPage
             // 
             this.RecordsByPage.BackColor = System.Drawing.Color.White;
             this.RecordsByPage.CanOverrideStyle = true;
             this.RecordsByPage.DropDownStyle = Syncfusion.WinForms.ListView.Enums.DropDownStyle.DropDownList;
             this.RecordsByPage.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RecordsByPage.Location = new System.Drawing.Point(527, 113);
+            this.RecordsByPage.Location = new System.Drawing.Point(383, 100);
             this.RecordsByPage.Name = "RecordsByPage";
-            this.RecordsByPage.Size = new System.Drawing.Size(168, 27);
+            this.RecordsByPage.Size = new System.Drawing.Size(160, 27);
             this.RecordsByPage.Style.DropDownButtonStyle.BackColor = System.Drawing.Color.White;
             this.RecordsByPage.Style.DropDownButtonStyle.DisabledBackColor = System.Drawing.Color.White;
             this.RecordsByPage.Style.DropDownButtonStyle.DisabledForeColor = System.Drawing.Color.White;
@@ -273,19 +182,54 @@
             this.RecordsByPage.Style.ReadOnlyEditorStyle.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RecordsByPage.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.RecordsByPage.Style.TokenStyle.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RecordsByPage.TabIndex = 180;
+            this.RecordsByPage.TabIndex = 182;
             this.RecordsByPage.ToolTipOption.ShadowVisible = false;
             this.RecordsByPage.SelectedIndexChanged += new System.EventHandler(this.RecordsByPage_SelectedIndexChanged);
+            // 
+            // SearchByDescription
+            // 
+            this.SearchByDescription.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.SearchByDescription.BeforeTouchSize = new System.Drawing.Size(365, 27);
+            this.SearchByDescription.BorderColor = System.Drawing.Color.DarkGray;
+            this.SearchByDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.SearchByDescription.CanOverrideStyle = true;
+            this.SearchByDescription.CausesValidation = false;
+            this.SearchByDescription.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.SearchByDescription.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchByDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.SearchByDescription.Location = new System.Drawing.Point(12, 100);
+            this.SearchByDescription.MaxLength = 50;
+            this.SearchByDescription.Metrocolor = System.Drawing.Color.DodgerBlue;
+            this.SearchByDescription.MinimumSize = new System.Drawing.Size(16, 12);
+            this.SearchByDescription.Multiline = true;
+            this.SearchByDescription.Name = "SearchByDescription";
+            this.SearchByDescription.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
+            this.SearchByDescription.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
+            this.SearchByDescription.Size = new System.Drawing.Size(365, 27);
+            this.SearchByDescription.TabIndex = 181;
+            this.SearchByDescription.Tag = "";
+            this.SearchByDescription.ThemeName = "Default";
+            this.SearchByDescription.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SearchByDescription_KeyPress);
             // 
             // TitleRecordsByPage
             // 
             this.TitleRecordsByPage.AutoSize = true;
             this.TitleRecordsByPage.Font = new System.Drawing.Font("Calibri Light", 11F);
-            this.TitleRecordsByPage.Location = new System.Drawing.Point(524, 94);
+            this.TitleRecordsByPage.Location = new System.Drawing.Point(380, 81);
             this.TitleRecordsByPage.Name = "TitleRecordsByPage";
             this.TitleRecordsByPage.Size = new System.Drawing.Size(134, 18);
-            this.TitleRecordsByPage.TabIndex = 181;
+            this.TitleRecordsByPage.TabIndex = 184;
             this.TitleRecordsByPage.Text = "Registros Por Página:";
+            // 
+            // TitleSearchByDescription
+            // 
+            this.TitleSearchByDescription.AutoSize = true;
+            this.TitleSearchByDescription.Font = new System.Drawing.Font("Calibri Light", 11F);
+            this.TitleSearchByDescription.Location = new System.Drawing.Point(9, 81);
+            this.TitleSearchByDescription.Name = "TitleSearchByDescription";
+            this.TitleSearchByDescription.Size = new System.Drawing.Size(69, 18);
+            this.TitleSearchByDescription.TabIndex = 183;
+            this.TitleSearchByDescription.Text = "Descrição:";
             // 
             // DataList
             // 
@@ -298,65 +242,86 @@
             this.DataList.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DataList.BackgroundImage")));
             this.DataList.ButtonText = "Listar";
             this.DataList.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.DataList.Font = new System.Drawing.Font("Calibri Light", 14F);
+            this.DataList.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DataList.ForeColor = System.Drawing.Color.SeaGreen;
             this.DataList.IdleBorderThickness = 1;
             this.DataList.IdleCornerRadius = 10;
             this.DataList.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
             this.DataList.IdleForecolor = System.Drawing.Color.White;
             this.DataList.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
-            this.DataList.Location = new System.Drawing.Point(29, 25);
+            this.DataList.Location = new System.Drawing.Point(111, 19);
             this.DataList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DataList.Name = "DataList";
             this.DataList.Size = new System.Drawing.Size(97, 43);
-            this.DataList.TabIndex = 218;
+            this.DataList.TabIndex = 213;
             this.DataList.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.DataList.Click += new System.EventHandler(this.DataList_Click);
             // 
-            // UserHistoryListingForm
+            // NewRegister
+            // 
+            this.NewRegister.ActiveBorderThickness = 1;
+            this.NewRegister.ActiveCornerRadius = 10;
+            this.NewRegister.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.NewRegister.ActiveForecolor = System.Drawing.Color.White;
+            this.NewRegister.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.NewRegister.BackColor = System.Drawing.Color.White;
+            this.NewRegister.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("NewRegister.BackgroundImage")));
+            this.NewRegister.ButtonText = "Novo";
+            this.NewRegister.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.NewRegister.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NewRegister.ForeColor = System.Drawing.Color.SeaGreen;
+            this.NewRegister.IdleBorderThickness = 1;
+            this.NewRegister.IdleCornerRadius = 10;
+            this.NewRegister.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
+            this.NewRegister.IdleForecolor = System.Drawing.Color.White;
+            this.NewRegister.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
+            this.NewRegister.Location = new System.Drawing.Point(12, 19);
+            this.NewRegister.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.NewRegister.Name = "NewRegister";
+            this.NewRegister.Size = new System.Drawing.Size(97, 43);
+            this.NewRegister.TabIndex = 212;
+            this.NewRegister.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.NewRegister.Click += new System.EventHandler(this.NewRegister_Click);
+            // 
+            // SearchTimer
+            // 
+            this.SearchTimer.Interval = 500;
+            this.SearchTimer.Tick += new System.EventHandler(this.SearchTimer_Tick);
+            // 
+            // ProductCategoryListingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(928, 551);
             this.Controls.Add(this.DataList);
+            this.Controls.Add(this.NewRegister);
             this.Controls.Add(this.RecordsByPage);
+            this.Controls.Add(this.SearchByDescription);
             this.Controls.Add(this.TitleRecordsByPage);
-            this.Controls.Add(this.BindingPagination);
+            this.Controls.Add(this.TitleSearchByDescription);
             this.Controls.Add(this.GifLoading);
-            this.Controls.Add(this.FinalDate);
-            this.Controls.Add(this.FinalDateTitle);
-            this.Controls.Add(this.StartDate);
-            this.Controls.Add(this.SearchTitleByLogin);
-            this.Controls.Add(this.SearchByLogin);
-            this.Controls.Add(this.HistoryDataList);
-            this.Controls.Add(this.StartDateTitle);
+            this.Controls.Add(this.BindingPagination);
+            this.Controls.Add(this.CategoryDataList);
             this.MinimumSize = new System.Drawing.Size(944, 590);
-            this.Name = "UserHistoryListingForm";
-            this.ShowIcon = false;
-            this.Load += new System.EventHandler(this.UserHistoryListingForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.HistoryDataList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SearchByLogin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GifLoading)).EndInit();
+            this.Name = "ProductCategoryListingForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.ProductCategoryListingForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.CategoryDataList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BindingPagination)).EndInit();
             this.BindingPagination.ResumeLayout(false);
             this.BindingPagination.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GifLoading)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RecordsByPage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SearchByDescription)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.DataGridView HistoryDataList;
-        private System.Windows.Forms.Label SearchTitleByLogin;
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt SearchByLogin;
-        private Syncfusion.WinForms.Input.SfDateTimeEdit StartDate;
-        private System.Windows.Forms.Label StartDateTitle;
-        private System.Windows.Forms.Label FinalDateTitle;
-        private Syncfusion.WinForms.Input.SfDateTimeEdit FinalDate;
-        private System.Windows.Forms.Timer SearchTimer;
-        private System.Windows.Forms.PictureBox GifLoading;
+
+        private System.Windows.Forms.DataGridView CategoryDataList;
         private System.Windows.Forms.BindingNavigator BindingPagination;
         private System.Windows.Forms.ToolStripButton BackPage;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -365,8 +330,13 @@
         private System.Windows.Forms.ToolStripButton NextPage;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripLabel LblRecordsState;
+        private System.Windows.Forms.PictureBox GifLoading;
         private Syncfusion.WinForms.ListView.SfComboBox RecordsByPage;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt SearchByDescription;
         private System.Windows.Forms.Label TitleRecordsByPage;
+        private System.Windows.Forms.Label TitleSearchByDescription;
         private Bunifu.Framework.UI.BunifuThinButton2 DataList;
+        private Bunifu.Framework.UI.BunifuThinButton2 NewRegister;
+        private System.Windows.Forms.Timer SearchTimer;
     }
 }

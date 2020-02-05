@@ -50,7 +50,7 @@
             this.UserDataList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.UserDataList.Location = new System.Drawing.Point(31, 136);
             this.UserDataList.Name = "UserDataList";
-            this.UserDataList.Size = new System.Drawing.Size(980, 481);
+            this.UserDataList.Size = new System.Drawing.Size(873, 403);
             this.UserDataList.TabIndex = 142;
             this.UserDataList.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.UserDataList_CellMouseClick);
             this.UserDataList.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.UserDataList_CellMouseEnter);
@@ -59,9 +59,9 @@
             // 
             this.GifLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.GifLoading.Image = global::DimStock.Properties.Resources.Loading;
-            this.GifLoading.Location = new System.Drawing.Point(455, 303);
+            this.GifLoading.Location = new System.Drawing.Point(407, 269);
             this.GifLoading.Name = "GifLoading";
-            this.GifLoading.Size = new System.Drawing.Size(194, 198);
+            this.GifLoading.Size = new System.Drawing.Size(135, 135);
             this.GifLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.GifLoading.TabIndex = 143;
             this.GifLoading.TabStop = false;
@@ -76,7 +76,7 @@
             this.SearchFields.CanOverrideStyle = true;
             this.SearchFields.CausesValidation = false;
             this.SearchFields.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.SearchFields.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchFields.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchFields.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.SearchFields.Location = new System.Drawing.Point(31, 103);
             this.SearchFields.MaxLength = 2000;
@@ -94,10 +94,10 @@
             // SearchFieldTitle
             // 
             this.SearchFieldTitle.AutoSize = true;
-            this.SearchFieldTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchFieldTitle.Location = new System.Drawing.Point(28, 87);
+            this.SearchFieldTitle.Font = new System.Drawing.Font("Calibri Light", 11F);
+            this.SearchFieldTitle.Location = new System.Drawing.Point(28, 85);
             this.SearchFieldTitle.Name = "SearchFieldTitle";
-            this.SearchFieldTitle.Size = new System.Drawing.Size(53, 16);
+            this.SearchFieldTitle.Size = new System.Drawing.Size(52, 18);
             this.SearchFieldTitle.TabIndex = 145;
             this.SearchFieldTitle.Text = "Buscar:";
             // 
@@ -121,9 +121,9 @@
             this.DataList.ForeColor = System.Drawing.Color.SeaGreen;
             this.DataList.IdleBorderThickness = 1;
             this.DataList.IdleCornerRadius = 10;
-            this.DataList.IdleFillColor = System.Drawing.Color.MediumAquamarine;
+            this.DataList.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
             this.DataList.IdleForecolor = System.Drawing.Color.White;
-            this.DataList.IdleLineColor = System.Drawing.Color.MediumAquamarine;
+            this.DataList.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
             this.DataList.Location = new System.Drawing.Point(130, 23);
             this.DataList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DataList.Name = "DataList";
@@ -147,9 +147,9 @@
             this.RegisterNew.ForeColor = System.Drawing.Color.SeaGreen;
             this.RegisterNew.IdleBorderThickness = 1;
             this.RegisterNew.IdleCornerRadius = 10;
-            this.RegisterNew.IdleFillColor = System.Drawing.Color.MediumAquamarine;
+            this.RegisterNew.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
             this.RegisterNew.IdleForecolor = System.Drawing.Color.White;
-            this.RegisterNew.IdleLineColor = System.Drawing.Color.MediumAquamarine;
+            this.RegisterNew.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
             this.RegisterNew.Location = new System.Drawing.Point(31, 23);
             this.RegisterNew.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.RegisterNew.Name = "RegisterNew";
@@ -163,13 +163,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1035, 629);
+            this.ClientSize = new System.Drawing.Size(928, 551);
             this.Controls.Add(this.RegisterNew);
             this.Controls.Add(this.DataList);
             this.Controls.Add(this.GifLoading);
             this.Controls.Add(this.SearchFields);
             this.Controls.Add(this.SearchFieldTitle);
             this.Controls.Add(this.UserDataList);
+            this.MinimumSize = new System.Drawing.Size(944, 590);
             this.Name = "UserListingForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.UserListingForm_Load);

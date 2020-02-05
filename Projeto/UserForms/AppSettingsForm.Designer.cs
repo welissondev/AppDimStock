@@ -111,10 +111,10 @@
             this.MainTabControl.Controls.Add(this.PageBackUp);
             this.MainTabControl.Controls.Add(this.PageFinalize);
             this.MainTabControl.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MainTabControl.Location = new System.Drawing.Point(176, 161);
+            this.MainTabControl.Location = new System.Drawing.Point(173, 154);
             this.MainTabControl.Name = "MainTabControl";
             this.MainTabControl.SelectedIndex = 0;
-            this.MainTabControl.Size = new System.Drawing.Size(617, 458);
+            this.MainTabControl.Size = new System.Drawing.Size(577, 409);
             this.MainTabControl.TabIndex = 0;
             // 
             // PageConfigType
@@ -127,7 +127,7 @@
             this.PageConfigType.Location = new System.Drawing.Point(4, 28);
             this.PageConfigType.Name = "PageConfigType";
             this.PageConfigType.Padding = new System.Windows.Forms.Padding(3);
-            this.PageConfigType.Size = new System.Drawing.Size(609, 426);
+            this.PageConfigType.Size = new System.Drawing.Size(569, 377);
             this.PageConfigType.TabIndex = 0;
             this.PageConfigType.Text = "Ambiente";
             this.PageConfigType.UseVisualStyleBackColor = true;
@@ -137,7 +137,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label1.Location = new System.Drawing.Point(63, 108);
+            this.label1.Location = new System.Drawing.Point(63, 79);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(421, 48);
             this.label1.TabIndex = 203;
@@ -156,9 +156,9 @@
             this.CheckBoxNewConfiguration.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen;
             this.CheckBoxNewConfiguration.Font = new System.Drawing.Font("Calibri Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CheckBoxNewConfiguration.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.CheckBoxNewConfiguration.Location = new System.Drawing.Point(65, 275);
+            this.CheckBoxNewConfiguration.Location = new System.Drawing.Point(65, 246);
             this.CheckBoxNewConfiguration.Name = "CheckBoxNewConfiguration";
-            this.CheckBoxNewConfiguration.Size = new System.Drawing.Size(431, 25);
+            this.CheckBoxNewConfiguration.Size = new System.Drawing.Size(391, 25);
             this.CheckBoxNewConfiguration.TabIndex = 1;
             this.CheckBoxNewConfiguration.Text = "Opção B: Não tenho um backup, desejo fazer uma nova configuração\r\n\r\n\r\n";
             this.CheckBoxNewConfiguration.UseCompatibleTextRendering = true;
@@ -175,9 +175,9 @@
             this.CheckBoxRestoureBackup.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen;
             this.CheckBoxRestoureBackup.Font = new System.Drawing.Font("Calibri Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CheckBoxRestoureBackup.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.CheckBoxRestoureBackup.Location = new System.Drawing.Point(65, 248);
+            this.CheckBoxRestoureBackup.Location = new System.Drawing.Point(65, 219);
             this.CheckBoxRestoureBackup.Name = "CheckBoxRestoureBackup";
-            this.CheckBoxRestoureBackup.Size = new System.Drawing.Size(431, 25);
+            this.CheckBoxRestoureBackup.Size = new System.Drawing.Size(391, 25);
             this.CheckBoxRestoureBackup.TabIndex = 0;
             this.CheckBoxRestoureBackup.Text = "Opção A: Já tenho um backup pronto para ser restaurado\r\n";
             this.CheckBoxRestoureBackup.UseCompatibleTextRendering = true;
@@ -187,8 +187,8 @@
             // 
             this.label21.BackColor = System.Drawing.Color.Transparent;
             this.label21.Font = new System.Drawing.Font("Calibri", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ForeColor = System.Drawing.Color.MediumAquamarine;
-            this.label21.Location = new System.Drawing.Point(59, 62);
+            this.label21.ForeColor = System.Drawing.Color.MediumSeaGreen;
+            this.label21.Location = new System.Drawing.Point(59, 33);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(424, 41);
             this.label21.TabIndex = 201;
@@ -200,7 +200,7 @@
             this.label22.BackColor = System.Drawing.Color.Transparent;
             this.label22.Font = new System.Drawing.Font("Calibri Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label22.Location = new System.Drawing.Point(62, 162);
+            this.label22.Location = new System.Drawing.Point(62, 133);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(421, 69);
             this.label22.TabIndex = 202;
@@ -218,7 +218,7 @@
             this.PageChooseDirectory.Location = new System.Drawing.Point(4, 28);
             this.PageChooseDirectory.Name = "PageChooseDirectory";
             this.PageChooseDirectory.Padding = new System.Windows.Forms.Padding(3);
-            this.PageChooseDirectory.Size = new System.Drawing.Size(609, 426);
+            this.PageChooseDirectory.Size = new System.Drawing.Size(569, 377);
             this.PageChooseDirectory.TabIndex = 1;
             this.PageChooseDirectory.Text = "Diretório";
             this.PageChooseDirectory.UseVisualStyleBackColor = true;
@@ -229,7 +229,7 @@
             this.label4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label4.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.Location = new System.Drawing.Point(61, 119);
+            this.label4.Location = new System.Drawing.Point(61, 113);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(424, 48);
             this.label4.TabIndex = 206;
@@ -243,8 +243,8 @@
             this.label5.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.label5.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label5.Font = new System.Drawing.Font("Calibri", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.MediumAquamarine;
-            this.label5.Location = new System.Drawing.Point(61, 62);
+            this.label5.ForeColor = System.Drawing.Color.MediumSeaGreen;
+            this.label5.Location = new System.Drawing.Point(61, 56);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(424, 41);
             this.label5.TabIndex = 204;
@@ -257,7 +257,7 @@
             this.label6.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.label6.Font = new System.Drawing.Font("Calibri Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Location = new System.Drawing.Point(61, 166);
+            this.label6.Location = new System.Drawing.Point(61, 160);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(424, 69);
             this.label6.TabIndex = 205;
@@ -275,7 +275,7 @@
             this.ChooseMainDirectory.ButtonType = Syncfusion.Windows.Forms.Tools.ButtonTypes.Browse;
             this.ChooseMainDirectory.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.ChooseMainDirectory.KeepFocusRectangle = false;
-            this.ChooseMainDirectory.Location = new System.Drawing.Point(467, 260);
+            this.ChooseMainDirectory.Location = new System.Drawing.Point(467, 243);
             this.ChooseMainDirectory.Name = "ChooseMainDirectory";
             this.ChooseMainDirectory.Size = new System.Drawing.Size(37, 27);
             this.ChooseMainDirectory.TabIndex = 154;
@@ -288,7 +288,7 @@
             // 
             this.MainDirectoryPath.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.MainDirectoryPath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.MainDirectoryPath.BeforeTouchSize = new System.Drawing.Size(438, 27);
+            this.MainDirectoryPath.BeforeTouchSize = new System.Drawing.Size(405, 27);
             this.MainDirectoryPath.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.MainDirectoryPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.MainDirectoryPath.CanOverrideStyle = true;
@@ -297,7 +297,7 @@
             this.MainDirectoryPath.Enabled = false;
             this.MainDirectoryPath.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainDirectoryPath.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.MainDirectoryPath.Location = new System.Drawing.Point(66, 260);
+            this.MainDirectoryPath.Location = new System.Drawing.Point(66, 243);
             this.MainDirectoryPath.MaxLength = 50;
             this.MainDirectoryPath.Metrocolor = System.Drawing.Color.DodgerBlue;
             this.MainDirectoryPath.MinimumSize = new System.Drawing.Size(16, 12);
@@ -321,7 +321,7 @@
             this.PageCompanyLogo.Location = new System.Drawing.Point(4, 28);
             this.PageCompanyLogo.Name = "PageCompanyLogo";
             this.PageCompanyLogo.Padding = new System.Windows.Forms.Padding(3);
-            this.PageCompanyLogo.Size = new System.Drawing.Size(609, 426);
+            this.PageCompanyLogo.Size = new System.Drawing.Size(569, 377);
             this.PageCompanyLogo.TabIndex = 4;
             this.PageCompanyLogo.Text = "Logomarca";
             this.PageCompanyLogo.UseVisualStyleBackColor = true;
@@ -331,7 +331,7 @@
             this.FrameProductPhoto.BackColor = System.Drawing.Color.White;
             this.FrameProductPhoto.Controls.Add(this.CompanyLogoImage);
             this.FrameProductPhoto.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.FrameProductPhoto.Location = new System.Drawing.Point(69, 199);
+            this.FrameProductPhoto.Location = new System.Drawing.Point(69, 168);
             this.FrameProductPhoto.Name = "FrameProductPhoto";
             this.FrameProductPhoto.Size = new System.Drawing.Size(120, 121);
             this.FrameProductPhoto.TabIndex = 218;
@@ -355,7 +355,7 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label7.Location = new System.Drawing.Point(67, 109);
+            this.label7.Location = new System.Drawing.Point(67, 78);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(334, 27);
             this.label7.TabIndex = 217;
@@ -367,8 +367,8 @@
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.label8.Font = new System.Drawing.Font("Calibri", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.MediumAquamarine;
-            this.label8.Location = new System.Drawing.Point(61, 62);
+            this.label8.ForeColor = System.Drawing.Color.MediumSeaGreen;
+            this.label8.Location = new System.Drawing.Point(61, 31);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(340, 41);
             this.label8.TabIndex = 215;
@@ -380,7 +380,7 @@
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Calibri Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label9.Location = new System.Drawing.Point(67, 142);
+            this.label9.Location = new System.Drawing.Point(67, 111);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(334, 46);
             this.label9.TabIndex = 216;
@@ -406,7 +406,7 @@
             this.PageLogin.Location = new System.Drawing.Point(4, 28);
             this.PageLogin.Name = "PageLogin";
             this.PageLogin.Padding = new System.Windows.Forms.Padding(3);
-            this.PageLogin.Size = new System.Drawing.Size(609, 426);
+            this.PageLogin.Size = new System.Drawing.Size(569, 377);
             this.PageLogin.TabIndex = 3;
             this.PageLogin.Text = "Usuário";
             this.PageLogin.UseVisualStyleBackColor = true;
@@ -416,7 +416,7 @@
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label10.Location = new System.Drawing.Point(62, 84);
+            this.label10.Location = new System.Drawing.Point(62, 63);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(334, 22);
             this.label10.TabIndex = 220;
@@ -427,8 +427,8 @@
             // 
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Calibri", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.MediumAquamarine;
-            this.label11.Location = new System.Drawing.Point(56, 36);
+            this.label11.ForeColor = System.Drawing.Color.MediumSeaGreen;
+            this.label11.Location = new System.Drawing.Point(56, 15);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(424, 41);
             this.label11.TabIndex = 218;
@@ -440,7 +440,7 @@
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Calibri Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label12.Location = new System.Drawing.Point(62, 113);
+            this.label12.Location = new System.Drawing.Point(62, 92);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(387, 55);
             this.label12.TabIndex = 219;
@@ -451,7 +451,7 @@
             // PassWordConfirmation
             // 
             this.PassWordConfirmation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.PassWordConfirmation.BeforeTouchSize = new System.Drawing.Size(438, 27);
+            this.PassWordConfirmation.BeforeTouchSize = new System.Drawing.Size(405, 27);
             this.PassWordConfirmation.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.PassWordConfirmation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PassWordConfirmation.CanOverrideStyle = true;
@@ -459,7 +459,7 @@
             this.PassWordConfirmation.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.PassWordConfirmation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PassWordConfirmation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.PassWordConfirmation.Location = new System.Drawing.Point(402, 288);
+            this.PassWordConfirmation.Location = new System.Drawing.Point(402, 267);
             this.PassWordConfirmation.MaxLength = 2000;
             this.PassWordConfirmation.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.PassWordConfirmation.MinimumSize = new System.Drawing.Size(16, 12);
@@ -476,7 +476,7 @@
             // PassWordConfirmationTitle
             // 
             this.PassWordConfirmationTitle.Font = new System.Drawing.Font("Calibri Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PassWordConfirmationTitle.Location = new System.Drawing.Point(398, 269);
+            this.PassWordConfirmationTitle.Location = new System.Drawing.Point(398, 248);
             this.PassWordConfirmationTitle.Name = "PassWordConfirmationTitle";
             this.PassWordConfirmationTitle.Size = new System.Drawing.Size(110, 16);
             this.PassWordConfirmationTitle.TabIndex = 195;
@@ -485,7 +485,7 @@
             // PassWord
             // 
             this.PassWord.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.PassWord.BeforeTouchSize = new System.Drawing.Size(438, 27);
+            this.PassWord.BeforeTouchSize = new System.Drawing.Size(405, 27);
             this.PassWord.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.PassWord.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PassWord.CanOverrideStyle = true;
@@ -493,7 +493,7 @@
             this.PassWord.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.PassWord.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PassWord.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.PassWord.Location = new System.Drawing.Point(287, 288);
+            this.PassWord.Location = new System.Drawing.Point(287, 267);
             this.PassWord.MaxLength = 2000;
             this.PassWord.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.PassWord.MinimumSize = new System.Drawing.Size(16, 12);
@@ -510,7 +510,7 @@
             // LoginTitle
             // 
             this.LoginTitle.Font = new System.Drawing.Font("Calibri Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LoginTitle.Location = new System.Drawing.Point(62, 269);
+            this.LoginTitle.Location = new System.Drawing.Point(62, 248);
             this.LoginTitle.Name = "LoginTitle";
             this.LoginTitle.Size = new System.Drawing.Size(44, 16);
             this.LoginTitle.TabIndex = 194;
@@ -519,7 +519,7 @@
             // Login
             // 
             this.Login.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.Login.BeforeTouchSize = new System.Drawing.Size(438, 27);
+            this.Login.BeforeTouchSize = new System.Drawing.Size(405, 27);
             this.Login.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.Login.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Login.CanOverrideStyle = true;
@@ -527,7 +527,7 @@
             this.Login.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Login.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Login.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.Login.Location = new System.Drawing.Point(66, 288);
+            this.Login.Location = new System.Drawing.Point(66, 267);
             this.Login.MaxLength = 2000;
             this.Login.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Login.MinimumSize = new System.Drawing.Size(16, 12);
@@ -543,7 +543,7 @@
             // PassWordTitle
             // 
             this.PassWordTitle.Font = new System.Drawing.Font("Calibri Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PassWordTitle.Location = new System.Drawing.Point(283, 270);
+            this.PassWordTitle.Location = new System.Drawing.Point(283, 249);
             this.PassWordTitle.Name = "PassWordTitle";
             this.PassWordTitle.Size = new System.Drawing.Size(50, 16);
             this.PassWordTitle.TabIndex = 193;
@@ -552,7 +552,7 @@
             // Email
             // 
             this.Email.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.Email.BeforeTouchSize = new System.Drawing.Size(438, 27);
+            this.Email.BeforeTouchSize = new System.Drawing.Size(405, 27);
             this.Email.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.Email.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Email.CanOverrideStyle = true;
@@ -560,7 +560,7 @@
             this.Email.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Email.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Email.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.Email.Location = new System.Drawing.Point(66, 237);
+            this.Email.Location = new System.Drawing.Point(66, 216);
             this.Email.MaxLength = 2000;
             this.Email.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Email.MinimumSize = new System.Drawing.Size(16, 12);
@@ -577,7 +577,7 @@
             // EmailTitle
             // 
             this.EmailTitle.Font = new System.Drawing.Font("Calibri Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EmailTitle.Location = new System.Drawing.Point(62, 220);
+            this.EmailTitle.Location = new System.Drawing.Point(62, 199);
             this.EmailTitle.Name = "EmailTitle";
             this.EmailTitle.Size = new System.Drawing.Size(46, 16);
             this.EmailTitle.TabIndex = 192;
@@ -586,7 +586,7 @@
             // UserName
             // 
             this.UserName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.UserName.BeforeTouchSize = new System.Drawing.Size(438, 27);
+            this.UserName.BeforeTouchSize = new System.Drawing.Size(405, 27);
             this.UserName.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.UserName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.UserName.CanOverrideStyle = true;
@@ -594,7 +594,7 @@
             this.UserName.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.UserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UserName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.UserName.Location = new System.Drawing.Point(66, 185);
+            this.UserName.Location = new System.Drawing.Point(66, 164);
             this.UserName.MaxLength = 2000;
             this.UserName.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.UserName.MinimumSize = new System.Drawing.Size(16, 12);
@@ -611,7 +611,7 @@
             // NameTitle
             // 
             this.NameTitle.Font = new System.Drawing.Font("Calibri Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NameTitle.Location = new System.Drawing.Point(62, 168);
+            this.NameTitle.Location = new System.Drawing.Point(62, 147);
             this.NameTitle.Name = "NameTitle";
             this.NameTitle.Size = new System.Drawing.Size(48, 16);
             this.NameTitle.TabIndex = 191;
@@ -626,7 +626,7 @@
             this.PageBackUp.Controls.Add(this.BackupPath);
             this.PageBackUp.Location = new System.Drawing.Point(4, 28);
             this.PageBackUp.Name = "PageBackUp";
-            this.PageBackUp.Size = new System.Drawing.Size(609, 426);
+            this.PageBackUp.Size = new System.Drawing.Size(569, 377);
             this.PageBackUp.TabIndex = 6;
             this.PageBackUp.Text = "BackUp";
             this.PageBackUp.UseVisualStyleBackColor = true;
@@ -644,10 +644,10 @@
             this.ListviewBackup.HideSelection = false;
             this.ListviewBackup.HotTracking = true;
             this.ListviewBackup.HoverSelection = true;
-            this.ListviewBackup.Location = new System.Drawing.Point(68, 161);
+            this.ListviewBackup.Location = new System.Drawing.Point(68, 137);
             this.ListviewBackup.MultiSelect = false;
             this.ListviewBackup.Name = "ListviewBackup";
-            this.ListviewBackup.Size = new System.Drawing.Size(438, 177);
+            this.ListviewBackup.Size = new System.Drawing.Size(438, 159);
             this.ListviewBackup.Sorting = System.Windows.Forms.SortOrder.Descending;
             this.ListviewBackup.TabIndex = 210;
             this.ListviewBackup.UseCompatibleStateImageBehavior = false;
@@ -664,7 +664,7 @@
             this.label13.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label13.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label13.Location = new System.Drawing.Point(65, 81);
+            this.label13.Location = new System.Drawing.Point(65, 53);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(424, 48);
             this.label13.TabIndex = 209;
@@ -678,8 +678,8 @@
             this.label14.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.label14.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label14.Font = new System.Drawing.Font("Calibri", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.MediumAquamarine;
-            this.label14.Location = new System.Drawing.Point(65, 36);
+            this.label14.ForeColor = System.Drawing.Color.MediumSeaGreen;
+            this.label14.Location = new System.Drawing.Point(65, 8);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(453, 41);
             this.label14.TabIndex = 207;
@@ -694,7 +694,7 @@
             this.ChooseBackup.ButtonType = Syncfusion.Windows.Forms.Tools.ButtonTypes.Browse;
             this.ChooseBackup.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.ChooseBackup.KeepFocusRectangle = false;
-            this.ChooseBackup.Location = new System.Drawing.Point(469, 132);
+            this.ChooseBackup.Location = new System.Drawing.Point(469, 104);
             this.ChooseBackup.Name = "ChooseBackup";
             this.ChooseBackup.Size = new System.Drawing.Size(37, 27);
             this.ChooseBackup.TabIndex = 156;
@@ -706,7 +706,7 @@
             // BackupPath
             // 
             this.BackupPath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.BackupPath.BeforeTouchSize = new System.Drawing.Size(438, 27);
+            this.BackupPath.BeforeTouchSize = new System.Drawing.Size(405, 27);
             this.BackupPath.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.BackupPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.BackupPath.CanOverrideStyle = true;
@@ -715,7 +715,7 @@
             this.BackupPath.Enabled = false;
             this.BackupPath.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BackupPath.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.BackupPath.Location = new System.Drawing.Point(68, 132);
+            this.BackupPath.Location = new System.Drawing.Point(68, 104);
             this.BackupPath.MaxLength = 50;
             this.BackupPath.Metrocolor = System.Drawing.Color.DodgerBlue;
             this.BackupPath.MinimumSize = new System.Drawing.Size(16, 12);
@@ -723,7 +723,7 @@
             this.BackupPath.Name = "BackupPath";
             this.BackupPath.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
             this.BackupPath.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
-            this.BackupPath.Size = new System.Drawing.Size(438, 27);
+            this.BackupPath.Size = new System.Drawing.Size(405, 27);
             this.BackupPath.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016Colorful;
             this.BackupPath.TabIndex = 155;
             this.BackupPath.Tag = "";
@@ -737,7 +737,7 @@
             this.PageFinalize.Controls.Add(this.LabelPageFinalizeTitle);
             this.PageFinalize.Location = new System.Drawing.Point(4, 28);
             this.PageFinalize.Name = "PageFinalize";
-            this.PageFinalize.Size = new System.Drawing.Size(609, 426);
+            this.PageFinalize.Size = new System.Drawing.Size(569, 377);
             this.PageFinalize.TabIndex = 5;
             this.PageFinalize.Text = "Finalize";
             this.PageFinalize.UseVisualStyleBackColor = true;
@@ -747,7 +747,7 @@
             this.Loading.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Loading.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.Loading.Image = global::DimStock.Properties.Resources.Loading;
-            this.Loading.Location = new System.Drawing.Point(230, 165);
+            this.Loading.Location = new System.Drawing.Point(208, 139);
             this.Loading.Name = "Loading";
             this.Loading.Size = new System.Drawing.Size(123, 126);
             this.Loading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -761,7 +761,7 @@
             this.LabelPageFinalizeSubTitle.BackColor = System.Drawing.Color.Transparent;
             this.LabelPageFinalizeSubTitle.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelPageFinalizeSubTitle.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.LabelPageFinalizeSubTitle.Location = new System.Drawing.Point(117, 121);
+            this.LabelPageFinalizeSubTitle.Location = new System.Drawing.Point(95, 95);
             this.LabelPageFinalizeSubTitle.Name = "LabelPageFinalizeSubTitle";
             this.LabelPageFinalizeSubTitle.Size = new System.Drawing.Size(334, 22);
             this.LabelPageFinalizeSubTitle.TabIndex = 223;
@@ -773,8 +773,8 @@
             this.LabelPageFinalizeTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.LabelPageFinalizeTitle.BackColor = System.Drawing.Color.Transparent;
             this.LabelPageFinalizeTitle.Font = new System.Drawing.Font("Calibri", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelPageFinalizeTitle.ForeColor = System.Drawing.Color.MediumAquamarine;
-            this.LabelPageFinalizeTitle.Location = new System.Drawing.Point(111, 77);
+            this.LabelPageFinalizeTitle.ForeColor = System.Drawing.Color.MediumSeaGreen;
+            this.LabelPageFinalizeTitle.Location = new System.Drawing.Point(89, 51);
             this.LabelPageFinalizeTitle.Name = "LabelPageFinalizeTitle";
             this.LabelPageFinalizeTitle.Size = new System.Drawing.Size(424, 41);
             this.LabelPageFinalizeTitle.TabIndex = 221;
@@ -786,8 +786,8 @@
             this.NextPage.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.NextPage.AutoSize = true;
             this.NextPage.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NextPage.LinkColor = System.Drawing.Color.SteelBlue;
-            this.NextPage.Location = new System.Drawing.Point(605, 554);
+            this.NextPage.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(87)))), ((int)(((byte)(166)))));
+            this.NextPage.Location = new System.Drawing.Point(580, 511);
             this.NextPage.Name = "NextPage";
             this.NextPage.Size = new System.Drawing.Size(84, 19);
             this.NextPage.TabIndex = 204;
@@ -800,8 +800,8 @@
             this.BackPage.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.BackPage.AutoSize = true;
             this.BackPage.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BackPage.LinkColor = System.Drawing.Color.SteelBlue;
-            this.BackPage.Location = new System.Drawing.Point(244, 554);
+            this.BackPage.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(87)))), ((int)(((byte)(166)))));
+            this.BackPage.Location = new System.Drawing.Point(234, 511);
             this.BackPage.Name = "BackPage";
             this.BackPage.Size = new System.Drawing.Size(82, 19);
             this.BackPage.TabIndex = 203;
@@ -816,7 +816,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BackgroundImage = global::DimStock.Properties.Resources.DimStockLogoType;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(429, 30);
+            this.pictureBox1.Location = new System.Drawing.Point(419, 23);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(75, 72);
             this.pictureBox1.TabIndex = 206;
@@ -827,8 +827,8 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Calibri", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.MediumAquamarine;
-            this.label2.Location = new System.Drawing.Point(260, 89);
+            this.label2.ForeColor = System.Drawing.Color.MediumSeaGreen;
+            this.label2.Location = new System.Drawing.Point(250, 82);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(417, 40);
             this.label2.TabIndex = 205;
@@ -841,7 +841,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label3.Location = new System.Drawing.Point(282, 117);
+            this.label3.Location = new System.Drawing.Point(272, 110);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(378, 41);
             this.label3.TabIndex = 207;
@@ -867,7 +867,7 @@
             this.CloseAssistant.IdleFillColor = System.Drawing.Color.White;
             this.CloseAssistant.IdleForecolor = System.Drawing.Color.Gray;
             this.CloseAssistant.IdleLineColor = System.Drawing.Color.Gray;
-            this.CloseAssistant.Location = new System.Drawing.Point(391, 543);
+            this.CloseAssistant.Location = new System.Drawing.Point(374, 501);
             this.CloseAssistant.Margin = new System.Windows.Forms.Padding(5);
             this.CloseAssistant.Name = "CloseAssistant";
             this.CloseAssistant.Size = new System.Drawing.Size(160, 41);
@@ -882,10 +882,10 @@
             this.bunifuSeparator2.ForeColor = System.Drawing.Color.White;
             this.bunifuSeparator2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.bunifuSeparator2.LineThickness = 1;
-            this.bunifuSeparator2.Location = new System.Drawing.Point(246, 518);
+            this.bunifuSeparator2.Location = new System.Drawing.Point(243, 481);
             this.bunifuSeparator2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.bunifuSeparator2.Name = "bunifuSeparator2";
-            this.bunifuSeparator2.Size = new System.Drawing.Size(440, 9);
+            this.bunifuSeparator2.Size = new System.Drawing.Size(440, 14);
             this.bunifuSeparator2.TabIndex = 207;
             this.bunifuSeparator2.Transparency = 150;
             this.bunifuSeparator2.Vertical = false;
@@ -895,7 +895,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(959, 667);
+            this.ClientSize = new System.Drawing.Size(944, 590);
             this.Controls.Add(this.bunifuSeparator2);
             this.Controls.Add(this.CloseAssistant);
             this.Controls.Add(this.label2);
@@ -905,7 +905,7 @@
             this.Controls.Add(this.BackPage);
             this.Controls.Add(this.MainTabControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MinimumSize = new System.Drawing.Size(959, 667);
+            this.MinimumSize = new System.Drawing.Size(944, 590);
             this.Name = "AppSettingsForm";
             this.Text = "AppConfigForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

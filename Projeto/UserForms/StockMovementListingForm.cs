@@ -193,7 +193,7 @@ namespace DimStock.UserForms
                 switch (columnName)
                 {
                     case "viewDetails":
-                        GetStockMovementDetails();
+                        ViewMovementDetails();
                         break;
 
                     case "delete":
@@ -261,7 +261,7 @@ namespace DimStock.UserForms
                 Dock = DockStyle.Fill,
                 ShowInTaskbar = false
             };
-            form.InitializeNewMovement("Entrada");
+            form.StartNewOperation("Entrada");
             form.Show();
         }
 
@@ -274,7 +274,7 @@ namespace DimStock.UserForms
                 Dock = DockStyle.Fill,
                 ShowInTaskbar = false
             };
-            form.InitializeNewMovement("Saída");
+            form.StartNewOperation("Saída");
             form.Show();
         }
 
@@ -304,7 +304,7 @@ namespace DimStock.UserForms
                     stockMovement.ListOfRecords[i].OperationType,
                     stockMovement.ListOfRecords[i].Id,
                     stockMovement.ListOfRecords[i].OperationDate,
-                    stockMovement.ListOfRecords[i].OperationHour,
+                    Convert.ToString(stockMovement.ListOfRecords[i].OperationHour.ToString("hh:mm:ss")),
                     stockMovement.ListOfRecords[i].StockDestinationLocation
                     );
                 }
@@ -362,7 +362,7 @@ namespace DimStock.UserForms
             }
         }
 
-        private void GetStockMovementDetails()
+        private void ViewMovementDetails()
         {
             try
             {
@@ -379,12 +379,11 @@ namespace DimStock.UserForms
                     MinimizeBox = false,
                 };
 
-                form.GetStockMovementDetails(id);
-                form.ListStockItems();
+                form.ViewMovementDetails(id);
                 form.Show();
 
-                HomeScreenForm.He.FormNovigationDescription.Text = 
-                @"Cadastro De Movimentações"; 
+                HomeScreenForm.He.FormNovigationDescription.Text =
+                @"Cadastro De Movimentações";
             }
             catch (Exception ex)
             {
