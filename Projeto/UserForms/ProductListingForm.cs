@@ -396,28 +396,28 @@ namespace DimStock.UserForms
 
         private void ReplicateRegistration()
         {
-
-            var userForm = new ProductRegistrationForm();
+            var productForm = new ProductRegistrationForm();
 
             try
             {
                 var product = new Product();
-
                 product.ViewDetails(Id);
 
-                userForm.ProductCode.Text = product.Code.ToString();
-                userForm.ProductSize.Text = product.Size.ToString();
-                userForm.ProductReference.Text = product.Reference.ToString();
-                userForm.Supplier.Text = product.Supplier;
-                userForm.Description.Text = product.Description;
-                userForm.MinStock.Text = product.MinStock.ToString();
-                userForm.MaxStock.Text = product.MaxStock.ToString();
-                userForm.CostPrice.Text = product.CostPrice.ToString();
-                userForm.SalePrice.Text = product.SalePrice.ToString();
-                userForm.BarCode.Text = product.BarCode;
-                userForm.ReloadPhoto(product.PhotoName, true);
-                userForm.ShowInTaskbar = false;
-                userForm.ShowDialog();
+                productForm.CategoryId = product.CategoryId;
+                productForm.BoxProductCategoryList.Text = product.CategoryDescription;
+                productForm.ProductCode.Text = product.Code.ToString();
+                productForm.ProductSize.Text = product.Size.ToString();
+                productForm.ProductReference.Text = product.Reference.ToString();
+                productForm.Supplier.Text = product.Supplier;
+                productForm.Description.Text = product.Description;
+                productForm.MinStock.Text = product.MinStock.ToString();
+                productForm.MaxStock.Text = product.MaxStock.ToString();
+                productForm.CostPrice.Text = product.CostPrice.ToString();
+                productForm.SalePrice.Text = product.SalePrice.ToString();
+                productForm.BarCode.Text = product.BarCode;
+                productForm.ReloadPhoto(product.PhotoName, true);
+                productForm.ShowInTaskbar = false;
+                productForm.ShowDialog();
             }
             catch (Exception ex)
             {
@@ -425,7 +425,7 @@ namespace DimStock.UserForms
             }
             finally
             {
-                userForm.Dispose();
+                productForm.Dispose();
             }
         }
 
