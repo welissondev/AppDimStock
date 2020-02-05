@@ -380,8 +380,15 @@ namespace DimStock.Business
                     while (reader.Read())
                     {
                         Id = Convert.ToInt32(reader["Product.Id"]);
-                        CategoryId = Convert.ToInt32(reader.IsDBNull(1) ? null : reader["ProductCategory.Id"]);
-                        CategoryDescription = Convert.ToString(reader.IsDBNull(2) ? null : reader["ProductCategory.Description"]);
+
+                        if (!reader.IsDBNull(1))
+                            CategoryId = Convert.ToInt32(
+                            reader["ProductCategory.Id"]);
+
+                        if (!reader.IsDBNull(2))
+                            CategoryDescription = Convert.ToString(
+                            reader["ProductCategory.Description"]);
+
                         Code = Convert.ToInt32(reader["Code"]);
                         Size = Convert.ToInt32(reader["Size"]);
                         Reference = Convert.ToInt32(reader["Reference"]);
