@@ -59,11 +59,13 @@ namespace DimStock.Business
 
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
-                    var sqlCommand = @"INSERT INTO Product (Code, [Size], Reference, Supplier, 
-                    Description, CostPrice, SalePrice, MinStock, MaxStock, BarCode, PhotoName) VALUES
-                    (@Code, @Size, @Reference, @Supplier, @Description, @CostPrice, @SalePrice, 
-                    @MinStock, @MaxStock, @BarCode, @PhotoName)";
+                    var sqlCommand = @"INSERT INTO Product 
+                    (ProductCategoryId, Code, [Size], Reference, Supplier, Description, CostPrice, 
+                    SalePrice, MinStock, MaxStock, BarCode, PhotoName) VALUES (@ProductCategoryId, @Code, 
+                    @Size, @Reference, @Supplier, @Description, @CostPrice, @SalePrice, @MinStock, 
+                    @MaxStock, @BarCode, @PhotoName)";
 
+                    connection.AddParameter("@ProductCategoryId", OleDbType.Integer, CategoryId);
                     connection.AddParameter("@Code", OleDbType.Integer, Code);
                     connection.AddParameter("@Size", OleDbType.Integer, Size);
                     connection.AddParameter("@Reference", OleDbType.Integer, Reference);
@@ -79,15 +81,16 @@ namespace DimStock.Business
                     transactionState = connection.ExecuteTransaction(
                     sqlCommand) > 0;
 
+
                     //Pegar id do último registro inserido
                     Id = Convert.ToInt32(connection.ExecuteScalar(
                     "SELECT MAX(Id) From Product"));
 
-                    transactionState = RelateCategory(Id, connection);
 
                     //Relacionar o produto ao stock
                     var stock = new Stock(connection);
                     transactionState = stock.RelateProduct(Id);
+
 
                     //Registrar histórico do usuário
                     var userHistory = new UserHistory(connection)
@@ -99,8 +102,8 @@ namespace DimStock.Business
                         OperationHour = DateTime.Now.ToString("HH:mm:ss"),
                         AffectedFields = GetAffectedFields(Id, connection)
                     };
-
                     transactionState = userHistory.Register();
+
 
                     //Fianalizar transação
                     connection.Transaction.Commit();
@@ -122,13 +125,14 @@ namespace DimStock.Business
 
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
-                    var sqlCommand = @"UPDATE Product Set Code = @Code, 
+                    var sqlCommand = @"UPDATE Product Set ProductCategoryId = @ProductCategoryId, Code = @Code, 
                     [Size] = @Size, Reference = @Reference, Supplier = @Supplier, 
                     Description = @Description, CostPrice = @CostPrice, SalePrice = @SalePrice, 
                     MinStock = @MinStock, MaxStock = @MaxStock, BarCode = @BarCode, 
                     PhotoName = @PhotoName WHERE Id = @Id";
 
                     connection.ParameterClear();
+                    connection.AddParameter("@ProductCategoryId", OleDbType.Integer, CategoryId);
                     connection.AddParameter("@Code", OleDbType.Integer, Code);
                     connection.AddParameter("@Size", OleDbType.Integer, Size);
                     connection.AddParameter("@Reference", OleDbType.Integer, Reference);
@@ -144,7 +148,7 @@ namespace DimStock.Business
 
                     transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
 
-                    //Seleciona o preço de custo do produto
+                    //Seleciona preço de costo do produto
                     var sqlQuery = @"SELECT CostPrice FROM 
                     Product WHERE Id = @Id";
 
@@ -159,8 +163,6 @@ namespace DimStock.Business
                     var stock = new Stock(connection);
                     transactionState = stock.UpdateValue(
                     costPrice, id);
-
-                    transactionState = RelateCategory(id, connection);
 
                     //Registrar histórico do usuário
                     var userHistory = new UserHistory(connection)
@@ -229,22 +231,6 @@ namespace DimStock.Business
 
                 return transactionState;
             }
-        }
-
-        public bool RelateCategory(int productId, Connection connection)
-        {
-            var sqlCommand = @"UPDATE Product SET 
-            ProductCategoryId = @ProductCategoryId WHERE Id = @ProductId";
-
-            connection.ParameterClear();
-
-            connection.AddParameter("@ProductCategoryId",
-            OleDbType.Integer, CategoryId);
-
-            connection.AddParameter("@ProductId",
-            OleDbType.Integer, productId);
-
-            return connection.ExecuteTransaction(sqlCommand) > 0;
         }
 
         public void ListData()

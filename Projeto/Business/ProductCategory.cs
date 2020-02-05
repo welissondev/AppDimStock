@@ -9,7 +9,14 @@ namespace DimStock.Business
 {
     public class ProductCategory
     {
+        private readonly Connection connection;
+
         public ProductCategory() { }
+
+        public ProductCategory(Connection connection)
+        {
+            this.connection = connection;
+        }
 
         public ProductCategory(AxlDataPagination dataPagination)
         {
