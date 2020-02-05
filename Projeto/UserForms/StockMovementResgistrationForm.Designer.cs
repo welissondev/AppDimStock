@@ -99,21 +99,21 @@
             // SubTotalTitle
             // 
             this.SubTotalTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.SubTotalTitle.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.SubTotalTitle.Font = new System.Drawing.Font("Calibri Light", 16F);
             this.SubTotalTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.SubTotalTitle.Location = new System.Drawing.Point(202, 15);
+            this.SubTotalTitle.Location = new System.Drawing.Point(202, 14);
             this.SubTotalTitle.Name = "SubTotalTitle";
-            this.SubTotalTitle.Size = new System.Drawing.Size(90, 23);
+            this.SubTotalTitle.Size = new System.Drawing.Size(106, 23);
             this.SubTotalTitle.TabIndex = 115;
-            this.SubTotalTitle.Text = "SUBTOTAL:";
+            this.SubTotalTitle.Text = "SubTotal:";
             this.SubTotalTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // SubTotal
             // 
             this.SubTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.SubTotal.Font = new System.Drawing.Font("Calibri Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SubTotal.Font = new System.Drawing.Font("Calibri Light", 16F);
             this.SubTotal.ForeColor = System.Drawing.Color.MediumSeaGreen;
-            this.SubTotal.Location = new System.Drawing.Point(293, 14);
+            this.SubTotal.Location = new System.Drawing.Point(289, 14);
             this.SubTotal.Name = "SubTotal";
             this.SubTotal.Size = new System.Drawing.Size(196, 23);
             this.SubTotal.TabIndex = 116;
@@ -124,14 +124,14 @@
             // 
             this.AddItem.AccessibleName = "Button";
             this.AddItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddItem.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.AddItem.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.AddItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddItem.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
+            this.AddItem.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddItem.ForeColor = System.Drawing.Color.White;
-            this.AddItem.Location = new System.Drawing.Point(859, 28);
+            this.AddItem.Location = new System.Drawing.Point(802, 28);
             this.AddItem.Name = "AddItem";
-            this.AddItem.Size = new System.Drawing.Size(39, 27);
-            this.AddItem.Style.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.AddItem.Size = new System.Drawing.Size(44, 27);
+            this.AddItem.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.AddItem.Style.DisabledBackColor = System.Drawing.Color.SeaGreen;
             this.AddItem.Style.DisabledForeColor = System.Drawing.Color.SeaGreen;
             this.AddItem.Style.FocusedBackColor = System.Drawing.Color.Crimson;
@@ -142,21 +142,21 @@
             this.AddItem.Style.PressedBackColor = System.Drawing.Color.Crimson;
             this.AddItem.Style.PressedForeColor = System.Drawing.Color.White;
             this.AddItem.TabIndex = 7;
-            this.AddItem.Text = "ADD";
+            this.AddItem.Text = "Add";
             this.AddItem.UseVisualStyleBackColor = false;
             this.AddItem.Click += new System.EventHandler(this.AddItem_Click);
             // 
             // Quantity
             // 
             this.Quantity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Quantity.BeforeTouchSize = new System.Drawing.Size(200, 27);
-            this.Quantity.BorderColor = System.Drawing.Color.DarkGray;
+            this.Quantity.BeforeTouchSize = new System.Drawing.Size(78, 27);
+            this.Quantity.BorderColor = System.Drawing.Color.Gray;
             this.Quantity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Quantity.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Quantity.Font = new System.Drawing.Font("Calibri Light", 12F);
             this.Quantity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.Quantity.IntegerValue = ((long)(0));
-            this.Quantity.Location = new System.Drawing.Point(656, 28);
+            this.Quantity.Location = new System.Drawing.Point(604, 28);
             this.Quantity.MaxValue = ((long)(50000));
             this.Quantity.Metrocolor = System.Drawing.Color.Green;
             this.Quantity.MinimumSize = new System.Drawing.Size(14, 10);
@@ -177,7 +177,7 @@
             this.LblTotalValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LblTotalValue.AutoSize = true;
             this.LblTotalValue.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.LblTotalValue.Location = new System.Drawing.Point(724, 11);
+            this.LblTotalValue.Location = new System.Drawing.Point(672, 11);
             this.LblTotalValue.Name = "LblTotalValue";
             this.LblTotalValue.Size = new System.Drawing.Size(40, 17);
             this.LblTotalValue.TabIndex = 135;
@@ -186,8 +186,8 @@
             // TotalValue
             // 
             this.TotalValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.TotalValue.BeforeTouchSize = new System.Drawing.Size(200, 27);
-            this.TotalValue.BorderColor = System.Drawing.Color.DarkGray;
+            this.TotalValue.BeforeTouchSize = new System.Drawing.Size(78, 27);
+            this.TotalValue.BorderColor = System.Drawing.Color.Gray;
             this.TotalValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TotalValue.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.TotalValue.DecimalValue = new decimal(new int[] {
@@ -198,12 +198,12 @@
             this.TotalValue.Enabled = false;
             this.TotalValue.Font = new System.Drawing.Font("Calibri Light", 12F);
             this.TotalValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.TotalValue.Location = new System.Drawing.Point(727, 28);
+            this.TotalValue.Location = new System.Drawing.Point(675, 28);
             this.TotalValue.Metrocolor = System.Drawing.Color.Green;
             this.TotalValue.MinimumSize = new System.Drawing.Size(14, 10);
             this.TotalValue.Name = "TotalValue";
             this.TotalValue.PositiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.TotalValue.Size = new System.Drawing.Size(130, 27);
+            this.TotalValue.Size = new System.Drawing.Size(126, 27);
             this.TotalValue.TabIndex = 6;
             this.TotalValue.Text = "R$ 0,00";
             this.TotalValue.ThemeName = "Default";
@@ -215,7 +215,7 @@
             this.LblUnitaryValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LblUnitaryValue.AutoSize = true;
             this.LblUnitaryValue.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.LblUnitaryValue.Location = new System.Drawing.Point(523, 11);
+            this.LblUnitaryValue.Location = new System.Drawing.Point(471, 11);
             this.LblUnitaryValue.Name = "LblUnitaryValue";
             this.LblUnitaryValue.Size = new System.Drawing.Size(63, 17);
             this.LblUnitaryValue.TabIndex = 133;
@@ -224,8 +224,8 @@
             // UnitaryValue
             // 
             this.UnitaryValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.UnitaryValue.BeforeTouchSize = new System.Drawing.Size(200, 27);
-            this.UnitaryValue.BorderColor = System.Drawing.Color.DarkGray;
+            this.UnitaryValue.BeforeTouchSize = new System.Drawing.Size(78, 27);
+            this.UnitaryValue.BorderColor = System.Drawing.Color.Gray;
             this.UnitaryValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.UnitaryValue.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.UnitaryValue.DecimalValue = new decimal(new int[] {
@@ -236,7 +236,7 @@
             this.UnitaryValue.Enabled = false;
             this.UnitaryValue.Font = new System.Drawing.Font("Calibri Light", 12F);
             this.UnitaryValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.UnitaryValue.Location = new System.Drawing.Point(526, 28);
+            this.UnitaryValue.Location = new System.Drawing.Point(474, 28);
             this.UnitaryValue.Metrocolor = System.Drawing.Color.Green;
             this.UnitaryValue.MinimumSize = new System.Drawing.Size(14, 10);
             this.UnitaryValue.Name = "UnitaryValue";
@@ -253,7 +253,7 @@
             this.LblQuantity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LblQuantity.AutoSize = true;
             this.LblQuantity.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.LblQuantity.Location = new System.Drawing.Point(655, 11);
+            this.LblQuantity.Location = new System.Drawing.Point(603, 11);
             this.LblQuantity.Name = "LblQuantity";
             this.LblQuantity.Size = new System.Drawing.Size(47, 17);
             this.LblQuantity.TabIndex = 131;
@@ -294,8 +294,8 @@
             this.QueryByDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.QueryByDescription.BackColor = System.Drawing.Color.White;
-            this.QueryByDescription.BeforeTouchSize = new System.Drawing.Size(200, 27);
-            this.QueryByDescription.BorderColor = System.Drawing.Color.DarkGray;
+            this.QueryByDescription.BeforeTouchSize = new System.Drawing.Size(78, 27);
+            this.QueryByDescription.BorderColor = System.Drawing.Color.Gray;
             this.QueryByDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.QueryByDescription.CanOverrideStyle = true;
             this.QueryByDescription.CausesValidation = false;
@@ -310,7 +310,7 @@
             this.QueryByDescription.Name = "QueryByDescription";
             this.QueryByDescription.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
             this.QueryByDescription.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
-            this.QueryByDescription.Size = new System.Drawing.Size(200, 27);
+            this.QueryByDescription.Size = new System.Drawing.Size(148, 27);
             this.QueryByDescription.TabIndex = 3;
             this.QueryByDescription.Tag = "";
             this.QueryByDescription.ThemeName = "Default";
@@ -330,8 +330,8 @@
             // QueryByCode
             // 
             this.QueryByCode.BackColor = System.Drawing.Color.White;
-            this.QueryByCode.BeforeTouchSize = new System.Drawing.Size(200, 27);
-            this.QueryByCode.BorderColor = System.Drawing.Color.DarkGray;
+            this.QueryByCode.BeforeTouchSize = new System.Drawing.Size(78, 27);
+            this.QueryByCode.BorderColor = System.Drawing.Color.Gray;
             this.QueryByCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.QueryByCode.CanOverrideStyle = true;
             this.QueryByCode.CausesValidation = false;
@@ -356,8 +356,8 @@
             // QueryByReference
             // 
             this.QueryByReference.BackColor = System.Drawing.Color.White;
-            this.QueryByReference.BeforeTouchSize = new System.Drawing.Size(200, 27);
-            this.QueryByReference.BorderColor = System.Drawing.Color.DarkGray;
+            this.QueryByReference.BeforeTouchSize = new System.Drawing.Size(78, 27);
+            this.QueryByReference.BorderColor = System.Drawing.Color.Gray;
             this.QueryByReference.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.QueryByReference.CanOverrideStyle = true;
             this.QueryByReference.CausesValidation = false;
@@ -382,8 +382,8 @@
             // QueryBySize
             // 
             this.QueryBySize.BackColor = System.Drawing.Color.White;
-            this.QueryBySize.BeforeTouchSize = new System.Drawing.Size(200, 27);
-            this.QueryBySize.BorderColor = System.Drawing.Color.DarkGray;
+            this.QueryBySize.BeforeTouchSize = new System.Drawing.Size(78, 27);
+            this.QueryBySize.BorderColor = System.Drawing.Color.Gray;
             this.QueryBySize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.QueryBySize.CanOverrideStyle = true;
             this.QueryBySize.CausesValidation = false;
@@ -409,7 +409,7 @@
             this.StockMovementIdTitle.AutoSize = true;
             this.StockMovementIdTitle.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold);
             this.StockMovementIdTitle.ForeColor = System.Drawing.Color.Black;
-            this.StockMovementIdTitle.Location = new System.Drawing.Point(31, 27);
+            this.StockMovementIdTitle.Location = new System.Drawing.Point(31, 24);
             this.StockMovementIdTitle.Name = "StockMovementIdTitle";
             this.StockMovementIdTitle.Size = new System.Drawing.Size(125, 18);
             this.StockMovementIdTitle.TabIndex = 118;
@@ -420,7 +420,7 @@
             this.StockMovementId.AutoSize = true;
             this.StockMovementId.Font = new System.Drawing.Font("Calibri Light", 10F);
             this.StockMovementId.ForeColor = System.Drawing.Color.Gray;
-            this.StockMovementId.Location = new System.Drawing.Point(154, 28);
+            this.StockMovementId.Location = new System.Drawing.Point(154, 25);
             this.StockMovementId.Name = "StockMovementId";
             this.StockMovementId.Size = new System.Drawing.Size(16, 17);
             this.StockMovementId.TabIndex = 119;
@@ -432,7 +432,7 @@
             this.OperationHour.AutoSize = true;
             this.OperationHour.Font = new System.Drawing.Font("Calibri Light", 10F);
             this.OperationHour.ForeColor = System.Drawing.Color.Gray;
-            this.OperationHour.Location = new System.Drawing.Point(345, 61);
+            this.OperationHour.Location = new System.Drawing.Point(345, 53);
             this.OperationHour.Name = "OperationHour";
             this.OperationHour.Size = new System.Drawing.Size(16, 17);
             this.OperationHour.TabIndex = 125;
@@ -443,7 +443,7 @@
             this.OperationHourTitle.AutoSize = true;
             this.OperationHourTitle.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold);
             this.OperationHourTitle.ForeColor = System.Drawing.Color.Black;
-            this.OperationHourTitle.Location = new System.Drawing.Point(289, 60);
+            this.OperationHourTitle.Location = new System.Drawing.Point(289, 52);
             this.OperationHourTitle.Name = "OperationHourTitle";
             this.OperationHourTitle.Size = new System.Drawing.Size(58, 18);
             this.OperationHourTitle.TabIndex = 124;
@@ -454,7 +454,7 @@
             this.OperationDate.AutoSize = true;
             this.OperationDate.Font = new System.Drawing.Font("Calibri Light", 10F);
             this.OperationDate.ForeColor = System.Drawing.Color.Gray;
-            this.OperationDate.Location = new System.Drawing.Point(326, 30);
+            this.OperationDate.Location = new System.Drawing.Point(326, 27);
             this.OperationDate.Name = "OperationDate";
             this.OperationDate.Size = new System.Drawing.Size(16, 17);
             this.OperationDate.TabIndex = 123;
@@ -465,7 +465,7 @@
             this.OperationDataTitle.AutoSize = true;
             this.OperationDataTitle.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold);
             this.OperationDataTitle.ForeColor = System.Drawing.Color.Black;
-            this.OperationDataTitle.Location = new System.Drawing.Point(289, 29);
+            this.OperationDataTitle.Location = new System.Drawing.Point(289, 26);
             this.OperationDataTitle.Name = "OperationDataTitle";
             this.OperationDataTitle.Size = new System.Drawing.Size(40, 18);
             this.OperationDataTitle.TabIndex = 122;
@@ -476,7 +476,7 @@
             this.OperationSituation.AutoSize = true;
             this.OperationSituation.Font = new System.Drawing.Font("Calibri Light", 10F);
             this.OperationSituation.ForeColor = System.Drawing.Color.Gray;
-            this.OperationSituation.Location = new System.Drawing.Point(540, 30);
+            this.OperationSituation.Location = new System.Drawing.Point(540, 27);
             this.OperationSituation.Name = "OperationSituation";
             this.OperationSituation.Size = new System.Drawing.Size(16, 17);
             this.OperationSituation.TabIndex = 127;
@@ -487,7 +487,7 @@
             this.OperationSituationTitle.AutoSize = true;
             this.OperationSituationTitle.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold);
             this.OperationSituationTitle.ForeColor = System.Drawing.Color.Black;
-            this.OperationSituationTitle.Location = new System.Drawing.Point(479, 29);
+            this.OperationSituationTitle.Location = new System.Drawing.Point(479, 26);
             this.OperationSituationTitle.Name = "OperationSituationTitle";
             this.OperationSituationTitle.Size = new System.Drawing.Size(64, 18);
             this.OperationSituationTitle.TabIndex = 126;
@@ -522,11 +522,11 @@
             this.CardMain.Controls.Add(this.QueryTitleByDescription);
             this.CardMain.Controls.Add(this.MainDataList);
             this.CardMain.LeftSahddow = true;
-            this.CardMain.Location = new System.Drawing.Point(31, 288);
+            this.CardMain.Location = new System.Drawing.Point(31, 224);
             this.CardMain.Name = "CardMain";
             this.CardMain.RightSahddow = true;
             this.CardMain.ShadowDepth = 20;
-            this.CardMain.Size = new System.Drawing.Size(918, 420);
+            this.CardMain.Size = new System.Drawing.Size(866, 309);
             this.CardMain.TabIndex = 136;
             // 
             // groupBox1
@@ -538,30 +538,30 @@
             this.groupBox1.Controls.Add(this.SubTotalTitle);
             this.groupBox1.Controls.Add(this.TitleOfTotalItems);
             this.groupBox1.Controls.Add(this.TotalItems);
-            this.groupBox1.Location = new System.Drawing.Point(21, 347);
+            this.groupBox1.Location = new System.Drawing.Point(21, 236);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(877, 50);
+            this.groupBox1.Size = new System.Drawing.Size(825, 50);
             this.groupBox1.TabIndex = 142;
             this.groupBox1.TabStop = false;
             // 
             // TitleOfTotalItems
             // 
             this.TitleOfTotalItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.TitleOfTotalItems.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.TitleOfTotalItems.Font = new System.Drawing.Font("Calibri Light", 16F);
             this.TitleOfTotalItems.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.TitleOfTotalItems.Location = new System.Drawing.Point(26, 15);
+            this.TitleOfTotalItems.Location = new System.Drawing.Point(26, 14);
             this.TitleOfTotalItems.Name = "TitleOfTotalItems";
-            this.TitleOfTotalItems.Size = new System.Drawing.Size(64, 23);
+            this.TitleOfTotalItems.Size = new System.Drawing.Size(70, 23);
             this.TitleOfTotalItems.TabIndex = 137;
-            this.TitleOfTotalItems.Text = "ITENS:";
+            this.TitleOfTotalItems.Text = "Itens:";
             this.TitleOfTotalItems.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // TotalItems
             // 
             this.TotalItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.TotalItems.Font = new System.Drawing.Font("Calibri Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TotalItems.Font = new System.Drawing.Font("Calibri Light", 16F);
             this.TotalItems.ForeColor = System.Drawing.Color.MediumSeaGreen;
-            this.TotalItems.Location = new System.Drawing.Point(86, 14);
+            this.TotalItems.Location = new System.Drawing.Point(95, 16);
             this.TotalItems.Name = "TotalItems";
             this.TotalItems.Size = new System.Drawing.Size(98, 23);
             this.TotalItems.TabIndex = 138;
@@ -571,10 +571,11 @@
             // ClearQueryFields
             // 
             this.ClearQueryFields.AutoSize = true;
+            this.ClearQueryFields.Font = new System.Drawing.Font("Calibri Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClearQueryFields.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(87)))), ((int)(((byte)(166)))));
-            this.ClearQueryFields.Location = new System.Drawing.Point(25, 34);
+            this.ClearQueryFields.Location = new System.Drawing.Point(18, 30);
             this.ClearQueryFields.Name = "ClearQueryFields";
-            this.ClearQueryFields.Size = new System.Drawing.Size(38, 13);
+            this.ClearQueryFields.Size = new System.Drawing.Size(49, 18);
             this.ClearQueryFields.TabIndex = 141;
             this.ClearQueryFields.TabStop = true;
             this.ClearQueryFields.Text = "Limpar";
@@ -584,9 +585,9 @@
             // 
             this.GifLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.GifLoading.Image = global::DimStock.Properties.Resources.Loading;
-            this.GifLoading.Location = new System.Drawing.Point(380, 124);
+            this.GifLoading.Location = new System.Drawing.Point(371, 80);
             this.GifLoading.Name = "GifLoading";
-            this.GifLoading.Size = new System.Drawing.Size(188, 172);
+            this.GifLoading.Size = new System.Drawing.Size(135, 135);
             this.GifLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.GifLoading.TabIndex = 139;
             this.GifLoading.TabStop = false;
@@ -602,7 +603,7 @@
             this.MainDataList.ListIsStock = false;
             this.MainDataList.Location = new System.Drawing.Point(21, 60);
             this.MainDataList.Name = "MainDataList";
-            this.MainDataList.Size = new System.Drawing.Size(877, 287);
+            this.MainDataList.Size = new System.Drawing.Size(825, 176);
             this.MainDataList.TabIndex = 141;
             this.MainDataList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MainDataList_CellClick);
             this.MainDataList.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.MainDataList_CellMouseEnter);
@@ -624,9 +625,9 @@
             this.GrupBoxGeneralInformation.Controls.Add(this.OperationHour);
             this.GrupBoxGeneralInformation.Controls.Add(this.OperationHourTitle);
             this.GrupBoxGeneralInformation.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.GrupBoxGeneralInformation.Location = new System.Drawing.Point(31, 108);
+            this.GrupBoxGeneralInformation.Location = new System.Drawing.Point(31, 64);
             this.GrupBoxGeneralInformation.Name = "GrupBoxGeneralInformation";
-            this.GrupBoxGeneralInformation.Size = new System.Drawing.Size(918, 96);
+            this.GrupBoxGeneralInformation.Size = new System.Drawing.Size(866, 83);
             this.GrupBoxGeneralInformation.TabIndex = 140;
             this.GrupBoxGeneralInformation.TabStop = false;
             this.GrupBoxGeneralInformation.Text = "Informações Gerais";
@@ -636,7 +637,7 @@
             this.OperationTypeTitle.AutoSize = true;
             this.OperationTypeTitle.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold);
             this.OperationTypeTitle.ForeColor = System.Drawing.Color.Black;
-            this.OperationTypeTitle.Location = new System.Drawing.Point(31, 61);
+            this.OperationTypeTitle.Location = new System.Drawing.Point(31, 53);
             this.OperationTypeTitle.Name = "OperationTypeTitle";
             this.OperationTypeTitle.Size = new System.Drawing.Size(39, 18);
             this.OperationTypeTitle.TabIndex = 128;
@@ -647,7 +648,7 @@
             this.OperationType.AutoSize = true;
             this.OperationType.Font = new System.Drawing.Font("Calibri Light", 10F);
             this.OperationType.ForeColor = System.Drawing.Color.Gray;
-            this.OperationType.Location = new System.Drawing.Point(68, 62);
+            this.OperationType.Location = new System.Drawing.Point(68, 54);
             this.OperationType.Name = "OperationType";
             this.OperationType.Size = new System.Drawing.Size(16, 17);
             this.OperationType.TabIndex = 129;
@@ -659,7 +660,7 @@
             this.LblStockDestination.AutoSize = true;
             this.LblStockDestination.Font = new System.Drawing.Font("Calibri Light", 10F);
             this.LblStockDestination.ForeColor = System.Drawing.Color.Black;
-            this.LblStockDestination.Location = new System.Drawing.Point(29, 220);
+            this.LblStockDestination.Location = new System.Drawing.Point(29, 162);
             this.LblStockDestination.Name = "LblStockDestination";
             this.LblStockDestination.Size = new System.Drawing.Size(55, 17);
             this.LblStockDestination.TabIndex = 142;
@@ -670,9 +671,9 @@
             this.StockDestinationList.BackColor = System.Drawing.Color.White;
             this.StockDestinationList.Font = new System.Drawing.Font("Calibri Light", 12F);
             this.StockDestinationList.FormattingEnabled = true;
-            this.StockDestinationList.Location = new System.Drawing.Point(31, 239);
+            this.StockDestinationList.Location = new System.Drawing.Point(31, 181);
             this.StockDestinationList.Name = "StockDestinationList";
-            this.StockDestinationList.Size = new System.Drawing.Size(266, 27);
+            this.StockDestinationList.Size = new System.Drawing.Size(314, 27);
             this.StockDestinationList.TabIndex = 145;
             this.StockDestinationList.DropDown += new System.EventHandler(this.StockDestinationList_DropDown);
             this.StockDestinationList.SelectedIndexChanged += new System.EventHandler(this.StockDestinationList_SelectedIndexChanged);
@@ -681,10 +682,11 @@
             // AddNewStockDestination
             // 
             this.AddNewStockDestination.AutoSize = true;
+            this.AddNewStockDestination.Font = new System.Drawing.Font("Calibri Light", 11F);
             this.AddNewStockDestination.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(87)))), ((int)(((byte)(166)))));
-            this.AddNewStockDestination.Location = new System.Drawing.Point(216, 223);
+            this.AddNewStockDestination.Location = new System.Drawing.Point(248, 159);
             this.AddNewStockDestination.Name = "AddNewStockDestination";
-            this.AddNewStockDestination.Size = new System.Drawing.Size(81, 13);
+            this.AddNewStockDestination.Size = new System.Drawing.Size(102, 18);
             this.AddNewStockDestination.TabIndex = 146;
             this.AddNewStockDestination.TabStop = true;
             this.AddNewStockDestination.Text = "Cadastrar Novo";
@@ -727,10 +729,10 @@
             this.RegisterNew.ForeColor = System.Drawing.Color.SeaGreen;
             this.RegisterNew.IdleBorderThickness = 1;
             this.RegisterNew.IdleCornerRadius = 10;
-            this.RegisterNew.IdleFillColor = System.Drawing.Color.MediumAquamarine;
+            this.RegisterNew.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
             this.RegisterNew.IdleForecolor = System.Drawing.Color.White;
-            this.RegisterNew.IdleLineColor = System.Drawing.Color.MediumAquamarine;
-            this.RegisterNew.Location = new System.Drawing.Point(26, 29);
+            this.RegisterNew.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
+            this.RegisterNew.Location = new System.Drawing.Point(26, 9);
             this.RegisterNew.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.RegisterNew.Name = "RegisterNew";
             this.RegisterNew.Size = new System.Drawing.Size(97, 43);
@@ -753,10 +755,10 @@
             this.Delete.ForeColor = System.Drawing.Color.SeaGreen;
             this.Delete.IdleBorderThickness = 1;
             this.Delete.IdleCornerRadius = 10;
-            this.Delete.IdleFillColor = System.Drawing.Color.MediumAquamarine;
+            this.Delete.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
             this.Delete.IdleForecolor = System.Drawing.Color.White;
-            this.Delete.IdleLineColor = System.Drawing.Color.MediumAquamarine;
-            this.Delete.Location = new System.Drawing.Point(125, 29);
+            this.Delete.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
+            this.Delete.Location = new System.Drawing.Point(125, 9);
             this.Delete.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Delete.Name = "Delete";
             this.Delete.Size = new System.Drawing.Size(97, 43);
@@ -779,10 +781,10 @@
             this.Confirm.ForeColor = System.Drawing.Color.SeaGreen;
             this.Confirm.IdleBorderThickness = 1;
             this.Confirm.IdleCornerRadius = 10;
-            this.Confirm.IdleFillColor = System.Drawing.Color.MediumAquamarine;
+            this.Confirm.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
             this.Confirm.IdleForecolor = System.Drawing.Color.White;
-            this.Confirm.IdleLineColor = System.Drawing.Color.MediumAquamarine;
-            this.Confirm.Location = new System.Drawing.Point(224, 29);
+            this.Confirm.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
+            this.Confirm.Location = new System.Drawing.Point(224, 9);
             this.Confirm.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Confirm.Name = "Confirm";
             this.Confirm.Size = new System.Drawing.Size(97, 43);
@@ -806,10 +808,10 @@
             this.CloseForm.ForeColor = System.Drawing.Color.SeaGreen;
             this.CloseForm.IdleBorderThickness = 1;
             this.CloseForm.IdleCornerRadius = 10;
-            this.CloseForm.IdleFillColor = System.Drawing.Color.MediumAquamarine;
+            this.CloseForm.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
             this.CloseForm.IdleForecolor = System.Drawing.Color.White;
-            this.CloseForm.IdleLineColor = System.Drawing.Color.MediumAquamarine;
-            this.CloseForm.Location = new System.Drawing.Point(851, 29);
+            this.CloseForm.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
+            this.CloseForm.Location = new System.Drawing.Point(799, 9);
             this.CloseForm.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.CloseForm.Name = "CloseForm";
             this.CloseForm.Size = new System.Drawing.Size(97, 43);
@@ -821,8 +823,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(980, 720);
+            this.ClientSize = new System.Drawing.Size(928, 551);
             this.Controls.Add(this.CloseForm);
             this.Controls.Add(this.Confirm);
             this.Controls.Add(this.Delete);
@@ -832,7 +835,7 @@
             this.Controls.Add(this.GrupBoxGeneralInformation);
             this.Controls.Add(this.LblStockDestination);
             this.Controls.Add(this.CardMain);
-            this.MinimumSize = new System.Drawing.Size(980, 720);
+            this.MinimumSize = new System.Drawing.Size(944, 590);
             this.Name = "StockMovementRegistrationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Resize += new System.EventHandler(this.StockMovementResgistrationForm_Resize);

@@ -44,7 +44,7 @@
             this.ReportViewControl.Location = new System.Drawing.Point(12, 12);
             this.ReportViewControl.Name = "ReportViewControl";
             this.ReportViewControl.ServerReport.BearerToken = null;
-            this.ReportViewControl.Size = new System.Drawing.Size(896, 560);
+            this.ReportViewControl.Size = new System.Drawing.Size(904, 474);
             this.ReportViewControl.TabIndex = 1;
             // 
             // CloseForm
@@ -66,7 +66,7 @@
             this.CloseForm.IdleFillColor = System.Drawing.Color.MediumAquamarine;
             this.CloseForm.IdleForecolor = System.Drawing.Color.White;
             this.CloseForm.IdleLineColor = System.Drawing.Color.MediumAquamarine;
-            this.CloseForm.Location = new System.Drawing.Point(11, 580);
+            this.CloseForm.Location = new System.Drawing.Point(11, 494);
             this.CloseForm.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.CloseForm.Name = "CloseForm";
             this.CloseForm.Size = new System.Drawing.Size(97, 43);
@@ -79,11 +79,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(920, 637);
+            this.ClientSize = new System.Drawing.Size(928, 551);
             this.Controls.Add(this.CloseForm);
             this.Controls.Add(this.ReportViewControl);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(944, 590);
             this.Name = "ReportViewForm";
             this.Load += new System.EventHandler(this.FrmReportView_Load);
             this.ResumeLayout(false);
