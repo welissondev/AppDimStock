@@ -937,8 +937,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TabControl MainTabControl;
         private System.Windows.Forms.TabPage PageConfigType;
         private System.Windows.Forms.TabPage PageChooseDirectory;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt MainDirectoryPath;
@@ -962,7 +960,6 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.LinkLabel NextPage;
         private System.Windows.Forms.RadioButton CheckBoxNewConfiguration;
-        private System.Windows.Forms.RadioButton CheckBoxRestoureBackup;
         private System.Windows.Forms.LinkLabel BackPage;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -989,5 +986,7 @@
         private Syncfusion.Windows.Forms.Tools.TextBoxExt BackupPath;
         private System.Windows.Forms.ListView ListviewBackup;
         private System.Windows.Forms.ColumnHeader FileList;
+        public System.Windows.Forms.TabControl MainTabControl;
+        public System.Windows.Forms.RadioButton CheckBoxRestoureBackup;
     }
 }
