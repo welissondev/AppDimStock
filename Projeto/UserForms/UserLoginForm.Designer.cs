@@ -53,7 +53,7 @@
             this.PassWord.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.PassWord.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.PassWord.BeforeTouchSize = new System.Drawing.Size(192, 27);
-            this.PassWord.BorderColor = System.Drawing.Color.Silver;
+            this.PassWord.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.PassWord.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PassWord.CanOverrideStyle = true;
             this.PassWord.CausesValidation = false;
@@ -77,7 +77,7 @@
             this.Login.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Login.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.Login.BeforeTouchSize = new System.Drawing.Size(192, 27);
-            this.Login.BorderColor = System.Drawing.Color.Silver;
+            this.Login.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.Login.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Login.CanOverrideStyle = true;
             this.Login.CausesValidation = false;
@@ -279,8 +279,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimumSize = new System.Drawing.Size(959, 667);
             this.Name = "UserLoginForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.UserLoginForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PassWord)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Login)).EndInit();

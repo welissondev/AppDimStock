@@ -53,7 +53,7 @@ namespace DimStock.UserForms
                 AxlLogin.Login = user.Login;
 
                 HomeScreenForm.He.Show();
-                
+
                 Close();
             }
             catch (Exception ex)

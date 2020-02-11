@@ -904,10 +904,10 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.BackPage);
             this.Controls.Add(this.MainTabControl);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MinimumSize = new System.Drawing.Size(944, 590);
             this.Name = "AppSettingsForm";
-            this.Text = "AppConfigForm";
+            this.Text = "Assistente de configuração da aplicação";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.MainTabControl.ResumeLayout(false);
             this.PageConfigType.ResumeLayout(false);
