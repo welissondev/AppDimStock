@@ -301,7 +301,7 @@ namespace DimStock.UserForms
             }
         }
 
-        private void MenuSettings_Backup_Click(object sender, EventArgs e)
+        private void MenuSettings_Backup_GenerateNew_Click(object sender, EventArgs e)
         {
             AxlMdiForm.CloseAllForms();
 
@@ -315,6 +315,25 @@ namespace DimStock.UserForms
             form.Show();
 
             FormNovigationDescription.Text = "Configurações";
+        }
+
+        private void MenuSettings_Backup_ImportAnother_Click(object sender, EventArgs e)
+        {
+            AxlMdiForm.CloseAllForms();
+
+            var form = new AppSettingsForm()
+            {
+                WindowState = FormWindowState.Normal,
+                MdiParent = HomeScreenForm.He,
+                FormBorderStyle = FormBorderStyle.None,
+                Dock = DockStyle.Fill,
+                ShowInTaskbar = false
+            };
+
+            form.CheckBoxRestoureBackup.Checked = true;
+            form.MainTabControl.SelectTab("PageBackUp");
+
+            form.Show();
         }
 
         #endregion

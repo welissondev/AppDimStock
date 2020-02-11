@@ -64,6 +64,8 @@
             this.FormNovigationDescription = new System.Windows.Forms.Label();
             this.ContextMenu_Settings = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MenuSettings_Backup = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuSettings_Backup_GenerateNew = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuSettings_Backup_ImportAnother = new System.Windows.Forms.ToolStripMenuItem();
             this.PanelMenuTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.ContextMenu_Product.SuspendLayout();
@@ -447,14 +449,31 @@
             this.ContextMenu_Settings.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuSettings_Backup});
             this.ContextMenu_Settings.Name = "ContextMenu_Settings";
-            this.ContextMenu_Settings.Size = new System.Drawing.Size(114, 26);
+            this.ContextMenu_Settings.Size = new System.Drawing.Size(181, 48);
             // 
             // MenuSettings_Backup
             // 
+            this.MenuSettings_Backup.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuSettings_Backup_GenerateNew,
+            this.MenuSettings_Backup_ImportAnother});
             this.MenuSettings_Backup.Name = "MenuSettings_Backup";
-            this.MenuSettings_Backup.Size = new System.Drawing.Size(113, 22);
+            this.MenuSettings_Backup.Size = new System.Drawing.Size(180, 22);
             this.MenuSettings_Backup.Text = "Backup";
-            this.MenuSettings_Backup.Click += new System.EventHandler(this.MenuSettings_Backup_Click);
+            
+            // 
+            // MenuSettings_Backup_GenerateNew
+            // 
+            this.MenuSettings_Backup_GenerateNew.Name = "MenuSettings_Backup_GenerateNew";
+            this.MenuSettings_Backup_GenerateNew.Size = new System.Drawing.Size(180, 22);
+            this.MenuSettings_Backup_GenerateNew.Text = "Gerar Novo";
+            this.MenuSettings_Backup_GenerateNew.Click += new System.EventHandler(this.MenuSettings_Backup_GenerateNew_Click);
+            // 
+            // MenuSettings_Backup_ImportAnother
+            // 
+            this.MenuSettings_Backup_ImportAnother.Name = "MenuSettings_Backup_ImportAnother";
+            this.MenuSettings_Backup_ImportAnother.Size = new System.Drawing.Size(180, 22);
+            this.MenuSettings_Backup_ImportAnother.Text = "Importar Outro";
+            this.MenuSettings_Backup_ImportAnother.Click += new System.EventHandler(this.MenuSettings_Backup_ImportAnother_Click);
             // 
             // HomeScreenForm
             // 
@@ -518,6 +537,8 @@
         private System.Windows.Forms.ToolStripMenuItem MenuProduct_RegisterNew_Category;
         private System.Windows.Forms.ToolStripMenuItem MenuProduct_ListRegisters_Product;
         private System.Windows.Forms.ToolStripMenuItem MenuProduct_ListRegisters_Category;
+        private System.Windows.Forms.ToolStripMenuItem MenuSettings_Backup_GenerateNew;
+        private System.Windows.Forms.ToolStripMenuItem MenuSettings_Backup_ImportAnother;
     }
 }
 
