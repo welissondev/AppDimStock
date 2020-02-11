@@ -592,13 +592,6 @@ namespace DimStock.UserForms
 
                 return false;
             }
-            else if (CheckIfItemExists().Equals(true))
-            {
-                MessageBox.Show("Esse produto já foi adicionado!", "NÃO PERMITIDO",
-                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-                return false;
-            }
             else
             {
                 return true;
