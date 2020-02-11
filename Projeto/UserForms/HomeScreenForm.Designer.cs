@@ -468,6 +468,7 @@
             this.IsMdiContainer = true;
             this.MinimumSize = new System.Drawing.Size(960, 720);
             this.Name = "HomeScreenForm";
+            this.Text = "DimStock--Sistema Para Controle De Estoque";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.HomeScreenForm_Load);
             this.PanelMenuTop.ResumeLayout(false);
