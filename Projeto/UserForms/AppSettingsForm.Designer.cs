@@ -648,7 +648,7 @@
             this.ListviewBackup.MultiSelect = false;
             this.ListviewBackup.Name = "ListviewBackup";
             this.ListviewBackup.Size = new System.Drawing.Size(438, 159);
-            this.ListviewBackup.Sorting = System.Windows.Forms.SortOrder.Descending;
+            this.ListviewBackup.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.ListviewBackup.TabIndex = 210;
             this.ListviewBackup.UseCompatibleStateImageBehavior = false;
             this.ListviewBackup.View = System.Windows.Forms.View.Details;
