@@ -10,7 +10,6 @@ namespace DimStock.Reports
         public int ProductSize { get; set; }
         public int ProductReference { get; set; }
         public string ProductDescription { get; set; }
-        public string Supplier { get; set; }
         public int MinStock { get; set; }
         public int MaxStock { get; set; }
         public int StockQuantity { get; set; }
@@ -32,7 +31,6 @@ namespace DimStock.Reports
                     ProductCode = listOfRecords[i].ProductCode,
                     ProductSize = listOfRecords[i].ProductSize,
                     ProductReference = listOfRecords[i].ProductReference,
-                    Supplier = listOfRecords[i].Supplier,
                     ProductDescription = listOfRecords[i].ProductDescription,
                     MinStock = listOfRecords[i].MinStock,
                     MaxStock = listOfRecords[i].MaxStock,

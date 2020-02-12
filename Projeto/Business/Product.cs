@@ -12,30 +12,32 @@ namespace DimStock.Business
     {
         #region Constructors
 
-        public Product() { }
+        public Product()
+        {
+            Category = new ProductCategory();
+        }
 
         public Product(AxlDataPagination dataPagination)
         {
             DataPagination = dataPagination;
+            Category = new ProductCategory();
         }
 
         #endregion
 
         #region BussinesProperties
         public int Id { get; set; }
-        public int CategoryId { get; set; }
-        public string CategoryDescription { get; set; }
         public int Code { get; set; }
         public int Size { get; set; }
         public int Reference { get; set; }
-        public string Supplier { get; set; }
         public string Description { get; set; }
         public double CostPrice { get; set; }
         public double SalePrice { get; set; }
         public int MinStock { get; set; }
         public int MaxStock { get; set; }
         public string BarCode { get; set; }
-        public string PhotoName { get; set; }
+        public string PhotoPath { get; set; }
+        public ProductCategory Category { get; set; }
         public List<Product> ListOfRecords { get; set; }
         #endregion 
 
@@ -60,23 +62,22 @@ namespace DimStock.Business
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
                     var sqlCommand = @"INSERT INTO Product 
-                    (ProductCategoryId, Code, [Size], Reference, Supplier, Description, CostPrice, 
-                    SalePrice, MinStock, MaxStock, BarCode, PhotoName) VALUES (@ProductCategoryId, @Code, 
-                    @Size, @Reference, @Supplier, @Description, @CostPrice, @SalePrice, @MinStock, 
-                    @MaxStock, @BarCode, @PhotoName)";
+                    (ProductCategoryId, Code, [Size], Reference, Description, CostPrice, 
+                    SalePrice, MinStock, MaxStock, BarCode, PhotoPath) VALUES (@ProductCategoryId, @Code, 
+                    @Size, @Reference, @Description, @CostPrice, @SalePrice, @MinStock, 
+                    @MaxStock, @BarCode, @PhotoPath)";
 
-                    connection.AddParameter("@ProductCategoryId", OleDbType.Integer, CategoryId);
+                    connection.AddParameter("@ProductCategoryId", OleDbType.Integer, Category.Id);
                     connection.AddParameter("@Code", OleDbType.Integer, Code);
                     connection.AddParameter("@Size", OleDbType.Integer, Size);
                     connection.AddParameter("@Reference", OleDbType.Integer, Reference);
-                    connection.AddParameter("@Supplier", OleDbType.VarChar, Supplier);
                     connection.AddParameter("@Description", OleDbType.VarChar, Description);
                     connection.AddParameter("@CostPrice", OleDbType.Double, CostPrice);
                     connection.AddParameter("@SalePrice", OleDbType.Double, SalePrice);
                     connection.AddParameter("@MinStock", OleDbType.Integer, MinStock);
                     connection.AddParameter("@MaxStock", OleDbType.Integer, MaxStock);
                     connection.AddParameter("@BarCode", OleDbType.VarChar, BarCode);
-                    connection.AddParameter("@PhotoName", OleDbType.VarChar, PhotoName);
+                    connection.AddParameter("@PhotoPath", OleDbType.VarChar, PhotoPath);
 
                     transactionState = connection.ExecuteTransaction(
                     sqlCommand) > 0;
@@ -126,24 +127,22 @@ namespace DimStock.Business
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
                     var sqlCommand = @"UPDATE Product Set ProductCategoryId = @ProductCategoryId, Code = @Code, 
-                    [Size] = @Size, Reference = @Reference, Supplier = @Supplier, 
-                    Description = @Description, CostPrice = @CostPrice, SalePrice = @SalePrice, 
-                    MinStock = @MinStock, MaxStock = @MaxStock, BarCode = @BarCode, 
-                    PhotoName = @PhotoName WHERE Id = @Id";
+                    [Size] = @Size, Reference = @Reference, Description = @Description, CostPrice = @CostPrice, 
+                    SalePrice = @SalePrice, MinStock = @MinStock, MaxStock = @MaxStock, BarCode = @BarCode, 
+                    PhotoPath = @PhotoPath WHERE Id = @Id";
 
                     connection.ParameterClear();
-                    connection.AddParameter("@ProductCategoryId", OleDbType.Integer, CategoryId);
+                    connection.AddParameter("@ProductCategoryId", OleDbType.Integer, Category.Id);
                     connection.AddParameter("@Code", OleDbType.Integer, Code);
                     connection.AddParameter("@Size", OleDbType.Integer, Size);
                     connection.AddParameter("@Reference", OleDbType.Integer, Reference);
-                    connection.AddParameter("@Supplier", OleDbType.VarChar, Supplier);
                     connection.AddParameter("@Description", OleDbType.VarChar, Description);
                     connection.AddParameter("@CostPrice", OleDbType.Double, CostPrice);
                     connection.AddParameter("@SalePrice", OleDbType.Double, SalePrice);
                     connection.AddParameter("@MinStock", OleDbType.Integer, MinStock);
                     connection.AddParameter("@MaxStock", OleDbType.Integer, MaxStock);
                     connection.AddParameter("@BarCode", OleDbType.VarChar, BarCode);
-                    connection.AddParameter("@PhotoName", OleDbType.VarChar, PhotoName);
+                    connection.AddParameter("@PhotoPath", OleDbType.VarChar, PhotoPath);
                     connection.AddParameter("@Id", OleDbType.Integer, id);
 
                     transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
@@ -242,8 +241,8 @@ namespace DimStock.Business
                 var sqlQuery = string.Empty;
                 var productList = new List<Product>();
 
-                sqlQuery = @"SELECT Id, Code, [Size], Reference, Supplier, Description, 
-                CostPrice, SalePrice, PhotoName FROM Product WHERE Id > 0";
+                sqlQuery = @"SELECT Id, Code, [Size], Reference, Description, 
+                CostPrice, SalePrice, PhotoPath FROM Product WHERE Id > 0";
 
                 if (SearchByCode != string.Empty)
                 {
@@ -288,12 +287,11 @@ namespace DimStock.Business
                             Id = Convert.ToInt32(reader["Id"]),
                             Code = Convert.ToInt32(reader["Code"]),
                             Reference = Convert.ToInt32(reader["Reference"]),
-                            Supplier = Convert.ToString(reader["Supplier"]),
                             Description = Convert.ToString(reader["Description"]),
                             Size = Convert.ToInt32(reader["Size"]),
                             CostPrice = Convert.ToDouble(reader["CostPrice"]),
                             SalePrice = Convert.ToDouble(reader["SalePrice"]),
-                            PhotoName = Convert.ToString(reader["PhotoName"])
+                            PhotoPath = Convert.ToString(reader["PhotoPath"])
                         };
 
                         productList.Add(product);
@@ -313,8 +311,8 @@ namespace DimStock.Business
                 var criterion = string.Empty;
                 var parameter = connection.Command.Parameters;
 
-                sqlQuery = @"SELECT Id, Code, [Size], Reference, Supplier, Description, 
-                CostPrice, SalePrice, PhotoName FROM Product WHERE Id > 0";
+                sqlQuery = @"SELECT Id, Code, [Size], Reference, Description, 
+                CostPrice, SalePrice, PhotoPath FROM Product WHERE Id > 0";
 
                 sqlCount = @"SELECT COUNT(*) FROM Product WHERE Id > 0";
 
@@ -382,23 +380,22 @@ namespace DimStock.Business
                         Id = Convert.ToInt32(reader["Product.Id"]);
 
                         if (!reader.IsDBNull(1))
-                            CategoryId = Convert.ToInt32(
+                            Category.Id = Convert.ToInt32(
                             reader["ProductCategory.Id"]);
 
                         if (!reader.IsDBNull(2))
-                            CategoryDescription = Convert.ToString(
+                            Category.Description = Convert.ToString(
                             reader["ProductCategory.Description"]);
 
                         Code = Convert.ToInt32(reader["Code"]);
                         Size = Convert.ToInt32(reader["Size"]);
                         Reference = Convert.ToInt32(reader["Reference"]);
-                        Supplier = Convert.ToString(reader["Supplier"]);
                         Description = Convert.ToString(reader["Product.Description"]);
                         MinStock = Convert.ToInt32(reader["MinStock"]);
                         MaxStock = Convert.ToInt32(reader["MaxStock"]);
                         CostPrice = Convert.ToDouble(reader["CostPrice"]);
                         SalePrice = Convert.ToDouble(reader["SalePrice"]);
-                        PhotoName = reader["PhotoName"].ToString();
+                        PhotoPath = reader["PhotoPath"].ToString();
                         BarCode = reader["BarCode"].ToString();
                     }
                 }
@@ -423,11 +420,10 @@ namespace DimStock.Business
                     Code = Convert.ToInt32(row["Code"]),
                     Size = Convert.ToInt32(row["Size"]),
                     Reference = Convert.ToInt32(row["Reference"]),
-                    Supplier = Convert.ToString(row["Supplier"]),
                     Description = Convert.ToString(row["Description"]),
                     CostPrice = Convert.ToDouble(row["CostPrice"]),
                     SalePrice = Convert.ToDouble(row["SalePrice"]),
-                    PhotoName = Convert.ToString(row["PhotoName"])
+                    PhotoPath = Convert.ToString(row["PhotoPath"])
                 };
 
                 productList.Add(product);
@@ -454,11 +450,10 @@ namespace DimStock.Business
                     affectedFieldList.Add("Tamanho:" + dataReader["Size"].ToString());
                     affectedFieldList.Add("Referência:" + dataReader["Reference"].ToString());
                     affectedFieldList.Add("Descrição:" + dataReader["Description"].ToString());
-                    affectedFieldList.Add("Fornecedor:" + dataReader["Supplier"].ToString());
                     affectedFieldList.Add("PreçoCusto:" + dataReader["CostPrice"].ToString());
                     affectedFieldList.Add("PreçoVenda:" + dataReader["SalePrice"].ToString());
                     affectedFieldList.Add("CódigoBarras:" + dataReader["BarCode"].ToString());
-                    affectedFieldList.Add("FotoNome:" + dataReader["PhotoName"].ToString());
+                    affectedFieldList.Add("FotoNome:" + dataReader["PhotoPath"].ToString());
                 }
             }
 

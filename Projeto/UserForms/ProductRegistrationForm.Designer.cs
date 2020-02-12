@@ -48,8 +48,6 @@
             this.MinStock = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
             this.MaxStock = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
             this.ProductSize = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
-            this.Supplier = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.SupplierTitle = new System.Windows.Forms.Label();
             this.ProductCode = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
             this.ProductReference = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
             this.ClearFields = new Bunifu.Framework.UI.BunifuThinButton2();
@@ -70,7 +68,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.MinStock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxStock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductSize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Supplier)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductReference)).BeginInit();
             this.SuspendLayout();
@@ -88,7 +85,7 @@
             this.BarCode.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.BarCode.Font = new System.Drawing.Font("Calibri Light", 12F);
             this.BarCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.BarCode.Location = new System.Drawing.Point(264, 433);
+            this.BarCode.Location = new System.Drawing.Point(264, 382);
             this.BarCode.MaxLength = 50;
             this.BarCode.MinimumSize = new System.Drawing.Size(16, 12);
             this.BarCode.Name = "BarCode";
@@ -117,7 +114,7 @@
             131072});
             this.SalePrice.Font = new System.Drawing.Font("Calibri Light", 12F);
             this.SalePrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.SalePrice.Location = new System.Drawing.Point(264, 377);
+            this.SalePrice.Location = new System.Drawing.Point(264, 326);
             this.SalePrice.MinimumSize = new System.Drawing.Size(16, 12);
             this.SalePrice.Name = "SalePrice";
             this.SalePrice.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Managed;
@@ -148,7 +145,7 @@
             131072});
             this.CostPrice.Font = new System.Drawing.Font("Calibri Light", 12F);
             this.CostPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.CostPrice.Location = new System.Drawing.Point(264, 320);
+            this.CostPrice.Location = new System.Drawing.Point(264, 269);
             this.CostPrice.MinimumSize = new System.Drawing.Size(16, 12);
             this.CostPrice.Name = "CostPrice";
             this.CostPrice.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Managed;
@@ -174,7 +171,7 @@
             this.Description.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Description.Font = new System.Drawing.Font("Calibri Light", 12F);
             this.Description.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.Description.Location = new System.Drawing.Point(264, 212);
+            this.Description.Location = new System.Drawing.Point(264, 161);
             this.Description.MaxLength = 2000;
             this.Description.MinimumSize = new System.Drawing.Size(16, 12);
             this.Description.Name = "Description";
@@ -191,7 +188,7 @@
             this.BarCodeTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.BarCodeTitle.AutoSize = true;
             this.BarCodeTitle.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.BarCodeTitle.Location = new System.Drawing.Point(261, 415);
+            this.BarCodeTitle.Location = new System.Drawing.Point(261, 364);
             this.BarCodeTitle.Name = "BarCodeTitle";
             this.BarCodeTitle.Size = new System.Drawing.Size(108, 17);
             this.BarCodeTitle.TabIndex = 64;
@@ -202,7 +199,7 @@
             this.SalePriceTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.SalePriceTitle.AutoSize = true;
             this.SalePriceTitle.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.SalePriceTitle.Location = new System.Drawing.Point(261, 360);
+            this.SalePriceTitle.Location = new System.Drawing.Point(261, 309);
             this.SalePriceTitle.Name = "SalePriceTitle";
             this.SalePriceTitle.Size = new System.Drawing.Size(82, 17);
             this.SalePriceTitle.TabIndex = 63;
@@ -213,7 +210,7 @@
             this.CostPriceTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.CostPriceTitle.AutoSize = true;
             this.CostPriceTitle.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.CostPriceTitle.Location = new System.Drawing.Point(261, 303);
+            this.CostPriceTitle.Location = new System.Drawing.Point(261, 252);
             this.CostPriceTitle.Name = "CostPriceTitle";
             this.CostPriceTitle.Size = new System.Drawing.Size(79, 17);
             this.CostPriceTitle.TabIndex = 62;
@@ -224,7 +221,7 @@
             this.DescriptionTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.DescriptionTitle.AutoSize = true;
             this.DescriptionTitle.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.DescriptionTitle.Location = new System.Drawing.Point(261, 195);
+            this.DescriptionTitle.Location = new System.Drawing.Point(261, 144);
             this.DescriptionTitle.Name = "DescriptionTitle";
             this.DescriptionTitle.Size = new System.Drawing.Size(67, 17);
             this.DescriptionTitle.TabIndex = 61;
@@ -293,7 +290,7 @@
             this.MinStockTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.MinStockTitle.AutoSize = true;
             this.MinStockTitle.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.MinStockTitle.Location = new System.Drawing.Point(261, 249);
+            this.MinStockTitle.Location = new System.Drawing.Point(261, 198);
             this.MinStockTitle.Name = "MinStockTitle";
             this.MinStockTitle.Size = new System.Drawing.Size(81, 17);
             this.MinStockTitle.TabIndex = 80;
@@ -304,7 +301,7 @@
             this.MaxStockTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.MaxStockTitle.AutoSize = true;
             this.MaxStockTitle.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.MaxStockTitle.Location = new System.Drawing.Point(355, 249);
+            this.MaxStockTitle.Location = new System.Drawing.Point(355, 198);
             this.MaxStockTitle.Name = "MaxStockTitle";
             this.MaxStockTitle.Size = new System.Drawing.Size(84, 17);
             this.MaxStockTitle.TabIndex = 79;
@@ -323,7 +320,7 @@
             this.MinStock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.MinStock.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.MinStock.IntegerValue = ((long)(0));
-            this.MinStock.Location = new System.Drawing.Point(264, 265);
+            this.MinStock.Location = new System.Drawing.Point(264, 214);
             this.MinStock.MaxValue = ((long)(50000));
             this.MinStock.MinimumSize = new System.Drawing.Size(12, 8);
             this.MinStock.Name = "MinStock";
@@ -349,7 +346,7 @@
             this.MaxStock.Font = new System.Drawing.Font("Calibri Light", 12F);
             this.MaxStock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.MaxStock.IntegerValue = ((long)(0));
-            this.MaxStock.Location = new System.Drawing.Point(358, 265);
+            this.MaxStock.Location = new System.Drawing.Point(358, 214);
             this.MaxStock.MaxValue = ((long)(50000));
             this.MaxStock.MinimumSize = new System.Drawing.Size(12, 8);
             this.MaxStock.Name = "MaxStock";
@@ -390,42 +387,6 @@
             this.ProductSize.ThemeName = "Default";
             this.ProductSize.ThemesEnabled = false;
             this.ProductSize.ZeroColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            // 
-            // Supplier
-            // 
-            this.Supplier.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Supplier.BackColor = System.Drawing.Color.White;
-            this.Supplier.BeforeTouchSize = new System.Drawing.Size(94, 27);
-            this.Supplier.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Supplier.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Supplier.CanOverrideStyle = true;
-            this.Supplier.CausesValidation = false;
-            this.Supplier.CornerRadius = 1;
-            this.Supplier.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.Supplier.Font = new System.Drawing.Font("Calibri Light", 12F);
-            this.Supplier.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.Supplier.Location = new System.Drawing.Point(264, 158);
-            this.Supplier.MaxLength = 2000;
-            this.Supplier.MinimumSize = new System.Drawing.Size(16, 12);
-            this.Supplier.Name = "Supplier";
-            this.Supplier.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Managed;
-            this.Supplier.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Managed;
-            this.Supplier.Size = new System.Drawing.Size(602, 27);
-            this.Supplier.TabIndex = 3;
-            this.Supplier.Tag = "";
-            this.Supplier.ThemeName = "Default";
-            this.Supplier.ThemesEnabled = false;
-            // 
-            // SupplierTitle
-            // 
-            this.SupplierTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.SupplierTitle.AutoSize = true;
-            this.SupplierTitle.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.SupplierTitle.Location = new System.Drawing.Point(261, 142);
-            this.SupplierTitle.Name = "SupplierTitle";
-            this.SupplierTitle.Size = new System.Drawing.Size(76, 17);
-            this.SupplierTitle.TabIndex = 81;
-            this.SupplierTitle.Text = "Fornecedor:";
             // 
             // ProductCode
             // 
@@ -499,7 +460,7 @@
             this.ClearFields.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
             this.ClearFields.IdleForecolor = System.Drawing.Color.White;
             this.ClearFields.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
-            this.ClearFields.Location = new System.Drawing.Point(363, 474);
+            this.ClearFields.Location = new System.Drawing.Point(364, 417);
             this.ClearFields.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ClearFields.Name = "ClearFields";
             this.ClearFields.Size = new System.Drawing.Size(97, 43);
@@ -526,7 +487,7 @@
             this.Save.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
             this.Save.IdleForecolor = System.Drawing.Color.White;
             this.Save.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
-            this.Save.Location = new System.Drawing.Point(264, 474);
+            this.Save.Location = new System.Drawing.Point(265, 417);
             this.Save.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Save.Name = "Save";
             this.Save.Size = new System.Drawing.Size(97, 43);
@@ -628,8 +589,6 @@
             this.Controls.Add(this.Save);
             this.Controls.Add(this.ProductReference);
             this.Controls.Add(this.ProductCode);
-            this.Controls.Add(this.Supplier);
-            this.Controls.Add(this.SupplierTitle);
             this.Controls.Add(this.ProductSize);
             this.Controls.Add(this.MinStock);
             this.Controls.Add(this.MinStockTitle);
@@ -659,7 +618,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.MinStock)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxStock)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductSize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Supplier)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductReference)).EndInit();
             this.ResumeLayout(false);
@@ -685,8 +643,6 @@
         public Syncfusion.Windows.Forms.Tools.IntegerTextBox MinStock;
         public Syncfusion.Windows.Forms.Tools.IntegerTextBox MaxStock;
         public Syncfusion.Windows.Forms.Tools.IntegerTextBox ProductSize;
-        public Syncfusion.Windows.Forms.Tools.TextBoxExt Supplier;
-        private System.Windows.Forms.Label SupplierTitle;
         public DimStock.Controls.CustomPictureBoxOne ImageProduct;
         public Syncfusion.Windows.Forms.Tools.IntegerTextBox ProductCode;
         public Syncfusion.Windows.Forms.Tools.IntegerTextBox ProductReference;

@@ -187,19 +187,19 @@ namespace DimStock.UserForms
 
                 var product = new Product
                 {
-                    CategoryId = CategoryId,
                     Code = Convert.ToInt32(ProductCode.Text),
                     Size = Convert.ToInt32(ProductSize.Text),
                     Reference = Convert.ToInt32(ProductReference.Text),
-                    Supplier = Supplier.Text,
                     Description = Description.Text,
                     MinStock = Convert.ToInt32(MinStock.Text),
                     MaxStock = Convert.ToInt32(MaxStock.Text),
                     CostPrice = Convert.ToDouble(CostPrice.DecimalValue),
                     SalePrice = Convert.ToDouble(SalePrice.DecimalValue),
                     BarCode = BarCode.Text,
-                    PhotoName = ImageProduct.IndentificationPhotoNumber
+                    PhotoPath = ImageProduct.IndentificationPhotoNumber
                 };
+
+                product.Category.Id = CategoryId;
 
                 if (product.Register() == false)
                 {
@@ -210,7 +210,7 @@ namespace DimStock.UserForms
                 }
 
                 productPhoto.CopyFromDirectory(ImageProduct.SelectedDirectory,
-                productPhoto.GetDirectoryPeth() + product.PhotoName);
+                productPhoto.GetDirectoryPeth() + product.PhotoPath);
 
                 MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -234,19 +234,18 @@ namespace DimStock.UserForms
 
                 var product = new Product()
                 {
-                    CategoryId = CategoryId,
                     Code = Convert.ToInt32(ProductCode.Text),
                     Size = Convert.ToInt32(ProductSize.Text),
                     Reference = Convert.ToInt32(ProductReference.Text),
-                    Supplier = Supplier.Text,
                     Description = Description.Text,
                     MinStock = Convert.ToInt32(MinStock.Text),
                     MaxStock = Convert.ToInt32(MaxStock.Text),
                     CostPrice = Convert.ToDouble(CostPrice.DecimalValue),
                     SalePrice = Convert.ToDouble(SalePrice.DecimalValue),
                     BarCode = BarCode.Text,
-                    PhotoName = ImageProduct.IndentificationPhotoNumber,
+                    PhotoPath = ImageProduct.IndentificationPhotoNumber,
                 };
+                product.Category.Id  = CategoryId;
 
                 if (product.Edit(Id) == false)
                 {
@@ -257,7 +256,7 @@ namespace DimStock.UserForms
                 }
 
                 var photoPath = productPhoto.GetDirectoryPeth()
-                + product.PhotoName;
+                + product.PhotoPath;
 
                 //Apaga a foto atual do diretório, caso a foto do produto
                 //seja alterada
