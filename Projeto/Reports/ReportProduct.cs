@@ -10,8 +10,6 @@ namespace DimStock.Reports
         public int Size { get; set; }
         public int Reference { get; set; }
         public string Description { get; set; }
-        public int MinStock { get; set; }
-        public int MaxStock { get; set; }
         public double CostPrice { get; set; }
         public List<ReportProduct> ListOfRecords { get; set; }
         #endregion
@@ -30,8 +28,6 @@ namespace DimStock.Reports
                     Size = productList[i].Size,
                     Reference = productList[i].Reference,
                     Description = productList[i].Description,
-                    MinStock = productList[i].MinStock,
-                    MaxStock = productList[i].MaxStock,
                     CostPrice = productList[i].CostPrice
                 };
 

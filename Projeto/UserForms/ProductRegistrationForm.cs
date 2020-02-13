@@ -191,8 +191,6 @@ namespace DimStock.UserForms
                     Size = Convert.ToInt32(ProductSize.Text),
                     Reference = Convert.ToInt32(ProductReference.Text),
                     Description = Description.Text,
-                    MinStock = Convert.ToInt32(MinStock.Text),
-                    MaxStock = Convert.ToInt32(MaxStock.Text),
                     CostPrice = Convert.ToDouble(CostPrice.DecimalValue),
                     SalePrice = Convert.ToDouble(SalePrice.DecimalValue),
                     BarCode = BarCode.Text,
@@ -238,8 +236,6 @@ namespace DimStock.UserForms
                     Size = Convert.ToInt32(ProductSize.Text),
                     Reference = Convert.ToInt32(ProductReference.Text),
                     Description = Description.Text,
-                    MinStock = Convert.ToInt32(MinStock.Text),
-                    MaxStock = Convert.ToInt32(MaxStock.Text),
                     CostPrice = Convert.ToDouble(CostPrice.DecimalValue),
                     SalePrice = Convert.ToDouble(SalePrice.DecimalValue),
                     BarCode = BarCode.Text,
@@ -328,37 +324,6 @@ namespace DimStock.UserForms
                 Description.Select();
 
                 return false;
-            }
-
-            if (MinStock.Text == string.Empty)
-            {
-                MessageBox.Show("Quantidade mínima obrigatória!", "OBRIGATÓRIO",
-                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-                MinStock.Select();
-
-                return false;
-            }
-
-            if (MaxStock.Text == string.Empty)
-            {
-                MessageBox.Show("Quantidade máxima obrigatória!", "OBRIGATÓRIO",
-                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-                MaxStock.Select();
-
-                return false;
-            }
-
-            if (Convert.ToInt32(MinStock.Text) > Convert.ToInt32(MaxStock.Text))
-            {
-                MessageBox.Show("Quantidade mínima não pode ser maior que quantidade máxima!", "OBRIGATÓRIO",
-                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-                MaxStock.Select();
-
-                return false;
-
             }
 
             return true;

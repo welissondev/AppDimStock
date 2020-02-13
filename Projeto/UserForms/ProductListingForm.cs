@@ -308,8 +308,6 @@ namespace DimStock.UserForms
                 userForm.ProductSize.Text = product.Size.ToString();
                 userForm.ProductReference.Text = product.Reference.ToString();
                 userForm.Description.Text = product.Description;
-                userForm.MinStock.Text = product.MinStock.ToString();
-                userForm.MaxStock.Text = product.MaxStock.ToString();
                 userForm.CostPrice.Text = product.CostPrice.ToString();
                 userForm.SalePrice.Text = product.SalePrice.ToString();
                 userForm.BarCode.Text = product.BarCode;
@@ -407,8 +405,6 @@ namespace DimStock.UserForms
                 productForm.ProductSize.Text = product.Size.ToString();
                 productForm.ProductReference.Text = product.Reference.ToString();
                 productForm.Description.Text = product.Description;
-                productForm.MinStock.Text = product.MinStock.ToString();
-                productForm.MaxStock.Text = product.MaxStock.ToString();
                 productForm.CostPrice.Text = product.CostPrice.ToString();
                 productForm.SalePrice.Text = product.SalePrice.ToString();
                 productForm.BarCode.Text = product.BarCode;

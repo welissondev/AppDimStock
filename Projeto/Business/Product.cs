@@ -33,8 +33,6 @@ namespace DimStock.Business
         public string Description { get; set; }
         public double CostPrice { get; set; }
         public double SalePrice { get; set; }
-        public int MinStock { get; set; }
-        public int MaxStock { get; set; }
         public string BarCode { get; set; }
         public string PhotoPath { get; set; }
         public ProductCategory Category { get; set; }
@@ -63,9 +61,8 @@ namespace DimStock.Business
                 {
                     var sqlCommand = @"INSERT INTO Product 
                     (ProductCategoryId, Code, [Size], Reference, Description, CostPrice, 
-                    SalePrice, MinStock, MaxStock, BarCode, PhotoPath) VALUES (@ProductCategoryId, @Code, 
-                    @Size, @Reference, @Description, @CostPrice, @SalePrice, @MinStock, 
-                    @MaxStock, @BarCode, @PhotoPath)";
+                    SalePrice, BarCode, PhotoPath) VALUES (@ProductCategoryId, @Code, 
+                    @Size, @Reference, @Description, @CostPrice, @SalePrice, @BarCode, @PhotoPath)";
 
                     connection.AddParameter("@ProductCategoryId", OleDbType.Integer, Category.Id);
                     connection.AddParameter("@Code", OleDbType.Integer, Code);
@@ -74,8 +71,6 @@ namespace DimStock.Business
                     connection.AddParameter("@Description", OleDbType.VarChar, Description);
                     connection.AddParameter("@CostPrice", OleDbType.Double, CostPrice);
                     connection.AddParameter("@SalePrice", OleDbType.Double, SalePrice);
-                    connection.AddParameter("@MinStock", OleDbType.Integer, MinStock);
-                    connection.AddParameter("@MaxStock", OleDbType.Integer, MaxStock);
                     connection.AddParameter("@BarCode", OleDbType.VarChar, BarCode);
                     connection.AddParameter("@PhotoPath", OleDbType.VarChar, PhotoPath);
 
@@ -128,7 +123,7 @@ namespace DimStock.Business
                 {
                     var sqlCommand = @"UPDATE Product Set ProductCategoryId = @ProductCategoryId, Code = @Code, 
                     [Size] = @Size, Reference = @Reference, Description = @Description, CostPrice = @CostPrice, 
-                    SalePrice = @SalePrice, MinStock = @MinStock, MaxStock = @MaxStock, BarCode = @BarCode, 
+                    SalePrice = @SalePrice, BarCode = @BarCode, 
                     PhotoPath = @PhotoPath WHERE Id = @Id";
 
                     connection.ParameterClear();
@@ -139,8 +134,6 @@ namespace DimStock.Business
                     connection.AddParameter("@Description", OleDbType.VarChar, Description);
                     connection.AddParameter("@CostPrice", OleDbType.Double, CostPrice);
                     connection.AddParameter("@SalePrice", OleDbType.Double, SalePrice);
-                    connection.AddParameter("@MinStock", OleDbType.Integer, MinStock);
-                    connection.AddParameter("@MaxStock", OleDbType.Integer, MaxStock);
                     connection.AddParameter("@BarCode", OleDbType.VarChar, BarCode);
                     connection.AddParameter("@PhotoPath", OleDbType.VarChar, PhotoPath);
                     connection.AddParameter("@Id", OleDbType.Integer, id);
@@ -379,11 +372,11 @@ namespace DimStock.Business
                     {
                         Id = Convert.ToInt32(reader["Product.Id"]);
 
-                        if (!reader.IsDBNull(1))
+                        if (!reader.IsDBNull(4))
                             Category.Id = Convert.ToInt32(
                             reader["ProductCategory.Id"]);
 
-                        if (!reader.IsDBNull(2))
+                        if (!reader.IsDBNull(5))
                             Category.Description = Convert.ToString(
                             reader["ProductCategory.Description"]);
 
@@ -391,8 +384,6 @@ namespace DimStock.Business
                         Size = Convert.ToInt32(reader["Size"]);
                         Reference = Convert.ToInt32(reader["Reference"]);
                         Description = Convert.ToString(reader["Product.Description"]);
-                        MinStock = Convert.ToInt32(reader["MinStock"]);
-                        MaxStock = Convert.ToInt32(reader["MaxStock"]);
                         CostPrice = Convert.ToDouble(reader["CostPrice"]);
                         SalePrice = Convert.ToDouble(reader["SalePrice"]);
                         PhotoPath = reader["PhotoPath"].ToString();

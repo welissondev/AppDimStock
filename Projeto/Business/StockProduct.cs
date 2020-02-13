@@ -68,60 +68,57 @@ namespace DimStock.Business
                     sqlCount = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
                     Stock.ProductId = Product.Id WHERE Stock.Id > 0";
 
-                    sqlQuery = @"SELECT Stock.Id, Stock.Quantity, TotalValue, 
+                    sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max,  
                     Product.Id, Product.Description, Product.CostPrice, Product.Code, Product.Reference, 
-                    [Product.Size], Product.MinStock, Product.MaxStock, Product.PhotoPath From 
-                    Product INNER JOIN Stock ON Stock.ProductId = Product.Id WHERE Stock.Id > 0";
+                    [Product.Size], Product.PhotoPath FROM Product INNER JOIN Stock ON Stock.ProductId 
+                    = Product.Id WHERE Stock.Id > 0";
                 }
 
                 if (SearchBySummary == "Nothing")
                 {
                     sqlCount = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
-                    Stock.ProductId = Product.Id WHERE Quantity = 0 AND MinStock = 0 
-                    AND MaxStock = 0";
+                    Stock.ProductId = Product.Id WHERE Stock.Quantity = 0 AND Stock.Min = 0 
+                    AND Stock.Max = 0";
 
-                    sqlQuery = @"SELECT Stock.Id, Stock.Quantity, TotalValue, 
+                    sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max, 
                     Product.Id, Product.Description, Product.CostPrice, Product.Code, Product.Reference, 
-                    [Product.Size], Product.MinStock, Product.MaxStock, Product.PhotoPath From 
-                    Product INNER JOIN Stock ON Stock.ProductId = Product.Id WHERE Quantity = 0 
-                    AND MinStock = 0 AND MaxStock = 0";
+                    [Product.Size], Product.PhotoPath From Product INNER JOIN Stock ON Stock.ProductId = 
+                    Product.Id WHERE Stock.Quantity = 0 AND Stock.Min = 0 AND Stock.Max = 0";
                 }
 
                 if (SearchBySummary == "Ok")
                 {
                     sqlCount = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
-                    Product.Id = Stock.ProductId WHERE Quantity > 0 AND Quantity >= 
-                    MinStock AND Quantity <= MaxStock";
+                    Product.Id = Stock.ProductId WHERE Stock.Quantity > 0 AND Stock.Quantity >= 
+                    Stock.Min AND Stock.Quantity <= Stock.Max";
 
-                    sqlQuery = @"SELECT Stock.Id, Stock.Quantity, TotalValue, 
+                    sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max,
                     Product.Id, Product.Description, Product.CostPrice, Product.Code, Product.Reference, 
-                    [Product.Size], Product.MinStock, Product.MaxStock, Product.PhotoPath From 
-                    Product INNER JOIN Stock ON Stock.ProductId = Product.Id WHERE Quantity > 0 
-                    AND Quantity >= MinStock AND Quantity <= MaxStock";
+                    [Product.Size], Product.PhotoPath From Product INNER JOIN Stock ON Stock.ProductId 
+                    = Product.Id WHERE Stock.Quantity > 0 AND Stock.Quantity >= Stock.Min 
+                    AND Stock.Quantity <= Stock.Max";
                 }
 
                 if (SearchBySummary == "High")
                 {
                     sqlCount = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
-                    Stock.ProductId = Product.Id WHERE Quantity > MaxStock";
+                    Stock.ProductId = Product.Id WHERE Stock.Quantity > Stock.Max";
 
-                    sqlQuery = @"SELECT Stock.Id, Stock.Quantity, TotalValue, 
+                    sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max,  
                     Product.Id, Product.Description, Product.CostPrice, Product.Code, Product.Reference, 
-                    [Product.Size], Product.MinStock, Product.MaxStock, Product.PhotoPath From 
-                    Product INNER JOIN Stock ON Stock.ProductId = Product.Id WHERE 
-                    Quantity > MaxStock";
+                    [Product.Size],Product.PhotoPath From Product INNER JOIN Stock ON Stock.ProductId 
+                    = Product.Id WHERE Stock.Quantity > Stock.Max";
                 }
 
                 if (SearchBySummary == "Low")
                 {
                     sqlCount = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
-                    Stock.ProductId = Product.Id WHERE Quantity < MinStock";
+                    Stock.ProductId = Product.Id WHERE Stock.Quantity < Stock.Min";
 
-                    sqlQuery = @"SELECT Stock.Id, Stock.Quantity, TotalValue, 
+                    sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max, 
                     Product.Id, Product.Description, Product.CostPrice, Product.Code, Product.Reference, 
-                    [Product.Size], Product.MinStock, Product.MaxStock, Product.PhotoPath From 
-                    Product INNER JOIN Stock ON Stock.ProductId = Product.Id WHERE 
-                    Quantity < MinStock";
+                    [Product.Size], Product.PhotoPath From Product INNER JOIN Stock ON Stock.ProductId 
+                    = Product.Id WHERE Stock.Quantity < Stock.Min";
                 }
 
                 if (SearchByDescription != string.Empty)
@@ -174,8 +171,8 @@ namespace DimStock.Business
                             ProductReference = Convert.ToInt32(reader["Reference"]),
                             ProductSize = Convert.ToInt32(reader["Product.Size"]),
                             ProductDescription = Convert.ToString(reader["Description"]),
-                            MinStock = Convert.ToInt32(reader["MinStock"]),
-                            MaxStock = Convert.ToInt32(reader["MaxStock"]),
+                            MinStock = Convert.ToInt32(reader["Min"]),
+                            MaxStock = Convert.ToInt32(reader["Max"]),
                             StockQuantity = Convert.ToInt32(reader["Quantity"]),
                             StockValue = Convert.ToDouble(reader["TotalValue"]),
                             ProductCostPrice = Convert.ToDouble(reader["CostPrice"]),
@@ -205,61 +202,60 @@ namespace DimStock.Business
 
                 if (SearchBySummary == "All")
                 {
-                    sqlCount = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
+                    sqlCount = @"SELECT COUNT(Stock.Id) From Stock INNER JOIN Product ON 
                     Stock.ProductId = Product.Id WHERE Stock.Id > 0";
 
-                    sqlQuery = @"SELECT Stock.Id, Stock.Quantity, TotalValue, 
+                    sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.Min, Stock.Max, Stock.TotalValue, 
                     Product.Id, Product.Description, Product.CostPrice, Product.Code, Product.Reference, 
-                    [Product.Size], Product.MinStock, Product.MaxStock, Product.PhotoPath From Product 
-                    INNER JOIN Stock ON Stock.ProductId = Product.Id WHERE Stock.Id > 0";
+                    [Product.Size], Product.PhotoPath From Product INNER JOIN Stock ON Stock.ProductId 
+                    = Product.Id WHERE Stock.Id > 0";
                 }
 
                 if (SearchBySummary == "Nothing")
                 {
                     sqlCount = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
-                    Stock.ProductId = Product.Id WHERE Quantity = 0 AND MinStock = 0 
-                    AND MaxStock = 0";
+                    Stock.ProductId = Product.Id WHERE Quantity = 0 AND Stock.Min = 0 
+                    AND Stock.Max = 0";
 
-                    sqlQuery = @"SELECT Stock.Id, Stock.Quantity, TotalValue, 
+                    sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max,
                     Product.Id, Product.Description, Product.CostPrice, Product.Code, Product.Reference, 
-                    [Product.Size], Product.MinStock, Product.MaxStock, Product.PhotoPath From Product 
-                    INNER JOIN Stock ON Stock.ProductId = Product.Id WHERE Quantity = 0 AND 
-                    MinStock = 0 AND MaxStock = 0";
+                    [Product.Size], Product.PhotoPath From Product INNER JOIN Stock ON Stock.ProductId 
+                    = Product.Id WHERE Quantity = 0 AND Stock.Min = 0 AND Stock.Max = 0";
                 }
 
                 if (SearchBySummary == "Ok")
                 {
                     sqlCount = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
                     Product.Id = Stock.ProductId WHERE Quantity > 0 AND Quantity >= 
-                    MinStock AND Quantity <= MaxStock";
+                    Stock.Min AND Quantity <= Stock.Max";
 
-                    sqlQuery = @"SELECT Stock.Id, Stock.Quantity, TotalValue, 
+                    sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max, 
                     Product.Id, Product.Description, Product.CostPrice, Product.Code, Product.Reference, 
-                    [Product.Size], Product.MinStock, Product.MaxStock, Product.PhotoPath From Product 
-                    INNER JOIN Stock ON Stock.ProductId = Product.Id WHERE Quantity > 0 AND 
-                    Quantity >= MinStock AND Quantity <= MaxStock";
+                    [Product.Size], Product.PhotoPath From Product INNER JOIN Stock ON Stock.ProductId 
+                    = Product.Id WHERE Quantity > 0 AND Quantity >= Stock.Min AND Quantity <= Stock.Max";
                 }
 
                 if (SearchBySummary == "High")
                 {
                     sqlCount = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
-                    Stock.ProductId = Product.Id WHERE Quantity > MaxStock";
+                    Stock.ProductId = Product.Id WHERE Stock.Quantity > Stock.Max";
 
-                    sqlQuery = @"SELECT Stock.Id, Stock.Quantity, TotalValue, 
-                    Product.Id, Product.Description, Product.CostPrice, Product.Code, Product.Reference, [Product.Size], 
-                    Product.MinStock, Product.MaxStock, Product.PhotoPath From Product INNER JOIN Stock ON 
-                    Stock.ProductId = Product.Id WHERE Quantity > MaxStock";
+                    sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, 
+                    Stock.Max, Product.Id, Product.Description, Product.CostPrice, Product.Code, 
+                    Product.Reference, [Product.Size], Product.PhotoPath From Product 
+                    INNER JOIN Stock ON Stock.ProductId = Product.Id WHERE 
+                    Stock.Quantity > Stock.Max";
                 }
 
                 if (SearchBySummary == "Low")
                 {
                     sqlCount = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
-                    Stock.ProductId = Product.Id WHERE Quantity < MinStock";
+                    Stock.ProductId = Product.Id WHERE Stock.Quantity < Stock.Min";
 
-                    sqlQuery = @"SELECT Stock.Id, Stock.Quantity, TotalValue, 
-                    Product.Id, Product.Description, Product.CostPrice, Product.Code, Product.Reference, [Product.Size], 
-                    Product.MinStock, Product.MaxStock, Product.PhotoPath From Product INNER JOIN Stock ON 
-                    Stock.ProductId = Product.Id WHERE Quantity < MinStock";
+                    sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max,
+                    Product.Id, Product.Description, Product.CostPrice, Product.Code, Product.Reference, 
+                    [Product.Size], Product.PhotoPath From Product INNER JOIN Stock ON 
+                    Stock.ProductId = Product.Id WHERE Stock.Quantity < Stock.Min";
                 }
 
                 if (SearchByCode != string.Empty)
@@ -406,8 +402,8 @@ namespace DimStock.Business
                     ProductReference = Convert.ToInt32(row["Reference"]),
                     ProductSize = Convert.ToInt32(row["Product.Size"]),
                     ProductDescription = Convert.ToString(row["Description"]),
-                    MinStock = Convert.ToInt32(row["MinStock"]),
-                    MaxStock = Convert.ToInt32(row["MaxStock"]),
+                    MinStock = Convert.ToInt32(row["Min"]),
+                    MaxStock = Convert.ToInt32(row["Max"]),
                     StockQuantity = Convert.ToInt32(row["Quantity"]),
                     StockValue = Convert.ToDouble(row["TotalValue"]),
                     ProductCostPrice = Convert.ToDouble(row["CostPrice"]),

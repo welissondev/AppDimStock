@@ -13,7 +13,10 @@ namespace DimStock.Business
 
         #region Contructs
 
-        public Stock() { }
+        public Stock()
+        {
+            Product = new Product();
+        }
 
         public Stock(Connection connection)
         {
@@ -24,9 +27,12 @@ namespace DimStock.Business
 
         #region Get e Set
         public int Id { get; set; }
-        public int ProductId { get; set; }
+        public int Min { get; set; }
+        public int Max { get; set; }
         public int Quantity { get; set; }
         public double TotalValue { get; set; }
+        public Product Product { get; set; }
+        public List<Stock> List { get; set; }
         #endregion 
 
         #region Methods
