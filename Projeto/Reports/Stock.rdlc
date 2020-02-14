@@ -11,7 +11,7 @@
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="DataSetStockProduct">
+    <DataSet Name="DataSetStock">
       <Query>
         <DataSourceName>DimStockReport</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
@@ -938,7 +938,7 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <DataSetName>DataSetStockProduct</DataSetName>
+            <DataSetName>DataSetStock</DataSetName>
             <Top>3.38035cm</Top>
             <Height>1.2cm</Height>
             <Width>28.64763cm</Width>

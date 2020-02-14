@@ -398,7 +398,7 @@ namespace DimStock.Business
 
         public void GenerateReport(List<Product> list)
         {
-            var product = new ReportProduct();
+            var product = new ProductReport();
             ListData(); product.GenerateReport(list);
         }
 

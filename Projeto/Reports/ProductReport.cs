@@ -5,7 +5,7 @@ using DimStock.UserForms;
 
 namespace DimStock.Reports
 {
-    public class ReportProduct : IReport<Product>
+    public class ProductReport : IReport<Product>
     {
         #region Get e Set
 
@@ -21,11 +21,11 @@ namespace DimStock.Reports
 
         public void GenerateReport(List<Product> list)
         {
-            var reportList = new List<ReportProduct>();
+            var reportList = new List<ProductReport>();
 
             for (int i = 0; i < list.Count; i++)
             {
-                var report = new ReportProduct()
+                var report = new ProductReport()
                 {
                     Code = list[i].Code,
                     Size = list[i].Size,

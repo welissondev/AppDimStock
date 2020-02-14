@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace DimStock.Reports
 {
-    public class ReportStockProduct : IReport<Stock>
+    public class StockReport : IReport<Stock>
     {
         #region Get e Set
         public int ProductCode { get; set; }
@@ -24,11 +24,11 @@ namespace DimStock.Reports
 
         public void GenerateReport(List<Stock> list)
         {
-            var reportList = new List<ReportStockProduct>();
+            var reportList = new List<StockReport>();
 
             for (int i = 0; i < list.Count; i++)
             {
-                var report = new ReportStockProduct()
+                var report = new StockReport()
                 {
                     ProductCode = list[i].Product.Code,
                     ProductSize = list[i].Product.Size,
@@ -45,15 +45,16 @@ namespace DimStock.Reports
                 reportList.Add(report);
             }
 
-            var path = "DimStock.Reports.StockProduct.rdlc";
+            var path = "DimStock.Reports.Stock.rdlc";
             var description = "Relatório de estoque";
-            var dataSet = "DataSetStockProduct";
+            var dataSet = "DataSetStock";
 
             ReportViewForm.ShowReport(path, description, true,
             new Dictionary<string, object>() { {dataSet,
             reportList}});
 
         }
+
         #endregion
     }
 }

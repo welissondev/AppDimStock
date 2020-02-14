@@ -176,14 +176,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Reports\ReportProduct.cs" />
+    <Compile Include="Reports\ProductReport.cs" />
     <Compile Include="UserForms\AppSettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UserForms\AppSettingsForm.Designer.cs">
       <DependentUpon>AppSettingsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\ReportStockProduct.cs" />
+    <Compile Include="Reports\StockReport.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="UserForms\BackupSaveForm.cs">
       <SubType>Form</SubType>
@@ -283,7 +283,7 @@
     <EmbeddedResource Include="UserForms\AppSettingsForm.resx">
       <DependentUpon>AppSettingsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\StockProduct.rdlc" />
+    <EmbeddedResource Include="Reports\Stock.rdlc" />
     <EmbeddedResource Include="Reports\Product.rdlc" />
     <EmbeddedResource Include="UserForms\BackupSaveForm.resx">
       <DependentUpon>BackupSaveForm.cs</DependentUpon>
@@ -330,8 +330,6 @@
     <EmbeddedResource Include="UserForms\UserResgistrationForm.resx">
       <DependentUpon>UserResgistrationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="DataSources\DimStock.Report.ReportProduct.datasource" />
-    <None Include="DataSources\DimStock.Report.ReportStockProduct.datasource" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
