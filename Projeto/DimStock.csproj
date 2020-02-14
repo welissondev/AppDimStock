@@ -167,6 +167,7 @@
     <Compile Include="Business\Stock.cs" />
     <Compile Include="Business\User.cs" />
     <Compile Include="Business\UserHistory.cs" />
+    <Compile Include="Interfaces\IReport.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Auxiliarys\AxlFile.cs" />

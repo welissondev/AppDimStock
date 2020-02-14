@@ -72,7 +72,7 @@ namespace DimStock.UserForms
             StartSearchTimer();
         }
 
-        private void GenerateReport_Click_1(object sender, EventArgs e)
+        private void GenerateReport_Click(object sender, EventArgs e)
         {
             try
             {
@@ -84,17 +84,7 @@ namespace DimStock.UserForms
                     SearchByDescription = SearchByDescription.Text
                 };
 
-                product.ListData();
-
-                var path = "DimStock.Reports.Product.rdlc";
-                var description = "Relatório de Produtos";
-                var dataset = "DataSetProduct";
-
-                product.GenerateReport(product.ListOfRecords);
-
-                ReportViewForm.ShowReport(path, description, true,
-                new Dictionary<string, object>() {{dataset,
-                product.ListOfRecords}});
+                product.GenerateReport(product.List);
 
             }
             catch (Exception ex)
@@ -257,17 +247,17 @@ namespace DimStock.UserForms
 
                 ProductDataList.Rows.Clear();
 
-                for (int i = 0; i < product.ListOfRecords.Count; i++)
+                for (int i = 0; i < product.List.Count; i++)
                 {
                     ProductDataList.Rows.Add(
-                    product.ListOfRecords[i].Id,
-                    product.ListOfRecords[i].Code,
-                    product.ListOfRecords[i].Reference,
-                    product.ListOfRecords[i].Size,
-                    product.ListOfRecords[i].Description,
-                    product.ListOfRecords[i].CostPrice,
-                    product.ListOfRecords[i].SalePrice,
-                    product.ListOfRecords[i].PhotoPath);
+                    product.List[i].Id,
+                    product.List[i].Code,
+                    product.List[i].Reference,
+                    product.List[i].Size,
+                    product.List[i].Description,
+                    product.List[i].CostPrice,
+                    product.List[i].SalePrice,
+                    product.List[i].PhotoPath);
                 }
 
                 ProductDataList.ClearSelection();

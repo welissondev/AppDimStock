@@ -1,10 +1,11 @@
 ﻿using DimStock.Business;
+using DimStock.Interfaces;
 using DimStock.UserForms;
 using System.Collections.Generic;
 
 namespace DimStock.Reports
 {
-    public class ReportStockProduct
+    public class ReportStockProduct : IReport<Stock>
     {
         #region Get e Set
         public int ProductCode { get; set; }
@@ -53,7 +54,6 @@ namespace DimStock.Reports
             reportList}});
 
         }
-
         #endregion
     }
 }

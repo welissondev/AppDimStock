@@ -1,40 +1,52 @@
 ﻿using DimStock.Business;
 using System.Collections.Generic;
+using DimStock.Interfaces;
+using DimStock.UserForms;
 
 namespace DimStock.Reports
 {
-    public class ReportProduct 
+    public class ReportProduct : IReport<Product>
     {
         #region Get e Set
+
         public int Code { get; set; }
         public int Size { get; set; }
         public int Reference { get; set; }
         public string Description { get; set; }
         public double CostPrice { get; set; }
-        public List<ReportProduct> ListOfRecords { get; set; }
+
         #endregion
 
         #region Methods
 
-        public void GenerateReport(List<Product> productList)
+        public void GenerateReport(List<Product> list)
         {
-            ListOfRecords = new List<ReportProduct>();
+            var reportList = new List<ReportProduct>();
 
-            for (int i = 0; i < productList.Count; i++)
+            for (int i = 0; i < list.Count; i++)
             {
-                var reportProduct = new ReportProduct()
+                var report = new ReportProduct()
                 {
-                    Code = productList[i].Code,
-                    Size = productList[i].Size,
-                    Reference = productList[i].Reference,
-                    Description = productList[i].Description,
-                    CostPrice = productList[i].CostPrice
+                    Code = list[i].Code,
+                    Size = list[i].Size,
+                    Reference = list[i].Reference,
+                    Description = list[i].Description,
+                    CostPrice = list[i].CostPrice
                 };
 
-                ListOfRecords.Add(reportProduct);
+                reportList.Add(report);
             }
+
+            var path = "DimStock.Reports.Product.rdlc";
+            var description = "Relatório de Produtos";
+            var dataset = "DataSetProduct";
+
+            ReportViewForm.ShowReport(path, description, true,
+            new Dictionary<string, object>() {{dataset,
+            reportList}});
+
         }
 
-        #endregion 
+        #endregion
     }
 }

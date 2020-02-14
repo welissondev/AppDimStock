@@ -50,7 +50,7 @@ namespace DimStock.UserForms
                     SearchByDescription = SearchByDescription.Text,
                     SearchBySummary = selectedSummary
                 };
-                stock.GenerateReport();
+                stock.GenerateReport(stock.List);
             }
             catch (Exception ex)
             {

@@ -1,5 +1,6 @@
 ﻿using DimStock.Auxiliarys;
 using DimStock.Reports;
+using DimStock.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,7 +8,7 @@ using System.Data.OleDb;
 
 namespace DimStock.Business
 {
-    public class Stock
+    public class Stock : IReport<Stock>
     {
         #region Properties
         private Connection connection;
@@ -518,15 +519,11 @@ namespace DimStock.Business
             return transactionState;
         }
 
-        public void GenerateReport()
+        public void GenerateReport(List<Stock> list)
         {
-            ListData();
-
-            if (List.Count > 0)
-            {
-                var stock = new ReportStockProduct();
-                stock.GenerateReport(List);
-            }
+            var stock = new ReportStockProduct();
+            
+            ListData(); stock.GenerateReport(list);
         }
 
         public bool UpdateValue(double productCostPrice, int productId)

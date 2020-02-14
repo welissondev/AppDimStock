@@ -5,22 +5,28 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
 using System.Linq;
+using DimStock.Interfaces;
 
 namespace DimStock.Business
 {
-    public class Product
+    public class Product : IReport<Product>
     {
         #region Constructors
 
         public Product()
         {
             Category = new ProductCategory();
+
+            List = new List<Product>();
         }
 
         public Product(AxlDataPagination dataPagination)
         {
             DataPagination = dataPagination;
+
             Category = new ProductCategory();
+
+            List = new List<Product>();
         }
 
         #endregion
@@ -36,7 +42,7 @@ namespace DimStock.Business
         public string BarCode { get; set; }
         public string PhotoPath { get; set; }
         public ProductCategory Category { get; set; }
-        public List<Product> ListOfRecords { get; set; }
+        public List<Product> List { get; set; }
         #endregion 
 
         #region SearchProperties
@@ -232,7 +238,6 @@ namespace DimStock.Business
                 var parameter = connection.Command.Parameters;
                 var criterion = string.Empty;
                 var sqlQuery = string.Empty;
-                var productList = new List<Product>();
 
                 sqlQuery = @"SELECT Id, Code, [Size], Reference, Description, 
                 CostPrice, SalePrice, PhotoPath FROM Product WHERE Id > 0";
@@ -287,10 +292,8 @@ namespace DimStock.Business
                             PhotoPath = Convert.ToString(reader["PhotoPath"])
                         };
 
-                        productList.Add(product);
+                        List.Add(product);
                     }
-
-                    ListOfRecords = productList;
                 }
             }
         }
@@ -393,16 +396,14 @@ namespace DimStock.Business
             }
         }
 
-        public void GenerateReport(List<Product> listOfRecords)
+        public void GenerateReport(List<Product> list)
         {
             var product = new ReportProduct();
-            product.GenerateReport(listOfRecords);
+            ListData(); product.GenerateReport(list);
         }
 
         public void PassToList(DataTable dataTable)
         {
-            var productList = new List<Product>();
-
             foreach (DataRow row in dataTable.Rows)
             {
                 var product = new Product()
@@ -417,10 +418,8 @@ namespace DimStock.Business
                     PhotoPath = Convert.ToString(row["PhotoPath"])
                 };
 
-                productList.Add(product);
+                List.Add(product);
             }
-
-            ListOfRecords = productList;
         }
 
         public string GetAffectedFields(int id, Connection connection)
