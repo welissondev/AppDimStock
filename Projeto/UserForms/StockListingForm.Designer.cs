@@ -423,7 +423,7 @@
             this.GenerateReport.Size = new System.Drawing.Size(97, 43);
             this.GenerateReport.TabIndex = 216;
             this.GenerateReport.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.GenerateReport.Click += new System.EventHandler(this.GenerateReport_Click_1);
+            this.GenerateReport.Click += new System.EventHandler(this.GenerateReport_Click);
             // 
             // StockListingForm
             // 

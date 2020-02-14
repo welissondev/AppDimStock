@@ -266,7 +266,7 @@ namespace DimStock.UserForms
         {
             try
             {
-                var stock = new StockProduct(dataPagination)
+                var stock = new Stock(dataPagination)
                 {
                     SearchByCode = QueryByCode.Text,
                     SearchBySize = QueryBySize.Text,
@@ -281,16 +281,16 @@ namespace DimStock.UserForms
 
                 CreateColumnForItemList();
 
-                for (var i = 0; i < stock.ListOfRecords.Count; i++)
+                for (var i = 0; i < stock.List.Count; i++)
                 {
                     MainDataList.Rows.Add(
-                    stock.ListOfRecords[i].StockId,
-                    stock.ListOfRecords[i].ProductId,
-                    stock.ListOfRecords[i].ProductCode,
-                    stock.ListOfRecords[i].ProductSize,
-                    stock.ListOfRecords[i].ProductReference,
-                    stock.ListOfRecords[i].ProductDescription,
-                    stock.ListOfRecords[i].ProductCostPrice
+                    stock.List[i].Id,
+                    stock.List[i].Product.Id,
+                    stock.List[i].Product.Code,
+                    stock.List[i].Product.Size,
+                    stock.List[i].Product.Reference,
+                    stock.List[i].Product.Description,
+                    stock.List[i].Product.CostPrice
                     );
                 }
                 MainDataList.ClearSelection();
@@ -326,17 +326,17 @@ namespace DimStock.UserForms
 
         private void ViewStockDetails(int id)
         {
-            var stock = new StockProduct();
+            var stock = new Stock();
             stock.ViewDetails(id);
 
-            QueryByCode.Text = stock.ProductCode.ToString();
-            QueryBySize.Text = stock.ProductSize.ToString();
-            QueryByReference.Text = stock.ProductReference.ToString();
-            QueryByDescription.Text = stock.ProductDescription;
-            UnitaryValue.Text = stock.ProductCostPrice.ToString();
-            ProductId = stock.ProductId;
-            StockId = stock.StockId;
-            StockQuantity = stock.StockQuantity;
+            QueryByCode.Text = stock.Product.Code.ToString();
+            QueryBySize.Text = stock.Product.Size.ToString();
+            QueryByReference.Text = stock.Product.Reference.ToString();
+            QueryByDescription.Text = stock.Product.Description;
+            UnitaryValue.Text = stock.Product.CostPrice.ToString();
+            ProductId = stock.Product.Id;
+            StockId = stock.Id;
+            StockQuantity = stock.Quantity;
             Quantity.Select();
 
             ListStockItems();

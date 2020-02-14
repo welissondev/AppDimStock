@@ -1,5 +1,6 @@
 ﻿using DimStock.Auxiliarys;
 using DimStock.Business;
+using DimStock.Reports;
 using Syncfusion.Windows.Forms.Tools;
 using System;
 using System.Collections.Generic;
@@ -37,11 +38,11 @@ namespace DimStock.UserForms
 
         #region Button
 
-        private void GenerateReport_Click_1(object sender, EventArgs e)
+        private void GenerateReport_Click(object sender, EventArgs e)
         {
             try
             {
-                var stockProduct = new StockProduct()
+                var stock = new Stock()
                 {
                     SearchByCode = SearchByCode.Text,
                     SearchBySize = SearchBySize.Text,
@@ -49,19 +50,7 @@ namespace DimStock.UserForms
                     SearchByDescription = SearchByDescription.Text,
                     SearchBySummary = selectedSummary
                 };
-
-                stockProduct.ListData();
-
-                stockProduct.GenerateReport(
-                stockProduct.ListOfRecords);
-
-                var path = "DimStock.Reports.StockProduct.rdlc";
-                var description = "Relatório de estoque";
-                var dataSet = "DataSetStockProduct";
-
-                ReportViewForm.ShowReport(path, description, true,
-                new Dictionary<string, object>() { {dataSet,
-                stockProduct.ListOfRecords } });
+                stock.GenerateReport();
             }
             catch (Exception ex)
             {
@@ -271,7 +260,7 @@ namespace DimStock.UserForms
         {
             try
             {
-                var stockProduct = new StockProduct(dataPagination)
+                var stock = new Stock(dataPagination)
                 {
                     SearchByCode = SearchByCode.Text,
                     SearchBySize = SearchBySize.Text,
@@ -280,25 +269,25 @@ namespace DimStock.UserForms
                     SearchBySummary = selectedSummary
                 };
 
-                stockProduct.SearchData();
+                stock.SearchData();
 
                 StockDataList.Rows.Clear();
 
-                for (int i = 0; i < stockProduct.ListOfRecords.Count; i++)
+                for (int i = 0; i < stock.List.Count; i++)
                 {
                     StockDataList.Rows.Add(
-                    stockProduct.ListOfRecords[i].StockId,
-                    stockProduct.ListOfRecords[i].ProductId,
-                    stockProduct.ListOfRecords[i].ProductCode,
-                    stockProduct.ListOfRecords[i].ProductReference,
-                    stockProduct.ListOfRecords[i].ProductSize,
-                    stockProduct.ListOfRecords[i].ProductDescription,
-                    stockProduct.ListOfRecords[i].MinStock,
-                    stockProduct.ListOfRecords[i].MaxStock,
-                    stockProduct.ListOfRecords[i].StockQuantity,
-                    stockProduct.ListOfRecords[i].StockValue,
-                    stockProduct.ListOfRecords[i].StockSummary,
-                    stockProduct.ListOfRecords[i].StockResult);
+                    stock.List[i].Id,
+                    stock.List[i].Product.Id,
+                    stock.List[i].Product.Code,
+                    stock.List[i].Product.Reference,
+                    stock.List[i].Product.Size,
+                    stock.List[i].Product.Description,
+                    stock.List[i].Min,
+                    stock.List[i].Max,
+                    stock.List[i].Quantity,
+                    stock.List[i].TotalValue,
+                    stock.List[i].Summary,
+                    stock.List[i].Result);
                 }
 
                 StockDataList.ClearSelection();

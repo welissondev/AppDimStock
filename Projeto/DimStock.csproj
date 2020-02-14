@@ -160,7 +160,6 @@
     <Compile Include="Business\Connection.cs" />
     <Compile Include="Business\StockDestination.cs" />
     <Compile Include="Business\StockMovementItem.cs" />
-    <Compile Include="Business\StockProduct.cs" />
     <Compile Include="Business\StockMovement.cs" />
     <Compile Include="Auxiliarys\AxlMessageNotifier.cs" />
     <Compile Include="Business\Product.cs" />
@@ -331,8 +330,8 @@
       <DependentUpon>UserResgistrationForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="DataSources\DimStock.Report.ReportProduct.datasource" />
-    <None Include="packages.config" />
     <None Include="DataSources\DimStock.Report.ReportStockProduct.datasource" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -371,5 +370,6 @@
   <ItemGroup>
     <None Include="Resources\DimStockLogoType.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
