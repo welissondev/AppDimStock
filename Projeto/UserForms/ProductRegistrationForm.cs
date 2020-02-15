@@ -149,9 +149,9 @@ namespace DimStock.UserForms
                 if (UploadPhoto() == false)
                 {
                     if (productPhoto.CheckIfExtits(productPhoto.GetDirectoryPeth() +
-                        ImageProduct.IndentificationPhotoNumber).Equals(false))
+                        ImageProduct.ImageId).Equals(false))
                     {
-                        ImageProduct.IndentificationPhotoNumber = "";
+                        ImageProduct.ImageId = "";
                         ImageProduct.SelectedDirectory = "";
                         ImageProduct.Image = Resources.FotoNothing;
                     }
@@ -194,7 +194,7 @@ namespace DimStock.UserForms
                     CostPrice = Convert.ToDouble(CostPrice.DecimalValue),
                     SalePrice = Convert.ToDouble(SalePrice.DecimalValue),
                     BarCode = BarCode.Text,
-                    PhotoPath = ImageProduct.IndentificationPhotoNumber
+                    PhotoPath = ImageProduct.ImageId
                 };
 
                 product.Category.Id = CategoryId;
@@ -239,7 +239,7 @@ namespace DimStock.UserForms
                     CostPrice = Convert.ToDouble(CostPrice.DecimalValue),
                     SalePrice = Convert.ToDouble(SalePrice.DecimalValue),
                     BarCode = BarCode.Text,
-                    PhotoPath = ImageProduct.IndentificationPhotoNumber,
+                    PhotoPath = ImageProduct.ImageId,
                 };
                 product.Category.Id  = CategoryId;
 
@@ -258,7 +258,7 @@ namespace DimStock.UserForms
                 //seja alterada
                 if (productPhoto.CheckIfExtits(photoPath) == false)
                     productPhoto.DeleteFromDirectory(
-                    ImageProduct.PathOfLastSelectedPhoto);
+                    ImageProduct.PathOfLastSelectedImage);
 
                 productPhoto.CopyFromDirectory(ImageProduct.SelectedDirectory,
                 photoPath);
@@ -342,7 +342,7 @@ namespace DimStock.UserForms
                 FileMode.Open, FileAccess.Read))
                 {
                     ImageProduct.Image = Image.FromStream(fileStream);
-                    ImageProduct.IndentificationPhotoNumber = productPhoto.GetNumberId() + ".jpg";
+                    ImageProduct.ImageId = productPhoto.GetNumberId() + ".jpg";
                     ImageProduct.SelectedDirectory = picture.DirectoryPath;
 
                     uploadState = true;
@@ -366,13 +366,13 @@ namespace DimStock.UserForms
             {
                 ImageProduct.Image = Image.FromStream(fileStream);
                 ImageProduct.SelectedDirectory = photoPath;
-                ImageProduct.PathOfLastSelectedPhoto = photoPath;
-                ImageProduct.IndentificationPhotoNumber = photoIdNumber;
+                ImageProduct.PathOfLastSelectedImage = photoPath;
+                ImageProduct.ImageId = photoIdNumber;
 
                 if (newIdNumber == true)
                 {
                     photoIdNumber = productPhoto.GetNumberId() + ".jpg";
-                    ImageProduct.IndentificationPhotoNumber = photoIdNumber;
+                    ImageProduct.ImageId = photoIdNumber;
                 }
 
             }
@@ -399,9 +399,9 @@ namespace DimStock.UserForms
                 }
 
                 ImageProduct.Image = Resources.FotoNothing;
-                ImageProduct.IndentificationPhotoNumber = string.Empty;
+                ImageProduct.ImageId = string.Empty;
                 ImageProduct.SelectedDirectory = string.Empty;
-                ImageProduct.PathOfLastSelectedPhoto = string.Empty;
+                ImageProduct.PathOfLastSelectedImage = string.Empty;
 
                 ProductCode.Select();
             }

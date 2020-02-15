@@ -11,19 +11,19 @@ namespace DimStock.Controls
             set { selectedDirectory = value; }
         }
         
-        private string identificationPhotoNumber = "";
-        public string IndentificationPhotoNumber
+        private string imageId = "";
+        public string ImageId
         {
-            get { return identificationPhotoNumber; }
-            set { identificationPhotoNumber = value; }
+            get { return imageId; }
+            set { imageId = value; }
         }
 
-        private string pathOfLastSelectedPhoto = "";
+        private string pathOfLastSelectedImage = "";
 
-        public string PathOfLastSelectedPhoto
+        public string PathOfLastSelectedImage
         {
-            get { return pathOfLastSelectedPhoto; }
-            set { pathOfLastSelectedPhoto = value; }
+            get { return pathOfLastSelectedImage; }
+            set { pathOfLastSelectedImage = value; }
         }
     }
 }

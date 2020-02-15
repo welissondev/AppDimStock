@@ -257,10 +257,10 @@
             // ImageProduct
             // 
             this.ImageProduct.Image = global::DimStock.Properties.Resources.FotoNothing;
-            this.ImageProduct.IndentificationPhotoNumber = "";
+            this.ImageProduct.ImageId = "";
             this.ImageProduct.Location = new System.Drawing.Point(7, 14);
             this.ImageProduct.Name = "ImageProduct";
-            this.ImageProduct.PathOfLastSelectedPhoto = "";
+            this.ImageProduct.PathOfLastSelectedImage = "";
             this.ImageProduct.SelectedDirectory = null;
             this.ImageProduct.Size = new System.Drawing.Size(176, 188);
             this.ImageProduct.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
