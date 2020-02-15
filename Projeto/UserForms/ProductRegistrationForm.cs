@@ -3,7 +3,6 @@ using DimStock.Business;
 using DimStock.Properties;
 using Syncfusion.Windows.Forms.Tools;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -194,7 +193,7 @@ namespace DimStock.UserForms
                     CostPrice = Convert.ToDouble(CostPrice.DecimalValue),
                     SalePrice = Convert.ToDouble(SalePrice.DecimalValue),
                     BarCode = BarCode.Text,
-                    PhotoPath = ImageProduct.ImageId
+                    Photo = ImageProduct.ImageId
                 };
 
                 product.Category.Id = CategoryId;
@@ -208,7 +207,7 @@ namespace DimStock.UserForms
                 }
 
                 productPhoto.CopyFromDirectory(ImageProduct.SelectedDirectory,
-                productPhoto.GetDirectoryPeth() + product.PhotoPath);
+                productPhoto.GetDirectoryPeth() + product.Photo);
 
                 MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -239,7 +238,7 @@ namespace DimStock.UserForms
                     CostPrice = Convert.ToDouble(CostPrice.DecimalValue),
                     SalePrice = Convert.ToDouble(SalePrice.DecimalValue),
                     BarCode = BarCode.Text,
-                    PhotoPath = ImageProduct.ImageId,
+                    Photo = ImageProduct.ImageId,
                 };
                 product.Category.Id  = CategoryId;
 
@@ -252,7 +251,7 @@ namespace DimStock.UserForms
                 }
 
                 var photoPath = productPhoto.GetDirectoryPeth()
-                + product.PhotoPath;
+                + product.Photo;
 
                 //Apaga a foto atual do diretório, caso a foto do produto
                 //seja alterada

@@ -40,7 +40,7 @@ namespace DimStock.Business
         public double CostPrice { get; set; }
         public double SalePrice { get; set; }
         public string BarCode { get; set; }
-        public string PhotoPath { get; set; }
+        public string Photo { get; set; }
         public ProductCategory Category { get; set; }
         public List<Product> List { get; set; }
         #endregion 
@@ -67,8 +67,8 @@ namespace DimStock.Business
                 {
                     var sqlCommand = @"INSERT INTO Product 
                     (ProductCategoryId, Code, [Size], Reference, Description, CostPrice, 
-                    SalePrice, BarCode, PhotoPath) VALUES (@ProductCategoryId, @Code, 
-                    @Size, @Reference, @Description, @CostPrice, @SalePrice, @BarCode, @PhotoPath)";
+                    SalePrice, BarCode, Photo) VALUES (@ProductCategoryId, @Code, 
+                    @Size, @Reference, @Description, @CostPrice, @SalePrice, @BarCode, @Photo)";
 
                     connection.AddParameter("@ProductCategoryId", OleDbType.Integer, Category.Id);
                     connection.AddParameter("@Code", OleDbType.Integer, Code);
@@ -78,7 +78,7 @@ namespace DimStock.Business
                     connection.AddParameter("@CostPrice", OleDbType.Double, CostPrice);
                     connection.AddParameter("@SalePrice", OleDbType.Double, SalePrice);
                     connection.AddParameter("@BarCode", OleDbType.VarChar, BarCode);
-                    connection.AddParameter("@PhotoPath", OleDbType.VarChar, PhotoPath);
+                    connection.AddParameter("@Photo", OleDbType.VarChar, Photo);
 
                     transactionState = connection.ExecuteTransaction(
                     sqlCommand) > 0;
@@ -130,7 +130,7 @@ namespace DimStock.Business
                     var sqlCommand = @"UPDATE Product Set ProductCategoryId = @ProductCategoryId, Code = @Code, 
                     [Size] = @Size, Reference = @Reference, Description = @Description, CostPrice = @CostPrice, 
                     SalePrice = @SalePrice, BarCode = @BarCode, 
-                    PhotoPath = @PhotoPath WHERE Id = @Id";
+                    Photo = @Photo WHERE Id = @Id";
 
                     connection.ParameterClear();
                     connection.AddParameter("@ProductCategoryId", OleDbType.Integer, Category.Id);
@@ -141,7 +141,7 @@ namespace DimStock.Business
                     connection.AddParameter("@CostPrice", OleDbType.Double, CostPrice);
                     connection.AddParameter("@SalePrice", OleDbType.Double, SalePrice);
                     connection.AddParameter("@BarCode", OleDbType.VarChar, BarCode);
-                    connection.AddParameter("@PhotoPath", OleDbType.VarChar, PhotoPath);
+                    connection.AddParameter("@Photo", OleDbType.VarChar, Photo);
                     connection.AddParameter("@Id", OleDbType.Integer, id);
 
                     transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
@@ -240,7 +240,7 @@ namespace DimStock.Business
                 var sqlQuery = string.Empty;
 
                 sqlQuery = @"SELECT Id, Code, [Size], Reference, Description, 
-                CostPrice, SalePrice, PhotoPath FROM Product WHERE Id > 0";
+                CostPrice, SalePrice, Photo FROM Product WHERE Id > 0";
 
                 if (SearchByCode != string.Empty)
                 {
@@ -289,7 +289,7 @@ namespace DimStock.Business
                             Size = Convert.ToInt32(reader["Size"]),
                             CostPrice = Convert.ToDouble(reader["CostPrice"]),
                             SalePrice = Convert.ToDouble(reader["SalePrice"]),
-                            PhotoPath = Convert.ToString(reader["PhotoPath"])
+                            Photo = Convert.ToString(reader["Photo"])
                         };
 
                         List.Add(product);
@@ -308,7 +308,7 @@ namespace DimStock.Business
                 var parameter = connection.Command.Parameters;
 
                 sqlQuery = @"SELECT Id, Code, [Size], Reference, Description, 
-                CostPrice, SalePrice, PhotoPath FROM Product WHERE Id > 0";
+                CostPrice, SalePrice, Photo FROM Product WHERE Id > 0";
 
                 sqlCount = @"SELECT COUNT(*) FROM Product WHERE Id > 0";
 
@@ -389,7 +389,7 @@ namespace DimStock.Business
                         Description = Convert.ToString(reader["Product.Description"]);
                         CostPrice = Convert.ToDouble(reader["CostPrice"]);
                         SalePrice = Convert.ToDouble(reader["SalePrice"]);
-                        PhotoPath = reader["PhotoPath"].ToString();
+                        Photo = reader["Photo"].ToString();
                         BarCode = reader["BarCode"].ToString();
                     }
                 }
@@ -415,7 +415,7 @@ namespace DimStock.Business
                     Description = Convert.ToString(row["Description"]),
                     CostPrice = Convert.ToDouble(row["CostPrice"]),
                     SalePrice = Convert.ToDouble(row["SalePrice"]),
-                    PhotoPath = Convert.ToString(row["PhotoPath"])
+                    Photo = Convert.ToString(row["Photo"])
                 };
 
                 List.Add(product);
@@ -443,7 +443,7 @@ namespace DimStock.Business
                     affectedFieldList.Add("PreçoCusto:" + dataReader["CostPrice"].ToString());
                     affectedFieldList.Add("PreçoVenda:" + dataReader["SalePrice"].ToString());
                     affectedFieldList.Add("CódigoBarras:" + dataReader["BarCode"].ToString());
-                    affectedFieldList.Add("FotoNome:" + dataReader["PhotoPath"].ToString());
+                    affectedFieldList.Add("FotoNome:" + dataReader["Photo"].ToString());
                 }
             }
 

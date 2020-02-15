@@ -257,7 +257,7 @@ namespace DimStock.UserForms
                     product.List[i].Description,
                     product.List[i].CostPrice,
                     product.List[i].SalePrice,
-                    product.List[i].PhotoPath);
+                    product.List[i].Photo);
                 }
 
                 ProductDataList.ClearSelection();
@@ -301,7 +301,7 @@ namespace DimStock.UserForms
                 userForm.CostPrice.Text = product.CostPrice.ToString();
                 userForm.SalePrice.Text = product.SalePrice.ToString();
                 userForm.BarCode.Text = product.BarCode;
-                userForm.ReloadPhoto(product.PhotoPath);
+                userForm.ReloadPhoto(product.Photo);
                 userForm.ShowInTaskbar = false;
                 userForm.ShowDialog();
 
@@ -363,7 +363,7 @@ namespace DimStock.UserForms
 
                     var photoPath = productPhoto.GetDirectoryPeth() +
                     Convert.ToString(ProductDataList.CurrentRow.Cells
-                    ["PhotoPath"].Value);
+                    ["Photo"].Value);
 
                     productPhoto.DeleteFromDirectory(photoPath);
 
@@ -398,7 +398,7 @@ namespace DimStock.UserForms
                 productForm.CostPrice.Text = product.CostPrice.ToString();
                 productForm.SalePrice.Text = product.SalePrice.ToString();
                 productForm.BarCode.Text = product.BarCode;
-                productForm.ReloadPhoto(product.PhotoPath, true);
+                productForm.ReloadPhoto(product.Photo, true);
                 productForm.ShowInTaskbar = false;
                 productForm.ShowDialog();
             }
@@ -488,7 +488,7 @@ namespace DimStock.UserForms
                 var description = new DataGridViewTextBoxColumn();
                 var costPrice = new DataGridViewTextBoxColumn();
                 var salePrice = new DataGridViewTextBoxColumn();
-                var photoPath = new DataGridViewTextBoxColumn();
+                var photo = new DataGridViewTextBoxColumn();
                 var edit = new DataGridViewLinkColumn();
                 var delete = new DataGridViewLinkColumn();
                 var replicate = new DataGridViewLinkColumn();
@@ -553,8 +553,8 @@ namespace DimStock.UserForms
                 productDataList.Columns[6].DefaultCellStyle.Format = "c2";
                 productDataList.Columns[6].ReadOnly = true;
 
-                productDataList.Columns.Add(photoPath);
-                productDataList.Columns[7].Name = "photoPath";
+                productDataList.Columns.Add(photo);
+                productDataList.Columns[7].Name = "photo";
                 productDataList.Columns[7].HeaderText = "Nome da Foto";
                 productDataList.Columns[7].ReadOnly = true;
                 productDataList.Columns[7].Visible = false;

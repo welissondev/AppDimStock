@@ -79,7 +79,7 @@ namespace DimStock.Business
 
                     sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max,  
                     Product.Id, Product.Description, Product.CostPrice, Product.Code, Product.Reference, 
-                    [Product.Size], Product.PhotoPath FROM Product INNER JOIN Stock ON Stock.ProductId 
+                    [Product.Size], Product.Photo FROM Product INNER JOIN Stock ON Stock.ProductId 
                     = Product.Id WHERE Stock.Id > 0";
                 }
 
@@ -91,7 +91,7 @@ namespace DimStock.Business
 
                     sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max, 
                     Product.Id, Product.Description, Product.CostPrice, Product.Code, Product.Reference, 
-                    [Product.Size], Product.PhotoPath From Product INNER JOIN Stock ON Stock.ProductId = 
+                    [Product.Size], Product.Photo From Product INNER JOIN Stock ON Stock.ProductId = 
                     Product.Id WHERE Stock.Quantity = 0 AND Stock.Min = 0 AND Stock.Max = 0";
                 }
 
@@ -103,7 +103,7 @@ namespace DimStock.Business
 
                     sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max,
                     Product.Id, Product.Description, Product.CostPrice, Product.Code, Product.Reference, 
-                    [Product.Size], Product.PhotoPath From Product INNER JOIN Stock ON Stock.ProductId 
+                    [Product.Size], Product.Photo From Product INNER JOIN Stock ON Stock.ProductId 
                     = Product.Id WHERE Stock.Quantity > 0 AND Stock.Quantity >= Stock.Min 
                     AND Stock.Quantity <= Stock.Max";
                 }
@@ -115,7 +115,7 @@ namespace DimStock.Business
 
                     sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max,  
                     Product.Id, Product.Description, Product.CostPrice, Product.Code, Product.Reference, 
-                    [Product.Size],Product.PhotoPath From Product INNER JOIN Stock ON Stock.ProductId 
+                    [Product.Size],Product.Photo From Product INNER JOIN Stock ON Stock.ProductId 
                     = Product.Id WHERE Stock.Quantity > Stock.Max";
                 }
 
@@ -126,7 +126,7 @@ namespace DimStock.Business
 
                     sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max, 
                     Product.Id, Product.Description, Product.CostPrice, Product.Code, Product.Reference, 
-                    [Product.Size], Product.PhotoPath From Product INNER JOIN Stock ON Stock.ProductId 
+                    [Product.Size], Product.Photo From Product INNER JOIN Stock ON Stock.ProductId 
                     = Product.Id WHERE Stock.Quantity < Stock.Min";
                 }
 
@@ -187,7 +187,7 @@ namespace DimStock.Business
                         stock.Product.Size = Convert.ToInt32(reader["Product.Size"]);
                         stock.Product.Description = Convert.ToString(reader["Description"]);
                         stock.Product.CostPrice = Convert.ToDouble(reader["CostPrice"]);
-                        stock.Product.PhotoPath = Convert.ToString(reader["PhotoPath"]);
+                        stock.Product.Photo = Convert.ToString(reader["Photo"]);
 
                         List.Add(stock);
                     }
@@ -215,7 +215,7 @@ namespace DimStock.Business
 
                     sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.Min, Stock.Max, Stock.TotalValue, 
                     Product.Id, Product.Description, Product.CostPrice, Product.Code, Product.Reference, 
-                    [Product.Size], Product.PhotoPath From Product INNER JOIN Stock ON Stock.ProductId 
+                    [Product.Size], Product.Photo From Product INNER JOIN Stock ON Stock.ProductId 
                     = Product.Id WHERE Stock.Id > 0";
                 }
 
@@ -227,7 +227,7 @@ namespace DimStock.Business
 
                     sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max,
                     Product.Id, Product.Description, Product.CostPrice, Product.Code, Product.Reference, 
-                    [Product.Size], Product.PhotoPath From Product INNER JOIN Stock ON Stock.ProductId 
+                    [Product.Size], Product.Photo From Product INNER JOIN Stock ON Stock.ProductId 
                     = Product.Id WHERE Quantity = 0 AND Stock.Min = 0 AND Stock.Max = 0";
                 }
 
@@ -239,7 +239,7 @@ namespace DimStock.Business
 
                     sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max, 
                     Product.Id, Product.Description, Product.CostPrice, Product.Code, Product.Reference, 
-                    [Product.Size], Product.PhotoPath From Product INNER JOIN Stock ON Stock.ProductId 
+                    [Product.Size], Product.Photo From Product INNER JOIN Stock ON Stock.ProductId 
                     = Product.Id WHERE Quantity > 0 AND Quantity >= Stock.Min AND Quantity <= Stock.Max";
                 }
 
@@ -250,7 +250,7 @@ namespace DimStock.Business
 
                     sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, 
                     Stock.Max, Product.Id, Product.Description, Product.CostPrice, Product.Code, 
-                    Product.Reference, [Product.Size], Product.PhotoPath From Product 
+                    Product.Reference, [Product.Size], Product.Photo From Product 
                     INNER JOIN Stock ON Stock.ProductId = Product.Id WHERE 
                     Stock.Quantity > Stock.Max";
                 }
@@ -262,7 +262,7 @@ namespace DimStock.Business
 
                     sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max,
                     Product.Id, Product.Description, Product.CostPrice, Product.Code, Product.Reference, 
-                    [Product.Size], Product.PhotoPath From Product INNER JOIN Stock ON 
+                    [Product.Size], Product.Photo From Product INNER JOIN Stock ON 
                     Stock.ProductId = Product.Id WHERE Stock.Quantity < Stock.Min";
                 }
 
@@ -605,7 +605,7 @@ namespace DimStock.Business
                 stock.Product.Size = Convert.ToInt32(row["Product.Size"]);
                 stock.Product.Description = Convert.ToString(row["Description"]);
                 stock.Product.CostPrice = Convert.ToDouble(row["CostPrice"]);
-                stock.Product.PhotoPath = Convert.ToString(row["PhotoPath"]);
+                stock.Product.Photo = Convert.ToString(row["Photo"]);
 
                 List.Add(stock);
             }
