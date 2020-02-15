@@ -10,50 +10,33 @@ namespace DimStock.UserForms
     public partial class ReportViewForm : Form
     {
         #region Constructors
-        private ReportViewForm(string path, string reportName, bool isEmbeddedResource, Dictionary<string,
-        object> dataSources, Dictionary<string, object> reportParameters = null)
-        {
 
+        private ReportViewForm(string path, string reportName, bool isEmbeddedResource, Dictionary<string, object> dataSources)
+        {
             InitializeComponent();
 
             ReportViewControl.LocalReport.DisplayName = reportName;
 
-            if (isEmbeddedResource)
-            {
-                ReportViewControl.LocalReport.ReportEmbeddedResource = path;
-            }
-            else
-            {
-                ReportViewControl.LocalReport.ReportPath = path;
-            }
+            SetEmbeddedResource(isEmbeddedResource, path);
 
             foreach (var dataSource in dataSources)
             {
-                var reportDataSource = new ReportDataSource(dataSource.Key, dataSource.Value);
-                this.ReportViewControl.LocalReport.DataSources.Add(reportDataSource);
+                var reportDataSource = new ReportDataSource(
+                dataSource.Key, dataSource.Value);
+
+                ReportViewControl.LocalReport.DataSources.Add(
+                reportDataSource);
             }
 
-            if (reportParameters != null)
-            {
-                var reportParameterCollection = new List<ReportParameter>();
-
-                foreach (var parameter in reportParameters)
-                {
-                    var reportParameter = new ReportParameter(parameter.Key, parameter.Value.ToString());
-                    reportParameterCollection.Add(reportParameter);
-                }
-
-                ReportViewControl.LocalReport.SetParameters(reportParameterCollection);
-            }
+            SetCompanyLogo();
         }
+
         #endregion
 
         #region UserForm
 
         private void FrmReportView_Load(object sender, EventArgs e)
         {
-            SetCompanyLogo();
-
             ReportViewControl.RefreshReport();
         }
 
@@ -66,12 +49,10 @@ namespace DimStock.UserForms
 
         #region Methods
 
-        public static void ShowReport(string path, string reportName,
-        bool isEmbeddedResource, Dictionary<string, object> dataSources,
-        Dictionary<string, object> reportParameters = null)
+        public static void ShowReport(string path, string reportName, bool isEmbeddedResource, Dictionary<string, object> dataSources)
         {
             var form = new ReportViewForm(path, reportName,
-            isEmbeddedResource, dataSources, reportParameters)
+            isEmbeddedResource, dataSources)
             {
                 MdiParent = HomeScreenForm.He,
                 FormBorderStyle = FormBorderStyle.None,
@@ -80,6 +61,18 @@ namespace DimStock.UserForms
             };
 
             form.Show();
+        }
+
+        private void SetEmbeddedResource(bool isEmbeddedResource, string path)
+        {
+            if (isEmbeddedResource)
+            {
+                ReportViewControl.LocalReport.ReportEmbeddedResource = path;
+            }
+            else
+            {
+                ReportViewControl.LocalReport.ReportPath = path;
+            }
         }
 
         private void SetCompanyLogo()
