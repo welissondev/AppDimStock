@@ -297,15 +297,15 @@ namespace DimStock.UserForms
 
                 MovementStockDataList.Rows.Clear();
 
-                for (int i = 0; i < stockMovement.ListOfRecords.Count; i++)
+                for (int i = 0; i < stockMovement.List.Count; i++)
                 {
                     MovementStockDataList.Rows.Add(
-                    stockMovement.ListOfRecords[i].OperationSituation,
-                    stockMovement.ListOfRecords[i].OperationType,
-                    stockMovement.ListOfRecords[i].Id,
-                    stockMovement.ListOfRecords[i].OperationDate,
-                    Convert.ToString(stockMovement.ListOfRecords[i].OperationHour.ToString("hh:mm:ss")),
-                    stockMovement.ListOfRecords[i].StockDestinationLocation
+                    stockMovement.List[i].OperationSituation,
+                    stockMovement.List[i].OperationType,
+                    stockMovement.List[i].Id,
+                    stockMovement.List[i].OperationDate,
+                    Convert.ToString(stockMovement.List[i].OperationHour.ToString("hh:mm:ss")),
+                    stockMovement.List[i].StockDestination.Location
                     );
                 }
 

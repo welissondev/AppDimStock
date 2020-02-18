@@ -137,12 +137,12 @@ namespace DimStock.UserForms
             {
                 if (OperationSituation.Text == "Em Aberto")
                 {
-                    var stockMovement = new StockMovement
-                    {
-                        StockDestinationLocation = ((ComboBox)sender).SelectedItem.ToString()
-                    };
+                    var movement = new StockMovement();
+                        movement.StockDestination.Location = 
+                        ((ComboBox)sender).SelectedItem.ToString();
 
-                    stockMovement.SetDestination(Convert.ToInt32(StockMovementId.Text));
+                    movement.RelateDestination(Convert.ToInt32(
+                    StockMovementId.Text));
                 }
             }
             catch (Exception ex)
@@ -355,12 +355,12 @@ namespace DimStock.UserForms
                 OperationHour.Text = Convert.ToString(movement.OperationHour.ToString("hh:mm:ss"));
                 OperationSituation.Text = movement.OperationSituation;
 
-                if (movement.StockDestinationLocation != string.Empty)
+                if (movement.StockDestination.Id != 0)
                 {
                     FillAllComboBox();
 
                     StockDestinationList.Text =
-                    movement.StockDestinationLocation;
+                    movement.StockDestination.Location;
                 }
 
                 ListStockItems();

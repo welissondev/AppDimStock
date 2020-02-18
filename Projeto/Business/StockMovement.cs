@@ -15,28 +15,38 @@ namespace DimStock.Business
 
         #region Constructs
 
-        public StockMovement() { }
+        public StockMovement()
+        {
+            StockDestination = new StockDestination();
+            List = new List<StockMovement>();
+        }
 
         public StockMovement(AxlDataPagination dataPagination)
         {
             DataPagination = dataPagination;
+            StockDestination = new StockDestination();
+            List = new List<StockMovement>();
         }
 
         public StockMovement(Connection connection)
         {
             this.connection = connection;
+            StockDestination = new StockDestination();
+            List = new List<StockMovement>();
         }
 
         #endregion 
 
         #region BussinessProperties
+
         public int Id { get; set; }
         public string OperationType { get; set; }
         public DateTime OperationDate { get; set; }
         public DateTime OperationHour { get; set; }
         public string OperationSituation { get; set; }
-        public string StockDestinationLocation { get; set; }
-        public List<StockMovement> ListOfRecords { get; set; }
+        public StockDestination StockDestination { get; set; }
+        public List<StockMovement> List { get; set; }
+
         #endregion
 
         #region SearchProperties
@@ -71,25 +81,39 @@ namespace DimStock.Business
             }
         }
 
-        public bool SetDestination(int id)
+        public bool RelateDestination(int id)
         {
             bool setDestinationState = false;
+            var sqlCommand = string.Empty;
 
-            if (StockDestinationLocation != string.Empty)
+            using (var connection = new Connection())
             {
-                using (var connection = new Connection())
-                {
-                    var sqlCommand = @"UPDATE StockMovement SET StockDestinationLocation
-                    = @StockDestinationLocation WHERE Id = @Id";
+                //Pega Id de destino pelo nome do local
+                sqlCommand = @"SELECT * FROM StockDestination 
+                WHERE Location = @Location";
 
-                    connection.AddParameter("@StockDestinationLocation",
-                    OleDbType.VarChar, StockDestinationLocation);
+                connection.AddParameter("Location", OleDbType.VarChar,
+                StockDestination.Location);
+
+                bool convert = int.TryParse(connection.ExecuteScalar(
+                sqlCommand).ToString(), out int result);
+
+                if (convert != false)
+                    StockDestination.Id = result;
+
+                if (StockDestination.Id != 0)
+                {
+                    connection.ParameterClear();
+
+                    sqlCommand = @"UPDATE StockMovement SET StockDestinationId
+                    = @Value WHERE Id = @Id";
+
+                    connection.AddParameter("@Value",
+                    OleDbType.VarChar, StockDestination.Id);
                     connection.AddParameter("@Id", OleDbType.Integer, id);
 
                     if (connection.ExecuteNonQuery(sqlCommand) > 0)
-                    {
                         setDestinationState = true;
-                    }
                 }
             }
 
@@ -129,14 +153,14 @@ namespace DimStock.Business
             {
                 var affectedFields = GetAffectedFields(id, connection);
 
-                using (connection.Transaction = 
+                using (connection.Transaction =
                 connection.Open().BeginTransaction())
                 {
                     var sqlCommand = @"DELETE FROM StockMovement 
                     WHERE Id = @Id";
 
                     connection.ParameterClear();
-                    connection.AddParameter("@Id", 
+                    connection.AddParameter("@Id",
                     OleDbType.Integer, id);
 
                     transactionState = connection.ExecuteTransaction(
@@ -201,14 +225,16 @@ namespace DimStock.Business
                             OperationType = reader["OperationType"].ToString(),
                             OperationDate = Convert.ToDateTime(reader["OperationDate"]),
                             OperationHour = Convert.ToDateTime(reader["OperationHour"]),
-                            OperationSituation = reader["OperationSituation"].ToString(),
-                            StockDestinationLocation = reader["StockDestinationLocation"].ToString(),
+                            OperationSituation = reader["OperationSituation"].ToString()
                         };
+
+                        StockDestination.Id = Convert.ToInt32(reader["StockDestination.Id"]);
+                        StockDestination.Location = Convert.ToString(reader["Location"]);
 
                         stockMovementsList.Add(stockMovement);
                     }
 
-                    ListOfRecords = stockMovementsList;
+                    List = stockMovementsList;
                 }
             }
         }
@@ -222,11 +248,12 @@ namespace DimStock.Business
                 var criterion = string.Empty;
                 var parameter = connection.Command.Parameters;
 
-                sqlQuery = @"SELECT * From StockMovement 
-                WHERE Id > 0 ";
+                sqlQuery = @"SELECT StockMovement.*, StockDestination.* FROM StockMovement
+                LEFT JOIN StockDestination On StockMovement.StockDestinationId = 
+                StockDestination.Id WHERE StockMovement.Id > 0 ";
 
                 sqlCount = @"SELECT COUNT(*) FROM StockMovement 
-                WHERE Id > 0 ";
+                WHERE StockMovement.Id > 0 ";
 
                 if (SearchByType != string.Empty)
                 {
@@ -246,13 +273,13 @@ namespace DimStock.Business
 
                 if (SearchByMovimentId != string.Empty)
                 {
-                    criterion += @" AND Id LIKE @MovimentId ";
+                    criterion += @" AND StockMovement.Id LIKE @MovimentId ";
 
                     parameter.AddWithValue("@MovimentId", string.Format("{0}",
                     SearchByMovimentId));
                 }
 
-                sqlQuery += criterion + @" ORDER BY Id DESC";
+                sqlQuery += criterion + @" ORDER BY StockMovement.Id DESC";
 
                 sqlCount += criterion;
 
@@ -263,7 +290,7 @@ namespace DimStock.Business
                 DataPagination.OffSetValue,
                 DataPagination.PageSize);
 
-                PassDataTableToList(dataTable);
+                PassToList(dataTable);
 
             }
         }
@@ -272,45 +299,54 @@ namespace DimStock.Business
         {
             using (var connection = new Connection())
             {
-                var sqlQuery = @"SELECT * FROM StockMovement WHERE Id = @Id";
+                var sqlQuery = @"SELECT StockMovement.*, StockDestination.* 
+                FROM StockMovement LEFT JOIN StockDestination ON StockMovement.StockDestinationId 
+                = StockDestination.Id WHERE StockMovement.Id = @Id";
 
+                connection.ParameterClear();
                 connection.AddParameter("Id", OleDbType.Integer, id);
 
                 using (var reader = connection.QueryWithDataReader(sqlQuery))
                 {
                     while (reader.Read())
                     {
-                        Id = Convert.ToInt32(reader["Id"]);
-                        OperationType = Convert.ToString(reader["OperationType"]);
-                        OperationDate = Convert.ToDateTime(reader["OperationDate"]);
-                        OperationHour = Convert.ToDateTime(reader["OperationHour"]);
-                        OperationSituation = Convert.ToString(reader["OperationSituation"]);
-                        StockDestinationLocation = Convert.ToString(reader["StockDestinationLocation"]);
+                        Id = Convert.ToInt32(reader["StockMovement.Id"]);
+                        OperationType = Convert.ToString(reader["OperationType"].ToString());
+                        OperationDate = Convert.ToDateTime(reader["OperationDate"].ToString());
+                        OperationHour = Convert.ToDateTime(reader["OperationHour"].ToString());
+                        OperationSituation = Convert.ToString(reader["OperationSituation"].ToString());
+
+                        bool convert = int.TryParse(reader[
+                        "StockDestination.Id"].ToString(),
+                        out int result);
+
+                        if (convert != false)
+                            StockDestination.Id = result;
+
+                        StockDestination.Location = reader["Location"].ToString();
                     }
                 }
             }
         }
 
-        public void PassDataTableToList(DataTable dataTable)
+        public void PassToList(DataTable dataTable)
         {
-            var stockMovementsList = new List<StockMovement>();
-
             foreach (DataRow row in dataTable.Rows)
             {
-                var stockMovement = new StockMovement()
+                var movement = new StockMovement()
                 {
-                    Id = Convert.ToInt32(row["Id"]),
+                    Id = Convert.ToInt32(row["StockMovement.Id"]),
                     OperationType = Convert.ToString(row["OperationType"]),
                     OperationDate = Convert.ToDateTime(row["OperationDate"]),
                     OperationHour = Convert.ToDateTime(row["OperationHour"]),
-                    OperationSituation = Convert.ToString(row["OperationSituation"]),
-                    StockDestinationLocation = row["StockDestinationLocation"].ToString(),
+                    OperationSituation = Convert.ToString(row["OperationSituation"])
                 };
 
-                stockMovementsList.Add(stockMovement);
-            }
+                movement.StockDestination.Location =
+                Convert.ToString(row["Location"]);
 
-            ListOfRecords = stockMovementsList;
+                List.Add(movement);
+            }
         }
 
         public string GetAffectedFields(int id, Connection connection)
