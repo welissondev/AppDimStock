@@ -44,12 +44,12 @@ namespace DimStock.UserForms
             {
                 var stock = new Stock()
                 {
-                    SearchByCode = SearchByCode.Text,
-                    SearchBySize = SearchBySize.Text,
-                    SearchByReference = SearchByReference.Text,
-                    SearchByDescription = SearchByDescription.Text,
-                    SearchBySummary = selectedSummary
+                    Summary = selectedSummary
                 };
+
+                stock.Product.InternalCode = SearchByCode.Text;
+                stock.Product.Description = SearchByDescription.Text;
+
                 stock.GenerateReport(stock.List);
             }
             catch (Exception ex)
@@ -262,12 +262,11 @@ namespace DimStock.UserForms
             {
                 var stock = new Stock(dataPagination)
                 {
-                    SearchByCode = SearchByCode.Text,
-                    SearchBySize = SearchBySize.Text,
-                    SearchByReference = SearchByReference.Text,
-                    SearchByDescription = SearchByDescription.Text,
-                    SearchBySummary = selectedSummary
+                    Summary = selectedSummary
                 };
+
+                stock.Product.InternalCode = SearchByCode.Text;
+                stock.Product.Description = SearchByDescription.Text;
 
                 stock.SearchData();
 
@@ -278,9 +277,7 @@ namespace DimStock.UserForms
                     StockDataList.Rows.Add(
                     stock.List[i].Id,
                     stock.List[i].Product.Id,
-                    stock.List[i].Product.Code,
-                    stock.List[i].Product.Reference,
-                    stock.List[i].Product.Size,
+                    stock.List[i].Product.InternalCode,
                     stock.List[i].Product.Description,
                     stock.List[i].Min,
                     stock.List[i].Max,
@@ -404,9 +401,7 @@ namespace DimStock.UserForms
             {
                 var stockId = new DataGridViewTextBoxColumn();
                 var productId = new DataGridViewTextBoxColumn();
-                var productCode = new DataGridViewTextBoxColumn();
-                var productSize = new DataGridViewTextBoxColumn();
-                var productReference = new DataGridViewTextBoxColumn();
+                var internalCode = new DataGridViewTextBoxColumn();
                 var productDescription = new DataGridViewTextBoxColumn();
                 var minStock = new DataGridViewTextBoxColumn();
                 var maxStock = new DataGridViewTextBoxColumn();
@@ -433,92 +428,73 @@ namespace DimStock.UserForms
                 dataGrid.Columns[1].Visible = false;
                 dataGrid.Columns[1].ReadOnly = true;
 
-                dataGrid.Columns.Add(productCode);
-                dataGrid.Columns[2].Name = "productCode";
-                dataGrid.Columns[2].HeaderText = "CÓD.";
-                dataGrid.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGrid.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns.Add(internalCode);
+                dataGrid.Columns[2].Name = "internalCode";
+                dataGrid.Columns[2].HeaderText = "CÓDIGO.";
+                dataGrid.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dataGrid.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 dataGrid.Columns[2].Visible = true;
                 dataGrid.Columns[2].ReadOnly = true;
                 dataGrid.Columns[2].Width = 80;
 
-                dataGrid.Columns.Add(productReference);
-                dataGrid.Columns[3].Name = "productReference";
-                dataGrid.Columns[3].HeaderText = "REF.";
-                dataGrid.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGrid.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGrid.Columns[3].Visible = true;
-                dataGrid.Columns[3].ReadOnly = true;
-                dataGrid.Columns[3].Width = 80;
-
-                dataGrid.Columns.Add(productSize);
-                dataGrid.Columns[4].Name = "productSize";
-                dataGrid.Columns[4].HeaderText = "TAM.";
-                dataGrid.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGrid.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGrid.Columns[4].Visible = true;
-                dataGrid.Columns[4].ReadOnly = true;
-                dataGrid.Columns[4].DisplayIndex = 3;
-                dataGrid.Columns[4].Width = 80;
-
                 dataGrid.Columns.Add(productDescription);
-                dataGrid.Columns[5].Width = 200;
-                dataGrid.Columns[5].Name = "productDescription";
-                dataGrid.Columns[5].HeaderText = "DESCRIÇÃO";
-                dataGrid.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dataGrid.Columns[5].ReadOnly = true;
+                dataGrid.Columns[3].Width = 200;
+                dataGrid.Columns[3].Name = "productDescription";
+                dataGrid.Columns[3].HeaderText = "DESCRIÇÃO";
+                dataGrid.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dataGrid.Columns[3].ReadOnly = true;
 
                 dataGrid.Columns.Add(minStock);
+                dataGrid.Columns[4].Width = 70;
+                dataGrid.Columns[4].Name = "minStock";
+                dataGrid.Columns[4].HeaderText = "MIN.";
+                dataGrid.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[4].ReadOnly = true;
+
+                dataGrid.Columns.Add(maxStock);
+                dataGrid.Columns[5].Width = 70;
+                dataGrid.Columns[5].Name = "maxStock";
+                dataGrid.Columns[5].HeaderText = "MAX.";
+                dataGrid.Columns[5].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[5].ReadOnly = true;
+
+                dataGrid.Columns.Add(stockQuantity);
                 dataGrid.Columns[6].Width = 70;
-                dataGrid.Columns[6].Name = "minStock";
-                dataGrid.Columns[6].HeaderText = "MIN.";
+                dataGrid.Columns[6].Name = "stockQuantity";
+                dataGrid.Columns[6].HeaderText = "QTD.";
                 dataGrid.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[6].ReadOnly = true;
 
-                dataGrid.Columns.Add(maxStock);
-                dataGrid.Columns[7].Width = 70;
-                dataGrid.Columns[7].Name = "maxStock";
-                dataGrid.Columns[7].HeaderText = "MAX.";
-                dataGrid.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGrid.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns.Add(stockValue);
+                dataGrid.Columns[7].Width = 120;
+                dataGrid.Columns[7].Name = "stockValue";
+                dataGrid.Columns[7].HeaderText = "VALOR";
+                dataGrid.Columns[7].DefaultCellStyle.Format = "c2";
+                dataGrid.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dataGrid.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dataGrid.Columns[7].DisplayIndex = 6;
                 dataGrid.Columns[7].ReadOnly = true;
 
-                dataGrid.Columns.Add(stockQuantity);
-                dataGrid.Columns[8].Width = 70;
-                dataGrid.Columns[8].Name = "stockQuantity";
-                dataGrid.Columns[8].HeaderText = "QTD.";
+                dataGrid.Columns.Add(stockSummary);
+                dataGrid.Columns[8].Width = 80;
+                dataGrid.Columns[8].Name = "stockSummary";
+                dataGrid.Columns[8].HeaderText = "RESUMO";
                 dataGrid.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGrid.Columns[8].ReadOnly = true;
-
-                dataGrid.Columns.Add(stockValue);
-                dataGrid.Columns[9].Width = 120;
-                dataGrid.Columns[9].Name = "stockValue";
-                dataGrid.Columns[9].HeaderText = "VALOR";
-                dataGrid.Columns[9].DefaultCellStyle.Format = "c2";
-                dataGrid.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                dataGrid.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                dataGrid.Columns[9].DisplayIndex = 6;
-                dataGrid.Columns[9].ReadOnly = true;
-
-                dataGrid.Columns.Add(stockSummary);
-                dataGrid.Columns[10].Width = 80;
-                dataGrid.Columns[10].Name = "stockSummary";
-                dataGrid.Columns[10].HeaderText = "RESUMO";
-                dataGrid.Columns[10].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGrid.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGrid.Columns[10].ReadOnly = true;
-                dataGrid.Columns[10].DisplayIndex = 0;
+                dataGrid.Columns[8].DisplayIndex = 0;
 
                 dataGrid.Columns.Add(stockResult);
-                dataGrid.Columns[11].Width = 80;
-                dataGrid.Columns[11].Name = "stockResult";
-                dataGrid.Columns[11].HeaderText = "RESULTADO";
-                dataGrid.Columns[11].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGrid.Columns[11].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGrid.Columns[11].ReadOnly = true;
-                dataGrid.Columns[11].DisplayIndex = 1;
+                dataGrid.Columns[9].Width = 80;
+                dataGrid.Columns[9].Name = "stockResult";
+                dataGrid.Columns[9].HeaderText = "RESULTADO";
+                dataGrid.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGrid.Columns[9].ReadOnly = true;
+                dataGrid.Columns[9].DisplayIndex = 1;
             }
             catch (Exception ex)
             {

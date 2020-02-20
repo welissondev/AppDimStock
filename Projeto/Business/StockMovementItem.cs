@@ -6,23 +6,33 @@ namespace DimStock.Business
 {
     public class StockMovementItem
     {
+        #region Builder
+
+        public StockMovementItem()
+        {
+            Stock = new Stock();
+            Product = new Product();
+            StockMovement = new StockMovement();
+            List = new List<StockMovementItem>();
+        }
+
+        #endregion
+
         #region Get e Set
+
         public int Id { get; set; }
-        public int StockId { get; set; }
-        public int ProductId { get; set; }
-        public int StockMovementId { get; set; }
-        public string ProductCode { get; set; }
-        public string ProductSize { get; set; }
-        public string ProductReference { get; set; }
-        public string ProductDescription { get; set; }
         public int Quantity { get; set; }
         public double UnitaryValue { get; set; }
         public double TotalValue { get; set; }
         public double SubTotal { get; set; }
-        public List<StockMovementItem> ListOfRecords { get; set; }
+        public Stock Stock { get; set; }
+        public Product Product { get; set; }
+        public StockMovement StockMovement { get; set; }
+        public List<StockMovementItem> List { get; set; }
+
         #endregion
 
-        #region Methods
+        #region Function
 
         public bool Add()
         {
@@ -32,9 +42,10 @@ namespace DimStock.Business
                 Quantity, UnitaryValue, TotalValue)VALUES(@StockMovementId, @ProductId, @StockId, 
                 @Quantity, @UnitaryValue, @TotalValue)";
 
-                connection.AddParameter("@StockMovementId", OleDbType.Integer, StockMovementId);
-                connection.AddParameter("@ProductId", OleDbType.Integer, ProductId);
-                connection.AddParameter("@StockId", OleDbType.Integer, StockId);
+                connection.ParameterClear();
+                connection.AddParameter("@StockMovementId", OleDbType.Integer, StockMovement.Id);
+                connection.AddParameter("@ProductId", OleDbType.Integer, Product.Id);
+                connection.AddParameter("@StockId", OleDbType.Integer, Stock.Id);
                 connection.AddParameter("@Quantity", OleDbType.Integer, Quantity);
                 connection.AddParameter("@UnitaryValue", OleDbType.Double, UnitaryValue);
                 connection.AddParameter("@TotalValue", OleDbType.Double, TotalValue);
@@ -66,13 +77,11 @@ namespace DimStock.Business
         {
             using (var connection = new Connection())
             {
-                var sqlQuery = @"SELECT StockMovementItem.*, Product.Description, Product.Code, [Product.Size],
-                Product.Reference FROM StockMovementItem INNER JOIN Product ON StockMovementItem.ProductId = Product.Id WHERE 
-                StockMovementItem.StockMovementId LIKE @Id ORDER BY Code";
+                var sqlQuery = @"SELECT StockMovementItem.*, Product.Description, Product.InternalCode 
+                FROM StockMovementItem INNER JOIN Product ON StockMovementItem.ProductId = Product.Id WHERE 
+                StockMovementItem.StockMovementId LIKE @Id ORDER BY InternalCode";
 
                 connection.AddParameter("@Id", OleDbType.Integer, id);
-
-                var itemList = new List<StockMovementItem>();
 
                 using (var dr = connection.QueryWithDataReader(sqlQuery))
                 {
@@ -81,20 +90,17 @@ namespace DimStock.Business
                         var item = new StockMovementItem()
                         {
                             Id = Convert.ToInt32(dr["Id"]),
-                            StockId = Convert.ToInt32(dr["StockId"]),
-                            ProductCode = dr["Code"].ToString(),
-                            ProductSize = dr["Product.Size"].ToString(),
-                            ProductReference = dr["Reference"].ToString(),
-                            ProductDescription = dr["Description"].ToString(),
                             Quantity = Convert.ToInt32(dr["Quantity"]),
                             UnitaryValue = Convert.ToDouble(dr["UnitaryValue"]),
                             TotalValue = Convert.ToDouble(dr["TotalValue"])
                         };
 
-                        itemList.Add(item);
-                    }
+                        item.Stock.Id = Convert.ToInt32(dr["StockId"]);
+                        item.Product.InternalCode = dr["InternalCode"].ToString();
+                        item.Product.Description = dr["Description"].ToString();
 
-                    ListOfRecords = itemList;
+                        List.Add(item);
+                    }
                 }
             }
         }

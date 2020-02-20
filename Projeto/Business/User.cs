@@ -9,7 +9,7 @@ namespace DimStock.Business
 {
     public class User
     {
-        #region Constructs
+        #region Builder
 
         public User() { }
 
@@ -20,7 +20,8 @@ namespace DimStock.Business
 
         #endregion 
 
-        #region BussinesProperties 
+        #region Get & Set 
+
         public int Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
@@ -32,17 +33,11 @@ namespace DimStock.Business
         public bool PermissionToView { get; set; }
         public bool AllPermissions { get; set; }
         public List<User> ListOfRecords { get; set; }
-        #endregion
-
-        #region SearchProperties
-
-        public string SearchByName { get; set; }
-        public string SearchByEmail { get; set; }
         public AxlDataPagination DataPagination { get; set; }
 
-        #endregion 
+        #endregion
 
-        #region Methods
+        #region Function
 
         public bool SignIn()
         {
@@ -119,7 +114,7 @@ namespace DimStock.Business
         {
             Login = "Admin";
 
-            if(CheckIfLoginExists() == true)
+            if (CheckIfLoginExists() == true)
                 return;
 
             connection.ParameterClear();
@@ -177,16 +172,18 @@ namespace DimStock.Business
                     "SELECT MAX(Id) FROM [User]"));
 
                     //Registra histórico do usuário
-                    var userHistory = new UserHistory(connection)
+                    var history = new UserHistory(connection)
                     {
-                        UserId = AxlLogin.Id,
                         OperationType = "Cadastrou",
                         OperationModule = "Usuário",
                         OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
                         OperationHour = DateTime.Now.ToString("HH:mm:ss"),
                         AffectedFields = GetAffectedFields(Id, connection)
                     };
-                    transactionState = userHistory.Register();
+
+                    history.User.Id = AxlLogin.Id;
+
+                    transactionState = history.Register();
 
                     //Finaliza a transação
                     connection.Transaction.Commit();
@@ -232,16 +229,18 @@ namespace DimStock.Business
                     transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
 
                     //Registra histórico do usuário
-                    var userHistory = new UserHistory(connection)
+                    var history = new UserHistory(connection)
                     {
-                        UserId = AxlLogin.Id,
                         OperationType = "Editou",
                         OperationModule = "Usuário",
                         OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
                         OperationHour = DateTime.Now.ToString("HH:mm:ss"),
                         AffectedFields = affectedFields
                     };
-                    transactionState = userHistory.Register();
+
+                    history.User.Id = AxlLogin.Id;
+
+                    transactionState = history.Register();
 
                     //Finaliza a transação
                     connection.Transaction.Commit();
@@ -287,16 +286,18 @@ namespace DimStock.Business
                     transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
 
                     //Registra histórico do usuário
-                    var userHistory = new UserHistory(connection)
+                    var history = new UserHistory(connection)
                     {
-                        UserId = AxlLogin.Id,
                         OperationType = "Deletou",
                         OperationModule = "Usuário",
                         OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
                         OperationHour = DateTime.Now.ToString("HH:mm:ss"),
                         AffectedFields = affectedFields
                     };
-                    transactionState = userHistory.Register();
+
+                    history.User.Id = AxlLogin.Id;
+
+                    transactionState = history.Register();
 
                     //Finaliza a transação
                     connection.Transaction.Commit();
@@ -343,8 +344,8 @@ namespace DimStock.Business
                 LIKE @Name Or Email LIKE @Email";
 
                 var parameter = connection.Command.Parameters;
-                parameter.AddWithValue("@Name", string.Format("%{0}%", SearchByName));
-                parameter.AddWithValue("@Email", string.Format("%{0}%", SearchByEmail));
+                parameter.AddWithValue("@Name", string.Format("%{0}%", Name));
+                parameter.AddWithValue("@Email", string.Format("%{0}%", Email));
 
                 var dataTable = connection.QueryWithDataTable(sqlQuery,
                 DataPagination.OffSetValue, DataPagination.PageSize);

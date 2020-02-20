@@ -36,11 +36,7 @@
             this.RecordsByPage = new Syncfusion.WinForms.ListView.SfComboBox();
             this.TitleRecordsByPage = new System.Windows.Forms.Label();
             this.TitleSearchByDescription = new System.Windows.Forms.Label();
-            this.TitleSearchByReference = new System.Windows.Forms.Label();
-            this.TitleSearchBySize = new System.Windows.Forms.Label();
             this.TitleSearchByCode = new System.Windows.Forms.Label();
-            this.SearchByReference = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.SearchBySize = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.SearchByCode = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.SearchTimer = new System.Windows.Forms.Timer(this.components);
             this.BindingPagination = new System.Windows.Forms.BindingNavigator(this.components);
@@ -58,8 +54,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ProductDataList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GifLoading)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RecordsByPage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SearchByReference)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SearchBySize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SearchByCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BindingPagination)).BeginInit();
             this.BindingPagination.SuspendLayout();
@@ -68,7 +62,7 @@
             // SearchByDescription
             // 
             this.SearchByDescription.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SearchByDescription.BeforeTouchSize = new System.Drawing.Size(90, 27);
+            this.SearchByDescription.BeforeTouchSize = new System.Drawing.Size(140, 27);
             this.SearchByDescription.BorderColor = System.Drawing.Color.DarkGray;
             this.SearchByDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SearchByDescription.CanOverrideStyle = true;
@@ -76,7 +70,7 @@
             this.SearchByDescription.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.SearchByDescription.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchByDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.SearchByDescription.Location = new System.Drawing.Point(309, 108);
+            this.SearchByDescription.Location = new System.Drawing.Point(163, 108);
             this.SearchByDescription.MaxLength = 50;
             this.SearchByDescription.Metrocolor = System.Drawing.Color.DodgerBlue;
             this.SearchByDescription.MinimumSize = new System.Drawing.Size(16, 12);
@@ -84,7 +78,7 @@
             this.SearchByDescription.Name = "SearchByDescription";
             this.SearchByDescription.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
             this.SearchByDescription.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
-            this.SearchByDescription.Size = new System.Drawing.Size(235, 27);
+            this.SearchByDescription.Size = new System.Drawing.Size(362, 27);
             this.SearchByDescription.TabIndex = 4;
             this.SearchByDescription.Tag = "";
             this.SearchByDescription.ThemeName = "Default";
@@ -123,7 +117,7 @@
             this.RecordsByPage.CanOverrideStyle = true;
             this.RecordsByPage.DropDownStyle = Syncfusion.WinForms.ListView.Enums.DropDownStyle.DropDownList;
             this.RecordsByPage.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RecordsByPage.Location = new System.Drawing.Point(550, 108);
+            this.RecordsByPage.Location = new System.Drawing.Point(531, 108);
             this.RecordsByPage.Name = "RecordsByPage";
             this.RecordsByPage.Size = new System.Drawing.Size(157, 27);
             this.RecordsByPage.Style.DropDownButtonStyle.BackColor = System.Drawing.Color.White;
@@ -154,7 +148,7 @@
             // 
             this.TitleRecordsByPage.AutoSize = true;
             this.TitleRecordsByPage.Font = new System.Drawing.Font("Calibri Light", 11F);
-            this.TitleRecordsByPage.Location = new System.Drawing.Point(547, 90);
+            this.TitleRecordsByPage.Location = new System.Drawing.Point(528, 90);
             this.TitleRecordsByPage.Name = "TitleRecordsByPage";
             this.TitleRecordsByPage.Size = new System.Drawing.Size(134, 18);
             this.TitleRecordsByPage.TabIndex = 91;
@@ -164,31 +158,11 @@
             // 
             this.TitleSearchByDescription.AutoSize = true;
             this.TitleSearchByDescription.Font = new System.Drawing.Font("Calibri Light", 11F);
-            this.TitleSearchByDescription.Location = new System.Drawing.Point(306, 90);
+            this.TitleSearchByDescription.Location = new System.Drawing.Point(160, 90);
             this.TitleSearchByDescription.Name = "TitleSearchByDescription";
             this.TitleSearchByDescription.Size = new System.Drawing.Size(69, 18);
             this.TitleSearchByDescription.TabIndex = 90;
             this.TitleSearchByDescription.Text = "Descrição:";
-            // 
-            // TitleSearchByReference
-            // 
-            this.TitleSearchByReference.AutoSize = true;
-            this.TitleSearchByReference.Font = new System.Drawing.Font("Calibri Light", 11F);
-            this.TitleSearchByReference.Location = new System.Drawing.Point(211, 90);
-            this.TitleSearchByReference.Name = "TitleSearchByReference";
-            this.TitleSearchByReference.Size = new System.Drawing.Size(74, 18);
-            this.TitleSearchByReference.TabIndex = 89;
-            this.TitleSearchByReference.Text = "Referência:";
-            // 
-            // TitleSearchBySize
-            // 
-            this.TitleSearchBySize.AutoSize = true;
-            this.TitleSearchBySize.Font = new System.Drawing.Font("Calibri Light", 11F);
-            this.TitleSearchBySize.Location = new System.Drawing.Point(112, 90);
-            this.TitleSearchBySize.Name = "TitleSearchBySize";
-            this.TitleSearchBySize.Size = new System.Drawing.Size(68, 18);
-            this.TitleSearchBySize.TabIndex = 88;
-            this.TitleSearchBySize.Text = "Tamanho:";
             // 
             // TitleSearchByCode
             // 
@@ -200,60 +174,10 @@
             this.TitleSearchByCode.TabIndex = 87;
             this.TitleSearchByCode.Text = "Código:";
             // 
-            // SearchByReference
-            // 
-            this.SearchByReference.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SearchByReference.BeforeTouchSize = new System.Drawing.Size(90, 27);
-            this.SearchByReference.BorderColor = System.Drawing.Color.DarkGray;
-            this.SearchByReference.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SearchByReference.CanOverrideStyle = true;
-            this.SearchByReference.CausesValidation = false;
-            this.SearchByReference.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.SearchByReference.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchByReference.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.SearchByReference.Location = new System.Drawing.Point(214, 108);
-            this.SearchByReference.MaxLength = 50;
-            this.SearchByReference.Metrocolor = System.Drawing.Color.DodgerBlue;
-            this.SearchByReference.MinimumSize = new System.Drawing.Size(16, 12);
-            this.SearchByReference.Multiline = true;
-            this.SearchByReference.Name = "SearchByReference";
-            this.SearchByReference.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
-            this.SearchByReference.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
-            this.SearchByReference.Size = new System.Drawing.Size(90, 27);
-            this.SearchByReference.TabIndex = 2;
-            this.SearchByReference.Tag = "";
-            this.SearchByReference.ThemeName = "Default";
-            this.SearchByReference.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SearchByFields_KeyPress);
-            // 
-            // SearchBySize
-            // 
-            this.SearchBySize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SearchBySize.BeforeTouchSize = new System.Drawing.Size(90, 27);
-            this.SearchBySize.BorderColor = System.Drawing.Color.DarkGray;
-            this.SearchBySize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SearchBySize.CanOverrideStyle = true;
-            this.SearchBySize.CausesValidation = false;
-            this.SearchBySize.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.SearchBySize.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchBySize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.SearchBySize.Location = new System.Drawing.Point(115, 108);
-            this.SearchBySize.MaxLength = 50;
-            this.SearchBySize.Metrocolor = System.Drawing.Color.DodgerBlue;
-            this.SearchBySize.MinimumSize = new System.Drawing.Size(16, 12);
-            this.SearchBySize.Multiline = true;
-            this.SearchBySize.Name = "SearchBySize";
-            this.SearchBySize.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
-            this.SearchBySize.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
-            this.SearchBySize.Size = new System.Drawing.Size(94, 27);
-            this.SearchBySize.TabIndex = 1;
-            this.SearchBySize.Tag = "";
-            this.SearchBySize.ThemeName = "Default";
-            this.SearchBySize.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SearchByFields_KeyPress);
-            // 
             // SearchByCode
             // 
             this.SearchByCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SearchByCode.BeforeTouchSize = new System.Drawing.Size(90, 27);
+            this.SearchByCode.BeforeTouchSize = new System.Drawing.Size(140, 27);
             this.SearchByCode.BorderColor = System.Drawing.Color.DarkGray;
             this.SearchByCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SearchByCode.CanOverrideStyle = true;
@@ -269,7 +193,7 @@
             this.SearchByCode.Name = "SearchByCode";
             this.SearchByCode.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
             this.SearchByCode.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
-            this.SearchByCode.Size = new System.Drawing.Size(93, 27);
+            this.SearchByCode.Size = new System.Drawing.Size(140, 27);
             this.SearchByCode.TabIndex = 0;
             this.SearchByCode.Tag = "";
             this.SearchByCode.ThemeName = "Default";
@@ -445,13 +369,9 @@
             this.Controls.Add(this.SearchByDescription);
             this.Controls.Add(this.ProductDataList);
             this.Controls.Add(this.SearchByCode);
-            this.Controls.Add(this.SearchBySize);
-            this.Controls.Add(this.SearchByReference);
             this.Controls.Add(this.TitleSearchByCode);
             this.Controls.Add(this.TitleRecordsByPage);
-            this.Controls.Add(this.TitleSearchBySize);
             this.Controls.Add(this.TitleSearchByDescription);
-            this.Controls.Add(this.TitleSearchByReference);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(944, 590);
@@ -463,8 +383,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ProductDataList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GifLoading)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RecordsByPage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SearchByReference)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SearchBySize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SearchByCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BindingPagination)).EndInit();
             this.BindingPagination.ResumeLayout(false);
@@ -477,12 +395,8 @@
         #endregion
         private Syncfusion.Windows.Forms.Tools.TextBoxExt SearchByDescription;
         private System.Windows.Forms.DataGridView ProductDataList;
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt SearchByReference;
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt SearchBySize;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt SearchByCode;
         private System.Windows.Forms.Label TitleSearchByDescription;
-        private System.Windows.Forms.Label TitleSearchByReference;
-        private System.Windows.Forms.Label TitleSearchBySize;
         private System.Windows.Forms.Label TitleSearchByCode;
         private System.Windows.Forms.Label TitleRecordsByPage;
         private System.Windows.Forms.Timer SearchTimer;

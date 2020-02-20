@@ -41,13 +41,9 @@
             this.UnitaryValue = new Syncfusion.Windows.Forms.Tools.CurrencyTextBox();
             this.LblQuantity = new System.Windows.Forms.Label();
             this.QueryTitleByDescription = new System.Windows.Forms.Label();
-            this.QueryTitleByReference = new System.Windows.Forms.Label();
-            this.QueryTitleBySize = new System.Windows.Forms.Label();
             this.QueryByDescription = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.QueryTitleByCode = new System.Windows.Forms.Label();
             this.QueryByCode = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.QueryByReference = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.QueryBySize = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.StockMovementIdTitle = new System.Windows.Forms.Label();
             this.StockMovementId = new System.Windows.Forms.Label();
             this.OperationHour = new System.Windows.Forms.Label();
@@ -81,8 +77,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.UnitaryValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.QueryByDescription)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.QueryByCode)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.QueryByReference)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.QueryBySize)).BeginInit();
             this.CardMain.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GifLoading)).BeginInit();
@@ -149,7 +143,7 @@
             // Quantity
             // 
             this.Quantity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Quantity.BeforeTouchSize = new System.Drawing.Size(78, 27);
+            this.Quantity.BeforeTouchSize = new System.Drawing.Size(95, 27);
             this.Quantity.BorderColor = System.Drawing.Color.Gray;
             this.Quantity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Quantity.Cursor = System.Windows.Forms.Cursors.Arrow;
@@ -186,7 +180,7 @@
             // TotalValue
             // 
             this.TotalValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.TotalValue.BeforeTouchSize = new System.Drawing.Size(78, 27);
+            this.TotalValue.BeforeTouchSize = new System.Drawing.Size(95, 27);
             this.TotalValue.BorderColor = System.Drawing.Color.Gray;
             this.TotalValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TotalValue.Cursor = System.Windows.Forms.Cursors.Arrow;
@@ -224,7 +218,7 @@
             // UnitaryValue
             // 
             this.UnitaryValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.UnitaryValue.BeforeTouchSize = new System.Drawing.Size(78, 27);
+            this.UnitaryValue.BeforeTouchSize = new System.Drawing.Size(95, 27);
             this.UnitaryValue.BorderColor = System.Drawing.Color.Gray;
             this.UnitaryValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.UnitaryValue.Cursor = System.Windows.Forms.Cursors.Arrow;
@@ -263,38 +257,18 @@
             // 
             this.QueryTitleByDescription.AutoSize = true;
             this.QueryTitleByDescription.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.QueryTitleByDescription.Location = new System.Drawing.Point(317, 11);
+            this.QueryTitleByDescription.Location = new System.Drawing.Point(167, 11);
             this.QueryTitleByDescription.Name = "QueryTitleByDescription";
             this.QueryTitleByDescription.Size = new System.Drawing.Size(115, 17);
             this.QueryTitleByDescription.TabIndex = 130;
             this.QueryTitleByDescription.Text = "Descrição Produto:";
-            // 
-            // QueryTitleByReference
-            // 
-            this.QueryTitleByReference.AutoSize = true;
-            this.QueryTitleByReference.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.QueryTitleByReference.Location = new System.Drawing.Point(233, 11);
-            this.QueryTitleByReference.Name = "QueryTitleByReference";
-            this.QueryTitleByReference.Size = new System.Drawing.Size(72, 17);
-            this.QueryTitleByReference.TabIndex = 129;
-            this.QueryTitleByReference.Text = "Referência:";
-            // 
-            // QueryTitleBySize
-            // 
-            this.QueryTitleBySize.AutoSize = true;
-            this.QueryTitleBySize.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.QueryTitleBySize.Location = new System.Drawing.Point(149, 11);
-            this.QueryTitleBySize.Name = "QueryTitleBySize";
-            this.QueryTitleBySize.Size = new System.Drawing.Size(64, 17);
-            this.QueryTitleBySize.TabIndex = 128;
-            this.QueryTitleBySize.Text = "Tamanho:";
             // 
             // QueryByDescription
             // 
             this.QueryByDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.QueryByDescription.BackColor = System.Drawing.Color.White;
-            this.QueryByDescription.BeforeTouchSize = new System.Drawing.Size(78, 27);
+            this.QueryByDescription.BeforeTouchSize = new System.Drawing.Size(95, 27);
             this.QueryByDescription.BorderColor = System.Drawing.Color.Gray;
             this.QueryByDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.QueryByDescription.CanOverrideStyle = true;
@@ -302,7 +276,7 @@
             this.QueryByDescription.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.QueryByDescription.Font = new System.Drawing.Font("Calibri Light", 12F);
             this.QueryByDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.QueryByDescription.Location = new System.Drawing.Point(320, 28);
+            this.QueryByDescription.Location = new System.Drawing.Point(170, 28);
             this.QueryByDescription.MaxLength = 50;
             this.QueryByDescription.Metrocolor = System.Drawing.Color.Green;
             this.QueryByDescription.MinimumSize = new System.Drawing.Size(16, 12);
@@ -310,7 +284,7 @@
             this.QueryByDescription.Name = "QueryByDescription";
             this.QueryByDescription.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
             this.QueryByDescription.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
-            this.QueryByDescription.Size = new System.Drawing.Size(148, 27);
+            this.QueryByDescription.Size = new System.Drawing.Size(298, 27);
             this.QueryByDescription.TabIndex = 3;
             this.QueryByDescription.Tag = "";
             this.QueryByDescription.ThemeName = "Default";
@@ -330,7 +304,7 @@
             // QueryByCode
             // 
             this.QueryByCode.BackColor = System.Drawing.Color.White;
-            this.QueryByCode.BeforeTouchSize = new System.Drawing.Size(78, 27);
+            this.QueryByCode.BeforeTouchSize = new System.Drawing.Size(95, 27);
             this.QueryByCode.BorderColor = System.Drawing.Color.Gray;
             this.QueryByCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.QueryByCode.CanOverrideStyle = true;
@@ -346,63 +320,12 @@
             this.QueryByCode.Name = "QueryByCode";
             this.QueryByCode.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
             this.QueryByCode.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
-            this.QueryByCode.Size = new System.Drawing.Size(78, 27);
+            this.QueryByCode.Size = new System.Drawing.Size(95, 27);
             this.QueryByCode.TabIndex = 0;
             this.QueryByCode.Tag = "";
             this.QueryByCode.ThemeName = "Default";
             this.QueryByCode.WordWrap = false;
             this.QueryByCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ShearchFields_KeyPress);
-            // 
-            // QueryByReference
-            // 
-            this.QueryByReference.BackColor = System.Drawing.Color.White;
-            this.QueryByReference.BeforeTouchSize = new System.Drawing.Size(78, 27);
-            this.QueryByReference.BorderColor = System.Drawing.Color.Gray;
-            this.QueryByReference.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.QueryByReference.CanOverrideStyle = true;
-            this.QueryByReference.CausesValidation = false;
-            this.QueryByReference.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.QueryByReference.Font = new System.Drawing.Font("Calibri Light", 12F);
-            this.QueryByReference.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.QueryByReference.Location = new System.Drawing.Point(236, 28);
-            this.QueryByReference.MaxLength = 50;
-            this.QueryByReference.Metrocolor = System.Drawing.Color.Green;
-            this.QueryByReference.MinimumSize = new System.Drawing.Size(16, 12);
-            this.QueryByReference.Multiline = true;
-            this.QueryByReference.Name = "QueryByReference";
-            this.QueryByReference.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
-            this.QueryByReference.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
-            this.QueryByReference.Size = new System.Drawing.Size(78, 27);
-            this.QueryByReference.TabIndex = 2;
-            this.QueryByReference.Tag = "";
-            this.QueryByReference.ThemeName = "Default";
-            this.QueryByReference.WordWrap = false;
-            this.QueryByReference.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ShearchFields_KeyPress);
-            // 
-            // QueryBySize
-            // 
-            this.QueryBySize.BackColor = System.Drawing.Color.White;
-            this.QueryBySize.BeforeTouchSize = new System.Drawing.Size(78, 27);
-            this.QueryBySize.BorderColor = System.Drawing.Color.Gray;
-            this.QueryBySize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.QueryBySize.CanOverrideStyle = true;
-            this.QueryBySize.CausesValidation = false;
-            this.QueryBySize.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.QueryBySize.Font = new System.Drawing.Font("Calibri Light", 12F);
-            this.QueryBySize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.QueryBySize.Location = new System.Drawing.Point(152, 28);
-            this.QueryBySize.MaxLength = 50;
-            this.QueryBySize.Metrocolor = System.Drawing.Color.Green;
-            this.QueryBySize.MinimumSize = new System.Drawing.Size(16, 12);
-            this.QueryBySize.Multiline = true;
-            this.QueryBySize.Name = "QueryBySize";
-            this.QueryBySize.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
-            this.QueryBySize.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
-            this.QueryBySize.Size = new System.Drawing.Size(78, 27);
-            this.QueryBySize.TabIndex = 1;
-            this.QueryBySize.Tag = "";
-            this.QueryBySize.ThemeName = "Default";
-            this.QueryBySize.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ShearchFields_KeyPress);
             // 
             // StockMovementIdTitle
             // 
@@ -510,15 +433,11 @@
             this.CardMain.Controls.Add(this.LblTotalValue);
             this.CardMain.Controls.Add(this.QueryByDescription);
             this.CardMain.Controls.Add(this.TotalValue);
-            this.CardMain.Controls.Add(this.QueryBySize);
             this.CardMain.Controls.Add(this.LblUnitaryValue);
-            this.CardMain.Controls.Add(this.QueryByReference);
             this.CardMain.Controls.Add(this.QueryByCode);
             this.CardMain.Controls.Add(this.UnitaryValue);
             this.CardMain.Controls.Add(this.QueryTitleByCode);
-            this.CardMain.Controls.Add(this.QueryTitleBySize);
             this.CardMain.Controls.Add(this.LblQuantity);
-            this.CardMain.Controls.Add(this.QueryTitleByReference);
             this.CardMain.Controls.Add(this.QueryTitleByDescription);
             this.CardMain.Controls.Add(this.MainDataList);
             this.CardMain.LeftSahddow = true;
@@ -844,8 +763,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.UnitaryValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.QueryByDescription)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.QueryByCode)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.QueryByReference)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.QueryBySize)).EndInit();
             this.CardMain.ResumeLayout(false);
             this.CardMain.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -874,13 +791,9 @@
         private Syncfusion.Windows.Forms.Tools.CurrencyTextBox UnitaryValue;
         private System.Windows.Forms.Label LblQuantity;
         private System.Windows.Forms.Label QueryTitleByDescription;
-        private System.Windows.Forms.Label QueryTitleByReference;
-        private System.Windows.Forms.Label QueryTitleBySize;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt QueryByDescription;
         private System.Windows.Forms.Label QueryTitleByCode;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt QueryByCode;
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt QueryByReference;
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt QueryBySize;
         public System.Windows.Forms.Label StockMovementId;
         public System.Windows.Forms.Label OperationHour;
         public System.Windows.Forms.Label OperationDate;

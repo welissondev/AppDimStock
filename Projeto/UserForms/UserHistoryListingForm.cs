@@ -156,16 +156,16 @@ namespace DimStock.UserForms
 
                 HistoryDataList.Rows.Clear();
 
-                for (int i = 0; i < historic.ListOfRecords.Count; i++)
+                for (int i = 0; i < historic.List.Count; i++)
                 {
                     HistoryDataList.Rows.Add(
-                    historic.ListOfRecords[i].Id,
-                    historic.ListOfRecords[i].Login,
-                    historic.ListOfRecords[i].OperationType,
-                    historic.ListOfRecords[i].OperationModule,
-                    historic.ListOfRecords[i].OperationDate,
-                    historic.ListOfRecords[i].OperationHour,
-                    historic.ListOfRecords[i].AffectedFields);
+                    historic.List[i].Id,
+                    historic.List[i].User.Login,
+                    historic.List[i].OperationType,
+                    historic.List[i].OperationModule,
+                    historic.List[i].OperationDate,
+                    historic.List[i].OperationHour,
+                    historic.List[i].AffectedFields);
                 }
 
                 HistoryDataList.ClearSelection();
@@ -185,27 +185,28 @@ namespace DimStock.UserForms
         {
             try
             {
-                var historic = new UserHistory(dataPagination)
-                {
-                    SearchByLogin = SearchByLogin.Text,
-                    SearchByStartDate = Convert.ToDateTime(StartDate.Value).ToString("dd-MM-yyyy"),
-                    SearchByFinalDate = Convert.ToDateTime(FinalDate.Value).ToString("dd-MM-yyyy")
-                };
+                var history = new UserHistory(dataPagination);
+                history.User.Login = SearchByLogin.Text;
 
-                historic.SearchData();
+                history.SearchData(
+                Convert.ToDateTime(StartDate.Value).
+                ToString("dd-MM-yyyy"),
+
+                Convert.ToDateTime(FinalDate.Value).
+                ToString("dd-MM-yyyy"));
 
                 HistoryDataList.Rows.Clear();
 
-                for (int i = 0; i < historic.ListOfRecords.Count; i++)
+                for (int i = 0; i < history.List.Count; i++)
                 {
                     HistoryDataList.Rows.Add(
-                    historic.ListOfRecords[i].Id,
-                    historic.ListOfRecords[i].Login,
-                    historic.ListOfRecords[i].OperationType,
-                    historic.ListOfRecords[i].OperationModule,
-                    historic.ListOfRecords[i].OperationDate,
-                    historic.ListOfRecords[i].OperationHour,
-                    historic.ListOfRecords[i].AffectedFields);
+                    history.List[i].Id,
+                    history.List[i].User.Login,
+                    history.List[i].OperationType,
+                    history.List[i].OperationModule,
+                    history.List[i].OperationDate,
+                    history.List[i].OperationHour,
+                    history.List[i].AffectedFields);
                 }
 
                 HistoryDataList.ClearSelection();

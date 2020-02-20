@@ -36,6 +36,15 @@ namespace DimStock.UserForms
 
         #endregion
 
+        #region UserForm
+
+        private void ProductRegistrationForm_Click(object sender, EventArgs e)
+        {
+            ListviewCategory.Visible = false;
+        }
+
+        #endregion
+
         #region Button
 
         private void Save_Click(object sender, EventArgs e)
@@ -186,9 +195,7 @@ namespace DimStock.UserForms
 
                 var product = new Product
                 {
-                    Code = Convert.ToInt32(ProductCode.Text),
-                    Size = Convert.ToInt32(ProductSize.Text),
-                    Reference = Convert.ToInt32(ProductReference.Text),
+                    InternalCode = InternalCode.Text,
                     Description = Description.Text,
                     CostPrice = Convert.ToDouble(CostPrice.DecimalValue),
                     SalePrice = Convert.ToDouble(SalePrice.DecimalValue),
@@ -198,7 +205,7 @@ namespace DimStock.UserForms
 
                 product.Category.Id = CategoryId;
 
-                if (product.Register() == false)
+                if (product.Save() == false)
                 {
                     MessageBox.Show(AxlMessageNotifier.Message, "ERROR",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -231,16 +238,14 @@ namespace DimStock.UserForms
 
                 var product = new Product()
                 {
-                    Code = Convert.ToInt32(ProductCode.Text),
-                    Size = Convert.ToInt32(ProductSize.Text),
-                    Reference = Convert.ToInt32(ProductReference.Text),
+                    InternalCode = InternalCode.Text,
                     Description = Description.Text,
                     CostPrice = Convert.ToDouble(CostPrice.DecimalValue),
                     SalePrice = Convert.ToDouble(SalePrice.DecimalValue),
                     BarCode = BarCode.Text,
                     Photo = ImageProduct.ImageId,
                 };
-                product.Category.Id  = CategoryId;
+                product.Category.Id = CategoryId;
 
                 if (product.Edit(Id) == false)
                 {
@@ -274,37 +279,6 @@ namespace DimStock.UserForms
 
         private bool ValidateData()
         {
-
-            if (ProductCode.Text == string.Empty)
-            {
-                MessageBox.Show("Campo código produto é obrigatório!",
-                "OBRIGATÓRIO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-                ProductCode.Select();
-
-                return false;
-            }
-
-            if (ProductSize.Text == string.Empty)
-            {
-                MessageBox.Show("Campo tamanho é obrigatório!", "OBRIGATÓRIO",
-                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-                ProductSize.Select();
-
-                return false;
-            }
-
-            if (ProductReference.Text == string.Empty)
-            {
-                MessageBox.Show("Campo código estampa é obrigatório!", "OBRIGATÓRIO",
-                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-                ProductReference.Select();
-
-                return false;
-            }
-
             if (CategoryId == 0)
             {
                 MessageBox.Show("Informe a categoria do produto!", "OBRIGATÓRIO",
@@ -402,7 +376,7 @@ namespace DimStock.UserForms
                 ImageProduct.SelectedDirectory = string.Empty;
                 ImageProduct.PathOfLastSelectedImage = string.Empty;
 
-                ProductCode.Select();
+                InternalCode.Select();
             }
             catch (Exception ex)
             {

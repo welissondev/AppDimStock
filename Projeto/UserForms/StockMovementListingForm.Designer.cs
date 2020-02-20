@@ -38,7 +38,6 @@
             this.OperationSituation = new Syncfusion.WinForms.ListView.SfComboBox();
             this.OperationType = new Syncfusion.WinForms.ListView.SfComboBox();
             this.StockMovementIdTitle = new System.Windows.Forms.Label();
-            this.SearchByStockMovimentId = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.ClearSearchFields = new System.Windows.Forms.LinkLabel();
             this.BindingPagination = new System.Windows.Forms.BindingNavigator(this.components);
             this.BackPage = new System.Windows.Forms.ToolStripButton();
@@ -55,15 +54,16 @@
             this.MovementOutPut_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.RegisterNew = new Bunifu.Framework.UI.BunifuThinButton2();
             this.DataList = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.SearchByOperationCode = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             ((System.ComponentModel.ISupportInitialize)(this.MovementStockDataList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GifLoading)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OperationSituation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OperationType)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SearchByStockMovimentId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BindingPagination)).BeginInit();
             this.BindingPagination.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RecordsByPage)).BeginInit();
             this.StockMovementMenuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SearchByOperationCode)).BeginInit();
             this.SuspendLayout();
             // 
             // MovementStockDataList
@@ -166,36 +166,12 @@
             this.StockMovementIdTitle.TabIndex = 168;
             this.StockMovementIdTitle.Text = "Movimentação Nº :";
             // 
-            // SearchByStockMovimentId
-            // 
-            this.SearchByStockMovimentId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SearchByStockMovimentId.BeforeTouchSize = new System.Drawing.Size(136, 27);
-            this.SearchByStockMovimentId.BorderColor = System.Drawing.Color.DarkGray;
-            this.SearchByStockMovimentId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SearchByStockMovimentId.CanOverrideStyle = true;
-            this.SearchByStockMovimentId.CausesValidation = false;
-            this.SearchByStockMovimentId.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.SearchByStockMovimentId.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchByStockMovimentId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.SearchByStockMovimentId.Location = new System.Drawing.Point(253, 106);
-            this.SearchByStockMovimentId.MaxLength = 50;
-            this.SearchByStockMovimentId.MinimumSize = new System.Drawing.Size(16, 12);
-            this.SearchByStockMovimentId.Multiline = true;
-            this.SearchByStockMovimentId.Name = "SearchByStockMovimentId";
-            this.SearchByStockMovimentId.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
-            this.SearchByStockMovimentId.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
-            this.SearchByStockMovimentId.Size = new System.Drawing.Size(136, 27);
-            this.SearchByStockMovimentId.TabIndex = 167;
-            this.SearchByStockMovimentId.Tag = "";
-            this.SearchByStockMovimentId.ThemeName = "Default";
-            this.SearchByStockMovimentId.TextChanged += new System.EventHandler(this.QueryByStockMovementId_TextChanged);
-            // 
             // ClearSearchFields
             // 
             this.ClearSearchFields.AutoSize = true;
             this.ClearSearchFields.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClearSearchFields.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(87)))), ((int)(((byte)(166)))));
-            this.ClearSearchFields.Location = new System.Drawing.Point(560, 108);
+            this.ClearSearchFields.Location = new System.Drawing.Point(558, 109);
             this.ClearSearchFields.Name = "ClearSearchFields";
             this.ClearSearchFields.Size = new System.Drawing.Size(55, 19);
             this.ClearSearchFields.TabIndex = 170;
@@ -279,7 +255,7 @@
             // 
             this.RecordsByPage.DropDownStyle = Syncfusion.WinForms.ListView.Enums.DropDownStyle.DropDownList;
             this.RecordsByPage.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RecordsByPage.Location = new System.Drawing.Point(393, 106);
+            this.RecordsByPage.Location = new System.Drawing.Point(391, 106);
             this.RecordsByPage.Name = "RecordsByPage";
             this.RecordsByPage.Size = new System.Drawing.Size(165, 27);
             this.RecordsByPage.Style.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -296,7 +272,7 @@
             // 
             this.RecordsOfPageTitle.AutoSize = true;
             this.RecordsOfPageTitle.Font = new System.Drawing.Font("Calibri Light", 11F);
-            this.RecordsOfPageTitle.Location = new System.Drawing.Point(389, 86);
+            this.RecordsOfPageTitle.Location = new System.Drawing.Point(387, 86);
             this.RecordsOfPageTitle.Name = "RecordsOfPageTitle";
             this.RecordsOfPageTitle.Size = new System.Drawing.Size(134, 18);
             this.RecordsOfPageTitle.TabIndex = 181;
@@ -376,12 +352,39 @@
             this.DataList.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.DataList.Click += new System.EventHandler(this.DataList_Click);
             // 
+            // SearchByOperationCode
+            // 
+            this.SearchByOperationCode.BackColor = System.Drawing.Color.White;
+            this.SearchByOperationCode.BeforeTouchSize = new System.Drawing.Size(132, 28);
+            this.SearchByOperationCode.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.SearchByOperationCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.SearchByOperationCode.CanOverrideStyle = true;
+            this.SearchByOperationCode.CausesValidation = false;
+            this.SearchByOperationCode.CornerRadius = 1;
+            this.SearchByOperationCode.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.SearchByOperationCode.Font = new System.Drawing.Font("Calibri Light", 12F);
+            this.SearchByOperationCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.SearchByOperationCode.Location = new System.Drawing.Point(253, 105);
+            this.SearchByOperationCode.MaxLength = 2000;
+            this.SearchByOperationCode.MinimumSize = new System.Drawing.Size(16, 12);
+            this.SearchByOperationCode.Multiline = true;
+            this.SearchByOperationCode.Name = "SearchByOperationCode";
+            this.SearchByOperationCode.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Managed;
+            this.SearchByOperationCode.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Managed;
+            this.SearchByOperationCode.Size = new System.Drawing.Size(132, 28);
+            this.SearchByOperationCode.TabIndex = 220;
+            this.SearchByOperationCode.Tag = "";
+            this.SearchByOperationCode.ThemeName = "Default";
+            this.SearchByOperationCode.ThemesEnabled = false;
+            this.SearchByOperationCode.TextChanged += new System.EventHandler(this.SearchByOperationCode_TextChanged);
+            // 
             // StockMovementListingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(928, 551);
+            this.Controls.Add(this.SearchByOperationCode);
             this.Controls.Add(this.DataList);
             this.Controls.Add(this.RegisterNew);
             this.Controls.Add(this.GifLoading);
@@ -390,7 +393,6 @@
             this.Controls.Add(this.BindingPagination);
             this.Controls.Add(this.ClearSearchFields);
             this.Controls.Add(this.StockMovementIdTitle);
-            this.Controls.Add(this.SearchByStockMovimentId);
             this.Controls.Add(this.OperationType);
             this.Controls.Add(this.OperationSituation);
             this.Controls.Add(this.OperationSituationTitle);
@@ -403,12 +405,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.GifLoading)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OperationSituation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OperationType)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SearchByStockMovimentId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BindingPagination)).EndInit();
             this.BindingPagination.ResumeLayout(false);
             this.BindingPagination.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RecordsByPage)).EndInit();
             this.StockMovementMenuStrip.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SearchByOperationCode)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -424,7 +426,6 @@
         private Syncfusion.WinForms.ListView.SfComboBox OperationSituation;
         private Syncfusion.WinForms.ListView.SfComboBox OperationType;
         private System.Windows.Forms.Label StockMovementIdTitle;
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt SearchByStockMovimentId;
         private System.Windows.Forms.LinkLabel ClearSearchFields;
         private System.Windows.Forms.BindingNavigator BindingPagination;
         private System.Windows.Forms.ToolStripButton BackPage;
@@ -441,5 +442,6 @@
         private System.Windows.Forms.ToolStripMenuItem MovementOutPut_ToolStripMenuItem;
         private Bunifu.Framework.UI.BunifuThinButton2 RegisterNew;
         private Bunifu.Framework.UI.BunifuThinButton2 DataList;
+        public Syncfusion.Windows.Forms.Tools.TextBoxExt SearchByOperationCode;
     }
 }

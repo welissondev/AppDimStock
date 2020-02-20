@@ -7,7 +7,7 @@ namespace DimStock.Business
 {
     public class Connection : IDisposable
     {
-        #region Properties 
+        #region Get & Set 
 
         private readonly OleDbConnection connection = new OleDbConnection(@"Provider = Microsoft.jet.oledb.4.0; Data Source =" + Settings.Default.MainAppDirectory + @"\dimstock-database.mdb;jet oledb:database password=#admin#");
         public OleDbCommand Command = new OleDbCommand();
@@ -17,7 +17,7 @@ namespace DimStock.Business
 
         #endregion
 
-        #region Methods
+        #region Function
 
         public OleDbConnection Open()
         {

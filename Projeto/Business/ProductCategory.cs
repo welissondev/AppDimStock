@@ -1,15 +1,15 @@
-﻿using System;
+﻿using DimStock.Auxiliarys;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
 using System.Linq;
-using DimStock.Auxiliarys;
 
 namespace DimStock.Business
 {
     public class ProductCategory
     {
-        private readonly Connection connection;
+        #region Builder
 
         public ProductCategory() { }
 
@@ -23,10 +23,20 @@ namespace DimStock.Business
             DataPagination = dataPagination;
         }
 
+        #endregion
+
+        #region Get & Set
+
         public int Id { get; set; }
         public string Description { get; set; }
         public List<ProductCategory> ListOfRecords { get; set; }
         public AxlDataPagination DataPagination { get; set; }
+
+        private readonly Connection connection;
+
+        #endregion
+
+        #region Function
 
         public bool Register()
         {
@@ -52,16 +62,18 @@ namespace DimStock.Business
                     "SELECT MAX(Id) From ProductCategory"));
 
                     //Registrar histórico do usuário
-                    var userHistory = new UserHistory(connection)
+                    var history = new UserHistory(connection)
                     {
-                        UserId = AxlLogin.Id,
                         OperationType = "Cadastrou",
                         OperationModule = "Produto Categoria",
                         OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
                         OperationHour = DateTime.Now.ToString("HH:mm:ss"),
                         AffectedFields = GetAffectedFields(Id, connection)
                     };
-                    registerState = userHistory.Register();
+
+                    history.User.Id = AxlLogin.Id;
+
+                    registerState = history.Register();
 
                     //Finalizar transação
                     connection.Transaction.Commit();
@@ -101,16 +113,18 @@ namespace DimStock.Business
                     sqlCommand) > 0;
 
                     //Registrar histórico do usuário
-                    var userHistory = new UserHistory(connection)
+                    var history = new UserHistory(connection)
                     {
-                        UserId = AxlLogin.Id,
                         OperationType = "Editou",
                         OperationModule = "Produto Categoria",
                         OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
                         OperationHour = DateTime.Now.ToString("HH:mm:ss"),
                         AffectedFields = affectedFields
                     };
-                    modifyState = userHistory.Register();
+
+                    history.User.Id = AxlLogin.Id;
+
+                    modifyState = history.Register();
 
                     //Finalizar transação
                     connection.Transaction.Commit();
@@ -147,16 +161,18 @@ namespace DimStock.Business
                     sqlCommand) > 0;
 
                     //Registrar histórico do usuário
-                    var userHistory = new UserHistory(connection)
+                    var history = new UserHistory(connection)
                     {
-                        UserId = AxlLogin.Id,
                         OperationType = "Deletou",
                         OperationModule = "Produto Categoria",
                         OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
                         OperationHour = DateTime.Now.ToString("HH:mm:ss"),
                         AffectedFields = affectedFields
                     };
-                    deleteState = userHistory.Register();
+
+                    history.User.Id = AxlLogin.Id;
+
+                    deleteState = history.Register();
 
                     //Finalizar transação
                     connection.Transaction.Commit();
@@ -306,5 +322,7 @@ namespace DimStock.Business
 
             ListOfRecords = categoryList;
         }
+
+        #endregion
     }
 }

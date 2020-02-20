@@ -138,8 +138,8 @@ namespace DimStock.UserForms
                 if (OperationSituation.Text == "Em Aberto")
                 {
                     var movement = new StockMovement();
-                        movement.StockDestination.Location = 
-                        ((ComboBox)sender).SelectedItem.ToString();
+                    movement.StockDestination.Location =
+                    ((ComboBox)sender).SelectedItem.ToString();
 
                     movement.RelateDestination(Convert.ToInt32(
                     StockMovementId.Text));
@@ -266,14 +266,9 @@ namespace DimStock.UserForms
         {
             try
             {
-                var stock = new Stock(dataPagination)
-                {
-                    SearchByCode = QueryByCode.Text,
-                    SearchBySize = QueryBySize.Text,
-                    SearchByReference = QueryByReference.Text,
-                    SearchByDescription = QueryByDescription.Text,
-                    SearchBySummary = "All",
-                };
+                var stock = new Stock(dataPagination);
+
+                stock.Product.InternalCode =  QueryByCode.Text;
 
                 stock.SearchData();
 
@@ -286,9 +281,7 @@ namespace DimStock.UserForms
                     MainDataList.Rows.Add(
                     stock.List[i].Id,
                     stock.List[i].Product.Id,
-                    stock.List[i].Product.Code,
-                    stock.List[i].Product.Size,
-                    stock.List[i].Product.Reference,
+                    stock.List[i].Product.InternalCode,
                     stock.List[i].Product.Description,
                     stock.List[i].Product.CostPrice
                     );
@@ -329,9 +322,7 @@ namespace DimStock.UserForms
             var stock = new Stock();
             stock.ViewDetails(id);
 
-            QueryByCode.Text = stock.Product.Code.ToString();
-            QueryBySize.Text = stock.Product.Size.ToString();
-            QueryByReference.Text = stock.Product.Reference.ToString();
+            QueryByCode.Text = stock.Product.InternalCode;
             QueryByDescription.Text = stock.Product.Description;
             UnitaryValue.Text = stock.Product.CostPrice.ToString();
             ProductId = stock.Product.Id;
@@ -352,7 +343,7 @@ namespace DimStock.UserForms
                 StockMovementId.Text = id.ToString();
                 OperationType.Text = movement.OperationType;
                 OperationDate.Text = Convert.ToString(movement.OperationDate.ToString("dd-MM-yyyy"));
-                OperationHour.Text = Convert.ToString(movement.OperationHour.ToString("hh:mm:ss"));
+                OperationHour.Text = Convert.ToString(movement.OperationHour.ToString("HH:MM:ss"));
                 OperationSituation.Text = movement.OperationSituation;
 
                 if (movement.StockDestination.Id != 0)
@@ -375,7 +366,7 @@ namespace DimStock.UserForms
         {
             var stockMovement = new StockMovement();
 
-            stockMovement.StartNewOperation(operationType);
+            stockMovement.InitOperation(operationType);
 
             ViewMovementDetails(stockMovement.Id);
 
@@ -490,18 +481,16 @@ namespace DimStock.UserForms
 
                 CreateColumnForStockList();
 
-                for (int i = 0; i < item.ListOfRecords.Count; i++)
+                for (int i = 0; i < item.List.Count; i++)
                 {
                     MainDataList.Rows.Add(
-                    item.ListOfRecords[i].Id,
-                    item.ListOfRecords[i].StockId,
-                    item.ListOfRecords[i].ProductCode,
-                    item.ListOfRecords[i].ProductSize,
-                    item.ListOfRecords[i].ProductReference,
-                    item.ListOfRecords[i].ProductDescription,
-                    item.ListOfRecords[i].Quantity,
-                    item.ListOfRecords[i].UnitaryValue,
-                    item.ListOfRecords[i].TotalValue
+                    item.List[i].Id,
+                    item.List[i].Stock.Id,
+                    item.List[i].Product.InternalCode,
+                    item.List[i].Product.Description,
+                    item.List[i].Quantity,
+                    item.List[i].UnitaryValue,
+                    item.List[i].TotalValue
                     );
                 }
                 MainDataList.ClearSelection();
@@ -509,8 +498,8 @@ namespace DimStock.UserForms
                 if (OperationSituation.Text == "Finalizada")
                     MainDataList.Columns["delete"].Visible = false;
 
-                var totalValue = item.ListOfRecords.Sum(x => x.TotalValue);
-                var totalItems = item.ListOfRecords.Count;
+                var totalValue = item.List.Sum(x => x.TotalValue);
+                var totalItems = item.List.Count;
 
                 SubTotal.Text = totalValue.ToString("c2");
                 TotalItems.Text = totalItems.ToString();
@@ -527,13 +516,14 @@ namespace DimStock.UserForms
             {
                 var item = new StockMovementItem()
                 {
-                    StockMovementId = Convert.ToInt32(StockMovementId.Text),
-                    StockId = StockId,
-                    ProductId = ProductId,
                     Quantity = Convert.ToInt32(Quantity.Text),
                     UnitaryValue = Convert.ToDouble(UnitaryValue.DecimalValue),
                     TotalValue = Convert.ToDouble(TotalValue.DecimalValue)
                 };
+
+                item.StockMovement.Id = Convert.ToInt32(StockMovementId.Text);
+                item.Stock.Id = StockId;
+                item.Product.Id= ProductId;
 
                 item.Add();
             }
@@ -698,9 +688,7 @@ namespace DimStock.UserForms
             {
                 var stockId = new DataGridViewTextBoxColumn();
                 var productId = new DataGridViewTextBoxColumn();
-                var productCode = new DataGridViewTextBoxColumn();
-                var productSize = new DataGridViewTextBoxColumn();
-                var productReference = new DataGridViewTextBoxColumn();
+                var productInternalCode = new DataGridViewTextBoxColumn();
                 var productDescription = new DataGridViewTextBoxColumn();
                 var productCostPrice = new DataGridViewTextBoxColumn();
 
@@ -725,45 +713,29 @@ namespace DimStock.UserForms
                 mainDataList.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 mainDataList.Columns[1].Visible = false;
 
-                mainDataList.Columns.Add(productCode);
+                mainDataList.Columns.Add(productInternalCode);
                 mainDataList.Columns[2].Width = 80;
-                mainDataList.Columns[2].Name = "productCode";
+                mainDataList.Columns[2].Name = "productInternalCode";
                 mainDataList.Columns[2].HeaderText = "CÓD.";
                 mainDataList.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 mainDataList.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 mainDataList.Columns[2].ReadOnly = true;
 
-                mainDataList.Columns.Add(productSize);
-                mainDataList.Columns[3].Width = 80;
-                mainDataList.Columns[3].Name = "productSize";
-                mainDataList.Columns[3].HeaderText = "TAM.";
-                mainDataList.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                mainDataList.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                mainDataList.Columns.Add(productDescription);
+                mainDataList.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                mainDataList.Columns[3].Name = "productDescription";
+                mainDataList.Columns[3].HeaderText = "DESCRIÇÃO DO PRODUTO";
+                mainDataList.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                mainDataList.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 mainDataList.Columns[3].ReadOnly = true;
 
-                mainDataList.Columns.Add(productReference);
-                mainDataList.Columns[4].Width = 80;
-                mainDataList.Columns[4].Name = "productReference";
-                mainDataList.Columns[4].HeaderText = "REF.";
-                mainDataList.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                mainDataList.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                mainDataList.Columns[4].ReadOnly = true;
-
-                mainDataList.Columns.Add(productDescription);
-                mainDataList.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                mainDataList.Columns[5].Name = "productDescription";
-                mainDataList.Columns[5].HeaderText = "DESCRIÇÃO";
-                mainDataList.Columns[5].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                mainDataList.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                mainDataList.Columns[5].ReadOnly = true;
-
                 mainDataList.Columns.Add(productCostPrice);
-                mainDataList.Columns[6].Name = "productCostPrice";
-                mainDataList.Columns[6].HeaderText = "CUSTO";
-                mainDataList.Columns[6].DefaultCellStyle.Format = "c2";
-                mainDataList.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                mainDataList.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                mainDataList.Columns[6].ReadOnly = true;
+                mainDataList.Columns[4].Name = "productCostPrice";
+                mainDataList.Columns[4].HeaderText = "CUSTO";
+                mainDataList.Columns[4].DefaultCellStyle.Format = "c2";
+                mainDataList.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                mainDataList.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                mainDataList.Columns[4].ReadOnly = true;
             }
             catch (Exception ex)
             {
@@ -777,9 +749,7 @@ namespace DimStock.UserForms
             {
                 var itemId = new DataGridViewTextBoxColumn();
                 var stockId = new DataGridViewTextBoxColumn();
-                var productCode = new DataGridViewTextBoxColumn();
-                var productSize = new DataGridViewTextBoxColumn();
-                var productReference = new DataGridViewTextBoxColumn();
+                var productIntenalCode = new DataGridViewTextBoxColumn();
                 var productDescription = new DataGridViewTextBoxColumn();
                 var stockQuantity = new DataGridViewTextBoxColumn();
                 var productCostPrice = new DataGridViewTextBoxColumn();
@@ -809,61 +779,45 @@ namespace DimStock.UserForms
                 mainDataList.Columns[1].ReadOnly = true;
                 mainDataList.Columns[1].Visible = false;
 
-                mainDataList.Columns.Add(productCode);
-                mainDataList.Columns[2].Width = 80;
-                mainDataList.Columns[2].Name = "productCode";
-                mainDataList.Columns[2].HeaderText = "CÓD.";
-                mainDataList.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                mainDataList.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                mainDataList.Columns.Add(productIntenalCode);
+                mainDataList.Columns[2].Width = 100;
+                mainDataList.Columns[2].Name = "productIntenalCode";
+                mainDataList.Columns[2].HeaderText = "CÓDIGO";
+                mainDataList.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                mainDataList.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 mainDataList.Columns[2].ReadOnly = true;
 
-                mainDataList.Columns.Add(productSize);
-                mainDataList.Columns[3].Width = 80;
-                mainDataList.Columns[3].Name = "productSize";
-                mainDataList.Columns[3].HeaderText = "TAM.";
-                mainDataList.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                mainDataList.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                mainDataList.Columns.Add(productDescription);
+                mainDataList.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                mainDataList.Columns[3].Name = "productDescription";
+                mainDataList.Columns[3].HeaderText = "DESCRIÇÃO DO PRODUTO";
+                mainDataList.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                mainDataList.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 mainDataList.Columns[3].ReadOnly = true;
 
-                mainDataList.Columns.Add(productReference);
-                mainDataList.Columns[4].Width = 80;
-                mainDataList.Columns[4].Name = "productReference";
-                mainDataList.Columns[4].HeaderText = "REF.";
-                mainDataList.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                mainDataList.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                mainDataList.Columns.Add(stockQuantity);
+                mainDataList.Columns[4].Width = 50;
+                mainDataList.Columns[4].Name = "stockQuantity";
+                mainDataList.Columns[4].HeaderText = "QTD.";
+                mainDataList.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                mainDataList.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 mainDataList.Columns[4].ReadOnly = true;
 
-                mainDataList.Columns.Add(productDescription);
-                mainDataList.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                mainDataList.Columns[5].Name = "productDescription";
-                mainDataList.Columns[5].HeaderText = "DESCRIÇÃO";
+                mainDataList.Columns.Add(productCostPrice);
+                mainDataList.Columns[5].Name = "productCostPrice";
+                mainDataList.Columns[5].HeaderText = "VALOR UNI.";
+                mainDataList.Columns[5].DefaultCellStyle.Format = "c2";
                 mainDataList.Columns[5].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 mainDataList.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 mainDataList.Columns[5].ReadOnly = true;
 
-                mainDataList.Columns.Add(stockQuantity);
-                mainDataList.Columns[6].Width = 50;
-                mainDataList.Columns[6].Name = "stockQuantity";
-                mainDataList.Columns[6].HeaderText = "QTD.";
+                mainDataList.Columns.Add(stockTotalValue);
+                mainDataList.Columns[6].Name = "stockTotalValue";
+                mainDataList.Columns[6].HeaderText = "TOTAL";
+                mainDataList.Columns[6].DefaultCellStyle.Format = "c2";
                 mainDataList.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 mainDataList.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 mainDataList.Columns[6].ReadOnly = true;
-
-                mainDataList.Columns.Add(productCostPrice);
-                mainDataList.Columns[7].Name = "productCostPrice";
-                mainDataList.Columns[7].HeaderText = "VALOR UNI.";
-                mainDataList.Columns[7].DefaultCellStyle.Format = "c2";
-                mainDataList.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                mainDataList.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                mainDataList.Columns[7].ReadOnly = true;
-
-                mainDataList.Columns.Add(stockTotalValue);
-                mainDataList.Columns[8].Name = "stockTotalValue";
-                mainDataList.Columns[8].HeaderText = "TOTAL";
-                mainDataList.Columns[8].DefaultCellStyle.Format = "c2";
-                mainDataList.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                mainDataList.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                mainDataList.Columns[8].ReadOnly = true;
 
                 delete.Text = "Deletar";
                 delete.TrackVisitedState = false;
@@ -871,13 +825,13 @@ namespace DimStock.UserForms
                 delete.LinkColor = Color.Black;
                 delete.ActiveLinkColor = Color.MediumAquamarine;
                 mainDataList.Columns.Add(delete);
-                mainDataList.Columns[9].Name = "delete";
-                mainDataList.Columns[9].HeaderText = "";
-                mainDataList.Columns[9].Width = 80;
-                mainDataList.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                mainDataList.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                mainDataList.Columns[9].ReadOnly = true;
-                mainDataList.Columns[9].DisplayIndex = 0;
+                mainDataList.Columns[7].Name = "delete";
+                mainDataList.Columns[7].HeaderText = "";
+                mainDataList.Columns[7].Width = 80;
+                mainDataList.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                mainDataList.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                mainDataList.Columns[7].ReadOnly = true;
+                mainDataList.Columns[7].DisplayIndex = 0;
 
             }
             catch (Exception ex)

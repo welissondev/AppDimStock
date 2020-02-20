@@ -9,11 +9,7 @@ namespace DimStock.Business
 {
     public class StockMovement
     {
-        #region Properties
-        private Connection connection;
-        #endregion
-
-        #region Constructs
+        #region Builder
 
         public StockMovement()
         {
@@ -37,45 +33,55 @@ namespace DimStock.Business
 
         #endregion 
 
-        #region BussinessProperties
+        #region Get & Set
 
         public int Id { get; set; }
         public string OperationType { get; set; }
         public DateTime OperationDate { get; set; }
         public DateTime OperationHour { get; set; }
+        public string OperationCode { get; set; }
         public string OperationSituation { get; set; }
         public StockDestination StockDestination { get; set; }
+        public AxlDataPagination DataPagination { get; set; }
         public List<StockMovement> List { get; set; }
+
+        private Connection connection;
 
         #endregion
 
-        #region SearchProperties
+        #region Function
 
-        public string SearchByType { get; set; }
-        public string SearchBySituation { get; set; }
-        public string SearchByMovimentId { get; set; }
-        public AxlDataPagination DataPagination { get; set; }
-
-        #endregion 
-
-        #region Methods
-
-        public bool StartNewOperation(string operationType)
+        public bool InitOperation(string operationType)
         {
             bool registerState = false;
 
             using (var connection = new Connection())
             {
-                var sqlCommand = @"INSERT INTO StockMovement(OperationType)
-                VALUES(@OperationType)";
+                using (connection.Transaction = connection.Open().BeginTransaction())
+                {
+                    var sqlCommand = @"INSERT INTO StockMovement(OperationType)
+                    VALUES(@OperationType)";
 
-                connection.AddParameter("@OperationType", OleDbType.VarChar, operationType);
+                    connection.AddParameter("@OperationType", OleDbType.VarChar, operationType);
 
-                registerState = connection.ExecuteNonQuery(sqlCommand) > 0;
+                    registerState = connection.ExecuteTransaction(sqlCommand) > 0;
 
-                //Seleciona o id da ultima movimentação inserida
-                Id = Convert.ToInt32(connection.ExecuteScalar(
-                @"SELECT MAX(Id) FROM StockMovement"));
+                    //Seleciona o id da ultima movimentação inserida
+                    Id = Convert.ToInt32(connection.ExecuteScalar(
+                    @"SELECT MAX(Id) FROM StockMovement"));
+
+                    //O código da operação é o mesmo que o ID da tabela
+                    connection.ParameterClear();
+                    connection.AddParameter("@OperationCode", OleDbType.VarChar, Id);
+                    connection.AddParameter("Id", OleDbType.Integer, Id);
+
+                    sqlCommand = @"UPDATE StockMovement SET OperationCode 
+                    = @OperationCode WHERE Id = @Id";
+
+                    registerState = connection.ExecuteTransaction(sqlCommand) > 0;
+
+                    connection.Transaction.Commit();
+                }
 
                 return registerState;
             }
@@ -136,7 +142,7 @@ namespace DimStock.Business
 
         public bool Delete(int id)
         {
-            if (CheckIfRegisterExists(id) == false)
+            if (CheckIfExists(id) == false)
             {
                 AxlMessageNotifier.Message = "Esse registro já foi " +
                 "excluido, atualize a lista de dados!";
@@ -166,7 +172,7 @@ namespace DimStock.Business
                     transactionState = connection.ExecuteTransaction(
                     sqlCommand) > 0;
 
-                    if (stockItem.ListOfRecords.Count > 0)
+                    if (stockItem.List.Count > 0)
                     {
                         //Remove o estoque
                         var stok = new Stock(connection);
@@ -175,27 +181,29 @@ namespace DimStock.Business
                         {
                             case "Entrada":
                                 transactionState = stok.RemoveEntries(
-                                stockItem.ListOfRecords);
+                                stockItem.List);
                                 break;
 
                             case "Saída":
                                 transactionState = stok.RemoveOutputs(
-                                stockItem.ListOfRecords);
+                                stockItem.List);
                                 break;
                         }
                     }
 
                     //Registra o histórico do usuário
-                    var userHistory = new UserHistory(connection)
+                    var history = new UserHistory(connection)
                     {
-                        UserId = AxlLogin.Id,
                         OperationType = "Deletou",
                         OperationModule = "Estoque",
                         OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
                         OperationHour = DateTime.Now.ToString("HH:mm:ss"),
                         AffectedFields = affectedFields
                     };
-                    transactionState = userHistory.Register();
+
+                    history.User.Id = AxlLogin.Id;
+
+                    transactionState = history.Register();
 
                     //Finaliza o transação
                     connection.Transaction.Commit();
@@ -225,7 +233,8 @@ namespace DimStock.Business
                             OperationType = reader["OperationType"].ToString(),
                             OperationDate = Convert.ToDateTime(reader["OperationDate"]),
                             OperationHour = Convert.ToDateTime(reader["OperationHour"]),
-                            OperationSituation = reader["OperationSituation"].ToString()
+                            OperationSituation = reader["OperationSituation"].ToString(),
+                            OperationCode = reader["OperationCode"].ToString()
                         };
 
                         StockDestination.Id = Convert.ToInt32(reader["StockDestination.Id"]);
@@ -255,28 +264,28 @@ namespace DimStock.Business
                 sqlCount = @"SELECT COUNT(*) FROM StockMovement 
                 WHERE StockMovement.Id > 0 ";
 
-                if (SearchByType != string.Empty)
+                if (OperationType != string.Empty)
                 {
                     criterion += @" AND OperationType LIKE @OperationType";
 
                     parameter.AddWithValue("@OperationType", string.Format("{0}",
-                    SearchByType));
+                    OperationType));
                 }
 
-                if (SearchBySituation != string.Empty)
+                if (OperationSituation != string.Empty)
                 {
                     criterion += @" AND OperationSituation LIKE @OperationSituation";
 
                     parameter.AddWithValue("@OperationSituation", string.Format("{0}",
-                    SearchBySituation));
+                    OperationSituation));
                 }
 
-                if (SearchByMovimentId != string.Empty)
+                if (OperationCode != string.Empty)
                 {
-                    criterion += @" AND StockMovement.Id LIKE @MovimentId ";
+                    criterion += @" AND StockMovement.OperationCode LIKE @OperationCode ";
 
-                    parameter.AddWithValue("@MovimentId", string.Format("{0}",
-                    SearchByMovimentId));
+                    parameter.AddWithValue("@OperationCode", string.Format("{0}",
+                    OperationCode));
                 }
 
                 sqlQuery += criterion + @" ORDER BY StockMovement.Id DESC";
@@ -315,6 +324,7 @@ namespace DimStock.Business
                         OperationDate = Convert.ToDateTime(reader["OperationDate"].ToString());
                         OperationHour = Convert.ToDateTime(reader["OperationHour"].ToString());
                         OperationSituation = Convert.ToString(reader["OperationSituation"].ToString());
+                        OperationCode = Convert.ToString(reader["OperationCode"]).ToString();
 
                         bool convert = int.TryParse(reader[
                         "StockDestination.Id"].ToString(),
@@ -339,7 +349,8 @@ namespace DimStock.Business
                     OperationType = Convert.ToString(row["OperationType"]),
                     OperationDate = Convert.ToDateTime(row["OperationDate"]),
                     OperationHour = Convert.ToDateTime(row["OperationHour"]),
-                    OperationSituation = Convert.ToString(row["OperationSituation"])
+                    OperationSituation = Convert.ToString(row["OperationSituation"]),
+                    OperationCode = Convert.ToString(row["OperationCode"])
                 };
 
                 movement.StockDestination.Location =
@@ -367,14 +378,14 @@ namespace DimStock.Business
                     affectedFieldList.Add("Data:" + Convert.ToDateTime(reader["OperationDate"]).ToString("dd-MM-yyyy"));
                     affectedFieldList.Add("Hora:" + reader["OperationHour"].ToString());
                     affectedFieldList.Add("Situação:" + reader["OperationSituation"].ToString());
-                    affectedFieldList.Add("LocalDestino:" + reader["StockDestinationLocation"].ToString());
+                    affectedFieldList.Add("Número:" + reader["OperationCode"].ToString());
                 }
             }
 
             return string.Join(" | ", affectedFieldList.Select(x => x.ToString()));
         }
 
-        public bool CheckIfRegisterExists(int id)
+        public bool CheckIfExists(int id)
         {
             using (var connection = new Connection())
             {

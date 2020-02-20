@@ -57,7 +57,7 @@ namespace DimStock.UserForms
 
         #region TextBox
 
-        private void QueryByStockMovementId_TextChanged(object sender, EventArgs e)
+        private void SearchByOperationCode_TextChanged(object sender, EventArgs e)
         {
             dataPagination.OffSetValue = 0;
             dataPagination.CurrentPage = 1;
@@ -286,26 +286,26 @@ namespace DimStock.UserForms
         {
             try
             {
-                var stockMovement = new StockMovement(dataPagination)
+                var movement = new StockMovement(dataPagination)
                 {
-                    SearchByType = selectedType,
-                    SearchByMovimentId = SearchByStockMovimentId.Text,
-                    SearchBySituation = selectedSituation
+                    OperationType = selectedType,
+                    OperationCode = SearchByOperationCode.Text,
+                    OperationSituation = selectedSituation
                 };
 
-                stockMovement.SearchData();
+                movement.SearchData();
 
                 MovementStockDataList.Rows.Clear();
 
-                for (int i = 0; i < stockMovement.List.Count; i++)
+                for (int i = 0; i < movement.List.Count; i++)
                 {
                     MovementStockDataList.Rows.Add(
-                    stockMovement.List[i].OperationSituation,
-                    stockMovement.List[i].OperationType,
-                    stockMovement.List[i].Id,
-                    stockMovement.List[i].OperationDate,
-                    Convert.ToString(stockMovement.List[i].OperationHour.ToString("hh:mm:ss")),
-                    stockMovement.List[i].StockDestination.Location
+                    movement.List[i].OperationSituation,
+                    movement.List[i].OperationType,
+                    movement.List[i].OperationCode,
+                    movement.List[i].OperationDate,
+                    Convert.ToString(movement.List[i].OperationHour.ToString("HH:MM:ss")),
+                    movement.List[i].StockDestination.Location
                     );
                 }
 
@@ -491,7 +491,7 @@ namespace DimStock.UserForms
 
                 RecordsByPage.Text = dataPagination.PageSize + " Registros ";
 
-                SearchByStockMovimentId.Select();
+                SearchByOperationCode.Select();
             }
             catch (Exception ex)
             {
@@ -566,6 +566,7 @@ namespace DimStock.UserForms
                 stockMovementList.Columns[4].Width = 100;
                 stockMovementList.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 stockMovementList.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                stockMovementList.Columns[4].DefaultCellStyle.Format = "HH:MM:ss";
                 stockMovementList.Columns[4].ReadOnly = true;
                 stockMovementList.Columns[4].Visible = true;
 

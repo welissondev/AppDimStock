@@ -193,6 +193,7 @@ namespace DimStock.UserForms
                 user.ViewDetails(id);
 
                 id = user.Id;
+                this.id = id;
                 UserName.Text = user.Name;
                 Email.Text = user.Email;
                 Login.Text = user.Login;

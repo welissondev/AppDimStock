@@ -18,7 +18,7 @@ namespace DimStock.Business
         public string StrieetNumber { get; set; }
         #endregion
 
-        #region Methods
+        #region Function
 
         public bool Register()
         {

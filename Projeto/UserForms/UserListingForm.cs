@@ -164,8 +164,8 @@ namespace DimStock.UserForms
 
                 var user = new User(dataPagination)
                 {
-                    SearchByName = SearchFields.Text,
-                    SearchByEmail = SearchFields.Text,
+                    Name = SearchFields.Text,
+                    Email = SearchFields.Text,
                 };
 
                 user.SearchData();

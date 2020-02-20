@@ -8,9 +8,7 @@ namespace DimStock.Reports
     public class StockReport : IReport<Stock>
     {
         #region Get e Set
-        public int ProductCode { get; set; }
-        public int ProductSize { get; set; }
-        public int ProductReference { get; set; }
+        public string ProductCode { get; set; }
         public string ProductDescription { get; set; }
         public int MinStock { get; set; }
         public int MaxStock { get; set; }
@@ -30,9 +28,7 @@ namespace DimStock.Reports
             {
                 var report = new StockReport()
                 {
-                    ProductCode = list[i].Product.Code,
-                    ProductSize = list[i].Product.Size,
-                    ProductReference = list[i].Product.Reference,
+                    ProductCode = list[i].Product.InternalCode,
                     ProductDescription = list[i].Product.Description,
                     MinStock = list[i].Min,
                     MaxStock = list[i].Max,

@@ -13,7 +13,7 @@ namespace DimStock.Business
         public List<StockDestination> ListOfRecords { get; set; }
         #endregion
 
-        #region Methods
+        #region Function
 
         public bool Register()
         {

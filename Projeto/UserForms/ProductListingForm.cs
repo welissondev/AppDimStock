@@ -78,10 +78,8 @@ namespace DimStock.UserForms
             {
                 var product = new Product(dataPagination)
                 {
-                    SearchByCode = SearchByCode.Text,
-                    SearchBySize = SearchBySize.Text,
-                    SearchByReference = SearchByReference.Text,
-                    SearchByDescription = SearchByDescription.Text
+                    InternalCode = SearchByCode.Text,
+                    Description = SearchByDescription.Text
                 };
 
                 product.GenerateReport(product.List);
@@ -237,10 +235,8 @@ namespace DimStock.UserForms
             {
                 var product = new Product(dataPagination)
                 {
-                    SearchByCode = SearchByCode.Text,
-                    SearchBySize = SearchBySize.Text,
-                    SearchByReference = SearchByReference.Text,
-                    SearchByDescription = SearchByDescription.Text,
+                    InternalCode = SearchByCode.Text,
+                    Description = SearchByDescription.Text
                 };
 
                 product.SearchData();
@@ -251,9 +247,7 @@ namespace DimStock.UserForms
                 {
                     ProductDataList.Rows.Add(
                     product.List[i].Id,
-                    product.List[i].Code,
-                    product.List[i].Reference,
-                    product.List[i].Size,
+                    product.List[i].InternalCode,
                     product.List[i].Description,
                     product.List[i].CostPrice,
                     product.List[i].SalePrice,
@@ -289,14 +283,12 @@ namespace DimStock.UserForms
                 }
 
                 var product = new Product();
-                product.ViewDetails(Id);
+                product.GetDetail(Id);
 
                 userForm.Id = product.Id;
                 userForm.CategoryId = product.Category.Id;
                 userForm.BoxProductCategoryList.Text = product.Category.Description.ToString();
-                userForm.ProductCode.Text = product.Code.ToString();
-                userForm.ProductSize.Text = product.Size.ToString();
-                userForm.ProductReference.Text = product.Reference.ToString();
+                userForm.InternalCode.Text = product.InternalCode.ToString();
                 userForm.Description.Text = product.Description;
                 userForm.CostPrice.Text = product.CostPrice.ToString();
                 userForm.SalePrice.Text = product.SalePrice.ToString();
@@ -353,7 +345,7 @@ namespace DimStock.UserForms
                 {
                     var product = new Product();
 
-                    if (product.Delete(Id) == false)
+                    if (product.Remove(Id) == false)
                     {
                         MessageBox.Show(AxlMessageNotifier.Message, "ATENÇÃO",
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -387,13 +379,11 @@ namespace DimStock.UserForms
             try
             {
                 var product = new Product();
-                product.ViewDetails(Id);
+                product.GetDetail(Id);
 
                 productForm.CategoryId = product.Category.Id;
                 productForm.BoxProductCategoryList.Text = product.Category.Description;
-                productForm.ProductCode.Text = product.Code.ToString();
-                productForm.ProductSize.Text = product.Size.ToString();
-                productForm.ProductReference.Text = product.Reference.ToString();
+                productForm.InternalCode.Text = product.InternalCode;
                 productForm.Description.Text = product.Description;
                 productForm.CostPrice.Text = product.CostPrice.ToString();
                 productForm.SalePrice.Text = product.SalePrice.ToString();
@@ -482,9 +472,7 @@ namespace DimStock.UserForms
             try
             {
                 var id = new DataGridViewTextBoxColumn();
-                var code = new DataGridViewTextBoxColumn();
-                var reference = new DataGridViewTextBoxColumn();
-                var size = new DataGridViewTextBoxColumn();
+                var internalCode = new DataGridViewTextBoxColumn();
                 var description = new DataGridViewTextBoxColumn();
                 var costPrice = new DataGridViewTextBoxColumn();
                 var salePrice = new DataGridViewTextBoxColumn();
@@ -503,61 +491,41 @@ namespace DimStock.UserForms
                 productDataList.Columns[0].Visible = false;
                 productDataList.Columns[0].ReadOnly = true;
 
-                productDataList.Columns.Add(code);
+                productDataList.Columns.Add(internalCode);
                 productDataList.Columns[1].Width = 80;
-                productDataList.Columns[1].Name = "code";
-                productDataList.Columns[1].HeaderText = "CÓD.";
+                productDataList.Columns[1].Name = "internalCode";
+                productDataList.Columns[1].HeaderText = "CÓDIGO";
                 productDataList.Columns[1].ToolTipText = "Código do produto";
-                productDataList.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                productDataList.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                productDataList.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                productDataList.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 productDataList.Columns[1].ReadOnly = true;
 
-                productDataList.Columns.Add(reference);
-                productDataList.Columns[2].Width = 80;
-                productDataList.Columns[2].Name = "reference";
-                productDataList.Columns[2].HeaderText = "REF.";
-                productDataList.Columns[2].ToolTipText = "Número de referência do produto";
-                productDataList.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                productDataList.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                productDataList.Columns.Add(description);
+                productDataList.Columns[2].Name = "description";
+                productDataList.Columns[2].HeaderText = "DESCRIÇÃO";
+                productDataList.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 productDataList.Columns[2].ReadOnly = true;
 
-                productDataList.Columns.Add(size);
-                productDataList.Columns[3].Name = "size";
-                productDataList.Columns[3].HeaderText = "TAM.";
-                productDataList.Columns[3].ToolTipText = "O tamanho do produto";
-                productDataList.Columns[3].Width = 80;
-                productDataList.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                productDataList.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                productDataList.Columns[3].DisplayIndex = 2;
-                productDataList.Columns[3].ReadOnly = true;
-                productDataList.Columns[3].Visible = true;
-
-                productDataList.Columns.Add(description);
-                productDataList.Columns[4].Name = "description";
-                productDataList.Columns[4].HeaderText = "DESCRIÇÃO";
-                productDataList.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                productDataList.Columns[4].ReadOnly = true;
-
                 productDataList.Columns.Add(costPrice);
-                productDataList.Columns[5].Name = "costPrice";
-                productDataList.Columns[5].HeaderText = "PREÇO CUSTO";
-                productDataList.Columns[5].Width = 120;
-                productDataList.Columns[5].DefaultCellStyle.Format = "c2";
-                productDataList.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                productDataList.Columns[5].ReadOnly = true;
+                productDataList.Columns[3].Name = "costPrice";
+                productDataList.Columns[3].HeaderText = "PREÇO CUSTO";
+                productDataList.Columns[3].Width = 120;
+                productDataList.Columns[3].DefaultCellStyle.Format = "c2";
+                productDataList.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                productDataList.Columns[3].ReadOnly = true;
 
                 productDataList.Columns.Add(salePrice);
-                productDataList.Columns[6].Name = "salePrice";
-                productDataList.Columns[6].HeaderText = "PREÇO VENDA";
-                productDataList.Columns[6].Width = 120;
-                productDataList.Columns[6].DefaultCellStyle.Format = "c2";
-                productDataList.Columns[6].ReadOnly = true;
+                productDataList.Columns[4].Name = "salePrice";
+                productDataList.Columns[4].HeaderText = "PREÇO VENDA";
+                productDataList.Columns[4].Width = 120;
+                productDataList.Columns[4].DefaultCellStyle.Format = "c2";
+                productDataList.Columns[4].ReadOnly = true;
 
                 productDataList.Columns.Add(photo);
-                productDataList.Columns[7].Name = "photo";
-                productDataList.Columns[7].HeaderText = "Nome da Foto";
-                productDataList.Columns[7].ReadOnly = true;
-                productDataList.Columns[7].Visible = false;
+                productDataList.Columns[5].Name = "photo";
+                productDataList.Columns[5].HeaderText = "Nome da Foto";
+                productDataList.Columns[5].ReadOnly = true;
+                productDataList.Columns[5].Visible = false;
 
                 replicate.Text = "Replicar";
                 replicate.TrackVisitedState = false;
@@ -565,12 +533,12 @@ namespace DimStock.UserForms
                 replicate.LinkColor = Color.Black;
                 replicate.ActiveLinkColor = Color.MediumAquamarine;
                 productDataList.Columns.Add(replicate);
-                productDataList.Columns[8].Name = "replicate";
-                productDataList.Columns[8].HeaderText = "";
-                productDataList.Columns[8].Width = 70;
-                productDataList.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                productDataList.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                productDataList.Columns[8].ReadOnly = true;
+                productDataList.Columns[6].Name = "replicate";
+                productDataList.Columns[6].HeaderText = "";
+                productDataList.Columns[6].Width = 70;
+                productDataList.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                productDataList.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                productDataList.Columns[6].ReadOnly = true;
 
                 edit.Text = "Editar";
                 edit.TrackVisitedState = false;
@@ -578,12 +546,12 @@ namespace DimStock.UserForms
                 edit.LinkColor = Color.Black;
                 edit.ActiveLinkColor = Color.MediumAquamarine;
                 productDataList.Columns.Add(edit);
-                productDataList.Columns[9].Name = "edit";
-                productDataList.Columns[9].HeaderText = "";
-                productDataList.Columns[9].Width = 70;
-                productDataList.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                productDataList.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                productDataList.Columns[9].ReadOnly = true;
+                productDataList.Columns[7].Name = "edit";
+                productDataList.Columns[7].HeaderText = "";
+                productDataList.Columns[7].Width = 70;
+                productDataList.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                productDataList.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                productDataList.Columns[7].ReadOnly = true;
 
                 delete.Text = "Deletar";
                 delete.TrackVisitedState = false;
@@ -591,12 +559,12 @@ namespace DimStock.UserForms
                 delete.LinkColor = Color.Black;
                 delete.ActiveLinkColor = Color.MediumAquamarine;
                 productDataList.Columns.Add(delete);
-                productDataList.Columns[10].Name = "delete";
-                productDataList.Columns[10].HeaderText = "";
-                productDataList.Columns[10].Width = 70;
-                productDataList.Columns[10].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                productDataList.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                productDataList.Columns[10].ReadOnly = true;
+                productDataList.Columns[8].Name = "delete";
+                productDataList.Columns[8].HeaderText = "";
+                productDataList.Columns[8].Width = 70;
+                productDataList.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                productDataList.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                productDataList.Columns[8].ReadOnly = true;
             }
             catch (Exception ex)
             {
