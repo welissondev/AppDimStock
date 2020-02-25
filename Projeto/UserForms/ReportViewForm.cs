@@ -9,7 +9,7 @@ namespace DimStock.UserForms
 {
     public partial class ReportViewForm : Form
     {
-        #region Constructors
+        #region Builder
 
         private ReportViewForm(string path, string reportName, bool isEmbeddedResource, Dictionary<string, object> dataSources)
         {
@@ -33,21 +33,26 @@ namespace DimStock.UserForms
 
         #endregion
 
-        #region UserForm
+        #region Form
 
         private void FrmReportView_Load(object sender, EventArgs e)
         {
             ReportViewControl.RefreshReport();
         }
 
-        private void CloseForm_Click(object sender, EventArgs e)
+       
+        #endregion
+
+        #region Button
+
+        private void ButtonCloseForm_Click(object sender, EventArgs e)
         {
             Close();
         }
 
         #endregion
 
-        #region Methods
+        #region Function
 
         public static void ShowReport(string path, string reportName, bool isEmbeddedResource, Dictionary<string, object> dataSources)
         {

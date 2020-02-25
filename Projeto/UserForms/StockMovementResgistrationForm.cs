@@ -11,19 +11,7 @@ namespace DimStock.UserForms
 {
     public partial class StockMovementRegistrationForm : Form
     {
-        #region Get e Set
-
-        public int StockId { get; set; }
-        public int StockQuantity { get; set; }
-        public int ProductId { get; set; }
-
-        #endregion
-
-        #region Variables
-        private AxlDataPagination dataPagination = new AxlDataPagination();
-        #endregion
-
-        #region Constructs
+        #region Builder
 
         public StockMovementRegistrationForm()
         {
@@ -34,14 +22,31 @@ namespace DimStock.UserForms
 
         #endregion
 
-        #region UserForm
+        #region Properties
+        private AxlDataPage pagination = new AxlDataPage();
+        #endregion
+
+        #region Get e Set
+
+        public int StockId { get; set; }
+        public int ProductId { get; set; }
+        public int StockQuantity { get; set; }
+        public string OperationDate { get; set; }
+        public string OperationType { get; set; }
+        public string OperationHour { get; set; }
+        public string OperationSituation { get; set; }
+        public string OperationCode { get; set; }
+
+        #endregion
+
+        #region Form
 
         private void StockMovementResgistrationForm_Resize(object sender, EventArgs e)
         {
             try
             {
                 // Centraliza imagem loading no formulário
-                GifLoading.Left = MainDataList.Width / 2 - GifLoading.Width / 2;
+                PictureLoading.Left = DataGridMainDataList.Width / 2 - PictureLoading.Width / 2;
             }
             catch (Exception ex)
             {
@@ -53,7 +58,7 @@ namespace DimStock.UserForms
 
         #region Button
 
-        private void RegisterNew_Click(object sender, EventArgs e)
+        private void ButtonRegisterNew_Click(object sender, EventArgs e)
         {
             try
             {
@@ -66,9 +71,9 @@ namespace DimStock.UserForms
             }
         }
 
-        private void Confirm_Click(object sender, EventArgs e)
+        private void ButtonConfirm_Click(object sender, EventArgs e)
         {
-            switch (OperationType.Text)
+            switch (TextOperationType.Text)
             {
                 case "Entrada":
 
@@ -82,14 +87,14 @@ namespace DimStock.UserForms
             }
         }
 
-        private void Delete_Click(object sender, EventArgs e)
+        private void ButtonDelete_Click(object sender, EventArgs e)
         {
             DeleteMovement();
         }
 
-        private void AddItem_Click(object sender, EventArgs e)
+        private void ButtonAddItem_Click(object sender, EventArgs e)
         {
-            if (OperationSituation.Text == "Em Aberto")
+            if (TextOperationSituation.Text == "Em Aberto")
             {
                 if (CheckDataToAddItem() == true)
                 {
@@ -100,7 +105,7 @@ namespace DimStock.UserForms
             }
         }
 
-        private void CloseForm_Click(object sender, EventArgs e)
+        private void ButtonCloseForm_Click(object sender, EventArgs e)
         {
             Close();
         }
@@ -109,40 +114,40 @@ namespace DimStock.UserForms
 
         #region TextBox
 
-        private void ShearchFields_KeyPress(object sender, KeyPressEventArgs e)
+        private void TextShearchFields_KeyPress(object sender, KeyPressEventArgs e)
         {
-            GifLoading.Visible = true;
+            PictureLoading.Visible = true;
             SearchTimer.Enabled = false;
             SearchTimer.Enabled = true;
         }
 
-        private void Quantity_KeyPress(object sender, KeyPressEventArgs e)
+        private void TextQuantity_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TotalValue.Text = Calculate(Convert.ToInt32(Quantity.Text),
-            Convert.ToDouble(UnitaryValue.DecimalValue)).ToString();
+            TextTotalValue.Text = Calculate(Convert.ToInt32(TextQuantity.Text),
+            Convert.ToDouble(TextUnitaryValue.DecimalValue)).ToString();
         }
 
         #endregion
 
         #region ComboBox
 
-        private void StockDestinationList_DropDown(object sender, EventArgs e)
+        private void ComboBoxStockDestinationList_DropDown(object sender, EventArgs e)
         {
             FillAllComboBox();
         }
 
-        private void StockDestinationList_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxStockDestinationList_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                if (OperationSituation.Text == "Em Aberto")
+                if (TextOperationSituation.Text == "Em Aberto")
                 {
                     var movement = new StockMovement();
                     movement.StockDestination.Location =
                     ((ComboBox)sender).SelectedItem.ToString();
 
                     movement.RelateDestination(Convert.ToInt32(
-                    StockMovementId.Text));
+                    TextStockMovementId.Text));
                 }
             }
             catch (Exception ex)
@@ -151,7 +156,7 @@ namespace DimStock.UserForms
             }
         }
 
-        private void StockDestinationList_KeyPress(object sender, KeyPressEventArgs e)
+        private void ComboBoxStockDestinationList_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((Char.IsLetter(e.KeyChar)) || (Char.IsWhiteSpace(e.KeyChar)))
                 e.Handled = true;
@@ -163,16 +168,16 @@ namespace DimStock.UserForms
 
         private void SearchTimer_Tick(object sender, EventArgs e)
         {
-            GifLoading.Visible = false;
+            PictureLoading.Visible = false;
             SearchTimer.Enabled = false;
-            SearchStockData();
+            SearchData();
         }
 
         #endregion
 
         #region LabelLink
 
-        private void AddNewStockDestination_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void ButtonShow_StockDestination_RegistrationForm_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             var form = new StockDestinationRegistrationForm()
             {
@@ -185,7 +190,7 @@ namespace DimStock.UserForms
             form.ShowDialog();
         }
 
-        private void ClearQueryFields_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void ButtonClear_SearchFields_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             ClearSearchFields();
             ResetControl();
@@ -196,14 +201,14 @@ namespace DimStock.UserForms
 
         #region DataGridView
 
-        private void MainDataList_DoubleClick(object sender, EventArgs e)
+        private void DataGridMainDataList_DoubleClick(object sender, EventArgs e)
         {
             try
             {
-                if (MainDataList.ListIsStock.Equals(true))
+                if (DataGridMainDataList.ListIsStock.Equals(true))
                 {
-                    ProductId = Convert.ToInt32(MainDataList.CurrentRow.Cells["productId"].Value);
-                    ViewStockDetails(ProductId);
+                    ProductId = Convert.ToInt32(DataGridMainDataList.CurrentRow.Cells["productId"].Value);
+                    StockGetDetail(ProductId);
                 }
             }
             catch (Exception ex)
@@ -212,15 +217,15 @@ namespace DimStock.UserForms
             }
         }
 
-        private void MainDataList_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void DataGridMainDataList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                var columnName = MainDataList.Columns[e.ColumnIndex].Name;
+                var columnName = DataGridMainDataList.Columns[e.ColumnIndex].Name;
 
                 if (columnName == "delete")
                 {
-                    int id = Convert.ToInt32(MainDataList.CurrentRow.Cells["itemId"].Value);
+                    int id = Convert.ToInt32(DataGridMainDataList.CurrentRow.Cells["itemId"].Value);
                     RemoveItem(id);
                 }
             }
@@ -230,17 +235,17 @@ namespace DimStock.UserForms
             }
         }
 
-        private void MainDataList_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        private void DataGridMainDataList_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
             //Remove o focus do controle datagriview
             e.PaintParts = DataGridViewPaintParts.All ^ DataGridViewPaintParts.Focus;
         }
 
-        private void MainDataList_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        private void DataGridMainDataList_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1)
             {
-                MainDataList.Rows[e.RowIndex].Selected = true;
+                DataGridMainDataList.Rows[e.RowIndex].Selected = true;
             }
         }
 
@@ -260,25 +265,25 @@ namespace DimStock.UserForms
 
         #endregion
 
-        #region MethodsAuxiliarys
+        #region Function
 
-        private void SearchStockData()
+        private void SearchData()
         {
             try
             {
-                var stock = new Stock(dataPagination);
+                var stock = new Stock(pagination);
 
-                stock.Product.InternalCode =  QueryByCode.Text;
+                stock.Product.InternalCode = TextSearchByCode.Text;
 
                 stock.SearchData();
 
-                MainDataList.Columns.Clear();
+                DataGridMainDataList.Columns.Clear();
 
                 CreateColumnForItemList();
 
                 for (var i = 0; i < stock.List.Count; i++)
                 {
-                    MainDataList.Rows.Add(
+                    DataGridMainDataList.Rows.Add(
                     stock.List[i].Id,
                     stock.List[i].Product.Id,
                     stock.List[i].Product.InternalCode,
@@ -286,8 +291,8 @@ namespace DimStock.UserForms
                     stock.List[i].Product.CostPrice
                     );
                 }
-                MainDataList.ClearSelection();
-                MainDataList.Visible = true;
+                DataGridMainDataList.ClearSelection();
+                DataGridMainDataList.Visible = true;
             }
             catch (Exception ex)
             {
@@ -304,12 +309,12 @@ namespace DimStock.UserForms
 
                 var destinationList = new List<string>();
 
-                for (int i = 0; i < destination.ListOfRecords.Count; i++)
+                for (int i = 0; i < destination.List.Count; i++)
                 {
-                    destinationList.Add(destination.ListOfRecords[i].Location);
+                    destinationList.Add(destination.List[i].Location);
                 }
 
-                StockDestinationList.DataSource = destinationList;
+                ComboBoxStockDestinationList.DataSource = destinationList;
             }
             catch (Exception ex)
             {
@@ -317,40 +322,40 @@ namespace DimStock.UserForms
             }
         }
 
-        private void ViewStockDetails(int id)
+        private void StockGetDetail(int id)
         {
             var stock = new Stock();
-            stock.ViewDetails(id);
+            stock.GetDetail(id);
 
-            QueryByCode.Text = stock.Product.InternalCode;
-            QueryByDescription.Text = stock.Product.Description;
-            UnitaryValue.Text = stock.Product.CostPrice.ToString();
+            TextSearchByCode.Text = stock.Product.InternalCode;
+            TextSearchByDescription.Text = stock.Product.Description;
+            TextUnitaryValue.Text = stock.Product.CostPrice.ToString();
             ProductId = stock.Product.Id;
             StockId = stock.Id;
             StockQuantity = stock.Quantity;
-            Quantity.Select();
+            TextQuantity.Select();
 
             ListStockItems();
         }
 
-        public void ViewMovementDetails(int id)
+        public void MovementGetDetail(int id)
         {
             try
             {
                 var movement = new StockMovement();
-                movement.ViewDetails(id);
+                movement.GetDetail(id);
 
-                StockMovementId.Text = id.ToString();
-                OperationType.Text = movement.OperationType;
-                OperationDate.Text = Convert.ToString(movement.OperationDate.ToString("dd-MM-yyyy"));
-                OperationHour.Text = Convert.ToString(movement.OperationHour.ToString("HH:MM:ss"));
-                OperationSituation.Text = movement.OperationSituation;
+                TextStockMovementId.Text = id.ToString();
+                TextOperationType.Text = movement.OperationType;
+                TextOperationDate.Text = Convert.ToString(movement.OperationDate.ToString("dd-MM-yyyy"));
+                TextOperationHour.Text = Convert.ToString(movement.OperationHour.ToString("HH:MM:ss"));
+                TextOperationSituation.Text = movement.OperationSituation;
 
                 if (movement.StockDestination.Id != 0)
                 {
                     FillAllComboBox();
 
-                    StockDestinationList.Text =
+                    ComboBoxStockDestinationList.Text =
                     movement.StockDestination.Location;
                 }
 
@@ -364,11 +369,11 @@ namespace DimStock.UserForms
 
         public void StartNewOperation(string operationType)
         {
-            var stockMovement = new StockMovement();
+            var movement = new StockMovement();
 
-            stockMovement.InitOperation(operationType);
+            movement.InitOperation(operationType);
 
-            ViewMovementDetails(stockMovement.Id);
+            MovementGetDetail(movement.Id);
 
             ResetControl();
 
@@ -379,7 +384,7 @@ namespace DimStock.UserForms
         {
             try
             {
-                if (Convert.ToInt32(StockMovementId.Text) > 0)
+                if (Convert.ToInt32(TextStockMovementId.Text) > 0)
                 {
                     if (MessageBox.Show("Confirma essa operação?", "CONFIRME",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation,
@@ -387,11 +392,11 @@ namespace DimStock.UserForms
                     {
                         var movement = new StockMovement
                         {
-                            OperationType = OperationType.Text
+                            OperationType = TextOperationType.Text
                         };
 
-                        if (movement.Delete(Convert.ToInt32(
-                        StockMovementId.Text)) == true)
+                        if (movement.Remove(Convert.ToInt32(
+                        TextStockMovementId.Text)) == true)
                         {
                             MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -414,12 +419,12 @@ namespace DimStock.UserForms
                 {
                     var stock = new Stock();
 
-                    if (stock.AddEntries(GetItems(), Convert.ToInt32(StockMovementId.Text)) == true)
+                    if (stock.AddEntries(GetItems(), Convert.ToInt32(TextStockMovementId.Text)) == true)
                     {
                         MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
 
-                        OperationSituation.Text = "Finalizada";
+                        TextOperationSituation.Text = "Finalizada";
                     }
                 }
             }
@@ -434,12 +439,12 @@ namespace DimStock.UserForms
                 {
                     var stock = new Stock();
 
-                    if (stock.AddOutputs(GetItems(), Convert.ToInt32(StockMovementId.Text)) == true)
+                    if (stock.AddOutputs(GetItems(), Convert.ToInt32(TextStockMovementId.Text)) == true)
                     {
                         MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
 
-                        OperationSituation.Text = "Finalizada";
+                        TextOperationSituation.Text = "Finalizada";
                     }
                 }
             }
@@ -449,11 +454,11 @@ namespace DimStock.UserForms
         {
             var itemList = new List<Stock>();
 
-            for (int i = 0; i < MainDataList.Rows.Count; i++)
+            for (int i = 0; i < DataGridMainDataList.Rows.Count; i++)
             {
-                var id = MainDataList.Rows[i].Cells["stockId"].Value;
-                var quantity = MainDataList.Rows[i].Cells["stockQuantity"].Value;
-                var totalValue = MainDataList.Rows[i].Cells["stockTotalValue"].Value;
+                var id = DataGridMainDataList.Rows[i].Cells["stockId"].Value;
+                var quantity = DataGridMainDataList.Rows[i].Cells["stockQuantity"].Value;
+                var totalValue = DataGridMainDataList.Rows[i].Cells["stockTotalValue"].Value;
 
                 totalValue.ToString().Replace("R$", "").Replace("$", "");
 
@@ -475,15 +480,15 @@ namespace DimStock.UserForms
             try
             {
                 var item = new StockMovementItem();
-                item.ListItems(Convert.ToInt32(StockMovementId.Text));
+                item.ListItems(Convert.ToInt32(TextStockMovementId.Text));
 
-                MainDataList.Columns.Clear();
+                DataGridMainDataList.Columns.Clear();
 
                 CreateColumnForStockList();
 
                 for (int i = 0; i < item.List.Count; i++)
                 {
-                    MainDataList.Rows.Add(
+                    DataGridMainDataList.Rows.Add(
                     item.List[i].Id,
                     item.List[i].Stock.Id,
                     item.List[i].Product.InternalCode,
@@ -493,10 +498,10 @@ namespace DimStock.UserForms
                     item.List[i].TotalValue
                     );
                 }
-                MainDataList.ClearSelection();
+                DataGridMainDataList.ClearSelection();
 
-                if (OperationSituation.Text == "Finalizada")
-                    MainDataList.Columns["delete"].Visible = false;
+                if (TextOperationSituation.Text == "Finalizada")
+                    DataGridMainDataList.Columns["delete"].Visible = false;
 
                 var totalValue = item.List.Sum(x => x.TotalValue);
                 var totalItems = item.List.Count;
@@ -516,14 +521,14 @@ namespace DimStock.UserForms
             {
                 var item = new StockMovementItem()
                 {
-                    Quantity = Convert.ToInt32(Quantity.Text),
-                    UnitaryValue = Convert.ToDouble(UnitaryValue.DecimalValue),
-                    TotalValue = Convert.ToDouble(TotalValue.DecimalValue)
+                    Quantity = Convert.ToInt32(TextQuantity.Text),
+                    UnitaryValue = Convert.ToDouble(TextUnitaryValue.DecimalValue),
+                    TotalValue = Convert.ToDouble(TextTotalValue.DecimalValue)
                 };
 
-                item.StockMovement.Id = Convert.ToInt32(StockMovementId.Text);
+                item.StockMovement.Id = Convert.ToInt32(TextStockMovementId.Text);
                 item.Stock.Id = StockId;
-                item.Product.Id= ProductId;
+                item.Product.Id = ProductId;
 
                 item.Add();
             }
@@ -535,7 +540,7 @@ namespace DimStock.UserForms
 
         private void RemoveItem(int id)
         {
-            if (OperationSituation.Text != "Finalizada")
+            if (TextOperationSituation.Text != "Finalizada")
             {
                 var item = new StockMovementItem();
                 item.Remove(id);
@@ -546,27 +551,27 @@ namespace DimStock.UserForms
 
         private bool CheckDataToAddItem()
         {
-            if (Quantity.Text == "" || Quantity.Text == null || Convert.ToInt32(Quantity.Text) < 1)
+            if (TextQuantity.Text == "" || TextQuantity.Text == null || Convert.ToInt32(TextQuantity.Text) < 1)
             {
                 MessageBox.Show("Informe a quantidade de estoque", "OBRIGATÓRIO",
                 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
-                Quantity.Select();
+                TextQuantity.Select();
 
                 return false;
             }
 
-            else if (Convert.ToDouble(UnitaryValue.Text.Replace("R$", "").Replace("$", "")) == 0)
+            else if (Convert.ToDouble(TextUnitaryValue.Text.Replace("R$", "").Replace("$", "")) == 0)
             {
                 MessageBox.Show("Informe o valor unitário!", "OBRIGATÓRIO",
                 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
-                UnitaryValue.Select();
+                TextUnitaryValue.Select();
 
                 return false;
             }
 
-            else if (OperationType.Text == "Saída" && StockQuantity < 1)
+            else if (TextOperationType.Text == "Saída" && StockQuantity < 1)
             {
                 MessageBox.Show("Não é possível adicionar esse produto, " +
                 "porque ele não tem estoque!", "SEM ESTOQUE",
@@ -574,7 +579,7 @@ namespace DimStock.UserForms
 
                 return false;
             }
-            else if (OperationType.Text == "Saída" && Convert.ToInt32(Quantity.Text) > StockQuantity)
+            else if (TextOperationType.Text == "Saída" && Convert.ToInt32(TextQuantity.Text) > StockQuantity)
             {
                 MessageBox.Show("Esse produto não possui estoque suficiente, " +
                 "atualize o estoque e tente novamente!", "ESTOQUE BAIXO",
@@ -590,7 +595,7 @@ namespace DimStock.UserForms
 
         private bool CheckDataToAddStock()
         {
-            if (OperationSituation.Text == "Finalizada")
+            if (TextOperationSituation.Text == "Finalizada")
             {
                 MessageBox.Show("Não é possível realizar essa operação pois a situação " +
                 "do cadastro consta como finalizada!", "NÃO PERMITIDO", MessageBoxButtons.OK,
@@ -617,9 +622,9 @@ namespace DimStock.UserForms
             {
                 var itemExists = false;
 
-                for (int i = 0; i < MainDataList.Rows.Count; i++)
+                for (int i = 0; i < DataGridMainDataList.Rows.Count; i++)
                 {
-                    if (Convert.ToInt32(MainDataList.Rows[i].Cells["stockId"].Value) == StockId)
+                    if (Convert.ToInt32(DataGridMainDataList.Rows[i].Cells["stockId"].Value) == StockId)
                     {
                         itemExists = true;
                     }
@@ -653,7 +658,7 @@ namespace DimStock.UserForms
                         ctl.Text = string.Empty;
                 }
 
-                QueryByCode.Select();
+                TextSearchByCode.Select();
             }
             catch (Exception ex)
             {
@@ -663,16 +668,16 @@ namespace DimStock.UserForms
 
         private void ResetControl()
         {
-            MainDataList.Columns.Clear();
+            DataGridMainDataList.Columns.Clear();
             CreateColumnForItemList();
 
             TotalItems.Text = "0";
             SubTotal.Text = "R$0,00";
-            Quantity.Text = "0";
-            QueryByCode.Select();
+            TextQuantity.Text = "0";
+            TextSearchByCode.Select();
 
             var itemList = new List<string>();
-            StockDestinationList.DataSource = itemList;
+            ComboBoxStockDestinationList.DataSource = itemList;
         }
 
         private void InitializeSettings()
@@ -692,7 +697,7 @@ namespace DimStock.UserForms
                 var productDescription = new DataGridViewTextBoxColumn();
                 var productCostPrice = new DataGridViewTextBoxColumn();
 
-                var mainDataList = MainDataList;
+                var mainDataList = DataGridMainDataList;
                 mainDataList.ListIsStock = true;
 
                 AxlDataGridLealt.SetDefaultStyle(mainDataList);
@@ -756,7 +761,7 @@ namespace DimStock.UserForms
                 var stockTotalValue = new DataGridViewTextBoxColumn();
                 var delete = new DataGridViewLinkColumn();
 
-                var mainDataList = MainDataList;
+                var mainDataList = DataGridMainDataList;
                 mainDataList.ListIsItem = true;
 
                 AxlDataGridLealt.DefineStyleItem(mainDataList);

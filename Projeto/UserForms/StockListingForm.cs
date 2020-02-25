@@ -1,6 +1,5 @@
 ﻿using DimStock.Auxiliarys;
 using DimStock.Business;
-using DimStock.Reports;
 using Syncfusion.Windows.Forms.Tools;
 using System;
 using System.Collections.Generic;
@@ -11,12 +10,7 @@ namespace DimStock.UserForms
 {
     public partial class StockListingForm : Form
     {
-        #region Properties
-        private AxlDataPagination dataPagination = new AxlDataPagination();
-        private string selectedSummary = "All";
-        #endregion
-
-        #region Constructors
+        #region Builder
 
         public StockListingForm()
         {
@@ -27,7 +21,12 @@ namespace DimStock.UserForms
 
         #endregion
 
-        #region UserForm
+        #region Properties
+        private AxlDataPage pagination = new AxlDataPage();
+        private string selectedSummary = "All";
+        #endregion
+
+        #region Form
 
         private void StockListingForm_Load(object sender, EventArgs e)
         {
@@ -38,7 +37,7 @@ namespace DimStock.UserForms
 
         #region Button
 
-        private void GenerateReport_Click(object sender, EventArgs e)
+        private void ButtonGenerateReport_Click(object sender, EventArgs e)
         {
             try
             {
@@ -47,8 +46,8 @@ namespace DimStock.UserForms
                     Summary = selectedSummary
                 };
 
-                stock.Product.InternalCode = SearchByCode.Text;
-                stock.Product.Description = SearchByDescription.Text;
+                stock.Product.InternalCode = TextSearchByCode.Text;
+                stock.Product.Description = TextSearchByDescription.Text;
 
                 stock.GenerateReport(stock.List);
             }
@@ -58,7 +57,7 @@ namespace DimStock.UserForms
             }
         }
 
-        private void DataList_Click(object sender, EventArgs e)
+        private void ButtonDataList_Click(object sender, EventArgs e)
         {
             CallAllResets();
             StartSearchTimer();
@@ -68,10 +67,10 @@ namespace DimStock.UserForms
 
         #region TextBox
 
-        private void SearchFields_KeyPress(object sender, KeyPressEventArgs e)
+        private void TextSearchFields_KeyPress(object sender, KeyPressEventArgs e)
         {
-            dataPagination.CurrentPage = 1;
-            dataPagination.OffSetValue = 0;
+            pagination.CurrentPage = 1;
+            pagination.OffSetValue = 0;
             StartSearchTimer();
         }
 
@@ -89,10 +88,10 @@ namespace DimStock.UserForms
 
         #region ComboBox
 
-        private void Summaries_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxSummaries_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            var itemSelected = Summaries.SelectedIndex;
+            var itemSelected = ComBoxSummaries.SelectedIndex;
 
             switch (itemSelected)
             {
@@ -114,35 +113,35 @@ namespace DimStock.UserForms
                     break;
             }
 
-            dataPagination.OffSetValue = 0;
-            dataPagination.CurrentPage = 1;
+            pagination.OffSetValue = 0;
+            pagination.CurrentPage = 1;
             StartSearchTimer();
         }
 
-        private void RecordsByPage_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxRecordsByPage_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                var itemSelected = RecordsByPage.SelectedIndex;
+                var itemSelected = ComboBoxRecordsByPage.SelectedIndex;
 
                 switch (itemSelected)
                 {
                     case 0:
-                        dataPagination.PageSize = 20;
+                        pagination.PageSize = 20;
                         break;
                     case 1:
-                        dataPagination.PageSize = 30;
+                        pagination.PageSize = 30;
                         break;
                     case 2:
-                        dataPagination.PageSize = 70;
+                        pagination.PageSize = 70;
                         break;
                     case 3:
-                        dataPagination.PageSize = 100;
+                        pagination.PageSize = 100;
                         break;
                 }
 
-                dataPagination.OffSetValue = 0;
-                dataPagination.CurrentPage = 1;
+                pagination.OffSetValue = 0;
+                pagination.CurrentPage = 1;
                 StartSearchTimer();
 
             }
@@ -154,13 +153,13 @@ namespace DimStock.UserForms
 
         #endregion
 
-        #region DataGridView
+        #region DataGrid
 
-        private void StockDataList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        private void DatagridStock_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             try
             {
-                if (StockDataList.Columns[e.ColumnIndex].Name == "stockSummary")
+                if (DatagridStock.Columns[e.ColumnIndex].Name == "stockSummary")
                 {
                     if (e.Value.GetType() != typeof(DBNull))
                     {
@@ -204,11 +203,11 @@ namespace DimStock.UserForms
             }
         }
 
-        private void StockDataList_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        private void DatagridStock_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1)
             {
-                StockDataList.Rows[e.RowIndex].Selected = true;
+                DatagridStock.Rows[e.RowIndex].Selected = true;
             }
         }
 
@@ -216,10 +215,10 @@ namespace DimStock.UserForms
 
         #region LabelLink
 
-        private void ClearFields_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void ButtonClearFields_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            dataPagination.CurrentPage = 1;
-            dataPagination.OffSetValue = 0;
+            pagination.CurrentPage = 1;
+            pagination.OffSetValue = 0;
             ResetControl();
             StartSearchTimer();
         }
@@ -230,51 +229,51 @@ namespace DimStock.UserForms
 
         private void NextPage_Click(object sender, EventArgs e)
         {
-            if (dataPagination.CurrentPage < dataPagination.NumberOfPages)
+            if (pagination.CurrentPage < pagination.NumberOfPages)
             {
-                dataPagination.CurrentPage += 1;
-                dataPagination.OffSetValue += dataPagination.PageSize;
+                pagination.CurrentPage += 1;
+                pagination.OffSetValue += pagination.PageSize;
                 StartSearchTimer();
             }
 
-            SetInBadingNavigator(dataPagination);
+            SetInBadingNavigator(pagination);
         }
 
         private void BackPage_Click(object sender, EventArgs e)
         {
-            if (dataPagination.CurrentPage > 1)
+            if (pagination.CurrentPage > 1)
             {
-                dataPagination.CurrentPage -= 1;
-                dataPagination.OffSetValue -= dataPagination.PageSize;
+                pagination.CurrentPage -= 1;
+                pagination.OffSetValue -= pagination.PageSize;
                 StartSearchTimer();
             }
 
-            SetInBadingNavigator(dataPagination);
+            SetInBadingNavigator(pagination);
         }
 
         #endregion
 
-        #region MethodsAuxiliarys
+        #region Function
 
         private void SearchData()
         {
             try
             {
-                var stock = new Stock(dataPagination)
+                var stock = new Stock(pagination)
                 {
                     Summary = selectedSummary
                 };
 
-                stock.Product.InternalCode = SearchByCode.Text;
-                stock.Product.Description = SearchByDescription.Text;
+                stock.Product.InternalCode = TextSearchByCode.Text;
+                stock.Product.Description = TextSearchByDescription.Text;
 
                 stock.SearchData();
 
-                StockDataList.Rows.Clear();
+                DatagridStock.Rows.Clear();
 
                 for (int i = 0; i < stock.List.Count; i++)
                 {
-                    StockDataList.Rows.Add(
+                    DatagridStock.Rows.Add(
                     stock.List[i].Id,
                     stock.List[i].Product.Id,
                     stock.List[i].Product.InternalCode,
@@ -287,11 +286,11 @@ namespace DimStock.UserForms
                     stock.List[i].Result);
                 }
 
-                StockDataList.ClearSelection();
+                DatagridStock.ClearSelection();
 
                 PauseSearchTimer();
 
-                SetInBadingNavigator(dataPagination);
+                SetInBadingNavigator(pagination);
 
             }
             catch (Exception ex)
@@ -313,8 +312,8 @@ namespace DimStock.UserForms
                 "100 Registros"
             };
 
-            RecordsByPage.DataSource = pageSizeItemList;
-            RecordsByPage.Text = "20 Registros";
+            ComboBoxRecordsByPage.DataSource = pageSizeItemList;
+            ComboBoxRecordsByPage.Text = "20 Registros";
 
 
             var resumeListItem = new List<string>
@@ -326,21 +325,21 @@ namespace DimStock.UserForms
                 "Sem Resumo"
             };
 
-            Summaries.DataSource = resumeListItem;
-            Summaries.Text = "Todos";
+            ComBoxSummaries.DataSource = resumeListItem;
+            ComBoxSummaries.Text = "Todos";
 
         }
 
         private void CallAllResets()
         {
-            ResetVariables();
+            ResetProperties();
             ResetControl();
         }
 
-        private void ResetVariables()
+        private void ResetProperties()
         {
-            dataPagination.OffSetValue = 0;
-            dataPagination.CurrentPage = 1;
+            pagination.OffSetValue = 0;
+            pagination.CurrentPage = 1;
         }
 
         private void ResetControl()
@@ -353,7 +352,7 @@ namespace DimStock.UserForms
                         ctl.Text = string.Empty;
                 }
 
-                SearchByCode.Select();
+                TextSearchByCode.Select();
             }
             catch (Exception ex)
             {
@@ -365,33 +364,33 @@ namespace DimStock.UserForms
         {
             CreateColumnInTheDataList();
 
-            AxlDataGridLealt.SetDefaultStyle(StockDataList);
+            AxlDataGridLealt.SetDefaultStyle(DatagridStock);
 
             FillAllComboBoxes();
         }
 
-        private void SetInBadingNavigator(AxlDataPagination dataPagination)
+        private void SetInBadingNavigator(AxlDataPage pagination)
         {
-            if (dataPagination.RecordCount == 0)
-                dataPagination.CurrentPage = 0;
+            if (pagination.RecordCount == 0)
+                pagination.CurrentPage = 0;
 
-            var legend = " Página " + dataPagination.CurrentPage + " de " + dataPagination.NumberOfPages;
+            var legend = " Página " + pagination.CurrentPage + " de " + pagination.NumberOfPages;
             BindingPagination.Items[2].Text = legend;
 
-            legend = " Total de " + dataPagination.RecordCount + " registro(s)";
+            legend = " Total de " + pagination.RecordCount + " registro(s)";
             BindingPagination.Items[6].Text = legend;
         }
 
         private void StartSearchTimer()
         {
-            GifLoading.Visible = true;
+            PictureLoading.Visible = true;
             SearchTimer.Enabled = false;
             SearchTimer.Enabled = true;
         }
 
         private void PauseSearchTimer()
         {
-            GifLoading.Visible = false;
+            PictureLoading.Visible = false;
             SearchTimer.Enabled = false;
         }
 
@@ -410,7 +409,7 @@ namespace DimStock.UserForms
                 var stockSummary = new DataGridViewTextBoxColumn();
                 var stockResult = new DataGridViewTextBoxColumn();
 
-                var dataGrid = StockDataList;
+                var dataGrid = DatagridStock;
 
                 dataGrid.Columns.Add(stockId);
                 dataGrid.Columns[0].Name = "stockId";

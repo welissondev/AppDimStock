@@ -30,14 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductListingForm));
-            this.SearchByDescription = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.ProductDataList = new System.Windows.Forms.DataGridView();
-            this.GifLoading = new System.Windows.Forms.PictureBox();
-            this.RecordsByPage = new Syncfusion.WinForms.ListView.SfComboBox();
+            this.TextSearchByDescription = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.DatagridProduct = new System.Windows.Forms.DataGridView();
+            this.PictureLoading = new System.Windows.Forms.PictureBox();
+            this.ComboBoxRecordsByPage = new Syncfusion.WinForms.ListView.SfComboBox();
             this.TitleRecordsByPage = new System.Windows.Forms.Label();
             this.TitleSearchByDescription = new System.Windows.Forms.Label();
             this.TitleSearchByCode = new System.Windows.Forms.Label();
-            this.SearchByCode = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.TextSearchByCode = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.SearchTimer = new System.Windows.Forms.Timer(this.components);
             this.BindingPagination = new System.Windows.Forms.BindingNavigator(this.components);
             this.BackPage = new System.Windows.Forms.ToolStripButton();
@@ -47,102 +47,102 @@
             this.NextPage = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.LblRecordsState = new System.Windows.Forms.ToolStripLabel();
-            this.NewRegister = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.DataList = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.GenerateReport = new Bunifu.Framework.UI.BunifuThinButton2();
-            ((System.ComponentModel.ISupportInitialize)(this.SearchByDescription)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProductDataList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GifLoading)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RecordsByPage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SearchByCode)).BeginInit();
+            this.ButtonNewRegister = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.ButtonDataList = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.ButtonGenerateReport = new Bunifu.Framework.UI.BunifuThinButton2();
+            ((System.ComponentModel.ISupportInitialize)(this.TextSearchByDescription)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DatagridProduct)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureLoading)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ComboBoxRecordsByPage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextSearchByCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BindingPagination)).BeginInit();
             this.BindingPagination.SuspendLayout();
             this.SuspendLayout();
             // 
-            // SearchByDescription
+            // TextSearchByDescription
             // 
-            this.SearchByDescription.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SearchByDescription.BeforeTouchSize = new System.Drawing.Size(140, 27);
-            this.SearchByDescription.BorderColor = System.Drawing.Color.DarkGray;
-            this.SearchByDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SearchByDescription.CanOverrideStyle = true;
-            this.SearchByDescription.CausesValidation = false;
-            this.SearchByDescription.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.SearchByDescription.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchByDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.SearchByDescription.Location = new System.Drawing.Point(163, 108);
-            this.SearchByDescription.MaxLength = 50;
-            this.SearchByDescription.Metrocolor = System.Drawing.Color.DodgerBlue;
-            this.SearchByDescription.MinimumSize = new System.Drawing.Size(16, 12);
-            this.SearchByDescription.Multiline = true;
-            this.SearchByDescription.Name = "SearchByDescription";
-            this.SearchByDescription.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
-            this.SearchByDescription.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
-            this.SearchByDescription.Size = new System.Drawing.Size(362, 27);
-            this.SearchByDescription.TabIndex = 4;
-            this.SearchByDescription.Tag = "";
-            this.SearchByDescription.ThemeName = "Default";
-            this.SearchByDescription.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SearchByFields_KeyPress);
+            this.TextSearchByDescription.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.TextSearchByDescription.BeforeTouchSize = new System.Drawing.Size(140, 27);
+            this.TextSearchByDescription.BorderColor = System.Drawing.Color.DarkGray;
+            this.TextSearchByDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextSearchByDescription.CanOverrideStyle = true;
+            this.TextSearchByDescription.CausesValidation = false;
+            this.TextSearchByDescription.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.TextSearchByDescription.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextSearchByDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.TextSearchByDescription.Location = new System.Drawing.Point(163, 108);
+            this.TextSearchByDescription.MaxLength = 50;
+            this.TextSearchByDescription.Metrocolor = System.Drawing.Color.DodgerBlue;
+            this.TextSearchByDescription.MinimumSize = new System.Drawing.Size(16, 12);
+            this.TextSearchByDescription.Multiline = true;
+            this.TextSearchByDescription.Name = "TextSearchByDescription";
+            this.TextSearchByDescription.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
+            this.TextSearchByDescription.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
+            this.TextSearchByDescription.Size = new System.Drawing.Size(362, 27);
+            this.TextSearchByDescription.TabIndex = 4;
+            this.TextSearchByDescription.Tag = "";
+            this.TextSearchByDescription.ThemeName = "Default";
+            this.TextSearchByDescription.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextSearchByFields_KeyPress);
             // 
-            // ProductDataList
+            // DatagridProduct
             // 
-            this.ProductDataList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.DatagridProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProductDataList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ProductDataList.Location = new System.Drawing.Point(16, 150);
-            this.ProductDataList.Name = "ProductDataList";
-            this.ProductDataList.Size = new System.Drawing.Size(900, 373);
-            this.ProductDataList.TabIndex = 69;
-            this.ProductDataList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductDataList_CellClick);
-            this.ProductDataList.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ProductDataList_CellMouseDoubleClick);
-            this.ProductDataList.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductDataList_CellMouseEnter);
-            this.ProductDataList.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.ProductDataList_RowPrePaint);
+            this.DatagridProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DatagridProduct.Location = new System.Drawing.Point(16, 150);
+            this.DatagridProduct.Name = "DatagridProduct";
+            this.DatagridProduct.Size = new System.Drawing.Size(900, 373);
+            this.DatagridProduct.TabIndex = 69;
+            this.DatagridProduct.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DatagridProductt_CellClick);
+            this.DatagridProduct.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DatagridProduct_CellMouseDoubleClick);
+            this.DatagridProduct.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DatagridProduct_CellMouseEnter);
+            this.DatagridProduct.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.DatagridProduct_RowPrePaint);
             // 
-            // GifLoading
+            // PictureLoading
             // 
-            this.GifLoading.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.GifLoading.Image = global::DimStock.Properties.Resources.Loading;
-            this.GifLoading.Location = new System.Drawing.Point(390, 269);
-            this.GifLoading.Name = "GifLoading";
-            this.GifLoading.Size = new System.Drawing.Size(135, 135);
-            this.GifLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.GifLoading.TabIndex = 85;
-            this.GifLoading.TabStop = false;
-            this.GifLoading.Visible = false;
+            this.PictureLoading.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.PictureLoading.Image = global::DimStock.Properties.Resources.Loading;
+            this.PictureLoading.Location = new System.Drawing.Point(390, 269);
+            this.PictureLoading.Name = "PictureLoading";
+            this.PictureLoading.Size = new System.Drawing.Size(135, 135);
+            this.PictureLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PictureLoading.TabIndex = 85;
+            this.PictureLoading.TabStop = false;
+            this.PictureLoading.Visible = false;
             // 
-            // RecordsByPage
+            // ComboBoxRecordsByPage
             // 
-            this.RecordsByPage.BackColor = System.Drawing.Color.White;
-            this.RecordsByPage.CanOverrideStyle = true;
-            this.RecordsByPage.DropDownStyle = Syncfusion.WinForms.ListView.Enums.DropDownStyle.DropDownList;
-            this.RecordsByPage.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RecordsByPage.Location = new System.Drawing.Point(531, 108);
-            this.RecordsByPage.Name = "RecordsByPage";
-            this.RecordsByPage.Size = new System.Drawing.Size(157, 27);
-            this.RecordsByPage.Style.DropDownButtonStyle.BackColor = System.Drawing.Color.White;
-            this.RecordsByPage.Style.DropDownButtonStyle.DisabledBackColor = System.Drawing.Color.White;
-            this.RecordsByPage.Style.DropDownButtonStyle.DisabledForeColor = System.Drawing.Color.White;
-            this.RecordsByPage.Style.DropDownButtonStyle.FocusedBackColor = System.Drawing.Color.White;
-            this.RecordsByPage.Style.DropDownButtonStyle.HoverBackColor = System.Drawing.Color.White;
-            this.RecordsByPage.Style.DropDownButtonStyle.PressedBackColor = System.Drawing.Color.White;
-            this.RecordsByPage.Style.DropDownStyle.BorderColor = System.Drawing.Color.Gray;
-            this.RecordsByPage.Style.DropDownStyle.GripperForeColor = System.Drawing.Color.White;
-            this.RecordsByPage.Style.EditorStyle.BackColor = System.Drawing.Color.White;
-            this.RecordsByPage.Style.EditorStyle.BorderColor = System.Drawing.Color.DarkGray;
-            this.RecordsByPage.Style.EditorStyle.DisabledBackColor = System.Drawing.Color.White;
-            this.RecordsByPage.Style.EditorStyle.DisabledBorderColor = System.Drawing.Color.DarkGray;
-            this.RecordsByPage.Style.EditorStyle.FocusedBorderColor = System.Drawing.Color.DarkGray;
-            this.RecordsByPage.Style.EditorStyle.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RecordsByPage.Style.ReadOnlyEditorStyle.BorderColor = System.Drawing.Color.DarkGray;
-            this.RecordsByPage.Style.ReadOnlyEditorStyle.DisabledBackColor = System.Drawing.Color.Gray;
-            this.RecordsByPage.Style.ReadOnlyEditorStyle.FocusedBorderColor = System.Drawing.Color.Gray;
-            this.RecordsByPage.Style.ReadOnlyEditorStyle.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RecordsByPage.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.RecordsByPage.Style.TokenStyle.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RecordsByPage.TabIndex = 6;
-            this.RecordsByPage.ToolTipOption.ShadowVisible = false;
-            this.RecordsByPage.SelectedIndexChanged += new System.EventHandler(this.RecordsByPage_SelectedIndexChanged);
+            this.ComboBoxRecordsByPage.BackColor = System.Drawing.Color.White;
+            this.ComboBoxRecordsByPage.CanOverrideStyle = true;
+            this.ComboBoxRecordsByPage.DropDownStyle = Syncfusion.WinForms.ListView.Enums.DropDownStyle.DropDownList;
+            this.ComboBoxRecordsByPage.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ComboBoxRecordsByPage.Location = new System.Drawing.Point(531, 108);
+            this.ComboBoxRecordsByPage.Name = "ComboBoxRecordsByPage";
+            this.ComboBoxRecordsByPage.Size = new System.Drawing.Size(157, 27);
+            this.ComboBoxRecordsByPage.Style.DropDownButtonStyle.BackColor = System.Drawing.Color.White;
+            this.ComboBoxRecordsByPage.Style.DropDownButtonStyle.DisabledBackColor = System.Drawing.Color.White;
+            this.ComboBoxRecordsByPage.Style.DropDownButtonStyle.DisabledForeColor = System.Drawing.Color.White;
+            this.ComboBoxRecordsByPage.Style.DropDownButtonStyle.FocusedBackColor = System.Drawing.Color.White;
+            this.ComboBoxRecordsByPage.Style.DropDownButtonStyle.HoverBackColor = System.Drawing.Color.White;
+            this.ComboBoxRecordsByPage.Style.DropDownButtonStyle.PressedBackColor = System.Drawing.Color.White;
+            this.ComboBoxRecordsByPage.Style.DropDownStyle.BorderColor = System.Drawing.Color.Gray;
+            this.ComboBoxRecordsByPage.Style.DropDownStyle.GripperForeColor = System.Drawing.Color.White;
+            this.ComboBoxRecordsByPage.Style.EditorStyle.BackColor = System.Drawing.Color.White;
+            this.ComboBoxRecordsByPage.Style.EditorStyle.BorderColor = System.Drawing.Color.DarkGray;
+            this.ComboBoxRecordsByPage.Style.EditorStyle.DisabledBackColor = System.Drawing.Color.White;
+            this.ComboBoxRecordsByPage.Style.EditorStyle.DisabledBorderColor = System.Drawing.Color.DarkGray;
+            this.ComboBoxRecordsByPage.Style.EditorStyle.FocusedBorderColor = System.Drawing.Color.DarkGray;
+            this.ComboBoxRecordsByPage.Style.EditorStyle.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ComboBoxRecordsByPage.Style.ReadOnlyEditorStyle.BorderColor = System.Drawing.Color.DarkGray;
+            this.ComboBoxRecordsByPage.Style.ReadOnlyEditorStyle.DisabledBackColor = System.Drawing.Color.Gray;
+            this.ComboBoxRecordsByPage.Style.ReadOnlyEditorStyle.FocusedBorderColor = System.Drawing.Color.Gray;
+            this.ComboBoxRecordsByPage.Style.ReadOnlyEditorStyle.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ComboBoxRecordsByPage.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.ComboBoxRecordsByPage.Style.TokenStyle.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ComboBoxRecordsByPage.TabIndex = 6;
+            this.ComboBoxRecordsByPage.ToolTipOption.ShadowVisible = false;
+            this.ComboBoxRecordsByPage.SelectedIndexChanged += new System.EventHandler(this.ComboBoxRecordsByPage_SelectedIndexChanged);
             // 
             // TitleRecordsByPage
             // 
@@ -174,30 +174,30 @@
             this.TitleSearchByCode.TabIndex = 87;
             this.TitleSearchByCode.Text = "Código:";
             // 
-            // SearchByCode
+            // TextSearchByCode
             // 
-            this.SearchByCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SearchByCode.BeforeTouchSize = new System.Drawing.Size(140, 27);
-            this.SearchByCode.BorderColor = System.Drawing.Color.DarkGray;
-            this.SearchByCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SearchByCode.CanOverrideStyle = true;
-            this.SearchByCode.CausesValidation = false;
-            this.SearchByCode.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.SearchByCode.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchByCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.SearchByCode.Location = new System.Drawing.Point(17, 108);
-            this.SearchByCode.MaxLength = 50;
-            this.SearchByCode.Metrocolor = System.Drawing.Color.DodgerBlue;
-            this.SearchByCode.MinimumSize = new System.Drawing.Size(16, 12);
-            this.SearchByCode.Multiline = true;
-            this.SearchByCode.Name = "SearchByCode";
-            this.SearchByCode.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
-            this.SearchByCode.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
-            this.SearchByCode.Size = new System.Drawing.Size(140, 27);
-            this.SearchByCode.TabIndex = 0;
-            this.SearchByCode.Tag = "";
-            this.SearchByCode.ThemeName = "Default";
-            this.SearchByCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SearchByFields_KeyPress);
+            this.TextSearchByCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.TextSearchByCode.BeforeTouchSize = new System.Drawing.Size(140, 27);
+            this.TextSearchByCode.BorderColor = System.Drawing.Color.DarkGray;
+            this.TextSearchByCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextSearchByCode.CanOverrideStyle = true;
+            this.TextSearchByCode.CausesValidation = false;
+            this.TextSearchByCode.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.TextSearchByCode.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextSearchByCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.TextSearchByCode.Location = new System.Drawing.Point(17, 108);
+            this.TextSearchByCode.MaxLength = 50;
+            this.TextSearchByCode.Metrocolor = System.Drawing.Color.DodgerBlue;
+            this.TextSearchByCode.MinimumSize = new System.Drawing.Size(16, 12);
+            this.TextSearchByCode.Multiline = true;
+            this.TextSearchByCode.Name = "TextSearchByCode";
+            this.TextSearchByCode.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
+            this.TextSearchByCode.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
+            this.TextSearchByCode.Size = new System.Drawing.Size(140, 27);
+            this.TextSearchByCode.TabIndex = 0;
+            this.TextSearchByCode.Tag = "";
+            this.TextSearchByCode.ThemeName = "Default";
+            this.TextSearchByCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextSearchByFields_KeyPress);
             // 
             // SearchTimer
             // 
@@ -276,83 +276,83 @@
             this.LblRecordsState.Size = new System.Drawing.Size(110, 22);
             this.LblRecordsState.Text = "0 de 0 registros";
             // 
-            // NewRegister
+            // ButtonNewRegister
             // 
-            this.NewRegister.ActiveBorderThickness = 1;
-            this.NewRegister.ActiveCornerRadius = 10;
-            this.NewRegister.ActiveFillColor = System.Drawing.SystemColors.Desktop;
-            this.NewRegister.ActiveForecolor = System.Drawing.Color.White;
-            this.NewRegister.ActiveLineColor = System.Drawing.SystemColors.Desktop;
-            this.NewRegister.BackColor = System.Drawing.Color.White;
-            this.NewRegister.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("NewRegister.BackgroundImage")));
-            this.NewRegister.ButtonText = "Novo";
-            this.NewRegister.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.NewRegister.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewRegister.ForeColor = System.Drawing.Color.SeaGreen;
-            this.NewRegister.IdleBorderThickness = 1;
-            this.NewRegister.IdleCornerRadius = 10;
-            this.NewRegister.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
-            this.NewRegister.IdleForecolor = System.Drawing.Color.White;
-            this.NewRegister.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
-            this.NewRegister.Location = new System.Drawing.Point(13, 22);
-            this.NewRegister.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.NewRegister.Name = "NewRegister";
-            this.NewRegister.Size = new System.Drawing.Size(97, 43);
-            this.NewRegister.TabIndex = 209;
-            this.NewRegister.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.NewRegister.Click += new System.EventHandler(this.NewRegister_Click);
+            this.ButtonNewRegister.ActiveBorderThickness = 1;
+            this.ButtonNewRegister.ActiveCornerRadius = 10;
+            this.ButtonNewRegister.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonNewRegister.ActiveForecolor = System.Drawing.Color.White;
+            this.ButtonNewRegister.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonNewRegister.BackColor = System.Drawing.Color.White;
+            this.ButtonNewRegister.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonNewRegister.BackgroundImage")));
+            this.ButtonNewRegister.ButtonText = "Novo";
+            this.ButtonNewRegister.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonNewRegister.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonNewRegister.ForeColor = System.Drawing.Color.SeaGreen;
+            this.ButtonNewRegister.IdleBorderThickness = 1;
+            this.ButtonNewRegister.IdleCornerRadius = 10;
+            this.ButtonNewRegister.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonNewRegister.IdleForecolor = System.Drawing.Color.White;
+            this.ButtonNewRegister.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonNewRegister.Location = new System.Drawing.Point(13, 22);
+            this.ButtonNewRegister.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ButtonNewRegister.Name = "ButtonNewRegister";
+            this.ButtonNewRegister.Size = new System.Drawing.Size(97, 43);
+            this.ButtonNewRegister.TabIndex = 209;
+            this.ButtonNewRegister.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ButtonNewRegister.Click += new System.EventHandler(this.ButtonNewRegister_Click);
             // 
-            // DataList
+            // ButtonDataList
             // 
-            this.DataList.ActiveBorderThickness = 1;
-            this.DataList.ActiveCornerRadius = 10;
-            this.DataList.ActiveFillColor = System.Drawing.SystemColors.Desktop;
-            this.DataList.ActiveForecolor = System.Drawing.Color.White;
-            this.DataList.ActiveLineColor = System.Drawing.SystemColors.Desktop;
-            this.DataList.BackColor = System.Drawing.Color.White;
-            this.DataList.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DataList.BackgroundImage")));
-            this.DataList.ButtonText = "Listar";
-            this.DataList.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.DataList.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DataList.ForeColor = System.Drawing.Color.SeaGreen;
-            this.DataList.IdleBorderThickness = 1;
-            this.DataList.IdleCornerRadius = 10;
-            this.DataList.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
-            this.DataList.IdleForecolor = System.Drawing.Color.White;
-            this.DataList.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
-            this.DataList.Location = new System.Drawing.Point(112, 22);
-            this.DataList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.DataList.Name = "DataList";
-            this.DataList.Size = new System.Drawing.Size(97, 43);
-            this.DataList.TabIndex = 210;
-            this.DataList.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.DataList.Click += new System.EventHandler(this.DataList_Click);
+            this.ButtonDataList.ActiveBorderThickness = 1;
+            this.ButtonDataList.ActiveCornerRadius = 10;
+            this.ButtonDataList.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonDataList.ActiveForecolor = System.Drawing.Color.White;
+            this.ButtonDataList.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonDataList.BackColor = System.Drawing.Color.White;
+            this.ButtonDataList.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonDataList.BackgroundImage")));
+            this.ButtonDataList.ButtonText = "Listar";
+            this.ButtonDataList.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonDataList.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonDataList.ForeColor = System.Drawing.Color.SeaGreen;
+            this.ButtonDataList.IdleBorderThickness = 1;
+            this.ButtonDataList.IdleCornerRadius = 10;
+            this.ButtonDataList.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonDataList.IdleForecolor = System.Drawing.Color.White;
+            this.ButtonDataList.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonDataList.Location = new System.Drawing.Point(112, 22);
+            this.ButtonDataList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ButtonDataList.Name = "ButtonDataList";
+            this.ButtonDataList.Size = new System.Drawing.Size(97, 43);
+            this.ButtonDataList.TabIndex = 210;
+            this.ButtonDataList.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ButtonDataList.Click += new System.EventHandler(this.ButtonDataList_Click);
             // 
-            // GenerateReport
+            // ButtonGenerateReport
             // 
-            this.GenerateReport.ActiveBorderThickness = 1;
-            this.GenerateReport.ActiveCornerRadius = 10;
-            this.GenerateReport.ActiveFillColor = System.Drawing.SystemColors.Desktop;
-            this.GenerateReport.ActiveForecolor = System.Drawing.Color.White;
-            this.GenerateReport.ActiveLineColor = System.Drawing.SystemColors.Desktop;
-            this.GenerateReport.BackColor = System.Drawing.Color.White;
-            this.GenerateReport.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("GenerateReport.BackgroundImage")));
-            this.GenerateReport.ButtonText = "Relatório";
-            this.GenerateReport.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.GenerateReport.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GenerateReport.ForeColor = System.Drawing.Color.SeaGreen;
-            this.GenerateReport.IdleBorderThickness = 1;
-            this.GenerateReport.IdleCornerRadius = 10;
-            this.GenerateReport.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
-            this.GenerateReport.IdleForecolor = System.Drawing.Color.White;
-            this.GenerateReport.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
-            this.GenerateReport.Location = new System.Drawing.Point(211, 22);
-            this.GenerateReport.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.GenerateReport.Name = "GenerateReport";
-            this.GenerateReport.Size = new System.Drawing.Size(97, 43);
-            this.GenerateReport.TabIndex = 211;
-            this.GenerateReport.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.GenerateReport.Click += new System.EventHandler(this.GenerateReport_Click);
+            this.ButtonGenerateReport.ActiveBorderThickness = 1;
+            this.ButtonGenerateReport.ActiveCornerRadius = 10;
+            this.ButtonGenerateReport.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonGenerateReport.ActiveForecolor = System.Drawing.Color.White;
+            this.ButtonGenerateReport.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonGenerateReport.BackColor = System.Drawing.Color.White;
+            this.ButtonGenerateReport.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonGenerateReport.BackgroundImage")));
+            this.ButtonGenerateReport.ButtonText = "Relatório";
+            this.ButtonGenerateReport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonGenerateReport.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonGenerateReport.ForeColor = System.Drawing.Color.SeaGreen;
+            this.ButtonGenerateReport.IdleBorderThickness = 1;
+            this.ButtonGenerateReport.IdleCornerRadius = 10;
+            this.ButtonGenerateReport.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonGenerateReport.IdleForecolor = System.Drawing.Color.White;
+            this.ButtonGenerateReport.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonGenerateReport.Location = new System.Drawing.Point(211, 22);
+            this.ButtonGenerateReport.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ButtonGenerateReport.Name = "ButtonGenerateReport";
+            this.ButtonGenerateReport.Size = new System.Drawing.Size(97, 43);
+            this.ButtonGenerateReport.TabIndex = 211;
+            this.ButtonGenerateReport.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ButtonGenerateReport.Click += new System.EventHandler(this.ButtonGenerateReport_Click);
             // 
             // ProductListingForm
             // 
@@ -360,15 +360,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(928, 551);
-            this.Controls.Add(this.GenerateReport);
-            this.Controls.Add(this.DataList);
-            this.Controls.Add(this.NewRegister);
-            this.Controls.Add(this.GifLoading);
+            this.Controls.Add(this.ButtonGenerateReport);
+            this.Controls.Add(this.ButtonDataList);
+            this.Controls.Add(this.ButtonNewRegister);
+            this.Controls.Add(this.PictureLoading);
             this.Controls.Add(this.BindingPagination);
-            this.Controls.Add(this.RecordsByPage);
-            this.Controls.Add(this.SearchByDescription);
-            this.Controls.Add(this.ProductDataList);
-            this.Controls.Add(this.SearchByCode);
+            this.Controls.Add(this.ComboBoxRecordsByPage);
+            this.Controls.Add(this.TextSearchByDescription);
+            this.Controls.Add(this.DatagridProduct);
+            this.Controls.Add(this.TextSearchByCode);
             this.Controls.Add(this.TitleSearchByCode);
             this.Controls.Add(this.TitleRecordsByPage);
             this.Controls.Add(this.TitleSearchByDescription);
@@ -379,11 +379,11 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.ProductListingForm_Load);
             this.Resize += new System.EventHandler(this.ProductListingForm_Resize);
-            ((System.ComponentModel.ISupportInitialize)(this.SearchByDescription)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProductDataList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GifLoading)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RecordsByPage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SearchByCode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextSearchByDescription)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DatagridProduct)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureLoading)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ComboBoxRecordsByPage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextSearchByCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BindingPagination)).EndInit();
             this.BindingPagination.ResumeLayout(false);
             this.BindingPagination.PerformLayout();
@@ -393,15 +393,15 @@
         }
 
         #endregion
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt SearchByDescription;
-        private System.Windows.Forms.DataGridView ProductDataList;
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt SearchByCode;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt TextSearchByDescription;
+        private System.Windows.Forms.DataGridView DatagridProduct;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt TextSearchByCode;
         private System.Windows.Forms.Label TitleSearchByDescription;
         private System.Windows.Forms.Label TitleSearchByCode;
         private System.Windows.Forms.Label TitleRecordsByPage;
         private System.Windows.Forms.Timer SearchTimer;
-        private System.Windows.Forms.PictureBox GifLoading;
-        private Syncfusion.WinForms.ListView.SfComboBox RecordsByPage;
+        private System.Windows.Forms.PictureBox PictureLoading;
+        private Syncfusion.WinForms.ListView.SfComboBox ComboBoxRecordsByPage;
         private System.Windows.Forms.BindingNavigator BindingPagination;
         private System.Windows.Forms.ToolStripButton BackPage;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -410,8 +410,8 @@
         private System.Windows.Forms.ToolStripButton NextPage;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripLabel LblRecordsState;
-        private Bunifu.Framework.UI.BunifuThinButton2 NewRegister;
-        private Bunifu.Framework.UI.BunifuThinButton2 DataList;
-        private Bunifu.Framework.UI.BunifuThinButton2 GenerateReport;
+        private Bunifu.Framework.UI.BunifuThinButton2 ButtonNewRegister;
+        private Bunifu.Framework.UI.BunifuThinButton2 ButtonDataList;
+        private Bunifu.Framework.UI.BunifuThinButton2 ButtonGenerateReport;
     }
 }

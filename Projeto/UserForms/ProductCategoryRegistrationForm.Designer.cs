@@ -29,102 +29,102 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductCategoryRegistrationForm));
-            this.Description = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.DescriptionTitle = new System.Windows.Forms.Label();
-            this.Save = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.ClearFields = new Bunifu.Framework.UI.BunifuThinButton2();
-            ((System.ComponentModel.ISupportInitialize)(this.Description)).BeginInit();
+            this.TextDescription = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.LabelTextDescription = new System.Windows.Forms.Label();
+            this.ButtonSave = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.ButtonClear = new Bunifu.Framework.UI.BunifuThinButton2();
+            ((System.ComponentModel.ISupportInitialize)(this.TextDescription)).BeginInit();
             this.SuspendLayout();
             // 
-            // Description
+            // TextDescription
             // 
-            this.Description.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Description.BackColor = System.Drawing.Color.White;
-            this.Description.BeforeTouchSize = new System.Drawing.Size(504, 26);
-            this.Description.BorderColor = System.Drawing.Color.DarkGray;
-            this.Description.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Description.CanOverrideStyle = true;
-            this.Description.CausesValidation = false;
-            this.Description.CornerRadius = 1;
-            this.Description.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.Description.Font = new System.Drawing.Font("Calibri Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Description.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.Description.Location = new System.Drawing.Point(35, 55);
-            this.Description.MaxLength = 2000;
-            this.Description.MinimumSize = new System.Drawing.Size(16, 12);
-            this.Description.Name = "Description";
-            this.Description.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Managed;
-            this.Description.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Managed;
-            this.Description.Size = new System.Drawing.Size(504, 26);
-            this.Description.TabIndex = 214;
-            this.Description.Tag = "";
-            this.Description.ThemeName = "Default";
-            this.Description.ThemesEnabled = false;
+            this.TextDescription.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TextDescription.BackColor = System.Drawing.Color.White;
+            this.TextDescription.BeforeTouchSize = new System.Drawing.Size(504, 26);
+            this.TextDescription.BorderColor = System.Drawing.Color.DarkGray;
+            this.TextDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextDescription.CanOverrideStyle = true;
+            this.TextDescription.CausesValidation = false;
+            this.TextDescription.CornerRadius = 1;
+            this.TextDescription.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.TextDescription.Font = new System.Drawing.Font("Calibri Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.TextDescription.Location = new System.Drawing.Point(35, 55);
+            this.TextDescription.MaxLength = 2000;
+            this.TextDescription.MinimumSize = new System.Drawing.Size(16, 12);
+            this.TextDescription.Name = "TextDescription";
+            this.TextDescription.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Managed;
+            this.TextDescription.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Managed;
+            this.TextDescription.Size = new System.Drawing.Size(504, 26);
+            this.TextDescription.TabIndex = 214;
+            this.TextDescription.Tag = "";
+            this.TextDescription.ThemeName = "Default";
+            this.TextDescription.ThemesEnabled = false;
             // 
-            // DescriptionTitle
+            // LabelTextDescription
             // 
-            this.DescriptionTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.DescriptionTitle.AutoSize = true;
-            this.DescriptionTitle.Font = new System.Drawing.Font("Calibri Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DescriptionTitle.Location = new System.Drawing.Point(32, 38);
-            this.DescriptionTitle.Name = "DescriptionTitle";
-            this.DescriptionTitle.Size = new System.Drawing.Size(69, 18);
-            this.DescriptionTitle.TabIndex = 215;
-            this.DescriptionTitle.Text = "Descrição:";
+            this.LabelTextDescription.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.LabelTextDescription.AutoSize = true;
+            this.LabelTextDescription.Font = new System.Drawing.Font("Calibri Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelTextDescription.Location = new System.Drawing.Point(32, 38);
+            this.LabelTextDescription.Name = "LabelTextDescription";
+            this.LabelTextDescription.Size = new System.Drawing.Size(69, 18);
+            this.LabelTextDescription.TabIndex = 215;
+            this.LabelTextDescription.Text = "Descrição:";
             // 
-            // Save
+            // ButtonSave
             // 
-            this.Save.ActiveBorderThickness = 1;
-            this.Save.ActiveCornerRadius = 10;
-            this.Save.ActiveFillColor = System.Drawing.SystemColors.Desktop;
-            this.Save.ActiveForecolor = System.Drawing.Color.White;
-            this.Save.ActiveLineColor = System.Drawing.SystemColors.Desktop;
-            this.Save.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Save.BackColor = System.Drawing.Color.White;
-            this.Save.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Save.BackgroundImage")));
-            this.Save.ButtonText = "Salvar";
-            this.Save.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Save.Font = new System.Drawing.Font("Calibri Light", 14F);
-            this.Save.ForeColor = System.Drawing.Color.SeaGreen;
-            this.Save.IdleBorderThickness = 1;
-            this.Save.IdleCornerRadius = 10;
-            this.Save.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
-            this.Save.IdleForecolor = System.Drawing.Color.White;
-            this.Save.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
-            this.Save.Location = new System.Drawing.Point(35, 89);
-            this.Save.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Save.Name = "Save";
-            this.Save.Size = new System.Drawing.Size(97, 43);
-            this.Save.TabIndex = 224;
-            this.Save.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Save.Click += new System.EventHandler(this.Save_Click);
+            this.ButtonSave.ActiveBorderThickness = 1;
+            this.ButtonSave.ActiveCornerRadius = 10;
+            this.ButtonSave.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonSave.ActiveForecolor = System.Drawing.Color.White;
+            this.ButtonSave.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonSave.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ButtonSave.BackColor = System.Drawing.Color.White;
+            this.ButtonSave.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonSave.BackgroundImage")));
+            this.ButtonSave.ButtonText = "Salvar";
+            this.ButtonSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonSave.Font = new System.Drawing.Font("Calibri Light", 14F);
+            this.ButtonSave.ForeColor = System.Drawing.Color.SeaGreen;
+            this.ButtonSave.IdleBorderThickness = 1;
+            this.ButtonSave.IdleCornerRadius = 10;
+            this.ButtonSave.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonSave.IdleForecolor = System.Drawing.Color.White;
+            this.ButtonSave.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonSave.Location = new System.Drawing.Point(35, 89);
+            this.ButtonSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ButtonSave.Name = "ButtonSave";
+            this.ButtonSave.Size = new System.Drawing.Size(97, 43);
+            this.ButtonSave.TabIndex = 224;
+            this.ButtonSave.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ButtonSave.Click += new System.EventHandler(this.ButtonSave_Click);
             // 
-            // ClearFields
+            // ButtonClear
             // 
-            this.ClearFields.ActiveBorderThickness = 1;
-            this.ClearFields.ActiveCornerRadius = 10;
-            this.ClearFields.ActiveFillColor = System.Drawing.SystemColors.Desktop;
-            this.ClearFields.ActiveForecolor = System.Drawing.Color.White;
-            this.ClearFields.ActiveLineColor = System.Drawing.SystemColors.Desktop;
-            this.ClearFields.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ClearFields.BackColor = System.Drawing.Color.White;
-            this.ClearFields.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ClearFields.BackgroundImage")));
-            this.ClearFields.ButtonText = "Limpar";
-            this.ClearFields.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ClearFields.Font = new System.Drawing.Font("Calibri Light", 14F);
-            this.ClearFields.ForeColor = System.Drawing.Color.SeaGreen;
-            this.ClearFields.IdleBorderThickness = 1;
-            this.ClearFields.IdleCornerRadius = 10;
-            this.ClearFields.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
-            this.ClearFields.IdleForecolor = System.Drawing.Color.White;
-            this.ClearFields.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
-            this.ClearFields.Location = new System.Drawing.Point(136, 89);
-            this.ClearFields.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ClearFields.Name = "ClearFields";
-            this.ClearFields.Size = new System.Drawing.Size(97, 43);
-            this.ClearFields.TabIndex = 223;
-            this.ClearFields.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.ClearFields.Click += new System.EventHandler(this.ClearFields_Click);
+            this.ButtonClear.ActiveBorderThickness = 1;
+            this.ButtonClear.ActiveCornerRadius = 10;
+            this.ButtonClear.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonClear.ActiveForecolor = System.Drawing.Color.White;
+            this.ButtonClear.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonClear.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ButtonClear.BackColor = System.Drawing.Color.White;
+            this.ButtonClear.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonClear.BackgroundImage")));
+            this.ButtonClear.ButtonText = "Limpar";
+            this.ButtonClear.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonClear.Font = new System.Drawing.Font("Calibri Light", 14F);
+            this.ButtonClear.ForeColor = System.Drawing.Color.SeaGreen;
+            this.ButtonClear.IdleBorderThickness = 1;
+            this.ButtonClear.IdleCornerRadius = 10;
+            this.ButtonClear.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonClear.IdleForecolor = System.Drawing.Color.White;
+            this.ButtonClear.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonClear.Location = new System.Drawing.Point(136, 89);
+            this.ButtonClear.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ButtonClear.Name = "ButtonClear";
+            this.ButtonClear.Size = new System.Drawing.Size(97, 43);
+            this.ButtonClear.TabIndex = 223;
+            this.ButtonClear.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ButtonClear.Click += new System.EventHandler(this.ButtonClear_Click);
             // 
             // ProductCategoryRegistrationForm
             // 
@@ -132,23 +132,24 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(571, 178);
-            this.Controls.Add(this.Save);
-            this.Controls.Add(this.ClearFields);
-            this.Controls.Add(this.Description);
-            this.Controls.Add(this.DescriptionTitle);
+            this.Controls.Add(this.ButtonSave);
+            this.Controls.Add(this.ButtonClear);
+            this.Controls.Add(this.TextDescription);
+            this.Controls.Add(this.LabelTextDescription);
             this.MinimumSize = new System.Drawing.Size(587, 217);
             this.Name = "ProductCategoryRegistrationForm";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            ((System.ComponentModel.ISupportInitialize)(this.Description)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextDescription)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        public Syncfusion.Windows.Forms.Tools.TextBoxExt Description;
-        private System.Windows.Forms.Label DescriptionTitle;
-        private Bunifu.Framework.UI.BunifuThinButton2 Save;
-        private Bunifu.Framework.UI.BunifuThinButton2 ClearFields;
+        public Syncfusion.Windows.Forms.Tools.TextBoxExt TextDescription;
+        private System.Windows.Forms.Label LabelTextDescription;
+        private Bunifu.Framework.UI.BunifuThinButton2 ButtonSave;
+        private Bunifu.Framework.UI.BunifuThinButton2 ButtonClear;
     }
 }

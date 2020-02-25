@@ -32,15 +32,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BackupSaveForm));
             this.MainTabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.OpenDirectory = new Syncfusion.Windows.Forms.ButtonAdv();
-            this.BackupFolderPath = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.GenerateBackup = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.ButtonOpenDirectory = new Syncfusion.Windows.Forms.ButtonAdv();
+            this.TextBackupFolderPath = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.ButtonGenerateBackup = new Bunifu.Framework.UI.BunifuThinButton2();
             this.label1 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.MainTabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BackupFolderPath)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextBackupFolderPath)).BeginInit();
             this.SuspendLayout();
             // 
             // MainTabControl
@@ -55,9 +55,9 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.OpenDirectory);
-            this.tabPage1.Controls.Add(this.BackupFolderPath);
-            this.tabPage1.Controls.Add(this.GenerateBackup);
+            this.tabPage1.Controls.Add(this.ButtonOpenDirectory);
+            this.tabPage1.Controls.Add(this.TextBackupFolderPath);
+            this.tabPage1.Controls.Add(this.ButtonGenerateBackup);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.label21);
             this.tabPage1.Controls.Add(this.label22);
@@ -69,78 +69,78 @@
             this.tabPage1.Text = "BackUp";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // OpenDirectory
+            // ButtonOpenDirectory
             // 
-            this.OpenDirectory.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.OpenDirectory.Appearance = Syncfusion.Windows.Forms.ButtonAppearance.Office2016White;
-            this.OpenDirectory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
-            this.OpenDirectory.BeforeTouchSize = new System.Drawing.Size(37, 27);
-            this.OpenDirectory.ButtonType = Syncfusion.Windows.Forms.Tools.ButtonTypes.Redo;
-            this.OpenDirectory.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.OpenDirectory.KeepFocusRectangle = false;
-            this.OpenDirectory.Location = new System.Drawing.Point(539, 275);
-            this.OpenDirectory.Name = "OpenDirectory";
-            this.OpenDirectory.Size = new System.Drawing.Size(37, 27);
-            this.OpenDirectory.TabIndex = 211;
-            this.OpenDirectory.Text = "buttonAdv1";
-            this.OpenDirectory.ThemeName = "Office2016White";
-            this.OpenDirectory.UseVisualStyle = true;
-            this.OpenDirectory.Click += new System.EventHandler(this.OpenDirectory_Click);
+            this.ButtonOpenDirectory.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ButtonOpenDirectory.Appearance = Syncfusion.Windows.Forms.ButtonAppearance.Office2016White;
+            this.ButtonOpenDirectory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
+            this.ButtonOpenDirectory.BeforeTouchSize = new System.Drawing.Size(37, 27);
+            this.ButtonOpenDirectory.ButtonType = Syncfusion.Windows.Forms.Tools.ButtonTypes.Redo;
+            this.ButtonOpenDirectory.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.ButtonOpenDirectory.KeepFocusRectangle = false;
+            this.ButtonOpenDirectory.Location = new System.Drawing.Point(539, 275);
+            this.ButtonOpenDirectory.Name = "ButtonOpenDirectory";
+            this.ButtonOpenDirectory.Size = new System.Drawing.Size(37, 27);
+            this.ButtonOpenDirectory.TabIndex = 211;
+            this.ButtonOpenDirectory.Text = "buttonAdv1";
+            this.ButtonOpenDirectory.ThemeName = "Office2016White";
+            this.ButtonOpenDirectory.UseVisualStyle = true;
+            this.ButtonOpenDirectory.Click += new System.EventHandler(this.ButtonOpenDirectory_Click);
             // 
-            // BackupFolderPath
+            // TextBackupFolderPath
             // 
-            this.BackupFolderPath.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BackupFolderPath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.BackupFolderPath.BeforeTouchSize = new System.Drawing.Size(391, 27);
-            this.BackupFolderPath.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
-            this.BackupFolderPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.BackupFolderPath.CanOverrideStyle = true;
-            this.BackupFolderPath.CausesValidation = false;
-            this.BackupFolderPath.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.BackupFolderPath.Enabled = false;
-            this.BackupFolderPath.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BackupFolderPath.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.BackupFolderPath.Location = new System.Drawing.Point(150, 275);
-            this.BackupFolderPath.MaxLength = 50;
-            this.BackupFolderPath.Metrocolor = System.Drawing.Color.DodgerBlue;
-            this.BackupFolderPath.MinimumSize = new System.Drawing.Size(16, 12);
-            this.BackupFolderPath.Multiline = true;
-            this.BackupFolderPath.Name = "BackupFolderPath";
-            this.BackupFolderPath.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
-            this.BackupFolderPath.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
-            this.BackupFolderPath.Size = new System.Drawing.Size(391, 27);
-            this.BackupFolderPath.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016Colorful;
-            this.BackupFolderPath.TabIndex = 210;
-            this.BackupFolderPath.Tag = "";
-            this.BackupFolderPath.ThemeName = "Office2016Colorful";
-            this.BackupFolderPath.ThemesEnabled = false;
+            this.TextBackupFolderPath.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TextBackupFolderPath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.TextBackupFolderPath.BeforeTouchSize = new System.Drawing.Size(391, 27);
+            this.TextBackupFolderPath.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
+            this.TextBackupFolderPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextBackupFolderPath.CanOverrideStyle = true;
+            this.TextBackupFolderPath.CausesValidation = false;
+            this.TextBackupFolderPath.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.TextBackupFolderPath.Enabled = false;
+            this.TextBackupFolderPath.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextBackupFolderPath.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.TextBackupFolderPath.Location = new System.Drawing.Point(150, 275);
+            this.TextBackupFolderPath.MaxLength = 50;
+            this.TextBackupFolderPath.Metrocolor = System.Drawing.Color.DodgerBlue;
+            this.TextBackupFolderPath.MinimumSize = new System.Drawing.Size(16, 12);
+            this.TextBackupFolderPath.Multiline = true;
+            this.TextBackupFolderPath.Name = "TextBackupFolderPath";
+            this.TextBackupFolderPath.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
+            this.TextBackupFolderPath.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
+            this.TextBackupFolderPath.Size = new System.Drawing.Size(391, 27);
+            this.TextBackupFolderPath.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016Colorful;
+            this.TextBackupFolderPath.TabIndex = 210;
+            this.TextBackupFolderPath.Tag = "";
+            this.TextBackupFolderPath.ThemeName = "Office2016Colorful";
+            this.TextBackupFolderPath.ThemesEnabled = false;
             // 
-            // GenerateBackup
+            // ButtonGenerateBackup
             // 
-            this.GenerateBackup.ActiveBorderThickness = 1;
-            this.GenerateBackup.ActiveCornerRadius = 10;
-            this.GenerateBackup.ActiveFillColor = System.Drawing.Color.MediumSeaGreen;
-            this.GenerateBackup.ActiveForecolor = System.Drawing.Color.White;
-            this.GenerateBackup.ActiveLineColor = System.Drawing.Color.MediumSeaGreen;
-            this.GenerateBackup.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.GenerateBackup.BackColor = System.Drawing.Color.Transparent;
-            this.GenerateBackup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("GenerateBackup.BackgroundImage")));
-            this.GenerateBackup.ButtonText = "Gerar Backup";
-            this.GenerateBackup.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.GenerateBackup.Font = new System.Drawing.Font("Calibri Light", 14F);
-            this.GenerateBackup.ForeColor = System.Drawing.Color.White;
-            this.GenerateBackup.IdleBorderThickness = 1;
-            this.GenerateBackup.IdleCornerRadius = 10;
-            this.GenerateBackup.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
-            this.GenerateBackup.IdleForecolor = System.Drawing.Color.White;
-            this.GenerateBackup.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
-            this.GenerateBackup.Location = new System.Drawing.Point(148, 310);
-            this.GenerateBackup.Margin = new System.Windows.Forms.Padding(5);
-            this.GenerateBackup.Name = "GenerateBackup";
-            this.GenerateBackup.Size = new System.Drawing.Size(150, 41);
-            this.GenerateBackup.TabIndex = 209;
-            this.GenerateBackup.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.GenerateBackup.Click += new System.EventHandler(this.GenerateBackup_Click);
+            this.ButtonGenerateBackup.ActiveBorderThickness = 1;
+            this.ButtonGenerateBackup.ActiveCornerRadius = 10;
+            this.ButtonGenerateBackup.ActiveFillColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonGenerateBackup.ActiveForecolor = System.Drawing.Color.White;
+            this.ButtonGenerateBackup.ActiveLineColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonGenerateBackup.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ButtonGenerateBackup.BackColor = System.Drawing.Color.Transparent;
+            this.ButtonGenerateBackup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonGenerateBackup.BackgroundImage")));
+            this.ButtonGenerateBackup.ButtonText = "Gerar Backup";
+            this.ButtonGenerateBackup.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonGenerateBackup.Font = new System.Drawing.Font("Calibri Light", 14F);
+            this.ButtonGenerateBackup.ForeColor = System.Drawing.Color.White;
+            this.ButtonGenerateBackup.IdleBorderThickness = 1;
+            this.ButtonGenerateBackup.IdleCornerRadius = 10;
+            this.ButtonGenerateBackup.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonGenerateBackup.IdleForecolor = System.Drawing.Color.White;
+            this.ButtonGenerateBackup.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonGenerateBackup.Location = new System.Drawing.Point(148, 310);
+            this.ButtonGenerateBackup.Margin = new System.Windows.Forms.Padding(5);
+            this.ButtonGenerateBackup.Name = "ButtonGenerateBackup";
+            this.ButtonGenerateBackup.Size = new System.Drawing.Size(150, 41);
+            this.ButtonGenerateBackup.TabIndex = 209;
+            this.ButtonGenerateBackup.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ButtonGenerateBackup.Click += new System.EventHandler(this.ButtonGenerateBackup_Click);
             // 
             // label1
             // 
@@ -198,7 +198,7 @@
             this.MainTabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BackupFolderPath)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextBackupFolderPath)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -210,8 +210,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
-        private Bunifu.Framework.UI.BunifuThinButton2 GenerateBackup;
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt BackupFolderPath;
-        private Syncfusion.Windows.Forms.ButtonAdv OpenDirectory;
+        private Bunifu.Framework.UI.BunifuThinButton2 ButtonGenerateBackup;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt TextBackupFolderPath;
+        private Syncfusion.Windows.Forms.ButtonAdv ButtonOpenDirectory;
     }
 }

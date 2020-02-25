@@ -8,24 +8,34 @@ namespace DimStock.UserForms
 {
     public partial class ProductCategoryRegistrationForm : Form
     {
-        public int Id = 0;
+        #region Builder
 
         public ProductCategoryRegistrationForm()
         {
             InitializeComponent();
         }
 
-        private void Save_Click(object sender, EventArgs e)
+        #endregion
+
+        #region Properties
+
+        public int Id = 0;
+
+        #endregion
+
+        #region Button
+
+        private void ButtonSave_Click(object sender, EventArgs e)
         {
             try
             {
                 if (Id > 0)
                 {
-                    Modify();
+                    Edit();
                 }
                 else
                 {
-                    Register();
+                    Save();
                 }
             }
             catch (Exception ex)
@@ -34,21 +44,25 @@ namespace DimStock.UserForms
             }
         }
 
-        private void ClearFields_Click(object sender, EventArgs e)
+        private void ButtonClear_Click(object sender, EventArgs e)
         {
             CallAllResets();
         }
 
-        private void Register()
+        #endregion
+
+        #region Function
+
+        private void Save()
         {
             if (ValidateData() == true)
             {
                 var category = new ProductCategory()
                 {
-                    Description = Description.Text
+                    Description = TextDescription.Text
                 };
 
-                if (category.Register() == false)
+                if (category.Save() == false)
                 {
                     MessageBox.Show(AxlMessageNotifier.Message, "ERRO");
                     return;
@@ -57,20 +71,20 @@ namespace DimStock.UserForms
                 MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                Description.Text = string.Empty;
+                TextDescription.Text = string.Empty;
             }
         }
 
-        private void Modify()
+        private void Edit()
         {
             if (ValidateData() == true)
             {
                 var category = new ProductCategory()
                 {
-                    Description = Description.Text
+                    Description = TextDescription.Text
                 };
 
-                if (category.Modify(Id) == false)
+                if (category.Edit(Id) == false)
                 {
                     MessageBox.Show(AxlMessageNotifier.Message, "ERRO");
                     return;
@@ -81,7 +95,7 @@ namespace DimStock.UserForms
             }
         }
 
-        private void ResetVariables()
+        private void ResetProperties()
         {
             Id = 0;
         }
@@ -96,7 +110,7 @@ namespace DimStock.UserForms
                         ctl.Text = string.Empty;
                 }
 
-                Description.Select();
+                TextDescription.Select();
             }
             catch (Exception ex)
             {
@@ -106,13 +120,13 @@ namespace DimStock.UserForms
 
         private void CallAllResets()
         {
-            ResetVariables();
+            ResetProperties();
             ResetControls();
         }
 
         private bool ValidateData()
         {
-            if (Description.Text == string.Empty || Description.Text == null)
+            if (TextDescription.Text == string.Empty || TextDescription.Text == null)
             {
                 MessageBox.Show("Descreva a categoria!", "OBRIGATÓRIO",
                 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -122,5 +136,7 @@ namespace DimStock.UserForms
 
             return true;
         }
+
+        #endregion
     }
 }

@@ -30,15 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StockMovementListingForm));
-            this.MovementStockDataList = new System.Windows.Forms.DataGridView();
+            this.DatagridMovement = new System.Windows.Forms.DataGridView();
             this.SearchTimer = new System.Windows.Forms.Timer(this.components);
-            this.GifLoading = new System.Windows.Forms.PictureBox();
+            this.PictureLoading = new System.Windows.Forms.PictureBox();
             this.OperationTypeTitle = new System.Windows.Forms.Label();
             this.OperationSituationTitle = new System.Windows.Forms.Label();
-            this.OperationSituation = new Syncfusion.WinForms.ListView.SfComboBox();
-            this.OperationType = new Syncfusion.WinForms.ListView.SfComboBox();
+            this.ComboBoxOperationSituation = new Syncfusion.WinForms.ListView.SfComboBox();
+            this.ComboBoxOperationType = new Syncfusion.WinForms.ListView.SfComboBox();
             this.StockMovementIdTitle = new System.Windows.Forms.Label();
-            this.ClearSearchFields = new System.Windows.Forms.LinkLabel();
+            this.ButtonClearSearchFields = new System.Windows.Forms.LinkLabel();
             this.BindingPagination = new System.Windows.Forms.BindingNavigator(this.components);
             this.BackPage = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -47,54 +47,54 @@
             this.NextPage = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.LblRecordsState = new System.Windows.Forms.ToolStripLabel();
-            this.RecordsByPage = new Syncfusion.WinForms.ListView.SfComboBox();
+            this.ComboBoxRecordsByPage = new Syncfusion.WinForms.ListView.SfComboBox();
             this.RecordsOfPageTitle = new System.Windows.Forms.Label();
             this.StockMovementMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MovementEntrie_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MovementOutPut_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.RegisterNew = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.DataList = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.SearchByOperationCode = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            ((System.ComponentModel.ISupportInitialize)(this.MovementStockDataList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GifLoading)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OperationSituation)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OperationType)).BeginInit();
+            this.ButonRegisterNew = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.ButtonDataList = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.TextSearchByOperationCode = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            ((System.ComponentModel.ISupportInitialize)(this.DatagridMovement)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureLoading)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ComboBoxOperationSituation)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ComboBoxOperationType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BindingPagination)).BeginInit();
             this.BindingPagination.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RecordsByPage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ComboBoxRecordsByPage)).BeginInit();
             this.StockMovementMenuStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SearchByOperationCode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextSearchByOperationCode)).BeginInit();
             this.SuspendLayout();
             // 
-            // MovementStockDataList
+            // DatagridMovement
             // 
-            this.MovementStockDataList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.DatagridMovement.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.MovementStockDataList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.MovementStockDataList.Location = new System.Drawing.Point(21, 139);
-            this.MovementStockDataList.Name = "MovementStockDataList";
-            this.MovementStockDataList.Size = new System.Drawing.Size(895, 384);
-            this.MovementStockDataList.TabIndex = 0;
-            this.MovementStockDataList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MovementStockDataList_CellClick);
-            this.MovementStockDataList.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.MovementStockDataList_CellMouseEnter);
+            this.DatagridMovement.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DatagridMovement.Location = new System.Drawing.Point(21, 139);
+            this.DatagridMovement.Name = "DatagridMovement";
+            this.DatagridMovement.Size = new System.Drawing.Size(895, 384);
+            this.DatagridMovement.TabIndex = 0;
+            this.DatagridMovement.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DatagridMovement_CellClick);
+            this.DatagridMovement.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DatagridMovement_CellMouseEnter);
             // 
             // SearchTimer
             // 
             this.SearchTimer.Interval = 1000;
             this.SearchTimer.Tick += new System.EventHandler(this.SearchTimer_Tick);
             // 
-            // GifLoading
+            // PictureLoading
             // 
-            this.GifLoading.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.GifLoading.Image = global::DimStock.Properties.Resources.Loading;
-            this.GifLoading.Location = new System.Drawing.Point(393, 238);
-            this.GifLoading.Name = "GifLoading";
-            this.GifLoading.Size = new System.Drawing.Size(135, 135);
-            this.GifLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.GifLoading.TabIndex = 159;
-            this.GifLoading.TabStop = false;
-            this.GifLoading.Visible = false;
+            this.PictureLoading.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.PictureLoading.Image = global::DimStock.Properties.Resources.Loading;
+            this.PictureLoading.Location = new System.Drawing.Point(393, 238);
+            this.PictureLoading.Name = "PictureLoading";
+            this.PictureLoading.Size = new System.Drawing.Size(135, 135);
+            this.PictureLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PictureLoading.TabIndex = 159;
+            this.PictureLoading.TabStop = false;
+            this.PictureLoading.Visible = false;
             // 
             // OperationTypeTitle
             // 
@@ -116,45 +116,45 @@
             this.OperationSituationTitle.TabIndex = 163;
             this.OperationSituationTitle.Text = "Situação:";
             // 
-            // OperationSituation
+            // ComboBoxOperationSituation
             // 
-            this.OperationSituation.BackColor = System.Drawing.Color.White;
-            this.OperationSituation.DropDownStyle = Syncfusion.WinForms.ListView.Enums.DropDownStyle.DropDownList;
-            this.OperationSituation.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OperationSituation.Location = new System.Drawing.Point(21, 106);
-            this.OperationSituation.Name = "OperationSituation";
-            this.OperationSituation.Size = new System.Drawing.Size(109, 27);
-            this.OperationSituation.Style.DropDownButtonStyle.DisabledForeColor = System.Drawing.Color.White;
-            this.OperationSituation.Style.DropDownStyle.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-            this.OperationSituation.Style.EditorStyle.BackColor = System.Drawing.Color.White;
-            this.OperationSituation.Style.EditorStyle.BorderColor = System.Drawing.Color.Gray;
-            this.OperationSituation.Style.EditorStyle.FocusedBorderColor = System.Drawing.Color.White;
-            this.OperationSituation.Style.EditorStyle.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OperationSituation.Style.ReadOnlyEditorStyle.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OperationSituation.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.OperationSituation.Style.TokenStyle.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OperationSituation.TabIndex = 165;
-            this.OperationSituation.SelectedIndexChanged += new System.EventHandler(this.OperationSituation_SelectedIndexChanged);
+            this.ComboBoxOperationSituation.BackColor = System.Drawing.Color.White;
+            this.ComboBoxOperationSituation.DropDownStyle = Syncfusion.WinForms.ListView.Enums.DropDownStyle.DropDownList;
+            this.ComboBoxOperationSituation.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ComboBoxOperationSituation.Location = new System.Drawing.Point(21, 106);
+            this.ComboBoxOperationSituation.Name = "ComboBoxOperationSituation";
+            this.ComboBoxOperationSituation.Size = new System.Drawing.Size(109, 27);
+            this.ComboBoxOperationSituation.Style.DropDownButtonStyle.DisabledForeColor = System.Drawing.Color.White;
+            this.ComboBoxOperationSituation.Style.DropDownStyle.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.ComboBoxOperationSituation.Style.EditorStyle.BackColor = System.Drawing.Color.White;
+            this.ComboBoxOperationSituation.Style.EditorStyle.BorderColor = System.Drawing.Color.Gray;
+            this.ComboBoxOperationSituation.Style.EditorStyle.FocusedBorderColor = System.Drawing.Color.White;
+            this.ComboBoxOperationSituation.Style.EditorStyle.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ComboBoxOperationSituation.Style.ReadOnlyEditorStyle.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ComboBoxOperationSituation.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.ComboBoxOperationSituation.Style.TokenStyle.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ComboBoxOperationSituation.TabIndex = 165;
+            this.ComboBoxOperationSituation.SelectedIndexChanged += new System.EventHandler(this.ComboBoxOperationSituation_SelectedIndexChanged);
             // 
-            // OperationType
+            // ComboBoxOperationType
             // 
-            this.OperationType.BackColor = System.Drawing.Color.White;
-            this.OperationType.DropDownStyle = Syncfusion.WinForms.ListView.Enums.DropDownStyle.DropDownList;
-            this.OperationType.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OperationType.Location = new System.Drawing.Point(134, 106);
-            this.OperationType.Name = "OperationType";
-            this.OperationType.Size = new System.Drawing.Size(115, 27);
-            this.OperationType.Style.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.OperationType.Style.DropDownButtonStyle.DisabledForeColor = System.Drawing.Color.White;
-            this.OperationType.Style.DropDownStyle.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-            this.OperationType.Style.EditorStyle.BackColor = System.Drawing.Color.White;
-            this.OperationType.Style.EditorStyle.FocusedBorderColor = System.Drawing.Color.White;
-            this.OperationType.Style.EditorStyle.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OperationType.Style.ReadOnlyEditorStyle.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OperationType.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.OperationType.Style.TokenStyle.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OperationType.TabIndex = 166;
-            this.OperationType.SelectedIndexChanged += new System.EventHandler(this.OperationType_SelectedIndexChanged);
+            this.ComboBoxOperationType.BackColor = System.Drawing.Color.White;
+            this.ComboBoxOperationType.DropDownStyle = Syncfusion.WinForms.ListView.Enums.DropDownStyle.DropDownList;
+            this.ComboBoxOperationType.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ComboBoxOperationType.Location = new System.Drawing.Point(134, 106);
+            this.ComboBoxOperationType.Name = "ComboBoxOperationType";
+            this.ComboBoxOperationType.Size = new System.Drawing.Size(115, 27);
+            this.ComboBoxOperationType.Style.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ComboBoxOperationType.Style.DropDownButtonStyle.DisabledForeColor = System.Drawing.Color.White;
+            this.ComboBoxOperationType.Style.DropDownStyle.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.ComboBoxOperationType.Style.EditorStyle.BackColor = System.Drawing.Color.White;
+            this.ComboBoxOperationType.Style.EditorStyle.FocusedBorderColor = System.Drawing.Color.White;
+            this.ComboBoxOperationType.Style.EditorStyle.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ComboBoxOperationType.Style.ReadOnlyEditorStyle.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ComboBoxOperationType.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.ComboBoxOperationType.Style.TokenStyle.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ComboBoxOperationType.TabIndex = 166;
+            this.ComboBoxOperationType.SelectedIndexChanged += new System.EventHandler(this.ComboBoxOperationType_SelectedIndexChanged);
             // 
             // StockMovementIdTitle
             // 
@@ -166,18 +166,18 @@
             this.StockMovementIdTitle.TabIndex = 168;
             this.StockMovementIdTitle.Text = "Movimentação Nº :";
             // 
-            // ClearSearchFields
+            // ButtonClearSearchFields
             // 
-            this.ClearSearchFields.AutoSize = true;
-            this.ClearSearchFields.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClearSearchFields.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(87)))), ((int)(((byte)(166)))));
-            this.ClearSearchFields.Location = new System.Drawing.Point(558, 109);
-            this.ClearSearchFields.Name = "ClearSearchFields";
-            this.ClearSearchFields.Size = new System.Drawing.Size(55, 19);
-            this.ClearSearchFields.TabIndex = 170;
-            this.ClearSearchFields.TabStop = true;
-            this.ClearSearchFields.Text = "Limpar";
-            this.ClearSearchFields.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ClearSearchFields_LinkClicked);
+            this.ButtonClearSearchFields.AutoSize = true;
+            this.ButtonClearSearchFields.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonClearSearchFields.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(87)))), ((int)(((byte)(166)))));
+            this.ButtonClearSearchFields.Location = new System.Drawing.Point(558, 109);
+            this.ButtonClearSearchFields.Name = "ButtonClearSearchFields";
+            this.ButtonClearSearchFields.Size = new System.Drawing.Size(55, 19);
+            this.ButtonClearSearchFields.TabIndex = 170;
+            this.ButtonClearSearchFields.TabStop = true;
+            this.ButtonClearSearchFields.Text = "Limpar";
+            this.ButtonClearSearchFields.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ButtonClearSearchFields_LinkClicked);
             // 
             // BindingPagination
             // 
@@ -251,22 +251,22 @@
             this.LblRecordsState.Size = new System.Drawing.Size(110, 22);
             this.LblRecordsState.Text = "0 de 0 registros";
             // 
-            // RecordsByPage
+            // ComboBoxRecordsByPage
             // 
-            this.RecordsByPage.DropDownStyle = Syncfusion.WinForms.ListView.Enums.DropDownStyle.DropDownList;
-            this.RecordsByPage.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RecordsByPage.Location = new System.Drawing.Point(391, 106);
-            this.RecordsByPage.Name = "RecordsByPage";
-            this.RecordsByPage.Size = new System.Drawing.Size(165, 27);
-            this.RecordsByPage.Style.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.RecordsByPage.Style.EditorStyle.DisabledBorderColor = System.Drawing.Color.Transparent;
-            this.RecordsByPage.Style.EditorStyle.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RecordsByPage.Style.ReadOnlyEditorStyle.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RecordsByPage.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.RecordsByPage.Style.TokenStyle.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RecordsByPage.TabIndex = 180;
-            this.RecordsByPage.ToolTipOption.ShadowVisible = false;
-            this.RecordsByPage.SelectedIndexChanged += new System.EventHandler(this.RecordsByPage_SelectedIndexChanged);
+            this.ComboBoxRecordsByPage.DropDownStyle = Syncfusion.WinForms.ListView.Enums.DropDownStyle.DropDownList;
+            this.ComboBoxRecordsByPage.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ComboBoxRecordsByPage.Location = new System.Drawing.Point(391, 106);
+            this.ComboBoxRecordsByPage.Name = "ComboBoxRecordsByPage";
+            this.ComboBoxRecordsByPage.Size = new System.Drawing.Size(165, 27);
+            this.ComboBoxRecordsByPage.Style.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ComboBoxRecordsByPage.Style.EditorStyle.DisabledBorderColor = System.Drawing.Color.Transparent;
+            this.ComboBoxRecordsByPage.Style.EditorStyle.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ComboBoxRecordsByPage.Style.ReadOnlyEditorStyle.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ComboBoxRecordsByPage.Style.TokenStyle.CloseButtonBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.ComboBoxRecordsByPage.Style.TokenStyle.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ComboBoxRecordsByPage.TabIndex = 180;
+            this.ComboBoxRecordsByPage.ToolTipOption.ShadowVisible = false;
+            this.ComboBoxRecordsByPage.SelectedIndexChanged += new System.EventHandler(this.ComboBoxRecordsByPage_SelectedIndexChanged);
             // 
             // RecordsOfPageTitle
             // 
@@ -300,83 +300,83 @@
             this.MovementOutPut_ToolStripMenuItem.Text = "Saída";
             this.MovementOutPut_ToolStripMenuItem.Click += new System.EventHandler(this.MovementOutPut_ToolStripMenuItem_Click);
             // 
-            // RegisterNew
+            // ButonRegisterNew
             // 
-            this.RegisterNew.ActiveBorderThickness = 1;
-            this.RegisterNew.ActiveCornerRadius = 10;
-            this.RegisterNew.ActiveFillColor = System.Drawing.SystemColors.Desktop;
-            this.RegisterNew.ActiveForecolor = System.Drawing.Color.White;
-            this.RegisterNew.ActiveLineColor = System.Drawing.SystemColors.Desktop;
-            this.RegisterNew.BackColor = System.Drawing.Color.White;
-            this.RegisterNew.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RegisterNew.BackgroundImage")));
-            this.RegisterNew.ButtonText = "Nova";
-            this.RegisterNew.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.RegisterNew.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RegisterNew.ForeColor = System.Drawing.Color.SeaGreen;
-            this.RegisterNew.IdleBorderThickness = 1;
-            this.RegisterNew.IdleCornerRadius = 10;
-            this.RegisterNew.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
-            this.RegisterNew.IdleForecolor = System.Drawing.Color.White;
-            this.RegisterNew.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
-            this.RegisterNew.Location = new System.Drawing.Point(20, 19);
-            this.RegisterNew.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.RegisterNew.Name = "RegisterNew";
-            this.RegisterNew.Size = new System.Drawing.Size(97, 43);
-            this.RegisterNew.TabIndex = 216;
-            this.RegisterNew.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.RegisterNew.Click += new System.EventHandler(this.RegisterNew_Click);
+            this.ButonRegisterNew.ActiveBorderThickness = 1;
+            this.ButonRegisterNew.ActiveCornerRadius = 10;
+            this.ButonRegisterNew.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.ButonRegisterNew.ActiveForecolor = System.Drawing.Color.White;
+            this.ButonRegisterNew.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.ButonRegisterNew.BackColor = System.Drawing.Color.White;
+            this.ButonRegisterNew.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButonRegisterNew.BackgroundImage")));
+            this.ButonRegisterNew.ButtonText = "Nova";
+            this.ButonRegisterNew.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButonRegisterNew.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButonRegisterNew.ForeColor = System.Drawing.Color.SeaGreen;
+            this.ButonRegisterNew.IdleBorderThickness = 1;
+            this.ButonRegisterNew.IdleCornerRadius = 10;
+            this.ButonRegisterNew.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButonRegisterNew.IdleForecolor = System.Drawing.Color.White;
+            this.ButonRegisterNew.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButonRegisterNew.Location = new System.Drawing.Point(20, 19);
+            this.ButonRegisterNew.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ButonRegisterNew.Name = "ButonRegisterNew";
+            this.ButonRegisterNew.Size = new System.Drawing.Size(97, 43);
+            this.ButonRegisterNew.TabIndex = 216;
+            this.ButonRegisterNew.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ButonRegisterNew.Click += new System.EventHandler(this.ButtonRegisterNew_Click);
             // 
-            // DataList
+            // ButtonDataList
             // 
-            this.DataList.ActiveBorderThickness = 1;
-            this.DataList.ActiveCornerRadius = 10;
-            this.DataList.ActiveFillColor = System.Drawing.SystemColors.Desktop;
-            this.DataList.ActiveForecolor = System.Drawing.Color.White;
-            this.DataList.ActiveLineColor = System.Drawing.SystemColors.Desktop;
-            this.DataList.BackColor = System.Drawing.Color.White;
-            this.DataList.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DataList.BackgroundImage")));
-            this.DataList.ButtonText = "Listar";
-            this.DataList.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.DataList.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DataList.ForeColor = System.Drawing.Color.SeaGreen;
-            this.DataList.IdleBorderThickness = 1;
-            this.DataList.IdleCornerRadius = 10;
-            this.DataList.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
-            this.DataList.IdleForecolor = System.Drawing.Color.White;
-            this.DataList.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
-            this.DataList.Location = new System.Drawing.Point(119, 19);
-            this.DataList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.DataList.Name = "DataList";
-            this.DataList.Size = new System.Drawing.Size(97, 43);
-            this.DataList.TabIndex = 217;
-            this.DataList.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.DataList.Click += new System.EventHandler(this.DataList_Click);
+            this.ButtonDataList.ActiveBorderThickness = 1;
+            this.ButtonDataList.ActiveCornerRadius = 10;
+            this.ButtonDataList.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonDataList.ActiveForecolor = System.Drawing.Color.White;
+            this.ButtonDataList.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonDataList.BackColor = System.Drawing.Color.White;
+            this.ButtonDataList.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonDataList.BackgroundImage")));
+            this.ButtonDataList.ButtonText = "Listar";
+            this.ButtonDataList.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonDataList.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonDataList.ForeColor = System.Drawing.Color.SeaGreen;
+            this.ButtonDataList.IdleBorderThickness = 1;
+            this.ButtonDataList.IdleCornerRadius = 10;
+            this.ButtonDataList.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonDataList.IdleForecolor = System.Drawing.Color.White;
+            this.ButtonDataList.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonDataList.Location = new System.Drawing.Point(119, 19);
+            this.ButtonDataList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ButtonDataList.Name = "ButtonDataList";
+            this.ButtonDataList.Size = new System.Drawing.Size(97, 43);
+            this.ButtonDataList.TabIndex = 217;
+            this.ButtonDataList.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ButtonDataList.Click += new System.EventHandler(this.ButtonDataList_Click);
             // 
-            // SearchByOperationCode
+            // TextSearchByOperationCode
             // 
-            this.SearchByOperationCode.BackColor = System.Drawing.Color.White;
-            this.SearchByOperationCode.BeforeTouchSize = new System.Drawing.Size(132, 28);
-            this.SearchByOperationCode.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.SearchByOperationCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SearchByOperationCode.CanOverrideStyle = true;
-            this.SearchByOperationCode.CausesValidation = false;
-            this.SearchByOperationCode.CornerRadius = 1;
-            this.SearchByOperationCode.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.SearchByOperationCode.Font = new System.Drawing.Font("Calibri Light", 12F);
-            this.SearchByOperationCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.SearchByOperationCode.Location = new System.Drawing.Point(253, 105);
-            this.SearchByOperationCode.MaxLength = 2000;
-            this.SearchByOperationCode.MinimumSize = new System.Drawing.Size(16, 12);
-            this.SearchByOperationCode.Multiline = true;
-            this.SearchByOperationCode.Name = "SearchByOperationCode";
-            this.SearchByOperationCode.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Managed;
-            this.SearchByOperationCode.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Managed;
-            this.SearchByOperationCode.Size = new System.Drawing.Size(132, 28);
-            this.SearchByOperationCode.TabIndex = 220;
-            this.SearchByOperationCode.Tag = "";
-            this.SearchByOperationCode.ThemeName = "Default";
-            this.SearchByOperationCode.ThemesEnabled = false;
-            this.SearchByOperationCode.TextChanged += new System.EventHandler(this.SearchByOperationCode_TextChanged);
+            this.TextSearchByOperationCode.BackColor = System.Drawing.Color.White;
+            this.TextSearchByOperationCode.BeforeTouchSize = new System.Drawing.Size(132, 28);
+            this.TextSearchByOperationCode.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TextSearchByOperationCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextSearchByOperationCode.CanOverrideStyle = true;
+            this.TextSearchByOperationCode.CausesValidation = false;
+            this.TextSearchByOperationCode.CornerRadius = 1;
+            this.TextSearchByOperationCode.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.TextSearchByOperationCode.Font = new System.Drawing.Font("Calibri Light", 12F);
+            this.TextSearchByOperationCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.TextSearchByOperationCode.Location = new System.Drawing.Point(253, 105);
+            this.TextSearchByOperationCode.MaxLength = 2000;
+            this.TextSearchByOperationCode.MinimumSize = new System.Drawing.Size(16, 12);
+            this.TextSearchByOperationCode.Multiline = true;
+            this.TextSearchByOperationCode.Name = "TextSearchByOperationCode";
+            this.TextSearchByOperationCode.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Managed;
+            this.TextSearchByOperationCode.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Managed;
+            this.TextSearchByOperationCode.Size = new System.Drawing.Size(132, 28);
+            this.TextSearchByOperationCode.TabIndex = 220;
+            this.TextSearchByOperationCode.Tag = "";
+            this.TextSearchByOperationCode.ThemeName = "Default";
+            this.TextSearchByOperationCode.ThemesEnabled = false;
+            this.TextSearchByOperationCode.TextChanged += new System.EventHandler(this.TextSearchByOperationCode_TextChanged);
             // 
             // StockMovementListingForm
             // 
@@ -384,33 +384,33 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(928, 551);
-            this.Controls.Add(this.SearchByOperationCode);
-            this.Controls.Add(this.DataList);
-            this.Controls.Add(this.RegisterNew);
-            this.Controls.Add(this.GifLoading);
-            this.Controls.Add(this.RecordsByPage);
+            this.Controls.Add(this.TextSearchByOperationCode);
+            this.Controls.Add(this.ButtonDataList);
+            this.Controls.Add(this.ButonRegisterNew);
+            this.Controls.Add(this.PictureLoading);
+            this.Controls.Add(this.ComboBoxRecordsByPage);
             this.Controls.Add(this.RecordsOfPageTitle);
             this.Controls.Add(this.BindingPagination);
-            this.Controls.Add(this.ClearSearchFields);
+            this.Controls.Add(this.ButtonClearSearchFields);
             this.Controls.Add(this.StockMovementIdTitle);
-            this.Controls.Add(this.OperationType);
-            this.Controls.Add(this.OperationSituation);
+            this.Controls.Add(this.ComboBoxOperationType);
+            this.Controls.Add(this.ComboBoxOperationSituation);
             this.Controls.Add(this.OperationSituationTitle);
             this.Controls.Add(this.OperationTypeTitle);
-            this.Controls.Add(this.MovementStockDataList);
+            this.Controls.Add(this.DatagridMovement);
             this.MinimumSize = new System.Drawing.Size(944, 590);
             this.Name = "StockMovementListingForm";
             this.Load += new System.EventHandler(this.StockMovementListingForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.MovementStockDataList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GifLoading)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OperationSituation)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OperationType)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DatagridMovement)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureLoading)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ComboBoxOperationSituation)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ComboBoxOperationType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BindingPagination)).EndInit();
             this.BindingPagination.ResumeLayout(false);
             this.BindingPagination.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RecordsByPage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ComboBoxRecordsByPage)).EndInit();
             this.StockMovementMenuStrip.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.SearchByOperationCode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextSearchByOperationCode)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -418,15 +418,15 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView MovementStockDataList;
+        private System.Windows.Forms.DataGridView DatagridMovement;
         private System.Windows.Forms.Timer SearchTimer;
-        private System.Windows.Forms.PictureBox GifLoading;
+        private System.Windows.Forms.PictureBox PictureLoading;
         private System.Windows.Forms.Label OperationTypeTitle;
         private System.Windows.Forms.Label OperationSituationTitle;
-        private Syncfusion.WinForms.ListView.SfComboBox OperationSituation;
-        private Syncfusion.WinForms.ListView.SfComboBox OperationType;
+        private Syncfusion.WinForms.ListView.SfComboBox ComboBoxOperationSituation;
+        private Syncfusion.WinForms.ListView.SfComboBox ComboBoxOperationType;
         private System.Windows.Forms.Label StockMovementIdTitle;
-        private System.Windows.Forms.LinkLabel ClearSearchFields;
+        private System.Windows.Forms.LinkLabel ButtonClearSearchFields;
         private System.Windows.Forms.BindingNavigator BindingPagination;
         private System.Windows.Forms.ToolStripButton BackPage;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -435,13 +435,13 @@
         private System.Windows.Forms.ToolStripButton NextPage;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripLabel LblRecordsState;
-        private Syncfusion.WinForms.ListView.SfComboBox RecordsByPage;
+        private Syncfusion.WinForms.ListView.SfComboBox ComboBoxRecordsByPage;
         private System.Windows.Forms.Label RecordsOfPageTitle;
         private System.Windows.Forms.ContextMenuStrip StockMovementMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem MovementEntrie_ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem MovementOutPut_ToolStripMenuItem;
-        private Bunifu.Framework.UI.BunifuThinButton2 RegisterNew;
-        private Bunifu.Framework.UI.BunifuThinButton2 DataList;
-        public Syncfusion.Windows.Forms.Tools.TextBoxExt SearchByOperationCode;
+        private Bunifu.Framework.UI.BunifuThinButton2 ButonRegisterNew;
+        private Bunifu.Framework.UI.BunifuThinButton2 ButtonDataList;
+        public Syncfusion.Windows.Forms.Tools.TextBoxExt TextSearchByOperationCode;
     }
 }

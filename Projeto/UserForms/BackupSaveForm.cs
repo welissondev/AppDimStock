@@ -9,7 +9,7 @@ namespace DimStock.UserForms
 {
     public partial class BackupSaveForm : Form
     {
-        #region Constructs
+        #region Builder
 
         public BackupSaveForm()
         {
@@ -18,7 +18,7 @@ namespace DimStock.UserForms
 
         #endregion
 
-        #region UserForm
+        #region Form
         
         private void BackupSaveForm_Load(object sender, EventArgs e)
         {
@@ -28,7 +28,7 @@ namespace DimStock.UserForms
                 MainTabControl.ItemSize = new Size(0, 1);
                 MainTabControl.SizeMode = TabSizeMode.Fixed;
 
-                BackupFolderPath.Text = AppSetting.GetMainAppDirectory() + @"\DataBaseBackUp";
+                TextBackupFolderPath.Text = AppSetting.GetMainAppDirectory() + @"\DataBaseBackUp";
 
             }
             catch (Exception ex)
@@ -41,7 +41,7 @@ namespace DimStock.UserForms
 
         #region Button
 
-        private void GenerateBackup_Click(object sender, EventArgs e)
+        private void ButtonGenerateBackup_Click(object sender, EventArgs e)
         {
             try
             {
@@ -56,11 +56,11 @@ namespace DimStock.UserForms
             }
         }
 
-        private void OpenDirectory_Click(object sender, EventArgs e)
+        private void ButtonOpenDirectory_Click(object sender, EventArgs e)
         {
             try
             {
-                Process.Start("Explorer", BackupFolderPath.Text);
+                Process.Start("Explorer", TextBackupFolderPath.Text);
             }
             catch(Exception ex)
             {

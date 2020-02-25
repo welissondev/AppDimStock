@@ -20,9 +20,9 @@ namespace DimStock.Business
             List = new List<Product>();
         }
 
-        public Product(AxlDataPagination dataPagination)
+        public Product(AxlDataPage pagination)
         {
-            DataPagination = dataPagination;
+            Pagination = pagination;
 
             Category = new ProductCategory();
 
@@ -41,7 +41,7 @@ namespace DimStock.Business
         public string BarCode { get; set; }
         public string Photo { get; set; }
         public ProductCategory Category { get; set; }
-        public AxlDataPagination DataPagination { get; set; }
+        public AxlDataPage Pagination { get; set; }
         public List<Product> List { get; set; }
 
         #endregion 
@@ -50,7 +50,7 @@ namespace DimStock.Business
 
         public bool Save()
         {
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 bool transactionState = false;
 
@@ -95,7 +95,7 @@ namespace DimStock.Business
 
                     userHistory.User.Id = AxlLogin.Id;
 
-                    transactionState = userHistory.Register();
+                    transactionState = userHistory.Save();
 
 
                     //Fianalizar transação
@@ -110,7 +110,7 @@ namespace DimStock.Business
 
         public bool Edit(int id)
         {
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 bool transactionState = false;
 
@@ -163,7 +163,7 @@ namespace DimStock.Business
 
                     history.User.Id = AxlLogin.Id;
 
-                    transactionState = history.Register();
+                    transactionState = history.Save();
 
                     //Fianaliza a transação
                     connection.Transaction.Commit();
@@ -185,7 +185,7 @@ namespace DimStock.Business
                 return false;
             }
 
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 var sqlCommand = string.Empty;
                 var transactionState = false;
@@ -212,7 +212,7 @@ namespace DimStock.Business
 
                     history.User.Id = AxlLogin.Id;
 
-                    transactionState = history.Register();
+                    transactionState = history.Save();
 
                     //Fianaliza transação
                     connection.Transaction.Commit();
@@ -226,7 +226,7 @@ namespace DimStock.Business
 
         public void GetDetail(int id)
         {
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 var sqlQuery = @"SELECT Product.*, ProductCategory.* FROM Product
                 LEFT JOIN ProductCategory ON Product.ProductCategoryId = ProductCategory.Id
@@ -270,7 +270,7 @@ namespace DimStock.Business
 
         public void SearchData()
         {
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 var sqlQuery = string.Empty;
                 var sqlCount = string.Empty;
@@ -301,12 +301,12 @@ namespace DimStock.Business
 
                 sqlCount += criterion;
 
-                DataPagination.RecordCount = Convert.ToInt32(
+                Pagination.RecordCount = Convert.ToInt32(
                 connection.ExecuteScalar(sqlCount));
 
                 var dataTable = connection.QueryWithDataTable(sqlQuery,
-                DataPagination.OffSetValue,
-                DataPagination.PageSize);
+                Pagination.OffSetValue,
+                Pagination.PageSize);
 
                 PassToList(dataTable);
             }
@@ -314,7 +314,7 @@ namespace DimStock.Business
 
         public void ListData()
         {
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 var parameter = connection.Command.Parameters;
                 var criterion = string.Empty;
@@ -363,7 +363,7 @@ namespace DimStock.Business
 
         public bool CheckIfExists(int id)
         {
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 var sqlQuery = "SELECT Id FROM Product WHERE Id = @Id";
                 var recordsFound = 0;
@@ -400,7 +400,7 @@ namespace DimStock.Business
             }
         }
 
-        private string GetAffectedFields(int id, Connection connection)
+        private string GetAffectedFields(int id, DatabaseConnection connection)
         {
             var affectedFieldList = new List<string>();
 

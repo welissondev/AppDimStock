@@ -7,7 +7,7 @@ namespace DimStock.UserForms
 {
     public partial class UserLoginForm : Form
     {
-        #region Constructs
+        #region Builder
         public UserLoginForm()
         {
             InitializeComponent();
@@ -29,16 +29,16 @@ namespace DimStock.UserForms
 
         #endregion
 
-        #region Buttons
+        #region Button
 
-        private void SignIn_Click(object sender, EventArgs e)
+        private void ButtonSignIn_Click(object sender, EventArgs e)
         {
             try
             {
                 var user = new User
                 {
-                    Login = Login.Text,
-                    PassWord = PassWord.Text
+                    Login = TextLogin.Text,
+                    PassWord = TextPassWord.Text
                 };
 
                 if (user.SignIn() == false)
@@ -62,7 +62,7 @@ namespace DimStock.UserForms
             }
         }
 
-        private void Exists_Click(object sender, EventArgs e)
+        private void ButtonExists_Click(object sender, EventArgs e)
         {
             Close();
             HomeScreenForm.He.Close();
@@ -70,7 +70,7 @@ namespace DimStock.UserForms
 
         #endregion
 
-        #region MethodsAuxiliarys
+        #region Function
 
         public static void ShowForm()
         {

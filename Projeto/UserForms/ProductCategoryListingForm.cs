@@ -10,14 +10,7 @@ namespace DimStock.UserForms
 {
     public partial class ProductCategoryListingForm : Form
     {
-        #region Variables
-
-        private AxlDataPagination dataPagination = new AxlDataPagination();
-        public int Id = 0;
-
-        #endregion
-
-        #region Constructs
+        #region Builder
 
         public ProductCategoryListingForm()
         {
@@ -28,7 +21,14 @@ namespace DimStock.UserForms
 
         #endregion
 
-        #region UserForm
+        #region Properties
+
+        private AxlDataPage pagination = new AxlDataPage();
+        public int Id = 0;
+
+        #endregion
+
+        #region Form
 
         private void ProductCategoryListingForm_Load(object sender, EventArgs e)
         {
@@ -37,9 +37,9 @@ namespace DimStock.UserForms
 
         #endregion
 
-        #region Buttons
+        #region Button
 
-        private void NewRegister_Click(object sender, EventArgs e)
+        private void ButtonNewRegister_Click(object sender, EventArgs e)
         {
             var categoryForm = new ProductCategoryRegistrationForm()
             {
@@ -51,7 +51,7 @@ namespace DimStock.UserForms
             categoryForm.ShowDialog();
         }
 
-        private void DataList_Click(object sender, EventArgs e)
+        private void ButtonDataList_Click(object sender, EventArgs e)
         {
             CallAllResets();
             StartSearchTimer();
@@ -61,10 +61,10 @@ namespace DimStock.UserForms
 
         #region TextBox
 
-        private void SearchByDescription_KeyPress(object sender, KeyPressEventArgs e)
+        private void TextSearchByDescription_KeyPress(object sender, KeyPressEventArgs e)
         {
-            dataPagination.OffSetValue = 0;
-            dataPagination.CurrentPage = 1;
+            pagination.OffSetValue = 0;
+            pagination.CurrentPage = 1;
             StartSearchTimer();
         }
 
@@ -72,30 +72,30 @@ namespace DimStock.UserForms
 
         #region ComboBox
 
-        private void RecordsByPage_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxRecordsByPage_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                var itemSelected = RecordsByPage.SelectedIndex;
+                var itemSelected = ComboBoxRecordsByPage.SelectedIndex;
 
                 switch (itemSelected)
                 {
                     case 0:
-                        dataPagination.PageSize = 20;
+                        pagination.PageSize = 20;
                         break;
                     case 1:
-                        dataPagination.PageSize = 30;
+                        pagination.PageSize = 30;
                         break;
                     case 2:
-                        dataPagination.PageSize = 70;
+                        pagination.PageSize = 70;
                         break;
                     case 3:
-                        dataPagination.PageSize = 100;
+                        pagination.PageSize = 100;
                         break;
                 }
 
-                dataPagination.OffSetValue = 0;
-                dataPagination.CurrentPage = 1;
+                pagination.OffSetValue = 0;
+                pagination.CurrentPage = 1;
                 StartSearchTimer();
             }
             catch (Exception ex)
@@ -108,41 +108,41 @@ namespace DimStock.UserForms
 
         #region DataGrid
 
-        private void CategoryDataList_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        private void DatagridCategory_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1)
             {
-                CategoryDataList.Rows[e.RowIndex].Selected = true;
+                DatagridCategory.Rows[e.RowIndex].Selected = true;
             }
         }
 
-        private void CategoryDataList_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        private void DatagridCategory_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
             //Remove o focus do controle datagriview
             e.PaintParts = DataGridViewPaintParts.All ^ DataGridViewPaintParts.Focus;
         }
 
-        private void CategoryDataList_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void DatagridCategory_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (CategoryDataList.Rows.Count != 0)
+            if (DatagridCategory.Rows.Count != 0)
             {
                 Id = Convert.ToInt32(
-                CategoryDataList.CurrentRow.Cells["id"].Value);
+                DatagridCategory.CurrentRow.Cells["id"].Value);
 
-                var columnName = CategoryDataList.Columns
+                var columnName = DatagridCategory.Columns
                 [e.ColumnIndex].Name;
 
                 switch (columnName)
                 {
                     case "edit":
 
-                        Modify();
+                        Edit();
 
                         break;
 
                     case "delete":
 
-                        Delete();
+                        Remove();
 
                         break;
                 }
@@ -164,57 +164,57 @@ namespace DimStock.UserForms
 
         private void NextPage_Click(object sender, EventArgs e)
         {
-            if (dataPagination.CurrentPage < dataPagination.NumberOfPages)
+            if (pagination.CurrentPage < pagination.NumberOfPages)
             {
-                dataPagination.CurrentPage += 1;
-                dataPagination.OffSetValue += dataPagination.PageSize;
+                pagination.CurrentPage += 1;
+                pagination.OffSetValue += pagination.PageSize;
                 StartSearchTimer();
             }
 
-            SetInBadingNavigator(dataPagination);
+            SetInBadingNavigator(pagination);
         }
 
         private void BackPage_Click(object sender, EventArgs e)
         {
-            if (dataPagination.CurrentPage > 1)
+            if (pagination.CurrentPage > 1)
             {
-                dataPagination.CurrentPage -= 1;
-                dataPagination.OffSetValue -= dataPagination.PageSize;
+                pagination.CurrentPage -= 1;
+                pagination.OffSetValue -= pagination.PageSize;
                 StartSearchTimer();
             }
 
-            SetInBadingNavigator(dataPagination);
+            SetInBadingNavigator(pagination);
         }
 
         #endregion
 
-        #region MethodsAuxiliarys
+        #region Function
 
         private void SearchData()
         {
             try
             {
-                var category = new ProductCategory(dataPagination)
+                var category = new ProductCategory(pagination)
                 {
-                    Description = SearchByDescription.Text,
+                    Description = TextSearchByDescription.Text,
                 };
 
                 category.SearchData();
 
-                CategoryDataList.Rows.Clear();
+                DatagridCategory.Rows.Clear();
 
-                for (int i = 0; i < category.ListOfRecords.Count; i++)
+                for (int i = 0; i < category.List.Count; i++)
                 {
-                    CategoryDataList.Rows.Add(
-                    category.ListOfRecords[i].Id,
-                    category.ListOfRecords[i].Description);
+                    DatagridCategory.Rows.Add(
+                    category.List[i].Id,
+                    category.List[i].Description);
                 }
 
-                CategoryDataList.ClearSelection();
+                DatagridCategory.ClearSelection();
 
                 PauseSearchTimer();
 
-                SetInBadingNavigator(dataPagination);
+                SetInBadingNavigator(pagination);
             }
             catch (Exception ex)
             {
@@ -224,7 +224,7 @@ namespace DimStock.UserForms
             }
         }
 
-        private void Delete()
+        private void Remove()
         {
             try
             {
@@ -243,7 +243,7 @@ namespace DimStock.UserForms
                 {
                     var category = new ProductCategory();
 
-                    if (category.Delete(Id) == false)
+                    if (category.Remove(Id) == false)
                     {
                         MessageBox.Show(AxlMessageNotifier.Message, "ERRO",
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -261,12 +261,12 @@ namespace DimStock.UserForms
             }
         }
 
-        private void Modify()
+        private void Edit()
         {
             try
             {
                 var category = new ProductCategory();
-                category.ViewDetails(Id);
+                category.GetDetail(Id);
 
                 var categoryForm = new ProductCategoryRegistrationForm()
                 {
@@ -275,7 +275,7 @@ namespace DimStock.UserForms
                     MinimizeBox = false
                 };
 
-                categoryForm.Description.Text = category.Description;
+                categoryForm.TextDescription.Text = category.Description;
                 categoryForm.Id = Id;
 
                 categoryForm.ShowDialog();
@@ -296,37 +296,37 @@ namespace DimStock.UserForms
                 "100 Registros"
             };
 
-            RecordsByPage.DataSource = itemList;
-            RecordsByPage.Text = "20 Registros";
+            ComboBoxRecordsByPage.DataSource = itemList;
+            ComboBoxRecordsByPage.Text = "20 Registros";
 
         }
 
-        private void SetInBadingNavigator(AxlDataPagination dataPagination)
+        private void SetInBadingNavigator(AxlDataPage pagination)
         {
-            if (dataPagination.RecordCount == 0)
-                dataPagination.CurrentPage = 0;
+            if (pagination.RecordCount == 0)
+                pagination.CurrentPage = 0;
 
-            var legend = " Página " + dataPagination.CurrentPage + " de " + dataPagination.NumberOfPages;
+            var legend = " Página " + pagination.CurrentPage + " de " + pagination.NumberOfPages;
             BindingPagination.Items[2].Text = legend;
 
-            legend = " Total de " + dataPagination.RecordCount + " registro(s)";
+            legend = " Total de " + pagination.RecordCount + " registro(s)";
             BindingPagination.Items[6].Text = legend;
         }
 
         private void InitializeSettings()
         {
-            AxlDataGridLealt.SetDefaultStyle(CategoryDataList);
+            AxlDataGridLealt.SetDefaultStyle(DatagridCategory);
 
             FillAllComboBoxes();
 
             CreateColumnsInTheDataList();
         }
 
-        private void ResetVariables()
+        private void ResetProperties()
         {
             Id = 0;
-            dataPagination.OffSetValue = 0;
-            dataPagination.CurrentPage = 1;
+            pagination.OffSetValue = 0;
+            pagination.CurrentPage = 1;
         }
 
         private void ResetControls()
@@ -339,7 +339,7 @@ namespace DimStock.UserForms
                         ctl.Text = string.Empty;
                 }
 
-                SearchByDescription.Select();
+                TextSearchByDescription.Select();
             }
             catch (Exception ex)
             {
@@ -349,20 +349,20 @@ namespace DimStock.UserForms
 
         private void CallAllResets()
         {
-            ResetVariables();
+            ResetProperties();
             ResetControls();
         }
 
         private void StartSearchTimer()
         {
-            GifLoading.Visible = true;
+            PictureLoading.Visible = true;
             SearchTimer.Enabled = false;
             SearchTimer.Enabled = true;
         }
 
         private void PauseSearchTimer()
         {
-            GifLoading.Visible = false;
+            PictureLoading.Visible = false;
             SearchTimer.Enabled = false;
         }
 
@@ -375,7 +375,7 @@ namespace DimStock.UserForms
                 var edit = new DataGridViewLinkColumn();
                 var delete = new DataGridViewLinkColumn();
 
-                var categoryDataList = CategoryDataList;
+                var categoryDataList = DatagridCategory;
 
                 categoryDataList.Columns.Add(id);
                 categoryDataList.Columns[0].Name = "id";

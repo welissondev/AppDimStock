@@ -29,61 +29,61 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserResgistrationForm));
-            this.UserName = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.TextUserName = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.NameTitle = new System.Windows.Forms.Label();
-            this.Email = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.TextEmail = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.EmailTitle = new System.Windows.Forms.Label();
-            this.Login = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.TextLogin = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.PassWordTitle = new System.Windows.Forms.Label();
-            this.PassWord = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.TextPassWord = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.LoginTitle = new System.Windows.Forms.Label();
             this.FrameEditPermission = new System.Windows.Forms.GroupBox();
             this.PermissionToViewTitle = new System.Windows.Forms.Label();
-            this.PermissionToView = new Bunifu.Framework.UI.BunifuCheckbox();
+            this.CheckPermissionToView = new Bunifu.Framework.UI.BunifuCheckbox();
             this.AllPermissionsTitle = new System.Windows.Forms.Label();
-            this.AllPermissons = new Bunifu.Framework.UI.BunifuCheckbox();
+            this.CheckAllPermissons = new Bunifu.Framework.UI.BunifuCheckbox();
             this.PermissionToDeleteTile = new System.Windows.Forms.Label();
-            this.PermissionToDelete = new Bunifu.Framework.UI.BunifuCheckbox();
+            this.CheckPermissionToDelete = new Bunifu.Framework.UI.BunifuCheckbox();
             this.PermissionToEditTitle = new System.Windows.Forms.Label();
             this.PermissionToRegisterTitle = new System.Windows.Forms.Label();
-            this.PermissionToEdit = new Bunifu.Framework.UI.BunifuCheckbox();
-            this.PermissionToRegister = new Bunifu.Framework.UI.BunifuCheckbox();
-            this.PassWordConfirmation = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.CheckPermissionToEdit = new Bunifu.Framework.UI.BunifuCheckbox();
+            this.CheckPermissionToRegister = new Bunifu.Framework.UI.BunifuCheckbox();
+            this.TextPassWordConfirmation = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.PassWordConfirmationTitle = new System.Windows.Forms.Label();
-            this.ClearFields = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.Save = new Bunifu.Framework.UI.BunifuThinButton2();
-            ((System.ComponentModel.ISupportInitialize)(this.UserName)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Email)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Login)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PassWord)).BeginInit();
+            this.ButtonClearFields = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.ButtonSave = new Bunifu.Framework.UI.BunifuThinButton2();
+            ((System.ComponentModel.ISupportInitialize)(this.TextUserName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextEmail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextLogin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextPassWord)).BeginInit();
             this.FrameEditPermission.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PassWordConfirmation)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextPassWordConfirmation)).BeginInit();
             this.SuspendLayout();
             // 
-            // UserName
+            // TextUserName
             // 
-            this.UserName.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.UserName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.UserName.BeforeTouchSize = new System.Drawing.Size(342, 26);
-            this.UserName.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
-            this.UserName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.UserName.CanOverrideStyle = true;
-            this.UserName.CausesValidation = false;
-            this.UserName.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.UserName.Font = new System.Drawing.Font("Calibri Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UserName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.UserName.Location = new System.Drawing.Point(68, 100);
-            this.UserName.MaxLength = 2000;
-            this.UserName.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.UserName.MinimumSize = new System.Drawing.Size(16, 12);
-            this.UserName.Name = "UserName";
-            this.UserName.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Silver;
-            this.UserName.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
-            this.UserName.Size = new System.Drawing.Size(794, 26);
-            this.UserName.TabIndex = 0;
-            this.UserName.Tag = "";
-            this.UserName.ThemeName = "Default";
-            this.UserName.WordWrap = false;
+            this.TextUserName.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TextUserName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.TextUserName.BeforeTouchSize = new System.Drawing.Size(342, 26);
+            this.TextUserName.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
+            this.TextUserName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextUserName.CanOverrideStyle = true;
+            this.TextUserName.CausesValidation = false;
+            this.TextUserName.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.TextUserName.Font = new System.Drawing.Font("Calibri Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextUserName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.TextUserName.Location = new System.Drawing.Point(68, 100);
+            this.TextUserName.MaxLength = 2000;
+            this.TextUserName.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TextUserName.MinimumSize = new System.Drawing.Size(16, 12);
+            this.TextUserName.Name = "TextUserName";
+            this.TextUserName.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Silver;
+            this.TextUserName.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
+            this.TextUserName.Size = new System.Drawing.Size(794, 26);
+            this.TextUserName.TabIndex = 0;
+            this.TextUserName.Tag = "";
+            this.TextUserName.ThemeName = "Default";
+            this.TextUserName.WordWrap = false;
             // 
             // NameTitle
             // 
@@ -96,30 +96,30 @@
             this.NameTitle.TabIndex = 83;
             this.NameTitle.Text = "Nome:";
             // 
-            // Email
+            // TextEmail
             // 
-            this.Email.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Email.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.Email.BeforeTouchSize = new System.Drawing.Size(342, 26);
-            this.Email.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
-            this.Email.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Email.CanOverrideStyle = true;
-            this.Email.CausesValidation = false;
-            this.Email.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.Email.Font = new System.Drawing.Font("Calibri Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Email.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.Email.Location = new System.Drawing.Point(68, 152);
-            this.Email.MaxLength = 2000;
-            this.Email.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Email.MinimumSize = new System.Drawing.Size(16, 12);
-            this.Email.Name = "Email";
-            this.Email.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Silver;
-            this.Email.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
-            this.Email.Size = new System.Drawing.Size(794, 26);
-            this.Email.TabIndex = 1;
-            this.Email.Tag = "";
-            this.Email.ThemeName = "Default";
-            this.Email.WordWrap = false;
+            this.TextEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TextEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.TextEmail.BeforeTouchSize = new System.Drawing.Size(342, 26);
+            this.TextEmail.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
+            this.TextEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextEmail.CanOverrideStyle = true;
+            this.TextEmail.CausesValidation = false;
+            this.TextEmail.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.TextEmail.Font = new System.Drawing.Font("Calibri Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.TextEmail.Location = new System.Drawing.Point(68, 152);
+            this.TextEmail.MaxLength = 2000;
+            this.TextEmail.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TextEmail.MinimumSize = new System.Drawing.Size(16, 12);
+            this.TextEmail.Name = "TextEmail";
+            this.TextEmail.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Silver;
+            this.TextEmail.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
+            this.TextEmail.Size = new System.Drawing.Size(794, 26);
+            this.TextEmail.TabIndex = 1;
+            this.TextEmail.Tag = "";
+            this.TextEmail.ThemeName = "Default";
+            this.TextEmail.WordWrap = false;
             // 
             // EmailTitle
             // 
@@ -132,29 +132,29 @@
             this.EmailTitle.TabIndex = 85;
             this.EmailTitle.Text = "E-mail";
             // 
-            // Login
+            // TextLogin
             // 
-            this.Login.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Login.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.Login.BeforeTouchSize = new System.Drawing.Size(342, 26);
-            this.Login.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
-            this.Login.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Login.CanOverrideStyle = true;
-            this.Login.CausesValidation = false;
-            this.Login.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.Login.Font = new System.Drawing.Font("Calibri Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Login.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.Login.Location = new System.Drawing.Point(68, 203);
-            this.Login.MaxLength = 2000;
-            this.Login.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Login.MinimumSize = new System.Drawing.Size(16, 12);
-            this.Login.Name = "Login";
-            this.Login.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Silver;
-            this.Login.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
-            this.Login.Size = new System.Drawing.Size(342, 26);
-            this.Login.TabIndex = 2;
-            this.Login.Tag = "";
-            this.Login.ThemeName = "Default";
+            this.TextLogin.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TextLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.TextLogin.BeforeTouchSize = new System.Drawing.Size(342, 26);
+            this.TextLogin.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
+            this.TextLogin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextLogin.CanOverrideStyle = true;
+            this.TextLogin.CausesValidation = false;
+            this.TextLogin.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.TextLogin.Font = new System.Drawing.Font("Calibri Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.TextLogin.Location = new System.Drawing.Point(68, 203);
+            this.TextLogin.MaxLength = 2000;
+            this.TextLogin.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TextLogin.MinimumSize = new System.Drawing.Size(16, 12);
+            this.TextLogin.Name = "TextLogin";
+            this.TextLogin.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Silver;
+            this.TextLogin.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
+            this.TextLogin.Size = new System.Drawing.Size(342, 26);
+            this.TextLogin.TabIndex = 2;
+            this.TextLogin.Tag = "";
+            this.TextLogin.ThemeName = "Default";
             // 
             // PassWordTitle
             // 
@@ -167,30 +167,30 @@
             this.PassWordTitle.TabIndex = 87;
             this.PassWordTitle.Text = "Senha:";
             // 
-            // PassWord
+            // TextPassWord
             // 
-            this.PassWord.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PassWord.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.PassWord.BeforeTouchSize = new System.Drawing.Size(342, 26);
-            this.PassWord.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
-            this.PassWord.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PassWord.CanOverrideStyle = true;
-            this.PassWord.CausesValidation = false;
-            this.PassWord.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.PassWord.Font = new System.Drawing.Font("Calibri Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PassWord.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.PassWord.Location = new System.Drawing.Point(68, 254);
-            this.PassWord.MaxLength = 2000;
-            this.PassWord.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.PassWord.MinimumSize = new System.Drawing.Size(16, 12);
-            this.PassWord.Name = "PassWord";
-            this.PassWord.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Silver;
-            this.PassWord.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
-            this.PassWord.PasswordChar = '*';
-            this.PassWord.Size = new System.Drawing.Size(342, 26);
-            this.PassWord.TabIndex = 3;
-            this.PassWord.Tag = "";
-            this.PassWord.ThemeName = "Default";
+            this.TextPassWord.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TextPassWord.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.TextPassWord.BeforeTouchSize = new System.Drawing.Size(342, 26);
+            this.TextPassWord.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
+            this.TextPassWord.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextPassWord.CanOverrideStyle = true;
+            this.TextPassWord.CausesValidation = false;
+            this.TextPassWord.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.TextPassWord.Font = new System.Drawing.Font("Calibri Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextPassWord.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.TextPassWord.Location = new System.Drawing.Point(68, 254);
+            this.TextPassWord.MaxLength = 2000;
+            this.TextPassWord.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TextPassWord.MinimumSize = new System.Drawing.Size(16, 12);
+            this.TextPassWord.Name = "TextPassWord";
+            this.TextPassWord.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Silver;
+            this.TextPassWord.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
+            this.TextPassWord.PasswordChar = '*';
+            this.TextPassWord.Size = new System.Drawing.Size(342, 26);
+            this.TextPassWord.TabIndex = 3;
+            this.TextPassWord.Tag = "";
+            this.TextPassWord.ThemeName = "Default";
             // 
             // LoginTitle
             // 
@@ -207,15 +207,15 @@
             // 
             this.FrameEditPermission.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.FrameEditPermission.Controls.Add(this.PermissionToViewTitle);
-            this.FrameEditPermission.Controls.Add(this.PermissionToView);
+            this.FrameEditPermission.Controls.Add(this.CheckPermissionToView);
             this.FrameEditPermission.Controls.Add(this.AllPermissionsTitle);
-            this.FrameEditPermission.Controls.Add(this.AllPermissons);
+            this.FrameEditPermission.Controls.Add(this.CheckAllPermissons);
             this.FrameEditPermission.Controls.Add(this.PermissionToDeleteTile);
-            this.FrameEditPermission.Controls.Add(this.PermissionToDelete);
+            this.FrameEditPermission.Controls.Add(this.CheckPermissionToDelete);
             this.FrameEditPermission.Controls.Add(this.PermissionToEditTitle);
             this.FrameEditPermission.Controls.Add(this.PermissionToRegisterTitle);
-            this.FrameEditPermission.Controls.Add(this.PermissionToEdit);
-            this.FrameEditPermission.Controls.Add(this.PermissionToRegister);
+            this.FrameEditPermission.Controls.Add(this.CheckPermissionToEdit);
+            this.FrameEditPermission.Controls.Add(this.CheckPermissionToRegister);
             this.FrameEditPermission.Font = new System.Drawing.Font("Calibri Light", 11F);
             this.FrameEditPermission.Location = new System.Drawing.Point(65, 347);
             this.FrameEditPermission.Name = "FrameEditPermission";
@@ -234,17 +234,17 @@
             this.PermissionToViewTitle.TabIndex = 91;
             this.PermissionToViewTitle.Text = "Visualizar";
             // 
-            // PermissionToView
+            // CheckPermissionToView
             // 
-            this.PermissionToView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
-            this.PermissionToView.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
-            this.PermissionToView.Checked = false;
-            this.PermissionToView.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(205)))), ((int)(((byte)(117)))));
-            this.PermissionToView.ForeColor = System.Drawing.Color.White;
-            this.PermissionToView.Location = new System.Drawing.Point(341, 32);
-            this.PermissionToView.Name = "PermissionToView";
-            this.PermissionToView.Size = new System.Drawing.Size(20, 20);
-            this.PermissionToView.TabIndex = 90;
+            this.CheckPermissionToView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.CheckPermissionToView.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.CheckPermissionToView.Checked = false;
+            this.CheckPermissionToView.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(205)))), ((int)(((byte)(117)))));
+            this.CheckPermissionToView.ForeColor = System.Drawing.Color.White;
+            this.CheckPermissionToView.Location = new System.Drawing.Point(341, 32);
+            this.CheckPermissionToView.Name = "CheckPermissionToView";
+            this.CheckPermissionToView.Size = new System.Drawing.Size(20, 20);
+            this.CheckPermissionToView.TabIndex = 90;
             // 
             // AllPermissionsTitle
             // 
@@ -256,18 +256,18 @@
             this.AllPermissionsTitle.TabIndex = 89;
             this.AllPermissionsTitle.Text = "Todas";
             // 
-            // AllPermissons
+            // CheckAllPermissons
             // 
-            this.AllPermissons.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
-            this.AllPermissons.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
-            this.AllPermissons.Checked = false;
-            this.AllPermissons.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(205)))), ((int)(((byte)(117)))));
-            this.AllPermissons.ForeColor = System.Drawing.Color.White;
-            this.AllPermissons.Location = new System.Drawing.Point(439, 32);
-            this.AllPermissons.Name = "AllPermissons";
-            this.AllPermissons.Size = new System.Drawing.Size(20, 20);
-            this.AllPermissons.TabIndex = 88;
-            this.AllPermissons.OnChange += new System.EventHandler(this.AllPermissions_OnChange);
+            this.CheckAllPermissons.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.CheckAllPermissons.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.CheckAllPermissons.Checked = false;
+            this.CheckAllPermissons.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(205)))), ((int)(((byte)(117)))));
+            this.CheckAllPermissons.ForeColor = System.Drawing.Color.White;
+            this.CheckAllPermissons.Location = new System.Drawing.Point(439, 32);
+            this.CheckAllPermissons.Name = "CheckAllPermissons";
+            this.CheckAllPermissons.Size = new System.Drawing.Size(20, 20);
+            this.CheckAllPermissons.TabIndex = 88;
+            this.CheckAllPermissons.OnChange += new System.EventHandler(this.AllPermissions_OnChange);
             // 
             // PermissionToDeleteTile
             // 
@@ -279,17 +279,17 @@
             this.PermissionToDeleteTile.TabIndex = 87;
             this.PermissionToDeleteTile.Text = "Deletar";
             // 
-            // PermissionToDelete
+            // CheckPermissionToDelete
             // 
-            this.PermissionToDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
-            this.PermissionToDelete.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
-            this.PermissionToDelete.Checked = false;
-            this.PermissionToDelete.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(205)))), ((int)(((byte)(117)))));
-            this.PermissionToDelete.ForeColor = System.Drawing.Color.White;
-            this.PermissionToDelete.Location = new System.Drawing.Point(247, 32);
-            this.PermissionToDelete.Name = "PermissionToDelete";
-            this.PermissionToDelete.Size = new System.Drawing.Size(20, 20);
-            this.PermissionToDelete.TabIndex = 86;
+            this.CheckPermissionToDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.CheckPermissionToDelete.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.CheckPermissionToDelete.Checked = false;
+            this.CheckPermissionToDelete.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(205)))), ((int)(((byte)(117)))));
+            this.CheckPermissionToDelete.ForeColor = System.Drawing.Color.White;
+            this.CheckPermissionToDelete.Location = new System.Drawing.Point(247, 32);
+            this.CheckPermissionToDelete.Name = "CheckPermissionToDelete";
+            this.CheckPermissionToDelete.Size = new System.Drawing.Size(20, 20);
+            this.CheckPermissionToDelete.TabIndex = 86;
             // 
             // PermissionToEditTitle
             // 
@@ -311,54 +311,54 @@
             this.PermissionToRegisterTitle.TabIndex = 84;
             this.PermissionToRegisterTitle.Text = "Cadastrar";
             // 
-            // PermissionToEdit
+            // CheckPermissionToEdit
             // 
-            this.PermissionToEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
-            this.PermissionToEdit.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
-            this.PermissionToEdit.Checked = false;
-            this.PermissionToEdit.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(205)))), ((int)(((byte)(117)))));
-            this.PermissionToEdit.ForeColor = System.Drawing.Color.White;
-            this.PermissionToEdit.Location = new System.Drawing.Point(148, 32);
-            this.PermissionToEdit.Name = "PermissionToEdit";
-            this.PermissionToEdit.Size = new System.Drawing.Size(20, 20);
-            this.PermissionToEdit.TabIndex = 1;
+            this.CheckPermissionToEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.CheckPermissionToEdit.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.CheckPermissionToEdit.Checked = false;
+            this.CheckPermissionToEdit.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(205)))), ((int)(((byte)(117)))));
+            this.CheckPermissionToEdit.ForeColor = System.Drawing.Color.White;
+            this.CheckPermissionToEdit.Location = new System.Drawing.Point(148, 32);
+            this.CheckPermissionToEdit.Name = "CheckPermissionToEdit";
+            this.CheckPermissionToEdit.Size = new System.Drawing.Size(20, 20);
+            this.CheckPermissionToEdit.TabIndex = 1;
             // 
-            // PermissionToRegister
+            // CheckPermissionToRegister
             // 
-            this.PermissionToRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
-            this.PermissionToRegister.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
-            this.PermissionToRegister.Checked = false;
-            this.PermissionToRegister.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(205)))), ((int)(((byte)(117)))));
-            this.PermissionToRegister.ForeColor = System.Drawing.Color.White;
-            this.PermissionToRegister.Location = new System.Drawing.Point(28, 32);
-            this.PermissionToRegister.Name = "PermissionToRegister";
-            this.PermissionToRegister.Size = new System.Drawing.Size(20, 20);
-            this.PermissionToRegister.TabIndex = 0;
+            this.CheckPermissionToRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.CheckPermissionToRegister.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.CheckPermissionToRegister.Checked = false;
+            this.CheckPermissionToRegister.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(205)))), ((int)(((byte)(117)))));
+            this.CheckPermissionToRegister.ForeColor = System.Drawing.Color.White;
+            this.CheckPermissionToRegister.Location = new System.Drawing.Point(28, 32);
+            this.CheckPermissionToRegister.Name = "CheckPermissionToRegister";
+            this.CheckPermissionToRegister.Size = new System.Drawing.Size(20, 20);
+            this.CheckPermissionToRegister.TabIndex = 0;
             // 
-            // PassWordConfirmation
+            // TextPassWordConfirmation
             // 
-            this.PassWordConfirmation.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PassWordConfirmation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.PassWordConfirmation.BeforeTouchSize = new System.Drawing.Size(342, 26);
-            this.PassWordConfirmation.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
-            this.PassWordConfirmation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PassWordConfirmation.CanOverrideStyle = true;
-            this.PassWordConfirmation.CausesValidation = false;
-            this.PassWordConfirmation.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.PassWordConfirmation.Font = new System.Drawing.Font("Calibri Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PassWordConfirmation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.PassWordConfirmation.Location = new System.Drawing.Point(68, 305);
-            this.PassWordConfirmation.MaxLength = 2000;
-            this.PassWordConfirmation.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.PassWordConfirmation.MinimumSize = new System.Drawing.Size(16, 12);
-            this.PassWordConfirmation.Name = "PassWordConfirmation";
-            this.PassWordConfirmation.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Silver;
-            this.PassWordConfirmation.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
-            this.PassWordConfirmation.PasswordChar = '*';
-            this.PassWordConfirmation.Size = new System.Drawing.Size(342, 26);
-            this.PassWordConfirmation.TabIndex = 4;
-            this.PassWordConfirmation.Tag = "";
-            this.PassWordConfirmation.ThemeName = "Default";
+            this.TextPassWordConfirmation.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TextPassWordConfirmation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.TextPassWordConfirmation.BeforeTouchSize = new System.Drawing.Size(342, 26);
+            this.TextPassWordConfirmation.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
+            this.TextPassWordConfirmation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextPassWordConfirmation.CanOverrideStyle = true;
+            this.TextPassWordConfirmation.CausesValidation = false;
+            this.TextPassWordConfirmation.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.TextPassWordConfirmation.Font = new System.Drawing.Font("Calibri Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextPassWordConfirmation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.TextPassWordConfirmation.Location = new System.Drawing.Point(68, 305);
+            this.TextPassWordConfirmation.MaxLength = 2000;
+            this.TextPassWordConfirmation.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TextPassWordConfirmation.MinimumSize = new System.Drawing.Size(16, 12);
+            this.TextPassWordConfirmation.Name = "TextPassWordConfirmation";
+            this.TextPassWordConfirmation.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Silver;
+            this.TextPassWordConfirmation.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
+            this.TextPassWordConfirmation.PasswordChar = '*';
+            this.TextPassWordConfirmation.Size = new System.Drawing.Size(342, 26);
+            this.TextPassWordConfirmation.TabIndex = 4;
+            this.TextPassWordConfirmation.Tag = "";
+            this.TextPassWordConfirmation.ThemeName = "Default";
             // 
             // PassWordConfirmationTitle
             // 
@@ -371,59 +371,59 @@
             this.PassWordConfirmationTitle.TabIndex = 142;
             this.PassWordConfirmationTitle.Text = "Confirmar Senha:";
             // 
-            // ClearFields
+            // ButtonClearFields
             // 
-            this.ClearFields.ActiveBorderThickness = 1;
-            this.ClearFields.ActiveCornerRadius = 10;
-            this.ClearFields.ActiveFillColor = System.Drawing.SystemColors.Desktop;
-            this.ClearFields.ActiveForecolor = System.Drawing.Color.White;
-            this.ClearFields.ActiveLineColor = System.Drawing.SystemColors.Desktop;
-            this.ClearFields.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ClearFields.BackColor = System.Drawing.Color.White;
-            this.ClearFields.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ClearFields.BackgroundImage")));
-            this.ClearFields.ButtonText = "Limpar";
-            this.ClearFields.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ClearFields.Font = new System.Drawing.Font("Calibri Light", 14F);
-            this.ClearFields.ForeColor = System.Drawing.Color.SeaGreen;
-            this.ClearFields.IdleBorderThickness = 1;
-            this.ClearFields.IdleCornerRadius = 10;
-            this.ClearFields.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
-            this.ClearFields.IdleForecolor = System.Drawing.Color.White;
-            this.ClearFields.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
-            this.ClearFields.Location = new System.Drawing.Point(762, 458);
-            this.ClearFields.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ClearFields.Name = "ClearFields";
-            this.ClearFields.Size = new System.Drawing.Size(97, 43);
-            this.ClearFields.TabIndex = 221;
-            this.ClearFields.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.ClearFields.Click += new System.EventHandler(this.ClearFields_Click);
+            this.ButtonClearFields.ActiveBorderThickness = 1;
+            this.ButtonClearFields.ActiveCornerRadius = 10;
+            this.ButtonClearFields.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonClearFields.ActiveForecolor = System.Drawing.Color.White;
+            this.ButtonClearFields.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonClearFields.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ButtonClearFields.BackColor = System.Drawing.Color.White;
+            this.ButtonClearFields.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonClearFields.BackgroundImage")));
+            this.ButtonClearFields.ButtonText = "Limpar";
+            this.ButtonClearFields.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonClearFields.Font = new System.Drawing.Font("Calibri Light", 14F);
+            this.ButtonClearFields.ForeColor = System.Drawing.Color.SeaGreen;
+            this.ButtonClearFields.IdleBorderThickness = 1;
+            this.ButtonClearFields.IdleCornerRadius = 10;
+            this.ButtonClearFields.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonClearFields.IdleForecolor = System.Drawing.Color.White;
+            this.ButtonClearFields.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonClearFields.Location = new System.Drawing.Point(762, 458);
+            this.ButtonClearFields.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ButtonClearFields.Name = "ButtonClearFields";
+            this.ButtonClearFields.Size = new System.Drawing.Size(97, 43);
+            this.ButtonClearFields.TabIndex = 221;
+            this.ButtonClearFields.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ButtonClearFields.Click += new System.EventHandler(this.ClearFields_Click);
             // 
-            // Save
+            // ButtonSave
             // 
-            this.Save.ActiveBorderThickness = 1;
-            this.Save.ActiveCornerRadius = 10;
-            this.Save.ActiveFillColor = System.Drawing.SystemColors.Desktop;
-            this.Save.ActiveForecolor = System.Drawing.Color.White;
-            this.Save.ActiveLineColor = System.Drawing.SystemColors.Desktop;
-            this.Save.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Save.BackColor = System.Drawing.Color.White;
-            this.Save.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Save.BackgroundImage")));
-            this.Save.ButtonText = "Salvar";
-            this.Save.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Save.Font = new System.Drawing.Font("Calibri Light", 14F);
-            this.Save.ForeColor = System.Drawing.Color.SeaGreen;
-            this.Save.IdleBorderThickness = 1;
-            this.Save.IdleCornerRadius = 10;
-            this.Save.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
-            this.Save.IdleForecolor = System.Drawing.Color.White;
-            this.Save.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
-            this.Save.Location = new System.Drawing.Point(660, 458);
-            this.Save.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Save.Name = "Save";
-            this.Save.Size = new System.Drawing.Size(97, 43);
-            this.Save.TabIndex = 222;
-            this.Save.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Save.Click += new System.EventHandler(this.Save_Click);
+            this.ButtonSave.ActiveBorderThickness = 1;
+            this.ButtonSave.ActiveCornerRadius = 10;
+            this.ButtonSave.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonSave.ActiveForecolor = System.Drawing.Color.White;
+            this.ButtonSave.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonSave.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ButtonSave.BackColor = System.Drawing.Color.White;
+            this.ButtonSave.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonSave.BackgroundImage")));
+            this.ButtonSave.ButtonText = "Salvar";
+            this.ButtonSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonSave.Font = new System.Drawing.Font("Calibri Light", 14F);
+            this.ButtonSave.ForeColor = System.Drawing.Color.SeaGreen;
+            this.ButtonSave.IdleBorderThickness = 1;
+            this.ButtonSave.IdleCornerRadius = 10;
+            this.ButtonSave.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonSave.IdleForecolor = System.Drawing.Color.White;
+            this.ButtonSave.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonSave.Location = new System.Drawing.Point(660, 458);
+            this.ButtonSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ButtonSave.Name = "ButtonSave";
+            this.ButtonSave.Size = new System.Drawing.Size(97, 43);
+            this.ButtonSave.TabIndex = 222;
+            this.ButtonSave.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ButtonSave.Click += new System.EventHandler(this.Save_Click);
             // 
             // UserResgistrationForm
             // 
@@ -431,29 +431,29 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(928, 551);
-            this.Controls.Add(this.Save);
-            this.Controls.Add(this.ClearFields);
-            this.Controls.Add(this.PassWordConfirmation);
+            this.Controls.Add(this.ButtonSave);
+            this.Controls.Add(this.ButtonClearFields);
+            this.Controls.Add(this.TextPassWordConfirmation);
             this.Controls.Add(this.PassWordConfirmationTitle);
             this.Controls.Add(this.FrameEditPermission);
-            this.Controls.Add(this.PassWord);
+            this.Controls.Add(this.TextPassWord);
             this.Controls.Add(this.LoginTitle);
-            this.Controls.Add(this.Login);
+            this.Controls.Add(this.TextLogin);
             this.Controls.Add(this.PassWordTitle);
-            this.Controls.Add(this.Email);
+            this.Controls.Add(this.TextEmail);
             this.Controls.Add(this.EmailTitle);
-            this.Controls.Add(this.UserName);
+            this.Controls.Add(this.TextUserName);
             this.Controls.Add(this.NameTitle);
             this.MinimumSize = new System.Drawing.Size(944, 590);
             this.Name = "UserResgistrationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            ((System.ComponentModel.ISupportInitialize)(this.UserName)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Email)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Login)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PassWord)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextUserName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextEmail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextLogin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextPassWord)).EndInit();
             this.FrameEditPermission.ResumeLayout(false);
             this.FrameEditPermission.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PassWordConfirmation)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextPassWordConfirmation)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -461,28 +461,28 @@
 
         #endregion
 
-        public Syncfusion.Windows.Forms.Tools.TextBoxExt UserName;
+        public Syncfusion.Windows.Forms.Tools.TextBoxExt TextUserName;
         private System.Windows.Forms.Label NameTitle;
-        public Syncfusion.Windows.Forms.Tools.TextBoxExt Email;
+        public Syncfusion.Windows.Forms.Tools.TextBoxExt TextEmail;
         private System.Windows.Forms.Label EmailTitle;
-        public Syncfusion.Windows.Forms.Tools.TextBoxExt Login;
+        public Syncfusion.Windows.Forms.Tools.TextBoxExt TextLogin;
         private System.Windows.Forms.Label PassWordTitle;
-        public Syncfusion.Windows.Forms.Tools.TextBoxExt PassWord;
+        public Syncfusion.Windows.Forms.Tools.TextBoxExt TextPassWord;
         private System.Windows.Forms.Label LoginTitle;
         private System.Windows.Forms.Label AllPermissionsTitle;
         private System.Windows.Forms.Label PermissionToDeleteTile;
         private System.Windows.Forms.Label PermissionToEditTitle;
         private System.Windows.Forms.Label PermissionToRegisterTitle;
-        public Syncfusion.Windows.Forms.Tools.TextBoxExt PassWordConfirmation;
+        public Syncfusion.Windows.Forms.Tools.TextBoxExt TextPassWordConfirmation;
         private System.Windows.Forms.Label PassWordConfirmationTitle;
         public System.Windows.Forms.GroupBox FrameEditPermission;
-        public Bunifu.Framework.UI.BunifuCheckbox AllPermissons;
-        public Bunifu.Framework.UI.BunifuCheckbox PermissionToDelete;
-        public Bunifu.Framework.UI.BunifuCheckbox PermissionToEdit;
-        public Bunifu.Framework.UI.BunifuCheckbox PermissionToRegister;
+        public Bunifu.Framework.UI.BunifuCheckbox CheckAllPermissons;
+        public Bunifu.Framework.UI.BunifuCheckbox CheckPermissionToDelete;
+        public Bunifu.Framework.UI.BunifuCheckbox CheckPermissionToEdit;
+        public Bunifu.Framework.UI.BunifuCheckbox CheckPermissionToRegister;
         private System.Windows.Forms.Label PermissionToViewTitle;
-        public Bunifu.Framework.UI.BunifuCheckbox PermissionToView;
-        private Bunifu.Framework.UI.BunifuThinButton2 ClearFields;
-        private Bunifu.Framework.UI.BunifuThinButton2 Save;
+        public Bunifu.Framework.UI.BunifuCheckbox CheckPermissionToView;
+        private Bunifu.Framework.UI.BunifuThinButton2 ButtonClearFields;
+        private Bunifu.Framework.UI.BunifuThinButton2 ButtonSave;
     }
 }

@@ -41,11 +41,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.ChooseMainDirectory = new Syncfusion.Windows.Forms.ButtonAdv();
-            this.MainDirectoryPath = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.ButtonChooseMainDirectory = new Syncfusion.Windows.Forms.ButtonAdv();
+            this.TextMainDirectoryPath = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.PageCompanyLogo = new System.Windows.Forms.TabPage();
             this.FrameProductPhoto = new System.Windows.Forms.GroupBox();
-            this.CompanyLogoImage = new System.Windows.Forms.PictureBox();
+            this.PictureCompanyLogo = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -53,51 +53,51 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.PassWordConfirmation = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.TextPasswordConfirmation = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.PassWordConfirmationTitle = new System.Windows.Forms.Label();
-            this.PassWord = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.TextPassWord = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.LoginTitle = new System.Windows.Forms.Label();
-            this.Login = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.TextLogin = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.PassWordTitle = new System.Windows.Forms.Label();
-            this.Email = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.TextEmail = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.EmailTitle = new System.Windows.Forms.Label();
-            this.UserName = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.TextUserName = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.NameTitle = new System.Windows.Forms.Label();
             this.PageBackUp = new System.Windows.Forms.TabPage();
             this.ListviewBackup = new System.Windows.Forms.ListView();
             this.FileList = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.ChooseBackup = new Syncfusion.Windows.Forms.ButtonAdv();
-            this.BackupPath = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.ButtonChooseBackup = new Syncfusion.Windows.Forms.ButtonAdv();
+            this.TextBackupPath = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.PageFinalize = new System.Windows.Forms.TabPage();
-            this.Loading = new System.Windows.Forms.PictureBox();
+            this.PictureLoading = new System.Windows.Forms.PictureBox();
             this.LabelPageFinalizeSubTitle = new System.Windows.Forms.Label();
             this.LabelPageFinalizeTitle = new System.Windows.Forms.Label();
-            this.NextPage = new System.Windows.Forms.LinkLabel();
-            this.BackPage = new System.Windows.Forms.LinkLabel();
+            this.ButtonNextPage = new System.Windows.Forms.LinkLabel();
+            this.ButtonBackPage = new System.Windows.Forms.LinkLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.CloseAssistant = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.ButtonCloseAssistant = new Bunifu.Framework.UI.BunifuThinButton2();
             this.bunifuSeparator2 = new Bunifu.Framework.UI.BunifuSeparator();
             this.MainTabControl.SuspendLayout();
             this.PageConfigType.SuspendLayout();
             this.PageChooseDirectory.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MainDirectoryPath)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextMainDirectoryPath)).BeginInit();
             this.PageCompanyLogo.SuspendLayout();
             this.FrameProductPhoto.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CompanyLogoImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureCompanyLogo)).BeginInit();
             this.PageLogin.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PassWordConfirmation)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PassWord)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Login)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Email)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UserName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextPasswordConfirmation)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextPassWord)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextLogin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextEmail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextUserName)).BeginInit();
             this.PageBackUp.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BackupPath)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextBackupPath)).BeginInit();
             this.PageFinalize.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Loading)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureLoading)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -213,8 +213,8 @@
             this.PageChooseDirectory.Controls.Add(this.label4);
             this.PageChooseDirectory.Controls.Add(this.label5);
             this.PageChooseDirectory.Controls.Add(this.label6);
-            this.PageChooseDirectory.Controls.Add(this.ChooseMainDirectory);
-            this.PageChooseDirectory.Controls.Add(this.MainDirectoryPath);
+            this.PageChooseDirectory.Controls.Add(this.ButtonChooseMainDirectory);
+            this.PageChooseDirectory.Controls.Add(this.TextMainDirectoryPath);
             this.PageChooseDirectory.Location = new System.Drawing.Point(4, 28);
             this.PageChooseDirectory.Name = "PageChooseDirectory";
             this.PageChooseDirectory.Padding = new System.Windows.Forms.Padding(3);
@@ -266,51 +266,51 @@
     " dados";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // ChooseMainDirectory
+            // ButtonChooseMainDirectory
             // 
-            this.ChooseMainDirectory.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.ChooseMainDirectory.Appearance = Syncfusion.Windows.Forms.ButtonAppearance.Office2016White;
-            this.ChooseMainDirectory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
-            this.ChooseMainDirectory.BeforeTouchSize = new System.Drawing.Size(37, 27);
-            this.ChooseMainDirectory.ButtonType = Syncfusion.Windows.Forms.Tools.ButtonTypes.Browse;
-            this.ChooseMainDirectory.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.ChooseMainDirectory.KeepFocusRectangle = false;
-            this.ChooseMainDirectory.Location = new System.Drawing.Point(467, 243);
-            this.ChooseMainDirectory.Name = "ChooseMainDirectory";
-            this.ChooseMainDirectory.Size = new System.Drawing.Size(37, 27);
-            this.ChooseMainDirectory.TabIndex = 154;
-            this.ChooseMainDirectory.Text = "buttonAdv1";
-            this.ChooseMainDirectory.ThemeName = "Office2016White";
-            this.ChooseMainDirectory.UseVisualStyle = true;
-            this.ChooseMainDirectory.Click += new System.EventHandler(this.ChooseMainDirectory_Click);
+            this.ButtonChooseMainDirectory.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ButtonChooseMainDirectory.Appearance = Syncfusion.Windows.Forms.ButtonAppearance.Office2016White;
+            this.ButtonChooseMainDirectory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
+            this.ButtonChooseMainDirectory.BeforeTouchSize = new System.Drawing.Size(37, 27);
+            this.ButtonChooseMainDirectory.ButtonType = Syncfusion.Windows.Forms.Tools.ButtonTypes.Browse;
+            this.ButtonChooseMainDirectory.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.ButtonChooseMainDirectory.KeepFocusRectangle = false;
+            this.ButtonChooseMainDirectory.Location = new System.Drawing.Point(467, 243);
+            this.ButtonChooseMainDirectory.Name = "ButtonChooseMainDirectory";
+            this.ButtonChooseMainDirectory.Size = new System.Drawing.Size(37, 27);
+            this.ButtonChooseMainDirectory.TabIndex = 154;
+            this.ButtonChooseMainDirectory.Text = "buttonAdv1";
+            this.ButtonChooseMainDirectory.ThemeName = "Office2016White";
+            this.ButtonChooseMainDirectory.UseVisualStyle = true;
+            this.ButtonChooseMainDirectory.Click += new System.EventHandler(this.ButtonChooseMainDirectory_Click);
             // 
-            // MainDirectoryPath
+            // TextMainDirectoryPath
             // 
-            this.MainDirectoryPath.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.MainDirectoryPath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.MainDirectoryPath.BeforeTouchSize = new System.Drawing.Size(405, 27);
-            this.MainDirectoryPath.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
-            this.MainDirectoryPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.MainDirectoryPath.CanOverrideStyle = true;
-            this.MainDirectoryPath.CausesValidation = false;
-            this.MainDirectoryPath.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.MainDirectoryPath.Enabled = false;
-            this.MainDirectoryPath.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MainDirectoryPath.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.MainDirectoryPath.Location = new System.Drawing.Point(66, 243);
-            this.MainDirectoryPath.MaxLength = 50;
-            this.MainDirectoryPath.Metrocolor = System.Drawing.Color.DodgerBlue;
-            this.MainDirectoryPath.MinimumSize = new System.Drawing.Size(16, 12);
-            this.MainDirectoryPath.Multiline = true;
-            this.MainDirectoryPath.Name = "MainDirectoryPath";
-            this.MainDirectoryPath.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
-            this.MainDirectoryPath.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
-            this.MainDirectoryPath.Size = new System.Drawing.Size(438, 27);
-            this.MainDirectoryPath.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016Colorful;
-            this.MainDirectoryPath.TabIndex = 149;
-            this.MainDirectoryPath.Tag = "";
-            this.MainDirectoryPath.ThemeName = "Office2016Colorful";
-            this.MainDirectoryPath.ThemesEnabled = false;
+            this.TextMainDirectoryPath.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.TextMainDirectoryPath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.TextMainDirectoryPath.BeforeTouchSize = new System.Drawing.Size(405, 27);
+            this.TextMainDirectoryPath.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
+            this.TextMainDirectoryPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextMainDirectoryPath.CanOverrideStyle = true;
+            this.TextMainDirectoryPath.CausesValidation = false;
+            this.TextMainDirectoryPath.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.TextMainDirectoryPath.Enabled = false;
+            this.TextMainDirectoryPath.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextMainDirectoryPath.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.TextMainDirectoryPath.Location = new System.Drawing.Point(66, 243);
+            this.TextMainDirectoryPath.MaxLength = 50;
+            this.TextMainDirectoryPath.Metrocolor = System.Drawing.Color.DodgerBlue;
+            this.TextMainDirectoryPath.MinimumSize = new System.Drawing.Size(16, 12);
+            this.TextMainDirectoryPath.Multiline = true;
+            this.TextMainDirectoryPath.Name = "TextMainDirectoryPath";
+            this.TextMainDirectoryPath.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
+            this.TextMainDirectoryPath.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
+            this.TextMainDirectoryPath.Size = new System.Drawing.Size(438, 27);
+            this.TextMainDirectoryPath.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016Colorful;
+            this.TextMainDirectoryPath.TabIndex = 149;
+            this.TextMainDirectoryPath.Tag = "";
+            this.TextMainDirectoryPath.ThemeName = "Office2016Colorful";
+            this.TextMainDirectoryPath.ThemesEnabled = false;
             // 
             // PageCompanyLogo
             // 
@@ -329,7 +329,7 @@
             // FrameProductPhoto
             // 
             this.FrameProductPhoto.BackColor = System.Drawing.Color.White;
-            this.FrameProductPhoto.Controls.Add(this.CompanyLogoImage);
+            this.FrameProductPhoto.Controls.Add(this.PictureCompanyLogo);
             this.FrameProductPhoto.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.FrameProductPhoto.Location = new System.Drawing.Point(69, 168);
             this.FrameProductPhoto.Name = "FrameProductPhoto";
@@ -337,18 +337,18 @@
             this.FrameProductPhoto.TabIndex = 218;
             this.FrameProductPhoto.TabStop = false;
             // 
-            // CompanyLogoImage
+            // PictureCompanyLogo
             // 
-            this.CompanyLogoImage.BackColor = System.Drawing.Color.White;
-            this.CompanyLogoImage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.CompanyLogoImage.Image = global::DimStock.Properties.Resources.DimStockLogoType;
-            this.CompanyLogoImage.Location = new System.Drawing.Point(7, 16);
-            this.CompanyLogoImage.Name = "CompanyLogoImage";
-            this.CompanyLogoImage.Size = new System.Drawing.Size(106, 96);
-            this.CompanyLogoImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.CompanyLogoImage.TabIndex = 212;
-            this.CompanyLogoImage.TabStop = false;
-            this.CompanyLogoImage.Click += new System.EventHandler(this.CompanyLogoImage_Click);
+            this.PictureCompanyLogo.BackColor = System.Drawing.Color.White;
+            this.PictureCompanyLogo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PictureCompanyLogo.Image = global::DimStock.Properties.Resources.DimStockLogoType;
+            this.PictureCompanyLogo.Location = new System.Drawing.Point(7, 16);
+            this.PictureCompanyLogo.Name = "PictureCompanyLogo";
+            this.PictureCompanyLogo.Size = new System.Drawing.Size(106, 96);
+            this.PictureCompanyLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PictureCompanyLogo.TabIndex = 212;
+            this.PictureCompanyLogo.TabStop = false;
+            this.PictureCompanyLogo.Click += new System.EventHandler(this.PictureCompanyLogo_Click);
             // 
             // label7
             // 
@@ -393,15 +393,15 @@
             this.PageLogin.Controls.Add(this.label10);
             this.PageLogin.Controls.Add(this.label11);
             this.PageLogin.Controls.Add(this.label12);
-            this.PageLogin.Controls.Add(this.PassWordConfirmation);
+            this.PageLogin.Controls.Add(this.TextPasswordConfirmation);
             this.PageLogin.Controls.Add(this.PassWordConfirmationTitle);
-            this.PageLogin.Controls.Add(this.PassWord);
+            this.PageLogin.Controls.Add(this.TextPassWord);
             this.PageLogin.Controls.Add(this.LoginTitle);
-            this.PageLogin.Controls.Add(this.Login);
+            this.PageLogin.Controls.Add(this.TextLogin);
             this.PageLogin.Controls.Add(this.PassWordTitle);
-            this.PageLogin.Controls.Add(this.Email);
+            this.PageLogin.Controls.Add(this.TextEmail);
             this.PageLogin.Controls.Add(this.EmailTitle);
-            this.PageLogin.Controls.Add(this.UserName);
+            this.PageLogin.Controls.Add(this.TextUserName);
             this.PageLogin.Controls.Add(this.NameTitle);
             this.PageLogin.Location = new System.Drawing.Point(4, 28);
             this.PageLogin.Name = "PageLogin";
@@ -448,30 +448,30 @@
     "cê esqueça seus dados de acesso\r\n\r\n";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // PassWordConfirmation
+            // TextPasswordConfirmation
             // 
-            this.PassWordConfirmation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.PassWordConfirmation.BeforeTouchSize = new System.Drawing.Size(405, 27);
-            this.PassWordConfirmation.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
-            this.PassWordConfirmation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PassWordConfirmation.CanOverrideStyle = true;
-            this.PassWordConfirmation.CausesValidation = false;
-            this.PassWordConfirmation.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.PassWordConfirmation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PassWordConfirmation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.PassWordConfirmation.Location = new System.Drawing.Point(402, 267);
-            this.PassWordConfirmation.MaxLength = 2000;
-            this.PassWordConfirmation.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.PassWordConfirmation.MinimumSize = new System.Drawing.Size(16, 12);
-            this.PassWordConfirmation.Name = "PassWordConfirmation";
-            this.PassWordConfirmation.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Silver;
-            this.PassWordConfirmation.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
-            this.PassWordConfirmation.PasswordChar = '*';
-            this.PassWordConfirmation.Size = new System.Drawing.Size(104, 26);
-            this.PassWordConfirmation.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016Colorful;
-            this.PassWordConfirmation.TabIndex = 190;
-            this.PassWordConfirmation.Tag = "";
-            this.PassWordConfirmation.ThemeName = "Office2016Colorful";
+            this.TextPasswordConfirmation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.TextPasswordConfirmation.BeforeTouchSize = new System.Drawing.Size(405, 27);
+            this.TextPasswordConfirmation.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
+            this.TextPasswordConfirmation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextPasswordConfirmation.CanOverrideStyle = true;
+            this.TextPasswordConfirmation.CausesValidation = false;
+            this.TextPasswordConfirmation.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.TextPasswordConfirmation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextPasswordConfirmation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.TextPasswordConfirmation.Location = new System.Drawing.Point(402, 267);
+            this.TextPasswordConfirmation.MaxLength = 2000;
+            this.TextPasswordConfirmation.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TextPasswordConfirmation.MinimumSize = new System.Drawing.Size(16, 12);
+            this.TextPasswordConfirmation.Name = "TextPasswordConfirmation";
+            this.TextPasswordConfirmation.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Silver;
+            this.TextPasswordConfirmation.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
+            this.TextPasswordConfirmation.PasswordChar = '*';
+            this.TextPasswordConfirmation.Size = new System.Drawing.Size(104, 26);
+            this.TextPasswordConfirmation.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016Colorful;
+            this.TextPasswordConfirmation.TabIndex = 190;
+            this.TextPasswordConfirmation.Tag = "";
+            this.TextPasswordConfirmation.ThemeName = "Office2016Colorful";
             // 
             // PassWordConfirmationTitle
             // 
@@ -482,30 +482,30 @@
             this.PassWordConfirmationTitle.TabIndex = 195;
             this.PassWordConfirmationTitle.Text = "Confirmar Senha:";
             // 
-            // PassWord
+            // TextPassWord
             // 
-            this.PassWord.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.PassWord.BeforeTouchSize = new System.Drawing.Size(405, 27);
-            this.PassWord.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
-            this.PassWord.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PassWord.CanOverrideStyle = true;
-            this.PassWord.CausesValidation = false;
-            this.PassWord.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.PassWord.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PassWord.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.PassWord.Location = new System.Drawing.Point(287, 267);
-            this.PassWord.MaxLength = 2000;
-            this.PassWord.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.PassWord.MinimumSize = new System.Drawing.Size(16, 12);
-            this.PassWord.Name = "PassWord";
-            this.PassWord.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Silver;
-            this.PassWord.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
-            this.PassWord.PasswordChar = '*';
-            this.PassWord.Size = new System.Drawing.Size(109, 26);
-            this.PassWord.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016Colorful;
-            this.PassWord.TabIndex = 189;
-            this.PassWord.Tag = "";
-            this.PassWord.ThemeName = "Office2016Colorful";
+            this.TextPassWord.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.TextPassWord.BeforeTouchSize = new System.Drawing.Size(405, 27);
+            this.TextPassWord.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
+            this.TextPassWord.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextPassWord.CanOverrideStyle = true;
+            this.TextPassWord.CausesValidation = false;
+            this.TextPassWord.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.TextPassWord.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextPassWord.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.TextPassWord.Location = new System.Drawing.Point(287, 267);
+            this.TextPassWord.MaxLength = 2000;
+            this.TextPassWord.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TextPassWord.MinimumSize = new System.Drawing.Size(16, 12);
+            this.TextPassWord.Name = "TextPassWord";
+            this.TextPassWord.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Silver;
+            this.TextPassWord.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
+            this.TextPassWord.PasswordChar = '*';
+            this.TextPassWord.Size = new System.Drawing.Size(109, 26);
+            this.TextPassWord.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016Colorful;
+            this.TextPassWord.TabIndex = 189;
+            this.TextPassWord.Tag = "";
+            this.TextPassWord.ThemeName = "Office2016Colorful";
             // 
             // LoginTitle
             // 
@@ -516,29 +516,29 @@
             this.LoginTitle.TabIndex = 194;
             this.LoginTitle.Text = "Login:";
             // 
-            // Login
+            // TextLogin
             // 
-            this.Login.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.Login.BeforeTouchSize = new System.Drawing.Size(405, 27);
-            this.Login.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
-            this.Login.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Login.CanOverrideStyle = true;
-            this.Login.CausesValidation = false;
-            this.Login.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.Login.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Login.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.Login.Location = new System.Drawing.Point(66, 267);
-            this.Login.MaxLength = 2000;
-            this.Login.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Login.MinimumSize = new System.Drawing.Size(16, 12);
-            this.Login.Name = "Login";
-            this.Login.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Silver;
-            this.Login.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
-            this.Login.Size = new System.Drawing.Size(215, 26);
-            this.Login.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016Colorful;
-            this.Login.TabIndex = 188;
-            this.Login.Tag = "";
-            this.Login.ThemeName = "Office2016Colorful";
+            this.TextLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.TextLogin.BeforeTouchSize = new System.Drawing.Size(405, 27);
+            this.TextLogin.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
+            this.TextLogin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextLogin.CanOverrideStyle = true;
+            this.TextLogin.CausesValidation = false;
+            this.TextLogin.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.TextLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.TextLogin.Location = new System.Drawing.Point(66, 267);
+            this.TextLogin.MaxLength = 2000;
+            this.TextLogin.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TextLogin.MinimumSize = new System.Drawing.Size(16, 12);
+            this.TextLogin.Name = "TextLogin";
+            this.TextLogin.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Silver;
+            this.TextLogin.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
+            this.TextLogin.Size = new System.Drawing.Size(215, 26);
+            this.TextLogin.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016Colorful;
+            this.TextLogin.TabIndex = 188;
+            this.TextLogin.Tag = "";
+            this.TextLogin.ThemeName = "Office2016Colorful";
             // 
             // PassWordTitle
             // 
@@ -549,30 +549,30 @@
             this.PassWordTitle.TabIndex = 193;
             this.PassWordTitle.Text = "Senha:";
             // 
-            // Email
+            // TextEmail
             // 
-            this.Email.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.Email.BeforeTouchSize = new System.Drawing.Size(405, 27);
-            this.Email.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
-            this.Email.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Email.CanOverrideStyle = true;
-            this.Email.CausesValidation = false;
-            this.Email.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.Email.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Email.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.Email.Location = new System.Drawing.Point(66, 216);
-            this.Email.MaxLength = 2000;
-            this.Email.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Email.MinimumSize = new System.Drawing.Size(16, 12);
-            this.Email.Name = "Email";
-            this.Email.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Silver;
-            this.Email.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
-            this.Email.Size = new System.Drawing.Size(440, 26);
-            this.Email.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016Colorful;
-            this.Email.TabIndex = 187;
-            this.Email.Tag = "";
-            this.Email.ThemeName = "Office2016Colorful";
-            this.Email.WordWrap = false;
+            this.TextEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.TextEmail.BeforeTouchSize = new System.Drawing.Size(405, 27);
+            this.TextEmail.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
+            this.TextEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextEmail.CanOverrideStyle = true;
+            this.TextEmail.CausesValidation = false;
+            this.TextEmail.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.TextEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.TextEmail.Location = new System.Drawing.Point(66, 216);
+            this.TextEmail.MaxLength = 2000;
+            this.TextEmail.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TextEmail.MinimumSize = new System.Drawing.Size(16, 12);
+            this.TextEmail.Name = "TextEmail";
+            this.TextEmail.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Silver;
+            this.TextEmail.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
+            this.TextEmail.Size = new System.Drawing.Size(440, 26);
+            this.TextEmail.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016Colorful;
+            this.TextEmail.TabIndex = 187;
+            this.TextEmail.Tag = "";
+            this.TextEmail.ThemeName = "Office2016Colorful";
+            this.TextEmail.WordWrap = false;
             // 
             // EmailTitle
             // 
@@ -583,30 +583,30 @@
             this.EmailTitle.TabIndex = 192;
             this.EmailTitle.Text = "E-mail";
             // 
-            // UserName
+            // TextUserName
             // 
-            this.UserName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.UserName.BeforeTouchSize = new System.Drawing.Size(405, 27);
-            this.UserName.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
-            this.UserName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.UserName.CanOverrideStyle = true;
-            this.UserName.CausesValidation = false;
-            this.UserName.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.UserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UserName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.UserName.Location = new System.Drawing.Point(66, 164);
-            this.UserName.MaxLength = 2000;
-            this.UserName.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.UserName.MinimumSize = new System.Drawing.Size(16, 12);
-            this.UserName.Name = "UserName";
-            this.UserName.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Silver;
-            this.UserName.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
-            this.UserName.Size = new System.Drawing.Size(440, 26);
-            this.UserName.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016Colorful;
-            this.UserName.TabIndex = 186;
-            this.UserName.Tag = "";
-            this.UserName.ThemeName = "Office2016Colorful";
-            this.UserName.WordWrap = false;
+            this.TextUserName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.TextUserName.BeforeTouchSize = new System.Drawing.Size(405, 27);
+            this.TextUserName.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
+            this.TextUserName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextUserName.CanOverrideStyle = true;
+            this.TextUserName.CausesValidation = false;
+            this.TextUserName.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.TextUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextUserName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.TextUserName.Location = new System.Drawing.Point(66, 164);
+            this.TextUserName.MaxLength = 2000;
+            this.TextUserName.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TextUserName.MinimumSize = new System.Drawing.Size(16, 12);
+            this.TextUserName.Name = "TextUserName";
+            this.TextUserName.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Silver;
+            this.TextUserName.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
+            this.TextUserName.Size = new System.Drawing.Size(440, 26);
+            this.TextUserName.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016Colorful;
+            this.TextUserName.TabIndex = 186;
+            this.TextUserName.Tag = "";
+            this.TextUserName.ThemeName = "Office2016Colorful";
+            this.TextUserName.WordWrap = false;
             // 
             // NameTitle
             // 
@@ -622,8 +622,8 @@
             this.PageBackUp.Controls.Add(this.ListviewBackup);
             this.PageBackUp.Controls.Add(this.label13);
             this.PageBackUp.Controls.Add(this.label14);
-            this.PageBackUp.Controls.Add(this.ChooseBackup);
-            this.PageBackUp.Controls.Add(this.BackupPath);
+            this.PageBackUp.Controls.Add(this.ButtonChooseBackup);
+            this.PageBackUp.Controls.Add(this.TextBackupPath);
             this.PageBackUp.Location = new System.Drawing.Point(4, 28);
             this.PageBackUp.Name = "PageBackUp";
             this.PageBackUp.Size = new System.Drawing.Size(569, 377);
@@ -686,53 +686,53 @@
             this.label14.Text = "BackUp";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // ChooseBackup
+            // ButtonChooseBackup
             // 
-            this.ChooseBackup.Appearance = Syncfusion.Windows.Forms.ButtonAppearance.Office2016White;
-            this.ChooseBackup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
-            this.ChooseBackup.BeforeTouchSize = new System.Drawing.Size(37, 27);
-            this.ChooseBackup.ButtonType = Syncfusion.Windows.Forms.Tools.ButtonTypes.Browse;
-            this.ChooseBackup.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.ChooseBackup.KeepFocusRectangle = false;
-            this.ChooseBackup.Location = new System.Drawing.Point(469, 104);
-            this.ChooseBackup.Name = "ChooseBackup";
-            this.ChooseBackup.Size = new System.Drawing.Size(37, 27);
-            this.ChooseBackup.TabIndex = 156;
-            this.ChooseBackup.Text = "buttonAdv1";
-            this.ChooseBackup.ThemeName = "Office2016White";
-            this.ChooseBackup.UseVisualStyle = true;
-            this.ChooseBackup.Click += new System.EventHandler(this.ChooseBackup_Click);
+            this.ButtonChooseBackup.Appearance = Syncfusion.Windows.Forms.ButtonAppearance.Office2016White;
+            this.ButtonChooseBackup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
+            this.ButtonChooseBackup.BeforeTouchSize = new System.Drawing.Size(37, 27);
+            this.ButtonChooseBackup.ButtonType = Syncfusion.Windows.Forms.Tools.ButtonTypes.Browse;
+            this.ButtonChooseBackup.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.ButtonChooseBackup.KeepFocusRectangle = false;
+            this.ButtonChooseBackup.Location = new System.Drawing.Point(469, 104);
+            this.ButtonChooseBackup.Name = "ButtonChooseBackup";
+            this.ButtonChooseBackup.Size = new System.Drawing.Size(37, 27);
+            this.ButtonChooseBackup.TabIndex = 156;
+            this.ButtonChooseBackup.Text = "buttonAdv1";
+            this.ButtonChooseBackup.ThemeName = "Office2016White";
+            this.ButtonChooseBackup.UseVisualStyle = true;
+            this.ButtonChooseBackup.Click += new System.EventHandler(this.ButtonChooseBackup_Click);
             // 
-            // BackupPath
+            // TextBackupPath
             // 
-            this.BackupPath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.BackupPath.BeforeTouchSize = new System.Drawing.Size(405, 27);
-            this.BackupPath.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
-            this.BackupPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.BackupPath.CanOverrideStyle = true;
-            this.BackupPath.CausesValidation = false;
-            this.BackupPath.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.BackupPath.Enabled = false;
-            this.BackupPath.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BackupPath.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.BackupPath.Location = new System.Drawing.Point(68, 104);
-            this.BackupPath.MaxLength = 50;
-            this.BackupPath.Metrocolor = System.Drawing.Color.DodgerBlue;
-            this.BackupPath.MinimumSize = new System.Drawing.Size(16, 12);
-            this.BackupPath.Multiline = true;
-            this.BackupPath.Name = "BackupPath";
-            this.BackupPath.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
-            this.BackupPath.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
-            this.BackupPath.Size = new System.Drawing.Size(405, 27);
-            this.BackupPath.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016Colorful;
-            this.BackupPath.TabIndex = 155;
-            this.BackupPath.Tag = "";
-            this.BackupPath.ThemeName = "Office2016Colorful";
-            this.BackupPath.ThemesEnabled = false;
+            this.TextBackupPath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.TextBackupPath.BeforeTouchSize = new System.Drawing.Size(405, 27);
+            this.TextBackupPath.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
+            this.TextBackupPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextBackupPath.CanOverrideStyle = true;
+            this.TextBackupPath.CausesValidation = false;
+            this.TextBackupPath.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.TextBackupPath.Enabled = false;
+            this.TextBackupPath.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextBackupPath.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.TextBackupPath.Location = new System.Drawing.Point(68, 104);
+            this.TextBackupPath.MaxLength = 50;
+            this.TextBackupPath.Metrocolor = System.Drawing.Color.DodgerBlue;
+            this.TextBackupPath.MinimumSize = new System.Drawing.Size(16, 12);
+            this.TextBackupPath.Multiline = true;
+            this.TextBackupPath.Name = "TextBackupPath";
+            this.TextBackupPath.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
+            this.TextBackupPath.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
+            this.TextBackupPath.Size = new System.Drawing.Size(405, 27);
+            this.TextBackupPath.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016Colorful;
+            this.TextBackupPath.TabIndex = 155;
+            this.TextBackupPath.Tag = "";
+            this.TextBackupPath.ThemeName = "Office2016Colorful";
+            this.TextBackupPath.ThemesEnabled = false;
             // 
             // PageFinalize
             // 
-            this.PageFinalize.Controls.Add(this.Loading);
+            this.PageFinalize.Controls.Add(this.PictureLoading);
             this.PageFinalize.Controls.Add(this.LabelPageFinalizeSubTitle);
             this.PageFinalize.Controls.Add(this.LabelPageFinalizeTitle);
             this.PageFinalize.Location = new System.Drawing.Point(4, 28);
@@ -742,18 +742,18 @@
             this.PageFinalize.Text = "Finalize";
             this.PageFinalize.UseVisualStyleBackColor = true;
             // 
-            // Loading
+            // PictureLoading
             // 
-            this.Loading.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Loading.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.Loading.Image = global::DimStock.Properties.Resources.Loading;
-            this.Loading.Location = new System.Drawing.Point(208, 139);
-            this.Loading.Name = "Loading";
-            this.Loading.Size = new System.Drawing.Size(123, 126);
-            this.Loading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Loading.TabIndex = 213;
-            this.Loading.TabStop = false;
-            this.Loading.Visible = false;
+            this.PictureLoading.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.PictureLoading.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.PictureLoading.Image = global::DimStock.Properties.Resources.Loading;
+            this.PictureLoading.Location = new System.Drawing.Point(208, 139);
+            this.PictureLoading.Name = "PictureLoading";
+            this.PictureLoading.Size = new System.Drawing.Size(123, 126);
+            this.PictureLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PictureLoading.TabIndex = 213;
+            this.PictureLoading.TabStop = false;
+            this.PictureLoading.Visible = false;
             // 
             // LabelPageFinalizeSubTitle
             // 
@@ -781,34 +781,34 @@
             this.LabelPageFinalizeTitle.Text = "Ok, Aguarde Um Instante";
             this.LabelPageFinalizeTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // NextPage
+            // ButtonNextPage
             // 
-            this.NextPage.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.NextPage.AutoSize = true;
-            this.NextPage.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NextPage.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(87)))), ((int)(((byte)(166)))));
-            this.NextPage.Location = new System.Drawing.Point(580, 511);
-            this.NextPage.Name = "NextPage";
-            this.NextPage.Size = new System.Drawing.Size(84, 19);
-            this.NextPage.TabIndex = 204;
-            this.NextPage.TabStop = true;
-            this.NextPage.Text = "Próximo >>";
-            this.NextPage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.NextPage_LinkClicked);
+            this.ButtonNextPage.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.ButtonNextPage.AutoSize = true;
+            this.ButtonNextPage.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonNextPage.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(87)))), ((int)(((byte)(166)))));
+            this.ButtonNextPage.Location = new System.Drawing.Point(580, 511);
+            this.ButtonNextPage.Name = "ButtonNextPage";
+            this.ButtonNextPage.Size = new System.Drawing.Size(84, 19);
+            this.ButtonNextPage.TabIndex = 204;
+            this.ButtonNextPage.TabStop = true;
+            this.ButtonNextPage.Text = "Próximo >>";
+            this.ButtonNextPage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ButtonNextPage_LinkClicked);
             // 
-            // BackPage
+            // ButtonBackPage
             // 
-            this.BackPage.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.BackPage.AutoSize = true;
-            this.BackPage.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BackPage.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(87)))), ((int)(((byte)(166)))));
-            this.BackPage.Location = new System.Drawing.Point(234, 511);
-            this.BackPage.Name = "BackPage";
-            this.BackPage.Size = new System.Drawing.Size(82, 19);
-            this.BackPage.TabIndex = 203;
-            this.BackPage.TabStop = true;
-            this.BackPage.Text = "<< Anterior";
-            this.BackPage.Visible = false;
-            this.BackPage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.BackPage_LinkClicked);
+            this.ButtonBackPage.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ButtonBackPage.AutoSize = true;
+            this.ButtonBackPage.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonBackPage.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(87)))), ((int)(((byte)(166)))));
+            this.ButtonBackPage.Location = new System.Drawing.Point(234, 511);
+            this.ButtonBackPage.Name = "ButtonBackPage";
+            this.ButtonBackPage.Size = new System.Drawing.Size(82, 19);
+            this.ButtonBackPage.TabIndex = 203;
+            this.ButtonBackPage.TabStop = true;
+            this.ButtonBackPage.Text = "<< Anterior";
+            this.ButtonBackPage.Visible = false;
+            this.ButtonBackPage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ButtonBackPage_LinkClicked);
             // 
             // pictureBox1
             // 
@@ -848,32 +848,32 @@
             this.label3.Text = "Assistente de configuração";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // CloseAssistant
+            // ButtonCloseAssistant
             // 
-            this.CloseAssistant.ActiveBorderThickness = 1;
-            this.CloseAssistant.ActiveCornerRadius = 10;
-            this.CloseAssistant.ActiveFillColor = System.Drawing.Color.Gray;
-            this.CloseAssistant.ActiveForecolor = System.Drawing.Color.White;
-            this.CloseAssistant.ActiveLineColor = System.Drawing.Color.Gray;
-            this.CloseAssistant.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.CloseAssistant.BackColor = System.Drawing.Color.White;
-            this.CloseAssistant.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CloseAssistant.BackgroundImage")));
-            this.CloseAssistant.ButtonText = "Fechar";
-            this.CloseAssistant.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.CloseAssistant.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CloseAssistant.ForeColor = System.Drawing.Color.SeaGreen;
-            this.CloseAssistant.IdleBorderThickness = 1;
-            this.CloseAssistant.IdleCornerRadius = 20;
-            this.CloseAssistant.IdleFillColor = System.Drawing.Color.White;
-            this.CloseAssistant.IdleForecolor = System.Drawing.Color.Gray;
-            this.CloseAssistant.IdleLineColor = System.Drawing.Color.Gray;
-            this.CloseAssistant.Location = new System.Drawing.Point(374, 501);
-            this.CloseAssistant.Margin = new System.Windows.Forms.Padding(5);
-            this.CloseAssistant.Name = "CloseAssistant";
-            this.CloseAssistant.Size = new System.Drawing.Size(160, 41);
-            this.CloseAssistant.TabIndex = 208;
-            this.CloseAssistant.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.CloseAssistant.Click += new System.EventHandler(this.CloseAssistant_Click);
+            this.ButtonCloseAssistant.ActiveBorderThickness = 1;
+            this.ButtonCloseAssistant.ActiveCornerRadius = 10;
+            this.ButtonCloseAssistant.ActiveFillColor = System.Drawing.Color.Gray;
+            this.ButtonCloseAssistant.ActiveForecolor = System.Drawing.Color.White;
+            this.ButtonCloseAssistant.ActiveLineColor = System.Drawing.Color.Gray;
+            this.ButtonCloseAssistant.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ButtonCloseAssistant.BackColor = System.Drawing.Color.White;
+            this.ButtonCloseAssistant.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonCloseAssistant.BackgroundImage")));
+            this.ButtonCloseAssistant.ButtonText = "Fechar";
+            this.ButtonCloseAssistant.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonCloseAssistant.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonCloseAssistant.ForeColor = System.Drawing.Color.SeaGreen;
+            this.ButtonCloseAssistant.IdleBorderThickness = 1;
+            this.ButtonCloseAssistant.IdleCornerRadius = 20;
+            this.ButtonCloseAssistant.IdleFillColor = System.Drawing.Color.White;
+            this.ButtonCloseAssistant.IdleForecolor = System.Drawing.Color.Gray;
+            this.ButtonCloseAssistant.IdleLineColor = System.Drawing.Color.Gray;
+            this.ButtonCloseAssistant.Location = new System.Drawing.Point(374, 501);
+            this.ButtonCloseAssistant.Margin = new System.Windows.Forms.Padding(5);
+            this.ButtonCloseAssistant.Name = "ButtonCloseAssistant";
+            this.ButtonCloseAssistant.Size = new System.Drawing.Size(160, 41);
+            this.ButtonCloseAssistant.TabIndex = 208;
+            this.ButtonCloseAssistant.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ButtonCloseAssistant.Click += new System.EventHandler(this.ButtonCloseAssistant_Click);
             // 
             // bunifuSeparator2
             // 
@@ -897,12 +897,12 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(944, 590);
             this.Controls.Add(this.bunifuSeparator2);
-            this.Controls.Add(this.CloseAssistant);
+            this.Controls.Add(this.ButtonCloseAssistant);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.NextPage);
+            this.Controls.Add(this.ButtonNextPage);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.BackPage);
+            this.Controls.Add(this.ButtonBackPage);
             this.Controls.Add(this.MainTabControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -914,22 +914,22 @@
             this.PageConfigType.ResumeLayout(false);
             this.PageChooseDirectory.ResumeLayout(false);
             this.PageChooseDirectory.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MainDirectoryPath)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextMainDirectoryPath)).EndInit();
             this.PageCompanyLogo.ResumeLayout(false);
             this.FrameProductPhoto.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.CompanyLogoImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureCompanyLogo)).EndInit();
             this.PageLogin.ResumeLayout(false);
             this.PageLogin.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PassWordConfirmation)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PassWord)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Login)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Email)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UserName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextPasswordConfirmation)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextPassWord)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextLogin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextEmail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextUserName)).EndInit();
             this.PageBackUp.ResumeLayout(false);
             this.PageBackUp.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BackupPath)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextBackupPath)).EndInit();
             this.PageFinalize.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Loading)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureLoading)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -939,33 +939,33 @@
         #endregion
         private System.Windows.Forms.TabPage PageConfigType;
         private System.Windows.Forms.TabPage PageChooseDirectory;
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt MainDirectoryPath;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt TextMainDirectoryPath;
         private System.Windows.Forms.TabPage PageLogin;
-        public Syncfusion.Windows.Forms.Tools.TextBoxExt PassWordConfirmation;
+        public Syncfusion.Windows.Forms.Tools.TextBoxExt TextPasswordConfirmation;
         private System.Windows.Forms.Label PassWordConfirmationTitle;
-        public Syncfusion.Windows.Forms.Tools.TextBoxExt PassWord;
+        public Syncfusion.Windows.Forms.Tools.TextBoxExt TextPassWord;
         private System.Windows.Forms.Label LoginTitle;
-        public Syncfusion.Windows.Forms.Tools.TextBoxExt Login;
+        public Syncfusion.Windows.Forms.Tools.TextBoxExt TextLogin;
         private System.Windows.Forms.Label PassWordTitle;
-        public Syncfusion.Windows.Forms.Tools.TextBoxExt Email;
+        public Syncfusion.Windows.Forms.Tools.TextBoxExt TextEmail;
         private System.Windows.Forms.Label EmailTitle;
-        public Syncfusion.Windows.Forms.Tools.TextBoxExt UserName;
+        public Syncfusion.Windows.Forms.Tools.TextBoxExt TextUserName;
         private System.Windows.Forms.Label NameTitle;
         private System.Windows.Forms.TabPage PageCompanyLogo;
-        private System.Windows.Forms.PictureBox CompanyLogoImage;
+        private System.Windows.Forms.PictureBox PictureCompanyLogo;
         private System.Windows.Forms.TabPage PageFinalize;
-        private System.Windows.Forms.PictureBox Loading;
-        private Syncfusion.Windows.Forms.ButtonAdv ChooseMainDirectory;
+        private System.Windows.Forms.PictureBox PictureLoading;
+        private Syncfusion.Windows.Forms.ButtonAdv ButtonChooseMainDirectory;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.LinkLabel NextPage;
+        private System.Windows.Forms.LinkLabel ButtonNextPage;
         private System.Windows.Forms.RadioButton CheckBoxNewConfiguration;
-        private System.Windows.Forms.LinkLabel BackPage;
+        private System.Windows.Forms.LinkLabel ButtonBackPage;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private Bunifu.Framework.UI.BunifuThinButton2 CloseAssistant;
+        private Bunifu.Framework.UI.BunifuThinButton2 ButtonCloseAssistant;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -982,8 +982,8 @@
         private System.Windows.Forms.TabPage PageBackUp;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
-        private Syncfusion.Windows.Forms.ButtonAdv ChooseBackup;
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt BackupPath;
+        private Syncfusion.Windows.Forms.ButtonAdv ButtonChooseBackup;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt TextBackupPath;
         private System.Windows.Forms.ListView ListviewBackup;
         private System.Windows.Forms.ColumnHeader FileList;
         public System.Windows.Forms.TabControl MainTabControl;

@@ -13,15 +13,21 @@ namespace DimStock.Business
 
         public ProductCategory() { }
 
-        public ProductCategory(Connection connection)
+        public ProductCategory(DatabaseConnection connection)
         {
             this.connection = connection;
         }
 
-        public ProductCategory(AxlDataPagination dataPagination)
+        public ProductCategory(AxlDataPage pagination)
         {
-            DataPagination = dataPagination;
+            Pagination = pagination;
         }
+
+        #endregion
+
+        #region Properties
+
+        private readonly DatabaseConnection connection;
 
         #endregion
 
@@ -29,21 +35,19 @@ namespace DimStock.Business
 
         public int Id { get; set; }
         public string Description { get; set; }
-        public List<ProductCategory> ListOfRecords { get; set; }
-        public AxlDataPagination DataPagination { get; set; }
-
-        private readonly Connection connection;
+        public List<ProductCategory> List { get; set; }
+        public AxlDataPage Pagination { get; set; }
 
         #endregion
 
         #region Function
 
-        public bool Register()
+        public bool Save()
         {
             var registerState = false;
             var sqlCommand = string.Empty;
 
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
@@ -73,7 +77,7 @@ namespace DimStock.Business
 
                     history.User.Id = AxlLogin.Id;
 
-                    registerState = history.Register();
+                    registerState = history.Save();
 
                     //Finalizar transação
                     connection.Transaction.Commit();
@@ -86,12 +90,12 @@ namespace DimStock.Business
             }
         }
 
-        public bool Modify(int id)
+        public bool Edit(int id)
         {
             var modifyState = false;
             var sqlCommand = string.Empty;
 
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 var affectedFields =
                 GetAffectedFields(id, connection);
@@ -124,7 +128,7 @@ namespace DimStock.Business
 
                     history.User.Id = AxlLogin.Id;
 
-                    modifyState = history.Register();
+                    modifyState = history.Save();
 
                     //Finalizar transação
                     connection.Transaction.Commit();
@@ -137,12 +141,12 @@ namespace DimStock.Business
             }
         }
 
-        public bool Delete(int id)
+        public bool Remove(int id)
         {
             var deleteState = false;
             var sqlCommand = string.Empty;
 
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 var affectedFields =
                 GetAffectedFields(id, connection);
@@ -172,7 +176,7 @@ namespace DimStock.Business
 
                     history.User.Id = AxlLogin.Id;
 
-                    deleteState = history.Register();
+                    deleteState = history.Save();
 
                     //Finalizar transação
                     connection.Transaction.Commit();
@@ -185,9 +189,9 @@ namespace DimStock.Business
             }
         }
 
-        public void ViewDetails(int id)
+        public void GetDetail(int id)
         {
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 var sqlQuery = @"SELECT Id, Description From 
                 ProductCategory Where Id = @Id ";
@@ -207,7 +211,7 @@ namespace DimStock.Business
 
         public void SearchData()
         {
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 var sqlQuery = string.Empty;
                 var sqlCount = string.Empty;
@@ -232,13 +236,13 @@ namespace DimStock.Business
 
                 sqlCount += criterion;
 
-                DataPagination.RecordCount =
+                Pagination.RecordCount =
                 Convert.ToInt32(connection.ExecuteScalar(
                 sqlCount));
 
                 var dataTable = connection.QueryWithDataTable(
-                sqlQuery, DataPagination.OffSetValue,
-                DataPagination.PageSize);
+                sqlQuery, Pagination.OffSetValue,
+                Pagination.PageSize);
 
                 PassToList(dataTable);
             }
@@ -246,7 +250,7 @@ namespace DimStock.Business
 
         public void ListData()
         {
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 var parameter = connection.Command.Parameters;
                 var criterion = string.Empty;
@@ -279,12 +283,12 @@ namespace DimStock.Business
                         categoryList.Add(category);
                     }
 
-                    ListOfRecords = categoryList;
+                    List = categoryList;
                 }
             }
         }
 
-        public string GetAffectedFields(int id, Connection connection)
+        public string GetAffectedFields(int id, DatabaseConnection connection)
         {
             var affectedFieldList = new List<string>();
 
@@ -320,7 +324,7 @@ namespace DimStock.Business
                 categoryList.Add(category);
             }
 
-            ListOfRecords = categoryList;
+            List = categoryList;
         }
 
         #endregion

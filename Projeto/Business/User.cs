@@ -13,9 +13,9 @@ namespace DimStock.Business
 
         public User() { }
 
-        public User(AxlDataPagination dataPagination)
+        public User(AxlDataPage pagination)
         {
-            DataPagination = dataPagination;
+            Pagination = pagination;
         }
 
         #endregion 
@@ -32,8 +32,8 @@ namespace DimStock.Business
         public bool PermissionToDelete { get; set; }
         public bool PermissionToView { get; set; }
         public bool AllPermissions { get; set; }
-        public List<User> ListOfRecords { get; set; }
-        public AxlDataPagination DataPagination { get; set; }
+        public List<User> List { get; set; }
+        public AxlDataPage Pagination { get; set; }
 
         #endregion
 
@@ -43,7 +43,7 @@ namespace DimStock.Business
         {
             var accessState = false;
 
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 var sqlQuery = @"SELECT * FROM [User] WHERE Login 
                 LIKE @Login AND [PassWord] = @PassWord";
@@ -52,7 +52,7 @@ namespace DimStock.Business
                 paramerter.AddWithValue("@Login", Login);
                 paramerter.AddWithValue("@PassWord", PassWord);
 
-                using (var reader = connection.ExecuteParameterQuery(sqlQuery))
+                using (var reader = connection.QueryWithDataReader(sqlQuery))
                 {
                     while (reader.Read())
                     {
@@ -83,7 +83,7 @@ namespace DimStock.Business
             if (ValidateEmail(Email) == false)
                 return false;
 
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 var createState = false;
 
@@ -110,7 +110,7 @@ namespace DimStock.Business
             }
         }
 
-        private void CreateDefaultLogin(Connection connection)
+        private void CreateDefaultLogin(DatabaseConnection connection)
         {
             Login = "Admin";
 
@@ -136,7 +136,7 @@ namespace DimStock.Business
             connection.ExecuteNonQuery(sqlCommand);
         }
 
-        public bool Register()
+        public bool Save()
         {
             if (CheckIfLoginExists() == true)
                 return false;
@@ -144,7 +144,7 @@ namespace DimStock.Business
             if (ValidateEmail(Email) == false)
                 return false;
 
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 var transactionState = false;
 
@@ -183,7 +183,7 @@ namespace DimStock.Business
 
                     history.User.Id = AxlLogin.Id;
 
-                    transactionState = history.Register();
+                    transactionState = history.Save();
 
                     //Finaliza a transação
                     connection.Transaction.Commit();
@@ -200,7 +200,7 @@ namespace DimStock.Business
             if (ValidateEmail(Email) == false)
                 return false;
 
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 var transactionState = false;
 
@@ -240,7 +240,7 @@ namespace DimStock.Business
 
                     history.User.Id = AxlLogin.Id;
 
-                    transactionState = history.Register();
+                    transactionState = history.Save();
 
                     //Finaliza a transação
                     connection.Transaction.Commit();
@@ -252,7 +252,7 @@ namespace DimStock.Business
             }
         }
 
-        public bool Delete(int id)
+        public bool Remove(int id)
         {
             if (CheckIfResgisterExists(id) == false)
             {
@@ -270,7 +270,7 @@ namespace DimStock.Business
                 return false;
             }
 
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 var transactionState = false;
 
@@ -297,7 +297,7 @@ namespace DimStock.Business
 
                     history.User.Id = AxlLogin.Id;
 
-                    transactionState = history.Register();
+                    transactionState = history.Save();
 
                     //Finaliza a transação
                     connection.Transaction.Commit();
@@ -311,7 +311,7 @@ namespace DimStock.Business
 
         public void ListData()
         {
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 var sqlQuery = "SELECT * FROM [User]";
 
@@ -331,14 +331,14 @@ namespace DimStock.Business
                         userList.Add(User);
                     }
 
-                    ListOfRecords = userList;
+                    List = userList;
                 }
             }
         }
 
         public void SearchData()
         {
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 var sqlQuery = @"SELECT * FROM [User] WHERE [Name]  
                 LIKE @Name Or Email LIKE @Email";
@@ -348,15 +348,15 @@ namespace DimStock.Business
                 parameter.AddWithValue("@Email", string.Format("%{0}%", Email));
 
                 var dataTable = connection.QueryWithDataTable(sqlQuery,
-                DataPagination.OffSetValue, DataPagination.PageSize);
+                Pagination.OffSetValue, Pagination.PageSize);
 
                 PassToList(dataTable);
             }
         }
 
-        public void ViewDetails(int id)
+        public void GetDetail(int id)
         {
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 var sqlQuery = @"SELECT * FROM [User] WHERE Id = @Id";
 
@@ -383,7 +383,7 @@ namespace DimStock.Business
 
         public bool ValidateEmail(string email)
         {
-            var validation = AxlEmailAdderess.Validate(email);
+            var validation = AxlEmailAddress.Validate(email);
 
             if (validation == false)
                 AxlMessageNotifier.Message = "O endereço de e-mail " +
@@ -394,7 +394,7 @@ namespace DimStock.Business
 
         public bool CheckIfLoginExists()
         {
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 var userFound = 0;
 
@@ -437,7 +437,7 @@ namespace DimStock.Business
 
         public bool CheckIfResgisterExists(int id)
         {
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 var sqlQuery = "SELECT Id FROM [User] WHERE Id = @Id";
                 var recordsFound = 0;
@@ -473,10 +473,10 @@ namespace DimStock.Business
                 userList.Add(User);
             }
 
-            ListOfRecords = userList;
+            List = userList;
         }
 
-        public string GetAffectedFields(int id, Connection connection)
+        public string GetAffectedFields(int id, DatabaseConnection connection)
         {
             var usersList = new List<string>();
 

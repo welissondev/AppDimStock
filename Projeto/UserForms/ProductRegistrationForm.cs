@@ -11,23 +11,7 @@ namespace DimStock.UserForms
 {
     public partial class ProductRegistrationForm : Form
     {
-        #region Get & Set
-
-        public int Id { get; set; }
-
-        public int CategoryId { get; set; }
-
-        #endregion
-
-        #region Variables
-
-        private ProductPhoto productPhoto = new ProductPhoto();
-
-        private AxlDataPagination dataPagination = new AxlDataPagination();
-
-        #endregion 
-
-        #region Constructs
+        #region Builder
 
         public ProductRegistrationForm()
         {
@@ -36,7 +20,23 @@ namespace DimStock.UserForms
 
         #endregion
 
-        #region UserForm
+        #region Properties
+
+        private ProductPhoto productPhoto = new ProductPhoto();
+
+        private AxlDataPage pagination = new AxlDataPage();
+
+        #endregion 
+
+        #region Get & Set
+
+        public int Id { get; set; }
+
+        public int CategoryId { get; set; }
+
+        #endregion
+
+        #region Form
 
         private void ProductRegistrationForm_Click(object sender, EventArgs e)
         {
@@ -47,10 +47,10 @@ namespace DimStock.UserForms
 
         #region Button
 
-        private void Save_Click(object sender, EventArgs e)
+        private void ButtonSave_Click(object sender, EventArgs e)
         {
             var user = new User();
-            user.ViewDetails(AxlLogin.Id);
+            user.GetDetail(AxlLogin.Id);
 
             if (Id == 0)
             {
@@ -61,7 +61,7 @@ namespace DimStock.UserForms
                     return;
                 }
 
-                Register();
+                Save();
             }
 
             if (Id > 0)
@@ -77,7 +77,7 @@ namespace DimStock.UserForms
             };
         }
 
-        private void ClearFields_Click_1(object sender, EventArgs e)
+        private void ButtonClearFields_Click_1(object sender, EventArgs e)
         {
             CallAllResets();
         }
@@ -93,7 +93,7 @@ namespace DimStock.UserForms
                 CategoryId = Convert.ToInt32(ListviewCategory.
                 SelectedItems[0].SubItems[0].Text);
 
-                BoxProductCategoryList.Text = ListviewCategory.
+                ComboBoxCategoryList.Text = ListviewCategory.
                 SelectedItems[0].SubItems[1].Text;
 
                 ListviewCategory.Visible = false;
@@ -108,14 +108,14 @@ namespace DimStock.UserForms
 
         #region ComboBox
 
-        private void BoxProductCategoryList_Click(object sender, EventArgs e)
+        private void ComboBoxCategoryList_Click(object sender, EventArgs e)
         {
             if (ListviewCategory.Visible == false)
             {
-                if (BoxProductCategoryList.Text == string.Empty)
+                if (ComboBoxCategoryList.Text == string.Empty)
                 {
                     ListviewCategory.Visible = true;
-                    BoxProductCategoryList.DroppedDown = false;
+                    ComboBoxCategoryList.DroppedDown = false;
                     StartSearchTimer();
                 }
             }
@@ -125,7 +125,7 @@ namespace DimStock.UserForms
             }
         }
 
-        private void BoxProductCategoryList_KeyPress(object sender, KeyPressEventArgs e)
+        private void ComboBoxCategoryList_KeyPress(object sender, KeyPressEventArgs e)
         {
             StartSearchTimer();
         }
@@ -134,7 +134,7 @@ namespace DimStock.UserForms
 
         #region LabelLink
 
-        private void AddNewProductCategory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void ButtonShow_GategoryRegistrationForm_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             var categoryForm = new ProductCategoryRegistrationForm()
             {
@@ -150,18 +150,18 @@ namespace DimStock.UserForms
 
         #region PictureBox
 
-        private void ImageProduct_Click(object sender, EventArgs e)
+        private void PictureImageProduct_Click(object sender, EventArgs e)
         {
             try
             {
                 if (UploadPhoto() == false)
                 {
                     if (productPhoto.CheckIfExtits(productPhoto.GetDirectoryPeth() +
-                        ImageProduct.ImageId).Equals(false))
+                        PictureImageProduct.ImageId).Equals(false))
                     {
-                        ImageProduct.ImageId = "";
-                        ImageProduct.SelectedDirectory = "";
-                        ImageProduct.Image = Resources.FotoNothing;
+                        PictureImageProduct.ImageId = "";
+                        PictureImageProduct.SelectedDirectory = "";
+                        PictureImageProduct.Image = Resources.FotoNothing;
                     }
                 }
             }
@@ -182,9 +182,9 @@ namespace DimStock.UserForms
 
         #endregion
 
-        #region MethodsAuxiliarys
+        #region Function
 
-        private void Register()
+        private void Save()
         {
             try
             {
@@ -195,12 +195,12 @@ namespace DimStock.UserForms
 
                 var product = new Product
                 {
-                    InternalCode = InternalCode.Text,
-                    Description = Description.Text,
-                    CostPrice = Convert.ToDouble(CostPrice.DecimalValue),
-                    SalePrice = Convert.ToDouble(SalePrice.DecimalValue),
-                    BarCode = BarCode.Text,
-                    Photo = ImageProduct.ImageId
+                    InternalCode = TextInternalCode.Text,
+                    Description = TextDescription.Text,
+                    CostPrice = Convert.ToDouble(TextCostPrice.DecimalValue),
+                    SalePrice = Convert.ToDouble(TextSalePrice.DecimalValue),
+                    BarCode = TextBarCode.Text,
+                    Photo = PictureImageProduct.ImageId
                 };
 
                 product.Category.Id = CategoryId;
@@ -213,7 +213,7 @@ namespace DimStock.UserForms
                     return;
                 }
 
-                productPhoto.CopyFromDirectory(ImageProduct.SelectedDirectory,
+                productPhoto.CopyFromDirectory(PictureImageProduct.SelectedDirectory,
                 productPhoto.GetDirectoryPeth() + product.Photo);
 
                 MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
@@ -238,12 +238,12 @@ namespace DimStock.UserForms
 
                 var product = new Product()
                 {
-                    InternalCode = InternalCode.Text,
-                    Description = Description.Text,
-                    CostPrice = Convert.ToDouble(CostPrice.DecimalValue),
-                    SalePrice = Convert.ToDouble(SalePrice.DecimalValue),
-                    BarCode = BarCode.Text,
-                    Photo = ImageProduct.ImageId,
+                    InternalCode = TextInternalCode.Text,
+                    Description = TextDescription.Text,
+                    CostPrice = Convert.ToDouble(TextCostPrice.DecimalValue),
+                    SalePrice = Convert.ToDouble(TextSalePrice.DecimalValue),
+                    BarCode = TextBarCode.Text,
+                    Photo = PictureImageProduct.ImageId,
                 };
                 product.Category.Id = CategoryId;
 
@@ -262,9 +262,9 @@ namespace DimStock.UserForms
                 //seja alterada
                 if (productPhoto.CheckIfExtits(photoPath) == false)
                     productPhoto.DeleteFromDirectory(
-                    ImageProduct.PathOfLastSelectedImage);
+                    PictureImageProduct.PathOfLastSelectedImage);
 
-                productPhoto.CopyFromDirectory(ImageProduct.SelectedDirectory,
+                productPhoto.CopyFromDirectory(PictureImageProduct.SelectedDirectory,
                 photoPath);
 
                 MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
@@ -284,17 +284,17 @@ namespace DimStock.UserForms
                 MessageBox.Show("Informe a categoria do produto!", "OBRIGATÓRIO",
                 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
-                BoxProductCategoryList.Select();
+                ComboBoxCategoryList.Select();
 
                 return false;
             }
 
-            if (Description.Text == string.Empty)
+            if (TextDescription.Text == string.Empty)
             {
                 MessageBox.Show("Campo descrição é obrigatório!", "OBRIGATÓRIO",
                 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
-                Description.Select();
+                TextDescription.Select();
 
                 return false;
             }
@@ -314,9 +314,9 @@ namespace DimStock.UserForms
                 using (var fileStream = new FileStream(picture.DirectoryPath,
                 FileMode.Open, FileAccess.Read))
                 {
-                    ImageProduct.Image = Image.FromStream(fileStream);
-                    ImageProduct.ImageId = productPhoto.GetNumberId() + ".jpg";
-                    ImageProduct.SelectedDirectory = picture.DirectoryPath;
+                    PictureImageProduct.Image = Image.FromStream(fileStream);
+                    PictureImageProduct.ImageId = productPhoto.GetNumberId() + ".jpg";
+                    PictureImageProduct.SelectedDirectory = picture.DirectoryPath;
 
                     uploadState = true;
                 }
@@ -331,21 +331,21 @@ namespace DimStock.UserForms
 
             if (productPhoto.CheckIfExtits(photoPath) == false)
             {
-                ImageProduct.Image = Resources.FotoNothing;
+                PictureImageProduct.Image = Resources.FotoNothing;
                 return;
             }
 
             using (var fileStream = new FileStream(photoPath, FileMode.Open, FileAccess.Read))
             {
-                ImageProduct.Image = Image.FromStream(fileStream);
-                ImageProduct.SelectedDirectory = photoPath;
-                ImageProduct.PathOfLastSelectedImage = photoPath;
-                ImageProduct.ImageId = photoIdNumber;
+                PictureImageProduct.Image = Image.FromStream(fileStream);
+                PictureImageProduct.SelectedDirectory = photoPath;
+                PictureImageProduct.PathOfLastSelectedImage = photoPath;
+                PictureImageProduct.ImageId = photoIdNumber;
 
                 if (newIdNumber == true)
                 {
                     photoIdNumber = productPhoto.GetNumberId() + ".jpg";
-                    ImageProduct.ImageId = photoIdNumber;
+                    PictureImageProduct.ImageId = photoIdNumber;
                 }
 
             }
@@ -371,12 +371,12 @@ namespace DimStock.UserForms
                     }
                 }
 
-                ImageProduct.Image = Resources.FotoNothing;
-                ImageProduct.ImageId = string.Empty;
-                ImageProduct.SelectedDirectory = string.Empty;
-                ImageProduct.PathOfLastSelectedImage = string.Empty;
+                PictureImageProduct.Image = Resources.FotoNothing;
+                PictureImageProduct.ImageId = string.Empty;
+                PictureImageProduct.SelectedDirectory = string.Empty;
+                PictureImageProduct.PathOfLastSelectedImage = string.Empty;
 
-                InternalCode.Select();
+                TextInternalCode.Select();
             }
             catch (Exception ex)
             {
@@ -384,7 +384,7 @@ namespace DimStock.UserForms
             }
         }
 
-        private void ResetVariables()
+        private void ResetProperties()
         {
             Id = 0;
             CategoryId = 0;
@@ -393,16 +393,16 @@ namespace DimStock.UserForms
         private void CallAllResets()
         {
             ResetControls();
-            ResetVariables();
+            ResetProperties();
         }
 
         public void FillBoxCategory()
         {
             try
             {
-                var category = new ProductCategory(dataPagination)
+                var category = new ProductCategory(pagination)
                 {
-                    Description = BoxProductCategoryList.Text
+                    Description = ComboBoxCategoryList.Text
                 };
                 category.SearchData();
 
@@ -410,7 +410,7 @@ namespace DimStock.UserForms
                 ListviewCategory.Height = 250;
                 ListviewCategory.Visible = true;
 
-                foreach (var item in category.ListOfRecords)
+                foreach (var item in category.List)
                 {
                     ListviewCategory.Items.Add(new ListViewItem(
                     new string[] { item.Id.ToString(),

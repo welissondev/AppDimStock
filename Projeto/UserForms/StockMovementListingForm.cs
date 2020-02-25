@@ -11,15 +11,7 @@ namespace DimStock.UserForms
 {
     public partial class StockMovementListingForm : Form
     {
-        #region Variables
-
-        private AxlDataPagination dataPagination = new AxlDataPagination();
-        private string selectedSituation = string.Empty;
-        private string selectedType = string.Empty;
-
-        #endregion
-
-        #region Constructs
+        #region Builder
 
         public StockMovementListingForm()
         {
@@ -27,6 +19,14 @@ namespace DimStock.UserForms
 
             InitializeSettings();
         }
+
+        #endregion
+
+        #region Properties
+
+        private AxlDataPage pagination = new AxlDataPage();
+        private string selectedSituation = string.Empty;
+        private string selectedType = string.Empty;
 
         #endregion
 
@@ -41,13 +41,13 @@ namespace DimStock.UserForms
 
         #region Button
 
-        private void RegisterNew_Click(object sender, EventArgs e)
+        private void ButtonRegisterNew_Click(object sender, EventArgs e)
         {
             StockMovementMenuStrip.Show();
             StockMovementMenuStrip.Location = MousePosition;
         }
 
-        private void DataList_Click(object sender, EventArgs e)
+        private void ButtonDataList_Click(object sender, EventArgs e)
         {
             CallAllResets();
             StartSearchTimer();
@@ -57,10 +57,10 @@ namespace DimStock.UserForms
 
         #region TextBox
 
-        private void SearchByOperationCode_TextChanged(object sender, EventArgs e)
+        private void TextSearchByOperationCode_TextChanged(object sender, EventArgs e)
         {
-            dataPagination.OffSetValue = 0;
-            dataPagination.CurrentPage = 1;
+            pagination.OffSetValue = 0;
+            pagination.CurrentPage = 1;
             StartSearchTimer();
         }
 
@@ -68,11 +68,11 @@ namespace DimStock.UserForms
 
         #region ComboBox
 
-        private void OperationType_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxOperationType_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                var itemSelected = OperationType.SelectedIndex;
+                var itemSelected = ComboBoxOperationType.SelectedIndex;
 
                 switch (itemSelected)
                 {
@@ -89,8 +89,8 @@ namespace DimStock.UserForms
                         break;
                 }
 
-                dataPagination.OffSetValue = 0;
-                dataPagination.CurrentPage = 1;
+                pagination.OffSetValue = 0;
+                pagination.CurrentPage = 1;
                 StartSearchTimer();
             }
             catch (Exception ex)
@@ -99,11 +99,11 @@ namespace DimStock.UserForms
             }
         }
 
-        private void OperationSituation_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxOperationSituation_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                var itemSelected = OperationSituation.SelectedIndex;
+                var itemSelected = ComboBoxOperationSituation.SelectedIndex;
 
                 switch (itemSelected)
                 {
@@ -120,8 +120,8 @@ namespace DimStock.UserForms
                         break;
                 }
 
-                dataPagination.OffSetValue = 0;
-                dataPagination.CurrentPage = 1;
+                pagination.OffSetValue = 0;
+                pagination.CurrentPage = 1;
                 StartSearchTimer();
             }
             catch (Exception ex)
@@ -130,30 +130,30 @@ namespace DimStock.UserForms
             }
         }
 
-        private void RecordsByPage_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxRecordsByPage_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                var itemSelected = RecordsByPage.SelectedIndex;
+                var itemSelected = ComboBoxRecordsByPage.SelectedIndex;
 
                 switch (itemSelected)
                 {
                     case 0:
-                        dataPagination.PageSize = 20;
+                        pagination.PageSize = 20;
                         break;
                     case 1:
-                        dataPagination.PageSize = 30;
+                        pagination.PageSize = 30;
                         break;
                     case 2:
-                        dataPagination.PageSize = 70;
+                        pagination.PageSize = 70;
                         break;
                     case 3:
-                        dataPagination.PageSize = 100;
+                        pagination.PageSize = 100;
                         break;
                 }
 
-                dataPagination.OffSetValue = 0;
-                dataPagination.CurrentPage = 1;
+                pagination.OffSetValue = 0;
+                pagination.CurrentPage = 1;
                 StartSearchTimer();
             }
             catch (Exception ex)
@@ -166,7 +166,7 @@ namespace DimStock.UserForms
 
         #region LabelLink
 
-        private void ClearSearchFields_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void ButtonClearSearchFields_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             try
             {
@@ -181,33 +181,33 @@ namespace DimStock.UserForms
 
         #endregion
 
-        #region DataGridView
+        #region DataGrid
 
-        private void MovementStockDataList_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void DatagridMovement_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (MovementStockDataList.Rows.Count > 0)
+            if (DatagridMovement.Rows.Count > 0)
             {
-                var columnName = MovementStockDataList.Columns[
+                var columnName = DatagridMovement.Columns[
                 e.ColumnIndex].Name;
 
                 switch (columnName)
                 {
                     case "viewDetails":
-                        ViewMovementDetails();
+                        GetDetail();
                         break;
 
                     case "delete":
-                        Delete();
+                        Remove();
                         break;
                 }
             }
         }
 
-        private void MovementStockDataList_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        private void DatagridMovement_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1)
             {
-                MovementStockDataList.Rows[e.RowIndex].Selected = true;
+                DatagridMovement.Rows[e.RowIndex].Selected = true;
             }
         }
 
@@ -226,26 +226,26 @@ namespace DimStock.UserForms
 
         private void NextPage_Click(object sender, EventArgs e)
         {
-            if (dataPagination.CurrentPage < dataPagination.NumberOfPages)
+            if (pagination.CurrentPage < pagination.NumberOfPages)
             {
-                dataPagination.CurrentPage += 1;
-                dataPagination.OffSetValue += dataPagination.PageSize;
+                pagination.CurrentPage += 1;
+                pagination.OffSetValue += pagination.PageSize;
                 StartSearchTimer();
             }
 
-            SetInBadingNavigator(dataPagination);
+            SetInBadingNavigator(pagination);
         }
 
         private void BackPage_Click(object sender, EventArgs e)
         {
-            if (dataPagination.CurrentPage > 1)
+            if (pagination.CurrentPage > 1)
             {
-                dataPagination.CurrentPage -= 1;
-                dataPagination.OffSetValue -= dataPagination.PageSize;
+                pagination.CurrentPage -= 1;
+                pagination.OffSetValue -= pagination.PageSize;
                 StartSearchTimer();
             }
 
-            SetInBadingNavigator(dataPagination);
+            SetInBadingNavigator(pagination);
         }
 
         #endregion
@@ -280,26 +280,26 @@ namespace DimStock.UserForms
 
         #endregion
 
-        #region MethodsAxiliarys
+        #region Function
 
         private void SearchData()
         {
             try
             {
-                var movement = new StockMovement(dataPagination)
+                var movement = new StockMovement(pagination)
                 {
                     OperationType = selectedType,
-                    OperationCode = SearchByOperationCode.Text,
+                    OperationCode = TextSearchByOperationCode.Text,
                     OperationSituation = selectedSituation
                 };
 
                 movement.SearchData();
 
-                MovementStockDataList.Rows.Clear();
+                DatagridMovement.Rows.Clear();
 
                 for (int i = 0; i < movement.List.Count; i++)
                 {
-                    MovementStockDataList.Rows.Add(
+                    DatagridMovement.Rows.Add(
                     movement.List[i].OperationSituation,
                     movement.List[i].OperationType,
                     movement.List[i].OperationCode,
@@ -309,11 +309,11 @@ namespace DimStock.UserForms
                     );
                 }
 
-                MovementStockDataList.ClearSelection();
+                DatagridMovement.ClearSelection();
 
                 PauseSearchTimer();
 
-                SetInBadingNavigator(dataPagination);
+                SetInBadingNavigator(pagination);
 
             }
             catch (Exception ex)
@@ -323,7 +323,7 @@ namespace DimStock.UserForms
             }
         }
 
-        private void Delete()
+        private void Remove()
         {
             try
             {
@@ -332,11 +332,11 @@ namespace DimStock.UserForms
                 MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
                     int id = Convert.ToInt32(
-                    MovementStockDataList.CurrentRow.Cells[
+                    DatagridMovement.CurrentRow.Cells[
                     "id"].Value);
 
                     var operationType = Convert.ToString(
-                    MovementStockDataList.CurrentRow.Cells[
+                    DatagridMovement.CurrentRow.Cells[
                     "operationType"].Value);
 
                     var stockMovement = new StockMovement
@@ -344,7 +344,7 @@ namespace DimStock.UserForms
                         OperationType = operationType
                     };
 
-                    if (stockMovement.Delete(id) == true)
+                    if (stockMovement.Remove(id) == true)
                     {
                         MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -362,12 +362,12 @@ namespace DimStock.UserForms
             }
         }
 
-        private void ViewMovementDetails()
+        private void GetDetail()
         {
             try
             {
                 int id = Convert.ToInt32(
-                MovementStockDataList.CurrentRow.Cells["id"].Value);
+                DatagridMovement.CurrentRow.Cells["id"].Value);
 
                 var form = new StockMovementRegistrationForm()
                 {
@@ -379,10 +379,10 @@ namespace DimStock.UserForms
                     MinimizeBox = false,
                 };
 
-                form.ViewMovementDetails(id);
+                form.MovementGetDetail(id);
                 form.Show();
 
-                HomeScreenForm.He.FormNovigationDescription.Text =
+                HomeScreenForm.He.LabelNavegationDescription.Text =
                 @"Cadastro De Movimentações";
             }
             catch (Exception ex)
@@ -402,8 +402,8 @@ namespace DimStock.UserForms
                     "Saída"
                 };
 
-                OperationType.DataSource = typeList;
-                OperationType.Text = "Todos";
+                ComboBoxOperationType.DataSource = typeList;
+                ComboBoxOperationType.Text = "Todos";
 
 
                 List<string> situationList = new List<string>()
@@ -413,8 +413,8 @@ namespace DimStock.UserForms
                     "Finalizada"
                 };
 
-                OperationSituation.DataSource = situationList;
-                OperationSituation.Text = "Todos";
+                ComboBoxOperationSituation.DataSource = situationList;
+                ComboBoxOperationSituation.Text = "Todos";
 
 
                 List<string> pageSizeList = new List<string>()
@@ -425,8 +425,8 @@ namespace DimStock.UserForms
                     "100 Registros"
                 };
 
-                RecordsByPage.DataSource = pageSizeList;
-                RecordsByPage.Text = "20 Registros";
+                ComboBoxRecordsByPage.DataSource = pageSizeList;
+                ComboBoxRecordsByPage.Text = "20 Registros";
 
             }
             catch (Exception ex)
@@ -443,32 +443,32 @@ namespace DimStock.UserForms
             FillAllComboBox();
 
             //Defini o lealt do datagridviw
-            AxlDataGridLealt.SetDefaultStyle(MovementStockDataList);
+            AxlDataGridLealt.SetDefaultStyle(DatagridMovement);
 
         }
 
         private void StartSearchTimer()
         {
-            GifLoading.Visible = true;
+            PictureLoading.Visible = true;
             SearchTimer.Enabled = false;
             SearchTimer.Enabled = true;
         }
 
         private void PauseSearchTimer()
         {
-            GifLoading.Visible = false;
+            PictureLoading.Visible = false;
             SearchTimer.Enabled = false;
         }
 
-        private void SetInBadingNavigator(AxlDataPagination dataPagination)
+        private void SetInBadingNavigator(AxlDataPage pagination)
         {
-            if (dataPagination.RecordCount == 0)
-                dataPagination.CurrentPage = 0;
+            if (pagination.RecordCount == 0)
+                pagination.CurrentPage = 0;
 
-            var legend = " Página " + dataPagination.CurrentPage + " de " + dataPagination.NumberOfPages;
+            var legend = " Página " + pagination.CurrentPage + " de " + pagination.NumberOfPages;
             BindingPagination.Items[2].Text = legend;
 
-            legend = " Total de " + dataPagination.RecordCount + " registro(s)";
+            legend = " Total de " + pagination.RecordCount + " registro(s)";
             BindingPagination.Items[6].Text = legend;
         }
 
@@ -485,13 +485,13 @@ namespace DimStock.UserForms
                         ctl.Text = string.Empty;
                 }
 
-                OperationSituation.Text = "Todos";
+                ComboBoxOperationSituation.Text = "Todos";
 
-                OperationType.Text = "Todos";
+                ComboBoxOperationType.Text = "Todos";
 
-                RecordsByPage.Text = dataPagination.PageSize + " Registros ";
+                ComboBoxRecordsByPage.Text = pagination.PageSize + " Registros ";
 
-                SearchByOperationCode.Select();
+                TextSearchByOperationCode.Select();
             }
             catch (Exception ex)
             {
@@ -499,18 +499,18 @@ namespace DimStock.UserForms
             }
         }
 
-        private void ResetVariables()
+        private void ResetProperties()
         {
             selectedSituation = string.Empty;
             selectedType = string.Empty;
-            dataPagination.OffSetValue = 0;
-            dataPagination.CurrentPage = 1;
+            pagination.OffSetValue = 0;
+            pagination.CurrentPage = 1;
         }
 
         private void CallAllResets()
         {
             ResetControls();
-            ResetVariables();
+            ResetProperties();
         }
 
         private void CreateColumnsInTheDataList()
@@ -526,7 +526,7 @@ namespace DimStock.UserForms
                 var viewDetails = new DataGridViewLinkColumn();
                 var delete = new DataGridViewLinkColumn();
 
-                var stockMovementList = MovementStockDataList;
+                var stockMovementList = DatagridMovement;
 
                 stockMovementList.Columns.Add(operationSituation);
                 stockMovementList.Columns[0].Width = 100;
@@ -571,7 +571,7 @@ namespace DimStock.UserForms
                 stockMovementList.Columns[4].Visible = true;
 
                 stockMovementList.Columns.Add(stockDestinationLocation);
-                stockMovementList.Columns[5].Width = 250;
+                stockMovementList.Columns[5].Width = 200;
                 stockMovementList.Columns[5].Name = "stockDestinationLocation";
                 stockMovementList.Columns[5].HeaderText = "DESTINO";
                 stockMovementList.Columns[5].ReadOnly = true;

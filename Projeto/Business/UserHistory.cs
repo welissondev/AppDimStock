@@ -16,21 +16,27 @@ namespace DimStock.Business
             List = new List<UserHistory>();
         }
 
-        public UserHistory(AxlDataPagination dataPagination)
+        public UserHistory(AxlDataPage pagination)
         {
-            DataPagination = dataPagination;
+            Pagination = pagination;
             User = new User();
             List = new List<UserHistory>();
         }
 
-        public UserHistory(Connection connection)
+        public UserHistory(DatabaseConnection connection)
         {
             this.connection = connection;
             User = new User();
             List = new List<UserHistory>();
         }
 
-        #endregion 
+        #endregion
+
+        #region Properties
+
+        private DatabaseConnection connection;
+
+        #endregion
 
         #region Get & Set
 
@@ -41,16 +47,14 @@ namespace DimStock.Business
         public string OperationHour { get; set; }
         public string OperationModule { get; set; }
         public List<UserHistory> List { get; set; }
-        public AxlDataPagination DataPagination { get; set; }
+        public AxlDataPage Pagination { get; set; }
         public User User { get; set; }
-
-        private Connection connection;
 
         #endregion
 
         #region Function
 
-        public bool Register()
+        public bool Save()
         {
             var sqlCommand = @"INSERT INTO UserHistory(UserId, OperationType, OperationDate, OperationHour, 
             OperationModule, AffectedFields)VALUES(@UserId, @OperationType, @OperationDate, @OperationHour, 
@@ -72,7 +76,7 @@ namespace DimStock.Business
             var sqlQuery = @"SELECT [User].*, UserHistory.* FROM UserHistory 
             INNER JOIN [User] ON User.Id = UserHistory.UserId";
 
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 using (var reader = connection.QueryWithDataReader(sqlQuery))
                 {
@@ -99,7 +103,7 @@ namespace DimStock.Business
 
         public void SearchData(string startDate, string finalDate)
         {
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 var sqlQuery = string.Empty;
                 var sqlCount = string.Empty;
@@ -136,18 +140,18 @@ namespace DimStock.Business
 
                 sqlCount += criterion;
 
-                DataPagination.RecordCount = Convert.ToInt32(
+                Pagination.RecordCount = Convert.ToInt32(
                 connection.ExecuteScalar(sqlCount));
 
                 var dataTable = connection.QueryWithDataTable(sqlQuery,
-                DataPagination.OffSetValue,
-                DataPagination.PageSize);
+                Pagination.OffSetValue,
+                Pagination.PageSize);
 
-                PassForList(dataTable);
+                PassToList(dataTable);
             }
         }
 
-        public void PassForList(DataTable dataTable)
+        public void PassToList(DataTable dataTable)
         {
             foreach (DataRow row in dataTable.Rows)
             {

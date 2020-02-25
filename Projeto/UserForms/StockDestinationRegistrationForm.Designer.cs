@@ -30,14 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StockDestinationRegistrationForm));
             this.DestinationLocationTitle = new System.Windows.Forms.Label();
-            this.DestinationLocation = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.DestinationDataList = new System.Windows.Forms.DataGridView();
-            this.Edit = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.Save = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.DataList = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.Delete = new Bunifu.Framework.UI.BunifuThinButton2();
-            ((System.ComponentModel.ISupportInitialize)(this.DestinationLocation)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DestinationDataList)).BeginInit();
+            this.TextDestinationLocation = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.DatagridDestination = new System.Windows.Forms.DataGridView();
+            this.ButtonEdit = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.ButtonSave = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.ButtonDataList = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.ButtonDelete = new Bunifu.Framework.UI.BunifuThinButton2();
+            ((System.ComponentModel.ISupportInitialize)(this.TextDestinationLocation)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DatagridDestination)).BeginInit();
             this.SuspendLayout();
             // 
             // DestinationLocationTitle
@@ -52,141 +52,141 @@
             this.DestinationLocationTitle.TabIndex = 144;
             this.DestinationLocationTitle.Text = "Descrição do destino:";
             // 
-            // DestinationLocation
+            // TextDestinationLocation
             // 
-            this.DestinationLocation.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.DestinationLocation.BackColor = System.Drawing.Color.White;
-            this.DestinationLocation.BeforeTouchSize = new System.Drawing.Size(400, 26);
-            this.DestinationLocation.BorderColor = System.Drawing.Color.Silver;
-            this.DestinationLocation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.DestinationLocation.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.DestinationLocation.Font = new System.Drawing.Font("Calibri Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DestinationLocation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.DestinationLocation.Location = new System.Drawing.Point(12, 35);
-            this.DestinationLocation.MinimumSize = new System.Drawing.Size(14, 10);
-            this.DestinationLocation.Name = "DestinationLocation";
-            this.DestinationLocation.Size = new System.Drawing.Size(400, 26);
-            this.DestinationLocation.TabIndex = 143;
-            this.DestinationLocation.ThemeName = "Default";
+            this.TextDestinationLocation.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.TextDestinationLocation.BackColor = System.Drawing.Color.White;
+            this.TextDestinationLocation.BeforeTouchSize = new System.Drawing.Size(400, 26);
+            this.TextDestinationLocation.BorderColor = System.Drawing.Color.Silver;
+            this.TextDestinationLocation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextDestinationLocation.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.TextDestinationLocation.Font = new System.Drawing.Font("Calibri Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextDestinationLocation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TextDestinationLocation.Location = new System.Drawing.Point(12, 35);
+            this.TextDestinationLocation.MinimumSize = new System.Drawing.Size(14, 10);
+            this.TextDestinationLocation.Name = "TextDestinationLocation";
+            this.TextDestinationLocation.Size = new System.Drawing.Size(400, 26);
+            this.TextDestinationLocation.TabIndex = 143;
+            this.TextDestinationLocation.ThemeName = "Default";
             // 
-            // DestinationDataList
+            // DatagridDestination
             // 
-            this.DestinationDataList.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.DestinationDataList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DestinationDataList.Location = new System.Drawing.Point(12, 74);
-            this.DestinationDataList.Name = "DestinationDataList";
-            this.DestinationDataList.Size = new System.Drawing.Size(904, 465);
-            this.DestinationDataList.TabIndex = 145;
-            this.DestinationDataList.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DestinationDataList_CellMouseEnter);
-            this.DestinationDataList.DoubleClick += new System.EventHandler(this.DestinationDataList_DoubleClick);
+            this.DatagridDestination.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.DatagridDestination.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DatagridDestination.Location = new System.Drawing.Point(12, 74);
+            this.DatagridDestination.Name = "DatagridDestination";
+            this.DatagridDestination.Size = new System.Drawing.Size(904, 465);
+            this.DatagridDestination.TabIndex = 145;
+            this.DatagridDestination.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DatagridDestination_CellMouseEnter);
+            this.DatagridDestination.DoubleClick += new System.EventHandler(this.DatagridDestination_DoubleClick);
             // 
-            // Edit
+            // ButtonEdit
             // 
-            this.Edit.ActiveBorderThickness = 1;
-            this.Edit.ActiveCornerRadius = 10;
-            this.Edit.ActiveFillColor = System.Drawing.SystemColors.Desktop;
-            this.Edit.ActiveForecolor = System.Drawing.Color.White;
-            this.Edit.ActiveLineColor = System.Drawing.SystemColors.Desktop;
-            this.Edit.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Edit.BackColor = System.Drawing.Color.White;
-            this.Edit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Edit.BackgroundImage")));
-            this.Edit.ButtonText = "Editar";
-            this.Edit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Edit.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Edit.ForeColor = System.Drawing.Color.SeaGreen;
-            this.Edit.IdleBorderThickness = 1;
-            this.Edit.IdleCornerRadius = 10;
-            this.Edit.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
-            this.Edit.IdleForecolor = System.Drawing.Color.White;
-            this.Edit.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
-            this.Edit.Location = new System.Drawing.Point(619, 16);
-            this.Edit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Edit.Name = "Edit";
-            this.Edit.Size = new System.Drawing.Size(97, 43);
-            this.Edit.TabIndex = 215;
-            this.Edit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Edit.Click += new System.EventHandler(this.Edit_Click);
+            this.ButtonEdit.ActiveBorderThickness = 1;
+            this.ButtonEdit.ActiveCornerRadius = 10;
+            this.ButtonEdit.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonEdit.ActiveForecolor = System.Drawing.Color.White;
+            this.ButtonEdit.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonEdit.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ButtonEdit.BackColor = System.Drawing.Color.White;
+            this.ButtonEdit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonEdit.BackgroundImage")));
+            this.ButtonEdit.ButtonText = "Editar";
+            this.ButtonEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonEdit.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonEdit.ForeColor = System.Drawing.Color.SeaGreen;
+            this.ButtonEdit.IdleBorderThickness = 1;
+            this.ButtonEdit.IdleCornerRadius = 10;
+            this.ButtonEdit.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonEdit.IdleForecolor = System.Drawing.Color.White;
+            this.ButtonEdit.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonEdit.Location = new System.Drawing.Point(619, 16);
+            this.ButtonEdit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ButtonEdit.Name = "ButtonEdit";
+            this.ButtonEdit.Size = new System.Drawing.Size(97, 43);
+            this.ButtonEdit.TabIndex = 215;
+            this.ButtonEdit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ButtonEdit.Click += new System.EventHandler(this.ButtonEdit_Click);
             // 
-            // Save
+            // ButtonSave
             // 
-            this.Save.ActiveBorderThickness = 1;
-            this.Save.ActiveCornerRadius = 10;
-            this.Save.ActiveFillColor = System.Drawing.SystemColors.Desktop;
-            this.Save.ActiveForecolor = System.Drawing.Color.White;
-            this.Save.ActiveLineColor = System.Drawing.SystemColors.Desktop;
-            this.Save.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Save.BackColor = System.Drawing.Color.White;
-            this.Save.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Save.BackgroundImage")));
-            this.Save.ButtonText = "Salvar";
-            this.Save.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Save.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Save.ForeColor = System.Drawing.Color.SeaGreen;
-            this.Save.IdleBorderThickness = 1;
-            this.Save.IdleCornerRadius = 10;
-            this.Save.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
-            this.Save.IdleForecolor = System.Drawing.Color.White;
-            this.Save.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
-            this.Save.Location = new System.Drawing.Point(520, 16);
-            this.Save.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Save.Name = "Save";
-            this.Save.Size = new System.Drawing.Size(97, 43);
-            this.Save.TabIndex = 214;
-            this.Save.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Save.Click += new System.EventHandler(this.Save_Click);
+            this.ButtonSave.ActiveBorderThickness = 1;
+            this.ButtonSave.ActiveCornerRadius = 10;
+            this.ButtonSave.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonSave.ActiveForecolor = System.Drawing.Color.White;
+            this.ButtonSave.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonSave.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ButtonSave.BackColor = System.Drawing.Color.White;
+            this.ButtonSave.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonSave.BackgroundImage")));
+            this.ButtonSave.ButtonText = "Salvar";
+            this.ButtonSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonSave.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonSave.ForeColor = System.Drawing.Color.SeaGreen;
+            this.ButtonSave.IdleBorderThickness = 1;
+            this.ButtonSave.IdleCornerRadius = 10;
+            this.ButtonSave.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonSave.IdleForecolor = System.Drawing.Color.White;
+            this.ButtonSave.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonSave.Location = new System.Drawing.Point(520, 16);
+            this.ButtonSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ButtonSave.Name = "ButtonSave";
+            this.ButtonSave.Size = new System.Drawing.Size(97, 43);
+            this.ButtonSave.TabIndex = 214;
+            this.ButtonSave.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ButtonSave.Click += new System.EventHandler(this.ButtonSave_Click);
             // 
-            // DataList
+            // ButtonDataList
             // 
-            this.DataList.ActiveBorderThickness = 1;
-            this.DataList.ActiveCornerRadius = 10;
-            this.DataList.ActiveFillColor = System.Drawing.SystemColors.Desktop;
-            this.DataList.ActiveForecolor = System.Drawing.Color.White;
-            this.DataList.ActiveLineColor = System.Drawing.SystemColors.Desktop;
-            this.DataList.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.DataList.BackColor = System.Drawing.Color.White;
-            this.DataList.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DataList.BackgroundImage")));
-            this.DataList.ButtonText = "Listar";
-            this.DataList.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.DataList.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DataList.ForeColor = System.Drawing.Color.SeaGreen;
-            this.DataList.IdleBorderThickness = 1;
-            this.DataList.IdleCornerRadius = 10;
-            this.DataList.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
-            this.DataList.IdleForecolor = System.Drawing.Color.White;
-            this.DataList.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
-            this.DataList.Location = new System.Drawing.Point(818, 16);
-            this.DataList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.DataList.Name = "DataList";
-            this.DataList.Size = new System.Drawing.Size(97, 43);
-            this.DataList.TabIndex = 217;
-            this.DataList.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.DataList.Click += new System.EventHandler(this.DataList_Click);
+            this.ButtonDataList.ActiveBorderThickness = 1;
+            this.ButtonDataList.ActiveCornerRadius = 10;
+            this.ButtonDataList.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonDataList.ActiveForecolor = System.Drawing.Color.White;
+            this.ButtonDataList.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonDataList.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ButtonDataList.BackColor = System.Drawing.Color.White;
+            this.ButtonDataList.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonDataList.BackgroundImage")));
+            this.ButtonDataList.ButtonText = "Listar";
+            this.ButtonDataList.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonDataList.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonDataList.ForeColor = System.Drawing.Color.SeaGreen;
+            this.ButtonDataList.IdleBorderThickness = 1;
+            this.ButtonDataList.IdleCornerRadius = 10;
+            this.ButtonDataList.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonDataList.IdleForecolor = System.Drawing.Color.White;
+            this.ButtonDataList.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonDataList.Location = new System.Drawing.Point(818, 16);
+            this.ButtonDataList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ButtonDataList.Name = "ButtonDataList";
+            this.ButtonDataList.Size = new System.Drawing.Size(97, 43);
+            this.ButtonDataList.TabIndex = 217;
+            this.ButtonDataList.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ButtonDataList.Click += new System.EventHandler(this.ButtonDataList_Click);
             // 
-            // Delete
+            // ButtonDelete
             // 
-            this.Delete.ActiveBorderThickness = 1;
-            this.Delete.ActiveCornerRadius = 10;
-            this.Delete.ActiveFillColor = System.Drawing.SystemColors.Desktop;
-            this.Delete.ActiveForecolor = System.Drawing.Color.White;
-            this.Delete.ActiveLineColor = System.Drawing.SystemColors.Desktop;
-            this.Delete.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Delete.BackColor = System.Drawing.Color.White;
-            this.Delete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Delete.BackgroundImage")));
-            this.Delete.ButtonText = "Deletar";
-            this.Delete.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Delete.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Delete.ForeColor = System.Drawing.Color.SeaGreen;
-            this.Delete.IdleBorderThickness = 1;
-            this.Delete.IdleCornerRadius = 10;
-            this.Delete.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
-            this.Delete.IdleForecolor = System.Drawing.Color.White;
-            this.Delete.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
-            this.Delete.Location = new System.Drawing.Point(719, 16);
-            this.Delete.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Delete.Name = "Delete";
-            this.Delete.Size = new System.Drawing.Size(97, 43);
-            this.Delete.TabIndex = 216;
-            this.Delete.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Delete.Click += new System.EventHandler(this.Delete_Click);
+            this.ButtonDelete.ActiveBorderThickness = 1;
+            this.ButtonDelete.ActiveCornerRadius = 10;
+            this.ButtonDelete.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonDelete.ActiveForecolor = System.Drawing.Color.White;
+            this.ButtonDelete.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonDelete.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ButtonDelete.BackColor = System.Drawing.Color.White;
+            this.ButtonDelete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonDelete.BackgroundImage")));
+            this.ButtonDelete.ButtonText = "Deletar";
+            this.ButtonDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonDelete.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonDelete.ForeColor = System.Drawing.Color.SeaGreen;
+            this.ButtonDelete.IdleBorderThickness = 1;
+            this.ButtonDelete.IdleCornerRadius = 10;
+            this.ButtonDelete.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonDelete.IdleForecolor = System.Drawing.Color.White;
+            this.ButtonDelete.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonDelete.Location = new System.Drawing.Point(719, 16);
+            this.ButtonDelete.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ButtonDelete.Name = "ButtonDelete";
+            this.ButtonDelete.Size = new System.Drawing.Size(97, 43);
+            this.ButtonDelete.TabIndex = 216;
+            this.ButtonDelete.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ButtonDelete.Click += new System.EventHandler(this.ButtonDelete_Click);
             // 
             // StockDestinationRegistrationForm
             // 
@@ -194,20 +194,20 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(928, 551);
-            this.Controls.Add(this.DataList);
-            this.Controls.Add(this.Delete);
-            this.Controls.Add(this.Edit);
-            this.Controls.Add(this.Save);
-            this.Controls.Add(this.DestinationDataList);
+            this.Controls.Add(this.ButtonDataList);
+            this.Controls.Add(this.ButtonDelete);
+            this.Controls.Add(this.ButtonEdit);
+            this.Controls.Add(this.ButtonSave);
+            this.Controls.Add(this.DatagridDestination);
             this.Controls.Add(this.DestinationLocationTitle);
-            this.Controls.Add(this.DestinationLocation);
+            this.Controls.Add(this.TextDestinationLocation);
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(944, 590);
             this.Name = "StockDestinationRegistrationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.StockDestinationRegistrationForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.DestinationLocation)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DestinationDataList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextDestinationLocation)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DatagridDestination)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -216,11 +216,11 @@
         #endregion
 
         public System.Windows.Forms.Label DestinationLocationTitle;
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt DestinationLocation;
-        private System.Windows.Forms.DataGridView DestinationDataList;
-        private Bunifu.Framework.UI.BunifuThinButton2 Edit;
-        private Bunifu.Framework.UI.BunifuThinButton2 Save;
-        private Bunifu.Framework.UI.BunifuThinButton2 DataList;
-        private Bunifu.Framework.UI.BunifuThinButton2 Delete;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt TextDestinationLocation;
+        private System.Windows.Forms.DataGridView DatagridDestination;
+        private Bunifu.Framework.UI.BunifuThinButton2 ButtonEdit;
+        private Bunifu.Framework.UI.BunifuThinButton2 ButtonSave;
+        private Bunifu.Framework.UI.BunifuThinButton2 ButtonDataList;
+        private Bunifu.Framework.UI.BunifuThinButton2 ButtonDelete;
     }
 }

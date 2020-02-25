@@ -61,7 +61,7 @@
             this.MenuUser_ListHistory = new System.Windows.Forms.ToolStripMenuItem();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.DayOfTheWeek = new System.Windows.Forms.Label();
-            this.FormNovigationDescription = new System.Windows.Forms.Label();
+            this.LabelNavegationDescription = new System.Windows.Forms.Label();
             this.ContextMenu_Settings = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MenuSettings_Backup = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuSettings_Backup_GenerateNew = new System.Windows.Forms.ToolStripMenuItem();
@@ -406,7 +406,7 @@
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuGradientPanel1.Controls.Add(this.DayOfTheWeek);
-            this.bunifuGradientPanel1.Controls.Add(this.FormNovigationDescription);
+            this.bunifuGradientPanel1.Controls.Add(this.LabelNavegationDescription);
             this.bunifuGradientPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.DimGray;
             this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.SystemColors.Desktop;
@@ -432,24 +432,24 @@
             this.DayOfTheWeek.Text = "DayOfTheWeek";
             this.DayOfTheWeek.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // FormNovigationDescription
+            // LabelNavegationDescription
             // 
-            this.FormNovigationDescription.BackColor = System.Drawing.Color.Transparent;
-            this.FormNovigationDescription.Font = new System.Drawing.Font("Calibri Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormNovigationDescription.ForeColor = System.Drawing.Color.White;
-            this.FormNovigationDescription.Location = new System.Drawing.Point(4, -2);
-            this.FormNovigationDescription.Name = "FormNovigationDescription";
-            this.FormNovigationDescription.Size = new System.Drawing.Size(535, 33);
-            this.FormNovigationDescription.TabIndex = 0;
-            this.FormNovigationDescription.Text = "Tela Inicial";
-            this.FormNovigationDescription.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.LabelNavegationDescription.BackColor = System.Drawing.Color.Transparent;
+            this.LabelNavegationDescription.Font = new System.Drawing.Font("Calibri Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelNavegationDescription.ForeColor = System.Drawing.Color.White;
+            this.LabelNavegationDescription.Location = new System.Drawing.Point(4, -2);
+            this.LabelNavegationDescription.Name = "LabelNavegationDescription";
+            this.LabelNavegationDescription.Size = new System.Drawing.Size(535, 33);
+            this.LabelNavegationDescription.TabIndex = 0;
+            this.LabelNavegationDescription.Text = "Tela Inicial";
+            this.LabelNavegationDescription.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ContextMenu_Settings
             // 
             this.ContextMenu_Settings.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuSettings_Backup});
             this.ContextMenu_Settings.Name = "ContextMenu_Settings";
-            this.ContextMenu_Settings.Size = new System.Drawing.Size(181, 48);
+            this.ContextMenu_Settings.Size = new System.Drawing.Size(114, 26);
             // 
             // MenuSettings_Backup
             // 
@@ -457,21 +457,20 @@
             this.MenuSettings_Backup_GenerateNew,
             this.MenuSettings_Backup_ImportAnother});
             this.MenuSettings_Backup.Name = "MenuSettings_Backup";
-            this.MenuSettings_Backup.Size = new System.Drawing.Size(180, 22);
+            this.MenuSettings_Backup.Size = new System.Drawing.Size(113, 22);
             this.MenuSettings_Backup.Text = "Backup";
-            
             // 
             // MenuSettings_Backup_GenerateNew
             // 
             this.MenuSettings_Backup_GenerateNew.Name = "MenuSettings_Backup_GenerateNew";
-            this.MenuSettings_Backup_GenerateNew.Size = new System.Drawing.Size(180, 22);
+            this.MenuSettings_Backup_GenerateNew.Size = new System.Drawing.Size(154, 22);
             this.MenuSettings_Backup_GenerateNew.Text = "Gerar Novo";
             this.MenuSettings_Backup_GenerateNew.Click += new System.EventHandler(this.MenuSettings_Backup_GenerateNew_Click);
             // 
             // MenuSettings_Backup_ImportAnother
             // 
             this.MenuSettings_Backup_ImportAnother.Name = "MenuSettings_Backup_ImportAnother";
-            this.MenuSettings_Backup_ImportAnother.Size = new System.Drawing.Size(180, 22);
+            this.MenuSettings_Backup_ImportAnother.Size = new System.Drawing.Size(154, 22);
             this.MenuSettings_Backup_ImportAnother.Text = "Importar Outro";
             this.MenuSettings_Backup_ImportAnother.Click += new System.EventHandler(this.MenuSettings_Backup_ImportAnother_Click);
             // 
@@ -532,7 +531,7 @@
         private System.Windows.Forms.Label DayOfTheWeek;
         private System.Windows.Forms.ContextMenuStrip ContextMenu_Settings;
         private System.Windows.Forms.ToolStripMenuItem MenuSettings_Backup;
-        public System.Windows.Forms.Label FormNovigationDescription;
+        public System.Windows.Forms.Label LabelNavegationDescription;
         private System.Windows.Forms.ToolStripMenuItem MenuProduct_RegisterNew_Product;
         private System.Windows.Forms.ToolStripMenuItem MenuProduct_RegisterNew_Category;
         private System.Windows.Forms.ToolStripMenuItem MenuProduct_ListRegisters_Product;

@@ -29,71 +29,71 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserLoginForm));
-            this.PassWord = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.Login = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.TextPassWord = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.TextLogin = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.PictureBackGroudUserLogin = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.bunifuCards1 = new Bunifu.Framework.UI.BunifuCards();
-            this.Exists = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.SignIn = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.ButtonExists = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.ButtonSignIn = new Bunifu.Framework.UI.BunifuThinButton2();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.PassWord)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Login)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextPassWord)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextLogin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBackGroudUserLogin)).BeginInit();
             this.bunifuCards1.SuspendLayout();
             this.bunifuGradientPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // PassWord
+            // TextPassWord
             // 
-            this.PassWord.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PassWord.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.PassWord.BeforeTouchSize = new System.Drawing.Size(192, 27);
-            this.PassWord.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
-            this.PassWord.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PassWord.CanOverrideStyle = true;
-            this.PassWord.CausesValidation = false;
-            this.PassWord.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.PassWord.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PassWord.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.PassWord.Location = new System.Drawing.Point(32, 147);
-            this.PassWord.MaxLength = 50;
-            this.PassWord.MinimumSize = new System.Drawing.Size(16, 12);
-            this.PassWord.Name = "PassWord";
-            this.PassWord.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
-            this.PassWord.PasswordChar = '*';
-            this.PassWord.Size = new System.Drawing.Size(192, 27);
-            this.PassWord.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016Colorful;
-            this.PassWord.TabIndex = 1;
-            this.PassWord.Tag = "";
-            this.PassWord.ThemeName = "Office2016Colorful";
+            this.TextPassWord.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TextPassWord.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.TextPassWord.BeforeTouchSize = new System.Drawing.Size(192, 27);
+            this.TextPassWord.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
+            this.TextPassWord.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextPassWord.CanOverrideStyle = true;
+            this.TextPassWord.CausesValidation = false;
+            this.TextPassWord.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.TextPassWord.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextPassWord.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.TextPassWord.Location = new System.Drawing.Point(32, 147);
+            this.TextPassWord.MaxLength = 50;
+            this.TextPassWord.MinimumSize = new System.Drawing.Size(16, 12);
+            this.TextPassWord.Name = "TextPassWord";
+            this.TextPassWord.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
+            this.TextPassWord.PasswordChar = '*';
+            this.TextPassWord.Size = new System.Drawing.Size(192, 27);
+            this.TextPassWord.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016Colorful;
+            this.TextPassWord.TabIndex = 1;
+            this.TextPassWord.Tag = "";
+            this.TextPassWord.ThemeName = "Office2016Colorful";
             // 
-            // Login
+            // TextLogin
             // 
-            this.Login.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Login.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.Login.BeforeTouchSize = new System.Drawing.Size(192, 27);
-            this.Login.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
-            this.Login.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Login.CanOverrideStyle = true;
-            this.Login.CausesValidation = false;
-            this.Login.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.Login.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Login.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.Login.Location = new System.Drawing.Point(32, 89);
-            this.Login.MaxLength = 50;
-            this.Login.MinimumSize = new System.Drawing.Size(16, 12);
-            this.Login.Name = "Login";
-            this.Login.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
-            this.Login.Size = new System.Drawing.Size(192, 27);
-            this.Login.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016Colorful;
-            this.Login.TabIndex = 0;
-            this.Login.Tag = "";
-            this.Login.ThemeName = "Office2016Colorful";
+            this.TextLogin.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TextLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.TextLogin.BeforeTouchSize = new System.Drawing.Size(192, 27);
+            this.TextLogin.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
+            this.TextLogin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextLogin.CanOverrideStyle = true;
+            this.TextLogin.CausesValidation = false;
+            this.TextLogin.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.TextLogin.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.TextLogin.Location = new System.Drawing.Point(32, 89);
+            this.TextLogin.MaxLength = 50;
+            this.TextLogin.MinimumSize = new System.Drawing.Size(16, 12);
+            this.TextLogin.Name = "TextLogin";
+            this.TextLogin.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Silver;
+            this.TextLogin.Size = new System.Drawing.Size(192, 27);
+            this.TextLogin.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016Colorful;
+            this.TextLogin.TabIndex = 0;
+            this.TextLogin.Tag = "";
+            this.TextLogin.ThemeName = "Office2016Colorful";
             // 
             // PictureBackGroudUserLogin
             // 
@@ -141,12 +141,12 @@
             this.bunifuCards1.BorderRadius = 5;
             this.bunifuCards1.BottomSahddow = true;
             this.bunifuCards1.color = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(117)))), ((int)(((byte)(192)))));
-            this.bunifuCards1.Controls.Add(this.Exists);
-            this.bunifuCards1.Controls.Add(this.SignIn);
+            this.bunifuCards1.Controls.Add(this.ButtonExists);
+            this.bunifuCards1.Controls.Add(this.ButtonSignIn);
             this.bunifuCards1.Controls.Add(this.label2);
             this.bunifuCards1.Controls.Add(this.label1);
-            this.bunifuCards1.Controls.Add(this.PassWord);
-            this.bunifuCards1.Controls.Add(this.Login);
+            this.bunifuCards1.Controls.Add(this.TextPassWord);
+            this.bunifuCards1.Controls.Add(this.TextLogin);
             this.bunifuCards1.LeftSahddow = false;
             this.bunifuCards1.Location = new System.Drawing.Point(348, 138);
             this.bunifuCards1.Name = "bunifuCards1";
@@ -155,57 +155,57 @@
             this.bunifuCards1.Size = new System.Drawing.Size(257, 293);
             this.bunifuCards1.TabIndex = 143;
             // 
-            // Exists
+            // ButtonExists
             // 
-            this.Exists.ActiveBorderThickness = 1;
-            this.Exists.ActiveCornerRadius = 5;
-            this.Exists.ActiveFillColor = System.Drawing.SystemColors.Desktop;
-            this.Exists.ActiveForecolor = System.Drawing.Color.White;
-            this.Exists.ActiveLineColor = System.Drawing.SystemColors.Desktop;
-            this.Exists.BackColor = System.Drawing.Color.White;
-            this.Exists.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Exists.BackgroundImage")));
-            this.Exists.ButtonText = "Sair";
-            this.Exists.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Exists.Font = new System.Drawing.Font("Calibri Light", 14F);
-            this.Exists.ForeColor = System.Drawing.Color.SeaGreen;
-            this.Exists.IdleBorderThickness = 1;
-            this.Exists.IdleCornerRadius = 5;
-            this.Exists.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(117)))), ((int)(((byte)(192)))));
-            this.Exists.IdleForecolor = System.Drawing.Color.White;
-            this.Exists.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(117)))), ((int)(((byte)(192)))));
-            this.Exists.Location = new System.Drawing.Point(129, 183);
-            this.Exists.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.Exists.Name = "Exists";
-            this.Exists.Size = new System.Drawing.Size(95, 45);
-            this.Exists.TabIndex = 3;
-            this.Exists.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Exists.Click += new System.EventHandler(this.Exists_Click);
+            this.ButtonExists.ActiveBorderThickness = 1;
+            this.ButtonExists.ActiveCornerRadius = 5;
+            this.ButtonExists.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonExists.ActiveForecolor = System.Drawing.Color.White;
+            this.ButtonExists.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonExists.BackColor = System.Drawing.Color.White;
+            this.ButtonExists.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonExists.BackgroundImage")));
+            this.ButtonExists.ButtonText = "Sair";
+            this.ButtonExists.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonExists.Font = new System.Drawing.Font("Calibri Light", 14F);
+            this.ButtonExists.ForeColor = System.Drawing.Color.SeaGreen;
+            this.ButtonExists.IdleBorderThickness = 1;
+            this.ButtonExists.IdleCornerRadius = 5;
+            this.ButtonExists.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(117)))), ((int)(((byte)(192)))));
+            this.ButtonExists.IdleForecolor = System.Drawing.Color.White;
+            this.ButtonExists.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(117)))), ((int)(((byte)(192)))));
+            this.ButtonExists.Location = new System.Drawing.Point(129, 183);
+            this.ButtonExists.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.ButtonExists.Name = "ButtonExists";
+            this.ButtonExists.Size = new System.Drawing.Size(95, 45);
+            this.ButtonExists.TabIndex = 3;
+            this.ButtonExists.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ButtonExists.Click += new System.EventHandler(this.ButtonExists_Click);
             // 
-            // SignIn
+            // ButtonSignIn
             // 
-            this.SignIn.ActiveBorderThickness = 1;
-            this.SignIn.ActiveCornerRadius = 5;
-            this.SignIn.ActiveFillColor = System.Drawing.SystemColors.Desktop;
-            this.SignIn.ActiveForecolor = System.Drawing.Color.White;
-            this.SignIn.ActiveLineColor = System.Drawing.SystemColors.Desktop;
-            this.SignIn.BackColor = System.Drawing.Color.White;
-            this.SignIn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SignIn.BackgroundImage")));
-            this.SignIn.ButtonText = "Entrar";
-            this.SignIn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SignIn.Font = new System.Drawing.Font("Calibri Light", 14F);
-            this.SignIn.ForeColor = System.Drawing.Color.SeaGreen;
-            this.SignIn.IdleBorderThickness = 1;
-            this.SignIn.IdleCornerRadius = 5;
-            this.SignIn.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(117)))), ((int)(((byte)(192)))));
-            this.SignIn.IdleForecolor = System.Drawing.Color.White;
-            this.SignIn.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(117)))), ((int)(((byte)(192)))));
-            this.SignIn.Location = new System.Drawing.Point(31, 183);
-            this.SignIn.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.SignIn.Name = "SignIn";
-            this.SignIn.Size = new System.Drawing.Size(92, 45);
-            this.SignIn.TabIndex = 2;
-            this.SignIn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.SignIn.Click += new System.EventHandler(this.SignIn_Click);
+            this.ButtonSignIn.ActiveBorderThickness = 1;
+            this.ButtonSignIn.ActiveCornerRadius = 5;
+            this.ButtonSignIn.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonSignIn.ActiveForecolor = System.Drawing.Color.White;
+            this.ButtonSignIn.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonSignIn.BackColor = System.Drawing.Color.White;
+            this.ButtonSignIn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonSignIn.BackgroundImage")));
+            this.ButtonSignIn.ButtonText = "Entrar";
+            this.ButtonSignIn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonSignIn.Font = new System.Drawing.Font("Calibri Light", 14F);
+            this.ButtonSignIn.ForeColor = System.Drawing.Color.SeaGreen;
+            this.ButtonSignIn.IdleBorderThickness = 1;
+            this.ButtonSignIn.IdleCornerRadius = 5;
+            this.ButtonSignIn.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(117)))), ((int)(((byte)(192)))));
+            this.ButtonSignIn.IdleForecolor = System.Drawing.Color.White;
+            this.ButtonSignIn.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(117)))), ((int)(((byte)(192)))));
+            this.ButtonSignIn.Location = new System.Drawing.Point(31, 183);
+            this.ButtonSignIn.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.ButtonSignIn.Name = "ButtonSignIn";
+            this.ButtonSignIn.Size = new System.Drawing.Size(92, 45);
+            this.ButtonSignIn.TabIndex = 2;
+            this.ButtonSignIn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ButtonSignIn.Click += new System.EventHandler(this.ButtonSignIn_Click);
             // 
             // bunifuGradientPanel1
             // 
@@ -281,8 +281,8 @@
             this.Name = "UserLoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.UserLoginForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.PassWord)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Login)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextPassWord)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextLogin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBackGroudUserLogin)).EndInit();
             this.bunifuCards1.ResumeLayout(false);
             this.bunifuCards1.PerformLayout();
@@ -293,8 +293,8 @@
 
         #endregion
 
-        public Syncfusion.Windows.Forms.Tools.TextBoxExt PassWord;
-        public Syncfusion.Windows.Forms.Tools.TextBoxExt Login;
+        public Syncfusion.Windows.Forms.Tools.TextBoxExt TextPassWord;
+        public Syncfusion.Windows.Forms.Tools.TextBoxExt TextLogin;
         private System.Windows.Forms.PictureBox PictureBackGroudUserLogin;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -303,7 +303,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
-        private Bunifu.Framework.UI.BunifuThinButton2 Exists;
-        private Bunifu.Framework.UI.BunifuThinButton2 SignIn;
+        private Bunifu.Framework.UI.BunifuThinButton2 ButtonExists;
+        private Bunifu.Framework.UI.BunifuThinButton2 ButtonSignIn;
     }
 }

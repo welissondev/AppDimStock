@@ -17,21 +17,27 @@ namespace DimStock.Business
             List = new List<StockMovement>();
         }
 
-        public StockMovement(AxlDataPagination dataPagination)
+        public StockMovement(AxlDataPage pagination)
         {
-            DataPagination = dataPagination;
+            Pagination = pagination;
             StockDestination = new StockDestination();
             List = new List<StockMovement>();
         }
 
-        public StockMovement(Connection connection)
+        public StockMovement(DatabaseConnection connection)
         {
             this.connection = connection;
             StockDestination = new StockDestination();
             List = new List<StockMovement>();
         }
 
-        #endregion 
+        #endregion
+
+        #region Properties
+
+        private DatabaseConnection connection;
+
+        #endregion
 
         #region Get & Set
 
@@ -42,27 +48,25 @@ namespace DimStock.Business
         public string OperationCode { get; set; }
         public string OperationSituation { get; set; }
         public StockDestination StockDestination { get; set; }
-        public AxlDataPagination DataPagination { get; set; }
+        public AxlDataPage Pagination { get; set; }
         public List<StockMovement> List { get; set; }
-
-        private Connection connection;
 
         #endregion
 
         #region Function
 
-        public bool InitOperation(string operationType)
+        public bool InitOperation(string type)
         {
             bool registerState = false;
 
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
                     var sqlCommand = @"INSERT INTO StockMovement(OperationType)
                     VALUES(@OperationType)";
 
-                    connection.AddParameter("@OperationType", OleDbType.VarChar, operationType);
+                    connection.AddParameter("@OperationType", OleDbType.VarChar, type);
 
                     registerState = connection.ExecuteTransaction(sqlCommand) > 0;
 
@@ -92,7 +96,7 @@ namespace DimStock.Business
             bool setDestinationState = false;
             var sqlCommand = string.Empty;
 
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 //Pega Id de destino pelo nome do local
                 sqlCommand = @"SELECT * FROM StockDestination 
@@ -140,7 +144,7 @@ namespace DimStock.Business
             sqlCommand) > 0;
         }
 
-        public bool Delete(int id)
+        public bool Remove(int id)
         {
             if (CheckIfExists(id) == false)
             {
@@ -155,7 +159,7 @@ namespace DimStock.Business
 
             var transactionState = false;
 
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 var affectedFields = GetAffectedFields(id, connection);
 
@@ -203,7 +207,7 @@ namespace DimStock.Business
 
                     history.User.Id = AxlLogin.Id;
 
-                    transactionState = history.Register();
+                    transactionState = history.Save();
 
                     //Finaliza o transação
                     connection.Transaction.Commit();
@@ -217,7 +221,7 @@ namespace DimStock.Business
 
         public void ListData()
         {
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 var sqlQuery = @"SELECT * From StockMovement";
 
@@ -250,7 +254,7 @@ namespace DimStock.Business
 
         public void SearchData()
         {
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 var sqlQuery = string.Empty;
                 var sqlCount = string.Empty;
@@ -292,21 +296,21 @@ namespace DimStock.Business
 
                 sqlCount += criterion;
 
-                DataPagination.RecordCount = Convert.ToInt32(
+                Pagination.RecordCount = Convert.ToInt32(
                 connection.ExecuteScalar(sqlCount));
 
                 var dataTable = connection.QueryWithDataTable(sqlQuery,
-                DataPagination.OffSetValue,
-                DataPagination.PageSize);
+                Pagination.OffSetValue,
+                Pagination.PageSize);
 
                 PassToList(dataTable);
 
             }
         }
 
-        public void ViewDetails(int id)
+        public void GetDetail(int id)
         {
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 var sqlQuery = @"SELECT StockMovement.*, StockDestination.* 
                 FROM StockMovement LEFT JOIN StockDestination ON StockMovement.StockDestinationId 
@@ -360,7 +364,28 @@ namespace DimStock.Business
             }
         }
 
-        public string GetAffectedFields(int id, Connection connection)
+        public bool CheckIfExists(int id)
+        {
+            using (var connection = new DatabaseConnection())
+            {
+                var sqlQuery = "SELECT Id FROM StockMovement WHERE Id = @Id";
+                var recordsFound = 0;
+
+                connection.AddParameter("Id", OleDbType.Integer, id);
+
+                using (var reader = connection.QueryWithDataReader(sqlQuery))
+                {
+                    while (reader.Read())
+                    {
+                        recordsFound += 1;
+                    }
+                }
+
+                return recordsFound > 0;
+            }
+        }
+
+        public string GetAffectedFields(int id, DatabaseConnection connection)
         {
             var sqlQuery = @"SELECT * FROM StockMovement WHERE Id = @Id";
 
@@ -383,27 +408,6 @@ namespace DimStock.Business
             }
 
             return string.Join(" | ", affectedFieldList.Select(x => x.ToString()));
-        }
-
-        public bool CheckIfExists(int id)
-        {
-            using (var connection = new Connection())
-            {
-                var sqlQuery = "SELECT Id FROM StockMovement WHERE Id = @Id";
-                var recordsFound = 0;
-
-                connection.AddParameter("Id", OleDbType.Integer, id);
-
-                using (var reader = connection.QueryWithDataReader(sqlQuery))
-                {
-                    while (reader.Read())
-                    {
-                        recordsFound += 1;
-                    }
-                }
-
-                return recordsFound > 0;
-            }
         }
 
         #endregion

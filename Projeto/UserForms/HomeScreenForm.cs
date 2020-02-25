@@ -10,9 +10,12 @@ namespace DimStock.UserForms
 {
     public partial class HomeScreenForm : Form
     {
-        #region  Get & Set
+        #region Builder
 
-        public static HomeScreenForm He { get; set; }
+        public HomeScreenForm()
+        {
+            InitializeComponent();
+        }
 
         #endregion
 
@@ -22,16 +25,13 @@ namespace DimStock.UserForms
 
         #endregion 
 
-        #region Contructs
+        #region  Get & Set
 
-        public HomeScreenForm()
-        {
-            InitializeComponent();
-        }
+        public static HomeScreenForm He { get; set; }
 
         #endregion
 
-        #region UserForm
+        #region Form
 
         private void HomeScreenForm_Load(object sender, EventArgs e)
         {
@@ -99,7 +99,7 @@ namespace DimStock.UserForms
 
             form.Show();
 
-            FormNovigationDescription.Text = "Cadastro De Produtos";
+            LabelNavegationDescription.Text = "Cadastro De Produtos";
         }
 
         private void MenuProduct_RegisterNew_Category_Click(object sender, EventArgs e)
@@ -115,7 +115,7 @@ namespace DimStock.UserForms
 
             form.Show();
 
-            FormNovigationDescription.Text = "Cadastro De Categorias";
+            LabelNavegationDescription.Text = "Cadastro De Categorias";
         }
 
         private void MenuProduct_ListRegisters_Product_Click(object sender, EventArgs e)
@@ -131,7 +131,7 @@ namespace DimStock.UserForms
 
             form.Show();
 
-            FormNovigationDescription.Text = "Lista De Produtos";
+            LabelNavegationDescription.Text = "Lista De Produtos";
         }
 
         private void MenuProduct_ListRegisters_Category_Click(object sender, EventArgs e)
@@ -147,7 +147,7 @@ namespace DimStock.UserForms
 
             form.Show();
 
-            FormNovigationDescription.Text = "Lista De Categorias";
+            LabelNavegationDescription.Text = "Lista De Categorias";
         }
 
         private void MenuStock_RegisterNew_Entrie_Click(object sender, EventArgs e)
@@ -165,7 +165,7 @@ namespace DimStock.UserForms
 
             form.StartNewOperation("Entrada");
 
-            FormNovigationDescription.Text = "Cadastro de Estoques";
+            LabelNavegationDescription.Text = "Cadastro de Estoques";
         }
 
         private void MenuStock_RegisterNew_Output_Click(object sender, EventArgs e)
@@ -182,7 +182,7 @@ namespace DimStock.UserForms
 
             form.StartNewOperation("Saída");
 
-            FormNovigationDescription.Text = "Cadastro De Estoque";
+            LabelNavegationDescription.Text = "Cadastro De Estoque";
         }
 
         private void MenuStock_ListMovements_Click(object sender, EventArgs e)
@@ -198,7 +198,7 @@ namespace DimStock.UserForms
 
             form.Show();
 
-            FormNovigationDescription.Text = "Lista De Movimentações";
+            LabelNavegationDescription.Text = "Lista De Movimentações";
         }
 
         private void MenuStock_ListStocks_Click(object sender, EventArgs e)
@@ -214,13 +214,13 @@ namespace DimStock.UserForms
 
             form.Show();
 
-            FormNovigationDescription.Text = "Lista De Estoque";
+            LabelNavegationDescription.Text = "Lista De Estoque";
         }
 
         private void MenuUser_RegisterNew_Click(object sender, EventArgs e)
         {
             var user = new User();
-            user.ViewDetails(AxlLogin.Id);
+            user.GetDetail(AxlLogin.Id);
 
             if (user.PermissionToView == true)
             {
@@ -235,7 +235,7 @@ namespace DimStock.UserForms
 
                 form.Show();
 
-                FormNovigationDescription.Text = "Cadastro De Usuários";
+                LabelNavegationDescription.Text = "Cadastro De Usuários";
             }
             else
             {
@@ -248,7 +248,7 @@ namespace DimStock.UserForms
         private void MenuUser_ListUsers_Click(object sender, EventArgs e)
         {
             var user = new User();
-            user.ViewDetails(AxlLogin.Id);
+            user.GetDetail(AxlLogin.Id);
 
             if (user.PermissionToView == true)
             {
@@ -263,7 +263,7 @@ namespace DimStock.UserForms
 
                 form.Show();
 
-                FormNovigationDescription.Text = "Lista De Usuários";
+                LabelNavegationDescription.Text = "Lista De Usuários";
             }
             else
             {
@@ -276,7 +276,7 @@ namespace DimStock.UserForms
         private void MenuUser_ListHistory_Click(object sender, EventArgs e)
         {
             var user = new User();
-            user.ViewDetails(AxlLogin.Id);
+            user.GetDetail(AxlLogin.Id);
 
             if (user.PermissionToView == true)
             {
@@ -291,7 +291,7 @@ namespace DimStock.UserForms
 
                 form.Show();
 
-                FormNovigationDescription.Text = "Lista De Históricos";
+                LabelNavegationDescription.Text = "Lista De Históricos";
             }
             else
             {
@@ -314,7 +314,7 @@ namespace DimStock.UserForms
 
             form.Show();
 
-            FormNovigationDescription.Text = "Configurações";
+            LabelNavegationDescription.Text = "Configurações";
         }
 
         private void MenuSettings_Backup_ImportAnother_Click(object sender, EventArgs e)

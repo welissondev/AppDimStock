@@ -8,11 +8,7 @@ namespace DimStock.UserForms
 {
     public partial class UserListingForm : Form
     {
-        #region Variables
-        private AxlDataPagination dataPagination = new AxlDataPagination();
-        #endregion
-
-        #region Constructs
+        #region Builder
 
         public UserListingForm()
         {
@@ -22,7 +18,11 @@ namespace DimStock.UserForms
 
         #endregion
 
-        #region UserForm
+        #region Properties
+        private AxlDataPage pagination = new AxlDataPage();
+        #endregion
+
+        #region Form
 
         private void UserListingForm_Load(object sender, EventArgs e)
         {
@@ -33,7 +33,7 @@ namespace DimStock.UserForms
 
         #region Button
 
-        private void RegisterNew_Click_1(object sender, EventArgs e)
+        private void ButtonRegisterNew_Click(object sender, EventArgs e)
         {
             var form = new UserResgistrationForm()
             {
@@ -46,7 +46,7 @@ namespace DimStock.UserForms
             form.ShowDialog();
         }
 
-        private void DataList_Click(object sender, EventArgs e)
+        private void ButtonDataList_Click(object sender, EventArgs e)
         {
             ListData();
         }
@@ -55,32 +55,32 @@ namespace DimStock.UserForms
 
         #region TextBox
 
-        private void SearchFields_KeyPress(object sender, KeyPressEventArgs e)
+        private void TextSearchFields_KeyPress(object sender, KeyPressEventArgs e)
         {
             SearchTimer.Enabled = false;
             SearchTimer.Enabled = true;
-            GifLoading.Visible = true;
+            PictureLoading.Visible = true;
         }
 
         #endregion 
 
         #region DataGrid
 
-        private void UserDataList_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void DatagridUser_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             try
             {
-                var columnName = UserDataList.Columns[
+                var columnName = DatagridUser.Columns[
                 e.ColumnIndex].Name;
 
                 int id = Convert.ToInt32(
-                UserDataList.CurrentRow.Cells["id"].Value);
+                DatagridUser.CurrentRow.Cells["id"].Value);
 
                 switch (columnName)
                 {
                     case "delete":
 
-                        Delete(id);
+                        Remove(id);
                         break;
 
                     case "edit":
@@ -93,7 +93,7 @@ namespace DimStock.UserForms
                             ShowInTaskbar = false
                         };
 
-                        form.ViewDetails(id);
+                        form.GetDetail(id);
 
                         form.ShowDialog();
 
@@ -106,11 +106,11 @@ namespace DimStock.UserForms
             }
         }
 
-        private void UserDataList_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        private void DatagridUser_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1)
             {
-                UserDataList.Rows[e.RowIndex].Selected = true;
+                DatagridUser.Rows[e.RowIndex].Selected = true;
             }
         }
 
@@ -120,35 +120,35 @@ namespace DimStock.UserForms
 
         private void SearchTimer_Tick(object sender, EventArgs e)
         {
-            GifLoading.Visible = false;
+            PictureLoading.Visible = false;
             SearchTimer.Enabled = false;
             SearchData();
         }
 
         #endregion
 
-        #region MethodsAuxiliarys
+        #region Function
 
         private void ListData()
         {
             try
             {
-                UserDataList.Rows.Clear();
+                DatagridUser.Rows.Clear();
 
-                var user = new User(dataPagination);
+                var user = new User(pagination);
                 user.ListData();
 
-                for (int i = 0; i < user.ListOfRecords.Count; i++)
+                for (int i = 0; i < user.List.Count; i++)
                 {
-                    UserDataList.Rows.Add(
-                    user.ListOfRecords[i].Id,
-                    user.ListOfRecords[i].Name,
-                    user.ListOfRecords[i].Email);
+                    DatagridUser.Rows.Add(
+                    user.List[i].Id,
+                    user.List[i].Name,
+                    user.List[i].Email);
                 }
 
-                UserDataList.ClearSelection();
+                DatagridUser.ClearSelection();
 
-                AxlDataGridLealt.SortColumnDesc(UserDataList, 0);
+                AxlDataGridLealt.SortColumnDesc(DatagridUser, 0);
             }
             catch (Exception ex)
             {
@@ -160,27 +160,27 @@ namespace DimStock.UserForms
         {
             try
             {
-                UserDataList.Rows.Clear();
+                DatagridUser.Rows.Clear();
 
-                var user = new User(dataPagination)
+                var user = new User(pagination)
                 {
-                    Name = SearchFields.Text,
-                    Email = SearchFields.Text,
+                    Name = TextSearchFields.Text,
+                    Email = TextSearchFields.Text,
                 };
 
                 user.SearchData();
 
-                for (int i = 0; i < user.ListOfRecords.Count; i++)
+                for (int i = 0; i < user.List.Count; i++)
                 {
-                    UserDataList.Rows.Add(
-                    user.ListOfRecords[i].Id,
-                    user.ListOfRecords[i].Name,
-                    user.ListOfRecords[i].Email);
+                    DatagridUser.Rows.Add(
+                    user.List[i].Id,
+                    user.List[i].Name,
+                    user.List[i].Email);
                 }
 
-                UserDataList.ClearSelection();
+                DatagridUser.ClearSelection();
 
-                AxlDataGridLealt.SortColumnDesc(UserDataList, 0);
+                AxlDataGridLealt.SortColumnDesc(DatagridUser, 0);
             }
             catch (Exception ex)
             {
@@ -188,7 +188,7 @@ namespace DimStock.UserForms
             }
         }
 
-        private void Delete(int id)
+        private void Remove(int id)
         {
             try
             {
@@ -198,7 +198,7 @@ namespace DimStock.UserForms
                 {
                     var user = new User();
 
-                    if (user.Delete(id) == true)
+                    if (user.Remove(id) == true)
                     {
                         MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -220,7 +220,7 @@ namespace DimStock.UserForms
         {
             CreateColumnInTheDataList();
 
-            AxlDataGridLealt.SetDefaultStyle(UserDataList);
+            AxlDataGridLealt.SetDefaultStyle(DatagridUser);
         }
 
         private void CreateColumnInTheDataList()
@@ -233,7 +233,7 @@ namespace DimStock.UserForms
                 var edit = new DataGridViewLinkColumn();
                 var delete = new DataGridViewLinkColumn();
 
-                var dataGrid = UserDataList;
+                var dataGrid = DatagridUser;
 
                 dataGrid.Columns.Add(id);
                 dataGrid.Columns[0].Name = "id";

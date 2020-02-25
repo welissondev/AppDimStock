@@ -9,11 +9,7 @@ namespace DimStock.UserForms
 {
     public partial class UserHistoryListingForm : Form
     {
-        #region Variables
-        private AxlDataPagination dataPagination = new AxlDataPagination();
-        #endregion 
-
-        #region Constructs
+        #region Builder
         public UserHistoryListingForm()
         {
             InitializeComponent();
@@ -21,7 +17,11 @@ namespace DimStock.UserForms
         }
         #endregion
 
-        #region UserForm
+        #region Properties
+        private AxlDataPage pagination = new AxlDataPage();
+        #endregion 
+
+        #region Form
 
         private void UserHistoryListingForm_Load(object sender, EventArgs e)
         {
@@ -32,7 +32,7 @@ namespace DimStock.UserForms
 
         #region Button
 
-        private void DataList_Click(object sender, EventArgs e)
+        private void ButtonDataList_Click(object sender, EventArgs e)
         {
             CallAllResets();
             StartSearchTimer();
@@ -42,16 +42,16 @@ namespace DimStock.UserForms
 
         #region TextBox
 
-        private void SearchByLogin_TextChanged(object sender, EventArgs e)
+        private void TextSearchByLogin_TextChanged(object sender, EventArgs e)
         {
-            GifLoading.Visible = true;
+            PictureLoading.Visible = true;
             SearchTimer.Enabled = false;
             SearchTimer.Enabled = true;
         }
 
-        private void FinalDate_ValueChanged(object sender, Syncfusion.WinForms.Input.Events.DateTimeValueChangedEventArgs e)
+        private void TextFinalDate_ValueChanged(object sender, Syncfusion.WinForms.Input.Events.DateTimeValueChangedEventArgs e)
         {
-            GifLoading.Visible = true;
+            PictureLoading.Visible = true;
             SearchTimer.Enabled = false;
             SearchTimer.Enabled = true;
         }
@@ -60,30 +60,30 @@ namespace DimStock.UserForms
 
         #region ComboBox
 
-        private void RecordsByPage_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxRecordsByPage_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                var itemSelected = RecordsByPage.SelectedIndex;
+                var itemSelected = ComboBoxRecordsByPage.SelectedIndex;
 
                 switch (itemSelected)
                 {
                     case 0:
-                        dataPagination.PageSize = 20;
+                        pagination.PageSize = 20;
                         break;
                     case 1:
-                        dataPagination.PageSize = 30;
+                        pagination.PageSize = 30;
                         break;
                     case 2:
-                        dataPagination.PageSize = 70;
+                        pagination.PageSize = 70;
                         break;
                     case 3:
-                        dataPagination.PageSize = 100;
+                        pagination.PageSize = 100;
                         break;
                 }
 
-                dataPagination.OffSetValue = 0;
-                dataPagination.CurrentPage = 1;
+                pagination.OffSetValue = 0;
+                pagination.CurrentPage = 1;
                 StartSearchTimer();
             }
             catch (Exception ex)
@@ -98,20 +98,20 @@ namespace DimStock.UserForms
 
         private void SearchTimer_Tick(object sender, EventArgs e)
         {
-            GifLoading.Visible = false;
+            PictureLoading.Visible = false;
             SearchTimer.Enabled = false;
             SearchData();
         }
 
         #endregion
 
-        #region DataGridView
+        #region DataGrid
 
-        private void HistoryDataList_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        private void DatagridUserHistory_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1)
             {
-                HistoryDataList.Rows[e.RowIndex].Selected = true;
+                DatagridUserHistory.Rows[e.RowIndex].Selected = true;
             }
         }
 
@@ -121,44 +121,44 @@ namespace DimStock.UserForms
 
         private void NextPage_Click(object sender, EventArgs e)
         {
-            if (dataPagination.CurrentPage < dataPagination.NumberOfPages)
+            if (pagination.CurrentPage < pagination.NumberOfPages)
             {
-                dataPagination.CurrentPage += 1;
-                dataPagination.OffSetValue += dataPagination.PageSize;
+                pagination.CurrentPage += 1;
+                pagination.OffSetValue += pagination.PageSize;
                 StartSearchTimer();
             }
 
-            SetInBadingNavigator(dataPagination);
+            SetInBadingNavigator(pagination);
         }
 
         private void BackPage_Click(object sender, EventArgs e)
         {
-            if (dataPagination.CurrentPage > 1)
+            if (pagination.CurrentPage > 1)
             {
-                dataPagination.CurrentPage -= 1;
-                dataPagination.OffSetValue -= dataPagination.PageSize;
+                pagination.CurrentPage -= 1;
+                pagination.OffSetValue -= pagination.PageSize;
                 StartSearchTimer();
             }
 
-            SetInBadingNavigator(dataPagination);
+            SetInBadingNavigator(pagination);
         }
 
         #endregion
 
-        #region MethodsAxiliarys
+        #region Function
 
         private void ListData()
         {
             try
             {
-                var historic = new UserHistory(dataPagination);
+                var historic = new UserHistory(pagination);
                 historic.ListData();
 
-                HistoryDataList.Rows.Clear();
+                DatagridUserHistory.Rows.Clear();
 
                 for (int i = 0; i < historic.List.Count; i++)
                 {
-                    HistoryDataList.Rows.Add(
+                    DatagridUserHistory.Rows.Add(
                     historic.List[i].Id,
                     historic.List[i].User.Login,
                     historic.List[i].OperationType,
@@ -168,11 +168,11 @@ namespace DimStock.UserForms
                     historic.List[i].AffectedFields);
                 }
 
-                HistoryDataList.ClearSelection();
+                DatagridUserHistory.ClearSelection();
 
                 PauseSearchTimer();
 
-                SetInBadingNavigator(dataPagination);
+                SetInBadingNavigator(pagination);
 
             }
             catch (Exception ex)
@@ -185,21 +185,21 @@ namespace DimStock.UserForms
         {
             try
             {
-                var history = new UserHistory(dataPagination);
-                history.User.Login = SearchByLogin.Text;
+                var history = new UserHistory(pagination);
+                history.User.Login = TextSearchByLogin.Text;
 
                 history.SearchData(
-                Convert.ToDateTime(StartDate.Value).
+                Convert.ToDateTime(TextStartDate.Value).
                 ToString("dd-MM-yyyy"),
 
-                Convert.ToDateTime(FinalDate.Value).
+                Convert.ToDateTime(TextFinalDate.Value).
                 ToString("dd-MM-yyyy"));
 
-                HistoryDataList.Rows.Clear();
+                DatagridUserHistory.Rows.Clear();
 
                 for (int i = 0; i < history.List.Count; i++)
                 {
-                    HistoryDataList.Rows.Add(
+                    DatagridUserHistory.Rows.Add(
                     history.List[i].Id,
                     history.List[i].User.Login,
                     history.List[i].OperationType,
@@ -209,11 +209,11 @@ namespace DimStock.UserForms
                     history.List[i].AffectedFields);
                 }
 
-                HistoryDataList.ClearSelection();
+                DatagridUserHistory.ClearSelection();
 
                 PauseSearchTimer();
 
-                SetInBadingNavigator(dataPagination);
+                SetInBadingNavigator(pagination);
             }
             catch (Exception ex)
             {
@@ -225,7 +225,7 @@ namespace DimStock.UserForms
         {
             CreateColumnInTheDataList();
 
-            AxlDataGridLealt.SetDefaultStyle(HistoryDataList);
+            AxlDataGridLealt.SetDefaultStyle(DatagridUserHistory);
 
             FillAllComboBoxes();
 
@@ -236,9 +236,9 @@ namespace DimStock.UserForms
             DateTime.Today.Month, DateTime.DaysInMonth(DateTime.Today.Year,
             DateTime.Today.Month));
 
-            StartDate.Text = startDate.ToString();
+            TextStartDate.Text = startDate.ToString();
 
-            FinalDate.Text = finalDate.ToString();
+            TextFinalDate.Text = finalDate.ToString();
         }
 
         private void FillAllComboBoxes()
@@ -252,8 +252,8 @@ namespace DimStock.UserForms
                 "100 Registros"
             };
 
-            RecordsByPage.DataSource = itemList;
-            RecordsByPage.Text = "20 Registros";
+            ComboBoxRecordsByPage.DataSource = itemList;
+            ComboBoxRecordsByPage.Text = "20 Registros";
 
         }
 
@@ -267,7 +267,7 @@ namespace DimStock.UserForms
                         ctl.Text = string.Empty;
                 }
 
-                SearchByLogin.Select();
+                TextSearchByLogin.Select();
             }
             catch (Exception ex)
             {
@@ -275,40 +275,40 @@ namespace DimStock.UserForms
             }
         }
 
-        private void ResetVariables()
+        private void ResetProperties()
         {
-            dataPagination.OffSetValue = 0;
-            dataPagination.CurrentPage = 1;
+            pagination.OffSetValue = 0;
+            pagination.CurrentPage = 1;
         }
 
         private void CallAllResets()
         {
-            ResetVariables();
+            ResetProperties();
             ResetControls();
         }
 
-        private void SetInBadingNavigator(AxlDataPagination dataPagination)
+        private void SetInBadingNavigator(AxlDataPage pagination)
         {
-            if (dataPagination.RecordCount == 0)
-                dataPagination.CurrentPage = 0;
+            if (pagination.RecordCount == 0)
+                pagination.CurrentPage = 0;
 
-            var legend = " Página " + dataPagination.CurrentPage + " de " + dataPagination.NumberOfPages;
+            var legend = " Página " + pagination.CurrentPage + " de " + pagination.NumberOfPages;
             BindingPagination.Items[2].Text = legend;
 
-            legend = " Total de " + dataPagination.RecordCount + " registro(s)";
+            legend = " Total de " + pagination.RecordCount + " registro(s)";
             BindingPagination.Items[6].Text = legend;
         }
 
         private void StartSearchTimer()
         {
-            GifLoading.Visible = true;
+            PictureLoading.Visible = true;
             SearchTimer.Enabled = false;
             SearchTimer.Enabled = true;
         }
 
         private void PauseSearchTimer()
         {
-            GifLoading.Visible = false;
+            PictureLoading.Visible = false;
             SearchTimer.Enabled = false;
         }
 
@@ -325,7 +325,7 @@ namespace DimStock.UserForms
                 var affectedFields = new DataGridViewTextBoxColumn();
 
 
-                var dataGrid = HistoryDataList;
+                var dataGrid = DatagridUserHistory;
 
                 dataGrid.Columns.Add(id);
                 dataGrid.Columns[0].Name = "id";

@@ -8,20 +8,22 @@ namespace DimStock.Business
     public class StockDestination
     {
         #region Get e Set
+
         public int Id { get; set; }
         public string Location { get; set; }
-        public List<StockDestination> ListOfRecords { get; set; }
+        public List<StockDestination> List { get; set; }
+
         #endregion
 
         #region Function
 
-        public bool Register()
+        public bool Save()
         {
             var transaction = false;
 
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
-                if (CheckIfDestinationExists() == true)
+                if (CheckIfExists() == true)
                 {
                     AxlMessageNotifier.Message = "Esse destino já existe, cadastre outro!";
                     return transaction;
@@ -47,7 +49,7 @@ namespace DimStock.Business
         {
             var transaction = false;
 
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 var sqlCommand = @"UPDATE StockDestination SET 
                 Location = @Location WHERE Id = @Id";
@@ -65,11 +67,11 @@ namespace DimStock.Business
             return transaction;
         }
 
-        public bool Delete(int id)
+        public bool Remove(int id)
         {
             bool transaction = false;
 
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 var sqlCommand = @"DELETE FROM StockDestination 
                 WHERE Id = @Id";
@@ -97,7 +99,7 @@ namespace DimStock.Business
 
             var sqlQuery = @"SELECT * From StockDestination";
 
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 using (var reader = connection.QueryWithDataReader(sqlQuery))
                 {
@@ -113,13 +115,13 @@ namespace DimStock.Business
                     }
                 }
 
-                ListOfRecords = destinationList;
+                List = destinationList;
             }
         }
 
-        public void ViewDetails(int id)
+        public void GetDetail(int id)
         {
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 var sqlQuery = @"SELECT * FROM StockDestination 
                 WHERE Id = @Id";
@@ -137,11 +139,11 @@ namespace DimStock.Business
             }
         }
 
-        public bool CheckIfDestinationExists()
+        public bool CheckIfExists()
         {
             var destinationsFound = 0;
 
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 var sqlQuery = @"SELECT Location From StockDestination 
                 WHERE Location LIKE @Location";

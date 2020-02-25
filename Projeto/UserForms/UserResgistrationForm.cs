@@ -9,17 +9,17 @@ namespace DimStock.UserForms
 {
     public partial class UserResgistrationForm : Form
     {
-        #region Variables
-        private int id = 0;
-        #endregion
-
-        #region Constructs
+        #region Builder
 
         public UserResgistrationForm()
         {
             InitializeComponent();
         }
 
+        #endregion
+
+        #region Properties
+        private int id = 0;
         #endregion
 
         #region Button
@@ -33,7 +33,7 @@ namespace DimStock.UserForms
         {
             if (id == 0)
             {
-                Register();
+                Save();
             }
             else
             {
@@ -52,7 +52,7 @@ namespace DimStock.UserForms
 
         #endregion 
 
-        #region Methods
+        #region Function
 
         private void ResetControls()
         {
@@ -73,7 +73,7 @@ namespace DimStock.UserForms
                     }
                 }
 
-                UserName.Select();
+                TextUserName.Select();
             }
             catch (Exception ex)
             {
@@ -85,7 +85,7 @@ namespace DimStock.UserForms
         {
             try
             {
-                if (AllPermissons.Checked == true)
+                if (CheckAllPermissons.Checked == true)
                 {
                     foreach (Control ctl in FrameEditPermission.Controls)
                     {
@@ -108,7 +108,7 @@ namespace DimStock.UserForms
             }
         }
 
-        private void Register()
+        private void Save()
         {
             try
             {
@@ -116,18 +116,18 @@ namespace DimStock.UserForms
                 {
                     var user = new User
                     {
-                        Name = UserName.Text.TrimStart().TrimEnd(),
-                        Email = Email.Text.TrimStart().TrimEnd(),
-                        Login = Login.Text.Trim(),
-                        PassWord = PassWord.Text.Trim(),
-                        PermissionToRegister = PermissionToRegister.Checked,
-                        PermissionToEdit = PermissionToEdit.Checked,
-                        PermissionToDelete = PermissionToDelete.Checked,
-                        PermissionToView = PermissionToView.Checked,
-                        AllPermissions = AllPermissons.Checked
+                        Name = TextUserName.Text.TrimStart().TrimEnd(),
+                        Email = TextEmail.Text.TrimStart().TrimEnd(),
+                        Login = TextLogin.Text.Trim(),
+                        PassWord = TextPassWord.Text.Trim(),
+                        PermissionToRegister = CheckPermissionToRegister.Checked,
+                        PermissionToEdit = CheckPermissionToEdit.Checked,
+                        PermissionToDelete = CheckPermissionToDelete.Checked,
+                        PermissionToView = CheckPermissionToView.Checked,
+                        AllPermissions = CheckAllPermissons.Checked
                     };
 
-                    if (user.Register() == true)
+                    if (user.Save() == true)
                     {
                         MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -156,15 +156,15 @@ namespace DimStock.UserForms
                 {
                     var user = new User
                     {
-                        Name = UserName.Text,
-                        Email = Email.Text,
-                        Login = Login.Text,
-                        PassWord = PassWord.Text,
-                        PermissionToRegister = PermissionToRegister.Checked,
-                        PermissionToEdit = PermissionToEdit.Checked,
-                        PermissionToDelete = PermissionToDelete.Checked,
-                        PermissionToView = PermissionToView.Checked,
-                        AllPermissions = AllPermissons.Checked
+                        Name = TextUserName.Text,
+                        Email = TextEmail.Text,
+                        Login = TextLogin.Text,
+                        PassWord = TextPassWord.Text,
+                        PermissionToRegister = CheckPermissionToRegister.Checked,
+                        PermissionToEdit = CheckPermissionToEdit.Checked,
+                        PermissionToDelete = CheckPermissionToDelete.Checked,
+                        PermissionToView = CheckPermissionToView.Checked,
+                        AllPermissions = CheckAllPermissons.Checked
                     };
 
                     if (user.Edit(id) == true)
@@ -185,25 +185,25 @@ namespace DimStock.UserForms
             }
         }
 
-        public void ViewDetails(int id)
+        public void GetDetail(int id)
         {
             try
             {
                 var user = new User();
-                user.ViewDetails(id);
+                user.GetDetail(id);
 
                 id = user.Id;
                 this.id = id;
-                UserName.Text = user.Name;
-                Email.Text = user.Email;
-                Login.Text = user.Login;
-                PassWord.Text = user.PassWord;
-                PassWordConfirmation.Text = user.PassWord;
-                PermissionToRegister.Checked = user.PermissionToRegister;
-                PermissionToEdit.Checked = user.PermissionToEdit;
-                PermissionToDelete.Checked = user.PermissionToDelete;
-                PermissionToView.Checked = user.PermissionToView;
-                AllPermissons.Checked = user.AllPermissions;
+                TextUserName.Text = user.Name;
+                TextEmail.Text = user.Email;
+                TextLogin.Text = user.Login;
+                TextPassWord.Text = user.PassWord;
+                TextPassWordConfirmation.Text = user.PassWord;
+                CheckPermissionToRegister.Checked = user.PermissionToRegister;
+                CheckPermissionToEdit.Checked = user.PermissionToEdit;
+                CheckPermissionToDelete.Checked = user.PermissionToDelete;
+                CheckPermissionToView.Checked = user.PermissionToView;
+                CheckAllPermissons.Checked = user.AllPermissions;
             }
             catch (Exception ex)
             {
@@ -213,52 +213,52 @@ namespace DimStock.UserForms
 
         private bool ValidadeData()
         {
-            if (UserName.Text == "")
+            if (TextUserName.Text == "")
             {
                 MessageBox.Show("O nome é obrigatório!", "OBRIGATÓRIO",
                 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
-                UserName.Select();
+                TextUserName.Select();
 
                 return false;
             }
 
-            else if (Email.Text == "")
+            else if (TextEmail.Text == "")
             {
                 MessageBox.Show("E-mail é obrigatório!", "OBRIGATÓRIO",
                 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
-                Email.Select();
+                TextEmail.Select();
 
                 return false;
             }
 
-            else if (PassWord.Text == "")
+            else if (TextPassWord.Text == "")
             {
                 MessageBox.Show("A senha é obrigatória!", "OBRIGATÓRIO",
                 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
-                PassWord.Select();
+                TextPassWord.Select();
 
                 return false;
             }
 
-            else if (PassWordConfirmation.Text == "")
+            else if (TextPassWordConfirmation.Text == "")
             {
                 MessageBox.Show("Confirme a senha!", "OBRIGATÓRIO",
                 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
-                PassWordConfirmation.Select();
+                TextPassWordConfirmation.Select();
 
                 return false;
             }
 
-            else if (PassWordConfirmation.Text != PassWord.Text)
+            else if (TextPassWordConfirmation.Text != TextPassWord.Text)
             {
                 MessageBox.Show("A senhas não conferem!", "NÃO CONFERE",
                 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
-                PassWordConfirmation.Select();
+                TextPassWordConfirmation.Select();
 
                 return false;
             }

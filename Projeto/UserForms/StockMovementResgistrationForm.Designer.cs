@@ -33,54 +33,54 @@
             this.SearchTimer = new System.Windows.Forms.Timer(this.components);
             this.SubTotalTitle = new System.Windows.Forms.Label();
             this.SubTotal = new System.Windows.Forms.Label();
-            this.AddItem = new Syncfusion.WinForms.Controls.SfButton();
-            this.Quantity = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
+            this.ButtonAddItem = new Syncfusion.WinForms.Controls.SfButton();
+            this.TextQuantity = new Syncfusion.Windows.Forms.Tools.IntegerTextBox();
             this.LblTotalValue = new System.Windows.Forms.Label();
-            this.TotalValue = new Syncfusion.Windows.Forms.Tools.CurrencyTextBox();
+            this.TextTotalValue = new Syncfusion.Windows.Forms.Tools.CurrencyTextBox();
             this.LblUnitaryValue = new System.Windows.Forms.Label();
-            this.UnitaryValue = new Syncfusion.Windows.Forms.Tools.CurrencyTextBox();
+            this.TextUnitaryValue = new Syncfusion.Windows.Forms.Tools.CurrencyTextBox();
             this.LblQuantity = new System.Windows.Forms.Label();
             this.QueryTitleByDescription = new System.Windows.Forms.Label();
-            this.QueryByDescription = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.TextSearchByDescription = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.QueryTitleByCode = new System.Windows.Forms.Label();
-            this.QueryByCode = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.TextSearchByCode = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.StockMovementIdTitle = new System.Windows.Forms.Label();
-            this.StockMovementId = new System.Windows.Forms.Label();
-            this.OperationHour = new System.Windows.Forms.Label();
+            this.TextStockMovementId = new System.Windows.Forms.Label();
+            this.TextOperationHour = new System.Windows.Forms.Label();
             this.OperationHourTitle = new System.Windows.Forms.Label();
-            this.OperationDate = new System.Windows.Forms.Label();
+            this.TextOperationDate = new System.Windows.Forms.Label();
             this.OperationDataTitle = new System.Windows.Forms.Label();
-            this.OperationSituation = new System.Windows.Forms.Label();
+            this.TextOperationSituation = new System.Windows.Forms.Label();
             this.OperationSituationTitle = new System.Windows.Forms.Label();
             this.CardMain = new Bunifu.Framework.UI.BunifuCards();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.TitleOfTotalItems = new System.Windows.Forms.Label();
             this.TotalItems = new System.Windows.Forms.Label();
-            this.ClearQueryFields = new System.Windows.Forms.LinkLabel();
-            this.GifLoading = new System.Windows.Forms.PictureBox();
-            this.MainDataList = new DimStock.Controls.CustomDataGridViewOne();
+            this.ButtonClear_SearchFields = new System.Windows.Forms.LinkLabel();
+            this.PictureLoading = new System.Windows.Forms.PictureBox();
+            this.DataGridMainDataList = new DimStock.Controls.CustomDataGridViewOne();
             this.GrupBoxGeneralInformation = new System.Windows.Forms.GroupBox();
             this.OperationTypeTitle = new System.Windows.Forms.Label();
-            this.OperationType = new System.Windows.Forms.Label();
+            this.TextOperationType = new System.Windows.Forms.Label();
             this.LblStockDestination = new System.Windows.Forms.Label();
-            this.StockDestinationList = new System.Windows.Forms.ComboBox();
-            this.AddNewStockDestination = new System.Windows.Forms.LinkLabel();
+            this.ComboBoxStockDestinationList = new System.Windows.Forms.ComboBox();
+            this.ButtonShow_StockDestination_RegistrationForm = new System.Windows.Forms.LinkLabel();
             this.StockMovementMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MovementEntrie_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MovementOutPut_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.RegisterNew = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.Delete = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.Confirm = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.CloseForm = new Bunifu.Framework.UI.BunifuThinButton2();
-            ((System.ComponentModel.ISupportInitialize)(this.Quantity)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TotalValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UnitaryValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.QueryByDescription)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.QueryByCode)).BeginInit();
+            this.ButtonRegisterNew = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.ButtonDelete = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.ButtonConfirm = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.ButtonCloseForm = new Bunifu.Framework.UI.BunifuThinButton2();
+            ((System.ComponentModel.ISupportInitialize)(this.TextQuantity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextTotalValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextUnitaryValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextSearchByDescription)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextSearchByCode)).BeginInit();
             this.CardMain.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GifLoading)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MainDataList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureLoading)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridMainDataList)).BeginInit();
             this.GrupBoxGeneralInformation.SuspendLayout();
             this.StockMovementMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -114,57 +114,57 @@
             this.SubTotal.Text = "R$0.00";
             this.SubTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // AddItem
+            // ButtonAddItem
             // 
-            this.AddItem.AccessibleName = "Button";
-            this.AddItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddItem.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.AddItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddItem.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddItem.ForeColor = System.Drawing.Color.White;
-            this.AddItem.Location = new System.Drawing.Point(802, 28);
-            this.AddItem.Name = "AddItem";
-            this.AddItem.Size = new System.Drawing.Size(44, 27);
-            this.AddItem.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.AddItem.Style.DisabledBackColor = System.Drawing.Color.SeaGreen;
-            this.AddItem.Style.DisabledForeColor = System.Drawing.Color.SeaGreen;
-            this.AddItem.Style.FocusedBackColor = System.Drawing.Color.Crimson;
-            this.AddItem.Style.FocusedForeColor = System.Drawing.Color.White;
-            this.AddItem.Style.ForeColor = System.Drawing.Color.White;
-            this.AddItem.Style.HoverBackColor = System.Drawing.Color.PaleVioletRed;
-            this.AddItem.Style.HoverForeColor = System.Drawing.Color.White;
-            this.AddItem.Style.PressedBackColor = System.Drawing.Color.Crimson;
-            this.AddItem.Style.PressedForeColor = System.Drawing.Color.White;
-            this.AddItem.TabIndex = 7;
-            this.AddItem.Text = "Add";
-            this.AddItem.UseVisualStyleBackColor = false;
-            this.AddItem.Click += new System.EventHandler(this.AddItem_Click);
+            this.ButtonAddItem.AccessibleName = "Button";
+            this.ButtonAddItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ButtonAddItem.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonAddItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonAddItem.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonAddItem.ForeColor = System.Drawing.Color.White;
+            this.ButtonAddItem.Location = new System.Drawing.Point(802, 28);
+            this.ButtonAddItem.Name = "ButtonAddItem";
+            this.ButtonAddItem.Size = new System.Drawing.Size(44, 27);
+            this.ButtonAddItem.Style.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonAddItem.Style.DisabledBackColor = System.Drawing.Color.SeaGreen;
+            this.ButtonAddItem.Style.DisabledForeColor = System.Drawing.Color.SeaGreen;
+            this.ButtonAddItem.Style.FocusedBackColor = System.Drawing.Color.Crimson;
+            this.ButtonAddItem.Style.FocusedForeColor = System.Drawing.Color.White;
+            this.ButtonAddItem.Style.ForeColor = System.Drawing.Color.White;
+            this.ButtonAddItem.Style.HoverBackColor = System.Drawing.Color.PaleVioletRed;
+            this.ButtonAddItem.Style.HoverForeColor = System.Drawing.Color.White;
+            this.ButtonAddItem.Style.PressedBackColor = System.Drawing.Color.Crimson;
+            this.ButtonAddItem.Style.PressedForeColor = System.Drawing.Color.White;
+            this.ButtonAddItem.TabIndex = 7;
+            this.ButtonAddItem.Text = "Add";
+            this.ButtonAddItem.UseVisualStyleBackColor = false;
+            this.ButtonAddItem.Click += new System.EventHandler(this.ButtonAddItem_Click);
             // 
-            // Quantity
+            // TextQuantity
             // 
-            this.Quantity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Quantity.BeforeTouchSize = new System.Drawing.Size(95, 27);
-            this.Quantity.BorderColor = System.Drawing.Color.Gray;
-            this.Quantity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Quantity.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.Quantity.Font = new System.Drawing.Font("Calibri Light", 12F);
-            this.Quantity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.Quantity.IntegerValue = ((long)(0));
-            this.Quantity.Location = new System.Drawing.Point(604, 28);
-            this.Quantity.MaxValue = ((long)(50000));
-            this.Quantity.Metrocolor = System.Drawing.Color.Green;
-            this.Quantity.MinimumSize = new System.Drawing.Size(14, 10);
-            this.Quantity.MinValue = ((long)(0));
-            this.Quantity.Name = "Quantity";
-            this.Quantity.NegativeSign = "";
-            this.Quantity.NumberGroupSeparator = "";
-            this.Quantity.PositiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.Quantity.Size = new System.Drawing.Size(65, 27);
-            this.Quantity.TabIndex = 5;
-            this.Quantity.ThemeName = "Default";
-            this.Quantity.WordWrap = false;
-            this.Quantity.ZeroColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.Quantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Quantity_KeyPress);
+            this.TextQuantity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TextQuantity.BeforeTouchSize = new System.Drawing.Size(95, 27);
+            this.TextQuantity.BorderColor = System.Drawing.Color.Gray;
+            this.TextQuantity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextQuantity.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.TextQuantity.Font = new System.Drawing.Font("Calibri Light", 12F);
+            this.TextQuantity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.TextQuantity.IntegerValue = ((long)(0));
+            this.TextQuantity.Location = new System.Drawing.Point(604, 28);
+            this.TextQuantity.MaxValue = ((long)(50000));
+            this.TextQuantity.Metrocolor = System.Drawing.Color.Green;
+            this.TextQuantity.MinimumSize = new System.Drawing.Size(14, 10);
+            this.TextQuantity.MinValue = ((long)(0));
+            this.TextQuantity.Name = "TextQuantity";
+            this.TextQuantity.NegativeSign = "";
+            this.TextQuantity.NumberGroupSeparator = "";
+            this.TextQuantity.PositiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.TextQuantity.Size = new System.Drawing.Size(65, 27);
+            this.TextQuantity.TabIndex = 5;
+            this.TextQuantity.ThemeName = "Default";
+            this.TextQuantity.WordWrap = false;
+            this.TextQuantity.ZeroColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.TextQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextQuantity_KeyPress);
             // 
             // LblTotalValue
             // 
@@ -177,32 +177,32 @@
             this.LblTotalValue.TabIndex = 135;
             this.LblTotalValue.Text = "Total:";
             // 
-            // TotalValue
+            // TextTotalValue
             // 
-            this.TotalValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.TotalValue.BeforeTouchSize = new System.Drawing.Size(95, 27);
-            this.TotalValue.BorderColor = System.Drawing.Color.Gray;
-            this.TotalValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TotalValue.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.TotalValue.DecimalValue = new decimal(new int[] {
+            this.TextTotalValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TextTotalValue.BeforeTouchSize = new System.Drawing.Size(95, 27);
+            this.TextTotalValue.BorderColor = System.Drawing.Color.Gray;
+            this.TextTotalValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextTotalValue.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.TextTotalValue.DecimalValue = new decimal(new int[] {
             0,
             0,
             0,
             131072});
-            this.TotalValue.Enabled = false;
-            this.TotalValue.Font = new System.Drawing.Font("Calibri Light", 12F);
-            this.TotalValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.TotalValue.Location = new System.Drawing.Point(675, 28);
-            this.TotalValue.Metrocolor = System.Drawing.Color.Green;
-            this.TotalValue.MinimumSize = new System.Drawing.Size(14, 10);
-            this.TotalValue.Name = "TotalValue";
-            this.TotalValue.PositiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.TotalValue.Size = new System.Drawing.Size(126, 27);
-            this.TotalValue.TabIndex = 6;
-            this.TotalValue.Text = "R$ 0,00";
-            this.TotalValue.ThemeName = "Default";
-            this.TotalValue.WordWrap = false;
-            this.TotalValue.ZeroColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.TextTotalValue.Enabled = false;
+            this.TextTotalValue.Font = new System.Drawing.Font("Calibri Light", 12F);
+            this.TextTotalValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.TextTotalValue.Location = new System.Drawing.Point(675, 28);
+            this.TextTotalValue.Metrocolor = System.Drawing.Color.Green;
+            this.TextTotalValue.MinimumSize = new System.Drawing.Size(14, 10);
+            this.TextTotalValue.Name = "TextTotalValue";
+            this.TextTotalValue.PositiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.TextTotalValue.Size = new System.Drawing.Size(126, 27);
+            this.TextTotalValue.TabIndex = 6;
+            this.TextTotalValue.Text = "R$ 0,00";
+            this.TextTotalValue.ThemeName = "Default";
+            this.TextTotalValue.WordWrap = false;
+            this.TextTotalValue.ZeroColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             // 
             // LblUnitaryValue
             // 
@@ -215,32 +215,32 @@
             this.LblUnitaryValue.TabIndex = 133;
             this.LblUnitaryValue.Text = "Valor Uni:";
             // 
-            // UnitaryValue
+            // TextUnitaryValue
             // 
-            this.UnitaryValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.UnitaryValue.BeforeTouchSize = new System.Drawing.Size(95, 27);
-            this.UnitaryValue.BorderColor = System.Drawing.Color.Gray;
-            this.UnitaryValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.UnitaryValue.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.UnitaryValue.DecimalValue = new decimal(new int[] {
+            this.TextUnitaryValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TextUnitaryValue.BeforeTouchSize = new System.Drawing.Size(95, 27);
+            this.TextUnitaryValue.BorderColor = System.Drawing.Color.Gray;
+            this.TextUnitaryValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextUnitaryValue.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.TextUnitaryValue.DecimalValue = new decimal(new int[] {
             0,
             0,
             0,
             131072});
-            this.UnitaryValue.Enabled = false;
-            this.UnitaryValue.Font = new System.Drawing.Font("Calibri Light", 12F);
-            this.UnitaryValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.UnitaryValue.Location = new System.Drawing.Point(474, 28);
-            this.UnitaryValue.Metrocolor = System.Drawing.Color.Green;
-            this.UnitaryValue.MinimumSize = new System.Drawing.Size(14, 10);
-            this.UnitaryValue.Name = "UnitaryValue";
-            this.UnitaryValue.PositiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.UnitaryValue.Size = new System.Drawing.Size(124, 27);
-            this.UnitaryValue.TabIndex = 4;
-            this.UnitaryValue.Text = "R$ 0,00";
-            this.UnitaryValue.ThemeName = "Default";
-            this.UnitaryValue.WordWrap = false;
-            this.UnitaryValue.ZeroColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.TextUnitaryValue.Enabled = false;
+            this.TextUnitaryValue.Font = new System.Drawing.Font("Calibri Light", 12F);
+            this.TextUnitaryValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.TextUnitaryValue.Location = new System.Drawing.Point(474, 28);
+            this.TextUnitaryValue.Metrocolor = System.Drawing.Color.Green;
+            this.TextUnitaryValue.MinimumSize = new System.Drawing.Size(14, 10);
+            this.TextUnitaryValue.Name = "TextUnitaryValue";
+            this.TextUnitaryValue.PositiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.TextUnitaryValue.Size = new System.Drawing.Size(124, 27);
+            this.TextUnitaryValue.TabIndex = 4;
+            this.TextUnitaryValue.Text = "R$ 0,00";
+            this.TextUnitaryValue.ThemeName = "Default";
+            this.TextUnitaryValue.WordWrap = false;
+            this.TextUnitaryValue.ZeroColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             // 
             // LblQuantity
             // 
@@ -263,33 +263,33 @@
             this.QueryTitleByDescription.TabIndex = 130;
             this.QueryTitleByDescription.Text = "Descrição Produto:";
             // 
-            // QueryByDescription
+            // TextSearchByDescription
             // 
-            this.QueryByDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.TextSearchByDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.QueryByDescription.BackColor = System.Drawing.Color.White;
-            this.QueryByDescription.BeforeTouchSize = new System.Drawing.Size(95, 27);
-            this.QueryByDescription.BorderColor = System.Drawing.Color.Gray;
-            this.QueryByDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.QueryByDescription.CanOverrideStyle = true;
-            this.QueryByDescription.CausesValidation = false;
-            this.QueryByDescription.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.QueryByDescription.Font = new System.Drawing.Font("Calibri Light", 12F);
-            this.QueryByDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.QueryByDescription.Location = new System.Drawing.Point(170, 28);
-            this.QueryByDescription.MaxLength = 50;
-            this.QueryByDescription.Metrocolor = System.Drawing.Color.Green;
-            this.QueryByDescription.MinimumSize = new System.Drawing.Size(16, 12);
-            this.QueryByDescription.Multiline = true;
-            this.QueryByDescription.Name = "QueryByDescription";
-            this.QueryByDescription.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
-            this.QueryByDescription.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
-            this.QueryByDescription.Size = new System.Drawing.Size(298, 27);
-            this.QueryByDescription.TabIndex = 3;
-            this.QueryByDescription.Tag = "";
-            this.QueryByDescription.ThemeName = "Default";
-            this.QueryByDescription.WordWrap = false;
-            this.QueryByDescription.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ShearchFields_KeyPress);
+            this.TextSearchByDescription.BackColor = System.Drawing.Color.White;
+            this.TextSearchByDescription.BeforeTouchSize = new System.Drawing.Size(95, 27);
+            this.TextSearchByDescription.BorderColor = System.Drawing.Color.Gray;
+            this.TextSearchByDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextSearchByDescription.CanOverrideStyle = true;
+            this.TextSearchByDescription.CausesValidation = false;
+            this.TextSearchByDescription.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.TextSearchByDescription.Font = new System.Drawing.Font("Calibri Light", 12F);
+            this.TextSearchByDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.TextSearchByDescription.Location = new System.Drawing.Point(170, 28);
+            this.TextSearchByDescription.MaxLength = 50;
+            this.TextSearchByDescription.Metrocolor = System.Drawing.Color.Green;
+            this.TextSearchByDescription.MinimumSize = new System.Drawing.Size(16, 12);
+            this.TextSearchByDescription.Multiline = true;
+            this.TextSearchByDescription.Name = "TextSearchByDescription";
+            this.TextSearchByDescription.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
+            this.TextSearchByDescription.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
+            this.TextSearchByDescription.Size = new System.Drawing.Size(298, 27);
+            this.TextSearchByDescription.TabIndex = 3;
+            this.TextSearchByDescription.Tag = "";
+            this.TextSearchByDescription.ThemeName = "Default";
+            this.TextSearchByDescription.WordWrap = false;
+            this.TextSearchByDescription.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextShearchFields_KeyPress);
             // 
             // QueryTitleByCode
             // 
@@ -301,31 +301,31 @@
             this.QueryTitleByCode.TabIndex = 127;
             this.QueryTitleByCode.Text = "Código:";
             // 
-            // QueryByCode
+            // TextSearchByCode
             // 
-            this.QueryByCode.BackColor = System.Drawing.Color.White;
-            this.QueryByCode.BeforeTouchSize = new System.Drawing.Size(95, 27);
-            this.QueryByCode.BorderColor = System.Drawing.Color.Gray;
-            this.QueryByCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.QueryByCode.CanOverrideStyle = true;
-            this.QueryByCode.CausesValidation = false;
-            this.QueryByCode.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.QueryByCode.Font = new System.Drawing.Font("Calibri Light", 12F);
-            this.QueryByCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.QueryByCode.Location = new System.Drawing.Point(69, 28);
-            this.QueryByCode.MaxLength = 50;
-            this.QueryByCode.Metrocolor = System.Drawing.Color.Green;
-            this.QueryByCode.MinimumSize = new System.Drawing.Size(16, 12);
-            this.QueryByCode.Multiline = true;
-            this.QueryByCode.Name = "QueryByCode";
-            this.QueryByCode.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
-            this.QueryByCode.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
-            this.QueryByCode.Size = new System.Drawing.Size(95, 27);
-            this.QueryByCode.TabIndex = 0;
-            this.QueryByCode.Tag = "";
-            this.QueryByCode.ThemeName = "Default";
-            this.QueryByCode.WordWrap = false;
-            this.QueryByCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ShearchFields_KeyPress);
+            this.TextSearchByCode.BackColor = System.Drawing.Color.White;
+            this.TextSearchByCode.BeforeTouchSize = new System.Drawing.Size(95, 27);
+            this.TextSearchByCode.BorderColor = System.Drawing.Color.Gray;
+            this.TextSearchByCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TextSearchByCode.CanOverrideStyle = true;
+            this.TextSearchByCode.CausesValidation = false;
+            this.TextSearchByCode.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.TextSearchByCode.Font = new System.Drawing.Font("Calibri Light", 12F);
+            this.TextSearchByCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.TextSearchByCode.Location = new System.Drawing.Point(69, 28);
+            this.TextSearchByCode.MaxLength = 50;
+            this.TextSearchByCode.Metrocolor = System.Drawing.Color.Green;
+            this.TextSearchByCode.MinimumSize = new System.Drawing.Size(16, 12);
+            this.TextSearchByCode.Multiline = true;
+            this.TextSearchByCode.Name = "TextSearchByCode";
+            this.TextSearchByCode.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Black;
+            this.TextSearchByCode.Office2010ColorScheme = Syncfusion.Windows.Forms.Office2010Theme.Black;
+            this.TextSearchByCode.Size = new System.Drawing.Size(95, 27);
+            this.TextSearchByCode.TabIndex = 0;
+            this.TextSearchByCode.Tag = "";
+            this.TextSearchByCode.ThemeName = "Default";
+            this.TextSearchByCode.WordWrap = false;
+            this.TextSearchByCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextShearchFields_KeyPress);
             // 
             // StockMovementIdTitle
             // 
@@ -338,28 +338,28 @@
             this.StockMovementIdTitle.TabIndex = 118;
             this.StockMovementIdTitle.Text = "Movimentação Nº:";
             // 
-            // StockMovementId
+            // TextStockMovementId
             // 
-            this.StockMovementId.AutoSize = true;
-            this.StockMovementId.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.StockMovementId.ForeColor = System.Drawing.Color.Gray;
-            this.StockMovementId.Location = new System.Drawing.Point(154, 25);
-            this.StockMovementId.Name = "StockMovementId";
-            this.StockMovementId.Size = new System.Drawing.Size(16, 17);
-            this.StockMovementId.TabIndex = 119;
-            this.StockMovementId.Text = "--";
-            this.StockMovementId.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.TextStockMovementId.AutoSize = true;
+            this.TextStockMovementId.Font = new System.Drawing.Font("Calibri Light", 10F);
+            this.TextStockMovementId.ForeColor = System.Drawing.Color.Gray;
+            this.TextStockMovementId.Location = new System.Drawing.Point(154, 25);
+            this.TextStockMovementId.Name = "TextStockMovementId";
+            this.TextStockMovementId.Size = new System.Drawing.Size(16, 17);
+            this.TextStockMovementId.TabIndex = 119;
+            this.TextStockMovementId.Text = "--";
+            this.TextStockMovementId.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // OperationHour
+            // TextOperationHour
             // 
-            this.OperationHour.AutoSize = true;
-            this.OperationHour.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.OperationHour.ForeColor = System.Drawing.Color.Gray;
-            this.OperationHour.Location = new System.Drawing.Point(345, 53);
-            this.OperationHour.Name = "OperationHour";
-            this.OperationHour.Size = new System.Drawing.Size(16, 17);
-            this.OperationHour.TabIndex = 125;
-            this.OperationHour.Text = "--";
+            this.TextOperationHour.AutoSize = true;
+            this.TextOperationHour.Font = new System.Drawing.Font("Calibri Light", 10F);
+            this.TextOperationHour.ForeColor = System.Drawing.Color.Gray;
+            this.TextOperationHour.Location = new System.Drawing.Point(345, 53);
+            this.TextOperationHour.Name = "TextOperationHour";
+            this.TextOperationHour.Size = new System.Drawing.Size(16, 17);
+            this.TextOperationHour.TabIndex = 125;
+            this.TextOperationHour.Text = "--";
             // 
             // OperationHourTitle
             // 
@@ -372,16 +372,16 @@
             this.OperationHourTitle.TabIndex = 124;
             this.OperationHourTitle.Text = "Horário:";
             // 
-            // OperationDate
+            // TextOperationDate
             // 
-            this.OperationDate.AutoSize = true;
-            this.OperationDate.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.OperationDate.ForeColor = System.Drawing.Color.Gray;
-            this.OperationDate.Location = new System.Drawing.Point(326, 27);
-            this.OperationDate.Name = "OperationDate";
-            this.OperationDate.Size = new System.Drawing.Size(16, 17);
-            this.OperationDate.TabIndex = 123;
-            this.OperationDate.Text = "--";
+            this.TextOperationDate.AutoSize = true;
+            this.TextOperationDate.Font = new System.Drawing.Font("Calibri Light", 10F);
+            this.TextOperationDate.ForeColor = System.Drawing.Color.Gray;
+            this.TextOperationDate.Location = new System.Drawing.Point(326, 27);
+            this.TextOperationDate.Name = "TextOperationDate";
+            this.TextOperationDate.Size = new System.Drawing.Size(16, 17);
+            this.TextOperationDate.TabIndex = 123;
+            this.TextOperationDate.Text = "--";
             // 
             // OperationDataTitle
             // 
@@ -394,16 +394,16 @@
             this.OperationDataTitle.TabIndex = 122;
             this.OperationDataTitle.Text = "Data:";
             // 
-            // OperationSituation
+            // TextOperationSituation
             // 
-            this.OperationSituation.AutoSize = true;
-            this.OperationSituation.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.OperationSituation.ForeColor = System.Drawing.Color.Gray;
-            this.OperationSituation.Location = new System.Drawing.Point(540, 27);
-            this.OperationSituation.Name = "OperationSituation";
-            this.OperationSituation.Size = new System.Drawing.Size(16, 17);
-            this.OperationSituation.TabIndex = 127;
-            this.OperationSituation.Text = "--";
+            this.TextOperationSituation.AutoSize = true;
+            this.TextOperationSituation.Font = new System.Drawing.Font("Calibri Light", 10F);
+            this.TextOperationSituation.ForeColor = System.Drawing.Color.Gray;
+            this.TextOperationSituation.Location = new System.Drawing.Point(540, 27);
+            this.TextOperationSituation.Name = "TextOperationSituation";
+            this.TextOperationSituation.Size = new System.Drawing.Size(16, 17);
+            this.TextOperationSituation.TabIndex = 127;
+            this.TextOperationSituation.Text = "--";
             // 
             // OperationSituationTitle
             // 
@@ -426,20 +426,20 @@
             this.CardMain.BottomSahddow = true;
             this.CardMain.color = System.Drawing.Color.SlateGray;
             this.CardMain.Controls.Add(this.groupBox1);
-            this.CardMain.Controls.Add(this.ClearQueryFields);
-            this.CardMain.Controls.Add(this.GifLoading);
-            this.CardMain.Controls.Add(this.AddItem);
-            this.CardMain.Controls.Add(this.Quantity);
+            this.CardMain.Controls.Add(this.ButtonClear_SearchFields);
+            this.CardMain.Controls.Add(this.PictureLoading);
+            this.CardMain.Controls.Add(this.ButtonAddItem);
+            this.CardMain.Controls.Add(this.TextQuantity);
             this.CardMain.Controls.Add(this.LblTotalValue);
-            this.CardMain.Controls.Add(this.QueryByDescription);
-            this.CardMain.Controls.Add(this.TotalValue);
+            this.CardMain.Controls.Add(this.TextSearchByDescription);
+            this.CardMain.Controls.Add(this.TextTotalValue);
             this.CardMain.Controls.Add(this.LblUnitaryValue);
-            this.CardMain.Controls.Add(this.QueryByCode);
-            this.CardMain.Controls.Add(this.UnitaryValue);
+            this.CardMain.Controls.Add(this.TextSearchByCode);
+            this.CardMain.Controls.Add(this.TextUnitaryValue);
             this.CardMain.Controls.Add(this.QueryTitleByCode);
             this.CardMain.Controls.Add(this.LblQuantity);
             this.CardMain.Controls.Add(this.QueryTitleByDescription);
-            this.CardMain.Controls.Add(this.MainDataList);
+            this.CardMain.Controls.Add(this.DataGridMainDataList);
             this.CardMain.LeftSahddow = true;
             this.CardMain.Location = new System.Drawing.Point(31, 224);
             this.CardMain.Name = "CardMain";
@@ -487,61 +487,61 @@
             this.TotalItems.Text = "0";
             this.TotalItems.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // ClearQueryFields
+            // ButtonClear_SearchFields
             // 
-            this.ClearQueryFields.AutoSize = true;
-            this.ClearQueryFields.Font = new System.Drawing.Font("Calibri Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClearQueryFields.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(87)))), ((int)(((byte)(166)))));
-            this.ClearQueryFields.Location = new System.Drawing.Point(18, 30);
-            this.ClearQueryFields.Name = "ClearQueryFields";
-            this.ClearQueryFields.Size = new System.Drawing.Size(49, 18);
-            this.ClearQueryFields.TabIndex = 141;
-            this.ClearQueryFields.TabStop = true;
-            this.ClearQueryFields.Text = "Limpar";
-            this.ClearQueryFields.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ClearQueryFields_LinkClicked);
+            this.ButtonClear_SearchFields.AutoSize = true;
+            this.ButtonClear_SearchFields.Font = new System.Drawing.Font("Calibri Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonClear_SearchFields.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(87)))), ((int)(((byte)(166)))));
+            this.ButtonClear_SearchFields.Location = new System.Drawing.Point(18, 30);
+            this.ButtonClear_SearchFields.Name = "ButtonClear_SearchFields";
+            this.ButtonClear_SearchFields.Size = new System.Drawing.Size(49, 18);
+            this.ButtonClear_SearchFields.TabIndex = 141;
+            this.ButtonClear_SearchFields.TabStop = true;
+            this.ButtonClear_SearchFields.Text = "Limpar";
+            this.ButtonClear_SearchFields.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ButtonClear_SearchFields_LinkClicked);
             // 
-            // GifLoading
+            // PictureLoading
             // 
-            this.GifLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.GifLoading.Image = global::DimStock.Properties.Resources.Loading;
-            this.GifLoading.Location = new System.Drawing.Point(371, 80);
-            this.GifLoading.Name = "GifLoading";
-            this.GifLoading.Size = new System.Drawing.Size(135, 135);
-            this.GifLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.GifLoading.TabIndex = 139;
-            this.GifLoading.TabStop = false;
-            this.GifLoading.Visible = false;
+            this.PictureLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.PictureLoading.Image = global::DimStock.Properties.Resources.Loading;
+            this.PictureLoading.Location = new System.Drawing.Point(371, 80);
+            this.PictureLoading.Name = "PictureLoading";
+            this.PictureLoading.Size = new System.Drawing.Size(135, 135);
+            this.PictureLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PictureLoading.TabIndex = 139;
+            this.PictureLoading.TabStop = false;
+            this.PictureLoading.Visible = false;
             // 
-            // MainDataList
+            // DataGridMainDataList
             // 
-            this.MainDataList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.DataGridMainDataList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.MainDataList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.MainDataList.ListIsItem = false;
-            this.MainDataList.ListIsStock = false;
-            this.MainDataList.Location = new System.Drawing.Point(21, 60);
-            this.MainDataList.Name = "MainDataList";
-            this.MainDataList.Size = new System.Drawing.Size(825, 176);
-            this.MainDataList.TabIndex = 141;
-            this.MainDataList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MainDataList_CellClick);
-            this.MainDataList.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.MainDataList_CellMouseEnter);
-            this.MainDataList.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.MainDataList_RowPrePaint);
-            this.MainDataList.DoubleClick += new System.EventHandler(this.MainDataList_DoubleClick);
+            this.DataGridMainDataList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGridMainDataList.ListIsItem = false;
+            this.DataGridMainDataList.ListIsStock = false;
+            this.DataGridMainDataList.Location = new System.Drawing.Point(21, 60);
+            this.DataGridMainDataList.Name = "DataGridMainDataList";
+            this.DataGridMainDataList.Size = new System.Drawing.Size(825, 176);
+            this.DataGridMainDataList.TabIndex = 141;
+            this.DataGridMainDataList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridMainDataList_CellClick);
+            this.DataGridMainDataList.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridMainDataList_CellMouseEnter);
+            this.DataGridMainDataList.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.DataGridMainDataList_RowPrePaint);
+            this.DataGridMainDataList.DoubleClick += new System.EventHandler(this.DataGridMainDataList_DoubleClick);
             // 
             // GrupBoxGeneralInformation
             // 
             this.GrupBoxGeneralInformation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.GrupBoxGeneralInformation.Controls.Add(this.OperationTypeTitle);
-            this.GrupBoxGeneralInformation.Controls.Add(this.OperationType);
-            this.GrupBoxGeneralInformation.Controls.Add(this.OperationDate);
+            this.GrupBoxGeneralInformation.Controls.Add(this.TextOperationType);
+            this.GrupBoxGeneralInformation.Controls.Add(this.TextOperationDate);
             this.GrupBoxGeneralInformation.Controls.Add(this.StockMovementIdTitle);
-            this.GrupBoxGeneralInformation.Controls.Add(this.StockMovementId);
-            this.GrupBoxGeneralInformation.Controls.Add(this.OperationSituation);
+            this.GrupBoxGeneralInformation.Controls.Add(this.TextStockMovementId);
+            this.GrupBoxGeneralInformation.Controls.Add(this.TextOperationSituation);
             this.GrupBoxGeneralInformation.Controls.Add(this.OperationDataTitle);
             this.GrupBoxGeneralInformation.Controls.Add(this.OperationSituationTitle);
-            this.GrupBoxGeneralInformation.Controls.Add(this.OperationHour);
+            this.GrupBoxGeneralInformation.Controls.Add(this.TextOperationHour);
             this.GrupBoxGeneralInformation.Controls.Add(this.OperationHourTitle);
             this.GrupBoxGeneralInformation.Font = new System.Drawing.Font("Calibri Light", 10F);
             this.GrupBoxGeneralInformation.Location = new System.Drawing.Point(31, 64);
@@ -562,17 +562,17 @@
             this.OperationTypeTitle.TabIndex = 128;
             this.OperationTypeTitle.Text = "Tipo:";
             // 
-            // OperationType
+            // TextOperationType
             // 
-            this.OperationType.AutoSize = true;
-            this.OperationType.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.OperationType.ForeColor = System.Drawing.Color.Gray;
-            this.OperationType.Location = new System.Drawing.Point(68, 54);
-            this.OperationType.Name = "OperationType";
-            this.OperationType.Size = new System.Drawing.Size(16, 17);
-            this.OperationType.TabIndex = 129;
-            this.OperationType.Text = "--";
-            this.OperationType.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.TextOperationType.AutoSize = true;
+            this.TextOperationType.Font = new System.Drawing.Font("Calibri Light", 10F);
+            this.TextOperationType.ForeColor = System.Drawing.Color.Gray;
+            this.TextOperationType.Location = new System.Drawing.Point(68, 54);
+            this.TextOperationType.Name = "TextOperationType";
+            this.TextOperationType.Size = new System.Drawing.Size(16, 17);
+            this.TextOperationType.TabIndex = 129;
+            this.TextOperationType.Text = "--";
+            this.TextOperationType.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // LblStockDestination
             // 
@@ -585,31 +585,31 @@
             this.LblStockDestination.TabIndex = 142;
             this.LblStockDestination.Text = "Destino:";
             // 
-            // StockDestinationList
+            // ComboBoxStockDestinationList
             // 
-            this.StockDestinationList.BackColor = System.Drawing.Color.White;
-            this.StockDestinationList.Font = new System.Drawing.Font("Calibri Light", 12F);
-            this.StockDestinationList.FormattingEnabled = true;
-            this.StockDestinationList.Location = new System.Drawing.Point(31, 181);
-            this.StockDestinationList.Name = "StockDestinationList";
-            this.StockDestinationList.Size = new System.Drawing.Size(314, 27);
-            this.StockDestinationList.TabIndex = 145;
-            this.StockDestinationList.DropDown += new System.EventHandler(this.StockDestinationList_DropDown);
-            this.StockDestinationList.SelectedIndexChanged += new System.EventHandler(this.StockDestinationList_SelectedIndexChanged);
-            this.StockDestinationList.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.StockDestinationList_KeyPress);
+            this.ComboBoxStockDestinationList.BackColor = System.Drawing.Color.White;
+            this.ComboBoxStockDestinationList.Font = new System.Drawing.Font("Calibri Light", 12F);
+            this.ComboBoxStockDestinationList.FormattingEnabled = true;
+            this.ComboBoxStockDestinationList.Location = new System.Drawing.Point(31, 181);
+            this.ComboBoxStockDestinationList.Name = "ComboBoxStockDestinationList";
+            this.ComboBoxStockDestinationList.Size = new System.Drawing.Size(314, 27);
+            this.ComboBoxStockDestinationList.TabIndex = 145;
+            this.ComboBoxStockDestinationList.DropDown += new System.EventHandler(this.ComboBoxStockDestinationList_DropDown);
+            this.ComboBoxStockDestinationList.SelectedIndexChanged += new System.EventHandler(this.ComboBoxStockDestinationList_SelectedIndexChanged);
+            this.ComboBoxStockDestinationList.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ComboBoxStockDestinationList_KeyPress);
             // 
-            // AddNewStockDestination
+            // ButtonShow_StockDestination_RegistrationForm
             // 
-            this.AddNewStockDestination.AutoSize = true;
-            this.AddNewStockDestination.Font = new System.Drawing.Font("Calibri Light", 11F);
-            this.AddNewStockDestination.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(87)))), ((int)(((byte)(166)))));
-            this.AddNewStockDestination.Location = new System.Drawing.Point(248, 159);
-            this.AddNewStockDestination.Name = "AddNewStockDestination";
-            this.AddNewStockDestination.Size = new System.Drawing.Size(102, 18);
-            this.AddNewStockDestination.TabIndex = 146;
-            this.AddNewStockDestination.TabStop = true;
-            this.AddNewStockDestination.Text = "Cadastrar Novo";
-            this.AddNewStockDestination.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.AddNewStockDestination_LinkClicked);
+            this.ButtonShow_StockDestination_RegistrationForm.AutoSize = true;
+            this.ButtonShow_StockDestination_RegistrationForm.Font = new System.Drawing.Font("Calibri Light", 11F);
+            this.ButtonShow_StockDestination_RegistrationForm.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(87)))), ((int)(((byte)(166)))));
+            this.ButtonShow_StockDestination_RegistrationForm.Location = new System.Drawing.Point(248, 159);
+            this.ButtonShow_StockDestination_RegistrationForm.Name = "ButtonShow_StockDestination_RegistrationForm";
+            this.ButtonShow_StockDestination_RegistrationForm.Size = new System.Drawing.Size(102, 18);
+            this.ButtonShow_StockDestination_RegistrationForm.TabIndex = 146;
+            this.ButtonShow_StockDestination_RegistrationForm.TabStop = true;
+            this.ButtonShow_StockDestination_RegistrationForm.Text = "Cadastrar Novo";
+            this.ButtonShow_StockDestination_RegistrationForm.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ButtonShow_StockDestination_RegistrationForm_LinkClicked);
             // 
             // StockMovementMenuStrip
             // 
@@ -633,110 +633,110 @@
             this.MovementOutPut_ToolStripMenuItem.Text = "Saída";
             this.MovementOutPut_ToolStripMenuItem.Click += new System.EventHandler(this.MovementOutPut_ToolStripMenuItem_Click);
             // 
-            // RegisterNew
+            // ButtonRegisterNew
             // 
-            this.RegisterNew.ActiveBorderThickness = 1;
-            this.RegisterNew.ActiveCornerRadius = 10;
-            this.RegisterNew.ActiveFillColor = System.Drawing.SystemColors.Desktop;
-            this.RegisterNew.ActiveForecolor = System.Drawing.Color.White;
-            this.RegisterNew.ActiveLineColor = System.Drawing.SystemColors.Desktop;
-            this.RegisterNew.BackColor = System.Drawing.Color.White;
-            this.RegisterNew.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RegisterNew.BackgroundImage")));
-            this.RegisterNew.ButtonText = "Nova";
-            this.RegisterNew.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.RegisterNew.Font = new System.Drawing.Font("Calibri Light", 14F);
-            this.RegisterNew.ForeColor = System.Drawing.Color.SeaGreen;
-            this.RegisterNew.IdleBorderThickness = 1;
-            this.RegisterNew.IdleCornerRadius = 10;
-            this.RegisterNew.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
-            this.RegisterNew.IdleForecolor = System.Drawing.Color.White;
-            this.RegisterNew.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
-            this.RegisterNew.Location = new System.Drawing.Point(26, 9);
-            this.RegisterNew.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.RegisterNew.Name = "RegisterNew";
-            this.RegisterNew.Size = new System.Drawing.Size(97, 43);
-            this.RegisterNew.TabIndex = 217;
-            this.RegisterNew.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.RegisterNew.Click += new System.EventHandler(this.RegisterNew_Click);
+            this.ButtonRegisterNew.ActiveBorderThickness = 1;
+            this.ButtonRegisterNew.ActiveCornerRadius = 10;
+            this.ButtonRegisterNew.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonRegisterNew.ActiveForecolor = System.Drawing.Color.White;
+            this.ButtonRegisterNew.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonRegisterNew.BackColor = System.Drawing.Color.White;
+            this.ButtonRegisterNew.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonRegisterNew.BackgroundImage")));
+            this.ButtonRegisterNew.ButtonText = "Nova";
+            this.ButtonRegisterNew.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonRegisterNew.Font = new System.Drawing.Font("Calibri Light", 14F);
+            this.ButtonRegisterNew.ForeColor = System.Drawing.Color.SeaGreen;
+            this.ButtonRegisterNew.IdleBorderThickness = 1;
+            this.ButtonRegisterNew.IdleCornerRadius = 10;
+            this.ButtonRegisterNew.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonRegisterNew.IdleForecolor = System.Drawing.Color.White;
+            this.ButtonRegisterNew.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonRegisterNew.Location = new System.Drawing.Point(26, 9);
+            this.ButtonRegisterNew.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ButtonRegisterNew.Name = "ButtonRegisterNew";
+            this.ButtonRegisterNew.Size = new System.Drawing.Size(97, 43);
+            this.ButtonRegisterNew.TabIndex = 217;
+            this.ButtonRegisterNew.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ButtonRegisterNew.Click += new System.EventHandler(this.ButtonRegisterNew_Click);
             // 
-            // Delete
+            // ButtonDelete
             // 
-            this.Delete.ActiveBorderThickness = 1;
-            this.Delete.ActiveCornerRadius = 10;
-            this.Delete.ActiveFillColor = System.Drawing.SystemColors.Desktop;
-            this.Delete.ActiveForecolor = System.Drawing.Color.White;
-            this.Delete.ActiveLineColor = System.Drawing.SystemColors.Desktop;
-            this.Delete.BackColor = System.Drawing.Color.White;
-            this.Delete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Delete.BackgroundImage")));
-            this.Delete.ButtonText = "Excluir";
-            this.Delete.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Delete.Font = new System.Drawing.Font("Calibri Light", 14F);
-            this.Delete.ForeColor = System.Drawing.Color.SeaGreen;
-            this.Delete.IdleBorderThickness = 1;
-            this.Delete.IdleCornerRadius = 10;
-            this.Delete.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
-            this.Delete.IdleForecolor = System.Drawing.Color.White;
-            this.Delete.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
-            this.Delete.Location = new System.Drawing.Point(125, 9);
-            this.Delete.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Delete.Name = "Delete";
-            this.Delete.Size = new System.Drawing.Size(97, 43);
-            this.Delete.TabIndex = 218;
-            this.Delete.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Delete.Click += new System.EventHandler(this.Delete_Click);
+            this.ButtonDelete.ActiveBorderThickness = 1;
+            this.ButtonDelete.ActiveCornerRadius = 10;
+            this.ButtonDelete.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonDelete.ActiveForecolor = System.Drawing.Color.White;
+            this.ButtonDelete.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonDelete.BackColor = System.Drawing.Color.White;
+            this.ButtonDelete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonDelete.BackgroundImage")));
+            this.ButtonDelete.ButtonText = "Excluir";
+            this.ButtonDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonDelete.Font = new System.Drawing.Font("Calibri Light", 14F);
+            this.ButtonDelete.ForeColor = System.Drawing.Color.SeaGreen;
+            this.ButtonDelete.IdleBorderThickness = 1;
+            this.ButtonDelete.IdleCornerRadius = 10;
+            this.ButtonDelete.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonDelete.IdleForecolor = System.Drawing.Color.White;
+            this.ButtonDelete.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonDelete.Location = new System.Drawing.Point(125, 9);
+            this.ButtonDelete.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ButtonDelete.Name = "ButtonDelete";
+            this.ButtonDelete.Size = new System.Drawing.Size(97, 43);
+            this.ButtonDelete.TabIndex = 218;
+            this.ButtonDelete.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ButtonDelete.Click += new System.EventHandler(this.ButtonDelete_Click);
             // 
-            // Confirm
+            // ButtonConfirm
             // 
-            this.Confirm.ActiveBorderThickness = 1;
-            this.Confirm.ActiveCornerRadius = 10;
-            this.Confirm.ActiveFillColor = System.Drawing.SystemColors.Desktop;
-            this.Confirm.ActiveForecolor = System.Drawing.Color.White;
-            this.Confirm.ActiveLineColor = System.Drawing.SystemColors.Desktop;
-            this.Confirm.BackColor = System.Drawing.Color.White;
-            this.Confirm.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Confirm.BackgroundImage")));
-            this.Confirm.ButtonText = "Confirmar";
-            this.Confirm.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Confirm.Font = new System.Drawing.Font("Calibri Light", 14F);
-            this.Confirm.ForeColor = System.Drawing.Color.SeaGreen;
-            this.Confirm.IdleBorderThickness = 1;
-            this.Confirm.IdleCornerRadius = 10;
-            this.Confirm.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
-            this.Confirm.IdleForecolor = System.Drawing.Color.White;
-            this.Confirm.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
-            this.Confirm.Location = new System.Drawing.Point(224, 9);
-            this.Confirm.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Confirm.Name = "Confirm";
-            this.Confirm.Size = new System.Drawing.Size(97, 43);
-            this.Confirm.TabIndex = 219;
-            this.Confirm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Confirm.Click += new System.EventHandler(this.Confirm_Click);
+            this.ButtonConfirm.ActiveBorderThickness = 1;
+            this.ButtonConfirm.ActiveCornerRadius = 10;
+            this.ButtonConfirm.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonConfirm.ActiveForecolor = System.Drawing.Color.White;
+            this.ButtonConfirm.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonConfirm.BackColor = System.Drawing.Color.White;
+            this.ButtonConfirm.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonConfirm.BackgroundImage")));
+            this.ButtonConfirm.ButtonText = "Confirmar";
+            this.ButtonConfirm.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonConfirm.Font = new System.Drawing.Font("Calibri Light", 14F);
+            this.ButtonConfirm.ForeColor = System.Drawing.Color.SeaGreen;
+            this.ButtonConfirm.IdleBorderThickness = 1;
+            this.ButtonConfirm.IdleCornerRadius = 10;
+            this.ButtonConfirm.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonConfirm.IdleForecolor = System.Drawing.Color.White;
+            this.ButtonConfirm.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonConfirm.Location = new System.Drawing.Point(224, 9);
+            this.ButtonConfirm.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ButtonConfirm.Name = "ButtonConfirm";
+            this.ButtonConfirm.Size = new System.Drawing.Size(97, 43);
+            this.ButtonConfirm.TabIndex = 219;
+            this.ButtonConfirm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ButtonConfirm.Click += new System.EventHandler(this.ButtonConfirm_Click);
             // 
-            // CloseForm
+            // ButtonCloseForm
             // 
-            this.CloseForm.ActiveBorderThickness = 1;
-            this.CloseForm.ActiveCornerRadius = 10;
-            this.CloseForm.ActiveFillColor = System.Drawing.SystemColors.Desktop;
-            this.CloseForm.ActiveForecolor = System.Drawing.Color.White;
-            this.CloseForm.ActiveLineColor = System.Drawing.SystemColors.Desktop;
-            this.CloseForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CloseForm.BackColor = System.Drawing.Color.White;
-            this.CloseForm.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CloseForm.BackgroundImage")));
-            this.CloseForm.ButtonText = "Sair";
-            this.CloseForm.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.CloseForm.Font = new System.Drawing.Font("Calibri Light", 14F);
-            this.CloseForm.ForeColor = System.Drawing.Color.SeaGreen;
-            this.CloseForm.IdleBorderThickness = 1;
-            this.CloseForm.IdleCornerRadius = 10;
-            this.CloseForm.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
-            this.CloseForm.IdleForecolor = System.Drawing.Color.White;
-            this.CloseForm.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
-            this.CloseForm.Location = new System.Drawing.Point(799, 9);
-            this.CloseForm.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.CloseForm.Name = "CloseForm";
-            this.CloseForm.Size = new System.Drawing.Size(97, 43);
-            this.CloseForm.TabIndex = 220;
-            this.CloseForm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.CloseForm.Click += new System.EventHandler(this.CloseForm_Click);
+            this.ButtonCloseForm.ActiveBorderThickness = 1;
+            this.ButtonCloseForm.ActiveCornerRadius = 10;
+            this.ButtonCloseForm.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonCloseForm.ActiveForecolor = System.Drawing.Color.White;
+            this.ButtonCloseForm.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonCloseForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ButtonCloseForm.BackColor = System.Drawing.Color.White;
+            this.ButtonCloseForm.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonCloseForm.BackgroundImage")));
+            this.ButtonCloseForm.ButtonText = "Sair";
+            this.ButtonCloseForm.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonCloseForm.Font = new System.Drawing.Font("Calibri Light", 14F);
+            this.ButtonCloseForm.ForeColor = System.Drawing.Color.SeaGreen;
+            this.ButtonCloseForm.IdleBorderThickness = 1;
+            this.ButtonCloseForm.IdleCornerRadius = 10;
+            this.ButtonCloseForm.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonCloseForm.IdleForecolor = System.Drawing.Color.White;
+            this.ButtonCloseForm.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonCloseForm.Location = new System.Drawing.Point(799, 9);
+            this.ButtonCloseForm.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ButtonCloseForm.Name = "ButtonCloseForm";
+            this.ButtonCloseForm.Size = new System.Drawing.Size(97, 43);
+            this.ButtonCloseForm.TabIndex = 220;
+            this.ButtonCloseForm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ButtonCloseForm.Click += new System.EventHandler(this.ButtonCloseForm_Click);
             // 
             // StockMovementRegistrationForm
             // 
@@ -745,12 +745,12 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(928, 551);
-            this.Controls.Add(this.CloseForm);
-            this.Controls.Add(this.Confirm);
-            this.Controls.Add(this.Delete);
-            this.Controls.Add(this.RegisterNew);
-            this.Controls.Add(this.AddNewStockDestination);
-            this.Controls.Add(this.StockDestinationList);
+            this.Controls.Add(this.ButtonCloseForm);
+            this.Controls.Add(this.ButtonConfirm);
+            this.Controls.Add(this.ButtonDelete);
+            this.Controls.Add(this.ButtonRegisterNew);
+            this.Controls.Add(this.ButtonShow_StockDestination_RegistrationForm);
+            this.Controls.Add(this.ComboBoxStockDestinationList);
             this.Controls.Add(this.GrupBoxGeneralInformation);
             this.Controls.Add(this.LblStockDestination);
             this.Controls.Add(this.CardMain);
@@ -758,16 +758,16 @@
             this.Name = "StockMovementRegistrationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Resize += new System.EventHandler(this.StockMovementResgistrationForm_Resize);
-            ((System.ComponentModel.ISupportInitialize)(this.Quantity)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TotalValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UnitaryValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.QueryByDescription)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.QueryByCode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextQuantity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextTotalValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextUnitaryValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextSearchByDescription)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextSearchByCode)).EndInit();
             this.CardMain.ResumeLayout(false);
             this.CardMain.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.GifLoading)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MainDataList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureLoading)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridMainDataList)).EndInit();
             this.GrupBoxGeneralInformation.ResumeLayout(false);
             this.GrupBoxGeneralInformation.PerformLayout();
             this.StockMovementMenuStrip.ResumeLayout(false);
@@ -783,41 +783,41 @@
         private System.Windows.Forms.Label OperationHourTitle;
         private System.Windows.Forms.Label OperationDataTitle;
         private System.Windows.Forms.Label OperationSituationTitle;
-        private Syncfusion.WinForms.Controls.SfButton AddItem;
-        private Syncfusion.Windows.Forms.Tools.IntegerTextBox Quantity;
+        private Syncfusion.WinForms.Controls.SfButton ButtonAddItem;
+        private Syncfusion.Windows.Forms.Tools.IntegerTextBox TextQuantity;
         private System.Windows.Forms.Label LblTotalValue;
-        private Syncfusion.Windows.Forms.Tools.CurrencyTextBox TotalValue;
+        private Syncfusion.Windows.Forms.Tools.CurrencyTextBox TextTotalValue;
         private System.Windows.Forms.Label LblUnitaryValue;
-        private Syncfusion.Windows.Forms.Tools.CurrencyTextBox UnitaryValue;
+        private Syncfusion.Windows.Forms.Tools.CurrencyTextBox TextUnitaryValue;
         private System.Windows.Forms.Label LblQuantity;
         private System.Windows.Forms.Label QueryTitleByDescription;
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt QueryByDescription;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt TextSearchByDescription;
         private System.Windows.Forms.Label QueryTitleByCode;
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt QueryByCode;
-        public System.Windows.Forms.Label StockMovementId;
-        public System.Windows.Forms.Label OperationHour;
-        public System.Windows.Forms.Label OperationDate;
-        public System.Windows.Forms.Label OperationSituation;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt TextSearchByCode;
+        public System.Windows.Forms.Label TextStockMovementId;
+        public System.Windows.Forms.Label TextOperationHour;
+        public System.Windows.Forms.Label TextOperationDate;
+        public System.Windows.Forms.Label TextOperationSituation;
         private Bunifu.Framework.UI.BunifuCards CardMain;
         private System.Windows.Forms.Label TotalItems;
         private System.Windows.Forms.Label TitleOfTotalItems;
-        private System.Windows.Forms.PictureBox GifLoading;
+        private System.Windows.Forms.PictureBox PictureLoading;
         public System.Windows.Forms.Label StockMovementIdTitle;
         private System.Windows.Forms.GroupBox GrupBoxGeneralInformation;
         public System.Windows.Forms.Label OperationTypeTitle;
-        public System.Windows.Forms.Label OperationType;
-        private System.Windows.Forms.LinkLabel ClearQueryFields;
-        public Controls.CustomDataGridViewOne MainDataList;
+        public System.Windows.Forms.Label TextOperationType;
+        private System.Windows.Forms.LinkLabel ButtonClear_SearchFields;
+        public Controls.CustomDataGridViewOne DataGridMainDataList;
         public System.Windows.Forms.Label LblStockDestination;
-        private System.Windows.Forms.ComboBox StockDestinationList;
-        private System.Windows.Forms.LinkLabel AddNewStockDestination;
+        private System.Windows.Forms.ComboBox ComboBoxStockDestinationList;
+        private System.Windows.Forms.LinkLabel ButtonShow_StockDestination_RegistrationForm;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ContextMenuStrip StockMovementMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem MovementEntrie_ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem MovementOutPut_ToolStripMenuItem;
-        private Bunifu.Framework.UI.BunifuThinButton2 RegisterNew;
-        private Bunifu.Framework.UI.BunifuThinButton2 Delete;
-        private Bunifu.Framework.UI.BunifuThinButton2 Confirm;
-        private Bunifu.Framework.UI.BunifuThinButton2 CloseForm;
+        private Bunifu.Framework.UI.BunifuThinButton2 ButtonRegisterNew;
+        private Bunifu.Framework.UI.BunifuThinButton2 ButtonDelete;
+        private Bunifu.Framework.UI.BunifuThinButton2 ButtonConfirm;
+        private Bunifu.Framework.UI.BunifuThinButton2 ButtonCloseForm;
     }
 }

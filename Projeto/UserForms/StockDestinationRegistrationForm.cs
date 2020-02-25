@@ -7,13 +7,7 @@ namespace DimStock.UserForms
 {
     public partial class StockDestinationRegistrationForm : Form
     {
-        #region Variables
-
-        private int id = 0;
-
-        #endregion 
-
-        #region Constructs
+        #region Builder
 
         public StockDestinationRegistrationForm()
         {
@@ -24,7 +18,13 @@ namespace DimStock.UserForms
 
         #endregion
 
-        #region UserForm
+        #region Properties
+
+        private int id = 0;
+
+        #endregion 
+
+        #region Form
 
         private void StockDestinationRegistrationForm_Load(object sender, EventArgs e)
         {
@@ -35,7 +35,7 @@ namespace DimStock.UserForms
 
         #region Button
 
-        private void Save_Click(object sender, EventArgs e)
+        private void ButtonSave_Click(object sender, EventArgs e)
         {
             try
             {
@@ -46,10 +46,10 @@ namespace DimStock.UserForms
 
                 var stockDestination = new StockDestination
                 {
-                    Location = DestinationLocation.Text.TrimStart().TrimEnd()
+                    Location = TextDestinationLocation.Text.TrimStart().TrimEnd()
                 };
 
-                if (stockDestination.Register() == true)
+                if (stockDestination.Save() == true)
                 {
 
                     MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
@@ -64,7 +64,7 @@ namespace DimStock.UserForms
             }
         }
 
-        private void Edit_Click(object sender, EventArgs e)
+        private void ButtonEdit_Click(object sender, EventArgs e)
         {
             try
             {
@@ -77,7 +77,7 @@ namespace DimStock.UserForms
 
                 var stockDestination = new StockDestination
                 {
-                    Location = DestinationLocation.Text.TrimStart().TrimEnd()
+                    Location = TextDestinationLocation.Text.TrimStart().TrimEnd()
                 };
 
                 if (stockDestination.Edit(id) == true)
@@ -92,7 +92,7 @@ namespace DimStock.UserForms
             }
         }
 
-        private void Delete_Click(object sender, EventArgs e)
+        private void ButtonDelete_Click(object sender, EventArgs e)
         {
             try
             {
@@ -105,7 +105,7 @@ namespace DimStock.UserForms
 
                 var stockDestination = new StockDestination();
 
-                if (stockDestination.Delete(id) == true)
+                if (stockDestination.Remove(id) == true)
                 {
                     MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -118,7 +118,7 @@ namespace DimStock.UserForms
             }
         }
 
-        private void DataList_Click(object sender, EventArgs e)
+        private void ButtonDataList_Click(object sender, EventArgs e)
         {
             ListData();
 
@@ -129,11 +129,11 @@ namespace DimStock.UserForms
 
         #region DataGrid
 
-        private void DestinationDataList_DoubleClick(object sender, EventArgs e)
+        private void DatagridDestination_DoubleClick(object sender, EventArgs e)
         {
             try
             {
-                ViewDetails();
+                GetDetail();
             }
             catch (Exception ex)
             {
@@ -141,21 +141,21 @@ namespace DimStock.UserForms
             }
         }
 
-        private void DestinationDataList_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        private void DatagridDestination_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1)
             {
-                DestinationDataList.Rows[e.RowIndex].Selected = true;
+                DatagridDestination.Rows[e.RowIndex].Selected = true;
             }
         }
 
         #endregion
 
-        #region Methods
+        #region Function
 
         private bool ValidateData()
         {
-            if (DestinationLocation.Text == "" || DestinationLocation.Text == null)
+            if (TextDestinationLocation.Text == "" || TextDestinationLocation.Text == null)
             {
                 MessageBox.Show("Informe o nome de um destino Ex: Loja1", "OBRIGATÓRIO",
                 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -166,16 +166,16 @@ namespace DimStock.UserForms
             return true;
         }
 
-        private void ViewDetails()
+        private void GetDetail()
         {
-            if (DestinationDataList.Rows.Count > 0)
+            if (DatagridDestination.Rows.Count > 0)
             {
-                id = Convert.ToInt32(DestinationDataList.CurrentRow.Cells["id"].Value);
+                id = Convert.ToInt32(DatagridDestination.CurrentRow.Cells["id"].Value);
 
                 var stockDestination = new StockDestination();
-                stockDestination.ViewDetails(id);
+                stockDestination.GetDetail(id);
 
-                DestinationLocation.Text = stockDestination.Location;
+                TextDestinationLocation.Text = stockDestination.Location;
             }
         }
 
@@ -186,16 +186,16 @@ namespace DimStock.UserForms
                 var stockDestination = new StockDestination();
                 stockDestination.ListData();
 
-                DestinationDataList.Rows.Clear();
+                DatagridDestination.Rows.Clear();
 
-                for (int i = 0; i < stockDestination.ListOfRecords.Count; i++)
+                for (int i = 0; i < stockDestination.List.Count; i++)
                 {
-                    DestinationDataList.Rows.Add(
-                    stockDestination.ListOfRecords[i].Id,
-                    stockDestination.ListOfRecords[i].Location);
+                    DatagridDestination.Rows.Add(
+                    stockDestination.List[i].Id,
+                    stockDestination.List[i].Location);
                 }
 
-                DestinationDataList.ClearSelection();
+                DatagridDestination.ClearSelection();
             }
             catch (Exception ex)
             {
@@ -207,7 +207,7 @@ namespace DimStock.UserForms
         {
             try
             {
-                DestinationLocation.Text = string.Empty;
+                TextDestinationLocation.Text = string.Empty;
             }
             catch (Exception ex)
             {
@@ -215,7 +215,7 @@ namespace DimStock.UserForms
             }
         }
 
-        private void ResetVariables()
+        private void ResetProperties()
         {
             try
             {
@@ -230,14 +230,14 @@ namespace DimStock.UserForms
         private void CallAllReset()
         {
             ResetControls();
-            ResetVariables();
+            ResetProperties();
         }
 
         private void InitializeSettings()
         {
             CreateColumnInTheDataList();
 
-            AxlDataGridLealt.SetDefaultStyle(DestinationDataList);
+            AxlDataGridLealt.SetDefaultStyle(DatagridDestination);
         }
 
         private void CreateColumnInTheDataList()
@@ -247,7 +247,7 @@ namespace DimStock.UserForms
                 var id = new DataGridViewTextBoxColumn();
                 var destinationLocation = new DataGridViewTextBoxColumn();
 
-                var dataGrid = DestinationDataList;
+                var dataGrid = DatagridDestination;
 
                 dataGrid.Columns.Add(id);
                 dataGrid.Columns[0].Name = "id";

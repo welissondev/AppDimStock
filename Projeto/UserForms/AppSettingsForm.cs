@@ -14,7 +14,7 @@ namespace DimStock.UserForms
 
         #endregion
 
-        #region Constructs
+        #region Builder
 
         public AppSettingsForm()
         {
@@ -29,7 +29,7 @@ namespace DimStock.UserForms
 
         #region Button
 
-        private void ChooseMainDirectory_Click(object sender, EventArgs e)
+        private void ButtonChooseMainDirectory_Click(object sender, EventArgs e)
         {
             var folder = new AxlDirectory();
 
@@ -38,10 +38,10 @@ namespace DimStock.UserForms
             if (path == string.Empty)
                 return;
 
-            MainDirectoryPath.Text = path;
+            TextMainDirectoryPath.Text = path;
         }
 
-        private void ChooseBackup_Click(object sender, EventArgs e)
+        private void ButtonChooseBackup_Click(object sender, EventArgs e)
         {
             try
             {
@@ -52,7 +52,7 @@ namespace DimStock.UserForms
                 if (path == string.Empty)
                     return;
 
-                BackupPath.Text = path;
+                TextBackupPath.Text = path;
 
                 var fileList = folderBackup.ListFile(path
                 + @"\DataBaseBackUp");
@@ -75,11 +75,11 @@ namespace DimStock.UserForms
                 "importe as subpastas do diretório automaticamente",
                 "Erro Ao Importar");
 
-                BackupPath.Text = string.Empty;
+                TextBackupPath.Text = string.Empty;
             }
         }
 
-        private void CloseAssistant_Click(object sender, EventArgs e)
+        private void ButtonCloseAssistant_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Tem certeza que deseja finalizar?", "IMPORTANTE",
             MessageBoxButtons.YesNo, MessageBoxIcon.None,
@@ -93,7 +93,7 @@ namespace DimStock.UserForms
 
         #region PictureBox
 
-        private void CompanyLogoImage_Click(object sender, EventArgs e)
+        private void PictureCompanyLogo_Click(object sender, EventArgs e)
         {
             var logoType = new AxlFile();
 
@@ -102,14 +102,14 @@ namespace DimStock.UserForms
             if (path == string.Empty)
                 return;
 
-            CompanyLogoImage.ImageLocation = path;
+            PictureCompanyLogo.ImageLocation = path;
         }
 
         #endregion
 
         #region LabelLink
 
-        private void NextPage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void ButtonNextPage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             try
             {
@@ -120,17 +120,17 @@ namespace DimStock.UserForms
                         case "PageConfigType":
 
                             MainTabControl.SelectTab("PageChooseDirectory");
-                            BackPage.Visible = true;
+                            ButtonBackPage.Visible = true;
 
                             break;
 
                         case "PageChooseDirectory":
 
-                            if (MainDirectoryPath.Text == string.Empty)
+                            if (TextMainDirectoryPath.Text == string.Empty)
                                 return;
 
                             appSetting.SaveAsMainDirectory(
-                            MainDirectoryPath.Text);
+                            TextMainDirectoryPath.Text);
 
                             appSetting.TransferDataBaseToMainDirectory();
 
@@ -143,7 +143,7 @@ namespace DimStock.UserForms
 
                         case "PageCompanyLogo":
 
-                            if (CompanyLogoImage.ImageLocation == null)
+                            if (PictureCompanyLogo.ImageLocation == null)
                             {
                                 var path = AppSetting.GetDirectoryOfExe() + 
                                 @"Resources\DimStockLogoType.png";
@@ -153,7 +153,7 @@ namespace DimStock.UserForms
                             else
                             {
                                 appSetting.TransferCompanyLogoToMainDirectory(
-                                CompanyLogoImage.ImageLocation);
+                                PictureCompanyLogo.ImageLocation);
                             }
 
                             MainTabControl.SelectTab("PageLogin");
@@ -166,8 +166,8 @@ namespace DimStock.UserForms
                             {
                                 MainTabControl.SelectTab("PageFinalize");
 
-                                NextPage.Visible = false;
-                                BackPage.Visible = false;
+                                ButtonNextPage.Visible = false;
+                                ButtonBackPage.Visible = false;
 
                                 Await(18000);
                                 LabelPageFinalizeTitle.Text = "Salvo Com Sucesso!";
@@ -190,7 +190,7 @@ namespace DimStock.UserForms
                         case "PageConfigType":
 
                             MainTabControl.SelectTab("PageBackUp");
-                            BackPage.Visible = true;
+                            ButtonBackPage.Visible = true;
 
                             break;
 
@@ -200,8 +200,8 @@ namespace DimStock.UserForms
                             {
                                 MainTabControl.SelectTab("PageFinalize");
 
-                                NextPage.Visible = false;
-                                BackPage.Visible = false;
+                                ButtonNextPage.Visible = false;
+                                ButtonBackPage.Visible = false;
 
                                 LabelPageFinalizeTitle.Text = "Ok, Aguarde Um Instante";
                                 LabelPageFinalizeSubTitle.Text = "Estamos importando seus dados...";
@@ -225,7 +225,7 @@ namespace DimStock.UserForms
             }
         }
 
-        private void BackPage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void ButtonBackPage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (CheckBoxNewConfiguration.Checked == true)
             {
@@ -247,7 +247,7 @@ namespace DimStock.UserForms
                     case "PageChooseDirectory":
 
                         MainTabControl.SelectTab("PageConfigType");
-                        BackPage.Visible = false;
+                        ButtonBackPage.Visible = false;
 
                         break;
                 }
@@ -260,7 +260,7 @@ namespace DimStock.UserForms
                     case "PageBackUp":
 
                         MainTabControl.SelectTab("PageConfigType");
-                        BackPage.Visible = false;
+                        ButtonBackPage.Visible = false;
 
                         break;
                 }
@@ -269,11 +269,11 @@ namespace DimStock.UserForms
 
         #endregion
 
-        #region MethodsAuxiliarys
+        #region Function
 
         private void Await(int time)
         {
-            Loading.Visible = true;
+            PictureLoading.Visible = true;
 
             DateTime dateTimeTarget = DateTime.Now.AddMilliseconds(time);
 
@@ -282,36 +282,36 @@ namespace DimStock.UserForms
                 Application.DoEvents();
             }
 
-            Loading.Visible = false;
+            PictureLoading.Visible = false;
         }
 
         private bool RegisterUser()
         {
-            if (UserName.Text == string.Empty)
+            if (TextUserName.Text == string.Empty)
             {
                 MessageBox.Show("Informe um nome de usuário!");
                 return false;
             }
 
-            if (Login.Text == string.Empty)
+            if (TextLogin.Text == string.Empty)
             {
                 MessageBox.Show("Informe um login de acesso!");
                 return false;
             }
 
-            if (PassWord.Text == string.Empty)
+            if (TextPassWord.Text == string.Empty)
             {
                 MessageBox.Show("Informe uma senha!");
                 return false;
             }
 
-            if (PassWordConfirmation.Text == string.Empty)
+            if (TextPasswordConfirmation.Text == string.Empty)
             {
                 MessageBox.Show("Confirme a senha!");
                 return false;
             }
 
-            if (PassWord.Text != PassWordConfirmation.Text)
+            if (TextPassWord.Text != TextPasswordConfirmation.Text)
             {
                 MessageBox.Show("As senhas não conferem!");
                 return false;
@@ -319,10 +319,10 @@ namespace DimStock.UserForms
 
             var user = new User()
             {
-                Name = UserName.Text,
-                Email = Email.Text,
-                Login = Login.Text,
-                PassWord = PassWord.Text,
+                Name = TextUserName.Text,
+                Email = TextEmail.Text,
+                Login = TextLogin.Text,
+                PassWord = TextPassWord.Text,
             };
 
             if (user.CreateNewLogin() == false)

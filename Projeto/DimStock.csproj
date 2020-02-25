@@ -148,9 +148,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Auxiliarys\AxlDataGridLealt.cs" />
-    <Compile Include="Auxiliarys\AxlDataPagination.cs" />
+    <Compile Include="Auxiliarys\AxlDataPage.cs" />
     <Compile Include="Auxiliarys\AxlDirectory.cs" />
-    <Compile Include="Auxiliarys\AxlEmailAdderess.cs" />
+    <Compile Include="Auxiliarys\AxlEmailAddress.cs" />
     <Compile Include="Auxiliarys\AxlException.cs" />
     <Compile Include="Auxiliarys\AxlMdiForm.cs" />
     <Compile Include="Auxiliarys\AxlLogin.cs" />
@@ -164,7 +164,7 @@
     </Compile>
     <Compile Include="Business\AppSetting.cs" />
     <Compile Include="Business\Company.cs" />
-    <Compile Include="Business\Connection.cs" />
+    <Compile Include="Business\DatabaseConnection.cs" />
     <Compile Include="Business\StockDestination.cs" />
     <Compile Include="Business\StockMovementItem.cs" />
     <Compile Include="Business\StockMovement.cs" />

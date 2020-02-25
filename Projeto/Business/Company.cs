@@ -20,9 +20,9 @@ namespace DimStock.Business
 
         #region Function
 
-        public bool Register()
+        public bool Save()
         {
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 bool registerState = false;
 

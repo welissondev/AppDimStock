@@ -5,15 +5,31 @@ using System.Data.OleDb;
 
 namespace DimStock.Business
 {
-    public class Connection : IDisposable
+    public class DatabaseConnection : IDisposable
     {
+        #region Builder
+
+        public DatabaseConnection()
+        {
+            Connection = new OleDbConnection(GetConnectionString());
+            Command = new OleDbCommand();
+            Parameter = new OleDbParameter();
+        }
+
+        #endregion
+
+        #region Properties
+
+        private bool disposed = false;
+
+        #endregion
+
         #region Get & Set 
 
-        private readonly OleDbConnection connection = new OleDbConnection(@"Provider = Microsoft.jet.oledb.4.0; Data Source =" + Settings.Default.MainAppDirectory + @"\dimstock-database.mdb;jet oledb:database password=#admin#");
-        public OleDbCommand Command = new OleDbCommand();
-        public OleDbParameter Parameter = new OleDbParameter();
-        public OleDbTransaction Transaction;
-        private bool disposed = false;
+        public OleDbConnection Connection { get; set; }
+        public OleDbCommand Command { get; set; }
+        public OleDbParameter Parameter { get; set; }
+        public OleDbTransaction Transaction { get; set; }
 
         #endregion
 
@@ -23,12 +39,12 @@ namespace DimStock.Business
         {
             try
             {
-                if (connection.State == ConnectionState.Closed)
+                if (Connection.State == ConnectionState.Closed)
                 {
-                    connection.Open();
+                    Connection.Open();
                 }
 
-                return connection;
+                return Connection;
             }
             catch (OleDbException)
             {
@@ -60,20 +76,6 @@ namespace DimStock.Business
                 Command.CommandText = sql;
                 Command.Connection = Open();
                 return Command.ExecuteNonQuery();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-        public OleDbDataReader ExecuteParameterQuery(string sql)
-        {
-            try
-            {
-                Command.CommandText = sql;
-                Command.Connection = Open();
-                return Command.ExecuteReader();
             }
             catch (Exception)
             {
@@ -132,7 +134,7 @@ namespace DimStock.Business
             Open();
 
             Command.CommandText = sql;
-            Command.Connection = connection;
+            Command.Connection = Connection;
 
             var adapter = new OleDbDataAdapter
             {
@@ -142,6 +144,12 @@ namespace DimStock.Business
             adapter.Fill(startReg, maxReg, dt);
 
             return dt;
+        }
+
+        private string GetConnectionString()
+        {
+            return @"Provider = Microsoft.jet.oledb.4.0; Data Source =" +
+            Settings.Default.MainAppDirectory + @"\dimstock-database.mdb;jet oledb:database password=#admin#";
         }
 
         public void Dispose()
@@ -157,7 +165,7 @@ namespace DimStock.Business
 
             if (disposing)
             {
-                connection.Dispose();
+                Connection.Dispose();
                 Command.Dispose();
             }
 

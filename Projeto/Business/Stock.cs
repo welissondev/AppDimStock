@@ -10,11 +10,7 @@ namespace DimStock.Business
 {
     public class Stock : IReport<Stock>
     {
-        #region Properties
-        private Connection connection;
-        #endregion
-
-        #region Contructs
+        #region Buider
 
         public Stock()
         {
@@ -22,41 +18,49 @@ namespace DimStock.Business
             List = new List<Stock>();
         }
 
-        public Stock(Connection connection)
+        public Stock(DatabaseConnection connection)
         {
             this.connection = connection;
         }
 
-        public Stock(AxlDataPagination dataPagination)
+        public Stock(AxlDataPage pagination)
         {
             Product = new Product();
             List = new List<Stock>();
-            DataPagination = dataPagination;
+            Pagination = pagination;
         }
 
-        #endregion 
+        #endregion
+
+        #region Properties
+
+        private DatabaseConnection connection;
+
+        #endregion
 
         #region Get & Set
-
-        private string summary = "All";
 
         public int Id { get; set; }
         public int Min { get; set; }
         public int Max { get; set; }
         public int Quantity { get; set; }
         public double TotalValue { get; set; }
+
+        private string summary = "All";
         public string Summary { get => summary; set => summary = value; }
+
         public string Result { get; set; }
         public Product Product { get; set; }
         public List<Stock> List { get; set; }
-        public AxlDataPagination DataPagination { get; set; }
+        public AxlDataPage Pagination { get; set; }
+
         #endregion 
 
-        #region Methods
+        #region Function
 
         public void ListData()
         {
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 var sqlQuery = string.Empty;
                 var sqlCount = string.Empty;
@@ -171,7 +175,7 @@ namespace DimStock.Business
 
         public void SearchData()
         {
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 var sqlQuery = string.Empty;
                 var sqlCount = string.Empty;
@@ -255,12 +259,12 @@ namespace DimStock.Business
 
                 sqlCount += criterion;
 
-                DataPagination.RecordCount = Convert.ToInt32(
+                Pagination.RecordCount = Convert.ToInt32(
                 connection.ExecuteScalar(sqlCount));
 
                 var dataTable = connection.QueryWithDataTable(sqlQuery,
-                DataPagination.OffSetValue,
-                DataPagination.PageSize);
+                Pagination.OffSetValue,
+                Pagination.PageSize);
 
                 PassToList(dataTable);
 
@@ -270,9 +274,9 @@ namespace DimStock.Business
             }
         }
 
-        public void ViewDetails(int id)
+        public void GetDetail(int id)
         {
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 var sqlQuery = @"SELECT Product.*, Stock.* From Product INNER JOIN 
                 Stock ON Product.Id = Stock.ProductId WHERE Product.Id = @Id";
@@ -299,7 +303,7 @@ namespace DimStock.Business
             var transactionState = false;
             var sqlCommand = string.Empty;
 
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
@@ -337,7 +341,7 @@ namespace DimStock.Business
 
                     history.User.Id = AxlLogin.Id;
 
-                    transactionState = history.Register();
+                    transactionState = history.Save();
 
                     //Finalza o transação
                     connection.Transaction.Commit();
@@ -351,7 +355,7 @@ namespace DimStock.Business
 
         public bool AddOutputs(List<Stock> itemList, int stockMovementId)
         {
-            using (var connection = new Connection())
+            using (var connection = new DatabaseConnection())
             {
                 var transactionState = false;
                 var sqlCommand = string.Empty;
@@ -392,7 +396,7 @@ namespace DimStock.Business
 
                     history.User.Id = AxlLogin.Id;
 
-                    transactionState = history.Register();
+                    transactionState = history.Save();
 
                     //Finaliza a transação
                     connection.Transaction.Commit();
