@@ -123,8 +123,10 @@ namespace DimStock.UserForms
 
         private void TextQuantity_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TextTotalValue.Text = Calculate(Convert.ToInt32(TextQuantity.Text),
-            Convert.ToDouble(TextUnitaryValue.DecimalValue)).ToString();
+            TextTotalValue.Text = StockMovementItem.
+            CalculeSubTotal(Convert.ToInt32(TextQuantity.Text),
+            Convert.ToDouble(TextUnitaryValue.DecimalValue)
+            ).ToString();
         }
 
         #endregion
@@ -637,11 +639,6 @@ namespace DimStock.UserForms
                 AxlException.Message.Show(ex);
                 return false;
             }
-        }
-
-        private double Calculate(int quantity, double unitaryValue)
-        {
-            return quantity * unitaryValue;
         }
 
         private void ClearSearchFields()

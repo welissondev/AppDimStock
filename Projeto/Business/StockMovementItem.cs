@@ -106,6 +106,11 @@ namespace DimStock.Business
             }
         }
 
+        public static double CalculeSubTotal(int quantity, double unitaryValue)
+        {
+            return quantity * unitaryValue;
+        }
+
         #endregion
     }
 }
