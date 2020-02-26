@@ -172,7 +172,7 @@ namespace DimStock.UserForms
         {
             PictureLoading.Visible = false;
             SearchTimer.Enabled = false;
-            SearchData();
+            FetchData();
         }
 
         #endregion
@@ -269,7 +269,7 @@ namespace DimStock.UserForms
 
         #region Function
 
-        private void SearchData()
+        private void FetchData()
         {
             try
             {
@@ -277,7 +277,7 @@ namespace DimStock.UserForms
 
                 stock.Product.InternalCode = TextSearchByCode.Text;
 
-                stock.SearchData();
+                stock.FetchData();
 
                 DataGridMainDataList.Columns.Clear();
 

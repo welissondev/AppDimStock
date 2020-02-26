@@ -100,7 +100,7 @@ namespace DimStock.UserForms
         {
             PictureLoading.Visible = false;
             SearchTimer.Enabled = false;
-            SearchData();
+            FetchData();
         }
 
         #endregion
@@ -181,14 +181,14 @@ namespace DimStock.UserForms
             }
         }
 
-        private void SearchData()
+        private void FetchData()
         {
             try
             {
                 var history = new UserHistory(pagination);
                 history.User.Login = TextSearchByLogin.Text;
 
-                history.SearchData(
+                history.FetchData(
                 Convert.ToDateTime(TextStartDate.Value).
                 ToString("dd-MM-yyyy"),
 

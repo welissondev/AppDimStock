@@ -266,7 +266,7 @@ namespace DimStock.Business
             ListData(); product.GenerateReport(list);
         }
 
-        public void SearchData()
+        public void FetchData()
         {
             using (var connection = new DatabaseConnection())
             {

@@ -144,7 +144,7 @@ namespace DimStock.UserForms
 
         private void SearchTimer_Tick(object sender, EventArgs e)
         {
-            SearchData();
+            FetchData();
         }
 
         #endregion
@@ -229,7 +229,7 @@ namespace DimStock.UserForms
 
         #region Function
 
-        private void SearchData()
+        private void FetchData()
         {
             try
             {
@@ -239,7 +239,7 @@ namespace DimStock.UserForms
                     Description = TextSearchByDescription.Text
                 };
 
-                product.SearchData();
+                product.FetchData();
 
                 DatagridProduct.Rows.Clear();
 

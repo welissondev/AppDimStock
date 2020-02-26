@@ -93,7 +93,7 @@ namespace DimStock.Business
             }
         }
 
-        public void SearchData(string startDate, string finalDate)
+        public void FetchData(string startDate, string finalDate)
         {
             using (var connection = new DatabaseConnection())
             {

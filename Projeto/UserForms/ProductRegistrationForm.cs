@@ -404,7 +404,7 @@ namespace DimStock.UserForms
                 {
                     Description = ComboBoxCategoryList.Text
                 };
-                category.SearchData();
+                category.FetchData();
 
                 ListviewCategory.Items.Clear();
                 ListviewCategory.Height = 250;

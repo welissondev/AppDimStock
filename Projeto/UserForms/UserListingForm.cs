@@ -122,7 +122,7 @@ namespace DimStock.UserForms
         {
             PictureLoading.Visible = false;
             SearchTimer.Enabled = false;
-            SearchData();
+            FetchData();
         }
 
         #endregion
@@ -156,7 +156,7 @@ namespace DimStock.UserForms
             }
         }
 
-        private void SearchData()
+        private void FetchData()
         {
             try
             {
@@ -168,7 +168,7 @@ namespace DimStock.UserForms
                     Email = TextSearchFields.Text,
                 };
 
-                user.SearchData();
+                user.FetchData();
 
                 for (int i = 0; i < user.List.Count; i++)
                 {

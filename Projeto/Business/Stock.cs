@@ -168,7 +168,7 @@ namespace DimStock.Business
             }
         }
 
-        public void SearchData()
+        public void FetchData()
         {
             using (var connection = new DatabaseConnection())
             {
