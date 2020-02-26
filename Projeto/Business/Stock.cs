@@ -14,8 +14,6 @@ namespace DimStock.Business
 
         public Stock()
         {
-            Product = new Product();
-            List = new List<Stock>();
         }
 
         public Stock(DatabaseConnection connection)
@@ -25,8 +23,6 @@ namespace DimStock.Business
 
         public Stock(AxlDataPage pagination)
         {
-            Product = new Product();
-            List = new List<Stock>();
             Pagination = pagination;
         }
 
@@ -34,7 +30,12 @@ namespace DimStock.Business
 
         #region Properties
 
+        private string summary = "All";
         private DatabaseConnection connection;
+
+        public Product Product = new Product();
+        public List<Stock> List = new List<Stock>();
+        public AxlDataPage Pagination = new AxlDataPage();
 
         #endregion
 
@@ -45,14 +46,8 @@ namespace DimStock.Business
         public int Max { get; set; }
         public int Quantity { get; set; }
         public double TotalValue { get; set; }
-
-        private string summary = "All";
-        public string Summary { get => summary; set => summary = value; }
-
         public string Result { get; set; }
-        public Product Product { get; set; }
-        public List<Stock> List { get; set; }
-        public AxlDataPage Pagination { get; set; }
+        public string Summary { get => summary; set => summary = value; }
 
         #endregion 
 

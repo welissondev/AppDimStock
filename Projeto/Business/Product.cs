@@ -15,19 +15,20 @@ namespace DimStock.Business
 
         public Product()
         {
-            Category = new ProductCategory();
-
-            List = new List<Product>();
         }
 
         public Product(AxlDataPage pagination)
         {
             Pagination = pagination;
-
-            Category = new ProductCategory();
-
-            List = new List<Product>();
         }
+
+        #endregion
+
+        #region Properties
+
+        public ProductCategory Category = new ProductCategory();
+        public AxlDataPage Pagination = new AxlDataPage();
+        public List<Product> List = new List<Product>();
 
         #endregion
 
@@ -40,9 +41,6 @@ namespace DimStock.Business
         public double SalePrice { get; set; }
         public string BarCode { get; set; }
         public string Photo { get; set; }
-        public ProductCategory Category { get; set; }
-        public AxlDataPage Pagination { get; set; }
-        public List<Product> List { get; set; }
 
         #endregion 
 

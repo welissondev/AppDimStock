@@ -7,11 +7,16 @@ namespace DimStock.Business
 {
     public class StockDestination
     {
+        #region Properties
+
+        public List<StockDestination> List = new List<StockDestination>();
+
+        #endregion 
+
         #region Get e Set
 
         public int Id { get; set; }
         public string Location { get; set; }
-        public List<StockDestination> List { get; set; }
 
         #endregion
 
@@ -95,8 +100,6 @@ namespace DimStock.Business
 
         public void ListData()
         {
-            var destinationList = new List<StockDestination>();
-
             var sqlQuery = @"SELECT * From StockDestination";
 
             using (var connection = new DatabaseConnection())
@@ -105,17 +108,15 @@ namespace DimStock.Business
                 {
                     while (reader.Read())
                     {
-                        var stockDestination = new StockDestination()
+                        var destination = new StockDestination()
                         {
                             Id = Convert.ToInt32(reader["Id"]),
                             Location = Convert.ToString(reader["Location"])
                         };
 
-                        destinationList.Add(stockDestination);
+                        List.Add(destination);
                     }
                 }
-
-                List = destinationList;
             }
         }
 

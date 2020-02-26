@@ -13,22 +13,16 @@ namespace DimStock.Business
 
         public StockMovement()
         {
-            StockDestination = new StockDestination();
-            List = new List<StockMovement>();
         }
 
         public StockMovement(AxlDataPage pagination)
         {
             Pagination = pagination;
-            StockDestination = new StockDestination();
-            List = new List<StockMovement>();
         }
 
         public StockMovement(DatabaseConnection connection)
         {
             this.connection = connection;
-            StockDestination = new StockDestination();
-            List = new List<StockMovement>();
         }
 
         #endregion
@@ -36,6 +30,9 @@ namespace DimStock.Business
         #region Properties
 
         private DatabaseConnection connection;
+        public StockDestination StockDestination = new StockDestination();
+        public AxlDataPage Pagination = new AxlDataPage();
+        public List<StockMovement> List = new List<StockMovement>();
 
         #endregion
 
@@ -47,9 +44,6 @@ namespace DimStock.Business
         public DateTime OperationHour { get; set; }
         public string OperationCode { get; set; }
         public string OperationSituation { get; set; }
-        public StockDestination StockDestination { get; set; }
-        public AxlDataPage Pagination { get; set; }
-        public List<StockMovement> List { get; set; }
 
         #endregion
 
@@ -225,8 +219,6 @@ namespace DimStock.Business
             {
                 var sqlQuery = @"SELECT * From StockMovement";
 
-                var stockMovementsList = new List<StockMovement>();
-
                 using (var reader = connection.QueryWithDataReader(sqlQuery))
                 {
                     while (reader.Read())
@@ -244,10 +236,8 @@ namespace DimStock.Business
                         StockDestination.Id = Convert.ToInt32(reader["StockDestination.Id"]);
                         StockDestination.Location = Convert.ToString(reader["Location"]);
 
-                        stockMovementsList.Add(stockMovement);
+                        List.Add(stockMovement);
                     }
-
-                    List = stockMovementsList;
                 }
             }
         }

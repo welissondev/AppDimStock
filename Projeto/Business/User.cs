@@ -18,7 +18,14 @@ namespace DimStock.Business
             Pagination = pagination;
         }
 
-        #endregion 
+        #endregion
+
+        #region Properties
+
+        public List<User> List = new List<User>();
+        public AxlDataPage Pagination = new AxlDataPage();
+
+        #endregion
 
         #region Get & Set 
 
@@ -32,8 +39,6 @@ namespace DimStock.Business
         public bool PermissionToDelete { get; set; }
         public bool PermissionToView { get; set; }
         public bool AllPermissions { get; set; }
-        public List<User> List { get; set; }
-        public AxlDataPage Pagination { get; set; }
 
         #endregion
 
@@ -315,8 +320,6 @@ namespace DimStock.Business
             {
                 var sqlQuery = "SELECT * FROM [User]";
 
-                var userList = new List<User>();
-
                 using (var reader = connection.QueryWithDataReader(sqlQuery))
                 {
                     while (reader.Read())
@@ -328,10 +331,8 @@ namespace DimStock.Business
                             Email = Convert.ToString(reader["Email"])
                         };
 
-                        userList.Add(User);
+                        List.Add(User);
                     }
-
-                    List = userList;
                 }
             }
         }
@@ -459,8 +460,6 @@ namespace DimStock.Business
 
         public void PassToList(DataTable dataTable)
         {
-            var userList = new List<User>();
-
             foreach (DataRow row in dataTable.Rows)
             {
                 var User = new User()
@@ -470,10 +469,8 @@ namespace DimStock.Business
                     Email = Convert.ToString(row["Email"])
                 };
 
-                userList.Add(User);
+                List.Add(User);
             }
-
-            List = userList;
         }
 
         public string GetAffectedFields(int id, DatabaseConnection connection)
