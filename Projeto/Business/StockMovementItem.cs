@@ -10,16 +10,11 @@ namespace DimStock.Business
 
         public StockMovementItem()
         {
+            Stock = new Stock();
+            Product = new Product();
+            StockMovement = new StockMovement();
+            List = new List<StockMovementItem>();
         }
-
-        #endregion
-
-        #region Properties
-
-        public Stock Stock = new Stock();
-        public Product Product = new Product();
-        public StockMovement StockMovement = new StockMovement();
-        public List<StockMovementItem> List = new List<StockMovementItem>();
 
         #endregion
 
@@ -30,6 +25,10 @@ namespace DimStock.Business
         public double UnitaryValue { get; set; }
         public double TotalValue { get; set; }
         public double SubTotal { get; set; }
+        public Stock Stock { get; set; }
+        public Product Product { get; set; }
+        public StockMovement StockMovement { get; set; }
+        public List<StockMovementItem> List { get; set; }
 
         #endregion
 

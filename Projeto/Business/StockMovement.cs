@@ -13,37 +13,36 @@ namespace DimStock.Business
 
         public StockMovement()
         {
+            Destination = new StockDestination();
         }
 
         public StockMovement(AxlDataPage pagination)
         {
             Pagination = pagination;
+            Destination = new StockDestination();
+            List = new List<StockMovement>();
         }
 
         public StockMovement(DatabaseConnection connection)
         {
             this.connection = connection;
+            Destination = new StockDestination();
         }
-
-        #endregion
-
-        #region Properties
-
-        private DatabaseConnection connection;
-        public StockDestination StockDestination = new StockDestination();
-        public AxlDataPage Pagination = new AxlDataPage();
-        public List<StockMovement> List = new List<StockMovement>();
 
         #endregion
 
         #region Get & Set
 
+        private DatabaseConnection connection;
         public int Id { get; set; }
         public string OperationType { get; set; }
         public DateTime OperationDate { get; set; }
         public DateTime OperationHour { get; set; }
         public string OperationCode { get; set; }
         public string OperationSituation { get; set; }
+        public StockDestination Destination { get; set; }
+        public AxlDataPage Pagination { get; set; }
+        public List<StockMovement> List { get; set; }
 
         #endregion
 
@@ -97,15 +96,15 @@ namespace DimStock.Business
                 WHERE Location = @Location";
 
                 connection.AddParameter("Location", OleDbType.VarChar,
-                StockDestination.Location);
+                Destination.Location);
 
                 bool convert = int.TryParse(connection.ExecuteScalar(
                 sqlCommand).ToString(), out int result);
 
                 if (convert != false)
-                    StockDestination.Id = result;
+                    Destination.Id = result;
 
-                if (StockDestination.Id != 0)
+                if (Destination.Id != 0)
                 {
                     connection.ParameterClear();
 
@@ -113,7 +112,7 @@ namespace DimStock.Business
                     = @Value WHERE Id = @Id";
 
                     connection.AddParameter("@Value",
-                    OleDbType.VarChar, StockDestination.Id);
+                    OleDbType.VarChar, Destination.Id);
                     connection.AddParameter("@Id", OleDbType.Integer, id);
 
                     if (connection.ExecuteNonQuery(sqlCommand) > 0)
@@ -233,8 +232,8 @@ namespace DimStock.Business
                             OperationCode = reader["OperationCode"].ToString()
                         };
 
-                        StockDestination.Id = Convert.ToInt32(reader["StockDestination.Id"]);
-                        StockDestination.Location = Convert.ToString(reader["Location"]);
+                        Destination.Id = Convert.ToInt32(reader["StockDestination.Id"]);
+                        Destination.Location = Convert.ToString(reader["Location"]);
 
                         List.Add(stockMovement);
                     }
@@ -325,9 +324,9 @@ namespace DimStock.Business
                         out int result);
 
                         if (convert != false)
-                            StockDestination.Id = result;
+                            Destination.Id = result;
 
-                        StockDestination.Location = reader["Location"].ToString();
+                        Destination.Location = reader["Location"].ToString();
                     }
                 }
             }
@@ -346,9 +345,7 @@ namespace DimStock.Business
                     OperationSituation = Convert.ToString(row["OperationSituation"]),
                     OperationCode = Convert.ToString(row["OperationCode"])
                 };
-
-                movement.StockDestination.Location =
-                Convert.ToString(row["Location"]);
+                movement.Destination.Location = Convert.ToString(row["Location"]);
 
                 List.Add(movement);
             }

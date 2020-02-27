@@ -10,37 +10,38 @@ namespace DimStock.Business
     {
         #region Builder
 
-        public UserHistory(){}
+        public UserHistory()
+        {
+            User = new User();
+        }
 
         public UserHistory(AxlDataPage pagination)
         {
             Pagination = pagination;
+            User = new User();
+            List = new List<UserHistory>();
         }
 
         public UserHistory(DatabaseConnection connection)
         {
             this.connection = connection;
+            User = new User();
         }
-
-        #endregion
-
-        #region Properties
-
-        private DatabaseConnection connection;
-        public List<UserHistory> List = new List<UserHistory>();
-        public AxlDataPage Pagination = new AxlDataPage();
-        public User User = new User();
 
         #endregion
 
         #region Get & Set
 
+        private DatabaseConnection connection;
         public int Id { get; set; }
         public string AffectedFields { get; set; }
         public string OperationType { get; set; }
         public DateTime OperationDate { get; set; }
         public string OperationHour { get; set; }
         public string OperationModule { get; set; }
+        public AxlDataPage Pagination { get; set; }
+        public User User { get; set; }
+        public List<UserHistory> List { get; set; }
 
         #endregion
 

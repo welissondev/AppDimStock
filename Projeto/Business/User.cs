@@ -11,19 +11,16 @@ namespace DimStock.Business
     {
         #region Builder
 
-        public User() { }
+        public User() 
+        { 
+            
+        }
 
         public User(AxlDataPage pagination)
         {
             Pagination = pagination;
+            List = new List<User>();
         }
-
-        #endregion
-
-        #region Properties
-
-        public List<User> List = new List<User>();
-        public AxlDataPage Pagination = new AxlDataPage();
 
         #endregion
 
@@ -39,7 +36,8 @@ namespace DimStock.Business
         public bool PermissionToDelete { get; set; }
         public bool PermissionToView { get; set; }
         public bool AllPermissions { get; set; }
-
+        public AxlDataPage Pagination { get; set; }
+        public List<User> List { get; set; }
         #endregion
 
         #region Function

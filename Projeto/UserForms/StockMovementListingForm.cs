@@ -305,7 +305,7 @@ namespace DimStock.UserForms
                     movement.List[i].OperationCode,
                     movement.List[i].OperationDate,
                     Convert.ToString(movement.List[i].OperationHour.ToString("HH:MM:ss")),
-                    movement.List[i].StockDestination.Location
+                    movement.List[i].Destination.Location
                     );
                 }
 

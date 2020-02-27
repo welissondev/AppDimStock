@@ -145,7 +145,7 @@ namespace DimStock.UserForms
                 if (TextOperationSituation.Text == "Em Aberto")
                 {
                     var movement = new StockMovement();
-                    movement.StockDestination.Location =
+                    movement.Destination.Location =
                     ((ComboBox)sender).SelectedItem.ToString();
 
                     movement.RelateDestination(Convert.ToInt32(
@@ -353,12 +353,12 @@ namespace DimStock.UserForms
                 TextOperationHour.Text = Convert.ToString(movement.OperationHour.ToString("HH:MM:ss"));
                 TextOperationSituation.Text = movement.OperationSituation;
 
-                if (movement.StockDestination.Id != 0)
+                if (movement.Destination.Id != 0)
                 {
                     FillAllComboBox();
 
                     ComboBoxStockDestinationList.Text =
-                    movement.StockDestination.Location;
+                    movement.Destination.Location;
                 }
 
                 ListStockItems();

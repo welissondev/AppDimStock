@@ -7,16 +7,20 @@ namespace DimStock.Business
 {
     public class StockDestination
     {
-        #region Properties
+        #region Builder
+        
+        public StockDestination()
+        {
+            List = new List<StockDestination>();
+        }
 
-        public List<StockDestination> List = new List<StockDestination>();
-
-        #endregion 
+        #endregion
 
         #region Get e Set
 
         public int Id { get; set; }
         public string Location { get; set; }
+        public List<StockDestination> List { get; set; }
 
         #endregion
 

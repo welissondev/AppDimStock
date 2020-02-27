@@ -14,32 +14,29 @@ namespace DimStock.Business
 
         public Stock()
         {
-        }
-
-        public Stock(DatabaseConnection connection)
-        {
-            this.connection = connection;
+            Product = new Product();
+            List = new List<Stock>();
         }
 
         public Stock(AxlDataPage pagination)
         {
             Pagination = pagination;
+            Product = new Product();
+            List = new List<Stock>();
+        }
+
+        public Stock(DatabaseConnection connection)
+        {
+            this.connection = connection;
+            Product = new Product();
         }
 
         #endregion
 
-        #region Properties
+        #region Get & Set
 
         private string summary = "All";
         private DatabaseConnection connection;
-
-        public Product Product = new Product();
-        public List<Stock> List = new List<Stock>();
-        public AxlDataPage Pagination = new AxlDataPage();
-
-        #endregion
-
-        #region Get & Set
 
         public int Id { get; set; }
         public int Min { get; set; }
@@ -48,8 +45,11 @@ namespace DimStock.Business
         public double TotalValue { get; set; }
         public string Result { get; set; }
         public string Summary { get => summary; set => summary = value; }
+        public Product Product { get; set; }
+        public AxlDataPage Pagination { get; set; }
+        public List<Stock> List { get; set; }
 
-        #endregion 
+        #endregion
 
         #region Function
 
@@ -543,7 +543,7 @@ namespace DimStock.Business
         {
             foreach (DataRow row in dataTable.Rows)
             {
-                var stock = new Stock
+                var stock = new Stock()
                 {
                     Id = Convert.ToInt32(row["Stock.Id"]),
                     Min = Convert.ToInt32(row["Min"]),
