@@ -8,7 +8,7 @@ using System.Data.OleDb;
 
 namespace DimStock.Business
 {
-    public class Stock : IReport<Stock>
+    public class Stock : IReportGenerator<Stock>
     {
         #region Buider
 

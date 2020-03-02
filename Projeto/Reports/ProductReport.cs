@@ -5,7 +5,7 @@ using DimStock.UserForms;
 
 namespace DimStock.Reports
 {
-    public class ProductReport : IReport<Product>
+    public class ProductReport : IReportGenerator<Product>
     {
         #region Get e Set
 

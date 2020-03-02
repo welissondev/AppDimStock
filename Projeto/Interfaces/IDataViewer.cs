@@ -2,8 +2,8 @@
 
 namespace DimStock.Interfaces
 {
-    public interface IReport<T>
+    interface IDataViewer<T>
     {
-        void GenerateReport(List<T> list);
+        void GetDetail(int id);
     }
 }

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace DimStock.Reports
 {
-    public class StockReport : IReport<Stock>
+    public class StockReport : IReportGenerator<Stock>
     {
         #region Get e Set
         public string ProductCode { get; set; }

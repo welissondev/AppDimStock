@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace DimStock.Business
 {
-    public class Product : IReport<Product>
+    public class Product : IReportGenerator<Product>
     {
         #region Builder
 

@@ -174,7 +174,15 @@
     <Compile Include="Business\Stock.cs" />
     <Compile Include="Business\User.cs" />
     <Compile Include="Business\UserHistory.cs" />
-    <Compile Include="Interfaces\IReport.cs" />
+    <Compile Include="Interfaces\IDataChecker.cs" />
+    <Compile Include="Interfaces\IDataTransfer.cs" />
+    <Compile Include="Interfaces\IDataViewer.cs" />
+    <Compile Include="Interfaces\IDataEditor.cs" />
+    <Compile Include="Interfaces\IDataFetch.cs" />
+    <Compile Include="Interfaces\IDataList.cs" />
+    <Compile Include="Interfaces\IDataRemover.cs" />
+    <Compile Include="Interfaces\IReportGenerator.cs" />
+    <Compile Include="Interfaces\IDataSave.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Auxiliarys\AxlFile.cs" />
