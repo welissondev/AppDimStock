@@ -154,8 +154,6 @@ namespace DimStock.Business
 
             using (var connection = new DatabaseConnection())
             {
-                var affectedFields = GetAffectedFields(id, connection);
-
                 using (connection.Transaction =
                 connection.Open().BeginTransaction())
                 {
@@ -187,20 +185,6 @@ namespace DimStock.Business
                                 break;
                         }
                     }
-
-                    //Registra o histórico do usuário
-                    var history = new UserHistory(connection)
-                    {
-                        OperationType = "Deletou",
-                        OperationModule = "Estoque",
-                        OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
-                        OperationHour = DateTime.Now.ToString("HH:mm:ss"),
-                        AffectedFields = affectedFields
-                    };
-
-                    history.User.Id = AxlLogin.Id;
-
-                    transactionState = history.Save();
 
                     //Finaliza o transação
                     connection.Transaction.Commit();

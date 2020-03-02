@@ -172,21 +172,7 @@ namespace DimStock.Business
 
                     //Seleciona ultimo ID inserido
                     Id = Convert.ToInt32(connection.ExecuteScalar(
-                    "SELECT MAX(Id) FROM [User]"));
-
-                    //Registra histórico do usuário
-                    var history = new UserHistory(connection)
-                    {
-                        OperationType = "Cadastrou",
-                        OperationModule = "Usuário",
-                        OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
-                        OperationHour = DateTime.Now.ToString("HH:mm:ss"),
-                        AffectedFields = GetAffectedFields(Id, connection)
-                    };
-
-                    history.User.Id = AxlLogin.Id;
-
-                    transactionState = history.Save();
+                    "SELECT MAX(Id) FROM [User]"));  
 
                     //Finaliza a transação
                     connection.Transaction.Commit();
@@ -206,8 +192,6 @@ namespace DimStock.Business
             using (var connection = new DatabaseConnection())
             {
                 var transactionState = false;
-
-                var affectedFields = GetAffectedFields(id, connection);
 
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
@@ -230,20 +214,6 @@ namespace DimStock.Business
                     connection.AddParameter("@Id", OleDbType.Integer, id);
 
                     transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
-
-                    //Registra histórico do usuário
-                    var history = new UserHistory(connection)
-                    {
-                        OperationType = "Editou",
-                        OperationModule = "Usuário",
-                        OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
-                        OperationHour = DateTime.Now.ToString("HH:mm:ss"),
-                        AffectedFields = affectedFields
-                    };
-
-                    history.User.Id = AxlLogin.Id;
-
-                    transactionState = history.Save();
 
                     //Finaliza a transação
                     connection.Transaction.Commit();
@@ -277,8 +247,6 @@ namespace DimStock.Business
             {
                 var transactionState = false;
 
-                var affectedFields = GetAffectedFields(id, connection);
-
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
                     var sqlCommand = @"DELETE FROM [User] WHERE Id = @Id";
@@ -287,20 +255,6 @@ namespace DimStock.Business
                     connection.AddParameter("@Id", OleDbType.Integer, id);
 
                     transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
-
-                    //Registra histórico do usuário
-                    var history = new UserHistory(connection)
-                    {
-                        OperationType = "Deletou",
-                        OperationModule = "Usuário",
-                        OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
-                        OperationHour = DateTime.Now.ToString("HH:mm:ss"),
-                        AffectedFields = affectedFields
-                    };
-
-                    history.User.Id = AxlLogin.Id;
-
-                    transactionState = history.Save();
 
                     //Finaliza a transação
                     connection.Transaction.Commit();
@@ -335,24 +289,6 @@ namespace DimStock.Business
             }
         }
 
-        public void FetchData()
-        {
-            using (var connection = new DatabaseConnection())
-            {
-                var sqlQuery = @"SELECT * FROM [User] WHERE [Name]  
-                LIKE @Name Or Email LIKE @Email";
-
-                var parameter = connection.Command.Parameters;
-                parameter.AddWithValue("@Name", string.Format("%{0}%", Name));
-                parameter.AddWithValue("@Email", string.Format("%{0}%", Email));
-
-                var dataTable = connection.QueryWithDataTable(sqlQuery,
-                Pagination.OffSetValue, Pagination.PageSize);
-
-                PassToList(dataTable);
-            }
-        }
-
         public void GetDetail(int id)
         {
             using (var connection = new DatabaseConnection())
@@ -377,6 +313,24 @@ namespace DimStock.Business
                         AllPermissions = Convert.ToBoolean(reader["AllPermissions"]);
                     }
                 }
+            }
+        }
+
+        public void FetchData()
+        {
+            using (var connection = new DatabaseConnection())
+            {
+                var sqlQuery = @"SELECT * FROM [User] WHERE [Name]  
+                LIKE @Name Or Email LIKE @Email";
+
+                var parameter = connection.Command.Parameters;
+                parameter.AddWithValue("@Name", string.Format("%{0}%", Name));
+                parameter.AddWithValue("@Email", string.Format("%{0}%", Email));
+
+                var dataTable = connection.QueryWithDataTable(sqlQuery,
+                Pagination.OffSetValue, Pagination.PageSize);
+
+                PassToList(dataTable);
             }
         }
 

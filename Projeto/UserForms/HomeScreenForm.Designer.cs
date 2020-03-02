@@ -58,7 +58,6 @@
             this.ContextMenu_User = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MenuUser_RegisterNew = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuUser_ListUsers = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuUser_ListHistory = new System.Windows.Forms.ToolStripMenuItem();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.DayOfTheWeek = new System.Windows.Forms.Label();
             this.LabelNavegationDescription = new System.Windows.Forms.Label();
@@ -375,31 +374,23 @@
             // 
             this.ContextMenu_User.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuUser_RegisterNew,
-            this.MenuUser_ListUsers,
-            this.MenuUser_ListHistory});
+            this.MenuUser_ListUsers});
             this.ContextMenu_User.Name = "ContextMenu_User";
-            this.ContextMenu_User.Size = new System.Drawing.Size(159, 70);
+            this.ContextMenu_User.Size = new System.Drawing.Size(157, 48);
             // 
             // MenuUser_RegisterNew
             // 
             this.MenuUser_RegisterNew.Name = "MenuUser_RegisterNew";
-            this.MenuUser_RegisterNew.Size = new System.Drawing.Size(158, 22);
+            this.MenuUser_RegisterNew.Size = new System.Drawing.Size(156, 22);
             this.MenuUser_RegisterNew.Text = "Cadastrar Novo";
             this.MenuUser_RegisterNew.Click += new System.EventHandler(this.MenuUser_RegisterNew_Click);
             // 
             // MenuUser_ListUsers
             // 
             this.MenuUser_ListUsers.Name = "MenuUser_ListUsers";
-            this.MenuUser_ListUsers.Size = new System.Drawing.Size(158, 22);
+            this.MenuUser_ListUsers.Size = new System.Drawing.Size(156, 22);
             this.MenuUser_ListUsers.Text = "Listar Usuários";
             this.MenuUser_ListUsers.Click += new System.EventHandler(this.MenuUser_ListUsers_Click);
-            // 
-            // MenuUser_ListHistory
-            // 
-            this.MenuUser_ListHistory.Name = "MenuUser_ListHistory";
-            this.MenuUser_ListHistory.Size = new System.Drawing.Size(158, 22);
-            this.MenuUser_ListHistory.Text = "Listar Históricos";
-            this.MenuUser_ListHistory.Click += new System.EventHandler(this.MenuUser_ListHistory_Click);
             // 
             // bunifuGradientPanel1
             // 
@@ -523,7 +514,6 @@
         private System.Windows.Forms.ContextMenuStrip ContextMenu_User;
         private System.Windows.Forms.ToolStripMenuItem MenuUser_RegisterNew;
         private System.Windows.Forms.ToolStripMenuItem MenuUser_ListUsers;
-        private System.Windows.Forms.ToolStripMenuItem MenuUser_ListHistory;
         private System.Windows.Forms.LinkLabel MainMenu_Support;
         private Bunifu.Framework.UI.BunifuGradientPanel bunifuGradientPanel1;
         private System.Windows.Forms.Label label6;

@@ -79,21 +79,6 @@ namespace DimStock.Business
                     transactionState = stock.RelateProduct(Id);
 
 
-                    //Registrar histórico do usuário
-                    var userHistory = new UserHistory(connection)
-                    {
-                        OperationType = "Cadastrou",
-                        OperationModule = "Produto",
-                        OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
-                        OperationHour = DateTime.Now.ToString("HH:mm:ss"),
-                        AffectedFields = GetAffectedFields(Id, connection)
-                    };
-
-                    userHistory.User.Id = AxlLogin.Id;
-
-                    transactionState = userHistory.Save();
-
-
                     //Fianalizar transação
                     connection.Transaction.Commit();
 
@@ -109,8 +94,6 @@ namespace DimStock.Business
             using (var connection = new DatabaseConnection())
             {
                 bool transactionState = false;
-
-                var affectedFields = GetAffectedFields(id, connection);
 
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
@@ -147,20 +130,6 @@ namespace DimStock.Business
                     transactionState = stock.UpdateValue(
                     costPrice, id);
 
-                    //Registrar histórico do usuário
-                    var history = new UserHistory(connection)
-                    {
-                        OperationType = "Editou",
-                        OperationModule = "Produto",
-                        OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
-                        OperationHour = DateTime.Now.ToString("HH:mm:ss"),
-                        AffectedFields = affectedFields
-                    };
-
-                    history.User.Id = AxlLogin.Id;
-
-                    transactionState = history.Save();
-
                     //Fianaliza a transação
                     connection.Transaction.Commit();
 
@@ -186,29 +155,12 @@ namespace DimStock.Business
                 var sqlCommand = string.Empty;
                 var transactionState = false;
 
-                //Pega campos afetados
-                var affectedFields = GetAffectedFields(id, connection);
-
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
                     sqlCommand = @"DELETE FROM Product WHERE Id = @Id";
                     connection.AddParameter("@Id", OleDbType.Integer, id);
 
                     transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
-
-                    //Registrar histórico do usuário
-                    var history = new UserHistory(connection)
-                    {
-                        OperationType = "Deletou",
-                        OperationModule = "Produto",
-                        OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
-                        OperationHour = DateTime.Now.ToString("HH:mm:ss"),
-                        AffectedFields = affectedFields
-                    };
-
-                    history.User.Id = AxlLogin.Id;
-
-                    transactionState = history.Save();
 
                     //Fianaliza transação
                     connection.Transaction.Commit();
@@ -293,7 +245,7 @@ namespace DimStock.Business
                     Description));
                 }
 
-                sqlQuery += criterion + " Order By InternalCode";
+                sqlQuery += criterion + " Order By Id, InternalCode Desc";
 
                 sqlCount += criterion;
 

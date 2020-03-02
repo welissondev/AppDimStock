@@ -324,20 +324,6 @@ namespace DimStock.Business
                     transactionState = stockMovement.FinalizeOperation(
                     stockMovementId);
 
-                    //Registra o histórico do usuário
-                    var history = new UserHistory(connection)
-                    {
-                        OperationType = "Entrada",
-                        OperationModule = "Estoque",
-                        OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
-                        OperationHour = DateTime.Now.ToString("HH:mm:ss"),
-                        AffectedFields = stockMovement.GetAffectedFields(stockMovementId, connection)
-                    };
-
-                    history.User.Id = AxlLogin.Id;
-
-                    transactionState = history.Save();
-
                     //Finalza o transação
                     connection.Transaction.Commit();
 
@@ -378,20 +364,6 @@ namespace DimStock.Business
                     //Finaliza a operação
                     var stockMovement = new StockMovement(connection);
                     transactionState = stockMovement.FinalizeOperation(stockMovementId);
-
-                    //Registra o histórico do usuário
-                    var history = new UserHistory(connection)
-                    {
-                        OperationType = "Saída",
-                        OperationModule = "Estoque",
-                        OperationDate = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy")),
-                        OperationHour = DateTime.Now.ToString("HH:mm:ss"),
-                        AffectedFields = stockMovement.GetAffectedFields(stockMovementId, connection)
-                    };
-
-                    history.User.Id = AxlLogin.Id;
-
-                    transactionState = history.Save();
 
                     //Finaliza a transação
                     connection.Transaction.Commit();
