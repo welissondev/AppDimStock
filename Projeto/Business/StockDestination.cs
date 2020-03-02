@@ -30,7 +30,7 @@ namespace DimStock.Business
         {
             var transaction = false;
 
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 if (CheckIfExists() == true)
                 {
@@ -58,7 +58,7 @@ namespace DimStock.Business
         {
             var transaction = false;
 
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 var sqlCommand = @"UPDATE StockDestination SET 
                 Location = @Location WHERE Id = @Id";
@@ -80,7 +80,7 @@ namespace DimStock.Business
         {
             bool transaction = false;
 
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 var sqlCommand = @"DELETE FROM StockDestination 
                 WHERE Id = @Id";
@@ -106,7 +106,7 @@ namespace DimStock.Business
         {
             var sqlQuery = @"SELECT * From StockDestination";
 
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 using (var reader = connection.QueryWithDataReader(sqlQuery))
                 {
@@ -126,7 +126,7 @@ namespace DimStock.Business
 
         public void GetDetail(int id)
         {
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 var sqlQuery = @"SELECT * FROM StockDestination 
                 WHERE Id = @Id";
@@ -148,7 +148,7 @@ namespace DimStock.Business
         {
             var destinationsFound = 0;
 
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 var sqlQuery = @"SELECT Location From StockDestination 
                 WHERE Location LIKE @Location";

@@ -46,7 +46,7 @@ namespace DimStock.Business
 
         public bool Save()
         {
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 bool transactionState = false;
 
@@ -91,7 +91,7 @@ namespace DimStock.Business
 
         public bool Edit(int id)
         {
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 bool transactionState = false;
 
@@ -150,7 +150,7 @@ namespace DimStock.Business
                 return false;
             }
 
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 var sqlCommand = string.Empty;
                 var transactionState = false;
@@ -174,7 +174,7 @@ namespace DimStock.Business
 
         public void GetDetail(int id)
         {
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 var sqlQuery = @"SELECT Product.*, ProductCategory.* FROM Product
                 LEFT JOIN ProductCategory ON Product.ProductCategoryId = ProductCategory.Id
@@ -218,7 +218,7 @@ namespace DimStock.Business
 
         public void FetchData()
         {
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 var sqlQuery = string.Empty;
                 var sqlCount = string.Empty;
@@ -262,7 +262,7 @@ namespace DimStock.Business
 
         public void ListData()
         {
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 var parameter = connection.Command.Parameters;
                 var criterion = string.Empty;
@@ -311,7 +311,7 @@ namespace DimStock.Business
 
         public bool CheckIfExists(int id)
         {
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 var sqlQuery = "SELECT Id FROM Product WHERE Id = @Id";
                 var recordsFound = 0;
@@ -348,7 +348,7 @@ namespace DimStock.Business
             }
         }
 
-        private string GetAffectedFields(int id, DatabaseConnection connection)
+        private string GetAffectedFields(int id, AccessConnection connection)
         {
             var affectedFieldList = new List<string>();
 

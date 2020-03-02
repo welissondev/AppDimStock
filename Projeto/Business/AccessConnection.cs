@@ -6,11 +6,11 @@ using System.Data.OleDb;
 
 namespace DimStock.Business
 {
-    public class DatabaseConnection : IDisposable
+    public class AccessConnection : IDisposable
     {
         #region Builder
 
-        public DatabaseConnection()
+        public AccessConnection()
         {
             Connection = new OleDbConnection(GetConnectionString());
             Command = new OleDbCommand();

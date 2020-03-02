@@ -22,7 +22,7 @@ namespace DimStock.Business
             List = new List<UserHistory>();
         }
 
-        public UserHistory(DatabaseConnection connection)
+        public UserHistory(AccessConnection connection)
         {
             this.connection = connection;
             User = new User();
@@ -32,7 +32,7 @@ namespace DimStock.Business
 
         #region Get & Set
 
-        private DatabaseConnection connection;
+        private AccessConnection connection;
         public int Id { get; set; }
         public string AffectedFields { get; set; }
         public string OperationType { get; set; }
@@ -69,7 +69,7 @@ namespace DimStock.Business
             var sqlQuery = @"SELECT [User].*, UserHistory.* FROM UserHistory 
             INNER JOIN [User] ON User.Id = UserHistory.UserId";
 
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 using (var reader = connection.QueryWithDataReader(sqlQuery))
                 {
@@ -96,7 +96,7 @@ namespace DimStock.Business
 
         public void FetchData(string startDate, string finalDate)
         {
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 var sqlQuery = string.Empty;
                 var sqlCount = string.Empty;

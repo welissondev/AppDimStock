@@ -46,7 +46,7 @@ namespace DimStock.Business
         {
             var accessState = false;
 
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 var sqlQuery = @"SELECT * FROM [User] WHERE Login 
                 LIKE @Login AND [PassWord] = @PassWord";
@@ -86,7 +86,7 @@ namespace DimStock.Business
             if (ValidateEmail(Email) == false)
                 return false;
 
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 var createState = false;
 
@@ -113,7 +113,7 @@ namespace DimStock.Business
             }
         }
 
-        private void CreateDefaultLogin(DatabaseConnection connection)
+        private void CreateDefaultLogin(AccessConnection connection)
         {
             Login = "Admin";
 
@@ -147,7 +147,7 @@ namespace DimStock.Business
             if (ValidateEmail(Email) == false)
                 return false;
 
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 var transactionState = false;
 
@@ -189,7 +189,7 @@ namespace DimStock.Business
             if (ValidateEmail(Email) == false)
                 return false;
 
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 var transactionState = false;
 
@@ -243,7 +243,7 @@ namespace DimStock.Business
                 return false;
             }
 
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 var transactionState = false;
 
@@ -268,7 +268,7 @@ namespace DimStock.Business
 
         public void ListData()
         {
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 var sqlQuery = "SELECT * FROM [User]";
 
@@ -291,7 +291,7 @@ namespace DimStock.Business
 
         public void GetDetail(int id)
         {
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 var sqlQuery = @"SELECT * FROM [User] WHERE Id = @Id";
 
@@ -318,7 +318,7 @@ namespace DimStock.Business
 
         public void FetchData()
         {
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 var sqlQuery = @"SELECT * FROM [User] WHERE [Name]  
                 LIKE @Name Or Email LIKE @Email";
@@ -347,7 +347,7 @@ namespace DimStock.Business
 
         public bool CheckIfLoginExists()
         {
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 var userFound = 0;
 
@@ -390,7 +390,7 @@ namespace DimStock.Business
 
         public bool CheckIfResgisterExists(int id)
         {
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 var sqlQuery = "SELECT Id FROM [User] WHERE Id = @Id";
                 var recordsFound = 0;
@@ -425,7 +425,7 @@ namespace DimStock.Business
             }
         }
 
-        public string GetAffectedFields(int id, DatabaseConnection connection)
+        public string GetAffectedFields(int id, AccessConnection connection)
         {
             var usersList = new List<string>();
 

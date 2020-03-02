@@ -13,7 +13,7 @@ namespace DimStock.Business
 
         public ProductCategory() { }
 
-        public ProductCategory(DatabaseConnection connection)
+        public ProductCategory(AccessConnection connection)
         {
             this.connection = connection;
         }
@@ -27,7 +27,7 @@ namespace DimStock.Business
 
         #region Properties
 
-        private readonly DatabaseConnection connection;
+        private readonly AccessConnection connection;
 
         #endregion
 
@@ -47,7 +47,7 @@ namespace DimStock.Business
             var registerState = false;
             var sqlCommand = string.Empty;
 
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
@@ -81,7 +81,7 @@ namespace DimStock.Business
             var modifyState = false;
             var sqlCommand = string.Empty;
 
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 using (connection.Transaction =
                 connection.Open().BeginTransaction())
@@ -115,7 +115,7 @@ namespace DimStock.Business
             var deleteState = false;
             var sqlCommand = string.Empty;
 
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 using (connection.Transaction =
                 connection.Open().BeginTransaction())
@@ -143,7 +143,7 @@ namespace DimStock.Business
 
         public void GetDetail(int id)
         {
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 var sqlQuery = @"SELECT Id, Description From 
                 ProductCategory Where Id = @Id ";
@@ -163,7 +163,7 @@ namespace DimStock.Business
 
         public void FetchData()
         {
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 var sqlQuery = string.Empty;
                 var sqlCount = string.Empty;
@@ -202,7 +202,7 @@ namespace DimStock.Business
 
         public void ListData()
         {
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 var parameter = connection.Command.Parameters;
                 var criterion = string.Empty;
@@ -240,7 +240,7 @@ namespace DimStock.Business
             }
         }
 
-        public string GetAffectedFields(int id, DatabaseConnection connection)
+        public string GetAffectedFields(int id, AccessConnection connection)
         {
             var affectedFieldList = new List<string>();
 

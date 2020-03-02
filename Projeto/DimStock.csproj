@@ -155,6 +155,7 @@
     <Compile Include="Auxiliarys\AxlMdiForm.cs" />
     <Compile Include="Auxiliarys\AxlLogin.cs" />
     <Compile Include="Auxiliarys\AxlPageWeb.cs" />
+    <Compile Include="Business\AccessConnection.cs" />
     <Compile Include="Business\ProductCategory.cs" />
     <Compile Include="Controls\CustomPictureBoxOne.cs">
       <SubType>Component</SubType>
@@ -164,7 +165,6 @@
     </Compile>
     <Compile Include="Business\AppSetting.cs" />
     <Compile Include="Business\Company.cs" />
-    <Compile Include="Business\DatabaseConnection.cs" />
     <Compile Include="Business\StockDestination.cs" />
     <Compile Include="Business\StockMovementItem.cs" />
     <Compile Include="Business\StockMovement.cs" />

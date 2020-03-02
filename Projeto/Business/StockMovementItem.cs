@@ -36,7 +36,7 @@ namespace DimStock.Business
 
         public bool Add()
         {
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 var sqlCommand = @"INSERT INTO StockMovementItem(StockMovementId, ProductId, StockId, 
                 Quantity, UnitaryValue, TotalValue)VALUES(@StockMovementId, @ProductId, @StockId, 
@@ -58,7 +58,7 @@ namespace DimStock.Business
         {
             var deleteState = false;
 
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 var sqlCommand = @"DELETE FROM StockMovementItem Where Id = @Id";
 
@@ -75,7 +75,7 @@ namespace DimStock.Business
 
         public void ListItems(int id)
         {
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 var sqlQuery = @"SELECT StockMovementItem.*, Product.Description, Product.InternalCode 
                 FROM StockMovementItem INNER JOIN Product ON StockMovementItem.ProductId = Product.Id WHERE 

@@ -23,7 +23,7 @@ namespace DimStock.Business
             List = new List<StockMovement>();
         }
 
-        public StockMovement(DatabaseConnection connection)
+        public StockMovement(AccessConnection connection)
         {
             this.connection = connection;
             Destination = new StockDestination();
@@ -33,7 +33,7 @@ namespace DimStock.Business
 
         #region Get & Set
 
-        private DatabaseConnection connection;
+        private AccessConnection connection;
         public int Id { get; set; }
         public string OperationType { get; set; }
         public DateTime OperationDate { get; set; }
@@ -52,7 +52,7 @@ namespace DimStock.Business
         {
             bool registerState = false;
 
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
@@ -89,7 +89,7 @@ namespace DimStock.Business
             bool setDestinationState = false;
             var sqlCommand = string.Empty;
 
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 //Pega Id de destino pelo nome do local
                 sqlCommand = @"SELECT * FROM StockDestination 
@@ -152,7 +152,7 @@ namespace DimStock.Business
 
             var transactionState = false;
 
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 using (connection.Transaction =
                 connection.Open().BeginTransaction())
@@ -198,7 +198,7 @@ namespace DimStock.Business
 
         public void ListData()
         {
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 var sqlQuery = @"SELECT * From StockMovement";
 
@@ -227,7 +227,7 @@ namespace DimStock.Business
 
         public void FetchData()
         {
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 var sqlQuery = string.Empty;
                 var sqlCount = string.Empty;
@@ -283,7 +283,7 @@ namespace DimStock.Business
 
         public void GetDetail(int id)
         {
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 var sqlQuery = @"SELECT StockMovement.*, StockDestination.* 
                 FROM StockMovement LEFT JOIN StockDestination ON StockMovement.StockDestinationId 
@@ -337,7 +337,7 @@ namespace DimStock.Business
 
         public bool CheckIfExists(int id)
         {
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 var sqlQuery = "SELECT Id FROM StockMovement WHERE Id = @Id";
                 var recordsFound = 0;
@@ -356,7 +356,7 @@ namespace DimStock.Business
             }
         }
 
-        public string GetAffectedFields(int id, DatabaseConnection connection)
+        public string GetAffectedFields(int id, AccessConnection connection)
         {
             var sqlQuery = @"SELECT * FROM StockMovement WHERE Id = @Id";
 

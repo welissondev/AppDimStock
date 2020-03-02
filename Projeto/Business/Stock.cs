@@ -25,7 +25,7 @@ namespace DimStock.Business
             List = new List<Stock>();
         }
 
-        public Stock(DatabaseConnection connection)
+        public Stock(AccessConnection connection)
         {
             this.connection = connection;
             Product = new Product();
@@ -36,7 +36,7 @@ namespace DimStock.Business
         #region Get & Set
 
         private string summary = "All";
-        private DatabaseConnection connection;
+        private AccessConnection connection;
 
         public int Id { get; set; }
         public int Min { get; set; }
@@ -55,7 +55,7 @@ namespace DimStock.Business
 
         public void ListData()
         {
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 var sqlQuery = string.Empty;
                 var sqlCount = string.Empty;
@@ -170,7 +170,7 @@ namespace DimStock.Business
 
         public void FetchData()
         {
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 var sqlQuery = string.Empty;
                 var sqlCount = string.Empty;
@@ -271,7 +271,7 @@ namespace DimStock.Business
 
         public void GetDetail(int id)
         {
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 var sqlQuery = @"SELECT Product.*, Stock.* From Product INNER JOIN 
                 Stock ON Product.Id = Stock.ProductId WHERE Product.Id = @Id";
@@ -298,7 +298,7 @@ namespace DimStock.Business
             var transactionState = false;
             var sqlCommand = string.Empty;
 
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
@@ -336,7 +336,7 @@ namespace DimStock.Business
 
         public bool AddOutputs(List<Stock> itemList, int stockMovementId)
         {
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 var transactionState = false;
                 var sqlCommand = string.Empty;

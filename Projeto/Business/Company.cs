@@ -22,7 +22,7 @@ namespace DimStock.Business
 
         public bool Save()
         {
-            using (var connection = new DatabaseConnection())
+            using (var connection = new AccessConnection())
             {
                 bool registerState = false;
 
