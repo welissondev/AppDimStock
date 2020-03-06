@@ -1,7 +1,7 @@
 ﻿using DimStock.Auxiliarys;
 using DimStock.Properties;
 
-namespace DimStock.Business
+namespace DimStock.Models
 {
     public class ProductPhoto
     {

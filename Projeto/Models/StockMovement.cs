@@ -5,7 +5,7 @@ using System.Data;
 using System.Data.OleDb;
 using System.Linq;
 
-namespace DimStock.Business
+namespace DimStock.Models
 {
     public class StockMovement
     {

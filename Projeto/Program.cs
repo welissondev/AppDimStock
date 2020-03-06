@@ -1,4 +1,4 @@
-﻿using DimStock.Business;
+﻿using DimStock.Models;
 using System;
 using System.Windows.Forms;
 

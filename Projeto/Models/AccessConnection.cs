@@ -4,7 +4,7 @@ using System;
 using System.Data;
 using System.Data.OleDb;
 
-namespace DimStock.Business
+namespace DimStock.Models
 {
     public class AccessConnection : IDisposable
     {

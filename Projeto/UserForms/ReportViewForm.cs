@@ -1,5 +1,5 @@
 ﻿using DimStock.Auxiliarys;
-using DimStock.Business;
+using DimStock.Models;
 using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data.OleDb;
 
-namespace DimStock.Business
+namespace DimStock.Models
 {
     public class StockMovementItem
     {

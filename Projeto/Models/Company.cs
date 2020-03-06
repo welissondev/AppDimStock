@@ -1,7 +1,7 @@
 ﻿using DimStock.Auxiliarys;
 using System.Data.OleDb;
 
-namespace DimStock.Business
+namespace DimStock.Models
 {
     public class Company
     {

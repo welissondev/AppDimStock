@@ -155,25 +155,25 @@
     <Compile Include="Auxiliarys\AxlMdiForm.cs" />
     <Compile Include="Auxiliarys\AxlLogin.cs" />
     <Compile Include="Auxiliarys\AxlPageWeb.cs" />
-    <Compile Include="Business\AccessConnection.cs" />
-    <Compile Include="Business\ProductCategory.cs" />
+    <Compile Include="Models\AccessConnection.cs" />
+    <Compile Include="Models\ProductCategory.cs" />
     <Compile Include="Controls\CustomPictureBoxOne.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\CustomDataGridViewOne.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Business\AppSetting.cs" />
-    <Compile Include="Business\Company.cs" />
-    <Compile Include="Business\StockDestination.cs" />
-    <Compile Include="Business\StockMovementItem.cs" />
-    <Compile Include="Business\StockMovement.cs" />
+    <Compile Include="Models\AppSetting.cs" />
+    <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\StockDestination.cs" />
+    <Compile Include="Models\StockMovementItem.cs" />
+    <Compile Include="Models\StockMovement.cs" />
     <Compile Include="Auxiliarys\AxlMessageNotifier.cs" />
-    <Compile Include="Business\Product.cs" />
-    <Compile Include="Business\ProductPhoto.cs" />
-    <Compile Include="Business\Stock.cs" />
-    <Compile Include="Business\User.cs" />
-    <Compile Include="Business\UserHistory.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductPhoto.cs" />
+    <Compile Include="Models\Stock.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserHistory.cs" />
     <Compile Include="Interfaces\IDataChecker.cs" />
     <Compile Include="Interfaces\IDataTransfer.cs" />
     <Compile Include="Interfaces\IDataViewer.cs" />

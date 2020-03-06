@@ -3,7 +3,7 @@ using DimStock.Properties;
 using System;
 using System.Collections.Generic;
 
-namespace DimStock.Business
+namespace DimStock.Models
 {
     public class AppSetting
     {

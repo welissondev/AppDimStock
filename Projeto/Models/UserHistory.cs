@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
 
-namespace DimStock.Business
+namespace DimStock.Models
 {
     public class UserHistory
     {
