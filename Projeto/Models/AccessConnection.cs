@@ -1,5 +1,4 @@
-﻿
-using DimStock.Properties;
+﻿using DimStock.Properties;
 using System;
 using System.Data;
 using System.Data.OleDb;
@@ -150,7 +149,7 @@ namespace DimStock.Models
         private string GetConnectionString()
         {
             return @"Provider = Microsoft.jet.oledb.4.0; Data Source =" +
-            Settings.Default.MainAppDirectory + @"\dimstock-database.mdb;jet oledb:database password=#admin#";
+            Settings.Default.MainAppDirectory + @"\dimstockdatabase.mdb;jet oledb:database password=#admin#";
         }
 
         public void Dispose()
