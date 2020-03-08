@@ -53,13 +53,13 @@ namespace DimStock.Models
             OperationModule, AffectedFields)VALUES(@UserId, @OperationType, @OperationDate, @OperationHour, 
             @Module, @AffectedFields)";
 
-            connection.ParameterClear();
-            connection.AddParameter("@UserId", OleDbType.VarChar, User.Id);
-            connection.AddParameter("@OperationType", OleDbType.VarChar, OperationType);
-            connection.AddParameter("@OperationDate", OleDbType.Date, OperationDate);
-            connection.AddParameter("@OperationHour", OleDbType.VarChar, OperationHour);
-            connection.AddParameter("@OperationModule", OleDbType.VarChar, OperationModule);
-            connection.AddParameter("@AffectedFields", OleDbType.VarChar, AffectedFields);
+            connection.ClearParameter();
+            connection.AddParameter("@UserId", User.Id);
+            connection.AddParameter("@OperationType", OperationType);
+            connection.AddParameter("@OperationDate", OperationDate);
+            connection.AddParameter("@OperationHour", OperationHour);
+            connection.AddParameter("@OperationModule", OperationModule);
+            connection.AddParameter("@AffectedFields", AffectedFields);
 
             return connection.ExecuteTransaction(sqlCommand) > 0;
         }
@@ -71,7 +71,7 @@ namespace DimStock.Models
 
             using (var connection = new AccessConnection())
             {
-                using (var reader = connection.QueryWithDataReader(sqlQuery))
+                using (var reader = connection.GetReader(sqlQuery))
                 {
                     while (reader.Read())
                     {
@@ -136,7 +136,7 @@ namespace DimStock.Models
                 Pagination.RecordCount = Convert.ToInt32(
                 connection.ExecuteScalar(sqlCount));
 
-                var dataTable = connection.QueryWithDataTable(sqlQuery,
+                var dataTable = connection.GetTable(sqlQuery,
                 Pagination.OffSetValue,
                 Pagination.PageSize);
 

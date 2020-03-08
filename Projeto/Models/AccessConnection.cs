@@ -50,26 +50,24 @@ namespace DimStock.Models
             {
                 throw;
             }
-
         }
 
-        public void AddParameter(string name, OleDbType type, object value)
+        public void AddParameter(string name, object value)
         {
             var parameter = new OleDbParameter
             {
                 ParameterName = name,
-                OleDbType = type,
                 Value = value
             };
             Command.Parameters.Add(parameter);
         }
 
-        public void ParameterClear()
+        public void ClearParameter()
         {
             Command.Parameters.Clear();
         }
 
-        public int ExecuteNonQuery(string sql)
+        public int ExecuteCommand(string sql)
         {
             try
             {
@@ -98,13 +96,13 @@ namespace DimStock.Models
             }
         }
 
-        public string ExecuteScalar(string sql)
+        public int ExecuteScalar(string sql)
         {
             try
             {
                 Command.CommandText = sql;
                 Command.Connection = Open();
-                return Command.ExecuteScalar().ToString();
+                return Convert.ToInt32(Command.ExecuteScalar());
             }
             catch (Exception)
             {
@@ -112,7 +110,7 @@ namespace DimStock.Models
             }
         }
 
-        public OleDbDataReader QueryWithDataReader(string sql)
+        public OleDbDataReader GetReader(string sql)
         {
             try
             {
@@ -127,9 +125,9 @@ namespace DimStock.Models
             }
         }
 
-        public DataTable QueryWithDataTable(string sql, int startReg = 0, int maxReg = 20)
+        public DataTable GetTable(string sql, int startRegister = 0, int finalRegister = 20)
         {
-            var dt = new DataTable();
+            var table = new DataTable();
 
             Open();
 
@@ -141,9 +139,9 @@ namespace DimStock.Models
                 SelectCommand = Command
             };
 
-            adapter.Fill(startReg, maxReg, dt);
+            adapter.Fill(startRegister, finalRegister, table);
 
-            return dt;
+            return table;
         }
 
         private string GetConnectionString()

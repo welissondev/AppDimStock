@@ -139,7 +139,7 @@ namespace DimStock.Models
 
                 sqlCount += criterion;
 
-                using (var reader = connection.QueryWithDataReader(sqlQuery))
+                using (var reader = connection.GetReader(sqlQuery))
                 {
                     while (reader.Read())
                     {
@@ -257,7 +257,7 @@ namespace DimStock.Models
                 Pagination.RecordCount = Convert.ToInt32(
                 connection.ExecuteScalar(sqlCount));
 
-                var dataTable = connection.QueryWithDataTable(sqlQuery,
+                var dataTable = connection.GetTable(sqlQuery,
                 Pagination.OffSetValue,
                 Pagination.PageSize);
 
@@ -276,9 +276,9 @@ namespace DimStock.Models
                 var sqlQuery = @"SELECT Product.*, Stock.* From Product INNER JOIN 
                 Stock ON Product.Id = Stock.ProductId WHERE Product.Id = @Id";
 
-                connection.AddParameter("@Id", OleDbType.Integer, id);
+                connection.AddParameter("@Id", id);
 
-                using (var reader = connection.QueryWithDataReader(sqlQuery))
+                using (var reader = connection.GetReader(sqlQuery))
                 {
                     while (reader.Read())
                     {
@@ -311,10 +311,10 @@ namespace DimStock.Models
                         sqlCommand = @"UPDATE Stock Set Quantity = Quantity + @Quantity, 
                         TotalValue = TotalValue + @TotalValue WHERE Id = @Id";
 
-                        connection.ParameterClear();
-                        connection.AddParameter("@Quantity", OleDbType.Integer, quantity);
-                        connection.AddParameter("@TotalValue", OleDbType.Double, totalValue);
-                        connection.AddParameter("@Id", OleDbType.Integer, stockId);
+                        connection.ClearParameter();
+                        connection.AddParameter("@Quantity", quantity);
+                        connection.AddParameter("@TotalValue" , totalValue);
+                        connection.AddParameter("@Id", stockId);
 
                         connection.ExecuteTransaction(sqlCommand);
                     }
@@ -353,10 +353,10 @@ namespace DimStock.Models
                         sqlCommand = @"UPDATE Stock Set Quantity = Quantity - @Quantity, 
                         TotalValue = TotalValue - @TotalValue WHERE Id = @Id";
 
-                        connection.ParameterClear();
-                        connection.AddParameter("@Quantity", OleDbType.Integer, quantity);
-                        connection.AddParameter("@TotalValue", OleDbType.Double, totalValue);
-                        connection.AddParameter("@Id", OleDbType.Integer, stockId);
+                        connection.ClearParameter();
+                        connection.AddParameter("@Quantity", quantity);
+                        connection.AddParameter("@TotalValue" ,totalValue);
+                        connection.AddParameter("@Id", stockId);
 
                         connection.ExecuteTransaction(sqlCommand);
                     }
@@ -390,10 +390,10 @@ namespace DimStock.Models
                 sqlCommand = @"UPDATE Stock Set Quantity = Quantity - @Quantity, 
                 TotalValue = TotalValue - @TotalValue WHERE Id = @Id";
 
-                connection.ParameterClear();
-                connection.AddParameter("@Quantity", OleDbType.Integer, quantity);
-                connection.AddParameter("@TotalValue", OleDbType.Double, totalValue);
-                connection.AddParameter("@Id", OleDbType.Integer, stockId);
+                connection.ClearParameter();
+                connection.AddParameter("@Quantity", quantity);
+                connection.AddParameter("@TotalValue" ,totalValue);
+                connection.AddParameter("@Id", stockId);
 
                 transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
             }
@@ -416,10 +416,10 @@ namespace DimStock.Models
                 sqlCommand = @"UPDATE Stock Set Quantity = Quantity + @Quantity, 
                     TotalValue = TotalValue + @TotalValue WHERE Id = @Id";
 
-                connection.ParameterClear();
-                connection.AddParameter("@Quantity", OleDbType.Integer, quantity);
-                connection.AddParameter("@TotalValue", OleDbType.Double, totalValue);
-                connection.AddParameter("@Id", OleDbType.Integer, stockId);
+                connection.ClearParameter();
+                connection.AddParameter("@Quantity", quantity);
+                connection.AddParameter("@TotalValue" ,totalValue);
+                connection.AddParameter("@Id", stockId);
 
                 transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
             }
@@ -433,8 +433,8 @@ namespace DimStock.Models
 
             var sqlCommand = @"INSERT INTO Stock(ProductId)VALUES(@ProductId)";
 
-            connection.ParameterClear();
-            connection.AddParameter("@ProductId", OleDbType.Integer, id);
+            connection.ClearParameter();
+            connection.AddParameter("@ProductId", id);
 
             if (connection.ExecuteTransaction(sqlCommand) > 0)
             {
@@ -458,9 +458,9 @@ namespace DimStock.Models
             var sqlCommand = @"UPDATE Stock Set TotalValue = @ProductCostPrice * 
             Quantity WHERE ProductId = @ProductId";
 
-            connection.ParameterClear();
-            connection.AddParameter("ProductCostPrice", OleDbType.Double, productCostPrice);
-            connection.AddParameter("@ProductId", OleDbType.Integer, productId);
+            connection.ClearParameter();
+            connection.AddParameter("ProductCostPrice" ,productCostPrice);
+            connection.AddParameter("@ProductId", productId);
 
             return transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
         }

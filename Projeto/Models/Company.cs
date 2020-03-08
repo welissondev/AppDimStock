@@ -30,17 +30,17 @@ namespace DimStock.Models
                 District, City, State, Cep, StrieetNumber)VALUES(@Name, @CPF_CNPJ, @RG_IE, 
                 @Address, @District, @City, @State, @Cep, @StrieetNumber)";
 
-                connection.AddParameter("@Name", OleDbType.VarChar, Name);
-                connection.AddParameter("@CPF_CNPJ", OleDbType.VarChar, CPF_CNPJ);
-                connection.AddParameter("@RG_IE", OleDbType.VarChar, RG_IE);
-                connection.AddParameter("@Address", OleDbType.VarChar, Address);
-                connection.AddParameter("@District", OleDbType.VarChar, District);
-                connection.AddParameter("@City", OleDbType.VarChar, City);
-                connection.AddParameter("@State", OleDbType.VarChar, State);
-                connection.AddParameter("@Cep", OleDbType.VarChar, Cep);
-                connection.AddParameter("@StrieetNumber", OleDbType.VarChar, StrieetNumber);
+                connection.AddParameter("@Name", Name);
+                connection.AddParameter("@CPF_CNPJ", CPF_CNPJ);
+                connection.AddParameter("@RG_IE", RG_IE);
+                connection.AddParameter("@Address", Address);
+                connection.AddParameter("@District", District);
+                connection.AddParameter("@City", City);
+                connection.AddParameter("@State", State);
+                connection.AddParameter("@Cep", Cep);
+                connection.AddParameter("@StrieetNumber", StrieetNumber);
 
-                registerState = connection.ExecuteNonQuery(sqlCommand) > 0;
+                registerState = connection.ExecuteCommand(sqlCommand) > 0;
 
                 AxlMessageNotifier.Message = "Cadastrado com sucesso!";
 

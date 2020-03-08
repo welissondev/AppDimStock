@@ -55,7 +55,7 @@ namespace DimStock.Models
                 paramerter.AddWithValue("@Login", Login);
                 paramerter.AddWithValue("@PassWord", PassWord);
 
-                using (var reader = connection.QueryWithDataReader(sqlQuery))
+                using (var reader = connection.GetReader(sqlQuery))
                 {
                     while (reader.Read())
                     {
@@ -95,17 +95,17 @@ namespace DimStock.Models
                 AllPermissions)VALUES(@Name, @Email, @Login, @PassWord, @PermissionToRegister, 
                 @PermissionToEdit, @PermissionToDelete, @PermissionToView, @AllPermissions)";
 
-                connection.AddParameter("@Name", OleDbType.VarChar, Name);
-                connection.AddParameter("@Email", OleDbType.VarChar, Email);
-                connection.AddParameter("@Login", OleDbType.VarChar, Login);
-                connection.AddParameter("@PassWord", OleDbType.VarChar, PassWord);
-                connection.AddParameter("@PermissionToRegister", OleDbType.Boolean, true);
-                connection.AddParameter("@PermissionToEdit", OleDbType.Boolean, true);
-                connection.AddParameter("@PermissionToDelete", OleDbType.Boolean, true);
-                connection.AddParameter("@PermissionToView", OleDbType.Boolean, true);
-                connection.AddParameter("@AllPermissions", OleDbType.Boolean, true);
+                connection.AddParameter("@Name", Name);
+                connection.AddParameter("@Email", Email);
+                connection.AddParameter("@Login", Login);
+                connection.AddParameter("@PassWord", PassWord);
+                connection.AddParameter("@PermissionToRegister", true);
+                connection.AddParameter("@PermissionToEdit", true);
+                connection.AddParameter("@PermissionToDelete", true);
+                connection.AddParameter("@PermissionToView", true);
+                connection.AddParameter("@AllPermissions", true);
 
-                createState = connection.ExecuteNonQuery(sqlCommand) > 0;
+                createState = connection.ExecuteCommand(sqlCommand) > 0;
 
                 CreateDefaultLogin(connection);
 
@@ -120,23 +120,23 @@ namespace DimStock.Models
             if (CheckIfLoginExists() == true)
                 return;
 
-            connection.ParameterClear();
+            connection.ClearParameter();
             var sqlCommand = @"INSERT INTO [User]([Name], Email, Login, [PassWord], 
             PermissionToRegister, PermissionToEdit, PermissionToDelete, PermissionToView, 
             AllPermissions)VALUES(@Name, @Email, @Login, @PassWord, @PermissionToRegister, 
             @PermissionToEdit, @PermissionToDelete, @PermissionToView, @AllPermissions)";
 
-            connection.AddParameter("@Name", OleDbType.VarChar, "AdminUser");
-            connection.AddParameter("@Email", OleDbType.VarChar, "Admin@admin.com");
-            connection.AddParameter("@Login", OleDbType.VarChar, "Admin");
-            connection.AddParameter("@PassWord", OleDbType.VarChar, "Admin");
-            connection.AddParameter("@PermissionToRegister", OleDbType.Boolean, true);
-            connection.AddParameter("@PermissionToEdit", OleDbType.Boolean, true);
-            connection.AddParameter("@PermissionToDelete", OleDbType.Boolean, true);
-            connection.AddParameter("@PermissionToView", OleDbType.Boolean, true);
-            connection.AddParameter("@AllPermissions", OleDbType.Boolean, true);
+            connection.AddParameter("@Name", "AdminUser");
+            connection.AddParameter("@Email", "Admin@admin.com");
+            connection.AddParameter("@Login", "Admin");
+            connection.AddParameter("@PassWord", "Admin");
+            connection.AddParameter("@PermissionToRegister", true);
+            connection.AddParameter("@PermissionToEdit", true);
+            connection.AddParameter("@PermissionToDelete", true);
+            connection.AddParameter("@PermissionToView", true);
+            connection.AddParameter("@AllPermissions", true);
 
-            connection.ExecuteNonQuery(sqlCommand);
+            connection.ExecuteCommand(sqlCommand);
         }
 
         public bool Save()
@@ -158,15 +158,15 @@ namespace DimStock.Models
                     AllPermissions)VALUES(@Name, @Email, @Login, @PassWord, @PermissionToRegister, 
                     @PermissionToEdit, @PermissionToDelete, @PermissionToView, @AllPermissions)";
 
-                    connection.AddParameter("@Name", OleDbType.VarChar, Name);
-                    connection.AddParameter("@Email", OleDbType.VarChar, Email);
-                    connection.AddParameter("@Login", OleDbType.VarChar, Login);
-                    connection.AddParameter("@PassWord", OleDbType.VarChar, PassWord);
-                    connection.AddParameter("@PermissionToRegister", OleDbType.Boolean, PermissionToRegister);
-                    connection.AddParameter("@PermissionToEdit", OleDbType.Boolean, PermissionToEdit);
-                    connection.AddParameter("@PermissionToDelete", OleDbType.Boolean, PermissionToDelete);
-                    connection.AddParameter("@PermissionToView", OleDbType.Boolean, PermissionToView);
-                    connection.AddParameter("@AllPermissions", OleDbType.Boolean, AllPermissions);
+                    connection.AddParameter("@Name", Name);
+                    connection.AddParameter("@Email", Email);
+                    connection.AddParameter("@Login", Login);
+                    connection.AddParameter("@PassWord", PassWord);
+                    connection.AddParameter("@PermissionToRegister", PermissionToRegister);
+                    connection.AddParameter("@PermissionToEdit", PermissionToEdit);
+                    connection.AddParameter("@PermissionToDelete", PermissionToDelete);
+                    connection.AddParameter("@PermissionToView", PermissionToView);
+                    connection.AddParameter("@AllPermissions", AllPermissions);
 
                     transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
 
@@ -201,17 +201,17 @@ namespace DimStock.Models
                     PermissionToView = @PermissionToView, AllPermissions = @AllPermissions 
                     WHERE Id = @Id";
 
-                    connection.ParameterClear();
-                    connection.AddParameter("@Name", OleDbType.VarChar, Name);
-                    connection.AddParameter("@Email", OleDbType.VarChar, Email);
-                    connection.AddParameter("@Login", OleDbType.VarChar, Login);
-                    connection.AddParameter("@PassWord", OleDbType.VarChar, PassWord);
-                    connection.AddParameter("@PermissionToRegister", OleDbType.Boolean, PermissionToRegister);
-                    connection.AddParameter("@PermissionToEdit", OleDbType.Boolean, PermissionToEdit);
-                    connection.AddParameter("@PermissionToDelete", OleDbType.Boolean, PermissionToDelete);
-                    connection.AddParameter("@PermissionToView", OleDbType.Boolean, PermissionToView);
-                    connection.AddParameter("@AllPermissions", OleDbType.Boolean, AllPermissions);
-                    connection.AddParameter("@Id", OleDbType.Integer, id);
+                    connection.ClearParameter();
+                    connection.AddParameter("@Name", Name);
+                    connection.AddParameter("@Email", Email);
+                    connection.AddParameter("@Login", Login);
+                    connection.AddParameter("@PassWord", PassWord);
+                    connection.AddParameter("@PermissionToRegister", PermissionToRegister);
+                    connection.AddParameter("@PermissionToEdit", PermissionToEdit);
+                    connection.AddParameter("@PermissionToDelete", PermissionToDelete);
+                    connection.AddParameter("@PermissionToView", PermissionToView);
+                    connection.AddParameter("@AllPermissions", AllPermissions);
+                    connection.AddParameter("@Id", id);
 
                     transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
 
@@ -251,8 +251,8 @@ namespace DimStock.Models
                 {
                     var sqlCommand = @"DELETE FROM [User] WHERE Id = @Id";
 
-                    connection.ParameterClear();
-                    connection.AddParameter("@Id", OleDbType.Integer, id);
+                    connection.ClearParameter();
+                    connection.AddParameter("@Id", id);
 
                     transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
 
@@ -272,7 +272,7 @@ namespace DimStock.Models
             {
                 var sqlQuery = "SELECT * FROM [User]";
 
-                using (var reader = connection.QueryWithDataReader(sqlQuery))
+                using (var reader = connection.GetReader(sqlQuery))
                 {
                     while (reader.Read())
                     {
@@ -295,9 +295,9 @@ namespace DimStock.Models
             {
                 var sqlQuery = @"SELECT * FROM [User] WHERE Id = @Id";
 
-                connection.AddParameter("@Id", OleDbType.Integer, id);
+                connection.AddParameter("@Id", id);
 
-                using (var reader = connection.QueryWithDataReader(sqlQuery))
+                using (var reader = connection.GetReader(sqlQuery))
                 {
                     while (reader.Read())
                     {
@@ -327,7 +327,7 @@ namespace DimStock.Models
                 parameter.AddWithValue("@Name", string.Format("%{0}%", Name));
                 parameter.AddWithValue("@Email", string.Format("%{0}%", Email));
 
-                var dataTable = connection.QueryWithDataTable(sqlQuery,
+                var dataTable = connection.GetTable(sqlQuery,
                 Pagination.OffSetValue, Pagination.PageSize);
 
                 PassToList(dataTable);
@@ -354,10 +354,9 @@ namespace DimStock.Models
                 var sqlQuery = @"SELECT Login FROM [User] 
                 WHERE Login LIKE @Login";
 
-                connection.AddParameter("@Login",
-                OleDbType.VarChar, Login);
+                connection.AddParameter("@Login", Login);
 
-                using (var reader = connection.QueryWithDataReader(sqlQuery))
+                using (var reader = connection.GetReader(sqlQuery))
                 {
                     while (reader.Read())
                     {
@@ -395,10 +394,10 @@ namespace DimStock.Models
                 var sqlQuery = "SELECT Id FROM [User] WHERE Id = @Id";
                 var recordsFound = 0;
 
-                connection.ParameterClear();
-                connection.AddParameter("Id", OleDbType.Integer, id);
+                connection.ClearParameter();
+                connection.AddParameter("Id", id);
 
-                using (var reader = connection.QueryWithDataReader(sqlQuery))
+                using (var reader = connection.GetReader(sqlQuery))
                 {
                     while (reader.Read())
                     {
@@ -423,35 +422,6 @@ namespace DimStock.Models
 
                 List.Add(User);
             }
-        }
-
-        public string GetAffectedFields(int id, AccessConnection connection)
-        {
-            var usersList = new List<string>();
-
-            var sqlQuery = @"SELECT * FROM [User] WHERE Id = @Id";
-
-            connection.ParameterClear();
-            connection.AddParameter("@Id", OleDbType.Integer, id);
-
-            using (var reader = connection.QueryWithDataReader(sqlQuery))
-            {
-                while (reader.Read())
-                {
-                    usersList.Add("Id:" + reader["Id"].ToString());
-                    usersList.Add("Nome:" + reader["Name"].ToString());
-                    usersList.Add("Email:" + reader["Email"].ToString());
-                    usersList.Add("Login:" + reader["Login"].ToString());
-                    usersList.Add("Senha:" + reader["PassWord"].ToString());
-                    usersList.Add("PermissãoCadastrar:" + reader["PermissionToRegister"].ToString().Replace("True", "Sím").Replace("False", "Não"));
-                    usersList.Add("PermissãoEditar:" + reader["PermissionToEdit"].ToString().Replace("True", "Sím").Replace("False", "Não"));
-                    usersList.Add("PermissãoDeletar:" + reader["PermissionToDelete"].ToString().Replace("True", "Sím").Replace("False", "Não"));
-                    usersList.Add("PermissãoTodas:" + reader["AllPermissions"].ToString().Replace("True", "Sím").Replace("False", "Não"));
-                    usersList.Add("PermissãoVisualizar:" + reader["PermissionToView"].ToString().Replace("True", "Sím").Replace("False", "Não"));
-                }
-            }
-
-            return string.Join(" | ", usersList.Select(x => x.ToString()));
         }
 
         #endregion

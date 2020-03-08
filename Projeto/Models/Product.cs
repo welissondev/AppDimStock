@@ -4,8 +4,6 @@ using DimStock.Reports;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.OleDb;
-using System.Linq;
 
 namespace DimStock.Models
 {
@@ -57,13 +55,13 @@ namespace DimStock.Models
                     SalePrice, BarCode, Photo) VALUES (@ProductCategoryId, @Code, 
                     @InternalCode, @CostPrice, @SalePrice, @BarCode, @Photo)";
 
-                    connection.AddParameter("@ProductCategoryId", OleDbType.Integer, Category.Id);
-                    connection.AddParameter("@InternalCode", OleDbType.VarChar, InternalCode);
-                    connection.AddParameter("@Description", OleDbType.VarChar, Description);
-                    connection.AddParameter("@CostPrice", OleDbType.Double, CostPrice);
-                    connection.AddParameter("@SalePrice", OleDbType.Double, SalePrice);
-                    connection.AddParameter("@BarCode", OleDbType.VarChar, BarCode);
-                    connection.AddParameter("@Photo", OleDbType.VarChar, Photo);
+                    connection.AddParameter("@ProductCategoryId", Category.Id);
+                    connection.AddParameter("@InternalCode", InternalCode);
+                    connection.AddParameter("@Description", Description);
+                    connection.AddParameter("@CostPrice", CostPrice);
+                    connection.AddParameter("@SalePrice" , SalePrice);
+                    connection.AddParameter("@BarCode", BarCode);
+                    connection.AddParameter("@Photo", Photo);
 
                     transactionState = connection.ExecuteTransaction(
                     sqlCommand) > 0;
@@ -102,15 +100,15 @@ namespace DimStock.Models
                     SalePrice = @SalePrice, BarCode = @BarCode, 
                     Photo = @Photo WHERE Id = @Id";
 
-                    connection.ParameterClear();
-                    connection.AddParameter("@ProductCategoryId", OleDbType.Integer, Category.Id);
-                    connection.AddParameter("@InternalCode", OleDbType.VarChar, InternalCode);
-                    connection.AddParameter("@Description", OleDbType.VarChar, Description);
-                    connection.AddParameter("@CostPrice", OleDbType.Double, CostPrice);
-                    connection.AddParameter("@SalePrice", OleDbType.Double, SalePrice);
-                    connection.AddParameter("@BarCode", OleDbType.VarChar, BarCode);
-                    connection.AddParameter("@Photo", OleDbType.VarChar, Photo);
-                    connection.AddParameter("@Id", OleDbType.Integer, id);
+                    connection.ClearParameter();
+                    connection.AddParameter("@ProductCategoryId", Category.Id);
+                    connection.AddParameter("@InternalCode", InternalCode);
+                    connection.AddParameter("@Description", Description);
+                    connection.AddParameter("@CostPrice" , CostPrice);
+                    connection.AddParameter("@SalePrice" ,SalePrice);
+                    connection.AddParameter("@BarCode", BarCode);
+                    connection.AddParameter("@Photo", Photo);
+                    connection.AddParameter("@Id", id);
 
                     transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
 
@@ -118,9 +116,8 @@ namespace DimStock.Models
                     var sqlQuery = @"SELECT CostPrice FROM 
                     Product WHERE Id = @Id";
 
-                    connection.ParameterClear();
-                    connection.AddParameter("@Id",
-                    OleDbType.Integer, id);
+                    connection.ClearParameter();
+                    connection.AddParameter("@Id", id);
 
                     var costPrice = Convert.ToDouble(
                     connection.ExecuteScalar(sqlQuery));
@@ -158,7 +155,7 @@ namespace DimStock.Models
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
                     sqlCommand = @"DELETE FROM Product WHERE Id = @Id";
-                    connection.AddParameter("@Id", OleDbType.Integer, id);
+                    connection.AddParameter("@Id", id);
 
                     transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
 
@@ -180,9 +177,9 @@ namespace DimStock.Models
                 LEFT JOIN ProductCategory ON Product.ProductCategoryId = ProductCategory.Id
                 WHERE Product.Id = @Id ";
 
-                connection.AddParameter("@Id", OleDbType.Integer, id);
+                connection.AddParameter("@Id", id);
 
-                using (var reader = connection.QueryWithDataReader(sqlQuery))
+                using (var reader = connection.GetReader(sqlQuery))
                 {
                     while (reader.Read())
                     {
@@ -252,7 +249,7 @@ namespace DimStock.Models
                 Pagination.RecordCount = Convert.ToInt32(
                 connection.ExecuteScalar(sqlCount));
 
-                var dataTable = connection.QueryWithDataTable(sqlQuery,
+                var dataTable = connection.GetTable(sqlQuery,
                 Pagination.OffSetValue,
                 Pagination.PageSize);
 
@@ -289,7 +286,7 @@ namespace DimStock.Models
 
                 sqlQuery += criterion + " Order By InternalCode Asc";
 
-                using (var reader = connection.QueryWithDataReader(sqlQuery))
+                using (var reader = connection.GetReader(sqlQuery))
                 {
                     while (reader.Read())
                     {
@@ -316,9 +313,9 @@ namespace DimStock.Models
                 var sqlQuery = "SELECT Id FROM Product WHERE Id = @Id";
                 var recordsFound = 0;
 
-                connection.AddParameter("Id", OleDbType.Integer, id);
+                connection.AddParameter("Id", id);
 
-                using (var reader = connection.QueryWithDataReader(sqlQuery))
+                using (var reader = connection.GetReader(sqlQuery))
                 {
                     while (reader.Read())
                     {
@@ -346,32 +343,6 @@ namespace DimStock.Models
 
                 List.Add(product);
             }
-        }
-
-        private string GetAffectedFields(int id, AccessConnection connection)
-        {
-            var affectedFieldList = new List<string>();
-
-            var commandSQL = @"SELECT * From Product Where Id = @Id";
-
-            connection.ParameterClear();
-            connection.AddParameter("@Id", OleDbType.Integer, id);
-
-            using (var dataReader = connection.QueryWithDataReader(commandSQL))
-            {
-                while (dataReader.Read())
-                {
-                    affectedFieldList.Add("Id:" + dataReader["Id"].ToString());
-                    affectedFieldList.Add("Código:" + dataReader["InternalCode"].ToString());
-                    affectedFieldList.Add("Descrição:" + dataReader["Description"].ToString());
-                    affectedFieldList.Add("PreçoCusto:" + dataReader["CostPrice"].ToString());
-                    affectedFieldList.Add("PreçoVenda:" + dataReader["SalePrice"].ToString());
-                    affectedFieldList.Add("CódigoBarras:" + dataReader["BarCode"].ToString());
-                    affectedFieldList.Add("FotoNome:" + dataReader["Photo"].ToString());
-                }
-            }
-
-            return string.Join(" | ", affectedFieldList.Select(x => x.ToString()));
         }
 
         #endregion

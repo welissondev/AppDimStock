@@ -59,7 +59,7 @@ namespace DimStock.Models
                     var sqlCommand = @"INSERT INTO StockMovement(OperationType)
                     VALUES(@OperationType)";
 
-                    connection.AddParameter("@OperationType", OleDbType.VarChar, type);
+                    connection.AddParameter("@OperationType", type);
 
                     registerState = connection.ExecuteTransaction(sqlCommand) > 0;
 
@@ -68,9 +68,9 @@ namespace DimStock.Models
                     @"SELECT MAX(Id) FROM StockMovement"));
 
                     //O código da operação é o mesmo que o ID da tabela
-                    connection.ParameterClear();
-                    connection.AddParameter("@OperationCode", OleDbType.VarChar, Id);
-                    connection.AddParameter("Id", OleDbType.Integer, Id);
+                    connection.ClearParameter();
+                    connection.AddParameter("@OperationCode", Id);
+                    connection.AddParameter("Id", Id);
 
                     sqlCommand = @"UPDATE StockMovement SET OperationCode 
                     = @OperationCode WHERE Id = @Id";
@@ -95,7 +95,7 @@ namespace DimStock.Models
                 sqlCommand = @"SELECT * FROM StockDestination 
                 WHERE Location = @Location";
 
-                connection.AddParameter("Location", OleDbType.VarChar,
+                connection.AddParameter("Location",
                 Destination.Location);
 
                 bool convert = int.TryParse(connection.ExecuteScalar(
@@ -106,16 +106,15 @@ namespace DimStock.Models
 
                 if (Destination.Id != 0)
                 {
-                    connection.ParameterClear();
+                    connection.ClearParameter();
 
                     sqlCommand = @"UPDATE StockMovement SET StockDestinationId
                     = @Value WHERE Id = @Id";
 
-                    connection.AddParameter("@Value",
-                    OleDbType.VarChar, Destination.Id);
-                    connection.AddParameter("@Id", OleDbType.Integer, id);
+                    connection.AddParameter("@Value", Destination.Id);
+                    connection.AddParameter("@Id", id);
 
-                    if (connection.ExecuteNonQuery(sqlCommand) > 0)
+                    if (connection.ExecuteCommand(sqlCommand) > 0)
                         setDestinationState = true;
                 }
             }
@@ -130,8 +129,8 @@ namespace DimStock.Models
             var sqlCommand = @"UPDATE StockMovement Set OperationSituation 
             = 'Finalizada' Where Id = @Id";
 
-            connection.ParameterClear();
-            connection.AddParameter("@Id", OleDbType.Integer, id);
+            connection.ClearParameter();
+            connection.AddParameter("@Id", id);
 
             return transactionState = connection.ExecuteTransaction(
             sqlCommand) > 0;
@@ -160,9 +159,8 @@ namespace DimStock.Models
                     var sqlCommand = @"DELETE FROM StockMovement 
                     WHERE Id = @Id";
 
-                    connection.ParameterClear();
-                    connection.AddParameter("@Id",
-                    OleDbType.Integer, id);
+                    connection.ClearParameter();
+                    connection.AddParameter("@Id", id);
 
                     transactionState = connection.ExecuteTransaction(
                     sqlCommand) > 0;
@@ -202,7 +200,7 @@ namespace DimStock.Models
             {
                 var sqlQuery = @"SELECT * From StockMovement";
 
-                using (var reader = connection.QueryWithDataReader(sqlQuery))
+                using (var reader = connection.GetReader(sqlQuery))
                 {
                     while (reader.Read())
                     {
@@ -272,7 +270,7 @@ namespace DimStock.Models
                 Pagination.RecordCount = Convert.ToInt32(
                 connection.ExecuteScalar(sqlCount));
 
-                var dataTable = connection.QueryWithDataTable(sqlQuery,
+                var dataTable = connection.GetTable(sqlQuery,
                 Pagination.OffSetValue,
                 Pagination.PageSize);
 
@@ -289,10 +287,10 @@ namespace DimStock.Models
                 FROM StockMovement LEFT JOIN StockDestination ON StockMovement.StockDestinationId 
                 = StockDestination.Id WHERE StockMovement.Id = @Id";
 
-                connection.ParameterClear();
-                connection.AddParameter("Id", OleDbType.Integer, id);
+                connection.ClearParameter();
+                connection.AddParameter("Id", id);
 
-                using (var reader = connection.QueryWithDataReader(sqlQuery))
+                using (var reader = connection.GetReader(sqlQuery))
                 {
                     while (reader.Read())
                     {
@@ -342,9 +340,9 @@ namespace DimStock.Models
                 var sqlQuery = "SELECT Id FROM StockMovement WHERE Id = @Id";
                 var recordsFound = 0;
 
-                connection.AddParameter("Id", OleDbType.Integer, id);
+                connection.AddParameter("Id", id);
 
-                using (var reader = connection.QueryWithDataReader(sqlQuery))
+                using (var reader = connection.GetReader(sqlQuery))
                 {
                     while (reader.Read())
                     {
@@ -354,31 +352,6 @@ namespace DimStock.Models
 
                 return recordsFound > 0;
             }
-        }
-
-        public string GetAffectedFields(int id, AccessConnection connection)
-        {
-            var sqlQuery = @"SELECT * FROM StockMovement WHERE Id = @Id";
-
-            connection.ParameterClear();
-            connection.AddParameter("@Id", OleDbType.Integer, id);
-
-            var affectedFieldList = new List<string>();
-
-            using (var reader = connection.QueryWithDataReader(sqlQuery))
-            {
-                while (reader.Read())
-                {
-                    affectedFieldList.Add("Id:" + reader["Id"].ToString());
-                    affectedFieldList.Add("Tipo:" + reader["OperationType"].ToString());
-                    affectedFieldList.Add("Data:" + Convert.ToDateTime(reader["OperationDate"]).ToString("dd-MM-yyyy"));
-                    affectedFieldList.Add("Hora:" + reader["OperationHour"].ToString());
-                    affectedFieldList.Add("Situação:" + reader["OperationSituation"].ToString());
-                    affectedFieldList.Add("Número:" + reader["OperationCode"].ToString());
-                }
-            }
-
-            return string.Join(" | ", affectedFieldList.Select(x => x.ToString()));
         }
 
         #endregion

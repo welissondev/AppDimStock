@@ -41,10 +41,9 @@ namespace DimStock.Models
                 var sqlCommand = @"INSERT INTO StockDestination
                 (Location)VALUES(@Location)";
 
-                connection.AddParameter("@Location",
-                OleDbType.VarChar, Location);
+                connection.AddParameter("@Location", Location);
 
-                if (connection.ExecuteNonQuery(sqlCommand) > 0)
+                if (connection.ExecuteCommand(sqlCommand) > 0)
                 {
                     transaction = true;
                     AxlMessageNotifier.Message = "Cadastrado com sucesso!";
@@ -63,10 +62,10 @@ namespace DimStock.Models
                 var sqlCommand = @"UPDATE StockDestination SET 
                 Location = @Location WHERE Id = @Id";
 
-                connection.AddParameter("@Location", OleDbType.VarChar, Location);
-                connection.AddParameter("@Id", OleDbType.Integer, id);
+                connection.AddParameter("@Location", Location);
+                connection.AddParameter("@Id", id);
 
-                if (connection.ExecuteNonQuery(sqlCommand) > 0)
+                if (connection.ExecuteCommand(sqlCommand) > 0)
                 {
                     AxlMessageNotifier.Message = "Editado com sucesso!";
                     transaction = true;
@@ -85,9 +84,9 @@ namespace DimStock.Models
                 var sqlCommand = @"DELETE FROM StockDestination 
                 WHERE Id = @Id";
 
-                connection.AddParameter("@Id", OleDbType.Integer, id);
+                connection.AddParameter("@Id", id);
 
-                if (connection.ExecuteNonQuery(sqlCommand) > 0)
+                if (connection.ExecuteCommand(sqlCommand) > 0)
                 {
                     AxlMessageNotifier.Message = "Deletado com sucesso!";
                     transaction = true;
@@ -108,7 +107,7 @@ namespace DimStock.Models
 
             using (var connection = new AccessConnection())
             {
-                using (var reader = connection.QueryWithDataReader(sqlQuery))
+                using (var reader = connection.GetReader(sqlQuery))
                 {
                     while (reader.Read())
                     {
@@ -131,9 +130,9 @@ namespace DimStock.Models
                 var sqlQuery = @"SELECT * FROM StockDestination 
                 WHERE Id = @Id";
 
-                connection.AddParameter("@Id", OleDbType.Integer, id);
+                connection.AddParameter("@Id", id);
 
-                using (var reader = connection.QueryWithDataReader(sqlQuery))
+                using (var reader = connection.GetReader(sqlQuery))
                 {
                     while (reader.Read())
                     {
@@ -153,10 +152,9 @@ namespace DimStock.Models
                 var sqlQuery = @"SELECT Location From StockDestination 
                 WHERE Location LIKE @Location";
 
-                connection.AddParameter("@Location",
-                OleDbType.VarChar, Location);
+                connection.AddParameter("@Location", Location);
 
-                using (var reader = connection.QueryWithDataReader(sqlQuery))
+                using (var reader = connection.GetReader(sqlQuery))
                 {
                     while (reader.Read())
                     {

@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.OleDb;
 using System.Linq;
 
 namespace DimStock.Models
@@ -54,8 +53,7 @@ namespace DimStock.Models
                     sqlCommand = @"INSERT INTO ProductCategory
                     (Description)VALUES(@Description)";
 
-                    connection.AddParameter("@Description",
-                    OleDbType.VarChar, Description);
+                    connection.AddParameter("@Description", Description);
 
                     registerState =
                     connection.ExecuteTransaction(
@@ -89,11 +87,9 @@ namespace DimStock.Models
                     sqlCommand = @"UPDATE ProductCategory SET 
                     Description = @Description WHERE Id = @Id";
 
-                    connection.AddParameter("@Description",
-                    OleDbType.VarChar, Description);
+                    connection.AddParameter("@Description", Description);
 
-                    connection.AddParameter("@Id",
-                    OleDbType.Integer, id);
+                    connection.AddParameter("@Id", id);
 
                     modifyState =
                     connection.ExecuteTransaction(
@@ -123,8 +119,7 @@ namespace DimStock.Models
                     sqlCommand = @"DELETE FROM ProductCategory 
                     WHERE Id = @Id";
 
-                    connection.AddParameter("@Id",
-                    OleDbType.Integer, id);
+                    connection.AddParameter("@Id", id);
 
                     deleteState =
                     connection.ExecuteTransaction(
@@ -148,9 +143,9 @@ namespace DimStock.Models
                 var sqlQuery = @"SELECT Id, Description From 
                 ProductCategory Where Id = @Id ";
 
-                connection.AddParameter("@Id", OleDbType.Integer, id);
+                connection.AddParameter("@Id", id);
 
-                using (var reader = connection.QueryWithDataReader(sqlQuery))
+                using (var reader = connection.GetReader(sqlQuery))
                 {
                     while (reader.Read())
                     {
@@ -192,7 +187,7 @@ namespace DimStock.Models
                 Convert.ToInt32(connection.ExecuteScalar(
                 sqlCount));
 
-                var dataTable = connection.QueryWithDataTable(
+                var dataTable = connection.GetTable(
                 sqlQuery, Pagination.OffSetValue,
                 Pagination.PageSize);
 
@@ -222,7 +217,7 @@ namespace DimStock.Models
 
                 sqlQuery += criterion + @"ORDER BY Description";
 
-                using (var reader = connection.QueryWithDataReader(sqlQuery))
+                using (var reader = connection.GetReader(sqlQuery))
                 {
                     while (reader.Read())
                     {
@@ -238,27 +233,6 @@ namespace DimStock.Models
                     List = categoryList;
                 }
             }
-        }
-
-        public string GetAffectedFields(int id, AccessConnection connection)
-        {
-            var affectedFieldList = new List<string>();
-
-            var commandSQL = @"SELECT * From ProductCategory Where Id = @Id";
-
-            connection.ParameterClear();
-            connection.AddParameter("@Id", OleDbType.Integer, id);
-
-            using (var dataReader = connection.QueryWithDataReader(commandSQL))
-            {
-                while (dataReader.Read())
-                {
-                    affectedFieldList.Add("Id:" + dataReader["Id"].ToString());
-                    affectedFieldList.Add("Descrição:" + dataReader["Description"].ToString());
-                }
-            }
-
-            return string.Join(" | ", affectedFieldList.Select(x => x.ToString()));
         }
 
         public void PassToList(DataTable dataTable)

@@ -42,15 +42,15 @@ namespace DimStock.Models
                 Quantity, UnitaryValue, TotalValue)VALUES(@StockMovementId, @ProductId, @StockId, 
                 @Quantity, @UnitaryValue, @TotalValue)";
 
-                connection.ParameterClear();
-                connection.AddParameter("@StockMovementId", OleDbType.Integer, StockMovement.Id);
-                connection.AddParameter("@ProductId", OleDbType.Integer, Product.Id);
-                connection.AddParameter("@StockId", OleDbType.Integer, Stock.Id);
-                connection.AddParameter("@Quantity", OleDbType.Integer, Quantity);
-                connection.AddParameter("@UnitaryValue", OleDbType.Double, UnitaryValue);
-                connection.AddParameter("@TotalValue", OleDbType.Double, TotalValue);
+                connection.ClearParameter();
+                connection.AddParameter("@StockMovementId", StockMovement.Id);
+                connection.AddParameter("@ProductId", Product.Id);
+                connection.AddParameter("@StockId", Stock.Id);
+                connection.AddParameter("@Quantity", Quantity);
+                connection.AddParameter("@UnitaryValue", UnitaryValue);
+                connection.AddParameter("@TotalValue", TotalValue);
 
-                return connection.ExecuteNonQuery(sqlCommand) > 0;
+                return connection.ExecuteCommand(sqlCommand) > 0;
             }
         }
 
@@ -62,9 +62,9 @@ namespace DimStock.Models
             {
                 var sqlCommand = @"DELETE FROM StockMovementItem Where Id = @Id";
 
-                connection.AddParameter("Id", OleDbType.Integer, id);
+                connection.AddParameter("Id", id);
 
-                if (connection.ExecuteNonQuery(sqlCommand) > 0)
+                if (connection.ExecuteCommand(sqlCommand) > 0)
                 {
                     deleteState = true;
                 }
@@ -81,9 +81,9 @@ namespace DimStock.Models
                 FROM StockMovementItem INNER JOIN Product ON StockMovementItem.ProductId = Product.Id WHERE 
                 StockMovementItem.StockMovementId LIKE @Id ORDER BY InternalCode";
 
-                connection.AddParameter("@Id", OleDbType.Integer, id);
+                connection.AddParameter("@Id", id);
 
-                using (var dr = connection.QueryWithDataReader(sqlQuery))
+                using (var dr = connection.GetReader(sqlQuery))
                 {
                     while (dr.Read())
                     {
