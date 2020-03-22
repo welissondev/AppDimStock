@@ -1,5 +1,4 @@
 ﻿using DimStock.Auxiliarys;
-using DimStock.Interfaces;
 using DimStock.Reports;
 using System;
 using System.Collections.Generic;
@@ -7,7 +6,7 @@ using System.Data;
 
 namespace DimStock.Models
 {
-    public class Product : IReportGenerator<Product>
+    public class Product 
     {
         #region Builder
 

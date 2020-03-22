@@ -1,14 +1,12 @@
 ﻿using DimStock.Auxiliarys;
 using DimStock.Reports;
-using DimStock.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.OleDb;
 
 namespace DimStock.Models
 {
-    public class Stock : IReportGenerator<Stock>
+    public class Stock 
     {
         #region Buider
 
