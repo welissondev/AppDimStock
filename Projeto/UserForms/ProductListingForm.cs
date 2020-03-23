@@ -25,7 +25,6 @@ namespace DimStock.UserForms
 
         public int Id = 0;
         private AxlDataPage pagination = new AxlDataPage();
-        private ProductPhoto productPhoto = new ProductPhoto();
 
         #endregion
 
@@ -250,8 +249,7 @@ namespace DimStock.UserForms
                     product.List[i].InternalCode,
                     product.List[i].Description,
                     product.List[i].CostPrice,
-                    product.List[i].SalePrice,
-                    product.List[i].Photo);
+                    product.List[i].SalePrice);
                 }
 
                 DatagridProduct.ClearSelection();
@@ -293,7 +291,6 @@ namespace DimStock.UserForms
                 userForm.TextCostPrice.Text = product.CostPrice.ToString();
                 userForm.TextSalePrice.Text = product.SalePrice.ToString();
                 userForm.TextBarCode.Text = product.BarCode;
-                userForm.ReloadPhoto(product.Photo);
                 userForm.ShowInTaskbar = false;
                 userForm.ShowDialog();
 
@@ -328,7 +325,7 @@ namespace DimStock.UserForms
         {
             try
             {
-                var user = new User();
+                var user = new UserLogin();
                 user.GetDetail(AxlLogin.Id);
 
                 if (user.PermissionToDelete == false)
@@ -352,12 +349,6 @@ namespace DimStock.UserForms
 
                         return;
                     }
-
-                    var photoPath = productPhoto.GetDirectoryPeth() +
-                    Convert.ToString(DatagridProduct.CurrentRow.Cells
-                    ["Photo"].Value);
-
-                    productPhoto.DeleteFromDirectory(photoPath);
 
                     MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -388,7 +379,6 @@ namespace DimStock.UserForms
                 productForm.TextCostPrice.Text = product.CostPrice.ToString();
                 productForm.TextSalePrice.Text = product.SalePrice.ToString();
                 productForm.TextBarCode.Text = product.BarCode;
-                productForm.ReloadPhoto(product.Photo, true);
                 productForm.ShowInTaskbar = false;
                 productForm.ShowDialog();
             }
@@ -476,7 +466,6 @@ namespace DimStock.UserForms
                 var description = new DataGridViewTextBoxColumn();
                 var costPrice = new DataGridViewTextBoxColumn();
                 var salePrice = new DataGridViewTextBoxColumn();
-                var photo = new DataGridViewTextBoxColumn();
                 var edit = new DataGridViewLinkColumn();
                 var delete = new DataGridViewLinkColumn();
                 var replicate = new DataGridViewLinkColumn();
@@ -521,11 +510,6 @@ namespace DimStock.UserForms
                 productDataList.Columns[4].DefaultCellStyle.Format = "c2";
                 productDataList.Columns[4].ReadOnly = true;
 
-                productDataList.Columns.Add(photo);
-                productDataList.Columns[5].Name = "photo";
-                productDataList.Columns[5].HeaderText = "Nome da Foto";
-                productDataList.Columns[5].ReadOnly = true;
-                productDataList.Columns[5].Visible = false;
 
                 replicate.Text = "Replicar";
                 replicate.TrackVisitedState = false;
@@ -533,12 +517,12 @@ namespace DimStock.UserForms
                 replicate.LinkColor = Color.Black;
                 replicate.ActiveLinkColor = Color.MediumAquamarine;
                 productDataList.Columns.Add(replicate);
-                productDataList.Columns[6].Name = "replicate";
-                productDataList.Columns[6].HeaderText = "";
-                productDataList.Columns[6].Width = 70;
-                productDataList.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                productDataList.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                productDataList.Columns[6].ReadOnly = true;
+                productDataList.Columns[5].Name = "replicate";
+                productDataList.Columns[5].HeaderText = "";
+                productDataList.Columns[5].Width = 70;
+                productDataList.Columns[5].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                productDataList.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                productDataList.Columns[5].ReadOnly = true;
 
                 edit.Text = "Editar";
                 edit.TrackVisitedState = false;
@@ -546,12 +530,12 @@ namespace DimStock.UserForms
                 edit.LinkColor = Color.Black;
                 edit.ActiveLinkColor = Color.MediumAquamarine;
                 productDataList.Columns.Add(edit);
-                productDataList.Columns[7].Name = "edit";
-                productDataList.Columns[7].HeaderText = "";
-                productDataList.Columns[7].Width = 70;
-                productDataList.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                productDataList.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                productDataList.Columns[7].ReadOnly = true;
+                productDataList.Columns[6].Name = "edit";
+                productDataList.Columns[6].HeaderText = "";
+                productDataList.Columns[6].Width = 70;
+                productDataList.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                productDataList.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                productDataList.Columns[6].ReadOnly = true;
 
                 delete.Text = "Deletar";
                 delete.TrackVisitedState = false;
@@ -559,12 +543,12 @@ namespace DimStock.UserForms
                 delete.LinkColor = Color.Black;
                 delete.ActiveLinkColor = Color.MediumAquamarine;
                 productDataList.Columns.Add(delete);
-                productDataList.Columns[8].Name = "delete";
-                productDataList.Columns[8].HeaderText = "";
-                productDataList.Columns[8].Width = 70;
-                productDataList.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                productDataList.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                productDataList.Columns[8].ReadOnly = true;
+                productDataList.Columns[7].Name = "delete";
+                productDataList.Columns[7].HeaderText = "";
+                productDataList.Columns[7].Width = 70;
+                productDataList.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                productDataList.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                productDataList.Columns[7].ReadOnly = true;
             }
             catch (Exception ex)
             {

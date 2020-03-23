@@ -38,8 +38,6 @@
             this.SalePriceTitle = new System.Windows.Forms.Label();
             this.CostPriceTitle = new System.Windows.Forms.Label();
             this.DescriptionTitle = new System.Windows.Forms.Label();
-            this.FrameProductPhoto = new System.Windows.Forms.GroupBox();
-            this.PictureImageProduct = new DimStock.Controls.CustomPictureBoxOne();
             this.ButtonClearFields = new Bunifu.Framework.UI.BunifuThinButton2();
             this.ButtonSave = new Bunifu.Framework.UI.BunifuThinButton2();
             this.ButtonShow_CategoryRegistrationForm = new System.Windows.Forms.LinkLabel();
@@ -55,8 +53,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.TextSalePrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextCostPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextDescription)).BeginInit();
-            this.FrameProductPhoto.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureImageProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextInternalCode)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,7 +69,7 @@
             this.TextBarCode.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.TextBarCode.Font = new System.Drawing.Font("Calibri Light", 12F);
             this.TextBarCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.TextBarCode.Location = new System.Drawing.Point(262, 277);
+            this.TextBarCode.Location = new System.Drawing.Point(156, 320);
             this.TextBarCode.MaxLength = 50;
             this.TextBarCode.MinimumSize = new System.Drawing.Size(16, 12);
             this.TextBarCode.Name = "TextBarCode";
@@ -102,7 +98,7 @@
             131072});
             this.TextSalePrice.Font = new System.Drawing.Font("Calibri Light", 12F);
             this.TextSalePrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.TextSalePrice.Location = new System.Drawing.Point(262, 221);
+            this.TextSalePrice.Location = new System.Drawing.Point(156, 264);
             this.TextSalePrice.MinimumSize = new System.Drawing.Size(16, 12);
             this.TextSalePrice.Name = "TextSalePrice";
             this.TextSalePrice.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Managed;
@@ -133,7 +129,7 @@
             131072});
             this.TextCostPrice.Font = new System.Drawing.Font("Calibri Light", 12F);
             this.TextCostPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.TextCostPrice.Location = new System.Drawing.Point(262, 164);
+            this.TextCostPrice.Location = new System.Drawing.Point(156, 207);
             this.TextCostPrice.MinimumSize = new System.Drawing.Size(16, 12);
             this.TextCostPrice.Name = "TextCostPrice";
             this.TextCostPrice.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Managed;
@@ -159,7 +155,7 @@
             this.TextDescription.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.TextDescription.Font = new System.Drawing.Font("Calibri Light", 12F);
             this.TextDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.TextDescription.Location = new System.Drawing.Point(399, 48);
+            this.TextDescription.Location = new System.Drawing.Point(293, 91);
             this.TextDescription.MaxLength = 2000;
             this.TextDescription.MinimumSize = new System.Drawing.Size(16, 12);
             this.TextDescription.Name = "TextDescription";
@@ -176,7 +172,7 @@
             this.BarCodeTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.BarCodeTitle.AutoSize = true;
             this.BarCodeTitle.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.BarCodeTitle.Location = new System.Drawing.Point(259, 259);
+            this.BarCodeTitle.Location = new System.Drawing.Point(153, 302);
             this.BarCodeTitle.Name = "BarCodeTitle";
             this.BarCodeTitle.Size = new System.Drawing.Size(108, 17);
             this.BarCodeTitle.TabIndex = 64;
@@ -187,7 +183,7 @@
             this.SalePriceTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.SalePriceTitle.AutoSize = true;
             this.SalePriceTitle.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.SalePriceTitle.Location = new System.Drawing.Point(259, 204);
+            this.SalePriceTitle.Location = new System.Drawing.Point(153, 247);
             this.SalePriceTitle.Name = "SalePriceTitle";
             this.SalePriceTitle.Size = new System.Drawing.Size(82, 17);
             this.SalePriceTitle.TabIndex = 63;
@@ -198,7 +194,7 @@
             this.CostPriceTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.CostPriceTitle.AutoSize = true;
             this.CostPriceTitle.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.CostPriceTitle.Location = new System.Drawing.Point(259, 147);
+            this.CostPriceTitle.Location = new System.Drawing.Point(153, 190);
             this.CostPriceTitle.Name = "CostPriceTitle";
             this.CostPriceTitle.Size = new System.Drawing.Size(79, 17);
             this.CostPriceTitle.TabIndex = 62;
@@ -209,36 +205,11 @@
             this.DescriptionTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.DescriptionTitle.AutoSize = true;
             this.DescriptionTitle.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.DescriptionTitle.Location = new System.Drawing.Point(396, 31);
+            this.DescriptionTitle.Location = new System.Drawing.Point(290, 74);
             this.DescriptionTitle.Name = "DescriptionTitle";
             this.DescriptionTitle.Size = new System.Drawing.Size(67, 17);
             this.DescriptionTitle.TabIndex = 61;
             this.DescriptionTitle.Text = "Descrição:";
-            // 
-            // FrameProductPhoto
-            // 
-            this.FrameProductPhoto.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.FrameProductPhoto.BackColor = System.Drawing.Color.White;
-            this.FrameProductPhoto.Controls.Add(this.PictureImageProduct);
-            this.FrameProductPhoto.Location = new System.Drawing.Point(53, 48);
-            this.FrameProductPhoto.Name = "FrameProductPhoto";
-            this.FrameProductPhoto.Size = new System.Drawing.Size(189, 210);
-            this.FrameProductPhoto.TabIndex = 75;
-            this.FrameProductPhoto.TabStop = false;
-            // 
-            // PictureImageProduct
-            // 
-            this.PictureImageProduct.Image = global::DimStock.Properties.Resources.FotoNothing;
-            this.PictureImageProduct.ImageId = "";
-            this.PictureImageProduct.Location = new System.Drawing.Point(7, 14);
-            this.PictureImageProduct.Name = "PictureImageProduct";
-            this.PictureImageProduct.PathOfLastSelectedImage = "";
-            this.PictureImageProduct.SelectedDirectory = null;
-            this.PictureImageProduct.Size = new System.Drawing.Size(176, 188);
-            this.PictureImageProduct.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PictureImageProduct.TabIndex = 82;
-            this.PictureImageProduct.TabStop = false;
-            this.PictureImageProduct.Click += new System.EventHandler(this.PictureImageProduct_Click);
             // 
             // ButtonClearFields
             // 
@@ -259,7 +230,7 @@
             this.ButtonClearFields.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
             this.ButtonClearFields.IdleForecolor = System.Drawing.Color.White;
             this.ButtonClearFields.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
-            this.ButtonClearFields.Location = new System.Drawing.Point(362, 312);
+            this.ButtonClearFields.Location = new System.Drawing.Point(256, 355);
             this.ButtonClearFields.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ButtonClearFields.Name = "ButtonClearFields";
             this.ButtonClearFields.Size = new System.Drawing.Size(97, 43);
@@ -286,7 +257,7 @@
             this.ButtonSave.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
             this.ButtonSave.IdleForecolor = System.Drawing.Color.White;
             this.ButtonSave.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
-            this.ButtonSave.Location = new System.Drawing.Point(263, 312);
+            this.ButtonSave.Location = new System.Drawing.Point(157, 355);
             this.ButtonSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ButtonSave.Name = "ButtonSave";
             this.ButtonSave.Size = new System.Drawing.Size(97, 43);
@@ -300,7 +271,7 @@
             this.ButtonShow_CategoryRegistrationForm.AutoSize = true;
             this.ButtonShow_CategoryRegistrationForm.Font = new System.Drawing.Font("Calibri Light", 10F);
             this.ButtonShow_CategoryRegistrationForm.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(87)))), ((int)(((byte)(166)))));
-            this.ButtonShow_CategoryRegistrationForm.Location = new System.Drawing.Point(770, 86);
+            this.ButtonShow_CategoryRegistrationForm.Location = new System.Drawing.Point(664, 129);
             this.ButtonShow_CategoryRegistrationForm.Name = "ButtonShow_CategoryRegistrationForm";
             this.ButtonShow_CategoryRegistrationForm.Size = new System.Drawing.Size(96, 17);
             this.ButtonShow_CategoryRegistrationForm.TabIndex = 216;
@@ -314,7 +285,7 @@
             this.ComboBoxCategoryList.BackColor = System.Drawing.Color.White;
             this.ComboBoxCategoryList.Font = new System.Drawing.Font("Calibri Light", 12F);
             this.ComboBoxCategoryList.FormattingEnabled = true;
-            this.ComboBoxCategoryList.Location = new System.Drawing.Point(264, 105);
+            this.ComboBoxCategoryList.Location = new System.Drawing.Point(158, 148);
             this.ComboBoxCategoryList.Name = "ComboBoxCategoryList";
             this.ComboBoxCategoryList.Size = new System.Drawing.Size(601, 27);
             this.ComboBoxCategoryList.TabIndex = 215;
@@ -327,7 +298,7 @@
             this.LblStockDestination.AutoSize = true;
             this.LblStockDestination.Font = new System.Drawing.Font("Calibri Light", 10F);
             this.LblStockDestination.ForeColor = System.Drawing.Color.Black;
-            this.LblStockDestination.Location = new System.Drawing.Point(261, 86);
+            this.LblStockDestination.Location = new System.Drawing.Point(155, 129);
             this.LblStockDestination.Name = "LblStockDestination";
             this.LblStockDestination.Size = new System.Drawing.Size(68, 17);
             this.LblStockDestination.TabIndex = 214;
@@ -349,7 +320,7 @@
             this.ListviewCategory.HideSelection = false;
             this.ListviewCategory.HotTracking = true;
             this.ListviewCategory.HoverSelection = true;
-            this.ListviewCategory.Location = new System.Drawing.Point(264, 130);
+            this.ListviewCategory.Location = new System.Drawing.Point(158, 173);
             this.ListviewCategory.MultiSelect = false;
             this.ListviewCategory.Name = "ListviewCategory";
             this.ListviewCategory.Size = new System.Drawing.Size(601, 10);
@@ -387,7 +358,7 @@
             this.TextInternalCode.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.TextInternalCode.Font = new System.Drawing.Font("Calibri Light", 12F);
             this.TextInternalCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.TextInternalCode.Location = new System.Drawing.Point(263, 48);
+            this.TextInternalCode.Location = new System.Drawing.Point(157, 91);
             this.TextInternalCode.MaxLength = 2000;
             this.TextInternalCode.MinimumSize = new System.Drawing.Size(16, 12);
             this.TextInternalCode.Name = "TextInternalCode";
@@ -404,13 +375,13 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.label1.Location = new System.Drawing.Point(261, 31);
+            this.label1.Location = new System.Drawing.Point(155, 74);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 17);
             this.label1.TabIndex = 220;
             this.label1.Text = "Código:";
             // 
-            // ProductRegistrationForm
+            // ProductAddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -432,9 +403,8 @@
             this.Controls.Add(this.SalePriceTitle);
             this.Controls.Add(this.CostPriceTitle);
             this.Controls.Add(this.DescriptionTitle);
-            this.Controls.Add(this.FrameProductPhoto);
             this.MinimumSize = new System.Drawing.Size(944, 590);
-            this.Name = "ProductRegistrationForm";
+            this.Name = "ProductAddForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Click += new System.EventHandler(this.ProductAddForm_Click);
@@ -442,8 +412,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.TextSalePrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextCostPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextDescription)).EndInit();
-            this.FrameProductPhoto.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.PictureImageProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextInternalCode)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -455,12 +423,10 @@
         private System.Windows.Forms.Label SalePriceTitle;
         private System.Windows.Forms.Label CostPriceTitle;
         private System.Windows.Forms.Label DescriptionTitle;
-        private System.Windows.Forms.GroupBox FrameProductPhoto;
         public Syncfusion.Windows.Forms.Tools.TextBoxExt TextBarCode;
         public Syncfusion.Windows.Forms.Tools.CurrencyTextBox TextSalePrice;
         public Syncfusion.Windows.Forms.Tools.CurrencyTextBox TextCostPrice;
         public Syncfusion.Windows.Forms.Tools.TextBoxExt TextDescription;
-        public DimStock.Controls.CustomPictureBoxOne PictureImageProduct;
         private Bunifu.Framework.UI.BunifuThinButton2 ButtonClearFields;
         private Bunifu.Framework.UI.BunifuThinButton2 ButtonSave;
         private System.Windows.Forms.LinkLabel ButtonShow_CategoryRegistrationForm;
