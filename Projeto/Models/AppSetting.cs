@@ -60,7 +60,7 @@ namespace DimStock.Models
         {
             var sourcePath = GetMainAppDirectory() + @"\DataBaseBackUp\" + dataBaseBackUpName;
 
-            var destPath = GetMainAppDirectory() + @"\dimstock-database.mdb";
+            var destPath = GetMainAppDirectory() + @"\dimstockdatabase.mdb";
 
             var backup = new AxlFile();
 
