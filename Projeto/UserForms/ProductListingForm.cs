@@ -55,7 +55,7 @@ namespace DimStock.UserForms
 
         private void ButtonNewRegister_Click(object sender, EventArgs e)
         {
-            var form = new ProductRegistrationForm()
+            var form = new ProductAddForm()
             {
                 FormBorderStyle = FormBorderStyle.FixedDialog,
                 ShowInTaskbar = false,
@@ -270,7 +270,7 @@ namespace DimStock.UserForms
 
         private void ViewDetails()
         {
-            var userForm = new ProductRegistrationForm();
+            var userForm = new ProductAddForm();
 
             try
             {
@@ -374,7 +374,7 @@ namespace DimStock.UserForms
 
         private void ReplicateRegistration()
         {
-            var productForm = new ProductRegistrationForm();
+            var productForm = new ProductAddForm();
 
             try
             {

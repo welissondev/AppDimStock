@@ -1,6 +1,6 @@
 ﻿namespace DimStock.UserForms
 {
-    partial class StockMovementRegistrationForm
+    partial class StockMovementAddForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StockMovementRegistrationForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StockMovementAddForm));
             this.SearchTimer = new System.Windows.Forms.Timer(this.components);
             this.SubTotalTitle = new System.Windows.Forms.Label();
             this.SubTotal = new System.Windows.Forms.Label();
@@ -757,7 +757,7 @@
             this.MinimumSize = new System.Drawing.Size(944, 590);
             this.Name = "StockMovementRegistrationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Resize += new System.EventHandler(this.StockMovementResgistrationForm_Resize);
+            this.Resize += new System.EventHandler(this.StockMovementAddForm_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.TextQuantity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextTotalValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextUnitaryValue)).EndInit();

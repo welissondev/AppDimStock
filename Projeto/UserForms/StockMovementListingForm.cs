@@ -254,7 +254,7 @@ namespace DimStock.UserForms
 
         private void MovementEntrie_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var form = new StockMovementRegistrationForm()
+            var form = new StockMovementAddForm()
             {
                 MdiParent = HomeScreenForm.He,
                 FormBorderStyle = FormBorderStyle.None,
@@ -267,7 +267,7 @@ namespace DimStock.UserForms
 
         private void MovementOutPut_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var form = new StockMovementRegistrationForm()
+            var form = new StockMovementAddForm()
             {
                 MdiParent = HomeScreenForm.He,
                 FormBorderStyle = FormBorderStyle.None,
@@ -369,7 +369,7 @@ namespace DimStock.UserForms
                 int id = Convert.ToInt32(
                 DatagridMovement.CurrentRow.Cells["id"].Value);
 
-                var form = new StockMovementRegistrationForm()
+                var form = new StockMovementAddForm()
                 {
                     MdiParent = HomeScreenForm.He,
                     FormBorderStyle = FormBorderStyle.None,

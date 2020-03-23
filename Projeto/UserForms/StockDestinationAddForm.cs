@@ -5,11 +5,11 @@ using System.Windows.Forms;
 
 namespace DimStock.UserForms
 {
-    public partial class StockDestinationRegistrationForm : Form
+    public partial class StockDestinationAddForm : Form
     {
         #region Builder
 
-        public StockDestinationRegistrationForm()
+        public StockDestinationAddForm()
         {
             InitializeComponent();
 
@@ -26,7 +26,7 @@ namespace DimStock.UserForms
 
         #region Form
 
-        private void StockDestinationRegistrationForm_Load(object sender, EventArgs e)
+        private void StockDestinationAddForm_Load(object sender, EventArgs e)
         {
             ListData();
         }

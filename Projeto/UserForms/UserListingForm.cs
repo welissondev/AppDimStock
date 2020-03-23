@@ -35,7 +35,7 @@ namespace DimStock.UserForms
 
         private void ButtonRegisterNew_Click(object sender, EventArgs e)
         {
-            var form = new UserResgistrationForm()
+            var form = new UserLoginAddForm()
             {
                 FormBorderStyle = FormBorderStyle.Sizable,
                 MaximizeBox = false,
@@ -85,7 +85,7 @@ namespace DimStock.UserForms
 
                     case "edit":
 
-                        var form = new UserResgistrationForm()
+                        var form = new UserLoginAddForm()
                         {
                             FormBorderStyle = FormBorderStyle.Sizable,
                             MaximizeBox = false,

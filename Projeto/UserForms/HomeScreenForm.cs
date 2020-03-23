@@ -90,7 +90,7 @@ namespace DimStock.UserForms
         {
             AxlMdiForm.CloseAllForms();
 
-            var form = new ProductRegistrationForm()
+            var form = new ProductAddForm()
             {
                 MdiParent = this,
                 FormBorderStyle = FormBorderStyle.None,
@@ -106,7 +106,7 @@ namespace DimStock.UserForms
         {
             AxlMdiForm.CloseAllForms();
 
-            var form = new ProductCategoryRegistrationForm()
+            var form = new CategoryAddForm()
             {
                 MdiParent = this,
                 FormBorderStyle = FormBorderStyle.None,
@@ -138,7 +138,7 @@ namespace DimStock.UserForms
         {
             AxlMdiForm.CloseAllForms();
 
-            var form = new ProductCategoryListingForm()
+            var form = new CategoryListingForm()
             {
                 MdiParent = this,
                 FormBorderStyle = FormBorderStyle.None,
@@ -154,7 +154,7 @@ namespace DimStock.UserForms
         {
             AxlMdiForm.CloseAllForms();
 
-            var form = new StockMovementRegistrationForm()
+            var form = new StockMovementAddForm()
             {
                 MdiParent = this,
                 FormBorderStyle = FormBorderStyle.None,
@@ -172,7 +172,7 @@ namespace DimStock.UserForms
         {
             AxlMdiForm.CloseAllForms();
 
-            var form = new StockMovementRegistrationForm()
+            var form = new StockMovementAddForm()
             {
                 MdiParent = this,
                 FormBorderStyle = FormBorderStyle.None,
@@ -226,7 +226,7 @@ namespace DimStock.UserForms
             {
                 AxlMdiForm.CloseAllForms();
 
-                var form = new UserResgistrationForm()
+                var form = new UserLoginAddForm()
                 {
                     MdiParent = this,
                     FormBorderStyle = FormBorderStyle.None,

@@ -9,11 +9,11 @@ using System.Windows.Forms;
 
 namespace DimStock.UserForms
 {
-    public partial class StockMovementRegistrationForm : Form
+    public partial class StockMovementAddForm : Form
     {
         #region Builder
 
-        public StockMovementRegistrationForm()
+        public StockMovementAddForm()
         {
             InitializeComponent();
 
@@ -41,7 +41,7 @@ namespace DimStock.UserForms
 
         #region Form
 
-        private void StockMovementResgistrationForm_Resize(object sender, EventArgs e)
+        private void StockMovementAddForm_Resize(object sender, EventArgs e)
         {
             try
             {
@@ -181,7 +181,7 @@ namespace DimStock.UserForms
 
         private void ButtonShow_StockDestination_RegistrationForm_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var form = new StockDestinationRegistrationForm()
+            var form = new StockDestinationAddForm()
             {
                 FormBorderStyle = FormBorderStyle.FixedDialog,
                 ShowInTaskbar = false,

@@ -1,6 +1,6 @@
 ﻿namespace DimStock.UserForms
 {
-    partial class ProductRegistrationForm
+    partial class ProductAddForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductRegistrationForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductAddForm));
             this.TextBarCode = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.TextSalePrice = new Syncfusion.Windows.Forms.Tools.CurrencyTextBox();
             this.TextCostPrice = new Syncfusion.Windows.Forms.Tools.CurrencyTextBox();
@@ -437,7 +437,7 @@
             this.Name = "ProductRegistrationForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Click += new System.EventHandler(this.ProductRegistrationForm_Click);
+            this.Click += new System.EventHandler(this.ProductAddForm_Click);
             ((System.ComponentModel.ISupportInitialize)(this.TextBarCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextSalePrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextCostPrice)).EndInit();

@@ -1,6 +1,6 @@
 ﻿namespace DimStock.UserForms
 {
-    partial class StockDestinationRegistrationForm
+    partial class StockDestinationAddForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StockDestinationRegistrationForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StockDestinationAddForm));
             this.DestinationLocationTitle = new System.Windows.Forms.Label();
             this.TextDestinationLocation = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.DatagridDestination = new System.Windows.Forms.DataGridView();
@@ -205,7 +205,7 @@
             this.MinimumSize = new System.Drawing.Size(944, 590);
             this.Name = "StockDestinationRegistrationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Load += new System.EventHandler(this.StockDestinationRegistrationForm_Load);
+            this.Load += new System.EventHandler(this.StockDestinationAddForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.TextDestinationLocation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DatagridDestination)).EndInit();
             this.ResumeLayout(false);

@@ -6,11 +6,11 @@ using System.Windows.Forms;
 
 namespace DimStock.UserForms
 {
-    public partial class ProductCategoryRegistrationForm : Form
+    public partial class CategoryAddForm : Form
     {
         #region Builder
 
-        public ProductCategoryRegistrationForm()
+        public CategoryAddForm()
         {
             InitializeComponent();
         }

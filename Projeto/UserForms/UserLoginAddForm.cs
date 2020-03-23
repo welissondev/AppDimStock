@@ -7,11 +7,11 @@ using System.Windows.Forms;
 
 namespace DimStock.UserForms
 {
-    public partial class UserResgistrationForm : Form
+    public partial class UserLoginAddForm : Form
     {
         #region Builder
 
-        public UserResgistrationForm()
+        public UserLoginAddForm()
         {
             InitializeComponent();
         }

@@ -1,6 +1,6 @@
 ﻿namespace DimStock.UserForms
 {
-    partial class ProductCategoryRegistrationForm
+    partial class CategoryAddForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductCategoryRegistrationForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CategoryAddForm));
             this.TextDescription = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.LabelTextDescription = new System.Windows.Forms.Label();
             this.ButtonSave = new Bunifu.Framework.UI.BunifuThinButton2();

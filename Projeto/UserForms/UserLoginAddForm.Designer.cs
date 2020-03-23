@@ -1,6 +1,6 @@
 ﻿namespace DimStock.UserForms
 {
-    partial class UserResgistrationForm
+    partial class UserLoginAddForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserResgistrationForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserLoginAddForm));
             this.TextUserName = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.NameTitle = new System.Windows.Forms.Label();
             this.TextEmail = new Syncfusion.Windows.Forms.Tools.TextBoxExt();

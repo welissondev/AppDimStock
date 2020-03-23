@@ -8,11 +8,11 @@ using System.Windows.Forms;
 
 namespace DimStock.UserForms
 {
-    public partial class ProductCategoryListingForm : Form
+    public partial class CategoryListingForm : Form
     {
         #region Builder
 
-        public ProductCategoryListingForm()
+        public CategoryListingForm()
         {
             InitializeComponent();
 
@@ -41,7 +41,7 @@ namespace DimStock.UserForms
 
         private void ButtonNewRegister_Click(object sender, EventArgs e)
         {
-            var categoryForm = new ProductCategoryRegistrationForm()
+            var categoryForm = new CategoryAddForm()
             {
                 ShowInTaskbar = false,
                 MaximizeBox = false,
@@ -268,7 +268,7 @@ namespace DimStock.UserForms
                 var category = new ProductCategory();
                 category.GetDetail(Id);
 
-                var categoryForm = new ProductCategoryRegistrationForm()
+                var categoryForm = new CategoryAddForm()
                 {
                     ShowInTaskbar = false,
                     MaximizeBox = false,
