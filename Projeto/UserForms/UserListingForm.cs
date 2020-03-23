@@ -135,7 +135,7 @@ namespace DimStock.UserForms
             {
                 DatagridUser.Rows.Clear();
 
-                var user = new User(pagination);
+                var user = new UserLogin(pagination);
                 user.ListData();
 
                 for (int i = 0; i < user.List.Count; i++)
@@ -162,7 +162,7 @@ namespace DimStock.UserForms
             {
                 DatagridUser.Rows.Clear();
 
-                var user = new User(pagination)
+                var user = new UserLogin(pagination)
                 {
                     Name = TextSearchFields.Text,
                     Email = TextSearchFields.Text,
@@ -196,7 +196,7 @@ namespace DimStock.UserForms
                     MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
-                    var user = new User();
+                    var user = new UserLogin();
 
                     if (user.Remove(id) == true)
                     {

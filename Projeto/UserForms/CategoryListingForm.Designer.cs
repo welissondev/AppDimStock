@@ -306,7 +306,7 @@
             this.MinimumSize = new System.Drawing.Size(944, 590);
             this.Name = "ProductCategoryListingForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Load += new System.EventHandler(this.ProductCategoryListingForm_Load);
+            this.Load += new System.EventHandler(this.CategoryListingForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DatagridCategory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BindingPagination)).EndInit();
             this.BindingPagination.ResumeLayout(false);

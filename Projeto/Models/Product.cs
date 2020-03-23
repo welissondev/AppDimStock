@@ -12,13 +12,13 @@ namespace DimStock.Models
 
         public Product()
         {
-            Category = new ProductCategory();
+            Category = new Category();
         }
 
         public Product(AxlDataPage pagination)
         {
             Pagination = pagination;
-            Category = new ProductCategory();
+            Category = new Category();
             List = new List<Product>();
         }
 
@@ -33,7 +33,7 @@ namespace DimStock.Models
         public double SalePrice { get; set; }
         public string BarCode { get; set; }
         public string Photo { get; set; }
-        public ProductCategory Category { get; set; }
+        public Category Category { get; set; }
         public AxlDataPage Pagination { get; set; }
         public List<Product> List { get; set; }
 
@@ -50,17 +50,16 @@ namespace DimStock.Models
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
                     var sqlCommand = @"INSERT INTO Product 
-                    (ProductCategoryId, InternalCode, Description, CostPrice, 
-                    SalePrice, BarCode, Photo) VALUES (@ProductCategoryId, @Code, 
-                    @InternalCode, @CostPrice, @SalePrice, @BarCode, @Photo)";
+                    (CategoryId, InternalCode, Description, CostPrice, 
+                    SalePrice, BarCode) VALUES (@CategoryId, @Code, 
+                    @InternalCode, @CostPrice, @SalePrice, @BarCode)";
 
-                    connection.AddParameter("@ProductCategoryId", Category.Id);
+                    connection.AddParameter("@CategoryId", Category.Id);
                     connection.AddParameter("@InternalCode", InternalCode);
                     connection.AddParameter("@Description", Description);
                     connection.AddParameter("@CostPrice", CostPrice);
                     connection.AddParameter("@SalePrice" , SalePrice);
                     connection.AddParameter("@BarCode", BarCode);
-                    connection.AddParameter("@Photo", Photo);
 
                     transactionState = connection.ExecuteTransaction(
                     sqlCommand) > 0;
@@ -94,19 +93,17 @@ namespace DimStock.Models
 
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
-                    var sqlCommand = @"UPDATE Product Set ProductCategoryId = @ProductCategoryId, 
-                    InternalCode = @InternalCode, Description = @Description, CostPrice = @CostPrice, 
-                    SalePrice = @SalePrice, BarCode = @BarCode, 
-                    Photo = @Photo WHERE Id = @Id";
+                    var sqlCommand = @"UPDATE Product Set CategoryId = @CategoryId, 
+                    InternalCode = @InternalCode, Description = @Description, CostPrice = @CostPrice,
+                    SalePrice = @SalePrice, BarCode = @BarCode WHERE Id = @Id";
 
                     connection.ClearParameter();
-                    connection.AddParameter("@ProductCategoryId", Category.Id);
+                    connection.AddParameter("@CategoryId", Category.Id);
                     connection.AddParameter("@InternalCode", InternalCode);
                     connection.AddParameter("@Description", Description);
                     connection.AddParameter("@CostPrice" , CostPrice);
                     connection.AddParameter("@SalePrice" ,SalePrice);
                     connection.AddParameter("@BarCode", BarCode);
-                    connection.AddParameter("@Photo", Photo);
                     connection.AddParameter("@Id", id);
 
                     transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
@@ -172,8 +169,8 @@ namespace DimStock.Models
         {
             using (var connection = new AccessConnection())
             {
-                var sqlQuery = @"SELECT Product.*, ProductCategory.* FROM Product
-                LEFT JOIN ProductCategory ON Product.ProductCategoryId = ProductCategory.Id
+                var sqlQuery = @"SELECT Product.*, Category.* FROM Product
+                LEFT JOIN Category ON Product.CategoryId = Category.Id
                 WHERE Product.Id = @Id ";
 
                 connection.AddParameter("@Id", id);
@@ -186,20 +183,19 @@ namespace DimStock.Models
 
 
                         bool convert = int.TryParse(reader[
-                        "ProductCategory.Id"].ToString(),
+                        "Category.Id"].ToString(),
                         out int result);
 
                         if (convert != false)
                             Category.Id = result;
 
                         Category.Description = Convert.ToString(
-                        reader["ProductCategory.Description"]);
+                        reader["Category.Description"]);
 
                         InternalCode = Convert.ToString(reader["InternalCode"]);
                         Description = Convert.ToString(reader["Product.Description"]);
                         CostPrice = Convert.ToDouble(reader["CostPrice"]);
                         SalePrice = Convert.ToDouble(reader["SalePrice"]);
-                        Photo = reader["Photo"].ToString();
                         BarCode = reader["BarCode"].ToString();
                     }
                 }
@@ -265,7 +261,7 @@ namespace DimStock.Models
                 var sqlQuery = string.Empty;
 
                 sqlQuery = @"SELECT Id, InternalCode, Description, 
-                CostPrice, SalePrice, Photo FROM Product WHERE Id > 0";
+                CostPrice, SalePrice FROM Product WHERE Id > 0";
 
                 if (InternalCode != string.Empty)
                 {
@@ -337,7 +333,6 @@ namespace DimStock.Models
                     Description = Convert.ToString(row["Description"]),
                     CostPrice = Convert.ToDouble(row["CostPrice"]),
                     SalePrice = Convert.ToDouble(row["SalePrice"]),
-                    Photo = Convert.ToString(row["Photo"])
                 };
 
                 List.Add(product);

@@ -317,7 +317,7 @@ namespace DimStock.UserForms
                 return false;
             }
 
-            var user = new User()
+            var user = new UserLogin()
             {
                 Name = TextUserName.Text,
                 Email = TextEmail.Text,

@@ -12,20 +12,20 @@ namespace DimStock.Models
 
         public UserHistory()
         {
-            User = new User();
+            User = new UserLogin();
         }
 
         public UserHistory(AxlDataPage pagination)
         {
             Pagination = pagination;
-            User = new User();
+            User = new UserLogin();
             List = new List<UserHistory>();
         }
 
         public UserHistory(AccessConnection connection)
         {
             this.connection = connection;
-            User = new User();
+            User = new UserLogin();
         }
 
         #endregion
@@ -40,7 +40,7 @@ namespace DimStock.Models
         public string OperationHour { get; set; }
         public string OperationModule { get; set; }
         public AxlDataPage Pagination { get; set; }
-        public User User { get; set; }
+        public UserLogin User { get; set; }
         public List<UserHistory> List { get; set; }
 
         #endregion
@@ -67,7 +67,7 @@ namespace DimStock.Models
         public void ListData()
         {
             var sqlQuery = @"SELECT [User].*, UserHistory.* FROM UserHistory 
-            INNER JOIN [User] ON User.Id = UserHistory.UserId";
+            INNER JOIN [UserLogin] ON User.Id = UserHistory.UserId";
 
             using (var connection = new AccessConnection())
             {
@@ -104,7 +104,7 @@ namespace DimStock.Models
                 var parameter = connection.Command.Parameters;
 
                 sqlQuery = @"SELECT [User].*, UserHistory.* FROM UserHistory 
-                INNER JOIN [User] ON User.Id = UserHistory.UserId WHERE User.Id > 0 ";
+                INNER JOIN [UserLogin] ON User.Id = UserHistory.UserId WHERE User.Id > 0 ";
 
                 sqlCount = @"SELECT COUNT(*) FROM UserHistory WHERE Id > 0 ";
 

@@ -156,7 +156,7 @@
     <Compile Include="Auxiliarys\AxlLogin.cs" />
     <Compile Include="Auxiliarys\AxlPageWeb.cs" />
     <Compile Include="Models\AccessConnection.cs" />
-    <Compile Include="Models\ProductCategory.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Controls\CustomPictureBoxOne.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -164,15 +164,13 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Models\AppSetting.cs" />
-    <Compile Include="Models\Company.cs" />
     <Compile Include="Models\StockDestination.cs" />
     <Compile Include="Models\StockMovementItem.cs" />
     <Compile Include="Models\StockMovement.cs" />
     <Compile Include="Auxiliarys\AxlMessageNotifier.cs" />
     <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\ProductPhoto.cs" />
     <Compile Include="Models\Stock.cs" />
-    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Models\UserHistory.cs" />
     <Compile Include="Interfaces\IDataChecker.cs" />
     <Compile Include="Interfaces\IDataTransfer.cs" />
@@ -230,11 +228,11 @@
     <Compile Include="UserForms\ProductListingForm.designer.cs">
       <DependentUpon>ProductListingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserForms\ProductRegistrationForm.cs">
+    <Compile Include="UserForms\ProductAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserForms\ProductRegistrationForm.Designer.cs">
-      <DependentUpon>ProductRegistrationForm.cs</DependentUpon>
+    <Compile Include="UserForms\ProductAddForm.Designer.cs">
+      <DependentUpon>ProductAddForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UserForms\ReportViewForm.cs">
       <SubType>Form</SubType>
@@ -242,11 +240,11 @@
     <Compile Include="UserForms\ReportViewForm.Designer.cs">
       <DependentUpon>ReportViewForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserForms\StockDestinationRegistrationForm.cs">
+    <Compile Include="UserForms\StockDestinationAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserForms\StockDestinationRegistrationForm.Designer.cs">
-      <DependentUpon>StockDestinationRegistrationForm.cs</DependentUpon>
+    <Compile Include="UserForms\StockDestinationAddForm.Designer.cs">
+      <DependentUpon>StockDestinationAddForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UserForms\StockListingForm.cs">
       <SubType>Form</SubType>
@@ -260,11 +258,11 @@
     <Compile Include="UserForms\StockMovementListingForm.Designer.cs">
       <DependentUpon>StockMovementListingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserForms\StockMovementResgistrationForm.cs">
+    <Compile Include="UserForms\StockMovementAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserForms\StockMovementResgistrationForm.Designer.cs">
-      <DependentUpon>StockMovementResgistrationForm.cs</DependentUpon>
+    <Compile Include="UserForms\StockMovementAddForm.Designer.cs">
+      <DependentUpon>StockMovementAddForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UserForms\UserHistoryListingForm.cs">
       <SubType>Form</SubType>
@@ -284,11 +282,11 @@
     <Compile Include="UserForms\UserLoginForm.Designer.cs">
       <DependentUpon>UserLoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserForms\UserResgistrationForm.cs">
+    <Compile Include="UserForms\UserLoginAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserForms\UserResgistrationForm.Designer.cs">
-      <DependentUpon>UserResgistrationForm.cs</DependentUpon>
+    <Compile Include="UserForms\UserLoginAddForm.Designer.cs">
+      <DependentUpon>UserLoginAddForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -315,14 +313,14 @@
     <EmbeddedResource Include="UserForms\ProductListingForm.resx">
       <DependentUpon>ProductListingForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserForms\ProductRegistrationForm.resx">
-      <DependentUpon>ProductRegistrationForm.cs</DependentUpon>
+    <EmbeddedResource Include="UserForms\ProductAddForm.resx">
+      <DependentUpon>ProductAddForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserForms\ReportViewForm.resx">
       <DependentUpon>ReportViewForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserForms\StockDestinationRegistrationForm.resx">
-      <DependentUpon>StockDestinationRegistrationForm.cs</DependentUpon>
+    <EmbeddedResource Include="UserForms\StockDestinationAddForm.resx">
+      <DependentUpon>StockDestinationAddForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserForms\StockListingForm.resx">
       <DependentUpon>StockListingForm.cs</DependentUpon>
@@ -330,8 +328,8 @@
     <EmbeddedResource Include="UserForms\StockMovementListingForm.resx">
       <DependentUpon>StockMovementListingForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserForms\StockMovementResgistrationForm.resx">
-      <DependentUpon>StockMovementResgistrationForm.cs</DependentUpon>
+    <EmbeddedResource Include="UserForms\StockMovementAddForm.resx">
+      <DependentUpon>StockMovementAddForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserForms\UserHistoryListingForm.resx">
       <DependentUpon>UserHistoryListingForm.cs</DependentUpon>
@@ -342,8 +340,8 @@
     <EmbeddedResource Include="UserForms\UserLoginForm.resx">
       <DependentUpon>UserLoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserForms\UserResgistrationForm.resx">
-      <DependentUpon>UserResgistrationForm.cs</DependentUpon>
+    <EmbeddedResource Include="UserForms\UserLoginAddForm.resx">
+      <DependentUpon>UserLoginAddForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

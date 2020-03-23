@@ -1,10 +1,7 @@
 ﻿using DimStock.Auxiliarys;
 using DimStock.Models;
-using DimStock.Properties;
 using Syncfusion.Windows.Forms.Tools;
 using System;
-using System.Drawing;
-using System.IO;
 using System.Windows.Forms;
 
 namespace DimStock.UserForms
@@ -21,8 +18,6 @@ namespace DimStock.UserForms
         #endregion
 
         #region Properties
-
-        private ProductPhoto productPhoto = new ProductPhoto();
 
         private AxlDataPage pagination = new AxlDataPage();
 
@@ -49,7 +44,7 @@ namespace DimStock.UserForms
 
         private void ButtonSave_Click(object sender, EventArgs e)
         {
-            var user = new User();
+            var user = new UserLogin();
             user.GetDetail(AxlLogin.Id);
 
             if (Id == 0)
@@ -148,31 +143,6 @@ namespace DimStock.UserForms
 
         #endregion
 
-        #region PictureBox
-
-        private void PictureImageProduct_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (UploadPhoto() == false)
-                {
-                    if (productPhoto.CheckIfExtits(productPhoto.GetDirectoryPeth() +
-                        PictureImageProduct.ImageId).Equals(false))
-                    {
-                        PictureImageProduct.ImageId = "";
-                        PictureImageProduct.SelectedDirectory = "";
-                        PictureImageProduct.Image = Resources.FotoNothing;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                AxlException.Message.Show(ex);
-            }
-        }
-
-        #endregion
-
         #region Timer
 
         private void SearchTimer_Tick(object sender, EventArgs e)
@@ -200,7 +170,6 @@ namespace DimStock.UserForms
                     CostPrice = Convert.ToDouble(TextCostPrice.DecimalValue),
                     SalePrice = Convert.ToDouble(TextSalePrice.DecimalValue),
                     BarCode = TextBarCode.Text,
-                    Photo = PictureImageProduct.ImageId
                 };
 
                 product.Category.Id = CategoryId;
@@ -212,9 +181,6 @@ namespace DimStock.UserForms
 
                     return;
                 }
-
-                productPhoto.CopyFromDirectory(PictureImageProduct.SelectedDirectory,
-                productPhoto.GetDirectoryPeth() + product.Photo);
 
                 MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -243,7 +209,6 @@ namespace DimStock.UserForms
                     CostPrice = Convert.ToDouble(TextCostPrice.DecimalValue),
                     SalePrice = Convert.ToDouble(TextSalePrice.DecimalValue),
                     BarCode = TextBarCode.Text,
-                    Photo = PictureImageProduct.ImageId,
                 };
                 product.Category.Id = CategoryId;
 
@@ -254,18 +219,6 @@ namespace DimStock.UserForms
 
                     return;
                 }
-
-                var photoPath = productPhoto.GetDirectoryPeth()
-                + product.Photo;
-
-                //Apaga a foto atual do diretório, caso a foto do produto
-                //seja alterada
-                if (productPhoto.CheckIfExtits(photoPath) == false)
-                    productPhoto.DeleteFromDirectory(
-                    PictureImageProduct.PathOfLastSelectedImage);
-
-                productPhoto.CopyFromDirectory(PictureImageProduct.SelectedDirectory,
-                photoPath);
 
                 MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -302,55 +255,6 @@ namespace DimStock.UserForms
             return true;
         }
 
-        private bool UploadPhoto()
-        {
-            var picture = new AxlFile();
-            var uploadState = false;
-
-            picture.SelectPath();
-
-            if (picture.DirectoryPath != string.Empty)
-            {
-                using (var fileStream = new FileStream(picture.DirectoryPath,
-                FileMode.Open, FileAccess.Read))
-                {
-                    PictureImageProduct.Image = Image.FromStream(fileStream);
-                    PictureImageProduct.ImageId = productPhoto.GetNumberId() + ".jpg";
-                    PictureImageProduct.SelectedDirectory = picture.DirectoryPath;
-
-                    uploadState = true;
-                }
-            }
-
-            return uploadState;
-        }
-
-        public void ReloadPhoto(string photoIdNumber, bool newIdNumber = false)
-        {
-            var photoPath = productPhoto.GetDirectoryPeth() + photoIdNumber;
-
-            if (productPhoto.CheckIfExtits(photoPath) == false)
-            {
-                PictureImageProduct.Image = Resources.FotoNothing;
-                return;
-            }
-
-            using (var fileStream = new FileStream(photoPath, FileMode.Open, FileAccess.Read))
-            {
-                PictureImageProduct.Image = Image.FromStream(fileStream);
-                PictureImageProduct.SelectedDirectory = photoPath;
-                PictureImageProduct.PathOfLastSelectedImage = photoPath;
-                PictureImageProduct.ImageId = photoIdNumber;
-
-                if (newIdNumber == true)
-                {
-                    photoIdNumber = productPhoto.GetNumberId() + ".jpg";
-                    PictureImageProduct.ImageId = photoIdNumber;
-                }
-
-            }
-        }
-
         private void ResetControls()
         {
             try
@@ -370,11 +274,6 @@ namespace DimStock.UserForms
                         ctl.Text = string.Empty;
                     }
                 }
-
-                PictureImageProduct.Image = Resources.FotoNothing;
-                PictureImageProduct.ImageId = string.Empty;
-                PictureImageProduct.SelectedDirectory = string.Empty;
-                PictureImageProduct.PathOfLastSelectedImage = string.Empty;
 
                 TextInternalCode.Select();
             }
@@ -400,7 +299,7 @@ namespace DimStock.UserForms
         {
             try
             {
-                var category = new ProductCategory(pagination)
+                var category = new Category(pagination)
                 {
                     Description = ComboBoxCategoryList.Text
                 };

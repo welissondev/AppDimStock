@@ -30,7 +30,7 @@ namespace DimStock.UserForms
 
         #region Form
 
-        private void ProductCategoryListingForm_Load(object sender, EventArgs e)
+        private void CategoryListingForm_Load(object sender, EventArgs e)
         {
             StartSearchTimer();
         }
@@ -194,7 +194,7 @@ namespace DimStock.UserForms
         {
             try
             {
-                var category = new ProductCategory(pagination)
+                var category = new Category(pagination)
                 {
                     Description = TextSearchByDescription.Text,
                 };
@@ -241,7 +241,7 @@ namespace DimStock.UserForms
                 MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation,
                 MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
-                    var category = new ProductCategory();
+                    var category = new Category();
 
                     if (category.Remove(Id) == false)
                     {
@@ -265,7 +265,7 @@ namespace DimStock.UserForms
         {
             try
             {
-                var category = new ProductCategory();
+                var category = new Category();
                 category.GetDetail(Id);
 
                 var categoryForm = new CategoryAddForm()

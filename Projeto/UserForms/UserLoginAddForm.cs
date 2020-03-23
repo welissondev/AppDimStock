@@ -114,7 +114,7 @@ namespace DimStock.UserForms
             {
                 if (ValidadeData() == true)
                 {
-                    var user = new User
+                    var user = new UserLogin
                     {
                         Name = TextUserName.Text.TrimStart().TrimEnd(),
                         Email = TextEmail.Text.TrimStart().TrimEnd(),
@@ -154,7 +154,7 @@ namespace DimStock.UserForms
             {
                 if (ValidadeData() == true)
                 {
-                    var user = new User
+                    var user = new UserLogin
                     {
                         Name = TextUserName.Text,
                         Email = TextEmail.Text,
@@ -189,7 +189,7 @@ namespace DimStock.UserForms
         {
             try
             {
-                var user = new User();
+                var user = new UserLogin();
                 user.GetDetail(id);
 
                 id = user.Id;

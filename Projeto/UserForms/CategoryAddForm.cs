@@ -57,7 +57,7 @@ namespace DimStock.UserForms
         {
             if (ValidateData() == true)
             {
-                var category = new ProductCategory()
+                var category = new Category()
                 {
                     Description = TextDescription.Text
                 };
@@ -79,7 +79,7 @@ namespace DimStock.UserForms
         {
             if (ValidateData() == true)
             {
-                var category = new ProductCategory()
+                var category = new Category()
                 {
                     Description = TextDescription.Text
                 };

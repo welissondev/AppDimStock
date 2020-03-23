@@ -6,18 +6,18 @@ using System.Linq;
 
 namespace DimStock.Models
 {
-    public class ProductCategory
+    public class Category
     {
         #region Builder
 
-        public ProductCategory() { }
+        public Category() { }
 
-        public ProductCategory(AccessConnection connection)
+        public Category(AccessConnection connection)
         {
             this.connection = connection;
         }
 
-        public ProductCategory(AxlDataPage pagination)
+        public Category(AxlDataPage pagination)
         {
             Pagination = pagination;
         }
@@ -34,7 +34,7 @@ namespace DimStock.Models
 
         public int Id { get; set; }
         public string Description { get; set; }
-        public List<ProductCategory> List { get; set; }
+        public List<Category> List { get; set; }
         public AxlDataPage Pagination { get; set; }
 
         #endregion
@@ -50,7 +50,7 @@ namespace DimStock.Models
             {
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
-                    sqlCommand = @"INSERT INTO ProductCategory
+                    sqlCommand = @"INSERT INTO Category
                     (Description)VALUES(@Description)";
 
                     connection.AddParameter("@Description", Description);
@@ -61,7 +61,7 @@ namespace DimStock.Models
 
                     //Pegar id do último registro inserido
                     Id = Convert.ToInt32(connection.ExecuteScalar(
-                    "SELECT MAX(Id) From ProductCategory"));
+                    "SELECT MAX(Id) From Category"));
 
                     //Finalizar transação
                     connection.Transaction.Commit();
@@ -84,7 +84,7 @@ namespace DimStock.Models
                 using (connection.Transaction =
                 connection.Open().BeginTransaction())
                 {
-                    sqlCommand = @"UPDATE ProductCategory SET 
+                    sqlCommand = @"UPDATE Category SET 
                     Description = @Description WHERE Id = @Id";
 
                     connection.AddParameter("@Description", Description);
@@ -116,7 +116,7 @@ namespace DimStock.Models
                 using (connection.Transaction =
                 connection.Open().BeginTransaction())
                 {
-                    sqlCommand = @"DELETE FROM ProductCategory 
+                    sqlCommand = @"DELETE FROM Category 
                     WHERE Id = @Id";
 
                     connection.AddParameter("@Id", id);
@@ -141,7 +141,7 @@ namespace DimStock.Models
             using (var connection = new AccessConnection())
             {
                 var sqlQuery = @"SELECT Id, Description From 
-                ProductCategory Where Id = @Id ";
+                Category Where Id = @Id ";
 
                 connection.AddParameter("@Id", id);
 
@@ -165,10 +165,10 @@ namespace DimStock.Models
                 var criterion = string.Empty;
                 var parameter = connection.Command.Parameters;
 
-                sqlQuery = @"SELECT * FROM ProductCategory 
+                sqlQuery = @"SELECT * FROM Category 
                 WHERE Id > 0 ";
 
-                sqlCount = @"SELECT COUNT(*) FROM ProductCategory 
+                sqlCount = @"SELECT COUNT(*) FROM Category 
                 WHERE Id > 0 ";
 
                 if (Description != string.Empty)
@@ -202,9 +202,9 @@ namespace DimStock.Models
                 var parameter = connection.Command.Parameters;
                 var criterion = string.Empty;
                 var sqlQuery = string.Empty;
-                var categoryList = new List<ProductCategory>();
+                var categoryList = new List<Category>();
 
-                sqlQuery = @"SELECT * FROM ProductCategory 
+                sqlQuery = @"SELECT * FROM Category 
                 WHERE Id > 0 ";
 
                 if (Description != string.Empty)
@@ -221,7 +221,7 @@ namespace DimStock.Models
                 {
                     while (reader.Read())
                     {
-                        var category = new ProductCategory
+                        var category = new Category
                         {
                             Id = Convert.ToInt32(reader["Id"]),
                             Description = Convert.ToString(reader["Description"])
@@ -237,11 +237,11 @@ namespace DimStock.Models
 
         public void PassToList(DataTable dataTable)
         {
-            var categoryList = new List<ProductCategory>();
+            var categoryList = new List<Category>();
 
             foreach (DataRow row in dataTable.Rows)
             {
-                var category = new ProductCategory()
+                var category = new Category()
                 {
                     Id = Convert.ToInt32(row["Id"]),
                     Description = Convert.ToString(row["Description"]),

@@ -219,7 +219,7 @@ namespace DimStock.UserForms
 
         private void MenuUser_RegisterNew_Click(object sender, EventArgs e)
         {
-            var user = new User();
+            var user = new UserLogin();
             user.GetDetail(AxlLogin.Id);
 
             if (user.PermissionToView == true)
@@ -247,7 +247,7 @@ namespace DimStock.UserForms
 
         private void MenuUser_ListUsers_Click(object sender, EventArgs e)
         {
-            var user = new User();
+            var user = new UserLogin();
             user.GetDetail(AxlLogin.Id);
 
             if (user.PermissionToView == true)
@@ -275,7 +275,7 @@ namespace DimStock.UserForms
 
         private void MenuUser_ListHistory_Click(object sender, EventArgs e)
         {
-            var user = new User();
+            var user = new UserLogin();
             user.GetDetail(AxlLogin.Id);
 
             if (user.PermissionToView == true)

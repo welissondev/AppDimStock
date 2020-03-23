@@ -7,19 +7,19 @@ using System.Linq;
 
 namespace DimStock.Models
 {
-    public class User
+    public class UserLogin
     {
         #region Builder
 
-        public User() 
+        public UserLogin() 
         { 
             
         }
 
-        public User(AxlDataPage pagination)
+        public UserLogin(AxlDataPage pagination)
         {
             Pagination = pagination;
-            List = new List<User>();
+            List = new List<UserLogin>();
         }
 
         #endregion
@@ -37,7 +37,7 @@ namespace DimStock.Models
         public bool PermissionToView { get; set; }
         public bool AllPermissions { get; set; }
         public AxlDataPage Pagination { get; set; }
-        public List<User> List { get; set; }
+        public List<UserLogin> List { get; set; }
         #endregion
 
         #region Function
@@ -48,7 +48,7 @@ namespace DimStock.Models
 
             using (var connection = new AccessConnection())
             {
-                var sqlQuery = @"SELECT * FROM [User] WHERE Login 
+                var sqlQuery = @"SELECT * FROM [UserLogin] WHERE Login 
                 LIKE @Login AND [PassWord] = @PassWord";
 
                 var paramerter = connection.Command.Parameters;
@@ -195,7 +195,7 @@ namespace DimStock.Models
 
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
-                    var sqlCommand = @"UPDATE [User] Set [Name] = @Name, Email = @Email, 
+                    var sqlCommand = @"UPDATE [UserLogin] Set [Name] = @Name, Email = @Email, 
                     Login = @Login, [PassWord] = @PassWord, PermissionToRegister = @PermissionToRegister, 
                     PermissionToEdit = @PermissionToEdit, PermissionToDelete = @PermissionToDelete, 
                     PermissionToView = @PermissionToView, AllPermissions = @AllPermissions 
@@ -249,7 +249,7 @@ namespace DimStock.Models
 
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
-                    var sqlCommand = @"DELETE FROM [User] WHERE Id = @Id";
+                    var sqlCommand = @"DELETE FROM [UserLogin] WHERE Id = @Id";
 
                     connection.ClearParameter();
                     connection.AddParameter("@Id", id);
@@ -276,7 +276,7 @@ namespace DimStock.Models
                 {
                     while (reader.Read())
                     {
-                        var User = new User()
+                        var User = new UserLogin()
                         {
                             Id = Convert.ToInt32(reader["Id"]),
                             Name = Convert.ToString(reader["Name"]),
@@ -293,7 +293,7 @@ namespace DimStock.Models
         {
             using (var connection = new AccessConnection())
             {
-                var sqlQuery = @"SELECT * FROM [User] WHERE Id = @Id";
+                var sqlQuery = @"SELECT * FROM [UserLogin] WHERE Id = @Id";
 
                 connection.AddParameter("@Id", id);
 
@@ -320,7 +320,7 @@ namespace DimStock.Models
         {
             using (var connection = new AccessConnection())
             {
-                var sqlQuery = @"SELECT * FROM [User] WHERE [Name]  
+                var sqlQuery = @"SELECT * FROM [UserLogin] WHERE [Name]  
                 LIKE @Name Or Email LIKE @Email";
 
                 var parameter = connection.Command.Parameters;
@@ -351,7 +351,7 @@ namespace DimStock.Models
             {
                 var userFound = 0;
 
-                var sqlQuery = @"SELECT Login FROM [User] 
+                var sqlQuery = @"SELECT Login FROM [UserLogin] 
                 WHERE Login LIKE @Login";
 
                 connection.AddParameter("@Login", Login);
@@ -391,7 +391,7 @@ namespace DimStock.Models
         {
             using (var connection = new AccessConnection())
             {
-                var sqlQuery = "SELECT Id FROM [User] WHERE Id = @Id";
+                var sqlQuery = "SELECT Id FROM [UserLogin] WHERE Id = @Id";
                 var recordsFound = 0;
 
                 connection.ClearParameter();
@@ -413,7 +413,7 @@ namespace DimStock.Models
         {
             foreach (DataRow row in dataTable.Rows)
             {
-                var User = new User()
+                var User = new UserLogin()
                 {
                     Id = Convert.ToInt32(row["Id"]),
                     Name = Convert.ToString(row["Login"]),
