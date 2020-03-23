@@ -291,8 +291,7 @@ namespace DimStock.Models
                             Description = Convert.ToString(reader["Description"]),
                             InternalCode = Convert.ToString(reader["InternalCode"]),
                             CostPrice = Convert.ToDouble(reader["CostPrice"]),
-                            SalePrice = Convert.ToDouble(reader["SalePrice"]),
-                            Photo = Convert.ToString(reader["Photo"])
+                            SalePrice = Convert.ToDouble(reader["SalePrice"])
                         };
 
                         List.Add(product);
