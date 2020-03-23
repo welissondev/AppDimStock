@@ -10,10 +10,10 @@ namespace DimStock.Models
         public void TransferDataBaseToMainDirectory()
         {
             var sourcePath = GetDirectoryOfExe() +
-            @"Resources\dimstock-database.mdb";
+            @"Resources\dimstockdatabase.mdb";
 
             var destPath = Settings.Default.MainAppDirectory +
-            @"\dimstock-database.mdb";
+            @"\dimstockdatabase.mdb";
 
             var dataBase = new AxlFile();
 
@@ -48,7 +48,7 @@ namespace DimStock.Models
 
             var hour = hor + "." + min + "." + sec;
 
-            var sourcePath = GetMainAppDirectory() + @"\dimstock-database.mdb";
+            var sourcePath = GetMainAppDirectory() + @"\dimstockdatabase.mdb";
 
             var destPath = GetMainAppDirectory() + @"\DataBaseBackUp\dimStockBackup " 
             + date + " " + hour + ".mdb";
@@ -74,7 +74,6 @@ namespace DimStock.Models
             var listFolders = new List<string>()
             {
                 "DataBaseBackUp",
-                "ProductPhotos",
                 "CompanyLogo"
             };
 
