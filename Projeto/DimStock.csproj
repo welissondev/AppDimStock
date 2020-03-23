@@ -164,23 +164,14 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Models\AppSetting.cs" />
+    <Compile Include="Models\Stock.cs" />
     <Compile Include="Models\StockDestination.cs" />
     <Compile Include="Models\StockMovementItem.cs" />
     <Compile Include="Models\StockMovement.cs" />
     <Compile Include="Auxiliarys\AxlMessageNotifier.cs" />
     <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\Stock.cs" />
     <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Models\UserHistory.cs" />
-    <Compile Include="Interfaces\IDataChecker.cs" />
-    <Compile Include="Interfaces\IDataTransfer.cs" />
-    <Compile Include="Interfaces\IDataViewer.cs" />
-    <Compile Include="Interfaces\IDataEditor.cs" />
-    <Compile Include="Interfaces\IDataFetch.cs" />
-    <Compile Include="Interfaces\IDataList.cs" />
-    <Compile Include="Interfaces\IDataRemover.cs" />
-    <Compile Include="Interfaces\IReportGenerator.cs" />
-    <Compile Include="Interfaces\IDataSave.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Auxiliarys\AxlFile.cs" />

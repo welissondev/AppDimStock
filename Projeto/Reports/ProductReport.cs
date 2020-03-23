@@ -1,11 +1,10 @@
 ﻿using DimStock.Models;
-using System.Collections.Generic;
-using DimStock.Interfaces;
 using DimStock.UserForms;
+using System.Collections.Generic;
 
 namespace DimStock.Reports
 {
-    public class ProductReport : IReportGenerator<Product>
+    public class ProductReport 
     {
         #region Get e Set
 
