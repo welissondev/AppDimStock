@@ -33,7 +33,7 @@ namespace DimStock.Auxiliarys
             datagrid.RowHeadersVisible = false;
             datagrid.ColumnHeadersVisible = true;
             datagrid.AllowUserToResizeColumns = false;
-            datagrid.AutoGenerateColumns = false;
+            datagrid.AutoGenerateColumns = true;
         }
 
         public static void DefineStyleItem(DataGridView datagrid)

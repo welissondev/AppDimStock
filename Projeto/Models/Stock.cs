@@ -325,7 +325,7 @@ namespace DimStock.Models
                     //Finalza o transação
                     connection.Transaction.Commit();
 
-                    AxlMessageNotifier.Message = "Ok, todos os estoques foram cadastrados!";
+                    MessageNotifier.Message = "Ok, todos os estoques foram cadastrados!";
                 }
 
                 return transactionState;
@@ -366,7 +366,7 @@ namespace DimStock.Models
                     //Finaliza a transação
                     connection.Transaction.Commit();
 
-                    AxlMessageNotifier.Message = "Ok! Todos os estoques foram retirados!";
+                    MessageNotifier.Message = "Ok! Todos os estoques foram retirados!";
                 }
 
                 return transactionState;

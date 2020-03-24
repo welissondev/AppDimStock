@@ -140,7 +140,7 @@ namespace DimStock.Models
         {
             if (CheckIfExists(id) == false)
             {
-                AxlMessageNotifier.Message = "Esse registro já foi " +
+                MessageNotifier.Message = "Esse registro já foi " +
                 "excluido, atualize a lista de dados!";
 
                 return false;
@@ -187,7 +187,7 @@ namespace DimStock.Models
                     //Finaliza o transação
                     connection.Transaction.Commit();
 
-                    AxlMessageNotifier.Message = "Deletado com sucesso!";
+                    MessageNotifier.Message = "Deletado com sucesso!";
                 }
 
                 return transactionState;

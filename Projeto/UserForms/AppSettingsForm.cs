@@ -327,7 +327,7 @@ namespace DimStock.UserForms
 
             if (user.CreateNewLogin() == false)
             {
-                MessageBox.Show(AxlMessageNotifier.Message);
+                MessageBox.Show(MessageNotifier.Message);
                 return false;
             }
 

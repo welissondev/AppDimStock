@@ -18,7 +18,7 @@ namespace DimStock.UserForms
 
             if (AppSetting.GetAppSettingsState() == true)
             {
-                Application.Run(new HomeScreenForm());
+                Application.Run(new CategoryListingForm());
             }
             else
             {

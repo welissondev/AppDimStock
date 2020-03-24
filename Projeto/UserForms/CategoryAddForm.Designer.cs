@@ -31,8 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CategoryAddForm));
             this.TextDescription = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.LabelTextDescription = new System.Windows.Forms.Label();
-            this.ButtonSave = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.ButtonClear = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.ButtonUpdate = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.ButtonResetView = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.ButtonDelete = new Bunifu.Framework.UI.BunifuThinButton2();
             ((System.ComponentModel.ISupportInitialize)(this.TextDescription)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,72 +73,100 @@
             this.LabelTextDescription.TabIndex = 215;
             this.LabelTextDescription.Text = "Descrição:";
             // 
-            // ButtonSave
+            // ButtonUpdate
             // 
-            this.ButtonSave.ActiveBorderThickness = 1;
-            this.ButtonSave.ActiveCornerRadius = 10;
-            this.ButtonSave.ActiveFillColor = System.Drawing.SystemColors.Desktop;
-            this.ButtonSave.ActiveForecolor = System.Drawing.Color.White;
-            this.ButtonSave.ActiveLineColor = System.Drawing.SystemColors.Desktop;
-            this.ButtonSave.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ButtonSave.BackColor = System.Drawing.Color.White;
-            this.ButtonSave.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonSave.BackgroundImage")));
-            this.ButtonSave.ButtonText = "Salvar";
-            this.ButtonSave.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ButtonSave.Font = new System.Drawing.Font("Calibri Light", 14F);
-            this.ButtonSave.ForeColor = System.Drawing.Color.SeaGreen;
-            this.ButtonSave.IdleBorderThickness = 1;
-            this.ButtonSave.IdleCornerRadius = 10;
-            this.ButtonSave.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
-            this.ButtonSave.IdleForecolor = System.Drawing.Color.White;
-            this.ButtonSave.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
-            this.ButtonSave.Location = new System.Drawing.Point(35, 89);
-            this.ButtonSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ButtonSave.Name = "ButtonSave";
-            this.ButtonSave.Size = new System.Drawing.Size(97, 43);
-            this.ButtonSave.TabIndex = 224;
-            this.ButtonSave.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.ButtonSave.Click += new System.EventHandler(this.ButtonSave_Click);
+            this.ButtonUpdate.ActiveBorderThickness = 1;
+            this.ButtonUpdate.ActiveCornerRadius = 10;
+            this.ButtonUpdate.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonUpdate.ActiveForecolor = System.Drawing.Color.White;
+            this.ButtonUpdate.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonUpdate.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ButtonUpdate.BackColor = System.Drawing.Color.White;
+            this.ButtonUpdate.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonUpdate.BackgroundImage")));
+            this.ButtonUpdate.ButtonText = "Salvar";
+            this.ButtonUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonUpdate.Font = new System.Drawing.Font("Calibri Light", 14F);
+            this.ButtonUpdate.ForeColor = System.Drawing.Color.SeaGreen;
+            this.ButtonUpdate.IdleBorderThickness = 1;
+            this.ButtonUpdate.IdleCornerRadius = 10;
+            this.ButtonUpdate.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonUpdate.IdleForecolor = System.Drawing.Color.White;
+            this.ButtonUpdate.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonUpdate.Location = new System.Drawing.Point(35, 89);
+            this.ButtonUpdate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ButtonUpdate.Name = "ButtonUpdate";
+            this.ButtonUpdate.Size = new System.Drawing.Size(97, 43);
+            this.ButtonUpdate.TabIndex = 224;
+            this.ButtonUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
             // 
-            // ButtonClear
+            // ButtonResetView
             // 
-            this.ButtonClear.ActiveBorderThickness = 1;
-            this.ButtonClear.ActiveCornerRadius = 10;
-            this.ButtonClear.ActiveFillColor = System.Drawing.SystemColors.Desktop;
-            this.ButtonClear.ActiveForecolor = System.Drawing.Color.White;
-            this.ButtonClear.ActiveLineColor = System.Drawing.SystemColors.Desktop;
-            this.ButtonClear.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ButtonClear.BackColor = System.Drawing.Color.White;
-            this.ButtonClear.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonClear.BackgroundImage")));
-            this.ButtonClear.ButtonText = "Limpar";
-            this.ButtonClear.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ButtonClear.Font = new System.Drawing.Font("Calibri Light", 14F);
-            this.ButtonClear.ForeColor = System.Drawing.Color.SeaGreen;
-            this.ButtonClear.IdleBorderThickness = 1;
-            this.ButtonClear.IdleCornerRadius = 10;
-            this.ButtonClear.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
-            this.ButtonClear.IdleForecolor = System.Drawing.Color.White;
-            this.ButtonClear.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
-            this.ButtonClear.Location = new System.Drawing.Point(136, 89);
-            this.ButtonClear.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ButtonClear.Name = "ButtonClear";
-            this.ButtonClear.Size = new System.Drawing.Size(97, 43);
-            this.ButtonClear.TabIndex = 223;
-            this.ButtonClear.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.ButtonClear.Click += new System.EventHandler(this.ButtonClear_Click);
+            this.ButtonResetView.ActiveBorderThickness = 1;
+            this.ButtonResetView.ActiveCornerRadius = 10;
+            this.ButtonResetView.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonResetView.ActiveForecolor = System.Drawing.Color.White;
+            this.ButtonResetView.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonResetView.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ButtonResetView.BackColor = System.Drawing.Color.White;
+            this.ButtonResetView.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonResetView.BackgroundImage")));
+            this.ButtonResetView.ButtonText = "Limpar";
+            this.ButtonResetView.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonResetView.Font = new System.Drawing.Font("Calibri Light", 14F);
+            this.ButtonResetView.ForeColor = System.Drawing.Color.SeaGreen;
+            this.ButtonResetView.IdleBorderThickness = 1;
+            this.ButtonResetView.IdleCornerRadius = 10;
+            this.ButtonResetView.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonResetView.IdleForecolor = System.Drawing.Color.White;
+            this.ButtonResetView.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonResetView.Location = new System.Drawing.Point(139, 89);
+            this.ButtonResetView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ButtonResetView.Name = "ButtonResetView";
+            this.ButtonResetView.Size = new System.Drawing.Size(97, 43);
+            this.ButtonResetView.TabIndex = 223;
+            this.ButtonResetView.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ButtonResetView.Click += new System.EventHandler(this.ButtonResetView_Click);
             // 
-            // ProductCategoryRegistrationForm
+            // ButtonDelete
+            // 
+            this.ButtonDelete.ActiveBorderThickness = 1;
+            this.ButtonDelete.ActiveCornerRadius = 10;
+            this.ButtonDelete.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonDelete.ActiveForecolor = System.Drawing.Color.White;
+            this.ButtonDelete.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonDelete.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ButtonDelete.BackColor = System.Drawing.Color.White;
+            this.ButtonDelete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonDelete.BackgroundImage")));
+            this.ButtonDelete.ButtonText = "Deletar";
+            this.ButtonDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonDelete.Font = new System.Drawing.Font("Calibri Light", 14F);
+            this.ButtonDelete.ForeColor = System.Drawing.Color.White;
+            this.ButtonDelete.IdleBorderThickness = 1;
+            this.ButtonDelete.IdleCornerRadius = 10;
+            this.ButtonDelete.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.ButtonDelete.IdleForecolor = System.Drawing.Color.White;
+            this.ButtonDelete.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.ButtonDelete.Location = new System.Drawing.Point(244, 89);
+            this.ButtonDelete.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ButtonDelete.Name = "ButtonDelete";
+            this.ButtonDelete.Size = new System.Drawing.Size(97, 43);
+            this.ButtonDelete.TabIndex = 225;
+            this.ButtonDelete.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ButtonDelete.Click += new System.EventHandler(this.ButtonDelete_Click);
+            // 
+            // CategoryAddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(571, 178);
-            this.Controls.Add(this.ButtonSave);
-            this.Controls.Add(this.ButtonClear);
+            this.Controls.Add(this.ButtonDelete);
+            this.Controls.Add(this.ButtonUpdate);
+            this.Controls.Add(this.ButtonResetView);
             this.Controls.Add(this.TextDescription);
             this.Controls.Add(this.LabelTextDescription);
             this.MinimumSize = new System.Drawing.Size(587, 217);
-            this.Name = "ProductCategoryRegistrationForm";
+            this.Name = "CategoryAddForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             ((System.ComponentModel.ISupportInitialize)(this.TextDescription)).EndInit();
@@ -149,7 +178,8 @@
         #endregion
         public Syncfusion.Windows.Forms.Tools.TextBoxExt TextDescription;
         private System.Windows.Forms.Label LabelTextDescription;
-        private Bunifu.Framework.UI.BunifuThinButton2 ButtonSave;
-        private Bunifu.Framework.UI.BunifuThinButton2 ButtonClear;
+        private Bunifu.Framework.UI.BunifuThinButton2 ButtonUpdate;
+        private Bunifu.Framework.UI.BunifuThinButton2 ButtonResetView;
+        private Bunifu.Framework.UI.BunifuThinButton2 ButtonDelete;
     }
 }

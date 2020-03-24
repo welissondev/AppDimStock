@@ -176,13 +176,13 @@ namespace DimStock.UserForms
 
                 if (product.Save() == false)
                 {
-                    MessageBox.Show(AxlMessageNotifier.Message, "ERROR",
+                    MessageBox.Show(MessageNotifier.Message, "ERROR",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     return;
                 }
 
-                MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
+                MessageBox.Show(MessageNotifier.Message, "SUCESSO",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 CallAllResets();
@@ -214,13 +214,13 @@ namespace DimStock.UserForms
 
                 if (product.Edit(Id) == false)
                 {
-                    MessageBox.Show(AxlMessageNotifier.Message, "ERROR",
+                    MessageBox.Show(MessageNotifier.Message, "ERROR",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     return;
                 }
 
-                MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
+                MessageBox.Show(MessageNotifier.Message, "SUCESSO",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
@@ -299,7 +299,7 @@ namespace DimStock.UserForms
         {
             try
             {
-                var category = new Category(pagination)
+                var category = new CategoryModel()
                 {
                     Description = ComboBoxCategoryList.Text
                 };

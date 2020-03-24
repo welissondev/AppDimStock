@@ -52,7 +52,7 @@ namespace DimStock.UserForms
                 if (stockDestination.Save() == true)
                 {
 
-                    MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
+                    MessageBox.Show(MessageNotifier.Message, "SUCESSO",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     CallAllReset();
@@ -82,7 +82,7 @@ namespace DimStock.UserForms
 
                 if (stockDestination.Edit(id) == true)
                 {
-                    MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
+                    MessageBox.Show(MessageNotifier.Message, "SUCESSO",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
@@ -107,7 +107,7 @@ namespace DimStock.UserForms
 
                 if (stockDestination.Remove(id) == true)
                 {
-                    MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
+                    MessageBox.Show(MessageNotifier.Message, "SUCESSO",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CallAllReset();
                 }

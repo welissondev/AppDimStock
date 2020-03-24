@@ -400,7 +400,7 @@ namespace DimStock.UserForms
                         if (movement.Remove(Convert.ToInt32(
                         TextStockMovementId.Text)) == true)
                         {
-                            MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
+                            MessageBox.Show(MessageNotifier.Message, "SUCESSO",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
@@ -423,7 +423,7 @@ namespace DimStock.UserForms
 
                     if (stock.AddEntries(GetItems(), Convert.ToInt32(TextStockMovementId.Text)) == true)
                     {
-                        MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO", MessageBoxButtons.OK,
+                        MessageBox.Show(MessageNotifier.Message, "SUCESSO", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
 
                         TextOperationSituation.Text = "Finalizada";
@@ -443,7 +443,7 @@ namespace DimStock.UserForms
 
                     if (stock.AddOutputs(GetItems(), Convert.ToInt32(TextStockMovementId.Text)) == true)
                     {
-                        MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO", MessageBoxButtons.OK,
+                        MessageBox.Show(MessageNotifier.Message, "SUCESSO", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
 
                         TextOperationSituation.Text = "Finalizada";

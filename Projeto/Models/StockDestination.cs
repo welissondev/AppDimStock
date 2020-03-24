@@ -34,7 +34,7 @@ namespace DimStock.Models
             {
                 if (CheckIfExists() == true)
                 {
-                    AxlMessageNotifier.Message = "Esse destino já existe, cadastre outro!";
+                    MessageNotifier.Message = "Esse destino já existe, cadastre outro!";
                     return transaction;
                 }
 
@@ -46,7 +46,7 @@ namespace DimStock.Models
                 if (connection.ExecuteCommand(sqlCommand) > 0)
                 {
                     transaction = true;
-                    AxlMessageNotifier.Message = "Cadastrado com sucesso!";
+                    MessageNotifier.Message = "Cadastrado com sucesso!";
                 }
             }
 
@@ -67,7 +67,7 @@ namespace DimStock.Models
 
                 if (connection.ExecuteCommand(sqlCommand) > 0)
                 {
-                    AxlMessageNotifier.Message = "Editado com sucesso!";
+                    MessageNotifier.Message = "Editado com sucesso!";
                     transaction = true;
                 }
             }
@@ -88,12 +88,12 @@ namespace DimStock.Models
 
                 if (connection.ExecuteCommand(sqlCommand) > 0)
                 {
-                    AxlMessageNotifier.Message = "Deletado com sucesso!";
+                    MessageNotifier.Message = "Deletado com sucesso!";
                     transaction = true;
                 }
                 else
                 {
-                    AxlMessageNotifier.Message = "Esse registro já foi " +
+                    MessageNotifier.Message = "Esse registro já foi " +
                     "deletado, atualize a lista de dados!";
                 }
             }

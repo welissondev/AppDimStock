@@ -200,12 +200,12 @@ namespace DimStock.UserForms
 
                     if (user.Remove(id) == true)
                     {
-                        MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
+                        MessageBox.Show(MessageNotifier.Message, "SUCESSO",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show(AxlMessageNotifier.Message, "AVISO",
+                        MessageBox.Show(MessageNotifier.Message, "AVISO",
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }

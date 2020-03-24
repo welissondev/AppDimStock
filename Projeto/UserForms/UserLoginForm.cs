@@ -43,7 +43,7 @@ namespace DimStock.UserForms
 
                 if (user.SignIn() == false)
                 {
-                    MessageBox.Show(AxlMessageNotifier.Message, "NÃO ENCONTRADO",
+                    MessageBox.Show(MessageNotifier.Message, "NÃO ENCONTRADO",
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }

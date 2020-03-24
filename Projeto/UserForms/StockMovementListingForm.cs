@@ -346,12 +346,12 @@ namespace DimStock.UserForms
 
                     if (stockMovement.Remove(id) == true)
                     {
-                        MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
+                        MessageBox.Show(MessageNotifier.Message, "SUCESSO",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show(AxlMessageNotifier.Message, "ATENÇÃO",
+                        MessageBox.Show(MessageNotifier.Message, "ATENÇÃO",
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }

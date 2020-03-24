@@ -344,13 +344,13 @@ namespace DimStock.UserForms
 
                     if (product.Remove(Id) == false)
                     {
-                        MessageBox.Show(AxlMessageNotifier.Message, "ATENÇÃO",
+                        MessageBox.Show(MessageNotifier.Message, "ATENÇÃO",
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                         return;
                     }
 
-                    MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
+                    MessageBox.Show(MessageNotifier.Message, "SUCESSO",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     CallAllResets();

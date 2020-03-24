@@ -74,7 +74,7 @@ namespace DimStock.Models
 
             if (accessState == false)
             {
-                AxlMessageNotifier.Message = "Usuário não encontrado!";
+                MessageNotifier.Message = "Usuário não encontrado!";
             }
 
             return accessState;
@@ -177,7 +177,7 @@ namespace DimStock.Models
                     //Finaliza a transação
                     connection.Transaction.Commit();
 
-                    AxlMessageNotifier.Message = "Usuário cadastado com sucesso!";
+                    MessageNotifier.Message = "Usuário cadastado com sucesso!";
                 }
 
                 return transactionState;
@@ -218,7 +218,7 @@ namespace DimStock.Models
                     //Finaliza a transação
                     connection.Transaction.Commit();
 
-                    AxlMessageNotifier.Message = "Usuário alterado com sucesso!";
+                    MessageNotifier.Message = "Usuário alterado com sucesso!";
                 }
 
                 return transactionState;
@@ -229,7 +229,7 @@ namespace DimStock.Models
         {
             if (CheckIfResgisterExists(id) == false)
             {
-                AxlMessageNotifier.Message = "Esse registro já foi excluido " +
+                MessageNotifier.Message = "Esse registro já foi excluido " +
                 "atualize a lista de dados";
 
                 return false;
@@ -237,7 +237,7 @@ namespace DimStock.Models
 
             if (CheckCurrentRegister(id) == true)
             {
-                AxlMessageNotifier.Message = "Você não pode deletar seu " +
+                MessageNotifier.Message = "Você não pode deletar seu " +
                 "próprio registro de usuário!";
 
                 return false;
@@ -259,7 +259,7 @@ namespace DimStock.Models
                     //Finaliza a transação
                     connection.Transaction.Commit();
 
-                    AxlMessageNotifier.Message = "Usuário excluido com sucesso!";
+                    MessageNotifier.Message = "Usuário excluido com sucesso!";
                 }
 
                 return transactionState;
@@ -339,7 +339,7 @@ namespace DimStock.Models
             var validation = AxlEmailAddress.Validate(email);
 
             if (validation == false)
-                AxlMessageNotifier.Message = "O endereço de e-mail " +
+                MessageNotifier.Message = "O endereço de e-mail " +
                 "informado não é válido!";
 
             return validation;
@@ -366,7 +366,7 @@ namespace DimStock.Models
 
                 if (userFound > 0)
                 {
-                    AxlMessageNotifier.Message = "Já existe um usuário " +
+                    MessageNotifier.Message = "Já existe um usuário " +
                     "com o login |" + Login + "|. Por favor, informe " +
                     "outro nome de login!";
                 }

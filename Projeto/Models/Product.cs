@@ -12,13 +12,13 @@ namespace DimStock.Models
 
         public Product()
         {
-            Category = new Category();
+            Category = new CategoryModel();
         }
 
         public Product(AxlDataPage pagination)
         {
             Pagination = pagination;
-            Category = new Category();
+            Category = new CategoryModel();
             List = new List<Product>();
         }
 
@@ -33,7 +33,7 @@ namespace DimStock.Models
         public double SalePrice { get; set; }
         public string BarCode { get; set; }
         public string Photo { get; set; }
-        public Category Category { get; set; }
+        public CategoryModel Category { get; set; }
         public AxlDataPage Pagination { get; set; }
         public List<Product> List { get; set; }
 
@@ -78,7 +78,7 @@ namespace DimStock.Models
                     //Fianalizar transação
                     connection.Transaction.Commit();
 
-                    AxlMessageNotifier.Message = "Produto cadastrado com sucesso!";
+                    MessageNotifier.Message = "Produto cadastrado com sucesso!";
                 }
 
                 return transactionState;
@@ -126,7 +126,7 @@ namespace DimStock.Models
                     //Fianaliza a transação
                     connection.Transaction.Commit();
 
-                    AxlMessageNotifier.Message = "Produto alterado com sucesso!";
+                    MessageNotifier.Message = "Produto alterado com sucesso!";
                 }
 
                 return transactionState;
@@ -137,7 +137,7 @@ namespace DimStock.Models
         {
             if (CheckIfExists(id) == false)
             {
-                AxlMessageNotifier.Message = "Esse registro já foi excluido, " +
+                MessageNotifier.Message = "Esse registro já foi excluido, " +
                "atualize a lista de dados!";
 
                 return false;
@@ -158,7 +158,7 @@ namespace DimStock.Models
                     //Fianaliza transação
                     connection.Transaction.Commit();
 
-                    AxlMessageNotifier.Message = "Produto deletado com sucesso!";
+                    MessageNotifier.Message = "Produto deletado com sucesso!";
                 }
 
                 return transactionState;

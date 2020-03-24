@@ -1,41 +1,52 @@
 ﻿using DimStock.Auxiliarys;
-using DimStock.Models;
-using Syncfusion.Windows.Forms.Tools;
+using DimStock.Presenters;
+using DimStock.Views;
 using System;
 using System.Windows.Forms;
 
+
+/// <summary>
+/// Métodos da classe
+/// </summary>
+namespace DimStock.UserForms
+{
+    public partial class CategoryAddForm : ICategoryAddView
+    {
+        public int Id { get; set; }
+        public string Description { get => TextDescription.Text; set => TextDescription.Text = value; }
+    }
+}
+
+/// <summary>
+/// Eventos da classe
+/// </summary>
 namespace DimStock.UserForms
 {
     public partial class CategoryAddForm : Form
     {
-        #region Builder
-
         public CategoryAddForm()
         {
             InitializeComponent();
         }
 
-        #endregion
-
-        #region Properties
-
-        public int Id = 0;
-
-        #endregion
-
-        #region Button
-
-        private void ButtonSave_Click(object sender, EventArgs e)
+        private void ButtonUpdate_Click(object sender, EventArgs e)
         {
             try
             {
-                if (Id > 0)
+                var presenter = new CategoryAddPresenter(this);
+                var actionResult = presenter.Update();
+
+                switch (actionResult)
                 {
-                    Edit();
-                }
-                else
-                {
-                    Save();
+                    case true:
+                        MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+
+                    case false:
+                        MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        break;
                 }
             }
             catch (Exception ex)
@@ -44,73 +55,29 @@ namespace DimStock.UserForms
             }
         }
 
-        private void ButtonClear_Click(object sender, EventArgs e)
-        {
-            CallAllResets();
-        }
-
-        #endregion
-
-        #region Function
-
-        private void Save()
-        {
-            if (ValidateData() == true)
-            {
-                var category = new Category()
-                {
-                    Description = TextDescription.Text
-                };
-
-                if (category.Save() == false)
-                {
-                    MessageBox.Show(AxlMessageNotifier.Message, "ERRO");
-                    return;
-                }
-
-                MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                TextDescription.Text = string.Empty;
-            }
-        }
-
-        private void Edit()
-        {
-            if (ValidateData() == true)
-            {
-                var category = new Category()
-                {
-                    Description = TextDescription.Text
-                };
-
-                if (category.Edit(Id) == false)
-                {
-                    MessageBox.Show(AxlMessageNotifier.Message, "ERRO");
-                    return;
-                }
-
-                MessageBox.Show(AxlMessageNotifier.Message, "SUCESSO",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        private void ResetProperties()
-        {
-            Id = 0;
-        }
-
-        private void ResetControls()
+        private void ButtonDelete_Click(object sender, EventArgs e)
         {
             try
             {
-                foreach (Control ctl in Controls)
-                {
-                    if (ctl.GetType() == typeof(TextBoxExt))
-                        ctl.Text = string.Empty;
-                }
+                if (MessageBox.Show("Confirma a exclusão dessa categoria?", "IMPORTANTE",
+                MessageBoxButtons.YesNo, MessageBoxIcon.None, MessageBoxDefaultButton.Button2) ==
+                DialogResult.No) return;
 
-                TextDescription.Select();
+                var presenter = new CategoryAddPresenter(this);
+                var actionResult = presenter.Delete();
+
+                switch (actionResult)
+                {
+                    case true:
+                        MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+
+                    case false:
+                        MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        break;
+                }
             }
             catch (Exception ex)
             {
@@ -118,25 +85,59 @@ namespace DimStock.UserForms
             }
         }
 
-        private void CallAllResets()
+        private void ButtonResetView_Click(object sender, EventArgs e)
         {
-            ResetProperties();
-            ResetControls();
-        }
-
-        private bool ValidateData()
-        {
-            if (TextDescription.Text == string.Empty || TextDescription.Text == null)
+            try
             {
-                MessageBox.Show("Descreva a categoria!", "OBRIGATÓRIO",
-                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                var presenter = new CategoryAddPresenter(this);
+                presenter.ResetView();
+            }
+            catch (Exception ex)
+            {
+                AxlException.Message.Show(ex);
+            }
+        }
+    }
+}
 
-                return false;
+/// <summary>
+/// Métodos auxiliares
+/// </summary>
+namespace DimStock.UserForms
+{
+    public partial class CategoryAddForm
+    {
+        public static void ShowForm()
+        {
+            try
+            {
+                var categoryForm = new CategoryAddForm()
+                {
+                    ShowInTaskbar = false,
+                    MaximizeBox = false,
+                    MinimizeBox = false
+                };
+
+                categoryForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                AxlException.Message.Show(ex);
             }
 
-            return true;
         }
 
-        #endregion
+        public static void SetDetail(ICategoryAddView view)
+        {
+            var categoryAddForm = new CategoryAddForm()
+            {
+                Id = view.Id,
+                Description = view.Description,
+                ShowInTaskbar = false,
+                MinimizeBox = false
+            };
+
+            categoryAddForm.ShowDialog();
+        }
     }
 }
