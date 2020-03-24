@@ -273,34 +273,6 @@ namespace DimStock.UserForms
             }
         }
 
-        private void MenuUser_ListHistory_Click(object sender, EventArgs e)
-        {
-            var user = new UserLogin();
-            user.GetDetail(AxlLogin.Id);
-
-            if (user.PermissionToView == true)
-            {
-                AxlMdiForm.CloseAllForms();
-
-                var form = new UserHistoryListingForm()
-                {
-                    MdiParent = this,
-                    FormBorderStyle = FormBorderStyle.None,
-                    Dock = DockStyle.Fill,
-                };
-
-                form.Show();
-
-                LabelNavegationDescription.Text = "Lista De Históricos";
-            }
-            else
-            {
-                MessageBox.Show("Você não tem permissão para acessar " +
-                "essa ária!", "ACESSO NEGADO", MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
-            }
-        }
-
         private void MenuSettings_Backup_GenerateNew_Click(object sender, EventArgs e)
         {
             AxlMdiForm.CloseAllForms();

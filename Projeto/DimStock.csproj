@@ -133,7 +133,6 @@
     <Compile Include="Auxiliarys\MessageNotifier.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\UserLogin.cs" />
-    <Compile Include="Models\UserHistory.cs" />
     <Compile Include="Presenters\CategoryAddPresenter.cs" />
     <Compile Include="Presenters\CategoryListingPresenter.cs" />
     <Compile Include="Program.cs" />
@@ -219,12 +218,6 @@
     <Compile Include="UserForms\StockMovementAddForm.Designer.cs">
       <DependentUpon>StockMovementAddForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserForms\UserHistoryListingForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UserForms\UserHistoryListingForm.Designer.cs">
-      <DependentUpon>UserHistoryListingForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserForms\UserListingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -287,9 +280,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserForms\StockMovementAddForm.resx">
       <DependentUpon>StockMovementAddForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserForms\UserHistoryListingForm.resx">
-      <DependentUpon>UserHistoryListingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserForms\UserListingForm.resx">
       <DependentUpon>UserListingForm.cs</DependentUpon>
