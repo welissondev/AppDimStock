@@ -285,7 +285,7 @@ namespace DimStock.UserForms
 
                 userForm.Id = product.Id;
                 userForm.CategoryId = product.Category.Id;
-                userForm.ComboBoxCategoryList.Text = product.Category.Description.ToString();
+                userForm.BoxCategory.Text = product.Category.Description.ToString();
                 userForm.TextInternalCode.Text = product.InternalCode.ToString();
                 userForm.TextDescription.Text = product.Description;
                 userForm.TextCostPrice.Text = product.CostPrice.ToString();
@@ -373,7 +373,7 @@ namespace DimStock.UserForms
                 product.GetDetail(Id);
 
                 productForm.CategoryId = product.Category.Id;
-                productForm.ComboBoxCategoryList.Text = product.Category.Description;
+                productForm.BoxCategory.Text = product.Category.Description;
                 productForm.TextInternalCode.Text = product.InternalCode;
                 productForm.TextDescription.Text = product.Description;
                 productForm.TextCostPrice.Text = product.CostPrice.ToString();

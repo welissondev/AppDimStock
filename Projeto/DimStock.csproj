@@ -238,6 +238,7 @@
     </Compile>
     <Compile Include="Views\ICategoryAddView.cs" />
     <Compile Include="Views\ICategoryListingView.cs" />
+    <Compile Include="Views\IProductAddView.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>

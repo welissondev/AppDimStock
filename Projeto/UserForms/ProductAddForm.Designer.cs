@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductAddForm));
             this.TextBarCode = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.TextSalePrice = new Syncfusion.Windows.Forms.Tools.CurrencyTextBox();
@@ -38,15 +37,11 @@
             this.SalePriceTitle = new System.Windows.Forms.Label();
             this.CostPriceTitle = new System.Windows.Forms.Label();
             this.DescriptionTitle = new System.Windows.Forms.Label();
-            this.ButtonClearFields = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.ButtonPresenter_ResetView = new Bunifu.Framework.UI.BunifuThinButton2();
             this.ButtonSave = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.ButtonShow_CategoryRegistrationForm = new System.Windows.Forms.LinkLabel();
-            this.ComboBoxCategoryList = new System.Windows.Forms.ComboBox();
+            this.ButtonShow_CategoryAddForm = new System.Windows.Forms.LinkLabel();
+            this.BoxCategory = new System.Windows.Forms.ComboBox();
             this.LblStockDestination = new System.Windows.Forms.Label();
-            this.ListviewCategory = new System.Windows.Forms.ListView();
-            this.ColumnCategoryId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ColumnProductCategory = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.SearchTimer = new System.Windows.Forms.Timer(this.components);
             this.TextInternalCode = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.TextBarCode)).BeginInit();
@@ -211,32 +206,32 @@
             this.DescriptionTitle.TabIndex = 61;
             this.DescriptionTitle.Text = "Descrição:";
             // 
-            // ButtonClearFields
+            // ButtonPresenter_ResetView
             // 
-            this.ButtonClearFields.ActiveBorderThickness = 1;
-            this.ButtonClearFields.ActiveCornerRadius = 10;
-            this.ButtonClearFields.ActiveFillColor = System.Drawing.SystemColors.Desktop;
-            this.ButtonClearFields.ActiveForecolor = System.Drawing.Color.White;
-            this.ButtonClearFields.ActiveLineColor = System.Drawing.SystemColors.Desktop;
-            this.ButtonClearFields.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ButtonClearFields.BackColor = System.Drawing.Color.White;
-            this.ButtonClearFields.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonClearFields.BackgroundImage")));
-            this.ButtonClearFields.ButtonText = "Limpar";
-            this.ButtonClearFields.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ButtonClearFields.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonClearFields.ForeColor = System.Drawing.Color.SeaGreen;
-            this.ButtonClearFields.IdleBorderThickness = 1;
-            this.ButtonClearFields.IdleCornerRadius = 10;
-            this.ButtonClearFields.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
-            this.ButtonClearFields.IdleForecolor = System.Drawing.Color.White;
-            this.ButtonClearFields.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
-            this.ButtonClearFields.Location = new System.Drawing.Point(256, 355);
-            this.ButtonClearFields.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ButtonClearFields.Name = "ButtonClearFields";
-            this.ButtonClearFields.Size = new System.Drawing.Size(97, 43);
-            this.ButtonClearFields.TabIndex = 213;
-            this.ButtonClearFields.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.ButtonClearFields.Click += new System.EventHandler(this.ButtonClearFields_Click_1);
+            this.ButtonPresenter_ResetView.ActiveBorderThickness = 1;
+            this.ButtonPresenter_ResetView.ActiveCornerRadius = 10;
+            this.ButtonPresenter_ResetView.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonPresenter_ResetView.ActiveForecolor = System.Drawing.Color.White;
+            this.ButtonPresenter_ResetView.ActiveLineColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonPresenter_ResetView.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ButtonPresenter_ResetView.BackColor = System.Drawing.Color.White;
+            this.ButtonPresenter_ResetView.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonPresenter_ResetView.BackgroundImage")));
+            this.ButtonPresenter_ResetView.ButtonText = "Limpar";
+            this.ButtonPresenter_ResetView.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonPresenter_ResetView.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonPresenter_ResetView.ForeColor = System.Drawing.Color.SeaGreen;
+            this.ButtonPresenter_ResetView.IdleBorderThickness = 1;
+            this.ButtonPresenter_ResetView.IdleCornerRadius = 10;
+            this.ButtonPresenter_ResetView.IdleFillColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonPresenter_ResetView.IdleForecolor = System.Drawing.Color.White;
+            this.ButtonPresenter_ResetView.IdleLineColor = System.Drawing.Color.MediumSeaGreen;
+            this.ButtonPresenter_ResetView.Location = new System.Drawing.Point(256, 355);
+            this.ButtonPresenter_ResetView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ButtonPresenter_ResetView.Name = "ButtonPresenter_ResetView";
+            this.ButtonPresenter_ResetView.Size = new System.Drawing.Size(97, 43);
+            this.ButtonPresenter_ResetView.TabIndex = 213;
+            this.ButtonPresenter_ResetView.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ButtonPresenter_ResetView.Click += new System.EventHandler(this.ButtonPresenter_ResetView_Click);
             // 
             // ButtonSave
             // 
@@ -265,32 +260,32 @@
             this.ButtonSave.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonSave.Click += new System.EventHandler(this.ButtonSave_Click);
             // 
-            // ButtonShow_CategoryRegistrationForm
+            // ButtonShow_CategoryAddForm
             // 
-            this.ButtonShow_CategoryRegistrationForm.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ButtonShow_CategoryRegistrationForm.AutoSize = true;
-            this.ButtonShow_CategoryRegistrationForm.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.ButtonShow_CategoryRegistrationForm.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(87)))), ((int)(((byte)(166)))));
-            this.ButtonShow_CategoryRegistrationForm.Location = new System.Drawing.Point(664, 129);
-            this.ButtonShow_CategoryRegistrationForm.Name = "ButtonShow_CategoryRegistrationForm";
-            this.ButtonShow_CategoryRegistrationForm.Size = new System.Drawing.Size(96, 17);
-            this.ButtonShow_CategoryRegistrationForm.TabIndex = 216;
-            this.ButtonShow_CategoryRegistrationForm.TabStop = true;
-            this.ButtonShow_CategoryRegistrationForm.Text = "Cadastrar Nova";
-            this.ButtonShow_CategoryRegistrationForm.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ButtonShow_GategoryRegistrationForm_LinkClicked);
+            this.ButtonShow_CategoryAddForm.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ButtonShow_CategoryAddForm.AutoSize = true;
+            this.ButtonShow_CategoryAddForm.Font = new System.Drawing.Font("Calibri Light", 10F);
+            this.ButtonShow_CategoryAddForm.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(87)))), ((int)(((byte)(166)))));
+            this.ButtonShow_CategoryAddForm.Location = new System.Drawing.Point(664, 129);
+            this.ButtonShow_CategoryAddForm.Name = "ButtonShow_CategoryAddForm";
+            this.ButtonShow_CategoryAddForm.Size = new System.Drawing.Size(96, 17);
+            this.ButtonShow_CategoryAddForm.TabIndex = 216;
+            this.ButtonShow_CategoryAddForm.TabStop = true;
+            this.ButtonShow_CategoryAddForm.Text = "Cadastrar Nova";
+            this.ButtonShow_CategoryAddForm.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ButtonShow_CategoryAddForm_LinkClicked);
             // 
-            // ComboBoxCategoryList
+            // BoxCategory
             // 
-            this.ComboBoxCategoryList.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ComboBoxCategoryList.BackColor = System.Drawing.Color.White;
-            this.ComboBoxCategoryList.Font = new System.Drawing.Font("Calibri Light", 12F);
-            this.ComboBoxCategoryList.FormattingEnabled = true;
-            this.ComboBoxCategoryList.Location = new System.Drawing.Point(158, 148);
-            this.ComboBoxCategoryList.Name = "ComboBoxCategoryList";
-            this.ComboBoxCategoryList.Size = new System.Drawing.Size(601, 27);
-            this.ComboBoxCategoryList.TabIndex = 215;
-            this.ComboBoxCategoryList.Click += new System.EventHandler(this.ComboBoxCategoryList_Click);
-            this.ComboBoxCategoryList.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ComboBoxCategoryList_KeyPress);
+            this.BoxCategory.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BoxCategory.BackColor = System.Drawing.Color.White;
+            this.BoxCategory.Font = new System.Drawing.Font("Calibri Light", 12F);
+            this.BoxCategory.FormattingEnabled = true;
+            this.BoxCategory.Location = new System.Drawing.Point(158, 148);
+            this.BoxCategory.Name = "BoxCategory";
+            this.BoxCategory.Size = new System.Drawing.Size(601, 27);
+            this.BoxCategory.TabIndex = 215;
+            this.BoxCategory.Click += new System.EventHandler(this.BoxCategory_Click);
+            this.BoxCategory.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BoxCategory_KeyPress);
             // 
             // LblStockDestination
             // 
@@ -303,47 +298,6 @@
             this.LblStockDestination.Size = new System.Drawing.Size(68, 17);
             this.LblStockDestination.TabIndex = 214;
             this.LblStockDestination.Text = "Categoria:";
-            // 
-            // ListviewCategory
-            // 
-            this.ListviewCategory.Activation = System.Windows.Forms.ItemActivation.OneClick;
-            this.ListviewCategory.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ListviewCategory.BackColor = System.Drawing.Color.White;
-            this.ListviewCategory.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ListviewCategory.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.ColumnCategoryId,
-            this.ColumnProductCategory});
-            this.ListviewCategory.Font = new System.Drawing.Font("Calibri Light", 12.25F);
-            this.ListviewCategory.FullRowSelect = true;
-            this.ListviewCategory.GridLines = true;
-            this.ListviewCategory.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.ListviewCategory.HideSelection = false;
-            this.ListviewCategory.HotTracking = true;
-            this.ListviewCategory.HoverSelection = true;
-            this.ListviewCategory.Location = new System.Drawing.Point(158, 173);
-            this.ListviewCategory.MultiSelect = false;
-            this.ListviewCategory.Name = "ListviewCategory";
-            this.ListviewCategory.Size = new System.Drawing.Size(601, 10);
-            this.ListviewCategory.Sorting = System.Windows.Forms.SortOrder.Descending;
-            this.ListviewCategory.TabIndex = 218;
-            this.ListviewCategory.UseCompatibleStateImageBehavior = false;
-            this.ListviewCategory.View = System.Windows.Forms.View.Details;
-            this.ListviewCategory.Visible = false;
-            this.ListviewCategory.DoubleClick += new System.EventHandler(this.ListviewCategory_DoubleClick);
-            // 
-            // ColumnCategoryId
-            // 
-            this.ColumnCategoryId.Width = 0;
-            // 
-            // ColumnProductCategory
-            // 
-            this.ColumnProductCategory.Text = "";
-            this.ColumnProductCategory.Width = 580;
-            // 
-            // SearchTimer
-            // 
-            this.SearchTimer.Interval = 500;
-            this.SearchTimer.Tick += new System.EventHandler(this.SearchTimer_Tick);
             // 
             // TextInternalCode
             // 
@@ -389,11 +343,10 @@
             this.ClientSize = new System.Drawing.Size(928, 551);
             this.Controls.Add(this.TextInternalCode);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.ListviewCategory);
-            this.Controls.Add(this.ButtonShow_CategoryRegistrationForm);
-            this.Controls.Add(this.ComboBoxCategoryList);
+            this.Controls.Add(this.ButtonShow_CategoryAddForm);
+            this.Controls.Add(this.BoxCategory);
             this.Controls.Add(this.LblStockDestination);
-            this.Controls.Add(this.ButtonClearFields);
+            this.Controls.Add(this.ButtonPresenter_ResetView);
             this.Controls.Add(this.ButtonSave);
             this.Controls.Add(this.TextBarCode);
             this.Controls.Add(this.TextSalePrice);
@@ -427,15 +380,11 @@
         public Syncfusion.Windows.Forms.Tools.CurrencyTextBox TextSalePrice;
         public Syncfusion.Windows.Forms.Tools.CurrencyTextBox TextCostPrice;
         public Syncfusion.Windows.Forms.Tools.TextBoxExt TextDescription;
-        private Bunifu.Framework.UI.BunifuThinButton2 ButtonClearFields;
+        private Bunifu.Framework.UI.BunifuThinButton2 ButtonPresenter_ResetView;
         private Bunifu.Framework.UI.BunifuThinButton2 ButtonSave;
-        private System.Windows.Forms.LinkLabel ButtonShow_CategoryRegistrationForm;
+        private System.Windows.Forms.LinkLabel ButtonShow_CategoryAddForm;
         public System.Windows.Forms.Label LblStockDestination;
-        private System.Windows.Forms.ListView ListviewCategory;
-        private System.Windows.Forms.ColumnHeader ColumnProductCategory;
-        private System.Windows.Forms.Timer SearchTimer;
-        private System.Windows.Forms.ColumnHeader ColumnCategoryId;
-        public System.Windows.Forms.ComboBox ComboBoxCategoryList;
+        public System.Windows.Forms.ComboBox BoxCategory;
         public Syncfusion.Windows.Forms.Tools.TextBoxExt TextInternalCode;
         private System.Windows.Forms.Label label1;
     }
