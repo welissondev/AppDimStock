@@ -131,7 +131,7 @@
     <Compile Include="Models\StockMovementItem.cs" />
     <Compile Include="Models\StockMovement.cs" />
     <Compile Include="Auxiliarys\MessageNotifier.cs" />
-    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Presenters\CategoryAddPresenter.cs" />
     <Compile Include="Presenters\CategoryListingPresenter.cs" />

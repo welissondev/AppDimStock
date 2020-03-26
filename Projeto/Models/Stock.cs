@@ -12,21 +12,21 @@ namespace DimStock.Models
 
         public Stock()
         {
-            Product = new Product();
+            Product = new ProductModel();
             List = new List<Stock>();
         }
 
         public Stock(AxlDataPage pagination)
         {
             Pagination = pagination;
-            Product = new Product();
+            Product = new ProductModel();
             List = new List<Stock>();
         }
 
         public Stock(AccessConnection connection)
         {
             this.connection = connection;
-            Product = new Product();
+            Product = new ProductModel();
         }
 
         #endregion
@@ -43,7 +43,7 @@ namespace DimStock.Models
         public double TotalValue { get; set; }
         public string Result { get; set; }
         public string Summary { get => summary; set => summary = value; }
-        public Product Product { get; set; }
+        public ProductModel Product { get; set; }
         public AxlDataPage Pagination { get; set; }
         public List<Stock> List { get; set; }
 
