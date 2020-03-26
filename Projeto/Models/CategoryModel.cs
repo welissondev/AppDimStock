@@ -250,29 +250,34 @@ namespace DimStock.Models
 
         public bool GetDetail()
         {
+            var actionResult = false;
+
             if (CategoryValidationModel.ValidateToGetDetail(this) == false)
-                return false;
+                return actionResult;
 
             using (var db = new AccessConnection())
             {
-                var sql = @"SELECT Id, Description From Category Where Id = @Id ";
-                var count = 0;
+                var sql = @"SELECT Id, Description From 
+                Category Where Id = @Id ";
 
                 db.ClearParameter();
                 db.AddParameter("@Id", Id);
 
                 using (var reader = db.GetReader(sql))
                 {
-                    while (reader.Read())
+                    if (reader.FieldCount > 0)
                     {
-                        Id = Convert.ToInt32(reader["Id"]);
-                        Description = Convert.ToString(reader["Description"]);
+                        actionResult = true;
 
-                        count += 1;
+                        while (reader.Read())
+                        {
+                            Id = int.Parse(reader["Id"].ToString());
+                            Description = reader["Description"].ToString();
+                        }
                     }
                 }
 
-                return count > 0;
+                return actionResult;
             }
         }
     }
