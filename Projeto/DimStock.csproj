@@ -126,6 +126,7 @@
     </Compile>
     <Compile Include="Models\AppSetting.cs" />
     <Compile Include="Models\CategoryValidationModel.cs" />
+    <Compile Include="Models\ProductValidationModel.cs" />
     <Compile Include="Models\Stock.cs" />
     <Compile Include="Models\StockDestination.cs" />
     <Compile Include="Models\StockMovementItem.cs" />

@@ -1,5 +1,4 @@
 ﻿using DimStock.Auxiliarys;
-using System;
 using System.Collections.Generic;
 using System.Data;
 
@@ -32,6 +31,9 @@ namespace DimStock.Models
         {
             var actionResult = false;
             var sql = string.Empty;
+
+            if (ProductValidationModel.ValidateToInsert(this) == false)
+                return actionResult;
 
             using (var db = new AccessConnection())
             {
@@ -78,6 +80,9 @@ namespace DimStock.Models
         {
             var actionResult = false;
             var sql = string.Empty;
+
+            if (ProductValidationModel.ValidateToUpdate(this) == false)
+                return actionResult;
 
             using (var db = new AccessConnection())
             {
@@ -130,6 +135,9 @@ namespace DimStock.Models
             var sql = string.Empty;
             var actionResult = false;
 
+            if (ProductValidationModel.ValidateToDelete(this) == false)
+                return actionResult;
+
             using (var db = new AccessConnection())
             {
                 using (db.Transaction = db.Open().BeginTransaction())
@@ -146,56 +154,60 @@ namespace DimStock.Models
 
                         MessageNotifier.Message = "Produto excluido com sucesso!";
                         MessageNotifier.Title = "Sucesso";
-                    }              
+                    }
                 }
 
                 return actionResult;
             }
         }
 
-        public void GetDetail(int id)
+        public bool GetDetail()
         {
-            using (var connection = new AccessConnection())
+            var sql = string.Empty;
+            var actionResult = false;
+
+            if (ProductValidationModel.ValidateIfExists(this) == false)
+                return actionResult;
+
+            using (var db = new AccessConnection())
             {
-                var sqlQuery = @"SELECT Product.*, Category.* FROM Product
+                sql = @"SELECT Product.*, Category.* FROM Product
                 LEFT JOIN Category ON Product.CategoryId = Category.Id
                 WHERE Product.Id = @Id ";
 
-                connection.AddParameter("@Id", id);
+                db.ClearParameter();
+                db.AddParameter("@Id", Id);
 
-                using (var reader = connection.GetReader(sqlQuery))
+                using (var reader = db.GetReader(sql))
                 {
-                    while (reader.Read())
+                    if (reader.FieldCount > 0)
                     {
-                        Id = Convert.ToInt32(reader["Product.Id"]);
+                        actionResult = true;
 
-
-                        bool convert = int.TryParse(reader[
-                        "Category.Id"].ToString(),
-                        out int result);
-
-                        if (convert != false)
-                            Category.Id = result;
-
-                        Category.Description = Convert.ToString(
-                        reader["Category.Description"]);
-
-                        InternalCode = Convert.ToString(reader["InternalCode"]);
-                        Description = Convert.ToString(reader["Product.Description"]);
-                        CostPrice = Convert.ToDouble(reader["CostPrice"]);
-                        SalePrice = Convert.ToDouble(reader["SalePrice"]);
-                        BarCode = reader["BarCode"].ToString();
+                        while (reader.Read())
+                        {
+                            Id = int.Parse(reader["Product.Id"].ToString().Replace(null, "0"));
+                            InternalCode = reader["InternalCode"].ToString();
+                            Description = reader["Product.Description"].ToString();
+                            CostPrice = double.Parse(reader["CostPrice"].ToString());
+                            SalePrice = double.Parse(reader["SalePrice"].ToString());
+                            BarCode = reader["BarCode"].ToString();
+                            Category.Id = int.Parse(reader["Category.Id"].ToString());
+                            Category.Description = reader["Category.Description"].ToString();
+                        }
                     }
                 }
+
+                return actionResult;
             }
         }
 
         public DataTable FetchData()
         {
+            var sql = string.Empty;
+
             using (var db = new AccessConnection())
             {
-                var sql = string.Empty;
-
                 sql = @"SELECT * FROM Product WHERE Id > 0";
 
                 if (InternalCode != string.Empty)
