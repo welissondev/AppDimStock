@@ -12,8 +12,6 @@ namespace DimStock.Models
     {
         public int Id { get; set; }
         public string Description { get; set; }
-        public List<CategoryModel> List { get; set; }
-        public AxlDataPage DataPage { get; set; }
     }
 }
 
@@ -61,7 +59,7 @@ namespace DimStock.Models
             }
         }
 
-        public bool Update(int id)
+        public bool Update()
         {
             var actionResult = false;
             var sql = string.Empty;
@@ -77,7 +75,7 @@ namespace DimStock.Models
 
                     db.ClearParameter();
                     db.AddParameter("@Description", Description);
-                    db.AddParameter("@Id", id);
+                    db.AddParameter("@Id", Id);
 
                     actionResult = db.ExecuteTransaction(sql) > 0;
 
@@ -96,7 +94,7 @@ namespace DimStock.Models
             }
         }
 
-        public bool Delete(int id)
+        public bool Delete()
         {
             var actionResult = false;
             var sql = string.Empty;
@@ -111,7 +109,7 @@ namespace DimStock.Models
                     sql = @"DELETE FROM Category WHERE Id = @Id";
 
                     db.ClearParameter();
-                    db.AddParameter("@Id", id);
+                    db.AddParameter("@Id", Id);
 
                     actionResult = db.ExecuteTransaction(sql) > 0;
 
@@ -127,124 +125,6 @@ namespace DimStock.Models
                 }
 
                 return actionResult;
-            }
-        }
-
-        public DataTable FetchData()
-        {
-            using (var connection = new AccessConnection())
-            {
-                var sqlQuery = string.Empty;
-                var sqlCount = string.Empty;
-                var criterion = string.Empty;
-                var parameter = connection.Command.Parameters;
-
-                sqlQuery = @"SELECT * FROM Category 
-                WHERE Id > 0 ";
-
-                sqlCount = @"SELECT COUNT(*) FROM Category 
-                WHERE Id > 0 ";
-
-                if (Description != string.Empty)
-                {
-                    criterion += @" AND Description LIKE @Description ";
-
-                    parameter.AddWithValue("@Description",
-                    string.Format("%{0}%", Description));
-                }
-
-                sqlQuery += criterion + @"ORDER BY Description";
-
-                sqlCount += criterion;
-
-                DataPage.RecordCount =
-                Convert.ToInt32(connection.ExecuteScalar(
-                sqlCount));
-
-                var dataTable = connection.GetTable(
-                sqlQuery, DataPage.OffSetValue,
-                DataPage.PageSize);
-
-                PassToList(dataTable);
-                return dataTable;
-            }
-        }
-
-        public void ListData()
-        {
-            using (var connection = new AccessConnection())
-            {
-                var parameter = connection.Command.Parameters;
-                var criterion = string.Empty;
-                var sqlQuery = string.Empty;
-                var categoryList = new List<CategoryModel>();
-
-                sqlQuery = @"SELECT * FROM Category 
-                WHERE Id > 0 ";
-
-                if (Description != string.Empty)
-                {
-                    criterion += " AND Description LIKE @Description ";
-
-                    parameter.AddWithValue("@Description", string.Format("%{0}%",
-                    Description));
-                }
-
-                sqlQuery += criterion + @"ORDER BY Description";
-
-                using (var reader = connection.GetReader(sqlQuery))
-                {
-                    while (reader.Read())
-                    {
-                        var category = new CategoryModel
-                        {
-                            Id = Convert.ToInt32(reader["Id"]),
-                            Description = Convert.ToString(reader["Description"])
-                        };
-
-                        categoryList.Add(category);
-                    }
-
-                    List = categoryList;
-                }
-            }
-        }
-
-        public void PassToList(DataTable dataTable)
-        {
-            var categoryList = new List<CategoryModel>();
-
-            foreach (DataRow row in dataTable.Rows)
-            {
-                var category = new CategoryModel()
-                {
-                    Id = Convert.ToInt32(row["Id"]),
-                    Description = Convert.ToString(row["Description"]),
-                };
-
-                categoryList.Add(category);
-            }
-
-            List = categoryList;
-        }
-
-        public DataTable Query()
-        {
-            var sql = string.Empty;
-
-            using (var db = new AccessConnection())
-            {
-                sql = "SELECT * FROM Category ";
-
-                if (Description != string.Empty)
-                {
-                    sql += "WHERE Description LIKE @Description";
-
-                    db.AddParameter("@Description",
-                    string.Format("%{0}%", Description));
-                }
-
-                return db.GetTable(sql);
             }
         }
 
@@ -276,8 +156,28 @@ namespace DimStock.Models
                         }
                     }
                 }
+            }
 
-                return actionResult;
+            return actionResult;
+        }
+
+        public DataTable FetchData()
+        {
+            var sql = string.Empty;
+
+            using (var db = new AccessConnection())
+            {
+                sql = "SELECT * FROM Category ";
+
+                if (Description != string.Empty)
+                {
+                    sql += "WHERE Description LIKE @Description";
+
+                    db.AddParameter("@Description",
+                    string.Format("%{0}%", Description));
+                }
+
+                return db.GetTable(sql);
             }
         }
     }

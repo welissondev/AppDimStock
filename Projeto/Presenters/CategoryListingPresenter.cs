@@ -15,13 +15,10 @@ namespace DimStock.Presenters
 
         public bool Delete()
         {
-            var catgory = new CategoryModel()
-            {
-                Id = view.Id
-            };
-
             var actionResult = false;
-            actionResult = catgory.Delete(view.Id);
+
+            var catgory = new CategoryModel() { Id = view.Id };
+            actionResult = catgory.Delete();
 
             if (actionResult == true)
                 ResetView();
@@ -29,39 +26,39 @@ namespace DimStock.Presenters
             return actionResult;
         }
 
-        public DataTable Query()
+        public bool GetDetail()
+        {
+            var actionResult = false;
+
+            var category = new CategoryModel() { Id = view.Id };
+            actionResult = category.GetDetail();
+
+            if (actionResult == true)
+            {
+                view.Id = category.Id;
+                view.Description = category.Description;
+            }
+
+            return actionResult;
+        }
+
+        public DataTable FetchData()
         {
             var category = new CategoryModel()
             {
-                Description = view.SearchByDescription
+                Description = view.SearchDescription
             };
 
-            var table = category.Query();
+            var table = category.FetchData();
             view.DataList = table;
 
             return table;
         }
 
-        public bool GetDetail()
-        {
-            var model = new CategoryModel() { Id = view.Id };
-
-            var actionResult = false;
-            actionResult = model.GetDetail();
-
-            if (actionResult == true)
-            {
-                view.Id = model.Id;
-                view.Description = model.Description;
-            }
-            
-            return actionResult;
-        }
-
         public void ResetView()
         {
             view.Id = 0;
-            view.SearchByDescription = string.Empty;
+            view.SearchDescription = string.Empty;
         }
     }
 }

@@ -2,7 +2,7 @@
 {
     public interface ICategoryListingView : ICategoryAddView
     {
-        string SearchByDescription { get; set; }
+        string SearchDescription { get; set; }
         object DataList { get; set; }
     }
 }

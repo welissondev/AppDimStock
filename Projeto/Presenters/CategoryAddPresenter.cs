@@ -9,44 +9,46 @@ namespace DimStock.Presenters
 
         public CategoryAddPresenter(ICategoryAddView view) { this.view = view; }
 
-        public bool Update()
+        public bool Insert()
         {
+            var actionResult = false;
+
             var category = new CategoryModel()
             {
                 Id = view.Id,
                 Description = view.Description
             };
+            actionResult = category.Insert();
 
+            if (actionResult == true)
+                ResetView();  
+            
+            return actionResult;
+        }
+
+        public bool Update()
+        {
             var actionResult = false;
 
-            //->Executa cadastrado
-            if (view.Id == 0)
+            var category = new CategoryModel()
             {
-                actionResult = category.Insert();
-
-                if (actionResult == true)
-                    ResetView();
-            }
-
-            //->Executa atualização
-            if (view.Id > 0)
-            {
-                actionResult = category.Update(view.Id);
-            }
-
+                Id = view.Id,
+                Description = view.Description
+            };
+            actionResult = category.Update();
+            
             return actionResult;
         }
 
         public bool Delete()
         {
+            var actionResult = false;
+
             var category = new CategoryModel()
             {
                 Id = view.Id,
             };
-
-            bool actionResult = false;
-
-            actionResult = category.Delete(view.Id);
+            actionResult = category.Delete();
 
             if (actionResult == true)
                 ResetView();

@@ -33,8 +33,15 @@ namespace DimStock.UserForms
         {
             try
             {
+                var actionResult = false;
+
                 var presenter = new CategoryAddPresenter(this);
-                var actionResult = presenter.Update();
+
+                if (Id == 0)
+                    actionResult = presenter.Insert();
+
+                if (Id > 0)
+                    actionResult = presenter.Update();
 
                 switch (actionResult)
                 {

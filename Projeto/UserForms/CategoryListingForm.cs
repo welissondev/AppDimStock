@@ -16,7 +16,7 @@ namespace DimStock.UserForms
         public int Id { get; set; }
         public string Description { get; set; }
 
-        public string SearchByDescription { get => TextSearchDescription.Text; set => TextSearchDescription.Text = value; }
+        public string SearchDescription { get => TextSearchDescription.Text; set => TextSearchDescription.Text = value; }
         public object DataList { get => DatagridCategory.DataSource; set => DatagridCategory.DataSource = value; }
     }
 }
@@ -76,7 +76,7 @@ namespace DimStock.UserForms
             if (e.KeyChar == 13)
             {
                 var presenter = new CategoryListingPresenter(this);
-                presenter.Query();
+                presenter.FetchData();
             }
         }
 
@@ -199,7 +199,7 @@ namespace DimStock.UserForms
         private void SearchCategories()
         {
             var presenter = new CategoryListingPresenter(this);
-            var dataList = presenter.Query();
+            var dataList = presenter.FetchData();
 
             if (dataList.Rows.Count > 0)
                 ApplySettingsToDataGrid();
