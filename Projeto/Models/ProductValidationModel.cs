@@ -6,7 +6,7 @@ namespace DimStock.Models
     {
         public static bool ValidateToInsert(ProductModel product)
         {
-            bool isValid = false;
+            var isValid = false;
 
             if (product.Description == string.Empty || product.Description == null)
             {
@@ -37,7 +37,15 @@ namespace DimStock.Models
 
         public static bool ValidateToUpdate(ProductModel product)
         {
-            bool isValid = false;
+            var isValid = false;
+
+            if (ValidateIfExists(product) == false)
+            {
+                MessageNotifier.Message = "Não é possivel atualizar porque esse registro foi excluido!";
+                MessageNotifier.Title = "Atualize a Lista";
+
+                return isValid;
+            }
 
             if (product.Description == string.Empty || product.Description == null)
             {
@@ -68,7 +76,7 @@ namespace DimStock.Models
 
         public static bool ValidateToDelete(ProductModel product)
         {
-            bool isValid = false;
+            var isValid = false;
 
             if (product.Id == 0)
             {
@@ -80,7 +88,30 @@ namespace DimStock.Models
 
             if (ValidateIfExists(product) == false)
             {
-                MessageNotifier.Message = "Esse produto ja foi excluido, atualize sua lista de produtos!";
+                MessageNotifier.Message = "Esse produto ja foi excluido, atualize sua lista de registros!";
+                MessageNotifier.Title = "Atualize a Lista";
+
+                return isValid;
+            }
+
+            return isValid = true;
+        }
+
+        public static bool ValidateToGetDetail(ProductModel product)
+        {
+            var isValid = false;
+
+            if (product.Id == 0)
+            {
+                MessageNotifier.Message = "Selecione um produto para visualizar!";
+                MessageNotifier.Title = "Não Selecionado";
+
+                return isValid;
+            }
+
+            if (ValidateIfExists(product) == false)
+            {
+                MessageNotifier.Message = "Não é possivel visualizar porque esse registro foi excluido!";
                 MessageNotifier.Title = "Atualize a Lista";
 
                 return isValid;
@@ -91,30 +122,29 @@ namespace DimStock.Models
 
         public static bool ValidateIfExists(ProductModel product)
         {
+            var sql = string.Empty;
+            var actionResult = false;
+
             using (var db = new AccessConnection())
             {
-                var sql = "SELECT * FROM Product WHERE Id = @Id";
-                var found = false;
+                sql = "SELECT Id FROM Product WHERE Id = @Id";
 
                 db.ClearParameter();
                 db.AddParameter("@Id", product.Id);
 
                 using (var reader = db.GetReader(sql))
                 {
-                    while (reader.Read())
+                    if (reader.Read() == false)
                     {
-                        found = true;
+                        MessageNotifier.Message = "Esse produto não encontra-se registrado em sua base de dados!";
+                        MessageNotifier.Title = "Não Encontrada";
+
+                        return actionResult;
                     }
                 }
-
-                if (found == false)
-                {
-                    MessageNotifier.Message = "Esse produto não encontra-se registrado em sua base de dados!";
-                    MessageNotifier.Title = "Não Encontrado";
-                }
-
-                return found;
             }
+
+            return actionResult = true;
         }
     }
 }

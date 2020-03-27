@@ -166,7 +166,7 @@ namespace DimStock.Models
             var sql = string.Empty;
             var actionResult = false;
 
-            if (ProductValidationModel.ValidateIfExists(this) == false)
+            if (ProductValidationModel.ValidateToGetDetail(this) == false)
                 return actionResult;
 
             using (var db = new AccessConnection())
@@ -180,10 +180,8 @@ namespace DimStock.Models
 
                 using (var reader = db.GetReader(sql))
                 {
-                    if (reader.FieldCount > 0)
+                    if (reader.Read() == true)
                     {
-                        actionResult = true;
-
                         while (reader.Read())
                         {
                             Id = int.Parse(reader["Product.Id"].ToString().Replace(null, "0"));
@@ -195,11 +193,13 @@ namespace DimStock.Models
                             Category.Id = int.Parse(reader["Category.Id"].ToString());
                             Category.Description = reader["Category.Description"].ToString();
                         }
+
+                        return actionResult = true;
                     }
                 }
-
-                return actionResult;
             }
+
+            return actionResult;
         }
 
         public DataTable FetchData()
