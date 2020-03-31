@@ -382,8 +382,6 @@ namespace DimStock.UserForms
                 form.MovementGetDetail(id);
                 form.Show();
 
-                HomeScreenForm.He.LabelNavegationDescription.Text =
-                @"Cadastro De Movimentações";
             }
             catch (Exception ex)
             {

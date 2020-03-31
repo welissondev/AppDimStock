@@ -121,7 +121,7 @@
   <data name="PanelMenuTop.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAXSURBVChTY+ApPfCfGDyqEC+mtsID/wGcD+EB+/CdugAA
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAXSURBVChTYzAt2/efGDyqEC+mtsJ9/wE4jvCh0L/hMwAA
         AABJRU5ErkJggg==
 </value>
   </data>
@@ -134,13 +134,6 @@
   <metadata name="ContextMenu_User.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>358, 15</value>
   </metadata>
-  <data name="bunifuGradientPanel1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABDSURBVChTjcOJCYAwFETB7U8UURKTn0Ptv4hnCe7AqM4X
-        p8p4cCr3G6dSmzh1xsSpow6c2kvHqe1qOLXmwKklBf+DDwsoyyGIMnfoAAAAAElFTkSuQmCC
-</value>
-  </data>
   <metadata name="ContextMenu_Settings.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>513, 15</value>
   </metadata>

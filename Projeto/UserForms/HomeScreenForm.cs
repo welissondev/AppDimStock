@@ -36,7 +36,6 @@ namespace DimStock.UserForms
         private void HomeScreenForm_Load(object sender, EventArgs e)
         {
             He = this;
-            DayOfTheWeek.Text = DateTime.Now.ToLongDateString();
 
             Hide();
 
@@ -98,8 +97,6 @@ namespace DimStock.UserForms
             };
 
             form.Show();
-
-            LabelNavegationDescription.Text = "Cadastro De Produtos";
         }
 
         private void MenuProduct_RegisterNew_Category_Click(object sender, EventArgs e)
@@ -114,8 +111,6 @@ namespace DimStock.UserForms
             };
 
             form.Show();
-
-            LabelNavegationDescription.Text = "Cadastro De Categorias";
         }
 
         private void MenuProduct_ListRegisters_Product_Click(object sender, EventArgs e)
@@ -131,7 +126,6 @@ namespace DimStock.UserForms
 
             form.Show();
 
-            LabelNavegationDescription.Text = "Lista De Produtos";
         }
 
         private void MenuProduct_ListRegisters_Category_Click(object sender, EventArgs e)
@@ -147,7 +141,6 @@ namespace DimStock.UserForms
 
             form.Show();
 
-            LabelNavegationDescription.Text = "Lista De Categorias";
         }
 
         private void MenuStock_RegisterNew_Entrie_Click(object sender, EventArgs e)
@@ -165,7 +158,6 @@ namespace DimStock.UserForms
 
             form.StartNewOperation("Entrada");
 
-            LabelNavegationDescription.Text = "Cadastro de Estoques";
         }
 
         private void MenuStock_RegisterNew_Output_Click(object sender, EventArgs e)
@@ -181,8 +173,6 @@ namespace DimStock.UserForms
             form.Show();
 
             form.StartNewOperation("Saída");
-
-            LabelNavegationDescription.Text = "Cadastro De Estoque";
         }
 
         private void MenuStock_ListMovements_Click(object sender, EventArgs e)
@@ -197,8 +187,6 @@ namespace DimStock.UserForms
             };
 
             form.Show();
-
-            LabelNavegationDescription.Text = "Lista De Movimentações";
         }
 
         private void MenuStock_ListStocks_Click(object sender, EventArgs e)
@@ -213,8 +201,6 @@ namespace DimStock.UserForms
             };
 
             form.Show();
-
-            LabelNavegationDescription.Text = "Lista De Estoque";
         }
 
         private void MenuUser_RegisterNew_Click(object sender, EventArgs e)
@@ -234,8 +220,6 @@ namespace DimStock.UserForms
                 };
 
                 form.Show();
-
-                LabelNavegationDescription.Text = "Cadastro De Usuários";
             }
             else
             {
@@ -262,8 +246,6 @@ namespace DimStock.UserForms
                 };
 
                 form.Show();
-
-                LabelNavegationDescription.Text = "Lista De Usuários";
             }
             else
             {
@@ -285,8 +267,6 @@ namespace DimStock.UserForms
             };
 
             form.Show();
-
-            LabelNavegationDescription.Text = "Configurações";
         }
 
         private void MenuSettings_Backup_ImportAnother_Click(object sender, EventArgs e)

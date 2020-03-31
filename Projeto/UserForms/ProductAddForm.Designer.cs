@@ -46,7 +46,9 @@
             this.ButtonSearch_Category = new System.Windows.Forms.LinkLabel();
             this.ButtonDelete = new Bunifu.Framework.UI.BunifuThinButton2();
             this.TextCategoryDescription = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.doubleBitmapControl1 = new BunifuAnimatorNS.DoubleBitmapControl();
+            this.bunifuCards1 = new Bunifu.Framework.UI.BunifuCards();
+            this.ButtonExit = new System.Windows.Forms.PictureBox();
+            this.LabelNavegationDescription = new System.Windows.Forms.Label();
             this.DataGridCategory = new DimStock.Controls.CustomDataGridViewTwo();
             ((System.ComponentModel.ISupportInitialize)(this.TextBarCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextSalePrice)).BeginInit();
@@ -54,28 +56,30 @@
             ((System.ComponentModel.ISupportInitialize)(this.TextDescription)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextInternalCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextCategoryDescription)).BeginInit();
+            this.bunifuCards1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ButtonExit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridCategory)).BeginInit();
             this.SuspendLayout();
             // 
             // TextBarCode
             // 
-            this.TextBarCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.TextBarCode.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBarCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TextBarCode.BeforeTouchSize = new System.Drawing.Size(466, 27);
+            this.TextBarCode.BeforeTouchSize = new System.Drawing.Size(169, 27);
             this.TextBarCode.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
             this.TextBarCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TextBarCode.CanOverrideStyle = true;
             this.TextBarCode.CausesValidation = false;
             this.TextBarCode.CornerRadius = 1;
             this.TextBarCode.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.TextBarCode.Font = new System.Drawing.Font("Calibri Light", 12F);
+            this.TextBarCode.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextBarCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.TextBarCode.Location = new System.Drawing.Point(157, 311);
+            this.TextBarCode.Location = new System.Drawing.Point(89, 332);
             this.TextBarCode.MaxLength = 50;
             this.TextBarCode.MinimumSize = new System.Drawing.Size(16, 12);
             this.TextBarCode.Name = "TextBarCode";
             this.TextBarCode.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Managed;
-            this.TextBarCode.Size = new System.Drawing.Size(599, 27);
+            this.TextBarCode.Size = new System.Drawing.Size(602, 27);
             this.TextBarCode.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016White;
             this.TextBarCode.TabIndex = 5;
             this.TextBarCode.ThemeName = "Office2016White";
@@ -83,9 +87,9 @@
             // 
             // TextSalePrice
             // 
-            this.TextSalePrice.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.TextSalePrice.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextSalePrice.BackGroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TextSalePrice.BeforeTouchSize = new System.Drawing.Size(466, 27);
+            this.TextSalePrice.BeforeTouchSize = new System.Drawing.Size(169, 27);
             this.TextSalePrice.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
             this.TextSalePrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TextSalePrice.CanOverrideStyle = true;
@@ -97,14 +101,14 @@
             0,
             0,
             131072});
-            this.TextSalePrice.Font = new System.Drawing.Font("Calibri Light", 12F);
+            this.TextSalePrice.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextSalePrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.TextSalePrice.Location = new System.Drawing.Point(157, 255);
+            this.TextSalePrice.Location = new System.Drawing.Point(89, 278);
             this.TextSalePrice.MinimumSize = new System.Drawing.Size(16, 12);
             this.TextSalePrice.Name = "TextSalePrice";
             this.TextSalePrice.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Managed;
             this.TextSalePrice.PositiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.TextSalePrice.Size = new System.Drawing.Size(188, 27);
+            this.TextSalePrice.Size = new System.Drawing.Size(169, 27);
             this.TextSalePrice.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016White;
             this.TextSalePrice.TabIndex = 4;
             this.TextSalePrice.Text = "R$ 0,00";
@@ -114,9 +118,9 @@
             // 
             // TextCostPrice
             // 
-            this.TextCostPrice.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.TextCostPrice.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextCostPrice.BackGroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TextCostPrice.BeforeTouchSize = new System.Drawing.Size(466, 27);
+            this.TextCostPrice.BeforeTouchSize = new System.Drawing.Size(169, 27);
             this.TextCostPrice.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
             this.TextCostPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TextCostPrice.CanOverrideStyle = true;
@@ -128,14 +132,14 @@
             0,
             0,
             131072});
-            this.TextCostPrice.Font = new System.Drawing.Font("Calibri Light", 12F);
+            this.TextCostPrice.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextCostPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.TextCostPrice.Location = new System.Drawing.Point(157, 198);
+            this.TextCostPrice.Location = new System.Drawing.Point(89, 225);
             this.TextCostPrice.MinimumSize = new System.Drawing.Size(16, 12);
             this.TextCostPrice.Name = "TextCostPrice";
             this.TextCostPrice.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Managed;
             this.TextCostPrice.PositiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.TextCostPrice.Size = new System.Drawing.Size(188, 27);
+            this.TextCostPrice.Size = new System.Drawing.Size(169, 27);
             this.TextCostPrice.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016White;
             this.TextCostPrice.TabIndex = 3;
             this.TextCostPrice.Text = "R$ 0,00";
@@ -145,23 +149,23 @@
             // 
             // TextDescription
             // 
-            this.TextDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.TextDescription.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextDescription.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TextDescription.BeforeTouchSize = new System.Drawing.Size(466, 27);
+            this.TextDescription.BeforeTouchSize = new System.Drawing.Size(169, 27);
             this.TextDescription.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
             this.TextDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TextDescription.CanOverrideStyle = true;
             this.TextDescription.CausesValidation = false;
             this.TextDescription.CornerRadius = 1;
             this.TextDescription.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.TextDescription.Font = new System.Drawing.Font("Calibri Light", 12F);
+            this.TextDescription.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.TextDescription.Location = new System.Drawing.Point(293, 91);
+            this.TextDescription.Location = new System.Drawing.Point(89, 118);
             this.TextDescription.MaxLength = 2000;
             this.TextDescription.MinimumSize = new System.Drawing.Size(16, 12);
             this.TextDescription.Name = "TextDescription";
             this.TextDescription.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Managed;
-            this.TextDescription.Size = new System.Drawing.Size(466, 27);
+            this.TextDescription.Size = new System.Drawing.Size(602, 27);
             this.TextDescription.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016White;
             this.TextDescription.TabIndex = 1;
             this.TextDescription.Tag = "";
@@ -170,56 +174,56 @@
             // 
             // BarCodeTitle
             // 
-            this.BarCodeTitle.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.BarCodeTitle.AutoSize = true;
-            this.BarCodeTitle.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.BarCodeTitle.Location = new System.Drawing.Point(155, 293);
+            this.BarCodeTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BarCodeTitle.Font = new System.Drawing.Font("Myanmar Text", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BarCodeTitle.ForeColor = System.Drawing.Color.Gray;
+            this.BarCodeTitle.Location = new System.Drawing.Point(87, 314);
             this.BarCodeTitle.Name = "BarCodeTitle";
-            this.BarCodeTitle.Size = new System.Drawing.Size(108, 17);
+            this.BarCodeTitle.Size = new System.Drawing.Size(135, 20);
             this.BarCodeTitle.TabIndex = 64;
             this.BarCodeTitle.Text = "Código de Barras:";
             // 
             // SalePriceTitle
             // 
-            this.SalePriceTitle.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.SalePriceTitle.AutoSize = true;
-            this.SalePriceTitle.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.SalePriceTitle.Location = new System.Drawing.Point(155, 238);
+            this.SalePriceTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SalePriceTitle.Font = new System.Drawing.Font("Myanmar Text", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SalePriceTitle.ForeColor = System.Drawing.Color.Gray;
+            this.SalePriceTitle.Location = new System.Drawing.Point(87, 260);
             this.SalePriceTitle.Name = "SalePriceTitle";
-            this.SalePriceTitle.Size = new System.Drawing.Size(82, 17);
+            this.SalePriceTitle.Size = new System.Drawing.Size(103, 20);
             this.SalePriceTitle.TabIndex = 63;
             this.SalePriceTitle.Text = "Preço Venda:";
             // 
             // CostPriceTitle
             // 
-            this.CostPriceTitle.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.CostPriceTitle.AutoSize = true;
-            this.CostPriceTitle.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.CostPriceTitle.Location = new System.Drawing.Point(155, 182);
+            this.CostPriceTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.CostPriceTitle.Font = new System.Drawing.Font("Myanmar Text", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CostPriceTitle.ForeColor = System.Drawing.Color.Gray;
+            this.CostPriceTitle.Location = new System.Drawing.Point(87, 207);
             this.CostPriceTitle.Name = "CostPriceTitle";
-            this.CostPriceTitle.Size = new System.Drawing.Size(79, 17);
+            this.CostPriceTitle.Size = new System.Drawing.Size(99, 20);
             this.CostPriceTitle.TabIndex = 62;
             this.CostPriceTitle.Text = "Preço Custo:";
             // 
             // DescriptionTitle
             // 
-            this.DescriptionTitle.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.DescriptionTitle.AutoSize = true;
-            this.DescriptionTitle.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.DescriptionTitle.Location = new System.Drawing.Point(290, 74);
+            this.DescriptionTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.DescriptionTitle.Font = new System.Drawing.Font("Myanmar Text", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DescriptionTitle.ForeColor = System.Drawing.Color.Gray;
+            this.DescriptionTitle.Location = new System.Drawing.Point(87, 100);
             this.DescriptionTitle.Name = "DescriptionTitle";
-            this.DescriptionTitle.Size = new System.Drawing.Size(67, 17);
+            this.DescriptionTitle.Size = new System.Drawing.Size(83, 20);
             this.DescriptionTitle.TabIndex = 61;
             this.DescriptionTitle.Text = "Descrição:";
             // 
             // ButtonPresenter_ResetView
             // 
             this.ButtonPresenter_ResetView.ActiveBorderThickness = 1;
-            this.ButtonPresenter_ResetView.ActiveCornerRadius = 5;
-            this.ButtonPresenter_ResetView.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonPresenter_ResetView.ActiveCornerRadius = 1;
+            this.ButtonPresenter_ResetView.ActiveFillColor = System.Drawing.Color.YellowGreen;
             this.ButtonPresenter_ResetView.ActiveForecolor = System.Drawing.Color.White;
-            this.ButtonPresenter_ResetView.ActiveLineColor = System.Drawing.SystemColors.Desktop;
-            this.ButtonPresenter_ResetView.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.ButtonPresenter_ResetView.ActiveLineColor = System.Drawing.Color.White;
+            this.ButtonPresenter_ResetView.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ButtonPresenter_ResetView.BackColor = System.Drawing.Color.White;
             this.ButtonPresenter_ResetView.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonPresenter_ResetView.BackgroundImage")));
             this.ButtonPresenter_ResetView.ButtonText = "Limpar";
@@ -227,14 +231,14 @@
             this.ButtonPresenter_ResetView.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ButtonPresenter_ResetView.ForeColor = System.Drawing.Color.SeaGreen;
             this.ButtonPresenter_ResetView.IdleBorderThickness = 1;
-            this.ButtonPresenter_ResetView.IdleCornerRadius = 5;
-            this.ButtonPresenter_ResetView.IdleFillColor = System.Drawing.Color.Gray;
+            this.ButtonPresenter_ResetView.IdleCornerRadius = 1;
+            this.ButtonPresenter_ResetView.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(185)))), ((int)(((byte)(63)))));
             this.ButtonPresenter_ResetView.IdleForecolor = System.Drawing.Color.White;
             this.ButtonPresenter_ResetView.IdleLineColor = System.Drawing.Color.FloralWhite;
-            this.ButtonPresenter_ResetView.Location = new System.Drawing.Point(563, 346);
+            this.ButtonPresenter_ResetView.Location = new System.Drawing.Point(480, 382);
             this.ButtonPresenter_ResetView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ButtonPresenter_ResetView.Name = "ButtonPresenter_ResetView";
-            this.ButtonPresenter_ResetView.Size = new System.Drawing.Size(97, 43);
+            this.ButtonPresenter_ResetView.Size = new System.Drawing.Size(107, 48);
             this.ButtonPresenter_ResetView.TabIndex = 213;
             this.ButtonPresenter_ResetView.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonPresenter_ResetView.Click += new System.EventHandler(this.ButtonPresenter_ResetView_Click);
@@ -242,11 +246,11 @@
             // ButtonSave
             // 
             this.ButtonSave.ActiveBorderThickness = 1;
-            this.ButtonSave.ActiveCornerRadius = 5;
-            this.ButtonSave.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonSave.ActiveCornerRadius = 1;
+            this.ButtonSave.ActiveFillColor = System.Drawing.Color.YellowGreen;
             this.ButtonSave.ActiveForecolor = System.Drawing.Color.White;
-            this.ButtonSave.ActiveLineColor = System.Drawing.SystemColors.Desktop;
-            this.ButtonSave.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.ButtonSave.ActiveLineColor = System.Drawing.Color.White;
+            this.ButtonSave.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ButtonSave.BackColor = System.Drawing.Color.White;
             this.ButtonSave.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonSave.BackgroundImage")));
             this.ButtonSave.ButtonText = "Salvar";
@@ -254,49 +258,48 @@
             this.ButtonSave.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ButtonSave.ForeColor = System.Drawing.Color.SeaGreen;
             this.ButtonSave.IdleBorderThickness = 1;
-            this.ButtonSave.IdleCornerRadius = 5;
-            this.ButtonSave.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.ButtonSave.IdleCornerRadius = 1;
+            this.ButtonSave.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(185)))), ((int)(((byte)(63)))));
             this.ButtonSave.IdleForecolor = System.Drawing.Color.White;
             this.ButtonSave.IdleLineColor = System.Drawing.Color.FloralWhite;
-            this.ButtonSave.Location = new System.Drawing.Point(464, 346);
+            this.ButtonSave.Location = new System.Drawing.Point(373, 382);
             this.ButtonSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ButtonSave.Name = "ButtonSave";
-            this.ButtonSave.Size = new System.Drawing.Size(97, 43);
+            this.ButtonSave.Size = new System.Drawing.Size(107, 48);
             this.ButtonSave.TabIndex = 212;
             this.ButtonSave.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonSave.Click += new System.EventHandler(this.ButtonSave_Click);
             // 
             // LblStockDestination
             // 
-            this.LblStockDestination.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.LblStockDestination.AutoSize = true;
-            this.LblStockDestination.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.LblStockDestination.ForeColor = System.Drawing.Color.Black;
-            this.LblStockDestination.Location = new System.Drawing.Point(154, 129);
+            this.LblStockDestination.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.LblStockDestination.Font = new System.Drawing.Font("Myanmar Text", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblStockDestination.ForeColor = System.Drawing.Color.Gray;
+            this.LblStockDestination.Location = new System.Drawing.Point(87, 154);
             this.LblStockDestination.Name = "LblStockDestination";
-            this.LblStockDestination.Size = new System.Drawing.Size(68, 17);
+            this.LblStockDestination.Size = new System.Drawing.Size(83, 20);
             this.LblStockDestination.TabIndex = 214;
             this.LblStockDestination.Text = "Categoria:";
             // 
             // TextInternalCode
             // 
-            this.TextInternalCode.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.TextInternalCode.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextInternalCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TextInternalCode.BeforeTouchSize = new System.Drawing.Size(466, 27);
+            this.TextInternalCode.BeforeTouchSize = new System.Drawing.Size(169, 27);
             this.TextInternalCode.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
             this.TextInternalCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TextInternalCode.CanOverrideStyle = true;
             this.TextInternalCode.CausesValidation = false;
             this.TextInternalCode.CornerRadius = 1;
             this.TextInternalCode.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.TextInternalCode.Font = new System.Drawing.Font("Calibri Light", 12F);
+            this.TextInternalCode.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextInternalCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.TextInternalCode.Location = new System.Drawing.Point(157, 91);
+            this.TextInternalCode.Location = new System.Drawing.Point(89, 67);
             this.TextInternalCode.MaxLength = 2000;
             this.TextInternalCode.MinimumSize = new System.Drawing.Size(16, 12);
             this.TextInternalCode.Name = "TextInternalCode";
             this.TextInternalCode.Office2007ColorScheme = Syncfusion.Windows.Forms.Office2007Theme.Managed;
-            this.TextInternalCode.Size = new System.Drawing.Size(130, 27);
+            this.TextInternalCode.Size = new System.Drawing.Size(169, 27);
             this.TextInternalCode.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016White;
             this.TextInternalCode.TabIndex = 0;
             this.TextInternalCode.Tag = "";
@@ -305,23 +308,23 @@
             // 
             // label1
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.label1.Location = new System.Drawing.Point(155, 74);
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.Font = new System.Drawing.Font("Myanmar Text", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Gray;
+            this.label1.Location = new System.Drawing.Point(87, 50);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 17);
+            this.label1.Size = new System.Drawing.Size(66, 20);
             this.label1.TabIndex = 220;
             this.label1.Text = "Código:";
             // 
             // ButtonSearch_Category
             // 
-            this.ButtonSearch_Category.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.ButtonSearch_Category.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ButtonSearch_Category.AutoSize = true;
             this.ButtonSearch_Category.BackColor = System.Drawing.Color.Transparent;
             this.ButtonSearch_Category.Font = new System.Drawing.Font("Calibri Light", 10F);
             this.ButtonSearch_Category.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(87)))), ((int)(((byte)(166)))));
-            this.ButtonSearch_Category.Location = new System.Drawing.Point(710, 150);
+            this.ButtonSearch_Category.Location = new System.Drawing.Point(642, 176);
             this.ButtonSearch_Category.Name = "ButtonSearch_Category";
             this.ButtonSearch_Category.Size = new System.Drawing.Size(46, 17);
             this.ButtonSearch_Category.TabIndex = 221;
@@ -332,44 +335,44 @@
             // ButtonDelete
             // 
             this.ButtonDelete.ActiveBorderThickness = 1;
-            this.ButtonDelete.ActiveCornerRadius = 5;
-            this.ButtonDelete.ActiveFillColor = System.Drawing.SystemColors.Desktop;
+            this.ButtonDelete.ActiveCornerRadius = 1;
+            this.ButtonDelete.ActiveFillColor = System.Drawing.Color.YellowGreen;
             this.ButtonDelete.ActiveForecolor = System.Drawing.Color.White;
-            this.ButtonDelete.ActiveLineColor = System.Drawing.SystemColors.Desktop;
-            this.ButtonDelete.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.ButtonDelete.ActiveLineColor = System.Drawing.Color.White;
+            this.ButtonDelete.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ButtonDelete.BackColor = System.Drawing.Color.White;
             this.ButtonDelete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonDelete.BackgroundImage")));
             this.ButtonDelete.ButtonText = "Deletar";
             this.ButtonDelete.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ButtonDelete.Font = new System.Drawing.Font("Calibri Light", 14F);
+            this.ButtonDelete.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ButtonDelete.ForeColor = System.Drawing.Color.White;
             this.ButtonDelete.IdleBorderThickness = 1;
-            this.ButtonDelete.IdleCornerRadius = 5;
-            this.ButtonDelete.IdleFillColor = System.Drawing.Color.Gray;
+            this.ButtonDelete.IdleCornerRadius = 1;
+            this.ButtonDelete.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(185)))), ((int)(((byte)(63)))));
             this.ButtonDelete.IdleForecolor = System.Drawing.Color.White;
             this.ButtonDelete.IdleLineColor = System.Drawing.Color.FloralWhite;
-            this.ButtonDelete.Location = new System.Drawing.Point(662, 346);
+            this.ButtonDelete.Location = new System.Drawing.Point(586, 382);
             this.ButtonDelete.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ButtonDelete.Name = "ButtonDelete";
-            this.ButtonDelete.Size = new System.Drawing.Size(97, 43);
+            this.ButtonDelete.Size = new System.Drawing.Size(105, 48);
             this.ButtonDelete.TabIndex = 226;
             this.ButtonDelete.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonDelete.Click += new System.EventHandler(this.ButtonDelete_Click);
             // 
             // TextCategoryDescription
             // 
-            this.TextCategoryDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.TextCategoryDescription.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextCategoryDescription.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TextCategoryDescription.BeforeTouchSize = new System.Drawing.Size(466, 27);
+            this.TextCategoryDescription.BeforeTouchSize = new System.Drawing.Size(169, 27);
             this.TextCategoryDescription.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
             this.TextCategoryDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TextCategoryDescription.CanOverrideStyle = true;
             this.TextCategoryDescription.CausesValidation = false;
             this.TextCategoryDescription.CornerRadius = 1;
             this.TextCategoryDescription.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.TextCategoryDescription.Font = new System.Drawing.Font("Calibri Light", 12F);
+            this.TextCategoryDescription.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextCategoryDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.TextCategoryDescription.Location = new System.Drawing.Point(157, 145);
+            this.TextCategoryDescription.Location = new System.Drawing.Point(89, 171);
             this.TextCategoryDescription.MaxLength = 2000;
             this.TextCategoryDescription.MinimumSize = new System.Drawing.Size(16, 12);
             this.TextCategoryDescription.Name = "TextCategoryDescription";
@@ -383,33 +386,82 @@
             this.TextCategoryDescription.Click += new System.EventHandler(this.TextCategoryDescription_Click);
             this.TextCategoryDescription.TextChanged += new System.EventHandler(this.TextCategoryDescription_TextChanged);
             // 
-            // doubleBitmapControl1
+            // bunifuCards1
             // 
-            this.doubleBitmapControl1.Location = new System.Drawing.Point(868, 499);
-            this.doubleBitmapControl1.Name = "doubleBitmapControl1";
-            this.doubleBitmapControl1.Size = new System.Drawing.Size(75, 23);
-            this.doubleBitmapControl1.TabIndex = 229;
-            this.doubleBitmapControl1.Text = "doubleBitmapControl1";
-            this.doubleBitmapControl1.Visible = false;
+            this.bunifuCards1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.bunifuCards1.BackColor = System.Drawing.Color.White;
+            this.bunifuCards1.BorderRadius = 5;
+            this.bunifuCards1.BottomSahddow = true;
+            this.bunifuCards1.color = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(118)))), ((int)(((byte)(190)))));
+            this.bunifuCards1.Controls.Add(this.ButtonExit);
+            this.bunifuCards1.Controls.Add(this.DataGridCategory);
+            this.bunifuCards1.Controls.Add(this.TextBarCode);
+            this.bunifuCards1.Controls.Add(this.BarCodeTitle);
+            this.bunifuCards1.Controls.Add(this.TextSalePrice);
+            this.bunifuCards1.Controls.Add(this.TextCostPrice);
+            this.bunifuCards1.Controls.Add(this.TextDescription);
+            this.bunifuCards1.Controls.Add(this.LabelNavegationDescription);
+            this.bunifuCards1.Controls.Add(this.ButtonSearch_Category);
+            this.bunifuCards1.Controls.Add(this.ButtonDelete);
+            this.bunifuCards1.Controls.Add(this.ButtonPresenter_ResetView);
+            this.bunifuCards1.Controls.Add(this.ButtonSave);
+            this.bunifuCards1.Controls.Add(this.TextCategoryDescription);
+            this.bunifuCards1.Controls.Add(this.DescriptionTitle);
+            this.bunifuCards1.Controls.Add(this.TextInternalCode);
+            this.bunifuCards1.Controls.Add(this.CostPriceTitle);
+            this.bunifuCards1.Controls.Add(this.label1);
+            this.bunifuCards1.Controls.Add(this.SalePriceTitle);
+            this.bunifuCards1.Controls.Add(this.LblStockDestination);
+            this.bunifuCards1.LeftSahddow = true;
+            this.bunifuCards1.Location = new System.Drawing.Point(73, 47);
+            this.bunifuCards1.Name = "bunifuCards1";
+            this.bunifuCards1.RightSahddow = true;
+            this.bunifuCards1.ShadowDepth = 22;
+            this.bunifuCards1.Size = new System.Drawing.Size(778, 476);
+            this.bunifuCards1.TabIndex = 229;
+            // 
+            // ButtonExit
+            // 
+            this.ButtonExit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonExit.Image = global::DimStock.Properties.Resources.IconExit;
+            this.ButtonExit.Location = new System.Drawing.Point(735, 13);
+            this.ButtonExit.Name = "ButtonExit";
+            this.ButtonExit.Size = new System.Drawing.Size(30, 27);
+            this.ButtonExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ButtonExit.TabIndex = 230;
+            this.ButtonExit.TabStop = false;
+            this.ButtonExit.Click += new System.EventHandler(this.ButtonExit_Click);
+            // 
+            // LabelNavegationDescription
+            // 
+            this.LabelNavegationDescription.BackColor = System.Drawing.Color.Transparent;
+            this.LabelNavegationDescription.Font = new System.Drawing.Font("Myanmar Text", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelNavegationDescription.ForeColor = System.Drawing.Color.DimGray;
+            this.LabelNavegationDescription.Location = new System.Drawing.Point(16, 11);
+            this.LabelNavegationDescription.Name = "LabelNavegationDescription";
+            this.LabelNavegationDescription.Size = new System.Drawing.Size(355, 27);
+            this.LabelNavegationDescription.TabIndex = 229;
+            this.LabelNavegationDescription.Text = "Inicio > Cadastro de Produtos";
+            this.LabelNavegationDescription.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // DataGridCategory
             // 
             this.DataGridCategory.AllowUserToAddRows = false;
             this.DataGridCategory.AllowUserToResizeRows = false;
-            this.DataGridCategory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.DataGridCategory.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.DataGridCategory.BackgroundColor = System.Drawing.Color.White;
-            this.DataGridCategory.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.DataGridCategory.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DataGridCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridCategory.ColumnHeadersVisible = false;
             this.DataGridCategory.CustomSettings = false;
-            this.DataGridCategory.Location = new System.Drawing.Point(158, 171);
+            this.DataGridCategory.Location = new System.Drawing.Point(89, 196);
             this.DataGridCategory.MultiSelect = false;
             this.DataGridCategory.Name = "DataGridCategory";
             this.DataGridCategory.RowHeadersVisible = false;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri Light", 10F);
             this.DataGridCategory.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.DataGridCategory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridCategory.Size = new System.Drawing.Size(601, 13);
+            this.DataGridCategory.Size = new System.Drawing.Size(602, 10);
             this.DataGridCategory.TabIndex = 228;
             this.DataGridCategory.Visible = false;
             this.DataGridCategory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridCategory_CellClick);
@@ -418,26 +470,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(928, 551);
-            this.Controls.Add(this.ButtonSearch_Category);
-            this.Controls.Add(this.ButtonDelete);
-            this.Controls.Add(this.ButtonPresenter_ResetView);
-            this.Controls.Add(this.ButtonSave);
-            this.Controls.Add(this.doubleBitmapControl1);
-            this.Controls.Add(this.DataGridCategory);
-            this.Controls.Add(this.TextCategoryDescription);
-            this.Controls.Add(this.TextInternalCode);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.LblStockDestination);
-            this.Controls.Add(this.TextBarCode);
-            this.Controls.Add(this.TextSalePrice);
-            this.Controls.Add(this.TextCostPrice);
-            this.Controls.Add(this.TextDescription);
-            this.Controls.Add(this.BarCodeTitle);
-            this.Controls.Add(this.SalePriceTitle);
-            this.Controls.Add(this.CostPriceTitle);
-            this.Controls.Add(this.DescriptionTitle);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(244)))), ((int)(((byte)(250)))));
+            this.ClientSize = new System.Drawing.Size(928, 569);
+            this.Controls.Add(this.bunifuCards1);
             this.MinimumSize = new System.Drawing.Size(944, 590);
             this.Name = "ProductAddForm";
             this.ShowIcon = false;
@@ -449,9 +484,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.TextDescription)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextInternalCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextCategoryDescription)).EndInit();
+            this.bunifuCards1.ResumeLayout(false);
+            this.bunifuCards1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ButtonExit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridCategory)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -473,6 +510,8 @@
         private Bunifu.Framework.UI.BunifuThinButton2 ButtonDelete;
         public Syncfusion.Windows.Forms.Tools.TextBoxExt TextCategoryDescription;
         private Controls.CustomDataGridViewTwo DataGridCategory;
-        private BunifuAnimatorNS.DoubleBitmapControl doubleBitmapControl1;
+        private Bunifu.Framework.UI.BunifuCards bunifuCards1;
+        public System.Windows.Forms.Label LabelNavegationDescription;
+        private System.Windows.Forms.PictureBox ButtonExit;
     }
 }

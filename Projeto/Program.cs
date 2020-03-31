@@ -18,7 +18,7 @@ namespace DimStock.UserForms
 
             if (AppSetting.GetAppSettingsState() == true)
             {
-                Application.Run(new ProductAddForm());
+                Application.Run(new HomeScreenForm());
             }
             else
             {

@@ -58,9 +58,6 @@
             this.ContextMenu_User = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MenuUser_RegisterNew = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuUser_ListUsers = new System.Windows.Forms.ToolStripMenuItem();
-            this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
-            this.DayOfTheWeek = new System.Windows.Forms.Label();
-            this.LabelNavegationDescription = new System.Windows.Forms.Label();
             this.ContextMenu_Settings = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MenuSettings_Backup = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuSettings_Backup_GenerateNew = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,7 +67,6 @@
             this.ContextMenu_Product.SuspendLayout();
             this.ContextMenu_Stock.SuspendLayout();
             this.ContextMenu_User.SuspendLayout();
-            this.bunifuGradientPanel1.SuspendLayout();
             this.ContextMenu_Settings.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,10 +88,10 @@
             this.PanelMenuTop.Controls.Add(this.pictureBox1);
             this.PanelMenuTop.Controls.Add(this.label1);
             this.PanelMenuTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelMenuTop.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(117)))), ((int)(((byte)(192)))));
-            this.PanelMenuTop.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(117)))), ((int)(((byte)(192)))));
-            this.PanelMenuTop.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(117)))), ((int)(((byte)(192)))));
-            this.PanelMenuTop.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(117)))), ((int)(((byte)(192)))));
+            this.PanelMenuTop.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(118)))), ((int)(((byte)(190)))));
+            this.PanelMenuTop.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(118)))), ((int)(((byte)(190)))));
+            this.PanelMenuTop.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(118)))), ((int)(((byte)(190)))));
+            this.PanelMenuTop.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(118)))), ((int)(((byte)(190)))));
             this.PanelMenuTop.Location = new System.Drawing.Point(0, 0);
             this.PanelMenuTop.Name = "PanelMenuTop";
             this.PanelMenuTop.Quality = 10;
@@ -117,15 +113,15 @@
             // 
             this.MainMenu_Settings.ActiveLinkColor = System.Drawing.Color.LightSkyBlue;
             this.MainMenu_Settings.AutoEllipsis = true;
-            this.MainMenu_Settings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(117)))), ((int)(((byte)(192)))));
+            this.MainMenu_Settings.BackColor = System.Drawing.Color.Transparent;
             this.MainMenu_Settings.DisabledLinkColor = System.Drawing.Color.White;
-            this.MainMenu_Settings.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MainMenu_Settings.Font = new System.Drawing.Font("Myanmar Text", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenu_Settings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.MainMenu_Settings.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.MainMenu_Settings.LinkColor = System.Drawing.Color.AliceBlue;
-            this.MainMenu_Settings.Location = new System.Drawing.Point(701, 0);
+            this.MainMenu_Settings.Location = new System.Drawing.Point(706, 19);
             this.MainMenu_Settings.Name = "MainMenu_Settings";
-            this.MainMenu_Settings.Size = new System.Drawing.Size(128, 59);
+            this.MainMenu_Settings.Size = new System.Drawing.Size(128, 25);
             this.MainMenu_Settings.TabIndex = 17;
             this.MainMenu_Settings.TabStop = true;
             this.MainMenu_Settings.Text = "Configurações";
@@ -137,15 +133,15 @@
             // 
             this.MainMenu_Support.ActiveLinkColor = System.Drawing.Color.LightSkyBlue;
             this.MainMenu_Support.AutoEllipsis = true;
-            this.MainMenu_Support.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(117)))), ((int)(((byte)(192)))));
+            this.MainMenu_Support.BackColor = System.Drawing.Color.Transparent;
             this.MainMenu_Support.DisabledLinkColor = System.Drawing.Color.White;
-            this.MainMenu_Support.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MainMenu_Support.Font = new System.Drawing.Font("Myanmar Text", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenu_Support.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.MainMenu_Support.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.MainMenu_Support.LinkColor = System.Drawing.Color.AliceBlue;
-            this.MainMenu_Support.Location = new System.Drawing.Point(580, 0);
+            this.MainMenu_Support.Location = new System.Drawing.Point(585, 19);
             this.MainMenu_Support.Name = "MainMenu_Support";
-            this.MainMenu_Support.Size = new System.Drawing.Size(100, 59);
+            this.MainMenu_Support.Size = new System.Drawing.Size(100, 25);
             this.MainMenu_Support.TabIndex = 15;
             this.MainMenu_Support.TabStop = true;
             this.MainMenu_Support.Text = "Suporte";
@@ -190,15 +186,15 @@
             // 
             this.MainMenu_User.ActiveLinkColor = System.Drawing.Color.LightSkyBlue;
             this.MainMenu_User.AutoEllipsis = true;
-            this.MainMenu_User.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(117)))), ((int)(((byte)(192)))));
+            this.MainMenu_User.BackColor = System.Drawing.Color.Transparent;
             this.MainMenu_User.DisabledLinkColor = System.Drawing.Color.White;
-            this.MainMenu_User.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MainMenu_User.Font = new System.Drawing.Font("Myanmar Text", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenu_User.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.MainMenu_User.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.MainMenu_User.LinkColor = System.Drawing.Color.AliceBlue;
-            this.MainMenu_User.Location = new System.Drawing.Point(468, 0);
+            this.MainMenu_User.Location = new System.Drawing.Point(473, 19);
             this.MainMenu_User.Name = "MainMenu_User";
-            this.MainMenu_User.Size = new System.Drawing.Size(100, 59);
+            this.MainMenu_User.Size = new System.Drawing.Size(100, 25);
             this.MainMenu_User.TabIndex = 10;
             this.MainMenu_User.TabStop = true;
             this.MainMenu_User.Text = "Usuário";
@@ -210,15 +206,15 @@
             // 
             this.MainMenu_Stock.ActiveLinkColor = System.Drawing.Color.LightSkyBlue;
             this.MainMenu_Stock.AutoEllipsis = true;
-            this.MainMenu_Stock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(117)))), ((int)(((byte)(192)))));
+            this.MainMenu_Stock.BackColor = System.Drawing.Color.Transparent;
             this.MainMenu_Stock.DisabledLinkColor = System.Drawing.Color.White;
-            this.MainMenu_Stock.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MainMenu_Stock.Font = new System.Drawing.Font("Myanmar Text", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenu_Stock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.MainMenu_Stock.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.MainMenu_Stock.LinkColor = System.Drawing.Color.AliceBlue;
-            this.MainMenu_Stock.Location = new System.Drawing.Point(362, 0);
+            this.MainMenu_Stock.Location = new System.Drawing.Point(367, 19);
             this.MainMenu_Stock.Name = "MainMenu_Stock";
-            this.MainMenu_Stock.Size = new System.Drawing.Size(100, 59);
+            this.MainMenu_Stock.Size = new System.Drawing.Size(100, 25);
             this.MainMenu_Stock.TabIndex = 9;
             this.MainMenu_Stock.TabStop = true;
             this.MainMenu_Stock.Text = "Estoque";
@@ -230,15 +226,15 @@
             // 
             this.MainMenu_Product.ActiveLinkColor = System.Drawing.Color.LightSkyBlue;
             this.MainMenu_Product.AutoEllipsis = true;
-            this.MainMenu_Product.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(117)))), ((int)(((byte)(192)))));
+            this.MainMenu_Product.BackColor = System.Drawing.Color.Transparent;
             this.MainMenu_Product.DisabledLinkColor = System.Drawing.Color.White;
-            this.MainMenu_Product.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MainMenu_Product.Font = new System.Drawing.Font("Myanmar Text", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenu_Product.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.MainMenu_Product.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.MainMenu_Product.LinkColor = System.Drawing.Color.AliceBlue;
-            this.MainMenu_Product.Location = new System.Drawing.Point(256, 0);
+            this.MainMenu_Product.Location = new System.Drawing.Point(261, 19);
             this.MainMenu_Product.Name = "MainMenu_Product";
-            this.MainMenu_Product.Size = new System.Drawing.Size(100, 59);
+            this.MainMenu_Product.Size = new System.Drawing.Size(100, 25);
             this.MainMenu_Product.TabIndex = 8;
             this.MainMenu_Product.TabStop = true;
             this.MainMenu_Product.Text = "Produto";
@@ -392,49 +388,6 @@
             this.MenuUser_ListUsers.Text = "Listar Usuários";
             this.MenuUser_ListUsers.Click += new System.EventHandler(this.MenuUser_ListUsers_Click);
             // 
-            // bunifuGradientPanel1
-            // 
-            this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
-            this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bunifuGradientPanel1.Controls.Add(this.DayOfTheWeek);
-            this.bunifuGradientPanel1.Controls.Add(this.LabelNavegationDescription);
-            this.bunifuGradientPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.DimGray;
-            this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.SystemColors.Desktop;
-            this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.SystemColors.Desktop;
-            this.bunifuGradientPanel1.GradientTopRight = System.Drawing.SystemColors.Desktop;
-            this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, 60);
-            this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
-            this.bunifuGradientPanel1.Quality = 10;
-            this.bunifuGradientPanel1.Size = new System.Drawing.Size(944, 31);
-            this.bunifuGradientPanel1.TabIndex = 0;
-            // 
-            // DayOfTheWeek
-            // 
-            this.DayOfTheWeek.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.DayOfTheWeek.BackColor = System.Drawing.Color.Transparent;
-            this.DayOfTheWeek.Font = new System.Drawing.Font("Calibri Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DayOfTheWeek.ForeColor = System.Drawing.Color.White;
-            this.DayOfTheWeek.Location = new System.Drawing.Point(490, -2);
-            this.DayOfTheWeek.Name = "DayOfTheWeek";
-            this.DayOfTheWeek.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.DayOfTheWeek.Size = new System.Drawing.Size(451, 33);
-            this.DayOfTheWeek.TabIndex = 1;
-            this.DayOfTheWeek.Text = "DayOfTheWeek";
-            this.DayOfTheWeek.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // LabelNavegationDescription
-            // 
-            this.LabelNavegationDescription.BackColor = System.Drawing.Color.Transparent;
-            this.LabelNavegationDescription.Font = new System.Drawing.Font("Calibri Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelNavegationDescription.ForeColor = System.Drawing.Color.White;
-            this.LabelNavegationDescription.Location = new System.Drawing.Point(4, -2);
-            this.LabelNavegationDescription.Name = "LabelNavegationDescription";
-            this.LabelNavegationDescription.Size = new System.Drawing.Size(535, 33);
-            this.LabelNavegationDescription.TabIndex = 0;
-            this.LabelNavegationDescription.Text = "Tela Inicial";
-            this.LabelNavegationDescription.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // ContextMenu_Settings
             // 
             this.ContextMenu_Settings.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -471,7 +424,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(944, 681);
-            this.Controls.Add(this.bunifuGradientPanel1);
             this.Controls.Add(this.PanelMenuTop);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
@@ -486,7 +438,6 @@
             this.ContextMenu_Product.ResumeLayout(false);
             this.ContextMenu_Stock.ResumeLayout(false);
             this.ContextMenu_User.ResumeLayout(false);
-            this.bunifuGradientPanel1.ResumeLayout(false);
             this.ContextMenu_Settings.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -515,13 +466,10 @@
         private System.Windows.Forms.ToolStripMenuItem MenuUser_RegisterNew;
         private System.Windows.Forms.ToolStripMenuItem MenuUser_ListUsers;
         private System.Windows.Forms.LinkLabel MainMenu_Support;
-        private Bunifu.Framework.UI.BunifuGradientPanel bunifuGradientPanel1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.LinkLabel MainMenu_Settings;
-        private System.Windows.Forms.Label DayOfTheWeek;
         private System.Windows.Forms.ContextMenuStrip ContextMenu_Settings;
         private System.Windows.Forms.ToolStripMenuItem MenuSettings_Backup;
-        public System.Windows.Forms.Label LabelNavegationDescription;
         private System.Windows.Forms.ToolStripMenuItem MenuProduct_RegisterNew_Product;
         private System.Windows.Forms.ToolStripMenuItem MenuProduct_RegisterNew_Category;
         private System.Windows.Forms.ToolStripMenuItem MenuProduct_ListRegisters_Product;

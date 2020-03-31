@@ -124,6 +124,10 @@ namespace DimStock.UserForms
                 AxlException.Message.Show(ex);
             }
         }
+        private void ButtonExit_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
 
         private void DataGridCategory_CellClick(object sender, DataGridViewCellEventArgs e)
         {
