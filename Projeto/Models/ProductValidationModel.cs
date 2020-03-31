@@ -26,7 +26,7 @@ namespace DimStock.Models
 
             if (product.CostPrice == 0.00)
             {
-                MessageNotifier.Message = "Informe o preço de custo do prouto!";
+                MessageNotifier.Message = "Informe o preço de custo do produto!";
                 MessageNotifier.Title = "Não Informado";
 
                 return isValid;
