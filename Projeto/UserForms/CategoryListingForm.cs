@@ -136,6 +136,18 @@ namespace DimStock.UserForms
 {
     public partial class CategoryListingForm
     {
+        public static void ShowForm()
+        {
+            var categoryListingForm = new CategoryListingForm()
+            {
+                ShowIcon = false,
+                ShowInTaskbar = false,
+                MinimizeBox = false,
+                MaximizeBox = false
+            };
+            categoryListingForm.ShowDialog();
+        }
+
         private void ApplySettingsToDataGrid()
         {
             try

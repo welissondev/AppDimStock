@@ -161,6 +161,21 @@ namespace DimStock.Models
             return actionResult;
         }
 
+        public int GetIdByDescription()
+        {
+            var sql = string.Empty;
+
+            using (var db = new AccessConnection())
+            {
+                sql = "SELECT Id FROM Category WHERE Description = @Description";
+
+                db.ClearParameter();
+                db.AddParameter("@Description", Description);
+
+                return db.ExecuteScalar(sql);
+            }
+        }
+
         public DataTable FetchData()
         {
             var sql = string.Empty;
@@ -171,12 +186,25 @@ namespace DimStock.Models
 
                 if (Description != string.Empty)
                 {
-                    sql += "WHERE Description LIKE @Description";
+                    sql += "WHERE Description LIKE @Description ";
 
                     db.AddParameter("@Description",
                     string.Format("%{0}%", Description));
                 }
 
+                sql += "ORDER BY Description";
+
+                return db.GetTable(sql);
+            }
+        }
+
+        public DataTable ListData()
+        {
+            var sql = string.Empty;
+
+            using (var db = new AccessConnection())
+            {
+                sql = "SELECT * FROM Category ORDER BY Description";
                 return db.GetTable(sql);
             }
         }
