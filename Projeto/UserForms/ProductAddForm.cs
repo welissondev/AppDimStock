@@ -2,6 +2,7 @@
 using DimStock.Presenters;
 using DimStock.Views;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 /// <summary>
@@ -63,6 +64,9 @@ namespace DimStock.UserForms
                     case false:
                         MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                        SelectRequiredField();
+
                         break;
                 }
             }
@@ -102,8 +106,7 @@ namespace DimStock.UserForms
         {
             try
             {
-                var presenter = new ProductAddPresenter(this);
-                presenter.ResetView();
+                PresenterResetView();
             }
             catch (Exception ex)
             {
@@ -137,6 +140,8 @@ namespace DimStock.UserForms
 
                 var presenter = new ProductAddPresenter(this);
                 CategoryId = presenter.GetIdByDescription();
+
+                SelectRequiredField();
             }
             catch (Exception ex)
             {
@@ -212,6 +217,29 @@ namespace DimStock.UserForms
             {
                 AxlException.Message.Show(ex);
             }
+        }
+
+        private void SelectRequiredField()
+        {
+            foreach (Control ctl in BuniCard.Controls.Cast<Control>().OrderBy(c => c.TabIndex))
+            {
+                var tag = Convert.ToString(ctl.Tag);
+
+                if (tag == "required" && ctl.Text == string.Empty ||
+                    tag == "required" && ctl.Text == "R$ 0,00" || tag == "required" && ctl.Text == "$ 0,00")
+                {
+                    ctl.Select();
+                    return;
+                }
+            }
+        }
+
+        private void PresenterResetView()
+        {
+            var presenter = new ProductAddPresenter(this);
+            presenter.ResetView();
+
+            TextInternalCode.Select();
         }
     }
 }

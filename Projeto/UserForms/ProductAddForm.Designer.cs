@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductAddForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TextBarCode = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.TextSalePrice = new Syncfusion.Windows.Forms.Tools.CurrencyTextBox();
             this.TextCostPrice = new Syncfusion.Windows.Forms.Tools.CurrencyTextBox();
@@ -46,17 +46,17 @@
             this.ButtonSearch_Category = new System.Windows.Forms.LinkLabel();
             this.ButtonDelete = new Bunifu.Framework.UI.BunifuThinButton2();
             this.TextCategoryDescription = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.bunifuCards1 = new Bunifu.Framework.UI.BunifuCards();
+            this.BuniCard = new Bunifu.Framework.UI.BunifuCards();
             this.ButtonExit = new System.Windows.Forms.PictureBox();
-            this.LabelNavegationDescription = new System.Windows.Forms.Label();
             this.DataGridCategory = new DimStock.Controls.CustomDataGridViewTwo();
+            this.LabelNavegationDescription = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.TextBarCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextSalePrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextCostPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextDescription)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextInternalCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextCategoryDescription)).BeginInit();
-            this.bunifuCards1.SuspendLayout();
+            this.BuniCard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ButtonExit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridCategory)).BeginInit();
             this.SuspendLayout();
@@ -142,6 +142,7 @@
             this.TextCostPrice.Size = new System.Drawing.Size(169, 27);
             this.TextCostPrice.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016White;
             this.TextCostPrice.TabIndex = 3;
+            this.TextCostPrice.Tag = "required";
             this.TextCostPrice.Text = "R$ 0,00";
             this.TextCostPrice.ThemeName = "Office2016White";
             this.TextCostPrice.ThemesEnabled = false;
@@ -168,7 +169,7 @@
             this.TextDescription.Size = new System.Drawing.Size(602, 27);
             this.TextDescription.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016White;
             this.TextDescription.TabIndex = 1;
-            this.TextDescription.Tag = "";
+            this.TextDescription.Tag = "required";
             this.TextDescription.ThemeName = "Office2016White";
             this.TextDescription.ThemesEnabled = false;
             // 
@@ -302,7 +303,7 @@
             this.TextInternalCode.Size = new System.Drawing.Size(169, 27);
             this.TextInternalCode.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016White;
             this.TextInternalCode.TabIndex = 0;
-            this.TextInternalCode.Tag = "";
+            this.TextInternalCode.Tag = "required";
             this.TextInternalCode.ThemeName = "Office2016White";
             this.TextInternalCode.ThemesEnabled = false;
             // 
@@ -380,45 +381,45 @@
             this.TextCategoryDescription.Size = new System.Drawing.Size(602, 27);
             this.TextCategoryDescription.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016White;
             this.TextCategoryDescription.TabIndex = 2;
-            this.TextCategoryDescription.Tag = "";
+            this.TextCategoryDescription.Tag = "required";
             this.TextCategoryDescription.ThemeName = "Office2016White";
             this.TextCategoryDescription.ThemesEnabled = false;
             this.TextCategoryDescription.Click += new System.EventHandler(this.TextCategoryDescription_Click);
             this.TextCategoryDescription.TextChanged += new System.EventHandler(this.TextCategoryDescription_TextChanged);
             // 
-            // bunifuCards1
+            // BuniCard
             // 
-            this.bunifuCards1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.bunifuCards1.BackColor = System.Drawing.Color.White;
-            this.bunifuCards1.BorderRadius = 5;
-            this.bunifuCards1.BottomSahddow = true;
-            this.bunifuCards1.color = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(118)))), ((int)(((byte)(190)))));
-            this.bunifuCards1.Controls.Add(this.ButtonExit);
-            this.bunifuCards1.Controls.Add(this.DataGridCategory);
-            this.bunifuCards1.Controls.Add(this.TextBarCode);
-            this.bunifuCards1.Controls.Add(this.BarCodeTitle);
-            this.bunifuCards1.Controls.Add(this.TextSalePrice);
-            this.bunifuCards1.Controls.Add(this.TextCostPrice);
-            this.bunifuCards1.Controls.Add(this.TextDescription);
-            this.bunifuCards1.Controls.Add(this.LabelNavegationDescription);
-            this.bunifuCards1.Controls.Add(this.ButtonSearch_Category);
-            this.bunifuCards1.Controls.Add(this.ButtonDelete);
-            this.bunifuCards1.Controls.Add(this.ButtonPresenter_ResetView);
-            this.bunifuCards1.Controls.Add(this.ButtonSave);
-            this.bunifuCards1.Controls.Add(this.TextCategoryDescription);
-            this.bunifuCards1.Controls.Add(this.DescriptionTitle);
-            this.bunifuCards1.Controls.Add(this.TextInternalCode);
-            this.bunifuCards1.Controls.Add(this.CostPriceTitle);
-            this.bunifuCards1.Controls.Add(this.label1);
-            this.bunifuCards1.Controls.Add(this.SalePriceTitle);
-            this.bunifuCards1.Controls.Add(this.LblStockDestination);
-            this.bunifuCards1.LeftSahddow = true;
-            this.bunifuCards1.Location = new System.Drawing.Point(73, 47);
-            this.bunifuCards1.Name = "bunifuCards1";
-            this.bunifuCards1.RightSahddow = true;
-            this.bunifuCards1.ShadowDepth = 22;
-            this.bunifuCards1.Size = new System.Drawing.Size(778, 476);
-            this.bunifuCards1.TabIndex = 229;
+            this.BuniCard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.BuniCard.BackColor = System.Drawing.Color.White;
+            this.BuniCard.BorderRadius = 5;
+            this.BuniCard.BottomSahddow = true;
+            this.BuniCard.color = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(118)))), ((int)(((byte)(190)))));
+            this.BuniCard.Controls.Add(this.ButtonExit);
+            this.BuniCard.Controls.Add(this.DataGridCategory);
+            this.BuniCard.Controls.Add(this.TextBarCode);
+            this.BuniCard.Controls.Add(this.BarCodeTitle);
+            this.BuniCard.Controls.Add(this.TextSalePrice);
+            this.BuniCard.Controls.Add(this.TextCostPrice);
+            this.BuniCard.Controls.Add(this.TextDescription);
+            this.BuniCard.Controls.Add(this.LabelNavegationDescription);
+            this.BuniCard.Controls.Add(this.ButtonSearch_Category);
+            this.BuniCard.Controls.Add(this.ButtonDelete);
+            this.BuniCard.Controls.Add(this.ButtonPresenter_ResetView);
+            this.BuniCard.Controls.Add(this.ButtonSave);
+            this.BuniCard.Controls.Add(this.TextCategoryDescription);
+            this.BuniCard.Controls.Add(this.DescriptionTitle);
+            this.BuniCard.Controls.Add(this.TextInternalCode);
+            this.BuniCard.Controls.Add(this.CostPriceTitle);
+            this.BuniCard.Controls.Add(this.label1);
+            this.BuniCard.Controls.Add(this.SalePriceTitle);
+            this.BuniCard.Controls.Add(this.LblStockDestination);
+            this.BuniCard.LeftSahddow = true;
+            this.BuniCard.Location = new System.Drawing.Point(73, 47);
+            this.BuniCard.Name = "BuniCard";
+            this.BuniCard.RightSahddow = true;
+            this.BuniCard.ShadowDepth = 22;
+            this.BuniCard.Size = new System.Drawing.Size(778, 476);
+            this.BuniCard.TabIndex = 229;
             // 
             // ButtonExit
             // 
@@ -431,18 +432,6 @@
             this.ButtonExit.TabIndex = 230;
             this.ButtonExit.TabStop = false;
             this.ButtonExit.Click += new System.EventHandler(this.ButtonExit_Click);
-            // 
-            // LabelNavegationDescription
-            // 
-            this.LabelNavegationDescription.BackColor = System.Drawing.Color.Transparent;
-            this.LabelNavegationDescription.Font = new System.Drawing.Font("Myanmar Text", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelNavegationDescription.ForeColor = System.Drawing.Color.DimGray;
-            this.LabelNavegationDescription.Location = new System.Drawing.Point(16, 11);
-            this.LabelNavegationDescription.Name = "LabelNavegationDescription";
-            this.LabelNavegationDescription.Size = new System.Drawing.Size(355, 27);
-            this.LabelNavegationDescription.TabIndex = 229;
-            this.LabelNavegationDescription.Text = "Inicio > Cadastro de Produtos";
-            this.LabelNavegationDescription.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // DataGridCategory
             // 
@@ -458,13 +447,25 @@
             this.DataGridCategory.MultiSelect = false;
             this.DataGridCategory.Name = "DataGridCategory";
             this.DataGridCategory.RowHeadersVisible = false;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.DataGridCategory.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri Light", 10F);
+            this.DataGridCategory.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.DataGridCategory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DataGridCategory.Size = new System.Drawing.Size(602, 10);
             this.DataGridCategory.TabIndex = 228;
             this.DataGridCategory.Visible = false;
             this.DataGridCategory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridCategory_CellClick);
+            // 
+            // LabelNavegationDescription
+            // 
+            this.LabelNavegationDescription.BackColor = System.Drawing.Color.Transparent;
+            this.LabelNavegationDescription.Font = new System.Drawing.Font("Myanmar Text", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelNavegationDescription.ForeColor = System.Drawing.Color.DimGray;
+            this.LabelNavegationDescription.Location = new System.Drawing.Point(16, 11);
+            this.LabelNavegationDescription.Name = "LabelNavegationDescription";
+            this.LabelNavegationDescription.Size = new System.Drawing.Size(355, 27);
+            this.LabelNavegationDescription.TabIndex = 229;
+            this.LabelNavegationDescription.Text = "Inicio > Cadastro de Produtos";
+            this.LabelNavegationDescription.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ProductAddForm
             // 
@@ -472,7 +473,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(244)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(928, 569);
-            this.Controls.Add(this.bunifuCards1);
+            this.Controls.Add(this.BuniCard);
             this.MinimumSize = new System.Drawing.Size(944, 590);
             this.Name = "ProductAddForm";
             this.ShowIcon = false;
@@ -484,8 +485,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.TextDescription)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextInternalCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextCategoryDescription)).EndInit();
-            this.bunifuCards1.ResumeLayout(false);
-            this.bunifuCards1.PerformLayout();
+            this.BuniCard.ResumeLayout(false);
+            this.BuniCard.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ButtonExit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridCategory)).EndInit();
             this.ResumeLayout(false);
@@ -510,7 +511,7 @@
         private Bunifu.Framework.UI.BunifuThinButton2 ButtonDelete;
         public Syncfusion.Windows.Forms.Tools.TextBoxExt TextCategoryDescription;
         private Controls.CustomDataGridViewTwo DataGridCategory;
-        private Bunifu.Framework.UI.BunifuCards bunifuCards1;
+        private Bunifu.Framework.UI.BunifuCards BuniCard;
         public System.Windows.Forms.Label LabelNavegationDescription;
         private System.Windows.Forms.PictureBox ButtonExit;
     }
