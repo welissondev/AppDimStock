@@ -8,6 +8,14 @@ namespace DimStock.Models
         {
             var isValid = false;
 
+            if (product.InternalCode == string.Empty || product.InternalCode == null)
+            {
+                MessageNotifier.Message = "Informe um código para esse produto!";
+                MessageNotifier.Title = "Não Informado";
+
+                return isValid;
+            }
+
             if (product.Description == string.Empty || product.Description == null)
             {
                 MessageNotifier.Message = "Informe a descrição do produto!";
@@ -43,6 +51,14 @@ namespace DimStock.Models
             {
                 MessageNotifier.Message = "Não é possivel atualizar porque esse registro foi excluido!";
                 MessageNotifier.Title = "Atualize a Lista";
+
+                return isValid;
+            }
+
+            if (product.InternalCode == string.Empty || product.InternalCode == null)
+            {
+                MessageNotifier.Message = "Informe um código para esse produto!";
+                MessageNotifier.Title = "Não Informado";
 
                 return isValid;
             }
