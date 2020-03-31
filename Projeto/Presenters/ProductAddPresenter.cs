@@ -43,7 +43,7 @@ namespace DimStock.Presenters
             actionResult = product.Insert();
 
             if (actionResult == true)
-                ResetView();
+                ClearView();
 
             return actionResult;
         }
@@ -124,7 +124,7 @@ namespace DimStock.Presenters
             return table;
         }
 
-        public void ResetView()
+        public void ClearView()
         {
             view.Id = 0;
             view.InternalCode = string.Empty;

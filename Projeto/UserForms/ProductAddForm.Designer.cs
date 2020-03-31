@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductAddForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TextBarCode = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.TextSalePrice = new Syncfusion.Windows.Forms.Tools.CurrencyTextBox();
             this.TextCostPrice = new Syncfusion.Windows.Forms.Tools.CurrencyTextBox();
@@ -38,18 +38,18 @@
             this.SalePriceTitle = new System.Windows.Forms.Label();
             this.CostPriceTitle = new System.Windows.Forms.Label();
             this.DescriptionTitle = new System.Windows.Forms.Label();
-            this.ButtonPresenter_ResetView = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.ButtonClear_View = new Bunifu.Framework.UI.BunifuThinButton2();
             this.ButtonSave = new Bunifu.Framework.UI.BunifuThinButton2();
             this.LblStockDestination = new System.Windows.Forms.Label();
             this.TextInternalCode = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.label1 = new System.Windows.Forms.Label();
-            this.ButtonSearch_Category = new System.Windows.Forms.LinkLabel();
+            this.ButtonFetch_CategoryData = new System.Windows.Forms.LinkLabel();
             this.ButtonDelete = new Bunifu.Framework.UI.BunifuThinButton2();
             this.TextCategoryDescription = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.BuniCard = new Bunifu.Framework.UI.BunifuCards();
-            this.ButtonExit = new System.Windows.Forms.PictureBox();
-            this.DataGridCategory = new DimStock.Controls.CustomDataGridViewTwo();
+            this.ButtonClose = new System.Windows.Forms.PictureBox();
             this.LabelNavegationDescription = new System.Windows.Forms.Label();
+            this.DataGridCategory = new DimStock.Controls.CustomDataGridViewTwo();
             ((System.ComponentModel.ISupportInitialize)(this.TextBarCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextSalePrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextCostPrice)).BeginInit();
@@ -57,7 +57,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.TextInternalCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextCategoryDescription)).BeginInit();
             this.BuniCard.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ButtonExit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ButtonClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridCategory)).BeginInit();
             this.SuspendLayout();
             // 
@@ -217,32 +217,32 @@
             this.DescriptionTitle.TabIndex = 61;
             this.DescriptionTitle.Text = "Descrição:";
             // 
-            // ButtonPresenter_ResetView
+            // ButtonClear_View
             // 
-            this.ButtonPresenter_ResetView.ActiveBorderThickness = 1;
-            this.ButtonPresenter_ResetView.ActiveCornerRadius = 1;
-            this.ButtonPresenter_ResetView.ActiveFillColor = System.Drawing.Color.YellowGreen;
-            this.ButtonPresenter_ResetView.ActiveForecolor = System.Drawing.Color.White;
-            this.ButtonPresenter_ResetView.ActiveLineColor = System.Drawing.Color.White;
-            this.ButtonPresenter_ResetView.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ButtonPresenter_ResetView.BackColor = System.Drawing.Color.White;
-            this.ButtonPresenter_ResetView.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonPresenter_ResetView.BackgroundImage")));
-            this.ButtonPresenter_ResetView.ButtonText = "Limpar";
-            this.ButtonPresenter_ResetView.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ButtonPresenter_ResetView.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonPresenter_ResetView.ForeColor = System.Drawing.Color.SeaGreen;
-            this.ButtonPresenter_ResetView.IdleBorderThickness = 1;
-            this.ButtonPresenter_ResetView.IdleCornerRadius = 1;
-            this.ButtonPresenter_ResetView.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(185)))), ((int)(((byte)(63)))));
-            this.ButtonPresenter_ResetView.IdleForecolor = System.Drawing.Color.White;
-            this.ButtonPresenter_ResetView.IdleLineColor = System.Drawing.Color.FloralWhite;
-            this.ButtonPresenter_ResetView.Location = new System.Drawing.Point(480, 382);
-            this.ButtonPresenter_ResetView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ButtonPresenter_ResetView.Name = "ButtonPresenter_ResetView";
-            this.ButtonPresenter_ResetView.Size = new System.Drawing.Size(107, 48);
-            this.ButtonPresenter_ResetView.TabIndex = 213;
-            this.ButtonPresenter_ResetView.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.ButtonPresenter_ResetView.Click += new System.EventHandler(this.ButtonPresenter_ResetView_Click);
+            this.ButtonClear_View.ActiveBorderThickness = 1;
+            this.ButtonClear_View.ActiveCornerRadius = 1;
+            this.ButtonClear_View.ActiveFillColor = System.Drawing.Color.YellowGreen;
+            this.ButtonClear_View.ActiveForecolor = System.Drawing.Color.White;
+            this.ButtonClear_View.ActiveLineColor = System.Drawing.Color.White;
+            this.ButtonClear_View.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ButtonClear_View.BackColor = System.Drawing.Color.White;
+            this.ButtonClear_View.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonClear_View.BackgroundImage")));
+            this.ButtonClear_View.ButtonText = "Limpar";
+            this.ButtonClear_View.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonClear_View.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonClear_View.ForeColor = System.Drawing.Color.SeaGreen;
+            this.ButtonClear_View.IdleBorderThickness = 1;
+            this.ButtonClear_View.IdleCornerRadius = 1;
+            this.ButtonClear_View.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(185)))), ((int)(((byte)(63)))));
+            this.ButtonClear_View.IdleForecolor = System.Drawing.Color.White;
+            this.ButtonClear_View.IdleLineColor = System.Drawing.Color.FloralWhite;
+            this.ButtonClear_View.Location = new System.Drawing.Point(480, 382);
+            this.ButtonClear_View.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ButtonClear_View.Name = "ButtonClear_View";
+            this.ButtonClear_View.Size = new System.Drawing.Size(107, 48);
+            this.ButtonClear_View.TabIndex = 213;
+            this.ButtonClear_View.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ButtonClear_View.Click += new System.EventHandler(this.ButtonClear_View_Click);
             // 
             // ButtonSave
             // 
@@ -318,20 +318,20 @@
             this.label1.TabIndex = 220;
             this.label1.Text = "Código:";
             // 
-            // ButtonSearch_Category
+            // ButtonFetch_CategoryData
             // 
-            this.ButtonSearch_Category.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ButtonSearch_Category.AutoSize = true;
-            this.ButtonSearch_Category.BackColor = System.Drawing.Color.Transparent;
-            this.ButtonSearch_Category.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.ButtonSearch_Category.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(87)))), ((int)(((byte)(166)))));
-            this.ButtonSearch_Category.Location = new System.Drawing.Point(642, 176);
-            this.ButtonSearch_Category.Name = "ButtonSearch_Category";
-            this.ButtonSearch_Category.Size = new System.Drawing.Size(46, 17);
-            this.ButtonSearch_Category.TabIndex = 221;
-            this.ButtonSearch_Category.TabStop = true;
-            this.ButtonSearch_Category.Text = "Buscar";
-            this.ButtonSearch_Category.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ButtonSearch_Category_LinkClicked);
+            this.ButtonFetch_CategoryData.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ButtonFetch_CategoryData.AutoSize = true;
+            this.ButtonFetch_CategoryData.BackColor = System.Drawing.Color.Transparent;
+            this.ButtonFetch_CategoryData.Font = new System.Drawing.Font("Calibri Light", 10F);
+            this.ButtonFetch_CategoryData.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(87)))), ((int)(((byte)(166)))));
+            this.ButtonFetch_CategoryData.Location = new System.Drawing.Point(642, 176);
+            this.ButtonFetch_CategoryData.Name = "ButtonFetch_CategoryData";
+            this.ButtonFetch_CategoryData.Size = new System.Drawing.Size(46, 17);
+            this.ButtonFetch_CategoryData.TabIndex = 221;
+            this.ButtonFetch_CategoryData.TabStop = true;
+            this.ButtonFetch_CategoryData.Text = "Buscar";
+            this.ButtonFetch_CategoryData.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ButtonFetch_CategoryData_LinkClicked);
             // 
             // ButtonDelete
             // 
@@ -394,7 +394,7 @@
             this.BuniCard.BorderRadius = 5;
             this.BuniCard.BottomSahddow = true;
             this.BuniCard.color = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(118)))), ((int)(((byte)(190)))));
-            this.BuniCard.Controls.Add(this.ButtonExit);
+            this.BuniCard.Controls.Add(this.ButtonClose);
             this.BuniCard.Controls.Add(this.DataGridCategory);
             this.BuniCard.Controls.Add(this.TextBarCode);
             this.BuniCard.Controls.Add(this.BarCodeTitle);
@@ -402,9 +402,9 @@
             this.BuniCard.Controls.Add(this.TextCostPrice);
             this.BuniCard.Controls.Add(this.TextDescription);
             this.BuniCard.Controls.Add(this.LabelNavegationDescription);
-            this.BuniCard.Controls.Add(this.ButtonSearch_Category);
+            this.BuniCard.Controls.Add(this.ButtonFetch_CategoryData);
             this.BuniCard.Controls.Add(this.ButtonDelete);
-            this.BuniCard.Controls.Add(this.ButtonPresenter_ResetView);
+            this.BuniCard.Controls.Add(this.ButtonClear_View);
             this.BuniCard.Controls.Add(this.ButtonSave);
             this.BuniCard.Controls.Add(this.TextCategoryDescription);
             this.BuniCard.Controls.Add(this.DescriptionTitle);
@@ -421,39 +421,17 @@
             this.BuniCard.Size = new System.Drawing.Size(778, 476);
             this.BuniCard.TabIndex = 229;
             // 
-            // ButtonExit
+            // ButtonClose
             // 
-            this.ButtonExit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ButtonExit.Image = global::DimStock.Properties.Resources.IconExit;
-            this.ButtonExit.Location = new System.Drawing.Point(735, 13);
-            this.ButtonExit.Name = "ButtonExit";
-            this.ButtonExit.Size = new System.Drawing.Size(30, 27);
-            this.ButtonExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ButtonExit.TabIndex = 230;
-            this.ButtonExit.TabStop = false;
-            this.ButtonExit.Click += new System.EventHandler(this.ButtonExit_Click);
-            // 
-            // DataGridCategory
-            // 
-            this.DataGridCategory.AllowUserToAddRows = false;
-            this.DataGridCategory.AllowUserToResizeRows = false;
-            this.DataGridCategory.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.DataGridCategory.BackgroundColor = System.Drawing.Color.White;
-            this.DataGridCategory.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.DataGridCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridCategory.ColumnHeadersVisible = false;
-            this.DataGridCategory.CustomSettings = false;
-            this.DataGridCategory.Location = new System.Drawing.Point(89, 196);
-            this.DataGridCategory.MultiSelect = false;
-            this.DataGridCategory.Name = "DataGridCategory";
-            this.DataGridCategory.RowHeadersVisible = false;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.DataGridCategory.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.DataGridCategory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridCategory.Size = new System.Drawing.Size(602, 10);
-            this.DataGridCategory.TabIndex = 228;
-            this.DataGridCategory.Visible = false;
-            this.DataGridCategory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridCategory_CellClick);
+            this.ButtonClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonClose.Image = global::DimStock.Properties.Resources.IconExit;
+            this.ButtonClose.Location = new System.Drawing.Point(737, 13);
+            this.ButtonClose.Name = "ButtonClose";
+            this.ButtonClose.Size = new System.Drawing.Size(30, 30);
+            this.ButtonClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ButtonClose.TabIndex = 230;
+            this.ButtonClose.TabStop = false;
+            this.ButtonClose.Click += new System.EventHandler(this.ButtonClose_Click);
             // 
             // LabelNavegationDescription
             // 
@@ -466,6 +444,28 @@
             this.LabelNavegationDescription.TabIndex = 229;
             this.LabelNavegationDescription.Text = "Inicio > Cadastro de Produtos";
             this.LabelNavegationDescription.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // DataGridCategory
+            // 
+            this.DataGridCategory.AllowUserToAddRows = false;
+            this.DataGridCategory.AllowUserToResizeRows = false;
+            this.DataGridCategory.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.DataGridCategory.BackgroundColor = System.Drawing.Color.White;
+            this.DataGridCategory.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.DataGridCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGridCategory.ColumnHeadersVisible = false;
+            this.DataGridCategory.CustomSettings = false;
+            this.DataGridCategory.Location = new System.Drawing.Point(90, 197);
+            this.DataGridCategory.MultiSelect = false;
+            this.DataGridCategory.Name = "DataGridCategory";
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri Light", 10F);
+            this.DataGridCategory.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.DataGridCategory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DataGridCategory.Size = new System.Drawing.Size(601, 10);
+            this.DataGridCategory.TabIndex = 228;
+            this.DataGridCategory.Visible = false;
+            this.DataGridCategory.DataSourceChanged += new System.EventHandler(this.DataGridCategory_DataSourceChanged);
+            this.DataGridCategory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridCategory_CellClick);
             // 
             // ProductAddForm
             // 
@@ -487,7 +487,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.TextCategoryDescription)).EndInit();
             this.BuniCard.ResumeLayout(false);
             this.BuniCard.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ButtonExit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ButtonClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridCategory)).EndInit();
             this.ResumeLayout(false);
 
@@ -502,17 +502,17 @@
         public Syncfusion.Windows.Forms.Tools.CurrencyTextBox TextSalePrice;
         public Syncfusion.Windows.Forms.Tools.CurrencyTextBox TextCostPrice;
         public Syncfusion.Windows.Forms.Tools.TextBoxExt TextDescription;
-        private Bunifu.Framework.UI.BunifuThinButton2 ButtonPresenter_ResetView;
+        private Bunifu.Framework.UI.BunifuThinButton2 ButtonClear_View;
         private Bunifu.Framework.UI.BunifuThinButton2 ButtonSave;
         public System.Windows.Forms.Label LblStockDestination;
         public Syncfusion.Windows.Forms.Tools.TextBoxExt TextInternalCode;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.LinkLabel ButtonSearch_Category;
+        private System.Windows.Forms.LinkLabel ButtonFetch_CategoryData;
         private Bunifu.Framework.UI.BunifuThinButton2 ButtonDelete;
         public Syncfusion.Windows.Forms.Tools.TextBoxExt TextCategoryDescription;
         private Controls.CustomDataGridViewTwo DataGridCategory;
         private Bunifu.Framework.UI.BunifuCards BuniCard;
         public System.Windows.Forms.Label LabelNavegationDescription;
-        private System.Windows.Forms.PictureBox ButtonExit;
+        private System.Windows.Forms.PictureBox ButtonClose;
     }
 }

@@ -102,32 +102,30 @@ namespace DimStock.UserForms
                 AxlException.Message.Show(ex);
             }
         }
-        private void ButtonPresenter_ResetView_Click(object sender, EventArgs e)
+        private void ButtonClear_View_Click(object sender, EventArgs e)
         {
             try
             {
-                PresenterResetView();
+                ClearView();
             }
             catch (Exception ex)
             {
                 AxlException.Message.Show(ex);
             }
         }
-        private void ButtonSearch_Category_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void ButtonFetch_CategoryData_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             try
             {
                 var presenter = new ProductAddPresenter(this);
-
-                if (presenter.FetchCategoryData().Rows.Count > 0)
-                    ApplySettingsToDataGridCategory();
+                presenter.FetchCategoryData();
             }
             catch (Exception ex)
             {
                 AxlException.Message.Show(ex);
             }
         }
-        private void ButtonExit_Click(object sender, EventArgs e)
+        private void ButtonClose_Click(object sender, EventArgs e)
         {
             Close();
         }
@@ -148,13 +146,28 @@ namespace DimStock.UserForms
                 AxlException.Message.Show(ex);
             }
         }
+        private void DataGridCategory_DataSourceChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DataGridCategory.Rows.Count == 0)
+                    return;
+
+                DataGridCategory.Columns["Id"].Visible = false;
+
+                DataGridCategory.Columns["Description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                DataGridCategory.Columns["Description"].ReadOnly = true;
+            }
+            catch (Exception ex)
+            {
+                AxlException.Message.Show(ex);
+            }
+        }
 
         private void TextCategoryDescription_Click(object sender, EventArgs e)
         {
             var presenter = new ProductAddPresenter(this);
-
-            if (presenter.ListAllCategoryData().Rows.Count > 0)
-                ApplySettingsToDataGridCategory();
+            presenter.ListAllCategoryData();
         }
         private void TextCategoryDescription_TextChanged(object sender, EventArgs e)
         {
@@ -204,29 +217,16 @@ namespace DimStock.UserForms
             productAddForm.ShowDialog();
         }
 
-        private void ApplySettingsToDataGridCategory()
-        {
-            try
-            {
-                DataGridCategory.Columns["Id"].Visible = false;
-
-                DataGridCategory.Columns["Description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                DataGridCategory.Columns["Description"].ReadOnly = true;
-            }
-            catch (Exception ex)
-            {
-                AxlException.Message.Show(ex);
-            }
-        }
-
         private void SelectRequiredField()
         {
-            foreach (Control ctl in BuniCard.Controls.Cast<Control>().OrderBy(c => c.TabIndex))
+            foreach (Control ctl in BuniCard.Controls.
+                Cast<Control>().OrderBy(c => c.TabIndex))
             {
                 var tag = Convert.ToString(ctl.Tag);
 
                 if (tag == "required" && ctl.Text == string.Empty ||
-                    tag == "required" && ctl.Text == "R$ 0,00" || tag == "required" && ctl.Text == "$ 0,00")
+                    tag == "required" && ctl.Text == "R$ 0,00" ||
+                    tag == "required" && ctl.Text == "$ 0,00")
                 {
                     ctl.Select();
                     return;
@@ -234,12 +234,13 @@ namespace DimStock.UserForms
             }
         }
 
-        private void PresenterResetView()
+        private void ClearView()
         {
             var presenter = new ProductAddPresenter(this);
-            presenter.ResetView();
+            presenter.ClearView();
 
             TextInternalCode.Select();
+            DataGridCategory.Visible = false;
         }
     }
 }

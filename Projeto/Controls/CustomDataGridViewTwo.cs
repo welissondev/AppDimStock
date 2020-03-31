@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
 namespace DimStock.Controls
@@ -68,7 +67,7 @@ namespace DimStock.Controls
                 case false:
                     Visible = false;
                     AllowUserToAddRows = false;
-                    RowHeadersVisible = false;
+                    RowHeadersVisible = true;
                     BackgroundColor = Color.White;
                     AllowUserToResizeRows = false;
                     ColumnHeadersVisible = false;
