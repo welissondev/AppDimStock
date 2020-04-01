@@ -62,8 +62,7 @@ namespace DimStock.UserForms
                         break;
 
                     case false:
-                        MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
-                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        SetRiqueridField();
                         break;
                 }
             }
@@ -148,7 +147,7 @@ namespace DimStock.UserForms
 
                 if (dataGrid.Rows.Count == 0)
                     return;
-          
+
                 dataGrid.Columns["Id"].Visible = false;
 
                 dataGrid.Columns["Description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -231,6 +230,30 @@ namespace DimStock.UserForms
                 MaximizeBox = false
             };
             productAddForm.ShowDialog();
+        }
+
+        private void SetRiqueridField()
+        {
+            foreach (Control ctl in BuniCard.Controls.Cast<Control>().OrderBy(c => c.TabIndex))
+            {
+                if (Convert.ToString(ctl.Tag) == "required" && ctl.Text == string.Empty)
+                {
+                    SetErrorProvider(ctl);
+                    return;
+                }
+
+                if (Convert.ToString(ctl.Tag) == "required" && ctl.Text == "R$ 0,00")
+                {
+                    SetErrorProvider(ctl);
+                    return;
+                }
+            }
+        }
+
+        private void SetErrorProvider(Control ctl)
+        {
+            MessageError.Clear();
+            MessageError.SetError(ctl, MessageNotifier.Message);
         }
 
         private void ClearView()

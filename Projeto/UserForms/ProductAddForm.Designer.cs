@@ -48,10 +48,11 @@
             this.ButtonDelete = new Bunifu.Framework.UI.BunifuThinButton2();
             this.TextCategoryDescription = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.BuniCard = new Bunifu.Framework.UI.BunifuCards();
-            this.ButtonClose = new System.Windows.Forms.PictureBox();
             this.DataGridCategory = new DimStock.Controls.CustomDataGridViewTwo();
+            this.ButtonClose = new System.Windows.Forms.PictureBox();
             this.LabelNavegationDescription = new System.Windows.Forms.Label();
             this.TimerSearch = new System.Windows.Forms.Timer(this.components);
+            this.MessageError = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.TextBarCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextSalePrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextCostPrice)).BeginInit();
@@ -59,8 +60,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.TextInternalCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextCategoryDescription)).BeginInit();
             this.BuniCard.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ButtonClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridCategory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ButtonClose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MessageError)).BeginInit();
             this.SuspendLayout();
             // 
             // TextBarCode
@@ -72,7 +74,7 @@
             this.TextBarCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TextBarCode.CanOverrideStyle = true;
             this.TextBarCode.CausesValidation = false;
-            this.TextBarCode.CornerRadius = 1;
+            this.TextBarCode.CornerRadius = 5;
             this.TextBarCode.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.TextBarCode.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextBarCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
@@ -96,7 +98,7 @@
             this.TextSalePrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TextSalePrice.CanOverrideStyle = true;
             this.TextSalePrice.CausesValidation = false;
-            this.TextSalePrice.CornerRadius = 1;
+            this.TextSalePrice.CornerRadius = 5;
             this.TextSalePrice.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.TextSalePrice.DecimalValue = new decimal(new int[] {
             0,
@@ -127,7 +129,7 @@
             this.TextCostPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TextCostPrice.CanOverrideStyle = true;
             this.TextCostPrice.CausesValidation = false;
-            this.TextCostPrice.CornerRadius = 1;
+            this.TextCostPrice.CornerRadius = 5;
             this.TextCostPrice.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.TextCostPrice.DecimalValue = new decimal(new int[] {
             0,
@@ -159,7 +161,7 @@
             this.TextDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TextDescription.CanOverrideStyle = true;
             this.TextDescription.CausesValidation = false;
-            this.TextDescription.CornerRadius = 1;
+            this.TextDescription.CornerRadius = 5;
             this.TextDescription.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.TextDescription.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
@@ -234,7 +236,7 @@
             this.ButtonClear_View.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ButtonClear_View.ForeColor = System.Drawing.Color.SeaGreen;
             this.ButtonClear_View.IdleBorderThickness = 1;
-            this.ButtonClear_View.IdleCornerRadius = 1;
+            this.ButtonClear_View.IdleCornerRadius = 10;
             this.ButtonClear_View.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(185)))), ((int)(((byte)(63)))));
             this.ButtonClear_View.IdleForecolor = System.Drawing.Color.White;
             this.ButtonClear_View.IdleLineColor = System.Drawing.Color.FloralWhite;
@@ -261,7 +263,7 @@
             this.ButtonSave.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ButtonSave.ForeColor = System.Drawing.Color.SeaGreen;
             this.ButtonSave.IdleBorderThickness = 1;
-            this.ButtonSave.IdleCornerRadius = 1;
+            this.ButtonSave.IdleCornerRadius = 10;
             this.ButtonSave.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(185)))), ((int)(((byte)(63)))));
             this.ButtonSave.IdleForecolor = System.Drawing.Color.White;
             this.ButtonSave.IdleLineColor = System.Drawing.Color.FloralWhite;
@@ -293,7 +295,7 @@
             this.TextInternalCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TextInternalCode.CanOverrideStyle = true;
             this.TextInternalCode.CausesValidation = false;
-            this.TextInternalCode.CornerRadius = 1;
+            this.TextInternalCode.CornerRadius = 5;
             this.TextInternalCode.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.TextInternalCode.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextInternalCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
@@ -350,7 +352,7 @@
             this.ButtonDelete.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ButtonDelete.ForeColor = System.Drawing.Color.White;
             this.ButtonDelete.IdleBorderThickness = 1;
-            this.ButtonDelete.IdleCornerRadius = 1;
+            this.ButtonDelete.IdleCornerRadius = 10;
             this.ButtonDelete.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(185)))), ((int)(((byte)(63)))));
             this.ButtonDelete.IdleForecolor = System.Drawing.Color.White;
             this.ButtonDelete.IdleLineColor = System.Drawing.Color.FloralWhite;
@@ -371,7 +373,7 @@
             this.TextCategoryDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TextCategoryDescription.CanOverrideStyle = true;
             this.TextCategoryDescription.CausesValidation = false;
-            this.TextCategoryDescription.CornerRadius = 1;
+            this.TextCategoryDescription.CornerRadius = 5;
             this.TextCategoryDescription.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.TextCategoryDescription.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextCategoryDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
@@ -397,8 +399,8 @@
             this.BuniCard.BorderRadius = 5;
             this.BuniCard.BottomSahddow = true;
             this.BuniCard.color = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(118)))), ((int)(((byte)(190)))));
-            this.BuniCard.Controls.Add(this.ButtonClose);
             this.BuniCard.Controls.Add(this.DataGridCategory);
+            this.BuniCard.Controls.Add(this.ButtonClose);
             this.BuniCard.Controls.Add(this.TextBarCode);
             this.BuniCard.Controls.Add(this.BarCodeTitle);
             this.BuniCard.Controls.Add(this.TextSalePrice);
@@ -424,18 +426,6 @@
             this.BuniCard.Size = new System.Drawing.Size(778, 476);
             this.BuniCard.TabIndex = 229;
             // 
-            // ButtonClose
-            // 
-            this.ButtonClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ButtonClose.Image = global::DimStock.Properties.Resources.IconExit;
-            this.ButtonClose.Location = new System.Drawing.Point(737, 13);
-            this.ButtonClose.Name = "ButtonClose";
-            this.ButtonClose.Size = new System.Drawing.Size(30, 30);
-            this.ButtonClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.ButtonClose.TabIndex = 230;
-            this.ButtonClose.TabStop = false;
-            this.ButtonClose.Click += new System.EventHandler(this.ButtonClose_Click);
-            // 
             // DataGridCategory
             // 
             this.DataGridCategory.AllowUserToAddRows = false;
@@ -458,6 +448,18 @@
             this.DataGridCategory.DataSourceChanged += new System.EventHandler(this.DataGridCategory_DataSourceChanged);
             this.DataGridCategory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridCategory_CellClick);
             // 
+            // ButtonClose
+            // 
+            this.ButtonClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonClose.Image = global::DimStock.Properties.Resources.IconExit;
+            this.ButtonClose.Location = new System.Drawing.Point(737, 13);
+            this.ButtonClose.Name = "ButtonClose";
+            this.ButtonClose.Size = new System.Drawing.Size(30, 30);
+            this.ButtonClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ButtonClose.TabIndex = 230;
+            this.ButtonClose.TabStop = false;
+            this.ButtonClose.Click += new System.EventHandler(this.ButtonClose_Click);
+            // 
             // LabelNavegationDescription
             // 
             this.LabelNavegationDescription.BackColor = System.Drawing.Color.Transparent;
@@ -474,6 +476,10 @@
             // 
             this.TimerSearch.Interval = 800;
             this.TimerSearch.Tick += new System.EventHandler(this.TimerSearch_Tick);
+            // 
+            // MessageError
+            // 
+            this.MessageError.ContainerControl = this;
             // 
             // ProductAddForm
             // 
@@ -495,8 +501,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.TextCategoryDescription)).EndInit();
             this.BuniCard.ResumeLayout(false);
             this.BuniCard.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ButtonClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridCategory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ButtonClose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MessageError)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -523,5 +530,6 @@
         public System.Windows.Forms.Label LabelNavegationDescription;
         private System.Windows.Forms.PictureBox ButtonClose;
         private System.Windows.Forms.Timer TimerSearch;
+        private System.Windows.Forms.ErrorProvider MessageError;
     }
 }
