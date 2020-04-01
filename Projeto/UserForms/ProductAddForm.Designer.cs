@@ -52,7 +52,7 @@
             this.ButtonClose = new System.Windows.Forms.PictureBox();
             this.LabelNavegationDescription = new System.Windows.Forms.Label();
             this.TimerSearch = new System.Windows.Forms.Timer(this.components);
-            this.MessageError = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.TextBarCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextSalePrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextCostPrice)).BeginInit();
@@ -62,7 +62,7 @@
             this.BuniCard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridCategory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ButtonClose)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MessageError)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // TextBarCode
@@ -436,7 +436,7 @@
             this.DataGridCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridCategory.ColumnHeadersVisible = false;
             this.DataGridCategory.CustomSettings = false;
-            this.DataGridCategory.Location = new System.Drawing.Point(90, 197);
+            this.DataGridCategory.Location = new System.Drawing.Point(90, 195);
             this.DataGridCategory.MultiSelect = false;
             this.DataGridCategory.Name = "DataGridCategory";
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri Light", 10F);
@@ -477,9 +477,9 @@
             this.TimerSearch.Interval = 800;
             this.TimerSearch.Tick += new System.EventHandler(this.TimerSearch_Tick);
             // 
-            // MessageError
+            // ErrorProvider
             // 
-            this.MessageError.ContainerControl = this;
+            this.ErrorProvider.ContainerControl = this;
             // 
             // ProductAddForm
             // 
@@ -503,7 +503,7 @@
             this.BuniCard.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridCategory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ButtonClose)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MessageError)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -530,6 +530,6 @@
         public System.Windows.Forms.Label LabelNavegationDescription;
         private System.Windows.Forms.PictureBox ButtonClose;
         private System.Windows.Forms.Timer TimerSearch;
-        private System.Windows.Forms.ErrorProvider MessageError;
+        private System.Windows.Forms.ErrorProvider ErrorProvider;
     }
 }

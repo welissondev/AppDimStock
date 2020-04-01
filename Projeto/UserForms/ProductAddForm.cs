@@ -161,6 +161,8 @@ namespace DimStock.UserForms
 
         private void TextCategoryDescription_Click(object sender, EventArgs e)
         {
+            SetErrorProvider();
+
             var presenter = new ProductAddPresenter(this);
             presenter.ListAllCategoryData();
         }
@@ -250,10 +252,16 @@ namespace DimStock.UserForms
             }
         }
 
-        private void SetErrorProvider(Control ctl)
+        private void SetErrorProvider(Control ctl = null)
         {
-            MessageError.Clear();
-            MessageError.SetError(ctl, MessageNotifier.Message);
+            if (ctl == null)
+            {
+                ErrorProvider.Clear();
+                return;
+            }
+
+            ErrorProvider.Clear();
+            ErrorProvider.SetError(ctl, MessageNotifier.Message);
         }
 
         private void ClearView()
