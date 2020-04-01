@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductAddForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TextBarCode = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
@@ -43,13 +44,14 @@
             this.LblStockDestination = new System.Windows.Forms.Label();
             this.TextInternalCode = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.label1 = new System.Windows.Forms.Label();
-            this.ButtonFetch_CategoryData = new System.Windows.Forms.LinkLabel();
+            this.ButtonShow_CategoryAddForm = new System.Windows.Forms.LinkLabel();
             this.ButtonDelete = new Bunifu.Framework.UI.BunifuThinButton2();
             this.TextCategoryDescription = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.BuniCard = new Bunifu.Framework.UI.BunifuCards();
             this.ButtonClose = new System.Windows.Forms.PictureBox();
-            this.LabelNavegationDescription = new System.Windows.Forms.Label();
             this.DataGridCategory = new DimStock.Controls.CustomDataGridViewTwo();
+            this.LabelNavegationDescription = new System.Windows.Forms.Label();
+            this.TimerSearch = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.TextBarCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextSalePrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextCostPrice)).BeginInit();
@@ -318,20 +320,20 @@
             this.label1.TabIndex = 220;
             this.label1.Text = "Código:";
             // 
-            // ButtonFetch_CategoryData
+            // ButtonShow_CategoryAddForm
             // 
-            this.ButtonFetch_CategoryData.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ButtonFetch_CategoryData.AutoSize = true;
-            this.ButtonFetch_CategoryData.BackColor = System.Drawing.Color.Transparent;
-            this.ButtonFetch_CategoryData.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.ButtonFetch_CategoryData.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(87)))), ((int)(((byte)(166)))));
-            this.ButtonFetch_CategoryData.Location = new System.Drawing.Point(642, 176);
-            this.ButtonFetch_CategoryData.Name = "ButtonFetch_CategoryData";
-            this.ButtonFetch_CategoryData.Size = new System.Drawing.Size(46, 17);
-            this.ButtonFetch_CategoryData.TabIndex = 221;
-            this.ButtonFetch_CategoryData.TabStop = true;
-            this.ButtonFetch_CategoryData.Text = "Buscar";
-            this.ButtonFetch_CategoryData.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ButtonFetch_CategoryData_LinkClicked);
+            this.ButtonShow_CategoryAddForm.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ButtonShow_CategoryAddForm.AutoSize = true;
+            this.ButtonShow_CategoryAddForm.BackColor = System.Drawing.Color.Transparent;
+            this.ButtonShow_CategoryAddForm.Font = new System.Drawing.Font("Calibri Light", 10F);
+            this.ButtonShow_CategoryAddForm.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(87)))), ((int)(((byte)(166)))));
+            this.ButtonShow_CategoryAddForm.Location = new System.Drawing.Point(602, 153);
+            this.ButtonShow_CategoryAddForm.Name = "ButtonShow_CategoryAddForm";
+            this.ButtonShow_CategoryAddForm.Size = new System.Drawing.Size(93, 17);
+            this.ButtonShow_CategoryAddForm.TabIndex = 221;
+            this.ButtonShow_CategoryAddForm.TabStop = true;
+            this.ButtonShow_CategoryAddForm.Text = "Adicionar Nova";
+            this.ButtonShow_CategoryAddForm.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ButtonShow_CategoryAddForm_LinkClicked);
             // 
             // ButtonDelete
             // 
@@ -386,6 +388,7 @@
             this.TextCategoryDescription.ThemesEnabled = false;
             this.TextCategoryDescription.Click += new System.EventHandler(this.TextCategoryDescription_Click);
             this.TextCategoryDescription.TextChanged += new System.EventHandler(this.TextCategoryDescription_TextChanged);
+            this.TextCategoryDescription.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextCategoryDescription_KeyPress);
             // 
             // BuniCard
             // 
@@ -402,7 +405,7 @@
             this.BuniCard.Controls.Add(this.TextCostPrice);
             this.BuniCard.Controls.Add(this.TextDescription);
             this.BuniCard.Controls.Add(this.LabelNavegationDescription);
-            this.BuniCard.Controls.Add(this.ButtonFetch_CategoryData);
+            this.BuniCard.Controls.Add(this.ButtonShow_CategoryAddForm);
             this.BuniCard.Controls.Add(this.ButtonDelete);
             this.BuniCard.Controls.Add(this.ButtonClear_View);
             this.BuniCard.Controls.Add(this.ButtonSave);
@@ -433,18 +436,6 @@
             this.ButtonClose.TabStop = false;
             this.ButtonClose.Click += new System.EventHandler(this.ButtonClose_Click);
             // 
-            // LabelNavegationDescription
-            // 
-            this.LabelNavegationDescription.BackColor = System.Drawing.Color.Transparent;
-            this.LabelNavegationDescription.Font = new System.Drawing.Font("Myanmar Text", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelNavegationDescription.ForeColor = System.Drawing.Color.DimGray;
-            this.LabelNavegationDescription.Location = new System.Drawing.Point(16, 11);
-            this.LabelNavegationDescription.Name = "LabelNavegationDescription";
-            this.LabelNavegationDescription.Size = new System.Drawing.Size(355, 27);
-            this.LabelNavegationDescription.TabIndex = 229;
-            this.LabelNavegationDescription.Text = "Inicio > Cadastro de Produtos";
-            this.LabelNavegationDescription.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // DataGridCategory
             // 
             this.DataGridCategory.AllowUserToAddRows = false;
@@ -466,6 +457,23 @@
             this.DataGridCategory.Visible = false;
             this.DataGridCategory.DataSourceChanged += new System.EventHandler(this.DataGridCategory_DataSourceChanged);
             this.DataGridCategory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridCategory_CellClick);
+            // 
+            // LabelNavegationDescription
+            // 
+            this.LabelNavegationDescription.BackColor = System.Drawing.Color.Transparent;
+            this.LabelNavegationDescription.Font = new System.Drawing.Font("Myanmar Text", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelNavegationDescription.ForeColor = System.Drawing.Color.DimGray;
+            this.LabelNavegationDescription.Location = new System.Drawing.Point(16, 11);
+            this.LabelNavegationDescription.Name = "LabelNavegationDescription";
+            this.LabelNavegationDescription.Size = new System.Drawing.Size(355, 27);
+            this.LabelNavegationDescription.TabIndex = 229;
+            this.LabelNavegationDescription.Text = "Inicio > Cadastro de Produtos";
+            this.LabelNavegationDescription.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // TimerSearch
+            // 
+            this.TimerSearch.Interval = 800;
+            this.TimerSearch.Tick += new System.EventHandler(this.TimerSearch_Tick);
             // 
             // ProductAddForm
             // 
@@ -507,12 +515,13 @@
         public System.Windows.Forms.Label LblStockDestination;
         public Syncfusion.Windows.Forms.Tools.TextBoxExt TextInternalCode;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.LinkLabel ButtonFetch_CategoryData;
+        private System.Windows.Forms.LinkLabel ButtonShow_CategoryAddForm;
         private Bunifu.Framework.UI.BunifuThinButton2 ButtonDelete;
         public Syncfusion.Windows.Forms.Tools.TextBoxExt TextCategoryDescription;
         private Controls.CustomDataGridViewTwo DataGridCategory;
         private Bunifu.Framework.UI.BunifuCards BuniCard;
         public System.Windows.Forms.Label LabelNavegationDescription;
         private System.Windows.Forms.PictureBox ButtonClose;
+        private System.Windows.Forms.Timer TimerSearch;
     }
 }

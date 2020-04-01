@@ -64,9 +64,6 @@ namespace DimStock.UserForms
                     case false:
                         MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-                        SelectRequiredField();
-
                         break;
                 }
             }
@@ -113,12 +110,11 @@ namespace DimStock.UserForms
                 AxlException.Message.Show(ex);
             }
         }
-        private void ButtonFetch_CategoryData_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void ButtonShow_CategoryAddForm_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             try
             {
-                var presenter = new ProductAddPresenter(this);
-                presenter.FetchCategoryData();
+                CategoryAddForm.ShowForm();
             }
             catch (Exception ex)
             {
@@ -138,8 +134,6 @@ namespace DimStock.UserForms
 
                 var presenter = new ProductAddPresenter(this);
                 CategoryId = presenter.GetIdByDescription();
-
-                SelectRequiredField();
             }
             catch (Exception ex)
             {
@@ -150,13 +144,15 @@ namespace DimStock.UserForms
         {
             try
             {
-                if (DataGridCategory.Rows.Count == 0)
+                var dataGrid = DataGridCategory;
+
+                if (dataGrid.Rows.Count == 0)
                     return;
+          
+                dataGrid.Columns["Id"].Visible = false;
 
-                DataGridCategory.Columns["Id"].Visible = false;
-
-                DataGridCategory.Columns["Description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                DataGridCategory.Columns["Description"].ReadOnly = true;
+                dataGrid.Columns["Description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dataGrid.Columns["Description"].ReadOnly = true;
             }
             catch (Exception ex)
             {
@@ -173,6 +169,26 @@ namespace DimStock.UserForms
         {
             if (TextCategoryDescription.Text == string.Empty)
                 DataGridCategory.Visible = false;
+        }
+        private void TextCategoryDescription_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TimerSearch.Enabled = false;
+            TimerSearch.Enabled = true;
+        }
+
+        private void TimerSearch_Tick(object sender, EventArgs e)
+        {
+            TimerSearch.Enabled = false;
+
+            try
+            {
+                var presenter = new ProductAddPresenter(this);
+                presenter.FetchCategoryData();
+            }
+            catch (Exception ex)
+            {
+                AxlException.Message.Show(ex);
+            }
         }
     }
 }
@@ -217,23 +233,6 @@ namespace DimStock.UserForms
             productAddForm.ShowDialog();
         }
 
-        private void SelectRequiredField()
-        {
-            foreach (Control ctl in BuniCard.Controls.
-                Cast<Control>().OrderBy(c => c.TabIndex))
-            {
-                var tag = Convert.ToString(ctl.Tag);
-
-                if (tag == "required" && ctl.Text == string.Empty ||
-                    tag == "required" && ctl.Text == "R$ 0,00" ||
-                    tag == "required" && ctl.Text == "$ 0,00")
-                {
-                    ctl.Select();
-                    return;
-                }
-            }
-        }
-
         private void ClearView()
         {
             var presenter = new ProductAddPresenter(this);
@@ -241,6 +240,7 @@ namespace DimStock.UserForms
 
             TextInternalCode.Select();
             DataGridCategory.Visible = false;
+            ButtonShow_CategoryAddForm.Visible = false;
         }
     }
 }
