@@ -263,7 +263,6 @@ namespace DimStock.UserForms
 
             TextInternalCode.Select();
             DataGridCategory.Visible = false;
-            ButtonShow_CategoryAddForm.Visible = false;
         }
     }
 }
