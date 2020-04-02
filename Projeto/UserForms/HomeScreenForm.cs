@@ -92,8 +92,11 @@ namespace DimStock.UserForms
             var form = new ProductAddForm()
             {
                 MdiParent = this,
-                FormBorderStyle = FormBorderStyle.None,
+                ControlBox = false,
+                Movable = false,
                 Dock = DockStyle.Fill,
+                MaximizeBox = false,
+                MinimizeBox = false
             };
 
             form.Show();

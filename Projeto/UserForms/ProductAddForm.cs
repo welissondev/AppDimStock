@@ -1,6 +1,8 @@
 ﻿using DimStock.Auxiliarys;
 using DimStock.Presenters;
 using DimStock.Views;
+using MetroFramework;
+using MetroFramework.Forms;
 using System;
 using System.Linq;
 using System.Windows.Forms;
@@ -15,8 +17,8 @@ namespace DimStock.UserForms
         public int Id { get; set; }
         public string InternalCode { get => TextInternalCode.Text; set => TextInternalCode.Text = value; }
         public string Description { get => TextDescription.Text; set => TextDescription.Text = value; }
-        public double CostPrice { get => double.Parse(TextCostPrice.DecimalValue.ToString()); set => TextCostPrice.DecimalValue = decimal.Parse(value.ToString()); }
-        public double SalePrice { get => double.Parse(TextSalePrice.DecimalValue.ToString()); set => TextSalePrice.DecimalValue = decimal.Parse(value.ToString()); }
+        public double CostPrice { get => double.Parse(TextCostPrice.DecimalValue.ToString()); set => double.Parse(TextCostPrice.Text = value.ToString()); }
+        public double SalePrice { get => double.Parse(TextSalePrice.DecimalValue.ToString()); set => double.Parse(TextSalePrice.Text = value.ToString()); }
         public string BarCode { get => TextBarCode.Text; set => TextBarCode.Text = value; }
         public int CategoryId { get; set; }
         public string CategoryDescription { get => TextCategoryDescription.Text; set => TextCategoryDescription.Text = value; }
@@ -29,7 +31,7 @@ namespace DimStock.UserForms
 /// </summary>
 namespace DimStock.UserForms
 {
-    public partial class ProductAddForm : Form
+    public partial class ProductAddForm : MetroForm
     {
         public ProductAddForm()
         {
@@ -45,7 +47,7 @@ namespace DimStock.UserForms
         {
             try
             {
-                var actionResult = false;
+                var actionResult = true;
                 var presenter = new ProductAddPresenter(this);
 
                 if (Id == 0)
@@ -57,14 +59,29 @@ namespace DimStock.UserForms
                 switch (actionResult)
                 {
                     case true:
-                        MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        MetroMessageBox.Show(this, "Produto cadastrado com sucesso",
+                        "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        ClearView();
+
                         break;
 
                     case false:
                         SetRiqueridField();
                         break;
                 }
+            }
+            catch (Exception ex)
+            {
+                AxlException.Message.Show(ex);
+            }
+        }
+        private void ButtonClearView_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ClearView();
             }
             catch (Exception ex)
             {
@@ -83,26 +100,15 @@ namespace DimStock.UserForms
                 switch (actionResult)
                 {
                     case true:
-                        MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
+                        MetroMessageBox.Show(this, MessageNotifier.Message, MessageNotifier.Title,
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                         break;
 
                     case false:
-                        MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
+                        MetroMessageBox.Show(this, MessageNotifier.Message, MessageNotifier.Title,
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         break;
                 }
-            }
-            catch (Exception ex)
-            {
-                AxlException.Message.Show(ex);
-            }
-        }
-        private void ButtonClear_View_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                ClearView();
             }
             catch (Exception ex)
             {
@@ -166,15 +172,15 @@ namespace DimStock.UserForms
             var presenter = new ProductAddPresenter(this);
             presenter.ListAllCategoryData();
         }
-        private void TextCategoryDescription_TextChanged(object sender, EventArgs e)
-        {
-            if (TextCategoryDescription.Text == string.Empty)
-                DataGridCategory.Visible = false;
-        }
         private void TextCategoryDescription_KeyPress(object sender, KeyPressEventArgs e)
         {
             TimerSearch.Enabled = false;
             TimerSearch.Enabled = true;
+        }
+        private void TextCategoryDescription_TextChanged(object sender, EventArgs e)
+        {
+            if (TextCategoryDescription.Text == string.Empty)
+                DataGridCategory.Visible = false;
         }
 
         private void TimerSearch_Tick(object sender, EventArgs e)
@@ -241,12 +247,14 @@ namespace DimStock.UserForms
                 if (Convert.ToString(ctl.Tag) == "required" && ctl.Text == string.Empty)
                 {
                     SetErrorProvider(ctl);
+                    ctl.Select();
                     return;
                 }
 
                 if (Convert.ToString(ctl.Tag) == "required" && ctl.Text == "R$ 0,00")
                 {
                     SetErrorProvider(ctl);
+                    ctl.Select();
                     return;
                 }
             }
@@ -271,6 +279,7 @@ namespace DimStock.UserForms
 
             TextInternalCode.Select();
             DataGridCategory.Visible = false;
+            SetErrorProvider();
         }
     }
 }
