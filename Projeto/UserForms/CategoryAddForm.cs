@@ -3,6 +3,7 @@ using DimStock.Presenters;
 using DimStock.Views;
 using MetroFramework.Forms;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 
@@ -30,7 +31,57 @@ namespace DimStock.UserForms
             InitializeComponent();
         }
 
-        private void ButtonUpdate_Click(object sender, EventArgs e)
+        private void CategoryAddForm_Resize(object sender, EventArgs e)
+        {
+            Refresh();
+        }
+
+        private void ButtonClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+        private void ButtonDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (MessageBox.Show("Confirma a exclusão dessa categoria?", "IMPORTANTE",
+                MessageBoxButtons.YesNo, MessageBoxIcon.None, MessageBoxDefaultButton.Button2) ==
+                DialogResult.No) return;
+
+                var presenter = new CategoryAddPresenter(this);
+                var actionResult = presenter.Delete();
+
+                switch (actionResult)
+                {
+                    case true:
+                        MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+
+                    case false:
+                        MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                AxlException.Message.Show(ex);
+            }
+        }
+        private void ButtonClearView_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var presenter = new CategoryAddPresenter(this);
+                presenter.ResetView();
+            }
+            catch (Exception ex)
+            {
+                AxlException.Message.Show(ex);
+            }
+        }
+        private void ButtonSave_Click(object sender, EventArgs e)
         {
             try
             {
@@ -63,48 +114,6 @@ namespace DimStock.UserForms
             }
         }
 
-        private void ButtonDelete_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (MessageBox.Show("Confirma a exclusão dessa categoria?", "IMPORTANTE",
-                MessageBoxButtons.YesNo, MessageBoxIcon.None, MessageBoxDefaultButton.Button2) ==
-                DialogResult.No) return;
-
-                var presenter = new CategoryAddPresenter(this);
-                var actionResult = presenter.Delete();
-
-                switch (actionResult)
-                {
-                    case true:
-                        MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        break;
-
-                    case false:
-                        MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
-                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        break;
-                }
-            }
-            catch (Exception ex)
-            {
-                AxlException.Message.Show(ex);
-            }
-        }
-
-        private void ButtonResetView_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var presenter = new CategoryAddPresenter(this);
-                presenter.ResetView();
-            }
-            catch (Exception ex)
-            {
-                AxlException.Message.Show(ex);
-            }
-        }
     }
 }
 
@@ -146,6 +155,38 @@ namespace DimStock.UserForms
             };
 
             categoryAddForm.ShowDialog();
+        }
+
+        private void SetRiqueridField()
+        {
+            foreach (Control ctl in BuniCard.Controls.Cast<Control>().OrderBy(c => c.TabIndex))
+            {
+                if (Convert.ToString(ctl.Tag) == "required" && ctl.Text == string.Empty)
+                {
+                    SetErrorProvider(ctl);
+                    ctl.Select();
+                    return;
+                }
+
+                if (Convert.ToString(ctl.Tag) == "required" && ctl.Text == "R$ 0,00")
+                {
+                    SetErrorProvider(ctl);
+                    ctl.Select();
+                    return;
+                }
+            }
+        }
+
+        private void SetErrorProvider(Control ctl = null)
+        {
+            if (ctl == null)
+            {
+                ErrorProvider.Clear();
+                return;
+            }
+
+            ErrorProvider.Clear();
+            ErrorProvider.SetError(ctl, MessageNotifier.Message);
         }
     }
 }
