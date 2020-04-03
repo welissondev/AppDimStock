@@ -67,7 +67,7 @@ namespace DimStock.Controls
                 case false:
                     Visible = false;
                     AllowUserToAddRows = false;
-                    RowHeadersVisible = true;
+                    RowHeadersVisible = false;
                     BackgroundColor = Color.White;
                     AllowUserToResizeRows = false;
                     ColumnHeadersVisible = false;

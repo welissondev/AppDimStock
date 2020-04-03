@@ -38,9 +38,24 @@ namespace DimStock.UserForms
             InitializeComponent();
         }
 
+        private void ProductAddForm_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                TextInternalCode.Select();
+            }
+            catch (Exception ex)
+            {
+                AxlException.Message.Show(ex);
+            }
+        }
         private void ProductAddForm_Click(object sender, EventArgs e)
         {
             DataGridCategory.Visible = false;
+        }
+        private void ProductAddForm_Resize(object sender, EventArgs e)
+        {
+            Refresh();
         }
 
         private void ButtonSave_Click(object sender, EventArgs e)
@@ -92,6 +107,11 @@ namespace DimStock.UserForms
         {
             try
             {
+
+                if (MetroMessageBox.Show(this, "Confirma a exclusão desse produto?", "IMPORTANTE",
+                MessageBoxButtons.YesNo, MessageBoxIcon.None, MessageBoxDefaultButton.Button2) ==
+                DialogResult.No) return;
+
                 var actionResult = false;
                 var presenter = new ProductAddPresenter(this);
 
@@ -130,6 +150,7 @@ namespace DimStock.UserForms
         {
             Close();
         }
+
 
         private void DataGridCategory_CellClick(object sender, DataGridViewCellEventArgs e)
         {
