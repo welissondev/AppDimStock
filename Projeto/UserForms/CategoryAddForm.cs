@@ -1,6 +1,7 @@
 ﻿using DimStock.Auxiliarys;
 using DimStock.Presenters;
 using DimStock.Views;
+using MetroFramework.Forms;
 using System;
 using System.Windows.Forms;
 
@@ -22,7 +23,7 @@ namespace DimStock.UserForms
 /// </summary>
 namespace DimStock.UserForms
 {
-    public partial class CategoryAddForm : Form
+    public partial class CategoryAddForm : MetroForm
     {
         public CategoryAddForm()
         {
