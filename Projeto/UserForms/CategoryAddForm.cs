@@ -17,6 +17,7 @@ namespace DimStock.UserForms
         public int Id { get; set; }
         public string Description { get => TextDescription.Text; set => TextDescription.Text = value; }
     }
+
 }
 
 /// <summary>
@@ -33,12 +34,47 @@ namespace DimStock.UserForms
 
         private void CategoryAddForm_Resize(object sender, EventArgs e)
         {
-            Refresh();
+            try
+            {
+                Refresh();
+            }
+            catch (Exception ex)
+            {
+                AxlException.Message.Show(ex);
+            }
         }
 
-        private void ButtonClose_Click(object sender, EventArgs e)
+        private void ButtonSave_Click(object sender, EventArgs e)
         {
-            Close();
+            try
+            {
+                var actionResult = false;
+
+                var presenter = new CategoryAddPresenter(this);
+
+                if (Id == 0)
+                    actionResult = presenter.Insert();
+
+                if (Id > 0)
+                    actionResult = presenter.Update();
+
+                switch (actionResult)
+                {
+                    case true:
+                        MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ClearView();
+                        break;
+
+                    case false:
+                        SetRiqueridField();
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                AxlException.Message.Show(ex);
+            }
         }
         private void ButtonDelete_Click(object sender, EventArgs e)
         {
@@ -69,51 +105,21 @@ namespace DimStock.UserForms
                 AxlException.Message.Show(ex);
             }
         }
+        private void ButtonClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
         private void ButtonClearView_Click(object sender, EventArgs e)
         {
             try
             {
-                var presenter = new CategoryAddPresenter(this);
-                presenter.ResetView();
+                ClearView();
             }
             catch (Exception ex)
             {
                 AxlException.Message.Show(ex);
             }
         }
-        private void ButtonSave_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var actionResult = false;
-
-                var presenter = new CategoryAddPresenter(this);
-
-                if (Id == 0)
-                    actionResult = presenter.Insert();
-
-                if (Id > 0)
-                    actionResult = presenter.Update();
-
-                switch (actionResult)
-                {
-                    case true:
-                        MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        break;
-
-                    case false:
-                        MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
-                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        break;
-                }
-            }
-            catch (Exception ex)
-            {
-                AxlException.Message.Show(ex);
-            }
-        }
-
     }
 }
 
@@ -131,8 +137,7 @@ namespace DimStock.UserForms
                 var categoryForm = new CategoryAddForm()
                 {
                     ShowInTaskbar = false,
-                    MaximizeBox = false,
-                    MinimizeBox = false
+                    ControlBox = false,
                 };
 
                 categoryForm.ShowDialog();
@@ -163,15 +168,7 @@ namespace DimStock.UserForms
             {
                 if (Convert.ToString(ctl.Tag) == "required" && ctl.Text == string.Empty)
                 {
-                    SetErrorProvider(ctl);
-                    ctl.Select();
-                    return;
-                }
-
-                if (Convert.ToString(ctl.Tag) == "required" && ctl.Text == "R$ 0,00")
-                {
-                    SetErrorProvider(ctl);
-                    ctl.Select();
+                    SetErrorProvider(ctl); ctl.Select();
                     return;
                 }
             }
@@ -187,6 +184,15 @@ namespace DimStock.UserForms
 
             ErrorProvider.Clear();
             ErrorProvider.SetError(ctl, MessageNotifier.Message);
+        }
+
+        private void ClearView()
+        {
+            var presenter = new CategoryAddPresenter(this);
+            presenter.ResetView();
+
+            TextDescription.Select();
+            SetErrorProvider();
         }
     }
 }
