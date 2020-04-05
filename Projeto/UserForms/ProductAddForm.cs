@@ -1,7 +1,6 @@
 ﻿using DimStock.Auxiliarys;
 using DimStock.Presenters;
 using DimStock.Views;
-using MetroFramework;
 using MetroFramework.Forms;
 using System;
 using System.Linq;
@@ -75,7 +74,7 @@ namespace DimStock.UserForms
                 {
                     case true:
 
-                        MetroMessageBox.Show(this, "Produto cadastrado com sucesso",
+                        MessageBox.Show("Produto cadastrado com sucesso",
                         "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         ClearView();
@@ -108,7 +107,7 @@ namespace DimStock.UserForms
             try
             {
 
-                if (MetroMessageBox.Show(this, "Confirma a exclusão desse produto?", "IMPORTANTE",
+                if (MessageBox.Show("Confirma a exclusão desse produto?", "IMPORTANTE",
                 MessageBoxButtons.YesNo, MessageBoxIcon.None, MessageBoxDefaultButton.Button2) ==
                 DialogResult.No) return;
 
@@ -120,12 +119,12 @@ namespace DimStock.UserForms
                 switch (actionResult)
                 {
                     case true:
-                        MetroMessageBox.Show(this, MessageNotifier.Message, MessageNotifier.Title,
+                        MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                         break;
 
                     case false:
-                        MetroMessageBox.Show(this, MessageNotifier.Message, MessageNotifier.Title,
+                        MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         break;
                 }
@@ -150,7 +149,6 @@ namespace DimStock.UserForms
         {
             Close();
         }
-
 
         private void DataGridCategory_CellClick(object sender, DataGridViewCellEventArgs e)
         {
