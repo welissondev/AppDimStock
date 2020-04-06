@@ -1,7 +1,9 @@
-﻿using DimStock.Auxiliarys;
+﻿using Bunifu.UI.WinForms.BunifuTextbox;
+using DimStock.Auxiliarys;
 using DimStock.Presenters;
 using DimStock.Views;
 using MetroFramework.Forms;
+using Syncfusion.Windows.Forms.Tools;
 using System;
 using System.Linq;
 using System.Windows.Forms;
@@ -20,7 +22,7 @@ namespace DimStock.UserForms
         public double SalePrice { get => double.Parse(TextSalePrice.DecimalValue.ToString()); set => double.Parse(TextSalePrice.Text = value.ToString()); }
         public string BarCode { get => TextBarCode.Text; set => TextBarCode.Text = value; }
         public int CategoryId { get; set; }
-        public string CategoryDescription { get => TextCategoryDescription.Text; set => TextCategoryDescription.Text = value; }
+        public string CategoryDescription { get => BoxCategoryDescription.Text; set => BoxCategoryDescription.Text = value; }
         public object CategoryList { get => DataGridCategory.DataSource; set => DataGridCategory.DataSource = value; }
     }
 }
@@ -57,6 +59,7 @@ namespace DimStock.UserForms
             Refresh();
         }
 
+
         private void ButtonSave_Click(object sender, EventArgs e)
         {
             try
@@ -73,29 +76,15 @@ namespace DimStock.UserForms
                 switch (actionResult)
                 {
                     case true:
-
-                        MessageBox.Show("Produto cadastrado com sucesso",
-                        "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        ClearView();
-
+                        MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                         break;
 
                     case false:
-                        SetRiqueridField();
+                        MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         break;
                 }
-            }
-            catch (Exception ex)
-            {
-                AxlException.Message.Show(ex);
-            }
-        }
-        private void ButtonClearView_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                ClearView();
             }
             catch (Exception ex)
             {
@@ -134,11 +123,11 @@ namespace DimStock.UserForms
                 AxlException.Message.Show(ex);
             }
         }
-        private void ButtonShow_CategoryAddForm_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void ButtonClearView_Click(object sender, EventArgs e)
         {
             try
             {
-                CategoryAddForm.ShowForm();
+                ClearView();
             }
             catch (Exception ex)
             {
@@ -148,6 +137,10 @@ namespace DimStock.UserForms
         private void ButtonClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+        private void ButtonShow_CategoryAddForm_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            CategoryAddForm.ShowForm();
         }
 
         private void DataGridCategory_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -184,21 +177,21 @@ namespace DimStock.UserForms
             }
         }
 
-        private void TextCategoryDescription_Click(object sender, EventArgs e)
+        private void BoxCategoryDescription_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TimerSearch.Enabled = false;
+            TimerSearch.Enabled = true;
+        }
+        private void BoxCategoryDescription_Click(object sender, EventArgs e)
         {
             SetErrorProvider();
 
             var presenter = new ProductAddPresenter(this);
             presenter.ListAllCategoryData();
         }
-        private void TextCategoryDescription_KeyPress(object sender, KeyPressEventArgs e)
+        private void BoxCategoryDescription_TextChanged(object sender, EventArgs e)
         {
-            TimerSearch.Enabled = false;
-            TimerSearch.Enabled = true;
-        }
-        private void TextCategoryDescription_TextChanged(object sender, EventArgs e)
-        {
-            if (TextCategoryDescription.Text == string.Empty)
+            if (BoxCategoryDescription.Text == string.Empty)
                 DataGridCategory.Visible = false;
         }
 
@@ -259,26 +252,6 @@ namespace DimStock.UserForms
             productAddForm.ShowDialog();
         }
 
-        private void SetRiqueridField()
-        {
-            foreach (Control ctl in BuniCard.Controls.Cast<Control>().OrderBy(c => c.TabIndex))
-            {
-                if (Convert.ToString(ctl.Tag) == "required" && ctl.Text == string.Empty)
-                {
-                    SetErrorProvider(ctl);
-                    ctl.Select();
-                    return;
-                }
-
-                if (Convert.ToString(ctl.Tag) == "required" && ctl.Text == "R$ 0,00")
-                {
-                    SetErrorProvider(ctl);
-                    ctl.Select();
-                    return;
-                }
-            }
-        }
-
         private void SetErrorProvider(Control ctl = null)
         {
             if (ctl == null)
@@ -296,7 +269,7 @@ namespace DimStock.UserForms
             var presenter = new ProductAddPresenter(this);
             presenter.ClearView();
 
-            TextInternalCode.Select();
+            TextInternalCode.Focus();
             DataGridCategory.Visible = false;
             SetErrorProvider();
         }
