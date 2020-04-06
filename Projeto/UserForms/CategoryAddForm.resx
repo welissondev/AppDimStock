@@ -117,7 +117,58 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="TextDescription.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAscAAAAjCAYAAAB4vKeTAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADgSURBVHhe7dZBDQMxEATB5Y/KJ8MIjABIZKkfCQZXSfMZ
+        BD0AAMCPvfdrrfUxMzMzM7txp4dL45lzAADArU4Pl8biGACAu4ljAACIOAYAgIhjAACIOAYAgIhjAACI
+        OAYAgIhjAACIOAYAgIhjAACIOAYAgIhjAACIOAYAgIhjAACIOAYAgIhjAACIOAYAgIhjAACIOAYAgIhj
+        AACIOAYAgIhjAACIOAYAgIhjAACIOAYAgIhjAACIOAYAgIhjAACIOAYAgIhjAADIXxw/z/M+h5mZmZnZ
+        jTs9XBoDAAAzM1+RePaGpLRPCgAAAABJRU5ErkJggg==
+</value>
+  </data>
   <metadata name="ErrorProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="ButtonClose.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAJAAAAAtCAYAAABBEuITAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD6SURBVHhe7dyxTQNBGEThLYVSqIACuZMpgJiUUpAs7kRA
+        RAVwRqcJrGePZKfvSV80G/7xDrP7e/l6GIf1dczrr1Q9L2//N5Om5X3MCz+W2Md+PVv8QLou0Sg1iUap
+        STRKTaJRahKNUpNolJpEo9QkGqUm0Sg1iUapSTRKTaJRahKNUpNolJpEo9QkGqUm0Sg1iUapSTRKTaJR
+        ahKNUpNolJpEo9QkGqUm0Sg1iUapSTRKTaJRahKNUpNolJpEo9QkGqUm0Sg1iUapSTRKTaJRahKNUpNo
+        lJp0+vOXHkiXTOvPfj1b0+fjmJdvfCidOx3PfHzar8fs1sb4A1QSn/Px6U9HAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="ButtonClearView.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAJAAAAAtCAYAAABBEuITAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD6SURBVHhe7dyxTQNBGEThLYVSqIACuZMpgJiUUpAs7kRA
+        RAVwRqcJrGePZKfvSV80G/7xDrP7e/l6GIf1dczrr1Q9L2//N5Om5X3MCz+W2Md+PVv8QLou0Sg1iUap
+        STRKTaJRahKNUpNolJpEo9QkGqUm0Sg1iUapSTRKTaJRahKNUpNolJpEo9QkGqUm0Sg1iUapSTRKTaJR
+        ahKNUpNolJpEo9QkGqUm0Sg1iUapSTRKTaJRahKNUpNolJpEo9QkGqUm0Sg1iUapSTRKTaJRahKNUpNo
+        lJp0+vOXHkiXTOvPfj1b0+fjmJdvfCidOx3PfHzar8fs1sb4A1QSn/Px6U9HAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="ButtonDelete.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAJAAAAAtCAYAAABBEuITAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD6SURBVHhe7dyxTQNBGEThLYVSqIACuZMpgJiUUpAs7kRA
+        RAVwRqcJrGePZKfvSV80G/7xDrP7e/l6GIf1dczrr1Q9L2//N5Om5X3MCz+W2Md+PVv8QLou0Sg1iUap
+        STRKTaJRahKNUpNolJpEo9QkGqUm0Sg1iUapSTRKTaJRahKNUpNolJpEo9QkGqUm0Sg1iUapSTRKTaJR
+        ahKNUpNolJpEo9QkGqUm0Sg1iUapSTRKTaJRahKNUpNolJpEo9QkGqUm0Sg1iUapSTRKTaJRahKNUpNo
+        lJp0+vOXHkiXTOvPfj1b0+fjmJdvfCidOx3PfHzar8fs1sb4A1QSn/Px6U9HAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="ButtonSave.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAJAAAAAtCAYAAABBEuITAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD6SURBVHhe7dyxTQNBGEThLYVSqIACuZMpgJiUUpAs7kRA
+        RAVwRqcJrGePZKfvSV80G/7xDrP7e/l6GIf1dczrr1Q9L2//N5Om5X3MCz+W2Md+PVv8QLou0Sg1iUap
+        STRKTaJRahKNUpNolJpEo9QkGqUm0Sg1iUapSTRKTaJRahKNUpNolJpEo9QkGqUm0Sg1iUapSTRKTaJR
+        ahKNUpNolJpEo9QkGqUm0Sg1iUapSTRKTaJRahKNUpNolJpEo9QkGqUm0Sg1iUapSTRKTaJRahKNUpNo
+        lJp0+vOXHkiXTOvPfj1b0+fjmJdvfCidOx3PfHzar8fs1sb4A1QSn/Px6U9HAAAAAElFTkSuQmCC
+</value>
+  </data>
 </root>

@@ -16,7 +16,7 @@ namespace DimStock.Presenters
             var category = new CategoryModel()
             {
                 Id = view.Id,
-                Description = view.Description
+                Description = view.Description.TrimStart().TrimEnd()
             };
             actionResult = category.Insert();
 
@@ -33,7 +33,7 @@ namespace DimStock.Presenters
             var category = new CategoryModel()
             {
                 Id = view.Id,
-                Description = view.Description
+                Description = view.Description.TrimStart().TrimEnd()
             };
             actionResult = category.Update();
             

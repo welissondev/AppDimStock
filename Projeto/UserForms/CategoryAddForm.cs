@@ -76,6 +76,17 @@ namespace DimStock.UserForms
                 AxlException.Message.Show(ex);
             }
         }
+        private void ButtonClearView_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ClearView();
+            }
+            catch (Exception ex)
+            {
+                AxlException.Message.Show(ex);
+            }
+        }
         private void ButtonDelete_Click(object sender, EventArgs e)
         {
             try
@@ -109,17 +120,7 @@ namespace DimStock.UserForms
         {
             Close();
         }
-        private void ButtonClearView_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                ClearView();
-            }
-            catch (Exception ex)
-            {
-                AxlException.Message.Show(ex);
-            }
-        }
+
     }
 }
 
@@ -155,8 +156,7 @@ namespace DimStock.UserForms
             {
                 Id = view.Id,
                 Description = view.Description,
-                ShowInTaskbar = false,
-                MinimizeBox = false
+                ControlBox = false
             };
 
             categoryAddForm.ShowDialog();

@@ -30,7 +30,7 @@ namespace DimStock.Presenters
         {
             var actionResult = false;
 
-            var category = new CategoryModel() { Id = view.Id };
+            var category = new CategoryModel(){Id = view.Id};
             actionResult = category.GetDetail();
 
             if (actionResult == true)

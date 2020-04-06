@@ -85,6 +85,9 @@ namespace DimStock.UserForms
                     Id = int.Parse(DatagridCategory.CurrentRow.
                     Cells["Id"].Value.ToString());
 
+                    Description = DatagridCategory.CurrentRow.
+                    Cells["Description"].Value.ToString();
+
                     var selectedButton = DatagridCategory.Columns
                     [e.ColumnIndex].Name;
 
