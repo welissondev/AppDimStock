@@ -122,7 +122,7 @@
             this.DatagridCategory.RowHeadersVisible = false;
             this.DatagridCategory.RowTemplate.Height = 40;
             this.DatagridCategory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DatagridCategory.Size = new System.Drawing.Size(801, 340);
+            this.DatagridCategory.Size = new System.Drawing.Size(801, 315);
             this.DatagridCategory.TabIndex = 234;
             this.DatagridCategory.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             this.DatagridCategory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DatagridCategory_CellClick);
@@ -138,7 +138,7 @@
             this.bunifuShadowPanel1.Controls.Add(this.ButtonClear_SearchFields);
             this.bunifuShadowPanel1.Controls.Add(this.ButtonUpdate_DataGridCategory);
             this.bunifuShadowPanel1.Controls.Add(this.ButtonShow_CategoryAddForm);
-            this.bunifuShadowPanel1.Location = new System.Drawing.Point(39, 29);
+            this.bunifuShadowPanel1.Location = new System.Drawing.Point(39, 74);
             this.bunifuShadowPanel1.Name = "bunifuShadowPanel1";
             this.bunifuShadowPanel1.PanelColor = System.Drawing.Color.Empty;
             this.bunifuShadowPanel1.ShadowDept = 2;
@@ -416,19 +416,19 @@
             this.bunifuShadowPanel2.Controls.Add(this.ImageLoading);
             this.bunifuShadowPanel2.Controls.Add(this.TextSearch_Category);
             this.bunifuShadowPanel2.Controls.Add(this.DatagridCategory);
-            this.bunifuShadowPanel2.Location = new System.Drawing.Point(39, 113);
+            this.bunifuShadowPanel2.Location = new System.Drawing.Point(39, 158);
             this.bunifuShadowPanel2.Name = "bunifuShadowPanel2";
             this.bunifuShadowPanel2.PanelColor = System.Drawing.Color.Empty;
             this.bunifuShadowPanel2.ShadowDept = 2;
             this.bunifuShadowPanel2.ShadowTopLeftVisible = true;
-            this.bunifuShadowPanel2.Size = new System.Drawing.Size(857, 442);
+            this.bunifuShadowPanel2.Size = new System.Drawing.Size(857, 417);
             this.bunifuShadowPanel2.TabIndex = 236;
             // 
             // ImageLoading
             // 
             this.ImageLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ImageLoading.Image = global::DimStock.Properties.Resources.Loading;
-            this.ImageLoading.Location = new System.Drawing.Point(361, 165);
+            this.ImageLoading.Location = new System.Drawing.Point(361, 152);
             this.ImageLoading.Name = "ImageLoading";
             this.ImageLoading.Size = new System.Drawing.Size(144, 135);
             this.ImageLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -527,6 +527,7 @@
             this.MinimumSize = new System.Drawing.Size(944, 590);
             this.Name = "CategoryListingForm";
             this.RightToLeftLayout = true;
+            this.Text = "Listagem de Categorias";
             this.Load += new System.EventHandler(this.CategoryListingForm_Load);
             this.Resize += new System.EventHandler(this.CategoryListingForm_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.DatagridCategory)).EndInit();
