@@ -16,6 +16,14 @@ namespace DimStock.Models
                 return isValid;
             }
 
+            if (ValidateIfExists(category) == true)
+            {
+                MessageNotifier.Message = "Já existe uma categoria registrada com esse nome!";
+                MessageNotifier.Title = "Já Existe";
+
+                return isValid;
+            }
+
             return isValid = true;
         }
 
@@ -102,10 +110,19 @@ namespace DimStock.Models
 
             using (var db = new AccessConnection())
             {
-                sql = "SELECT Id FROM Category WHERE Id = @Id";
+                sql = @"SELECT Id, Description FROM Category WHERE Id = @Id ";
 
                 db.ClearParameter();
                 db.AddParameter("@Id", category.Id);
+
+                //Concatena sql se usuário buscar a
+                //categoria pela descrição.
+                if (category.Description != string.Empty && 
+                    category.Description != null)
+                {
+                    sql += "OR Description = @Description";
+                    db.AddParameter("@Description", category.Description);
+                }
 
                 using (var reader = db.GetReader(sql))
                 {
