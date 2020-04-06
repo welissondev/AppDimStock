@@ -111,6 +111,7 @@ namespace DimStock.UserForms
                 MdiParent = this,
                 FormBorderStyle = FormBorderStyle.None,
                 Dock = DockStyle.Fill,
+                ControlBox = false
             };
 
             form.Show();
@@ -140,8 +141,7 @@ namespace DimStock.UserForms
                 MdiParent = this,
                 FormBorderStyle = FormBorderStyle.None,
                 Dock = DockStyle.Fill,
-                ControlBox = false,
-                Style = MetroFramework.MetroColorStyle.White
+                ControlBox = false
             };
 
             form.Show();

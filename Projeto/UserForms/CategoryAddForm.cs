@@ -63,11 +63,11 @@ namespace DimStock.UserForms
                     case true:
                         MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        ClearView();
                         break;
 
                     case false:
-                        SetRiqueridField();
+                        MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         break;
                 }
             }
@@ -162,37 +162,12 @@ namespace DimStock.UserForms
             categoryAddForm.ShowDialog();
         }
 
-        private void SetRiqueridField()
-        {
-            foreach (Control ctl in BuniCard.Controls.Cast<Control>().OrderBy(c => c.TabIndex))
-            {
-                if (Convert.ToString(ctl.Tag) == "required" && ctl.Text == string.Empty)
-                {
-                    SetErrorProvider(ctl); ctl.Select();
-                    return;
-                }
-            }
-        }
-
-        private void SetErrorProvider(Control ctl = null)
-        {
-            if (ctl == null)
-            {
-                ErrorProvider.Clear();
-                return;
-            }
-
-            ErrorProvider.Clear();
-            ErrorProvider.SetError(ctl, MessageNotifier.Message);
-        }
-
         private void ClearView()
         {
             var presenter = new CategoryAddPresenter(this);
             presenter.ResetView();
 
-            TextDescription.Select();
-            SetErrorProvider();
+            TextDescription.Focus();
         }
     }
 }

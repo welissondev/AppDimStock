@@ -184,8 +184,6 @@ namespace DimStock.UserForms
         }
         private void BoxCategoryDescription_Click(object sender, EventArgs e)
         {
-            SetErrorProvider();
-
             var presenter = new ProductAddPresenter(this);
             presenter.ListAllCategoryData();
         }
@@ -252,18 +250,6 @@ namespace DimStock.UserForms
             productAddForm.ShowDialog();
         }
 
-        private void SetErrorProvider(Control ctl = null)
-        {
-            if (ctl == null)
-            {
-                ErrorProvider.Clear();
-                return;
-            }
-
-            ErrorProvider.Clear();
-            ErrorProvider.SetError(ctl, MessageNotifier.Message);
-        }
-
         private void ClearView()
         {
             var presenter = new ProductAddPresenter(this);
@@ -271,7 +257,6 @@ namespace DimStock.UserForms
 
             TextInternalCode.Focus();
             DataGridCategory.Visible = false;
-            SetErrorProvider();
         }
     }
 }
