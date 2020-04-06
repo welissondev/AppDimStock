@@ -1,6 +1,7 @@
 ﻿using DimStock.Auxiliarys;
 using DimStock.Presenters;
 using DimStock.Views;
+using MetroFramework.Forms;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -16,8 +17,9 @@ namespace DimStock.UserForms
         public int Id { get; set; }
         public string Description { get; set; }
 
-        public string SearchDescription { get => TextSearchDescription.Text; set => TextSearchDescription.Text = value; }
+        public string SearchDescription { get => TextSearch_Category.Text; set => TextSearch_Category.Text = value; }
         public object DataList { get => DatagridCategory.DataSource; set => DatagridCategory.DataSource = value; }
+
     }
 }
 
@@ -26,68 +28,54 @@ namespace DimStock.UserForms
 /// </summary>
 namespace DimStock.UserForms
 {
-    public partial class CategoryListingForm : Form
+    public partial class CategoryListingForm : MetroForm
     {
         public CategoryListingForm()
         {
             InitializeComponent();
             AddButtonColumnInDataGrid();
-            AxlDataGridLealt.SetDefaultStyle(DatagridCategory);
         }
 
         private void CategoryListingForm_Load(object sender, EventArgs e)
         {
-            SearchCategories();
+            SearchCategory();
+        }
+        private void CategoryListingForm_Resize(object sender, EventArgs e)
+        {
+            Refresh();
         }
 
         private void ButtonShow_CategoryAddForm_Click(object sender, EventArgs e)
         {
             CategoryAddForm.ShowForm();
         }
+        private void ButtonClear_SearchFields_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ClearView();
+            }
+            catch (Exception ex)
+            {
+                AxlException.Message.Show(ex);
+            }
+        }
         private void ButtonUpdate_DataGridCategory_Click(object sender, EventArgs e)
         {
             try
             {
-                var presenter = new CategoryListingPresenter(this);
-                presenter.ResetView();
-
-                SearchCategories();
+                ClearView();
             }
             catch (Exception ex)
             {
                 AxlException.Message.Show(ex);
             }
         }
-        private void ButtonClear_ResetView_Click(object sender, EventArgs e)
+        private void ButtonClose_Click(object sender, EventArgs e)
         {
-            try
-            {
-                var presenter = new CategoryListingPresenter(this);
-                presenter.ResetView();
-            }
-            catch (Exception ex)
-            {
-                AxlException.Message.Show(ex);
-            }
+            Close();
         }
 
-        private void TextSearchDescription_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == 13)
-            {
-                var presenter = new CategoryListingPresenter(this);
-                presenter.FetchData();
-            }
-        }
-
-        private void DatagridCategory_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            //Selecione linha no datagrid ao passar o mouse
-            if (e.RowIndex != -1)
-            {
-                DatagridCategory.Rows[e.RowIndex].Selected = true;
-            }
-        }
         private void DatagridCategory_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -121,10 +109,35 @@ namespace DimStock.UserForms
                 AxlException.Message.Show(ex);
             }
         }
+        private void DatagridCategory_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                DatagridCategory.Rows[e.RowIndex].Selected = true;
+            }
+        }
         private void DatagridCategory_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
-            //Remove o focus do controle datagriview
             e.PaintParts = DataGridViewPaintParts.All ^ DataGridViewPaintParts.Focus;
+        }
+
+        private void TextSearch_Category_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ImageLoading.Visible = true;
+            TimerSearch.Enabled = false;
+            TimerSearch.Enabled = true;
+        }
+
+        private void TimerSearch_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                SearchCategory();
+            }
+            catch (Exception ex)
+            {
+                AxlException.Message.Show(ex);
+            }
         }
     }
 }
@@ -152,7 +165,7 @@ namespace DimStock.UserForms
         {
             try
             {
-                DatagridCategory.Columns["Id"].Visible = true;
+                DatagridCategory.Columns["Id"].Visible = false;
                 DatagridCategory.Columns["Id"].ReadOnly = true;
                 DatagridCategory.Columns["Id"].DisplayIndex = 0;
 
@@ -162,9 +175,20 @@ namespace DimStock.UserForms
                 DatagridCategory.Columns["Description"].DisplayIndex = 1;
 
                 DatagridCategory.Columns["ButtonView"].HeaderText = string.Empty;
+                DatagridCategory.Columns["ButtonView"].Width = 70;
+
+                DatagridCategory.Columns["ButtonDelete"].Width = 70;
                 DatagridCategory.Columns["ButtonDelete"].HeaderText = string.Empty;
 
+                DatagridCategory.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(38, 100, 148);
+                DatagridCategory.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(38, 100, 148);
+                DatagridCategory.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(192, 220, 236);
+
                 DatagridCategory.AllowUserToAddRows = false;
+                DatagridCategory.MultiSelect = false;
+                DatagridCategory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+
+                DatagridCategory.ClearSelection();
             }
             catch (Exception ex)
             {
@@ -184,8 +208,9 @@ namespace DimStock.UserForms
                     TrackVisitedState = false,
                     UseColumnTextForLinkValue = true,
                     LinkColor = Color.Black,
-                    ActiveLinkColor = Color.MediumAquamarine,
-                    Width = 70,
+                    ActiveLinkColor = Color.Black,
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.None,
+                    Width = 100,
                 };
                 DatagridCategory.Columns.Add(buttonView);
 
@@ -197,8 +222,9 @@ namespace DimStock.UserForms
                     TrackVisitedState = false,
                     UseColumnTextForLinkValue = true,
                     LinkColor = Color.Black,
-                    ActiveLinkColor = Color.MediumAquamarine,
-                    Width = 70
+                    ActiveLinkColor = Color.Black,
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.None,
+                    Width = 100,
                 };
                 DatagridCategory.Columns.Add(buttonDelete);
             }
@@ -208,8 +234,19 @@ namespace DimStock.UserForms
             }
         }
 
-        private void SearchCategories()
+        private void ClearView()
         {
+            var presenter = new CategoryListingPresenter(this);          
+            presenter.ResetView();
+
+            SearchCategory();
+        }
+
+        private void SearchCategory()
+        {
+            TimerSearch.Enabled = false;
+            ImageLoading.Visible = false;
+
             var presenter = new CategoryListingPresenter(this);
             var dataList = presenter.FetchData();
 
