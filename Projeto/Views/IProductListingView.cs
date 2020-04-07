@@ -4,5 +4,6 @@
     {
         string SearchInternalCode { get; set; }
         string SearchDescription { get; set; }
+        object ProductList { get; set; }
     }
 }

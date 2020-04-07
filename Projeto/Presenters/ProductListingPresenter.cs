@@ -12,5 +12,19 @@ namespace DimStock.Presenters
         {
             this.view = view;
         }
+
+        public DataTable FetchData()
+        {
+            var model = new ProductModel();
+            var product = model;
+
+            product.InternalCode = view.InternalCode;
+            product.Description = view.Description;
+            
+            var table = product.FetchData();
+            view.ProductList = table;
+            
+            return table;
+        }
     }
 }
