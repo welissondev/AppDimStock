@@ -46,9 +46,7 @@
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties11 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties12 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
-            this.LabelNavegationDescription = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
             this.BuniCard = new Bunifu.UI.WinForm.BunifuShadowPanel.BunifuShadowPanel();
             this.TextDescription = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             this.ErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
@@ -62,44 +60,16 @@
             this.bunifuShadowPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // LabelNavegationDescription
-            // 
-            this.LabelNavegationDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.LabelNavegationDescription.BackColor = System.Drawing.Color.Transparent;
-            this.LabelNavegationDescription.Font = new System.Drawing.Font("Myanmar Text", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelNavegationDescription.ForeColor = System.Drawing.Color.DimGray;
-            this.LabelNavegationDescription.Location = new System.Drawing.Point(31, 37);
-            this.LabelNavegationDescription.Name = "LabelNavegationDescription";
-            this.LabelNavegationDescription.Size = new System.Drawing.Size(413, 26);
-            this.LabelNavegationDescription.TabIndex = 235;
-            this.LabelNavegationDescription.Text = "Inicio > Cadastro de Categorias";
-            this.LabelNavegationDescription.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(33, 84);
+            this.label1.Location = new System.Drawing.Point(27, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 17);
             this.label1.TabIndex = 237;
             this.label1.Text = "Descrição:";
-            // 
-            // bunifuSeparator1
-            // 
-            this.bunifuSeparator1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.bunifuSeparator1.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.bunifuSeparator1.LineThickness = 1;
-            this.bunifuSeparator1.Location = new System.Drawing.Point(37, 65);
-            this.bunifuSeparator1.Name = "bunifuSeparator1";
-            this.bunifuSeparator1.Size = new System.Drawing.Size(806, 10);
-            this.bunifuSeparator1.TabIndex = 236;
-            this.bunifuSeparator1.Transparency = 255;
-            this.bunifuSeparator1.Vertical = false;
             // 
             // BuniCard
             // 
@@ -108,8 +78,6 @@
             this.BuniCard.BorderColor = System.Drawing.Color.Transparent;
             this.BuniCard.Controls.Add(this.TextDescription);
             this.BuniCard.Controls.Add(this.label1);
-            this.BuniCard.Controls.Add(this.LabelNavegationDescription);
-            this.BuniCard.Controls.Add(this.bunifuSeparator1);
             this.BuniCard.Location = new System.Drawing.Point(20, 69);
             this.BuniCard.Name = "BuniCard";
             this.BuniCard.PanelColor = System.Drawing.Color.Empty;
@@ -147,7 +115,7 @@
             this.TextDescription.IconRight = null;
             this.TextDescription.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.TextDescription.Lines = new string[0];
-            this.TextDescription.Location = new System.Drawing.Point(36, 104);
+            this.TextDescription.Location = new System.Drawing.Point(30, 55);
             this.TextDescription.MaxLength = 32767;
             this.TextDescription.MinimumSize = new System.Drawing.Size(100, 35);
             this.TextDescription.Modified = false;
@@ -182,7 +150,7 @@
             this.TextDescription.SelectionLength = 0;
             this.TextDescription.SelectionStart = 0;
             this.TextDescription.ShortcutsEnabled = true;
-            this.TextDescription.Size = new System.Drawing.Size(807, 35);
+            this.TextDescription.Size = new System.Drawing.Size(813, 35);
             this.TextDescription.Style = Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox._Style.Bunifu;
             this.TextDescription.TabIndex = 238;
             this.TextDescription.Tag = "required";
@@ -499,10 +467,7 @@
         }
 
         #endregion
-
-        public System.Windows.Forms.Label LabelNavegationDescription;
         private System.Windows.Forms.Label label1;
-        private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator1;
         private Bunifu.UI.WinForm.BunifuShadowPanel.BunifuShadowPanel BuniCard;
         private System.Windows.Forms.ErrorProvider ErrorProvider;
         private Bunifu.UI.WinForm.BunifuShadowPanel.BunifuShadowPanel bunifuShadowPanel1;
