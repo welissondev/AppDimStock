@@ -1,4 +1,5 @@
 ﻿using DimStock.Auxiliarys;
+using System;
 using System.Collections.Generic;
 using System.Data;
 
@@ -180,17 +181,20 @@ namespace DimStock.Models
 
                 using (var reader = db.GetReader(sql))
                 {
-                    if (reader.Read() == true)
+                    if (reader.FieldCount > 0)
                     {
                         while (reader.Read())
                         {
-                            Id = int.Parse(reader["Product.Id"].ToString().Replace(null, "0"));
+                            Id = int.Parse(reader["Product.Id"].ToString());
                             InternalCode = reader["InternalCode"].ToString();
                             Description = reader["Product.Description"].ToString();
                             CostPrice = double.Parse(reader["CostPrice"].ToString());
                             SalePrice = double.Parse(reader["SalePrice"].ToString());
                             BarCode = reader["BarCode"].ToString();
-                            Category.Id = int.Parse(reader["Category.Id"].ToString());
+
+                            if (reader["CategoryId"] != DBNull.Value)
+                                Category.Id = int.Parse(reader["Category.Id"].ToString());
+
                             Category.Description = reader["Category.Description"].ToString();
                         }
 
@@ -208,7 +212,8 @@ namespace DimStock.Models
 
             using (var db = new AccessConnection())
             {
-                sql = @"SELECT * FROM Product WHERE Id > 0";
+                sql = @"SELECT Id, InternalCode, Description, 
+                CostPrice, SalePrice FROM Product WHERE Id > 0";
 
                 if (InternalCode != string.Empty)
                 {

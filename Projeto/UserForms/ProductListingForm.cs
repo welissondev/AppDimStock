@@ -37,6 +37,14 @@ namespace DimStock.UserForms
 
         private void ProductListingForm_Load(object sender, EventArgs e)
         {
+            try
+            {
+                SearchProduct();
+            }
+            catch (Exception ex)
+            {
+                AxlException.Message.Show(ex);
+            }
         }
         private void ProductListingForm_Resize(object sender, EventArgs e)
         {
@@ -45,17 +53,48 @@ namespace DimStock.UserForms
 
         private void ButtonUpdate_DataGridProduct_Click(object sender, EventArgs e)
         {
-            var presenter = new ProductListingPresenter(this);
-            presenter.FetchData();
-        }
-
-        private void DatagridProduct_DataSourceChanged(object sender, EventArgs e)
-        {
-            if (DatagridProduct.Rows.Count > 0)
+            try
             {
-                ApplySettingsToDataGrid();
+                ClearView();
+            }
+            catch (Exception ex)
+            {
+                AxlException.Message.Show(ex);
             }
         }
+        private void ButtonShow_ProductAddForm_Click(object sender, EventArgs e)
+        {
+            ProductAddForm.ShowForm();
+        }
+        private void ButtonClear_SearchFields_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ClearView();
+            }
+            catch (Exception ex)
+            {
+                AxlException.Message.Show(ex);
+            }
+        }
+        private void ButtonClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void TextSearch_InternalCode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ImageLoading.Visible = true;
+            TimerSearch.Enabled = false;
+            TimerSearch.Enabled = true;
+        }
+        private void TextSearch_Description_TextChanged(object sender, EventArgs e)
+        {
+            ImageLoading.Visible = true;
+            TimerSearch.Enabled = false;
+            TimerSearch.Enabled = true;
+        }
+
         private void DatagridProduct_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
             e.PaintParts = DataGridViewPaintParts.All ^ DataGridViewPaintParts.Focus;
@@ -65,6 +104,50 @@ namespace DimStock.UserForms
             if (e.RowIndex != -1)
             {
                 DatagridProduct.Rows[e.RowIndex].Selected = true;
+            }
+        }
+        private void DatagridProduct_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (DatagridProduct.Rows.Count != 0)
+                {
+                    Id = int.Parse(DatagridProduct.CurrentRow.
+                    Cells["Id"].Value.ToString());
+
+                    var selectedButton = DatagridProduct.Columns
+                    [e.ColumnIndex].Name;
+
+                    switch (selectedButton)
+                    {
+                        case "ButtonView":
+                            GetProductDetail();
+                            break;
+
+                        case "ButtonDelete":
+                            DeleteProduct();
+                            break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                AxlException.Message.Show(ex);
+            }
+        }
+
+        private void TimerSearch_Tick(object sender, EventArgs e)
+        {
+            TimerSearch.Enabled = false;
+            ImageLoading.Visible = false;
+
+            try
+            {
+                SearchProduct();
+            }
+            catch (Exception ex)
+            {
+                AxlException.Message.Show(ex);
             }
         }
     }
@@ -93,28 +176,50 @@ namespace DimStock.UserForms
         {
             try
             {
-                DatagridProduct.Columns["Id"].Visible = false;
-                DatagridProduct.Columns["Id"].ReadOnly = true;
-                DatagridProduct.Columns["Id"].DisplayIndex = 0;
+                var grid = DatagridProduct;
 
-                DatagridProduct.Columns["Description"].HeaderText = "Descrição";
-                DatagridProduct.Columns["Description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                DatagridProduct.Columns["Description"].ReadOnly = true;
-                DatagridProduct.Columns["Description"].DisplayIndex = 1;
+                grid.Columns["Id"].Visible = false;
+                grid.Columns["Id"].ReadOnly = true;
+                grid.Columns["Id"].DisplayIndex = 0;
+                grid.Columns["Id"].Width = 100;
 
-                DatagridProduct.Columns["ButtonView"].HeaderText = string.Empty;
-                DatagridProduct.Columns["ButtonView"].Width = 70;
+                grid.Columns["InternalCode"].ReadOnly = true;
+                grid.Columns["InternalCode"].DisplayIndex = 1;
+                grid.Columns["InternalCode"].HeaderText = "Código";
+                grid.Columns["InternalCode"].Width = 130;
 
-                DatagridProduct.Columns["ButtonDelete"].Width = 70;
-                DatagridProduct.Columns["ButtonDelete"].HeaderText = string.Empty;
+                grid.Columns["Description"].HeaderText = "Descrição";
+                grid.Columns["Description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                grid.Columns["Description"].ReadOnly = true;
+                grid.Columns["Description"].DisplayIndex = 2;
 
-                DatagridProduct.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(38, 100, 148);
-                DatagridProduct.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(38, 100, 148);
-                DatagridProduct.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(192, 220, 236);
+                grid.Columns["CostPrice"].HeaderText = "Preço Custo";
+                grid.Columns["CostPrice"].DefaultCellStyle.Format = "c2";
+                grid.Columns["CostPrice"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                grid.Columns["CostPrice"].Width = 120;
 
-                DatagridProduct.AllowUserToAddRows = false;
-                DatagridProduct.MultiSelect = false;
-                DatagridProduct.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+                grid.Columns["SalePrice"].HeaderText = "Preço Venda";
+                grid.Columns["SalePrice"].DefaultCellStyle.Format = "c2";
+                grid.Columns["SalePrice"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                grid.Columns["SalePrice"].Width = 120;
+
+                grid.Columns["ButtonView"].HeaderText = string.Empty;
+                grid.Columns["ButtonView"].Width = 100;
+                grid.Columns["ButtonView"].DisplayIndex = 6;
+                grid.Columns["ButtonView"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                grid.Columns["ButtonDelete"].Width = 100;
+                grid.Columns["ButtonDelete"].HeaderText = string.Empty;
+                grid.Columns["ButtonDelete"].DisplayIndex = 6;
+                grid.Columns["ButtonView"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                grid.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(38, 100, 148);
+                grid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(38, 100, 148);
+                grid.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(192, 220, 236);
+
+                grid.AllowUserToAddRows = false;
+                grid.MultiSelect = false;
+                grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
 
                 DatagridProduct.ClearSelection();
             }
@@ -160,6 +265,55 @@ namespace DimStock.UserForms
             {
                 AxlException.Message.Show(ex);
             }
+        }
+
+        private void GetProductDetail()
+        {
+            var presenter = new ProductListingPresenter(this);
+            presenter.GetDetail();
+
+            ProductAddForm.SetDetail(this);
+        }
+
+        private void DeleteProduct()
+        {
+            if (MessageBox.Show("Confirma a exclusão desse produto?", "IMPORTANTE",
+            MessageBoxButtons.YesNo, MessageBoxIcon.None, MessageBoxDefaultButton.Button2) ==
+            DialogResult.No) return;
+
+            var presenter = new ProductListingPresenter(this);
+            var actionResult = presenter.Delete();
+
+            switch (actionResult)
+            {
+                case true:
+                    MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+
+                case false:
+                    MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    break;
+            }
+        }
+
+        private void SearchProduct()
+        {
+            var presenter = new ProductListingPresenter(this);
+
+            if (presenter.FetchData().Rows.Count > 0)
+                ApplySettingsToDataGrid();
+        }
+
+        private void ClearView()
+        {
+            var presenter = new ProductListingPresenter(this);
+            presenter.ResetView();
+
+            SearchProduct();
+
+            TextSearch_InternalCode.Focus();
         }
     }
 }

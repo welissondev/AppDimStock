@@ -126,10 +126,10 @@ namespace DimStock.UserForms
                 MdiParent = this,
                 FormBorderStyle = FormBorderStyle.None,
                 Dock = DockStyle.Fill,
+                ControlBox = false
             };
 
             form.Show();
-
         }
 
         private void MenuProduct_ListRegisters_Category_Click(object sender, EventArgs e)

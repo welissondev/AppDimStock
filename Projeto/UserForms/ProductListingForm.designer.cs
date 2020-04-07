@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductListingForm));
             Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
@@ -62,6 +63,7 @@
             this.ButtonClear_SearchFields = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.ButtonUpdate_DataGridProduct = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.ButtonShow_ProductAddForm = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.TimerSearch = new System.Windows.Forms.Timer(this.components);
             this.bunifuShadowPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImageLoading)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DatagridProduct)).BeginInit();
@@ -78,12 +80,12 @@
             this.bunifuShadowPanel2.Controls.Add(this.ImageLoading);
             this.bunifuShadowPanel2.Controls.Add(this.TextSearch_InternalCode);
             this.bunifuShadowPanel2.Controls.Add(this.DatagridProduct);
-            this.bunifuShadowPanel2.Location = new System.Drawing.Point(13, 109);
+            this.bunifuShadowPanel2.Location = new System.Drawing.Point(13, 148);
             this.bunifuShadowPanel2.Name = "bunifuShadowPanel2";
             this.bunifuShadowPanel2.PanelColor = System.Drawing.Color.Empty;
             this.bunifuShadowPanel2.ShadowDept = 2;
             this.bunifuShadowPanel2.ShadowTopLeftVisible = true;
-            this.bunifuShadowPanel2.Size = new System.Drawing.Size(902, 417);
+            this.bunifuShadowPanel2.Size = new System.Drawing.Size(908, 419);
             this.bunifuShadowPanel2.TabIndex = 238;
             // 
             // TextSearch_Description
@@ -143,29 +145,30 @@
             this.TextSearch_Description.OnIdleState = stateProperties4;
             this.TextSearch_Description.PasswordChar = '\0';
             this.TextSearch_Description.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.TextSearch_Description.PlaceholderText = "Buscar por descrição...";
+            this.TextSearch_Description.PlaceholderText = "Descrição";
             this.TextSearch_Description.ReadOnly = false;
             this.TextSearch_Description.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.TextSearch_Description.SelectedText = "";
             this.TextSearch_Description.SelectionLength = 0;
             this.TextSearch_Description.SelectionStart = 0;
             this.TextSearch_Description.ShortcutsEnabled = true;
-            this.TextSearch_Description.Size = new System.Drawing.Size(661, 35);
+            this.TextSearch_Description.Size = new System.Drawing.Size(667, 35);
             this.TextSearch_Description.Style = Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox._Style.Bunifu;
             this.TextSearch_Description.TabIndex = 237;
             this.TextSearch_Description.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.TextSearch_Description.TextMarginBottom = 0;
             this.TextSearch_Description.TextMarginLeft = 5;
             this.TextSearch_Description.TextMarginTop = 0;
-            this.TextSearch_Description.TextPlaceholder = "Buscar por descrição...";
+            this.TextSearch_Description.TextPlaceholder = "Descrição";
             this.TextSearch_Description.UseSystemPasswordChar = false;
             this.TextSearch_Description.WordWrap = true;
+            this.TextSearch_Description.TextChanged += new System.EventHandler(this.TextSearch_Description_TextChanged);
             // 
             // ImageLoading
             // 
             this.ImageLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ImageLoading.Image = global::DimStock.Properties.Resources.Loading;
-            this.ImageLoading.Location = new System.Drawing.Point(384, 152);
+            this.ImageLoading.Location = new System.Drawing.Point(387, 153);
             this.ImageLoading.Name = "ImageLoading";
             this.ImageLoading.Size = new System.Drawing.Size(144, 135);
             this.ImageLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -228,7 +231,7 @@
             this.TextSearch_InternalCode.OnIdleState = stateProperties8;
             this.TextSearch_InternalCode.PasswordChar = '\0';
             this.TextSearch_InternalCode.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.TextSearch_InternalCode.PlaceholderText = "Buscar por código...";
+            this.TextSearch_InternalCode.PlaceholderText = "Código";
             this.TextSearch_InternalCode.ReadOnly = false;
             this.TextSearch_InternalCode.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.TextSearch_InternalCode.SelectedText = "";
@@ -242,20 +245,23 @@
             this.TextSearch_InternalCode.TextMarginBottom = 0;
             this.TextSearch_InternalCode.TextMarginLeft = 5;
             this.TextSearch_InternalCode.TextMarginTop = 0;
-            this.TextSearch_InternalCode.TextPlaceholder = "Buscar por código...";
+            this.TextSearch_InternalCode.TextPlaceholder = "Código";
             this.TextSearch_InternalCode.UseSystemPasswordChar = false;
             this.TextSearch_InternalCode.WordWrap = true;
+            this.TextSearch_InternalCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextSearch_InternalCode_KeyPress);
             // 
             // DatagridProduct
             // 
             this.DatagridProduct.AllowCustomTheming = false;
+            this.DatagridProduct.AllowUserToResizeColumns = false;
+            this.DatagridProduct.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             this.DatagridProduct.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.DatagridProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DatagridProduct.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DatagridProduct.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.DatagridProduct.BackgroundColor = System.Drawing.Color.White;
             this.DatagridProduct.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DatagridProduct.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
@@ -303,10 +309,10 @@
             this.DatagridProduct.RowHeadersVisible = false;
             this.DatagridProduct.RowTemplate.Height = 40;
             this.DatagridProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DatagridProduct.Size = new System.Drawing.Size(846, 315);
+            this.DatagridProduct.Size = new System.Drawing.Size(852, 317);
             this.DatagridProduct.TabIndex = 234;
             this.DatagridProduct.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
-            this.DatagridProduct.DataSourceChanged += new System.EventHandler(this.DatagridProduct_DataSourceChanged);
+            this.DatagridProduct.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DatagridProduct_CellClick);
             this.DatagridProduct.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DatagridProduct_CellMouseEnter);
             this.DatagridProduct.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.DatagridProduct_RowPrePaint);
             // 
@@ -319,12 +325,12 @@
             this.bunifuShadowPanel1.Controls.Add(this.ButtonClear_SearchFields);
             this.bunifuShadowPanel1.Controls.Add(this.ButtonUpdate_DataGridProduct);
             this.bunifuShadowPanel1.Controls.Add(this.ButtonShow_ProductAddForm);
-            this.bunifuShadowPanel1.Location = new System.Drawing.Point(13, 25);
+            this.bunifuShadowPanel1.Location = new System.Drawing.Point(13, 64);
             this.bunifuShadowPanel1.Name = "bunifuShadowPanel1";
             this.bunifuShadowPanel1.PanelColor = System.Drawing.Color.Empty;
             this.bunifuShadowPanel1.ShadowDept = 2;
             this.bunifuShadowPanel1.ShadowTopLeftVisible = true;
-            this.bunifuShadowPanel1.Size = new System.Drawing.Size(902, 86);
+            this.bunifuShadowPanel1.Size = new System.Drawing.Size(908, 86);
             this.bunifuShadowPanel1.TabIndex = 237;
             // 
             // ButtonClose
@@ -366,7 +372,7 @@
             this.ButtonClose.IdleIconLeftImage = null;
             this.ButtonClose.IdleIconRightImage = null;
             this.ButtonClose.IndicateFocus = false;
-            this.ButtonClose.Location = new System.Drawing.Point(732, 22);
+            this.ButtonClose.Location = new System.Drawing.Point(738, 22);
             this.ButtonClose.Name = "ButtonClose";
             stateProperties9.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties9.BorderRadius = 3;
@@ -391,6 +397,7 @@
             this.ButtonClose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonClose.TextMarginLeft = 0;
             this.ButtonClose.UseDefaultRadiusAndThickness = true;
+            this.ButtonClose.Click += new System.EventHandler(this.ButtonClose_Click);
             // 
             // ButtonClear_SearchFields
             // 
@@ -455,6 +462,7 @@
             this.ButtonClear_SearchFields.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonClear_SearchFields.TextMarginLeft = 0;
             this.ButtonClear_SearchFields.UseDefaultRadiusAndThickness = true;
+            this.ButtonClear_SearchFields.Click += new System.EventHandler(this.ButtonClear_SearchFields_Click);
             // 
             // ButtonUpdate_DataGridProduct
             // 
@@ -584,6 +592,12 @@
             this.ButtonShow_ProductAddForm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonShow_ProductAddForm.TextMarginLeft = 0;
             this.ButtonShow_ProductAddForm.UseDefaultRadiusAndThickness = true;
+            this.ButtonShow_ProductAddForm.Click += new System.EventHandler(this.ButtonShow_ProductAddForm_Click);
+            // 
+            // TimerSearch
+            // 
+            this.TimerSearch.Interval = 800;
+            this.TimerSearch.Tick += new System.EventHandler(this.TimerSearch_Tick);
             // 
             // ProductListingForm
             // 
@@ -595,6 +609,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(944, 590);
             this.Name = "ProductListingForm";
+            this.Text = "Listagem de Produtos";
             this.Load += new System.EventHandler(this.ProductListingForm_Load);
             this.Resize += new System.EventHandler(this.ProductListingForm_Resize);
             this.bunifuShadowPanel2.ResumeLayout(false);
@@ -617,5 +632,6 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton ButtonUpdate_DataGridProduct;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton ButtonShow_ProductAddForm;
         private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox TextSearch_Description;
+        private System.Windows.Forms.Timer TimerSearch;
     }
 }

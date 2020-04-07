@@ -215,7 +215,7 @@
             0,
             0,
             131072});
-            this.TextSalePrice.Font = new System.Drawing.Font("Segoe UI Semibold", 12.75F);
+            this.TextSalePrice.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F);
             this.TextSalePrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.TextSalePrice.Location = new System.Drawing.Point(35, 273);
             this.TextSalePrice.MinimumSize = new System.Drawing.Size(16, 29);
@@ -248,7 +248,7 @@
             0,
             0,
             131072});
-            this.TextCostPrice.Font = new System.Drawing.Font("Segoe UI Semibold", 12.75F);
+            this.TextCostPrice.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F);
             this.TextCostPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.TextCostPrice.Location = new System.Drawing.Point(35, 217);
             this.TextCostPrice.MinimumSize = new System.Drawing.Size(16, 29);
@@ -894,6 +894,7 @@
             this.MinimumSize = new System.Drawing.Size(944, 590);
             this.Name = "ProductAddForm";
             this.RightToLeftLayout = true;
+            this.ShadowType = MetroFramework.Forms.MetroFormShadowType.DropShadow;
             this.ShowIcon = false;
             this.Text = "Cadastro de Produtos";
             this.TransparencyKey = System.Drawing.Color.Empty;

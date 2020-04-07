@@ -219,8 +219,7 @@ namespace DimStock.UserForms
             {
                 ShowInTaskbar = false,
                 ShowIcon = false,
-                MinimizeBox = false,
-                MaximizeBox = false
+                ControlBox = false
             };
 
             productAddForm.Show();
@@ -240,8 +239,7 @@ namespace DimStock.UserForms
                 CategoryDescription = view.CategoryDescription,
                 ShowIcon = false,
                 ShowInTaskbar = false,
-                MinimizeBox = false,
-                MaximizeBox = false
+                ControlBox = false
             };
             productAddForm.ShowDialog();
         }
