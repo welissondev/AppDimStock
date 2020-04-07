@@ -1,25 +1,13 @@
 ﻿using DimStock.Models;
 using DimStock.Views;
 using System.Data;
-
-/// <summary>
-/// Propriedades da classe
-/// </summary>
+    
 namespace DimStock.Presenters
 {
     public partial class ProductAddPresenter
     {
         private IProductAddView view;
-    }
-}
 
-/// <summary>
-/// Funções da classe
-/// </summary>
-namespace DimStock.Presenters
-{
-    public partial class ProductAddPresenter
-    {
         public ProductAddPresenter(IProductAddView view)
         {
             this.view = view;
@@ -82,7 +70,7 @@ namespace DimStock.Presenters
             return actionResult;
         }
 
-        public int GetIdByDescription()
+        public int GetCategoryIdByDescription()
         {
             var model = new CategoryModel();
             var category = model;
@@ -90,16 +78,7 @@ namespace DimStock.Presenters
             category.Description = view.CategoryDescription;
             return category.GetIdByDescription();
         }
-    }
-}
 
-/// <summary>
-/// Métodos auxiliares da classe
-/// </summary>
-namespace DimStock.Presenters
-{
-    public partial class ProductAddPresenter
-    {
         public DataTable FetchCategoryData()
         {
             var model = new CategoryModel();

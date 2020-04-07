@@ -1,11 +1,8 @@
-﻿using Bunifu.UI.WinForms.BunifuTextbox;
-using DimStock.Auxiliarys;
+﻿using DimStock.Auxiliarys;
 using DimStock.Presenters;
 using DimStock.Views;
 using MetroFramework.Forms;
-using Syncfusion.Windows.Forms.Tools;
 using System;
-using System.Linq;
 using System.Windows.Forms;
 
 /// <summary>
@@ -58,7 +55,6 @@ namespace DimStock.UserForms
         {
             Refresh();
         }
-
 
         private void ButtonSave_Click(object sender, EventArgs e)
         {
@@ -150,7 +146,7 @@ namespace DimStock.UserForms
                 CategoryDescription = DataGridCategory.CurrentRow.Cells["Description"].Value.ToString();
 
                 var presenter = new ProductAddPresenter(this);
-                CategoryId = presenter.GetIdByDescription();
+                CategoryId = presenter.GetCategoryIdByDescription();
             }
             catch (Exception ex)
             {
