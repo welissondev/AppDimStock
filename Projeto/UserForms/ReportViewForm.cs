@@ -1,4 +1,4 @@
-﻿using DimStock.ClassTools;
+﻿using DimStock.AuxilyTools;
 using DimStock.Models;
 using Microsoft.Reporting.WinForms;
 using System;
@@ -97,7 +97,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionNotifier.ShowMessage(ex);
             }
         }
 

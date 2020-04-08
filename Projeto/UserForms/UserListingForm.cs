@@ -1,4 +1,4 @@
-﻿using DimStock.ClassTools;
+﻿using DimStock.AuxilyTools;
 using DimStock.Models;
 using System;
 using System.Drawing;
@@ -19,7 +19,7 @@ namespace DimStock.UserForms
         #endregion
 
         #region Properties
-        private AxlDataPage pagination = new AxlDataPage();
+        private AuxiliaryDataPage pagination = new AuxiliaryDataPage();
         #endregion
 
         #region Form
@@ -102,7 +102,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionNotifier.ShowMessage(ex);
             }
         }
 
@@ -148,11 +148,11 @@ namespace DimStock.UserForms
 
                 DatagridUser.ClearSelection();
 
-                AxlDataGridLealt.SortColumnDesc(DatagridUser, 0);
+                AuxiliaryDataGridLealt.SortColumnDesc(DatagridUser, 0);
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionNotifier.ShowMessage(ex);
             }
         }
 
@@ -180,11 +180,11 @@ namespace DimStock.UserForms
 
                 DatagridUser.ClearSelection();
 
-                AxlDataGridLealt.SortColumnDesc(DatagridUser, 0);
+                AuxiliaryDataGridLealt.SortColumnDesc(DatagridUser, 0);
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionNotifier.ShowMessage(ex);
             }
         }
 
@@ -212,7 +212,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionNotifier.ShowMessage(ex);
             }
         }
 
@@ -220,7 +220,7 @@ namespace DimStock.UserForms
         {
             CreateColumnInTheDataList();
 
-            AxlDataGridLealt.SetDefaultStyle(DatagridUser);
+            AuxiliaryDataGridLealt.SetDefaultStyle(DatagridUser);
         }
 
         private void CreateColumnInTheDataList()
@@ -288,7 +288,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionNotifier.ShowMessage(ex);
             }
         }
 

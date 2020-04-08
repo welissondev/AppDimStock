@@ -1,4 +1,4 @@
-﻿using DimStock.ClassTools;
+﻿using DimStock.AuxilyTools;
 using DimStock.Models;
 using System;
 using System.Windows.Forms;
@@ -48,9 +48,9 @@ namespace DimStock.UserForms
                     return;
                 }
 
-                AxlLogin.Id = user.Id;
-                AxlLogin.Name = user.Name;
-                AxlLogin.Login = user.Login;
+                UserLoginState.Id = user.Id;
+                UserLoginState.Name = user.Name;
+                UserLoginState.Login = user.Login;
 
                 HomeScreenForm.He.Show();
 
@@ -58,7 +58,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionNotifier.ShowMessage(ex);
             }
         }
 

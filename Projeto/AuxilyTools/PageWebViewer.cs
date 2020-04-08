@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace DimStock.ClassTools
+namespace DimStock.AuxilyTools
 {
-    public class AxlPageWeb
+    /// <summary>
+    /// Abri uma página web com url especificada
+    /// </summary>
+    public class PageWebViewer
     {
         public static void OpenUrl(string url)
         {
@@ -13,7 +16,7 @@ namespace DimStock.ClassTools
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionNotifier.ShowMessage(ex);
             }
         }
     }

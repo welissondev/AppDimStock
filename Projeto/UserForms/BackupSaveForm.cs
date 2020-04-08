@@ -1,4 +1,4 @@
-﻿using DimStock.ClassTools;
+﻿using DimStock.AuxilyTools;
 using DimStock.Models;
 using System;
 using System.Diagnostics;
@@ -33,7 +33,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionNotifier.ShowMessage(ex);
             }
         }
 
@@ -52,7 +52,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionNotifier.ShowMessage(ex);
             }
         }
 
@@ -64,7 +64,7 @@ namespace DimStock.UserForms
             }
             catch(Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionNotifier.ShowMessage(ex);
             }       
         }
 

@@ -60,7 +60,7 @@
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
             this.ButtonShow_CategoryAddForm = new System.Windows.Forms.LinkLabel();
-            this.DataGridCategory = new DimStock.Controls.CustomDataGridViewTwo();
+            this.DataGridCategory = new DimStock.AuxilyTools.Controls.CustomDataGridViewTwo();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -914,7 +914,7 @@
 
         #endregion
         private System.Windows.Forms.LinkLabel ButtonShow_CategoryAddForm;
-        private Controls.CustomDataGridViewTwo DataGridCategory;
+        private AuxilyTools.Controls.CustomDataGridViewTwo DataGridCategory;
         private System.Windows.Forms.Timer TimerSearch;
         private System.Windows.Forms.ErrorProvider ErrorProvider;
         public Syncfusion.Windows.Forms.Tools.CurrencyTextBox TextSalePrice;

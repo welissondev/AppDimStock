@@ -1,4 +1,4 @@
-﻿using DimStock.ClassTools;
+﻿using DimStock.AuxilyTools;
 using DimStock.Presenters;
 using DimStock.Views;
 using MetroFramework.Forms;
@@ -57,7 +57,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionNotifier.ShowMessage(ex);
             }
         }
         private void ButtonUpdate_DataGridCategory_Click(object sender, EventArgs e)
@@ -68,7 +68,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionNotifier.ShowMessage(ex);
             }
         }
         private void ButtonClose_Click(object sender, EventArgs e)
@@ -109,7 +109,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionNotifier.ShowMessage(ex);
             }
         }
         private void DatagridCategory_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
@@ -139,7 +139,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionNotifier.ShowMessage(ex);
             }
         }
     }
@@ -233,7 +233,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionNotifier.ShowMessage(ex);
             }
         }
 

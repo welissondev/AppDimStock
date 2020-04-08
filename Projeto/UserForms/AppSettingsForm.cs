@@ -1,4 +1,4 @@
-﻿using DimStock.ClassTools;
+﻿using DimStock.AuxilyTools;
 using DimStock.Models;
 using System;
 using System.Drawing;
@@ -31,7 +31,7 @@ namespace DimStock.UserForms
 
         private void ButtonChooseMainDirectory_Click(object sender, EventArgs e)
         {
-            var folder = new AxlDirectory();
+            var folder = new AuxiliaryDirectoryManager();
 
             var path = folder.SelectPath();
 
@@ -45,7 +45,7 @@ namespace DimStock.UserForms
         {
             try
             {
-                var folderBackup = new AxlDirectory();
+                var folderBackup = new AuxiliaryDirectoryManager();
 
                 var path = folderBackup.SelectPath();
 
@@ -95,9 +95,9 @@ namespace DimStock.UserForms
 
         private void PictureCompanyLogo_Click(object sender, EventArgs e)
         {
-            var logoType = new AxlFile();
+            var logoType = new AuxiliaryFileManager();
 
-            var path = logoType.SelectPath();
+            var path = logoType.SelectPath("jpeg files|*.jpg");
 
             if (path == string.Empty)
                 return;
@@ -221,7 +221,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionNotifier.ShowMessage(ex);
             }
         }
 

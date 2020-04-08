@@ -1,31 +1,29 @@
 ﻿using System.IO;
 using System.Windows.Forms;
 
-namespace DimStock.ClassTools
+namespace DimStock.AuxilyTools
 {
-
-    public class AxlFile
+    /// <summary>
+    /// Pode executar e gerencia atividades de manipulação para um arquivo
+    /// como por exemplo, deletar o arquivo de um diretório especificado
+    /// </summary>
+    public class AuxiliaryFileManager
     {
-
-        #region Get e Set
-        public string DirectoryPath { get; set; }
-        #endregion
-
-        #region Methods
-
-        public string SelectPath()
+        public string SelectPath(string fileType)
         {
-            using (OpenFileDialog openFile = new OpenFileDialog())
+            OpenFileDialog openFile;
+            string path = string.Empty;
+
+            using (openFile = new OpenFileDialog())
             {
-                openFile.Filter = "jpeg files|*.jpg";
+                if (fileType != string.Empty)
+                    openFile.Filter = fileType;
 
-                if (openFile.ShowDialog() == DialogResult.OK)
-                {
-                    DirectoryPath = openFile.FileName;
-                }
-
-                return DirectoryPath;
+                if(openFile.ShowDialog() == DialogResult.OK)
+                    path = openFile.FileName;
             }
+
+            return path;
         }
 
         public string GetNumberId()
@@ -47,9 +45,6 @@ namespace DimStock.ClassTools
         public bool CheckIfExists(string path)
         {
             return File.Exists(path).Equals(true);
-
         }
-
-        #endregion
     }
 }

@@ -1,4 +1,4 @@
-﻿using DimStock.ClassTools;
+﻿using DimStock.AuxilyTools;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -16,7 +16,7 @@ namespace DimStock.Models
             
         }
 
-        public UserLoginModel(AxlDataPage pagination)
+        public UserLoginModel(AuxiliaryDataPage pagination)
         {
             Pagination = pagination;
             List = new List<UserLoginModel>();
@@ -36,7 +36,7 @@ namespace DimStock.Models
         public bool PermissionToDelete { get; set; }
         public bool PermissionToView { get; set; }
         public bool AllPermissions { get; set; }
-        public AxlDataPage Pagination { get; set; }
+        public AuxiliaryDataPage Pagination { get; set; }
         public List<UserLoginModel> List { get; set; }
         #endregion
 
@@ -336,7 +336,7 @@ namespace DimStock.Models
 
         public bool ValidateEmail(string email)
         {
-            var validation = AxlEmailAddress.Validate(email);
+            var validation = EmailAddressValidator.Validate(email);
 
             if (validation == false)
                 MessageNotifier.Message = "O endereço de e-mail " +
@@ -377,7 +377,7 @@ namespace DimStock.Models
 
         public bool CheckCurrentRegister(int id)
         {
-            if (AxlLogin.Id == id)
+            if (UserLoginState.Id == id)
             {
                 return true;
             }

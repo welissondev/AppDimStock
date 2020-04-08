@@ -137,26 +137,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClassTools\AxlDataGridLealt.cs" />
-    <Compile Include="ClassTools\AxlDataPage.cs" />
-    <Compile Include="ClassTools\AxlDirectory.cs" />
-    <Compile Include="ClassTools\AxlEmailAddress.cs" />
-    <Compile Include="ClassTools\AxlException.cs" />
-    <Compile Include="ClassTools\AxlMdiForm.cs" />
-    <Compile Include="ClassTools\AxlLogin.cs" />
-    <Compile Include="ClassTools\AxlPageWeb.cs" />
-    <Compile Include="Controls\CustomComboBoxView.cs">
+    <Compile Include="AuxilyTools\AuxiliaryDataGridLealt.cs" />
+    <Compile Include="AuxilyTools\AuxiliaryDataPage.cs" />
+    <Compile Include="AuxilyTools\AuxiliaryDirectoryManager.cs" />
+    <Compile Include="AuxilyTools\EmailAddressValidator.cs" />
+    <Compile Include="AuxilyTools\ExceptionNotifier.cs" />
+    <Compile Include="AuxilyTools\MdiClosingAll.cs" />
+    <Compile Include="AuxilyTools\UserLoginState.cs" />
+    <Compile Include="AuxilyTools\PageWebViewer.cs" />
+    <Compile Include="AuxilyTools\Controls\CustomComboBoxView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\CustomDataGridViewTwo.cs">
+    <Compile Include="AuxilyTools\Controls\CustomDataGridViewTwo.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Models\ConnectionModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
-    <Compile Include="Controls\CustomPictureBoxOne.cs">
+    <Compile Include="AuxilyTools\Controls\CustomPictureBoxOne.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\CustomDataGridViewOne.cs">
+    <Compile Include="AuxilyTools\Controls\CustomDataGridViewOne.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Models\AppSettingModel.cs" />
@@ -166,7 +166,7 @@
     <Compile Include="Models\StockDestinationModel.cs" />
     <Compile Include="Models\StockMovementItem.cs" />
     <Compile Include="Models\StockMovementModel.cs" />
-    <Compile Include="ClassTools\MessageNotifier.cs" />
+    <Compile Include="AuxilyTools\MessageNotifier.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\UserLoginModel.cs" />
     <Compile Include="Presenters\CategoryAddPresenter.cs" />
@@ -175,7 +175,7 @@
     <Compile Include="Presenters\ProductListingPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ClassTools\AxlFile.cs" />
+    <Compile Include="AuxilyTools\AuxiliaryFileManager.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -1,23 +1,21 @@
 ﻿using System;
 
-namespace DimStock.ClassTools
+namespace DimStock.AuxilyTools
 {
-    public class AxlDataPage
+    /// <summary>
+    /// Pode ser usado entre a view e um model a fim de obter ou 
+    /// definir estados de uma paginação de dados
+    /// </summary>
+    public class AuxiliaryDataPage
     {
-        #region PrivateProperties
         private int pageSize = 20;
         private int currentPage = 1;
-        #endregion 
 
-        #region PublicProperties
         public int RecordCount { get; set; }
         public int CurrentPage { get => currentPage; set => currentPage = value; }
         public int OffSetValue { get; set; }
         public int PageSize { get => pageSize; set => pageSize = value; }
-        public int NumberOfPages { get => CountTotalPages(); }
-        #endregion 
-
-        #region Methods
+        public int NumberOfPages { get => CountTotalPages(); } 
 
         private int CountTotalPages()
         {
@@ -27,7 +25,5 @@ namespace DimStock.ClassTools
 
             return nunberOfPages;
         }
-
-        #endregion
     }
 }

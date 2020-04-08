@@ -1,8 +1,8 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace DimStock.ClassTools
+namespace DimStock.AuxilyTools
 {
-    public class AxlEmailAddress
+    public class EmailAddressValidator
     {
         public static bool Validate(string email)
         {

@@ -1,4 +1,4 @@
-﻿using DimStock.ClassTools;
+﻿using DimStock.AuxilyTools;
 using DimStock.Reports;
 using System;
 using System.Collections.Generic;
@@ -22,7 +22,7 @@ namespace DimStock.Models
         public string Result { get; set; }
         public string Summary { get => summary; set => summary = value; }
         public ProductModel Product { get; set; }
-        public AxlDataPage Pagination { get; set; }
+        public AuxiliaryDataPage Pagination { get; set; }
         public List<StockModel> List { get; set; }
     }
 }
@@ -41,7 +41,7 @@ namespace DimStock.Models
             List = new List<StockModel>();
         }
 
-        public StockModel(AxlDataPage pagination)
+        public StockModel(AuxiliaryDataPage pagination)
         {
             Pagination = pagination;
             Product = new ProductModel();

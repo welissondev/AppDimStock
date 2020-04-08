@@ -1,4 +1,4 @@
-﻿using DimStock.ClassTools;
+﻿using DimStock.AuxilyTools;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -16,7 +16,7 @@ namespace DimStock.Models
             Destination = new StockDestinationModel();
         }
 
-        public StockMovementModel(AxlDataPage pagination)
+        public StockMovementModel(AuxiliaryDataPage pagination)
         {
             Pagination = pagination;
             Destination = new StockDestinationModel();
@@ -41,7 +41,7 @@ namespace DimStock.Models
         public string OperationCode { get; set; }
         public string OperationSituation { get; set; }
         public StockDestinationModel Destination { get; set; }
-        public AxlDataPage Pagination { get; set; }
+        public AuxiliaryDataPage Pagination { get; set; }
         public List<StockMovementModel> List { get; set; }
 
         #endregion

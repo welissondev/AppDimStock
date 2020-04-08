@@ -1,9 +1,9 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace DimStock.ClassTools
+namespace DimStock.AuxilyTools
 {
-    public static class AxlDataGridLealt
+    public static class AuxiliaryDataGridLealt
     {
         public static void SetDefaultStyle(DataGridView datagrid)
         {

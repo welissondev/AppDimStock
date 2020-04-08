@@ -1,10 +1,9 @@
-﻿namespace DimStock.ClassTools
+﻿namespace DimStock.AuxilyTools
 {
-
     /// <summary>
-    /// Uma classe axiliar statica que guarda os estados de um usuário logado
+    /// Guarda informações do usuário atual logado
     /// </summary>
-    public static class AxlLogin 
+    public static class UserLoginState 
     {
         public static int Id;
         public static string Name;

@@ -1,4 +1,4 @@
-﻿using DimStock.ClassTools;
+﻿using DimStock.AuxilyTools;
 using DimStock.Models;
 using System;
 using System.Diagnostics;
@@ -87,7 +87,7 @@ namespace DimStock.UserForms
 
         private void MenuProduct_RegisterNew_Product_Click(object sender, EventArgs e)
         {
-            AxlMdiForm.CloseAllForms();
+            MdiClosingAll.CloseAllForms();
 
             var form = new ProductAddForm()
             {
@@ -104,7 +104,7 @@ namespace DimStock.UserForms
 
         private void MenuProduct_RegisterNew_Category_Click(object sender, EventArgs e)
         {
-            AxlMdiForm.CloseAllForms();
+            MdiClosingAll.CloseAllForms();
 
             var form = new CategoryAddForm()
             {
@@ -119,7 +119,7 @@ namespace DimStock.UserForms
 
         private void MenuProduct_ListRegisters_Product_Click(object sender, EventArgs e)
         {
-            AxlMdiForm.CloseAllForms();
+            MdiClosingAll.CloseAllForms();
 
             var form = new ProductListingForm()
             {
@@ -134,7 +134,7 @@ namespace DimStock.UserForms
 
         private void MenuProduct_ListRegisters_Category_Click(object sender, EventArgs e)
         {
-            AxlMdiForm.CloseAllForms();
+            MdiClosingAll.CloseAllForms();
 
             var form = new CategoryListingForm()
             {
@@ -150,7 +150,7 @@ namespace DimStock.UserForms
 
         private void MenuStock_RegisterNew_Entrie_Click(object sender, EventArgs e)
         {
-            AxlMdiForm.CloseAllForms();
+            MdiClosingAll.CloseAllForms();
 
             var form = new StockMovementAddForm()
             {
@@ -164,7 +164,7 @@ namespace DimStock.UserForms
 
         private void MenuStock_RegisterNew_Output_Click(object sender, EventArgs e)
         {
-            AxlMdiForm.CloseAllForms();
+            MdiClosingAll.CloseAllForms();
 
             var form = new StockMovementAddForm()
             {
@@ -177,7 +177,7 @@ namespace DimStock.UserForms
 
         private void MenuStock_ListMovements_Click(object sender, EventArgs e)
         {
-            AxlMdiForm.CloseAllForms();
+            MdiClosingAll.CloseAllForms();
 
             var form = new StockMovementListingForm()
             {
@@ -191,7 +191,7 @@ namespace DimStock.UserForms
 
         private void MenuStock_ListStocks_Click(object sender, EventArgs e)
         {
-            AxlMdiForm.CloseAllForms();
+            MdiClosingAll.CloseAllForms();
 
             var form = new StockListingForm()
             {
@@ -206,11 +206,11 @@ namespace DimStock.UserForms
         private void MenuUser_RegisterNew_Click(object sender, EventArgs e)
         {
             var user = new UserLoginModel();
-            user.GetDetail(AxlLogin.Id);
+            user.GetDetail(UserLoginState.Id);
 
             if (user.PermissionToView == true)
             {
-                AxlMdiForm.CloseAllForms();
+                MdiClosingAll.CloseAllForms();
 
                 var form = new UserLoginAddForm()
                 {
@@ -232,11 +232,11 @@ namespace DimStock.UserForms
         private void MenuUser_ListUsers_Click(object sender, EventArgs e)
         {
             var user = new UserLoginModel();
-            user.GetDetail(AxlLogin.Id);
+            user.GetDetail(UserLoginState.Id);
 
             if (user.PermissionToView == true)
             {
-                AxlMdiForm.CloseAllForms();
+                MdiClosingAll.CloseAllForms();
 
                 var form = new UserListingForm()
                 {
@@ -257,7 +257,7 @@ namespace DimStock.UserForms
 
         private void MenuSettings_Backup_GenerateNew_Click(object sender, EventArgs e)
         {
-            AxlMdiForm.CloseAllForms();
+            MdiClosingAll.CloseAllForms();
 
             var form = new BackupSaveForm()
             {
@@ -271,7 +271,7 @@ namespace DimStock.UserForms
 
         private void MenuSettings_Backup_ImportAnother_Click(object sender, EventArgs e)
         {
-            AxlMdiForm.CloseAllForms();
+            MdiClosingAll.CloseAllForms();
 
             var form = new AppSettingsForm()
             {
@@ -319,7 +319,7 @@ namespace DimStock.UserForms
             }
             catch (Exception ex)
             {
-                AxlException.Message.Show(ex);
+                ExceptionNotifier.ShowMessage(ex);
             }
         }
 

@@ -1,4 +1,4 @@
-﻿using DimStock.ClassTools;
+﻿using DimStock.AuxilyTools;
 using DimStock.Properties;
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ namespace DimStock.Models
             var destPath = Settings.Default.MainAppDirectory +
             @"\dimstockdatabase.mdb";
 
-            var dataBase = new AxlFile();
+            var dataBase = new AuxiliaryFileManager();
 
             if (dataBase.CheckIfExists(destPath) == false)
                 dataBase.CopyFromDirectory(sourcePath, destPath);
@@ -25,7 +25,7 @@ namespace DimStock.Models
         {
             var destPath = GetMainAppDirectory() + @"\CompanyLogo\CompanyLogo.jpg";
 
-            var logoImage = new AxlFile();
+            var logoImage = new AuxiliaryFileManager();
 
             if (logoImage.CheckIfExists(destPath) == false)
                 logoImage.CopyFromDirectory(
@@ -34,7 +34,7 @@ namespace DimStock.Models
 
         public void SaveBackup()
         {
-            var backup = new AxlFile();
+            var backup = new AuxiliaryFileManager();
 
             var day = DateTime.Now.Day;
             var month = DateTime.Now.Month;
@@ -62,14 +62,14 @@ namespace DimStock.Models
 
             var destPath = GetMainAppDirectory() + @"\dimstockdatabase.mdb";
 
-            var backup = new AxlFile();
+            var backup = new AuxiliaryFileManager();
 
             backup.CopyFromDirectory(sourcePath, destPath);
         }
 
         public void CreateFoldersInTheMainDirectory()
         {
-            var directory = new AxlDirectory();
+            var directory = new AuxiliaryDirectoryManager();
 
             var listFolders = new List<string>()
             {

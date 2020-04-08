@@ -1,8 +1,8 @@
 ﻿using System.Windows.Forms;
 
-namespace DimStock.ClassTools
+namespace DimStock.AuxilyTools
 {
-    public static class AxlMdiForm
+    public static class MdiClosingAll
     {
         public static void CloseAllForms()
         {

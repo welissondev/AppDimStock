@@ -1,4 +1,4 @@
-﻿namespace DimStock.ClassTools
+﻿namespace DimStock.AuxilyTools
 {
     /// <summary>
     /// Uma que recebe uma mesagem sobre á ultima operação solicitada!
