@@ -10,7 +10,7 @@ namespace DimStock.UserForms
     {
         #region Properties
 
-        private AppSetting appSetting = new AppSetting();
+        private AppSettingModel appSetting = new AppSettingModel();
 
         #endregion
 
@@ -145,7 +145,7 @@ namespace DimStock.UserForms
 
                             if (PictureCompanyLogo.ImageLocation == null)
                             {
-                                var path = AppSetting.GetDirectoryOfExe() + 
+                                var path = AppSettingModel.GetDirectoryOfExe() + 
                                 @"Resources\DimStockLogoType.png";
                                 
                                 appSetting.TransferCompanyLogoToMainDirectory(path);
@@ -174,7 +174,7 @@ namespace DimStock.UserForms
                                 LabelPageFinalizeSubTitle.Text = "Reiniciando o sistema...";
                                 Await(8000);
 
-                                AppSetting.FinalizeConfiguration();
+                                AppSettingModel.FinalizeConfiguration();
 
                                 Application.Restart();
                             }
@@ -210,7 +210,7 @@ namespace DimStock.UserForms
                                 LabelPageFinalizeSubTitle.Text = "Reiniciando o sistema...";
                                 Await(8000);
 
-                                AppSetting.FinalizeConfiguration();
+                                AppSettingModel.FinalizeConfiguration();
 
                                 Application.Restart();
                             }
@@ -317,7 +317,7 @@ namespace DimStock.UserForms
                 return false;
             }
 
-            var user = new UserLogin()
+            var user = new UserLoginModel()
             {
                 Name = TextUserName.Text,
                 Email = TextEmail.Text,

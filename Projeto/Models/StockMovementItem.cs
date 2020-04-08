@@ -12,7 +12,7 @@ namespace DimStock.Models
         {
             Stock = new StockModel();
             Product = new ProductModel();
-            StockMovement = new StockMovement();
+            StockMovement = new StockMovementModel();
             List = new List<StockMovementItem>();
         }
 
@@ -27,7 +27,7 @@ namespace DimStock.Models
         public double SubTotal { get; set; }
         public StockModel Stock { get; set; }
         public ProductModel Product { get; set; }
-        public StockMovement StockMovement { get; set; }
+        public StockMovementModel StockMovement { get; set; }
         public List<StockMovementItem> List { get; set; }
 
         #endregion
@@ -36,7 +36,7 @@ namespace DimStock.Models
 
         public bool Add()
         {
-            using (var connection = new AccessConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlCommand = @"INSERT INTO StockMovementItem(StockMovementId, ProductId, StockId, 
                 Quantity, UnitaryValue, TotalValue)VALUES(@StockMovementId, @ProductId, @StockId, 
@@ -58,7 +58,7 @@ namespace DimStock.Models
         {
             var deleteState = false;
 
-            using (var connection = new AccessConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlCommand = @"DELETE FROM StockMovementItem Where Id = @Id";
 
@@ -75,7 +75,7 @@ namespace DimStock.Models
 
         public void ListItems(int id)
         {
-            using (var connection = new AccessConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlQuery = @"SELECT StockMovementItem.*, Product.Description, Product.InternalCode 
                 FROM StockMovementItem INNER JOIN Product ON StockMovementItem.ProductId = Product.Id WHERE 

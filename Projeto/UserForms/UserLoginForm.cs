@@ -35,7 +35,7 @@ namespace DimStock.UserForms
         {
             try
             {
-                var user = new UserLogin
+                var user = new UserLoginModel
                 {
                     Login = TextLogin.Text,
                     PassWord = TextPassWord.Text

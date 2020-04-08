@@ -33,7 +33,7 @@ namespace DimStock.Models
             if (ProductValidationModel.ValidateToInsert(this) == false)
                 return actionResult;
 
-            using (var db = new AccessConnection())
+            using (var db = new ConnectionModel())
             {
                 using (db.Transaction = db.Open().BeginTransaction())
                 {
@@ -82,7 +82,7 @@ namespace DimStock.Models
             if (ProductValidationModel.ValidateToUpdate(this) == false)
                 return actionResult;
 
-            using (var db = new AccessConnection())
+            using (var db = new ConnectionModel())
             {
                 using (db.Transaction = db.Open().BeginTransaction())
                 {
@@ -136,7 +136,7 @@ namespace DimStock.Models
             if (ProductValidationModel.ValidateToDelete(this) == false)
                 return actionResult;
 
-            using (var db = new AccessConnection())
+            using (var db = new ConnectionModel())
             {
                 using (db.Transaction = db.Open().BeginTransaction())
                 {
@@ -167,7 +167,7 @@ namespace DimStock.Models
             if (ProductValidationModel.ValidateToGetDetail(this) == false)
                 return actionResult;
 
-            using (var db = new AccessConnection())
+            using (var db = new ConnectionModel())
             {
                 sql = @"SELECT Product.*, Category.* FROM Product
                 LEFT JOIN Category ON Product.CategoryId = Category.Id
@@ -207,7 +207,7 @@ namespace DimStock.Models
         {
             var sql = string.Empty;
 
-            using (var db = new AccessConnection())
+            using (var db = new ConnectionModel())
             {
                 sql = @"SELECT Id, InternalCode, Description, 
                 CostPrice, SalePrice FROM Product WHERE Id > 0";

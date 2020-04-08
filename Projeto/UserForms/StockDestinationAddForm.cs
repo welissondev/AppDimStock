@@ -44,7 +44,7 @@ namespace DimStock.UserForms
                     return;
                 }
 
-                var stockDestination = new StockDestination
+                var stockDestination = new StockDestinationModel
                 {
                     Location = TextDestinationLocation.Text.TrimStart().TrimEnd()
                 };
@@ -75,7 +75,7 @@ namespace DimStock.UserForms
                     return;
                 }
 
-                var stockDestination = new StockDestination
+                var stockDestination = new StockDestinationModel
                 {
                     Location = TextDestinationLocation.Text.TrimStart().TrimEnd()
                 };
@@ -103,7 +103,7 @@ namespace DimStock.UserForms
                     return;
                 }
 
-                var stockDestination = new StockDestination();
+                var stockDestination = new StockDestinationModel();
 
                 if (stockDestination.Remove(id) == true)
                 {
@@ -172,7 +172,7 @@ namespace DimStock.UserForms
             {
                 id = Convert.ToInt32(DatagridDestination.CurrentRow.Cells["id"].Value);
 
-                var stockDestination = new StockDestination();
+                var stockDestination = new StockDestinationModel();
                 stockDestination.GetDetail(id);
 
                 TextDestinationLocation.Text = stockDestination.Location;
@@ -183,7 +183,7 @@ namespace DimStock.UserForms
         {
             try
             {
-                var stockDestination = new StockDestination();
+                var stockDestination = new StockDestinationModel();
                 stockDestination.ListData();
 
                 DatagridDestination.Rows.Clear();

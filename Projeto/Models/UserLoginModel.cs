@@ -7,19 +7,19 @@ using System.Linq;
 
 namespace DimStock.Models
 {
-    public class UserLogin
+    public class UserLoginModel
     {
         #region Builder
 
-        public UserLogin() 
+        public UserLoginModel() 
         { 
             
         }
 
-        public UserLogin(AxlDataPage pagination)
+        public UserLoginModel(AxlDataPage pagination)
         {
             Pagination = pagination;
-            List = new List<UserLogin>();
+            List = new List<UserLoginModel>();
         }
 
         #endregion
@@ -37,7 +37,7 @@ namespace DimStock.Models
         public bool PermissionToView { get; set; }
         public bool AllPermissions { get; set; }
         public AxlDataPage Pagination { get; set; }
-        public List<UserLogin> List { get; set; }
+        public List<UserLoginModel> List { get; set; }
         #endregion
 
         #region Function
@@ -46,7 +46,7 @@ namespace DimStock.Models
         {
             var accessState = false;
 
-            using (var connection = new AccessConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlQuery = @"SELECT * FROM [UserLogin] WHERE Login 
                 LIKE @Login AND [PassWord] = @PassWord";
@@ -86,7 +86,7 @@ namespace DimStock.Models
             if (ValidateEmail(Email) == false)
                 return false;
 
-            using (var connection = new AccessConnection())
+            using (var connection = new ConnectionModel())
             {
                 var createState = false;
 
@@ -113,7 +113,7 @@ namespace DimStock.Models
             }
         }
 
-        private void CreateDefaultLogin(AccessConnection connection)
+        private void CreateDefaultLogin(ConnectionModel connection)
         {
             Login = "Admin";
 
@@ -147,7 +147,7 @@ namespace DimStock.Models
             if (ValidateEmail(Email) == false)
                 return false;
 
-            using (var connection = new AccessConnection())
+            using (var connection = new ConnectionModel())
             {
                 var transactionState = false;
 
@@ -189,7 +189,7 @@ namespace DimStock.Models
             if (ValidateEmail(Email) == false)
                 return false;
 
-            using (var connection = new AccessConnection())
+            using (var connection = new ConnectionModel())
             {
                 var transactionState = false;
 
@@ -243,7 +243,7 @@ namespace DimStock.Models
                 return false;
             }
 
-            using (var connection = new AccessConnection())
+            using (var connection = new ConnectionModel())
             {
                 var transactionState = false;
 
@@ -268,7 +268,7 @@ namespace DimStock.Models
 
         public void ListData()
         {
-            using (var connection = new AccessConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlQuery = "SELECT * FROM [User]";
 
@@ -276,7 +276,7 @@ namespace DimStock.Models
                 {
                     while (reader.Read())
                     {
-                        var User = new UserLogin()
+                        var User = new UserLoginModel()
                         {
                             Id = Convert.ToInt32(reader["Id"]),
                             Name = Convert.ToString(reader["Name"]),
@@ -291,7 +291,7 @@ namespace DimStock.Models
 
         public void GetDetail(int id)
         {
-            using (var connection = new AccessConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlQuery = @"SELECT * FROM [UserLogin] WHERE Id = @Id";
 
@@ -318,7 +318,7 @@ namespace DimStock.Models
 
         public void FetchData()
         {
-            using (var connection = new AccessConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlQuery = @"SELECT * FROM [UserLogin] WHERE [Name]  
                 LIKE @Name Or Email LIKE @Email";
@@ -347,7 +347,7 @@ namespace DimStock.Models
 
         public bool CheckIfLoginExists()
         {
-            using (var connection = new AccessConnection())
+            using (var connection = new ConnectionModel())
             {
                 var userFound = 0;
 
@@ -389,7 +389,7 @@ namespace DimStock.Models
 
         public bool CheckIfResgisterExists(int id)
         {
-            using (var connection = new AccessConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlQuery = "SELECT Id FROM [UserLogin] WHERE Id = @Id";
                 var recordsFound = 0;
@@ -413,7 +413,7 @@ namespace DimStock.Models
         {
             foreach (DataRow row in dataTable.Rows)
             {
-                var User = new UserLogin()
+                var User = new UserLoginModel()
                 {
                     Id = Convert.ToInt32(row["Id"]),
                     Name = Convert.ToString(row["Login"]),

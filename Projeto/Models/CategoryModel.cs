@@ -33,7 +33,7 @@ namespace DimStock.Models
             if (CategoryValidationModel.ValidateToInsert(this) == false)
                 return actionResult;
 
-            using (var db = new AccessConnection())
+            using (var db = new ConnectionModel())
             {
                 using (db.Transaction = db.Open().BeginTransaction())
                 {
@@ -67,7 +67,7 @@ namespace DimStock.Models
             if (CategoryValidationModel.ValidateToUpdate(this) == false)
                 return actionResult;
 
-            using (var db = new AccessConnection())
+            using (var db = new ConnectionModel())
             {
                 using (db.Transaction = db.Open().BeginTransaction())
                 {
@@ -102,7 +102,7 @@ namespace DimStock.Models
             if (CategoryValidationModel.ValidateToDelete(this) == false)
                 return actionResult;
 
-            using (var db = new AccessConnection())
+            using (var db = new ConnectionModel())
             {
                 using (db.Transaction = db.Open().BeginTransaction())
                 {
@@ -135,7 +135,7 @@ namespace DimStock.Models
             if (CategoryValidationModel.ValidateToGetDetail(this) == false)
                 return actionResult;
 
-            using (var db = new AccessConnection())
+            using (var db = new ConnectionModel())
             {
                 var sql = @"SELECT Id, Description From 
                 Category Where Id = @Id ";
@@ -165,7 +165,7 @@ namespace DimStock.Models
         {
             var sql = string.Empty;
 
-            using (var db = new AccessConnection())
+            using (var db = new ConnectionModel())
             {
                 sql = "SELECT Id FROM Category WHERE Description = @Description";
 
@@ -180,7 +180,7 @@ namespace DimStock.Models
         {
             var sql = string.Empty;
 
-            using (var db = new AccessConnection())
+            using (var db = new ConnectionModel())
             {
                 sql = "SELECT * FROM Category ";
 
@@ -202,7 +202,7 @@ namespace DimStock.Models
         {
             var sql = string.Empty;
 
-            using (var db = new AccessConnection())
+            using (var db = new ConnectionModel())
             {
                 sql = "SELECT * FROM Category ORDER BY Description";
                 return db.GetTable(sql);

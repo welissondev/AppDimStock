@@ -144,7 +144,7 @@ namespace DimStock.UserForms
             {
                 if (TextOperationSituation.Text == "Em Aberto")
                 {
-                    var movement = new StockMovement();
+                    var movement = new StockMovementModel();
                     movement.Destination.Location =
                     ((ComboBox)sender).SelectedItem.ToString();
 
@@ -306,7 +306,7 @@ namespace DimStock.UserForms
         {
             try
             {
-                var destination = new StockDestination();
+                var destination = new StockDestinationModel();
                 destination.ListData();
 
                 var destinationList = new List<string>();
@@ -344,7 +344,7 @@ namespace DimStock.UserForms
         {
             try
             {
-                var movement = new StockMovement();
+                var movement = new StockMovementModel();
                 movement.GetDetail(id);
 
                 TextStockMovementId.Text = id.ToString();
@@ -371,7 +371,7 @@ namespace DimStock.UserForms
 
         public void StartNewOperation(string operationType)
         {
-            var movement = new StockMovement();
+            var movement = new StockMovementModel();
 
             movement.InitOperation(operationType);
 
@@ -392,7 +392,7 @@ namespace DimStock.UserForms
                     MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                     {
-                        var movement = new StockMovement
+                        var movement = new StockMovementModel
                         {
                             OperationType = TextOperationType.Text
                         };

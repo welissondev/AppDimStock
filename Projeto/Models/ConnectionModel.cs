@@ -5,11 +5,11 @@ using System.Data.OleDb;
 
 namespace DimStock.Models
 {
-    public class AccessConnection : IDisposable
+    public class ConnectionModel : IDisposable
     {
         #region Builder
 
-        public AccessConnection()
+        public ConnectionModel()
         {
             Connection = new OleDbConnection(GetConnectionString());
             Command = new OleDbCommand();

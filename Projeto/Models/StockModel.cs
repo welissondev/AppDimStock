@@ -23,7 +23,7 @@ namespace DimStock.Models
             List = new List<StockModel>();
         }
 
-        public StockModel(AccessConnection connection)
+        public StockModel(ConnectionModel connection)
         {
             this.connection = connection;
             Product = new ProductModel();
@@ -34,7 +34,7 @@ namespace DimStock.Models
         #region Get & Set
 
         private string summary = "All";
-        private AccessConnection connection;
+        private ConnectionModel connection;
 
         public int Id { get; set; }
         public int Min { get; set; }
@@ -53,7 +53,7 @@ namespace DimStock.Models
 
         public void ListData()
         {
-            using (var connection = new AccessConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlQuery = string.Empty;
                 var sqlCount = string.Empty;
@@ -168,7 +168,7 @@ namespace DimStock.Models
 
         public void FetchData()
         {
-            using (var connection = new AccessConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlQuery = string.Empty;
                 var sqlCount = string.Empty;
@@ -269,7 +269,7 @@ namespace DimStock.Models
 
         public void GetDetail(int id)
         {
-            using (var connection = new AccessConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlQuery = @"SELECT Product.*, Stock.* From Product INNER JOIN 
                 Stock ON Product.Id = Stock.ProductId WHERE Product.Id = @Id";
@@ -296,7 +296,7 @@ namespace DimStock.Models
             var transactionState = false;
             var sqlCommand = string.Empty;
 
-            using (var connection = new AccessConnection())
+            using (var connection = new ConnectionModel())
             {
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
@@ -318,7 +318,7 @@ namespace DimStock.Models
                     }
 
                     //Fianaliza a operação
-                    var stockMovement = new StockMovement(connection);
+                    var stockMovement = new StockMovementModel(connection);
                     transactionState = stockMovement.FinalizeOperation(
                     stockMovementId);
 
@@ -334,7 +334,7 @@ namespace DimStock.Models
 
         public bool AddOutputs(List<StockModel> itemList, int stockMovementId)
         {
-            using (var connection = new AccessConnection())
+            using (var connection = new ConnectionModel())
             {
                 var transactionState = false;
                 var sqlCommand = string.Empty;
@@ -360,7 +360,7 @@ namespace DimStock.Models
                     }
 
                     //Finaliza a operação
-                    var stockMovement = new StockMovement(connection);
+                    var stockMovement = new StockMovementModel(connection);
                     transactionState = stockMovement.FinalizeOperation(stockMovementId);
 
                     //Finaliza a transação

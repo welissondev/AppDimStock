@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace DimStock.Models
 {
-    public class AppSetting
+    public class AppSettingModel
     {
         public void TransferDataBaseToMainDirectory()
         {

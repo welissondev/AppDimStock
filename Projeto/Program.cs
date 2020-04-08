@@ -16,7 +16,7 @@ namespace DimStock.UserForms
 
             Application.SetCompatibleTextRenderingDefault(false);
 
-            if (AppSetting.GetAppSettingsState() == true)
+            if (AppSettingModel.GetAppSettingsState() == true)
             {
                 Application.Run(new HomeScreenForm());
             }

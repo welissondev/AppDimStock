@@ -86,7 +86,7 @@ namespace DimStock.UserForms
             {
                 var parameters = new ReportParameterCollection();
 
-                var imagePath = AppSetting.GetMainAppDirectory() +
+                var imagePath = AppSettingModel.GetMainAppDirectory() +
                 @"\CompanyLogo\CompanyLogo.jpg";
 
                 parameters.Add(new ReportParameter("CompanyLogoPath",

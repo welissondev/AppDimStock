@@ -5,13 +5,13 @@ using System.Data.OleDb;
 
 namespace DimStock.Models
 {
-    public class StockDestination
+    public class StockDestinationModel
     {
         #region Builder
         
-        public StockDestination()
+        public StockDestinationModel()
         {
-            List = new List<StockDestination>();
+            List = new List<StockDestinationModel>();
         }
 
         #endregion
@@ -20,7 +20,7 @@ namespace DimStock.Models
 
         public int Id { get; set; }
         public string Location { get; set; }
-        public List<StockDestination> List { get; set; }
+        public List<StockDestinationModel> List { get; set; }
 
         #endregion
 
@@ -30,7 +30,7 @@ namespace DimStock.Models
         {
             var transaction = false;
 
-            using (var connection = new AccessConnection())
+            using (var connection = new ConnectionModel())
             {
                 if (CheckIfExists() == true)
                 {
@@ -57,7 +57,7 @@ namespace DimStock.Models
         {
             var transaction = false;
 
-            using (var connection = new AccessConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlCommand = @"UPDATE StockDestination SET 
                 Location = @Location WHERE Id = @Id";
@@ -79,7 +79,7 @@ namespace DimStock.Models
         {
             bool transaction = false;
 
-            using (var connection = new AccessConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlCommand = @"DELETE FROM StockDestination 
                 WHERE Id = @Id";
@@ -105,13 +105,13 @@ namespace DimStock.Models
         {
             var sqlQuery = @"SELECT * From StockDestination";
 
-            using (var connection = new AccessConnection())
+            using (var connection = new ConnectionModel())
             {
                 using (var reader = connection.GetReader(sqlQuery))
                 {
                     while (reader.Read())
                     {
-                        var destination = new StockDestination()
+                        var destination = new StockDestinationModel()
                         {
                             Id = Convert.ToInt32(reader["Id"]),
                             Location = Convert.ToString(reader["Location"])
@@ -125,7 +125,7 @@ namespace DimStock.Models
 
         public void GetDetail(int id)
         {
-            using (var connection = new AccessConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlQuery = @"SELECT * FROM StockDestination 
                 WHERE Id = @Id";
@@ -147,7 +147,7 @@ namespace DimStock.Models
         {
             var destinationsFound = 0;
 
-            using (var connection = new AccessConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlQuery = @"SELECT Location From StockDestination 
                 WHERE Location LIKE @Location";

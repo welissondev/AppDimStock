@@ -28,7 +28,7 @@ namespace DimStock.UserForms
                 MainTabControl.ItemSize = new Size(0, 1);
                 MainTabControl.SizeMode = TabSizeMode.Fixed;
 
-                TextBackupFolderPath.Text = AppSetting.GetMainAppDirectory() + @"\DataBaseBackUp";
+                TextBackupFolderPath.Text = AppSettingModel.GetMainAppDirectory() + @"\DataBaseBackUp";
 
             }
             catch (Exception ex)
@@ -45,7 +45,7 @@ namespace DimStock.UserForms
         {
             try
             {
-                var appSetting = new AppSetting();
+                var appSetting = new AppSettingModel();
                 appSetting.SaveBackup();
 
                 MessageBox.Show("Backup gerado com sucesso!", "Sucesso");

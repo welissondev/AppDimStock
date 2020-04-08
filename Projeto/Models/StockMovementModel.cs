@@ -7,42 +7,42 @@ using System.Linq;
 
 namespace DimStock.Models
 {
-    public class StockMovement
+    public class StockMovementModel
     {
         #region Builder
 
-        public StockMovement()
+        public StockMovementModel()
         {
-            Destination = new StockDestination();
+            Destination = new StockDestinationModel();
         }
 
-        public StockMovement(AxlDataPage pagination)
+        public StockMovementModel(AxlDataPage pagination)
         {
             Pagination = pagination;
-            Destination = new StockDestination();
-            List = new List<StockMovement>();
+            Destination = new StockDestinationModel();
+            List = new List<StockMovementModel>();
         }
 
-        public StockMovement(AccessConnection connection)
+        public StockMovementModel(ConnectionModel connection)
         {
             this.connection = connection;
-            Destination = new StockDestination();
+            Destination = new StockDestinationModel();
         }
 
         #endregion
 
         #region Get & Set
 
-        private AccessConnection connection;
+        private ConnectionModel connection;
         public int Id { get; set; }
         public string OperationType { get; set; }
         public DateTime OperationDate { get; set; }
         public DateTime OperationHour { get; set; }
         public string OperationCode { get; set; }
         public string OperationSituation { get; set; }
-        public StockDestination Destination { get; set; }
+        public StockDestinationModel Destination { get; set; }
         public AxlDataPage Pagination { get; set; }
-        public List<StockMovement> List { get; set; }
+        public List<StockMovementModel> List { get; set; }
 
         #endregion
 
@@ -52,7 +52,7 @@ namespace DimStock.Models
         {
             bool registerState = false;
 
-            using (var connection = new AccessConnection())
+            using (var connection = new ConnectionModel())
             {
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
@@ -89,7 +89,7 @@ namespace DimStock.Models
             bool setDestinationState = false;
             var sqlCommand = string.Empty;
 
-            using (var connection = new AccessConnection())
+            using (var connection = new ConnectionModel())
             {
                 //Pega Id de destino pelo nome do local
                 sqlCommand = @"SELECT * FROM StockDestination 
@@ -151,7 +151,7 @@ namespace DimStock.Models
 
             var transactionState = false;
 
-            using (var connection = new AccessConnection())
+            using (var connection = new ConnectionModel())
             {
                 using (connection.Transaction =
                 connection.Open().BeginTransaction())
@@ -196,7 +196,7 @@ namespace DimStock.Models
 
         public void ListData()
         {
-            using (var connection = new AccessConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlQuery = @"SELECT * From StockMovement";
 
@@ -204,7 +204,7 @@ namespace DimStock.Models
                 {
                     while (reader.Read())
                     {
-                        var stockMovement = new StockMovement()
+                        var stockMovement = new StockMovementModel()
                         {
                             Id = Convert.ToInt32(reader["Id"]),
                             OperationType = reader["OperationType"].ToString(),
@@ -225,7 +225,7 @@ namespace DimStock.Models
 
         public void FetchData()
         {
-            using (var connection = new AccessConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlQuery = string.Empty;
                 var sqlCount = string.Empty;
@@ -281,7 +281,7 @@ namespace DimStock.Models
 
         public void GetDetail(int id)
         {
-            using (var connection = new AccessConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlQuery = @"SELECT StockMovement.*, StockDestination.* 
                 FROM StockMovement LEFT JOIN StockDestination ON StockMovement.StockDestinationId 
@@ -318,7 +318,7 @@ namespace DimStock.Models
         {
             foreach (DataRow row in dataTable.Rows)
             {
-                var movement = new StockMovement()
+                var movement = new StockMovementModel()
                 {
                     Id = Convert.ToInt32(row["StockMovement.Id"]),
                     OperationType = Convert.ToString(row["OperationType"]),
@@ -335,7 +335,7 @@ namespace DimStock.Models
 
         public bool CheckIfExists(int id)
         {
-            using (var connection = new AccessConnection())
+            using (var connection = new ConnectionModel())
             {
                 var sqlQuery = "SELECT Id FROM StockMovement WHERE Id = @Id";
                 var recordsFound = 0;

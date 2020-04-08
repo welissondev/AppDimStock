@@ -141,7 +141,7 @@ namespace DimStock.Models
             var sql = string.Empty;
             var actionResult = false;
 
-            using (var db = new AccessConnection())
+            using (var db = new ConnectionModel())
             {
                 sql = "SELECT Id FROM Product WHERE Id = @Id";
 

@@ -286,7 +286,7 @@ namespace DimStock.UserForms
         {
             try
             {
-                var movement = new StockMovement(pagination)
+                var movement = new StockMovementModel(pagination)
                 {
                     OperationType = selectedType,
                     OperationCode = TextSearchByOperationCode.Text,
@@ -339,7 +339,7 @@ namespace DimStock.UserForms
                     DatagridMovement.CurrentRow.Cells[
                     "operationType"].Value);
 
-                    var stockMovement = new StockMovement
+                    var stockMovement = new StockMovementModel
                     {
                         OperationType = operationType
                     };
