@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace DimStock.UserForms
+namespace DimStock.Screens
 {
     public partial class ReportViewForm : Form
     {

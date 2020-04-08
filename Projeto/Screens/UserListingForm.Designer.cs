@@ -1,4 +1,4 @@
-﻿namespace DimStock.UserForms
+﻿namespace DimStock.Screens
 {
     partial class UserListingForm
     {

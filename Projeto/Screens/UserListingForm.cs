@@ -4,7 +4,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace DimStock.UserForms
+namespace DimStock.Screens
 {
     public partial class UserListingForm : Form
     {

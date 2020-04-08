@@ -1,5 +1,5 @@
 ﻿using DimStock.Models;
-using DimStock.UserForms;
+using DimStock.Screens;
 using System.Collections.Generic;
 
 namespace DimStock.Reports

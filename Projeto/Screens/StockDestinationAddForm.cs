@@ -3,7 +3,7 @@ using DimStock.Models;
 using System;
 using System.Windows.Forms;
 
-namespace DimStock.UserForms
+namespace DimStock.Screens
 {
     public partial class StockDestinationAddForm : Form
     {

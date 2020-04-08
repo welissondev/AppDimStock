@@ -10,7 +10,7 @@ using System.Windows.Forms;
 /// <summary>
 /// Propriedades da classe
 /// </summary>
-namespace DimStock.UserForms
+namespace DimStock.Screens
 {
     public partial class CategoryListingForm : ICategoryListingView
     {
@@ -26,7 +26,7 @@ namespace DimStock.UserForms
 /// <summary>
 /// Eventos do classe
 /// </summary>
-namespace DimStock.UserForms
+namespace DimStock.Screens
 {
     public partial class CategoryListingForm : MetroForm
     {
@@ -148,7 +148,7 @@ namespace DimStock.UserForms
 /// <summary>
 /// Métodos auxiliares
 /// </summary>
-namespace DimStock.UserForms
+namespace DimStock.Screens
 {
     public partial class CategoryListingForm
     {

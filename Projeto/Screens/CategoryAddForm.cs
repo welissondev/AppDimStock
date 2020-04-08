@@ -10,7 +10,7 @@ using System.Windows.Forms;
 /// <summary>
 /// Métodos da classe
 /// </summary>
-namespace DimStock.UserForms
+namespace DimStock.Screens
 {
     public partial class CategoryAddForm : ICategoryAddView
     {
@@ -23,7 +23,7 @@ namespace DimStock.UserForms
 /// <summary>
 /// Eventos da classe
 /// </summary>
-namespace DimStock.UserForms
+namespace DimStock.Screens
 {
     public partial class CategoryAddForm : MetroForm
     {
@@ -127,7 +127,7 @@ namespace DimStock.UserForms
 /// <summary>
 /// Métodos auxiliares
 /// </summary>
-namespace DimStock.UserForms
+namespace DimStock.Screens
 {
     public partial class CategoryAddForm
     {

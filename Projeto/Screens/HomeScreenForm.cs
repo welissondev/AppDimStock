@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace DimStock.UserForms
+namespace DimStock.Screens
 {
     public partial class HomeScreenForm : Form
     {

@@ -6,7 +6,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace DimStock.UserForms
+namespace DimStock.Screens
 {
     public partial class ProductListingForm : IProductListingView
     {
@@ -25,7 +25,7 @@ namespace DimStock.UserForms
     }
 }
 
-namespace DimStock.UserForms
+namespace DimStock.Screens
 {
     public partial class ProductListingForm : MetroForm
     {
@@ -156,7 +156,7 @@ namespace DimStock.UserForms
 /// <summary>
 /// Métodos auxiliares da classe
 /// </summary>
-namespace DimStock.UserForms
+namespace DimStock.Screens
 {
     public partial class ProductListingForm
     {

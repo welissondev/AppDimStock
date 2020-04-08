@@ -3,7 +3,7 @@
 /// <summary>
 /// Definições de Propriedades
 /// </summary>
-namespace DimStock.UserForms
+namespace DimStock.Screens
 {
     public partial class StockListingForm : Form
     {
@@ -18,7 +18,7 @@ namespace DimStock.UserForms
 /// <summary>
 /// Eventos do formulário
 /// </summary>
-namespace DimStock.UserForms
+namespace DimStock.Screens
 {
     public partial class StockListingForm : Form
     {
@@ -30,7 +30,7 @@ namespace DimStock.UserForms
 /// <summary>
 /// Métodos auxiliares
 /// </summary>
-namespace DimStock.UserForms
+namespace DimStock.Screens
 {
     public partial class StockListingForm : Form
     {

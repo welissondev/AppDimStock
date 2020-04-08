@@ -8,7 +8,7 @@ using System.Windows.Forms;
 /// <summary>
 /// Propriedades da classe
 /// </summary>
-namespace DimStock.UserForms
+namespace DimStock.Screens
 {
     public partial class ProductAddForm : IProductAddView
     {
@@ -27,7 +27,7 @@ namespace DimStock.UserForms
 /// <summary>
 /// Eventos da classe
 /// </summary>
-namespace DimStock.UserForms
+namespace DimStock.Screens
 {
     public partial class ProductAddForm : MetroForm
     {
@@ -209,7 +209,7 @@ namespace DimStock.UserForms
 /// <summary>
 /// Métodos Auxiliares da classe
 /// </summary>
-namespace DimStock.UserForms
+namespace DimStock.Screens
 {
     public partial class ProductAddForm
     {

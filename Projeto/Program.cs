@@ -2,7 +2,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace DimStock.UserForms
+namespace DimStock.Screens
 {
     static class Program
     {

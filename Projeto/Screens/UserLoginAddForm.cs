@@ -5,7 +5,7 @@ using Syncfusion.Windows.Forms.Tools;
 using System;
 using System.Windows.Forms;
 
-namespace DimStock.UserForms
+namespace DimStock.Screens
 {
     public partial class UserLoginAddForm : Form
     {
