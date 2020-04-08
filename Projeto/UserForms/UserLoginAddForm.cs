@@ -1,5 +1,5 @@
 ﻿using Bunifu.Framework.UI;
-using DimStock.AuxilyTools;
+using DimStock.AuxilyTools.AuxilyClasses;
 using DimStock.Models;
 using Syncfusion.Windows.Forms.Tools;
 using System;

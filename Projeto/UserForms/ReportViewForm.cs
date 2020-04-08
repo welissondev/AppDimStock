@@ -1,4 +1,4 @@
-﻿using DimStock.AuxilyTools;
+﻿using DimStock.AuxilyTools.AuxilyClasses;
 using DimStock.Models;
 using Microsoft.Reporting.WinForms;
 using System;

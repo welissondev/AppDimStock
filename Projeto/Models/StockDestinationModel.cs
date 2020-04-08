@@ -1,4 +1,4 @@
-﻿using DimStock.AuxilyTools;
+﻿using DimStock.AuxilyTools.AuxilyClasses;
 using System;
 using System.Collections.Generic;
 using System.Data.OleDb;

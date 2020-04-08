@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace DimStock.AuxilyTools
+namespace DimStock.AuxilyTools.AuxilyClasses
 {
     public class EmailAddressValidator
     {

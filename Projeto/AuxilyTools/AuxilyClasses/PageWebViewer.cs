@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace DimStock.AuxilyTools
+namespace DimStock.AuxilyTools.AuxilyClasses
 {
     /// <summary>
     /// Abri uma página web com url especificada

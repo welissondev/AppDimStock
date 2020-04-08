@@ -1,4 +1,4 @@
-﻿using DimStock.AuxilyTools;
+﻿using DimStock.AuxilyTools.AuxilyClasses;
 using DimStock.Reports;
 using System;
 using System.Collections.Generic;

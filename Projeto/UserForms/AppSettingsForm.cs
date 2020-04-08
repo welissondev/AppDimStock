@@ -1,4 +1,4 @@
-﻿using DimStock.AuxilyTools;
+﻿using DimStock.AuxilyTools.AuxilyClasses;
 using DimStock.Models;
 using System;
 using System.Drawing;

@@ -1,4 +1,4 @@
-﻿using DimStock.AuxilyTools;
+﻿using DimStock.AuxilyTools.AuxilyClasses;
 
 namespace DimStock.Models
 {

@@ -1,4 +1,4 @@
-﻿namespace DimStock.AuxilyTools
+﻿namespace DimStock.AuxilyTools.AuxilyClasses
 {
     /// <summary>
     /// Guarda informações do usuário atual logado

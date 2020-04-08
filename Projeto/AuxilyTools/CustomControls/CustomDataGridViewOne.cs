@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace DimStock.AuxilyTools.Controls
+namespace DimStock.AuxilyTools.CustomControls
 {
     public class CustomDataGridViewOne : DataGridView
     {

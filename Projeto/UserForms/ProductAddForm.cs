@@ -1,4 +1,4 @@
-﻿using DimStock.AuxilyTools;
+﻿using DimStock.AuxilyTools.AuxilyClasses;
 using DimStock.Presenters;
 using DimStock.Views;
 using MetroFramework.Forms;

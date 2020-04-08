@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DimStock.AuxilyTools
+namespace DimStock.AuxilyTools.AuxilyClasses
 {
     /// <summary>
     /// Pode ser usado entre a view e um model a fim de obter ou 

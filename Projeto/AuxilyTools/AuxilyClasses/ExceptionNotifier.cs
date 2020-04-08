@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace DimStock.AuxilyTools
+namespace DimStock.AuxilyTools.AuxilyClasses
 {
     public class ExceptionNotifier
     {

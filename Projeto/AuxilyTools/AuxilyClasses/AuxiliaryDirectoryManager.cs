@@ -2,7 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 
-namespace DimStock.AuxilyTools
+namespace DimStock.AuxilyTools.AuxilyClasses
 {
     /// <summary>
     /// Pode executar e gerenciar atividades de manipulação para um diretório
