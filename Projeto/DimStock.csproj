@@ -145,18 +145,18 @@
     <Compile Include="AuxilyTools\AuxilyClasses\MdiClosingAll.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\UserLoginState.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\PageWebViewer.cs" />
-    <Compile Include="AuxilyTools\CustomControls\CustomComboBoxView.cs">
+    <Compile Include="AuxilyTools\AuxilyControls\CustomComboBoxView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="AuxilyTools\CustomControls\CustomDataGridViewTwo.cs">
+    <Compile Include="AuxilyTools\AuxilyControls\CustomDataGridViewTwo.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Models\ConnectionModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
-    <Compile Include="AuxilyTools\CustomControls\CustomPictureBoxOne.cs">
+    <Compile Include="AuxilyTools\AuxilyControls\CustomPictureBoxOne.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="AuxilyTools\CustomControls\CustomDataGridViewOne.cs">
+    <Compile Include="AuxilyTools\AuxilyControls\CustomDataGridViewOne.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Models\AppSettingModel.cs" />

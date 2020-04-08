@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace DimStock.AuxilyTools.CustomControls
+namespace DimStock.AuxilyTools.AuxilyControls
 {
     public partial class CustomDataGridViewTwo
     {
@@ -11,7 +11,7 @@ namespace DimStock.AuxilyTools.CustomControls
     }
 }
 
-namespace DimStock.AuxilyTools.CustomControls
+namespace DimStock.AuxilyTools.AuxilyControls
 {
     public partial class CustomDataGridViewTwo : DataGridView
     {
