@@ -1,8 +1,6 @@
 ﻿using DimStock.Auxiliarys;
 using System;
-using System.Collections.Generic;
 using System.Data;
-
 
 namespace DimStock.Models
 {
@@ -14,7 +12,6 @@ namespace DimStock.Models
         public double CostPrice { get; set; }
         public double SalePrice { get; set; }
         public string BarCode { get; set; }
-        public string Photo { get; set; }
         public CategoryModel Category { get; set; }
     }
 }
@@ -198,7 +195,7 @@ namespace DimStock.Models
                             Category.Description = reader["Category.Description"].ToString();
                         }
 
-                        return actionResult = true;
+                        actionResult = true;
                     }
                 }
             }
@@ -235,10 +232,6 @@ namespace DimStock.Models
 
                 return db.GetTable(sql);
             }
-        }
-
-        public void GenerateReport(List<ProductModel> list)
-        {
         }
     }
 }

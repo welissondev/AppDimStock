@@ -154,7 +154,7 @@ namespace DimStock.Models
                         stock.Product.InternalCode = Convert.ToString(reader["InternalCode"]);
                         stock.Product.Description = Convert.ToString(reader["Description"]);
                         stock.Product.CostPrice = Convert.ToDouble(reader["CostPrice"]);
-                        stock.Product.Photo = Convert.ToString(reader["Photo"]);
+
 
                         List.Add(stock);
                     }
@@ -526,7 +526,7 @@ namespace DimStock.Models
                 stock.Product.InternalCode = Convert.ToString(row["InternalCode"]);
                 stock.Product.Description = Convert.ToString(row["Description"]);
                 stock.Product.CostPrice = Convert.ToDouble(row["CostPrice"]);
-                stock.Product.Photo = Convert.ToString(row["Photo"]);
+
 
                 List.Add(stock);
             }
