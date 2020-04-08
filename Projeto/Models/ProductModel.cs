@@ -57,7 +57,7 @@ namespace DimStock.Models
                         Id = db.ExecuteScalar(sql);
 
                         //Relaciona produto ao stock
-                        var stock = new Stock(db);
+                        var stock = new StockModel(db);
                         actionResult = stock.RelateProduct(Id);
 
                         if (actionResult == true)
@@ -112,7 +112,7 @@ namespace DimStock.Models
                         var costPrice = double.Parse(db.ExecuteScalar(sql).ToString());
 
                         //Atualiza o valor no estoque
-                        var stock = new Stock(db);
+                        var stock = new StockModel(db);
                         actionResult = stock.UpdateValue(costPrice, Id);
 
                         if (actionResult == true)

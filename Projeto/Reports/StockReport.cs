@@ -19,7 +19,7 @@ namespace DimStock.Reports
 
         #region Methods
 
-        public void GenerateReport(List<Stock> list)
+        public void GenerateReport(List<StockModel> list)
         {
             var reportList = new List<StockReport>();
 

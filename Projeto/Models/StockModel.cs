@@ -6,24 +6,24 @@ using System.Data;
 
 namespace DimStock.Models
 {
-    public class Stock 
+    public class StockModel 
     {
         #region Buider
 
-        public Stock()
+        public StockModel()
         {
             Product = new ProductModel();
-            List = new List<Stock>();
+            List = new List<StockModel>();
         }
 
-        public Stock(AxlDataPage pagination)
+        public StockModel(AxlDataPage pagination)
         {
             Pagination = pagination;
             Product = new ProductModel();
-            List = new List<Stock>();
+            List = new List<StockModel>();
         }
 
-        public Stock(AccessConnection connection)
+        public StockModel(AccessConnection connection)
         {
             this.connection = connection;
             Product = new ProductModel();
@@ -45,7 +45,7 @@ namespace DimStock.Models
         public string Summary { get => summary; set => summary = value; }
         public ProductModel Product { get; set; }
         public AxlDataPage Pagination { get; set; }
-        public List<Stock> List { get; set; }
+        public List<StockModel> List { get; set; }
 
         #endregion
 
@@ -141,7 +141,7 @@ namespace DimStock.Models
                 {
                     while (reader.Read())
                     {
-                        var stock = new Stock
+                        var stock = new StockModel
                         {
                             Id = Convert.ToInt32(reader["Stock.Id"]),
                             Min = Convert.ToInt32(reader["Min"]),
@@ -291,7 +291,7 @@ namespace DimStock.Models
             }
         }
 
-        public bool AddEntries(List<Stock> itemList, int stockMovementId)
+        public bool AddEntries(List<StockModel> itemList, int stockMovementId)
         {
             var transactionState = false;
             var sqlCommand = string.Empty;
@@ -332,7 +332,7 @@ namespace DimStock.Models
             }
         }
 
-        public bool AddOutputs(List<Stock> itemList, int stockMovementId)
+        public bool AddOutputs(List<StockModel> itemList, int stockMovementId)
         {
             using (var connection = new AccessConnection())
             {
@@ -442,7 +442,7 @@ namespace DimStock.Models
             return transactionState;
         }
 
-        public void GenerateReport(List<Stock> list)
+        public void GenerateReport(List<StockModel> list)
         {
             var stock = new StockReport();
 
@@ -463,7 +463,7 @@ namespace DimStock.Models
             return transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
         }
 
-        public void SetSummary(List<Stock> listOfRecords)
+        public void SetSummary(List<StockModel> listOfRecords)
         {
             for (int i = 0; i < listOfRecords.Count; i++)
             {
@@ -486,7 +486,7 @@ namespace DimStock.Models
             }
         }
 
-        public void SetResult(List<Stock> listOfRecords)
+        public void SetResult(List<StockModel> listOfRecords)
         {
             for (int i = 0; i < listOfRecords.Count; i++)
             {
@@ -513,7 +513,7 @@ namespace DimStock.Models
         {
             foreach (DataRow row in dataTable.Rows)
             {
-                var stock = new Stock()
+                var stock = new StockModel()
                 {
                     Id = Convert.ToInt32(row["Stock.Id"]),
                     Min = Convert.ToInt32(row["Min"]),

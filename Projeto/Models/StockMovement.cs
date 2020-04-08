@@ -168,7 +168,7 @@ namespace DimStock.Models
                     if (stockItem.List.Count > 0)
                     {
                         //Remove o estoque
-                        var stok = new Stock(connection);
+                        var stok = new StockModel(connection);
 
                         switch (OperationType)
                         {

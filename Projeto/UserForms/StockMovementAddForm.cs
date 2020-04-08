@@ -273,7 +273,7 @@ namespace DimStock.UserForms
         {
             try
             {
-                var stock = new Stock(pagination);
+                var stock = new StockModel(pagination);
 
                 stock.Product.InternalCode = TextSearchByCode.Text;
 
@@ -326,7 +326,7 @@ namespace DimStock.UserForms
 
         private void StockGetDetail(int id)
         {
-            var stock = new Stock();
+            var stock = new StockModel();
             stock.GetDetail(id);
 
             TextSearchByCode.Text = stock.Product.InternalCode;
@@ -419,7 +419,7 @@ namespace DimStock.UserForms
                 if (MessageBox.Show("Confirma essa operação?", "CONFIRME", MessageBoxButtons.YesNo,
                  MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
-                    var stock = new Stock();
+                    var stock = new StockModel();
 
                     if (stock.AddEntries(GetItems(), Convert.ToInt32(TextStockMovementId.Text)) == true)
                     {
@@ -439,7 +439,7 @@ namespace DimStock.UserForms
                 if (MessageBox.Show("Confirma essa operação?", "CONFIRME", MessageBoxButtons.YesNo,
                  MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
-                    var stock = new Stock();
+                    var stock = new StockModel();
 
                     if (stock.AddOutputs(GetItems(), Convert.ToInt32(TextStockMovementId.Text)) == true)
                     {
@@ -452,9 +452,9 @@ namespace DimStock.UserForms
             }
         }
 
-        private List<Stock> GetItems()
+        private List<StockModel> GetItems()
         {
-            var itemList = new List<Stock>();
+            var itemList = new List<StockModel>();
 
             for (int i = 0; i < DataGridMainDataList.Rows.Count; i++)
             {
@@ -464,7 +464,7 @@ namespace DimStock.UserForms
 
                 totalValue.ToString().Replace("R$", "").Replace("$", "");
 
-                var stock = new Stock()
+                var stock = new StockModel()
                 {
                     Id = Convert.ToInt32(id),
                     Quantity = Convert.ToInt32(quantity),

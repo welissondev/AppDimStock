@@ -41,7 +41,7 @@ namespace DimStock.UserForms
         {
             try
             {
-                var stock = new Stock()
+                var stock = new StockModel()
                 {
                     Summary = selectedSummary
                 };
@@ -259,7 +259,7 @@ namespace DimStock.UserForms
         {
             try
             {
-                var stock = new Stock(pagination)
+                var stock = new StockModel(pagination)
                 {
                     Summary = selectedSummary
                 };

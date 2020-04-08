@@ -10,7 +10,7 @@ namespace DimStock.Models
 
         public StockMovementItem()
         {
-            Stock = new Stock();
+            Stock = new StockModel();
             Product = new ProductModel();
             StockMovement = new StockMovement();
             List = new List<StockMovementItem>();
@@ -25,7 +25,7 @@ namespace DimStock.Models
         public double UnitaryValue { get; set; }
         public double TotalValue { get; set; }
         public double SubTotal { get; set; }
-        public Stock Stock { get; set; }
+        public StockModel Stock { get; set; }
         public ProductModel Product { get; set; }
         public StockMovement StockMovement { get; set; }
         public List<StockMovementItem> List { get; set; }
