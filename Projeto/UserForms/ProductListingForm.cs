@@ -181,12 +181,12 @@ namespace DimStock.UserForms
                 grid.Columns["Id"].Visible = false;
                 grid.Columns["Id"].ReadOnly = true;
                 grid.Columns["Id"].DisplayIndex = 0;
-                grid.Columns["Id"].Width = 100;
 
                 grid.Columns["InternalCode"].ReadOnly = true;
                 grid.Columns["InternalCode"].DisplayIndex = 1;
                 grid.Columns["InternalCode"].HeaderText = "Código";
-                grid.Columns["InternalCode"].Width = 130;
+                grid.Columns["InternalCode"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                grid.Columns["InternalCode"].Width = 170;
 
                 grid.Columns["Description"].HeaderText = "Descrição";
                 grid.Columns["Description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -219,7 +219,6 @@ namespace DimStock.UserForms
 
                 grid.AllowUserToAddRows = false;
                 grid.MultiSelect = false;
-                grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
 
                 DatagridProduct.ClearSelection();
             }
@@ -269,10 +268,22 @@ namespace DimStock.UserForms
 
         private void GetProductDetail()
         {
-            var presenter = new ProductListingPresenter(this);
-            presenter.GetDetail();
+            var actionResult = false;
 
-            ProductAddForm.SetDetail(this);
+            var presenter = new ProductListingPresenter(this);
+            actionResult = presenter.GetDetail();
+
+            switch (actionResult)
+            {
+                case true:
+                    ProductAddForm.SetDetail(this);
+                    break;
+
+               case false:
+                    MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    break;
+            }
         }
 
         private void DeleteProduct()
@@ -313,7 +324,7 @@ namespace DimStock.UserForms
 
             SearchProduct();
 
-            TextSearch_InternalCode.Focus();
+            TextSearch_InternalCode.Select();
         }
     }
 }
