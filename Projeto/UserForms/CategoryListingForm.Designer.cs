@@ -115,7 +115,6 @@
             this.DatagridCategory.EnableHeadersVisualStyles = false;
             this.DatagridCategory.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.DatagridCategory.HeaderBackColor = System.Drawing.Color.DodgerBlue;
-            this.DatagridCategory.HeaderBgColor = System.Drawing.Color.Empty;
             this.DatagridCategory.HeaderForeColor = System.Drawing.Color.White;
             this.DatagridCategory.Location = new System.Drawing.Point(30, 85);
             this.DatagridCategory.Name = "DatagridCategory";

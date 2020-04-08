@@ -160,9 +160,6 @@ namespace DimStock.UserForms
             };
 
             form.Show();
-
-            form.StartNewOperation("Entrada");
-
         }
 
         private void MenuStock_RegisterNew_Output_Click(object sender, EventArgs e)
@@ -176,8 +173,6 @@ namespace DimStock.UserForms
                 Dock = DockStyle.Fill
             };
             form.Show();
-
-            form.StartNewOperation("Saída");
         }
 
         private void MenuStock_ListMovements_Click(object sender, EventArgs e)
