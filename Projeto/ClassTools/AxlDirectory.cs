@@ -2,7 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 
-namespace DimStock.Auxiliarys
+namespace DimStock.ClassTools
 {
     public class AxlDirectory
     {

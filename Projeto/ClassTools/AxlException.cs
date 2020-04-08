@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using DimStock.Auxiliarys;
+using DimStock.ClassTools;
 
-namespace DimStock.Auxiliarys
+namespace DimStock.ClassTools
 {
     public static class AxlException
     {
