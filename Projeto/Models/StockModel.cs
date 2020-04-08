@@ -4,12 +4,37 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 
+/// <summary>
+/// Definições das propriedades
+/// </summary>
 namespace DimStock.Models
 {
-    public class StockModel 
+    public partial class StockModel
     {
-        #region Buider
+        private string summary = "All";
+        private ConnectionModel connection;
 
+        public int Id { get; set; }
+        public int Min { get; set; }
+        public int Max { get; set; }
+        public int Quantity { get; set; }
+        public double TotalValue { get; set; }
+        public string Result { get; set; }
+        public string Summary { get => summary; set => summary = value; }
+        public ProductModel Product { get; set; }
+        public AxlDataPage Pagination { get; set; }
+        public List<StockModel> List { get; set; }
+    }
+}
+
+
+/// <summary>
+/// Construtores da classe
+/// </summary>
+namespace DimStock.Models
+{
+    public partial class StockModel
+    {
         public StockModel()
         {
             Product = new ProductModel();
@@ -28,29 +53,16 @@ namespace DimStock.Models
             this.connection = connection;
             Product = new ProductModel();
         }
+    }
+}
 
-        #endregion
-
-        #region Get & Set
-
-        private string summary = "All";
-        private ConnectionModel connection;
-
-        public int Id { get; set; }
-        public int Min { get; set; }
-        public int Max { get; set; }
-        public int Quantity { get; set; }
-        public double TotalValue { get; set; }
-        public string Result { get; set; }
-        public string Summary { get => summary; set => summary = value; }
-        public ProductModel Product { get; set; }
-        public AxlDataPage Pagination { get; set; }
-        public List<StockModel> List { get; set; }
-
-        #endregion
-
-        #region Function
-
+/// <summary>
+/// Métodos e funções
+/// </summary>
+namespace DimStock.Models
+{
+    public partial class StockModel
+    {
         public void ListData()
         {
             using (var connection = new ConnectionModel())
@@ -311,7 +323,7 @@ namespace DimStock.Models
 
                         connection.ClearParameter();
                         connection.AddParameter("@Quantity", quantity);
-                        connection.AddParameter("@TotalValue" , totalValue);
+                        connection.AddParameter("@TotalValue", totalValue);
                         connection.AddParameter("@Id", stockId);
 
                         connection.ExecuteTransaction(sqlCommand);
@@ -353,7 +365,7 @@ namespace DimStock.Models
 
                         connection.ClearParameter();
                         connection.AddParameter("@Quantity", quantity);
-                        connection.AddParameter("@TotalValue" ,totalValue);
+                        connection.AddParameter("@TotalValue", totalValue);
                         connection.AddParameter("@Id", stockId);
 
                         connection.ExecuteTransaction(sqlCommand);
@@ -390,7 +402,7 @@ namespace DimStock.Models
 
                 connection.ClearParameter();
                 connection.AddParameter("@Quantity", quantity);
-                connection.AddParameter("@TotalValue" ,totalValue);
+                connection.AddParameter("@TotalValue", totalValue);
                 connection.AddParameter("@Id", stockId);
 
                 transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
@@ -416,7 +428,7 @@ namespace DimStock.Models
 
                 connection.ClearParameter();
                 connection.AddParameter("@Quantity", quantity);
-                connection.AddParameter("@TotalValue" ,totalValue);
+                connection.AddParameter("@TotalValue", totalValue);
                 connection.AddParameter("@Id", stockId);
 
                 transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
@@ -457,7 +469,7 @@ namespace DimStock.Models
             Quantity WHERE ProductId = @ProductId";
 
             connection.ClearParameter();
-            connection.AddParameter("ProductCostPrice" ,productCostPrice);
+            connection.AddParameter("ProductCostPrice", productCostPrice);
             connection.AddParameter("@ProductId", productId);
 
             return transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
@@ -531,7 +543,5 @@ namespace DimStock.Models
                 List.Add(stock);
             }
         }
-
-        #endregion
     }
 }

@@ -151,7 +151,7 @@
     <Compile Include="Controls\CustomDataGridViewTwo.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Models\AccessConnection.cs" />
+    <Compile Include="Models\ConnectionModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Controls\CustomPictureBoxOne.cs">
       <SubType>Component</SubType>
@@ -159,16 +159,16 @@
     <Compile Include="Controls\CustomDataGridViewOne.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Models\AppSetting.cs" />
+    <Compile Include="Models\AppSettingModel.cs" />
     <Compile Include="Models\CategoryValidationModel.cs" />
     <Compile Include="Models\ProductValidationModel.cs" />
-    <Compile Include="Models\Stock.cs" />
-    <Compile Include="Models\StockDestination.cs" />
+    <Compile Include="Models\StockModel.cs" />
+    <Compile Include="Models\StockDestinationModel.cs" />
     <Compile Include="Models\StockMovementItem.cs" />
-    <Compile Include="Models\StockMovement.cs" />
+    <Compile Include="Models\StockMovementModel.cs" />
     <Compile Include="Auxiliarys\MessageNotifier.cs" />
     <Compile Include="Models\ProductModel.cs" />
-    <Compile Include="Models\UserLogin.cs" />
+    <Compile Include="Models\UserLoginModel.cs" />
     <Compile Include="Presenters\CategoryAddPresenter.cs" />
     <Compile Include="Presenters\CategoryListingPresenter.cs" />
     <Compile Include="Presenters\ProductAddPresenter.cs" />
