@@ -166,8 +166,8 @@ namespace DimStock.UserForms
             {
                 ShowIcon = false,
                 ShowInTaskbar = false,
-                MinimizeBox = false,
-                MaximizeBox = false
+                ControlBox = false,
+                Owner = HomeScreenForm.He
             };
             productListingForm.ShowDialog();
         }
@@ -279,7 +279,7 @@ namespace DimStock.UserForms
                     ProductAddForm.SetDetail(this);
                     break;
 
-               case false:
+                case false:
                     MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     break;

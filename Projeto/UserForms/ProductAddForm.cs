@@ -219,10 +219,11 @@ namespace DimStock.UserForms
             {
                 ShowInTaskbar = false,
                 ShowIcon = false,
-                ControlBox = false
+                ControlBox = false,
+                Owner = HomeScreenForm.He
             };
 
-            productAddForm.Show();
+            productAddForm.ShowDialog();
         }
 
         public static void SetDetail(IProductAddView view)
@@ -239,7 +240,9 @@ namespace DimStock.UserForms
                 CategoryDescription = view.CategoryDescription,
                 ShowIcon = false,
                 ShowInTaskbar = false,
-                ControlBox = false
+                ControlBox = false,
+                Owner = HomeScreenForm.He
+
             };
             productAddForm.ShowDialog();
         }

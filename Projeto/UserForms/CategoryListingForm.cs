@@ -158,8 +158,8 @@ namespace DimStock.UserForms
             {
                 ShowIcon = false,
                 ShowInTaskbar = false,
-                MinimizeBox = false,
-                MaximizeBox = false
+                ControlBox = false,
+                Owner = HomeScreenForm.He
             };
             categoryListingForm.ShowDialog();
         }
@@ -239,7 +239,7 @@ namespace DimStock.UserForms
 
         private void ClearView()
         {
-            var presenter = new CategoryListingPresenter(this);          
+            var presenter = new CategoryListingPresenter(this);
             presenter.ResetView();
 
             SearchCategory();

@@ -139,6 +139,7 @@ namespace DimStock.UserForms
                 {
                     ShowInTaskbar = false,
                     ControlBox = false,
+                    Owner = HomeScreenForm.He
                 };
 
                 categoryForm.ShowDialog();
@@ -147,7 +148,6 @@ namespace DimStock.UserForms
             {
                 AxlException.Message.Show(ex);
             }
-
         }
 
         public static void SetDetail(ICategoryAddView view)
@@ -156,7 +156,8 @@ namespace DimStock.UserForms
             {
                 Id = view.Id,
                 Description = view.Description,
-                ControlBox = false
+                ControlBox = false,
+                Owner = HomeScreenForm.He
             };
 
             categoryAddForm.ShowDialog();
