@@ -143,6 +143,7 @@
     <Compile Include="AuxilyTools\AuxilyClasses\EmailAddressValidator.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\ExceptionNotifier.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\MdiClosingAll.cs" />
+    <Compile Include="AuxilyTools\AuxilyClasses\SingleCodeGenerator.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\UserLoginState.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\PageWebViewer.cs" />
     <Compile Include="AuxilyTools\AuxilyControls\CustomComboBoxView.cs">
