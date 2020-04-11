@@ -67,7 +67,7 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
-            using (transaction = new TransactionModel(new ConnectionModel(), true))
+            using (transaction = new TransactionModel(new ConnectionModel()))
             {
                 var postingItems = GetItems();
                 var stock = new StockModel();
@@ -134,7 +134,7 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
-            using (transaction = new TransactionModel(new ConnectionModel(), true))
+            using (transaction = new TransactionModel(new ConnectionModel()))
             {
                 if (CancelStockPostings() == true)
                 {

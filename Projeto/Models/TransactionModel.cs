@@ -10,7 +10,7 @@ namespace DimStock.Models
 
         public ConnectionModel DataBase { get => dataBase; set => dataBase = value; }
 
-        public TransactionModel(ConnectionModel connection, bool beginAutomaticTransaction = false)
+        public TransactionModel(ConnectionModel connection, bool beginAutomaticTransaction = true)
         {
             dataBase = connection;
 

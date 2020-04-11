@@ -35,7 +35,7 @@ namespace DimStock.Models
             if (ProductValidationModel.ValidateToInsert(this) == false)
                 return actionResult;
 
-            using (transaction = new TransactionModel(new ConnectionModel(), true))
+            using (transaction = new TransactionModel(new ConnectionModel()))
             {
                 sql = @"INSERT INTO Product (CategoryId, InternalCode, Description, 
                 CostPrice, SalePrice, BarCode) VALUES (@CategoryId, @Code, @InternalCode, 
@@ -74,7 +74,7 @@ namespace DimStock.Models
             if (ProductValidationModel.ValidateToUpdate(this) == false)
                 return actionResult;
 
-            using (transaction = new TransactionModel(new ConnectionModel(), true))
+            using (transaction = new TransactionModel(new ConnectionModel()))
             {
                 sql = @"UPDATE Product SET CategoryId = @CategoryId, InternalCode = @InternalCode, 
                 Description = @Description, CostPrice = @CostPrice, SalePrice = @SalePrice, 
@@ -178,7 +178,7 @@ namespace DimStock.Models
             if (ProductValidationModel.ValidateToDelete(this) == false)
                 return actionResult;
 
-            using (transaction = new TransactionModel(new ConnectionModel(), true))
+            using (transaction = new TransactionModel(new ConnectionModel()))
             {
                 sql = @"DELETE FROM Product WHERE Id = @Id";
 
