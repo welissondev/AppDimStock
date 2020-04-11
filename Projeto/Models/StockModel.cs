@@ -1,5 +1,4 @@
-﻿using DimStock.AuxilyTools.AuxilyClasses;
-using DimStock.Reports;
+﻿using DimStock.Reports;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,6 +11,7 @@ namespace DimStock.Models
     public partial class StockModel
     {
         private string summary = "All";
+        private TransactionModel transaction;
 
         public int Id { get; set; }
         public int Min { get; set; }
@@ -21,6 +21,7 @@ namespace DimStock.Models
         public string Result { get; set; }
         public string Summary { get => summary; set => summary = value; }
         public ProductModel Product { get; set; }
+
     }
 }
 
@@ -32,11 +33,14 @@ namespace DimStock.Models
 {
     public partial class StockModel
     {
-        public StockModel() { }
-
-        public StockModel(ProductModel product)
+        public StockModel()
         {
-            Product = product;
+            Product = new ProductModel();
+        }
+
+        public StockModel(TransactionModel transaction)
+        {
+            this.transaction = transaction;
         }
     }
 }
@@ -272,7 +276,7 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public bool InsertPostingOfEntries(TransactionModel transaction, DataTable postingItems)
+        public bool InsertPostingOfEntries(DataTable postingItems)
         {
             var actionResult = false;
             var sql = string.Empty;
@@ -292,7 +296,7 @@ namespace DimStock.Models
 
             return actionResult;
         }
-        public bool InsertPostingOfOutPuts(TransactionModel transaction, DataTable postingItems)
+        public bool InsertPostingOfOutPuts(DataTable postingItems)
         {
             var actionResult = false;
             var sql = string.Empty;
@@ -313,7 +317,7 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public bool CancelPostingOfEntries(TransactionModel transaction, DataTable postedItems)
+        public bool CancelPostingOfEntries(DataTable postedItems)
         {
             var actionResult = false;
             var sql = string.Empty;
@@ -333,7 +337,7 @@ namespace DimStock.Models
 
             return actionResult;
         }
-        public bool CancelPostingOfOutPuts(TransactionModel transaction, DataTable postedItems)
+        public bool CancelPostingOfOutPuts(DataTable postedItems)
         {
             var actionResult = false;
             var sql = string.Empty;
@@ -354,12 +358,12 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public bool RelateProduct(TransactionModel transaction)
+        public bool RelateProduct(ProductModel product)
         {
             var sql = @"INSERT INTO Stock(ProductId)VALUES(@ProductId)";
 
             transaction.DataBase.ClearParameter();
-            transaction.DataBase.AddParameter("@ProductId", Product.Id);
+            transaction.DataBase.AddParameter("@ProductId", product.Id);
 
             return transaction.DataBase.ExecuteTransaction(sql) > 0;
         }
@@ -371,14 +375,14 @@ namespace DimStock.Models
             ListData(); stock.GenerateReport(list);
         }
 
-        public bool UpdateValue(TransactionModel transaction)
+        public bool UpdateValue(ProductModel product)
         {
             var sql = @"UPDATE Stock Set TotalValue = @ProductCostPrice * 
             Quantity WHERE ProductId = @ProductId";
 
             transaction.DataBase.ClearParameter();
-            transaction.DataBase.AddParameter("ProductCostPrice", Product.CostPrice);
-            transaction.DataBase.AddParameter("@ProductId", Product.Id);
+            transaction.DataBase.AddParameter("ProductCostPrice", product.CostPrice);
+            transaction.DataBase.AddParameter("@ProductId", product.Id);
 
             return transaction.DataBase.ExecuteTransaction(sql) > 0;
         }

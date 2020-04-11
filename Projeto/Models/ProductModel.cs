@@ -6,6 +6,8 @@ namespace DimStock.Models
 {
     public partial class ProductModel
     {
+        private TransactionModel transaction;
+
         public int Id { get; set; }
         public string InternalCode { get; set; }
         public string Description { get; set; }
@@ -33,7 +35,7 @@ namespace DimStock.Models
             if (ProductValidationModel.ValidateToInsert(this) == false)
                 return actionResult;
 
-            using (var transaction = new TransactionModel(new ConnectionModel(), true))
+            using (transaction = new TransactionModel(new ConnectionModel(), true))
             {
                 sql = @"INSERT INTO Product (CategoryId, InternalCode, Description, 
                 CostPrice, SalePrice, BarCode) VALUES (@CategoryId, @Code, @InternalCode, 
@@ -47,16 +49,9 @@ namespace DimStock.Models
                 transaction.DataBase.AddParameter("@SalePrice", SalePrice);
                 transaction.DataBase.AddParameter("@BarCode", BarCode);
 
-                actionResult = transaction.DataBase.ExecuteTransaction(sql) > 0;
-                if (actionResult == true)
+                if (transaction.DataBase.ExecuteTransaction(sql) > 0)
                 {
-                    //Obten id do último registro inserido
-                    sql = @"SELECT MAX(Id) From Product";
-                    Id = transaction.DataBase.ExecuteScalar(sql);
-
-                    //Relaciona produto ao stock
-                    var stock = new StockModel(this);
-                    if (stock.RelateProduct(transaction) == true)
+                    if (RelateToStock() == true)
                     {
                         transaction.Commit();
 
@@ -79,7 +74,7 @@ namespace DimStock.Models
             if (ProductValidationModel.ValidateToUpdate(this) == false)
                 return actionResult;
 
-            using (var transaction = new TransactionModel(new ConnectionModel(), true))
+            using (transaction = new TransactionModel(new ConnectionModel(), true))
             {
                 sql = @"UPDATE Product SET CategoryId = @CategoryId, InternalCode = @InternalCode, 
                 Description = @Description, CostPrice = @CostPrice, SalePrice = @SalePrice, 
@@ -96,7 +91,7 @@ namespace DimStock.Models
 
                 if (transaction.DataBase.ExecuteTransaction(sql) > 0)
                 {
-                    if (UpdateStockValue(transaction) == true)
+                    if (UpdateStockValue() == true)
                     {
                         transaction.Commit();
 
@@ -111,39 +106,24 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public bool UpdateStockValue(TransactionModel transaction)
+        public bool UpdateStockValue()
         {
-            var stock = new StockModel(this);
-            return stock.UpdateValue(transaction);
+            var stock = new StockModel(transaction);
+            return stock.UpdateValue(this);
         }
 
-        public bool Delete()
+        public bool RelateToStock()
         {
-            var sql = string.Empty;
-            var actionResult = false;
+            Id = GetLastId();
 
-            if (ProductValidationModel.ValidateToDelete(this) == false)
-                return actionResult;
+            var stock = new StockModel(transaction);
+            return stock.RelateProduct(this);
+        }
 
-            using (var transaction = new TransactionModel(new ConnectionModel(), true))
-            {
-                sql = @"DELETE FROM Product WHERE Id = @Id";
-
-                transaction.DataBase.ClearParameter();
-                transaction.DataBase.AddParameter("@Id", Id);
-
-                if (transaction.DataBase.ExecuteTransaction(sql) > 0)
-                {
-                    transaction.DataBase.Transaction.Commit();
-
-                    MessageNotifier.Message = "Produto excluido com sucesso!";
-                    MessageNotifier.Title = "Sucesso";
-
-                    actionResult = true;
-                }
-            }
-
-            return actionResult;
+        public int GetLastId()
+        {
+            var sql = @"SELECT MAX(Id) From Product";
+            return transaction.DataBase.ExecuteScalar(sql);
         }
 
         public bool GetDetail()
@@ -184,6 +164,35 @@ namespace DimStock.Models
 
                         actionResult = true;
                     }
+                }
+            }
+
+            return actionResult;
+        }
+
+        public bool Delete()
+        {
+            var sql = string.Empty;
+            var actionResult = false;
+
+            if (ProductValidationModel.ValidateToDelete(this) == false)
+                return actionResult;
+
+            using (transaction = new TransactionModel(new ConnectionModel(), true))
+            {
+                sql = @"DELETE FROM Product WHERE Id = @Id";
+
+                transaction.DataBase.ClearParameter();
+                transaction.DataBase.AddParameter("@Id", Id);
+
+                if (transaction.DataBase.ExecuteTransaction(sql) > 0)
+                {
+                    transaction.Commit();
+
+                    MessageNotifier.Message = "Produto excluido com sucesso!";
+                    MessageNotifier.Title = "Sucesso";
+
+                    actionResult = true;
                 }
             }
 

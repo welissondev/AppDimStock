@@ -13,6 +13,8 @@ namespace DimStock.Models
             Destination = new StockDestinationModel();
         }
 
+        private TransactionModel transaction;
+
         public int Id { get; set; }
         public string OperationType { get; set; }
         public DateTime OperationDate { get; set; }
@@ -22,7 +24,6 @@ namespace DimStock.Models
         public StockDestinationModel Destination { get; set; }
         public AuxiliaryDataPage Pagination { get; set; }
         public List<StockMovementModel> List { get; set; }
-
 
         public bool InitializeOperation()
         {
@@ -66,12 +67,12 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
-            using (var transaction = new TransactionModel(new ConnectionModel(), true))
+            using (transaction = new TransactionModel(new ConnectionModel(), true))
             {
                 var postingItems = GetItems();
                 var stock = new StockModel();
 
-                if (stock.InsertPostingOfEntries(transaction, postingItems) == true)
+                if (stock.InsertPostingOfEntries(postingItems) == true)
                 {
                     sql = @"UPDATE StockMovement Set OperationSituation = 
                     'Finalizada' WHERE Id = @Id";
@@ -133,9 +134,9 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
-            using (var transaction = new TransactionModel(new ConnectionModel(), true))
+            using (transaction = new TransactionModel(new ConnectionModel(), true))
             {
-                if (CancelStockPostings(transaction) == true)
+                if (CancelStockPostings() == true)
                 {
                     sql = @"DELETE FROM StockMovement WHERE Id = @Id";
 
@@ -155,20 +156,21 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public bool CancelStockPostings(TransactionModel transaction)
+        public bool CancelStockPostings()
         {
             var actionResult = false;
-            var postedItems = GetItems();
-            var stock = new StockModel();
 
+            var postedItems = GetItems();
+
+            var stock = new StockModel(transaction);
             switch (OperationType)
             {
                 case "Entry":
-                    actionResult = stock.CancelPostingOfEntries(transaction, postedItems);
+                    actionResult = stock.CancelPostingOfEntries(postedItems);
                     break;
 
                 case "OutPut":
-                    actionResult = stock.CancelPostingOfOutPuts(transaction, postedItems);
+                    actionResult = stock.CancelPostingOfOutPuts(postedItems);
                     break;
             }
 
