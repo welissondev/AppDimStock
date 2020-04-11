@@ -13,7 +13,6 @@ namespace DimStock.Models
             Destination = new StockDestinationModel();
         }
 
-        private TransactionModel transaction;
         public int Id { get; set; }
         public string OperationType { get; set; }
         public DateTime OperationDate { get; set; }
@@ -67,12 +66,10 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
-            using (var transaction = new TransactionModel(new ConnectionModel()))
+            using (var transaction = new TransactionModel(new ConnectionModel(), true))
             {
                 var postingItems = GetItems();
                 var stock = new StockModel();
-
-                transaction.BeginTransaction();
 
                 if (stock.InsertPostingOfEntries(transaction, postingItems) == true)
                 {
@@ -136,10 +133,8 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
-            using (var transaction = new TransactionModel(new ConnectionModel()))
+            using (var transaction = new TransactionModel(new ConnectionModel(), true))
             {
-                transaction.BeginTransaction();
-
                 if (CancelStockPostings(transaction) == true)
                 {
                     sql = @"DELETE FROM StockMovement WHERE Id = @Id";

@@ -33,13 +33,11 @@ namespace DimStock.Models
             if (ProductValidationModel.ValidateToInsert(this) == false)
                 return actionResult;
 
-            using (var transaction = new TransactionModel(new ConnectionModel()))
+            using (var transaction = new TransactionModel(new ConnectionModel(), true))
             {
-                transaction.BeginTransaction();
-
                 sql = @"INSERT INTO Product (CategoryId, InternalCode, Description, 
-                    CostPrice, SalePrice, BarCode) VALUES (@CategoryId, @Code, @InternalCode, 
-                    @CostPrice, @SalePrice, @BarCode)";
+                CostPrice, SalePrice, BarCode) VALUES (@CategoryId, @Code, @InternalCode, 
+                @CostPrice, @SalePrice, @BarCode)";
 
                 transaction.DataBase.ClearParameter();
                 transaction.DataBase.AddParameter("@CategoryId", Category.Id);
@@ -81,10 +79,8 @@ namespace DimStock.Models
             if (ProductValidationModel.ValidateToUpdate(this) == false)
                 return actionResult;
 
-            using (var transaction = new TransactionModel(new ConnectionModel()))
+            using (var transaction = new TransactionModel(new ConnectionModel(), true))
             {
-                transaction.BeginTransaction();
-
                 sql = @"UPDATE Product SET CategoryId = @CategoryId, InternalCode = @InternalCode, 
                 Description = @Description, CostPrice = @CostPrice, SalePrice = @SalePrice, 
                 BarCode = @BarCode WHERE Id = @Id";
@@ -129,27 +125,25 @@ namespace DimStock.Models
             if (ProductValidationModel.ValidateToDelete(this) == false)
                 return actionResult;
 
-            using (var db = new ConnectionModel())
+            using (var transaction = new TransactionModel(new ConnectionModel(), true))
             {
-                using (db.Transaction = db.Open().BeginTransaction())
+                sql = @"DELETE FROM Product WHERE Id = @Id";
+
+                transaction.DataBase.ClearParameter();
+                transaction.DataBase.AddParameter("@Id", Id);
+
+                if (transaction.DataBase.ExecuteTransaction(sql) > 0)
                 {
-                    sql = @"DELETE FROM Product WHERE Id = @Id";
+                    transaction.DataBase.Transaction.Commit();
 
-                    db.ClearParameter();
-                    db.AddParameter("@Id", Id);
+                    MessageNotifier.Message = "Produto excluido com sucesso!";
+                    MessageNotifier.Title = "Sucesso";
 
-                    actionResult = db.ExecuteTransaction(sql) > 0;
-                    if (actionResult == true)
-                    {
-                        db.Transaction.Commit();
-
-                        MessageNotifier.Message = "Produto excluido com sucesso!";
-                        MessageNotifier.Title = "Sucesso";
-                    }
+                    actionResult = true;
                 }
-
-                return actionResult;
             }
+
+            return actionResult;
         }
 
         public bool GetDetail()

@@ -1,27 +1,32 @@
 ﻿using System;
+using System.Data;
 
 namespace DimStock.Models
 {
     public class TransactionModel : IDisposable
     {
-        private ConnectionModel connection;
+        private ConnectionModel dataBase;
         private bool disposed = false;
 
-        public ConnectionModel DataBase { get => connection; set => connection = value; }
+        public ConnectionModel DataBase { get => dataBase; set => dataBase = value; }
 
-        public TransactionModel(ConnectionModel connection)
+        public TransactionModel(ConnectionModel connection, bool beginAutomaticTransaction = false)
         {
-            this.connection = connection;
+            dataBase = connection;
+
+            if (beginAutomaticTransaction == true)
+                BeginTransaction();
         }
 
         public void BeginTransaction()
         {
-            connection.Transaction = connection.Open().BeginTransaction();
+            if (dataBase.Connection.State == ConnectionState.Closed)
+                dataBase.Transaction = dataBase.Open().BeginTransaction();
         }
 
         public void Commit()
         {
-            connection.Transaction.Commit();
+            dataBase.Transaction.Commit();
         }
 
         public void Dispose()
@@ -37,7 +42,7 @@ namespace DimStock.Models
 
             if (disposing)
             {
-                connection.Dispose();
+                dataBase.Dispose();
             }
 
             disposed = true;
