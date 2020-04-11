@@ -33,40 +33,39 @@ namespace DimStock.Models
             if (ProductValidationModel.ValidateToInsert(this) == false)
                 return actionResult;
 
-            using (var db = new ConnectionModel())
+            using (var transaction = new TransactionModel(new ConnectionModel()))
             {
-                using (db.Transaction = db.Open().BeginTransaction())
-                {
-                    sql = @"INSERT INTO Product (CategoryId, InternalCode, Description, 
+                transaction.BeginTransaction();
+
+                sql = @"INSERT INTO Product (CategoryId, InternalCode, Description, 
                     CostPrice, SalePrice, BarCode) VALUES (@CategoryId, @Code, @InternalCode, 
                     @CostPrice, @SalePrice, @BarCode)";
 
-                    db.ClearParameter();
-                    db.AddParameter("@CategoryId", Category.Id);
-                    db.AddParameter("@InternalCode", InternalCode);
-                    db.AddParameter("@Description", Description);
-                    db.AddParameter("@CostPrice", CostPrice);
-                    db.AddParameter("@SalePrice", SalePrice);
-                    db.AddParameter("@BarCode", BarCode);
+                transaction.DataBase.ClearParameter();
+                transaction.DataBase.AddParameter("@CategoryId", Category.Id);
+                transaction.DataBase.AddParameter("@InternalCode", InternalCode);
+                transaction.DataBase.AddParameter("@Description", Description);
+                transaction.DataBase.AddParameter("@CostPrice", CostPrice);
+                transaction.DataBase.AddParameter("@SalePrice", SalePrice);
+                transaction.DataBase.AddParameter("@BarCode", BarCode);
 
-                    actionResult = db.ExecuteTransaction(sql) > 0;
-                    if (actionResult == true)
+                actionResult = transaction.DataBase.ExecuteTransaction(sql) > 0;
+                if (actionResult == true)
+                {
+                    //Obten id do último registro inserido
+                    sql = @"SELECT MAX(Id) From Product";
+                    Id = transaction.DataBase.ExecuteScalar(sql);
+
+                    //Relaciona produto ao stock
+                    var stock = new StockModel(this);
+                    if (stock.RelateProduct(transaction) == true)
                     {
-                        //Obten id do último registro inserido
-                        sql = @"SELECT MAX(Id) From Product";
-                        Id = db.ExecuteScalar(sql);
+                        transaction.Commit();
 
-                        //Relaciona produto ao stock
-                        var stock = new StockModel(db);
-                        actionResult = stock.RelateProduct(Id);
+                        MessageNotifier.Message = "Produto cadastrado com sucesso!";
+                        MessageNotifier.Title = "Sucesso";
 
-                        if (actionResult == true)
-                        {
-                            db.Transaction.Commit();
-
-                            MessageNotifier.Message = "Produto cadastrado com sucesso!";
-                            MessageNotifier.Title = "Sucesso";
-                        }
+                        actionResult = true;
                     }
                 }
 
@@ -82,50 +81,44 @@ namespace DimStock.Models
             if (ProductValidationModel.ValidateToUpdate(this) == false)
                 return actionResult;
 
-            using (var db = new ConnectionModel())
+            using (var transaction = new TransactionModel(new ConnectionModel()))
             {
-                using (db.Transaction = db.Open().BeginTransaction())
+                transaction.BeginTransaction();
+
+                sql = @"UPDATE Product SET CategoryId = @CategoryId, InternalCode = @InternalCode, 
+                Description = @Description, CostPrice = @CostPrice, SalePrice = @SalePrice, 
+                BarCode = @BarCode WHERE Id = @Id";
+
+                transaction.DataBase.ClearParameter();
+                transaction.DataBase.AddParameter("@CategoryId", Category.Id);
+                transaction.DataBase.AddParameter("@InternalCode", InternalCode);
+                transaction.DataBase.AddParameter("@Description", Description);
+                transaction.DataBase.AddParameter("@CostPrice", CostPrice);
+                transaction.DataBase.AddParameter("@SalePrice", SalePrice);
+                transaction.DataBase.AddParameter("@BarCode", BarCode);
+                transaction.DataBase.AddParameter("@Id", Id);
+
+                if (transaction.DataBase.ExecuteTransaction(sql) > 0)
                 {
-                    sql = @"UPDATE Product SET CategoryId = @CategoryId, InternalCode = @InternalCode, 
-                    Description = @Description, CostPrice = @CostPrice, SalePrice = @SalePrice, 
-                    BarCode = @BarCode WHERE Id = @Id";
-
-                    db.ClearParameter();
-                    db.AddParameter("@CategoryId", Category.Id);
-                    db.AddParameter("@InternalCode", InternalCode);
-                    db.AddParameter("@Description", Description);
-                    db.AddParameter("@CostPrice", CostPrice);
-                    db.AddParameter("@SalePrice", SalePrice);
-                    db.AddParameter("@BarCode", BarCode);
-                    db.AddParameter("@Id", Id);
-
-                    actionResult = db.ExecuteTransaction(sql) > 0;
-
-                    if (actionResult == true)
+                    if (UpdateStockValue(transaction) == true)
                     {
-                        //Seleciona preço de custo
-                        sql = @"SELECT CostPrice FROM Product WHERE Id = @Id";
+                        transaction.Commit();
 
-                        db.ClearParameter();
-                        db.AddParameter("@Id", Id);
+                        MessageNotifier.Message = "Produto atualizado com sucesso!";
+                        MessageNotifier.Title = "Sucesso!";
 
-                        var costPrice = double.Parse(db.ExecuteScalar(sql).ToString());
-
-                        //Atualiza o valor no estoque
-                        var stock = new StockModel(db);
-                        actionResult = stock.UpdateValue(costPrice, Id);
-
-                        if (actionResult == true)
-                        {
-                            db.Transaction.Commit();
-                            MessageNotifier.Message = "Produto atualizado com sucesso!";
-                            MessageNotifier.Title = "Sucesso";
-                        }
+                        actionResult = true;
                     }
                 }
-
-                return actionResult;
             }
+
+            return actionResult;
+        }
+
+        public bool UpdateStockValue(TransactionModel transaction)
+        {
+            var stock = new StockModel(this);
+            return stock.UpdateValue(transaction);
         }
 
         public bool Delete()

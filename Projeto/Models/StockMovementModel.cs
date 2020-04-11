@@ -2,38 +2,18 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.OleDb;
-using System.Linq;
 
 namespace DimStock.Models
 {
     public class StockMovementModel
     {
-        #region Builder
 
         public StockMovementModel()
         {
             Destination = new StockDestinationModel();
         }
 
-        public StockMovementModel(AuxiliaryDataPage pagination)
-        {
-            Pagination = pagination;
-            Destination = new StockDestinationModel();
-            List = new List<StockMovementModel>();
-        }
-
-        public StockMovementModel(ConnectionModel connection)
-        {
-            this.connection = connection;
-            Destination = new StockDestinationModel();
-        }
-
-        #endregion
-
-        #region Get & Set
-
-        private ConnectionModel connection;
+        private TransactionModel transaction;
         public int Id { get; set; }
         public string OperationType { get; set; }
         public DateTime OperationDate { get; set; }
@@ -44,11 +24,8 @@ namespace DimStock.Models
         public AuxiliaryDataPage Pagination { get; set; }
         public List<StockMovementModel> List { get; set; }
 
-        #endregion
 
-        #region Function
-
-        public bool InitOperation(string type)
+        public bool InitializeOperation()
         {
             bool registerState = false;
 
@@ -57,9 +34,10 @@ namespace DimStock.Models
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
                     var sqlCommand = @"INSERT INTO StockMovement(OperationType)
+
                     VALUES(@OperationType)";
 
-                    connection.AddParameter("@OperationType", type);
+                    connection.AddParameter("@OperationType", OperationType);
 
                     registerState = connection.ExecuteTransaction(sqlCommand) > 0;
 
@@ -82,6 +60,37 @@ namespace DimStock.Models
 
                 return registerState;
             }
+        }
+
+        public bool FinalizeOperation()
+        {
+            var actionResult = false;
+            var sql = string.Empty;
+
+            using (var transaction = new TransactionModel(new ConnectionModel()))
+            {
+                var postingItems = GetItems();
+                var stock = new StockModel();
+
+                transaction.BeginTransaction();
+
+                if (stock.InsertPostingOfEntries(transaction, postingItems) == true)
+                {
+                    sql = @"UPDATE StockMovement Set OperationSituation = 
+                    'Finalizada' WHERE Id = @Id";
+
+                    transaction.DataBase.ClearParameter();
+                    transaction.DataBase.AddParameter("@Id", Id);
+
+                    if (transaction.DataBase.ExecuteTransaction(sql) > 0)
+                    {
+                        transaction.Commit();
+                        actionResult = true;
+                    }
+                }
+            }
+
+            return actionResult;
         }
 
         public bool RelateDestination(int id)
@@ -122,76 +131,53 @@ namespace DimStock.Models
             return setDestinationState;
         }
 
-        public bool FinalizeOperation(int id)
+        public bool Delete()
         {
-            var transactionState = false;
+            var actionResult = false;
+            var sql = string.Empty;
 
-            var sqlCommand = @"UPDATE StockMovement Set OperationSituation 
-            = 'Finalizada' Where Id = @Id";
+            using (var transaction = new TransactionModel(new ConnectionModel()))
+            {
+                transaction.BeginTransaction();
 
-            connection.ClearParameter();
-            connection.AddParameter("@Id", id);
+                if (CancelStockPostings(transaction) == true)
+                {
+                    sql = @"DELETE FROM StockMovement WHERE Id = @Id";
 
-            return transactionState = connection.ExecuteTransaction(
-            sqlCommand) > 0;
+                    transaction.DataBase.ClearParameter();
+                    transaction.DataBase.AddParameter("Id", Id);
+
+                    if (transaction.DataBase.ExecuteTransaction(sql) > 0)
+                    {
+                        actionResult = true;
+
+                        MessageNotifier.Message = "Movimentação excluida com sucesso!";
+                        MessageNotifier.Title = "Sucesso";
+                    }
+                }
+            }
+
+            return actionResult;
         }
 
-        public bool Remove(int id)
+        public bool CancelStockPostings(TransactionModel transaction)
         {
-            if (CheckIfExists(id) == false)
-            {
-                MessageNotifier.Message = "Esse registro já foi " +
-                "excluido, atualize a lista de dados!";
+            var actionResult = false;
+            var postedItems = GetItems();
+            var stock = new StockModel();
 
-                return false;
+            switch (OperationType)
+            {
+                case "Entry":
+                    actionResult = stock.CancelPostingOfEntries(transaction, postedItems);
+                    break;
+
+                case "OutPut":
+                    actionResult = stock.CancelPostingOfOutPuts(transaction, postedItems);
+                    break;
             }
 
-            var stockItem = new StockMovementItem();
-            stockItem.ListItems(id);
-
-            var transactionState = false;
-
-            using (var connection = new ConnectionModel())
-            {
-                using (connection.Transaction =
-                connection.Open().BeginTransaction())
-                {
-                    var sqlCommand = @"DELETE FROM StockMovement 
-                    WHERE Id = @Id";
-
-                    connection.ClearParameter();
-                    connection.AddParameter("@Id", id);
-
-                    transactionState = connection.ExecuteTransaction(
-                    sqlCommand) > 0;
-
-                    if (stockItem.List.Count > 0)
-                    {
-                        //Remove o estoque
-                        var stok = new StockModel(connection);
-
-                        switch (OperationType)
-                        {
-                            case "Entrada":
-                                transactionState = stok.RemoveEntries(
-                                stockItem.List);
-                                break;
-
-                            case "Saída":
-                                transactionState = stok.RemoveOutputs(
-                                stockItem.List);
-                                break;
-                        }
-                    }
-
-                    //Finaliza o transação
-                    connection.Transaction.Commit();
-
-                    MessageNotifier.Message = "Deletado com sucesso!";
-                }
-
-                return transactionState;
-            }
+            return actionResult;
         }
 
         public void ListData()
@@ -354,6 +340,12 @@ namespace DimStock.Models
             }
         }
 
-        #endregion
+        public DataTable GetItems()
+        {
+            var item = new StockMovementItem();
+            item.StockMovement.Id = Id;
+
+            return item.ListItems();
+        }
     }
 }

@@ -168,6 +168,7 @@
     <Compile Include="Models\StockMovementModel.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\MessageNotifier.cs" />
     <Compile Include="Models\ProductModel.cs" />
+    <Compile Include="Models\TransactionModel.cs" />
     <Compile Include="Models\UserLoginModel.cs" />
     <Compile Include="Presenters\CategoryAddPresenter.cs" />
     <Compile Include="Presenters\CategoryListingPresenter.cs" />

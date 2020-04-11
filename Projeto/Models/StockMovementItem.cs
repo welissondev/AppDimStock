@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.OleDb;
 
 namespace DimStock.Models
@@ -73,35 +74,18 @@ namespace DimStock.Models
             return deleteState;
         }
 
-        public void ListItems(int id)
+        public DataTable ListItems()
         {
-            using (var connection = new ConnectionModel())
+            using (var db = new ConnectionModel())
             {
-                var sqlQuery = @"SELECT StockMovementItem.*, Product.Description, Product.InternalCode 
+                var sql = @"SELECT StockMovementItem.*, Product.Description, Product.InternalCode 
                 FROM StockMovementItem INNER JOIN Product ON StockMovementItem.ProductId = Product.Id WHERE 
-                StockMovementItem.StockMovementId LIKE @Id ORDER BY InternalCode";
+                StockMovementItem.StockMovementId LIKE @StockMovementId ORDER BY InternalCode";
 
-                connection.AddParameter("@Id", id);
+                db.ClearParameter();
+                db.AddParameter("@StockMovementId", StockMovement.Id);
 
-                using (var dr = connection.GetReader(sqlQuery))
-                {
-                    while (dr.Read())
-                    {
-                        var item = new StockMovementItem()
-                        {
-                            Id = Convert.ToInt32(dr["Id"]),
-                            Quantity = Convert.ToInt32(dr["Quantity"]),
-                            UnitaryValue = Convert.ToDouble(dr["UnitaryValue"]),
-                            TotalValue = Convert.ToDouble(dr["TotalValue"])
-                        };
-
-                        item.Stock.Id = Convert.ToInt32(dr["StockId"]);
-                        item.Product.InternalCode = dr["InternalCode"].ToString();
-                        item.Product.Description = dr["Description"].ToString();
-
-                        List.Add(item);
-                    }
-                }
+                return db.GetTable(sql);
             }
         }
 

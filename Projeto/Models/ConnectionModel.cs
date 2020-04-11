@@ -7,8 +7,6 @@ namespace DimStock.Models
 {
     public class ConnectionModel : IDisposable
     {
-        #region Builder
-
         public ConnectionModel()
         {
             Connection = new OleDbConnection(GetConnectionString());
@@ -16,24 +14,12 @@ namespace DimStock.Models
             Parameter = new OleDbParameter();
         }
 
-        #endregion
-
-        #region Properties
-
         private bool disposed = false;
-
-        #endregion
-
-        #region Get & Set 
 
         public OleDbConnection Connection { get; set; }
         public OleDbCommand Command { get; set; }
         public OleDbParameter Parameter { get; set; }
         public OleDbTransaction Transaction { get; set; }
-
-        #endregion
-
-        #region Function
 
         public OleDbConnection Open()
         {
@@ -61,7 +47,6 @@ namespace DimStock.Models
             };
             Command.Parameters.Add(parameter);
         }
-
         public void ClearParameter()
         {
             Command.Parameters.Clear();
@@ -80,7 +65,6 @@ namespace DimStock.Models
                 throw;
             }
         }
-
         public int ExecuteTransaction(string sql)
         {
             try
@@ -95,7 +79,6 @@ namespace DimStock.Models
                 throw;
             }
         }
-
         public int ExecuteScalar(string sql)
         {
             try
@@ -124,7 +107,6 @@ namespace DimStock.Models
                 throw;
             }
         }
-
         public DataTable GetTable(string sql, int startRegister = 0, int finalRegister = 20)
         {
             var table = new DataTable();
@@ -143,7 +125,6 @@ namespace DimStock.Models
 
             return table;
         }
-
         private string GetConnectionString()
         {
             return @"Provider = Microsoft.jet.oledb.4.0; Data Source =" +
@@ -155,7 +136,6 @@ namespace DimStock.Models
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-
         protected virtual void Dispose(bool disposing)
         {
             if (disposed)
@@ -169,7 +149,5 @@ namespace DimStock.Models
 
             disposed = true;
         }
-
-        #endregion
     }
 }

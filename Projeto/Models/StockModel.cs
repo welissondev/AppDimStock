@@ -12,7 +12,6 @@ namespace DimStock.Models
     public partial class StockModel
     {
         private string summary = "All";
-        private ConnectionModel connection;
 
         public int Id { get; set; }
         public int Min { get; set; }
@@ -22,8 +21,6 @@ namespace DimStock.Models
         public string Result { get; set; }
         public string Summary { get => summary; set => summary = value; }
         public ProductModel Product { get; set; }
-        public AuxiliaryDataPage Pagination { get; set; }
-        public List<StockModel> List { get; set; }
     }
 }
 
@@ -35,23 +32,11 @@ namespace DimStock.Models
 {
     public partial class StockModel
     {
-        public StockModel()
-        {
-            Product = new ProductModel();
-            List = new List<StockModel>();
-        }
+        public StockModel() { }
 
-        public StockModel(AuxiliaryDataPage pagination)
+        public StockModel(ProductModel product)
         {
-            Pagination = pagination;
-            Product = new ProductModel();
-            List = new List<StockModel>();
-        }
-
-        public StockModel(ConnectionModel connection)
-        {
-            this.connection = connection;
-            Product = new ProductModel();
+            Product = product;
         }
     }
 }
@@ -63,395 +48,320 @@ namespace DimStock.Models
 {
     public partial class StockModel
     {
-        public void ListData()
+        public DataTable ListData()
         {
-            using (var connection = new ConnectionModel())
+            using (var db = new ConnectionModel())
             {
                 var sqlQuery = string.Empty;
                 var sqlCount = string.Empty;
-                var criterion = string.Empty;
-                var parameter = connection.Command.Parameters;
+                var sqlLink = string.Empty;
 
-                if (Summary == "All")
+                switch (summary)
                 {
-                    sqlCount = @"SELECT COUNT(Stock.Id) From Stock INNER JOIN Product ON 
-                    Stock.ProductId = Product.Id WHERE Stock.Id > 0";
+                    case "All":
 
-                    sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.Min, Stock.Max, Stock.TotalValue, 
-                    Product.Id, Product.Description, Product.CostPrice, Product.InternalCode, 
-                    Product.Photo From Product INNER JOIN Stock ON Stock.ProductId = 
-                    Product.Id WHERE Stock.Id > 0";
-                }
+                        sqlCount = @"SELECT COUNT(Stock.Id) From Stock INNER JOIN Product ON 
+                        Stock.ProductId = Product.Id WHERE Stock.Id > 0";
 
-                if (Summary == "Nothing")
-                {
-                    sqlCount = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
-                    Stock.ProductId = Product.Id WHERE Quantity = 0 AND Stock.Min = 0 
-                    AND Stock.Max = 0";
+                        sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.Min, Stock.Max, Stock.TotalValue, 
+                        Product.Id, Product.Description, Product.CostPrice, Product.InternalCode, 
+                        Product.Photo From Product INNER JOIN Stock ON Stock.ProductId = 
+                        Product.Id WHERE Stock.Id > 0";
 
-                    sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max,
-                    Product.Id, Product.Description, Product.CostPrice, Product.InternalCode, Product.Photo 
-                    From Product INNER JOIN Stock ON Stock.ProductId = Product.Id WHERE 
-                    Quantity = 0 AND Stock.Min = 0 AND Stock.Max = 0";
-                }
+                        break;
 
-                if (Summary == "Ok")
-                {
-                    sqlCount = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
-                    Product.Id = Stock.ProductId WHERE Quantity > 0 AND Quantity >= 
-                    Stock.Min AND Quantity <= Stock.Max";
+                    case "Nothing":
 
-                    sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max, 
-                    Product.Id, Product.Description, Product.CostPrice, Product.InternalCode, Product.Photo 
-                    From Product INNER JOIN Stock ON Stock.ProductId = Product.Id WHERE Quantity > 0 
-                    AND Quantity >= Stock.Min AND Quantity <= Stock.Max";
-                }
+                        sqlCount = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
+                        Stock.ProductId = Product.Id WHERE Quantity = 0 AND Stock.Min = 0 
+                        AND Stock.Max = 0";
 
-                if (Summary == "High")
-                {
-                    sqlCount = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
-                    Stock.ProductId = Product.Id WHERE Stock.Quantity > Stock.Max";
+                        sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max,
+                        Product.Id, Product.Description, Product.CostPrice, Product.InternalCode, Product.Photo 
+                        From Product INNER JOIN Stock ON Stock.ProductId = Product.Id WHERE 
+                        Quantity = 0 AND Stock.Min = 0 AND Stock.Max = 0";
 
-                    sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, 
-                    Stock.Max, Product.Id, Product.Description, Product.CostPrice, Product.InternalCode, 
-                    Product.Photo From Product INNER JOIN Stock ON Stock.ProductId = Product.Id WHERE 
-                    Stock.Quantity > Stock.Max";
-                }
+                        break;
 
-                if (Summary == "Low")
-                {
-                    sqlCount = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
-                    Stock.ProductId = Product.Id WHERE Stock.Quantity < Stock.Min";
+                    case "Ok":
 
-                    sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max,
-                    Product.Id, Product.Description, Product.CostPrice, Product.InternalCode, Product.Photo From 
-                    Product INNER JOIN Stock ON Stock.ProductId = Product.Id WHERE 
-                    Stock.Quantity < Stock.Min";
+                        sqlCount = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
+                        Product.Id = Stock.ProductId WHERE Quantity > 0 AND Quantity >= 
+                        Stock.Min AND Quantity <= Stock.Max";
+
+                        sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max, 
+                        Product.Id, Product.Description, Product.CostPrice, Product.InternalCode, Product.Photo 
+                        From Product INNER JOIN Stock ON Stock.ProductId = Product.Id WHERE Quantity > 0 
+                        AND Quantity >= Stock.Min AND Quantity <= Stock.Max";
+
+                        break;
+
+                    case "High":
+
+                        sqlCount = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
+                        Stock.ProductId = Product.Id WHERE Stock.Quantity > Stock.Max";
+
+                        sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, 
+                        Stock.Max, Product.Id, Product.Description, Product.CostPrice, Product.InternalCode, 
+                        Product.Photo From Product INNER JOIN Stock ON Stock.ProductId = Product.Id WHERE 
+                        Stock.Quantity > Stock.Max";
+
+                        break;
+
+                    case "Low":
+
+                        sqlCount = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
+                        Stock.ProductId = Product.Id WHERE Stock.Quantity < Stock.Min";
+
+                        sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max,
+                        Product.Id, Product.Description, Product.CostPrice, Product.InternalCode, Product.Photo From 
+                        Product INNER JOIN Stock ON Stock.ProductId = Product.Id WHERE 
+                        Stock.Quantity < Stock.Min";
+
+                        break;
                 }
 
                 if (Product.InternalCode != string.Empty)
                 {
-                    criterion += " AND InternalCode LIKE @InternalCode";
+                    sqlLink += " AND InternalCode LIKE @InternalCode";
 
-                    parameter.AddWithValue("@InternalCode", string.Format("{0}%",
+                    db.AddParameter("@InternalCode", string.Format("{0}%",
                     Product.InternalCode));
                 }
-
                 if (Product.Description != string.Empty)
                 {
-                    criterion += " AND Description LIKE @Description";
+                    sqlLink += " AND Description LIKE @Description";
 
-                    parameter.AddWithValue("@Description", string.Format("%{0}%",
+                    db.AddParameter("@Description", string.Format("%{0}%",
                     Product.Description));
                 }
 
-                sqlQuery += criterion + " Order By InternalCode Asc";
+                sqlQuery += sqlLink + " Order By InternalCode Asc";
+                sqlCount += sqlLink;
 
-                sqlCount += criterion;
-
-                using (var reader = connection.GetReader(sqlQuery))
-                {
-                    while (reader.Read())
-                    {
-                        var stock = new StockModel
-                        {
-                            Id = Convert.ToInt32(reader["Stock.Id"]),
-                            Min = Convert.ToInt32(reader["Min"]),
-                            Max = Convert.ToInt32(reader["Max"]),
-                            Quantity = Convert.ToInt32(reader["Quantity"]),
-                            TotalValue = Convert.ToDouble(reader["TotalValue"])
-                        };
-
-                        stock.Product.Id = Convert.ToInt32(reader["Product.Id"]);
-                        stock.Product.InternalCode = Convert.ToString(reader["InternalCode"]);
-                        stock.Product.Description = Convert.ToString(reader["Description"]);
-                        stock.Product.CostPrice = Convert.ToDouble(reader["CostPrice"]);
-
-
-                        List.Add(stock);
-                    }
-                }
-
-                SetSummary(List);
-
-                SetResult(List);
+                return db.GetTable(sqlQuery);
             }
         }
-
-        public void FetchData()
+        public DataTable FetchData()
         {
-            using (var connection = new ConnectionModel())
+            using (var db = new ConnectionModel())
             {
                 var sqlQuery = string.Empty;
                 var sqlCount = string.Empty;
-                var criterion = string.Empty;
-                var parameter = connection.Command.Parameters;
+                var sqlLink = string.Empty;
 
-                if (Summary == "All")
+                switch (summary)
                 {
-                    sqlCount = @"SELECT COUNT(Stock.Id) From Stock INNER JOIN Product ON 
-                    Stock.ProductId = Product.Id WHERE Stock.Id > 0";
+                    case "All":
 
-                    sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.Min, Stock.Max, Stock.TotalValue, 
-                    Product.Id, Product.Description, Product.CostPrice, Product.InternalCode, 
-                    Product.Photo From Product INNER JOIN Stock ON Stock.ProductId = 
-                    Product.Id WHERE Stock.Id > 0";
-                }
+                        sqlCount = @"SELECT COUNT(Stock.Id) From Stock INNER JOIN Product ON 
+                        Stock.ProductId = Product.Id WHERE Stock.Id > 0";
 
-                if (Summary == "Nothing")
-                {
-                    sqlCount = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
-                    Stock.ProductId = Product.Id WHERE Quantity = 0 AND Stock.Min = 0 
-                    AND Stock.Max = 0";
+                        sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.Min, Stock.Max, Stock.TotalValue, 
+                        Product.Id, Product.Description, Product.CostPrice, Product.InternalCode, 
+                        Product.Photo From Product INNER JOIN Stock ON Stock.ProductId = 
+                        Product.Id WHERE Stock.Id > 0";
 
-                    sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max,
-                    Product.Id, Product.Description, Product.CostPrice, Product.InternalCode, Product.Photo 
-                    From Product INNER JOIN Stock ON Stock.ProductId = Product.Id WHERE 
-                    Quantity = 0 AND Stock.Min = 0 AND Stock.Max = 0";
-                }
+                        break;
 
-                if (Summary == "Ok")
-                {
-                    sqlCount = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
-                    Product.Id = Stock.ProductId WHERE Quantity > 0 AND Quantity >= 
-                    Stock.Min AND Quantity <= Stock.Max";
+                    case "Nothing":
 
-                    sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max, 
-                    Product.Id, Product.Description, Product.CostPrice, Product.InternalCode, Product.Photo 
-                    From Product INNER JOIN Stock ON Stock.ProductId = Product.Id WHERE Quantity > 0 
-                    AND Quantity >= Stock.Min AND Quantity <= Stock.Max";
-                }
+                        sqlCount = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
+                        Stock.ProductId = Product.Id WHERE Quantity = 0 AND Stock.Min = 0 
+                        AND Stock.Max = 0";
 
-                if (Summary == "High")
-                {
-                    sqlCount = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
-                    Stock.ProductId = Product.Id WHERE Stock.Quantity > Stock.Max";
+                        sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max,
+                        Product.Id, Product.Description, Product.CostPrice, Product.InternalCode, Product.Photo 
+                        From Product INNER JOIN Stock ON Stock.ProductId = Product.Id WHERE 
+                        Quantity = 0 AND Stock.Min = 0 AND Stock.Max = 0";
 
-                    sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, 
-                    Stock.Max, Product.Id, Product.Description, Product.CostPrice, Product.InternalCode, 
-                    Product.Photo From Product INNER JOIN Stock ON Stock.ProductId = Product.Id WHERE 
-                    Stock.Quantity > Stock.Max";
-                }
+                        break;
 
-                if (Summary == "Low")
-                {
-                    sqlCount = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
-                    Stock.ProductId = Product.Id WHERE Stock.Quantity < Stock.Min";
+                    case "Ok":
 
-                    sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max,
-                    Product.Id, Product.Description, Product.CostPrice, Product.InternalCode, Product.Photo From 
-                    Product INNER JOIN Stock ON Stock.ProductId = Product.Id WHERE 
-                    Stock.Quantity < Stock.Min";
+                        sqlCount = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
+                        Product.Id = Stock.ProductId WHERE Quantity > 0 AND Quantity >= 
+                        Stock.Min AND Quantity <= Stock.Max";
+
+                        sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max, 
+                        Product.Id, Product.Description, Product.CostPrice, Product.InternalCode, Product.Photo 
+                        From Product INNER JOIN Stock ON Stock.ProductId = Product.Id WHERE Quantity > 0 
+                        AND Quantity >= Stock.Min AND Quantity <= Stock.Max";
+
+                        break;
+
+                    case "High":
+
+                        sqlCount = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
+                        Stock.ProductId = Product.Id WHERE Stock.Quantity > Stock.Max";
+
+                        sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, 
+                        Stock.Max, Product.Id, Product.Description, Product.CostPrice, Product.InternalCode, 
+                        Product.Photo From Product INNER JOIN Stock ON Stock.ProductId = Product.Id WHERE 
+                        Stock.Quantity > Stock.Max";
+
+                        break;
+
+                    case "Low":
+
+                        sqlCount = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
+                        Stock.ProductId = Product.Id WHERE Stock.Quantity < Stock.Min";
+
+                        sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max,
+                        Product.Id, Product.Description, Product.CostPrice, Product.InternalCode, Product.Photo From 
+                        Product INNER JOIN Stock ON Stock.ProductId = Product.Id WHERE 
+                        Stock.Quantity < Stock.Min";
+
+                        break;
                 }
 
                 if (Product.InternalCode != string.Empty)
                 {
-                    criterion += " AND InternalCode LIKE @InternalCode";
+                    sqlLink += " AND InternalCode LIKE @InternalCode";
 
-                    parameter.AddWithValue("@InternalCode", string.Format("{0}%",
+                    db.AddParameter("@InternalCode", string.Format("{0}%",
                     Product.InternalCode));
                 }
-
                 if (Product.Description != string.Empty)
                 {
-                    criterion += " AND Description LIKE @Description";
+                    sqlLink += " AND Description LIKE @Description";
 
-                    parameter.AddWithValue("@Description", string.Format("%{0}%",
+                    db.AddParameter("@Description", string.Format("%{0}%",
                     Product.Description));
                 }
 
-                sqlQuery += criterion + " Order By InternalCode Asc";
+                sqlQuery += sqlLink + " Order By InternalCode Asc";
+                sqlCount += sqlLink;
 
-                sqlCount += criterion;
-
-                Pagination.RecordCount = Convert.ToInt32(
-                connection.ExecuteScalar(sqlCount));
-
-                var dataTable = connection.GetTable(sqlQuery,
-                Pagination.OffSetValue,
-                Pagination.PageSize);
-
-                PassToList(dataTable);
-
-                SetSummary(List);
-
-                SetResult(List);
+                return db.GetTable(sqlQuery);
             }
         }
 
-        public void GetDetail(int id)
+        public bool GetDetail()
         {
-            using (var connection = new ConnectionModel())
+            var actionResult = false;
+
+            using (var db = new ConnectionModel())
             {
-                var sqlQuery = @"SELECT Product.*, Stock.* From Product INNER JOIN 
+                var sql = @"SELECT Product.Id, Product.InternalCode, Product.Description, 
+                Product.CostPrice, Stock.Id, Stock.Quantity FROM Product INNER JOIN 
                 Stock ON Product.Id = Stock.ProductId WHERE Product.Id = @Id";
 
-                connection.AddParameter("@Id", id);
+                db.ClearParameter();
+                db.AddParameter("@Id", Id);
 
-                using (var reader = connection.GetReader(sqlQuery))
+                using (var reader = db.GetReader(sql))
                 {
-                    while (reader.Read())
+                    if (reader.FieldCount > 0)
                     {
-                        Id = Convert.ToInt32(reader["Stock.Id"]);
-                        Product.Id = Convert.ToInt32(reader["Product.Id"]);
-                        Product.InternalCode = Convert.ToString(reader["InternalCode"]);
-                        Product.Description = reader["Description"].ToString();
-                        Product.CostPrice = Convert.ToDouble(reader["CostPrice"]);
-                        Quantity = Convert.ToInt32(reader["Quantity"]);
+                        actionResult = true;
+
+                        while (reader.Read())
+                        {
+                            Id = int.Parse(reader["Stock.Id"].ToString());
+                            Product.Id = int.Parse(reader["Product.Id"].ToString());
+                            Product.InternalCode = reader["InternalCode"].ToString();
+                            Product.Description = reader["Description"].ToString();
+                            Product.CostPrice = double.Parse(reader["CostPrice"].ToString());
+                            Quantity = int.Parse(reader["Quantity"].ToString());
+                        }
                     }
                 }
             }
+
+            return actionResult;
         }
 
-        public bool AddEntries(List<StockModel> itemList, int stockMovementId)
+        public bool InsertPostingOfEntries(TransactionModel transaction, DataTable postingItems)
         {
-            var transactionState = false;
-            var sqlCommand = string.Empty;
+            var actionResult = false;
+            var sql = string.Empty;
 
-            using (var connection = new ConnectionModel())
+            foreach (DataRow item in postingItems.Rows)
             {
-                using (connection.Transaction = connection.Open().BeginTransaction())
-                {
-                    for (int i = 0; i < itemList.Count; i++)
-                    {
-                        var stockId = itemList[i].Id;
-                        var quantity = itemList[i].Quantity;
-                        var totalValue = itemList[i].TotalValue;
+                sql = @"UPDATE Stock Set Quantity = Quantity + @ItemQuantity, 
+                TotalValue = TotalValue + @ItemTotalValue WHERE Id = @StockId";
 
-                        sqlCommand = @"UPDATE Stock Set Quantity = Quantity + @Quantity, 
-                        TotalValue = TotalValue + @TotalValue WHERE Id = @Id";
+                transaction.DataBase.ClearParameter();
+                transaction.DataBase.AddParameter("@ItemQuantity", item["Quantity"]);
+                transaction.DataBase.AddParameter("@ItemTotalValue", item["TotalValue"]);
+                transaction.DataBase.AddParameter("@StockId", item["StockId"]);
 
-                        connection.ClearParameter();
-                        connection.AddParameter("@Quantity", quantity);
-                        connection.AddParameter("@TotalValue", totalValue);
-                        connection.AddParameter("@Id", stockId);
-
-                        connection.ExecuteTransaction(sqlCommand);
-                    }
-
-                    //Fianaliza a operação
-                    var stockMovement = new StockMovementModel(connection);
-                    transactionState = stockMovement.FinalizeOperation(
-                    stockMovementId);
-
-                    //Finalza o transação
-                    connection.Transaction.Commit();
-
-                    MessageNotifier.Message = "Ok, todos os estoques foram cadastrados!";
-                }
-
-                return transactionState;
+                actionResult = transaction.DataBase.ExecuteTransaction(sql) > 0;
             }
+
+            return actionResult;
+        }
+        public bool InsertPostingOfOutPuts(TransactionModel transaction, DataTable postingItems)
+        {
+            var actionResult = false;
+            var sql = string.Empty;
+
+            foreach (DataRow item in postingItems.Rows)
+            {
+                sql = @"UPDATE Stock Set Quantity = Quantity - @ItemQuantity, 
+                TotalValue = TotalValue - @ItemTotalValue WHERE Id = @StockId";
+
+                transaction.DataBase.ClearParameter();
+                transaction.DataBase.AddParameter("@ItemQuantity", item["Quantity"]);
+                transaction.DataBase.AddParameter("@ItemTotalValue", item["TotalValue"]);
+                transaction.DataBase.AddParameter("@StockId", item["StockId"]);
+
+                actionResult = transaction.DataBase.ExecuteTransaction(sql) > 0;
+            }
+
+            return actionResult;
         }
 
-        public bool AddOutputs(List<StockModel> itemList, int stockMovementId)
+        public bool CancelPostingOfEntries(TransactionModel transaction, DataTable postedItems)
         {
-            using (var connection = new ConnectionModel())
+            var actionResult = false;
+            var sql = string.Empty;
+
+            foreach (DataRow item in postedItems.Rows)
             {
-                var transactionState = false;
-                var sqlCommand = string.Empty;
+                sql = @"UPDATE Stock Set Quantity = Quantity - @ItemQuantity, 
+                TotalValue = TotalValue - @ItemTotalValue WHERE Id = @StockId";
 
-                using (connection.Transaction = connection.Open().BeginTransaction())
-                {
-                    for (int i = 0; i < itemList.Count; i++)
-                    {
+                transaction.DataBase.ClearParameter();
+                transaction.DataBase.AddParameter("@ItemQuantity", item["Quantity"]);
+                transaction.DataBase.AddParameter("@ItemTotalValue", item["TotalValue"]);
+                transaction.DataBase.AddParameter("@StockId", item["StockId"]);
 
-                        var stockId = itemList[i].Id;
-                        var quantity = itemList[i].Quantity;
-                        var totalValue = itemList[i].TotalValue;
-
-                        sqlCommand = @"UPDATE Stock Set Quantity = Quantity - @Quantity, 
-                        TotalValue = TotalValue - @TotalValue WHERE Id = @Id";
-
-                        connection.ClearParameter();
-                        connection.AddParameter("@Quantity", quantity);
-                        connection.AddParameter("@TotalValue", totalValue);
-                        connection.AddParameter("@Id", stockId);
-
-                        connection.ExecuteTransaction(sqlCommand);
-                    }
-
-                    //Finaliza a operação
-                    var stockMovement = new StockMovementModel(connection);
-                    transactionState = stockMovement.FinalizeOperation(stockMovementId);
-
-                    //Finaliza a transação
-                    connection.Transaction.Commit();
-
-                    MessageNotifier.Message = "Ok! Todos os estoques foram retirados!";
-                }
-
-                return transactionState;
+                actionResult = transaction.DataBase.ExecuteTransaction(sql) > 0;
             }
+
+            return actionResult;
+        }
+        public bool CancelPostingOfOutPuts(TransactionModel transaction, DataTable postedItems)
+        {
+            var actionResult = false;
+            var sql = string.Empty;
+
+            foreach (DataRow item in postedItems.Rows)
+            {
+                sql = @"UPDATE Stock Set Quantity = Quantity + @ItemQuantity, 
+                TotalValue = TotalValue + @ItemTotalValue WHERE Id = @StockId";
+
+                transaction.DataBase.ClearParameter();
+                transaction.DataBase.AddParameter("@ItemQuantity", item["Quantity"]);
+                transaction.DataBase.AddParameter("@ItemTotalValue", item["TotalValue"]);
+                transaction.DataBase.AddParameter("@StockId", item["StockId"]);
+
+                actionResult = transaction.DataBase.ExecuteTransaction(sql) > 0;
+            }
+
+            return actionResult;
         }
 
-        public bool RemoveEntries(List<StockMovementItem> stockItems)
+        public bool RelateProduct(TransactionModel transaction)
         {
-            var transactionState = false;
+            var sql = @"INSERT INTO Stock(ProductId)VALUES(@ProductId)";
 
-            var sqlCommand = string.Empty;
+            transaction.DataBase.ClearParameter();
+            transaction.DataBase.AddParameter("@ProductId", Product.Id);
 
-            for (int i = 0; i < stockItems.Count; i++)
-            {
-                var stockId = stockItems[i].Stock.Id;
-                var quantity = stockItems[i].Quantity;
-                var totalValue = stockItems[i].TotalValue;
-
-                sqlCommand = @"UPDATE Stock Set Quantity = Quantity - @Quantity, 
-                TotalValue = TotalValue - @TotalValue WHERE Id = @Id";
-
-                connection.ClearParameter();
-                connection.AddParameter("@Quantity", quantity);
-                connection.AddParameter("@TotalValue", totalValue);
-                connection.AddParameter("@Id", stockId);
-
-                transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
-            }
-
-            return transactionState;
-        }
-
-        public bool RemoveOutputs(List<StockMovementItem> stockItems)
-        {
-            var transactionState = false;
-
-            var sqlCommand = string.Empty;
-
-            for (int i = 0; i < stockItems.Count; i++)
-            {
-                var stockId = stockItems[i].Stock.Id;
-                var quantity = stockItems[i].Quantity;
-                var totalValue = stockItems[i].TotalValue;
-
-                sqlCommand = @"UPDATE Stock Set Quantity = Quantity + @Quantity, 
-                    TotalValue = TotalValue + @TotalValue WHERE Id = @Id";
-
-                connection.ClearParameter();
-                connection.AddParameter("@Quantity", quantity);
-                connection.AddParameter("@TotalValue", totalValue);
-                connection.AddParameter("@Id", stockId);
-
-                transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
-            }
-
-            return transactionState;
-        }
-
-        public bool RelateProduct(int id)
-        {
-            var transactionState = false;
-
-            var sqlCommand = @"INSERT INTO Stock(ProductId)VALUES(@ProductId)";
-
-            connection.ClearParameter();
-            connection.AddParameter("@ProductId", id);
-
-            if (connection.ExecuteTransaction(sqlCommand) > 0)
-            {
-                transactionState = true;
-            }
-
-            return transactionState;
+            return transaction.DataBase.ExecuteTransaction(sql) > 0;
         }
 
         public void GenerateReport(List<StockModel> list)
@@ -461,18 +371,16 @@ namespace DimStock.Models
             ListData(); stock.GenerateReport(list);
         }
 
-        public bool UpdateValue(double productCostPrice, int productId)
+        public bool UpdateValue(TransactionModel transaction)
         {
-            var transactionState = false;
-
-            var sqlCommand = @"UPDATE Stock Set TotalValue = @ProductCostPrice * 
+            var sql = @"UPDATE Stock Set TotalValue = @ProductCostPrice * 
             Quantity WHERE ProductId = @ProductId";
 
-            connection.ClearParameter();
-            connection.AddParameter("ProductCostPrice", productCostPrice);
-            connection.AddParameter("@ProductId", productId);
+            transaction.DataBase.ClearParameter();
+            transaction.DataBase.AddParameter("ProductCostPrice", Product.CostPrice);
+            transaction.DataBase.AddParameter("@ProductId", Product.Id);
 
-            return transactionState = connection.ExecuteTransaction(sqlCommand) > 0;
+            return transaction.DataBase.ExecuteTransaction(sql) > 0;
         }
 
         public void SetSummary(List<StockModel> listOfRecords)
@@ -518,29 +426,6 @@ namespace DimStock.Models
 
                 if (quantity == 0 && minStock == 0 && maxStock == 0)
                     stockItem.Result = "???";
-            }
-        }
-
-        public void PassToList(DataTable dataTable)
-        {
-            foreach (DataRow row in dataTable.Rows)
-            {
-                var stock = new StockModel()
-                {
-                    Id = Convert.ToInt32(row["Stock.Id"]),
-                    Min = Convert.ToInt32(row["Min"]),
-                    Max = Convert.ToInt32(row["Max"]),
-                    Quantity = Convert.ToInt32(row["Quantity"]),
-                    TotalValue = Convert.ToDouble(row["TotalValue"])
-                };
-
-                stock.Product.Id = Convert.ToInt32(row["Product.Id"]);
-                stock.Product.InternalCode = Convert.ToString(row["InternalCode"]);
-                stock.Product.Description = Convert.ToString(row["Description"]);
-                stock.Product.CostPrice = Convert.ToDouble(row["CostPrice"]);
-
-
-                List.Add(stock);
             }
         }
     }
