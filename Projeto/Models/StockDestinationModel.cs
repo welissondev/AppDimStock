@@ -7,37 +7,21 @@ namespace DimStock.Models
 {
     public class StockDestinationModel
     {
-        #region Builder
-        
         public StockDestinationModel()
         {
             List = new List<StockDestinationModel>();
         }
 
-        #endregion
-
-        #region Get e Set
-
         public int Id { get; set; }
         public string Location { get; set; }
         public List<StockDestinationModel> List { get; set; }
 
-        #endregion
-
-        #region Function
-
-        public bool Save()
+        public bool Insert()
         {
             var transaction = false;
 
             using (var connection = new ConnectionModel())
             {
-                if (CheckIfExists() == true)
-                {
-                    MessageNotifier.Message = "Esse destino já existe, cadastre outro!";
-                    return transaction;
-                }
-
                 var sqlCommand = @"INSERT INTO StockDestination
                 (Location)VALUES(@Location)";
 
@@ -53,7 +37,7 @@ namespace DimStock.Models
             return transaction;
         }
 
-        public bool Edit(int id)
+        public bool Update(int id)
         {
             var transaction = false;
 
@@ -75,7 +59,7 @@ namespace DimStock.Models
             return transaction;
         }
 
-        public bool Remove(int id)
+        public bool Delete(int id)
         {
             bool transaction = false;
 
@@ -142,30 +126,5 @@ namespace DimStock.Models
                 }
             }
         }
-
-        public bool CheckIfExists()
-        {
-            var destinationsFound = 0;
-
-            using (var connection = new ConnectionModel())
-            {
-                var sqlQuery = @"SELECT Location From StockDestination 
-                WHERE Location LIKE @Location";
-
-                connection.AddParameter("@Location", Location);
-
-                using (var reader = connection.GetReader(sqlQuery))
-                {
-                    while (reader.Read())
-                    {
-                        destinationsFound += 1;
-                    }
-                }
-            }
-
-            return destinationsFound > 0;
-        }
-
-        #endregion
     }
 }

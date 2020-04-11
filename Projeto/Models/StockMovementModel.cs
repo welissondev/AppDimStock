@@ -1,18 +1,14 @@
 ﻿using DimStock.AuxilyTools.AuxilyClasses;
 using System;
-using System.Collections.Generic;
 using System.Data;
 
+/// <summary>
+/// Propriedades da classe
+/// </summary>
 namespace DimStock.Models
 {
-    public class StockMovementModel
+    public partial class StockMovementModel
     {
-
-        public StockMovementModel()
-        {
-            Destination = new StockDestinationModel();
-        }
-
         private TransactionModel transaction;
 
         public int Id { get; set; }
@@ -22,8 +18,22 @@ namespace DimStock.Models
         public string OperationCode { get; set; }
         public string OperationSituation { get; set; }
         public StockDestinationModel Destination { get; set; }
+    }
+}
 
-        public bool InitializeOperation()
+/// <summary>
+/// Métodos da classe
+/// </summary>
+namespace DimStock.Models
+{
+    public partial class StockMovementModel
+    {
+        public StockMovementModel()
+        {
+            Destination = new StockDestinationModel();
+        }
+
+        public bool StartOperation()
         {
             var actionResult = false;
             var sql = string.Empty;
@@ -49,7 +59,7 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public bool FinalizeOperation()
+        public bool CloseOperation()
         {
             var actionResult = false;
             var sql = string.Empty;
@@ -57,8 +67,8 @@ namespace DimStock.Models
             using (transaction = new TransactionModel(new ConnectionModel()))
             {
                 var postingItems = GetItems();
-                var stock = new StockModel();
 
+                var stock = new StockModel();
                 if (stock.InsertPostingOfEntries(postingItems) == true)
                 {
                     sql = @"UPDATE StockMovement Set OperationSituation = 
@@ -76,6 +86,21 @@ namespace DimStock.Models
             }
 
             return actionResult;
+        }
+
+        public bool SetOperationCode()
+        {
+            Id = GetLastId();
+            OperationCode = Id.ToString();
+
+            var sql = @"UPDATE StockMovement SET OperationCode = 
+            @OperationCode WHERE Id = @Id";
+
+            transaction.DataBase.ClearParameter();
+            transaction.DataBase.AddParameter("@OperationCode", OperationCode);
+            transaction.DataBase.AddParameter("@Id", Id);
+
+            return transaction.DataBase.ExecuteTransaction(sql) > 0;
         }
 
         public bool RelateDestination()
@@ -108,7 +133,7 @@ namespace DimStock.Models
 
             using (transaction = new TransactionModel(new ConnectionModel()))
             {
-                if (CancelStockPostings() == true)
+                if (CancelPostings() == true)
                 {
                     sql = @"DELETE FROM StockMovement WHERE Id = @Id";
 
@@ -123,27 +148,6 @@ namespace DimStock.Models
                         MessageNotifier.Title = "Sucesso";
                     }
                 }
-            }
-
-            return actionResult;
-        }
-
-        public bool CancelStockPostings()
-        {
-            var actionResult = false;
-
-            var postedItems = GetItems();
-
-            var stock = new StockModel(transaction);
-            switch (OperationType)
-            {
-                case "Entry":
-                    actionResult = stock.CancelPostingOfEntries(postedItems);
-                    break;
-
-                case "OutPut":
-                    actionResult = stock.CancelPostingOfOutPuts(postedItems);
-                    break;
             }
 
             return actionResult;
@@ -231,13 +235,13 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public int GetLastId()
+        private int GetLastId()
         {
             var sql = @"SELECT MAX(Id) FROM StockMovement";
             return transaction.DataBase.ExecuteScalar(sql);
         }
 
-        public DataTable GetItems()
+        private DataTable GetItems()
         {
             var item = new StockMovementItem();
             item.StockMovement.Id = Id;
@@ -245,19 +249,25 @@ namespace DimStock.Models
             return item.ListItems();
         }
 
-        public bool SetOperationCode()
+        private bool CancelPostings()
         {
-            Id = GetLastId();
-            OperationCode = Id.ToString();
+            var actionResult = false;
 
-            var sql = @"UPDATE StockMovement SET OperationCode = 
-            @OperationCode WHERE Id = @Id";
+            var postedItems = GetItems();
 
-            transaction.DataBase.ClearParameter();
-            transaction.DataBase.AddParameter("@OperationCode", OperationCode);
-            transaction.DataBase.AddParameter("@Id", Id);
+            var stock = new StockModel(transaction);
+            switch (OperationType)
+            {
+                case "Entry":
+                    actionResult = stock.CancelPostingOfEntries(postedItems);
+                    break;
 
-            return transaction.DataBase.ExecuteTransaction(sql) > 0;
+                case "OutPut":
+                    actionResult = stock.CancelPostingOfOutPuts(postedItems);
+                    break;
+            }
+
+            return actionResult;
         }
     }
 }

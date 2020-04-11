@@ -49,7 +49,7 @@ namespace DimStock.Screens
                     Location = TextDestinationLocation.Text.TrimStart().TrimEnd()
                 };
 
-                if (stockDestination.Save() == true)
+                if (stockDestination.Insert() == true)
                 {
 
                     MessageBox.Show(MessageNotifier.Message, "SUCESSO",
@@ -80,7 +80,7 @@ namespace DimStock.Screens
                     Location = TextDestinationLocation.Text.TrimStart().TrimEnd()
                 };
 
-                if (stockDestination.Edit(id) == true)
+                if (stockDestination.Update(id) == true)
                 {
                     MessageBox.Show(MessageNotifier.Message, "SUCESSO",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -105,7 +105,7 @@ namespace DimStock.Screens
 
                 var stockDestination = new StockDestinationModel();
 
-                if (stockDestination.Remove(id) == true)
+                if (stockDestination.Delete(id) == true)
                 {
                     MessageBox.Show(MessageNotifier.Message, "SUCESSO",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
