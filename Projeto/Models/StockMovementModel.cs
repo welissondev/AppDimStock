@@ -22,44 +22,31 @@ namespace DimStock.Models
         public string OperationCode { get; set; }
         public string OperationSituation { get; set; }
         public StockDestinationModel Destination { get; set; }
-        public AuxiliaryDataPage Pagination { get; set; }
-        public List<StockMovementModel> List { get; set; }
 
         public bool InitializeOperation()
         {
-            bool registerState = false;
+            var actionResult = false;
+            var sql = string.Empty;
 
-            using (var connection = new ConnectionModel())
+            using (transaction = new TransactionModel(new ConnectionModel()))
             {
-                using (connection.Transaction = connection.Open().BeginTransaction())
+                sql = @"INSERT INTO StockMovement(OperationType)
+                VALUES(@OperationType)";
+
+                transaction.DataBase.ClearParameter();
+                transaction.DataBase.AddParameter("@OperationType", OperationType);
+
+                if (transaction.DataBase.ExecuteTransaction(sql) > 0)
                 {
-                    var sqlCommand = @"INSERT INTO StockMovement(OperationType)
-
-                    VALUES(@OperationType)";
-
-                    connection.AddParameter("@OperationType", OperationType);
-
-                    registerState = connection.ExecuteTransaction(sqlCommand) > 0;
-
-                    //Seleciona o id da ultima movimentação inserida
-                    Id = Convert.ToInt32(connection.ExecuteScalar(
-                    @"SELECT MAX(Id) FROM StockMovement"));
-
-                    //O código da operação é o mesmo que o ID da tabela
-                    connection.ClearParameter();
-                    connection.AddParameter("@OperationCode", Id);
-                    connection.AddParameter("Id", Id);
-
-                    sqlCommand = @"UPDATE StockMovement SET OperationCode 
-                    = @OperationCode WHERE Id = @Id";
-
-                    registerState = connection.ExecuteTransaction(sqlCommand) > 0;
-
-                    connection.Transaction.Commit();
+                    if (SetOperationCode() == true)
+                    {
+                        transaction.Commit();
+                        actionResult = true;
+                    }
                 }
-
-                return registerState;
             }
+
+            return actionResult;
         }
 
         public bool FinalizeOperation()
@@ -91,42 +78,27 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public bool RelateDestination(int id)
+        public bool RelateDestination()
         {
-            bool setDestinationState = false;
-            var sqlCommand = string.Empty;
+            var actionResult = false;
+            var sql = string.Empty;
 
-            using (var connection = new ConnectionModel())
+            using (var db = new ConnectionModel())
             {
-                //Pega Id de destino pelo nome do local
-                sqlCommand = @"SELECT * FROM StockDestination 
-                WHERE Location = @Location";
+                sql = @"UPDATE StockMovement SET 
+                StockDestinationId = @StockDestinationId WHERE Id = @Id";
 
-                connection.AddParameter("Location",
-                Destination.Location);
+                db.ClearParameter();
+                db.AddParameter("@StockDestinationId", Destination.Id);
+                db.AddParameter("@Id", Id);
 
-                bool convert = int.TryParse(connection.ExecuteScalar(
-                sqlCommand).ToString(), out int result);
-
-                if (convert != false)
-                    Destination.Id = result;
-
-                if (Destination.Id != 0)
+                if (db.ExecuteCommand(sql) > 0)
                 {
-                    connection.ClearParameter();
-
-                    sqlCommand = @"UPDATE StockMovement SET StockDestinationId
-                    = @Value WHERE Id = @Id";
-
-                    connection.AddParameter("@Value", Destination.Id);
-                    connection.AddParameter("@Id", id);
-
-                    if (connection.ExecuteCommand(sqlCommand) > 0)
-                        setDestinationState = true;
+                    actionResult = true;
                 }
             }
 
-            return setDestinationState;
+            return actionResult;
         }
 
         public bool Delete()
@@ -177,164 +149,92 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public void ListData()
+        public DataTable FetchData()
         {
-            using (var connection = new ConnectionModel())
+            using (var db = new ConnectionModel())
             {
-                var sqlQuery = @"SELECT * From StockMovement";
+                var sql = string.Empty;
+                var sqlLink = string.Empty;
 
-                using (var reader = connection.GetReader(sqlQuery))
-                {
-                    while (reader.Read())
-                    {
-                        var stockMovement = new StockMovementModel()
-                        {
-                            Id = Convert.ToInt32(reader["Id"]),
-                            OperationType = reader["OperationType"].ToString(),
-                            OperationDate = Convert.ToDateTime(reader["OperationDate"]),
-                            OperationHour = Convert.ToDateTime(reader["OperationHour"]),
-                            OperationSituation = reader["OperationSituation"].ToString(),
-                            OperationCode = reader["OperationCode"].ToString()
-                        };
-
-                        Destination.Id = Convert.ToInt32(reader["StockDestination.Id"]);
-                        Destination.Location = Convert.ToString(reader["Location"]);
-
-                        List.Add(stockMovement);
-                    }
-                }
-            }
-        }
-
-        public void FetchData()
-        {
-            using (var connection = new ConnectionModel())
-            {
-                var sqlQuery = string.Empty;
-                var sqlCount = string.Empty;
-                var criterion = string.Empty;
-                var parameter = connection.Command.Parameters;
-
-                sqlQuery = @"SELECT StockMovement.*, StockDestination.* FROM StockMovement
+                sql = @"SELECT StockMovement.*, StockDestination.* FROM StockMovement
                 LEFT JOIN StockDestination On StockMovement.StockDestinationId = 
                 StockDestination.Id WHERE StockMovement.Id > 0 ";
 
-                sqlCount = @"SELECT COUNT(*) FROM StockMovement 
-                WHERE StockMovement.Id > 0 ";
-
                 if (OperationType != string.Empty)
                 {
-                    criterion += @" AND OperationType LIKE @OperationType";
+                    sqlLink += @" AND OperationType LIKE @OperationType";
 
-                    parameter.AddWithValue("@OperationType", string.Format("{0}",
+                    db.AddParameter("@OperationType", string.Format("{0}",
                     OperationType));
                 }
 
                 if (OperationSituation != string.Empty)
                 {
-                    criterion += @" AND OperationSituation LIKE @OperationSituation";
+                    sqlLink += @" AND OperationSituation LIKE @OperationSituation";
 
-                    parameter.AddWithValue("@OperationSituation", string.Format("{0}",
+                    db.AddParameter("@OperationSituation", string.Format("{0}",
                     OperationSituation));
                 }
 
                 if (OperationCode != string.Empty)
                 {
-                    criterion += @" AND StockMovement.OperationCode LIKE @OperationCode ";
+                    sqlLink += @" AND StockMovement.OperationCode LIKE @OperationCode ";
 
-                    parameter.AddWithValue("@OperationCode", string.Format("{0}",
+                    db.AddParameter("@OperationCode", string.Format("{0}",
                     OperationCode));
                 }
 
-                sqlQuery += criterion + @" ORDER BY StockMovement.Id DESC";
+                sql += sqlLink + @" ORDER BY StockMovement.Id DESC";
 
-                sqlCount += criterion;
-
-                Pagination.RecordCount = Convert.ToInt32(
-                connection.ExecuteScalar(sqlCount));
-
-                var dataTable = connection.GetTable(sqlQuery,
-                Pagination.OffSetValue,
-                Pagination.PageSize);
-
-                PassToList(dataTable);
-
+                return db.GetTable(sql);
             }
         }
 
-        public void GetDetail(int id)
+        public bool GetDetail()
         {
-            using (var connection = new ConnectionModel())
+            var actionResult = false;
+            var sql = string.Empty;
+
+            using (var db = new ConnectionModel())
             {
-                var sqlQuery = @"SELECT StockMovement.*, StockDestination.* 
-                FROM StockMovement LEFT JOIN StockDestination ON StockMovement.StockDestinationId 
-                = StockDestination.Id WHERE StockMovement.Id = @Id";
+                sql = @"SELECT StockMovement.*, StockDestination.* FROM StockMovement LEFT JOIN 
+                StockDestination ON StockMovement.StockDestinationId = StockDestination.Id WHERE 
+                StockMovement.Id = @Id";
 
-                connection.ClearParameter();
-                connection.AddParameter("Id", id);
+                db.ClearParameter();
+                db.AddParameter("Id", Id);
 
-                using (var reader = connection.GetReader(sqlQuery))
+                using (var reader = db.GetReader(sql))
                 {
-                    while (reader.Read())
+                    if (reader.FieldCount > 0)
                     {
-                        Id = Convert.ToInt32(reader["StockMovement.Id"]);
-                        OperationType = Convert.ToString(reader["OperationType"].ToString());
-                        OperationDate = Convert.ToDateTime(reader["OperationDate"].ToString());
-                        OperationHour = Convert.ToDateTime(reader["OperationHour"].ToString());
-                        OperationSituation = Convert.ToString(reader["OperationSituation"].ToString());
-                        OperationCode = Convert.ToString(reader["OperationCode"]).ToString();
+                        while (reader.Read())
+                        {
+                            Id = int.Parse(reader["StockMovement.Id"].ToString());
+                            OperationType = reader["OperationType"].ToString();
+                            OperationDate = DateTime.Parse(reader["OperationDate"].ToString());
+                            OperationHour = DateTime.Parse(reader["OperationHour"].ToString());
+                            OperationSituation = reader["OperationSituation"].ToString();
+                            OperationCode = reader["OperationCode"].ToString();
 
-                        bool convert = int.TryParse(reader[
-                        "StockDestination.Id"].ToString(),
-                        out int result);
+                            if (reader["StockDestination.Id"] != DBNull.Value)
+                                Destination.Id = int.Parse(reader["StockDestination.Id"].ToString());
 
-                        if (convert != false)
-                            Destination.Id = result;
+                            Destination.Location = reader["Location"].ToString();
+                        }
 
-                        Destination.Location = reader["Location"].ToString();
+                        actionResult = true;
                     }
                 }
             }
+
+            return actionResult;
         }
 
-        public void PassToList(DataTable dataTable)
+        public int GetLastId()
         {
-            foreach (DataRow row in dataTable.Rows)
-            {
-                var movement = new StockMovementModel()
-                {
-                    Id = Convert.ToInt32(row["StockMovement.Id"]),
-                    OperationType = Convert.ToString(row["OperationType"]),
-                    OperationDate = Convert.ToDateTime(row["OperationDate"]),
-                    OperationHour = Convert.ToDateTime(row["OperationHour"]),
-                    OperationSituation = Convert.ToString(row["OperationSituation"]),
-                    OperationCode = Convert.ToString(row["OperationCode"])
-                };
-                movement.Destination.Location = Convert.ToString(row["Location"]);
-
-                List.Add(movement);
-            }
-        }
-
-        public bool CheckIfExists(int id)
-        {
-            using (var connection = new ConnectionModel())
-            {
-                var sqlQuery = "SELECT Id FROM StockMovement WHERE Id = @Id";
-                var recordsFound = 0;
-
-                connection.AddParameter("Id", id);
-
-                using (var reader = connection.GetReader(sqlQuery))
-                {
-                    while (reader.Read())
-                    {
-                        recordsFound += 1;
-                    }
-                }
-
-                return recordsFound > 0;
-            }
+            var sql = @"SELECT MAX(Id) FROM StockMovement";
+            return transaction.DataBase.ExecuteScalar(sql);
         }
 
         public DataTable GetItems()
@@ -343,6 +243,21 @@ namespace DimStock.Models
             item.StockMovement.Id = Id;
 
             return item.ListItems();
+        }
+
+        public bool SetOperationCode()
+        {
+            Id = GetLastId();
+            OperationCode = Id.ToString();
+
+            var sql = @"UPDATE StockMovement SET OperationCode = 
+            @OperationCode WHERE Id = @Id";
+
+            transaction.DataBase.ClearParameter();
+            transaction.DataBase.AddParameter("@OperationCode", OperationCode);
+            transaction.DataBase.AddParameter("@Id", Id);
+
+            return transaction.DataBase.ExecuteTransaction(sql) > 0;
         }
     }
 }
