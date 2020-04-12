@@ -90,8 +90,8 @@ namespace DimStock.Models
 
         public bool SetOperationCode()
         {
-            Id = GetLastId();
-            OperationCode = Id.ToString();
+            var seed = GetLastId();
+            OperationCode = new SingleCodeGenerator(seed).GetCode();
 
             var sql = @"UPDATE StockMovement SET OperationCode = 
             @OperationCode WHERE Id = @Id";
