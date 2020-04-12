@@ -8,10 +8,14 @@ namespace DimStock.AuxilyTools.AuxilyClasses
     /// </summary>
     public class SingleCodeGenerator
     {
-        public static string GetCode()
+        private readonly int seed;
+
+        public SingleCodeGenerator(int seed){ this.seed = seed;}
+
+        public string GetCode()
         {
             var chars = "0123456789";
-            Random random = new Random();
+            var random = new Random(seed);
             return new string(Enumerable.Repeat(chars, 7).Select(s => s[random.Next(s.Length)]).ToArray());
         }
     }
