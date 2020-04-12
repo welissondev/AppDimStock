@@ -51,7 +51,8 @@ namespace DimStock.Models
 
                 if (transaction.DataBase.ExecuteTransaction(sql) > 0)
                 {
-                    if (RelateToStock() == true)
+                    var id = GetLastId();
+                    if (new StockModel(transaction).RelateProduct(id))
                     {
                         transaction.Commit();
 
@@ -91,7 +92,7 @@ namespace DimStock.Models
 
                 if (transaction.DataBase.ExecuteTransaction(sql) > 0)
                 {
-                    if (UpdateStockValue() == true)
+                    if (new StockModel(transaction).UpdateValue(CostPrice) == true)
                     {
                         transaction.Commit();
 
@@ -104,20 +105,6 @@ namespace DimStock.Models
             }
 
             return actionResult;
-        }
-
-        public bool UpdateStockValue()
-        {
-            var stock = new StockModel(transaction);
-            return stock.UpdateValue(this);
-        }
-
-        public bool RelateToStock()
-        {
-            Id = GetLastId();
-
-            var stock = new StockModel(transaction);
-            return stock.RelateProduct(this);
         }
 
         public int GetLastId()
@@ -134,16 +121,16 @@ namespace DimStock.Models
             if (ProductValidationModel.ValidateToGetDetail(this) == false)
                 return actionResult;
 
-            using (var db = new ConnectionModel())
+            using (var dataBase = new ConnectionModel())
             {
                 sql = @"SELECT Product.*, Category.* FROM Product
                 LEFT JOIN Category ON Product.CategoryId = Category.Id
                 WHERE Product.Id = @Id ";
 
-                db.ClearParameter();
-                db.AddParameter("@Id", Id);
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@Id", Id);
 
-                using (var reader = db.GetReader(sql))
+                using (var reader = dataBase.GetReader(sql))
                 {
                     if (reader.FieldCount > 0)
                     {
@@ -203,7 +190,7 @@ namespace DimStock.Models
         {
             var sql = string.Empty;
 
-            using (var db = new ConnectionModel())
+            using (var dataBase = new ConnectionModel())
             {
                 sql = @"SELECT Id, InternalCode, Description, 
                 CostPrice, SalePrice FROM Product WHERE Id > 0";
@@ -212,7 +199,7 @@ namespace DimStock.Models
                 {
                     sql += " AND InternalCode LIKE @InternalCode";
 
-                    db.AddParameter("@InternalCode", string.
+                    dataBase.AddParameter("@InternalCode", string.
                     Format("{0}%", InternalCode));
                 }
 
@@ -220,13 +207,13 @@ namespace DimStock.Models
                 {
                     sql += " AND Description LIKE @Description";
 
-                    db.AddParameter("@Description", string.
+                    dataBase.AddParameter("@Description", string.
                     Format("%{0}%", Description));
                 }
 
                 sql += " Order By Id, InternalCode Desc";
 
-                return db.GetTable(sql);
+                return dataBase.GetTable(sql);
             }
         }
     }

@@ -108,16 +108,16 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
-            using (var db = new ConnectionModel())
+            using (var dataBase = new ConnectionModel())
             {
                 sql = @"UPDATE StockMovement SET 
                 StockDestinationId = @StockDestinationId WHERE Id = @Id";
 
-                db.ClearParameter();
-                db.AddParameter("@StockDestinationId", Destination.Id);
-                db.AddParameter("@Id", Id);
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@StockDestinationId", Destination.Id);
+                dataBase.AddParameter("@Id", Id);
 
-                if (db.ExecuteCommand(sql) > 0)
+                if (dataBase.ExecuteCommand(sql) > 0)
                 {
                     actionResult = true;
                 }
@@ -155,7 +155,7 @@ namespace DimStock.Models
 
         public DataTable FetchData()
         {
-            using (var db = new ConnectionModel())
+            using (var dataBase = new ConnectionModel())
             {
                 var sql = string.Empty;
                 var sqlLink = string.Empty;
@@ -168,7 +168,7 @@ namespace DimStock.Models
                 {
                     sqlLink += @" AND OperationType LIKE @OperationType";
 
-                    db.AddParameter("@OperationType", string.Format("{0}",
+                    dataBase.AddParameter("@OperationType", string.Format("{0}",
                     OperationType));
                 }
 
@@ -176,7 +176,7 @@ namespace DimStock.Models
                 {
                     sqlLink += @" AND OperationSituation LIKE @OperationSituation";
 
-                    db.AddParameter("@OperationSituation", string.Format("{0}",
+                    dataBase.AddParameter("@OperationSituation", string.Format("{0}",
                     OperationSituation));
                 }
 
@@ -184,13 +184,13 @@ namespace DimStock.Models
                 {
                     sqlLink += @" AND StockMovement.OperationCode LIKE @OperationCode ";
 
-                    db.AddParameter("@OperationCode", string.Format("{0}",
+                    dataBase.AddParameter("@OperationCode", string.Format("{0}",
                     OperationCode));
                 }
 
                 sql += sqlLink + @" ORDER BY StockMovement.Id DESC";
 
-                return db.GetTable(sql);
+                return dataBase.GetTable(sql);
             }
         }
 
@@ -199,16 +199,16 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
-            using (var db = new ConnectionModel())
+            using (var dataBase = new ConnectionModel())
             {
                 sql = @"SELECT StockMovement.*, StockDestination.* FROM StockMovement LEFT JOIN 
                 StockDestination ON StockMovement.StockDestinationId = StockDestination.Id WHERE 
                 StockMovement.Id = @Id";
 
-                db.ClearParameter();
-                db.AddParameter("Id", Id);
+                dataBase.ClearParameter();
+                dataBase.AddParameter("Id", Id);
 
-                using (var reader = db.GetReader(sql))
+                using (var reader = dataBase.GetReader(sql))
                 {
                     if (reader.FieldCount > 0)
                     {

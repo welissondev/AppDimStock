@@ -76,16 +76,16 @@ namespace DimStock.Models
 
         public DataTable ListItems()
         {
-            using (var db = new ConnectionModel())
+            using (var dataBase = new ConnectionModel())
             {
                 var sql = @"SELECT StockMovementItem.*, Product.Description, Product.InternalCode 
                 FROM StockMovementItem INNER JOIN Product ON StockMovementItem.ProductId = Product.Id WHERE 
                 StockMovementItem.StockMovementId LIKE @StockMovementId ORDER BY InternalCode";
 
-                db.ClearParameter();
-                db.AddParameter("@StockMovementId", StockMovement.Id);
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@StockMovementId", StockMovement.Id);
 
-                return db.GetTable(sql);
+                return dataBase.GetTable(sql);
             }
         }
 

@@ -33,20 +33,20 @@ namespace DimStock.Models
             if (CategoryValidationModel.ValidateToInsert(this) == false)
                 return actionResult;
 
-            using (var db = new ConnectionModel())
+            using (var dataBase = new ConnectionModel())
             {
-                using (db.Transaction = db.Open().BeginTransaction())
+                using (dataBase.Transaction = dataBase.Open().BeginTransaction())
                 {
                     sql = @"INSERT INTO Category(Description)VALUES(@Description)";
 
-                    db.ClearParameter();
-                    db.AddParameter("@Description", Description);
+                    dataBase.ClearParameter();
+                    dataBase.AddParameter("@Description", Description);
 
-                    actionResult = db.ExecuteTransaction(sql) > 0;
+                    actionResult = dataBase.ExecuteTransaction(sql) > 0;
 
                     if (actionResult == true)
                     {
-                        db.Transaction.Commit();
+                        dataBase.Transaction.Commit();
 
                         MessageNotifier.Message = "Cadastrado com sucesso!";
                         MessageNotifier.Title = "Sucesso";
@@ -67,21 +67,21 @@ namespace DimStock.Models
             if (CategoryValidationModel.ValidateToUpdate(this) == false)
                 return actionResult;
 
-            using (var db = new ConnectionModel())
+            using (var dataBase = new ConnectionModel())
             {
-                using (db.Transaction = db.Open().BeginTransaction())
+                using (dataBase.Transaction = dataBase.Open().BeginTransaction())
                 {
                     sql = @"UPDATE Category SET Description = @Description WHERE Id = @Id";
 
-                    db.ClearParameter();
-                    db.AddParameter("@Description", Description);
-                    db.AddParameter("@Id", Id);
+                    dataBase.ClearParameter();
+                    dataBase.AddParameter("@Description", Description);
+                    dataBase.AddParameter("@Id", Id);
 
-                    actionResult = db.ExecuteTransaction(sql) > 0;
+                    actionResult = dataBase.ExecuteTransaction(sql) > 0;
 
                     if (actionResult == true)
                     {
-                        db.Transaction.Commit();
+                        dataBase.Transaction.Commit();
 
                         MessageNotifier.Message = "Categoria editada com sucesso!";
                         MessageNotifier.Title = "Sucesso";
@@ -102,20 +102,20 @@ namespace DimStock.Models
             if (CategoryValidationModel.ValidateToDelete(this) == false)
                 return actionResult;
 
-            using (var db = new ConnectionModel())
+            using (var dataBase = new ConnectionModel())
             {
-                using (db.Transaction = db.Open().BeginTransaction())
+                using (dataBase.Transaction = dataBase.Open().BeginTransaction())
                 {
                     sql = @"DELETE FROM Category WHERE Id = @Id";
 
-                    db.ClearParameter();
-                    db.AddParameter("@Id", Id);
+                    dataBase.ClearParameter();
+                    dataBase.AddParameter("@Id", Id);
 
-                    actionResult = db.ExecuteTransaction(sql) > 0;
+                    actionResult = dataBase.ExecuteTransaction(sql) > 0;
 
                     if (actionResult == true)
                     {
-                        db.Transaction.Commit();
+                        dataBase.Transaction.Commit();
 
                         MessageNotifier.Message = "Categoria deletada com sucesso!";
                         MessageNotifier.Title = "Sucesso";
@@ -135,15 +135,15 @@ namespace DimStock.Models
             if (CategoryValidationModel.ValidateToGetDetail(this) == false)
                 return actionResult;
 
-            using (var db = new ConnectionModel())
+            using (var dataBase = new ConnectionModel())
             {
                 var sql = @"SELECT Id, Description From 
                 Category Where Id = @Id ";
 
-                db.ClearParameter();
-                db.AddParameter("@Id", Id);
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@Id", Id);
 
-                using (var reader = db.GetReader(sql))
+                using (var reader = dataBase.GetReader(sql))
                 {
                     if (reader.FieldCount > 0)
                     {
@@ -165,14 +165,14 @@ namespace DimStock.Models
         {
             var sql = string.Empty;
 
-            using (var db = new ConnectionModel())
+            using (var dataBase = new ConnectionModel())
             {
                 sql = "SELECT Id FROM Category WHERE Description = @Description";
 
-                db.ClearParameter();
-                db.AddParameter("@Description", Description);
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@Description", Description);
 
-                return db.ExecuteScalar(sql);
+                return dataBase.ExecuteScalar(sql);
             }
         }
 
@@ -180,7 +180,7 @@ namespace DimStock.Models
         {
             var sql = string.Empty;
 
-            using (var db = new ConnectionModel())
+            using (var dataBase = new ConnectionModel())
             {
                 sql = "SELECT * FROM Category ";
 
@@ -188,13 +188,13 @@ namespace DimStock.Models
                 {
                     sql += "WHERE Description LIKE @Description ";
 
-                    db.AddParameter("@Description",
+                    dataBase.AddParameter("@Description",
                     string.Format("%{0}%", Description));
                 }
 
                 sql += "ORDER BY Description";
 
-                return db.GetTable(sql);
+                return dataBase.GetTable(sql);
             }
         }
 
@@ -202,10 +202,10 @@ namespace DimStock.Models
         {
             var sql = string.Empty;
 
-            using (var db = new ConnectionModel())
+            using (var dataBase = new ConnectionModel())
             {
                 sql = "SELECT * FROM Category ORDER BY Description";
-                return db.GetTable(sql);
+                return dataBase.GetTable(sql);
             }
         }
     }

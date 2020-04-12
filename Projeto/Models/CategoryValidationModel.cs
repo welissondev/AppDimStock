@@ -108,12 +108,12 @@ namespace DimStock.Models
             var sql = string.Empty;
             var actionResult = false;
 
-            using (var db = new ConnectionModel())
+            using (var dataBase = new ConnectionModel())
             {
                 sql = @"SELECT Id, Description FROM Category WHERE Id = @Id ";
 
-                db.ClearParameter();
-                db.AddParameter("@Id", category.Id);
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@Id", category.Id);
 
                 //Concatena sql se usuário buscar a
                 //categoria pela descrição.
@@ -121,10 +121,10 @@ namespace DimStock.Models
                     category.Description != null)
                 {
                     sql += "OR Description = @Description";
-                    db.AddParameter("@Description", category.Description);
+                    dataBase.AddParameter("@Description", category.Description);
                 }
 
-                using (var reader = db.GetReader(sql))
+                using (var reader = dataBase.GetReader(sql))
                 {
                     if (reader.Read() == false)
                     {

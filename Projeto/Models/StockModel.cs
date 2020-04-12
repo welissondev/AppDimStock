@@ -1,5 +1,4 @@
-﻿using DimStock.Reports;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 
@@ -54,7 +53,7 @@ namespace DimStock.Models
     {
         public DataTable ListData()
         {
-            using (var db = new ConnectionModel())
+            using (var dataBase = new ConnectionModel())
             {
                 var sqlQuery = string.Empty;
                 var sqlCount = string.Empty;
@@ -129,26 +128,26 @@ namespace DimStock.Models
                 {
                     sqlLink += " AND InternalCode LIKE @InternalCode";
 
-                    db.AddParameter("@InternalCode", string.Format("{0}%",
+                    dataBase.AddParameter("@InternalCode", string.Format("{0}%",
                     Product.InternalCode));
                 }
                 if (Product.Description != string.Empty)
                 {
                     sqlLink += " AND Description LIKE @Description";
 
-                    db.AddParameter("@Description", string.Format("%{0}%",
+                    dataBase.AddParameter("@Description", string.Format("%{0}%",
                     Product.Description));
                 }
 
                 sqlQuery += sqlLink + " Order By InternalCode Asc";
                 sqlCount += sqlLink;
 
-                return db.GetTable(sqlQuery);
+                return dataBase.GetTable(sqlQuery);
             }
         }
         public DataTable FetchData()
         {
-            using (var db = new ConnectionModel())
+            using (var dataBase = new ConnectionModel())
             {
                 var sqlQuery = string.Empty;
                 var sqlCount = string.Empty;
@@ -223,21 +222,21 @@ namespace DimStock.Models
                 {
                     sqlLink += " AND InternalCode LIKE @InternalCode";
 
-                    db.AddParameter("@InternalCode", string.Format("{0}%",
+                    dataBase.AddParameter("@InternalCode", string.Format("{0}%",
                     Product.InternalCode));
                 }
                 if (Product.Description != string.Empty)
                 {
                     sqlLink += " AND Description LIKE @Description";
 
-                    db.AddParameter("@Description", string.Format("%{0}%",
+                    dataBase.AddParameter("@Description", string.Format("%{0}%",
                     Product.Description));
                 }
 
                 sqlQuery += sqlLink + " Order By InternalCode Asc";
                 sqlCount += sqlLink;
 
-                return db.GetTable(sqlQuery);
+                return dataBase.GetTable(sqlQuery);
             }
         }
 
@@ -245,16 +244,16 @@ namespace DimStock.Models
         {
             var actionResult = false;
 
-            using (var db = new ConnectionModel())
+            using (var dataBase = new ConnectionModel())
             {
                 var sql = @"SELECT Product.Id, Product.InternalCode, Product.Description, 
                 Product.CostPrice, Stock.Id, Stock.Quantity FROM Product INNER JOIN 
                 Stock ON Product.Id = Stock.ProductId WHERE Product.Id = @Id";
 
-                db.ClearParameter();
-                db.AddParameter("@Id", Id);
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@Id", Id);
 
-                using (var reader = db.GetReader(sql))
+                using (var reader = dataBase.GetReader(sql))
                 {
                     if (reader.FieldCount > 0)
                     {
@@ -358,24 +357,24 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public bool RelateProduct(ProductModel product)
+        public bool RelateProduct(int productId)
         {
             var sql = @"INSERT INTO Stock(ProductId)VALUES(@ProductId)";
 
             transaction.DataBase.ClearParameter();
-            transaction.DataBase.AddParameter("@ProductId", product.Id);
+            transaction.DataBase.AddParameter("@ProductId", productId);
 
             return transaction.DataBase.ExecuteTransaction(sql) > 0;
         }
 
-        public bool UpdateValue(ProductModel product)
+        public bool UpdateValue(double productCostPrice)
         {
             var sql = @"UPDATE Stock Set TotalValue = @ProductCostPrice * 
             Quantity WHERE ProductId = @ProductId";
 
             transaction.DataBase.ClearParameter();
-            transaction.DataBase.AddParameter("ProductCostPrice", product.CostPrice);
-            transaction.DataBase.AddParameter("@ProductId", product.Id);
+            transaction.DataBase.AddParameter("ProductCostPrice", productCostPrice);
+            transaction.DataBase.AddParameter("@ProductId", productCostPrice);
 
             return transaction.DataBase.ExecuteTransaction(sql) > 0;
         }
