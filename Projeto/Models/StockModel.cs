@@ -368,13 +368,6 @@ namespace DimStock.Models
             return transaction.DataBase.ExecuteTransaction(sql) > 0;
         }
 
-        public void GenerateReport(List<StockModel> list)
-        {
-            var stock = new StockReport();
-
-            ListData(); stock.GenerateReport(list);
-        }
-
         public bool UpdateValue(ProductModel product)
         {
             var sql = @"UPDATE Stock Set TotalValue = @ProductCostPrice * 
@@ -409,7 +402,6 @@ namespace DimStock.Models
                     stockItem.Summary = "???";
             }
         }
-
         public void SetResult(List<StockModel> listOfRecords)
         {
             for (int i = 0; i < listOfRecords.Count; i++)
