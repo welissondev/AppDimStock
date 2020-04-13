@@ -13,7 +13,7 @@ namespace DimStock.Models
         private bool disposed = false;
 
         public OleDbConnection Connection { get; set; }
-        public OleDbCommand Command { get; set; }
+        private OleDbCommand Command { get; set; }
         public OleDbParameter Parameter { get; set; }
         public OleDbTransaction Transaction { get; set; }
         public string SqlQuery { get; set; }

@@ -46,9 +46,9 @@ namespace DimStock.Models
                 connection.SqlQuery = @"SELECT * FROM [UserLogin] WHERE Login 
                 LIKE @Login AND [PassWord] = @PassWord";
 
-                var paramerter = connection.Command.Parameters;
-                paramerter.AddWithValue("@Login", Login);
-                paramerter.AddWithValue("@PassWord", PassWord);
+                connection.ClearParameter();
+                connection.AddParameter("@Login", Login);
+                connection.AddParameter("@PassWord", PassWord);
 
                 using (var reader = connection.GetReader())
                 {
@@ -318,9 +318,9 @@ namespace DimStock.Models
                 connection.SqlQuery = @"SELECT * FROM [UserLogin] WHERE [Name]  
                 LIKE @Name Or Email LIKE @Email";
 
-                var parameter = connection.Command.Parameters;
-                parameter.AddWithValue("@Name", string.Format("%{0}%", Name));
-                parameter.AddWithValue("@Email", string.Format("%{0}%", Email));
+                connection.ClearParameter();
+                connection.AddParameter("@Name", string.Format("%{0}%", Name));
+                connection.AddParameter("@Email", string.Format("%{0}%", Email));
 
                 var dataTable = connection.GetTable();
 

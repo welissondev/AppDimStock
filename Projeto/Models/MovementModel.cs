@@ -34,12 +34,12 @@ namespace DimStock.Models
 
             using (transaction = new TransactionModel(new ConnectionModel()))
             {
-                transaction.DataBase.SqlQuery = @"INSERT INTO Movement([Type])VALUES(@Type)";
+                transaction.SqlQuery = @"INSERT INTO Movement([Type])VALUES(@Type)";
 
-                transaction.DataBase.ClearParameter();
-                transaction.DataBase.AddParameter("@Type", Type);
+                transaction.ClearParameter();
+                transaction.AddParameter("@Type", Type);
 
-                if (transaction.DataBase.ExecuteTransaction() > 0)
+                if (transaction.Execute() > 0)
                 {
                     if (SetOperationCode() == true)
                     {
@@ -62,12 +62,12 @@ namespace DimStock.Models
 
                 if (new StockModel().InsertPostingOfEntries(postingItems) == true)
                 {
-                    transaction.DataBase.SqlQuery = @"UPDATE Movement Set Situation = 'Finalizada' WHERE Id = @Id";
+                    transaction.SqlQuery = @"UPDATE Movement Set Situation = 'Finalizada' WHERE Id = @Id";
 
-                    transaction.DataBase.ClearParameter();
-                    transaction.DataBase.AddParameter("@Id", Id);
+                    transaction.ClearParameter();
+                    transaction.AddParameter("@Id", Id);
 
-                    if (transaction.DataBase.ExecuteTransaction() > 0)
+                    if (transaction.Execute() > 0)
                     {
                         transaction.Commit();
                         actionResult = true;
@@ -83,13 +83,13 @@ namespace DimStock.Models
             var seed = GetLastId();
             Code = new SingleCodeGenerator(seed).GetCode();
 
-            transaction.DataBase.SqlQuery = @"UPDATE Movement SET Code = @Code WHERE Id = @Id";
+            transaction.SqlQuery = @"UPDATE Movement SET Code = @Code WHERE Id = @Id";
 
-            transaction.DataBase.ClearParameter();
-            transaction.DataBase.AddParameter("@Code", Code);
-            transaction.DataBase.AddParameter("@Id", Id);
+            transaction.ClearParameter();
+            transaction.AddParameter("@Code", Code);
+            transaction.AddParameter("@Id", Id);
 
-            return transaction.DataBase.ExecuteTransaction() > 0;
+            return transaction.Execute() > 0;
         }
 
         public bool SetDestinationId()
@@ -121,12 +121,12 @@ namespace DimStock.Models
             {
                 if (CancelPostings() == true)
                 {
-                    transaction.DataBase.SqlQuery = @"DELETE FROM Movement WHERE Id = @Id";
+                    transaction.SqlQuery = @"DELETE FROM Movement WHERE Id = @Id";
 
-                    transaction.DataBase.ClearParameter();
-                    transaction.DataBase.AddParameter("Id", Id);
+                    transaction.ClearParameter();
+                    transaction.AddParameter("Id", Id);
 
-                    if (transaction.DataBase.ExecuteTransaction() > 0)
+                    if (transaction.Execute() > 0)
                     {
                         actionResult = true;
 
@@ -244,8 +244,8 @@ namespace DimStock.Models
 
         public int GetLastId()
         {
-            transaction.DataBase.SqlQuery = @"SELECT MAX(Id) FROM Movement";
-            return transaction.DataBase.ExecuteScalar();
+            transaction.SqlQuery = @"SELECT MAX(Id) FROM Movement";
+            return transaction.Scalar();
         }
     }
 }

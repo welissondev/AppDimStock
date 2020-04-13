@@ -63,27 +63,26 @@ namespace DimStock.Models
         public bool Update()
         {
             var actionResult = false;
-            var sql = string.Empty;
 
             if (ProductValidationModel.ValidateToUpdate(this) == false)
                 return actionResult;
 
             using (transaction = new TransactionModel(new ConnectionModel()))
             {
-                transaction.DataBase.SqlQuery = @"UPDATE Product SET CategoryId = @CategoryId, InternalCode = @InternalCode, 
+                transaction.SqlQuery = @"UPDATE Product SET CategoryId = @CategoryId, InternalCode = @InternalCode, 
                 Description = @Description, CostPrice = @CostPrice, SalePrice = @SalePrice, 
                 BarCode = @BarCode WHERE Id = @Id";
 
-                transaction.DataBase.ClearParameter();
-                transaction.DataBase.AddParameter("@CategoryId", Category.Id);
-                transaction.DataBase.AddParameter("@InternalCode", InternalCode);
-                transaction.DataBase.AddParameter("@Description", Description);
-                transaction.DataBase.AddParameter("@CostPrice", CostPrice);
-                transaction.DataBase.AddParameter("@SalePrice", SalePrice);
-                transaction.DataBase.AddParameter("@BarCode", BarCode);
-                transaction.DataBase.AddParameter("@Id", Id);
+                transaction.ClearParameter();
+                transaction.AddParameter("@CategoryId", Category.Id);
+                transaction.AddParameter("@InternalCode", InternalCode);
+                transaction.AddParameter("@Description", Description);
+                transaction.AddParameter("@CostPrice", CostPrice);
+                transaction.AddParameter("@SalePrice", SalePrice);
+                transaction.AddParameter("@BarCode", BarCode);
+                transaction.AddParameter("@Id", Id);
 
-                if (transaction.DataBase.ExecuteTransaction() > 0)
+                if (transaction.Execute() > 0)
                 {
                     if (new StockModel(transaction, this).UpdateValue() == true)
                     {
@@ -169,8 +168,8 @@ namespace DimStock.Models
 
         public int GetLastId()
         {
-            transaction.DataBase.SqlQuery = @"SELECT MAX(Id) From Product";
-            return transaction.DataBase.ExecuteScalar();
+            transaction.SqlQuery = @"SELECT MAX(Id) From Product";
+            return transaction.Scalar();
         }
 
         public DataTable FetchData()
