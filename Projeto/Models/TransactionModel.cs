@@ -47,7 +47,7 @@ namespace DimStock.Models
         public int Execute()
         {
             dataBase.SqlQuery = SqlQuery;
-            return dataBase.ExecuteNonQuery();
+            return dataBase.ExecuteTransaction();
         }
         public int Scalar()
         {
