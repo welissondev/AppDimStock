@@ -4,6 +4,9 @@ using System.Data;
 
 namespace DimStock.Models
 {
+    /// <summary>
+    /// Representa o modelo do produto
+    /// </summary>
     public partial class ProductModel
     {
         private TransactionModel transaction;
@@ -16,10 +19,7 @@ namespace DimStock.Models
         public string BarCode { get; set; }
         public CategoryModel Category { get; set; }
     }
-}
 
-namespace DimStock.Models
-{
     public partial class ProductModel
     {
         public ProductModel()
@@ -37,7 +37,7 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"INSERT INTO Product (CategoryId, InternalCode, Description, 
+                dataBase.SqlQuery = @"INSERT INTO Product (CategoryId, InternalCode, Description, 
                 CostPrice, SalePrice, BarCode) VALUES (@CategoryId, @Code, @InternalCode, 
                 @CostPrice, @SalePrice, @BarCode)";
 
@@ -49,7 +49,7 @@ namespace DimStock.Models
                 dataBase.AddParameter("@SalePrice", SalePrice);
                 dataBase.AddParameter("@BarCode", BarCode);
 
-                if (dataBase.ExecuteCommand(sql) > 0)
+                if (dataBase.ExecuteNonQuery() > 0)
                 {
                     MessageNotifier.Message = "Produto cadastrado com sucesso!";
                     MessageNotifier.Title = "Sucesso";
@@ -70,7 +70,7 @@ namespace DimStock.Models
 
             using (transaction = new TransactionModel(new ConnectionModel()))
             {
-                sql = @"UPDATE Product SET CategoryId = @CategoryId, InternalCode = @InternalCode, 
+                transaction.DataBase.SqlQuery = @"UPDATE Product SET CategoryId = @CategoryId, InternalCode = @InternalCode, 
                 Description = @Description, CostPrice = @CostPrice, SalePrice = @SalePrice, 
                 BarCode = @BarCode WHERE Id = @Id";
 
@@ -83,9 +83,9 @@ namespace DimStock.Models
                 transaction.DataBase.AddParameter("@BarCode", BarCode);
                 transaction.DataBase.AddParameter("@Id", Id);
 
-                if (transaction.DataBase.ExecuteTransaction(sql) > 0)
+                if (transaction.DataBase.ExecuteTransaction() > 0)
                 {
-                    if (new StockModel(transaction).UpdateValue(CostPrice) == true)
+                    if (new StockModel(transaction, this).UpdateValue() == true)
                     {
                         transaction.Commit();
                         MessageNotifier.Message = "Produto atualizado com sucesso!";
@@ -100,7 +100,6 @@ namespace DimStock.Models
 
         public bool Delete()
         {
-            var sql = string.Empty;
             var actionResult = false;
 
             if (ProductValidationModel.ValidateToDelete(this) == false)
@@ -108,12 +107,12 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"DELETE FROM Product WHERE Id = @Id";
+                dataBase.SqlQuery = @"DELETE FROM Product WHERE Id = @Id";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Id", Id);
 
-                if (dataBase.ExecuteCommand(sql) > 0)
+                if (dataBase.ExecuteNonQuery() > 0)
                 {
                     MessageNotifier.Message = "Produto excluido com sucesso!";
                     MessageNotifier.Title = "Sucesso";
@@ -134,14 +133,14 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"SELECT Product.*, Category.* FROM Product
+                dataBase.SqlQuery = @"SELECT Product.*, Category.* FROM Product
                 LEFT JOIN Category ON Product.CategoryId = Category.Id
                 WHERE Product.Id = @Id ";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Id", Id);
 
-                using (var reader = dataBase.GetReader(sql))
+                using (var reader = dataBase.GetReader())
                 {
                     if (reader.FieldCount > 0)
                     {
@@ -170,22 +169,20 @@ namespace DimStock.Models
 
         public int GetLastId()
         {
-            var sql = @"SELECT MAX(Id) From Product";
-            return transaction.DataBase.ExecuteScalar(sql);
+            transaction.DataBase.SqlQuery = @"SELECT MAX(Id) From Product";
+            return transaction.DataBase.ExecuteScalar();
         }
 
         public DataTable FetchData()
         {
-            var sql = string.Empty;
-
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"SELECT Id, InternalCode, Description, 
+                dataBase.SqlQuery = @"SELECT Id, InternalCode, Description, 
                 CostPrice, SalePrice FROM Product WHERE Id > 0";
 
                 if (InternalCode != string.Empty)
                 {
-                    sql += " AND InternalCode LIKE @InternalCode";
+                    dataBase.SqlQuery += " AND InternalCode LIKE @InternalCode";
 
                     dataBase.AddParameter("@InternalCode", string.
                     Format("{0}%", InternalCode));
@@ -193,15 +190,15 @@ namespace DimStock.Models
 
                 if (Description != string.Empty)
                 {
-                    sql += " AND Description LIKE @Description";
+                    dataBase.SqlQuery += " AND Description LIKE @Description";
 
                     dataBase.AddParameter("@Description", string.
                     Format("%{0}%", Description));
                 }
 
-                sql += " Order By Id, InternalCode Desc";
+                dataBase.SqlQuery += " Order By Id, InternalCode Desc";
 
-                return dataBase.GetTable(sql);
+                return dataBase.GetTable();
             }
         }
     }

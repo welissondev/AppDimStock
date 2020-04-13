@@ -5,7 +5,22 @@ using System.Data.OleDb;
 
 namespace DimStock.Models
 {
-    public class ConnectionModel : IDisposable
+    /// <summary>
+    /// Representa o modelo de conexão com o banco de dados
+    /// </summary>
+    public partial class ConnectionModel
+    {
+        private bool disposed = false;
+
+        public OleDbConnection Connection { get; set; }
+        public OleDbCommand Command { get; set; }
+        public OleDbParameter Parameter { get; set; }
+        public OleDbTransaction Transaction { get; set; }
+        public string SqlQuery { get; set; }
+        public string SqlScala { get; set; }
+    }
+
+    public partial class ConnectionModel : IDisposable
     {
         public ConnectionModel()
         {
@@ -13,13 +28,6 @@ namespace DimStock.Models
             Command = new OleDbCommand();
             Parameter = new OleDbParameter();
         }
-
-        private bool disposed = false;
-
-        public OleDbConnection Connection { get; set; }
-        public OleDbCommand Command { get; set; }
-        public OleDbParameter Parameter { get; set; }
-        public OleDbTransaction Transaction { get; set; }
 
         public OleDbConnection Open()
         {
@@ -52,11 +60,11 @@ namespace DimStock.Models
             Command.Parameters.Clear();
         }
 
-        public int ExecuteCommand(string sql)
+        public int ExecuteNonQuery()
         {
             try
             {
-                Command.CommandText = sql;
+                Command.CommandText = SqlQuery;
                 Command.Connection = Open();
                 return Command.ExecuteNonQuery();
             }
@@ -65,11 +73,11 @@ namespace DimStock.Models
                 throw;
             }
         }
-        public int ExecuteTransaction(string sql)
+        public int ExecuteTransaction()
         {
             try
             {
-                Command.CommandText = sql;
+                Command.CommandText = SqlQuery;
                 Command.Connection = Transaction.Connection;
                 Command.Transaction = Transaction;
                 return Command.ExecuteNonQuery();
@@ -79,11 +87,11 @@ namespace DimStock.Models
                 throw;
             }
         }
-        public int ExecuteScalar(string sql)
+        public int ExecuteScalar()
         {
             try
             {
-                Command.CommandText = sql;
+                Command.CommandText = SqlScala;
                 Command.Connection = Open();
                 return Convert.ToInt32(Command.ExecuteScalar());
             }
@@ -93,11 +101,11 @@ namespace DimStock.Models
             }
         }
 
-        public OleDbDataReader GetReader(string sql)
+        public OleDbDataReader GetReader()
         {
             try
             {
-                Command.CommandText = sql;
+                Command.CommandText = SqlQuery;
                 Command.Connection = Open();
 
                 return Command.ExecuteReader();
@@ -107,13 +115,13 @@ namespace DimStock.Models
                 throw;
             }
         }
-        public DataTable GetTable(string sql, int startRegister = 0, int finalRegister = 20)
+        public DataTable GetTable(int startRegister = 0, int finalRegister = 20)
         {
             var table = new DataTable();
 
             Open();
 
-            Command.CommandText = sql;
+            Command.CommandText = SqlQuery;
             Command.Connection = Connection;
 
             var adapter = new OleDbDataAdapter
@@ -125,6 +133,7 @@ namespace DimStock.Models
 
             return table;
         }
+
         private string GetConnectionString()
         {
             return @"Provider = Microsoft.jet.oledb.4.0; Data Source =" +

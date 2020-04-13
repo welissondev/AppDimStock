@@ -3,13 +3,19 @@ using System.Data;
 
 namespace DimStock.Models
 {
-    public class TransactionModel : IDisposable
-    {
-        private ConnectionModel dataBase;
+    /// <summary>
+    /// Representa o modelo de transação no banco de dados
+    /// </summary>
+    public partial class TransactionModel
+    {      
         private bool disposed = false;
 
+        private ConnectionModel dataBase;
         public ConnectionModel DataBase { get => dataBase; set => dataBase = value; }
+    }
 
+    public partial class TransactionModel : IDisposable
+    {
         public TransactionModel(ConnectionModel connection, bool beginAutomaticTransaction = true)
         {
             dataBase = connection;

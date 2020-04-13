@@ -1,79 +1,86 @@
 ﻿using DimStock.AuxilyTools.AuxilyClasses;
 using System;
 using System.Collections.Generic;
-using System.Data.OleDb;
 
 namespace DimStock.Models
 {
-    public class StockDestinationModel
+    /// <summary>
+    /// Representa o modelo de destino do estoque
+    /// </summary>
+    public partial class DestinationModel
     {
-        public StockDestinationModel()
-        {
-            List = new List<StockDestinationModel>();
-        }
-
         public int Id { get; set; }
         public string Location { get; set; }
-        public List<StockDestinationModel> List { get; set; }
+        public List<DestinationModel> List { get; set; }
+    }
+
+    public partial class DestinationModel
+    {
+        public DestinationModel()
+        {
+            List = new List<DestinationModel>();
+        }
 
         public bool Insert()
         {
-            var transaction = false;
+            var actionResult = false;
 
-            using (var connection = new ConnectionModel())
+            using (var dataBase = new ConnectionModel())
             {
-                var sqlCommand = @"INSERT INTO StockDestination
+                dataBase.SqlQuery = @"INSERT INTO StockDestination
                 (Location)VALUES(@Location)";
 
-                connection.AddParameter("@Location", Location);
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@Location", Location);
 
-                if (connection.ExecuteCommand(sqlCommand) > 0)
+                if (dataBase.ExecuteNonQuery() > 0)
                 {
-                    transaction = true;
                     MessageNotifier.Message = "Cadastrado com sucesso!";
+                    MessageNotifier.Title = "Sucesso";
+                    actionResult = true;
                 }
             }
 
-            return transaction;
+            return actionResult;
         }
 
         public bool Update(int id)
         {
-            var transaction = false;
+            var actionResult = false;
 
-            using (var connection = new ConnectionModel())
+            using (var dataBase = new ConnectionModel())
             {
-                var sqlCommand = @"UPDATE StockDestination SET 
+                dataBase.SqlQuery = @"UPDATE StockDestination SET 
                 Location = @Location WHERE Id = @Id";
 
-                connection.AddParameter("@Location", Location);
-                connection.AddParameter("@Id", id);
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@Location", Location);
+                dataBase.AddParameter("@Id", id);
 
-                if (connection.ExecuteCommand(sqlCommand) > 0)
+                if (dataBase.ExecuteNonQuery() > 0)
                 {
                     MessageNotifier.Message = "Editado com sucesso!";
-                    transaction = true;
+                    actionResult = true;
                 }
             }
 
-            return transaction;
+            return actionResult;
         }
 
         public bool Delete(int id)
         {
-            bool transaction = false;
+            var actionResult = false;
 
-            using (var connection = new ConnectionModel())
+            using (var dataBase = new ConnectionModel())
             {
-                var sqlCommand = @"DELETE FROM StockDestination 
-                WHERE Id = @Id";
+                dataBase.SqlQuery = @"DELETE FROM Destination WHERE Id = @Id";
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@Id", id);
 
-                connection.AddParameter("@Id", id);
-
-                if (connection.ExecuteCommand(sqlCommand) > 0)
+                if (dataBase.ExecuteNonQuery() > 0)
                 {
                     MessageNotifier.Message = "Deletado com sucesso!";
-                    transaction = true;
+                    actionResult = true;
                 }
                 else
                 {
@@ -82,20 +89,20 @@ namespace DimStock.Models
                 }
             }
 
-            return transaction;
+            return actionResult;
         }
 
         public void ListData()
         {
-            var sqlQuery = @"SELECT * From StockDestination";
-
             using (var connection = new ConnectionModel())
             {
-                using (var reader = connection.GetReader(sqlQuery))
+                connection.SqlQuery = @"SELECT * From StockDestination";
+
+                using (var reader = connection.GetReader())
                 {
                     while (reader.Read())
                     {
-                        var destination = new StockDestinationModel()
+                        var destination = new DestinationModel()
                         {
                             Id = Convert.ToInt32(reader["Id"]),
                             Location = Convert.ToString(reader["Location"])
@@ -111,12 +118,12 @@ namespace DimStock.Models
         {
             using (var connection = new ConnectionModel())
             {
-                var sqlQuery = @"SELECT * FROM StockDestination 
+                connection.SqlQuery = @"SELECT * FROM StockDestination 
                 WHERE Id = @Id";
 
                 connection.AddParameter("@Id", id);
 
-                using (var reader = connection.GetReader(sqlQuery))
+                using (var reader = connection.GetReader())
                 {
                     while (reader.Read())
                     {

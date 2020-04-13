@@ -165,9 +165,9 @@
     <Compile Include="Models\CategoryValidationModel.cs" />
     <Compile Include="Models\ProductValidationModel.cs" />
     <Compile Include="Models\StockModel.cs" />
-    <Compile Include="Models\StockDestinationModel.cs" />
-    <Compile Include="Models\StockMovementItem.cs" />
-    <Compile Include="Models\StockMovementModel.cs" />
+    <Compile Include="Models\DestinationModel.cs" />
+    <Compile Include="Models\MovementItemModel.cs" />
+    <Compile Include="Models\MovementModel.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\MessageNotifier.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\TransactionModel.cs" />

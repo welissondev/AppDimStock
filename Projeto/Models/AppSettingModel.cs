@@ -5,6 +5,9 @@ using System.Collections.Generic;
 
 namespace DimStock.Models
 {
+    /// <summary>
+    /// Representa o modelo de configuração da aplicação
+    /// </summary>
     public class AppSettingModel
     {
         public void TransferDataBaseToMainDirectory()

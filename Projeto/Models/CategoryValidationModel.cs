@@ -2,6 +2,9 @@
 
 namespace DimStock.Models
 {
+    /// <summary>
+    /// Representa o modelo de validação da categoria
+    /// </summary>
     public class CategoryValidationModel
     {
         public static bool ValidateToInsert(CategoryModel category)
@@ -105,12 +108,11 @@ namespace DimStock.Models
 
         public static bool ValidateIfExists(CategoryModel category)
         {
-            var sql = string.Empty;
             var actionResult = false;
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"SELECT Id, Description FROM Category WHERE Id = @Id ";
+                dataBase.SqlQuery = @"SELECT Id, Description FROM Category WHERE Id = @Id ";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Id", category.Id);
@@ -120,11 +122,11 @@ namespace DimStock.Models
                 if (category.Description != string.Empty && 
                     category.Description != null)
                 {
-                    sql += "OR Description = @Description";
+                    dataBase.SqlQuery += "OR Description = @Description";
                     dataBase.AddParameter("@Description", category.Description);
                 }
 
-                using (var reader = dataBase.GetReader(sql))
+                using (var reader = dataBase.GetReader())
                 {
                     if (reader.Read() == false)
                     {

@@ -2,6 +2,9 @@
 
 namespace DimStock.Models
 {
+    /// <summary>
+    /// Representa o modelo de validação do produto
+    /// </summary>
     public class ProductValidationModel
     {
         public static bool ValidateToInsert(ProductModel product)
@@ -143,12 +146,12 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = "SELECT Id FROM Product WHERE Id = @Id";
+                dataBase.SqlQuery = "SELECT Id FROM Product WHERE Id = @Id";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Id", product.Id);
 
-                using (var reader = dataBase.GetReader(sql))
+                using (var reader = dataBase.GetReader())
                 {
                     if (reader.Read() == false)
                     {
