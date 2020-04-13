@@ -35,36 +35,29 @@ namespace DimStock.Models
             if (ProductValidationModel.ValidateToInsert(this) == false)
                 return actionResult;
 
-            using (transaction = new TransactionModel(new ConnectionModel()))
+            using (var dataBase = new ConnectionModel())
             {
                 sql = @"INSERT INTO Product (CategoryId, InternalCode, Description, 
                 CostPrice, SalePrice, BarCode) VALUES (@CategoryId, @Code, @InternalCode, 
                 @CostPrice, @SalePrice, @BarCode)";
 
-                transaction.DataBase.ClearParameter();
-                transaction.DataBase.AddParameter("@CategoryId", Category.Id);
-                transaction.DataBase.AddParameter("@InternalCode", InternalCode);
-                transaction.DataBase.AddParameter("@Description", Description);
-                transaction.DataBase.AddParameter("@CostPrice", CostPrice);
-                transaction.DataBase.AddParameter("@SalePrice", SalePrice);
-                transaction.DataBase.AddParameter("@BarCode", BarCode);
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@CategoryId", Category.Id);
+                dataBase.AddParameter("@InternalCode", InternalCode);
+                dataBase.AddParameter("@Description", Description);
+                dataBase.AddParameter("@CostPrice", CostPrice);
+                dataBase.AddParameter("@SalePrice", SalePrice);
+                dataBase.AddParameter("@BarCode", BarCode);
 
-                if (transaction.DataBase.ExecuteTransaction(sql) > 0)
+                if (dataBase.ExecuteCommand(sql) > 0)
                 {
-                    var id = GetLastId();
-                    if (new StockModel(transaction).RelateProduct(id))
-                    {
-                        transaction.Commit();
-
-                        MessageNotifier.Message = "Produto cadastrado com sucesso!";
-                        MessageNotifier.Title = "Sucesso";
-
-                        actionResult = true;
-                    }
+                    MessageNotifier.Message = "Produto cadastrado com sucesso!";
+                    MessageNotifier.Title = "Sucesso";
+                    actionResult = true;
                 }
-
-                return actionResult;
             }
+
+            return actionResult;
         }
 
         public bool Update()
@@ -95,10 +88,8 @@ namespace DimStock.Models
                     if (new StockModel(transaction).UpdateValue(CostPrice) == true)
                     {
                         transaction.Commit();
-
                         MessageNotifier.Message = "Produto atualizado com sucesso!";
                         MessageNotifier.Title = "Sucesso!";
-
                         actionResult = true;
                     }
                 }
@@ -107,10 +98,30 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public int GetLastId()
+        public bool Delete()
         {
-            var sql = @"SELECT MAX(Id) From Product";
-            return transaction.DataBase.ExecuteScalar(sql);
+            var sql = string.Empty;
+            var actionResult = false;
+
+            if (ProductValidationModel.ValidateToDelete(this) == false)
+                return actionResult;
+
+            using (var dataBase = new ConnectionModel())
+            {
+                sql = @"DELETE FROM Product WHERE Id = @Id";
+
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@Id", Id);
+
+                if (dataBase.ExecuteCommand(sql) > 0)
+                {
+                    MessageNotifier.Message = "Produto excluido com sucesso!";
+                    MessageNotifier.Title = "Sucesso";
+                    actionResult = true;
+                }
+            }
+
+            return actionResult;
         }
 
         public bool GetDetail()
@@ -157,33 +168,10 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public bool Delete()
+        public int GetLastId()
         {
-            var sql = string.Empty;
-            var actionResult = false;
-
-            if (ProductValidationModel.ValidateToDelete(this) == false)
-                return actionResult;
-
-            using (transaction = new TransactionModel(new ConnectionModel()))
-            {
-                sql = @"DELETE FROM Product WHERE Id = @Id";
-
-                transaction.DataBase.ClearParameter();
-                transaction.DataBase.AddParameter("@Id", Id);
-
-                if (transaction.DataBase.ExecuteTransaction(sql) > 0)
-                {
-                    transaction.Commit();
-
-                    MessageNotifier.Message = "Produto excluido com sucesso!";
-                    MessageNotifier.Title = "Sucesso";
-
-                    actionResult = true;
-                }
-            }
-
-            return actionResult;
+            var sql = @"SELECT MAX(Id) From Product";
+            return transaction.DataBase.ExecuteScalar(sql);
         }
 
         public DataTable FetchData()

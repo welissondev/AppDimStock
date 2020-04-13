@@ -357,16 +357,6 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public bool RelateProduct(int productId)
-        {
-            var sql = @"INSERT INTO Stock(ProductId)VALUES(@ProductId)";
-
-            transaction.DataBase.ClearParameter();
-            transaction.DataBase.AddParameter("@ProductId", productId);
-
-            return transaction.DataBase.ExecuteTransaction(sql) > 0;
-        }
-
         public bool UpdateValue(double productCostPrice)
         {
             var sql = @"UPDATE Stock Set TotalValue = @ProductCostPrice * 
