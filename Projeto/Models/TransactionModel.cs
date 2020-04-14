@@ -4,7 +4,7 @@ using System.Data;
 namespace DimStock.Models
 {
     /// <summary>
-    /// Representa o modelo de transação no banco de dados
+    /// Representa o modelo que manipula o transacionamento da conexão
     /// </summary>
     public partial class TransactionModel : IDisposable
     {

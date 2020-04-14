@@ -84,6 +84,7 @@ namespace DimStock.Models
             }
             catch (Exception)
             {
+                Transaction.Rollback();
                 throw;
             }
         }
