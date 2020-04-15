@@ -32,7 +32,7 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
-            using (transaction = new TransactionModel(new ConnectionModel()))
+            using (transaction = new TransactionModel())
             {
                 sql = @"INSERT INTO Movement([Type])VALUES(@Type)";
 
@@ -43,7 +43,7 @@ namespace DimStock.Models
                 {
                     if (SetOperationCode() == true)
                     {
-                        transaction.Commit();
+                        transaction.ExecuteCommit();
                         actionResult = true;
                     }
                 }
@@ -57,7 +57,7 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
-            using (transaction = new TransactionModel(new ConnectionModel()))
+            using (transaction = new TransactionModel())
             {
                 var postingItems = GetPostingsList();
 
@@ -70,7 +70,7 @@ namespace DimStock.Models
 
                     if (transaction.ExecuteCommand(sql) > 0)
                     {
-                        transaction.Commit();
+                        transaction.ExecuteCommit();
                         actionResult = true;
                     }
                 }
@@ -120,7 +120,7 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
-            using (transaction = new TransactionModel(new ConnectionModel()))
+            using (transaction = new TransactionModel())
             {
                 if (CancelPostings() == true)
                 {

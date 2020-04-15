@@ -9,16 +9,13 @@ namespace DimStock.Models
     {
         private bool disposed = false;
         private ConnectionModel dataBase;
-
-        public string SqlQuery { get; set; }
-        public string SqlScala { get; set; }
     }
 
     public partial class TransactionModel
     {
-        public TransactionModel(ConnectionModel connection, bool beginAutomaticTransaction = true)
+        public TransactionModel(bool beginAutomaticTransaction = true)
         {
-            dataBase = connection;
+            dataBase = new ConnectionModel();
 
             if (beginAutomaticTransaction == true)
                 Begin();
@@ -35,16 +32,16 @@ namespace DimStock.Models
 
         public void Begin()
         {
-            dataBase.Transaction = dataBase.Open().BeginTransaction();
+            dataBase.BeginTransaction(dataBase.Open());
         }
-        public void Commit()
+        public void ExecuteCommit()
         {
-            dataBase.Transaction.Commit();
+            dataBase.TransactionExecuteCommit();
         }
 
         public int ExecuteCommand(string sql)
         {
-            return dataBase.ExecuteTransaction(sql);
+            return dataBase.TransactionExecuteCommand(sql);
         }
         public int ExecuteScalar(string sql)
         {

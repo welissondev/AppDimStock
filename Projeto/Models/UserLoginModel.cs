@@ -146,42 +146,38 @@ namespace DimStock.Models
             if (ValidateEmail(Email) == false)
                 return false;
 
-            using (var connection = new ConnectionModel())
+            var transactionState = false;
+            var sql = string.Empty;
+
+            using (var transaction = new TransactionModel())
             {
-                var transactionState = false;
-                var sql = string.Empty;
+                sql = @"INSERT INTO [User]([Name], Email, Login, [PassWord], 
+                PermissionToRegister, PermissionToEdit, PermissionToDelete, PermissionToView, 
+                AllPermissions)VALUES(@Name, @Email, @Login, @PassWord, @PermissionToRegister, 
+                @PermissionToEdit, @PermissionToDelete, @PermissionToView, @AllPermissions)";
 
-                using (connection.Transaction = connection.Open().BeginTransaction())
-                {
-                    sql = @"INSERT INTO [User]([Name], Email, Login, [PassWord], 
-                    PermissionToRegister, PermissionToEdit, PermissionToDelete, PermissionToView, 
-                    AllPermissions)VALUES(@Name, @Email, @Login, @PassWord, @PermissionToRegister, 
-                    @PermissionToEdit, @PermissionToDelete, @PermissionToView, @AllPermissions)";
+                transaction.ClearParameter();
+                transaction.AddParameter("@Name", Name);
+                transaction.AddParameter("@Email", Email);
+                transaction.AddParameter("@Login", Login);
+                transaction.AddParameter("@PassWord", PassWord);
+                transaction.AddParameter("@PermissionToRegister", PermissionToRegister);
+                transaction.AddParameter("@PermissionToEdit", PermissionToEdit);
+                transaction.AddParameter("@PermissionToDelete", PermissionToDelete);
+                transaction.AddParameter("@PermissionToView", PermissionToView);
+                transaction.AddParameter("@AllPermissions", AllPermissions);
 
-                    connection.ClearParameter();
-                    connection.AddParameter("@Name", Name);
-                    connection.AddParameter("@Email", Email);
-                    connection.AddParameter("@Login", Login);
-                    connection.AddParameter("@PassWord", PassWord);
-                    connection.AddParameter("@PermissionToRegister", PermissionToRegister);
-                    connection.AddParameter("@PermissionToEdit", PermissionToEdit);
-                    connection.AddParameter("@PermissionToDelete", PermissionToDelete);
-                    connection.AddParameter("@PermissionToView", PermissionToView);
-                    connection.AddParameter("@AllPermissions", AllPermissions);
+                transactionState = transaction.ExecuteCommand(sql) > 0;
 
-                    transactionState = connection.ExecuteTransaction(sql) > 0;
+                sql = "SELECT MAX(Id) FROM [User]";
+                Id = Convert.ToInt32(transaction.ExecuteScalar(sql));
 
-                    sql = "SELECT MAX(Id) FROM [User]";
-                    Id = Convert.ToInt32(connection.ExecuteScalar(sql));
+                transaction.ExecuteCommit();
 
-                    //Finaliza a transação
-                    connection.Transaction.Commit();
-
-                    MessageNotifier.Message = "Usuário cadastado com sucesso!";
-                }
-
-                return transactionState;
+                MessageNotifier.Message = "Usuário cadastado com sucesso!";
             }
+
+            return transactionState;
         }
 
         public bool Edit(int id)
@@ -191,40 +187,35 @@ namespace DimStock.Models
             if (ValidateEmail(Email) == false)
                 return false;
 
-            using (var connection = new ConnectionModel())
+            var transactionState = false;
+
+            using (var transaction = new TransactionModel())
             {
-                var transactionState = false;
+                sql = @"UPDATE [UserLogin] Set [Name] = @Name, Email = @Email, 
+                Login = @Login, [PassWord] = @PassWord, PermissionToRegister = @PermissionToRegister, 
+                PermissionToEdit = @PermissionToEdit, PermissionToDelete = @PermissionToDelete, 
+                PermissionToView = @PermissionToView, AllPermissions = @AllPermissions 
+                WHERE Id = @Id";
 
-                using (connection.Transaction = connection.Open().BeginTransaction())
-                {
-                    sql = @"UPDATE [UserLogin] Set [Name] = @Name, Email = @Email, 
-                    Login = @Login, [PassWord] = @PassWord, PermissionToRegister = @PermissionToRegister, 
-                    PermissionToEdit = @PermissionToEdit, PermissionToDelete = @PermissionToDelete, 
-                    PermissionToView = @PermissionToView, AllPermissions = @AllPermissions 
-                    WHERE Id = @Id";
+                transaction.ClearParameter();
+                transaction.AddParameter("@Name", Name);
+                transaction.AddParameter("@Email", Email);
+                transaction.AddParameter("@Login", Login);
+                transaction.AddParameter("@PassWord", PassWord);
+                transaction.AddParameter("@PermissionToRegister", PermissionToRegister);
+                transaction.AddParameter("@PermissionToEdit", PermissionToEdit);
+                transaction.AddParameter("@PermissionToDelete", PermissionToDelete);
+                transaction.AddParameter("@PermissionToView", PermissionToView);
+                transaction.AddParameter("@AllPermissions", AllPermissions);
+                transaction.AddParameter("@Id", id);
 
-                    connection.ClearParameter();
-                    connection.AddParameter("@Name", Name);
-                    connection.AddParameter("@Email", Email);
-                    connection.AddParameter("@Login", Login);
-                    connection.AddParameter("@PassWord", PassWord);
-                    connection.AddParameter("@PermissionToRegister", PermissionToRegister);
-                    connection.AddParameter("@PermissionToEdit", PermissionToEdit);
-                    connection.AddParameter("@PermissionToDelete", PermissionToDelete);
-                    connection.AddParameter("@PermissionToView", PermissionToView);
-                    connection.AddParameter("@AllPermissions", AllPermissions);
-                    connection.AddParameter("@Id", id);
+                transactionState = transaction.ExecuteCommand(sql) > 0;
+                transaction.ExecuteCommit();
 
-                    transactionState = connection.ExecuteTransaction(sql) > 0;
-
-                    //Finaliza a transação
-                    connection.Transaction.Commit();
-
-                    MessageNotifier.Message = "Usuário alterado com sucesso!";
-                }
-
-                return transactionState;
+                MessageNotifier.Message = "Usuário alterado com sucesso!";
             }
+
+            return transactionState;
         }
 
         public bool Remove(int id)
@@ -245,28 +236,23 @@ namespace DimStock.Models
                 return false;
             }
 
-            using (var connection = new ConnectionModel())
+            var transactionState = false;
+            var sql = string.Empty;
+
+            using (var transaction = new TransactionModel())
             {
-                var transactionState = false;
-                var sql = string.Empty;
+                sql = @"DELETE FROM [UserLogin] WHERE Id = @Id";
 
-                using (connection.Transaction = connection.Open().BeginTransaction())
-                {
-                    sql = @"DELETE FROM [UserLogin] WHERE Id = @Id";
+                transaction.ClearParameter();
+                transaction.AddParameter("@Id", id);
 
-                    connection.ClearParameter();
-                    connection.AddParameter("@Id", id);
+                transactionState = transaction.ExecuteCommand(sql) > 0;
+                transaction.ExecuteCommit();
 
-                    transactionState = connection.ExecuteTransaction(sql) > 0;
-
-                    //Finaliza a transação
-                    connection.Transaction.Commit();
-
-                    MessageNotifier.Message = "Usuário excluido com sucesso!";
-                }
-
-                return transactionState;
+                MessageNotifier.Message = "Usuário excluido com sucesso!";
             }
+
+            return transactionState;
         }
 
         public void ListData()

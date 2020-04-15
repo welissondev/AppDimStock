@@ -11,32 +11,31 @@ namespace DimStock.Models
     public partial class ConnectionModel
     {
         private bool disposed = false;
-
-        public OleDbConnection Connection { get; set; }
-        public OleDbCommand Command { get; set; }
-        public OleDbParameter Parameter { get; set; }
-        public OleDbTransaction Transaction { get; set; }
+        private OleDbParameter parameter;
+        private OleDbCommand command;
+        private OleDbConnection connection;
+        private OleDbTransaction transaction;
     }
 
     public partial class ConnectionModel : IDisposable
     {
         public ConnectionModel()
         {
-            Connection = new OleDbConnection(GetConnectionString());
-            Command = new OleDbCommand();
-            Parameter = new OleDbParameter();
+            connection = new OleDbConnection(GetConnectionString());
+            command = new OleDbCommand();
+            parameter = new OleDbParameter();
         }
 
         public OleDbConnection Open()
         {
             try
             {
-                if (Connection.State == ConnectionState.Closed)
+                if (connection.State == ConnectionState.Closed)
                 {
-                    Connection.Open();
+                    connection.Open();
                 }
 
-                return Connection;
+                return connection;
             }
             catch (OleDbException)
             {
@@ -48,27 +47,12 @@ namespace DimStock.Models
         {
             try
             {
-                Command.CommandText = sql;
-                Command.Connection = Open();
-                return Command.ExecuteNonQuery();
+                command.CommandText = sql;
+                command.Connection = Open();
+                return command.ExecuteNonQuery();
             }
             catch (Exception)
             {
-                throw;
-            }
-        }
-        public int ExecuteTransaction(string sql)
-        {
-            try
-            {
-                Command.CommandText = sql;
-                Command.Connection = Transaction.Connection;
-                Command.Transaction = Transaction;
-                return Command.ExecuteNonQuery();
-            }
-            catch (Exception)
-            {
-                Transaction.Rollback();
                 throw;
             }
         }
@@ -76,9 +60,9 @@ namespace DimStock.Models
         {
             try
             {
-                Command.CommandText = sql;
-                Command.Connection = Open();
-                return Convert.ToInt32(Command.ExecuteScalar());
+                command.CommandText = sql;
+                command.Connection = Open();
+                return Convert.ToInt32(command.ExecuteScalar());
             }
             catch (Exception)
             {
@@ -86,14 +70,38 @@ namespace DimStock.Models
             }
         }
 
+        public int TransactionExecuteCommand(string sql)
+        {
+            try
+            {
+                command.CommandText = sql;
+                command.Connection = transaction.Connection;
+                command.Transaction = transaction;
+                return command.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                transaction.Rollback();
+                throw;
+            }
+        }
+        public void TransactionExecuteCommit()
+        {
+            transaction.Commit();
+        }
+        public void BeginTransaction(OleDbConnection connection)
+        {
+            transaction = connection.BeginTransaction();
+        }
+
         public OleDbDataReader GetDataReader(string sql)
         {
             try
             {
-                Command.CommandText = sql;
-                Command.Connection = Open();
+                command.CommandText = sql;
+                command.Connection = Open();
 
-                return Command.ExecuteReader();
+                return command.ExecuteReader();
             }
             catch (Exception)
             {
@@ -106,19 +114,18 @@ namespace DimStock.Models
 
             Open();
 
-            Command.CommandText = sql;
-            Command.Connection = Connection;
+            command.CommandText = sql;
+            command.Connection = connection;
 
             var adapter = new OleDbDataAdapter
             {
-                SelectCommand = Command
+                SelectCommand = command
             };
 
             adapter.Fill(startRegister, finalRegister, table);
 
             return table;
         }
-
 
         public void AddParameter(string name, object value)
         {
@@ -127,13 +134,12 @@ namespace DimStock.Models
                 ParameterName = name,
                 Value = value
             };
-            Command.Parameters.Add(parameter);
+            command.Parameters.Add(parameter);
         }
         public void ClearParameter()
         {
-            Command.Parameters.Clear();
+            command.Parameters.Clear();
         }
-
 
         private string GetConnectionString()
         {
@@ -153,8 +159,9 @@ namespace DimStock.Models
 
             if (disposing)
             {
-                Connection.Dispose();
-                Command.Dispose();
+                connection.Dispose();
+                command.Dispose();
+                if (transaction != null) transaction.Dispose();
             }
 
             disposed = true;

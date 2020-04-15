@@ -68,7 +68,7 @@ namespace DimStock.Models
             if (ProductValidationModel.ValidateToUpdate(this) == false)
                 return actionResult;
 
-            using (transaction = new TransactionModel(new ConnectionModel()))
+            using (transaction = new TransactionModel())
             {
                 sql = @"UPDATE Product SET CategoryId = @CategoryId, InternalCode = @InternalCode, 
                 Description = @Description, CostPrice = @CostPrice, SalePrice = @SalePrice, 
@@ -87,7 +87,7 @@ namespace DimStock.Models
                 {
                     if (new StockModel(transaction, this).UpdateValue() == true)
                     {
-                        transaction.Commit();
+                        transaction.ExecuteCommit();
                         MessageNotifier.Message = "Produto atualizado com sucesso!";
                         MessageNotifier.Title = "Sucesso!";
                         actionResult = true;

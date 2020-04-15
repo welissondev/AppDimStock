@@ -24,27 +24,24 @@ namespace DimStock.Models
             if (CategoryValidationModel.ValidateToInsert(this) == false)
                 return actionResult;
 
-            using (var dataBase = new ConnectionModel())
+            using (var transaction = new TransactionModel())
             {
-                using (dataBase.Transaction = dataBase.Open().BeginTransaction())
+                sql = @"INSERT INTO Category(Description)VALUES(@Description)";
+
+                transaction.ClearParameter();
+                transaction.AddParameter("@Description", Description);
+
+                if (transaction.ExecuteCommand(sql) > 0)
                 {
-                    sql = @"INSERT INTO Category(Description)VALUES(@Description)";
-
-                    dataBase.ClearParameter();
-                    dataBase.AddParameter("@Description", Description);
-
-                    if (dataBase.ExecuteTransaction(sql) > 0)
-                    {
-                        dataBase.Transaction.Commit();
-
-                        MessageNotifier.Message = "Cadastrado com sucesso!";
-                        MessageNotifier.Title = "Sucesso";
-                        actionResult = true;
-                    }
+                    transaction.ExecuteCommit();
+                    MessageNotifier.Message = "Cadastrado com sucesso!";
+                    MessageNotifier.Title = "Sucesso";
+                    actionResult = true;
                 }
-
-                return actionResult;
             }
+
+            return actionResult;
+
         }
 
         public bool Update()
@@ -55,30 +52,28 @@ namespace DimStock.Models
             if (CategoryValidationModel.ValidateToUpdate(this) == false)
                 return actionResult;
 
-            using (var dataBase = new ConnectionModel())
+            using (var transaction = new TransactionModel())
             {
-                using (dataBase.Transaction = dataBase.Open().BeginTransaction())
+                sql = @"UPDATE Category SET Description = @Description WHERE Id = @Id";
+
+                transaction.ClearParameter();
+                transaction.AddParameter("@Description", Description);
+                transaction.AddParameter("@Id", Id);
+
+                actionResult = transaction.ExecuteCommand(sql) > 0;
+
+                if (actionResult == true)
                 {
-                    sql = @"UPDATE Category SET Description = @Description WHERE Id = @Id";
+                    transaction.ExecuteCommit();
+                    MessageNotifier.Message = "Categoria editada com sucesso!";
+                    MessageNotifier.Title = "Sucesso";
 
-                    dataBase.ClearParameter();
-                    dataBase.AddParameter("@Description", Description);
-                    dataBase.AddParameter("@Id", Id);
-
-                    actionResult = dataBase.ExecuteTransaction(sql) > 0;
-
-                    if (actionResult == true)
-                    {
-                        dataBase.Transaction.Commit();
-                        MessageNotifier.Message = "Categoria editada com sucesso!";
-                        MessageNotifier.Title = "Sucesso";
-
-                        return actionResult;
-                    }
+                    return actionResult;
                 }
-
-                return actionResult;
             }
+
+            return actionResult;
+
         }
 
         public bool Delete()
@@ -89,30 +84,25 @@ namespace DimStock.Models
             if (CategoryValidationModel.ValidateToDelete(this) == false)
                 return actionResult;
 
-            using (var dataBase = new ConnectionModel())
+            using (var transaction = new TransactionModel())
             {
-                using (dataBase.Transaction = dataBase.Open().BeginTransaction())
+                sql = @"DELETE FROM Category WHERE Id = @Id";
+
+                transaction.ClearParameter();
+                transaction.AddParameter("@Id", Id);
+
+                actionResult = transaction.ExecuteCommand(sql) > 0;
+
+                if (actionResult == true)
                 {
-                    sql = @"DELETE FROM Category WHERE Id = @Id";
-
-                    dataBase.ClearParameter();
-                    dataBase.AddParameter("@Id", Id);
-
-                    actionResult = dataBase.ExecuteTransaction(sql) > 0;
-
-                    if (actionResult == true)
-                    {
-                        dataBase.Transaction.Commit();
-
-                        MessageNotifier.Message = "Categoria deletada com sucesso!";
-                        MessageNotifier.Title = "Sucesso";
-
-                        return actionResult;
-                    }
+                    transaction.ExecuteCommit();
+                    MessageNotifier.Message = "Categoria deletada com sucesso!";
+                    MessageNotifier.Title = "Sucesso";
+                    return actionResult;
                 }
-
-                return actionResult;
             }
+
+            return actionResult;
         }
 
         public bool GetDetail()
@@ -175,7 +165,7 @@ namespace DimStock.Models
                     sql += "WHERE Description LIKE @Description ";
 
                     dataBase.AddParameter("@Description",
-                    string.Format("%{0}%", Description));
+                   string.Format("%{0}%", Description));
                 }
 
                 sql += "ORDER BY Description";

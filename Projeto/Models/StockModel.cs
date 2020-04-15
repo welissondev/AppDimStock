@@ -300,7 +300,7 @@ namespace DimStock.Models
 
             foreach (DataRow item in postingItems.Rows)
             {
-                transaction.SqlQuery = @"UPDATE Stock Set Quantity = Quantity - @ItemQuantity, 
+                sql = @"UPDATE Stock Set Quantity = Quantity - @ItemQuantity, 
                 TotalValue = TotalValue - @ItemTotalValue WHERE Id = @StockId";
 
                 transaction.ClearParameter();
