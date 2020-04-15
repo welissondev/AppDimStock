@@ -15,7 +15,7 @@ namespace DimStock.Models
         public string SqlScala { get; set; }
     }
 
-    public partial class TransactionModel 
+    public partial class TransactionModel
     {
         public TransactionModel(ConnectionModel connection, bool beginAutomaticTransaction = true)
         {
@@ -36,8 +36,7 @@ namespace DimStock.Models
 
         public void Begin()
         {
-            if (dataBase.Connection.State == ConnectionState.Closed)
-                dataBase.Transaction = dataBase.Open().BeginTransaction();
+            dataBase.Transaction = dataBase.Open().BeginTransaction();
         }
         public void Commit()
         {
