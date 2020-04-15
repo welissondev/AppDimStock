@@ -149,7 +149,7 @@ namespace DimStock.Models
             var transactionState = false;
             var sql = string.Empty;
 
-            using (var transaction = new TransactionModel())
+            using (var transaction = new ConnectionTransactionModel())
             {
                 sql = @"INSERT INTO [User]([Name], Email, Login, [PassWord], 
                 PermissionToRegister, PermissionToEdit, PermissionToDelete, PermissionToView, 
@@ -189,7 +189,7 @@ namespace DimStock.Models
 
             var transactionState = false;
 
-            using (var transaction = new TransactionModel())
+            using (var transaction = new ConnectionTransactionModel())
             {
                 sql = @"UPDATE [UserLogin] Set [Name] = @Name, Email = @Email, 
                 Login = @Login, [PassWord] = @PassWord, PermissionToRegister = @PermissionToRegister, 
@@ -239,7 +239,7 @@ namespace DimStock.Models
             var transactionState = false;
             var sql = string.Empty;
 
-            using (var transaction = new TransactionModel())
+            using (var transaction = new ConnectionTransactionModel())
             {
                 sql = @"DELETE FROM [UserLogin] WHERE Id = @Id";
 

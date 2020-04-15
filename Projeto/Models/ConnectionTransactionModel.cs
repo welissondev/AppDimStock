@@ -5,15 +5,15 @@ namespace DimStock.Models
     /// <summary>
     /// Representa o modelo que manipula o transacionamento da conexão
     /// </summary>
-    public partial class TransactionModel : IDisposable
+    public partial class ConnectionTransactionModel : IDisposable
     {
         private bool disposed = false;
         private ConnectionModel dataBase;
     }
 
-    public partial class TransactionModel
+    public partial class ConnectionTransactionModel
     {
-        public TransactionModel(bool beginAutomaticTransaction = true)
+        public ConnectionTransactionModel(bool beginAutomaticTransaction = true)
         {
             dataBase = new ConnectionModel();
 

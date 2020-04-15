@@ -9,7 +9,7 @@ namespace DimStock.Models
     /// </summary>
     public partial class ProductModel
     {
-        private TransactionModel transaction;
+        private ConnectionTransactionModel transaction;
 
         public int Id { get; set; }
         public string InternalCode { get; set; }
@@ -68,7 +68,7 @@ namespace DimStock.Models
             if (ProductValidationModel.ValidateToUpdate(this) == false)
                 return actionResult;
 
-            using (transaction = new TransactionModel())
+            using (transaction = new ConnectionTransactionModel())
             {
                 sql = @"UPDATE Product SET CategoryId = @CategoryId, InternalCode = @InternalCode, 
                 Description = @Description, CostPrice = @CostPrice, SalePrice = @SalePrice, 

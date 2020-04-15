@@ -9,7 +9,7 @@ namespace DimStock.Models
     /// </summary>
     public partial class MovementModel
     {
-        private TransactionModel transaction;
+        private ConnectionTransactionModel transaction;
 
         public int Id { get; set; }
         public string Type { get; set; }
@@ -32,7 +32,7 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
-            using (transaction = new TransactionModel())
+            using (transaction = new ConnectionTransactionModel())
             {
                 sql = @"INSERT INTO Movement([Type])VALUES(@Type)";
 
@@ -57,7 +57,7 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
-            using (transaction = new TransactionModel())
+            using (transaction = new ConnectionTransactionModel())
             {
                 var postingItems = GetPostingsList();
 
@@ -120,7 +120,7 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
-            using (transaction = new TransactionModel())
+            using (transaction = new ConnectionTransactionModel())
             {
                 if (CancelPostings() == true)
                 {

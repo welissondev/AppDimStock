@@ -24,7 +24,7 @@ namespace DimStock.Models
             if (CategoryValidationModel.ValidateToInsert(this) == false)
                 return actionResult;
 
-            using (var transaction = new TransactionModel())
+            using (var transaction = new ConnectionTransactionModel())
             {
                 sql = @"INSERT INTO Category(Description)VALUES(@Description)";
 
@@ -52,7 +52,7 @@ namespace DimStock.Models
             if (CategoryValidationModel.ValidateToUpdate(this) == false)
                 return actionResult;
 
-            using (var transaction = new TransactionModel())
+            using (var transaction = new ConnectionTransactionModel())
             {
                 sql = @"UPDATE Category SET Description = @Description WHERE Id = @Id";
 
@@ -84,7 +84,7 @@ namespace DimStock.Models
             if (CategoryValidationModel.ValidateToDelete(this) == false)
                 return actionResult;
 
-            using (var transaction = new TransactionModel())
+            using (var transaction = new ConnectionTransactionModel())
             {
                 sql = @"DELETE FROM Category WHERE Id = @Id";
 

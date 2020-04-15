@@ -10,7 +10,7 @@ namespace DimStock.Models
     public partial class StockModel
     {
         private string summary = "All";
-        private TransactionModel transaction;
+        private ConnectionTransactionModel transaction;
 
         public int Id { get; set; }
         public int Min { get; set; }
@@ -29,11 +29,11 @@ namespace DimStock.Models
         {
             Product = new ProductModel();
         }
-        public StockModel(TransactionModel transaction)
+        public StockModel(ConnectionTransactionModel transaction)
         {
             this.transaction = transaction;
         }
-        public StockModel(TransactionModel transaction, ProductModel product)
+        public StockModel(ConnectionTransactionModel transaction, ProductModel product)
         {
             this.transaction = transaction;
             Product = product;
