@@ -109,10 +109,11 @@ namespace DimStock.Models
         public static bool ValidateIfExists(CategoryModel category)
         {
             var actionResult = false;
+            var sql = string.Empty;
 
             using (var dataBase = new ConnectionModel())
             {
-                dataBase.SqlQuery = @"SELECT Id, Description FROM Category WHERE Id = @Id ";
+                sql = @"SELECT Id, Description FROM Category WHERE Id = @Id ";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Id", category.Id);
@@ -122,11 +123,11 @@ namespace DimStock.Models
                 if (category.Description != string.Empty && 
                     category.Description != null)
                 {
-                    dataBase.SqlQuery += "OR Description = @Description";
+                    sql += "OR Description = @Description";
                     dataBase.AddParameter("@Description", category.Description);
                 }
 
-                using (var reader = dataBase.GetReader())
+                using (var reader = dataBase.GetDataReader(sql))
                 {
                     if (reader.Read() == false)
                     {

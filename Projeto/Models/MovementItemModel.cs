@@ -33,10 +33,11 @@ namespace DimStock.Models
         public bool Insert()
         {
             var actionResult = false;
+            var sql = string.Empty;
 
             using (var dataBase = new ConnectionModel())
             {
-                dataBase.SqlQuery = @"INSERT INTO MovementItem(MovementId, ProductId, StockId, 
+                sql = @"INSERT INTO MovementItem(MovementId, ProductId, StockId, 
                 Quantity, UnitaryValue, TotalValue)VALUES(@MovementId, @ProductId, @StockId, 
                 @Quantity, @UnitaryValue, @TotalValue)";
 
@@ -48,7 +49,7 @@ namespace DimStock.Models
                 dataBase.AddParameter("@UnitaryValue", UnitaryValue);
                 dataBase.AddParameter("@TotalValue", TotalValue);
 
-                if (dataBase.ExecuteNonQuery() > 0)
+                if (dataBase.ExecuteCommand(sql) > 0)
                     actionResult = true;
             }
 
@@ -58,14 +59,16 @@ namespace DimStock.Models
         public bool Delete()
         {
             var actionResult = false;
+            var sql = string.Empty;
 
             using (var dataBase = new ConnectionModel())
             {
-                dataBase.SqlQuery = @"DELETE FROM MovementItem Where Id = @Id";
+                sql = @"DELETE FROM MovementItem Where Id = @Id";
+
                 dataBase.ClearParameter();
                 dataBase.AddParameter("Id", Id);
 
-                if (dataBase.ExecuteNonQuery() > 0)
+                if (dataBase.ExecuteCommand(sql) > 0)
                 {
                     actionResult = true;
                 }
@@ -76,16 +79,18 @@ namespace DimStock.Models
 
         public DataTable ListItems()
         {
+            var sql = string.Empty;
+
             using (var dataBase = new ConnectionModel())
             {
-                dataBase.SqlQuery = @"SELECT MovementItem.*, Product.Description, Product.InternalCode 
+                sql = @"SELECT MovementItem.*, Product.Description, Product.InternalCode 
                 FROM MovementItem INNER JOIN Product ON MovementItem.ProductId = Product.Id WHERE 
                 MovementItem.MovementId = @MovementId ORDER BY InternalCode";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@MovementId", Movement.Id);
 
-                return dataBase.GetTable();
+                return dataBase.GetDataTable(sql);
             }
         }
     }

@@ -41,7 +41,9 @@ namespace DimStock.Models
 
         public DataTable ListData()
         {
-            var sqlLink = string.Empty;
+            var link = string.Empty;
+            var sqlCount = string.Empty;
+            var sqlQuery = string.Empty;
 
             using (var dataBase = new ConnectionModel())
             {
@@ -49,10 +51,10 @@ namespace DimStock.Models
                 {
                     case "All":
 
-                        dataBase.SqlScala = @"SELECT COUNT(Stock.Id) From Stock INNER JOIN Product ON 
+                        sqlCount = @"SELECT COUNT(Stock.Id) From Stock INNER JOIN Product ON 
                         Stock.ProductId = Product.Id WHERE Stock.Id > 0";
 
-                        dataBase.SqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.Min, Stock.Max, Stock.TotalValue, 
+                        sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.Min, Stock.Max, Stock.TotalValue, 
                         Product.Id, Product.Description, Product.CostPrice, Product.InternalCode, 
                         Product.Photo From Product INNER JOIN Stock ON Stock.ProductId = 
                         Product.Id WHERE Stock.Id > 0";
@@ -61,11 +63,11 @@ namespace DimStock.Models
 
                     case "Nothing":
 
-                        dataBase.SqlScala = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
+                        sqlCount = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
                         Stock.ProductId = Product.Id WHERE Quantity = 0 AND Stock.Min = 0 
                         AND Stock.Max = 0";
 
-                        dataBase.SqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max,
+                        sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max,
                         Product.Id, Product.Description, Product.CostPrice, Product.InternalCode, Product.Photo 
                         From Product INNER JOIN Stock ON Stock.ProductId = Product.Id WHERE 
                         Quantity = 0 AND Stock.Min = 0 AND Stock.Max = 0";
@@ -74,11 +76,11 @@ namespace DimStock.Models
 
                     case "Ok":
 
-                        dataBase.SqlScala = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
+                        sqlCount = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
                         Product.Id = Stock.ProductId WHERE Quantity > 0 AND Quantity >= 
                         Stock.Min AND Quantity <= Stock.Max";
 
-                        dataBase.SqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max, 
+                        sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max, 
                         Product.Id, Product.Description, Product.CostPrice, Product.InternalCode, Product.Photo 
                         From Product INNER JOIN Stock ON Stock.ProductId = Product.Id WHERE Quantity > 0 
                         AND Quantity >= Stock.Min AND Quantity <= Stock.Max";
@@ -87,10 +89,10 @@ namespace DimStock.Models
 
                     case "High":
 
-                        dataBase.SqlScala = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
+                        sqlCount = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
                         Stock.ProductId = Product.Id WHERE Stock.Quantity > Stock.Max";
 
-                        dataBase.SqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, 
+                        sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, 
                         Stock.Max, Product.Id, Product.Description, Product.CostPrice, Product.InternalCode, 
                         Product.Photo From Product INNER JOIN Stock ON Stock.ProductId = Product.Id WHERE 
                         Stock.Quantity > Stock.Max";
@@ -99,10 +101,10 @@ namespace DimStock.Models
 
                     case "Low":
 
-                        dataBase.SqlScala = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
+                        sqlCount = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
                         Stock.ProductId = Product.Id WHERE Stock.Quantity < Stock.Min";
 
-                        dataBase.SqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max,
+                        sqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max,
                         Product.Id, Product.Description, Product.CostPrice, Product.InternalCode, Product.Photo From 
                         Product INNER JOIN Stock ON Stock.ProductId = Product.Id WHERE 
                         Stock.Quantity < Stock.Min";
@@ -112,132 +114,144 @@ namespace DimStock.Models
 
                 if (Product.InternalCode != string.Empty)
                 {
-                    sqlLink += " AND InternalCode LIKE @InternalCode";
+                    link += " AND InternalCode LIKE @InternalCode";
 
                     dataBase.AddParameter("@InternalCode", string.Format("{0}%",
                     Product.InternalCode));
                 }
                 if (Product.Description != string.Empty)
                 {
-                    sqlLink += " AND Description LIKE @Description";
+                    link += " AND Description LIKE @Description";
 
                     dataBase.AddParameter("@Description", string.Format("%{0}%",
                     Product.Description));
                 }
 
-                dataBase.SqlQuery += sqlLink + " Order By InternalCode Asc";
-                dataBase.SqlScala += sqlLink;
+                sqlQuery += link + " Order By InternalCode Asc";
+                sqlCount += link;
 
-                return dataBase.GetTable();
+                return dataBase.GetDataTable(sqlQuery);
             }
         }
         public DataTable FetchData()
         {
-            var sqlLink = string.Empty;
+            var criterionSqlCount = string.Empty;
+            var criterionSqlQuery = string.Empty;
+            var criterionSqlParameter = string.Empty;
+            var criterionSqlOrderBy = string.Empty;
 
             using (var dataBase = new ConnectionModel())
             {
+                criterionSqlCount = @"SELECT COUNT(Stock.Id) FROM Stock 
+                INNER JOIN Stock ON Stock.ProductId = Product.Id";
+
+                criterionSqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.Min, 
+                Stock.Max, Stock.TotalValue, Product.Id, Product.Description, 
+                Product.CostPrice, Product.InternalCode, Product.Photo FROM 
+                Stock INNER JOIN Stock ON Stock.ProductId = Product.Id ";
+
+                criterionSqlOrderBy = " Order By InternalCode Asc";
+
+                /* 
+                 * Link [WHERE] na consulta de acordo com
+                 * o resumo buscado pelo usuário
+                */
                 switch (summary)
                 {
                     case "All":
 
-                        dataBase.SqlScala = @"SELECT COUNT(Stock.Id) From Stock INNER JOIN Product ON 
-                        Stock.ProductId = Product.Id WHERE Stock.Id > 0";
-
-                        dataBase.SqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.Min, Stock.Max, Stock.TotalValue, 
-                        Product.Id, Product.Description, Product.CostPrice, Product.InternalCode, 
-                        Product.Photo From Product INNER JOIN Stock ON Stock.ProductId = 
-                        Product.Id WHERE Stock.Id > 0";
+                        criterionSqlCount += @"WHERE Stock.Id > 0";
+                        criterionSqlQuery += @"WHERE Stock.Id > 0";
 
                         break;
 
                     case "Nothing":
 
-                        dataBase.SqlScala = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
-                        Stock.ProductId = Product.Id WHERE Quantity = 0 AND Stock.Min = 0 
-                        AND Stock.Max = 0";
+                        criterionSqlCount += @"WHERE Quantity = 0 
+                        AND Stock.Min = 0 AND Stock.Max = 0";
 
-                        dataBase.SqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max,
-                        Product.Id, Product.Description, Product.CostPrice, Product.InternalCode, Product.Photo 
-                        From Product INNER JOIN Stock ON Stock.ProductId = Product.Id WHERE 
-                        Quantity = 0 AND Stock.Min = 0 AND Stock.Max = 0";
+                        criterionSqlQuery += @"WHERE Quantity = 0 
+                        AND Stock.Min = 0 AND Stock.Max = 0";
 
                         break;
 
                     case "Ok":
 
-                        dataBase.SqlScala = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
-                        Product.Id = Stock.ProductId WHERE Quantity > 0 AND Quantity >= 
-                        Stock.Min AND Quantity <= Stock.Max";
+                        criterionSqlCount += @"WHERE Quantity > 0 
+                        AND Quantity >= Stock.Min AND Quantity 
+                        <= Stock.Max";
 
-                        dataBase.SqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max, 
-                        Product.Id, Product.Description, Product.CostPrice, Product.InternalCode, Product.Photo 
-                        From Product INNER JOIN Stock ON Stock.ProductId = Product.Id WHERE Quantity > 0 
-                        AND Quantity >= Stock.Min AND Quantity <= Stock.Max";
+                        criterionSqlQuery += @"WHERE Quantity > 0 
+                        AND Quantity >= Stock.Min AND Quantity 
+                        <= Stock.Max";
 
                         break;
 
                     case "High":
 
-                        dataBase.SqlScala = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
-                        Stock.ProductId = Product.Id WHERE Stock.Quantity > Stock.Max";
+                        criterionSqlCount += @"WHERE Stock.Quantity 
+                        > Stock.Max";
 
-                        dataBase.SqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, 
-                        Stock.Max, Product.Id, Product.Description, Product.CostPrice, Product.InternalCode, 
-                        Product.Photo From Product INNER JOIN Stock ON Stock.ProductId = Product.Id WHERE 
-                        Stock.Quantity > Stock.Max";
+                        criterionSqlQuery += @"WHERE Stock.Quantity 
+                        > Stock.Max";
 
                         break;
 
                     case "Low":
 
-                        dataBase.SqlScala = @"SELECT COUNT(Stock.Id) From Product INNER JOIN Stock ON 
-                        Stock.ProductId = Product.Id WHERE Stock.Quantity < Stock.Min";
+                        criterionSqlCount += @"WHERE Stock.Quantity 
+                        < Stock.Min";
 
-                        dataBase.SqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.TotalValue, Stock.Min, Stock.Max,
-                        Product.Id, Product.Description, Product.CostPrice, Product.InternalCode, Product.Photo From 
-                        Product INNER JOIN Stock ON Stock.ProductId = Product.Id WHERE 
-                        Stock.Quantity < Stock.Min";
+                        criterionSqlQuery += @"WHERE Stock.Quantity 
+                        < Stock.Min";
 
                         break;
                 }
 
-                if (Product.InternalCode != string.Empty)
+                /*
+                 *Link [AND] na consulta de acordo com o critério
+                 *buscado pelo usuário
+                */
+                if (Product.InternalCode != string.Empty &&
+                    Product.InternalCode != null)
                 {
-                    sqlLink += " AND InternalCode LIKE @InternalCode";
+                    criterionSqlParameter += " AND InternalCode LIKE @InternalCode";
 
                     dataBase.AddParameter("@InternalCode", string.Format("{0}%",
                     Product.InternalCode));
                 }
-                if (Product.Description != string.Empty)
+
+                if (Product.Description != string.Empty &&
+                    Product.Description != null)
                 {
-                    sqlLink += " AND Description LIKE @Description";
+                    criterionSqlParameter += " AND Description LIKE @Description";
 
                     dataBase.AddParameter("@Description", string.Format("%{0}%",
                     Product.Description));
                 }
 
-                dataBase.SqlQuery += sqlLink + " Order By InternalCode Asc";
-                dataBase.SqlScala += sqlLink;
+                criterionSqlCount += criterionSqlParameter;
+                criterionSqlQuery += criterionSqlParameter + criterionSqlOrderBy;
 
-                return dataBase.GetTable();
+                return dataBase.GetDataTable(criterionSqlQuery);
             }
         }
 
         public bool GetDetail()
         {
             var actionResult = false;
+            var sql = string.Empty;
 
             using (var dataBase = new ConnectionModel())
             {
-                dataBase.SqlQuery = @"SELECT Product.Id, Product.InternalCode, Product.Description, 
+                sql = @"SELECT Product.Id, Product.InternalCode, Product.Description, 
                 Product.CostPrice, Stock.Id, Stock.Quantity FROM Product INNER JOIN 
                 Stock ON Product.Id = Stock.ProductId WHERE Product.Id = @Id";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Id", Id);
 
-                using (var reader = dataBase.GetReader())
+                using (var reader = dataBase.GetDataReader(sql))
                 {
                     if (reader.FieldCount > 0)
                     {
@@ -262,10 +276,11 @@ namespace DimStock.Models
         public bool InsertPostingOfEntries(DataTable postingItems)
         {
             var actionResult = false;
+            var sql = string.Empty;
 
             foreach (DataRow item in postingItems.Rows)
             {
-                transaction.SqlQuery = @"UPDATE Stock Set Quantity = Quantity + @ItemQuantity, 
+                sql = @"UPDATE Stock Set Quantity = Quantity + @ItemQuantity, 
                 TotalValue = TotalValue + @ItemTotalValue WHERE Id = @StockId";
 
                 transaction.ClearParameter();
@@ -273,7 +288,7 @@ namespace DimStock.Models
                 transaction.AddParameter("@ItemTotalValue", item["TotalValue"]);
                 transaction.AddParameter("@StockId", item["StockId"]);
 
-                actionResult = transaction.Execute() > 0;
+                actionResult = transaction.ExecuteCommand(sql) > 0;
             }
 
             return actionResult;
@@ -281,6 +296,7 @@ namespace DimStock.Models
         public bool InsertPostingOfOutPuts(DataTable postingItems)
         {
             var actionResult = false;
+            var sql = string.Empty;
 
             foreach (DataRow item in postingItems.Rows)
             {
@@ -292,7 +308,7 @@ namespace DimStock.Models
                 transaction.AddParameter("@ItemTotalValue", item["TotalValue"]);
                 transaction.AddParameter("@StockId", item["StockId"]);
 
-                actionResult = transaction.Scalar() > 0;
+                actionResult = transaction.ExecuteCommand(sql) > 0;
             }
 
             return actionResult;
@@ -301,10 +317,11 @@ namespace DimStock.Models
         public bool CancelPostingOfEntries(DataTable postedItems)
         {
             var actionResult = false;
+            var sql = string.Empty;
 
             foreach (DataRow item in postedItems.Rows)
             {
-                transaction.SqlQuery = @"UPDATE Stock Set Quantity = Quantity - @ItemQuantity, 
+                sql = @"UPDATE Stock Set Quantity = Quantity - @ItemQuantity, 
                 TotalValue = TotalValue - @ItemTotalValue WHERE Id = @StockId";
 
                 transaction.ClearParameter();
@@ -312,7 +329,7 @@ namespace DimStock.Models
                 transaction.AddParameter("@ItemTotalValue", item["TotalValue"]);
                 transaction.AddParameter("@StockId", item["StockId"]);
 
-                actionResult = transaction.Execute() > 0;
+                actionResult = transaction.ExecuteCommand(sql) > 0;
             }
 
             return actionResult;
@@ -320,10 +337,11 @@ namespace DimStock.Models
         public bool CancelPostingOfOutPuts(DataTable postedItems)
         {
             var actionResult = false;
+            var sql = string.Empty;
 
             foreach (DataRow item in postedItems.Rows)
             {
-                transaction.SqlQuery = @"UPDATE Stock Set Quantity = Quantity + @ItemQuantity, 
+                sql = @"UPDATE Stock Set Quantity = Quantity + @ItemQuantity, 
                 TotalValue = TotalValue + @ItemTotalValue WHERE Id = @StockId";
 
                 transaction.ClearParameter();
@@ -331,7 +349,7 @@ namespace DimStock.Models
                 transaction.AddParameter("@ItemTotalValue", item["TotalValue"]);
                 transaction.AddParameter("@StockId", item["StockId"]);
 
-                actionResult = transaction.Execute() > 0;
+                actionResult = transaction.ExecuteCommand(sql) > 0;
             }
 
             return actionResult;
@@ -339,14 +357,14 @@ namespace DimStock.Models
 
         public bool UpdateValue()
         {
-            transaction.SqlQuery = @"UPDATE Stock Set TotalValue = @ProductCostPrice * 
+            var sql = @"UPDATE Stock Set TotalValue = @ProductCostPrice * 
             Quantity WHERE ProductId = @ProductId";
 
             transaction.ClearParameter();
             transaction.AddParameter("ProductCostPrice", Product.CostPrice);
             transaction.AddParameter("@ProductId", Product.Id);
 
-            return transaction.Execute() > 0;
+            return transaction.ExecuteCommand(sql) > 0;
         }
 
         public void SetSummary(List<StockModel> list)

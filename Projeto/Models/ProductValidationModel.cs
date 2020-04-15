@@ -146,12 +146,12 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                dataBase.SqlQuery = "SELECT Id FROM Product WHERE Id = @Id";
+                sql = "SELECT Id FROM Product WHERE Id = @Id";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Id", product.Id);
 
-                using (var reader = dataBase.GetReader())
+                using (var reader = dataBase.GetDataReader(sql))
                 {
                     if (reader.Read() == false)
                     {

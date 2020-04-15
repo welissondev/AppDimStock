@@ -37,7 +37,7 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                dataBase.SqlQuery = @"INSERT INTO Product (CategoryId, InternalCode, Description, 
+                sql = @"INSERT INTO Product (CategoryId, InternalCode, Description, 
                 CostPrice, SalePrice, BarCode) VALUES (@CategoryId, @Code, @InternalCode, 
                 @CostPrice, @SalePrice, @BarCode)";
 
@@ -49,7 +49,7 @@ namespace DimStock.Models
                 dataBase.AddParameter("@SalePrice", SalePrice);
                 dataBase.AddParameter("@BarCode", BarCode);
 
-                if (dataBase.ExecuteNonQuery() > 0)
+                if (dataBase.ExecuteCommand(sql) > 0)
                 {
                     MessageNotifier.Message = "Produto cadastrado com sucesso!";
                     MessageNotifier.Title = "Sucesso";
@@ -63,13 +63,14 @@ namespace DimStock.Models
         public bool Update()
         {
             var actionResult = false;
+            var sql = string.Empty;
 
             if (ProductValidationModel.ValidateToUpdate(this) == false)
                 return actionResult;
 
             using (transaction = new TransactionModel(new ConnectionModel()))
             {
-                transaction.SqlQuery = @"UPDATE Product SET CategoryId = @CategoryId, InternalCode = @InternalCode, 
+                sql = @"UPDATE Product SET CategoryId = @CategoryId, InternalCode = @InternalCode, 
                 Description = @Description, CostPrice = @CostPrice, SalePrice = @SalePrice, 
                 BarCode = @BarCode WHERE Id = @Id";
 
@@ -82,7 +83,7 @@ namespace DimStock.Models
                 transaction.AddParameter("@BarCode", BarCode);
                 transaction.AddParameter("@Id", Id);
 
-                if (transaction.Execute() > 0)
+                if (transaction.ExecuteCommand(sql) > 0)
                 {
                     if (new StockModel(transaction, this).UpdateValue() == true)
                     {
@@ -100,18 +101,19 @@ namespace DimStock.Models
         public bool Delete()
         {
             var actionResult = false;
+            var sql = string.Empty;
 
             if (ProductValidationModel.ValidateToDelete(this) == false)
                 return actionResult;
 
             using (var dataBase = new ConnectionModel())
             {
-                dataBase.SqlQuery = @"DELETE FROM Product WHERE Id = @Id";
+                sql = @"DELETE FROM Product WHERE Id = @Id";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Id", Id);
 
-                if (dataBase.ExecuteNonQuery() > 0)
+                if (dataBase.ExecuteCommand(sql) > 0)
                 {
                     MessageNotifier.Message = "Produto excluido com sucesso!";
                     MessageNotifier.Title = "Sucesso";
@@ -132,14 +134,14 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                dataBase.SqlQuery = @"SELECT Product.*, Category.* FROM Product
+                sql = @"SELECT Product.*, Category.* FROM Product
                 LEFT JOIN Category ON Product.CategoryId = Category.Id
                 WHERE Product.Id = @Id ";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Id", Id);
 
-                using (var reader = dataBase.GetReader())
+                using (var reader = dataBase.GetDataReader(sql))
                 {
                     if (reader.FieldCount > 0)
                     {
@@ -168,20 +170,22 @@ namespace DimStock.Models
 
         public int GetLastId()
         {
-            transaction.SqlQuery = @"SELECT MAX(Id) From Product";
-            return transaction.Scalar();
+            var sql = @"SELECT MAX(Id) From Product";
+            return transaction.ExecuteScalar(sql);
         }
 
         public DataTable FetchData()
         {
+            var sql = string.Empty;
+
             using (var dataBase = new ConnectionModel())
             {
-                dataBase.SqlQuery = @"SELECT Id, InternalCode, Description, 
+                sql = @"SELECT Id, InternalCode, Description, 
                 CostPrice, SalePrice FROM Product WHERE Id > 0";
 
                 if (InternalCode != string.Empty)
                 {
-                    dataBase.SqlQuery += " AND InternalCode LIKE @InternalCode";
+                    sql += " AND InternalCode LIKE @InternalCode";
 
                     dataBase.AddParameter("@InternalCode", string.
                     Format("{0}%", InternalCode));
@@ -189,15 +193,15 @@ namespace DimStock.Models
 
                 if (Description != string.Empty)
                 {
-                    dataBase.SqlQuery += " AND Description LIKE @Description";
+                    sql += " AND Description LIKE @Description";
 
                     dataBase.AddParameter("@Description", string.
                     Format("%{0}%", Description));
                 }
 
-                dataBase.SqlQuery += " Order By Id, InternalCode Desc";
+                sql += " Order By Id, InternalCode Desc";
 
-                return dataBase.GetTable();
+                return dataBase.GetDataTable(sql);
             }
         }
     }

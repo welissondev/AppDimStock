@@ -24,16 +24,17 @@ namespace DimStock.Models
         public bool Insert()
         {
             var actionResult = false;
+            var sql = string.Empty;
 
             using (var dataBase = new ConnectionModel())
             {
-                dataBase.SqlQuery = @"INSERT INTO StockDestination
+                sql = @"INSERT INTO StockDestination
                 (Location)VALUES(@Location)";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Location", Location);
 
-                if (dataBase.ExecuteNonQuery() > 0)
+                if (dataBase.ExecuteCommand(sql) > 0)
                 {
                     MessageNotifier.Message = "Cadastrado com sucesso!";
                     MessageNotifier.Title = "Sucesso";
@@ -47,17 +48,18 @@ namespace DimStock.Models
         public bool Update(int id)
         {
             var actionResult = false;
+            var sql = string.Empty;
 
             using (var dataBase = new ConnectionModel())
             {
-                dataBase.SqlQuery = @"UPDATE StockDestination SET 
+                sql = @"UPDATE StockDestination SET 
                 Location = @Location WHERE Id = @Id";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Location", Location);
                 dataBase.AddParameter("@Id", id);
 
-                if (dataBase.ExecuteNonQuery() > 0)
+                if (dataBase.ExecuteCommand(sql) > 0)
                 {
                     MessageNotifier.Message = "Editado com sucesso!";
                     actionResult = true;
@@ -70,14 +72,16 @@ namespace DimStock.Models
         public bool Delete(int id)
         {
             var actionResult = false;
+            var sql = string.Empty;
 
             using (var dataBase = new ConnectionModel())
             {
-                dataBase.SqlQuery = @"DELETE FROM Destination WHERE Id = @Id";
+                sql = @"DELETE FROM Destination WHERE Id = @Id";
+
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Id", id);
 
-                if (dataBase.ExecuteNonQuery() > 0)
+                if (dataBase.ExecuteCommand(sql) > 0)
                 {
                     MessageNotifier.Message = "Deletado com sucesso!";
                     actionResult = true;
@@ -94,11 +98,13 @@ namespace DimStock.Models
 
         public void ListData()
         {
+            var sql = string.Empty;
+
             using (var connection = new ConnectionModel())
             {
-                connection.SqlQuery = @"SELECT * From StockDestination";
+                sql = @"SELECT * From StockDestination";
 
-                using (var reader = connection.GetReader())
+                using (var reader = connection.GetDataReader(sql))
                 {
                     while (reader.Read())
                     {
@@ -116,14 +122,17 @@ namespace DimStock.Models
 
         public void GetDetail(int id)
         {
+            var sql = string.Empty;
+
             using (var connection = new ConnectionModel())
             {
-                connection.SqlQuery = @"SELECT * FROM StockDestination 
+                sql = @"SELECT * FROM StockDestination 
                 WHERE Id = @Id";
 
+                connection.ClearParameter();
                 connection.AddParameter("@Id", id);
 
-                using (var reader = connection.GetReader())
+                using (var reader = connection.GetDataReader(sql))
                 {
                     while (reader.Read())
                     {

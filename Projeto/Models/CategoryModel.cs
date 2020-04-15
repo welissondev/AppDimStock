@@ -19,6 +19,7 @@ namespace DimStock.Models
         public bool Insert()
         {
             var actionResult = false;
+            var sql = string.Empty;
 
             if (CategoryValidationModel.ValidateToInsert(this) == false)
                 return actionResult;
@@ -27,12 +28,12 @@ namespace DimStock.Models
             {
                 using (dataBase.Transaction = dataBase.Open().BeginTransaction())
                 {
-                    dataBase.SqlQuery = @"INSERT INTO Category(Description)VALUES(@Description)";
+                    sql = @"INSERT INTO Category(Description)VALUES(@Description)";
 
                     dataBase.ClearParameter();
                     dataBase.AddParameter("@Description", Description);
 
-                    if (dataBase.ExecuteTransaction() > 0)
+                    if (dataBase.ExecuteTransaction(sql) > 0)
                     {
                         dataBase.Transaction.Commit();
 
@@ -49,6 +50,7 @@ namespace DimStock.Models
         public bool Update()
         {
             var actionResult = false;
+            var sql = string.Empty;
 
             if (CategoryValidationModel.ValidateToUpdate(this) == false)
                 return actionResult;
@@ -57,13 +59,13 @@ namespace DimStock.Models
             {
                 using (dataBase.Transaction = dataBase.Open().BeginTransaction())
                 {
-                    dataBase.SqlQuery = @"UPDATE Category SET Description = @Description WHERE Id = @Id";
+                    sql = @"UPDATE Category SET Description = @Description WHERE Id = @Id";
 
                     dataBase.ClearParameter();
                     dataBase.AddParameter("@Description", Description);
                     dataBase.AddParameter("@Id", Id);
 
-                    actionResult = dataBase.ExecuteTransaction() > 0;
+                    actionResult = dataBase.ExecuteTransaction(sql) > 0;
 
                     if (actionResult == true)
                     {
@@ -82,6 +84,7 @@ namespace DimStock.Models
         public bool Delete()
         {
             var actionResult = false;
+            var sql = string.Empty;
 
             if (CategoryValidationModel.ValidateToDelete(this) == false)
                 return actionResult;
@@ -90,12 +93,12 @@ namespace DimStock.Models
             {
                 using (dataBase.Transaction = dataBase.Open().BeginTransaction())
                 {
-                    dataBase.SqlQuery = @"DELETE FROM Category WHERE Id = @Id";
+                    sql = @"DELETE FROM Category WHERE Id = @Id";
 
                     dataBase.ClearParameter();
                     dataBase.AddParameter("@Id", Id);
 
-                    actionResult = dataBase.ExecuteTransaction() > 0;
+                    actionResult = dataBase.ExecuteTransaction(sql) > 0;
 
                     if (actionResult == true)
                     {
@@ -115,19 +118,20 @@ namespace DimStock.Models
         public bool GetDetail()
         {
             var actionResult = false;
+            var sql = string.Empty;
 
             if (CategoryValidationModel.ValidateToGetDetail(this) == false)
                 return actionResult;
 
             using (var dataBase = new ConnectionModel())
             {
-                dataBase.SqlQuery = @"SELECT Id, Description From 
+                sql = @"SELECT Id, Description From 
                 Category Where Id = @Id ";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Id", Id);
 
-                using (var reader = dataBase.GetReader())
+                using (var reader = dataBase.GetDataReader(sql))
                 {
                     if (reader.FieldCount > 0)
                     {
@@ -149,32 +153,34 @@ namespace DimStock.Models
         {
             using (var dataBase = new ConnectionModel())
             {
-                dataBase.SqlScala = "SELECT Id FROM Category WHERE Description = @Description";
+                var sql = "SELECT Id FROM Category WHERE Description = @Description";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Description", Description);
 
-                return dataBase.ExecuteScalar();
+                return dataBase.ExecuteScalar(sql);
             }
         }
 
         public DataTable FetchData()
         {
+            var sql = string.Empty;
+
             using (var dataBase = new ConnectionModel())
             {
-                dataBase.SqlQuery = "SELECT * FROM Category ";
+                sql = "SELECT * FROM Category ";
 
                 if (Description != string.Empty)
                 {
-                    dataBase.SqlQuery += "WHERE Description LIKE @Description ";
+                    sql += "WHERE Description LIKE @Description ";
 
                     dataBase.AddParameter("@Description",
                     string.Format("%{0}%", Description));
                 }
 
-                dataBase.SqlQuery += "ORDER BY Description";
+                sql += "ORDER BY Description";
 
-                return dataBase.GetTable();
+                return dataBase.GetDataTable(sql);
             }
         }
 
@@ -182,8 +188,8 @@ namespace DimStock.Models
         {
             using (var dataBase = new ConnectionModel())
             {
-                dataBase.SqlQuery = "SELECT * FROM Category ORDER BY Description";
-                return dataBase.GetTable();
+                var sql = "SELECT * FROM Category ORDER BY Description";
+                return dataBase.GetDataTable(sql);
             }
         }
     }

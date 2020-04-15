@@ -40,17 +40,18 @@ namespace DimStock.Models
         public bool SignIn()
         {
             var accessState = false;
+            var sql = string.Empty;
 
             using (var connection = new ConnectionModel())
             {
-                connection.SqlQuery = @"SELECT * FROM [UserLogin] WHERE Login 
+                sql = @"SELECT * FROM [UserLogin] WHERE Login 
                 LIKE @Login AND [PassWord] = @PassWord";
 
                 connection.ClearParameter();
                 connection.AddParameter("@Login", Login);
                 connection.AddParameter("@PassWord", PassWord);
 
-                using (var reader = connection.GetReader())
+                using (var reader = connection.GetDataReader(sql))
                 {
                     while (reader.Read())
                     {
@@ -77,6 +78,7 @@ namespace DimStock.Models
 
         public bool CreateNewLogin()
         {
+            var sql = string.Empty;
 
             if (ValidateEmail(Email) == false)
                 return false;
@@ -85,7 +87,7 @@ namespace DimStock.Models
             {
                 var createState = false;
 
-                dataBase.SqlQuery = @"INSERT INTO [User]([Name], Email, Login, [PassWord], 
+                sql = @"INSERT INTO [User]([Name], Email, Login, [PassWord], 
                 PermissionToRegister, PermissionToEdit, PermissionToDelete, PermissionToView, 
                 AllPermissions)VALUES(@Name, @Email, @Login, @PassWord, @PermissionToRegister, 
                 @PermissionToEdit, @PermissionToDelete, @PermissionToView, @AllPermissions)";
@@ -100,7 +102,7 @@ namespace DimStock.Models
                 dataBase.AddParameter("@PermissionToView", true);
                 dataBase.AddParameter("@AllPermissions", true);
 
-                createState = dataBase.ExecuteNonQuery() > 0;
+                createState = dataBase.ExecuteCommand(sql) > 0;
 
                 CreateDefaultLogin(dataBase);
 
@@ -110,17 +112,19 @@ namespace DimStock.Models
 
         private void CreateDefaultLogin(ConnectionModel connection)
         {
+            var sql = string.Empty;
+
             Login = "Admin";
 
             if (CheckIfLoginExists() == true)
                 return;
 
-            connection.ClearParameter();
-            connection.SqlQuery = @"INSERT INTO [User]([Name], Email, Login, [PassWord], 
+            sql = @"INSERT INTO [User]([Name], Email, Login, [PassWord], 
             PermissionToRegister, PermissionToEdit, PermissionToDelete, PermissionToView, 
             AllPermissions)VALUES(@Name, @Email, @Login, @PassWord, @PermissionToRegister, 
             @PermissionToEdit, @PermissionToDelete, @PermissionToView, @AllPermissions)";
 
+            connection.ClearParameter();
             connection.AddParameter("@Name", "AdminUser");
             connection.AddParameter("@Email", "Admin@admin.com");
             connection.AddParameter("@Login", "Admin");
@@ -131,7 +135,7 @@ namespace DimStock.Models
             connection.AddParameter("@PermissionToView", true);
             connection.AddParameter("@AllPermissions", true);
 
-            connection.ExecuteNonQuery();
+            connection.ExecuteCommand(sql);
         }
 
         public bool Save()
@@ -145,10 +149,11 @@ namespace DimStock.Models
             using (var connection = new ConnectionModel())
             {
                 var transactionState = false;
+                var sql = string.Empty;
 
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
-                    connection.SqlQuery = @"INSERT INTO [User]([Name], Email, Login, [PassWord], 
+                    sql = @"INSERT INTO [User]([Name], Email, Login, [PassWord], 
                     PermissionToRegister, PermissionToEdit, PermissionToDelete, PermissionToView, 
                     AllPermissions)VALUES(@Name, @Email, @Login, @PassWord, @PermissionToRegister, 
                     @PermissionToEdit, @PermissionToDelete, @PermissionToView, @AllPermissions)";
@@ -164,10 +169,10 @@ namespace DimStock.Models
                     connection.AddParameter("@PermissionToView", PermissionToView);
                     connection.AddParameter("@AllPermissions", AllPermissions);
 
-                    transactionState = connection.ExecuteTransaction() > 0;
+                    transactionState = connection.ExecuteTransaction(sql) > 0;
 
-                    connection.SqlQuery = "SELECT MAX(Id) FROM [User]";
-                    Id = Convert.ToInt32(connection.ExecuteScalar());
+                    sql = "SELECT MAX(Id) FROM [User]";
+                    Id = Convert.ToInt32(connection.ExecuteScalar(sql));
 
                     //Finaliza a transação
                     connection.Transaction.Commit();
@@ -181,6 +186,8 @@ namespace DimStock.Models
 
         public bool Edit(int id)
         {
+            var sql = string.Empty;
+
             if (ValidateEmail(Email) == false)
                 return false;
 
@@ -190,7 +197,7 @@ namespace DimStock.Models
 
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
-                    connection.SqlQuery = @"UPDATE [UserLogin] Set [Name] = @Name, Email = @Email, 
+                    sql = @"UPDATE [UserLogin] Set [Name] = @Name, Email = @Email, 
                     Login = @Login, [PassWord] = @PassWord, PermissionToRegister = @PermissionToRegister, 
                     PermissionToEdit = @PermissionToEdit, PermissionToDelete = @PermissionToDelete, 
                     PermissionToView = @PermissionToView, AllPermissions = @AllPermissions 
@@ -208,7 +215,7 @@ namespace DimStock.Models
                     connection.AddParameter("@AllPermissions", AllPermissions);
                     connection.AddParameter("@Id", id);
 
-                    transactionState = connection.ExecuteTransaction() > 0;
+                    transactionState = connection.ExecuteTransaction(sql) > 0;
 
                     //Finaliza a transação
                     connection.Transaction.Commit();
@@ -241,15 +248,16 @@ namespace DimStock.Models
             using (var connection = new ConnectionModel())
             {
                 var transactionState = false;
+                var sql = string.Empty;
 
                 using (connection.Transaction = connection.Open().BeginTransaction())
                 {
-                    connection.SqlQuery = @"DELETE FROM [UserLogin] WHERE Id = @Id";
+                    sql = @"DELETE FROM [UserLogin] WHERE Id = @Id";
 
                     connection.ClearParameter();
                     connection.AddParameter("@Id", id);
 
-                    transactionState = connection.ExecuteTransaction() > 0;
+                    transactionState = connection.ExecuteTransaction(sql) > 0;
 
                     //Finaliza a transação
                     connection.Transaction.Commit();
@@ -263,11 +271,13 @@ namespace DimStock.Models
 
         public void ListData()
         {
+            var sql = string.Empty;
+
             using (var connection = new ConnectionModel())
             {
-                connection.SqlQuery = "SELECT * FROM [User]";
+                sql = "SELECT * FROM [User]";
 
-                using (var reader = connection.GetReader())
+                using (var reader = connection.GetDataReader(sql))
                 {
                     while (reader.Read())
                     {
@@ -286,13 +296,16 @@ namespace DimStock.Models
 
         public void GetDetail(int id)
         {
+            var sql = string.Empty;
+
             using (var connection = new ConnectionModel())
             {
-                connection.SqlQuery = @"SELECT * FROM [UserLogin] WHERE Id = @Id";
+                sql = @"SELECT * FROM [UserLogin] WHERE Id = @Id";
 
+                connection.ClearParameter();
                 connection.AddParameter("@Id", id);
 
-                using (var reader = connection.GetReader())
+                using (var reader = connection.GetDataReader(sql))
                 {
                     while (reader.Read())
                     {
@@ -315,14 +328,14 @@ namespace DimStock.Models
         {
             using (var connection = new ConnectionModel())
             {
-                connection.SqlQuery = @"SELECT * FROM [UserLogin] WHERE [Name]  
+                var sql = @"SELECT * FROM [UserLogin] WHERE [Name]  
                 LIKE @Name Or Email LIKE @Email";
 
                 connection.ClearParameter();
                 connection.AddParameter("@Name", string.Format("%{0}%", Name));
                 connection.AddParameter("@Email", string.Format("%{0}%", Email));
 
-                var dataTable = connection.GetTable();
+                var dataTable = connection.GetDataTable(sql);
 
                 PassToList(dataTable);
             }
@@ -341,16 +354,18 @@ namespace DimStock.Models
 
         public bool CheckIfLoginExists()
         {
+            var sql = string.Empty;
+
             using (var connection = new ConnectionModel())
             {
                 var userFound = 0;
 
-                connection.SqlQuery = @"SELECT Login FROM [UserLogin] 
+                sql = @"SELECT Login FROM [UserLogin] 
                 WHERE Login LIKE @Login";
 
                 connection.AddParameter("@Login", Login);
 
-                using (var reader = connection.GetReader())
+                using (var reader = connection.GetDataReader(sql))
                 {
                     while (reader.Read())
                     {
@@ -383,15 +398,17 @@ namespace DimStock.Models
 
         public bool CheckIfResgisterExists(int id)
         {
+            var sql = string.Empty;
+
             using (var connection = new ConnectionModel())
             {
-                connection.SqlQuery = "SELECT Id FROM [UserLogin] WHERE Id = @Id";
+                sql = "SELECT Id FROM [UserLogin] WHERE Id = @Id";
                 var recordsFound = 0;
 
                 connection.ClearParameter();
                 connection.AddParameter("Id", id);
 
-                using (var reader = connection.GetReader())
+                using (var reader = connection.GetDataReader(sql))
                 {
                     while (reader.Read())
                     {

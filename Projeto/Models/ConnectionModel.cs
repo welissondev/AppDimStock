@@ -13,11 +13,9 @@ namespace DimStock.Models
         private bool disposed = false;
 
         public OleDbConnection Connection { get; set; }
-        private OleDbCommand Command { get; set; }
+        public OleDbCommand Command { get; set; }
         public OleDbParameter Parameter { get; set; }
         public OleDbTransaction Transaction { get; set; }
-        public string SqlQuery { get; set; }
-        public string SqlScala { get; set; }
     }
 
     public partial class ConnectionModel : IDisposable
@@ -46,6 +44,82 @@ namespace DimStock.Models
             }
         }
 
+        public int ExecuteCommand(string sql)
+        {
+            try
+            {
+                Command.CommandText = sql;
+                Command.Connection = Open();
+                return Command.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public int ExecuteTransaction(string sql)
+        {
+            try
+            {
+                Command.CommandText = sql;
+                Command.Connection = Transaction.Connection;
+                Command.Transaction = Transaction;
+                return Command.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                Transaction.Rollback();
+                throw;
+            }
+        }
+        public int ExecuteScalar(string sql)
+        {
+            try
+            {
+                Command.CommandText = sql;
+                Command.Connection = Open();
+                return Convert.ToInt32(Command.ExecuteScalar());
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public OleDbDataReader GetDataReader(string sql)
+        {
+            try
+            {
+                Command.CommandText = sql;
+                Command.Connection = Open();
+
+                return Command.ExecuteReader();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public DataTable GetDataTable(string sql, int startRegister = 0, int finalRegister = 20)
+        {
+            var table = new DataTable();
+
+            Open();
+
+            Command.CommandText = sql;
+            Command.Connection = Connection;
+
+            var adapter = new OleDbDataAdapter
+            {
+                SelectCommand = Command
+            };
+
+            adapter.Fill(startRegister, finalRegister, table);
+
+            return table;
+        }
+
+
         public void AddParameter(string name, object value)
         {
             var parameter = new OleDbParameter
@@ -60,80 +134,6 @@ namespace DimStock.Models
             Command.Parameters.Clear();
         }
 
-        public int ExecuteNonQuery()
-        {
-            try
-            {
-                Command.CommandText = SqlQuery;
-                Command.Connection = Open();
-                return Command.ExecuteNonQuery();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-        public int ExecuteTransaction()
-        {
-            try
-            {
-                Command.CommandText = SqlQuery;
-                Command.Connection = Transaction.Connection;
-                Command.Transaction = Transaction;
-                return Command.ExecuteNonQuery();
-            }
-            catch (Exception)
-            {
-                Transaction.Rollback();
-                throw;
-            }
-        }
-        public int ExecuteScalar()
-        {
-            try
-            {
-                Command.CommandText = SqlScala;
-                Command.Connection = Open();
-                return Convert.ToInt32(Command.ExecuteScalar());
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-        public OleDbDataReader GetReader()
-        {
-            try
-            {
-                Command.CommandText = SqlQuery;
-                Command.Connection = Open();
-
-                return Command.ExecuteReader();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-        public DataTable GetTable(int startRegister = 0, int finalRegister = 20)
-        {
-            var table = new DataTable();
-
-            Open();
-
-            Command.CommandText = SqlQuery;
-            Command.Connection = Connection;
-
-            var adapter = new OleDbDataAdapter
-            {
-                SelectCommand = Command
-            };
-
-            adapter.Fill(startRegister, finalRegister, table);
-
-            return table;
-        }
 
         private string GetConnectionString()
         {

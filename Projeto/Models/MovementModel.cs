@@ -34,12 +34,12 @@ namespace DimStock.Models
 
             using (transaction = new TransactionModel(new ConnectionModel()))
             {
-                transaction.SqlQuery = @"INSERT INTO Movement([Type])VALUES(@Type)";
+                sql = @"INSERT INTO Movement([Type])VALUES(@Type)";
 
                 transaction.ClearParameter();
                 transaction.AddParameter("@Type", Type);
 
-                if (transaction.Execute() > 0)
+                if (transaction.ExecuteCommand(sql) > 0)
                 {
                     if (SetOperationCode() == true)
                     {
@@ -55,6 +55,7 @@ namespace DimStock.Models
         public bool CloseOperation()
         {
             var actionResult = false;
+            var sql = string.Empty;
 
             using (transaction = new TransactionModel(new ConnectionModel()))
             {
@@ -62,12 +63,12 @@ namespace DimStock.Models
 
                 if (new StockModel().InsertPostingOfEntries(postingItems) == true)
                 {
-                    transaction.SqlQuery = @"UPDATE Movement Set Situation = 'Finalizada' WHERE Id = @Id";
+                    sql = @"UPDATE Movement Set Situation = 'Finalizada' WHERE Id = @Id";
 
                     transaction.ClearParameter();
                     transaction.AddParameter("@Id", Id);
 
-                    if (transaction.Execute() > 0)
+                    if (transaction.ExecuteCommand(sql) > 0)
                     {
                         transaction.Commit();
                         actionResult = true;
@@ -83,28 +84,29 @@ namespace DimStock.Models
             var seed = GetLastId();
             Code = new SingleCodeGenerator(seed).GetCode();
 
-            transaction.SqlQuery = @"UPDATE Movement SET Code = @Code WHERE Id = @Id";
+            var sql = @"UPDATE Movement SET Code = @Code WHERE Id = @Id";
 
             transaction.ClearParameter();
             transaction.AddParameter("@Code", Code);
             transaction.AddParameter("@Id", Id);
 
-            return transaction.Execute() > 0;
+            return transaction.ExecuteCommand(sql) > 0;
         }
 
         public bool SetDestinationId()
         {
             var actionResult = false;
+            var sql = string.Empty;
 
             using (var dataBase = new ConnectionModel())
             {
-                dataBase.SqlQuery = @"UPDATE Movement SET DestinationId = @DestinationId WHERE Id = @Id";
+                sql = @"UPDATE Movement SET DestinationId = @DestinationId WHERE Id = @Id";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@DestinationId", Destination.Id);
                 dataBase.AddParameter("@Id", Id);
 
-                if (dataBase.ExecuteNonQuery() > 0)
+                if (dataBase.ExecuteCommand(sql) > 0)
                 {
                     actionResult = true;
                 }
@@ -116,17 +118,18 @@ namespace DimStock.Models
         public bool Delete()
         {
             var actionResult = false;
+            var sql = string.Empty;
 
             using (transaction = new TransactionModel(new ConnectionModel()))
             {
                 if (CancelPostings() == true)
                 {
-                    transaction.SqlQuery = @"DELETE FROM Movement WHERE Id = @Id";
+                    sql = @"DELETE FROM Movement WHERE Id = @Id";
 
                     transaction.ClearParameter();
                     transaction.AddParameter("Id", Id);
 
-                    if (transaction.Execute() > 0)
+                    if (transaction.ExecuteCommand(sql) > 0)
                     {
                         actionResult = true;
 
@@ -146,14 +149,14 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                dataBase.SqlQuery = @"SELECT Movement.*, Destination.* FROM Movement LEFT JOIN 
+                sql = @"SELECT Movement.*, Destination.* FROM Movement LEFT JOIN 
                 Destination ON Movement.DestinationId = Destination.Id WHERE 
                 Movement.Id = @Id";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("Id", Id);
 
-                using (var reader = dataBase.GetReader())
+                using (var reader = dataBase.GetDataReader(sql))
                 {
                     if (reader.FieldCount > 0)
                     {
@@ -182,38 +185,36 @@ namespace DimStock.Models
 
         public DataTable FetchData()
         {
-            var sqlLink = string.Empty;
+            var link = string.Empty;
+            var sql = string.Empty;
 
             using (var dataBase = new ConnectionModel())
             {
-                dataBase.SqlQuery = @"SELECT Movement.*, Destination.* FROM Movement
+                sql = @"SELECT Movement.*, Destination.* FROM Movement
                 LEFT JOIN Destination On Movement.DestinationId = 
                 Destination.Id WHERE Movement.Id > 0 ";
 
                 if (Type != string.Empty)
                 {
-                    sqlLink += @" AND [Type] LIKE @Type";
-
+                    link += @" AND [Type] LIKE @Type";
                     dataBase.AddParameter("@Type", string.Format("{0}", Type));
                 }
 
                 if (Situation != string.Empty)
                 {
-                    sqlLink += @" AND Situation LIKE @Situation";
-
+                    link += @" AND Situation LIKE @Situation";
                     dataBase.AddParameter("@Situation", string.Format("{0}", Situation));
                 }
 
                 if (Code != string.Empty)
                 {
-                    sqlLink += @" AND Movement.Code LIKE @Code ";
-
+                    link += @" AND Movement.Code LIKE @Code ";
                     dataBase.AddParameter("@Code", string.Format("{0}", Code));
                 }
 
-                dataBase.SqlQuery += sqlLink + @" ORDER BY Movement.Id DESC";
+                sql += link + @" ORDER BY Movement.Id DESC";
 
-                return dataBase.GetTable();
+                return dataBase.GetDataTable(sql);
             }
         }
 
@@ -244,8 +245,8 @@ namespace DimStock.Models
 
         public int GetLastId()
         {
-            transaction.SqlQuery = @"SELECT MAX(Id) FROM Movement";
-            return transaction.Scalar();
+            var sql = @"SELECT MAX(Id) FROM Movement";
+            return transaction.ExecuteScalar(sql);
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data;
 
 namespace DimStock.Models
 {
@@ -43,15 +42,13 @@ namespace DimStock.Models
             dataBase.Transaction.Commit();
         }
 
-        public int Execute()
+        public int ExecuteCommand(string sql)
         {
-            dataBase.SqlQuery = SqlQuery;
-            return dataBase.ExecuteTransaction();
+            return dataBase.ExecuteTransaction(sql);
         }
-        public int Scalar()
+        public int ExecuteScalar(string sql)
         {
-            dataBase.SqlScala = SqlScala;
-            return Convert.ToInt32(dataBase.ExecuteScalar());
+            return Convert.ToInt32(dataBase.ExecuteScalar(sql));
         }
 
         public void Dispose()
