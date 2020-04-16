@@ -51,7 +51,7 @@ namespace DimStock.Models
                 connection.AddParameter("@Login", Login);
                 connection.AddParameter("@PassWord", PassWord);
 
-                using (var reader = connection.GetDataReader(sql))
+                using (var reader = connection.ExecuteReader(sql))
                 {
                     while (reader.Read())
                     {
@@ -102,7 +102,7 @@ namespace DimStock.Models
                 dataBase.AddParameter("@PermissionToView", true);
                 dataBase.AddParameter("@AllPermissions", true);
 
-                createState = dataBase.ExecuteCommand(sql) > 0;
+                createState = dataBase.ExecuteNonQuery(sql) > 0;
 
                 CreateDefaultLogin(dataBase);
 
@@ -135,7 +135,7 @@ namespace DimStock.Models
             connection.AddParameter("@PermissionToView", true);
             connection.AddParameter("@AllPermissions", true);
 
-            connection.ExecuteCommand(sql);
+            connection.ExecuteNonQuery(sql);
         }
 
         public bool Save()
@@ -149,7 +149,7 @@ namespace DimStock.Models
             var transactionState = false;
             var sql = string.Empty;
 
-            using (var transaction = new ConnectionTransactionModel())
+            using (var transaction = new TransactionModel())
             {
                 sql = @"INSERT INTO [User]([Name], Email, Login, [PassWord], 
                 PermissionToRegister, PermissionToEdit, PermissionToDelete, PermissionToView, 
@@ -167,12 +167,12 @@ namespace DimStock.Models
                 transaction.AddParameter("@PermissionToView", PermissionToView);
                 transaction.AddParameter("@AllPermissions", AllPermissions);
 
-                transactionState = transaction.ExecuteCommand(sql) > 0;
+                transactionState = transaction.ExecuteNonQuery(sql) > 0;
 
                 sql = "SELECT MAX(Id) FROM [User]";
                 Id = Convert.ToInt32(transaction.ExecuteScalar(sql));
 
-                transaction.ExecuteCommit();
+                transaction.Commit();
 
                 MessageNotifier.Message = "Usuário cadastado com sucesso!";
             }
@@ -189,7 +189,7 @@ namespace DimStock.Models
 
             var transactionState = false;
 
-            using (var transaction = new ConnectionTransactionModel())
+            using (var transaction = new TransactionModel())
             {
                 sql = @"UPDATE [UserLogin] Set [Name] = @Name, Email = @Email, 
                 Login = @Login, [PassWord] = @PassWord, PermissionToRegister = @PermissionToRegister, 
@@ -209,8 +209,8 @@ namespace DimStock.Models
                 transaction.AddParameter("@AllPermissions", AllPermissions);
                 transaction.AddParameter("@Id", id);
 
-                transactionState = transaction.ExecuteCommand(sql) > 0;
-                transaction.ExecuteCommit();
+                transactionState = transaction.ExecuteNonQuery(sql) > 0;
+                transaction.Commit();
 
                 MessageNotifier.Message = "Usuário alterado com sucesso!";
             }
@@ -239,15 +239,15 @@ namespace DimStock.Models
             var transactionState = false;
             var sql = string.Empty;
 
-            using (var transaction = new ConnectionTransactionModel())
+            using (var transaction = new TransactionModel())
             {
                 sql = @"DELETE FROM [UserLogin] WHERE Id = @Id";
 
                 transaction.ClearParameter();
                 transaction.AddParameter("@Id", id);
 
-                transactionState = transaction.ExecuteCommand(sql) > 0;
-                transaction.ExecuteCommit();
+                transactionState = transaction.ExecuteNonQuery(sql) > 0;
+                transaction.Commit();
 
                 MessageNotifier.Message = "Usuário excluido com sucesso!";
             }
@@ -263,7 +263,7 @@ namespace DimStock.Models
             {
                 sql = "SELECT * FROM [User]";
 
-                using (var reader = connection.GetDataReader(sql))
+                using (var reader = connection.ExecuteReader(sql))
                 {
                     while (reader.Read())
                     {
@@ -291,7 +291,7 @@ namespace DimStock.Models
                 connection.ClearParameter();
                 connection.AddParameter("@Id", id);
 
-                using (var reader = connection.GetDataReader(sql))
+                using (var reader = connection.ExecuteReader(sql))
                 {
                     while (reader.Read())
                     {
@@ -321,7 +321,7 @@ namespace DimStock.Models
                 connection.AddParameter("@Name", string.Format("%{0}%", Name));
                 connection.AddParameter("@Email", string.Format("%{0}%", Email));
 
-                var dataTable = connection.GetDataTable(sql);
+                var dataTable = connection.ExecuteDataAdapter(sql);
 
                 PassToList(dataTable);
             }
@@ -351,7 +351,7 @@ namespace DimStock.Models
 
                 connection.AddParameter("@Login", Login);
 
-                using (var reader = connection.GetDataReader(sql))
+                using (var reader = connection.ExecuteReader(sql))
                 {
                     while (reader.Read())
                     {
@@ -394,7 +394,7 @@ namespace DimStock.Models
                 connection.ClearParameter();
                 connection.AddParameter("Id", id);
 
-                using (var reader = connection.GetDataReader(sql))
+                using (var reader = connection.ExecuteReader(sql))
                 {
                     while (reader.Read())
                     {

@@ -24,16 +24,16 @@ namespace DimStock.Models
             if (CategoryValidationModel.ValidateToInsert(this) == false)
                 return actionResult;
 
-            using (var transaction = new ConnectionTransactionModel())
+            using (var transaction = new TransactionModel())
             {
                 sql = @"INSERT INTO Category(Description)VALUES(@Description)";
 
                 transaction.ClearParameter();
                 transaction.AddParameter("@Description", Description);
 
-                if (transaction.ExecuteCommand(sql) > 0)
+                if (transaction.ExecuteNonQuery(sql) > 0)
                 {
-                    transaction.ExecuteCommit();
+                    transaction.Commit();
                     MessageNotifier.Message = "Cadastrado com sucesso!";
                     MessageNotifier.Title = "Sucesso";
                     actionResult = true;
@@ -52,7 +52,7 @@ namespace DimStock.Models
             if (CategoryValidationModel.ValidateToUpdate(this) == false)
                 return actionResult;
 
-            using (var transaction = new ConnectionTransactionModel())
+            using (var transaction = new TransactionModel())
             {
                 sql = @"UPDATE Category SET Description = @Description WHERE Id = @Id";
 
@@ -60,11 +60,11 @@ namespace DimStock.Models
                 transaction.AddParameter("@Description", Description);
                 transaction.AddParameter("@Id", Id);
 
-                actionResult = transaction.ExecuteCommand(sql) > 0;
+                actionResult = transaction.ExecuteNonQuery(sql) > 0;
 
                 if (actionResult == true)
                 {
-                    transaction.ExecuteCommit();
+                    transaction.Commit();
                     MessageNotifier.Message = "Categoria editada com sucesso!";
                     MessageNotifier.Title = "Sucesso";
 
@@ -84,18 +84,18 @@ namespace DimStock.Models
             if (CategoryValidationModel.ValidateToDelete(this) == false)
                 return actionResult;
 
-            using (var transaction = new ConnectionTransactionModel())
+            using (var transaction = new TransactionModel())
             {
                 sql = @"DELETE FROM Category WHERE Id = @Id";
 
                 transaction.ClearParameter();
                 transaction.AddParameter("@Id", Id);
 
-                actionResult = transaction.ExecuteCommand(sql) > 0;
+                actionResult = transaction.ExecuteNonQuery(sql) > 0;
 
                 if (actionResult == true)
                 {
-                    transaction.ExecuteCommit();
+                    transaction.Commit();
                     MessageNotifier.Message = "Categoria deletada com sucesso!";
                     MessageNotifier.Title = "Sucesso";
                     return actionResult;
@@ -121,7 +121,7 @@ namespace DimStock.Models
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Id", Id);
 
-                using (var reader = dataBase.GetDataReader(sql))
+                using (var reader = dataBase.ExecuteReader(sql))
                 {
                     if (reader.FieldCount > 0)
                     {
@@ -170,7 +170,7 @@ namespace DimStock.Models
 
                 sql += "ORDER BY Description";
 
-                return dataBase.GetDataTable(sql);
+                return dataBase.ExecuteDataAdapter(sql);
             }
         }
 
@@ -179,7 +179,7 @@ namespace DimStock.Models
             using (var dataBase = new ConnectionModel())
             {
                 var sql = "SELECT * FROM Category ORDER BY Description";
-                return dataBase.GetDataTable(sql);
+                return dataBase.ExecuteDataAdapter(sql);
             }
         }
     }

@@ -9,7 +9,7 @@ namespace DimStock.Models
     /// </summary>
     public partial class MovementModel
     {
-        private ConnectionTransactionModel transaction;
+        private TransactionModel transaction;
 
         public int Id { get; set; }
         public string Type { get; set; }
@@ -32,18 +32,18 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
-            using (transaction = new ConnectionTransactionModel())
+            using (transaction = new TransactionModel())
             {
                 sql = @"INSERT INTO Movement([Type])VALUES(@Type)";
 
                 transaction.ClearParameter();
                 transaction.AddParameter("@Type", Type);
 
-                if (transaction.ExecuteCommand(sql) > 0)
+                if (transaction.ExecuteNonQuery(sql) > 0)
                 {
                     if (SetOperationCode() == true)
                     {
-                        transaction.ExecuteCommit();
+                        transaction.Commit();
                         actionResult = true;
                     }
                 }
@@ -57,7 +57,7 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
-            using (transaction = new ConnectionTransactionModel())
+            using (transaction = new TransactionModel())
             {
                 var postingItems = GetPostingsList();
 
@@ -68,9 +68,9 @@ namespace DimStock.Models
                     transaction.ClearParameter();
                     transaction.AddParameter("@Id", Id);
 
-                    if (transaction.ExecuteCommand(sql) > 0)
+                    if (transaction.ExecuteNonQuery(sql) > 0)
                     {
-                        transaction.ExecuteCommit();
+                        transaction.Commit();
                         actionResult = true;
                     }
                 }
@@ -90,7 +90,7 @@ namespace DimStock.Models
             transaction.AddParameter("@Code", Code);
             transaction.AddParameter("@Id", Id);
 
-            return transaction.ExecuteCommand(sql) > 0;
+            return transaction.ExecuteNonQuery(sql) > 0;
         }
 
         public bool SetDestinationId()
@@ -106,7 +106,7 @@ namespace DimStock.Models
                 dataBase.AddParameter("@DestinationId", Destination.Id);
                 dataBase.AddParameter("@Id", Id);
 
-                if (dataBase.ExecuteCommand(sql) > 0)
+                if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
                     actionResult = true;
                 }
@@ -120,7 +120,7 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
-            using (transaction = new ConnectionTransactionModel())
+            using (transaction = new TransactionModel())
             {
                 if (CancelPostings() == true)
                 {
@@ -129,7 +129,7 @@ namespace DimStock.Models
                     transaction.ClearParameter();
                     transaction.AddParameter("Id", Id);
 
-                    if (transaction.ExecuteCommand(sql) > 0)
+                    if (transaction.ExecuteNonQuery(sql) > 0)
                     {
                         actionResult = true;
 
@@ -156,7 +156,7 @@ namespace DimStock.Models
                 dataBase.ClearParameter();
                 dataBase.AddParameter("Id", Id);
 
-                using (var reader = dataBase.GetDataReader(sql))
+                using (var reader = dataBase.ExecuteReader(sql))
                 {
                     if (reader.FieldCount > 0)
                     {
@@ -214,7 +214,7 @@ namespace DimStock.Models
 
                 sql += link + @" ORDER BY Movement.Id DESC";
 
-                return dataBase.GetDataTable(sql);
+                return dataBase.ExecuteDataAdapter(sql);
             }
         }
 

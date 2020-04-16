@@ -34,7 +34,7 @@ namespace DimStock.Models
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Location", Location);
 
-                if (dataBase.ExecuteCommand(sql) > 0)
+                if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
                     MessageNotifier.Message = "Cadastrado com sucesso!";
                     MessageNotifier.Title = "Sucesso";
@@ -59,7 +59,7 @@ namespace DimStock.Models
                 dataBase.AddParameter("@Location", Location);
                 dataBase.AddParameter("@Id", id);
 
-                if (dataBase.ExecuteCommand(sql) > 0)
+                if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
                     MessageNotifier.Message = "Editado com sucesso!";
                     actionResult = true;
@@ -81,7 +81,7 @@ namespace DimStock.Models
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Id", id);
 
-                if (dataBase.ExecuteCommand(sql) > 0)
+                if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
                     MessageNotifier.Message = "Deletado com sucesso!";
                     actionResult = true;
@@ -104,7 +104,7 @@ namespace DimStock.Models
             {
                 sql = @"SELECT * From StockDestination";
 
-                using (var reader = connection.GetDataReader(sql))
+                using (var reader = connection.ExecuteReader(sql))
                 {
                     while (reader.Read())
                     {
@@ -132,7 +132,7 @@ namespace DimStock.Models
                 connection.ClearParameter();
                 connection.AddParameter("@Id", id);
 
-                using (var reader = connection.GetDataReader(sql))
+                using (var reader = connection.ExecuteReader(sql))
                 {
                     while (reader.Read())
                     {

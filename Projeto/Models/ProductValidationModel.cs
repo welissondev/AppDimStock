@@ -151,7 +151,7 @@ namespace DimStock.Models
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Id", product.Id);
 
-                using (var reader = dataBase.GetDataReader(sql))
+                using (var reader = dataBase.ExecuteReader(sql))
                 {
                     if (reader.Read() == false)
                     {

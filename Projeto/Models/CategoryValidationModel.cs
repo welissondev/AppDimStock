@@ -127,7 +127,7 @@ namespace DimStock.Models
                     dataBase.AddParameter("@Description", category.Description);
                 }
 
-                using (var reader = dataBase.GetDataReader(sql))
+                using (var reader = dataBase.ExecuteReader(sql))
                 {
                     if (reader.Read() == false)
                     {

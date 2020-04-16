@@ -10,7 +10,7 @@ namespace DimStock.Models
     public partial class StockModel
     {
         private string summary = "All";
-        private ConnectionTransactionModel transaction;
+        private TransactionModel transaction;
 
         public int Id { get; set; }
         public int Min { get; set; }
@@ -29,11 +29,11 @@ namespace DimStock.Models
         {
             Product = new ProductModel();
         }
-        public StockModel(ConnectionTransactionModel transaction)
+        public StockModel(TransactionModel transaction)
         {
             this.transaction = transaction;
         }
-        public StockModel(ConnectionTransactionModel transaction, ProductModel product)
+        public StockModel(TransactionModel transaction, ProductModel product)
         {
             this.transaction = transaction;
             Product = product;
@@ -130,7 +130,7 @@ namespace DimStock.Models
                 sqlQuery += link + " Order By InternalCode Asc";
                 sqlCount += link;
 
-                return dataBase.GetDataTable(sqlQuery);
+                return dataBase.ExecuteDataAdapter(sqlQuery);
             }
         }
         public DataTable FetchData()
@@ -233,7 +233,7 @@ namespace DimStock.Models
                 criterionSqlCount += criterionSqlParameter;
                 criterionSqlQuery += criterionSqlParameter + criterionSqlOrderBy;
 
-                return dataBase.GetDataTable(criterionSqlQuery);
+                return dataBase.ExecuteDataAdapter(criterionSqlQuery);
             }
         }
 
@@ -251,7 +251,7 @@ namespace DimStock.Models
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Id", Id);
 
-                using (var reader = dataBase.GetDataReader(sql))
+                using (var reader = dataBase.ExecuteReader(sql))
                 {
                     if (reader.FieldCount > 0)
                     {
@@ -288,7 +288,7 @@ namespace DimStock.Models
                 transaction.AddParameter("@ItemTotalValue", item["TotalValue"]);
                 transaction.AddParameter("@StockId", item["StockId"]);
 
-                actionResult = transaction.ExecuteCommand(sql) > 0;
+                actionResult = transaction.ExecuteNonQuery(sql) > 0;
             }
 
             return actionResult;
@@ -308,7 +308,7 @@ namespace DimStock.Models
                 transaction.AddParameter("@ItemTotalValue", item["TotalValue"]);
                 transaction.AddParameter("@StockId", item["StockId"]);
 
-                actionResult = transaction.ExecuteCommand(sql) > 0;
+                actionResult = transaction.ExecuteNonQuery(sql) > 0;
             }
 
             return actionResult;
@@ -329,7 +329,7 @@ namespace DimStock.Models
                 transaction.AddParameter("@ItemTotalValue", item["TotalValue"]);
                 transaction.AddParameter("@StockId", item["StockId"]);
 
-                actionResult = transaction.ExecuteCommand(sql) > 0;
+                actionResult = transaction.ExecuteNonQuery(sql) > 0;
             }
 
             return actionResult;
@@ -349,7 +349,7 @@ namespace DimStock.Models
                 transaction.AddParameter("@ItemTotalValue", item["TotalValue"]);
                 transaction.AddParameter("@StockId", item["StockId"]);
 
-                actionResult = transaction.ExecuteCommand(sql) > 0;
+                actionResult = transaction.ExecuteNonQuery(sql) > 0;
             }
 
             return actionResult;
@@ -364,7 +364,7 @@ namespace DimStock.Models
             transaction.AddParameter("ProductCostPrice", Product.CostPrice);
             transaction.AddParameter("@ProductId", Product.Id);
 
-            return transaction.ExecuteCommand(sql) > 0;
+            return transaction.ExecuteNonQuery(sql) > 0;
         }
 
         public void SetSummary(List<StockModel> list)

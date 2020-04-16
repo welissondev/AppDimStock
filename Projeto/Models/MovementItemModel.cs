@@ -49,7 +49,7 @@ namespace DimStock.Models
                 dataBase.AddParameter("@UnitaryValue", UnitaryValue);
                 dataBase.AddParameter("@TotalValue", TotalValue);
 
-                if (dataBase.ExecuteCommand(sql) > 0)
+                if (dataBase.ExecuteNonQuery(sql) > 0)
                     actionResult = true;
             }
 
@@ -68,7 +68,7 @@ namespace DimStock.Models
                 dataBase.ClearParameter();
                 dataBase.AddParameter("Id", Id);
 
-                if (dataBase.ExecuteCommand(sql) > 0)
+                if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
                     actionResult = true;
                 }
@@ -90,7 +90,7 @@ namespace DimStock.Models
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@MovementId", Movement.Id);
 
-                return dataBase.GetDataTable(sql);
+                return dataBase.ExecuteDataAdapter(sql);
             }
         }
     }

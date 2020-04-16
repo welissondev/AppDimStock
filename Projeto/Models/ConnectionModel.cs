@@ -11,10 +11,8 @@ namespace DimStock.Models
     public partial class ConnectionModel
     {
         private bool disposed = false;
-        private OleDbParameter parameter;
         private OleDbCommand command;
         private OleDbConnection connection;
-        private OleDbTransaction transaction;
     }
 
     public partial class ConnectionModel : IDisposable
@@ -23,7 +21,6 @@ namespace DimStock.Models
         {
             connection = new OleDbConnection(GetConnectionString());
             command = new OleDbCommand();
-            parameter = new OleDbParameter();
         }
 
         public OleDbConnection Open()
@@ -43,7 +40,7 @@ namespace DimStock.Models
             }
         }
 
-        public int ExecuteCommand(string sql)
+        public int ExecuteNonQuery(string sql)
         {
             try
             {
@@ -70,31 +67,7 @@ namespace DimStock.Models
             }
         }
 
-        public int TransactionExecuteCommand(string sql)
-        {
-            try
-            {
-                command.CommandText = sql;
-                command.Connection = transaction.Connection;
-                command.Transaction = transaction;
-                return command.ExecuteNonQuery();
-            }
-            catch (Exception)
-            {
-                transaction.Rollback();
-                throw;
-            }
-        }
-        public void TransactionExecuteCommit()
-        {
-            transaction.Commit();
-        }
-        public void BeginTransaction(OleDbConnection connection)
-        {
-            transaction = connection.BeginTransaction();
-        }
-
-        public OleDbDataReader GetDataReader(string sql)
+        public OleDbDataReader ExecuteReader(string sql)
         {
             try
             {
@@ -108,7 +81,7 @@ namespace DimStock.Models
                 throw;
             }
         }
-        public DataTable GetDataTable(string sql, int startRegister = 0, int finalRegister = 20)
+        public DataTable ExecuteDataAdapter(string sql, int startRegister = 0, int finalRegister = 20)
         {
             var table = new DataTable();
 
@@ -161,7 +134,6 @@ namespace DimStock.Models
             {
                 connection.Dispose();
                 command.Dispose();
-                if (transaction != null) transaction.Dispose();
             }
 
             disposed = true;

@@ -9,7 +9,7 @@ namespace DimStock.Models
     /// </summary>
     public partial class ProductModel
     {
-        private ConnectionTransactionModel transaction;
+        private TransactionModel transaction;
 
         public int Id { get; set; }
         public string InternalCode { get; set; }
@@ -49,7 +49,7 @@ namespace DimStock.Models
                 dataBase.AddParameter("@SalePrice", SalePrice);
                 dataBase.AddParameter("@BarCode", BarCode);
 
-                if (dataBase.ExecuteCommand(sql) > 0)
+                if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
                     MessageNotifier.Message = "Produto cadastrado com sucesso!";
                     MessageNotifier.Title = "Sucesso";
@@ -68,7 +68,7 @@ namespace DimStock.Models
             if (ProductValidationModel.ValidateToUpdate(this) == false)
                 return actionResult;
 
-            using (transaction = new ConnectionTransactionModel())
+            using (transaction = new TransactionModel())
             {
                 sql = @"UPDATE Product SET CategoryId = @CategoryId, InternalCode = @InternalCode, 
                 Description = @Description, CostPrice = @CostPrice, SalePrice = @SalePrice, 
@@ -83,11 +83,11 @@ namespace DimStock.Models
                 transaction.AddParameter("@BarCode", BarCode);
                 transaction.AddParameter("@Id", Id);
 
-                if (transaction.ExecuteCommand(sql) > 0)
+                if (transaction.ExecuteNonQuery(sql) > 0)
                 {
                     if (new StockModel(transaction, this).UpdateValue() == true)
                     {
-                        transaction.ExecuteCommit();
+                        transaction.Commit();
                         MessageNotifier.Message = "Produto atualizado com sucesso!";
                         MessageNotifier.Title = "Sucesso!";
                         actionResult = true;
@@ -113,7 +113,7 @@ namespace DimStock.Models
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Id", Id);
 
-                if (dataBase.ExecuteCommand(sql) > 0)
+                if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
                     MessageNotifier.Message = "Produto excluido com sucesso!";
                     MessageNotifier.Title = "Sucesso";
@@ -141,7 +141,7 @@ namespace DimStock.Models
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Id", Id);
 
-                using (var reader = dataBase.GetDataReader(sql))
+                using (var reader = dataBase.ExecuteReader(sql))
                 {
                     if (reader.FieldCount > 0)
                     {
@@ -201,7 +201,7 @@ namespace DimStock.Models
 
                 sql += " Order By Id, InternalCode Desc";
 
-                return dataBase.GetDataTable(sql);
+                return dataBase.ExecuteDataAdapter(sql);
             }
         }
     }
