@@ -148,6 +148,9 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
+            if (StockValidationModel.ValidateToGetDetail(this) == false)
+                return actionResult;
+
             using (var dataBase = new ConnectionModel())
             {
                 sql = @"SELECT Product.Id, Product.InternalCode, Product.Description, 
@@ -184,6 +187,9 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
+            if (StockValidationModel.ValidatePostingItems(postingItems) == false)
+                return actionResult;
+
             foreach (DataRow item in postingItems.Rows)
             {
                 sql = @"UPDATE Stock Set Quantity = Quantity + @ItemQuantity, 
@@ -203,6 +209,9 @@ namespace DimStock.Models
         {
             var actionResult = false;
             var sql = string.Empty;
+
+            if (StockValidationModel.ValidatePostingItems(postingItems) == false)
+                return actionResult;
 
             foreach (DataRow item in postingItems.Rows)
             {
@@ -225,6 +234,9 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
+            if (StockValidationModel.ValidatePostingItems(postedItems) == false)
+                return actionResult;
+
             foreach (DataRow item in postedItems.Rows)
             {
                 sql = @"UPDATE Stock Set Quantity = Quantity - @ItemQuantity, 
@@ -245,6 +257,9 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
+            if (StockValidationModel.ValidatePostingItems(postedItems) == false)
+                return actionResult;
+
             foreach (DataRow item in postedItems.Rows)
             {
                 sql = @"UPDATE Stock Set Quantity = Quantity + @ItemQuantity, 
@@ -263,6 +278,9 @@ namespace DimStock.Models
 
         public bool UpdateValue()
         {
+            if (StockValidationModel.ValidateToUpdateValue(this) == false)
+                return false;
+
             var sql = @"UPDATE Stock Set TotalValue = @ProductCostPrice * 
             Quantity WHERE ProductId = @ProductId";
 
