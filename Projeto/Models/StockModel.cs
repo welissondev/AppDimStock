@@ -123,7 +123,7 @@ namespace DimStock.Models
                 {
                     criterionSqlParameter += " AND InternalCode LIKE @InternalCode";
 
-                    dataBase.AddParameter("@InternalCode", string.Format("{0}%",
+                    ParameterModel.Add("@InternalCode", string.Format("{0}%",
                     Product.InternalCode));
                 }
 
@@ -132,7 +132,7 @@ namespace DimStock.Models
                 {
                     criterionSqlParameter += " AND Description LIKE @Description";
 
-                    dataBase.AddParameter("@Description", string.Format("%{0}%",
+                    ParameterModel.Add("@Description", string.Format("%{0}%",
                     Product.Description));
                 }
 
@@ -154,8 +154,8 @@ namespace DimStock.Models
                 Product.CostPrice, Stock.Id, Stock.Quantity FROM Product INNER JOIN 
                 Stock ON Product.Id = Stock.ProductId WHERE Product.Id = @Id";
 
-                dataBase.ClearParameter();
-                dataBase.AddParameter("@Id", Id);
+                ParameterModel.Clear();
+                ParameterModel.Add("@Id", Id);
 
                 using (var reader = dataBase.ExecuteReader(sql))
                 {
@@ -189,10 +189,10 @@ namespace DimStock.Models
                 sql = @"UPDATE Stock Set Quantity = Quantity + @ItemQuantity, 
                 TotalValue = TotalValue + @ItemTotalValue WHERE Id = @StockId";
 
-                transaction.ClearParameter();
-                transaction.AddParameter("@ItemQuantity", item["Quantity"]);
-                transaction.AddParameter("@ItemTotalValue", item["TotalValue"]);
-                transaction.AddParameter("@StockId", item["StockId"]);
+                ParameterModel.Clear();
+                ParameterModel.Add("@ItemQuantity", item["Quantity"]);
+                ParameterModel.Add("@ItemTotalValue", item["TotalValue"]);
+                ParameterModel.Add("@StockId", item["StockId"]);
 
                 actionResult = transaction.ExecuteNonQuery(sql) > 0;
             }
@@ -209,10 +209,10 @@ namespace DimStock.Models
                 sql = @"UPDATE Stock Set Quantity = Quantity - @ItemQuantity, 
                 TotalValue = TotalValue - @ItemTotalValue WHERE Id = @StockId";
 
-                transaction.ClearParameter();
-                transaction.AddParameter("@ItemQuantity", item["Quantity"]);
-                transaction.AddParameter("@ItemTotalValue", item["TotalValue"]);
-                transaction.AddParameter("@StockId", item["StockId"]);
+                ParameterModel.Clear();
+                ParameterModel.Add("@ItemQuantity", item["Quantity"]);
+                ParameterModel.Add("@ItemTotalValue", item["TotalValue"]);
+                ParameterModel.Add("@StockId", item["StockId"]);
 
                 actionResult = transaction.ExecuteNonQuery(sql) > 0;
             }
@@ -230,10 +230,10 @@ namespace DimStock.Models
                 sql = @"UPDATE Stock Set Quantity = Quantity - @ItemQuantity, 
                 TotalValue = TotalValue - @ItemTotalValue WHERE Id = @StockId";
 
-                transaction.ClearParameter();
-                transaction.AddParameter("@ItemQuantity", item["Quantity"]);
-                transaction.AddParameter("@ItemTotalValue", item["TotalValue"]);
-                transaction.AddParameter("@StockId", item["StockId"]);
+                ParameterModel.Clear();
+                ParameterModel.Add("@ItemQuantity", item["Quantity"]);
+                ParameterModel.Add("@ItemTotalValue", item["TotalValue"]);
+                ParameterModel.Add("@StockId", item["StockId"]);
 
                 actionResult = transaction.ExecuteNonQuery(sql) > 0;
             }
@@ -250,10 +250,10 @@ namespace DimStock.Models
                 sql = @"UPDATE Stock Set Quantity = Quantity + @ItemQuantity, 
                 TotalValue = TotalValue + @ItemTotalValue WHERE Id = @StockId";
 
-                transaction.ClearParameter();
-                transaction.AddParameter("@ItemQuantity", item["Quantity"]);
-                transaction.AddParameter("@ItemTotalValue", item["TotalValue"]);
-                transaction.AddParameter("@StockId", item["StockId"]);
+                ParameterModel.Clear();
+                ParameterModel.Add("@ItemQuantity", item["Quantity"]);
+                ParameterModel.Add("@ItemTotalValue", item["TotalValue"]);
+                ParameterModel.Add("@StockId", item["StockId"]);
 
                 actionResult = transaction.ExecuteNonQuery(sql) > 0;
             }
@@ -266,9 +266,9 @@ namespace DimStock.Models
             var sql = @"UPDATE Stock Set TotalValue = @ProductCostPrice * 
             Quantity WHERE ProductId = @ProductId";
 
-            transaction.ClearParameter();
-            transaction.AddParameter("ProductCostPrice", Product.CostPrice);
-            transaction.AddParameter("@ProductId", Product.Id);
+            ParameterModel.Clear();
+            ParameterModel.Add("ProductCostPrice", Product.CostPrice);
+            ParameterModel.Add("@ProductId", Product.Id);
 
             return transaction.ExecuteNonQuery(sql) > 0;
         }

@@ -36,8 +36,8 @@ namespace DimStock.Models
             {
                 sql = @"INSERT INTO Movement([Type])VALUES(@Type)";
 
-                transaction.ClearParameter();
-                transaction.AddParameter("@Type", Type);
+                ParameterModel.Clear();
+                ParameterModel.Add("@Type", Type);
 
                 if (transaction.ExecuteNonQuery(sql) > 0)
                 {
@@ -65,8 +65,8 @@ namespace DimStock.Models
                 {
                     sql = @"UPDATE Movement Set Situation = 'Finalizada' WHERE Id = @Id";
 
-                    transaction.ClearParameter();
-                    transaction.AddParameter("@Id", Id);
+                    ParameterModel.Clear();
+                    ParameterModel.Add("@Id", Id);
 
                     if (transaction.ExecuteNonQuery(sql) > 0)
                     {
@@ -86,9 +86,9 @@ namespace DimStock.Models
 
             var sql = @"UPDATE Movement SET Code = @Code WHERE Id = @Id";
 
-            transaction.ClearParameter();
-            transaction.AddParameter("@Code", Code);
-            transaction.AddParameter("@Id", Id);
+            ParameterModel.Clear();
+            ParameterModel.Add("@Code", Code);
+            ParameterModel.Add("@Id", Id);
 
             return transaction.ExecuteNonQuery(sql) > 0;
         }
@@ -102,9 +102,9 @@ namespace DimStock.Models
             {
                 sql = @"UPDATE Movement SET DestinationId = @DestinationId WHERE Id = @Id";
 
-                dataBase.ClearParameter();
-                dataBase.AddParameter("@DestinationId", Destination.Id);
-                dataBase.AddParameter("@Id", Id);
+                ParameterModel.Clear();
+                ParameterModel.Add("@DestinationId", Destination.Id);
+                ParameterModel.Add("@Id", Id);
 
                 if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
@@ -126,8 +126,8 @@ namespace DimStock.Models
                 {
                     sql = @"DELETE FROM Movement WHERE Id = @Id";
 
-                    transaction.ClearParameter();
-                    transaction.AddParameter("Id", Id);
+                    ParameterModel.Clear();
+                    ParameterModel.Add("Id", Id);
 
                     if (transaction.ExecuteNonQuery(sql) > 0)
                     {
@@ -153,8 +153,8 @@ namespace DimStock.Models
                 Destination ON Movement.DestinationId = Destination.Id WHERE 
                 Movement.Id = @Id";
 
-                dataBase.ClearParameter();
-                dataBase.AddParameter("Id", Id);
+                ParameterModel.Clear();
+                ParameterModel.Add("Id", Id);
 
                 using (var reader = dataBase.ExecuteReader(sql))
                 {
@@ -197,19 +197,19 @@ namespace DimStock.Models
                 if (Type != string.Empty)
                 {
                     link += @" AND [Type] LIKE @Type";
-                    dataBase.AddParameter("@Type", string.Format("{0}", Type));
+                    ParameterModel.Add("@Type", string.Format("{0}", Type));
                 }
 
                 if (Situation != string.Empty)
                 {
                     link += @" AND Situation LIKE @Situation";
-                    dataBase.AddParameter("@Situation", string.Format("{0}", Situation));
+                    ParameterModel.Add("@Situation", string.Format("{0}", Situation));
                 }
 
                 if (Code != string.Empty)
                 {
                     link += @" AND Movement.Code LIKE @Code ";
-                    dataBase.AddParameter("@Code", string.Format("{0}", Code));
+                    ParameterModel.Add("@Code", string.Format("{0}", Code));
                 }
 
                 sql += link + @" ORDER BY Movement.Id DESC";

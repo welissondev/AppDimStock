@@ -1,5 +1,6 @@
 ﻿using DimStock.Properties;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
 
@@ -59,6 +60,7 @@ namespace DimStock.Models
         {
             try
             {
+                SetParameters(command);
                 command.CommandText = sql;
                 command.Connection = transaction.Connection;
                 command.Transaction = transaction;
@@ -75,6 +77,7 @@ namespace DimStock.Models
         {
             try
             {
+                SetParameters(command);
                 command.CommandText = sql;
                 command.Connection = transaction.Connection;
                 command.Transaction = transaction;
@@ -87,19 +90,19 @@ namespace DimStock.Models
             }
         }
 
-
-        public void AddParameter(string name, object value)
+        public void SetParameters(OleDbCommand command)
         {
-            var parameter = new OleDbParameter
+            try
             {
-                ParameterName = name,
-                Value = value
-            };
-            command.Parameters.Add(parameter);
-        }
-        public void ClearParameter()
-        {
-            command.Parameters.Clear();
+                command.Parameters.Clear();
+
+                for (int i = 0; i < ParameterModel.Collection.Count; i++)
+                    command.Parameters.Add(ParameterModel.Collection[i]);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public void Dispose()

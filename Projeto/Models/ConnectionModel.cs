@@ -44,6 +44,7 @@ namespace DimStock.Models
         {
             try
             {
+                SetParameters(command);
                 command.CommandText = sql;
                 command.Connection = Open();
                 return command.ExecuteNonQuery();
@@ -57,6 +58,7 @@ namespace DimStock.Models
         {
             try
             {
+                SetParameters(command);
                 command.CommandText = sql;
                 command.Connection = Open();
                 return Convert.ToInt32(command.ExecuteScalar());
@@ -71,6 +73,7 @@ namespace DimStock.Models
         {
             try
             {
+                SetParameters(command);
                 command.CommandText = sql;
                 command.Connection = Open();
 
@@ -87,6 +90,7 @@ namespace DimStock.Models
 
             Open();
 
+            SetParameters(command);
             command.CommandText = sql;
             command.Connection = connection;
 
@@ -100,18 +104,12 @@ namespace DimStock.Models
             return table;
         }
 
-        public void AddParameter(string name, object value)
-        {
-            var parameter = new OleDbParameter
-            {
-                ParameterName = name,
-                Value = value
-            };
-            command.Parameters.Add(parameter);
-        }
-        public void ClearParameter()
+        public void SetParameters(OleDbCommand command)
         {
             command.Parameters.Clear();
+
+            for (int i = 0; i < ParameterModel.Collection.Count; i++)
+                command.Parameters.Add(ParameterModel.Collection[i]);
         }
 
         public void Dispose()

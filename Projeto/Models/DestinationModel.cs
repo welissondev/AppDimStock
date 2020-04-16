@@ -31,8 +31,8 @@ namespace DimStock.Models
                 sql = @"INSERT INTO StockDestination
                 (Location)VALUES(@Location)";
 
-                dataBase.ClearParameter();
-                dataBase.AddParameter("@Location", Location);
+                ParameterModel.Clear();
+                ParameterModel.Add("@Location", Location);
 
                 if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
@@ -55,9 +55,9 @@ namespace DimStock.Models
                 sql = @"UPDATE StockDestination SET 
                 Location = @Location WHERE Id = @Id";
 
-                dataBase.ClearParameter();
-                dataBase.AddParameter("@Location", Location);
-                dataBase.AddParameter("@Id", id);
+                ParameterModel.Clear();
+                ParameterModel.Add("@Location", Location);
+                ParameterModel.Add("@Id", id);
 
                 if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
@@ -78,8 +78,8 @@ namespace DimStock.Models
             {
                 sql = @"DELETE FROM Destination WHERE Id = @Id";
 
-                dataBase.ClearParameter();
-                dataBase.AddParameter("@Id", id);
+                ParameterModel.Clear();
+                ParameterModel.Add("@Id", id);
 
                 if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
@@ -129,8 +129,8 @@ namespace DimStock.Models
                 sql = @"SELECT * FROM StockDestination 
                 WHERE Id = @Id";
 
-                connection.ClearParameter();
-                connection.AddParameter("@Id", id);
+                ParameterModel.Clear();
+                ParameterModel.Add("@Id", id);
 
                 using (var reader = connection.ExecuteReader(sql))
                 {

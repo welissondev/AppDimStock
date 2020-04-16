@@ -115,8 +115,8 @@ namespace DimStock.Models
             {
                 sql = @"SELECT Id, Description FROM Category WHERE Id = @Id ";
 
-                dataBase.ClearParameter();
-                dataBase.AddParameter("@Id", category.Id);
+                ParameterModel.Clear();
+                ParameterModel.Add("@Id", category.Id);
 
                 //Concatena sql se usuário buscar a
                 //categoria pela descrição.
@@ -124,7 +124,7 @@ namespace DimStock.Models
                     category.Description != null)
                 {
                     sql += "OR Description = @Description";
-                    dataBase.AddParameter("@Description", category.Description);
+                    ParameterModel.Add("@Description", category.Description);
                 }
 
                 using (var reader = dataBase.ExecuteReader(sql))

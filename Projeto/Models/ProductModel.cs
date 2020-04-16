@@ -41,13 +41,13 @@ namespace DimStock.Models
                 CostPrice, SalePrice, BarCode) VALUES (@CategoryId, @Code, @InternalCode, 
                 @CostPrice, @SalePrice, @BarCode)";
 
-                dataBase.ClearParameter();
-                dataBase.AddParameter("@CategoryId", Category.Id);
-                dataBase.AddParameter("@InternalCode", InternalCode);
-                dataBase.AddParameter("@Description", Description);
-                dataBase.AddParameter("@CostPrice", CostPrice);
-                dataBase.AddParameter("@SalePrice", SalePrice);
-                dataBase.AddParameter("@BarCode", BarCode);
+                ParameterModel.Clear();
+                ParameterModel.Add("@CategoryId", Category.Id);
+                ParameterModel.Add("@InternalCode", InternalCode);
+                ParameterModel.Add("@Description", Description);
+                ParameterModel.Add("@CostPrice", CostPrice);
+                ParameterModel.Add("@SalePrice", SalePrice);
+                ParameterModel.Add("@BarCode", BarCode);
 
                 if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
@@ -74,15 +74,15 @@ namespace DimStock.Models
                 Description = @Description, CostPrice = @CostPrice, SalePrice = @SalePrice, 
                 BarCode = @BarCode WHERE Id = @Id";
 
-                transaction.ClearParameter();
-                transaction.AddParameter("@CategoryId", Category.Id);
-                transaction.AddParameter("@InternalCode", InternalCode);
-                transaction.AddParameter("@Description", Description);
-                transaction.AddParameter("@CostPrice", CostPrice);
-                transaction.AddParameter("@SalePrice", SalePrice);
-                transaction.AddParameter("@BarCode", BarCode);
-                transaction.AddParameter("@Id", Id);
-
+                ParameterModel.Clear();
+                ParameterModel.Add("@CategoryId", Category.Id);
+                ParameterModel.Add("@InternalCode", InternalCode);
+                ParameterModel.Add("@Description", Description);
+                ParameterModel.Add("@CostPrice", CostPrice);
+                ParameterModel.Add("@SalePrice", SalePrice);
+                ParameterModel.Add("@BarCode", BarCode);
+                ParameterModel.Add("@Id", Id);
+               
                 if (transaction.ExecuteNonQuery(sql) > 0)
                 {
                     if (new StockModel(transaction, this).UpdateValue() == true)
@@ -110,8 +110,8 @@ namespace DimStock.Models
             {
                 sql = @"DELETE FROM Product WHERE Id = @Id";
 
-                dataBase.ClearParameter();
-                dataBase.AddParameter("@Id", Id);
+                ParameterModel.Clear();
+                ParameterModel.Add("@Id", Id);
 
                 if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
@@ -138,8 +138,8 @@ namespace DimStock.Models
                 LEFT JOIN Category ON Product.CategoryId = Category.Id
                 WHERE Product.Id = @Id ";
 
-                dataBase.ClearParameter();
-                dataBase.AddParameter("@Id", Id);
+                ParameterModel.Clear();
+                ParameterModel.Add("@Id", Id);
 
                 using (var reader = dataBase.ExecuteReader(sql))
                 {
@@ -180,6 +180,8 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
+                ParameterModel.Clear();
+
                 sql = @"SELECT Id, InternalCode, Description, 
                 CostPrice, SalePrice FROM Product WHERE Id > 0";
 
@@ -187,7 +189,7 @@ namespace DimStock.Models
                 {
                     sql += " AND InternalCode LIKE @InternalCode";
 
-                    dataBase.AddParameter("@InternalCode", string.
+                    ParameterModel.Add("@InternalCode", string.
                     Format("{0}%", InternalCode));
                 }
 
@@ -195,7 +197,7 @@ namespace DimStock.Models
                 {
                     sql += " AND Description LIKE @Description";
 
-                    dataBase.AddParameter("@Description", string.
+                    ParameterModel.Add("@Description", string.
                     Format("%{0}%", Description));
                 }
 

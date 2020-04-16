@@ -28,8 +28,8 @@ namespace DimStock.Models
             {
                 sql = @"INSERT INTO Category(Description)VALUES(@Description)";
 
-                transaction.ClearParameter();
-                transaction.AddParameter("@Description", Description);
+                ParameterModel.Clear();
+                ParameterModel.Add("@Description", Description);
 
                 if (transaction.ExecuteNonQuery(sql) > 0)
                 {
@@ -56,9 +56,9 @@ namespace DimStock.Models
             {
                 sql = @"UPDATE Category SET Description = @Description WHERE Id = @Id";
 
-                transaction.ClearParameter();
-                transaction.AddParameter("@Description", Description);
-                transaction.AddParameter("@Id", Id);
+                ParameterModel.Clear();
+                ParameterModel.Add("@Description", Description);
+                ParameterModel.Add("@Id", Id);
 
                 actionResult = transaction.ExecuteNonQuery(sql) > 0;
 
@@ -88,8 +88,8 @@ namespace DimStock.Models
             {
                 sql = @"DELETE FROM Category WHERE Id = @Id";
 
-                transaction.ClearParameter();
-                transaction.AddParameter("@Id", Id);
+                ParameterModel.Clear();
+                ParameterModel.Add("@Id", Id);
 
                 actionResult = transaction.ExecuteNonQuery(sql) > 0;
 
@@ -118,8 +118,8 @@ namespace DimStock.Models
                 sql = @"SELECT Id, Description From 
                 Category Where Id = @Id ";
 
-                dataBase.ClearParameter();
-                dataBase.AddParameter("@Id", Id);
+                ParameterModel.Clear();
+                ParameterModel.Add("@Id", Id);
 
                 using (var reader = dataBase.ExecuteReader(sql))
                 {
@@ -145,8 +145,8 @@ namespace DimStock.Models
             {
                 var sql = "SELECT Id FROM Category WHERE Description = @Description";
 
-                dataBase.ClearParameter();
-                dataBase.AddParameter("@Description", Description);
+                ParameterModel.Clear();
+                ParameterModel.Add("@Description", Description);
 
                 return dataBase.ExecuteScalar(sql);
             }
@@ -164,7 +164,7 @@ namespace DimStock.Models
                 {
                     sql += "WHERE Description LIKE @Description ";
 
-                    dataBase.AddParameter("@Description",
+                    ParameterModel.Add("@Description",
                    string.Format("%{0}%", Description));
                 }
 

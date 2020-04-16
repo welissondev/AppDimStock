@@ -41,13 +41,13 @@ namespace DimStock.Models
                 Quantity, UnitaryValue, TotalValue)VALUES(@MovementId, @ProductId, @StockId, 
                 @Quantity, @UnitaryValue, @TotalValue)";
 
-                dataBase.ClearParameter();
-                dataBase.AddParameter("@MovementId", Movement.Id);
-                dataBase.AddParameter("@ProductId", Product.Id);
-                dataBase.AddParameter("@StockId", Stock.Id);
-                dataBase.AddParameter("@Quantity", Quantity);
-                dataBase.AddParameter("@UnitaryValue", UnitaryValue);
-                dataBase.AddParameter("@TotalValue", TotalValue);
+                ParameterModel.Clear();
+                ParameterModel.Add("@MovementId", Movement.Id);
+                ParameterModel.Add("@ProductId", Product.Id);
+                ParameterModel.Add("@StockId", Stock.Id);
+                ParameterModel.Add("@Quantity", Quantity);
+                ParameterModel.Add("@UnitaryValue", UnitaryValue);
+                ParameterModel.Add("@TotalValue", TotalValue);
 
                 if (dataBase.ExecuteNonQuery(sql) > 0)
                     actionResult = true;
@@ -65,8 +65,8 @@ namespace DimStock.Models
             {
                 sql = @"DELETE FROM MovementItem Where Id = @Id";
 
-                dataBase.ClearParameter();
-                dataBase.AddParameter("Id", Id);
+                ParameterModel.Clear();
+                ParameterModel.Add("Id", Id);
 
                 if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
@@ -87,8 +87,8 @@ namespace DimStock.Models
                 FROM MovementItem INNER JOIN Product ON MovementItem.ProductId = Product.Id WHERE 
                 MovementItem.MovementId = @MovementId ORDER BY InternalCode";
 
-                dataBase.ClearParameter();
-                dataBase.AddParameter("@MovementId", Movement.Id);
+                ParameterModel.Clear();
+                ParameterModel.Add("@MovementId", Movement.Id);
 
                 return dataBase.ExecuteDataAdapter(sql);
             }
