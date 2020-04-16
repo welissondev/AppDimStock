@@ -10,7 +10,7 @@ namespace DimStock.Models
     /// </summary>
     public class AppSettingModel
     {
-        public void TransferDataBaseToMainDirectory()
+        public void PassDataBaseToMainDirectory()
         {
             var sourcePath = GetDirectoryOfExe() +
             @"Resources\dimstockdatabase.mdb";
@@ -23,8 +23,7 @@ namespace DimStock.Models
             if (dataBase.CheckIfExists(destPath) == false)
                 dataBase.CopyFromDirectory(sourcePath, destPath);
         }
-
-        public void TransferCompanyLogoToMainDirectory(string sourcePath)
+        public void PassBrandLogoToMainDirectory(string sourcePath)
         {
             var destPath = GetMainAppDirectory() + @"\CompanyLogo\CompanyLogo.jpg";
 
@@ -51,26 +50,25 @@ namespace DimStock.Models
 
             var hour = hor + "." + min + "." + sec;
 
-            var sourcePath = GetMainAppDirectory() + @"\dimstockdatabase.mdb";
+            var sourcePath = GetMainAppDirectory() + @"\" + GetDataBaseName();
 
-            var destPath = GetMainAppDirectory() + @"\DataBaseBackUp\dimStockBackup " 
+            var destPath = GetMainAppDirectory() + @"\DataBaseBackUp\dimStockBackup "
             + date + " " + hour + ".mdb";
 
             backup.CopyFromDirectory(sourcePath, destPath);
         }
-
         public void ImportBackUp(string dataBaseBackUpName)
         {
             var sourcePath = GetMainAppDirectory() + @"\DataBaseBackUp\" + dataBaseBackUpName;
 
-            var destPath = GetMainAppDirectory() + @"\dimstockdatabase.mdb";
+            var destPath = GetMainAppDirectory() + @"\" + GetDataBaseName();
 
             var backup = new AuxiliaryFileManager();
 
             backup.CopyFromDirectory(sourcePath, destPath);
         }
 
-        public void CreateFoldersInTheMainDirectory()
+        public void CreateFoldersMainDirectory()
         {
             var directory = new AuxiliaryDirectoryManager();
 
@@ -95,10 +93,23 @@ namespace DimStock.Models
         {
             return Settings.Default.MainAppDirectory;
         }
-
         public static string GetDirectoryOfExe()
         {
             return AppDomain.CurrentDomain.BaseDirectory.ToString();
+        }
+
+        public static string GetDataBaseName()
+        {
+            return Settings.Default.DataBaseName;
+
+        }
+        public static string GetConnectionString()
+        {
+            var connectionString = @"Provider = Microsoft.jet.oledb.4.0; Data Source =" +
+            GetMainAppDirectory() + @"\" + GetDataBaseName() + @";" +
+            @"jet oledb:database password=#admin#";
+
+            return connectionString;
         }
 
         public void SaveAsMainDirectory(string path)
@@ -107,7 +118,7 @@ namespace DimStock.Models
             Settings.Default.Save();
         }
 
-        public static void FinalizeConfiguration()
+        public static void FinalizeSettings()
         {
             Settings.Default.AppSettingsState = true;
             Settings.Default.Save();

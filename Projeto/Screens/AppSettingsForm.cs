@@ -132,9 +132,9 @@ namespace DimStock.Screens
                             appSetting.SaveAsMainDirectory(
                             TextMainDirectoryPath.Text);
 
-                            appSetting.TransferDataBaseToMainDirectory();
+                            appSetting.PassDataBaseToMainDirectory();
 
-                            appSetting.CreateFoldersInTheMainDirectory();
+                            appSetting.CreateFoldersMainDirectory();
 
                             MainTabControl.SelectTab(
                             "PageCompanyLogo");
@@ -148,11 +148,11 @@ namespace DimStock.Screens
                                 var path = AppSettingModel.GetDirectoryOfExe() + 
                                 @"Resources\DimStockLogoType.png";
                                 
-                                appSetting.TransferCompanyLogoToMainDirectory(path);
+                                appSetting.PassBrandLogoToMainDirectory(path);
                             }
                             else
                             {
-                                appSetting.TransferCompanyLogoToMainDirectory(
+                                appSetting.PassBrandLogoToMainDirectory(
                                 PictureCompanyLogo.ImageLocation);
                             }
 
@@ -174,7 +174,7 @@ namespace DimStock.Screens
                                 LabelPageFinalizeSubTitle.Text = "Reiniciando o sistema...";
                                 Await(8000);
 
-                                AppSettingModel.FinalizeConfiguration();
+                                AppSettingModel.FinalizeSettings();
 
                                 Application.Restart();
                             }
@@ -210,7 +210,7 @@ namespace DimStock.Screens
                                 LabelPageFinalizeSubTitle.Text = "Reiniciando o sistema...";
                                 Await(8000);
 
-                                AppSettingModel.FinalizeConfiguration();
+                                AppSettingModel.FinalizeSettings();
 
                                 Application.Restart();
                             }

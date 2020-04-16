@@ -21,7 +21,7 @@ namespace DimStock.Models
         public TransactionModel(bool beginAutomaticTransaction = true)
         {
             command = new OleDbCommand();
-            connection = new OleDbConnection(GetConnectionString());
+            connection = new OleDbConnection(AppSettingModel.GetConnectionString());
 
             if (beginAutomaticTransaction == true)
                 Begin();
@@ -100,12 +100,6 @@ namespace DimStock.Models
         public void ClearParameter()
         {
             command.Parameters.Clear();
-        }
-
-        private string GetConnectionString()
-        {
-            return @"Provider = Microsoft.jet.oledb.4.0; Data Source =" +
-            Settings.Default.MainAppDirectory + @"\dimstockdatabase.mdb;jet oledb:database password=#admin#";
         }
 
         public void Dispose()

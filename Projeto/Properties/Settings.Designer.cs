@@ -46,5 +46,17 @@ namespace DimStock.Properties {
                 this["AppSettingsState"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("dimstockdatabase.mdb")]
+        public string DataBaseName {
+            get {
+                return ((string)(this["DataBaseName"]));
+            }
+            set {
+                this["DataBaseName"] = value;
+            }
+        }
     }
 }
