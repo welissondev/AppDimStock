@@ -67,6 +67,7 @@ namespace DimStock.Models
             }
             catch (OleDbException)
             {
+                transaction.Rollback();
                 throw;
             }
         }
