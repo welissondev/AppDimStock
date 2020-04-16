@@ -29,34 +29,63 @@ namespace DimStock.Models
 
         public void Begin()
         {
-            if (connection.State == ConnectionState.Closed)
+            try
             {
-                connection.Open();
-                transaction = connection.BeginTransaction();
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                    transaction = connection.BeginTransaction();
+                }
+            }
+            catch (OleDbException)
+            {
+                throw;
             }
         }
 
         public void Commit()
         {
-            transaction.Commit();
+            try
+            {
+                transaction.Commit();
+            }
+            catch (OleDbException)
+            {
+                throw;
+            }
         }
 
         public int ExecuteNonQuery(string sql)
         {
-            command.CommandText = sql;
-            command.Connection = transaction.Connection;
-            command.Transaction = transaction;
+            try
+            {
+                command.CommandText = sql;
+                command.Connection = transaction.Connection;
+                command.Transaction = transaction;
 
-            return command.ExecuteNonQuery();
+                return command.ExecuteNonQuery();
+            }
+            catch (OleDbException)
+            {
+                throw;
+            }
         }
         public int ExecuteScalar(string sql)
         {
-            command.CommandText = sql;
-            command.Connection = transaction.Connection;
-            command.Transaction = transaction;
+            try
+            {
+                command.CommandText = sql;
+                command.Connection = transaction.Connection;
+                command.Transaction = transaction;
 
-            return int.Parse(command.ExecuteScalar().ToString());
+                return int.Parse(command.ExecuteScalar().ToString());
+            }
+            catch (OleDbException)
+            {
+                throw;
+            }
         }
+
 
         public void AddParameter(string name, object value)
         {
