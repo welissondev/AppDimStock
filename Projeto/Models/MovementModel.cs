@@ -252,36 +252,41 @@ namespace DimStock.Models
 
         public DataTable FetchData()
         {
-            var link = string.Empty;
-            var sql = string.Empty;
+            var criterionSql = string.Empty;
+            var criterionSqlParameter = string.Empty;
+            var criterionSqlOderBy = string.Empty;
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"SELECT Movement.*, Destination.* FROM Movement
-                LEFT JOIN Destination On Movement.DestinationId = 
-                Destination.Id WHERE Movement.Id > 0 ";
+                criterionSql = @"SELECT Movement.*, Destination.* FROM Movement
+                LEFT JOIN Destination On Movement.DestinationId = Destination.Id 
+                WHERE Movement.Id > 0 ";
 
-                if (Type != string.Empty)
+                criterionSqlOderBy = @"ORDER BY Movement.Id DESC";
+
+                ParameterModel.Clear();
+
+                if (Type != string.Empty && Type != null)
                 {
-                    link += @" AND [Type] LIKE @Type";
+                    criterionSqlParameter += @" AND [Type] LIKE @Type";
                     ParameterModel.Add("@Type", string.Format("{0}", Type));
                 }
 
-                if (Status != string.Empty)
+                if (Status != string.Empty && Type != null)
                 {
-                    link += @" AND Status LIKE @Status";
+                    criterionSqlParameter += @" AND Status LIKE @Status";
                     ParameterModel.Add("@Status", string.Format("{0}", Status));
                 }
 
-                if (Code != string.Empty)
+                if (Code != string.Empty && Type != null)
                 {
-                    link += @" AND Movement.Code LIKE @Code ";
+                    criterionSqlParameter += @" AND Movement.Code LIKE @Code ";
                     ParameterModel.Add("@Code", string.Format("{0}", Code));
                 }
 
-                sql += link + @" ORDER BY Movement.Id DESC";
+                criterionSql += criterionSqlParameter + criterionSqlOderBy;
 
-                return dataBase.ExecuteDataAdapter(sql);
+                return dataBase.ExecuteDataAdapter(criterionSql);
             }
         }
 
