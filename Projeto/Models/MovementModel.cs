@@ -51,8 +51,7 @@ namespace DimStock.Models
 
             return actionResult;
         }
-
-        public bool CloseOperation()
+        public bool FinishOperation()
         {
             var actionResult = false;
             var sql = string.Empty;
