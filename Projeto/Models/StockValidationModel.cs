@@ -11,8 +11,7 @@ namespace DimStock.Models
 
             if (postingItems.Rows.Count == 0)
             {
-                MessageNotifier.Message = "Nenhum item adicionado para essa operação!";
-                MessageNotifier.Title = "Itens Não Adicionados";
+                MessageNotifier.Set("Nenhum item adicionado para essa operação!", "Itens Não Adicionados");
                 return isValid;
             }
 
@@ -25,15 +24,18 @@ namespace DimStock.Models
 
             if (stock.Product.Id == 0)
             {
-                MessageNotifier.Message = "É necessário informar o produto para atualizar seu valor no estoque!";
-                MessageNotifier.Title = "Não Informado";
+                MessageNotifier.Set("É necessário informar o produto para " +
+                "atualizar seu valor no estoque!", "Não Informado");
+                
                 return isValid;
             }
 
             if (stock.Product.CostPrice == 0.00)
             {
-                MessageNotifier.Message = "O preço de custo precisa ser informado!";
-                MessageNotifier.Title = "Não Informado";
+                MessageNotifier.Set("Para atualizar o valor no estoque, " +
+                "é preciso informar o preço de custo do produto!",
+                "Não Informado");
+
                 return isValid;
             }
 
@@ -46,16 +48,16 @@ namespace DimStock.Models
 
             if (stock.Id == 0)
             {
-                MessageNotifier.Message = "Selecione um estoque para visualizar!";
-                MessageNotifier.Title = "Não Selecionado";
+                MessageNotifier.Set("Selecione um estoque para " +
+                "visualizar!", "Não Selecionado");
 
                 return isValid;
             }
 
             if (ValidateIfExists(stock) == false)
             {
-                MessageNotifier.Message = "Não é possivel visualizar porque esse registro foi excluido!";
-                MessageNotifier.Title = "Atualize a Lista";
+                MessageNotifier.Set("Não é possivel visualizar porque " +
+                "esse registro foi excluido!", "Atualize a Lista");
 
                 return isValid;
             }
@@ -79,8 +81,8 @@ namespace DimStock.Models
                 {
                     if (reader.Read() == false)
                     {
-                        MessageNotifier.Message = "Esse estoque não encontra-se registrado em sua base de dados!";
-                        MessageNotifier.Title = "Não Encontrada";
+                        MessageNotifier.Set("Esse estoque não encontra-se registrado " +
+                        "em sua base de dados!", "Não Encontrado");
 
                         return actionResult;
                     }

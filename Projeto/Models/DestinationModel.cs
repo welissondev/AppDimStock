@@ -36,8 +36,9 @@ namespace DimStock.Models
 
                 if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
-                    MessageNotifier.Message = "Cadastrado com sucesso!";
-                    MessageNotifier.Title = "Sucesso";
+                    MessageNotifier.Set("Destino cadastrado " +
+                    "com sucesso!", "Sucesso");
+
                     actionResult = true;
                 }
             }
@@ -61,7 +62,9 @@ namespace DimStock.Models
 
                 if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
-                    MessageNotifier.Message = "Editado com sucesso!";
+                    MessageNotifier.Set("Destino editado " +
+                    "com sucesso!", "Sucesso");
+
                     actionResult = true;
                 }
             }
@@ -83,13 +86,15 @@ namespace DimStock.Models
 
                 if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
-                    MessageNotifier.Message = "Deletado com sucesso!";
+                    MessageNotifier.Set("Destino deletado " +
+                    "com sucesso!", "Sucesso");
+                    
                     actionResult = true;
                 }
                 else
                 {
-                    MessageNotifier.Message = "Esse registro já foi " +
-                    "deletado, atualize a lista de dados!";
+                    MessageNotifier.Set("Esse registro já foi " +
+                    "deletado, atualize a lista de dados!", "");
                 }
             }
 

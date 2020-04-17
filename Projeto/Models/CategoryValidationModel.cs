@@ -13,16 +13,16 @@ namespace DimStock.Models
 
             if (category.Description == "" || category.Description == null)
             {
-                MessageNotifier.Message = "Descrição da categoria não informada!";
-                MessageNotifier.Title = "Obrigatório";
+                MessageNotifier.Set("Descrição da categoria " +
+                "não informada!", "Obrigatório");
 
                 return isValid;
             }
 
             if (ValidateIfExists(category) == true)
             {
-                MessageNotifier.Message = "Já existe uma categoria registrada com esse nome!";
-                MessageNotifier.Title = "Já Existe";
+                MessageNotifier.Set("Já existe uma categoria " +
+                "registrada com esse nome!", "Já Existe");
 
                 return isValid;
             }
@@ -36,24 +36,24 @@ namespace DimStock.Models
 
             if (category.Id == 0)
             {
-                MessageNotifier.Message = "Selecione uma categoria para atualizar!";
-                MessageNotifier.Title = "Não Selecionada";
+                MessageNotifier.Set("Selecione uma categoria para " +
+                "atualizar!", "Selecione");
 
                 return isValid;
             }
 
             if (category.Description == "" || category.Description == null)
             {
-                MessageNotifier.Message = "Descrição da categoria não informada!";
-                MessageNotifier.Title = "Obrigatório";
+                MessageNotifier.Set("Descrição da categoria " +
+                "não informada!", "Obrigatório");
 
                 return isValid;
             }
 
             if (ValidateIfExists(category) == false)
             {
-                MessageNotifier.Message = "Não foi possivel atualizar porque esse registro foi excluido!";
-                MessageNotifier.Title = "Atualize a Lista";
+                MessageNotifier.Set("Não foi possivel atualizar porque " +
+                "esse registro foi excluido!", "Atualize a Lista");
 
                 return isValid;
             }
@@ -67,15 +67,16 @@ namespace DimStock.Models
 
             if (category.Id == 0)
             {
-                MessageNotifier.Message = "Selecione uma categoria para deletar!";
-                MessageNotifier.Title = "Não Selecionada";
+                MessageNotifier.Set("Selecione uma categoria " +
+                "para deletar!", "Selecione");
+
                 return isValid;
             }
 
             if (ValidateIfExists(category) == false)
             {
-                MessageNotifier.Message = "Essa categoria já foi excluida, atualize a lista de registros!";
-                MessageNotifier.Title = "Atualize a Lista";
+                MessageNotifier.Set("Essa categoria já foi excluida, " +
+                "atualize a lista de registros!", "Atualize");
 
                 return isValid;
             }
@@ -89,16 +90,16 @@ namespace DimStock.Models
 
             if (category.Id == 0)
             {
-                MessageNotifier.Message = "Selecione uma categoria para visualizar!";
-                MessageNotifier.Title = "Não Selecionada";
+                MessageNotifier.Set("Selecione uma categoria " +
+                "para visualizar!", "Selecione");
 
                 return isValid;
             }
 
             if (ValidateIfExists(category) == false)
             {
-                MessageNotifier.Message = "Não é possivel visualizar porque esse registro foi excluido!";
-                MessageNotifier.Title = "Atualize a Lista";
+                MessageNotifier.Set("Não é possivel visualizar porque " +
+               "esse registro foi excluido!", "Atualize a Lista");
 
                 return isValid;
             }
@@ -117,10 +118,9 @@ namespace DimStock.Models
 
                 ParameterModel.Clear();
                 ParameterModel.Add("@Id", category.Id);
+               
 
-                //Concatena sql se usuário buscar a
-                //categoria pela descrição.
-                if (category.Description != string.Empty && 
+                if (category.Description != string.Empty &&
                     category.Description != null)
                 {
                     sql += "OR Description = @Description";
@@ -131,8 +131,8 @@ namespace DimStock.Models
                 {
                     if (reader.Read() == false)
                     {
-                        MessageNotifier.Message = "Essa categoria não encontra-se registrada em sua base de dados!";
-                        MessageNotifier.Title = "Não Encontrada";
+                        MessageNotifier.Set("Essa categoria não encontra-se " +
+                        "registrada em sua base de dados!", "Não Encontrada");
 
                         return actionResult;
                     }

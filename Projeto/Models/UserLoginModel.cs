@@ -70,7 +70,9 @@ namespace DimStock.Models
 
             if (accessState == false)
             {
-                MessageNotifier.Message = "Usuário não encontrado!";
+
+                MessageNotifier.Set("Usuário não encontrado!",
+                "Não Encontrado");
             }
 
             return accessState;
@@ -174,7 +176,8 @@ namespace DimStock.Models
 
                 transaction.Commit();
 
-                MessageNotifier.Message = "Usuário cadastado com sucesso!";
+                MessageNotifier.Set("Usuário cadastado " +
+                "com sucesso!", "Sucesso");
             }
 
             return transactionState;
@@ -212,7 +215,8 @@ namespace DimStock.Models
                 transactionState = transaction.ExecuteNonQuery(sql) > 0;
                 transaction.Commit();
 
-                MessageNotifier.Message = "Usuário alterado com sucesso!";
+                MessageNotifier.Set("Usuário alterado " +
+                "com sucesso!", "Sucesso");
             }
 
             return transactionState;
@@ -222,16 +226,16 @@ namespace DimStock.Models
         {
             if (CheckIfResgisterExists(id) == false)
             {
-                MessageNotifier.Message = "Esse registro já foi excluido " +
-                "atualize a lista de dados";
+                MessageNotifier.Set("Esse registro já foi excluido " +
+                "atualize a lista de dados", "Sucesso");
 
                 return false;
             }
 
             if (CheckCurrentRegister(id) == true)
             {
-                MessageNotifier.Message = "Você não pode deletar seu " +
-                "próprio registro de usuário!";
+                MessageNotifier.Set("Você não pode deletar seu " +
+                "próprio registro de usuário!","Não Permitido");
 
                 return false;
             }
@@ -249,7 +253,8 @@ namespace DimStock.Models
                 transactionState = transaction.ExecuteNonQuery(sql) > 0;
                 transaction.Commit();
 
-                MessageNotifier.Message = "Usuário excluido com sucesso!";
+                MessageNotifier.Set("Usuário excluido " +
+                "com sucesso!", "Sucesso");
             }
 
             return transactionState;
@@ -332,8 +337,8 @@ namespace DimStock.Models
             var validation = EmailAddressValidator.Validate(email);
 
             if (validation == false)
-                MessageNotifier.Message = "O endereço de e-mail " +
-                "informado não é válido!";
+                MessageNotifier.Set("O endereço de e-mail " +
+                "informado não é válido!", "Inválido");
 
             return validation;
         }
@@ -361,9 +366,9 @@ namespace DimStock.Models
 
                 if (userFound > 0)
                 {
-                    MessageNotifier.Message = "Já existe um usuário " +
+                    MessageNotifier.Set("Já existe um usuário " +
                     "com o login |" + Login + "|. Por favor, informe " +
-                    "outro nome de login!";
+                    "outro nome de login!", "Já Existe");
                 }
 
                 return userFound > 0;

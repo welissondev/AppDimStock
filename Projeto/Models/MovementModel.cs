@@ -131,10 +131,10 @@ namespace DimStock.Models
 
                     if (transaction.ExecuteNonQuery(sql) > 0)
                     {
+                        MessageNotifier.Set("Movimentação excluida " +
+                        "com sucesso!", "Sucesso");
+                        
                         actionResult = true;
-
-                        MessageNotifier.Message = "Movimentação excluida com sucesso!";
-                        MessageNotifier.Title = "Sucesso";
                     }
                 }
             }

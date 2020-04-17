@@ -1,11 +1,19 @@
-﻿namespace DimStock.AuxilyTools.AuxilyClasses
+﻿using System.Windows.Forms;
+
+namespace DimStock.AuxilyTools.AuxilyClasses
 {
     /// <summary>
-    /// Uma que recebe uma mesagem sobre á ultima operação solicitada!
+    /// Define mensagem de resposta sobre uma solicitação ou ação
     /// </summary>
     public class MessageNotifier
     {
-        public static string Message { get; set; }
-        public static string Title { get; set; }
+        public static string Message { get; private set; }
+        public static string Title { get; private set; }
+
+        public static void Set(string message = "", string title = "")
+        {
+            Message = message;
+            Title = title;
+        }
     }
 }

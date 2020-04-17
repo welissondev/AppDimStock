@@ -34,8 +34,10 @@ namespace DimStock.Models
                 if (transaction.ExecuteNonQuery(sql) > 0)
                 {
                     transaction.Commit();
-                    MessageNotifier.Message = "Cadastrado com sucesso!";
-                    MessageNotifier.Title = "Sucesso";
+
+                    MessageNotifier.Set("Categoria cadastrada " +
+                    "com sucesso", "Sucesso");
+
                     actionResult = true;
                 }
             }
@@ -65,15 +67,15 @@ namespace DimStock.Models
                 if (actionResult == true)
                 {
                     transaction.Commit();
-                    MessageNotifier.Message = "Categoria editada com sucesso!";
-                    MessageNotifier.Title = "Sucesso";
+
+                    MessageNotifier.Set("Categoria alterada " +
+                    "com sucesso!", "Sucesso");
 
                     return actionResult;
                 }
             }
 
             return actionResult;
-
         }
 
         public bool Delete()
@@ -96,8 +98,10 @@ namespace DimStock.Models
                 if (actionResult == true)
                 {
                     transaction.Commit();
-                    MessageNotifier.Message = "Categoria deletada com sucesso!";
-                    MessageNotifier.Title = "Sucesso";
+
+                    MessageNotifier.Set("Categoria deletada " +
+                    "com sucesso!", "Scuesso");
+                    
                     return actionResult;
                 }
             }
@@ -182,6 +186,7 @@ namespace DimStock.Models
                 return dataBase.ExecuteDataAdapter(sql);
             }
         }
+
     }
 }
 
