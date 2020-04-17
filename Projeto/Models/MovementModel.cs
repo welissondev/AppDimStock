@@ -12,11 +12,13 @@ namespace DimStock.Models
         private TransactionModel transaction;
 
         public int Id { get; set; }
-        public string Type { get; set; }
-        public DateTime Date { get; set; }
-        public DateTime Hour { get; set; }
-        public string Code { get; set; }
-        public string Status { get; set; }
+        public string OperationType { get; set; }
+        public string OperationNumber { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime StartHour { get; set; }
+        public DateTime FinishDate { get; set; }
+        public DateTime FinishHour { get; set; }
+        public string Situation { get; set; }
         public DestinationModel Destination { get; set; }
     }
 
@@ -34,14 +36,14 @@ namespace DimStock.Models
 
             using (transaction = new TransactionModel())
             {
-                sql = @"INSERT INTO Movement([Type])VALUES(@Type)";
+                sql = @"INSERT INTO Movement(OperationType)VALUES(@OperationType)";
 
                 ParameterModel.Clear();
-                ParameterModel.Add("@Type", Type);
+                ParameterModel.Add("@OperationType", OperationType);
 
                 if (transaction.ExecuteNonQuery(sql) > 0)
                 {
-                    if (SetOperationCode() == true)
+                    if (SetOperationNumber() == true)
                     {
                         transaction.Commit();
                         actionResult = true;
@@ -58,17 +60,29 @@ namespace DimStock.Models
 
             using (transaction = new TransactionModel())
             {
-                if (InsertPostings() == true)
+                if (InsertStockPostings() == true)
                 {
-                    sql = @"UPDATE Movement Set Status = 
-                    'Finalizada' WHERE Id = @Id";
+                    sql = @"UPDATE Movement Set FinishDate = @FinishDate, 
+                    FinishHour = @FinishHour, Situation = @Situation
+                    WHERE Id = @Id";
+
+                    FinishDate = DateTime.Now;
+                    FinishHour = DateTime.Now;
+                    Situation = "Finalizada";
 
                     ParameterModel.Clear();
+                    ParameterModel.Add("@FinishDate", FinishDate);
+                    ParameterModel.Add("@FinishHour", FinishHour);
+                    ParameterModel.Add("@Situation", Situation);
                     ParameterModel.Add("@Id", Id);
 
                     if (transaction.ExecuteNonQuery(sql) > 0)
                     {
                         transaction.Commit();
+
+                        MessageNotifier.Set("Movimentação registrada " +
+                        "com sucesso!", "Sucesso");
+
                         actionResult = true;
                     }
                 }
@@ -77,15 +91,16 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public bool SetOperationCode()
+        public bool SetOperationNumber()
         {
             var seed = GetLastId();
-            Code = new SingleCodeGenerator(seed).GetCode();
+            OperationNumber = new SingleCodeGenerator(seed).GetCode();
 
-            var sql = @"UPDATE Movement SET Code = @Code WHERE Id = @Id";
+            var sql = @"UPDATE Movement SET OperationNumber = 
+            @OperationNumber WHERE Id = @Id";
 
             ParameterModel.Clear();
-            ParameterModel.Add("@Code", Code);
+            ParameterModel.Add("@OperationNumber", OperationNumber);
             ParameterModel.Add("@Id", Id);
 
             return transaction.ExecuteNonQuery(sql) > 0;
@@ -98,7 +113,8 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"UPDATE Movement SET DestinationId = @DestinationId WHERE Id = @Id";
+                sql = @"UPDATE Movement SET DestinationId = 
+                @DestinationId WHERE Id = @Id";
 
                 ParameterModel.Clear();
                 ParameterModel.Add("@DestinationId", Destination.Id);
@@ -113,69 +129,37 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public bool InsertPostings()
+        public bool InsertStockPostings()
         {
             var actionResult = false;
             var postedItems = GetPostedItems();
 
-            switch (Type)
+            switch (OperationType)
             {
                 case "Entry":
-
-                    if (new StockModel(transaction).InsertPostingOfEntries(postedItems) == true)
-                    {
-                        MessageNotifier.Set("Entradas lançadas " +
-                        "com sucesso no estoque!", "Sucesso");
-
-                        actionResult = true;
-                    }
-
+                    actionResult = new StockModel(transaction).InsertPostingOfEntries(postedItems);
                     break;
 
                 case "OutPut":
-
-                    if (new StockModel(transaction).InsertPostingOfOutPuts(postedItems) == true)
-                    {
-                        MessageNotifier.Set("Saídas lançadas " +
-                        "com sucesso no estoque!", "Sucesso");
-
-                        actionResult = true;
-                    }
-
+                    actionResult = new StockModel(transaction).InsertPostingOfOutPuts(postedItems);
                     break;
             }
 
             return actionResult;
         }
-        public bool CancelPostings()
+        public bool CancelStockPostings()
         {
             var actionResult = false;
             var postedItems = GetPostedItems();
 
-            switch (Type)
+            switch (OperationType)
             {
                 case "Entry":
-
-                    if (new StockModel(transaction).CancelPostingOfEntries(postedItems) == true)
-                    {
-                        MessageNotifier.Set("Entradas canceladas " +
-                        "com sucesso do estoque!", "Sucesso");
-
-                        actionResult = true;
-                    }
-
+                    actionResult = new StockModel(transaction).CancelPostingOfEntries(postedItems);
                     break;
 
                 case "OutPut":
-
-                    if (new StockModel(transaction).CancelPostingOfOutPuts(postedItems) == true)
-                    {
-                        MessageNotifier.Set("Saídas canceladas " +
-                        "com sucesso do estoque!", "Sucesso");
-
-                        actionResult = true;
-                    }
-
+                    actionResult = new StockModel(transaction).CancelPostingOfOutPuts(postedItems);
                     break;
             }
 
@@ -189,7 +173,7 @@ namespace DimStock.Models
 
             using (transaction = new TransactionModel())
             {
-                if (CancelPostings() == true)
+                if (CancelStockPostings() == true)
                 {
                     sql = @"DELETE FROM Movement WHERE Id = @Id";
 
@@ -198,6 +182,8 @@ namespace DimStock.Models
 
                     if (transaction.ExecuteNonQuery(sql) > 0)
                     {
+                        transaction.Commit();
+
                         MessageNotifier.Set("Movimentação excluida " +
                         "com sucesso!", "Sucesso");
 
@@ -209,7 +195,7 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public bool GetDetail()
+        public bool GetDetails()
         {
             var actionResult = false;
             var sql = string.Empty;
@@ -230,16 +216,17 @@ namespace DimStock.Models
                         while (reader.Read())
                         {
                             Id = int.Parse(reader["Movement.Id"].ToString());
-                            Type = reader["[Type]"].ToString();
-                            Date = DateTime.Parse(reader["[Date]"].ToString());
-                            Hour = DateTime.Parse(reader["[Hour]"].ToString());
-                            Status = reader["[Status]"].ToString();
-                            Code = reader["[Code]"].ToString();
+                            OperationType = reader["OperationType"].ToString();
+                            OperationNumber = reader["OprationNumber"].ToString();
+                            StartDate = DateTime.Parse(reader["StartDate"].ToString());
+                            StartHour = DateTime.Parse(reader["StartHour"].ToString());
+                            Situation = reader["Situation"].ToString();
 
                             if (reader["Destination.Id"] != DBNull.Value)
                                 Destination.Id = int.Parse(reader["Destination.Id"].ToString());
 
-                            Destination.Location = reader["Location"].ToString();
+                            if (reader["Destination.Location"] != DBNull.Value)
+                                Destination.Location = reader["Location"].ToString();
                         }
 
                         actionResult = true;
@@ -266,22 +253,22 @@ namespace DimStock.Models
 
                 ParameterModel.Clear();
 
-                if (Type != string.Empty && Type != null)
+                if (OperationType != string.Empty && OperationType != null)
                 {
-                    criterionSqlParameter += @" AND [Type] LIKE @Type";
-                    ParameterModel.Add("@Type", string.Format("{0}", Type));
+                    criterionSqlParameter += @" AND OperationType LIKE @OperationType";
+                    ParameterModel.Add("@OperationType", string.Format("{0}", OperationType));
                 }
 
-                if (Status != string.Empty && Type != null)
+                if (OperationNumber != string.Empty && OperationNumber != null)
                 {
-                    criterionSqlParameter += @" AND Status LIKE @Status";
-                    ParameterModel.Add("@Status", string.Format("{0}", Status));
+                    criterionSqlParameter += @" AND OperationNumber LIKE @OperationNumber";
+                    ParameterModel.Add("@OperationNumber", string.Format("{0}", OperationNumber));
                 }
 
-                if (Code != string.Empty && Type != null)
+                if (Situation != string.Empty && Situation != null)
                 {
-                    criterionSqlParameter += @" AND Movement.Code LIKE @Code ";
-                    ParameterModel.Add("@Code", string.Format("{0}", Code));
+                    criterionSqlParameter += @" AND Sitation LIKE @Sitation";
+                    ParameterModel.Add("@Sitation", string.Format("{0}", Situation));
                 }
 
                 criterionSql += criterionSqlParameter + criterionSqlOderBy;
