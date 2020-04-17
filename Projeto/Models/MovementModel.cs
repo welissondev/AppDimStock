@@ -59,11 +59,10 @@ namespace DimStock.Models
 
             using (transaction = new TransactionModel())
             {
-                var postedItems = GetPostedItems();
-
-                if (new StockModel().InsertPostingOfEntries(postedItems) == true)
+                if (InsertPostings() == true)
                 {
-                    sql = @"UPDATE Movement Set Situation = 'Finalizada' WHERE Id = @Id";
+                    sql = @"UPDATE Movement Set Situation = 
+                    'Finalizada' WHERE Id = @Id";
 
                     ParameterModel.Clear();
                     ParameterModel.Add("@Id", Id);
@@ -71,10 +70,6 @@ namespace DimStock.Models
                     if (transaction.ExecuteNonQuery(sql) > 0)
                     {
                         transaction.Commit();
-
-                        MessageNotifier.Set("Tudo ok! Itens lançados " +
-                        "com sucesso no estoque!", "Sucesso");
-
                         actionResult = true;
                     }
                 }
@@ -137,7 +132,7 @@ namespace DimStock.Models
                     {
                         MessageNotifier.Set("Movimentação excluida " +
                         "com sucesso!", "Sucesso");
-                        
+
                         actionResult = true;
                     }
                 }
@@ -227,10 +222,43 @@ namespace DimStock.Models
             return new MovementItemModel(this).ListItems();
         }
 
+        public bool InsertPostings()
+        {
+            var actionResult = false;
+            var postedItems = GetPostedItems();
+
+            switch (Type)
+            {
+                case "Entry":
+
+                    if (new StockModel(transaction).InsertPostingOfEntries(postedItems) == true)
+                    {
+                        MessageNotifier.Set("Entradas lançadas " +
+                        "com sucesso no estoque!", "Sucesso");
+
+                        actionResult = true;
+                    }
+
+                    break;
+
+                case "OutPut":
+
+                    if (new StockModel(transaction).InsertPostingOfOutPuts(postedItems) == true)
+                    {
+                        MessageNotifier.Set("Saídas lançadas " +
+                        "com sucesso no estoque!", "Sucesso");
+
+                        actionResult = true;
+                    }
+
+                    break;
+            }
+
+            return actionResult;
+        }
         public bool CancelPostings()
         {
             var actionResult = false;
-
             var postedItems = GetPostedItems();
 
             switch (Type)
