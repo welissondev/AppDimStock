@@ -16,7 +16,7 @@ namespace DimStock.Models
         public DateTime Date { get; set; }
         public DateTime Hour { get; set; }
         public string Code { get; set; }
-        public string Situation { get; set; }
+        public string Status { get; set; }
         public DestinationModel Destination { get; set; }
     }
 
@@ -60,7 +60,7 @@ namespace DimStock.Models
             {
                 if (InsertPostings() == true)
                 {
-                    sql = @"UPDATE Movement Set Situation = 
+                    sql = @"UPDATE Movement Set Status = 
                     'Finalizada' WHERE Id = @Id";
 
                     ParameterModel.Clear();
@@ -233,7 +233,7 @@ namespace DimStock.Models
                             Type = reader["[Type]"].ToString();
                             Date = DateTime.Parse(reader["[Date]"].ToString());
                             Hour = DateTime.Parse(reader["[Hour]"].ToString());
-                            Situation = reader["[Situation]"].ToString();
+                            Status = reader["[Status]"].ToString();
                             Code = reader["[Code]"].ToString();
 
                             if (reader["Destination.Id"] != DBNull.Value)
@@ -267,10 +267,10 @@ namespace DimStock.Models
                     ParameterModel.Add("@Type", string.Format("{0}", Type));
                 }
 
-                if (Situation != string.Empty)
+                if (Status != string.Empty)
                 {
-                    link += @" AND Situation LIKE @Situation";
-                    ParameterModel.Add("@Situation", string.Format("{0}", Situation));
+                    link += @" AND Status LIKE @Status";
+                    ParameterModel.Add("@Status", string.Format("{0}", Status));
                 }
 
                 if (Code != string.Empty)
