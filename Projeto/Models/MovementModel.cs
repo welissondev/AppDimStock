@@ -114,6 +114,75 @@ namespace DimStock.Models
             return actionResult;
         }
 
+        public bool InsertPostings()
+        {
+            var actionResult = false;
+            var postedItems = GetPostedItems();
+
+            switch (Type)
+            {
+                case "Entry":
+
+                    if (new StockModel(transaction).InsertPostingOfEntries(postedItems) == true)
+                    {
+                        MessageNotifier.Set("Entradas lançadas " +
+                        "com sucesso no estoque!", "Sucesso");
+
+                        actionResult = true;
+                    }
+
+                    break;
+
+                case "OutPut":
+
+                    if (new StockModel(transaction).InsertPostingOfOutPuts(postedItems) == true)
+                    {
+                        MessageNotifier.Set("Saídas lançadas " +
+                        "com sucesso no estoque!", "Sucesso");
+
+                        actionResult = true;
+                    }
+
+                    break;
+            }
+
+            return actionResult;
+        }
+        public bool CancelPostings()
+        {
+            var actionResult = false;
+            var postedItems = GetPostedItems();
+
+            switch (Type)
+            {
+                case "Entry":
+
+                    if (new StockModel(transaction).CancelPostingOfEntries(postedItems) == true)
+                    {
+                        MessageNotifier.Set("Entradas canceladas " +
+                        "com sucesso do estoque!", "Sucesso");
+
+                        actionResult = true;
+                    }
+
+                    break;
+
+                case "OutPut":
+
+                    if (new StockModel(transaction).CancelPostingOfOutPuts(postedItems) == true)
+                    {
+                        MessageNotifier.Set("Saídas canceladas " +
+                        "com sucesso do estoque!", "Sucesso");
+
+                        actionResult = true;
+                    }
+
+                    break;
+            }
+
+            return actionResult;
+        }
+
         public bool Delete()
         {
             var actionResult = false;
@@ -220,59 +289,6 @@ namespace DimStock.Models
         public DataTable GetPostedItems()
         {
             return new MovementItemModel(this).ListItems();
-        }
-
-        public bool InsertPostings()
-        {
-            var actionResult = false;
-            var postedItems = GetPostedItems();
-
-            switch (Type)
-            {
-                case "Entry":
-
-                    if (new StockModel(transaction).InsertPostingOfEntries(postedItems) == true)
-                    {
-                        MessageNotifier.Set("Entradas lançadas " +
-                        "com sucesso no estoque!", "Sucesso");
-
-                        actionResult = true;
-                    }
-
-                    break;
-
-                case "OutPut":
-
-                    if (new StockModel(transaction).InsertPostingOfOutPuts(postedItems) == true)
-                    {
-                        MessageNotifier.Set("Saídas lançadas " +
-                        "com sucesso no estoque!", "Sucesso");
-
-                        actionResult = true;
-                    }
-
-                    break;
-            }
-
-            return actionResult;
-        }
-        public bool CancelPostings()
-        {
-            var actionResult = false;
-            var postedItems = GetPostedItems();
-
-            switch (Type)
-            {
-                case "Entry":
-                    actionResult = new StockModel(transaction).CancelPostingOfEntries(postedItems);
-                    break;
-
-                case "OutPut":
-                    actionResult = new StockModel(transaction).CancelPostingOfOutPuts(postedItems);
-                    break;
-            }
-
-            return actionResult;
         }
 
         public int GetLastId()
