@@ -5,13 +5,15 @@ namespace DimStock.Models
 {
     public class StockValidationModel
     {
-        public static bool ValidatePostingItems(DataTable postingItems)
+        public static bool ValidatePostingItems(DataTable postedItems)
         {
             var isValid = false;
 
-            if (postingItems.Rows.Count == 0)
+            if (postedItems.Rows.Count == 0)
             {
-                MessageNotifier.Set("Nenhum item adicionado para essa operação!", "Itens Não Adicionados");
+                MessageNotifier.Set("Nenhum item adicionado para " +
+                "essa operação!", "Itens Não Adicionados");
+                
                 return isValid;
             }
 

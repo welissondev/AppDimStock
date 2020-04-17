@@ -182,15 +182,15 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public bool InsertPostingOfEntries(DataTable postingItems)
+        public bool InsertPostingOfEntries(DataTable postedItems)
         {
             var actionResult = false;
             var sql = string.Empty;
 
-            if (StockValidationModel.ValidatePostingItems(postingItems) == false)
+            if (StockValidationModel.ValidatePostingItems(postedItems) == false)
                 return actionResult;
 
-            foreach (DataRow item in postingItems.Rows)
+            foreach (DataRow item in postedItems.Rows)
             {
                 sql = @"UPDATE Stock Set Quantity = Quantity + @ItemQuantity, 
                 TotalValue = TotalValue + @ItemTotalValue WHERE Id = @StockId";
@@ -205,15 +205,15 @@ namespace DimStock.Models
 
             return actionResult;
         }
-        public bool InsertPostingOfOutPuts(DataTable postingItems)
+        public bool InsertPostingOfOutPuts(DataTable postedItems)
         {
             var actionResult = false;
             var sql = string.Empty;
 
-            if (StockValidationModel.ValidatePostingItems(postingItems) == false)
+            if (StockValidationModel.ValidatePostingItems(postedItems) == false)
                 return actionResult;
 
-            foreach (DataRow item in postingItems.Rows)
+            foreach (DataRow item in postedItems.Rows)
             {
                 sql = @"UPDATE Stock Set Quantity = Quantity - @ItemQuantity, 
                 TotalValue = TotalValue - @ItemTotalValue WHERE Id = @StockId";

@@ -59,9 +59,9 @@ namespace DimStock.Models
 
             using (transaction = new TransactionModel())
             {
-                var postingItems = GetPostingsList();
+                var postedItems = GetPostedItems();
 
-                if (new StockModel().InsertPostingOfEntries(postingItems) == true)
+                if (new StockModel().InsertPostingOfEntries(postedItems) == true)
                 {
                     sql = @"UPDATE Movement Set Situation = 'Finalizada' WHERE Id = @Id";
 
@@ -71,6 +71,10 @@ namespace DimStock.Models
                     if (transaction.ExecuteNonQuery(sql) > 0)
                     {
                         transaction.Commit();
+
+                        MessageNotifier.Set("Tudo ok! Itens lançados " +
+                        "com sucesso no estoque!", "Sucesso");
+
                         actionResult = true;
                     }
                 }
@@ -218,7 +222,7 @@ namespace DimStock.Models
             }
         }
 
-        public DataTable GetPostingsList()
+        public DataTable GetPostedItems()
         {
             return new MovementItemModel(this).ListItems();
         }
@@ -227,7 +231,7 @@ namespace DimStock.Models
         {
             var actionResult = false;
 
-            var postedItems = GetPostingsList();
+            var postedItems = GetPostedItems();
 
             switch (Type)
             {
