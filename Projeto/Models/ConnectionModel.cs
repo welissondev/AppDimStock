@@ -73,7 +73,9 @@ namespace DimStock.Models
         {
             try
             {
-                SetParameters(command);
+                if (ParameterModel.Collection != null)
+                    SetParameters(command);
+
                 command.CommandText = sql;
                 command.Connection = Open();
 
@@ -90,7 +92,9 @@ namespace DimStock.Models
 
             Open();
 
-            SetParameters(command);
+            if (ParameterModel.Collection != null)
+                SetParameters(command);
+
             command.CommandText = sql;
             command.Connection = connection;
 
