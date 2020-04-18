@@ -60,7 +60,9 @@ namespace DimStock.Models
         {
             try
             {
-                SetParameters(command);
+                if (ParameterModel.Collection != null)
+                    SetParameters(command);
+
                 command.CommandText = sql;
                 command.Connection = transaction.Connection;
                 command.Transaction = transaction;
@@ -77,7 +79,9 @@ namespace DimStock.Models
         {
             try
             {
-                SetParameters(command);
+                if (ParameterModel.Collection != null)
+                    SetParameters(command);
+
                 command.CommandText = sql;
                 command.Connection = transaction.Connection;
                 command.Transaction = transaction;
@@ -120,6 +124,9 @@ namespace DimStock.Models
                 connection.Dispose();
                 command.Dispose();
                 transaction.Dispose();
+
+                if (ParameterModel.Collection != null)
+                    ParameterModel.Clear();
             }
 
             disposed = true;

@@ -130,6 +130,8 @@ namespace DimStock.Models
             {
                 connection.Dispose();
                 command.Dispose();
+                if (ParameterModel.Collection != null)
+                    ParameterModel.Clear();
             }
 
             disposed = true;
