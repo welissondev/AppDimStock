@@ -9,7 +9,7 @@ namespace DimStock.Models
     /// <summary>
     /// Representa o modelo que executa transações no banco de dados
     /// </summary>
-    public partial class TransactionModel : IDisposable
+    public partial class ConnectionTransactionModel : IDisposable
     {
         private bool disposed;
         private OleDbTransaction transaction = null;
@@ -17,9 +17,9 @@ namespace DimStock.Models
         private OleDbCommand command;
     }
 
-    public partial class TransactionModel
+    public partial class ConnectionTransactionModel
     {
-        public TransactionModel(bool beginAutomaticTransaction = true)
+        public ConnectionTransactionModel(bool beginAutomaticTransaction = true)
         {
             command = new OleDbCommand();
             connection = new OleDbConnection(AppSettingModel.GetConnectionString());
@@ -60,9 +60,6 @@ namespace DimStock.Models
         {
             try
             {
-                if (ParameterModel.Collection != null)
-                    SetParameters(command);
-
                 command.CommandText = sql;
                 command.Connection = transaction.Connection;
                 command.Transaction = transaction;
@@ -79,9 +76,6 @@ namespace DimStock.Models
         {
             try
             {
-                if (ParameterModel.Collection != null)
-                    SetParameters(command);
-
                 command.CommandText = sql;
                 command.Connection = transaction.Connection;
                 command.Transaction = transaction;
@@ -94,19 +88,19 @@ namespace DimStock.Models
             }
         }
 
-        public void SetParameters(OleDbCommand command)
+        public void AddParameter(string name, object value)
         {
-            try
+            var parameter = new OleDbParameter()
             {
-                command.Parameters.Clear();
+                ParameterName = name,
+                Value = value
+            };
 
-                for (int i = 0; i < ParameterModel.Collection.Count; i++)
-                    command.Parameters.Add(ParameterModel.Collection[i]);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            command.Parameters.Add(parameter);
+        }
+        public void ClearParameter()
+        {
+            command.Parameters.Clear();
         }
 
         public void Dispose()
@@ -124,9 +118,6 @@ namespace DimStock.Models
                 connection.Dispose();
                 command.Dispose();
                 transaction.Dispose();
-
-                if (ParameterModel.Collection != null)
-                    ParameterModel.Clear();
             }
 
             disposed = true;

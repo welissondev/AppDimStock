@@ -24,12 +24,12 @@ namespace DimStock.Models
             if (CategoryValidationModel.ValidateToInsert(this) == false)
                 return actionResult;
 
-            using (var transaction = new TransactionModel())
+            using (var transaction = new ConnectionTransactionModel())
             {
                 sql = @"INSERT INTO Category(Description)VALUES(@Description)";
 
-                ParameterModel.Clear();
-                ParameterModel.Add("@Description", Description);
+                transaction.ClearParameter();
+                transaction.AddParameter("@Description", Description);
 
                 if (transaction.ExecuteNonQuery(sql) > 0)
                 {
@@ -54,13 +54,13 @@ namespace DimStock.Models
             if (CategoryValidationModel.ValidateToUpdate(this) == false)
                 return actionResult;
 
-            using (var transaction = new TransactionModel())
+            using (var transaction = new ConnectionTransactionModel())
             {
                 sql = @"UPDATE Category SET Description = @Description WHERE Id = @Id";
 
-                ParameterModel.Clear();
-                ParameterModel.Add("@Description", Description);
-                ParameterModel.Add("@Id", Id);
+                transaction.ClearParameter();
+                transaction.AddParameter("@Description", Description);
+                transaction.AddParameter("@Id", Id);
 
                 actionResult = transaction.ExecuteNonQuery(sql) > 0;
 
@@ -86,12 +86,12 @@ namespace DimStock.Models
             if (CategoryValidationModel.ValidateToDelete(this) == false)
                 return actionResult;
 
-            using (var transaction = new TransactionModel())
+            using (var transaction = new ConnectionTransactionModel())
             {
                 sql = @"DELETE FROM Category WHERE Id = @Id";
 
-                ParameterModel.Clear();
-                ParameterModel.Add("@Id", Id);
+                transaction.ClearParameter();
+                transaction.AddParameter("@Id", Id);
 
                 actionResult = transaction.ExecuteNonQuery(sql) > 0;
 
@@ -122,8 +122,8 @@ namespace DimStock.Models
                 sql = @"SELECT Id, Description From 
                 Category Where Id = @Id ";
 
-                ParameterModel.Clear();
-                ParameterModel.Add("@Id", Id);
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@Id", Id);
 
                 using (var reader = dataBase.ExecuteReader(sql))
                 {
@@ -149,8 +149,8 @@ namespace DimStock.Models
             {
                 var sql = "SELECT Id FROM Category WHERE Description = @Description";
 
-                ParameterModel.Clear();
-                ParameterModel.Add("@Description", Description);
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@Description", Description);
 
                 return dataBase.ExecuteScalar(sql);
             }
@@ -168,7 +168,7 @@ namespace DimStock.Models
                 {
                     sql += "WHERE Description LIKE @Description ";
 
-                    ParameterModel.Add("@Description",
+                   dataBase.AddParameter("@Description",
                    string.Format("%{0}%", Description));
                 }
 
@@ -189,5 +189,3 @@ namespace DimStock.Models
 
     }
 }
-
-

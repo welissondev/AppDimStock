@@ -76,8 +76,8 @@ namespace DimStock.Models
             {
                 sql = "SELECT Id FROM Stock WHERE Id = @Id";
 
-                ParameterModel.Clear();
-                ParameterModel.Add("@Id", stock.Id);
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@Id", stock.Id);
 
                 using (var reader = dataBase.ExecuteReader(sql))
                 {

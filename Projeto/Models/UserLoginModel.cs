@@ -42,16 +42,16 @@ namespace DimStock.Models
             var accessState = false;
             var sql = string.Empty;
 
-            using (var connection = new ConnectionModel())
+            using (var dataBase = new ConnectionModel())
             {
                 sql = @"SELECT * FROM [UserLogin] WHERE Login 
                 LIKE @Login AND [PassWord] = @PassWord";
 
-                ParameterModel.Clear();
-                ParameterModel.Add("@Login", Login);
-                ParameterModel.Add("@PassWord", PassWord);
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@Login", Login);
+                dataBase.AddParameter("@PassWord", PassWord);
 
-                using (var reader = connection.ExecuteReader(sql))
+                using (var reader = dataBase.ExecuteReader(sql))
                 {
                     while (reader.Read())
                     {
@@ -94,15 +94,15 @@ namespace DimStock.Models
                 AllPermissions)VALUES(@Name, @Email, @Login, @PassWord, @PermissionToRegister, 
                 @PermissionToEdit, @PermissionToDelete, @PermissionToView, @AllPermissions)";
 
-                ParameterModel.Add("@Name", Name);
-                ParameterModel.Add("@Email", Email);
-                ParameterModel.Add("@Login", Login);
-                ParameterModel.Add("@PassWord", PassWord);
-                ParameterModel.Add("@PermissionToRegister", true);
-                ParameterModel.Add("@PermissionToEdit", true);
-                ParameterModel.Add("@PermissionToDelete", true);
-                ParameterModel.Add("@PermissionToView", true);
-                ParameterModel.Add("@AllPermissions", true);
+                dataBase.AddParameter("@Name", Name);
+                dataBase.AddParameter("@Email", Email);
+                dataBase.AddParameter("@Login", Login);
+                dataBase.AddParameter("@PassWord", PassWord);
+                dataBase.AddParameter("@PermissionToRegister", true);
+                dataBase.AddParameter("@PermissionToEdit", true);
+                dataBase.AddParameter("@PermissionToDelete", true);
+                dataBase.AddParameter("@PermissionToView", true);
+                dataBase.AddParameter("@AllPermissions", true);
 
                 createState = dataBase.ExecuteNonQuery(sql) > 0;
 
@@ -112,7 +112,7 @@ namespace DimStock.Models
             }
         }
 
-        private void CreateDefaultLogin(ConnectionModel connection)
+        private void CreateDefaultLogin(ConnectionModel dataBase)
         {
             var sql = string.Empty;
 
@@ -126,18 +126,18 @@ namespace DimStock.Models
             AllPermissions)VALUES(@Name, @Email, @Login, @PassWord, @PermissionToRegister, 
             @PermissionToEdit, @PermissionToDelete, @PermissionToView, @AllPermissions)";
 
-            ParameterModel.Clear();
-            ParameterModel.Add("@Name", "AdminUser");
-            ParameterModel.Add("@Email", "Admin@admin.com");
-            ParameterModel.Add("@Login", "Admin");
-            ParameterModel.Add("@PassWord", "Admin");
-            ParameterModel.Add("@PermissionToRegister", true);
-            ParameterModel.Add("@PermissionToEdit", true);
-            ParameterModel.Add("@PermissionToDelete", true);
-            ParameterModel.Add("@PermissionToView", true);
-            ParameterModel.Add("@AllPermissions", true);
+            dataBase.ClearParameter();
+            dataBase.AddParameter("@Name", "AdminUser");
+            dataBase.AddParameter("@Email", "Admin@admin.com");
+            dataBase.AddParameter("@Login", "Admin");
+            dataBase.AddParameter("@PassWord", "Admin");
+            dataBase.AddParameter("@PermissionToRegister", true);
+            dataBase.AddParameter("@PermissionToEdit", true);
+            dataBase.AddParameter("@PermissionToDelete", true);
+            dataBase.AddParameter("@PermissionToView", true);
+            dataBase.AddParameter("@AllPermissions", true);
 
-            connection.ExecuteNonQuery(sql);
+            dataBase.ExecuteNonQuery(sql);
         }
 
         public bool Save()
@@ -151,23 +151,23 @@ namespace DimStock.Models
             var transactionState = false;
             var sql = string.Empty;
 
-            using (var transaction = new TransactionModel())
+            using (var transaction = new ConnectionTransactionModel())
             {
                 sql = @"INSERT INTO [User]([Name], Email, Login, [PassWord], 
                 PermissionToRegister, PermissionToEdit, PermissionToDelete, PermissionToView, 
                 AllPermissions)VALUES(@Name, @Email, @Login, @PassWord, @PermissionToRegister, 
                 @PermissionToEdit, @PermissionToDelete, @PermissionToView, @AllPermissions)";
 
-                ParameterModel.Clear();
-                ParameterModel.Add("@Name", Name);
-                ParameterModel.Add("@Email", Email);
-                ParameterModel.Add("@Login", Login);
-                ParameterModel.Add("@PassWord", PassWord);
-                ParameterModel.Add("@PermissionToRegister", PermissionToRegister);
-                ParameterModel.Add("@PermissionToEdit", PermissionToEdit);
-                ParameterModel.Add("@PermissionToDelete", PermissionToDelete);
-                ParameterModel.Add("@PermissionToView", PermissionToView);
-                ParameterModel.Add("@AllPermissions", AllPermissions);
+                transaction.ClearParameter();
+                transaction.AddParameter("@Name", Name);
+                transaction.AddParameter("@Email", Email);
+                transaction.AddParameter("@Login", Login);
+                transaction.AddParameter("@PassWord", PassWord);
+                transaction.AddParameter("@PermissionToRegister", PermissionToRegister);
+                transaction.AddParameter("@PermissionToEdit", PermissionToEdit);
+                transaction.AddParameter("@PermissionToDelete", PermissionToDelete);
+                transaction.AddParameter("@PermissionToView", PermissionToView);
+                transaction.AddParameter("@AllPermissions", AllPermissions);
 
                 transactionState = transaction.ExecuteNonQuery(sql) > 0;
 
@@ -192,7 +192,7 @@ namespace DimStock.Models
 
             var transactionState = false;
 
-            using (var transaction = new TransactionModel())
+            using (var transaction = new ConnectionTransactionModel())
             {
                 sql = @"UPDATE [UserLogin] Set [Name] = @Name, Email = @Email, 
                 Login = @Login, [PassWord] = @PassWord, PermissionToRegister = @PermissionToRegister, 
@@ -200,17 +200,17 @@ namespace DimStock.Models
                 PermissionToView = @PermissionToView, AllPermissions = @AllPermissions 
                 WHERE Id = @Id";
 
-                ParameterModel.Clear();
-                ParameterModel.Add("@Name", Name);
-                ParameterModel.Add("@Email", Email);
-                ParameterModel.Add("@Login", Login);
-                ParameterModel.Add("@PassWord", PassWord);
-                ParameterModel.Add("@PermissionToRegister", PermissionToRegister);
-                ParameterModel.Add("@PermissionToEdit", PermissionToEdit);
-                ParameterModel.Add("@PermissionToDelete", PermissionToDelete);
-                ParameterModel.Add("@PermissionToView", PermissionToView);
-                ParameterModel.Add("@AllPermissions", AllPermissions);
-                ParameterModel.Add("@Id", id);
+                transaction.ClearParameter();
+                transaction.AddParameter("@Name", Name);
+                transaction.AddParameter("@Email", Email);
+                transaction.AddParameter("@Login", Login);
+                transaction.AddParameter("@PassWord", PassWord);
+                transaction.AddParameter("@PermissionToRegister", PermissionToRegister);
+                transaction.AddParameter("@PermissionToEdit", PermissionToEdit);
+                transaction.AddParameter("@PermissionToDelete", PermissionToDelete);
+                transaction.AddParameter("@PermissionToView", PermissionToView);
+                transaction.AddParameter("@AllPermissions", AllPermissions);
+                transaction.AddParameter("@Id", id);
 
                 transactionState = transaction.ExecuteNonQuery(sql) > 0;
                 transaction.Commit();
@@ -243,12 +243,12 @@ namespace DimStock.Models
             var transactionState = false;
             var sql = string.Empty;
 
-            using (var transaction = new TransactionModel())
+            using (var transaction = new ConnectionTransactionModel())
             {
                 sql = @"DELETE FROM [UserLogin] WHERE Id = @Id";
 
-                ParameterModel.Clear();
-                ParameterModel.Add("@Id", id);
+                transaction.ClearParameter();
+                transaction.AddParameter("@Id", id);
 
                 transactionState = transaction.ExecuteNonQuery(sql) > 0;
                 transaction.Commit();
@@ -289,14 +289,14 @@ namespace DimStock.Models
         {
             var sql = string.Empty;
 
-            using (var connection = new ConnectionModel())
+            using (var dataBase = new ConnectionModel())
             {
                 sql = @"SELECT * FROM [UserLogin] WHERE Id = @Id";
 
-                ParameterModel.Clear();
-                ParameterModel.Add("@Id", id);
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@Id", id);
 
-                using (var reader = connection.ExecuteReader(sql))
+                using (var reader = dataBase.ExecuteReader(sql))
                 {
                     while (reader.Read())
                     {
@@ -317,16 +317,16 @@ namespace DimStock.Models
 
         public void FetchData()
         {
-            using (var connection = new ConnectionModel())
+            using (var dataBase = new ConnectionModel())
             {
                 var sql = @"SELECT * FROM [UserLogin] WHERE [Name]  
                 LIKE @Name Or Email LIKE @Email";
 
-                ParameterModel.Clear();
-                ParameterModel.Add("@Name", string.Format("%{0}%", Name));
-                ParameterModel.Add("@Email", string.Format("%{0}%", Email));
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@Name", string.Format("%{0}%", Name));
+                dataBase.AddParameter("@Email", string.Format("%{0}%", Email));
 
-                var dataTable = connection.ExecuteDataAdapter(sql);
+                var dataTable = dataBase.ExecuteDataAdapter(sql);
 
                 PassToList(dataTable);
             }
@@ -347,16 +347,17 @@ namespace DimStock.Models
         {
             var sql = string.Empty;
 
-            using (var connection = new ConnectionModel())
+            using (var dataBase = new ConnectionModel())
             {
                 var userFound = 0;
 
                 sql = @"SELECT Login FROM [UserLogin] 
                 WHERE Login LIKE @Login";
 
-                ParameterModel.Add("@Login", Login);
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@Login", Login);
 
-                using (var reader = connection.ExecuteReader(sql))
+                using (var reader = dataBase.ExecuteReader(sql))
                 {
                     while (reader.Read())
                     {
@@ -391,15 +392,15 @@ namespace DimStock.Models
         {
             var sql = string.Empty;
 
-            using (var connection = new ConnectionModel())
+            using (var dataBase = new ConnectionModel())
             {
                 sql = "SELECT Id FROM [UserLogin] WHERE Id = @Id";
                 var recordsFound = 0;
 
-                ParameterModel.Clear();
-                ParameterModel.Add("Id", id);
+                dataBase.ClearParameter();
+                dataBase.AddParameter("Id", id);
 
-                using (var reader = connection.ExecuteReader(sql))
+                using (var reader = dataBase.ExecuteReader(sql))
                 {
                     while (reader.Read())
                     {

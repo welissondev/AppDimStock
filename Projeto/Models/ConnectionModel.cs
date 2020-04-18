@@ -44,7 +44,6 @@ namespace DimStock.Models
         {
             try
             {
-                SetParameters(command);
                 command.CommandText = sql;
                 command.Connection = Open();
                 return command.ExecuteNonQuery();
@@ -58,7 +57,6 @@ namespace DimStock.Models
         {
             try
             {
-                SetParameters(command);
                 command.CommandText = sql;
                 command.Connection = Open();
                 return Convert.ToInt32(command.ExecuteScalar());
@@ -73,12 +71,8 @@ namespace DimStock.Models
         {
             try
             {
-                if (ParameterModel.Collection != null)
-                    SetParameters(command);
-
                 command.CommandText = sql;
                 command.Connection = Open();
-
                 return command.ExecuteReader();
             }
             catch (Exception)
@@ -91,9 +85,6 @@ namespace DimStock.Models
             var table = new DataTable();
 
             Open();
-
-            if (ParameterModel.Collection != null)
-                SetParameters(command);
 
             command.CommandText = sql;
             command.Connection = connection;
@@ -108,12 +99,19 @@ namespace DimStock.Models
             return table;
         }
 
-        public void SetParameters(OleDbCommand command)
+        public void AddParameter(string name, object value)
+        {
+            var parameter = new OleDbParameter()
+            {
+                ParameterName = name,
+                Value = value
+            };
+
+            command.Parameters.Add(parameter);
+        }
+        public void ClearParameter()
         {
             command.Parameters.Clear();
-
-            for (int i = 0; i < ParameterModel.Collection.Count; i++)
-                command.Parameters.Add(ParameterModel.Collection[i]);
         }
 
         public void Dispose()
@@ -130,8 +128,6 @@ namespace DimStock.Models
             {
                 connection.Dispose();
                 command.Dispose();
-                if (ParameterModel.Collection != null)
-                    ParameterModel.Clear();
             }
 
             disposed = true;

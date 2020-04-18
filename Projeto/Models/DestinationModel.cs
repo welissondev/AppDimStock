@@ -31,8 +31,8 @@ namespace DimStock.Models
                 sql = @"INSERT INTO StockDestination
                 (Location)VALUES(@Location)";
 
-                ParameterModel.Clear();
-                ParameterModel.Add("@Location", Location);
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@Location", Location);
 
                 if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
@@ -56,9 +56,9 @@ namespace DimStock.Models
                 sql = @"UPDATE StockDestination SET 
                 Location = @Location WHERE Id = @Id";
 
-                ParameterModel.Clear();
-                ParameterModel.Add("@Location", Location);
-                ParameterModel.Add("@Id", id);
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@Location", Location);
+                dataBase.AddParameter("@Id", id);
 
                 if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
@@ -81,8 +81,8 @@ namespace DimStock.Models
             {
                 sql = @"DELETE FROM Destination WHERE Id = @Id";
 
-                ParameterModel.Clear();
-                ParameterModel.Add("@Id", id);
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@Id", id);
 
                 if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
@@ -105,11 +105,11 @@ namespace DimStock.Models
         {
             var sql = string.Empty;
 
-            using (var connection = new ConnectionModel())
+            using (var dataBase = new ConnectionModel())
             {
                 sql = @"SELECT * From StockDestination";
 
-                using (var reader = connection.ExecuteReader(sql))
+                using (var reader = dataBase.ExecuteReader(sql))
                 {
                     while (reader.Read())
                     {
@@ -129,15 +129,15 @@ namespace DimStock.Models
         {
             var sql = string.Empty;
 
-            using (var connection = new ConnectionModel())
+            using (var dataBase = new ConnectionModel())
             {
                 sql = @"SELECT * FROM StockDestination 
                 WHERE Id = @Id";
 
-                ParameterModel.Clear();
-                ParameterModel.Add("@Id", id);
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@Id", id);
 
-                using (var reader = connection.ExecuteReader(sql))
+                using (var reader = dataBase.ExecuteReader(sql))
                 {
                     while (reader.Read())
                     {

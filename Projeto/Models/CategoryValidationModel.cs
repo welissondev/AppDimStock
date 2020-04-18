@@ -116,15 +116,15 @@ namespace DimStock.Models
             {
                 sql = @"SELECT Id, Description FROM Category WHERE Id = @Id ";
 
-                ParameterModel.Clear();
-                ParameterModel.Add("@Id", category.Id);
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@Id", category.Id);
                
 
                 if (category.Description != string.Empty &&
                     category.Description != null)
                 {
                     sql += "OR Description = @Description";
-                    ParameterModel.Add("@Description", category.Description);
+                    dataBase.AddParameter("@Description", category.Description);
                 }
 
                 using (var reader = dataBase.ExecuteReader(sql))

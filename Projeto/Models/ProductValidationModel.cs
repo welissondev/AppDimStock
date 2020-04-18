@@ -112,16 +112,16 @@ namespace DimStock.Models
             {
                 sql = "SELECT Id FROM Product WHERE Id = @Id";
 
-                ParameterModel.Clear();
-                ParameterModel.Add("@Id", product.Id);
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@Id", product.Id);
 
                 using (var reader = dataBase.ExecuteReader(sql))
                 {
                     if (reader.Read() == false)
                     {
-                        MessageNotifier.Set("Esse produto não encontra-se " +
-                        "registrado em sua base de dados!",
-                        "Não Encontrada");
+                        MessageNotifier.Set("Esse produto não " +
+                        "encontra-se registrado em sua base de " +
+                        "dados!","Não Encontrada");
 
                         return actionResult;
                     }
@@ -133,9 +133,9 @@ namespace DimStock.Models
 
         public static bool ValidateToUpdateStockValue(ProductModel product)
         {
+            var isValid = false;
             var recentCostPrice = product.CostPrice;
             var currentCostPrice = product.GetCostPrice();
-            var isValid = false;
 
             if (recentCostPrice != currentCostPrice)
             {
@@ -162,8 +162,8 @@ namespace DimStock.Models
 
             if (ValidateIfRegisterExists(product) == false)
             {
-                MessageNotifier.Set("Esse produto ja foi excluido, " +
-                "atualize sua lista de registros!",
+                MessageNotifier.Set("Esse produto ja foi " +
+                "excluido atualize sua lista de registros!",
                 "Atualize a Lista");
 
                 return isValid;
