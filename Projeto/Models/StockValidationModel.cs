@@ -13,7 +13,7 @@ namespace DimStock.Models
             {
                 MessageNotifier.Set("Nenhum item adicionado para " +
                 "essa operação!", "Itens Não Adicionados");
-                
+
                 return isValid;
             }
 
@@ -28,7 +28,7 @@ namespace DimStock.Models
             {
                 MessageNotifier.Set("É necessário informar o produto para " +
                 "atualizar seu valor no estoque!", "Não Informado");
-                
+
                 return isValid;
             }
 

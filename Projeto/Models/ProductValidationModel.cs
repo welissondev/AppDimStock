@@ -50,7 +50,7 @@ namespace DimStock.Models
         {
             var isValid = false;
 
-            if (ValidateIfExists(product) == false)
+            if (ValidateIfRegisterExists(product) == false)
             {
                 MessageNotifier.Set("Não é possivel atualizar " +
                 "porque esse registro foi excluido!",
@@ -91,6 +91,60 @@ namespace DimStock.Models
                 return isValid;
             }
 
+            if (ValidateToUpdateStockValue(product) == false)
+            {
+                MessageNotifier.Set("O preço de custo não pode " +
+                "ser modificado, até que todos os estoques atuais " +
+                "sejam retirados!", "Não Permitido");
+
+                return isValid;
+            }
+
+            return isValid = true;
+        }
+
+        public static bool ValidateIfRegisterExists(ProductModel product)
+        {
+            var sql = string.Empty;
+            var actionResult = false;
+
+            using (var dataBase = new ConnectionModel())
+            {
+                sql = "SELECT Id FROM Product WHERE Id = @Id";
+
+                ParameterModel.Clear();
+                ParameterModel.Add("@Id", product.Id);
+
+                using (var reader = dataBase.ExecuteReader(sql))
+                {
+                    if (reader.Read() == false)
+                    {
+                        MessageNotifier.Set("Esse produto não encontra-se " +
+                        "registrado em sua base de dados!",
+                        "Não Encontrada");
+
+                        return actionResult;
+                    }
+                }
+            }
+
+            return actionResult = true;
+        }
+
+        public static bool ValidateToUpdateStockValue(ProductModel product)
+        {
+            var recentCostPrice = product.CostPrice;
+            var currentCostPrice = product.GetCostPrice();
+            var isValid = false;
+
+            if (recentCostPrice != currentCostPrice)
+            {
+                if (new StockModel(product).GetQuantity() > 0)
+                {
+                    return isValid;
+                }
+            }
+
             return isValid = true;
         }
 
@@ -106,7 +160,7 @@ namespace DimStock.Models
                 return isValid;
             }
 
-            if (ValidateIfExists(product) == false)
+            if (ValidateIfRegisterExists(product) == false)
             {
                 MessageNotifier.Set("Esse produto ja foi excluido, " +
                 "atualize sua lista de registros!",
@@ -125,49 +179,21 @@ namespace DimStock.Models
             if (product.Id == 0)
             {
                 MessageNotifier.Set("Selecione um produto " +
-                "para visualizar!","Não Selecionado");
+                "para visualizar!", "Não Selecionado");
 
                 return isValid;
             }
 
-            if (ValidateIfExists(product) == false)
+            if (ValidateIfRegisterExists(product) == false)
             {
                 MessageNotifier.Set("Não é possivel visualizar " +
-                "porque esse registro foi excluido!", 
+                "porque esse registro foi excluido!",
                 "Atualize a Lista");
 
                 return isValid;
             }
 
             return isValid = true;
-        }
-
-        public static bool ValidateIfExists(ProductModel product)
-        {
-            var sql = string.Empty;
-            var actionResult = false;
-
-            using (var dataBase = new ConnectionModel())
-            {
-                sql = "SELECT Id FROM Product WHERE Id = @Id";
-
-                ParameterModel.Clear();
-                ParameterModel.Add("@Id", product.Id);
-
-                using (var reader = dataBase.ExecuteReader(sql))
-                {
-                    if (reader.Read() == false)
-                    {
-                        MessageNotifier.Set("Esse produto não encontra-se " +
-                        "registrado em sua base de dados!", 
-                        "Não Encontrada");
-
-                        return actionResult;
-                    }
-                }
-            }
-
-            return actionResult = true;
         }
     }
 }

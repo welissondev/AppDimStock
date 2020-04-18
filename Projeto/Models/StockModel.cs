@@ -29,6 +29,10 @@ namespace DimStock.Models
         {
             Product = new ProductModel();
         }
+        public StockModel(ProductModel product)
+        {
+            Product = product;
+        }
         public StockModel(TransactionModel transaction)
         {
             this.transaction = transaction;
@@ -180,6 +184,21 @@ namespace DimStock.Models
             }
 
             return actionResult;
+        }
+
+        public int GetQuantity()
+        {
+            var sql = @"SELECT Quantity FROM STOCK WHERE 
+            Id = @Id OR ProductId = @ProductId";
+
+            ParameterModel.Clear();
+            ParameterModel.Add("@Id", Id);
+            ParameterModel.Add("@ProductId", Product.Id);
+
+            using (var dataBase = new ConnectionModel())
+            {
+                return dataBase.ExecuteScalar(sql);
+            }
         }
 
         public bool InsertPostingOfEntries(DataTable postedItems)

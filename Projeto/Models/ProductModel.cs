@@ -81,7 +81,7 @@ namespace DimStock.Models
                 ParameterModel.Add("@SalePrice", SalePrice);
                 ParameterModel.Add("@BarCode", BarCode);
                 ParameterModel.Add("@Id", Id);
-               
+
                 if (transaction.ExecuteNonQuery(sql) > 0)
                 {
                     if (new StockModel(transaction, this).UpdateValue() == true)
@@ -115,7 +115,7 @@ namespace DimStock.Models
                 {
                     MessageNotifier.Set("Produto excluido " +
                     "com sucesso!", "Sucesso");
-                    
+
                     actionResult = true;
                 }
             }
@@ -171,6 +171,30 @@ namespace DimStock.Models
         {
             var sql = @"SELECT MAX(Id) From Product";
             return transaction.ExecuteScalar(sql);
+        }
+
+        public double GetCostPrice()
+        {
+            var sql = @"SELECT CostPrice FROM 
+            Product WHERE Id = @Id";
+
+            ParameterModel.Clear();
+            ParameterModel.Add("@Id", Id);
+
+            double costPrice = CostPrice;
+
+            using (var dataBase = new ConnectionModel())
+            {
+                using (var reader = dataBase.ExecuteReader(sql))
+                {
+                    while (reader.Read())
+                    {
+                        costPrice = double.Parse(reader["CostPrice"].ToString());
+                    }
+                }
+            }
+
+            return costPrice;
         }
 
         public DataTable FetchData()
