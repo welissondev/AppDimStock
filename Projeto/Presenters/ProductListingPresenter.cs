@@ -34,7 +34,7 @@ namespace DimStock.Presenters
             var product = model;
 
             product.Id = view.Id;
-            actionResult = product.GetDetail();
+            actionResult = product.SelectDetails();
 
             if (actionResult == true)
             {
@@ -59,7 +59,7 @@ namespace DimStock.Presenters
             product.InternalCode = view.SearchInternalCode;
             product.Description = view.SearchDescription;
 
-            var table = product.FetchData();
+            var table = product.QueryData();
             view.ProductList = table;
 
             return table;

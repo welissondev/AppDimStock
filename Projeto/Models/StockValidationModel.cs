@@ -12,7 +12,7 @@ namespace DimStock.Models
             if (postedItems.Rows.Count == 0)
             {
                 MessageNotifier.Set("Nenhum item adicionado para " +
-                "essa operação!", "Itens Não Adicionados");
+                "essa operação!", "Não Adicionado");
 
                 return isValid;
             }
@@ -44,7 +44,7 @@ namespace DimStock.Models
             return isValid = true;
         }
 
-        public static bool ValidateToGetDetail(StockModel stock)
+        public static bool ValidateToGetDetails(StockModel stock)
         {
             var isValid = false;
 
@@ -56,7 +56,7 @@ namespace DimStock.Models
                 return isValid;
             }
 
-            if (ValidateIfExists(stock) == false)
+            if (ValidateIfRegisterExists(stock) == false)
             {
                 MessageNotifier.Set("Não é possivel visualizar porque " +
                 "esse registro foi excluido!", "Atualize a Lista");
@@ -67,7 +67,7 @@ namespace DimStock.Models
             return isValid = true;
         }
 
-        public static bool ValidateIfExists(StockModel stock)
+        public static bool ValidateIfRegisterExists(StockModel stock)
         {
             var sql = string.Empty;
             var actionResult = false;

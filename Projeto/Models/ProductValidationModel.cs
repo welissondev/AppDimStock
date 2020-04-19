@@ -135,11 +135,11 @@ namespace DimStock.Models
         {
             var isValid = false;
             var recentCostPrice = product.CostPrice;
-            var currentCostPrice = product.GetCostPrice();
+            var currentCostPrice = product.SelectCostPrice();
 
             if (recentCostPrice != currentCostPrice)
             {
-                if (new StockModel(product).GetQuantity() > 0)
+                if (new StockModel(product).SelectQuantity() > 0)
                 {
                     return isValid;
                 }

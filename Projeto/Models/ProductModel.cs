@@ -9,7 +9,7 @@ namespace DimStock.Models
     /// </summary>
     public partial class ProductModel
     {
-        private ConnectionTransactionModel transaction;
+        private ConnectionTransactionModel dataBaseTransaction;
 
         public int Id { get; set; }
         public string InternalCode { get; set; }
@@ -67,26 +67,26 @@ namespace DimStock.Models
             if (ProductValidationModel.ValidateToUpdate(this) == false)
                 return actionResult;
 
-            using (transaction = new ConnectionTransactionModel())
+            using (dataBaseTransaction = new ConnectionTransactionModel())
             {
                 sql = @"UPDATE Product SET CategoryId = @CategoryId, InternalCode = @InternalCode, 
                 Description = @Description, CostPrice = @CostPrice, SalePrice = @SalePrice, 
                 BarCode = @BarCode WHERE Id = @Id";
 
-                transaction.ClearParameter();
-                transaction.AddParameter("@CategoryId", Category.Id);
-                transaction.AddParameter("@InternalCode", InternalCode);
-                transaction.AddParameter("@Description", Description);
-                transaction.AddParameter("@CostPrice", CostPrice);
-                transaction.AddParameter("@SalePrice", SalePrice);
-                transaction.AddParameter("@BarCode", BarCode);
-                transaction.AddParameter("@Id", Id);
+                dataBaseTransaction.ClearParameter();
+                dataBaseTransaction.AddParameter("@CategoryId", Category.Id);
+                dataBaseTransaction.AddParameter("@InternalCode", InternalCode);
+                dataBaseTransaction.AddParameter("@Description", Description);
+                dataBaseTransaction.AddParameter("@CostPrice", CostPrice);
+                dataBaseTransaction.AddParameter("@SalePrice", SalePrice);
+                dataBaseTransaction.AddParameter("@BarCode", BarCode);
+                dataBaseTransaction.AddParameter("@Id", Id);
 
-                if (transaction.ExecuteNonQuery(sql) > 0)
+                if (dataBaseTransaction.ExecuteNonQuery(sql) > 0)
                 {
-                    if (new StockModel(transaction, this).UpdateValue() == true)
+                    if (new StockModel(dataBaseTransaction, this).UpdateTotalValue() == true)
                     {
-                        transaction.Commit();
+                        dataBaseTransaction.Commit();
                         MessageNotifier.Set("Produto atualizado com sucesso!", "Sucesso");
                         actionResult = true;
                     }
@@ -123,7 +123,7 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public bool GetDetail()
+        public bool SelectDetails()
         {
             var sql = string.Empty;
             var actionResult = false;
@@ -168,13 +168,13 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public int GetLastId()
+        public int SelectLastId()
         {
             var sql = @"SELECT MAX(Id) From Product";
-            return transaction.ExecuteScalar(sql);
+            return dataBaseTransaction.ExecuteScalar(sql);
         }
 
-        public double GetCostPrice()
+        public double SelectCostPrice()
         {
             double costPrice = CostPrice;
 
@@ -198,7 +198,7 @@ namespace DimStock.Models
             return costPrice;
         }
 
-        public DataTable FetchData()
+        public DataTable QueryData()
         {
             var sql = string.Empty;
 

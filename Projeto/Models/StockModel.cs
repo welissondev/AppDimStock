@@ -10,7 +10,7 @@ namespace DimStock.Models
     public partial class StockModel
     {
         private string summary = "All";
-        private ConnectionTransactionModel transaction;
+        private ConnectionTransactionModel dataBaseTransaction;
 
         public int Id { get; set; }
         public int Min { get; set; }
@@ -20,7 +20,6 @@ namespace DimStock.Models
         public string Result { get; set; }
         public string Summary { get => summary; set => summary = value; }
         public ProductModel Product { get; set; }
-
     }
 
     public partial class StockModel
@@ -33,126 +32,22 @@ namespace DimStock.Models
         {
             Product = product;
         }
-        public StockModel(ConnectionTransactionModel transaction)
+        public StockModel(ConnectionTransactionModel dataBaseTransaction)
         {
-            this.transaction = transaction;
+            this.dataBaseTransaction = dataBaseTransaction;
         }
-        public StockModel(ConnectionTransactionModel transaction, ProductModel product)
+        public StockModel(ConnectionTransactionModel dataBaseTransaction, ProductModel product)
         {
-            this.transaction = transaction;
+            this.dataBaseTransaction = dataBaseTransaction;
             Product = product;
         }
 
-        public DataTable FetchData()
-        {
-            var criterionSqlCount = string.Empty;
-            var criterionSqlQuery = string.Empty;
-            var criterionSqlParameter = string.Empty;
-            var criterionSqlOrderBy = string.Empty;
-
-            using (var dataBase = new ConnectionModel())
-            {
-                criterionSqlCount = @"SELECT COUNT(Stock.Id) FROM Stock 
-                INNER JOIN Stock ON Stock.ProductId = Product.Id";
-
-                criterionSqlQuery = @"SELECT Stock.Id, Stock.Quantity, Stock.Min, 
-                Stock.Max, Stock.TotalValue, Product.Id, Product.Description, 
-                Product.CostPrice, Product.InternalCode, Product.Photo FROM 
-                Stock INNER JOIN Stock ON Stock.ProductId = Product.Id ";
-
-                criterionSqlOrderBy = " Order By InternalCode Asc";
-
-                /* 
-                 * Link [WHERE] na consulta de acordo com
-                 * o resumo buscado pelo usuário
-                */
-                switch (summary)
-                {
-                    case "All":
-
-                        criterionSqlCount += @"WHERE Stock.Id > 0";
-                        criterionSqlQuery += @"WHERE Stock.Id > 0";
-
-                        break;
-
-                    case "Nothing":
-
-                        criterionSqlCount += @"WHERE Quantity = 0 
-                        AND Stock.Min = 0 AND Stock.Max = 0";
-
-                        criterionSqlQuery += @"WHERE Quantity = 0 
-                        AND Stock.Min = 0 AND Stock.Max = 0";
-
-                        break;
-
-                    case "Ok":
-
-                        criterionSqlCount += @"WHERE Quantity > 0 
-                        AND Quantity >= Stock.Min AND Quantity 
-                        <= Stock.Max";
-
-                        criterionSqlQuery += @"WHERE Quantity > 0 
-                        AND Quantity >= Stock.Min AND Quantity 
-                        <= Stock.Max";
-
-                        break;
-
-                    case "High":
-
-                        criterionSqlCount += @"WHERE Stock.Quantity 
-                        > Stock.Max";
-
-                        criterionSqlQuery += @"WHERE Stock.Quantity 
-                        > Stock.Max";
-
-                        break;
-
-                    case "Low":
-
-                        criterionSqlCount += @"WHERE Stock.Quantity 
-                        < Stock.Min";
-
-                        criterionSqlQuery += @"WHERE Stock.Quantity 
-                        < Stock.Min";
-
-                        break;
-                }
-
-                /*
-                 *Link [AND] na consulta de acordo com o critério
-                 *buscado pelo usuário
-                */
-                if (Product.InternalCode != string.Empty &&
-                    Product.InternalCode != null)
-                {
-                    criterionSqlParameter += " AND InternalCode LIKE @InternalCode";
-
-                    transaction.AddParameter("@InternalCode", string.Format("{0}%",
-                    Product.InternalCode));
-                }
-
-                if (Product.Description != string.Empty &&
-                    Product.Description != null)
-                {
-                    criterionSqlParameter += " AND Description LIKE @Description";
-
-                    transaction.AddParameter("@Description", string.Format("%{0}%",
-                    Product.Description));
-                }
-
-                criterionSqlCount += criterionSqlParameter;
-                criterionSqlQuery += criterionSqlParameter + criterionSqlOrderBy;
-
-                return dataBase.ExecuteDataAdapter(criterionSqlQuery);
-            }
-        }
-
-        public bool GetDetail()
+        public bool SelectDetails()
         {
             var actionResult = false;
             var sql = string.Empty;
 
-            if (StockValidationModel.ValidateToGetDetail(this) == false)
+            if (StockValidationModel.ValidateToGetDetails(this) == false)
                 return actionResult;
 
             using (var dataBase = new ConnectionModel())
@@ -186,23 +81,6 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public int GetQuantity()
-        {
-            var sql = string.Empty;
-
-            using (var dataBase = new ConnectionModel())
-            {
-                sql = @"SELECT Quantity FROM STOCK WHERE 
-                Id = @Id OR ProductId = @ProductId";
-
-                dataBase.ClearParameter();
-                dataBase.AddParameter("@Id", Id);
-                dataBase.AddParameter("@ProductId", Product.Id);
-
-                return dataBase.ExecuteScalar(sql);
-            }
-        }
-
         public bool InsertPostingOfEntries(DataTable postedItems)
         {
             var actionResult = false;
@@ -216,12 +94,12 @@ namespace DimStock.Models
                 sql = @"UPDATE Stock Set Quantity = Quantity + @ItemQuantity, 
                 TotalValue = TotalValue + @ItemTotalValue WHERE Id = @StockId";
 
-                transaction.ClearParameter();
-                transaction.AddParameter("@ItemQuantity", item["Quantity"]);
-                transaction.AddParameter("@ItemTotalValue", item["TotalValue"]);
-                transaction.AddParameter("@StockId", item["StockId"]);
+                dataBaseTransaction.ClearParameter();
+                dataBaseTransaction.AddParameter("@ItemQuantity", item["Quantity"]);
+                dataBaseTransaction.AddParameter("@ItemTotalValue", item["TotalValue"]);
+                dataBaseTransaction.AddParameter("@StockId", item["StockId"]);
 
-                actionResult = transaction.ExecuteNonQuery(sql) > 0;
+                actionResult = dataBaseTransaction.ExecuteNonQuery(sql) > 0;
             }
 
             return actionResult;
@@ -239,12 +117,12 @@ namespace DimStock.Models
                 sql = @"UPDATE Stock Set Quantity = Quantity - @ItemQuantity, 
                 TotalValue = TotalValue - @ItemTotalValue WHERE Id = @StockId";
 
-                transaction.ClearParameter();
-                transaction.AddParameter("@ItemQuantity", item["Quantity"]);
-                transaction.AddParameter("@ItemTotalValue", item["TotalValue"]);
-                transaction.AddParameter("@StockId", item["StockId"]);
+                dataBaseTransaction.ClearParameter();
+                dataBaseTransaction.AddParameter("@ItemQuantity", item["Quantity"]);
+                dataBaseTransaction.AddParameter("@ItemTotalValue", item["TotalValue"]);
+                dataBaseTransaction.AddParameter("@StockId", item["StockId"]);
 
-                actionResult = transaction.ExecuteNonQuery(sql) > 0;
+                actionResult = dataBaseTransaction.ExecuteNonQuery(sql) > 0;
             }
 
             return actionResult;
@@ -263,12 +141,12 @@ namespace DimStock.Models
                 sql = @"UPDATE Stock Set Quantity = Quantity - @ItemQuantity, 
                 TotalValue = TotalValue - @ItemTotalValue WHERE Id = @StockId";
 
-                transaction.ClearParameter();
-                transaction.AddParameter("@ItemQuantity", item["Quantity"]);
-                transaction.AddParameter("@ItemTotalValue", item["TotalValue"]);
-                transaction.AddParameter("@StockId", item["StockId"]);
+                dataBaseTransaction.ClearParameter();
+                dataBaseTransaction.AddParameter("@ItemQuantity", item["Quantity"]);
+                dataBaseTransaction.AddParameter("@ItemTotalValue", item["TotalValue"]);
+                dataBaseTransaction.AddParameter("@StockId", item["StockId"]);
 
-                actionResult = transaction.ExecuteNonQuery(sql) > 0;
+                actionResult = dataBaseTransaction.ExecuteNonQuery(sql) > 0;
             }
 
             return actionResult;
@@ -286,18 +164,18 @@ namespace DimStock.Models
                 sql = @"UPDATE Stock Set Quantity = Quantity + @ItemQuantity, 
                 TotalValue = TotalValue + @ItemTotalValue WHERE Id = @StockId";
 
-                transaction.ClearParameter();
-                transaction.AddParameter("@ItemQuantity", item["Quantity"]);
-                transaction.AddParameter("@ItemTotalValue", item["TotalValue"]);
-                transaction.AddParameter("@StockId", item["StockId"]);
+                dataBaseTransaction.ClearParameter();
+                dataBaseTransaction.AddParameter("@ItemQuantity", item["Quantity"]);
+                dataBaseTransaction.AddParameter("@ItemTotalValue", item["TotalValue"]);
+                dataBaseTransaction.AddParameter("@StockId", item["StockId"]);
 
-                actionResult = transaction.ExecuteNonQuery(sql) > 0;
+                actionResult = dataBaseTransaction.ExecuteNonQuery(sql) > 0;
             }
 
             return actionResult;
         }
 
-        public bool UpdateValue()
+        public bool UpdateTotalValue()
         {
             if (StockValidationModel.ValidateToUpdateValue(this) == false)
                 return false;
@@ -305,55 +183,158 @@ namespace DimStock.Models
             var sql = @"UPDATE Stock Set TotalValue = @ProductCostPrice * 
             Quantity WHERE ProductId = @ProductId";
 
-            transaction.ClearParameter();
-            transaction.AddParameter("ProductCostPrice", Product.CostPrice);
-            transaction.AddParameter("@ProductId", Product.Id);
+            dataBaseTransaction.ClearParameter();
+            dataBaseTransaction.AddParameter("ProductCostPrice", Product.CostPrice);
+            dataBaseTransaction.AddParameter("@ProductId", Product.Id);
 
-            return transaction.ExecuteNonQuery(sql) > 0;
+            return dataBaseTransaction.ExecuteNonQuery(sql) > 0;
         }
 
         public void SetSummary(List<StockModel> list)
         {
             for (int i = 0; i < list.Count; i++)
             {
-                var stockItem = list[i];
-                var quantity = stockItem.Quantity;
-                var minStock = stockItem.Min;
-                var maxStock = stockItem.Max;
+                var stock = list[i];
+                var quantity = stock.Quantity;
+                var min = stock.Min;
+                var max = stock.Max;
 
-                if (quantity > 0 && quantity >= minStock && quantity <= maxStock)
-                    stockItem.Summary = "OK";
+                if (quantity > 0 && quantity >= min && quantity <= max)
+                    stock.Summary = "OK";
 
-                if (quantity > maxStock)
-                    stockItem.Summary = "Alto";
+                if (quantity > max)
+                    stock.Summary = "Alto";
 
-                if (quantity < minStock)
-                    stockItem.Summary = "Baixo";
+                if (quantity < min)
+                    stock.Summary = "Baixo";
 
-                if (quantity == 0 & minStock == 0 && maxStock == 0)
-                    stockItem.Summary = "???";
+                if (quantity == 0 & min == 0 && max == 0)
+                    stock.Summary = "???";
             }
         }
         public void SetResult(List<StockModel> list)
         {
             for (int i = 0; i < list.Count; i++)
             {
-                var stockItem = list[i];
-                var quantity = stockItem.Quantity;
-                var minStock = stockItem.Min;
-                var maxStock = stockItem.Max;
+                var stock = list[i];
+                var quantity = stock.Quantity;
+                var min = stock.Min;
+                var max = stock.Max;
 
-                if (quantity < minStock)
-                    stockItem.Result = " + " + Convert.ToString(minStock - quantity);
+                if (quantity < min)
+                    stock.Result = " + " + Convert.ToString(min - quantity);
 
-                if (quantity > maxStock)
-                    stockItem.Result = " - " + Convert.ToString(quantity - maxStock);
+                if (quantity > max)
+                    stock.Result = " - " + Convert.ToString(quantity - max);
 
-                if (quantity > 0 && quantity >= minStock && quantity <= maxStock)
-                    stockItem.Result = "OK";
+                if (quantity > 0 && quantity >= min && quantity <= max)
+                    stock.Result = "OK";
 
-                if (quantity == 0 && minStock == 0 && maxStock == 0)
-                    stockItem.Result = "???";
+                if (quantity == 0 && min == 0 && max == 0)
+                    stock.Result = "???";
+            }
+        }
+
+        public int SelectQuantity()
+        {
+            var sql = string.Empty;
+
+            using (var dataBase = new ConnectionModel())
+            {
+                sql = @"SELECT Quantity FROM STOCK WHERE 
+                Id = @Id OR ProductId = @ProductId";
+
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@Id", Id);
+                dataBase.AddParameter("@ProductId", Product.Id);
+
+                return dataBase.ExecuteScalar(sql);
+            }
+        }
+
+        public DataTable QueryData()
+        {
+            var sqlSelect = string.Empty;
+            var sqlParameter = string.Empty;
+            var sqlOrderBy = string.Empty;
+            var query = string.Empty;
+
+            using (var dataBase = new ConnectionModel())
+            {
+                sqlSelect = @"SELECT Stock.Id, Stock.Quantity, Stock.Min, 
+                Stock.Max, Stock.TotalValue, Product.Id, Product.Description, 
+                Product.CostPrice, Product.InternalCode, Product.Photo FROM 
+                Stock INNER JOIN Stock ON Stock.ProductId = Product.Id ";
+
+                sqlOrderBy = " Order By InternalCode Asc";
+
+                /* 
+                 * Link [WHERE] na consulta de acordo com
+                 * o resumo buscado pelo usuário
+                */
+                switch (summary)
+                {
+                    case "All":
+
+                        sqlSelect += @"WHERE Stock.Id > 0 ";
+                        
+                        break;
+
+                    case "Nothing":
+
+                        sqlSelect += @"WHERE Quantity = 0 
+                        AND Stock.Min = 0 AND Stock.Max = 0 ";
+
+                        break;
+
+                    case "Ok":
+
+                        sqlSelect += @"WHERE Quantity > 0 
+                        AND Quantity >= Stock.Min AND Quantity 
+                        <= Stock.Max ";
+
+                        break;
+
+                    case "High":
+
+                        sqlSelect += @"WHERE Stock.Quantity 
+                        > Stock.Max ";
+
+                        break;
+
+                    case "Low":
+
+                        sqlSelect += @"WHERE Stock.Quantity 
+                        < Stock.Min ";
+
+                        break;
+                }
+
+                /*
+                 * Link [AND] na consulta de acordo com o critério
+                 * buscado pelo usuário
+                */
+                if (Product.InternalCode != string.Empty &&
+                    Product.InternalCode != null)
+                {
+                    sqlParameter += " AND InternalCode LIKE @InternalCode ";
+
+                    dataBaseTransaction.AddParameter("@InternalCode", string.Format("{0}%",
+                    Product.InternalCode));
+                }
+
+                if (Product.Description != string.Empty &&
+                    Product.Description != null)
+                {
+                    sqlParameter += " AND Description LIKE @Description ";
+
+                    dataBaseTransaction.AddParameter("@Description", string.Format("%{0}%",
+                    Product.Description));
+                }
+
+                query += sqlSelect + sqlParameter + sqlOrderBy;
+
+                return dataBase.ExecuteDataAdapter(query);
             }
         }
     }
