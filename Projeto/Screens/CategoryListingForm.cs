@@ -7,12 +7,9 @@ using System.Drawing;
 using System.Windows.Forms;
 
 
-/// <summary>
-/// Propriedades da classe
-/// </summary>
 namespace DimStock.Screens
 {
-    public partial class CategoryListingForm : ICategoryListingView
+    public partial class CategoryListingForm : MetroForm, ICategoryListingView
     {
         public int Id { get; set; }
         public string Description { get; set; }
@@ -20,20 +17,20 @@ namespace DimStock.Screens
         public string SearchDescription { get => TextSearch_Category.Text; set => TextSearch_Category.Text = value; }
         public object DataList { get => DatagridCategory.DataSource; set => DatagridCategory.DataSource = value; }
 
+        private CategoryListingPresenter presenter;
     }
 }
 
-/// <summary>
-/// Eventos do classe
-/// </summary>
 namespace DimStock.Screens
 {
-    public partial class CategoryListingForm : MetroForm
+    public partial class CategoryListingForm
     {
+        //Eventos do formulário
         public CategoryListingForm()
         {
             InitializeComponent();
             AddButtonColumnInDataGrid();
+            presenter = new CategoryListingPresenter(this);
         }
 
         private void CategoryListingForm_Load(object sender, EventArgs e)
@@ -53,7 +50,8 @@ namespace DimStock.Screens
         {
             try
             {
-                ClearView();
+                presenter.ClearView();
+                presenter.SearchData();
             }
             catch (Exception ex)
             {
@@ -64,7 +62,7 @@ namespace DimStock.Screens
         {
             try
             {
-                ClearView();
+                presenter.ClearView();
             }
             catch (Exception ex)
             {
@@ -142,16 +140,8 @@ namespace DimStock.Screens
                 ExceptionNotifier.ShowMessage(ex);
             }
         }
-    }
-}
 
-/// <summary>
-/// Métodos auxiliares
-/// </summary>
-namespace DimStock.Screens
-{
-    public partial class CategoryListingForm
-    {
+        //Métodos auxiliares
         public static void ShowForm()
         {
             var categoryListingForm = new CategoryListingForm()
@@ -237,20 +227,11 @@ namespace DimStock.Screens
             }
         }
 
-        private void ClearView()
-        {
-            var presenter = new CategoryListingPresenter(this);
-            presenter.ClearView();
-
-            SearchCategory();
-        }
-
         private void SearchCategory()
         {
             TimerSearch.Enabled = false;
             ImageLoading.Visible = false;
 
-            var presenter = new CategoryListingPresenter(this);
             var dataList = presenter.SearchData();
 
             if (dataList.Rows.Count > 0)
@@ -263,7 +244,6 @@ namespace DimStock.Screens
             MessageBoxButtons.YesNo, MessageBoxIcon.None, MessageBoxDefaultButton.Button2) ==
             DialogResult.No) return;
 
-            var presenter = new CategoryListingPresenter(this);
             var actionResult = presenter.Delete();
 
             switch (actionResult)
@@ -282,7 +262,6 @@ namespace DimStock.Screens
 
         private void GetCategoryDetail()
         {
-            var presenter = new CategoryListingPresenter(this);
             var actionResult = presenter.GetDetails();
 
             switch (actionResult)
@@ -297,5 +276,6 @@ namespace DimStock.Screens
                     break;
             }
         }
+
     }
 }

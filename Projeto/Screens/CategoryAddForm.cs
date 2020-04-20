@@ -6,30 +6,29 @@ using System;
 using System.Linq;
 using System.Windows.Forms;
 
-
-/// <summary>
-/// Métodos da classe
-/// </summary>
 namespace DimStock.Screens
 {
+    /// <summary>
+    /// Representa um formulário de cadastro de categorias
+    /// </summary>
     public partial class CategoryAddForm : ICategoryAddView
     {
         public int Id { get; set; }
         public string Description { get => TextDescription.Text; set => TextDescription.Text = value; }
-    }
 
+        private CategoryAddPresenter presenter;
+    }
 }
 
-/// <summary>
-/// Eventos da classe
-/// </summary>
 namespace DimStock.Screens
 {
     public partial class CategoryAddForm : MetroForm
     {
+        //Eventos do formulário
         public CategoryAddForm()
         {
             InitializeComponent();
+            presenter = new CategoryAddPresenter(this);
         }
 
         private void CategoryAddForm_Resize(object sender, EventArgs e)
@@ -49,8 +48,6 @@ namespace DimStock.Screens
             try
             {
                 var actionResult = false;
-
-                var presenter = new CategoryAddPresenter(this);
 
                 if (Id == 0)
                     actionResult = presenter.Insert();
@@ -80,7 +77,7 @@ namespace DimStock.Screens
         {
             try
             {
-                ClearView();
+                presenter.ClearView();
             }
             catch (Exception ex)
             {
@@ -95,7 +92,6 @@ namespace DimStock.Screens
                 MessageBoxButtons.YesNo, MessageBoxIcon.None, MessageBoxDefaultButton.Button2) ==
                 DialogResult.No) return;
 
-                var presenter = new CategoryAddPresenter(this);
                 var actionResult = presenter.Delete();
 
                 switch (actionResult)
@@ -121,16 +117,7 @@ namespace DimStock.Screens
             Close();
         }
 
-    }
-}
-
-/// <summary>
-/// Métodos auxiliares
-/// </summary>
-namespace DimStock.Screens
-{
-    public partial class CategoryAddForm
-    {
+        //Método auxiliares
         public static void ShowForm()
         {
             try
@@ -163,12 +150,5 @@ namespace DimStock.Screens
             categoryAddForm.ShowDialog();
         }
 
-        private void ClearView()
-        {
-            var presenter = new CategoryAddPresenter(this);
-            presenter.ClearView();
-
-            TextDescription.Focus();
-        }
     }
 }
