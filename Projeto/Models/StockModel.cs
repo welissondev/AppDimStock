@@ -193,29 +193,28 @@ namespace DimStock.Models
 
         public bool CheckIfRegister()
         {
-            var actionResult = false;
+            var registrationStatus = false;
             var sql = string.Empty;
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"SELECT * FROM Stock WHERE Id = @Id";
+                sql = @"SELECT COUNT(Id) FROM Stock 
+                WHERE Id = @Id";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Id", Id);
 
-                using (var reader = dataBase.ExecuteReader(sql))
+                if (dataBase.ExecuteScalar(sql) == 0)
                 {
-                    if (reader.Read() == false)
-                    {
-                        MessageNotifier.Set("Esse estoque não encontra-se registrado " +
-                        "em sua base de dados!", "Não Encontrado");
+                    MessageNotifier.Set("Esse estoque não " +
+                    "encontra-se registrado na sua base de " +
+                    "dados!", "Não Encontrado");
 
-                        return actionResult;
-                    }
+                    return registrationStatus;
                 }
             }
 
-            return actionResult = true;
+            return registrationStatus = true;
         }
 
         public bool CheckRelationWithProduct()
