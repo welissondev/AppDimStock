@@ -219,7 +219,7 @@ namespace DimStock.Models
 
         public bool CheckRelationWithProduct()
         {
-            var related = false;
+            var relatedStatus = false;
             var sql = string.Empty;
 
             using (var dataBase = new ConnectionModel())
@@ -230,10 +230,13 @@ namespace DimStock.Models
                 dataBase.ClearParameter();
                 dataBase.AddParameter("ProductId", Product.Id);
 
-                related = dataBase.ExecuteScalar(sql) > 0;
+                if (dataBase.ExecuteScalar(sql) > 0)
+                {
+                    relatedStatus = true;
+                }
             }
 
-            return related;
+            return relatedStatus;
         }
 
         public void SetSummary(List<StockModel> list)
