@@ -8,6 +8,9 @@ using System.Windows.Forms;
 
 namespace DimStock.Screens
 {
+    /// <summary>
+    /// Representa o formulário de listagem dos produtos
+    /// </summary>
     public partial class ProductListingForm : IProductListingView
     {
         public int Id { get; set; }

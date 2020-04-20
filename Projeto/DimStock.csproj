@@ -236,11 +236,11 @@
     <Compile Include="Screens\ReportViewForm.Designer.cs">
       <DependentUpon>ReportViewForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Screens\StockDestinationAddForm.cs">
+    <Compile Include="Screens\DestinationAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screens\StockDestinationAddForm.Designer.cs">
-      <DependentUpon>StockDestinationAddForm.cs</DependentUpon>
+    <Compile Include="Screens\DestinationAddForm.Designer.cs">
+      <DependentUpon>DestinationAddForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Screens\StockListingForm.cs">
       <SubType>Form</SubType>
@@ -248,17 +248,17 @@
     <Compile Include="Screens\StockListingForm.Designer.cs">
       <DependentUpon>StockListingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Screens\StockMovementListingForm.cs">
+    <Compile Include="Screens\MovementListingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screens\StockMovementListingForm.Designer.cs">
-      <DependentUpon>StockMovementListingForm.cs</DependentUpon>
+    <Compile Include="Screens\MovementListingForm.Designer.cs">
+      <DependentUpon>MovementListingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Screens\StockMovementAddForm.cs">
+    <Compile Include="Screens\MovementAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screens\StockMovementAddForm.Designer.cs">
-      <DependentUpon>StockMovementAddForm.cs</DependentUpon>
+    <Compile Include="Screens\MovementAddForm.Designer.cs">
+      <DependentUpon>MovementAddForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Screens\UserListingForm.cs">
       <SubType>Form</SubType>
@@ -313,17 +313,17 @@
     <EmbeddedResource Include="Screens\ReportViewForm.resx">
       <DependentUpon>ReportViewForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Screens\StockDestinationAddForm.resx">
-      <DependentUpon>StockDestinationAddForm.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\DestinationAddForm.resx">
+      <DependentUpon>DestinationAddForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\StockListingForm.resx">
       <DependentUpon>StockListingForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Screens\StockMovementListingForm.resx">
-      <DependentUpon>StockMovementListingForm.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\MovementListingForm.resx">
+      <DependentUpon>MovementListingForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Screens\StockMovementAddForm.resx">
-      <DependentUpon>StockMovementAddForm.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\MovementAddForm.resx">
+      <DependentUpon>MovementAddForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\UserListingForm.resx">
       <DependentUpon>UserListingForm.cs</DependentUpon>
