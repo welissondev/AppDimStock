@@ -5,11 +5,11 @@ using MetroFramework.Forms;
 using System;
 using System.Windows.Forms;
 
-/// <summary>
-/// Propriedades da classe
-/// </summary>
 namespace DimStock.Screens
 {
+    /// <summary>
+    /// Representa o formulário de cadastro dos produtos
+    /// </summary>
     public partial class ProductAddForm : IProductAddView
     {
         public int Id { get; set; }
@@ -22,15 +22,10 @@ namespace DimStock.Screens
         public string CategoryDescription { get => BoxCategoryDescription.Text; set => BoxCategoryDescription.Text = value; }
         public object CategoryList { get => DataGridCategory.DataSource; set => DataGridCategory.DataSource = value; }
     }
-}
 
-/// <summary>
-/// Eventos da classe
-/// </summary>
-namespace DimStock.Screens
-{
     public partial class ProductAddForm : MetroForm
     {
+        //Eventos do formulário
         public ProductAddForm()
         {
             InitializeComponent();
@@ -196,23 +191,24 @@ namespace DimStock.Screens
             try
             {
                 var presenter = new ProductAddPresenter(this);
-                presenter.FetchCategoryData();
+                presenter.SearchCategoryData();
             }
             catch (Exception ex)
             {
                 ExceptionNotifier.ShowMessage(ex);
             }
         }
-    }
-}
 
-/// <summary>
-/// Métodos Auxiliares da classe
-/// </summary>
-namespace DimStock.Screens
-{
-    public partial class ProductAddForm
-    {
+        //Métodos auxiliáres
+        private void ClearView()
+        {
+            var presenter = new ProductAddPresenter(this);
+            presenter.ClearView();
+
+            TextInternalCode.Focus();
+            DataGridCategory.Visible = false;
+        }
+
         public static void ShowForm()
         {
             var productAddForm = new ProductAddForm()
@@ -245,15 +241,6 @@ namespace DimStock.Screens
 
             };
             productAddForm.ShowDialog();
-        }
-
-        private void ClearView()
-        {
-            var presenter = new ProductAddPresenter(this);
-            presenter.ClearView();
-
-            TextInternalCode.Focus();
-            DataGridCategory.Visible = false;
         }
     }
 }

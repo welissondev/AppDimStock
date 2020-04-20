@@ -98,7 +98,7 @@ namespace DimStock.Presenters
             view.CategoryDescription = string.Empty;
         }
 
-        public DataTable FetchCategoryData()
+        public DataTable SearchCategoryData()
         {
             var category = new CategoryModel
             {

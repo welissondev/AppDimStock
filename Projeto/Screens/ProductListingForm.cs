@@ -16,19 +16,19 @@ namespace DimStock.Screens
         public double CostPrice { get; set; }
         public double SalePrice { get; set; }
         public string BarCode { get; set; }
+
         public int CategoryId { get; set; }
         public string CategoryDescription { get; set; }
         public object CategoryList { get; set; }
+
         public string SearchInternalCode { get => TextSearch_InternalCode.Text; set => TextSearch_InternalCode.Text = value; }
         public string SearchDescription { get => TextSearch_Description.Text; set => TextSearch_Description.Text = value; }
         public object ProductList { get => DatagridProduct.DataSource; set => DatagridProduct.DataSource = value; }
     }
-}
 
-namespace DimStock.Screens
-{
     public partial class ProductListingForm : MetroForm
     {
+        //Eventos do formulário
         public ProductListingForm()
         {
             InitializeComponent();
@@ -150,16 +150,8 @@ namespace DimStock.Screens
                 ExceptionNotifier.ShowMessage(ex);
             }
         }
-    }
-}
-
-/// <summary>
-/// Métodos auxiliares da classe
-/// </summary>
-namespace DimStock.Screens
-{
-    public partial class ProductListingForm
-    {
+        
+        //Métodos axuxiliáres 
         public static void ShowForm()
         {
             var productListingForm = new ProductListingForm()
