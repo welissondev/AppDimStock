@@ -152,7 +152,7 @@ namespace DimStock.Screens
         {
             MdiClosingAll.CloseAllForms();
 
-            var form = new StockMovementAddForm()
+            var form = new MovementAddForm()
             {
                 MdiParent = this,
                 FormBorderStyle = FormBorderStyle.None,
@@ -166,7 +166,7 @@ namespace DimStock.Screens
         {
             MdiClosingAll.CloseAllForms();
 
-            var form = new StockMovementAddForm()
+            var form = new MovementAddForm()
             {
                 MdiParent = this,
                 FormBorderStyle = FormBorderStyle.None,
@@ -179,7 +179,7 @@ namespace DimStock.Screens
         {
             MdiClosingAll.CloseAllForms();
 
-            var form = new StockMovementListingForm()
+            var form = new MovementListingForm()
             {
                 MdiParent = this,
                 FormBorderStyle = FormBorderStyle.None,

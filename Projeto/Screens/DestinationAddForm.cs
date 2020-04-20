@@ -5,11 +5,11 @@ using System.Windows.Forms;
 
 namespace DimStock.Screens
 {
-    public partial class StockDestinationAddForm : Form
+    public partial class DestinationAddForm : Form
     {
         #region Builder
 
-        public StockDestinationAddForm()
+        public DestinationAddForm()
         {
             InitializeComponent();
 
