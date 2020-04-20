@@ -198,8 +198,7 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"SELECT COUNT(Id) FROM Stock 
-                WHERE Id = @Id";
+                sql = @"SELECT * FROM Stock WHERE Id = @Id";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Id", Id);
