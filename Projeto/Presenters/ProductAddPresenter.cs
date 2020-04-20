@@ -1,7 +1,7 @@
 ﻿using DimStock.Models;
 using DimStock.Views;
 using System.Data;
-    
+
 namespace DimStock.Presenters
 {
     public partial class ProductAddPresenter
@@ -17,8 +17,7 @@ namespace DimStock.Presenters
         {
             var actionResult = false;
 
-            var model = new ProductModel();
-            var product = model;
+            var product = new ProductModel();
 
             product.InternalCode = view.InternalCode;
             product.Description = view.Description;
@@ -28,10 +27,11 @@ namespace DimStock.Presenters
             product.Category.Id = view.CategoryId;
             product.Category.Description = view.CategoryDescription;
 
-            actionResult = product.Insert();
-
-            if (actionResult == true)
+            if (product.Insert() == true)
+            {
+                actionResult = true;
                 ClearView();
+            }
 
             return actionResult;
         }
@@ -40,8 +40,7 @@ namespace DimStock.Presenters
         {
             var actionResult = false;
 
-            var model = new ProductModel();
-            var product = model;
+            var product = new ProductModel();
 
             product.Id = view.Id;
             product.InternalCode = view.InternalCode;
@@ -52,7 +51,10 @@ namespace DimStock.Presenters
             product.Category.Id = view.CategoryId;
             product.Category.Description = view.CategoryDescription;
 
-            actionResult = product.Update();
+            if (product.Update() == true)
+            {
+                actionResult = true;
+            }
 
             return actionResult;
         }
@@ -61,46 +63,27 @@ namespace DimStock.Presenters
         {
             var actionResult = false;
 
-            var model = new ProductModel();
-            var product = model;
+            var product = new ProductModel
+            {
+                Id = view.Id
+            };
 
-            product.Id = view.Id;
-            actionResult = product.Delete();
+            if (product.Delete() == true)
+            {
+                actionResult = true;
+            }
 
             return actionResult;
         }
 
         public int GetCategoryIdByDescription()
         {
-            var model = new CategoryModel();
-            var category = model;
+            var category = new CategoryModel
+            {
+                Description = view.CategoryDescription
+            };
 
-            category.Description = view.CategoryDescription;
             return category.GetIdByDescription();
-        }
-
-        public DataTable FetchCategoryData()
-        {
-            var model = new CategoryModel();
-            var category = model;
-
-            category.Description = view.CategoryDescription;
-            var table = category.FetchData();
-
-            view.CategoryList = table;
-
-            return table;
-        }
-
-        public DataTable ListAllCategoryData()
-        {
-            var model = new CategoryModel();
-            var category = model;
-
-            var table = category.ListData();
-            view.CategoryList = table;
-
-            return table;
         }
 
         public void ClearView()
@@ -113,6 +96,29 @@ namespace DimStock.Presenters
             view.BarCode = string.Empty;
             view.CategoryId = 0;
             view.CategoryDescription = string.Empty;
+        }
+
+        public DataTable FetchCategoryData()
+        {
+            var category = new CategoryModel
+            {
+                Description = view.CategoryDescription
+            };
+
+            var searchResult = category.FetchData();
+            view.CategoryList = searchResult;
+
+            return searchResult;
+        }
+
+        public DataTable ListAllCategoryData()
+        {
+            var category = new CategoryModel();
+
+            var queryResult = category.ListData();
+            view.CategoryList = queryResult;
+
+            return queryResult;
         }
     }
 }

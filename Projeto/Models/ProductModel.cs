@@ -123,12 +123,45 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public bool SelectDetails()
+        public bool CheckIfRegister()
+        {
+            var registrationState = false;
+            var sql = string.Empty;
+
+            using (var dataBase = new ConnectionModel())
+            {
+                sql = "SELECT Id FROM Product WHERE Id = @Id";
+
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@Id", Id);
+
+                using (var reader = dataBase.ExecuteReader(sql))
+                {
+                    if (reader.Read() == false)
+                    {
+                        MessageNotifier.Set("Esse produto não " +
+                        "encontra-se registrado em sua base de " +
+                        "dados!", "Não Encontrado");
+
+                        return registrationState;
+                    }
+                }
+            }
+
+            return registrationState = true;
+        }
+
+        public bool CheckRelationWithStock()
+        {
+            return new StockModel(this).CheckRelationWithProduct();
+        }
+
+        public bool GetDetails()
         {
             var sql = string.Empty;
             var actionResult = false;
 
-            if (ProductValidationModel.ValidateToGetDetail(this) == false)
+            if (ProductValidationModel.ValidateToGetDetails(this) == false)
                 return actionResult;
 
             using (var dataBase = new ConnectionModel())
@@ -168,13 +201,18 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public int SelectLastId()
+        public int GetQuantityInStock()
+        {
+            return new StockModel(this).GetQuantity();
+        }
+
+        public int GetLastId()
         {
             var sql = @"SELECT MAX(Id) From Product";
             return dataBaseTransaction.ExecuteScalar(sql);
         }
 
-        public double SelectCostPrice()
+        public double GetCostPrice()
         {
             double costPrice = CostPrice;
 
@@ -198,7 +236,7 @@ namespace DimStock.Models
             return costPrice;
         }
 
-        public DataTable QueryData()
+        public DataTable SearchData()
         {
             var sql = string.Empty;
 

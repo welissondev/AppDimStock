@@ -17,26 +17,25 @@ namespace DimStock.Presenters
         {
             var actionResult = false;
 
-            var model = new ProductModel();
-            var product = model;
-
-            product.Id = view.Id;
+            var product = new ProductModel
+            {
+                Id = view.Id
+            };
             actionResult = product.Delete();
-            
+
             return actionResult;
         }
 
-        public bool GetDetail()
+        public bool GetDetails()
         {
             var actionResult = false;
 
-            var model = new ProductModel();
-            var product = model;
+            var product = new ProductModel
+            {
+                Id = view.Id
+            };
 
-            product.Id = view.Id;
-            actionResult = product.SelectDetails();
-
-            if (actionResult == true)
+            if (product.GetDetails() == true)
             {
                 view.Id = product.Id;
                 view.InternalCode = product.InternalCode;
@@ -46,26 +45,14 @@ namespace DimStock.Presenters
                 view.BarCode = product.BarCode;
                 view.CategoryId = product.Category.Id;
                 view.CategoryDescription = product.Category.Description;
+
+                actionResult = true;
             }
 
             return actionResult;
         }
 
-        public DataTable FetchData()
-        {
-            var model = new ProductModel();
-            var product = model;
-
-            product.InternalCode = view.SearchInternalCode;
-            product.Description = view.SearchDescription;
-
-            var table = product.QueryData();
-            view.ProductList = table;
-
-            return table;
-        }
-
-        public void ResetView()
+        public void ClearView()
         {
             view.Id = 0;
             view.InternalCode = string.Empty;
@@ -79,6 +66,20 @@ namespace DimStock.Presenters
             view.SearchInternalCode = string.Empty;
             view.CategoryList = null;
             view.ProductList = null;
+        }
+
+        public DataTable SearchData()
+        {
+            var product = new ProductModel
+            {
+                InternalCode = view.SearchInternalCode,
+                Description = view.SearchDescription
+            };
+
+            var searchResult = product.SearchData();
+            view.ProductList = searchResult;
+
+            return searchResult;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DimStock.AuxilyTools.AuxilyClasses;
+using System;
 using System.Collections.Generic;
 using System.Data;
 
@@ -42,7 +43,7 @@ namespace DimStock.Models
             Product = product;
         }
 
-        public bool SelectDetails()
+        public bool GetDetails()
         {
             var actionResult = false;
             var sql = string.Empty;
@@ -52,12 +53,12 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"SELECT Product.Id, Product.InternalCode, Product.Description, 
-                Product.CostPrice, Stock.Id, Stock.Quantity FROM Product INNER JOIN 
-                Stock ON Product.Id = Stock.ProductId WHERE Product.Id = @Id";
+                sql = @"SELECT Stock.Id, Stock.Quantity, Product.Id, Product.InternalCode, 
+                Product.Description, Product.CostPrice FROM Stock INNER JOIN Product ON 
+                Stock.ProductId = Product.Id WHERE Stock.Id = @StockId";
 
                 dataBase.ClearParameter();
-                dataBase.AddParameter("@Id", Id);
+                dataBase.AddParameter("@StockId", Id);
 
                 using (var reader = dataBase.ExecuteReader(sql))
                 {
@@ -177,7 +178,7 @@ namespace DimStock.Models
 
         public bool UpdateTotalValue()
         {
-            if (StockValidationModel.ValidateToUpdateValue(this) == false)
+            if (StockValidationModel.ValidateToUpdateTotalValue(this) == false)
                 return false;
 
             var sql = @"UPDATE Stock Set TotalValue = @ProductCostPrice * 
@@ -188,6 +189,52 @@ namespace DimStock.Models
             dataBaseTransaction.AddParameter("@ProductId", Product.Id);
 
             return dataBaseTransaction.ExecuteNonQuery(sql) > 0;
+        }
+
+        public bool CheckIfRegister()
+        {
+            var actionResult = false;
+            var sql = string.Empty;
+
+            using (var dataBase = new ConnectionModel())
+            {
+                sql = @"SELECT * FROM Stock WHERE Id = @Id";
+
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@Id", Id);
+
+                using (var reader = dataBase.ExecuteReader(sql))
+                {
+                    if (reader.Read() == false)
+                    {
+                        MessageNotifier.Set("Esse estoque não encontra-se registrado " +
+                        "em sua base de dados!", "Não Encontrado");
+
+                        return actionResult;
+                    }
+                }
+            }
+
+            return actionResult = true;
+        }
+
+        public bool CheckRelationWithProduct()
+        {
+            var related = false;
+            var sql = string.Empty;
+
+            using (var dataBase = new ConnectionModel())
+            {
+                sql = @"SELECT * FROM Stock WHERE 
+                ProductId = @ProductId";
+
+                dataBase.ClearParameter();
+                dataBase.AddParameter("ProductId", Product.Id);
+
+                related = dataBase.ExecuteScalar(sql) > 0;
+            }
+
+            return related;
         }
 
         public void SetSummary(List<StockModel> list)
@@ -235,7 +282,7 @@ namespace DimStock.Models
             }
         }
 
-        public int SelectQuantity()
+        public int GetQuantity()
         {
             var sql = string.Empty;
 
@@ -252,7 +299,7 @@ namespace DimStock.Models
             }
         }
 
-        public DataTable QueryData()
+        public DataTable SearchData()
         {
             var sqlSelect = string.Empty;
             var sqlParameter = string.Empty;
@@ -277,7 +324,7 @@ namespace DimStock.Models
                     case "All":
 
                         sqlSelect += @"WHERE Stock.Id > 0 ";
-                        
+
                         break;
 
                     case "Nothing":

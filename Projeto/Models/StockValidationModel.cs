@@ -7,29 +7,29 @@ namespace DimStock.Models
     {
         public static bool ValidatePostingItems(DataTable postedItems)
         {
-            var isValid = false;
+            var validationStatus = false;
 
             if (postedItems.Rows.Count == 0)
             {
-                MessageNotifier.Set("Nenhum item adicionado para " +
-                "essa operação!", "Não Adicionado");
+                MessageNotifier.Set("Nenhum item foi adicionado para " +
+                "lançamento no estoque!", "Adicione Um Item");
 
-                return isValid;
+                return validationStatus;
             }
 
-            return isValid = true;
+            return validationStatus = true;
         }
 
-        public static bool ValidateToUpdateValue(StockModel stock)
+        public static bool ValidateToUpdateTotalValue(StockModel stock)
         {
-            var isValid = false;
+            var validationStatus = false;
 
             if (stock.Product.Id == 0)
             {
                 MessageNotifier.Set("É necessário informar o produto para " +
                 "atualizar seu valor no estoque!", "Não Informado");
 
-                return isValid;
+                return validationStatus;
             }
 
             if (stock.Product.CostPrice == 0.00)
@@ -38,60 +38,41 @@ namespace DimStock.Models
                 "é preciso informar o preço de custo do produto!",
                 "Não Informado");
 
-                return isValid;
+                return validationStatus;
             }
 
-            return isValid = true;
+            if (stock.Product.CostPrice < 0.00)
+            {
+                MessageNotifier.Set("Para atualizar o estoque do produto, " +
+                "o preço de custo não pode ser negativo!", "Não Permitido");
+
+                return validationStatus;
+            }
+
+            return validationStatus = true;
         }
 
         public static bool ValidateToGetDetails(StockModel stock)
         {
-            var isValid = false;
+            var validationStatus = false;
 
             if (stock.Id == 0)
             {
-                MessageNotifier.Set("Selecione um estoque para " +
+                MessageNotifier.Set("Selecione o estoque para " +
                 "visualizar!", "Não Selecionado");
 
-                return isValid;
+                return validationStatus;
             }
 
-            if (ValidateIfRegisterExists(stock) == false)
+            if (stock.CheckIfRegister() == false)
             {
                 MessageNotifier.Set("Não é possivel visualizar porque " +
                 "esse registro foi excluido!", "Atualize a Lista");
 
-                return isValid;
+                return validationStatus;
             }
 
-            return isValid = true;
-        }
-
-        public static bool ValidateIfRegisterExists(StockModel stock)
-        {
-            var sql = string.Empty;
-            var actionResult = false;
-
-            using (var dataBase = new ConnectionModel())
-            {
-                sql = "SELECT Id FROM Stock WHERE Id = @Id";
-
-                dataBase.ClearParameter();
-                dataBase.AddParameter("@Id", stock.Id);
-
-                using (var reader = dataBase.ExecuteReader(sql))
-                {
-                    if (reader.Read() == false)
-                    {
-                        MessageNotifier.Set("Esse estoque não encontra-se registrado " +
-                        "em sua base de dados!", "Não Encontrado");
-
-                        return actionResult;
-                    }
-                }
-            }
-
-            return actionResult = true;
+            return validationStatus = true;
         }
     }
 }

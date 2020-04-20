@@ -9,191 +9,262 @@ namespace DimStock.Models
     {
         public static bool ValidateToInsert(ProductModel product)
         {
-            var isValid = false;
+            var validationStatus = false;
 
-            if (product.InternalCode == string.Empty || product.InternalCode == null)
+            if (product.InternalCode == string.Empty)
             {
-                MessageNotifier.Set("Informe um código para " +
-                "esse produto!", "Não Informado");
+                MessageNotifier.Set("Informe o código interno " +
+                "do produto!", "Campo Obrigatório");
 
-                return isValid;
+                return validationStatus;
             }
 
-            if (product.Description == string.Empty || product.Description == null)
+            if (product.Description == string.Empty)
             {
                 MessageNotifier.Set("Informe a descrição " +
-                "do produto!", "Não Informado");
+                "do produto!", "Campo Obrigatório");
 
-                return isValid;
+                return validationStatus;
             }
 
-            if (product.Category.Id == 0 || product.Category.Description == string.Empty)
+            if (product.Category.Id == 0)
             {
                 MessageNotifier.Set("Selecione a categoria " +
-                "do produto!", "Não Selecionado");
+                "do produto!", "Não Selecionada");
 
-                return isValid;
+                return validationStatus;
             }
 
             if (product.CostPrice == 0.00)
             {
                 MessageNotifier.Set("Informe o preço de custo " +
-                "do produto!", "Não Informado");
+                "do produto!", "Campo Obrigatório");
 
-                return isValid;
+                return validationStatus;
             }
 
-            return isValid = true;
-        }
-
-        public static bool ValidateToUpdate(ProductModel product)
-        {
-            var isValid = false;
-
-            if (ValidateIfRegisterExists(product) == false)
+            if (product.SalePrice == 0.00)
             {
-                MessageNotifier.Set("Não é possivel atualizar " +
-                "porque esse registro foi excluido!",
-                "Atualize a Lista");
+                MessageNotifier.Set("Informe o preço de venda " +
+                "do produto!", "Campo Obrigatório");
 
-                return isValid;
+                return validationStatus;
             }
 
-            if (product.InternalCode == string.Empty || product.InternalCode == null)
+            if (product.CostPrice < 0.00)
             {
-                MessageNotifier.Set("Informe um código " +
-                "para esse produto!", "Não Informado");
+                MessageNotifier.Set("O preço de custo " +
+                "do produto não pode ser negativo!",
+                "Não Permitido");
 
-                return isValid;
+                return validationStatus;
             }
 
-            if (product.Description == string.Empty || product.Description == null)
+            if (product.SalePrice < 0.00)
             {
-                MessageNotifier.Set("Informe a descrição " +
-                "do produto!", "Não Informado");
+                MessageNotifier.Set("O preço de venda " +
+                "do produto não pode ser negativo!",
+                "Não Permitido");
 
-                return isValid;
+                return validationStatus;
             }
 
-            if (product.Category.Id == 0 || product.Category.Description == string.Empty)
+            if (product.CostPrice > product.SalePrice)
             {
-                MessageNotifier.Set("Selecione a categoria " +
-                "do produto!", "Não Selecionada");
+                MessageNotifier.Set("O preço de custo do produto " +
+                "não pode ser maior que o preço de venda!",
+                "Não Permitido");
 
-                return isValid;
+                return validationStatus;
             }
 
-            if (product.CostPrice == 0.00)
+            if (product.CostPrice == product.SalePrice)
             {
-                MessageNotifier.Set("Informe o preço de " +
-                "custo do prouto!", "Não Informado");
+                MessageNotifier.Set("O preço de custo " +
+                "do produto não pode ser igual ao preço " +
+                "de venda!", "Não Permitido");
 
-                return isValid;
+                return validationStatus;
             }
 
-            if (ValidateToUpdateStockValue(product) == false)
-            {
-                MessageNotifier.Set("O preço de custo não pode " +
-                "ser modificado, até que todos os estoques atuais " +
-                "sejam retirados!", "Não Permitido");
-
-                return isValid;
-            }
-
-            return isValid = true;
-        }
-
-        public static bool ValidateIfRegisterExists(ProductModel product)
-        {
-            var sql = string.Empty;
-            var actionResult = false;
-
-            using (var dataBase = new ConnectionModel())
-            {
-                sql = "SELECT Id FROM Product WHERE Id = @Id";
-
-                dataBase.ClearParameter();
-                dataBase.AddParameter("@Id", product.Id);
-
-                using (var reader = dataBase.ExecuteReader(sql))
-                {
-                    if (reader.Read() == false)
-                    {
-                        MessageNotifier.Set("Esse produto não " +
-                        "encontra-se registrado em sua base de " +
-                        "dados!","Não Encontrada");
-
-                        return actionResult;
-                    }
-                }
-            }
-
-            return actionResult = true;
-        }
-
-        public static bool ValidateToUpdateStockValue(ProductModel product)
-        {
-            var isValid = false;
-            var recentCostPrice = product.CostPrice;
-            var currentCostPrice = product.SelectCostPrice();
-
-            if (recentCostPrice != currentCostPrice)
-            {
-                if (new StockModel(product).SelectQuantity() > 0)
-                {
-                    return isValid;
-                }
-            }
-
-            return isValid = true;
+            return validationStatus = true;
         }
 
         public static bool ValidateToDelete(ProductModel product)
         {
-            var isValid = false;
+            var validationStatus = false;
 
             if (product.Id == 0)
             {
                 MessageNotifier.Set("Selecione o produto " +
                 "para excluir!", "Não Selecionado");
 
-                return isValid;
+                return validationStatus;
             }
 
-            if (ValidateIfRegisterExists(product) == false)
+            if (product.CheckIfRegister() == false)
             {
-                MessageNotifier.Set("Esse produto ja foi " +
-                "excluido atualize sua lista de registros!",
+                MessageNotifier.Set("Esse registro já foi " +
+                "excluido, atualize a lista de produtos!",
                 "Atualize a Lista");
 
-                return isValid;
+                return validationStatus;
             }
 
-            return isValid = true;
+            if (product.CheckRelationWithStock() == true)
+            {
+                MessageNotifier.Set("Não é possível deletar " +
+                "esse produto, porque ele possui registros " +
+                "relacionados ao estoque!", "Não Permitido");
+
+                return validationStatus;
+            }
+
+            return validationStatus = true;
         }
 
-        public static bool ValidateToGetDetail(ProductModel product)
+        public static bool ValidateToUpdate(ProductModel product)
         {
-            var isValid = false;
+            var validationStatus = false;
+
+            if (product.InternalCode == string.Empty)
+            {
+                MessageNotifier.Set("Informe o código interno " +
+                "do produto!", "Campo Obrigatório");
+
+                return validationStatus;
+            }
+
+            if (product.Description == string.Empty)
+            {
+                MessageNotifier.Set("Informe a descrição " +
+                "do produto!", "Campo Obrigatório");
+
+                return validationStatus;
+            }
+
+            if (product.Category.Id == 0)
+            {
+                MessageNotifier.Set("Selecione a categoria " +
+                "do produto!", "Não Selecionada");
+
+                return validationStatus;
+            }
+
+            if (product.CostPrice == 0.00)
+            {
+                MessageNotifier.Set("Informe o preço de custo " +
+                "do produto!", "Campo Obrigatório");
+
+                return validationStatus;
+            }
+
+            if (product.SalePrice == 0.00)
+            {
+                MessageNotifier.Set("Informe o preço de venda " +
+                "do produto!", "Campo Obrigatório");
+
+                return validationStatus;
+            }
+
+            if (product.CostPrice < 0.00)
+            {
+                MessageNotifier.Set("O preço de custo " +
+                "do produto não pode ser negativo!",
+                "Não Permitido");
+
+                return validationStatus;
+            }
+
+            if (product.SalePrice < 0.00)
+            {
+                MessageNotifier.Set("O preço de venda " +
+                "do produto não pode ser negativo!",
+                "Não Permitido");
+
+                return validationStatus;
+            }
+
+            if (product.CostPrice > product.SalePrice)
+            {
+                MessageNotifier.Set("O preço de custo " +
+                "do produto não pode ser maior que o " +
+                "preço de venda!", "Não Permitido");
+
+                return validationStatus;
+            }
+
+            if (product.CostPrice == product.SalePrice)
+            {
+                MessageNotifier.Set("O preço de custo " +
+                "do produto não pode ser igual ao preço " +
+                "de venda!", "Não Permitido");
+
+                return validationStatus;
+            }
+
+            if (product.CheckIfRegister() == false)
+            {
+                MessageNotifier.Set("Esse registro foi " +
+                "excluido, atualize a lista de produtos!",
+                "Atualize a Lista");
+
+                return validationStatus;
+            }
+
+            if (ValidateToUpdateStock(product) == false)
+                return validationStatus;
+
+            return validationStatus = true;
+        }
+
+        public static bool ValidateToUpdateStock(ProductModel product)
+        {
+            var validationStatus = false;
+
+            if (ValidateChangerInCostPrice(product) == true)
+            {
+                if (product.GetQuantityInStock() > 0)
+                {
+                    MessageNotifier.Set("Existem entradas no estoque " +
+                    "relacionadas a esse produto e por isso, o preço " +
+                    "de custo não poderá ser modificado até que todo " +
+                    "estoque atual seje zerado!", "Não Permitido");
+
+                    return validationStatus;
+                }
+            }
+
+            return validationStatus = true;
+        }
+
+        public static bool ValidateChangerInCostPrice(ProductModel product)
+        {
+            return product.GetCostPrice() != product.CostPrice;
+        }
+
+        public static bool ValidateToGetDetails(ProductModel product)
+        {
+            var valitationStatus = false;
 
             if (product.Id == 0)
             {
-                MessageNotifier.Set("Selecione um produto " +
+                MessageNotifier.Set("Selecione o produto " +
                 "para visualizar!", "Não Selecionado");
 
-                return isValid;
+                return valitationStatus;
             }
 
-            if (ValidateIfRegisterExists(product) == false)
+            if (product.CheckIfRegister() == false)
             {
                 MessageNotifier.Set("Não é possivel visualizar " +
                 "porque esse registro foi excluido!",
                 "Atualize a Lista");
 
-                return isValid;
+                return valitationStatus;
             }
 
-            return isValid = true;
+            return valitationStatus = true;
         }
     }
 }

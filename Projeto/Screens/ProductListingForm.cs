@@ -271,7 +271,7 @@ namespace DimStock.Screens
             var actionResult = false;
 
             var presenter = new ProductListingPresenter(this);
-            actionResult = presenter.GetDetail();
+            actionResult = presenter.GetDetails();
 
             switch (actionResult)
             {
@@ -313,14 +313,14 @@ namespace DimStock.Screens
         {
             var presenter = new ProductListingPresenter(this);
 
-            if (presenter.FetchData().Rows.Count > 0)
+            if (presenter.SearchData().Rows.Count > 0)
                 ApplySettingsToDataGrid();
         }
 
         private void ClearView()
         {
             var presenter = new ProductListingPresenter(this);
-            presenter.ResetView();
+            presenter.ClearView();
 
             SearchProduct();
 
