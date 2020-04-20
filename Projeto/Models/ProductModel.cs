@@ -125,30 +125,28 @@ namespace DimStock.Models
 
         public bool CheckIfRegister()
         {
-            var registrationState = false;
+            var registrationStatus = false;
             var sql = string.Empty;
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = "SELECT Id FROM Product WHERE Id = @Id";
+                sql = @"SELECT COUNT(Id) FROM Product 
+                WHERE Id = @Id";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Id", Id);
 
-                using (var reader = dataBase.ExecuteReader(sql))
+                if (dataBase.ExecuteScalar(sql) == 0)
                 {
-                    if (reader.Read() == false)
-                    {
-                        MessageNotifier.Set("Esse produto não " +
-                        "encontra-se registrado em sua base de " +
-                        "dados!", "Não Encontrado");
+                    MessageNotifier.Set("Esse produto não " +
+                    "encontra-se registrado na sua base de " +
+                    "dados!", "Não Encontrado");
 
-                        return registrationState;
-                    }
+                    return registrationStatus;
                 }
             }
 
-            return registrationState = true;
+            return registrationStatus = true;
         }
 
         public bool CheckRelationWithStock()
@@ -208,8 +206,16 @@ namespace DimStock.Models
 
         public int GetLastId()
         {
-            var sql = @"SELECT MAX(Id) From Product";
-            return dataBaseTransaction.ExecuteScalar(sql);
+            var sql = string.Empty;
+            int lastId;
+
+            using (var dataBase = new ConnectionModel())
+            {
+                sql = @"SELECT MAX(Id) FROM Product";
+                lastId = dataBase.ExecuteScalar(sql);
+            }
+
+            return lastId;
         }
 
         public double GetCostPrice()
@@ -238,18 +244,21 @@ namespace DimStock.Models
 
         public DataTable SearchData()
         {
-            var sql = string.Empty;
+            var sqlSelect = string.Empty;
+            var sqlParameter = string.Empty;
+            var sqlOderBy = string.Empty;
+            var query = string.Empty;
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"SELECT Id, InternalCode, Description, 
-                CostPrice, SalePrice FROM Product WHERE Id > 0";
+                sqlSelect = @"SELECT Id, InternalCode, Description, 
+                CostPrice, SalePrice FROM Product WHERE Id > 0 ";
 
-                dataBase.ClearParameter();
+                sqlOderBy = "Order By Id, InternalCode Desc";
 
                 if (InternalCode != string.Empty)
                 {
-                    sql += " AND InternalCode LIKE @InternalCode";
+                    sqlParameter += "AND InternalCode LIKE @InternalCode ";
 
                     dataBase.AddParameter("@InternalCode", string.
                     Format("{0}%", InternalCode));
@@ -257,15 +266,15 @@ namespace DimStock.Models
 
                 if (Description != string.Empty)
                 {
-                    sql += " AND Description LIKE @Description";
+                    sqlParameter += "AND Description LIKE @Description ";
 
                     dataBase.AddParameter("@Description", string.
                     Format("%{0}%", Description));
                 }
 
-                sql += " Order By Id, InternalCode Desc";
+                query += sqlSelect + sqlParameter + sqlOderBy; 
 
-                return dataBase.ExecuteDataAdapter(sql);
+                return dataBase.ExecuteDataAdapter(query);
             }
         }
     }
