@@ -18,11 +18,13 @@ namespace DimStock.Presenters
                 Id = view.Id,
                 Description = view.Description.TrimStart().TrimEnd()
             };
-            actionResult = category.Insert();
 
-            if (actionResult == true)
-                ResetView();  
-            
+            if (category.Insert() == true)
+            {
+                ClearView();
+                actionResult = true;
+            }
+
             return actionResult;
         }
 
@@ -35,8 +37,12 @@ namespace DimStock.Presenters
                 Id = view.Id,
                 Description = view.Description.TrimStart().TrimEnd()
             };
-            actionResult = category.Update();
-            
+
+            if (category.Update() == true)
+            {
+                actionResult = true;
+            }
+
             return actionResult;
         }
 
@@ -48,15 +54,17 @@ namespace DimStock.Presenters
             {
                 Id = view.Id,
             };
-            actionResult = category.Delete();
 
-            if (actionResult == true)
-                ResetView();
+            if (category.Delete() == true)
+            {
+                ClearView();
+                actionResult = true;
+            }
 
             return actionResult;
         }
 
-        public void ResetView()
+        public void ClearView()
         {
             view.Id = 0;
             view.Description = string.Empty;

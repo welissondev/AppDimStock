@@ -105,7 +105,7 @@ namespace DimStock.Presenters
                 Description = view.CategoryDescription
             };
 
-            var searchResult = category.FetchData();
+            var searchResult = category.SearchData();
             view.CategoryList = searchResult;
 
             return searchResult;

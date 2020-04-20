@@ -9,137 +9,105 @@ namespace DimStock.Models
     {
         public static bool ValidateToInsert(CategoryModel category)
         {
-            var isValid = false;
+            var validationStatus = false;
 
-            if (category.Description == "" || category.Description == null)
+            if (category.Description == string.Empty)
             {
-                MessageNotifier.Set("Descrição da categoria " +
-                "não informada!", "Obrigatório");
+                MessageNotifier.Set("Informe a descrição " +
+                "da categoria!", "Campo Obrigatório");
 
-                return isValid;
+                return validationStatus;
             }
 
-            if (ValidateIfExists(category) == true)
+            if (category.CheckIfRegister() == true)
             {
                 MessageNotifier.Set("Já existe uma categoria " +
                 "registrada com esse nome!", "Já Existe");
 
-                return isValid;
+                return validationStatus;
             }
 
-            return isValid = true;
+            return validationStatus = true;
         }
 
         public static bool ValidateToUpdate(CategoryModel category)
         {
-            var isValid = false;
+            var validationStatus = false;
 
             if (category.Id == 0)
             {
-                MessageNotifier.Set("Selecione uma categoria para " +
-                "atualizar!", "Selecione");
+                MessageNotifier.Set("Selecione a categoria para " +
+                "atualizar!", "Não Selecionada");
 
-                return isValid;
+                return validationStatus;
             }
 
-            if (category.Description == "" || category.Description == null)
+            if (category.Description == string.Empty)
             {
-                MessageNotifier.Set("Descrição da categoria " +
-                "não informada!", "Obrigatório");
+                MessageNotifier.Set("Informe a descrição " +
+                "da categoria!", "Campo Obrigatório");
 
-                return isValid;
+                return validationStatus;
             }
 
-            if (ValidateIfExists(category) == false)
+            if (category.CheckIfRegister() == false)
             {
-                MessageNotifier.Set("Não foi possivel atualizar porque " +
-                "esse registro foi excluido!", "Atualize a Lista");
+                MessageNotifier.Set("Não é possivel atualizar " +
+                "essa categoria, porque ela foi excluida da sua" +
+                "base de dados!", "Atualize a Lista");
 
-                return isValid;
+                return validationStatus;
             }
 
-            return isValid = true;
+            return validationStatus = true;
         }
 
         public static bool ValidateToDelete(CategoryModel category)
         {
-            var isValid = false;
+            var validationStatus = false;
 
             if (category.Id == 0)
             {
                 MessageNotifier.Set("Selecione uma categoria " +
                 "para deletar!", "Selecione");
 
-                return isValid;
+                return validationStatus;
             }
 
-            if (ValidateIfExists(category) == false)
+            if (category.CheckIfRegister() == false)
             {
-                MessageNotifier.Set("Essa categoria já foi excluida, " +
-                "atualize a lista de registros!", "Atualize");
+                MessageNotifier.Set("Não foi possivel excluir " +
+                "essa categoria, porque ela não esta mais registrada " +
+                "na sua base de dados!", "Atualize a Lista");
 
-                return isValid;
+                return validationStatus;
             }
 
-            return isValid = true;
+            return validationStatus = true;
         }
 
         public static bool ValidateToGetDetail(CategoryModel category)
         {
-            bool isValid = false;
+            var validationStatus = false;
 
             if (category.Id == 0)
             {
-                MessageNotifier.Set("Selecione uma categoria " +
-                "para visualizar!", "Selecione");
+                MessageNotifier.Set("Selecione a categoria " +
+                "para visualizar!", "Não Selecionada");
 
-                return isValid;
+                return validationStatus;
             }
 
-            if (ValidateIfExists(category) == false)
+            if (category.CheckIfRegister() == false)
             {
-                MessageNotifier.Set("Não é possivel visualizar porque " +
-               "esse registro foi excluido!", "Atualize a Lista");
+                MessageNotifier.Set("Não é possivel visualizar " +
+                "essa categoria, porque ela foi excluida da sua" +
+                "base de dados!", "Atualize a Lista");
 
-                return isValid;
+                return validationStatus;
             }
 
-            return isValid = true;
-        }
-
-        public static bool ValidateIfExists(CategoryModel category)
-        {
-            var actionResult = false;
-            var sql = string.Empty;
-
-            using (var dataBase = new ConnectionModel())
-            {
-                sql = @"SELECT Id, Description FROM Category WHERE Id = @Id ";
-
-                dataBase.ClearParameter();
-                dataBase.AddParameter("@Id", category.Id);
-               
-
-                if (category.Description != string.Empty &&
-                    category.Description != null)
-                {
-                    sql += "OR Description = @Description";
-                    dataBase.AddParameter("@Description", category.Description);
-                }
-
-                using (var reader = dataBase.ExecuteReader(sql))
-                {
-                    if (reader.Read() == false)
-                    {
-                        MessageNotifier.Set("Essa categoria não encontra-se " +
-                        "registrada em sua base de dados!", "Não Encontrada");
-
-                        return actionResult;
-                    }
-                }
-            }
-
-            return actionResult = true;
+            return validationStatus = true;
         }
     }
 }

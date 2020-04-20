@@ -240,7 +240,7 @@ namespace DimStock.Screens
         private void ClearView()
         {
             var presenter = new CategoryListingPresenter(this);
-            presenter.ResetView();
+            presenter.ClearView();
 
             SearchCategory();
         }
@@ -251,7 +251,7 @@ namespace DimStock.Screens
             ImageLoading.Visible = false;
 
             var presenter = new CategoryListingPresenter(this);
-            var dataList = presenter.FetchData();
+            var dataList = presenter.SearchData();
 
             if (dataList.Rows.Count > 0)
                 ApplySettingsToDataGrid();
@@ -283,7 +283,7 @@ namespace DimStock.Screens
         private void GetCategoryDetail()
         {
             var presenter = new CategoryListingPresenter(this);
-            var actionResult = presenter.GetDetail();
+            var actionResult = presenter.GetDetails();
 
             switch (actionResult)
             {

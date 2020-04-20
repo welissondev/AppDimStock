@@ -24,17 +24,15 @@ namespace DimStock.Models
             if (CategoryValidationModel.ValidateToInsert(this) == false)
                 return actionResult;
 
-            using (var transaction = new ConnectionTransactionModel())
+            using (var dataBase = new ConnectionModel())
             {
                 sql = @"INSERT INTO Category(Description)VALUES(@Description)";
 
-                transaction.ClearParameter();
-                transaction.AddParameter("@Description", Description);
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@Description", Description);
 
-                if (transaction.ExecuteNonQuery(sql) > 0)
+                if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
-                    transaction.Commit();
-
                     MessageNotifier.Set("Categoria cadastrada " +
                     "com sucesso", "Sucesso");
 
@@ -54,24 +52,20 @@ namespace DimStock.Models
             if (CategoryValidationModel.ValidateToUpdate(this) == false)
                 return actionResult;
 
-            using (var transaction = new ConnectionTransactionModel())
+            using (var dataBase = new ConnectionModel())
             {
-                sql = @"UPDATE Category SET Description = @Description WHERE Id = @Id";
+                sql = @"UPDATE Category SET Description = 
+                @Description WHERE Id = @Id";
 
-                transaction.ClearParameter();
-                transaction.AddParameter("@Description", Description);
-                transaction.AddParameter("@Id", Id);
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@Description", Description);
+                dataBase.AddParameter("@Id", Id);
 
-                actionResult = transaction.ExecuteNonQuery(sql) > 0;
-
-                if (actionResult == true)
+                if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
-                    transaction.Commit();
-
                     MessageNotifier.Set("Categoria alterada " +
                     "com sucesso!", "Sucesso");
-
-                    return actionResult;
+                    actionResult = true;
                 }
             }
 
@@ -86,30 +80,25 @@ namespace DimStock.Models
             if (CategoryValidationModel.ValidateToDelete(this) == false)
                 return actionResult;
 
-            using (var transaction = new ConnectionTransactionModel())
+            using (var dataBase = new ConnectionModel())
             {
                 sql = @"DELETE FROM Category WHERE Id = @Id";
 
-                transaction.ClearParameter();
-                transaction.AddParameter("@Id", Id);
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@Id", Id);
 
-                actionResult = transaction.ExecuteNonQuery(sql) > 0;
-
-                if (actionResult == true)
+                if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
-                    transaction.Commit();
-
                     MessageNotifier.Set("Categoria deletada " +
                     "com sucesso!", "Scuesso");
-                    
-                    return actionResult;
+                    actionResult = true;
                 }
             }
 
             return actionResult;
         }
 
-        public bool GetDetail()
+        public bool GetDetails()
         {
             var actionResult = false;
             var sql = string.Empty;
@@ -143,49 +132,98 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public int GetIdByDescription()
+        public bool CheckIfRegister()
         {
+            /*Essa verificação também precisou ser feita pelo 
+             nome da categoria, porque a regra de negócio não 
+             permiti duas categorias com o mesmo nome*/
+
+            var registrationStatus = false;
+            var sqlSelect = string.Empty;
+            var sqlParameter = string.Empty;
+            var query = string.Empty;
+
             using (var dataBase = new ConnectionModel())
             {
-                var sql = "SELECT Id FROM Category WHERE Description = @Description";
+                sqlSelect = @"SELECT * FROM Category 
+                WHERE Id = @Id ";
 
                 dataBase.ClearParameter();
-                dataBase.AddParameter("@Description", Description);
+                dataBase.AddParameter("@Id", Id);
 
-                return dataBase.ExecuteScalar(sql);
+                if (Description != string.Empty && Description != null)
+                {
+                    sqlParameter += "OR Description = @Description ";
+                    dataBase.AddParameter("@Description", Description);
+                }
+
+                query += sqlSelect + sqlParameter;
+
+                if (dataBase.ExecuteScalar(query) == 0)
+                {
+                    MessageNotifier.Set("Essa categoria não encontra-se " +
+                    "registrada na base de dados!", "Não Encontrada");
+                    return registrationStatus;
+                }
             }
+
+            return registrationStatus = true;
         }
 
-        public DataTable FetchData()
+        public int GetIdByDescription()
         {
             var sql = string.Empty;
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = "SELECT * FROM Category ";
+                sql = @"SELECT * FROM Category WHERE 
+                Description = @Description";
+                
+                return dataBase.ExecuteScalar(sql);
+            }
+        }
+
+        public DataTable SearchData()
+        {
+            var sqlSelect = string.Empty;
+            var sqlParemeter = string.Empty;
+            var sqlOderBy = string.Empty;
+            var query = string.Empty;
+
+            using (var dataBase = new ConnectionModel())
+            {
+                sqlSelect = @"SELECT * FROM Category ";
+
+                sqlOderBy = @"ORDER BY Description";
 
                 if (Description != string.Empty)
                 {
-                    sql += "WHERE Description LIKE @Description ";
+                    sqlParemeter += "WHERE Description LIKE @Description ";
 
-                   dataBase.AddParameter("@Description",
-                   string.Format("%{0}%", Description));
+                    dataBase.AddParameter("@Description",
+                    string.Format("%{0}%", Description));
                 }
 
-                sql += "ORDER BY Description";
+                query += sqlSelect + sqlParemeter + sqlOderBy;
 
-                return dataBase.ExecuteDataAdapter(sql);
+                return dataBase.ExecuteDataAdapter(query);
             }
         }
 
         public DataTable ListData()
         {
+            var searchResult = new DataTable();
+            var sql = string.Empty;
+
             using (var dataBase = new ConnectionModel())
             {
-                var sql = "SELECT * FROM Category ORDER BY Description";
-                return dataBase.ExecuteDataAdapter(sql);
-            }
-        }
+                sql = @"SELECT * FROM Category 
+                ORDER BY Description";
 
+                searchResult = dataBase.ExecuteDataAdapter(sql);
+            }
+
+            return searchResult;
+        }
     }
 }

@@ -166,7 +166,7 @@ namespace DimStock.Screens
         private void ClearView()
         {
             var presenter = new CategoryAddPresenter(this);
-            presenter.ResetView();
+            presenter.ClearView();
 
             TextDescription.Focus();
         }

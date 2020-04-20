@@ -16,49 +16,49 @@ namespace DimStock.Presenters
         public bool Delete()
         {
             var actionResult = false;
-
             var catgory = new CategoryModel() { Id = view.Id };
-            actionResult = catgory.Delete();
-
-            if (actionResult == true)
-                ResetView();
-
-            return actionResult;
-        }
-
-        public bool GetDetail()
-        {
-            var actionResult = false;
-
-            var category = new CategoryModel(){Id = view.Id};
-            actionResult = category.GetDetail();
-
-            if (actionResult == true)
+            
+            if (catgory.Delete() == true)
             {
-                view.Id = category.Id;
-                view.Description = category.Description;
+                ClearView();
             }
 
             return actionResult;
         }
 
-        public DataTable FetchData()
+        public bool GetDetails()
+        {
+            var actionResult = false;
+
+            var category = new CategoryModel() { Id = view.Id };
+
+            if (category.GetDetails() == true)
+            {
+                view.Id = category.Id;
+                view.Description = category.Description;
+                actionResult = true;
+            }
+
+            return actionResult;
+        }
+
+        public void ClearView()
+        {
+            view.Id = 0;
+            view.SearchDescription = string.Empty;
+        }
+
+        public DataTable SearchData()
         {
             var category = new CategoryModel()
             {
                 Description = view.SearchDescription
             };
 
-            var table = category.FetchData();
-            view.DataList = table;
+            var searchResult = category.SearchData();
+            view.DataList = searchResult;
 
-            return table;
-        }
-
-        public void ResetView()
-        {
-            view.Id = 0;
-            view.SearchDescription = string.Empty;
+            return searchResult;
         }
     }
 }
