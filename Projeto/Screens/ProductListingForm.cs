@@ -28,7 +28,10 @@ namespace DimStock.Screens
         public string SearchDescription { get => TextSearch_Description.Text; set => TextSearch_Description.Text = value; }
         public object ProductList { get => DatagridProduct.DataSource; set => DatagridProduct.DataSource = value; }
     }
+}
 
+namespace DimStock.Screens
+{
     public partial class ProductListingForm : MetroForm
     {
         //Eventos do formulário
@@ -153,7 +156,7 @@ namespace DimStock.Screens
                 ExceptionNotifier.ShowMessage(ex);
             }
         }
-        
+
         //Métodos axuxiliáres 
         public static void ShowForm()
         {

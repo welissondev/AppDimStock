@@ -22,7 +22,10 @@ namespace DimStock.Screens
         public string CategoryDescription { get => BoxCategoryDescription.Text; set => BoxCategoryDescription.Text = value; }
         public object CategoryList { get => DataGridCategory.DataSource; set => DataGridCategory.DataSource = value; }
     }
+}
 
+namespace DimStock.Screens
+{
     public partial class ProductAddForm : MetroForm
     {
         //Eventos do formulário
