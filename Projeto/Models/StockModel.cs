@@ -286,15 +286,18 @@ namespace DimStock.Models
 
         public int GetQuantity()
         {
+            /*A quantidade pode ser obtida tanto pelo id do 
+             *estoque como pelo id do produto*/
+
             var sql = string.Empty;
 
             using (var dataBase = new ConnectionModel())
             {
                 sql = @"SELECT Quantity FROM STOCK WHERE 
-                Id = @Id OR ProductId = @ProductId";
+                Id = @StockId OR ProductId = @ProductId";
 
                 dataBase.ClearParameter();
-                dataBase.AddParameter("@Id", Id);
+                dataBase.AddParameter("@StockId", Id);
                 dataBase.AddParameter("@ProductId", Product.Id);
 
                 return dataBase.ExecuteScalar(sql);
