@@ -1,5 +1,6 @@
 ﻿using DimStock.Models;
 using DimStock.Views;
+using System;
 
 namespace DimStock.Presenters
 {
@@ -9,47 +10,27 @@ namespace DimStock.Presenters
 
         public CategoryAddPresenter(ICategoryAddView view) { this.view = view; }
 
-        public bool Insert()
+        public void Update(object sender, EventArgs e)
         {
-            var actionResult = false;
-
             var category = new CategoryModel()
             {
                 Id = view.Id,
                 Description = view.Description.TrimStart().TrimEnd()
             };
 
-            if (category.Insert() == true)
+            if (view.Id == 0)
             {
-                ClearView();
-                actionResult = true;
+                if (category.Insert() == true)
+                    ClearView(sender, e);
             }
-
-            return actionResult;
+            else
+            {
+                category.Update();
+            }
         }
 
-        public bool Update()
+        public void Delete(object sender, EventArgs e)
         {
-            var actionResult = false;
-
-            var category = new CategoryModel()
-            {
-                Id = view.Id,
-                Description = view.Description.TrimStart().TrimEnd()
-            };
-
-            if (category.Update() == true)
-            {
-                actionResult = true;
-            }
-
-            return actionResult;
-        }
-
-        public bool Delete()
-        {
-            var actionResult = false;
-
             var category = new CategoryModel()
             {
                 Id = view.Id,
@@ -57,14 +38,11 @@ namespace DimStock.Presenters
 
             if (category.Delete() == true)
             {
-                ClearView();
-                actionResult = true;
+                ClearView(sender, e);
             }
-
-            return actionResult;
         }
 
-        public void ClearView()
+        public void ClearView(object sender, EventArgs e)
         {
             view.Id = 0;
             view.Description = string.Empty;

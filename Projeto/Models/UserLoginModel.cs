@@ -71,7 +71,7 @@ namespace DimStock.Models
             if (accessState == false)
             {
 
-                MessageNotifier.Set("Usuário não encontrado!",
+                MessageNotifier.Show("Usuário não encontrado!",
                 "Não Encontrado");
             }
 
@@ -176,7 +176,7 @@ namespace DimStock.Models
 
                 transaction.Commit();
 
-                MessageNotifier.Set("Usuário cadastado " +
+                MessageNotifier.Show("Usuário cadastado " +
                 "com sucesso!", "Sucesso");
             }
 
@@ -215,7 +215,7 @@ namespace DimStock.Models
                 transactionState = transaction.ExecuteNonQuery(sql) > 0;
                 transaction.Commit();
 
-                MessageNotifier.Set("Usuário alterado " +
+                MessageNotifier.Show("Usuário alterado " +
                 "com sucesso!", "Sucesso");
             }
 
@@ -226,7 +226,7 @@ namespace DimStock.Models
         {
             if (CheckIfResgisterExists(id) == false)
             {
-                MessageNotifier.Set("Esse registro já foi excluido " +
+                MessageNotifier.Show("Esse registro já foi excluido " +
                 "atualize a lista de dados", "Sucesso");
 
                 return false;
@@ -234,7 +234,7 @@ namespace DimStock.Models
 
             if (CheckCurrentRegister(id) == true)
             {
-                MessageNotifier.Set("Você não pode deletar seu " +
+                MessageNotifier.Show("Você não pode deletar seu " +
                 "próprio registro de usuário!","Não Permitido");
 
                 return false;
@@ -253,7 +253,7 @@ namespace DimStock.Models
                 transactionState = transaction.ExecuteNonQuery(sql) > 0;
                 transaction.Commit();
 
-                MessageNotifier.Set("Usuário excluido " +
+                MessageNotifier.Show("Usuário excluido " +
                 "com sucesso!", "Sucesso");
             }
 
@@ -337,7 +337,7 @@ namespace DimStock.Models
             var validation = EmailAddressValidator.Validate(email);
 
             if (validation == false)
-                MessageNotifier.Set("O endereço de e-mail " +
+                MessageNotifier.Show("O endereço de e-mail " +
                 "informado não é válido!", "Inválido");
 
             return validation;
@@ -367,7 +367,7 @@ namespace DimStock.Models
 
                 if (userFound > 0)
                 {
-                    MessageNotifier.Set("Já existe um usuário " +
+                    MessageNotifier.Show("Já existe um usuário " +
                     "com o login |" + Login + "|. Por favor, informe " +
                     "outro nome de login!", "Já Existe");
                 }

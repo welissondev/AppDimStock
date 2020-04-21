@@ -80,7 +80,7 @@ namespace DimStock.Models
                     {
                         transaction.Commit();
 
-                        MessageNotifier.Set("Movimentação registrada " +
+                        MessageNotifier.Show("Movimentação registrada " +
                         "com sucesso!", "Sucesso");
 
                         actionResult = true;
@@ -184,7 +184,7 @@ namespace DimStock.Models
                     {
                         transaction.Commit();
 
-                        MessageNotifier.Set("Movimentação excluida " +
+                        MessageNotifier.Show("Movimentação excluida " +
                         "com sucesso!", "Sucesso");
 
                         actionResult = true;

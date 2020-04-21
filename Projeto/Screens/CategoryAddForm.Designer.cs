@@ -247,7 +247,7 @@
             this.ButtonClose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonClose.TextMarginLeft = 0;
             this.ButtonClose.UseDefaultRadiusAndThickness = true;
-            this.ButtonClose.Click += new System.EventHandler(this.ButtonClose_Click);
+
             // 
             // ButtonClearView
             // 
@@ -312,7 +312,7 @@
             this.ButtonClearView.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonClearView.TextMarginLeft = 0;
             this.ButtonClearView.UseDefaultRadiusAndThickness = true;
-            this.ButtonClearView.Click += new System.EventHandler(this.ButtonClearView_Click);
+
             // 
             // ButtonDelete
             // 
@@ -377,7 +377,7 @@
             this.ButtonDelete.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonDelete.TextMarginLeft = 0;
             this.ButtonDelete.UseDefaultRadiusAndThickness = true;
-            this.ButtonDelete.Click += new System.EventHandler(this.ButtonDelete_Click);
+
             // 
             // ButtonSave
             // 
@@ -442,7 +442,7 @@
             this.ButtonSave.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonSave.TextMarginLeft = 0;
             this.ButtonSave.UseDefaultRadiusAndThickness = true;
-            this.ButtonSave.Click += new System.EventHandler(this.ButtonSave_Click);
+
             // 
             // CategoryAddForm
             // 
@@ -457,7 +457,6 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "Cadastro de Categorias";
-            this.Resize += new System.EventHandler(this.CategoryAddForm_Resize);
             this.BuniCard.ResumeLayout(false);
             this.BuniCard.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).EndInit();

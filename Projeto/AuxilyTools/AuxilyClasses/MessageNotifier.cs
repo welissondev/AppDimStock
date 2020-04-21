@@ -10,10 +10,12 @@ namespace DimStock.AuxilyTools.AuxilyClasses
         public static string Message { get; private set; }
         public static string Title { get; private set; }
 
-        public static void Set(string message = "", string title = "")
+        public static void Show(string message = "", string title = "")
         {
             Message = message;
             Title = title;
+
+            MessageBox.Show(message, title);
         }
     }
 }

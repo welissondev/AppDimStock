@@ -11,7 +11,7 @@ namespace DimStock.Models
 
             if (postedItems.Rows.Count == 0)
             {
-                MessageNotifier.Set("Nenhum item foi adicionado para " +
+                MessageNotifier.Show("Nenhum item foi adicionado para " +
                 "lançamento no estoque!", "Adicione Um Item");
 
                 return validationStatus;
@@ -26,7 +26,7 @@ namespace DimStock.Models
 
             if (stock.Product.Id == 0)
             {
-                MessageNotifier.Set("É necessário informar o produto para " +
+                MessageNotifier.Show("É necessário informar o produto para " +
                 "atualizar seu valor no estoque!", "Não Informado");
 
                 return validationStatus;
@@ -34,7 +34,7 @@ namespace DimStock.Models
 
             if (stock.Product.CostPrice == 0.00)
             {
-                MessageNotifier.Set("Para atualizar o valor no estoque, " +
+                MessageNotifier.Show("Para atualizar o valor no estoque, " +
                 "é preciso informar o preço de custo do produto!",
                 "Não Informado");
 
@@ -43,7 +43,7 @@ namespace DimStock.Models
 
             if (stock.Product.CostPrice < 0.00)
             {
-                MessageNotifier.Set("Para atualizar o estoque do produto, " +
+                MessageNotifier.Show("Para atualizar o estoque do produto, " +
                 "o preço de custo não pode ser negativo!", "Não Permitido");
 
                 return validationStatus;
@@ -58,7 +58,7 @@ namespace DimStock.Models
 
             if (stock.Id == 0)
             {
-                MessageNotifier.Set("Selecione o estoque para " +
+                MessageNotifier.Show("Selecione o estoque para " +
                 "visualizar!", "Não Selecionado");
 
                 return validationStatus;
@@ -66,7 +66,7 @@ namespace DimStock.Models
 
             if (stock.CheckIfRegister() == false)
             {
-                MessageNotifier.Set("Não é possivel visualizar porque " +
+                MessageNotifier.Show("Não é possivel visualizar porque " +
                 "esse registro foi excluido!", "Atualize a Lista");
 
                 return validationStatus;

@@ -134,7 +134,7 @@ namespace DimStock.Screens
         }
         private void ButtonShow_CategoryAddForm_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            CategoryAddForm.ShowForm();
+            CategoryAddForm.ShowScreen(sender, e);
         }
 
         private void DataGridCategory_CellClick(object sender, DataGridViewCellEventArgs e)

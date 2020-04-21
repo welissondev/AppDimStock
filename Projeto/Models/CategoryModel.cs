@@ -33,7 +33,7 @@ namespace DimStock.Models
 
                 if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
-                    MessageNotifier.Set("Categoria cadastrada " +
+                    MessageNotifier.Show("Categoria cadastrada " +
                     "com sucesso", "Sucesso");
 
                     actionResult = true;
@@ -63,7 +63,7 @@ namespace DimStock.Models
 
                 if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
-                    MessageNotifier.Set("Categoria alterada " +
+                    MessageNotifier.Show("Categoria alterada " +
                     "com sucesso!", "Sucesso");
                     actionResult = true;
                 }
@@ -89,7 +89,7 @@ namespace DimStock.Models
 
                 if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
-                    MessageNotifier.Set("Categoria deletada " +
+                    MessageNotifier.Show("Categoria deletada " +
                     "com sucesso!", "Scuesso");
                     actionResult = true;
                 }
@@ -161,7 +161,7 @@ namespace DimStock.Models
 
                 if (dataBase.ExecuteScalar(query) == 0)
                 {
-                    MessageNotifier.Set("Essa categoria não encontra-se " +
+                    MessageNotifier.Show("Essa categoria não encontra-se " +
                     "registrada na base de dados!", "Não Encontrada");
                     return registrationStatus;
                 }

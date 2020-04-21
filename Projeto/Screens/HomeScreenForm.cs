@@ -136,7 +136,7 @@ namespace DimStock.Screens
         {
             MdiClosingAll.CloseAllForms();
 
-            var form = new CategoryListingForm()
+            var form = new CategoryListingScreen()
             {
                 MdiParent = this,
                 FormBorderStyle = FormBorderStyle.None,

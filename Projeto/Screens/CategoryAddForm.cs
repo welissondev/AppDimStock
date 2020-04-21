@@ -24,101 +24,45 @@ namespace DimStock.Screens
 {
     public partial class CategoryAddForm : MetroForm
     {
-        //Eventos do formulário
         public CategoryAddForm()
         {
             InitializeComponent();
             presenter = new CategoryAddPresenter(this);
+            InitializeEvents();
         }
 
-        private void CategoryAddForm_Resize(object sender, EventArgs e)
+        public CategoryAddForm(ICategoryAddView view)
         {
-            try
-            {
-                Refresh();
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
+            InitializeComponent();
+            presenter = new CategoryAddPresenter(this);
+            InitializeEvents();
+
+            Id = view.Id;
+            Description = view.Description;
+            ControlBox = false;
+            Owner = HomeScreenForm.He;
         }
 
-        private void ButtonSave_Click(object sender, EventArgs e)
+        private void ChangerSize(object sender, EventArgs e)
         {
-            try
-            {
-                var actionResult = false;
-
-                if (Id == 0)
-                    actionResult = presenter.Insert();
-
-                if (Id > 0)
-                    actionResult = presenter.Update();
-
-                switch (actionResult)
-                {
-                    case true:
-                        MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        break;
-
-                    case false:
-                        MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
-                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        break;
-                }
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
+            Refresh();
         }
-        private void ButtonClearView_Click(object sender, EventArgs e)
+
+        private void ScreenClose(object sender, EventArgs e)
         {
-            try
-            {
-                presenter.ClearView();
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
+            Dispose();
         }
-        private void ButtonDelete_Click(object sender, EventArgs e)
+
+        private void InitializeEvents()
         {
-            try
-            {
-                if (MessageBox.Show("Confirma a exclusão dessa categoria?", "IMPORTANTE",
-                MessageBoxButtons.YesNo, MessageBoxIcon.None, MessageBoxDefaultButton.Button2) ==
-                DialogResult.No) return;
-
-                var actionResult = presenter.Delete();
-
-                switch (actionResult)
-                {
-                    case true:
-                        MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        break;
-
-                    case false:
-                        MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
-                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        break;
-                }
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
-        }
-        private void ButtonClose_Click(object sender, EventArgs e)
-        {
-            Close();
+            ButtonSave.Click += new EventHandler(presenter.Update);
+            ButtonDelete.Click += new EventHandler(presenter.Delete);
+            ButtonClearView.Click += new EventHandler(presenter.ClearView);
+            ButtonClose.Click += new EventHandler(ScreenClose);
+            Resize += new EventHandler(ChangerSize);
         }
 
-        //Método auxiliares
-        public static void ShowForm()
+        public static void ShowScreen(object sender, EventArgs e)
         {
             try
             {
@@ -137,9 +81,9 @@ namespace DimStock.Screens
             }
         }
 
-        public static void SetDetail(ICategoryAddView view)
+        public static void SetDetails(ICategoryAddView view)
         {
-            var categoryAddForm = new CategoryAddForm()
+            var screen = new CategoryAddForm()
             {
                 Id = view.Id,
                 Description = view.Description,
@@ -147,7 +91,7 @@ namespace DimStock.Screens
                 Owner = HomeScreenForm.He
             };
 
-            categoryAddForm.ShowDialog();
+            screen.ShowDialog();
         }
 
     }

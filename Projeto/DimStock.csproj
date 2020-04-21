@@ -193,6 +193,12 @@
       <DependentUpon>AppSettingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\StockReport.cs" />
+    <Compile Include="Screens\CategoryListingScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\CategoryListingScreen.Designer.cs">
+      <DependentUpon>CategoryListingScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="Screens\BackupSaveForm.cs">
       <SubType>Form</SubType>
@@ -205,12 +211,6 @@
     </Compile>
     <Compile Include="Screens\HomeScreenForm.Designer.cs">
       <DependentUpon>HomeScreenForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Screens\CategoryListingForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Screens\CategoryListingForm.Designer.cs">
-      <DependentUpon>CategoryListingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Screens\CategoryAddForm.cs">
       <SubType>Form</SubType>
@@ -295,11 +295,11 @@
     <EmbeddedResource Include="Screens\BackupSaveForm.resx">
       <DependentUpon>BackupSaveForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Screens\CategoryListingScreen.resx">
+      <DependentUpon>CategoryListingScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Screens\HomeScreenForm.resx">
       <DependentUpon>HomeScreenForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Screens\CategoryListingForm.resx">
-      <DependentUpon>CategoryListingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\CategoryAddForm.resx">
       <DependentUpon>CategoryAddForm.cs</DependentUpon>
