@@ -74,7 +74,7 @@ namespace DimStock.Screens
             {
                 case "ButtonView":
                     presenter.GetDetails(sender, e);
-                    new CategoryAddForm(this).ShowDialog();
+                    new CategoryAddScreen(this).ShowDialog();
                     break;
 
                 case "ButtonDelete":
@@ -155,7 +155,7 @@ namespace DimStock.Screens
                 ShowIcon = false,
                 ShowInTaskbar = false,
                 ControlBox = false,
-                Owner = HomeScreenForm.He
+                Owner = HomeScreen.He
             };
             screen.ShowDialog();
         }
@@ -167,7 +167,7 @@ namespace DimStock.Screens
             GridList.DataSourceChanged += new EventHandler(GridListSettings);
             GridList.CellMouseEnter += new DataGridViewCellEventHandler(GridListEnter);
             GridList.CellClick += new DataGridViewCellEventHandler(GridListClick);
-            ButtonNew.Click += new EventHandler(CategoryAddForm.ShowScreen);
+            ButtonNew.Click += new EventHandler(CategoryAddScreen.ShowScreen);
             ButtonUpdateGridList.Click += new EventHandler(TimerTick);
             ButtonCloseScreen.Click += new EventHandler(ScreenClose);
             TimerSearch.Tick += new EventHandler(TimerTick);

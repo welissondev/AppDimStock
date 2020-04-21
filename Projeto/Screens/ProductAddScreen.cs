@@ -10,7 +10,7 @@ namespace DimStock.Screens
     /// <summary>
     /// Representa o formulário de cadastro dos produtos
     /// </summary>
-    public partial class ProductAddForm : IProductAddView
+    public partial class ProductAddScreen : IProductAddView
     {
         public int Id { get; set; }
         public string InternalCode { get => TextInternalCode.Text; set => TextInternalCode.Text = value; }
@@ -26,10 +26,10 @@ namespace DimStock.Screens
 
 namespace DimStock.Screens
 {
-    public partial class ProductAddForm : MetroForm
+    public partial class ProductAddScreen : MetroForm
     {
         //Eventos do formulário
-        public ProductAddForm()
+        public ProductAddScreen()
         {
             InitializeComponent();
         }
@@ -134,7 +134,7 @@ namespace DimStock.Screens
         }
         private void ButtonShow_CategoryAddForm_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            CategoryAddForm.ShowScreen(sender, e);
+            CategoryAddScreen.ShowScreen(sender, e);
         }
 
         private void DataGridCategory_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -214,12 +214,12 @@ namespace DimStock.Screens
 
         public static void ShowForm()
         {
-            var productAddForm = new ProductAddForm()
+            var productAddForm = new ProductAddScreen()
             {
                 ShowInTaskbar = false,
                 ShowIcon = false,
                 ControlBox = false,
-                Owner = HomeScreenForm.He
+                Owner = HomeScreen.He
             };
 
             productAddForm.ShowDialog();
@@ -227,7 +227,7 @@ namespace DimStock.Screens
 
         public static void SetDetail(IProductAddView view)
         {
-            var productAddForm = new ProductAddForm()
+            var productAddForm = new ProductAddScreen()
             {
                 Id = view.Id,
                 InternalCode = view.InternalCode,
@@ -240,7 +240,7 @@ namespace DimStock.Screens
                 ShowIcon = false,
                 ShowInTaskbar = false,
                 ControlBox = false,
-                Owner = HomeScreenForm.He
+                Owner = HomeScreen.He
 
             };
             productAddForm.ShowDialog();

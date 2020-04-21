@@ -6,11 +6,11 @@ using System.Windows.Forms;
 
 namespace DimStock.Screens
 {
-    public partial class UserListingForm : Form
+    public partial class UserListingScreen : Form
     {
         #region Builder
 
-        public UserListingForm()
+        public UserListingScreen()
         {
             InitializeComponent();
             InitializeSettings();
@@ -35,7 +35,7 @@ namespace DimStock.Screens
 
         private void ButtonRegisterNew_Click(object sender, EventArgs e)
         {
-            var form = new UserLoginAddForm()
+            var form = new UserLoginAddScreen()
             {
                 FormBorderStyle = FormBorderStyle.Sizable,
                 MaximizeBox = false,
@@ -85,7 +85,7 @@ namespace DimStock.Screens
 
                     case "edit":
 
-                        var form = new UserLoginAddForm()
+                        var form = new UserLoginAddScreen()
                         {
                             FormBorderStyle = FormBorderStyle.Sizable,
                             MaximizeBox = false,

@@ -36,7 +36,7 @@ namespace DimStock.Reports
             var description = "Relatório de Produtos";
             var dataset = "DataSetProduct";
 
-            ReportViewForm.ShowReport(path, description, true,
+            ReportViewScreen.ShowReport(path, description, true,
             new Dictionary<string, object>() {{dataset,
             reportList}});
 

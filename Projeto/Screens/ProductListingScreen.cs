@@ -11,7 +11,7 @@ namespace DimStock.Screens
     /// <summary>
     /// Representa o formulário de listagem dos produtos
     /// </summary>
-    public partial class ProductListingForm : IProductListingView
+    public partial class ProductListingScreen : IProductListingView
     {
         public int Id { get; set; }
         public string InternalCode { get; set; }
@@ -32,10 +32,10 @@ namespace DimStock.Screens
 
 namespace DimStock.Screens
 {
-    public partial class ProductListingForm : MetroForm
+    public partial class ProductListingScreen : MetroForm
     {
         //Eventos do formulário
-        public ProductListingForm()
+        public ProductListingScreen()
         {
             InitializeComponent();
             AddButtonColumnInDataGrid();
@@ -70,7 +70,7 @@ namespace DimStock.Screens
         }
         private void ButtonShow_ProductAddForm_Click(object sender, EventArgs e)
         {
-            ProductAddForm.ShowForm();
+            ProductAddScreen.ShowForm();
         }
         private void ButtonClear_SearchFields_Click(object sender, EventArgs e)
         {
@@ -160,12 +160,12 @@ namespace DimStock.Screens
         //Métodos axuxiliáres 
         public static void ShowForm()
         {
-            var productListingForm = new ProductListingForm()
+            var productListingForm = new ProductListingScreen()
             {
                 ShowIcon = false,
                 ShowInTaskbar = false,
                 ControlBox = false,
-                Owner = HomeScreenForm.He
+                Owner = HomeScreen.He
             };
             productListingForm.ShowDialog();
         }
@@ -274,7 +274,7 @@ namespace DimStock.Screens
             switch (actionResult)
             {
                 case true:
-                    ProductAddForm.SetDetail(this);
+                    ProductAddScreen.SetDetail(this);
                     break;
 
                 case false:

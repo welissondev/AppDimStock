@@ -22,7 +22,7 @@ namespace DimStock.Screens
             }
             else
             {
-                Application.Run(new AppSettingsForm());
+                Application.Run(new AppSettingsScreen());
             }
         }
     }

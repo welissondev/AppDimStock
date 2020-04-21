@@ -5,10 +5,10 @@ using System.Windows.Forms;
 
 namespace DimStock.Screens
 {
-    public partial class UserLoginForm : Form
+    public partial class UserLoginScreen : Form
     {
         #region Builder
-        public UserLoginForm()
+        public UserLoginScreen()
         {
             InitializeComponent();
         }
@@ -16,7 +16,7 @@ namespace DimStock.Screens
 
         #region Get e Set
 
-        public static UserLoginForm He { get; set; }
+        public static UserLoginScreen He { get; set; }
 
         #endregion
 
@@ -52,7 +52,7 @@ namespace DimStock.Screens
                 UserLoginState.Name = user.Name;
                 UserLoginState.Login = user.Login;
 
-                HomeScreenForm.He.Show();
+                HomeScreen.He.Show();
 
                 Close();
             }
@@ -65,7 +65,7 @@ namespace DimStock.Screens
         private void ButtonExists_Click(object sender, EventArgs e)
         {
             Close();
-            HomeScreenForm.He.Close();
+            HomeScreen.He.Close();
         }
 
         #endregion
@@ -74,7 +74,7 @@ namespace DimStock.Screens
 
         public static void ShowForm()
         {
-            var form = new UserLoginForm();
+            var form = new UserLoginScreen();
             form.Show();
         }
 

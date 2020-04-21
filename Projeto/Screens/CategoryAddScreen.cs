@@ -11,7 +11,7 @@ namespace DimStock.Screens
     /// <summary>
     /// Representa um formulário de cadastro de categorias
     /// </summary>
-    public partial class CategoryAddForm : ICategoryAddView
+    public partial class CategoryAddScreen : ICategoryAddView
     {
         public int Id { get; set; }
         public string Description { get => TextDescription.Text; set => TextDescription.Text = value; }
@@ -22,16 +22,16 @@ namespace DimStock.Screens
 
 namespace DimStock.Screens
 {
-    public partial class CategoryAddForm : MetroForm
+    public partial class CategoryAddScreen : MetroForm
     {
-        public CategoryAddForm()
+        public CategoryAddScreen()
         {
             InitializeComponent();
             presenter = new CategoryAddPresenter(this);
             InitializeEvents();
         }
 
-        public CategoryAddForm(ICategoryAddView view)
+        public CategoryAddScreen(ICategoryAddView view)
         {
             InitializeComponent();
             presenter = new CategoryAddPresenter(this);
@@ -40,7 +40,7 @@ namespace DimStock.Screens
             Id = view.Id;
             Description = view.Description;
             ControlBox = false;
-            Owner = HomeScreenForm.He;
+            Owner = HomeScreen.He;
         }
 
         private void ChangerSize(object sender, EventArgs e)
@@ -66,11 +66,11 @@ namespace DimStock.Screens
         {
             try
             {
-                var categoryForm = new CategoryAddForm()
+                var categoryForm = new CategoryAddScreen()
                 {
                     ShowInTaskbar = false,
                     ControlBox = false,
-                    Owner = HomeScreenForm.He
+                    Owner = HomeScreen.He
                 };
 
                 categoryForm.ShowDialog();
@@ -83,12 +83,12 @@ namespace DimStock.Screens
 
         public static void SetDetails(ICategoryAddView view)
         {
-            var screen = new CategoryAddForm()
+            var screen = new CategoryAddScreen()
             {
                 Id = view.Id,
                 Description = view.Description,
                 ControlBox = false,
-                Owner = HomeScreenForm.He
+                Owner = HomeScreen.He
             };
 
             screen.ShowDialog();

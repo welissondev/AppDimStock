@@ -8,11 +8,11 @@ using System.Windows.Forms;
 
 namespace DimStock.Screens
 {
-    public partial class HomeScreenForm : Form
+    public partial class HomeScreen : Form
     {
         #region Builder
 
-        public HomeScreenForm()
+        public HomeScreen()
         {
             InitializeComponent();
         }
@@ -27,7 +27,7 @@ namespace DimStock.Screens
 
         #region  Get & Set
 
-        public static HomeScreenForm He { get; set; }
+        public static HomeScreen He { get; set; }
 
         #endregion
 
@@ -39,7 +39,7 @@ namespace DimStock.Screens
 
             Hide();
 
-            UserLoginForm.ShowForm();
+            UserLoginScreen.ShowForm();
         }
 
         private void ShowNewForm(object sender, EventArgs e)
@@ -89,7 +89,7 @@ namespace DimStock.Screens
         {
             MdiClosingAll.CloseAllForms();
 
-            var form = new ProductAddForm()
+            var form = new ProductAddScreen()
             {
                 MdiParent = this,
                 ControlBox = false,
@@ -106,7 +106,7 @@ namespace DimStock.Screens
         {
             MdiClosingAll.CloseAllForms();
 
-            var form = new CategoryAddForm()
+            var form = new CategoryAddScreen()
             {
                 MdiParent = this,
                 FormBorderStyle = FormBorderStyle.None,
@@ -121,7 +121,7 @@ namespace DimStock.Screens
         {
             MdiClosingAll.CloseAllForms();
 
-            var form = new ProductListingForm()
+            var form = new ProductListingScreen()
             {
                 MdiParent = this,
                 FormBorderStyle = FormBorderStyle.None,
@@ -152,7 +152,7 @@ namespace DimStock.Screens
         {
             MdiClosingAll.CloseAllForms();
 
-            var form = new MovementAddForm()
+            var form = new MovementAddScreen()
             {
                 MdiParent = this,
                 FormBorderStyle = FormBorderStyle.None,
@@ -166,7 +166,7 @@ namespace DimStock.Screens
         {
             MdiClosingAll.CloseAllForms();
 
-            var form = new MovementAddForm()
+            var form = new MovementAddScreen()
             {
                 MdiParent = this,
                 FormBorderStyle = FormBorderStyle.None,
@@ -179,7 +179,7 @@ namespace DimStock.Screens
         {
             MdiClosingAll.CloseAllForms();
 
-            var form = new MovementListingForm()
+            var form = new MovementListingScreen()
             {
                 MdiParent = this,
                 FormBorderStyle = FormBorderStyle.None,
@@ -193,7 +193,7 @@ namespace DimStock.Screens
         {
             MdiClosingAll.CloseAllForms();
 
-            var form = new StockListingForm()
+            var form = new StockListingScreen()
             {
                 MdiParent = this,
                 FormBorderStyle = FormBorderStyle.None,
@@ -212,7 +212,7 @@ namespace DimStock.Screens
             {
                 MdiClosingAll.CloseAllForms();
 
-                var form = new UserLoginAddForm()
+                var form = new UserLoginAddScreen()
                 {
                     MdiParent = this,
                     FormBorderStyle = FormBorderStyle.None,
@@ -238,7 +238,7 @@ namespace DimStock.Screens
             {
                 MdiClosingAll.CloseAllForms();
 
-                var form = new UserListingForm()
+                var form = new UserListingScreen()
                 {
                     MdiParent = this,
                     FormBorderStyle = FormBorderStyle.None,
@@ -259,7 +259,7 @@ namespace DimStock.Screens
         {
             MdiClosingAll.CloseAllForms();
 
-            var form = new BackupSaveForm()
+            var form = new BackupSaveScreen()
             {
                 MdiParent = this,
                 FormBorderStyle = FormBorderStyle.None,
@@ -273,10 +273,10 @@ namespace DimStock.Screens
         {
             MdiClosingAll.CloseAllForms();
 
-            var form = new AppSettingsForm()
+            var form = new AppSettingsScreen()
             {
                 WindowState = FormWindowState.Normal,
-                MdiParent = HomeScreenForm.He,
+                MdiParent = HomeScreen.He,
                 FormBorderStyle = FormBorderStyle.None,
                 Dock = DockStyle.Fill,
                 ShowInTaskbar = false

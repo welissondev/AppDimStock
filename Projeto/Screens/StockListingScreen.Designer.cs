@@ -1,6 +1,6 @@
 ﻿namespace DimStock.Screens
 {
-    partial class MovementAddForm
+    partial class StockListingScreen
     {
         /// <summary>
         /// Required designer variable.
@@ -34,18 +34,17 @@
             // 
             // SearchTimer
             // 
-            this.SearchTimer.Interval = 1000;
+            this.SearchTimer.Interval = 500;
             // 
-            // StockMovementAddForm
+            // StockListingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(928, 551);
             this.MinimumSize = new System.Drawing.Size(944, 590);
-            this.Name = "StockMovementAddForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Name = "StockListingForm";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.ResumeLayout(false);
 
         }

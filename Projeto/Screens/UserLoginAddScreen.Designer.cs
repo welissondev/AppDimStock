@@ -1,6 +1,6 @@
 ﻿namespace DimStock.Screens
 {
-    partial class UserLoginAddForm
+    partial class UserLoginAddScreen
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserLoginAddForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserLoginAddScreen));
             this.TextUserName = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.NameTitle = new System.Windows.Forms.Label();
             this.TextEmail = new Syncfusion.Windows.Forms.Tools.TextBoxExt();

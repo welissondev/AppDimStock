@@ -1,6 +1,6 @@
 ﻿namespace DimStock.Screens
 {
-    partial class MovementListingForm
+    partial class MovementListingScreen
     {
         /// <summary>
         /// Required designer variable.

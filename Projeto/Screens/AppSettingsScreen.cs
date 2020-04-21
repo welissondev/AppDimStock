@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace DimStock.Screens
 {
-    public partial class AppSettingsForm : Form
+    public partial class AppSettingsScreen : Form
     {
         #region Properties
 
@@ -16,7 +16,7 @@ namespace DimStock.Screens
 
         #region Builder
 
-        public AppSettingsForm()
+        public AppSettingsScreen()
         {
             InitializeComponent();
 

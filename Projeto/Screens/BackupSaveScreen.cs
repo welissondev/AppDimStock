@@ -7,11 +7,11 @@ using System.Windows.Forms;
 
 namespace DimStock.Screens
 {
-    public partial class BackupSaveForm : Form
+    public partial class BackupSaveScreen : Form
     {
         #region Builder
 
-        public BackupSaveForm()
+        public BackupSaveScreen()
         {
             InitializeComponent();
         }

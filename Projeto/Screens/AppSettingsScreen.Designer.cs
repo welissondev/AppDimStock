@@ -1,6 +1,6 @@
 ﻿namespace DimStock.Screens
 {
-    partial class AppSettingsForm
+    partial class AppSettingsScreen
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AppSettingsForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AppSettingsScreen));
             this.MainTabControl = new System.Windows.Forms.TabControl();
             this.PageConfigType = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();

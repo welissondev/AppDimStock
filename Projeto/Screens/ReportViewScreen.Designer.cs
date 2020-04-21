@@ -1,6 +1,6 @@
 ﻿namespace DimStock.Screens
 {
-    partial class ReportViewForm
+    partial class ReportViewScreen
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportViewForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportViewScreen));
             this.ReportViewControl = new Microsoft.Reporting.WinForms.ReportViewer();
             this.ButtonCloseForm = new Bunifu.Framework.UI.BunifuThinButton2();
             this.SuspendLayout();

@@ -186,11 +186,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Reports\ProductReport.cs" />
-    <Compile Include="Screens\AppSettingsForm.cs">
+    <Compile Include="Screens\AppSettingsScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screens\AppSettingsForm.Designer.cs">
-      <DependentUpon>AppSettingsForm.cs</DependentUpon>
+    <Compile Include="Screens\AppSettingsScreen.Designer.cs">
+      <DependentUpon>AppSettingsScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\StockReport.cs" />
     <Compile Include="Screens\CategoryListingScreen.cs">
@@ -200,83 +200,83 @@
       <DependentUpon>CategoryListingScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
-    <Compile Include="Screens\BackupSaveForm.cs">
+    <Compile Include="Screens\BackupSaveScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screens\BackupSaveForm.Designer.cs">
-      <DependentUpon>BackupSaveForm.cs</DependentUpon>
+    <Compile Include="Screens\BackupSaveScreen.Designer.cs">
+      <DependentUpon>BackupSaveScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Screens\HomeScreenForm.cs">
+    <Compile Include="Screens\HomeScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screens\HomeScreenForm.Designer.cs">
-      <DependentUpon>HomeScreenForm.cs</DependentUpon>
+    <Compile Include="Screens\HomeScreen.Designer.cs">
+      <DependentUpon>HomeScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Screens\CategoryAddForm.cs">
+    <Compile Include="Screens\CategoryAddScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screens\CategoryAddForm.Designer.cs">
-      <DependentUpon>CategoryAddForm.cs</DependentUpon>
+    <Compile Include="Screens\CategoryAddScreen.Designer.cs">
+      <DependentUpon>CategoryAddScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Screens\ProductListingForm.cs">
+    <Compile Include="Screens\ProductListingScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screens\ProductListingForm.designer.cs">
-      <DependentUpon>ProductListingForm.cs</DependentUpon>
+    <Compile Include="Screens\ProductListingScreen.designer.cs">
+      <DependentUpon>ProductListingScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Screens\ProductAddForm.cs">
+    <Compile Include="Screens\ProductAddScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screens\ProductAddForm.Designer.cs">
-      <DependentUpon>ProductAddForm.cs</DependentUpon>
+    <Compile Include="Screens\ProductAddScreen.Designer.cs">
+      <DependentUpon>ProductAddScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Screens\ReportViewForm.cs">
+    <Compile Include="Screens\ReportViewScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screens\ReportViewForm.Designer.cs">
-      <DependentUpon>ReportViewForm.cs</DependentUpon>
+    <Compile Include="Screens\ReportViewScreen.Designer.cs">
+      <DependentUpon>ReportViewScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Screens\DestinationAddForm.cs">
+    <Compile Include="Screens\DestinationAddScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screens\DestinationAddForm.Designer.cs">
-      <DependentUpon>DestinationAddForm.cs</DependentUpon>
+    <Compile Include="Screens\DestinationAddScreen.Designer.cs">
+      <DependentUpon>DestinationAddScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Screens\StockListingForm.cs">
+    <Compile Include="Screens\StockListingScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screens\StockListingForm.Designer.cs">
-      <DependentUpon>StockListingForm.cs</DependentUpon>
+    <Compile Include="Screens\StockListingScreen.Designer.cs">
+      <DependentUpon>StockListingScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Screens\MovementListingForm.cs">
+    <Compile Include="Screens\MovementListingScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screens\MovementListingForm.Designer.cs">
-      <DependentUpon>MovementListingForm.cs</DependentUpon>
+    <Compile Include="Screens\MovementListingScreen.Designer.cs">
+      <DependentUpon>MovementListingScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Screens\MovementAddForm.cs">
+    <Compile Include="Screens\MovementAddScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screens\MovementAddForm.Designer.cs">
-      <DependentUpon>MovementAddForm.cs</DependentUpon>
+    <Compile Include="Screens\MovementAddScreen.Designer.cs">
+      <DependentUpon>MovementAddScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Screens\UserListingForm.cs">
+    <Compile Include="Screens\UserListingScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screens\UserListingForm.Designer.cs">
-      <DependentUpon>UserListingForm.cs</DependentUpon>
+    <Compile Include="Screens\UserListingScreen.Designer.cs">
+      <DependentUpon>UserListingScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Screens\UserLoginForm.cs">
+    <Compile Include="Screens\UserLoginScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screens\UserLoginForm.Designer.cs">
-      <DependentUpon>UserLoginForm.cs</DependentUpon>
+    <Compile Include="Screens\UserLoginScreen.Designer.cs">
+      <DependentUpon>UserLoginScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Screens\UserLoginAddForm.cs">
+    <Compile Include="Screens\UserLoginAddScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screens\UserLoginAddForm.Designer.cs">
-      <DependentUpon>UserLoginAddForm.cs</DependentUpon>
+    <Compile Include="Screens\UserLoginAddScreen.Designer.cs">
+      <DependentUpon>UserLoginAddScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ICategoryAddView.cs" />
     <Compile Include="Views\ICategoryListingView.cs" />
@@ -287,52 +287,52 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Screens\AppSettingsForm.resx">
-      <DependentUpon>AppSettingsForm.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\AppSettingsScreen.resx">
+      <DependentUpon>AppSettingsScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Stock.rdlc" />
     <EmbeddedResource Include="Reports\Product.rdlc" />
-    <EmbeddedResource Include="Screens\BackupSaveForm.resx">
-      <DependentUpon>BackupSaveForm.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\BackupSaveScreen.resx">
+      <DependentUpon>BackupSaveScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\CategoryListingScreen.resx">
       <DependentUpon>CategoryListingScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Screens\HomeScreenForm.resx">
-      <DependentUpon>HomeScreenForm.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\HomeScreen.resx">
+      <DependentUpon>HomeScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Screens\CategoryAddForm.resx">
-      <DependentUpon>CategoryAddForm.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\CategoryAddScreen.resx">
+      <DependentUpon>CategoryAddScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Screens\ProductListingForm.resx">
-      <DependentUpon>ProductListingForm.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\ProductListingScreen.resx">
+      <DependentUpon>ProductListingScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Screens\ProductAddForm.resx">
-      <DependentUpon>ProductAddForm.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\ProductAddScreen.resx">
+      <DependentUpon>ProductAddScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Screens\ReportViewForm.resx">
-      <DependentUpon>ReportViewForm.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\ReportViewScreen.resx">
+      <DependentUpon>ReportViewScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Screens\DestinationAddForm.resx">
-      <DependentUpon>DestinationAddForm.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\DestinationAddScreen.resx">
+      <DependentUpon>DestinationAddScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Screens\StockListingForm.resx">
-      <DependentUpon>StockListingForm.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\StockListingScreen.resx">
+      <DependentUpon>StockListingScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Screens\MovementListingForm.resx">
-      <DependentUpon>MovementListingForm.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\MovementListingScreen.resx">
+      <DependentUpon>MovementListingScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Screens\MovementAddForm.resx">
-      <DependentUpon>MovementAddForm.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\MovementAddScreen.resx">
+      <DependentUpon>MovementAddScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Screens\UserListingForm.resx">
-      <DependentUpon>UserListingForm.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\UserListingScreen.resx">
+      <DependentUpon>UserListingScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Screens\UserLoginForm.resx">
-      <DependentUpon>UserLoginForm.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\UserLoginScreen.resx">
+      <DependentUpon>UserLoginScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Screens\UserLoginAddForm.resx">
-      <DependentUpon>UserLoginAddForm.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\UserLoginAddScreen.resx">
+      <DependentUpon>UserLoginAddScreen.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

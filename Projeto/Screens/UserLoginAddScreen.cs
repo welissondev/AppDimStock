@@ -7,11 +7,11 @@ using System.Windows.Forms;
 
 namespace DimStock.Screens
 {
-    public partial class UserLoginAddForm : Form
+    public partial class UserLoginAddScreen : Form
     {
         #region Builder
 
-        public UserLoginAddForm()
+        public UserLoginAddScreen()
         {
             InitializeComponent();
         }

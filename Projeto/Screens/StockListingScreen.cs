@@ -5,9 +5,9 @@
 /// </summary>
 namespace DimStock.Screens
 {
-    public partial class StockListingForm : Form
+    public partial class StockListingScreen : Form
     {
-        public StockListingForm()
+        public StockListingScreen()
         {
             InitializeComponent();
         }
@@ -20,7 +20,7 @@ namespace DimStock.Screens
 /// </summary>
 namespace DimStock.Screens
 {
-    public partial class StockListingForm : Form
+    public partial class StockListingScreen : Form
     {
         
     }
@@ -32,7 +32,7 @@ namespace DimStock.Screens
 /// </summary>
 namespace DimStock.Screens
 {
-    public partial class StockListingForm : Form
+    public partial class StockListingScreen : Form
     {
         
     }

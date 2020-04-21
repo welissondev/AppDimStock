@@ -7,11 +7,11 @@ using System.Windows.Forms;
 
 namespace DimStock.Screens
 {
-    public partial class ReportViewForm : Form
+    public partial class ReportViewScreen : Form
     {
         #region Builder
 
-        private ReportViewForm(string path, string reportName, bool isEmbeddedResource, Dictionary<string, object> dataSources)
+        private ReportViewScreen(string path, string reportName, bool isEmbeddedResource, Dictionary<string, object> dataSources)
         {
             InitializeComponent();
 
@@ -56,10 +56,10 @@ namespace DimStock.Screens
 
         public static void ShowReport(string path, string reportName, bool isEmbeddedResource, Dictionary<string, object> dataSources)
         {
-            var form = new ReportViewForm(path, reportName,
+            var form = new ReportViewScreen(path, reportName,
             isEmbeddedResource, dataSources)
             {
-                MdiParent = HomeScreenForm.He,
+                MdiParent = HomeScreen.He,
                 FormBorderStyle = FormBorderStyle.None,
                 Dock = DockStyle.Fill,
                 ShowInTaskbar = false

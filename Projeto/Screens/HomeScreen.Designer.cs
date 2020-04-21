@@ -1,6 +1,6 @@
 ﻿namespace DimStock.Screens
 {
-    partial class HomeScreenForm
+    partial class HomeScreen
     {
         /// <summary>
         /// Variável de designer necessária.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeScreenForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeScreen));
             this.PanelMenuTop = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.label6 = new System.Windows.Forms.Label();
             this.MainMenu_Settings = new System.Windows.Forms.LinkLabel();

@@ -1,6 +1,6 @@
 ﻿namespace DimStock.Screens
 {
-    partial class UserListingForm
+    partial class UserListingScreen
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserListingForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserListingScreen));
             this.DatagridUser = new System.Windows.Forms.DataGridView();
             this.PictureLoading = new System.Windows.Forms.PictureBox();
             this.TextSearchFields = new Syncfusion.Windows.Forms.Tools.TextBoxExt();

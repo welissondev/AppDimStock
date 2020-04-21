@@ -1,6 +1,6 @@
 ﻿namespace DimStock.Screens
 {
-    partial class DestinationAddForm
+    partial class DestinationAddScreen
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DestinationAddForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DestinationAddScreen));
             this.DestinationLocationTitle = new System.Windows.Forms.Label();
             this.TextDestinationLocation = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.DatagridDestination = new System.Windows.Forms.DataGridView();
