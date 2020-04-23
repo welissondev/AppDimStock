@@ -27,6 +27,11 @@ namespace DimStock.Models
             Category = new CategoryModel();
         }
 
+        public ProductModel(CategoryModel category)
+        {
+            Category = category;
+        }
+
         public bool Insert()
         {
             var actionResult = false;
@@ -142,7 +147,7 @@ namespace DimStock.Models
                 {
                     MessageNotifier.Show("Esse produto não " +
                     "encontra-se registrado na sua base de " +
-                    "dados!", "Não Encontrado" , "?");
+                    "dados!", "Não Encontrado", "?");
 
                     return registrationStatus;
                 }
@@ -154,6 +159,28 @@ namespace DimStock.Models
         public bool CheckRelationWithStock()
         {
             return new StockModel(this).CheckRelationWithProduct();
+        }
+
+        public bool CheckRelationWithCategory()
+        {
+            var relatedStatus = false;
+            var sql = string.Empty;
+
+            using (var dataBase = new ConnectionModel())
+            {
+                sql = @"SELECT * FROM Product WHERE 
+                CategoryId = @CategoryId";
+
+                dataBase.ClearParameter();
+                dataBase.AddParameter("CategoryId", Category.Id);
+
+                if (dataBase.ExecuteScalar(sql) > 0)
+                {
+                    relatedStatus = true;
+                }
+            }
+
+            return relatedStatus;
         }
 
         public bool GetDetails()
@@ -274,7 +301,7 @@ namespace DimStock.Models
                     Format("%{0}%", Description));
                 }
 
-                query += sqlSelect + sqlParameter + sqlOderBy; 
+                query += sqlSelect + sqlParameter + sqlOderBy;
 
                 return dataBase.ExecuteDataAdapter(query);
             }

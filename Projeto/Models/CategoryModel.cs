@@ -170,6 +170,11 @@ namespace DimStock.Models
             return registrationStatus = true;
         }
 
+        public bool CheckRelationWithProduct()
+        {
+            return new ProductModel(this).CheckRelationWithCategory();
+        }
+
         public int GetIdByDescription()
         {
             var sql = string.Empty;

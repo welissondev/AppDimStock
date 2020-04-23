@@ -83,6 +83,15 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
+            if (category.CheckRelationWithProduct() == true)
+            {
+                MessageNotifier.Show("Não é possível deletar " +
+                "essa categoria, porque ela possui registros " +
+                "relacionados a um produto!", "Não Permitido", "?");
+
+                return validationStatus;
+            }
+
             return validationStatus = true;
         }
 
