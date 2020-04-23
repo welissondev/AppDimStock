@@ -181,7 +181,7 @@
             this.GridList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.GridList.BackgroundColor = System.Drawing.Color.White;
             this.GridList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.GridList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.GridList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.GridList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.DodgerBlue;
@@ -219,6 +219,7 @@
             this.GridList.EnableHeadersVisualStyles = false;
             this.GridList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.GridList.HeaderBackColor = System.Drawing.Color.DodgerBlue;
+
             this.GridList.HeaderForeColor = System.Drawing.Color.White;
             this.GridList.Location = new System.Drawing.Point(30, 85);
             this.GridList.Name = "GridList";
@@ -515,7 +516,7 @@
             this.Controls.Add(this.bunifuShadowPanel2);
             this.Controls.Add(this.bunifuShadowPanel1);
             this.Name = "CategoryListingScreen";
-            this.Text = "CategoryListingForm";
+            this.Text = "Listagem de categorias";
             this.bunifuShadowPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ImageLoading)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridList)).EndInit();

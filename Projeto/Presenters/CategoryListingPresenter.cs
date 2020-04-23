@@ -1,6 +1,5 @@
 ﻿using DimStock.Models;
 using DimStock.Views;
-using System.Data;
 using System;
 
 
@@ -17,7 +16,7 @@ namespace DimStock.Presenters
 
         public void Delete(object sender, EventArgs e)
         {
-            var catgory = new CategoryModel() { Id = view.Id };
+            var catgory = new CategoryModel() { Id = view.Id};
             
             if (catgory.Delete() == true)
             {
@@ -27,26 +26,26 @@ namespace DimStock.Presenters
 
         public void GetDetails(object sender, EventArgs e)
         {
-            var category = new CategoryModel() { Id = view.Id };
+            var category = new CategoryModel() { Id = view.Id};
 
             if (category.GetDetails() == true)
             {
-                view.Id = category.Id;
-                view.Description = category.Description;
+                view.Id= category.Id;
+                view.Description= category.Description;
             }
         }
 
         public void ClearView(object sender, EventArgs e)
         {
             view.Id = 0;
-            view.SearchDescription = string.Empty;
+            view.Description = string.Empty;
         }
 
         public void SearchData(object sender, EventArgs e)
         {
             var category = new CategoryModel()
             {
-                Description = view.SearchDescription
+                Description = view.Description
             };
 
             var searchResult = category.SearchData();

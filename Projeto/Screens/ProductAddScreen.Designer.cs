@@ -60,7 +60,7 @@
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
             this.ButtonShow_CategoryAddForm = new System.Windows.Forms.LinkLabel();
-            this.DataGridCategory = new DimStock.AuxilyTools.AuxilyControls.CustomDataGridViewTwo();
+            this.GridCategory = new DimStock.AuxilyTools.AuxilyControls.CustomDataGridViewTwo();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -81,7 +81,7 @@
             this.ButtonClearView = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.ButtonDelete = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.ButtonSave = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridCategory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridCategory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextSalePrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextCostPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).BeginInit();
@@ -102,30 +102,27 @@
             this.ButtonShow_CategoryAddForm.TabIndex = 221;
             this.ButtonShow_CategoryAddForm.TabStop = true;
             this.ButtonShow_CategoryAddForm.Text = "Adicionar Nova";
-            this.ButtonShow_CategoryAddForm.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ButtonShow_CategoryAddForm_LinkClicked);
             // 
-            // DataGridCategory
+            // GridCategory
             // 
-            this.DataGridCategory.AllowUserToAddRows = false;
-            this.DataGridCategory.AllowUserToResizeRows = false;
-            this.DataGridCategory.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.DataGridCategory.BackgroundColor = System.Drawing.Color.White;
-            this.DataGridCategory.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.DataGridCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridCategory.ColumnHeadersVisible = false;
-            this.DataGridCategory.CustomSettings = false;
-            this.DataGridCategory.Location = new System.Drawing.Point(35, 190);
-            this.DataGridCategory.MultiSelect = false;
-            this.DataGridCategory.Name = "DataGridCategory";
-            this.DataGridCategory.RowHeadersVisible = false;
+            this.GridCategory.AllowUserToAddRows = false;
+            this.GridCategory.AllowUserToResizeRows = false;
+            this.GridCategory.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.GridCategory.BackgroundColor = System.Drawing.Color.White;
+            this.GridCategory.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.GridCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridCategory.ColumnHeadersVisible = false;
+            this.GridCategory.CustomSettings = false;
+            this.GridCategory.Location = new System.Drawing.Point(35, 190);
+            this.GridCategory.MultiSelect = false;
+            this.GridCategory.Name = "GridCategory";
+            this.GridCategory.RowHeadersVisible = false;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri Light", 10F);
-            this.DataGridCategory.RowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.DataGridCategory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridCategory.Size = new System.Drawing.Size(750, 10);
-            this.DataGridCategory.TabIndex = 228;
-            this.DataGridCategory.Visible = false;
-            this.DataGridCategory.DataSourceChanged += new System.EventHandler(this.DataGridCategory_DataSourceChanged);
-            this.DataGridCategory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridCategory_CellClick);
+            this.GridCategory.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.GridCategory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.GridCategory.Size = new System.Drawing.Size(750, 10);
+            this.GridCategory.TabIndex = 228;
+            this.GridCategory.Visible = false;
             // 
             // label6
             // 
@@ -269,7 +266,6 @@
             // TimerSearch
             // 
             this.TimerSearch.Interval = 800;
-            this.TimerSearch.Tick += new System.EventHandler(this.TimerSearch_Tick);
             // 
             // ErrorProvider
             // 
@@ -286,7 +282,7 @@
             this.PanelShadow.Controls.Add(this.TextBarCode);
             this.PanelShadow.Controls.Add(this.TextDescription);
             this.PanelShadow.Controls.Add(this.TextInternalCode);
-            this.PanelShadow.Controls.Add(this.DataGridCategory);
+            this.PanelShadow.Controls.Add(this.GridCategory);
             this.PanelShadow.Controls.Add(this.label1);
             this.PanelShadow.Controls.Add(this.label2);
             this.PanelShadow.Controls.Add(this.label5);
@@ -378,9 +374,6 @@
             this.BoxCategoryDescription.TextPlaceholder = "Buscar por categorias...";
             this.BoxCategoryDescription.UseSystemPasswordChar = false;
             this.BoxCategoryDescription.WordWrap = true;
-            this.BoxCategoryDescription.TextChanged += new System.EventHandler(this.BoxCategoryDescription_TextChanged);
-            this.BoxCategoryDescription.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BoxCategoryDescription_KeyPress);
-            this.BoxCategoryDescription.Click += new System.EventHandler(this.BoxCategoryDescription_Click);
             // 
             // TextBarCode
             // 
@@ -687,7 +680,6 @@
             this.ButtonClose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonClose.TextMarginLeft = 0;
             this.ButtonClose.UseDefaultRadiusAndThickness = true;
-            this.ButtonClose.Click += new System.EventHandler(this.ButtonClose_Click);
             // 
             // ButtonClearView
             // 
@@ -752,7 +744,6 @@
             this.ButtonClearView.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonClearView.TextMarginLeft = 0;
             this.ButtonClearView.UseDefaultRadiusAndThickness = true;
-            this.ButtonClearView.Click += new System.EventHandler(this.ButtonClearView_Click);
             // 
             // ButtonDelete
             // 
@@ -817,7 +808,6 @@
             this.ButtonDelete.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonDelete.TextMarginLeft = 0;
             this.ButtonDelete.UseDefaultRadiusAndThickness = true;
-            this.ButtonDelete.Click += new System.EventHandler(this.ButtonDelete_Click);
             // 
             // ButtonSave
             // 
@@ -882,9 +872,8 @@
             this.ButtonSave.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonSave.TextMarginLeft = 0;
             this.ButtonSave.UseDefaultRadiusAndThickness = true;
-            this.ButtonSave.Click += new System.EventHandler(this.ButtonSave_Click);
             // 
-            // ProductAddForm
+            // ProductAddScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -892,16 +881,13 @@
             this.Controls.Add(this.bunifuShadowPanel1);
             this.Controls.Add(this.PanelShadow);
             this.MinimumSize = new System.Drawing.Size(944, 590);
-            this.Name = "ProductAddForm";
+            this.Name = "ProductAddScreen";
             this.RightToLeftLayout = true;
             this.ShadowType = MetroFramework.Forms.MetroFormShadowType.DropShadow;
             this.ShowIcon = false;
             this.Text = "Cadastro de Produtos";
             this.TransparencyKey = System.Drawing.Color.Empty;
-            this.Load += new System.EventHandler(this.ProductAddForm_Load);
-            this.Click += new System.EventHandler(this.ProductAddForm_Click);
-            this.Resize += new System.EventHandler(this.ProductAddForm_Resize);
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridCategory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridCategory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextSalePrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextCostPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).EndInit();
@@ -914,7 +900,7 @@
 
         #endregion
         private System.Windows.Forms.LinkLabel ButtonShow_CategoryAddForm;
-        private AuxilyTools.AuxilyControls.CustomDataGridViewTwo DataGridCategory;
+        private AuxilyTools.AuxilyControls.CustomDataGridViewTwo GridCategory;
         private System.Windows.Forms.Timer TimerSearch;
         private System.Windows.Forms.ErrorProvider ErrorProvider;
         public Syncfusion.Windows.Forms.Tools.CurrencyTextBox TextSalePrice;

@@ -31,26 +31,13 @@ namespace DimStock.Screens
             InitializeEvents();
         }
 
-        public CategoryAddScreen(ICategoryAddView view)
-        {
-            InitializeComponent();
-            presenter = new CategoryAddPresenter(this);
-            InitializeEvents();
-
-            Id = view.Id;
-            Description = view.Description;
-            ControlBox = false;
-            Owner = HomeScreen.He;
-        }
-
-        private void ChangerSize(object sender, EventArgs e)
+        private void ScreenResize(object sender, EventArgs e)
         {
             Refresh();
         }
-
         private void ScreenClose(object sender, EventArgs e)
         {
-            Dispose();
+            Close();
         }
 
         private void InitializeEvents()
@@ -59,29 +46,27 @@ namespace DimStock.Screens
             ButtonDelete.Click += new EventHandler(presenter.Delete);
             ButtonClearView.Click += new EventHandler(presenter.ClearView);
             ButtonClose.Click += new EventHandler(ScreenClose);
-            Resize += new EventHandler(ChangerSize);
+            Resize += new EventHandler(ScreenResize);
         }
 
-        public static void ShowScreen(object sender, EventArgs e)
+        public void ShowScreen(object sender, EventArgs e)
         {
             try
             {
-                var categoryForm = new CategoryAddScreen()
+                using (var categoryForm = new CategoryAddScreen())
                 {
-                    ShowInTaskbar = false,
-                    ControlBox = false,
-                    Owner = HomeScreen.He
+                    ShowInTaskbar = false;
+                    ControlBox = false;
+                    Owner = HomeScreen.He;
+                    ShowDialog();
                 };
-
-                categoryForm.ShowDialog();
             }
             catch (Exception ex)
             {
                 ExceptionNotifier.ShowMessage(ex);
             }
         }
-
-        public static void SetDetails(ICategoryAddView view)
+        public void SetDetails(ICategoryAddView view)
         {
             var screen = new CategoryAddScreen()
             {
@@ -93,6 +78,5 @@ namespace DimStock.Screens
 
             screen.ShowDialog();
         }
-
     }
 }

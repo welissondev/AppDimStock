@@ -174,11 +174,19 @@ namespace DimStock.Models
         {
             var sql = string.Empty;
 
+            if (Description == string.Empty || Description == null)
+            {
+                MessageNotifier.Show("Para obter o ID da categoria é " +
+                "preciso informar sua descrição!", "Obrigatório");
+            }
+
             using (var dataBase = new ConnectionModel())
             {
+                dataBase.AddParameter("@Description", Description);
+
                 sql = @"SELECT * FROM Category WHERE 
                 Description = @Description";
-                
+
                 return dataBase.ExecuteScalar(sql);
             }
         }

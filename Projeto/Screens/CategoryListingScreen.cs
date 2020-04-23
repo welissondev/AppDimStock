@@ -5,18 +5,20 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-
 namespace DimStock.Screens
 {
+    /// <summary>
+    /// Representa a tela de listagem das categorias
+    /// </summary>
     public partial class CategoryListingScreen : MetroForm, ICategoryListingView
     {
-        public int Id { get; set; }
-        public string Description { get; set; }
-
-        public string SearchDescription { get => TextSearchDescription.Text; set => TextSearchDescription.Text = value; }
-        public object DataList { get => GridList.DataSource; set => GridList.DataSource = value; }
-
         private CategoryListingPresenter presenter;
+        private DataGridViewLinkColumn buttonView;
+        private DataGridViewLinkColumn buttonDelete;
+
+        public int Id { get; set; }
+        public string Description { get => TextSearchDescription.Text; set => TextSearchDescription.Text = value; }
+        public object DataList { get => GridList.DataSource; set => GridList.DataSource = value; }
     }
 }
 
@@ -27,18 +29,17 @@ namespace DimStock.Screens
         public CategoryListingScreen()
         {
             InitializeComponent();
-            presenter = new CategoryListingPresenter(this);
+            InitializePresenter();
             InitializeEvents();
         }
 
         private void ScreenLoad(object sender, EventArgs e)
         {
-            GridListAddButtons(sender, e);
             presenter.SearchData(sender, e);
         }
         private void ScreenClose(object sender, EventArgs e)
         {
-            Dispose();
+            Close();
         }
         private void ScreenResize(object sender, EventArgs e)
         {
@@ -52,14 +53,14 @@ namespace DimStock.Screens
             presenter.SearchData(sender, e);
         }
 
-        private void GridListEnter(object sender, DataGridViewCellEventArgs e)
+        private void GridCellEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1)
             {
                 GridList.Rows[e.RowIndex].Selected = true;
             }
         }
-        private void GridListClick(object sender, DataGridViewCellEventArgs e)
+        private void GridCellClick(object sender, DataGridViewCellEventArgs e)
         {
             Id = int.Parse(GridList.CurrentRow.
             Cells["Id"].Value.ToString());
@@ -74,21 +75,23 @@ namespace DimStock.Screens
             {
                 case "ButtonView":
                     presenter.GetDetails(sender, e);
-                    new CategoryAddScreen(this).ShowDialog();
+                    new CategoryAddScreen().SetDetails(this);
                     break;
 
                 case "ButtonDelete":
                     presenter.Delete(sender, e);
                     break;
             }
-
         }
-        private void GridListRowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        private void GridRowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
             e.PaintParts = DataGridViewPaintParts.All ^ DataGridViewPaintParts.Focus;
         }
-        private void GridListSettings(object sender, EventArgs e)
+        private void GridSourceChanged(object sender, EventArgs e)
         {
+            if (GridList.Rows.Count == 0)
+                return;
+
             GridList.Columns["Id"].Visible = false;
             GridList.Columns["Id"].ReadOnly = true;
             GridList.Columns["Id"].DisplayIndex = 0;
@@ -106,39 +109,48 @@ namespace DimStock.Screens
             GridList.MultiSelect = false;
             GridList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
 
+            if (buttonView == null)
+            {
+                buttonView = new DataGridViewLinkColumn
+                {
+                    Name = "ButtonView",
+                    Text = "Visualizar",
+                    TrackVisitedState = false,
+                    UseColumnTextForLinkValue = true,
+                    LinkColor = Color.Black,
+                    ActiveLinkColor = Color.Black,
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.None,
+                    Width = 100,
+                };
+                GridList.Columns.Add(buttonView);
+            }
+
+            if (buttonDelete == null)
+            {
+                buttonDelete = new DataGridViewLinkColumn
+                {
+                    Name = "ButtonDelete",
+                    Text = "Deletar",
+                    TrackVisitedState = false,
+                    UseColumnTextForLinkValue = true,
+                    LinkColor = Color.Black,
+                    ActiveLinkColor = Color.Black,
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.None,
+                    Width = 100,
+                };
+                GridList.Columns.Add(buttonDelete);
+            }
+
             GridList.Columns["ButtonView"].HeaderText = string.Empty;
             GridList.Columns["ButtonView"].Width = 70;
 
             GridList.Columns["ButtonDelete"].Width = 70;
             GridList.Columns["ButtonDelete"].HeaderText = string.Empty;
         }
-        private void GridListAddButtons(object sender, EventArgs e)
-        {
-            var buttonView = new DataGridViewLinkColumn
-            {
-                Name = "ButtonView",
-                Text = "Visualizar",
-                TrackVisitedState = false,
-                UseColumnTextForLinkValue = true,
-                LinkColor = Color.Black,
-                ActiveLinkColor = Color.Black,
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.None,
-                Width = 100,
-            };
-            GridList.Columns.Add(buttonView);
 
-            var buttonDelete = new DataGridViewLinkColumn
-            {
-                Name = "ButtonDelete",
-                Text = "Deletar",
-                TrackVisitedState = false,
-                UseColumnTextForLinkValue = true,
-                LinkColor = Color.Black,
-                ActiveLinkColor = Color.Black,
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.None,
-                Width = 100,
-            };
-            GridList.Columns.Add(buttonDelete);
+        private void ButtonDelete(object sender, EventArgs e)
+        {
+
         }
 
         private void TextKeyPress(object sender, KeyPressEventArgs e)
@@ -148,30 +160,34 @@ namespace DimStock.Screens
             ImageLoading.Visible = true;
         }
 
-        public static void ShowScreen(object sender, EventArgs e)
-        {
-            var screen = new CategoryListingScreen()
-            {
-                ShowIcon = false,
-                ShowInTaskbar = false,
-                ControlBox = false,
-                Owner = HomeScreen.He
-            };
-            screen.ShowDialog();
-        }
-
         private void InitializeEvents()
         {
             Load += new EventHandler(ScreenLoad);
             Resize += new EventHandler(ScreenResize);
-            GridList.DataSourceChanged += new EventHandler(GridListSettings);
-            GridList.CellMouseEnter += new DataGridViewCellEventHandler(GridListEnter);
-            GridList.CellClick += new DataGridViewCellEventHandler(GridListClick);
-            ButtonNew.Click += new EventHandler(CategoryAddScreen.ShowScreen);
+            GridList.DataSourceChanged += new EventHandler(GridSourceChanged);
+            GridList.CellMouseEnter += new DataGridViewCellEventHandler(GridCellEnter);
+            GridList.CellClick += new DataGridViewCellEventHandler(GridCellClick);
+            ButtonNew.Click += new EventHandler(new CategoryAddScreen().ShowScreen);
             ButtonUpdateGridList.Click += new EventHandler(TimerTick);
             ButtonCloseScreen.Click += new EventHandler(ScreenClose);
             TimerSearch.Tick += new EventHandler(TimerTick);
             TextSearchDescription.KeyPress += new KeyPressEventHandler(TextKeyPress);
+        }
+        private void InitializePresenter()
+        {
+            presenter = new CategoryListingPresenter(this);
+        }
+
+        public void ShowScreen(object sender, EventArgs e)
+        {
+            using (var screen = new CategoryListingScreen())
+            {
+                ShowIcon = false;
+                ShowInTaskbar = false;
+                ControlBox = false;
+                Owner = HomeScreen.He;
+                ShowDialog();
+            };
         }
     }
 }

@@ -12,6 +12,8 @@ namespace DimStock.Screens
     /// </summary>
     public partial class ProductAddScreen : IProductAddView
     {
+        private ProductAddPresenter presenter;
+
         public int Id { get; set; }
         public string InternalCode { get => TextInternalCode.Text; set => TextInternalCode.Text = value; }
         public string Description { get => TextDescription.Text; set => TextDescription.Text = value; }
@@ -20,7 +22,7 @@ namespace DimStock.Screens
         public string BarCode { get => TextBarCode.Text; set => TextBarCode.Text = value; }
         public int CategoryId { get; set; }
         public string CategoryDescription { get => BoxCategoryDescription.Text; set => BoxCategoryDescription.Text = value; }
-        public object CategoryList { get => DataGridCategory.DataSource; set => DataGridCategory.DataSource = value; }
+        public object CategoryDataList { get => GridCategory.DataSource; set => GridCategory.DataSource = value; }
     }
 }
 
@@ -28,13 +30,14 @@ namespace DimStock.Screens
 {
     public partial class ProductAddScreen : MetroForm
     {
-        //Eventos do formulário
         public ProductAddScreen()
         {
             InitializeComponent();
+            InitializePresenter();
+            InitializeEvents();
         }
 
-        private void ProductAddForm_Load(object sender, EventArgs e)
+        private void ScreenLoad(object sender, EventArgs e)
         {
             try
             {
@@ -45,125 +48,44 @@ namespace DimStock.Screens
                 ExceptionNotifier.ShowMessage(ex);
             }
         }
-        private void ProductAddForm_Click(object sender, EventArgs e)
-        {
-            DataGridCategory.Visible = false;
-        }
-        private void ProductAddForm_Resize(object sender, EventArgs e)
+        private void ScreenResize(object sender, EventArgs e)
         {
             Refresh();
         }
-
-        private void ButtonSave_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var actionResult = true;
-                var presenter = new ProductAddPresenter(this);
-
-                if (Id == 0)
-                    actionResult = presenter.Insert();
-
-                if (Id > 0)
-                    actionResult = presenter.Update();
-
-                switch (actionResult)
-                {
-                    case true:
-                        MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        break;
-
-                    case false:
-                        MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
-                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        break;
-                }
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
-        }
-        private void ButtonDelete_Click(object sender, EventArgs e)
-        {
-            try
-            {
-
-                if (MessageBox.Show("Confirma a exclusão desse produto?", "IMPORTANTE",
-                MessageBoxButtons.YesNo, MessageBoxIcon.None, MessageBoxDefaultButton.Button2) ==
-                DialogResult.No) return;
-
-                var actionResult = false;
-                var presenter = new ProductAddPresenter(this);
-
-                actionResult = presenter.Delete();
-
-                switch (actionResult)
-                {
-                    case true:
-                        MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        break;
-
-                    case false:
-                        MessageBox.Show(MessageNotifier.Message, MessageNotifier.Title,
-                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        break;
-                }
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
-        }
-        private void ButtonClearView_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                ClearView();
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
-        }
-        private void ButtonClose_Click(object sender, EventArgs e)
+        private void ScreenClose(object sender, EventArgs e)
         {
             Close();
         }
-        private void ButtonShow_CategoryAddForm_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        public void ScreenShow(object sender, EventArgs e)
         {
-            CategoryAddScreen.ShowScreen(sender, e);
+            using (var screen = new ProductAddScreen())
+            {
+                ShowInTaskbar = false;
+                ShowIcon = false;
+                ControlBox = false;
+                Owner = HomeScreen.He;
+                ShowDialog();
+            };
         }
 
-        private void DataGridCategory_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void GridCategoryCellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            CategoryDescription = GridCategory.CurrentRow.Cells["Description"].Value.ToString();
+            presenter.GetCategoryIdByDescription(sender, e);
+        }
+        private void GridCategorySourceChanged(object sender, EventArgs e)
         {
             try
             {
-                CategoryDescription = DataGridCategory.CurrentRow.Cells["Description"].Value.ToString();
+                var gridList = GridCategory;
 
-                var presenter = new ProductAddPresenter(this);
-                CategoryId = presenter.GetCategoryIdByDescription();
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
-        }
-        private void DataGridCategory_DataSourceChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                var dataGrid = DataGridCategory;
-
-                if (dataGrid.Rows.Count == 0)
+                if (gridList.Rows.Count == 0)
                     return;
 
-                dataGrid.Columns["Id"].Visible = false;
+                gridList.Columns["Id"].Visible = false;
 
-                dataGrid.Columns["Description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dataGrid.Columns["Description"].ReadOnly = true;
+                gridList.Columns["Description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                gridList.Columns["Description"].ReadOnly = true;
             }
             catch (Exception ex)
             {
@@ -171,30 +93,24 @@ namespace DimStock.Screens
             }
         }
 
-        private void BoxCategoryDescription_KeyPress(object sender, KeyPressEventArgs e)
+        private void BoxCategoryDescriptionKeyPress(object sender, KeyPressEventArgs e)
         {
             TimerSearch.Enabled = false;
             TimerSearch.Enabled = true;
         }
-        private void BoxCategoryDescription_Click(object sender, EventArgs e)
-        {
-            var presenter = new ProductAddPresenter(this);
-            presenter.ListAllCategoryData();
-        }
-        private void BoxCategoryDescription_TextChanged(object sender, EventArgs e)
+        private void BoxCategoryDescriptionChanger(object sender, EventArgs e)
         {
             if (BoxCategoryDescription.Text == string.Empty)
-                DataGridCategory.Visible = false;
+                GridCategory.Visible = false;
         }
 
-        private void TimerSearch_Tick(object sender, EventArgs e)
+        private void TimerSearchTick(object sender, EventArgs e)
         {
             TimerSearch.Enabled = false;
 
             try
             {
-                var presenter = new ProductAddPresenter(this);
-                presenter.SearchCategoryData();
+                presenter.SearchCategory(sender, e);
             }
             catch (Exception ex)
             {
@@ -202,48 +118,52 @@ namespace DimStock.Screens
             }
         }
 
-        //Métodos auxiliáres
-        private void ClearView()
+        private void HideGridCategory(object sender, EventArgs e)
         {
-            var presenter = new ProductAddPresenter(this);
-            presenter.ClearView();
-
-            TextInternalCode.Focus();
-            DataGridCategory.Visible = false;
+            GridCategory.Visible = false;
         }
 
-        public static void ShowForm()
+        private void InitializeEvents()
         {
-            var productAddForm = new ProductAddScreen()
-            {
-                ShowInTaskbar = false,
-                ShowIcon = false,
-                ControlBox = false,
-                Owner = HomeScreen.He
-            };
-
-            productAddForm.ShowDialog();
+            Load += new EventHandler(ScreenLoad);
+            Click += new EventHandler(HideGridCategory);
+            Resize += new EventHandler(ScreenResize);
+            PanelShadow.Click += new EventHandler(HideGridCategory);
+            ButtonSave.Click += new EventHandler(presenter.Update);
+            ButtonDelete.Click += new EventHandler(presenter.Delete);
+            ButtonClearView.Click += new EventHandler(presenter.ClearView);
+            ButtonClearView.Click += new EventHandler(HideGridCategory);
+            ButtonClose.Click += new EventHandler(ScreenClose);
+            GridCategory.CellClick += new DataGridViewCellEventHandler(GridCategoryCellClick);
+            GridCategory.DataSourceChanged += new EventHandler(GridCategorySourceChanged);
+            BoxCategoryDescription.Click += new EventHandler(presenter.ListCategory);
+            BoxCategoryDescription.KeyPress += new KeyPressEventHandler(BoxCategoryDescriptionKeyPress);
+            BoxCategoryDescription.TextChange += new EventHandler(BoxCategoryDescriptionChanger);
+            TimerSearch.Tick += new EventHandler(TimerSearchTick);
+        }
+        private void InitializePresenter()
+        {
+            presenter = new ProductAddPresenter(this);
         }
 
-        public static void SetDetail(IProductAddView view)
+        public void SetDetail(IProductAddView view)
         {
-            var productAddForm = new ProductAddScreen()
+            using (var screen = new ProductAddScreen())
             {
-                Id = view.Id,
-                InternalCode = view.InternalCode,
-                Description = view.Description,
-                CostPrice = view.CostPrice,
-                SalePrice = view.SalePrice,
-                BarCode = view.BarCode,
-                CategoryId = view.CategoryId,
-                CategoryDescription = view.CategoryDescription,
-                ShowIcon = false,
-                ShowInTaskbar = false,
-                ControlBox = false,
-                Owner = HomeScreen.He
-
+                Id = view.Id;
+                InternalCode = view.InternalCode;
+                Description = view.Description;
+                CostPrice = view.CostPrice;
+                SalePrice = view.SalePrice;
+                BarCode = view.BarCode;
+                CategoryId = view.CategoryId;
+                CategoryDescription = view.CategoryDescription;
+                ShowIcon = false;
+                ShowInTaskbar = false;
+                ControlBox = false;
+                Owner = HomeScreen.He;
+                ShowDialog();
             };
-            productAddForm.ShowDialog();
         }
     }
 }

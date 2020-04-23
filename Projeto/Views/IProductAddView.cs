@@ -10,6 +10,6 @@
         string BarCode { get; set; }
         int CategoryId { get; set; }
         string CategoryDescription { get; set; }
-        object CategoryList { get; set; }
+        object CategoryDataList { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using DimStock.Models;
 using DimStock.Views;
 using System.Data;
+using System;
 
 namespace DimStock.Presenters
 {
@@ -13,23 +14,17 @@ namespace DimStock.Presenters
             this.view = view;
         }
 
-        public bool Delete()
+        public void Delete(object sender, EventArgs e)
         {
-            var actionResult = false;
-
             var product = new ProductModel
             {
                 Id = view.Id
             };
-            actionResult = product.Delete();
-
-            return actionResult;
+            product.Delete();
         }
 
-        public bool GetDetails()
+        public void GetDetails(object sender, EventArgs e)
         {
-            var actionResult = false;
-
             var product = new ProductModel
             {
                 Id = view.Id
@@ -45,14 +40,10 @@ namespace DimStock.Presenters
                 view.BarCode = product.BarCode;
                 view.CategoryId = product.Category.Id;
                 view.CategoryDescription = product.Category.Description;
-
-                actionResult = true;
             }
-
-            return actionResult;
         }
 
-        public void ClearView()
+        public void ClearView(object sender, EventArgs e)
         {
             view.Id = 0;
             view.InternalCode = string.Empty;
@@ -62,13 +53,17 @@ namespace DimStock.Presenters
             view.BarCode = string.Empty;
             view.CategoryId = 0;
             view.CategoryDescription = string.Empty;
-            view.SearchDescription = string.Empty;
+            view.InternalCode = string.Empty;
+            view.Description = string.Empty;
+            view.CategoryDataList = null;
+            view.ProductDataList = null;
             view.SearchInternalCode = string.Empty;
-            view.CategoryList = null;
-            view.ProductList = null;
+            view.SearchDescription = string.Empty;
+
+            SearchData(sender, e);
         }
 
-        public DataTable SearchData()
+        public void SearchData(object sender, EventArgs e)
         {
             var product = new ProductModel
             {
@@ -77,9 +72,7 @@ namespace DimStock.Presenters
             };
 
             var searchResult = product.SearchData();
-            view.ProductList = searchResult;
-
-            return searchResult;
+            view.ProductDataList = searchResult;
         }
     }
 }

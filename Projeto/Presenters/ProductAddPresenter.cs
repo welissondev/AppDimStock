@@ -1,6 +1,7 @@
 ﻿using DimStock.Models;
 using DimStock.Views;
 using System.Data;
+using System;
 
 namespace DimStock.Presenters
 {
@@ -13,33 +14,8 @@ namespace DimStock.Presenters
             this.view = view;
         }
 
-        public bool Insert()
+        public void Update(object sender, EventArgs e)
         {
-            var actionResult = false;
-
-            var product = new ProductModel();
-
-            product.InternalCode = view.InternalCode;
-            product.Description = view.Description;
-            product.CostPrice = view.CostPrice;
-            product.SalePrice = view.SalePrice;
-            product.BarCode = view.BarCode;
-            product.Category.Id = view.CategoryId;
-            product.Category.Description = view.CategoryDescription;
-
-            if (product.Insert() == true)
-            {
-                actionResult = true;
-                ClearView();
-            }
-
-            return actionResult;
-        }
-
-        public bool Update()
-        {
-            var actionResult = false;
-
             var product = new ProductModel();
 
             product.Id = view.Id;
@@ -51,42 +27,27 @@ namespace DimStock.Presenters
             product.Category.Id = view.CategoryId;
             product.Category.Description = view.CategoryDescription;
 
-            if (product.Update() == true)
+            if (product.Id == 0)
             {
-                actionResult = true;
+                product.Insert();
             }
-
-            return actionResult;
+            else
+            {
+                product.Update();
+            }
         }
 
-        public bool Delete()
+        public void Delete(object sender, EventArgs e)
         {
-            var actionResult = false;
-
             var product = new ProductModel
             {
                 Id = view.Id
             };
 
-            if (product.Delete() == true)
-            {
-                actionResult = true;
-            }
-
-            return actionResult;
+            product.Delete();
         }
 
-        public int GetCategoryIdByDescription()
-        {
-            var category = new CategoryModel
-            {
-                Description = view.CategoryDescription
-            };
-
-            return category.GetIdByDescription();
-        }
-
-        public void ClearView()
+        public void ClearView(object sender, EventArgs e)
         {
             view.Id = 0;
             view.InternalCode = string.Empty;
@@ -98,7 +59,16 @@ namespace DimStock.Presenters
             view.CategoryDescription = string.Empty;
         }
 
-        public DataTable SearchCategoryData()
+        public void GetCategoryIdByDescription(object sender, EventArgs e)
+        {
+            var category = new CategoryModel
+            {
+                Description = view.CategoryDescription
+            };
+
+            view.CategoryId = category.GetIdByDescription();
+        }
+        public void SearchCategory(object sender, EventArgs e)
         {
             var category = new CategoryModel
             {
@@ -106,19 +76,14 @@ namespace DimStock.Presenters
             };
 
             var searchResult = category.SearchData();
-            view.CategoryList = searchResult;
-
-            return searchResult;
+            view.CategoryDataList = searchResult;
         }
-
-        public DataTable ListAllCategoryData()
+        public void ListCategory(object sender, EventArgs e)
         {
             var category = new CategoryModel();
 
             var queryResult = category.ListData();
-            view.CategoryList = queryResult;
-
-            return queryResult;
+            view.CategoryDataList = queryResult;
         }
     }
 }
