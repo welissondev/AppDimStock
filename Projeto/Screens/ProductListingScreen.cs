@@ -56,40 +56,83 @@ namespace DimStock.Screens
         }
         private void ScreenResize(object sender, EventArgs e)
         {
-            Refresh();
+            try
+            {
+                Refresh();
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
         }
         private void ScreenClose(object sender, EventArgs e)
         {
-            Close();
+            try
+            {
+                Close();
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
         }
         public void ScreenShow(object sender, EventArgs e)
         {
-            using (var screen = new ProductListingScreen())
+            try
             {
-                ShowIcon = false;
-                ShowInTaskbar = false;
-                ControlBox = false;
-                Owner = HomeScreen.He;
-                ShowDialog();
-            };
+                using (var screen = new ProductListingScreen())
+                {
+                    ShowIcon = false;
+                    ShowInTaskbar = false;
+                    ControlBox = false;
+                    Owner = HomeScreen.He;
+                    ShowDialog();
+                };
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
         }
 
         private void TextSearchKeyPress(object sender, KeyPressEventArgs e)
         {
-            ImageLoading.Visible = true;
-            TimerSearch.Enabled = false;
-            TimerSearch.Enabled = true;
+            try
+            {
+                ImageLoading.Visible = true;
+                TimerSearch.Enabled = false;
+                TimerSearch.Enabled = true;
+
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
         }
 
         private void GridListRowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
-            e.PaintParts = DataGridViewPaintParts.All ^ DataGridViewPaintParts.Focus;
+            try
+            {
+                e.PaintParts = DataGridViewPaintParts.All ^ DataGridViewPaintParts.Focus;
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
         }
         private void GridListCellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex != -1)
+            try
             {
-                GridList.Rows[e.RowIndex].Selected = true;
+                if (e.RowIndex != -1)
+                {
+                    GridList.Rows[e.RowIndex].Selected = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
             }
         }
         private void GridListCellClick(object sender, DataGridViewCellEventArgs e)
@@ -232,22 +275,36 @@ namespace DimStock.Screens
 
         private void InitializeEvents()
         {
-            Load += new EventHandler(ScreenLoad);
-            Resize += new EventHandler(ScreenResize);
-            ButtonNew.Click += new EventHandler(new ProductAddScreen().ScreenShow);
-            ButtonUpdateGridList.Click += new EventHandler(presenter.SearchData);
-            ButtonClear.Click += new EventHandler(presenter.ClearView);
-            ButtonClose.Click += new EventHandler(ScreenClose);
-            GridList.DataSourceChanged += new EventHandler(GridListSourceChanged);
-            GridList.CellMouseEnter += new DataGridViewCellEventHandler(GridListCellMouseEnter);
-            GridList.CellClick += new DataGridViewCellEventHandler(GridListCellClick);
-            TimerSearch.Tick += new EventHandler(TimerSearchTitk);
-            TextSearchInternalCode.KeyPress += new KeyPressEventHandler(TextSearchKeyPress);
-            TextSearchDescription.KeyPress += new KeyPressEventHandler(TextSearchKeyPress);
+            try
+            {
+                Load += new EventHandler(ScreenLoad);
+                Resize += new EventHandler(ScreenResize);
+                ButtonNew.Click += new EventHandler(new ProductAddScreen().ScreenShow);
+                ButtonUpdateGridList.Click += new EventHandler(presenter.SearchData);
+                ButtonClear.Click += new EventHandler(presenter.ClearView);
+                ButtonClose.Click += new EventHandler(ScreenClose);
+                GridList.DataSourceChanged += new EventHandler(GridListSourceChanged);
+                GridList.CellMouseEnter += new DataGridViewCellEventHandler(GridListCellMouseEnter);
+                GridList.CellClick += new DataGridViewCellEventHandler(GridListCellClick);
+                TimerSearch.Tick += new EventHandler(TimerSearchTitk);
+                TextSearchInternalCode.KeyPress += new KeyPressEventHandler(TextSearchKeyPress);
+                TextSearchDescription.KeyPress += new KeyPressEventHandler(TextSearchKeyPress);
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
         }
         private void InitializePrensenter()
         {
-            presenter = new ProductListingPresenter(this);
+            try
+            {
+                presenter = new ProductListingPresenter(this);
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
         }
     }
 }
