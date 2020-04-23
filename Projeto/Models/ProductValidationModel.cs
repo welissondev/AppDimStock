@@ -94,6 +94,10 @@ namespace DimStock.Models
         {
             var validationStatus = false;
 
+            if (MessageNotifier.Reply("Deseja mesmo excluir " +
+             "esse produto?", "IMPORTANTE") == false)
+                return validationStatus;
+
             if (product.Id == 0)
             {
                 MessageNotifier.Show("Selecione o produto " +
@@ -154,7 +158,7 @@ namespace DimStock.Models
             if (product.CostPrice == 0.00)
             {
                 MessageNotifier.Show("Informe o preço de custo " +
-                "do produto!", "Campo Obrigatório" , "?");
+                "do produto!", "Campo Obrigatório", "?");
 
                 return validationStatus;
             }
@@ -189,7 +193,7 @@ namespace DimStock.Models
             {
                 MessageNotifier.Show("O preço de custo " +
                 "do produto não pode ser maior que o " +
-                "preço de venda!", "Não Permitido" , "?");
+                "preço de venda!", "Não Permitido", "?");
 
                 return validationStatus;
             }
