@@ -17,5 +17,19 @@ namespace DimStock.AuxilyTools.AuxilyClasses
 
             MessageBox.Show(message, title);
         }
+
+        public static bool Reply(string message, string title)
+        {
+            bool reply = false;
+
+            if (MessageBox.Show(message, title, MessageBoxButtons.YesNo, 
+                MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) 
+                == DialogResult.Yes)
+            {
+                reply = true;
+            }
+
+            return reply;
+        }
     }
 }
