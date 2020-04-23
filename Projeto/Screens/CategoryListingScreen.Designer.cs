@@ -56,7 +56,7 @@
             this.bunifuShadowPanel1 = new Bunifu.UI.WinForm.BunifuShadowPanel.BunifuShadowPanel();
             this.ButtonCloseScreen = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.ButtonScreenClear = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            this.ButtonUpdateGridList = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.ButtonListGrid = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.ButtonNew = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.TimerSearch = new System.Windows.Forms.Timer(this.components);
             this.bunifuShadowPanel2.SuspendLayout();
@@ -219,7 +219,7 @@
             this.GridList.EnableHeadersVisualStyles = false;
             this.GridList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.GridList.HeaderBackColor = System.Drawing.Color.DodgerBlue;
-
+            this.GridList.HeaderBgColor = System.Drawing.Color.Empty;
             this.GridList.HeaderForeColor = System.Drawing.Color.White;
             this.GridList.Location = new System.Drawing.Point(30, 85);
             this.GridList.Name = "GridList";
@@ -237,7 +237,7 @@
             this.bunifuShadowPanel1.BorderColor = System.Drawing.Color.Transparent;
             this.bunifuShadowPanel1.Controls.Add(this.ButtonCloseScreen);
             this.bunifuShadowPanel1.Controls.Add(this.ButtonScreenClear);
-            this.bunifuShadowPanel1.Controls.Add(this.ButtonUpdateGridList);
+            this.bunifuShadowPanel1.Controls.Add(this.ButtonListGrid);
             this.bunifuShadowPanel1.Controls.Add(this.ButtonNew);
             this.bunifuShadowPanel1.Location = new System.Drawing.Point(15, 58);
             this.bunifuShadowPanel1.Name = "bunifuShadowPanel1";
@@ -376,46 +376,46 @@
             this.ButtonScreenClear.TextMarginLeft = 0;
             this.ButtonScreenClear.UseDefaultRadiusAndThickness = true;
             // 
-            // ButtonUpdateGridList
+            // ButtonListGrid
             // 
-            this.ButtonUpdateGridList.AllowToggling = false;
-            this.ButtonUpdateGridList.AnimationSpeed = 200;
-            this.ButtonUpdateGridList.AutoGenerateColors = false;
-            this.ButtonUpdateGridList.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
-            this.ButtonUpdateGridList.BackColor = System.Drawing.Color.Transparent;
-            this.ButtonUpdateGridList.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(156)))), ((int)(((byte)(229)))));
-            this.ButtonUpdateGridList.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonUpdateGridList.BackgroundImage")));
-            this.ButtonUpdateGridList.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.ButtonUpdateGridList.ButtonText = "Atualizar Lista";
-            this.ButtonUpdateGridList.ButtonTextMarginLeft = 0;
-            this.ButtonUpdateGridList.ColorContrastOnClick = 45;
-            this.ButtonUpdateGridList.ColorContrastOnHover = 45;
-            this.ButtonUpdateGridList.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonListGrid.AllowToggling = false;
+            this.ButtonListGrid.AnimationSpeed = 200;
+            this.ButtonListGrid.AutoGenerateColors = false;
+            this.ButtonListGrid.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
+            this.ButtonListGrid.BackColor = System.Drawing.Color.Transparent;
+            this.ButtonListGrid.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(156)))), ((int)(((byte)(229)))));
+            this.ButtonListGrid.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonListGrid.BackgroundImage")));
+            this.ButtonListGrid.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.ButtonListGrid.ButtonText = "Atualizar Lista";
+            this.ButtonListGrid.ButtonTextMarginLeft = 0;
+            this.ButtonListGrid.ColorContrastOnClick = 45;
+            this.ButtonListGrid.ColorContrastOnHover = 45;
+            this.ButtonListGrid.Cursor = System.Windows.Forms.Cursors.Hand;
             borderEdges3.BottomLeft = true;
             borderEdges3.BottomRight = true;
             borderEdges3.TopLeft = true;
             borderEdges3.TopRight = true;
-            this.ButtonUpdateGridList.CustomizableEdges = borderEdges3;
-            this.ButtonUpdateGridList.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.ButtonUpdateGridList.DisabledBorderColor = System.Drawing.Color.Empty;
-            this.ButtonUpdateGridList.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.ButtonUpdateGridList.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
-            this.ButtonUpdateGridList.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
-            this.ButtonUpdateGridList.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
-            this.ButtonUpdateGridList.ForeColor = System.Drawing.Color.White;
-            this.ButtonUpdateGridList.IconLeftCursor = System.Windows.Forms.Cursors.Hand;
-            this.ButtonUpdateGridList.IconMarginLeft = 11;
-            this.ButtonUpdateGridList.IconPadding = 10;
-            this.ButtonUpdateGridList.IconRightCursor = System.Windows.Forms.Cursors.Hand;
-            this.ButtonUpdateGridList.IdleBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(156)))), ((int)(((byte)(229)))));
-            this.ButtonUpdateGridList.IdleBorderRadius = 3;
-            this.ButtonUpdateGridList.IdleBorderThickness = 1;
-            this.ButtonUpdateGridList.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(156)))), ((int)(((byte)(229)))));
-            this.ButtonUpdateGridList.IdleIconLeftImage = null;
-            this.ButtonUpdateGridList.IdleIconRightImage = null;
-            this.ButtonUpdateGridList.IndicateFocus = false;
-            this.ButtonUpdateGridList.Location = new System.Drawing.Point(180, 22);
-            this.ButtonUpdateGridList.Name = "ButtonUpdateGridList";
+            this.ButtonListGrid.CustomizableEdges = borderEdges3;
+            this.ButtonListGrid.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.ButtonListGrid.DisabledBorderColor = System.Drawing.Color.Empty;
+            this.ButtonListGrid.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.ButtonListGrid.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.ButtonListGrid.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
+            this.ButtonListGrid.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
+            this.ButtonListGrid.ForeColor = System.Drawing.Color.White;
+            this.ButtonListGrid.IconLeftCursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonListGrid.IconMarginLeft = 11;
+            this.ButtonListGrid.IconPadding = 10;
+            this.ButtonListGrid.IconRightCursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonListGrid.IdleBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(156)))), ((int)(((byte)(229)))));
+            this.ButtonListGrid.IdleBorderRadius = 3;
+            this.ButtonListGrid.IdleBorderThickness = 1;
+            this.ButtonListGrid.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(156)))), ((int)(((byte)(229)))));
+            this.ButtonListGrid.IdleIconLeftImage = null;
+            this.ButtonListGrid.IdleIconRightImage = null;
+            this.ButtonListGrid.IndicateFocus = false;
+            this.ButtonListGrid.Location = new System.Drawing.Point(180, 22);
+            this.ButtonListGrid.Name = "ButtonListGrid";
             stateProperties9.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties9.BorderRadius = 3;
             stateProperties9.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
@@ -424,7 +424,7 @@
             stateProperties9.ForeColor = System.Drawing.Color.White;
             stateProperties9.IconLeftImage = null;
             stateProperties9.IconRightImage = null;
-            this.ButtonUpdateGridList.onHoverState = stateProperties9;
+            this.ButtonListGrid.onHoverState = stateProperties9;
             stateProperties10.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(156)))), ((int)(((byte)(229)))));
             stateProperties10.BorderRadius = 3;
             stateProperties10.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
@@ -433,12 +433,12 @@
             stateProperties10.ForeColor = System.Drawing.Color.White;
             stateProperties10.IconLeftImage = null;
             stateProperties10.IconRightImage = null;
-            this.ButtonUpdateGridList.OnPressedState = stateProperties10;
-            this.ButtonUpdateGridList.Size = new System.Drawing.Size(144, 45);
-            this.ButtonUpdateGridList.TabIndex = 12;
-            this.ButtonUpdateGridList.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.ButtonUpdateGridList.TextMarginLeft = 0;
-            this.ButtonUpdateGridList.UseDefaultRadiusAndThickness = true;
+            this.ButtonListGrid.OnPressedState = stateProperties10;
+            this.ButtonListGrid.Size = new System.Drawing.Size(144, 45);
+            this.ButtonListGrid.TabIndex = 12;
+            this.ButtonListGrid.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ButtonListGrid.TextMarginLeft = 0;
+            this.ButtonListGrid.UseDefaultRadiusAndThickness = true;
             // 
             // ButtonNew
             // 
@@ -534,7 +534,7 @@
         private Bunifu.UI.WinForm.BunifuShadowPanel.BunifuShadowPanel bunifuShadowPanel1;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton ButtonCloseScreen;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton ButtonScreenClear;
-        private Bunifu.UI.WinForms.BunifuButton.BunifuButton ButtonUpdateGridList;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton ButtonListGrid;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton ButtonNew;
         private System.Windows.Forms.Timer TimerSearch;
     }

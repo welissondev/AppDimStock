@@ -249,8 +249,9 @@ namespace DimStock.Screens
                 GridList.CellMouseEnter += new DataGridViewCellEventHandler(GridCellEnter);
                 GridList.CellClick += new DataGridViewCellEventHandler(GridCellClick);
                 ButtonNew.Click += new EventHandler(new CategoryAddScreen().ShowScreen);
-                ButtonUpdateGridList.Click += new EventHandler(TimerTick);
+                ButtonListGrid.Click += new EventHandler(TimerTick);
                 ButtonCloseScreen.Click += new EventHandler(ScreenClose);
+                ButtonScreenClear.Click += new EventHandler(presenter.ClearView);
                 TimerSearch.Tick += new EventHandler(TimerTick);
                 TextSearchDescription.KeyPress += new KeyPressEventHandler(TextKeyPress);
             }

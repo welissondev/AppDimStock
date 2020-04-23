@@ -39,6 +39,8 @@ namespace DimStock.Presenters
         {
             view.Id = 0;
             view.Description = string.Empty;
+
+            SearchData(sender, e);
         }
 
         public void SearchData(object sender, EventArgs e)
