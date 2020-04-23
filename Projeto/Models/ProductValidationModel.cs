@@ -14,7 +14,7 @@ namespace DimStock.Models
             if (product.InternalCode == string.Empty)
             {
                 MessageNotifier.Show("Informe o código interno " +
-                "do produto!", "Campo Obrigatório");
+                "do produto!", "Campo Obrigatório", "?");
 
                 return validationStatus;
             }
@@ -22,7 +22,7 @@ namespace DimStock.Models
             if (product.Description == string.Empty)
             {
                 MessageNotifier.Show("Informe a descrição " +
-                "do produto!", "Campo Obrigatório");
+                "do produto!", "Campo Obrigatório", "?");
 
                 return validationStatus;
             }
@@ -30,7 +30,7 @@ namespace DimStock.Models
             if (product.Category.Id == 0)
             {
                 MessageNotifier.Show("Selecione a categoria " +
-                "do produto!", "Não Selecionada");
+                "do produto!", "Não Selecionada", "?");
 
                 return validationStatus;
             }
@@ -38,7 +38,7 @@ namespace DimStock.Models
             if (product.CostPrice == 0.00)
             {
                 MessageNotifier.Show("Informe o preço de custo " +
-                "do produto!", "Campo Obrigatório");
+                "do produto!", "Campo Obrigatório", "?");
 
                 return validationStatus;
             }
@@ -46,7 +46,7 @@ namespace DimStock.Models
             if (product.SalePrice == 0.00)
             {
                 MessageNotifier.Show("Informe o preço de venda " +
-                "do produto!", "Campo Obrigatório");
+                "do produto!", "Campo Obrigatório", "?");
 
                 return validationStatus;
             }
@@ -55,7 +55,7 @@ namespace DimStock.Models
             {
                 MessageNotifier.Show("O preço de custo " +
                 "do produto não pode ser negativo!",
-                "Não Permitido");
+                "Não Permitido", "?");
 
                 return validationStatus;
             }
@@ -64,7 +64,7 @@ namespace DimStock.Models
             {
                 MessageNotifier.Show("O preço de venda " +
                 "do produto não pode ser negativo!",
-                "Não Permitido");
+                "Não Permitido", "?");
 
                 return validationStatus;
             }
@@ -73,7 +73,7 @@ namespace DimStock.Models
             {
                 MessageNotifier.Show("O preço de custo do produto " +
                 "não pode ser maior que o preço de venda!",
-                "Não Permitido");
+                "Não Permitido", "?");
 
                 return validationStatus;
             }
@@ -82,7 +82,7 @@ namespace DimStock.Models
             {
                 MessageNotifier.Show("O preço de custo " +
                 "do produto não pode ser igual ao preço " +
-                "de venda!", "Não Permitido");
+                "de venda!", "Não Permitido", "?");
 
                 return validationStatus;
             }
@@ -97,7 +97,7 @@ namespace DimStock.Models
             if (product.Id == 0)
             {
                 MessageNotifier.Show("Selecione o produto " +
-                "para excluir!", "Não Selecionado");
+                "para excluir!", "Não Selecionado", "?");
 
                 return validationStatus;
             }
@@ -106,7 +106,7 @@ namespace DimStock.Models
             {
                 MessageNotifier.Show("Esse registro já foi " +
                 "excluido, atualize a lista de produtos!",
-                "Atualize a Lista");
+                "Atualize a Lista", "?");
 
                 return validationStatus;
             }
@@ -115,7 +115,7 @@ namespace DimStock.Models
             {
                 MessageNotifier.Show("Não é possível deletar " +
                 "esse produto, porque ele possui registros " +
-                "relacionados ao estoque!", "Não Permitido");
+                "relacionados ao estoque!", "Não Permitido", "?");
 
                 return validationStatus;
             }
@@ -130,7 +130,7 @@ namespace DimStock.Models
             if (product.InternalCode == string.Empty)
             {
                 MessageNotifier.Show("Informe o código interno " +
-                "do produto!", "Campo Obrigatório");
+                "do produto!", "Campo Obrigatório", "?");
 
                 return validationStatus;
             }
@@ -138,7 +138,7 @@ namespace DimStock.Models
             if (product.Description == string.Empty)
             {
                 MessageNotifier.Show("Informe a descrição " +
-                "do produto!", "Campo Obrigatório");
+                "do produto!", "Campo Obrigatório", "?");
 
                 return validationStatus;
             }
@@ -146,7 +146,7 @@ namespace DimStock.Models
             if (product.Category.Id == 0)
             {
                 MessageNotifier.Show("Selecione a categoria " +
-                "do produto!", "Não Selecionada");
+                "do produto!", "Não Selecionada", "?");
 
                 return validationStatus;
             }
@@ -154,7 +154,7 @@ namespace DimStock.Models
             if (product.CostPrice == 0.00)
             {
                 MessageNotifier.Show("Informe o preço de custo " +
-                "do produto!", "Campo Obrigatório");
+                "do produto!", "Campo Obrigatório" , "?");
 
                 return validationStatus;
             }
@@ -162,7 +162,7 @@ namespace DimStock.Models
             if (product.SalePrice == 0.00)
             {
                 MessageNotifier.Show("Informe o preço de venda " +
-                "do produto!", "Campo Obrigatório");
+                "do produto!", "Campo Obrigatório", "?");
 
                 return validationStatus;
             }
@@ -171,7 +171,7 @@ namespace DimStock.Models
             {
                 MessageNotifier.Show("O preço de custo " +
                 "do produto não pode ser negativo!",
-                "Não Permitido");
+                "Não Permitido", "?");
 
                 return validationStatus;
             }
@@ -180,7 +180,7 @@ namespace DimStock.Models
             {
                 MessageNotifier.Show("O preço de venda " +
                 "do produto não pode ser negativo!",
-                "Não Permitido");
+                "Não Permitido", "?");
 
                 return validationStatus;
             }
@@ -189,7 +189,7 @@ namespace DimStock.Models
             {
                 MessageNotifier.Show("O preço de custo " +
                 "do produto não pode ser maior que o " +
-                "preço de venda!", "Não Permitido");
+                "preço de venda!", "Não Permitido" , "?");
 
                 return validationStatus;
             }
@@ -198,7 +198,7 @@ namespace DimStock.Models
             {
                 MessageNotifier.Show("O preço de custo " +
                 "do produto não pode ser igual ao preço " +
-                "de venda!", "Não Permitido");
+                "de venda!", "Não Permitido", "?");
 
                 return validationStatus;
             }
@@ -207,7 +207,7 @@ namespace DimStock.Models
             {
                 MessageNotifier.Show("Esse registro foi " +
                 "excluido, atualize a lista de produtos!",
-                "Atualize a Lista");
+                "Atualize a Lista", "?");
 
                 return validationStatus;
             }
@@ -229,7 +229,7 @@ namespace DimStock.Models
                     MessageNotifier.Show("Existem entradas no estoque " +
                     "relacionadas a esse produto e por isso, o preço " +
                     "de custo não poderá ser modificado até que todo " +
-                    "estoque atual seje zerado!", "Não Permitido");
+                    "estoque atual seje zerado!", "Não Permitido", "?");
 
                     return validationStatus;
                 }
@@ -250,7 +250,7 @@ namespace DimStock.Models
             if (product.Id == 0)
             {
                 MessageNotifier.Show("Selecione o produto " +
-                "para visualizar!", "Não Selecionado");
+                "para visualizar!", "Não Selecionado", "?");
 
                 return valitationStatus;
             }
@@ -259,7 +259,7 @@ namespace DimStock.Models
             {
                 MessageNotifier.Show("Não é possivel visualizar " +
                 "porque esse registro foi excluido!",
-                "Atualize a Lista");
+                "Atualize a Lista", "?");
 
                 return valitationStatus;
             }

@@ -51,7 +51,8 @@ namespace DimStock.Models
 
                 if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
-                    MessageNotifier.Show("Produto cadastrado com sucesso!", "Sucesso");
+                    MessageNotifier.Show("Produto cadastrado " +
+                    "com sucesso!", "Sucesso", "!");
                     actionResult = true;
                 }
             }
@@ -87,7 +88,9 @@ namespace DimStock.Models
                     if (new StockModel(dataBaseTransaction, this).UpdateTotalValue() == true)
                     {
                         dataBaseTransaction.Commit();
-                        MessageNotifier.Show("Produto atualizado com sucesso!", "Sucesso");
+                        MessageNotifier.Show("Produto atualizado " +
+                        "com sucesso!", "Sucesso", "!");
+
                         actionResult = true;
                     }
                 }
@@ -114,7 +117,7 @@ namespace DimStock.Models
                 if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
                     MessageNotifier.Show("Produto excluido " +
-                    "com sucesso!", "Sucesso");
+                    "com sucesso!", "Sucesso", "!");
 
                     actionResult = true;
                 }
@@ -139,7 +142,7 @@ namespace DimStock.Models
                 {
                     MessageNotifier.Show("Esse produto não " +
                     "encontra-se registrado na sua base de " +
-                    "dados!", "Não Encontrado");
+                    "dados!", "Não Encontrado" , "?");
 
                     return registrationStatus;
                 }
