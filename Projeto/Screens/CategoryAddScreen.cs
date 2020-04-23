@@ -3,8 +3,6 @@ using DimStock.Presenters;
 using DimStock.Views;
 using MetroFramework.Forms;
 using System;
-using System.Linq;
-using System.Windows.Forms;
 
 namespace DimStock.Screens
 {
@@ -33,20 +31,41 @@ namespace DimStock.Screens
 
         private void ScreenResize(object sender, EventArgs e)
         {
-            Refresh();
+            try
+            {
+                Refresh();
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
         }
         private void ScreenClose(object sender, EventArgs e)
         {
-            Close();
+            try
+            {
+                Close();
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
         }
 
         private void InitializeEvents()
         {
-            ButtonSave.Click += new EventHandler(presenter.Update);
-            ButtonDelete.Click += new EventHandler(presenter.Delete);
-            ButtonClearView.Click += new EventHandler(presenter.ClearView);
-            ButtonClose.Click += new EventHandler(ScreenClose);
-            Resize += new EventHandler(ScreenResize);
+            try
+            {
+                ButtonSave.Click += new EventHandler(presenter.Update);
+                ButtonDelete.Click += new EventHandler(presenter.Delete);
+                ButtonClearView.Click += new EventHandler(presenter.ClearView);
+                ButtonClose.Click += new EventHandler(ScreenClose);
+                Resize += new EventHandler(ScreenResize);
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
         }
 
         public void ShowScreen(object sender, EventArgs e)
@@ -68,15 +87,21 @@ namespace DimStock.Screens
         }
         public void SetDetails(ICategoryAddView view)
         {
-            var screen = new CategoryAddScreen()
+            try
             {
-                Id = view.Id,
-                Description = view.Description,
-                ControlBox = false,
-                Owner = HomeScreen.He
-            };
-
-            screen.ShowDialog();
+                using (var screen = new CategoryAddScreen())
+                {
+                    Id = view.Id;
+                    Description = view.Description;
+                    ControlBox = false;
+                    Owner = HomeScreen.He;
+                    ShowDialog();
+                };
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
         }
     }
 }
