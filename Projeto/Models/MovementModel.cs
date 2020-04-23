@@ -34,6 +34,9 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
+            if (MovementValidationModel.ValidateToStartOperation(this) == false)
+                return actionResult;
+
             using (transaction = new ConnectionTransactionModel())
             {
                 sql = @"INSERT INTO Movement(OperationType)VALUES(@OperationType)";
@@ -81,7 +84,7 @@ namespace DimStock.Models
                         transaction.Commit();
 
                         MessageNotifier.Show("Movimentação registrada " +
-                        "com sucesso!", "Sucesso");
+                        "com sucesso!", "Sucesso", "!");
 
                         actionResult = true;
                     }
@@ -110,6 +113,9 @@ namespace DimStock.Models
         {
             var actionResult = false;
             var sql = string.Empty;
+
+            if (MovementValidationModel.ValidateToSetDestinationId(this) == false)
+                return actionResult;
 
             using (var dataBase = new ConnectionModel())
             {
@@ -171,6 +177,9 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
+            if (MovementValidationModel.ValidateToDelete(this) == false)
+                return actionResult;
+
             using (transaction = new ConnectionTransactionModel())
             {
                 if (CancelStockPostings() == true)
@@ -185,7 +194,7 @@ namespace DimStock.Models
                         transaction.Commit();
 
                         MessageNotifier.Show("Movimentação excluida " +
-                        "com sucesso!", "Sucesso");
+                        "com sucesso!", "Sucesso", "!");
 
                         actionResult = true;
                     }
@@ -199,6 +208,9 @@ namespace DimStock.Models
         {
             var actionResult = false;
             var sql = string.Empty;
+
+            if (MovementValidationModel.ValidateToGetDetails(this) == false)
+                return actionResult;
 
             using (var dataBase = new ConnectionModel())
             {
@@ -237,6 +249,31 @@ namespace DimStock.Models
             }
 
             return actionResult;
+        }
+
+        public bool CheckIfRegister()
+        {
+            var registrationStatus = false;
+            var sql = string.Empty;
+
+            using (var dataBase = new ConnectionModel())
+            {
+                sql = @"SELECT * FROM Movement WHERE Id = @Id";
+
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@Id", Id);
+
+                if (dataBase.ExecuteScalar(sql) == 0)
+                {
+                    MessageNotifier.Show("Essa movimentação não " +
+                    "encontra-se registrada na sua base de " +
+                    "dados!", "Não Encontrada", "?");
+
+                    return registrationStatus;
+                }
+            }
+
+            return registrationStatus = true;
         }
 
         public DataTable FetchData()
