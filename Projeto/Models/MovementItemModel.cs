@@ -33,6 +33,9 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
+            if (MovementItemValidationModel.ValidateToInsert(this) == false)
+                return actionResult;
+
             using (var dataBase = new ConnectionModel())
             {
                 sql = @"INSERT INTO MovementItem(MovementId, ProductId, StockId, 
@@ -48,7 +51,9 @@ namespace DimStock.Models
                 dataBase.AddParameter("@TotalValue", TotalValue);
 
                 if (dataBase.ExecuteNonQuery(sql) > 0)
+                {
                     actionResult = true;
+                }
             }
 
             return actionResult;
@@ -58,6 +63,9 @@ namespace DimStock.Models
         {
             var actionResult = false;
             var sql = string.Empty;
+
+            if (MovementItemValidationModel.ValidateToDelete(this) == false)
+                return actionResult;
 
             using (var dataBase = new ConnectionModel())
             {
@@ -78,6 +86,10 @@ namespace DimStock.Models
         public DataTable ListItems()
         {
             var sql = string.Empty;
+            var searchResult = new DataTable();
+
+            if (MovementItemValidationModel.ValidateToListItems(this) == false)
+                return searchResult;
 
             using (var dataBase = new ConnectionModel())
             {
@@ -88,8 +100,10 @@ namespace DimStock.Models
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@MovementId", Movement.Id);
 
-                return dataBase.ExecuteDataAdapter(sql);
+                searchResult = dataBase.ExecuteDataAdapter(sql);
             }
+
+            return searchResult;
         }
     }
 }
