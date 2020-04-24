@@ -163,6 +163,7 @@
     </Compile>
     <Compile Include="Models\AppSettingModel.cs" />
     <Compile Include="Models\CategoryValidationModel.cs" />
+    <Compile Include="Models\DestinationValidationModel.cs" />
     <Compile Include="Models\MovementItemValidationModel.cs" />
     <Compile Include="Models\MovementValidationModel.cs" />
     <Compile Include="Models\ProductValidationModel.cs" />
