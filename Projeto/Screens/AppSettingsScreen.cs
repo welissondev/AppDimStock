@@ -317,7 +317,7 @@ namespace DimStock.Screens
                 return false;
             }
 
-            var user = new UserLoginModel()
+            var user = new UserModel()
             {
                 Name = TextUserName.Text,
                 Email = TextEmail.Text,
