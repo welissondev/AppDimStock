@@ -36,10 +36,6 @@ namespace DimStock.Screens
         private void HomeScreenForm_Load(object sender, EventArgs e)
         {
             He = this;
-
-            Hide();
-
-            UserLoginScreen.ShowForm();
         }
 
         private void ShowNewForm(object sender, EventArgs e)
