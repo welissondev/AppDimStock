@@ -127,7 +127,6 @@
             this.MainMenu_Settings.Text = "Configurações";
             this.MainMenu_Settings.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.MainMenu_Settings.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.MainMenu_Settings.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.MainMenu_Settings_LinkClicked);
             // 
             // MainMenu_Support
             // 
@@ -147,7 +146,6 @@
             this.MainMenu_Support.Text = "Suporte";
             this.MainMenu_Support.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.MainMenu_Support.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.MainMenu_Support.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.MainMenu_Support_LinkClicked);
             // 
             // label4
             // 
@@ -200,7 +198,6 @@
             this.MainMenu_User.Text = "Usuário";
             this.MainMenu_User.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.MainMenu_User.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.MainMenu_User.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.MainMenu_User_LinkClicked);
             // 
             // MainMenu_Stock
             // 
@@ -220,7 +217,6 @@
             this.MainMenu_Stock.Text = "Estoque";
             this.MainMenu_Stock.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.MainMenu_Stock.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.MainMenu_Stock.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.MainMenu_Stock_LinkClicked);
             // 
             // MainMenu_Product
             // 
@@ -240,7 +236,6 @@
             this.MainMenu_Product.Text = "Produto";
             this.MainMenu_Product.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.MainMenu_Product.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.MainMenu_Product.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.MainMenu_Product_LinkClicked);
             // 
             // pictureBox1
             // 
@@ -288,14 +283,12 @@
             this.MenuProduct_RegisterNew_Product.Name = "MenuProduct_RegisterNew_Product";
             this.MenuProduct_RegisterNew_Product.Size = new System.Drawing.Size(125, 22);
             this.MenuProduct_RegisterNew_Product.Text = "Produto";
-            this.MenuProduct_RegisterNew_Product.Click += new System.EventHandler(this.MenuProduct_RegisterNew_Product_Click);
             // 
             // MenuProduct_RegisterNew_Category
             // 
             this.MenuProduct_RegisterNew_Category.Name = "MenuProduct_RegisterNew_Category";
             this.MenuProduct_RegisterNew_Category.Size = new System.Drawing.Size(125, 22);
             this.MenuProduct_RegisterNew_Category.Text = "Categoria";
-            this.MenuProduct_RegisterNew_Category.Click += new System.EventHandler(this.MenuProduct_RegisterNew_Category_Click);
             // 
             // MenuProduct_ListRegisters
             // 
@@ -311,14 +304,12 @@
             this.MenuProduct_ListRegisters_Product.Name = "MenuProduct_ListRegisters_Product";
             this.MenuProduct_ListRegisters_Product.Size = new System.Drawing.Size(130, 22);
             this.MenuProduct_ListRegisters_Product.Text = "Produtos";
-            this.MenuProduct_ListRegisters_Product.Click += new System.EventHandler(this.MenuProduct_ListRegisters_Product_Click);
             // 
             // MenuProduct_ListRegisters_Category
             // 
             this.MenuProduct_ListRegisters_Category.Name = "MenuProduct_ListRegisters_Category";
             this.MenuProduct_ListRegisters_Category.Size = new System.Drawing.Size(130, 22);
             this.MenuProduct_ListRegisters_Category.Text = "Categorias";
-            this.MenuProduct_ListRegisters_Category.Click += new System.EventHandler(this.MenuProduct_ListRegisters_Category_Click);
             // 
             // ContextMenu_Stock
             // 
@@ -343,28 +334,24 @@
             this.MenuStock_RegisterNew_Entrie.Name = "MenuStock_RegisterNew_Entrie";
             this.MenuStock_RegisterNew_Entrie.Size = new System.Drawing.Size(114, 22);
             this.MenuStock_RegisterNew_Entrie.Text = "Entrada";
-            this.MenuStock_RegisterNew_Entrie.Click += new System.EventHandler(this.MenuStock_RegisterNew_Entrie_Click);
             // 
             // MenuStock_RegisterNew_Output
             // 
             this.MenuStock_RegisterNew_Output.Name = "MenuStock_RegisterNew_Output";
             this.MenuStock_RegisterNew_Output.Size = new System.Drawing.Size(114, 22);
             this.MenuStock_RegisterNew_Output.Text = "Saída";
-            this.MenuStock_RegisterNew_Output.Click += new System.EventHandler(this.MenuStock_RegisterNew_Output_Click);
             // 
             // MenuStock_ListMovements
             // 
             this.MenuStock_ListMovements.Name = "MenuStock_ListMovements";
             this.MenuStock_ListMovements.Size = new System.Drawing.Size(190, 22);
             this.MenuStock_ListMovements.Text = "Listar Movimentações";
-            this.MenuStock_ListMovements.Click += new System.EventHandler(this.MenuStock_ListMovements_Click);
             // 
             // MenuStock_ListStocks
             // 
             this.MenuStock_ListStocks.Name = "MenuStock_ListStocks";
             this.MenuStock_ListStocks.Size = new System.Drawing.Size(190, 22);
             this.MenuStock_ListStocks.Text = "Listar Estoques";
-            this.MenuStock_ListStocks.Click += new System.EventHandler(this.MenuStock_ListStocks_Click);
             // 
             // ContextMenu_User
             // 
@@ -379,14 +366,11 @@
             this.MenuUser_RegisterNew.Name = "MenuUser_RegisterNew";
             this.MenuUser_RegisterNew.Size = new System.Drawing.Size(156, 22);
             this.MenuUser_RegisterNew.Text = "Cadastrar Novo";
-            this.MenuUser_RegisterNew.Click += new System.EventHandler(this.MenuUser_RegisterNew_Click);
-            // 
             // MenuUser_ListUsers
             // 
             this.MenuUser_ListUsers.Name = "MenuUser_ListUsers";
             this.MenuUser_ListUsers.Size = new System.Drawing.Size(156, 22);
             this.MenuUser_ListUsers.Text = "Listar Usuários";
-            this.MenuUser_ListUsers.Click += new System.EventHandler(this.MenuUser_ListUsers_Click);
             // 
             // ContextMenu_Settings
             // 
@@ -409,14 +393,12 @@
             this.MenuSettings_Backup_GenerateNew.Name = "MenuSettings_Backup_GenerateNew";
             this.MenuSettings_Backup_GenerateNew.Size = new System.Drawing.Size(154, 22);
             this.MenuSettings_Backup_GenerateNew.Text = "Gerar Novo";
-            this.MenuSettings_Backup_GenerateNew.Click += new System.EventHandler(this.MenuSettings_Backup_GenerateNew_Click);
             // 
             // MenuSettings_Backup_ImportAnother
             // 
             this.MenuSettings_Backup_ImportAnother.Name = "MenuSettings_Backup_ImportAnother";
             this.MenuSettings_Backup_ImportAnother.Size = new System.Drawing.Size(154, 22);
             this.MenuSettings_Backup_ImportAnother.Text = "Importar Outro";
-            this.MenuSettings_Backup_ImportAnother.Click += new System.EventHandler(this.MenuSettings_Backup_ImportAnother_Click);
             // 
             // HomeScreenForm
             // 
