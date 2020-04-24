@@ -31,12 +31,6 @@ namespace DimStock.Models
 
         }
 
-        public UserModel(AuxiliaryDataPage pagination)
-        {
-            Pagination = pagination;
-            List = new List<UserModel>();
-        }
-
         public bool SignIn()
         {
             var accessState = false;
@@ -78,76 +72,8 @@ namespace DimStock.Models
             return accessState;
         }
 
-        public bool CreateNewLogin()
-        {
-            var sql = string.Empty;
-
-            if (ValidateEmail(Email) == false)
-                return false;
-
-            using (var dataBase = new ConnectionModel())
-            {
-                var createState = false;
-
-                sql = @"INSERT INTO [User]([Name], Email, Login, [PassWord], 
-                PermissionToRegister, PermissionToEdit, PermissionToDelete, PermissionToView, 
-                AllPermissions)VALUES(@Name, @Email, @Login, @PassWord, @PermissionToRegister, 
-                @PermissionToEdit, @PermissionToDelete, @PermissionToView, @AllPermissions)";
-
-                dataBase.AddParameter("@Name", Name);
-                dataBase.AddParameter("@Email", Email);
-                dataBase.AddParameter("@Login", Login);
-                dataBase.AddParameter("@PassWord", PassWord);
-                dataBase.AddParameter("@PermissionToRegister", true);
-                dataBase.AddParameter("@PermissionToEdit", true);
-                dataBase.AddParameter("@PermissionToDelete", true);
-                dataBase.AddParameter("@PermissionToView", true);
-                dataBase.AddParameter("@AllPermissions", true);
-
-                createState = dataBase.ExecuteNonQuery(sql) > 0;
-
-                CreateDefaultLogin(dataBase);
-
-                return createState;
-            }
-        }
-
-        private void CreateDefaultLogin(ConnectionModel dataBase)
-        {
-            var sql = string.Empty;
-
-            Login = "Admin";
-
-            if (CheckIfLoginExists() == true)
-                return;
-
-            sql = @"INSERT INTO [User]([Name], Email, Login, [PassWord], 
-            PermissionToRegister, PermissionToEdit, PermissionToDelete, PermissionToView, 
-            AllPermissions)VALUES(@Name, @Email, @Login, @PassWord, @PermissionToRegister, 
-            @PermissionToEdit, @PermissionToDelete, @PermissionToView, @AllPermissions)";
-
-            dataBase.ClearParameter();
-            dataBase.AddParameter("@Name", "AdminUser");
-            dataBase.AddParameter("@Email", "Admin@admin.com");
-            dataBase.AddParameter("@Login", "Admin");
-            dataBase.AddParameter("@PassWord", "Admin");
-            dataBase.AddParameter("@PermissionToRegister", true);
-            dataBase.AddParameter("@PermissionToEdit", true);
-            dataBase.AddParameter("@PermissionToDelete", true);
-            dataBase.AddParameter("@PermissionToView", true);
-            dataBase.AddParameter("@AllPermissions", true);
-
-            dataBase.ExecuteNonQuery(sql);
-        }
-
         public bool Save()
         {
-            if (CheckIfLoginExists() == true)
-                return false;
-
-            if (ValidateEmail(Email) == false)
-                return false;
-
             var transactionState = false;
             var sql = string.Empty;
 
@@ -187,9 +113,6 @@ namespace DimStock.Models
         {
             var sql = string.Empty;
 
-            if (ValidateEmail(Email) == false)
-                return false;
-
             var transactionState = false;
 
             using (var transaction = new ConnectionTransactionModel())
@@ -224,22 +147,6 @@ namespace DimStock.Models
 
         public bool Remove(int id)
         {
-            if (CheckIfResgisterExists(id) == false)
-            {
-                MessageNotifier.Show("Esse registro já foi excluido " +
-                "atualize a lista de dados", "Sucesso");
-
-                return false;
-            }
-
-            if (CheckCurrentRegister(id) == true)
-            {
-                MessageNotifier.Show("Você não pode deletar seu " +
-                "próprio registro de usuário!","Não Permitido");
-
-                return false;
-            }
-
             var transactionState = false;
             var sql = string.Empty;
 
@@ -327,103 +234,6 @@ namespace DimStock.Models
                 dataBase.AddParameter("@Email", string.Format("%{0}%", Email));
 
                 var dataTable = dataBase.ExecuteDataAdapter(sql);
-
-                PassToList(dataTable);
-            }
-        }
-
-        public bool ValidateEmail(string email)
-        {
-            var validation = EmailAddressValidator.Validate(email);
-
-            if (validation == false)
-                MessageNotifier.Show("O endereço de e-mail " +
-                "informado não é válido!", "Inválido");
-
-            return validation;
-        }
-
-        public bool CheckIfLoginExists()
-        {
-            var sql = string.Empty;
-
-            using (var dataBase = new ConnectionModel())
-            {
-                var userFound = 0;
-
-                sql = @"SELECT Login FROM [UserLogin] 
-                WHERE Login LIKE @Login";
-
-                dataBase.ClearParameter();
-                dataBase.AddParameter("@Login", Login);
-
-                using (var reader = dataBase.ExecuteReader(sql))
-                {
-                    while (reader.Read())
-                    {
-                        userFound += 1;
-                    }
-                }
-
-                if (userFound > 0)
-                {
-                    MessageNotifier.Show("Já existe um usuário " +
-                    "com o login |" + Login + "|. Por favor, informe " +
-                    "outro nome de login!", "Já Existe");
-                }
-
-                return userFound > 0;
-            }
-        }
-
-        public bool CheckCurrentRegister(int id)
-        {
-            if (UserLoginState.Id == id)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public bool CheckIfResgisterExists(int id)
-        {
-            var sql = string.Empty;
-
-            using (var dataBase = new ConnectionModel())
-            {
-                sql = "SELECT Id FROM [UserLogin] WHERE Id = @Id";
-                var recordsFound = 0;
-
-                dataBase.ClearParameter();
-                dataBase.AddParameter("Id", id);
-
-                using (var reader = dataBase.ExecuteReader(sql))
-                {
-                    while (reader.Read())
-                    {
-                        recordsFound += 1;
-                    }
-                }
-
-                return recordsFound > 0;
-            }
-        }
-
-        public void PassToList(DataTable dataTable)
-        {
-            foreach (DataRow row in dataTable.Rows)
-            {
-                var User = new UserModel()
-                {
-                    Id = Convert.ToInt32(row["Id"]),
-                    Name = Convert.ToString(row["Login"]),
-                    Email = Convert.ToString(row["Email"])
-                };
-
-                List.Add(User);
             }
         }
     }

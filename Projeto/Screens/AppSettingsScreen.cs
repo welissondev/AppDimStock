@@ -317,20 +317,6 @@ namespace DimStock.Screens
                 return false;
             }
 
-            var user = new UserModel()
-            {
-                Name = TextUserName.Text,
-                Email = TextEmail.Text,
-                Login = TextLogin.Text,
-                PassWord = TextPassWord.Text,
-            };
-
-            if (user.CreateNewLogin() == false)
-            {
-                MessageBox.Show(MessageNotifier.Message);
-                return false;
-            }
-
             return true;
         }
 
