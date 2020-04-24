@@ -13,7 +13,6 @@ namespace DimStock.Models
         public double TotalValue { get; set; }
         public double SubTotal { get; set; }
         public StockModel Stock { get; set; }
-        public ProductModel Product { get; set; }
         public MovementModel Movement { get; set; }
     }
 
@@ -22,7 +21,6 @@ namespace DimStock.Models
         public MovementItemModel()
         {
             Stock = new StockModel();
-            Product = new ProductModel();
             Movement = new MovementModel();
         }
         public MovementItemModel(MovementModel movement)
@@ -43,7 +41,7 @@ namespace DimStock.Models
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@MovementId", Movement.Id);
-                dataBase.AddParameter("@ProductId", Product.Id);
+                dataBase.AddParameter("@ProductId", Stock.Product.Id);
                 dataBase.AddParameter("@StockId", Stock.Id);
                 dataBase.AddParameter("@Quantity", Quantity);
                 dataBase.AddParameter("@UnitaryValue", UnitaryValue);
