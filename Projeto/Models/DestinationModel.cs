@@ -1,6 +1,6 @@
 ﻿using DimStock.AuxilyTools.AuxilyClasses;
 using System;
-using System.Collections.Generic;
+using System.Data;
 
 namespace DimStock.Models
 {
@@ -11,14 +11,12 @@ namespace DimStock.Models
     {
         public int Id { get; set; }
         public string Location { get; set; }
-        public List<DestinationModel> List { get; set; }
     }
 
     public partial class DestinationModel
     {
         public DestinationModel()
         {
-            List = new List<DestinationModel>();
         }
 
         public bool Insert()
@@ -46,7 +44,7 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public bool Update(int id)
+        public bool Update()
         {
             var actionResult = false;
             var sql = string.Empty;
@@ -58,7 +56,7 @@ namespace DimStock.Models
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Location", Location);
-                dataBase.AddParameter("@Id", id);
+                dataBase.AddParameter("@Id", Id);
 
                 if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
@@ -72,7 +70,7 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public bool Delete(int id)
+        public bool Delete()
         {
             var actionResult = false;
             var sql = string.Empty;
@@ -82,52 +80,24 @@ namespace DimStock.Models
                 sql = @"DELETE FROM Destination WHERE Id = @Id";
 
                 dataBase.ClearParameter();
-                dataBase.AddParameter("@Id", id);
+                dataBase.AddParameter("@Id", Id);
 
                 if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
                     MessageNotifier.Show("Destino deletado " +
                     "com sucesso!", "Sucesso");
-                    
+
                     actionResult = true;
-                }
-                else
-                {
-                    MessageNotifier.Show("Esse registro já foi " +
-                    "deletado, atualize a lista de dados!", "");
                 }
             }
 
             return actionResult;
         }
 
-        public void ListData()
+        public bool GetDetails()
         {
             var sql = string.Empty;
-
-            using (var dataBase = new ConnectionModel())
-            {
-                sql = @"SELECT * From StockDestination";
-
-                using (var reader = dataBase.ExecuteReader(sql))
-                {
-                    while (reader.Read())
-                    {
-                        var destination = new DestinationModel()
-                        {
-                            Id = Convert.ToInt32(reader["Id"]),
-                            Location = Convert.ToString(reader["Location"])
-                        };
-
-                        List.Add(destination);
-                    }
-                }
-            }
-        }
-
-        public void GetDetail(int id)
-        {
-            var sql = string.Empty;
+            var actionResult = false;
 
             using (var dataBase = new ConnectionModel())
             {
@@ -135,17 +105,38 @@ namespace DimStock.Models
                 WHERE Id = @Id";
 
                 dataBase.ClearParameter();
-                dataBase.AddParameter("@Id", id);
+                dataBase.AddParameter("@Id", Id);
 
                 using (var reader = dataBase.ExecuteReader(sql))
                 {
-                    while (reader.Read())
+                    if (reader.FieldCount > 0)
                     {
-                        Id = Convert.ToInt32(reader["Id"]);
-                        Location = Convert.ToString(reader["Location"]);
+                        while (reader.Read())
+                        {
+                            Id = Convert.ToInt32(reader["Id"]);
+                            Location = Convert.ToString(reader["Location"]);
+                        }
+
+                        actionResult = true;
                     }
                 }
             }
+
+            return actionResult;
+        }
+
+        public DataTable SearchData()
+        {
+            var sql = string.Empty;
+            var searchResult = new DataTable();
+
+            using (var dataBase = new ConnectionModel())
+            {
+                sql = @"SELECT * From StockDestination";
+                searchResult = dataBase.ExecuteDataAdapter(sql);
+            }
+
+            return searchResult;
         }
     }
 }
