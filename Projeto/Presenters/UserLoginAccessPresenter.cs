@@ -13,14 +13,15 @@ namespace DimStock.Presenters
             this.view = view;
         }
 
-        public void Access(object sender, EventArgs e)
+        public bool Access(object sender, EventArgs e)
         {
             var user = new UserLoginModel()
             {
                 Login = view.Login,
                 AccessPassWord = view.AccessPassWord
             };        
-            user.Access();
+            
+            return user.Access();
         }
     }
 }
