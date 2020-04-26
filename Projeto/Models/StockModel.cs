@@ -62,18 +62,15 @@ namespace DimStock.Models
 
                 using (var reader = dataBase.ExecuteReader(sql))
                 {
-                    if (reader.Read() == true)
+                    while (reader.Read())
                     {
-                        while (reader.Read())
-                        {
-                            Id = int.Parse(reader["Stock.Id"].ToString());
-                            Product.Id = int.Parse(reader["Product.Id"].ToString());
-                            Product.InternalCode = reader["InternalCode"].ToString();
-                            Product.Description = reader["Description"].ToString();
-                            Product.CostPrice = double.Parse(reader["CostPrice"].ToString());
-                            Quantity = int.Parse(reader["Quantity"].ToString());
-                            actionResult = true;
-                        }
+                        Id = int.Parse(reader["Stock.Id"].ToString());
+                        Product.Id = int.Parse(reader["Product.Id"].ToString());
+                        Product.InternalCode = reader["InternalCode"].ToString();
+                        Product.Description = reader["Description"].ToString();
+                        Product.CostPrice = double.Parse(reader["CostPrice"].ToString());
+                        Quantity = int.Parse(reader["Quantity"].ToString());
+                        actionResult = true;
                     }
                 }
             }

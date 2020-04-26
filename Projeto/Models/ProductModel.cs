@@ -198,25 +198,22 @@ namespace DimStock.Models
 
                 using (var reader = dataBase.ExecuteReader(sql))
                 {
-                    if (reader.Read())
+                    while (reader.Read())
                     {
-                        while (reader.Read())
-                        {
-                            Id = int.Parse(reader["Product.Id"].ToString());
-                            InternalCode = reader["InternalCode"].ToString();
-                            Description = reader["Product.Description"].ToString();
-                            CostPrice = double.Parse(reader["CostPrice"].ToString());
-                            SalePrice = double.Parse(reader["SalePrice"].ToString());
-                            BarCode = reader["BarCode"].ToString();
+                        Id = int.Parse(reader["Product.Id"].ToString());
+                        InternalCode = reader["InternalCode"].ToString();
+                        Description = reader["Product.Description"].ToString();
+                        CostPrice = double.Parse(reader["CostPrice"].ToString());
+                        SalePrice = double.Parse(reader["SalePrice"].ToString());
+                        BarCode = reader["BarCode"].ToString();
 
-                            if (reader["Category.Id"] != DBNull.Value)
-                                Category.Id = int.Parse(reader["Category.Id"].ToString());
+                        if (reader["Category.Id"] != DBNull.Value)
+                            Category.Id = int.Parse(reader["Category.Id"].ToString());
 
-                            if (reader["Category.Description"] != DBNull.Value)
-                                Category.Description = reader["Category.Description"].ToString();
+                        if (reader["Category.Description"] != DBNull.Value)
+                            Category.Description = reader["Category.Description"].ToString();
 
-                            actionResult = true;
-                        }
+                        actionResult = true;
                     }
                 }
             }

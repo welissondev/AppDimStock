@@ -116,14 +116,11 @@ namespace DimStock.Models
 
                 using (var reader = dataBase.ExecuteReader(sql))
                 {
-                    if (reader.Read() == true)
+                    while (reader.Read())
                     {
-                        while (reader.Read())
-                        {
-                            Id = int.Parse(reader["Id"].ToString());
-                            Description = reader["Description"].ToString();
-                            actionResult = true;
-                        }
+                        Id = int.Parse(reader["Id"].ToString());
+                        Description = reader["Description"].ToString();
+                        actionResult = true;
                     }
                 }
             }

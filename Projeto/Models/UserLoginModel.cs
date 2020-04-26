@@ -44,25 +44,24 @@ namespace DimStock.Models
 
                 using (var reader = dataBase.ExecuteReader(sql))
                 {
-                    if (reader.Read() == false)
+                    while (reader.Read())
                     {
-                        MessageNotifier.Show("Usuário ou senha " +
-                        "incorretos!", "Não Encontrado", "?");
+                        Id = int.Parse(reader["Id"].ToString());
+                        YourName = reader["YourName"].ToString();
+                        Email = reader["Email"].ToString();
+                        Login = reader["Login"].ToString();
+                        AccessPassWord = reader["AccessPassWord"].ToString();
+                        InsertAllowed = bool.Parse(reader["InsertAllowed"].ToString());
+                        UpdateAllowed = bool.Parse(reader["UpdateAllowed"].ToString());
+                        DeleteAllowed = bool.Parse(reader["DeleteAllowed"].ToString());
+                        actionResult = true;
                     }
-                    else
-                    {
-                        while (reader.Read())
-                        {
-                            Id = int.Parse(reader["Id"].ToString());
-                            YourName = reader["YourName"].ToString();
-                            Email = reader["Email"].ToString();
-                            AccessPassWord = reader["AccessPassWord"].ToString();
-                            InsertAllowed = bool.Parse(reader["InsertAllowed"].ToString());
-                            UpdateAllowed = bool.Parse(reader["UpdateAllowed"].ToString());
-                            DeleteAllowed = bool.Parse(reader["DeleteAllowed"].ToString());
-                            actionResult = true;
-                        }
-                    }
+                }
+
+                if (actionResult == false)
+                {
+                    MessageNotifier.Show("Senha ou login de usuário " +
+                    "incorretos!", "Não Encontrado", "?");
                 }
             }
 
@@ -183,19 +182,17 @@ namespace DimStock.Models
 
                 using (var reader = dataBase.ExecuteReader(sql))
                 {
-                    if (reader.Read() == true)
+                    while (reader.Read())
                     {
-                        while (reader.Read())
-                        {
-                            Id = int.Parse(reader["Id"].ToString());
-                            YourName = reader["YourName"].ToString();
-                            Email = reader["Email"].ToString();
-                            AccessPassWord = reader["AccessPassWord"].ToString();
-                            InsertAllowed = bool.Parse(reader["InsertAllowed"].ToString());
-                            UpdateAllowed = bool.Parse(reader["UpdateAllowed"].ToString());
-                            DeleteAllowed = bool.Parse(reader["DeleteAllowed"].ToString());
-                            actionResult = true;
-                        }
+                        Id = int.Parse(reader["Id"].ToString());
+                        YourName = reader["YourName"].ToString();
+                        Email = reader["Email"].ToString();
+                        Login = reader["Login"].ToString();
+                        AccessPassWord = reader["AccessPassWord"].ToString();
+                        InsertAllowed = bool.Parse(reader["InsertAllowed"].ToString());
+                        UpdateAllowed = bool.Parse(reader["UpdateAllowed"].ToString());
+                        DeleteAllowed = bool.Parse(reader["DeleteAllowed"].ToString());
+                        actionResult = true;
                     }
                 }
             }
