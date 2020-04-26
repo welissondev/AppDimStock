@@ -8,8 +8,8 @@
         string Login { get; set; }
         string AccessPassWord { get; set; }
         string PassWordCheck { get; set; }
-        bool InsertAllower { get; set; }
-        bool UpdateAllower { get; set; }
-        bool DeleteAllower { get; set; }
+        bool InsertAllowed { get; set; }
+        bool UpdateAllowed { get; set; }
+        bool DeleteAllowed { get; set; }
     }
 }
