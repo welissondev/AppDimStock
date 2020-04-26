@@ -25,6 +25,43 @@ namespace DimStock.Models
         {
         }
 
+        public bool Access()
+        {
+            var actionResult = false;
+            var sql = string.Empty;
+
+            using (var dataBase = new ConnectionModel())
+            {
+                sql = @"SELECT * FROM UserLogin WHERE Login = @Login AND
+                AccessPassWord = @AccessPassWord";
+
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@Login", Login);
+                dataBase.AddParameter("@AccessPassWord", AccessPassWord);
+
+                using (var reader = dataBase.ExecuteReader(sql))
+                {
+                    if (reader.FieldCount > 0)
+                    {
+                        while (reader.Read())
+                        {
+                            UserLoginState.Id = int.Parse(reader["Id"].ToString());
+                            UserLoginState.Name = reader["[Name]"].ToString();
+                            UserLoginState.Login = reader["Login"].ToString();
+                            actionResult = true;
+                        }
+                    }
+                    else
+                    {
+                        MessageNotifier.Show("Usuário ou senha incorretos!",
+                        "Não Encontrado", "?");
+                    }
+                }
+            }
+
+            return actionResult;
+        }
+
         public bool Insert()
         {
             var sql = string.Empty;
