@@ -24,6 +24,9 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
+            if (DestinationValidationModel.ValidateToInsert(this) == false)
+                return actionResult;
+
             using (var dataBase = new ConnectionModel())
             {
                 sql = @"INSERT INTO StockDestination
@@ -48,6 +51,9 @@ namespace DimStock.Models
         {
             var actionResult = false;
             var sql = string.Empty;
+
+            if (DestinationValidationModel.ValidateToUpdate(this) == false)
+                return actionResult;
 
             using (var dataBase = new ConnectionModel())
             {
@@ -75,6 +81,9 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
+            if (DestinationValidationModel.ValidateToDelete(this) == false)
+                return actionResult;
+
             using (var dataBase = new ConnectionModel())
             {
                 sql = @"DELETE FROM Destination WHERE Id = @Id";
@@ -98,6 +107,9 @@ namespace DimStock.Models
         {
             var sql = string.Empty;
             var actionResult = false;
+
+            if (DestinationValidationModel.ValidateToGetDetails(this) == false)
+                return actionResult;
 
             using (var dataBase = new ConnectionModel())
             {
@@ -123,6 +135,33 @@ namespace DimStock.Models
             }
 
             return actionResult;
+        }
+
+        public bool CheckIfRegister()
+        {
+            /*Essa verificação também precisou ser feita pelo 
+             nome do local de destino, porque a regra de negócio não 
+             permiti dois destinos com o mesmo nome*/
+
+            var registrationStatus = false;
+            var sql = string.Empty;
+
+            using (var dataBase = new ConnectionModel())
+            {
+                sql = @"SELECT * FROM Destination WHERE Id = @Id
+                OR Location = @Location";
+
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@Id", Id);
+                dataBase.AddParameter("@Location", Location);
+
+                if (dataBase.ExecuteScalar(sql) == 0)
+                {
+                    return registrationStatus;
+                }
+            }
+
+            return registrationStatus = true;
         }
 
         public DataTable SearchData()
