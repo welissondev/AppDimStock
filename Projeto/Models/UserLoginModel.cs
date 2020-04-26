@@ -73,15 +73,15 @@ namespace DimStock.Models
             using (var dataBase = new ConnectionModel())
             {
                 sql = @"INSERT INTO UserLogin ([Name], Email, Login, 
-                [PassWord], InsertAllowed, UpdateAllowed, DeleteAllowed)
-                VALUES(@Name, @Email, @Login, @PassWord, @InsertAllowed,
+                AccessPassWord, InsertAllowed, UpdateAllowed, DeleteAllowed)
+                VALUES(@Name, @Email, @Login, @AccessPassWord, @InsertAllowed,
                 @UpdateAllowed, @DeleteAllowed";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Name", Name);
                 dataBase.AddParameter("@Email", Email);
                 dataBase.AddParameter("@Login", Login);
-                dataBase.AddParameter("@PassWord", AccessPassWord);
+                dataBase.AddParameter("@AccessPassWord", AccessPassWord);
                 dataBase.AddParameter("@InsertAllowed", InsertAllowed);
                 dataBase.AddParameter("@UpdateAllowed", UpdateAllowed);
                 dataBase.AddParameter("@DeleteAllowed", DeleteAllowed);
@@ -109,15 +109,15 @@ namespace DimStock.Models
             using (var dataBase = new ConnectionModel())
             {
                 sql = @"UPDATE UserLogin SET [Name] = @Name, Email = @Email,
-                Login = @Login, [PassWord] = @PassWord, InsertAllowed = @InsertAllowed, 
-                UpdateAllowed = @UpdateAllowed, DeleteAllowed = @DeleteAllowed WHERE
-                Id = @Id";
+                Login = @Login, AccessPassWord = @AccessPassWord, InsertAllowed = 
+                @InsertAllowed, UpdateAllowed = @UpdateAllowed, DeleteAllowed = 
+                @DeleteAllowed WHERE Id = @Id";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Name", Name);
                 dataBase.AddParameter("@Email", Email);
                 dataBase.AddParameter("@Login", Login);
-                dataBase.AddParameter("@PassWord", AccessPassWord);
+                dataBase.AddParameter("@AccessPassWord", AccessPassWord);
                 dataBase.AddParameter("@InsertAllowed", InsertAllowed);
                 dataBase.AddParameter("@UpdateAllowed", UpdateAllowed);
                 dataBase.AddParameter("@DeleteAllowed", DeleteAllowed);
@@ -183,7 +183,7 @@ namespace DimStock.Models
                             Id = int.Parse(reader["Id"].ToString());
                             Name = reader["[Name]"].ToString();
                             Email = reader["Email"].ToString();
-                            AccessPassWord = reader["PassWord"].ToString();
+                            AccessPassWord = reader["AccessPassWord"].ToString();
                             InsertAllowed = bool.Parse(reader["InsertAllowed"].ToString());
                             UpdateAllowed = bool.Parse(reader["UpdateAllowed"].ToString());
                             DeleteAllowed = bool.Parse(reader["DeleteAllowed"].ToString());
