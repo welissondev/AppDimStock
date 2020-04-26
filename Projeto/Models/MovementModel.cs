@@ -61,6 +61,9 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
+            if (MessageNotifier.Reply("Confirma essa operação?", 
+            "IMPORTANTE") == false) return actionResult;
+
             using (transaction = new ConnectionTransactionModel())
             {
                 if (InsertStockPostings() == true)
