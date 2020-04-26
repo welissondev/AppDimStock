@@ -4,11 +4,11 @@ using System;
 
 namespace DimStock.Presenters
 {
-    public class UserLoginPresenter
+    public class UserLoginAccessPresenter
     {
-        private IUserLoginView view;
+        private IUserLoginAccessView view;
 
-        public UserLoginPresenter(IUserLoginView view)
+        public UserLoginAccessPresenter(IUserLoginAccessView view)
         {
             this.view = view;
         }

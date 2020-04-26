@@ -1,6 +1,6 @@
 ﻿namespace DimStock.Screens
 {
-    partial class UserLoginScreen
+    partial class UserLoginAccessScreen
     {
         /// <summary>
         /// Required designer variable.

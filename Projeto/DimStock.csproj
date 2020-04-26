@@ -182,7 +182,7 @@
     <Compile Include="Presenters\ProductAddPresenter.cs" />
     <Compile Include="Presenters\ProductListingPresenter.cs" />
     <Compile Include="Presenters\UserLoginAddPresenter.cs" />
-    <Compile Include="Presenters\UserLoginPresenter.cs" />
+    <Compile Include="Presenters\UserLoginAccessPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\AuxiliaryFileManager.cs" />
@@ -272,11 +272,11 @@
     <Compile Include="Screens\UserListingScreen.Designer.cs">
       <DependentUpon>UserListingScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Screens\UserLoginScreen.cs">
+    <Compile Include="Screens\UserLoginAccessScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screens\UserLoginScreen.Designer.cs">
-      <DependentUpon>UserLoginScreen.cs</DependentUpon>
+    <Compile Include="Screens\UserLoginAccessScreen.Designer.cs">
+      <DependentUpon>UserLoginAccessScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Screens\UserLoginAddScreen.cs">
       <SubType>Form</SubType>
@@ -289,7 +289,8 @@
     <Compile Include="Views\IProductAddView.cs" />
     <Compile Include="Views\IProductListingView.cs" />
     <Compile Include="Views\IUserLoginAddView.cs" />
-    <Compile Include="Views\IUserLoginView.cs" />
+    <Compile Include="Views\IUserLoginAccessView.cs" />
+    <Compile Include="Views\IUserLoginListingScreen.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -336,8 +337,8 @@
     <EmbeddedResource Include="Screens\UserListingScreen.resx">
       <DependentUpon>UserListingScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Screens\UserLoginScreen.resx">
-      <DependentUpon>UserLoginScreen.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\UserLoginAccessScreen.resx">
+      <DependentUpon>UserLoginAccessScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\UserLoginAddScreen.resx">
       <DependentUpon>UserLoginAddScreen.cs</DependentUpon>
