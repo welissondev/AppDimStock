@@ -8,7 +8,7 @@ namespace DimStock.Models
         {
             var validationStatus = false;
 
-            if (user.Name == string.Empty)
+            if (user.YourName == string.Empty)
             {
                 MessageNotifier.Show("Nome do usuário não " +
                 "informado!", "Obrigatório", "?");
@@ -80,7 +80,7 @@ namespace DimStock.Models
         {
             var validationStatus = false;
 
-            if (user.Name == string.Empty)
+            if (user.YourName == string.Empty)
             {
                 MessageNotifier.Show("Nome do usuário não " +
                 "informado!", "Obrigatório", "?");
