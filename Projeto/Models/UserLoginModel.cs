@@ -53,9 +53,13 @@ namespace DimStock.Models
                     {
                         while (reader.Read())
                         {
-                            UserLoginState.Id = int.Parse(reader["Id"].ToString());
-                            UserLoginState.Name = reader["YourName"].ToString();
-                            UserLoginState.Login = reader["Login"].ToString();
+                            Id = int.Parse(reader["Id"].ToString());
+                            YourName = reader["YourName"].ToString();
+                            Email = reader["Email"].ToString();
+                            AccessPassWord = reader["AccessPassWord"].ToString();
+                            InsertAllowed = bool.Parse(reader["InsertAllowed"].ToString());
+                            UpdateAllowed = bool.Parse(reader["UpdateAllowed"].ToString());
+                            DeleteAllowed = bool.Parse(reader["DeleteAllowed"].ToString());
                             actionResult = true;
                         }
                     }

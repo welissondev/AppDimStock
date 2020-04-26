@@ -52,7 +52,9 @@ namespace DimStock.Screens
         {
             try
             {
-                var acessStatus = presenter.Access(sender, e);
+                if (presenter.Access(sender, e) == true)
+                {
+                }
             }
             catch (Exception ex)
             {
