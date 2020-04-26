@@ -12,7 +12,8 @@ namespace DimStock.Models
         public string Name { get; set; }
         public string Email { get; set; }
         public string Login { get; set; }
-        public string PassWord { get; set; }
+        public string AccessPassWord { get; set; }
+        public string PassWordCheck { get; set; }
         public bool InsertAllowed { get; set; }
         public bool UpdateAllowed { get; set; }
         public bool DeleteAllowed { get; set; }
@@ -29,6 +30,9 @@ namespace DimStock.Models
             var sql = string.Empty;
             var actionResult = false;
 
+            if (UserLoginValidationModel.ValidateToInsert(this) == false)
+                return actionResult;
+
             using (var dataBase = new ConnectionModel())
             {
                 sql = @"INSERT INTO UserLogin ([Name], Email, Login, 
@@ -40,7 +44,7 @@ namespace DimStock.Models
                 dataBase.AddParameter("@Name", Name);
                 dataBase.AddParameter("@Email", Email);
                 dataBase.AddParameter("@Login", Login);
-                dataBase.AddParameter("@PassWord", PassWord);
+                dataBase.AddParameter("@PassWord", AccessPassWord);
                 dataBase.AddParameter("@InsertAllowed", InsertAllowed);
                 dataBase.AddParameter("@UpdateAllowed", UpdateAllowed);
                 dataBase.AddParameter("@DeleteAllowed", DeleteAllowed);
@@ -62,6 +66,9 @@ namespace DimStock.Models
             var sql = string.Empty;
             var actionResult = false;
 
+            if (UserLoginValidationModel.ValidateToUpdate(this) == false)
+                return actionResult;
+
             using (var dataBase = new ConnectionModel())
             {
                 sql = @"UPDATE UserLogin SET [Name] = @Name, Email = @Email,
@@ -73,7 +80,7 @@ namespace DimStock.Models
                 dataBase.AddParameter("@Name", Name);
                 dataBase.AddParameter("@Email", Email);
                 dataBase.AddParameter("@Login", Login);
-                dataBase.AddParameter("@PassWord", PassWord);
+                dataBase.AddParameter("@PassWord", AccessPassWord);
                 dataBase.AddParameter("@InsertAllowed", InsertAllowed);
                 dataBase.AddParameter("@UpdateAllowed", UpdateAllowed);
                 dataBase.AddParameter("@DeleteAllowed", DeleteAllowed);
@@ -96,10 +103,14 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
+            if (UserLoginValidationModel.ValidateToDelete(this) == false)
+                return actionResult;
+
             using (var dataBase = new ConnectionModel())
             {
                 sql = @"DELETE FROM UserLogin WHERE Id = @Id";
 
+                dataBase.ClearParameter();
                 dataBase.AddParameter("Id", Id);
 
                 if (dataBase.ExecuteNonQuery(sql) > 0)
@@ -123,6 +134,9 @@ namespace DimStock.Models
             {
                 sql = @"SELECT * FROM UserLogin WHERE Id = Id";
 
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@Id", Id);
+
                 using (var reader = dataBase.ExecuteReader(sql))
                 {
                     if (reader.FieldCount > 0)
@@ -130,9 +144,9 @@ namespace DimStock.Models
                         while (reader.Read())
                         {
                             Id = int.Parse(reader["Id"].ToString());
-                            Name =  reader["[Name]"].ToString();
+                            Name = reader["[Name]"].ToString();
                             Email = reader["Email"].ToString();
-                            PassWord = reader["PassWord"].ToString();
+                            AccessPassWord = reader["PassWord"].ToString();
                             InsertAllowed = bool.Parse(reader["InsertAllowed"].ToString());
                             UpdateAllowed = bool.Parse(reader["UpdateAllowed"].ToString());
                             DeleteAllowed = bool.Parse(reader["DeleteAllowed"].ToString());
