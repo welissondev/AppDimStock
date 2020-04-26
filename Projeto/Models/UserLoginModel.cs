@@ -179,7 +179,7 @@ namespace DimStock.Models
 
                 using (var reader = dataBase.ExecuteReader(sql))
                 {
-                    if (reader.FieldCount > 0)
+                    if (reader.Read() == true)
                     {
                         while (reader.Read())
                         {
@@ -190,9 +190,8 @@ namespace DimStock.Models
                             InsertAllowed = bool.Parse(reader["InsertAllowed"].ToString());
                             UpdateAllowed = bool.Parse(reader["UpdateAllowed"].ToString());
                             DeleteAllowed = bool.Parse(reader["DeleteAllowed"].ToString());
+                            actionResult = true;
                         }
-
-                        actionResult = true;
                     }
                 }
             }

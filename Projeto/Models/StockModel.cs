@@ -62,10 +62,8 @@ namespace DimStock.Models
 
                 using (var reader = dataBase.ExecuteReader(sql))
                 {
-                    if (reader.FieldCount > 0)
+                    if (reader.Read() == true)
                     {
-                        actionResult = true;
-
                         while (reader.Read())
                         {
                             Id = int.Parse(reader["Stock.Id"].ToString());
@@ -74,6 +72,7 @@ namespace DimStock.Models
                             Product.Description = reader["Description"].ToString();
                             Product.CostPrice = double.Parse(reader["CostPrice"].ToString());
                             Quantity = int.Parse(reader["Quantity"].ToString());
+                            actionResult = true;
                         }
                     }
                 }

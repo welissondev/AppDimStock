@@ -198,7 +198,7 @@ namespace DimStock.Models
 
                 using (var reader = dataBase.ExecuteReader(sql))
                 {
-                    if (reader.FieldCount > 0)
+                    if (reader.Read())
                     {
                         while (reader.Read())
                         {
@@ -214,9 +214,9 @@ namespace DimStock.Models
 
                             if (reader["Category.Description"] != DBNull.Value)
                                 Category.Description = reader["Category.Description"].ToString();
-                        }
 
-                        actionResult = true;
+                            actionResult = true;
+                        }
                     }
                 }
             }
