@@ -161,8 +161,6 @@ namespace DimStock.Models
 
                 if (dataBase.ExecuteScalar(query) == 0)
                 {
-                    MessageNotifier.Show("Essa categoria não encontra-se " +
-                    "registrada na base de dados!", "Não Encontrada");
                     return registrationStatus;
                 }
             }

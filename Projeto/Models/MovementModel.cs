@@ -268,10 +268,6 @@ namespace DimStock.Models
 
                 if (dataBase.ExecuteScalar(sql) == 0)
                 {
-                    MessageNotifier.Show("Essa movimentação não " +
-                    "encontra-se registrada na sua base de " +
-                    "dados!", "Não Encontrada", "?");
-
                     return registrationStatus;
                 }
             }

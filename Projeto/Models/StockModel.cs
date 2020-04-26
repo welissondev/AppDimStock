@@ -205,10 +205,6 @@ namespace DimStock.Models
 
                 if (dataBase.ExecuteScalar(sql) == 0)
                 {
-                    MessageNotifier.Show("Esse estoque não " +
-                    "encontra-se registrado na sua base de " +
-                    "dados!", "Não Encontrado","?");
-
                     return registrationStatus;
                 }
             }
