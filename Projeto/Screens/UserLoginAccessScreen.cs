@@ -2,7 +2,7 @@
 
 namespace DimStock.Screens
 {
-    public partial class UserLoginScreen : MetroForm
+    public partial class UserLoginAccessScreen : MetroForm
     {
     }
 }
