@@ -30,6 +30,9 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
+            if (UserLoginValidationModel.ValidateToAccess(this) == false)
+                return actionResult;
+
             using (var dataBase = new ConnectionModel())
             {
                 sql = @"SELECT * FROM UserLogin WHERE Login = @Login AND
@@ -41,7 +44,12 @@ namespace DimStock.Models
 
                 using (var reader = dataBase.ExecuteReader(sql))
                 {
-                    if (reader.FieldCount > 0)
+                    if (reader.Read() == false)
+                    {
+                        MessageNotifier.Show("Usuário ou senha " +
+                        "incorretos!", "Não Encontrado", "?");
+                    }
+                    else
                     {
                         while (reader.Read())
                         {
@@ -50,11 +58,6 @@ namespace DimStock.Models
                             UserLoginState.Login = reader["Login"].ToString();
                             actionResult = true;
                         }
-                    }
-                    else
-                    {
-                        MessageNotifier.Show("Usuário ou senha incorretos!",
-                        "Não Encontrado", "?");
                     }
                 }
             }
