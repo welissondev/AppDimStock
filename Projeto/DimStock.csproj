@@ -182,6 +182,7 @@
     <Compile Include="Presenters\ProductAddPresenter.cs" />
     <Compile Include="Presenters\ProductListingPresenter.cs" />
     <Compile Include="Presenters\UserLoginAddPresenter.cs" />
+    <Compile Include="Presenters\UserLoginPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\AuxiliaryFileManager.cs" />
