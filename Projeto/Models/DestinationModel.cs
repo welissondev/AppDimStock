@@ -85,7 +85,7 @@ namespace DimStock.Models
                 if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
                     MessageNotifier.Show("Destino deletado " +
-                    "com sucesso!", "Sucesso");
+                    "com sucesso!", "Sucesso", "!");
 
                     actionResult = true;
                 }

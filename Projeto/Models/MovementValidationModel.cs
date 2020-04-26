@@ -58,6 +58,9 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
+            if (MessageNotifier.Reply("Confirma mesmo a exclusão dessa " +
+            "movimentação?", "IMPORTANTE") == false) return validationStatus;
+
             return validationStatus = true;
         }
 

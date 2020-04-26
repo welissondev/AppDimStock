@@ -94,10 +94,6 @@ namespace DimStock.Models
         {
             var validationStatus = false;
 
-            if (MessageNotifier.Reply("Deseja mesmo excluir " +
-             "esse produto?", "IMPORTANTE") == false)
-                return validationStatus;
-
             if (product.Id == 0)
             {
                 MessageNotifier.Show("Selecione o produto " +
@@ -123,6 +119,9 @@ namespace DimStock.Models
 
                 return validationStatus;
             }
+
+            if (MessageNotifier.Reply("Confirma mesmo a exclusão desse " +
+            "produto?", "IMPORTANTE") == false) return validationStatus;
 
             return validationStatus = true;
         }
