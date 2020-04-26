@@ -18,7 +18,7 @@ namespace DimStock.Presenters
             var user = new UserLoginModel
             {
                 Id = view.Id,
-                Name = view.Name,
+                YourName = view.YourName,
                 Email = view.Email,
                 Login = view.Login,
                 AccessPassWord = view.AccessPassWord,
@@ -51,7 +51,7 @@ namespace DimStock.Presenters
         public void ClearView(object sender, EventArgs e)
         {
             view.Id = 0;
-            view.Name = string.Empty;
+            view.YourName = string.Empty;
             view.Email = string.Empty;
             view.Login = string.Empty;
             view.AccessPassWord = string.Empty;

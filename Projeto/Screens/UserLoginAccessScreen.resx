@@ -117,4 +117,45 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="TextLogin.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAX4AAAAjCAYAAACTvWFhAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC5SURBVHhe7dQxDQMxAARB80fll2EERgDkZclNKHhnpGsO
+        wA4AgtZanznnz8zM7t1u/cn+GPsA4G679Sf7wg9QIPwAMcIPECP8ADHCDxAj/AAxwg8QI/wAMcIPECP8
+        ADHCDxAj/AAxwg8QI/wAMcIPECP8ADHCDxAj/AAxwg8QI/wAMcIPECP8ADHCDxAj/AAxwg8QI/wAMcIP
+        ECP8ADHCDxAj/AAxf+F/nue7DzMzu3e79Sf7AHSM8QInNtgrJpmiKQAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="TextPassWord.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAX4AAAAjCAYAAACTvWFhAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC5SURBVHhe7dQxDQMxAARB80fll2EERgDkZclNKHhnpGsO
+        wA4AgtZanznnz8zM7t1u/cn+GPsA4G679Sf7wg9QIPwAMcIPECP8ADHCDxAj/AAxwg8QI/wAMcIPECP8
+        ADHCDxAj/AAxwg8QI/wAMcIPECP8ADHCDxAj/AAxwg8QI/wAMcIPECP8ADHCDxAj/AAxwg8QI/wAMcIP
+        ECP8ADHCDxAj/AAxf+F/nue7DzMzu3e79Sf7AHSM8QInNtgrJpmiKQAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="ButtonExit.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAALwAAAAtCAYAAAAUcwFNAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEkSURBVHhe7d2xTcRAGITRbcR3lEIFtGYjyiAmpRQaIKKB
+        NWc0oRvA80Z6yeoPv3yHWd3u6/503+b7bdt3uJzX+XE0ntzHuK3z8/QQLmJZ51dyfwR/cgBXk9wFT4fk
+        Lng6JHfB0yG5C54OyV3wdEjugqdDchc8HZK74OmQ3AVPh+QueDokd8HTIbkLng7JXfB0SO6Cp0NyFzwd
+        krvg6ZDcBU+H5C54OiR3wdMhuQueDsld8HRI7oKnQ3IXPB2Su+DpkNwFT4fkLng6JHfB0yG5C54OyV3w
+        dEjugqdDchc8HZK74OmQ3AVPh+QueDokd8HTIbkLng7JXfB0SO6Cp0NyH+P4w/LsAK5i2eZPcv/7ifv5
+        8fB9dgj/3RH78jZfkrtZy8b4BQ7PefqnBLS0AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="ButtonEnter.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAALwAAAAtCAYAAAAUcwFNAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEkSURBVHhe7d2xTcRAGITRbcR3lEIFtGYjyiAmpRQaIKKB
+        NWc0oRvA80Z6yeoPv3yHWd3u6/503+b7bdt3uJzX+XE0ntzHuK3z8/QQLmJZ51dyfwR/cgBXk9wFT4fk
+        Lng6JHfB0yG5C54OyV3wdEjugqdDchc8HZK74OmQ3AVPh+QueDokd8HTIbkLng7JXfB0SO6Cp0NyFzwd
+        krvg6ZDcBU+H5C54OiR3wdMhuQueDsld8HRI7oKnQ3IXPB2Su+DpkNwFT4fkLng6JHfB0yG5C54OyV3w
+        dEjugqdDchc8HZK74OmQ3AVPh+QueDokd8HTIbkLng7JXfB0SO6Cp0NyH+P4w/LsAK5i2eZPcv/7ifv5
+        8fB9dgj/3RH78jZfkrtZy8b4BQ7PefqnBLS0AAAAAElFTkSuQmCC
+</value>
+  </data>
 </root>

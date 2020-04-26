@@ -4,11 +4,34 @@ namespace DimStock.Models
 {
     public class UserLoginValidationModel
     {
+        public static bool ValidateToAccess(UserLoginModel user)
+        {
+            var validationStatus = false;
+
+            if (user.Login == string.Empty)
+            {
+                MessageNotifier.Show("Nome de login não " +
+                "Informado!", "Obrigatório", "?");
+
+                return validationStatus;
+            }
+
+            if (user.AccessPassWord == string.Empty)
+            {
+                MessageNotifier.Show("Senha de acesso não " +
+                "Informada!", "Obrigatório", "?");
+
+                return validationStatus;
+            }
+
+            return validationStatus = true;
+        }
+
         public static bool ValidateToInsert(UserLoginModel user)
         {
             var validationStatus = false;
 
-            if (user.Name == string.Empty)
+            if (user.YourName == string.Empty)
             {
                 MessageNotifier.Show("Nome do usuário não " +
                 "informado!", "Obrigatório", "?");
@@ -80,7 +103,7 @@ namespace DimStock.Models
         {
             var validationStatus = false;
 
-            if (user.Name == string.Empty)
+            if (user.YourName == string.Empty)
             {
                 MessageNotifier.Show("Nome do usuário não " +
                 "informado!", "Obrigatório", "?");

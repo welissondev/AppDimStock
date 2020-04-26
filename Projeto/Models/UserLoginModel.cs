@@ -9,7 +9,7 @@ namespace DimStock.Models
     public partial class UserLoginModel
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string YourName { get; set; }
         public string Email { get; set; }
         public string Login { get; set; }
         public string AccessPassWord { get; set; }
@@ -30,6 +30,9 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
+            if (UserLoginValidationModel.ValidateToAccess(this) == false)
+                return actionResult;
+
             using (var dataBase = new ConnectionModel())
             {
                 sql = @"SELECT * FROM UserLogin WHERE Login = @Login AND
@@ -41,20 +44,20 @@ namespace DimStock.Models
 
                 using (var reader = dataBase.ExecuteReader(sql))
                 {
-                    if (reader.FieldCount > 0)
+                    if (reader.Read() == false)
+                    {
+                        MessageNotifier.Show("Usuário ou senha " +
+                        "incorretos!", "Não Encontrado", "?");
+                    }
+                    else
                     {
                         while (reader.Read())
                         {
                             UserLoginState.Id = int.Parse(reader["Id"].ToString());
-                            UserLoginState.Name = reader["[Name]"].ToString();
+                            UserLoginState.Name = reader["YourName"].ToString();
                             UserLoginState.Login = reader["Login"].ToString();
                             actionResult = true;
                         }
-                    }
-                    else
-                    {
-                        MessageNotifier.Show("Usuário ou senha incorretos!",
-                        "Não Encontrado", "?");
                     }
                 }
             }
@@ -72,13 +75,13 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"INSERT INTO UserLogin ([Name], Email, Login, 
+                sql = @"INSERT INTO UserLogin (YourName, Email, Login, 
                 AccessPassWord, InsertAllowed, UpdateAllowed, DeleteAllowed)
-                VALUES(@Name, @Email, @Login, @AccessPassWord, @InsertAllowed,
+                VALUES(@YourName, @Email, @Login, @AccessPassWord, @InsertAllowed,
                 @UpdateAllowed, @DeleteAllowed";
 
                 dataBase.ClearParameter();
-                dataBase.AddParameter("@Name", Name);
+                dataBase.AddParameter("@YourName", YourName);
                 dataBase.AddParameter("@Email", Email);
                 dataBase.AddParameter("@Login", Login);
                 dataBase.AddParameter("@AccessPassWord", AccessPassWord);
@@ -108,13 +111,13 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"UPDATE UserLogin SET [Name] = @Name, Email = @Email,
+                sql = @"UPDATE UserLogin SET YourName = @YourName, Email = @Email,
                 Login = @Login, AccessPassWord = @AccessPassWord, InsertAllowed = 
                 @InsertAllowed, UpdateAllowed = @UpdateAllowed, DeleteAllowed = 
                 @DeleteAllowed WHERE Id = @Id";
 
                 dataBase.ClearParameter();
-                dataBase.AddParameter("@Name", Name);
+                dataBase.AddParameter("@YourName", YourName);
                 dataBase.AddParameter("@Email", Email);
                 dataBase.AddParameter("@Login", Login);
                 dataBase.AddParameter("@AccessPassWord", AccessPassWord);
@@ -176,20 +179,19 @@ namespace DimStock.Models
 
                 using (var reader = dataBase.ExecuteReader(sql))
                 {
-                    if (reader.FieldCount > 0)
+                    if (reader.Read() == true)
                     {
                         while (reader.Read())
                         {
                             Id = int.Parse(reader["Id"].ToString());
-                            Name = reader["[Name]"].ToString();
+                            YourName = reader["YourName"].ToString();
                             Email = reader["Email"].ToString();
                             AccessPassWord = reader["AccessPassWord"].ToString();
                             InsertAllowed = bool.Parse(reader["InsertAllowed"].ToString());
                             UpdateAllowed = bool.Parse(reader["UpdateAllowed"].ToString());
                             DeleteAllowed = bool.Parse(reader["DeleteAllowed"].ToString());
+                            actionResult = true;
                         }
-
-                        actionResult = true;
                     }
                 }
             }
@@ -232,12 +234,12 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"SELECT Id, Login, [Name], Email FROM UserLogin WHERE 
-                Login LIKE @Login OR [Name] LIKE @Name OR Email = LIKE @Email";
+                sql = @"SELECT Id, Login, YourName, Email FROM UserLogin WHERE 
+                Login LIKE @Login OR YourName LIKE @YourName OR Email = LIKE @Email";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Login", string.Format("%{0}%", Login));
-                dataBase.AddParameter("@Name", string.Format("%{0}%", Name));
+                dataBase.AddParameter("@YourName", string.Format("%{0}%", YourName));
                 dataBase.AddParameter("@Email", string.Format("%{0}%", Email));
 
                 searchResult = dataBase.ExecuteDataAdapter(sql);

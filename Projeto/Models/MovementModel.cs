@@ -61,7 +61,7 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
-            if (MessageNotifier.Reply("Confirma essa operação?", 
+            if (MessageNotifier.Reply("Confirma essa operação?",
             "IMPORTANTE") == false) return actionResult;
 
             using (transaction = new ConnectionTransactionModel())
@@ -226,7 +226,7 @@ namespace DimStock.Models
 
                 using (var reader = dataBase.ExecuteReader(sql))
                 {
-                    if (reader.FieldCount > 0)
+                    if (reader.Read() == true)
                     {
                         while (reader.Read())
                         {
@@ -244,9 +244,9 @@ namespace DimStock.Models
 
                             if (reader["Destination.Location"] != DBNull.Value)
                                 Destination.Location = reader["Location"].ToString();
-                        }
 
-                        actionResult = true;
+                            actionResult = true;
+                        }
                     }
                 }
             }
