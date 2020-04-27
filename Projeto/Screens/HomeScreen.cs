@@ -27,7 +27,8 @@ namespace DimStock.Screens
                 MdiParent = this,
                 Dock = DockStyle.Fill,
                 ControlBox = false,
-                Movable = false
+                Movable = false,
+                Style = MetroFramework.MetroColorStyle.White
             };
             screen.Show();
         }

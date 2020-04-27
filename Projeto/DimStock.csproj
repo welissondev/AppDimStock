@@ -412,5 +412,8 @@
   <ItemGroup>
     <None Include="Resources\IconSettings.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconExtendedMenu.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
