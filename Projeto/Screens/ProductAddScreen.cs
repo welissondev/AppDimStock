@@ -79,7 +79,7 @@ namespace DimStock.Screens
                     ShowInTaskbar = false;
                     ShowIcon = false;
                     ControlBox = false;
-                    Owner = HomeScreen.He;
+                    Owner = HomeScreen.GetInstance();
                     ShowDialog();
                 };
             }
@@ -230,7 +230,7 @@ namespace DimStock.Screens
                     ShowIcon = false;
                     ShowInTaskbar = false;
                     ControlBox = false;
-                    Owner = HomeScreen.He;
+                    Owner = HomeScreen.GetInstance();
                     ShowDialog();
                 };
             }

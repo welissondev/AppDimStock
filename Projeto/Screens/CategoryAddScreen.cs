@@ -44,7 +44,8 @@ namespace DimStock.Screens
         {
             try
             {
-                Close();
+                if (this != null)
+                    Close();
             }
             catch (Exception ex)
             {
@@ -76,7 +77,7 @@ namespace DimStock.Screens
                 {
                     ShowInTaskbar = false;
                     ControlBox = false;
-                    Owner = HomeScreen.He;
+                    Owner = HomeScreen.GetInstance();
                     ShowDialog();
                 };
             }
@@ -94,7 +95,7 @@ namespace DimStock.Screens
                     Id = view.Id;
                     Description = view.Description;
                     ControlBox = false;
-                    Owner = HomeScreen.He;
+                    Owner = HomeScreen.GetInstance();
                     ShowDialog();
                 };
             }

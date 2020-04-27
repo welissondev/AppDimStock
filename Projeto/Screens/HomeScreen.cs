@@ -7,36 +7,46 @@ namespace DimStock.Screens
 {
     public partial class HomeScreen : Form
     {
-        private int childFormNumber = 0;
-        public static HomeScreen He { get; set; }
+        private static HomeScreen instance;
 
         public HomeScreen()
         {
             InitializeComponent();
+            InitializeEvents();
+            instance = this;
         }
 
-        private void HomeScreenForm_Load(object sender, EventArgs e)
+        private void ScreenLoad(object sender, EventArgs e)
         {
-            He = this;
         }
 
-        private void ShowNewForm(object sender, EventArgs e)
+        private void ShowCategoryAddScreen(object sender, EventArgs e)
         {
-            Form childForm = new Form
+            var screen = new ProductListingScreen()
             {
                 MdiParent = this,
-                Text = "Janela " + childFormNumber++
+                Dock = DockStyle.Fill,
+                ControlBox = false,
+                Movable = false
             };
-            childForm.Show();
+            screen.Show();
+        }
+
+        private void InitializeEvents()
+        {
+            Load += new EventHandler(ScreenLoad);
+            categoriaToolStripMenuItem.Click += new EventHandler(ShowCategoryAddScreen);
+            bunifuButton2.Click += new EventHandler(ShowCategoryAddScreen);
         }
 
         protected override void OnLoad(EventArgs e)
         {
+            //*Remove 3d do mdi e troca a cor de fundo*//
+
             try
             {
-                var homeScreen = this.Controls.OfType<MdiClient>().SingleOrDefault();
+                var homeScreen = Controls.OfType<MdiClient>().SingleOrDefault();
                 homeScreen.BackColor = Color.White;
-                this.SuspendLayout();
                 homeScreen.SuspendLayout();
                 var hdiff = homeScreen.Size.Width - homeScreen.ClientSize.Width;
                 var vdiff = homeScreen.Size.Height - homeScreen.ClientSize.Height;
@@ -47,15 +57,23 @@ namespace DimStock.Screens
                 homeScreen.Location = location;
                 homeScreen.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom;
                 homeScreen.ResumeLayout(true);
-                this.ResumeLayout(true);
                 base.OnLoad(e);
             }
 
             catch (Exception ex)
             {
                 ex.GetType();
-                this.Close();
             }
+        }
+
+        public static HomeScreen GetInstance()
+        {
+            return instance;
+        }
+
+        private void HomeScreen_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
