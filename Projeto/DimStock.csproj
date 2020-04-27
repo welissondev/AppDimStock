@@ -371,13 +371,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\FotoNothing.jpg" />
+    <None Include="Resources\ImageNothing.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Loading.gif" />
+    <None Include="Resources\ImageLoading.gif" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\AppLogoType.png" />
+    <None Include="Resources\ImageLogoType.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\IconCategory.png" />
@@ -404,7 +404,7 @@
     <None Include="Resources\IconExtendedMenu.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Separator.png" />
+    <None Include="Resources\ImageSeparator.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

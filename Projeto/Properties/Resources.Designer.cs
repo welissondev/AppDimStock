@@ -63,26 +63,6 @@ namespace DimStock.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap AppLogoType {
-            get {
-                object obj = ResourceManager.GetObject("AppLogoType", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap FotoNothing {
-            get {
-                object obj = ResourceManager.GetObject("FotoNothing", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap IconCategory {
             get {
                 object obj = ResourceManager.GetObject("IconCategory", resourceCulture);
@@ -163,9 +143,9 @@ namespace DimStock.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Loading {
+        internal static System.Drawing.Bitmap ImageLoading {
             get {
-                object obj = ResourceManager.GetObject("Loading", resourceCulture);
+                object obj = ResourceManager.GetObject("ImageLoading", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,9 +153,29 @@ namespace DimStock.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Separator {
+        internal static System.Drawing.Bitmap ImageLogoType {
             get {
-                object obj = ResourceManager.GetObject("Separator", resourceCulture);
+                object obj = ResourceManager.GetObject("ImageLogoType", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ImageNothing {
+            get {
+                object obj = ResourceManager.GetObject("ImageNothing", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ImageSeparator {
+            get {
+                object obj = ResourceManager.GetObject("ImageSeparator", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
