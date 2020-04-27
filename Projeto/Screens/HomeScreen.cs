@@ -33,11 +33,16 @@ namespace DimStock.Screens
             screen.Show();
         }
 
+        private void ShowContextMenuRegistration(object sender, EventArgs e)
+        {
+            MenuContextRegistration.Show(this, MousePosition);
+        }
+
         private void InitializeEvents()
         {
             Load += new EventHandler(ScreenLoad);
-            categoriaToolStripMenuItem.Click += new EventHandler(ShowCategoryAddScreen);
-            bunifuButton2.Click += new EventHandler(ShowCategoryAddScreen);
+            ButtonMenuProducts.Click += new EventHandler(ShowCategoryAddScreen);
+            ButtonMenuGeneralRegistrations.Click += new EventHandler(ShowContextMenuRegistration);
         }
 
         protected override void OnLoad(EventArgs e)

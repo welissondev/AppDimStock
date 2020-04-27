@@ -374,19 +374,10 @@
     <None Include="Resources\FotoNothing.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\BackGroudUserLogin.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Loading.gif" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\DimStockLogoType.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Icon-Plus.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\IconExit.png" />
+    <None Include="Resources\AppLogoType.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\IconCategory.png" />
@@ -405,9 +396,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\IconUser.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\IconSupplier.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\IconSettings.png" />

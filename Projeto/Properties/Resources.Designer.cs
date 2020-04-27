@@ -63,19 +63,9 @@ namespace DimStock.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap BackGroudUserLogin {
+        internal static System.Drawing.Bitmap AppLogoType {
             get {
-                object obj = ResourceManager.GetObject("BackGroudUserLogin", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap DimStockLogoType {
-            get {
-                object obj = ResourceManager.GetObject("DimStockLogoType", resourceCulture);
+                object obj = ResourceManager.GetObject("AppLogoType", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -86,16 +76,6 @@ namespace DimStock.Properties {
         internal static System.Drawing.Bitmap FotoNothing {
             get {
                 object obj = ResourceManager.GetObject("FotoNothing", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Icon_Plus {
-            get {
-                object obj = ResourceManager.GetObject("Icon-Plus", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -116,16 +96,6 @@ namespace DimStock.Properties {
         internal static System.Drawing.Bitmap IconDestination {
             get {
                 object obj = ResourceManager.GetObject("IconDestination", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap IconExit {
-            get {
-                object obj = ResourceManager.GetObject("IconExit", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -176,16 +146,6 @@ namespace DimStock.Properties {
         internal static System.Drawing.Bitmap IconStock {
             get {
                 object obj = ResourceManager.GetObject("IconStock", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap IconSupplier {
-            get {
-                object obj = ResourceManager.GetObject("IconSupplier", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -85,7 +85,7 @@
             // ImageLoading
             // 
             this.ImageLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ImageLoading.Image = global::DimStock.Properties.Resources.Loading;
+
             this.ImageLoading.Location = new System.Drawing.Point(416, 200);
             this.ImageLoading.Name = "ImageLoading";
             this.ImageLoading.Size = new System.Drawing.Size(144, 135);
