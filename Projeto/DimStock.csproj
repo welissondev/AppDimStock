@@ -153,6 +153,7 @@
     <Compile Include="AuxilyTools\AuxilyClasses\EmailAddressValidator.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\ExceptionNotifier.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\GuidGenerator.cs" />
+    <Compile Include="AuxilyTools\AuxilyClasses\Mdi3dRemove.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\MdiClosingAll.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\SingleCodeGenerator.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\UserLoginState.cs" />
@@ -405,6 +406,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ImageSeparator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\IconNew.png" />
+    <Content Include="Resources\IconSupplier.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

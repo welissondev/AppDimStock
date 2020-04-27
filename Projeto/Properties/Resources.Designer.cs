@@ -103,6 +103,16 @@ namespace DimStock.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap IconNew {
+            get {
+                object obj = ResourceManager.GetObject("IconNew", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IconProduct {
             get {
                 object obj = ResourceManager.GetObject("IconProduct", resourceCulture);
@@ -126,6 +136,16 @@ namespace DimStock.Properties {
         internal static System.Drawing.Bitmap IconStock {
             get {
                 object obj = ResourceManager.GetObject("IconStock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconSupplier {
+            get {
+                object obj = ResourceManager.GetObject("IconSupplier", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

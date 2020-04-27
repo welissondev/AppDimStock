@@ -1,23 +1,35 @@
-﻿using System;
+﻿using DimStock.Properties;
+using DimStock.AuxilyTools.AuxilyClasses;
+using System;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using Bunifu.UI.WinForms.BunifuButton;
 
 namespace DimStock.Screens
 {
     public partial class HomeScreen : Form
     {
         private static HomeScreen instance;
+    }
+}
 
+namespace DimStock.Screens
+{
+    public partial class HomeScreen : Form
+    {
         public HomeScreen()
         {
             InitializeComponent();
             InitializeEvents();
+            Mdi3dRemove.SetBevel(this, false, Color.White);
             instance = this;
         }
 
         private void ScreenLoad(object sender, EventArgs e)
         {
+            SetScreenIcons();
         }
 
         private void ShowCategoryAddScreen(object sender, EventArgs e)
@@ -38,37 +50,57 @@ namespace DimStock.Screens
             MenuContextRegistration.Show(this, MousePosition);
         }
 
+        private void MenuExtenter(object sender, EventArgs e)
+        {
+            var extended = 215;
+            var unexpanded = 80;
+
+            if (PanelMenuSide.Width == extended)
+                PanelMenuSide.Width = unexpanded;
+            else
+                PanelMenuSide.Width = extended;
+
+            foreach (BunifuButton ctl in PanelMenuSide.Controls.OfType<BunifuButton>())
+            {
+                ctl.Text = string.Empty;
+            }
+        }
+
         private void InitializeEvents()
         {
             Load += new EventHandler(ScreenLoad);
             ButtonMenuProducts.Click += new EventHandler(ShowCategoryAddScreen);
             ButtonMenuGeneralRegistrations.Click += new EventHandler(ShowContextMenuRegistration);
+            ButtonMenuExtender.Click += new EventHandler(MenuExtenter);
         }
 
-        protected override void OnLoad(EventArgs e)
+        private void SetScreenIcons()
         {
-            //*Remove 3d do mdi e troca a cor de fundo*//
-
             try
             {
-                var homeScreen = Controls.OfType<MdiClient>().SingleOrDefault();
-                homeScreen.BackColor = Color.White;
-                homeScreen.SuspendLayout();
-                var hdiff = homeScreen.Size.Width - homeScreen.ClientSize.Width;
-                var vdiff = homeScreen.Size.Height - homeScreen.ClientSize.Height;
-                var size = new Size(homeScreen.Width + hdiff, homeScreen.Height + vdiff);
-                var location = new Point(homeScreen.Left - (hdiff / 2), homeScreen.Top - (vdiff / 2));
-                homeScreen.Dock = DockStyle.None;
-                homeScreen.Size = size;
-                homeScreen.Location = location;
-                homeScreen.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom;
-                homeScreen.ResumeLayout(true);
-                base.OnLoad(e);
-            }
+                ButtonMenuCategorys.IdleIconLeftImage = Resources.IconCategory;
+                ButtonMenuProducts.IdleIconLeftImage = Resources.IconProduct;
+                ButtonMenuStocks.IdleIconLeftImage = Resources.IconStock;
+                ButtonMenuMovements.IdleIconLeftImage = Resources.IconMovementStock;
+                ButtonMenuDestinations.IdleIconLeftImage = Resources.IconDestination;
+                ButtonMenuSupplies.IdleIconLeftImage = Resources.IconSupplier;
+                ButtonMenuUsers.IdleIconLeftImage = Resources.IconUser;
+                ButtonMenuGeneralRegistrations.IdleIconLeftImage = Resources.IconNew;
+                ButtonMenuTechSupport.IdleIconLeftImage = Resources.IconSupplier;
+                ButtonMenuSettings.IdleIconLeftImage = Resources.IconSettings;
+                ButtonMenuExtender.Image = Resources.IconExtendedMenu;
 
+                //foreach (PictureBox ctl in PanelMenuSide.Controls.OfType<PictureBox>())
+                //{
+                //    if (ctl.Tag.ToString() == "ImageSeparator" && ctl.GetType() == typeof(PictureBox))
+                //    {
+                //        ctl.Image = Resources.ImageSeparator;
+                //    };
+                //}
+            }
             catch (Exception ex)
             {
-                ex.GetType();
+                MessageBox.Show(ex.ToString());
             }
         }
 
@@ -77,9 +109,5 @@ namespace DimStock.Screens
             return instance;
         }
 
-        private void HomeScreen_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
