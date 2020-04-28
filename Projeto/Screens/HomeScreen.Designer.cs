@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeScreen));
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
@@ -59,8 +59,6 @@
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges10 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties19 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties20 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
-            BunifuAnimatorNS.Animation animation1 = new BunifuAnimatorNS.Animation();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeScreen));
             this.MenuContextRegistration = new Syncfusion.Windows.Forms.Tools.ContextMenuStripEx();
             this.categoriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.destinosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,10 +68,6 @@
             this.fornecedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PanelMenuSide = new Bunifu.Framework.UI.BunifuGradientPanel();
-            this.LowerMenuPanel = new Bunifu.Framework.UI.BunifuGradientPanel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.ButtonMenuProducts = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.ButtonMenuStocks = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.ButtonMenuMovements = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
@@ -81,26 +75,33 @@
             this.ButtonMenuUsers = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.ButtonMenuSupplies = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.ButtonMenuCategorys = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.label7 = new System.Windows.Forms.Label();
+            this.bunifuGradientPanel3 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.ButtonMenuExtender = new System.Windows.Forms.PictureBox();
+            this.PanelMenuLower = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.bunifuGradientPanel2 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ImageLogoBrand = new System.Windows.Forms.PictureBox();
             this.ButtonMenuTechSupport = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.ButtonMenuSettings = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.ButtonMenuGeneralRegistrations = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.ButtonMenuExtender = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.BuniTransation = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.MenuContextRegistration.SuspendLayout();
             this.PanelMenuSide.SuspendLayout();
-            this.LowerMenuPanel.SuspendLayout();
-            this.bunifuGradientPanel2.SuspendLayout();
+            this.bunifuGradientPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ButtonMenuExtender)).BeginInit();
+            this.PanelMenuLower.SuspendLayout();
+            this.bunifuGradientPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ImageLogoBrand)).BeginInit();
             this.SuspendLayout();
             // 
             // MenuContextRegistration
             // 
-            this.BuniTransation.SetDecoration(this.MenuContextRegistration, BunifuAnimatorNS.DecorationType.None);
             this.MenuContextRegistration.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.categoriaToolStripMenuItem,
             this.destinosToolStripMenuItem,
@@ -164,7 +165,6 @@
             this.PanelMenuSide.BackColor = System.Drawing.Color.Transparent;
             this.PanelMenuSide.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelMenuSide.BackgroundImage")));
             this.PanelMenuSide.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PanelMenuSide.Controls.Add(this.LowerMenuPanel);
             this.PanelMenuSide.Controls.Add(this.ButtonMenuProducts);
             this.PanelMenuSide.Controls.Add(this.ButtonMenuStocks);
             this.PanelMenuSide.Controls.Add(this.ButtonMenuMovements);
@@ -172,80 +172,24 @@
             this.PanelMenuSide.Controls.Add(this.ButtonMenuUsers);
             this.PanelMenuSide.Controls.Add(this.ButtonMenuSupplies);
             this.PanelMenuSide.Controls.Add(this.ButtonMenuCategorys);
-            this.BuniTransation.SetDecoration(this.PanelMenuSide, BunifuAnimatorNS.DecorationType.None);
+            this.PanelMenuSide.Controls.Add(this.label7);
+            this.PanelMenuSide.Controls.Add(this.bunifuGradientPanel3);
+            this.PanelMenuSide.Controls.Add(this.PanelMenuLower);
             this.PanelMenuSide.Dock = System.Windows.Forms.DockStyle.Left;
             this.PanelMenuSide.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(70)))), ((int)(((byte)(110)))));
             this.PanelMenuSide.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(70)))), ((int)(((byte)(110)))));
             this.PanelMenuSide.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(70)))), ((int)(((byte)(110)))));
             this.PanelMenuSide.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(70)))), ((int)(((byte)(110)))));
-            this.PanelMenuSide.Location = new System.Drawing.Point(0, 65);
+            this.PanelMenuSide.Location = new System.Drawing.Point(0, 55);
             this.PanelMenuSide.Name = "PanelMenuSide";
             this.PanelMenuSide.Quality = 10;
-            this.PanelMenuSide.Size = new System.Drawing.Size(215, 664);
+            this.PanelMenuSide.Size = new System.Drawing.Size(200, 674);
             this.PanelMenuSide.TabIndex = 23;
             this.PanelMenuSide.Tag = "ImageSeparator";
             // 
-            // LowerMenuPanel
-            // 
-            this.LowerMenuPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("LowerMenuPanel.BackgroundImage")));
-            this.LowerMenuPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.LowerMenuPanel.Controls.Add(this.label4);
-            this.LowerMenuPanel.Controls.Add(this.label3);
-            this.LowerMenuPanel.Controls.Add(this.label2);
-            this.BuniTransation.SetDecoration(this.LowerMenuPanel, BunifuAnimatorNS.DecorationType.None);
-            this.LowerMenuPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.LowerMenuPanel.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
-            this.LowerMenuPanel.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
-            this.LowerMenuPanel.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
-            this.LowerMenuPanel.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
-            this.LowerMenuPanel.Location = new System.Drawing.Point(0, 602);
-            this.LowerMenuPanel.Name = "LowerMenuPanel";
-            this.LowerMenuPanel.Quality = 10;
-            this.LowerMenuPanel.Size = new System.Drawing.Size(215, 62);
-            this.LowerMenuPanel.TabIndex = 23;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.BuniTransation.SetDecoration(this.label4, BunifuAnimatorNS.DecorationType.None);
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(153, 26);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(42, 13);
-            this.label4.TabIndex = 25;
-            this.label4.Text = "Termos";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.BuniTransation.SetDecoration(this.label3, BunifuAnimatorNS.DecorationType.None);
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(89, 26);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 13);
-            this.label3.TabIndex = 24;
-            this.label3.Text = "Privacidade";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.BuniTransation.SetDecoration(this.label2, BunifuAnimatorNS.DecorationType.None);
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(12, 26);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 13);
-            this.label2.TabIndex = 23;
-            this.label2.Text = "Diário Excel";
-            // 
             // ButtonMenuProducts
             // 
-            this.ButtonMenuProducts.AllowToggling = true;
+            this.ButtonMenuProducts.AllowToggling = false;
             this.ButtonMenuProducts.AnimationSpeed = 200;
             this.ButtonMenuProducts.AutoGenerateColors = false;
             this.ButtonMenuProducts.BackColor = System.Drawing.Color.Transparent;
@@ -262,7 +206,6 @@
             borderEdges1.TopLeft = true;
             borderEdges1.TopRight = true;
             this.ButtonMenuProducts.CustomizableEdges = borderEdges1;
-            this.BuniTransation.SetDecoration(this.ButtonMenuProducts, BunifuAnimatorNS.DecorationType.None);
             this.ButtonMenuProducts.DialogResult = System.Windows.Forms.DialogResult.None;
             this.ButtonMenuProducts.DisabledBorderColor = System.Drawing.Color.Empty;
             this.ButtonMenuProducts.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -281,14 +224,14 @@
             this.ButtonMenuProducts.IdleFillColor = System.Drawing.Color.Transparent;
             this.ButtonMenuProducts.IdleIconLeftImage = null;
             this.ButtonMenuProducts.IdleIconRightImage = null;
-            this.ButtonMenuProducts.IndicateFocus = true;
-            this.ButtonMenuProducts.Location = new System.Drawing.Point(0, 240);
+            this.ButtonMenuProducts.IndicateFocus = false;
+            this.ButtonMenuProducts.Location = new System.Drawing.Point(0, 315);
             this.ButtonMenuProducts.Name = "ButtonMenuProducts";
-            stateProperties1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            stateProperties1.BorderColor = System.Drawing.Color.Transparent;
             stateProperties1.BorderRadius = 1;
             stateProperties1.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             stateProperties1.BorderThickness = 1;
-            stateProperties1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            stateProperties1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
             stateProperties1.ForeColor = System.Drawing.Color.DeepSkyBlue;
             stateProperties1.IconLeftImage = null;
             stateProperties1.IconRightImage = null;
@@ -302,15 +245,15 @@
             stateProperties2.IconLeftImage = null;
             stateProperties2.IconRightImage = null;
             this.ButtonMenuProducts.OnPressedState = stateProperties2;
-            this.ButtonMenuProducts.Size = new System.Drawing.Size(215, 40);
-            this.ButtonMenuProducts.TabIndex = 13;
+            this.ButtonMenuProducts.Size = new System.Drawing.Size(200, 40);
+            this.ButtonMenuProducts.TabIndex = 27;
             this.ButtonMenuProducts.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonMenuProducts.TextMarginLeft = -22;
             this.ButtonMenuProducts.UseDefaultRadiusAndThickness = true;
             // 
             // ButtonMenuStocks
             // 
-            this.ButtonMenuStocks.AllowToggling = true;
+            this.ButtonMenuStocks.AllowToggling = false;
             this.ButtonMenuStocks.AnimationSpeed = 200;
             this.ButtonMenuStocks.AutoGenerateColors = false;
             this.ButtonMenuStocks.BackColor = System.Drawing.Color.Transparent;
@@ -327,7 +270,6 @@
             borderEdges2.TopLeft = true;
             borderEdges2.TopRight = true;
             this.ButtonMenuStocks.CustomizableEdges = borderEdges2;
-            this.BuniTransation.SetDecoration(this.ButtonMenuStocks, BunifuAnimatorNS.DecorationType.None);
             this.ButtonMenuStocks.DialogResult = System.Windows.Forms.DialogResult.None;
             this.ButtonMenuStocks.DisabledBorderColor = System.Drawing.Color.Empty;
             this.ButtonMenuStocks.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -346,14 +288,14 @@
             this.ButtonMenuStocks.IdleFillColor = System.Drawing.Color.Transparent;
             this.ButtonMenuStocks.IdleIconLeftImage = null;
             this.ButtonMenuStocks.IdleIconRightImage = null;
-            this.ButtonMenuStocks.IndicateFocus = true;
-            this.ButtonMenuStocks.Location = new System.Drawing.Point(0, 200);
+            this.ButtonMenuStocks.IndicateFocus = false;
+            this.ButtonMenuStocks.Location = new System.Drawing.Point(0, 275);
             this.ButtonMenuStocks.Name = "ButtonMenuStocks";
-            stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            stateProperties3.BorderColor = System.Drawing.Color.Transparent;
             stateProperties3.BorderRadius = 1;
             stateProperties3.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             stateProperties3.BorderThickness = 1;
-            stateProperties3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            stateProperties3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
             stateProperties3.ForeColor = System.Drawing.Color.DeepSkyBlue;
             stateProperties3.IconLeftImage = null;
             stateProperties3.IconRightImage = null;
@@ -367,15 +309,15 @@
             stateProperties4.IconLeftImage = null;
             stateProperties4.IconRightImage = null;
             this.ButtonMenuStocks.OnPressedState = stateProperties4;
-            this.ButtonMenuStocks.Size = new System.Drawing.Size(215, 40);
-            this.ButtonMenuStocks.TabIndex = 14;
+            this.ButtonMenuStocks.Size = new System.Drawing.Size(200, 40);
+            this.ButtonMenuStocks.TabIndex = 28;
             this.ButtonMenuStocks.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonMenuStocks.TextMarginLeft = -22;
             this.ButtonMenuStocks.UseDefaultRadiusAndThickness = true;
             // 
             // ButtonMenuMovements
             // 
-            this.ButtonMenuMovements.AllowToggling = true;
+            this.ButtonMenuMovements.AllowToggling = false;
             this.ButtonMenuMovements.AnimationSpeed = 200;
             this.ButtonMenuMovements.AutoGenerateColors = false;
             this.ButtonMenuMovements.BackColor = System.Drawing.Color.Transparent;
@@ -392,7 +334,6 @@
             borderEdges3.TopLeft = true;
             borderEdges3.TopRight = true;
             this.ButtonMenuMovements.CustomizableEdges = borderEdges3;
-            this.BuniTransation.SetDecoration(this.ButtonMenuMovements, BunifuAnimatorNS.DecorationType.None);
             this.ButtonMenuMovements.DialogResult = System.Windows.Forms.DialogResult.None;
             this.ButtonMenuMovements.DisabledBorderColor = System.Drawing.Color.Empty;
             this.ButtonMenuMovements.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -411,14 +352,14 @@
             this.ButtonMenuMovements.IdleFillColor = System.Drawing.Color.Transparent;
             this.ButtonMenuMovements.IdleIconLeftImage = null;
             this.ButtonMenuMovements.IdleIconRightImage = null;
-            this.ButtonMenuMovements.IndicateFocus = true;
-            this.ButtonMenuMovements.Location = new System.Drawing.Point(0, 160);
+            this.ButtonMenuMovements.IndicateFocus = false;
+            this.ButtonMenuMovements.Location = new System.Drawing.Point(0, 235);
             this.ButtonMenuMovements.Name = "ButtonMenuMovements";
-            stateProperties5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            stateProperties5.BorderColor = System.Drawing.Color.Transparent;
             stateProperties5.BorderRadius = 1;
             stateProperties5.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             stateProperties5.BorderThickness = 1;
-            stateProperties5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            stateProperties5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
             stateProperties5.ForeColor = System.Drawing.Color.DeepSkyBlue;
             stateProperties5.IconLeftImage = null;
             stateProperties5.IconRightImage = null;
@@ -432,15 +373,15 @@
             stateProperties6.IconLeftImage = null;
             stateProperties6.IconRightImage = null;
             this.ButtonMenuMovements.OnPressedState = stateProperties6;
-            this.ButtonMenuMovements.Size = new System.Drawing.Size(215, 40);
-            this.ButtonMenuMovements.TabIndex = 15;
+            this.ButtonMenuMovements.Size = new System.Drawing.Size(200, 40);
+            this.ButtonMenuMovements.TabIndex = 29;
             this.ButtonMenuMovements.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonMenuMovements.TextMarginLeft = -2;
             this.ButtonMenuMovements.UseDefaultRadiusAndThickness = true;
             // 
             // ButtonMenuDestinations
             // 
-            this.ButtonMenuDestinations.AllowToggling = true;
+            this.ButtonMenuDestinations.AllowToggling = false;
             this.ButtonMenuDestinations.AnimationSpeed = 200;
             this.ButtonMenuDestinations.AutoGenerateColors = false;
             this.ButtonMenuDestinations.BackColor = System.Drawing.Color.Transparent;
@@ -457,7 +398,6 @@
             borderEdges4.TopLeft = true;
             borderEdges4.TopRight = true;
             this.ButtonMenuDestinations.CustomizableEdges = borderEdges4;
-            this.BuniTransation.SetDecoration(this.ButtonMenuDestinations, BunifuAnimatorNS.DecorationType.None);
             this.ButtonMenuDestinations.DialogResult = System.Windows.Forms.DialogResult.None;
             this.ButtonMenuDestinations.DisabledBorderColor = System.Drawing.Color.Empty;
             this.ButtonMenuDestinations.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -476,14 +416,14 @@
             this.ButtonMenuDestinations.IdleFillColor = System.Drawing.Color.Transparent;
             this.ButtonMenuDestinations.IdleIconLeftImage = null;
             this.ButtonMenuDestinations.IdleIconRightImage = null;
-            this.ButtonMenuDestinations.IndicateFocus = true;
-            this.ButtonMenuDestinations.Location = new System.Drawing.Point(0, 120);
+            this.ButtonMenuDestinations.IndicateFocus = false;
+            this.ButtonMenuDestinations.Location = new System.Drawing.Point(0, 195);
             this.ButtonMenuDestinations.Name = "ButtonMenuDestinations";
-            stateProperties7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            stateProperties7.BorderColor = System.Drawing.Color.Transparent;
             stateProperties7.BorderRadius = 1;
             stateProperties7.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             stateProperties7.BorderThickness = 1;
-            stateProperties7.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            stateProperties7.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
             stateProperties7.ForeColor = System.Drawing.Color.DeepSkyBlue;
             stateProperties7.IconLeftImage = null;
             stateProperties7.IconRightImage = null;
@@ -497,15 +437,15 @@
             stateProperties8.IconLeftImage = null;
             stateProperties8.IconRightImage = null;
             this.ButtonMenuDestinations.OnPressedState = stateProperties8;
-            this.ButtonMenuDestinations.Size = new System.Drawing.Size(215, 40);
-            this.ButtonMenuDestinations.TabIndex = 16;
+            this.ButtonMenuDestinations.Size = new System.Drawing.Size(200, 40);
+            this.ButtonMenuDestinations.TabIndex = 30;
             this.ButtonMenuDestinations.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonMenuDestinations.TextMarginLeft = -23;
             this.ButtonMenuDestinations.UseDefaultRadiusAndThickness = true;
             // 
             // ButtonMenuUsers
             // 
-            this.ButtonMenuUsers.AllowToggling = true;
+            this.ButtonMenuUsers.AllowToggling = false;
             this.ButtonMenuUsers.AnimationSpeed = 200;
             this.ButtonMenuUsers.AutoGenerateColors = false;
             this.ButtonMenuUsers.BackColor = System.Drawing.Color.Transparent;
@@ -522,7 +462,6 @@
             borderEdges5.TopLeft = true;
             borderEdges5.TopRight = true;
             this.ButtonMenuUsers.CustomizableEdges = borderEdges5;
-            this.BuniTransation.SetDecoration(this.ButtonMenuUsers, BunifuAnimatorNS.DecorationType.None);
             this.ButtonMenuUsers.DialogResult = System.Windows.Forms.DialogResult.None;
             this.ButtonMenuUsers.DisabledBorderColor = System.Drawing.Color.Empty;
             this.ButtonMenuUsers.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -541,14 +480,14 @@
             this.ButtonMenuUsers.IdleFillColor = System.Drawing.Color.Transparent;
             this.ButtonMenuUsers.IdleIconLeftImage = null;
             this.ButtonMenuUsers.IdleIconRightImage = null;
-            this.ButtonMenuUsers.IndicateFocus = true;
-            this.ButtonMenuUsers.Location = new System.Drawing.Point(0, 80);
+            this.ButtonMenuUsers.IndicateFocus = false;
+            this.ButtonMenuUsers.Location = new System.Drawing.Point(0, 155);
             this.ButtonMenuUsers.Name = "ButtonMenuUsers";
-            stateProperties9.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            stateProperties9.BorderColor = System.Drawing.Color.Transparent;
             stateProperties9.BorderRadius = 1;
             stateProperties9.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             stateProperties9.BorderThickness = 1;
-            stateProperties9.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            stateProperties9.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
             stateProperties9.ForeColor = System.Drawing.Color.DeepSkyBlue;
             stateProperties9.IconLeftImage = null;
             stateProperties9.IconRightImage = null;
@@ -562,15 +501,15 @@
             stateProperties10.IconLeftImage = null;
             stateProperties10.IconRightImage = null;
             this.ButtonMenuUsers.OnPressedState = stateProperties10;
-            this.ButtonMenuUsers.Size = new System.Drawing.Size(215, 40);
-            this.ButtonMenuUsers.TabIndex = 18;
+            this.ButtonMenuUsers.Size = new System.Drawing.Size(200, 40);
+            this.ButtonMenuUsers.TabIndex = 32;
             this.ButtonMenuUsers.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonMenuUsers.TextMarginLeft = -23;
             this.ButtonMenuUsers.UseDefaultRadiusAndThickness = true;
             // 
             // ButtonMenuSupplies
             // 
-            this.ButtonMenuSupplies.AllowToggling = true;
+            this.ButtonMenuSupplies.AllowToggling = false;
             this.ButtonMenuSupplies.AnimationSpeed = 200;
             this.ButtonMenuSupplies.AutoGenerateColors = false;
             this.ButtonMenuSupplies.BackColor = System.Drawing.Color.Transparent;
@@ -587,7 +526,6 @@
             borderEdges6.TopLeft = true;
             borderEdges6.TopRight = true;
             this.ButtonMenuSupplies.CustomizableEdges = borderEdges6;
-            this.BuniTransation.SetDecoration(this.ButtonMenuSupplies, BunifuAnimatorNS.DecorationType.None);
             this.ButtonMenuSupplies.DialogResult = System.Windows.Forms.DialogResult.None;
             this.ButtonMenuSupplies.DisabledBorderColor = System.Drawing.Color.Empty;
             this.ButtonMenuSupplies.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -606,14 +544,14 @@
             this.ButtonMenuSupplies.IdleFillColor = System.Drawing.Color.Transparent;
             this.ButtonMenuSupplies.IdleIconLeftImage = null;
             this.ButtonMenuSupplies.IdleIconRightImage = null;
-            this.ButtonMenuSupplies.IndicateFocus = true;
-            this.ButtonMenuSupplies.Location = new System.Drawing.Point(0, 40);
+            this.ButtonMenuSupplies.IndicateFocus = false;
+            this.ButtonMenuSupplies.Location = new System.Drawing.Point(0, 115);
             this.ButtonMenuSupplies.Name = "ButtonMenuSupplies";
-            stateProperties11.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            stateProperties11.BorderColor = System.Drawing.Color.Transparent;
             stateProperties11.BorderRadius = 1;
             stateProperties11.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             stateProperties11.BorderThickness = 1;
-            stateProperties11.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            stateProperties11.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
             stateProperties11.ForeColor = System.Drawing.Color.DeepSkyBlue;
             stateProperties11.IconLeftImage = null;
             stateProperties11.IconRightImage = null;
@@ -627,15 +565,15 @@
             stateProperties12.IconLeftImage = null;
             stateProperties12.IconRightImage = null;
             this.ButtonMenuSupplies.OnPressedState = stateProperties12;
-            this.ButtonMenuSupplies.Size = new System.Drawing.Size(215, 40);
-            this.ButtonMenuSupplies.TabIndex = 17;
+            this.ButtonMenuSupplies.Size = new System.Drawing.Size(200, 40);
+            this.ButtonMenuSupplies.TabIndex = 31;
             this.ButtonMenuSupplies.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonMenuSupplies.TextMarginLeft = -7;
             this.ButtonMenuSupplies.UseDefaultRadiusAndThickness = true;
             // 
             // ButtonMenuCategorys
             // 
-            this.ButtonMenuCategorys.AllowToggling = true;
+            this.ButtonMenuCategorys.AllowToggling = false;
             this.ButtonMenuCategorys.AnimationSpeed = 200;
             this.ButtonMenuCategorys.AutoGenerateColors = false;
             this.ButtonMenuCategorys.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
@@ -653,7 +591,6 @@
             borderEdges7.TopLeft = true;
             borderEdges7.TopRight = true;
             this.ButtonMenuCategorys.CustomizableEdges = borderEdges7;
-            this.BuniTransation.SetDecoration(this.ButtonMenuCategorys, BunifuAnimatorNS.DecorationType.None);
             this.ButtonMenuCategorys.DialogResult = System.Windows.Forms.DialogResult.None;
             this.ButtonMenuCategorys.DisabledBorderColor = System.Drawing.Color.Empty;
             this.ButtonMenuCategorys.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -672,14 +609,14 @@
             this.ButtonMenuCategorys.IdleFillColor = System.Drawing.Color.Transparent;
             this.ButtonMenuCategorys.IdleIconLeftImage = null;
             this.ButtonMenuCategorys.IdleIconRightImage = null;
-            this.ButtonMenuCategorys.IndicateFocus = true;
-            this.ButtonMenuCategorys.Location = new System.Drawing.Point(0, 0);
+            this.ButtonMenuCategorys.IndicateFocus = false;
+            this.ButtonMenuCategorys.Location = new System.Drawing.Point(0, 75);
             this.ButtonMenuCategorys.Name = "ButtonMenuCategorys";
-            stateProperties13.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            stateProperties13.BorderColor = System.Drawing.Color.Transparent;
             stateProperties13.BorderRadius = 1;
             stateProperties13.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             stateProperties13.BorderThickness = 1;
-            stateProperties13.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            stateProperties13.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
             stateProperties13.ForeColor = System.Drawing.Color.DeepSkyBlue;
             stateProperties13.IconLeftImage = null;
             stateProperties13.IconRightImage = null;
@@ -693,24 +630,112 @@
             stateProperties14.IconLeftImage = null;
             stateProperties14.IconRightImage = null;
             this.ButtonMenuCategorys.OnPressedState = stateProperties14;
-            this.ButtonMenuCategorys.Size = new System.Drawing.Size(215, 40);
-            this.ButtonMenuCategorys.TabIndex = 12;
+            this.ButtonMenuCategorys.Size = new System.Drawing.Size(200, 40);
+            this.ButtonMenuCategorys.TabIndex = 26;
             this.ButtonMenuCategorys.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonMenuCategorys.TextMarginLeft = -15;
             this.ButtonMenuCategorys.UseDefaultRadiusAndThickness = true;
+            // 
+            // label7
+            // 
+            this.label7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label7.Location = new System.Drawing.Point(0, 62);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(200, 13);
+            this.label7.TabIndex = 25;
+            // 
+            // bunifuGradientPanel3
+            // 
+            this.bunifuGradientPanel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel3.BackgroundImage")));
+            this.bunifuGradientPanel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel3.Controls.Add(this.ButtonMenuExtender);
+            this.bunifuGradientPanel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bunifuGradientPanel3.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
+            this.bunifuGradientPanel3.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
+            this.bunifuGradientPanel3.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
+            this.bunifuGradientPanel3.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
+            this.bunifuGradientPanel3.Location = new System.Drawing.Point(0, 0);
+            this.bunifuGradientPanel3.Name = "bunifuGradientPanel3";
+            this.bunifuGradientPanel3.Quality = 10;
+            this.bunifuGradientPanel3.Size = new System.Drawing.Size(200, 62);
+            this.bunifuGradientPanel3.TabIndex = 24;
+            // 
+            // ButtonMenuExtender
+            // 
+            this.ButtonMenuExtender.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ButtonMenuExtender.BackColor = System.Drawing.Color.Transparent;
+            this.ButtonMenuExtender.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonMenuExtender.Location = new System.Drawing.Point(163, 16);
+            this.ButtonMenuExtender.Name = "ButtonMenuExtender";
+            this.ButtonMenuExtender.Size = new System.Drawing.Size(29, 30);
+            this.ButtonMenuExtender.TabIndex = 23;
+            this.ButtonMenuExtender.TabStop = false;
+            // 
+            // PanelMenuLower
+            // 
+            this.PanelMenuLower.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelMenuLower.BackgroundImage")));
+            this.PanelMenuLower.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PanelMenuLower.Controls.Add(this.label4);
+            this.PanelMenuLower.Controls.Add(this.label3);
+            this.PanelMenuLower.Controls.Add(this.label2);
+            this.PanelMenuLower.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.PanelMenuLower.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
+            this.PanelMenuLower.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
+            this.PanelMenuLower.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
+            this.PanelMenuLower.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
+            this.PanelMenuLower.Location = new System.Drawing.Point(0, 612);
+            this.PanelMenuLower.Name = "PanelMenuLower";
+            this.PanelMenuLower.Quality = 10;
+            this.PanelMenuLower.Size = new System.Drawing.Size(200, 62);
+            this.PanelMenuLower.TabIndex = 23;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(153, 26);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(42, 13);
+            this.label4.TabIndex = 25;
+            this.label4.Text = "Termos";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(89, 26);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(63, 13);
+            this.label3.TabIndex = 24;
+            this.label3.Text = "Privacidade";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(12, 26);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(75, 13);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "Diário Excel";
             // 
             // bunifuGradientPanel1
             // 
             this.bunifuGradientPanel1.BackColor = System.Drawing.Color.Transparent;
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BuniTransation.SetDecoration(this.bunifuGradientPanel1, BunifuAnimatorNS.DecorationType.None);
             this.bunifuGradientPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(181)))), ((int)(((byte)(228)))));
             this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(181)))), ((int)(((byte)(228)))));
             this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(181)))), ((int)(((byte)(228)))));
             this.bunifuGradientPanel1.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(181)))), ((int)(((byte)(228)))));
-            this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, 60);
+            this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, 50);
             this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
             this.bunifuGradientPanel1.Quality = 10;
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(960, 5);
@@ -720,14 +745,13 @@
             // 
             this.bunifuGradientPanel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel2.BackgroundImage")));
             this.bunifuGradientPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel2.Controls.Add(this.label1);
+            this.bunifuGradientPanel2.Controls.Add(this.ImageLogoBrand);
             this.bunifuGradientPanel2.Controls.Add(this.ButtonMenuTechSupport);
             this.bunifuGradientPanel2.Controls.Add(this.ButtonMenuSettings);
             this.bunifuGradientPanel2.Controls.Add(this.ButtonMenuGeneralRegistrations);
             this.bunifuGradientPanel2.Controls.Add(this.label6);
             this.bunifuGradientPanel2.Controls.Add(this.label5);
-            this.bunifuGradientPanel2.Controls.Add(this.ButtonMenuExtender);
-            this.bunifuGradientPanel2.Controls.Add(this.label1);
-            this.BuniTransation.SetDecoration(this.bunifuGradientPanel2, BunifuAnimatorNS.DecorationType.None);
             this.bunifuGradientPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.bunifuGradientPanel2.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
             this.bunifuGradientPanel2.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
@@ -736,8 +760,30 @@
             this.bunifuGradientPanel2.Location = new System.Drawing.Point(0, 0);
             this.bunifuGradientPanel2.Name = "bunifuGradientPanel2";
             this.bunifuGradientPanel2.Quality = 10;
-            this.bunifuGradientPanel2.Size = new System.Drawing.Size(960, 60);
+            this.bunifuGradientPanel2.Size = new System.Drawing.Size(960, 50);
             this.bunifuGradientPanel2.TabIndex = 20;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(46, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(152, 38);
+            this.label1.TabIndex = 28;
+            this.label1.Text = "DimStock";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // ImageLogoBrand
+            // 
+            this.ImageLogoBrand.BackColor = System.Drawing.Color.Transparent;
+            this.ImageLogoBrand.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ImageLogoBrand.Location = new System.Drawing.Point(0, 0);
+            this.ImageLogoBrand.Name = "ImageLogoBrand";
+            this.ImageLogoBrand.Size = new System.Drawing.Size(54, 50);
+            this.ImageLogoBrand.TabIndex = 25;
+            this.ImageLogoBrand.TabStop = false;
             // 
             // ButtonMenuTechSupport
             // 
@@ -758,7 +804,6 @@
             borderEdges8.TopLeft = true;
             borderEdges8.TopRight = true;
             this.ButtonMenuTechSupport.CustomizableEdges = borderEdges8;
-            this.BuniTransation.SetDecoration(this.ButtonMenuTechSupport, BunifuAnimatorNS.DecorationType.None);
             this.ButtonMenuTechSupport.DialogResult = System.Windows.Forms.DialogResult.None;
             this.ButtonMenuTechSupport.DisabledBorderColor = System.Drawing.Color.Empty;
             this.ButtonMenuTechSupport.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -768,19 +813,19 @@
             this.ButtonMenuTechSupport.ForeColor = System.Drawing.Color.White;
             this.ButtonMenuTechSupport.IconLeftCursor = System.Windows.Forms.Cursors.Hand;
             this.ButtonMenuTechSupport.IconMarginLeft = 10;
-            this.ButtonMenuTechSupport.IconPadding = 8;
+            this.ButtonMenuTechSupport.IconPadding = 10;
             this.ButtonMenuTechSupport.IconRightCursor = System.Windows.Forms.Cursors.Hand;
             this.ButtonMenuTechSupport.IdleBorderColor = System.Drawing.Color.Transparent;
-            this.ButtonMenuTechSupport.IdleBorderRadius = 32;
+            this.ButtonMenuTechSupport.IdleBorderRadius = 1;
             this.ButtonMenuTechSupport.IdleBorderThickness = 1;
             this.ButtonMenuTechSupport.IdleFillColor = System.Drawing.Color.Transparent;
             this.ButtonMenuTechSupport.IdleIconLeftImage = null;
             this.ButtonMenuTechSupport.IdleIconRightImage = null;
             this.ButtonMenuTechSupport.IndicateFocus = false;
-            this.ButtonMenuTechSupport.Location = new System.Drawing.Point(409, 7);
+            this.ButtonMenuTechSupport.Location = new System.Drawing.Point(409, 4);
             this.ButtonMenuTechSupport.Name = "ButtonMenuTechSupport";
             stateProperties15.BorderColor = System.Drawing.Color.SteelBlue;
-            stateProperties15.BorderRadius = 32;
+            stateProperties15.BorderRadius = 1;
             stateProperties15.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             stateProperties15.BorderThickness = 1;
             stateProperties15.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(110)))), ((int)(((byte)(171)))));
@@ -789,7 +834,7 @@
             stateProperties15.IconRightImage = null;
             this.ButtonMenuTechSupport.onHoverState = stateProperties15;
             stateProperties16.BorderColor = System.Drawing.Color.SteelBlue;
-            stateProperties16.BorderRadius = 32;
+            stateProperties16.BorderRadius = 1;
             stateProperties16.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             stateProperties16.BorderThickness = 1;
             stateProperties16.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
@@ -797,7 +842,7 @@
             stateProperties16.IconLeftImage = null;
             stateProperties16.IconRightImage = null;
             this.ButtonMenuTechSupport.OnPressedState = stateProperties16;
-            this.ButtonMenuTechSupport.Size = new System.Drawing.Size(150, 40);
+            this.ButtonMenuTechSupport.Size = new System.Drawing.Size(150, 43);
             this.ButtonMenuTechSupport.TabIndex = 25;
             this.ButtonMenuTechSupport.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonMenuTechSupport.TextMarginLeft = 13;
@@ -822,7 +867,6 @@
             borderEdges9.TopLeft = true;
             borderEdges9.TopRight = true;
             this.ButtonMenuSettings.CustomizableEdges = borderEdges9;
-            this.BuniTransation.SetDecoration(this.ButtonMenuSettings, BunifuAnimatorNS.DecorationType.None);
             this.ButtonMenuSettings.DialogResult = System.Windows.Forms.DialogResult.None;
             this.ButtonMenuSettings.DisabledBorderColor = System.Drawing.Color.Empty;
             this.ButtonMenuSettings.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -832,19 +876,19 @@
             this.ButtonMenuSettings.ForeColor = System.Drawing.Color.White;
             this.ButtonMenuSettings.IconLeftCursor = System.Windows.Forms.Cursors.Hand;
             this.ButtonMenuSettings.IconMarginLeft = 10;
-            this.ButtonMenuSettings.IconPadding = 8;
+            this.ButtonMenuSettings.IconPadding = 10;
             this.ButtonMenuSettings.IconRightCursor = System.Windows.Forms.Cursors.Hand;
             this.ButtonMenuSettings.IdleBorderColor = System.Drawing.Color.Transparent;
-            this.ButtonMenuSettings.IdleBorderRadius = 32;
+            this.ButtonMenuSettings.IdleBorderRadius = 1;
             this.ButtonMenuSettings.IdleBorderThickness = 1;
             this.ButtonMenuSettings.IdleFillColor = System.Drawing.Color.Transparent;
             this.ButtonMenuSettings.IdleIconLeftImage = null;
             this.ButtonMenuSettings.IdleIconRightImage = null;
             this.ButtonMenuSettings.IndicateFocus = false;
-            this.ButtonMenuSettings.Location = new System.Drawing.Point(581, 7);
+            this.ButtonMenuSettings.Location = new System.Drawing.Point(581, 4);
             this.ButtonMenuSettings.Name = "ButtonMenuSettings";
             stateProperties17.BorderColor = System.Drawing.Color.SteelBlue;
-            stateProperties17.BorderRadius = 32;
+            stateProperties17.BorderRadius = 1;
             stateProperties17.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             stateProperties17.BorderThickness = 1;
             stateProperties17.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(110)))), ((int)(((byte)(171)))));
@@ -853,7 +897,7 @@
             stateProperties17.IconRightImage = null;
             this.ButtonMenuSettings.onHoverState = stateProperties17;
             stateProperties18.BorderColor = System.Drawing.Color.SteelBlue;
-            stateProperties18.BorderRadius = 32;
+            stateProperties18.BorderRadius = 1;
             stateProperties18.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             stateProperties18.BorderThickness = 1;
             stateProperties18.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
@@ -861,7 +905,7 @@
             stateProperties18.IconLeftImage = null;
             stateProperties18.IconRightImage = null;
             this.ButtonMenuSettings.OnPressedState = stateProperties18;
-            this.ButtonMenuSettings.Size = new System.Drawing.Size(150, 40);
+            this.ButtonMenuSettings.Size = new System.Drawing.Size(150, 43);
             this.ButtonMenuSettings.TabIndex = 24;
             this.ButtonMenuSettings.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonMenuSettings.TextMarginLeft = 16;
@@ -886,7 +930,6 @@
             borderEdges10.TopLeft = true;
             borderEdges10.TopRight = true;
             this.ButtonMenuGeneralRegistrations.CustomizableEdges = borderEdges10;
-            this.BuniTransation.SetDecoration(this.ButtonMenuGeneralRegistrations, BunifuAnimatorNS.DecorationType.None);
             this.ButtonMenuGeneralRegistrations.DialogResult = System.Windows.Forms.DialogResult.None;
             this.ButtonMenuGeneralRegistrations.DisabledBorderColor = System.Drawing.Color.Empty;
             this.ButtonMenuGeneralRegistrations.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -896,19 +939,19 @@
             this.ButtonMenuGeneralRegistrations.ForeColor = System.Drawing.Color.White;
             this.ButtonMenuGeneralRegistrations.IconLeftCursor = System.Windows.Forms.Cursors.Hand;
             this.ButtonMenuGeneralRegistrations.IconMarginLeft = 10;
-            this.ButtonMenuGeneralRegistrations.IconPadding = 7;
+            this.ButtonMenuGeneralRegistrations.IconPadding = 10;
             this.ButtonMenuGeneralRegistrations.IconRightCursor = System.Windows.Forms.Cursors.Hand;
             this.ButtonMenuGeneralRegistrations.IdleBorderColor = System.Drawing.Color.Transparent;
-            this.ButtonMenuGeneralRegistrations.IdleBorderRadius = 32;
+            this.ButtonMenuGeneralRegistrations.IdleBorderRadius = 1;
             this.ButtonMenuGeneralRegistrations.IdleBorderThickness = 1;
             this.ButtonMenuGeneralRegistrations.IdleFillColor = System.Drawing.Color.Transparent;
             this.ButtonMenuGeneralRegistrations.IdleIconLeftImage = null;
             this.ButtonMenuGeneralRegistrations.IdleIconRightImage = null;
             this.ButtonMenuGeneralRegistrations.IndicateFocus = false;
-            this.ButtonMenuGeneralRegistrations.Location = new System.Drawing.Point(237, 7);
+            this.ButtonMenuGeneralRegistrations.Location = new System.Drawing.Point(237, 4);
             this.ButtonMenuGeneralRegistrations.Name = "ButtonMenuGeneralRegistrations";
             stateProperties19.BorderColor = System.Drawing.Color.SteelBlue;
-            stateProperties19.BorderRadius = 32;
+            stateProperties19.BorderRadius = 1;
             stateProperties19.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             stateProperties19.BorderThickness = 1;
             stateProperties19.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(110)))), ((int)(((byte)(171)))));
@@ -917,7 +960,7 @@
             stateProperties19.IconRightImage = null;
             this.ButtonMenuGeneralRegistrations.onHoverState = stateProperties19;
             stateProperties20.BorderColor = System.Drawing.Color.SteelBlue;
-            stateProperties20.BorderRadius = 32;
+            stateProperties20.BorderRadius = 1;
             stateProperties20.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             stateProperties20.BorderThickness = 1;
             stateProperties20.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
@@ -925,7 +968,7 @@
             stateProperties20.IconLeftImage = null;
             stateProperties20.IconRightImage = null;
             this.ButtonMenuGeneralRegistrations.OnPressedState = stateProperties20;
-            this.ButtonMenuGeneralRegistrations.Size = new System.Drawing.Size(150, 40);
+            this.ButtonMenuGeneralRegistrations.Size = new System.Drawing.Size(150, 43);
             this.ButtonMenuGeneralRegistrations.TabIndex = 19;
             this.ButtonMenuGeneralRegistrations.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonMenuGeneralRegistrations.TextMarginLeft = 15;
@@ -935,7 +978,6 @@
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.BuniTransation.SetDecoration(this.label6, BunifuAnimatorNS.DecorationType.None);
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(566, 23);
@@ -948,7 +990,6 @@
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.BuniTransation.SetDecoration(this.label5, BunifuAnimatorNS.DecorationType.None);
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(395, 23);
@@ -956,51 +997,6 @@
             this.label5.Size = new System.Drawing.Size(9, 13);
             this.label5.TabIndex = 26;
             this.label5.Text = "|";
-            // 
-            // ButtonMenuExtender
-            // 
-            this.ButtonMenuExtender.BackColor = System.Drawing.Color.Transparent;
-            this.ButtonMenuExtender.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BuniTransation.SetDecoration(this.ButtonMenuExtender, BunifuAnimatorNS.DecorationType.None);
-            this.ButtonMenuExtender.Location = new System.Drawing.Point(15, 12);
-            this.ButtonMenuExtender.Name = "ButtonMenuExtender";
-            this.ButtonMenuExtender.Size = new System.Drawing.Size(29, 30);
-            this.ButtonMenuExtender.TabIndex = 23;
-            this.ButtonMenuExtender.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.BuniTransation.SetDecoration(this.label1, BunifuAnimatorNS.DecorationType.None);
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 25.75F);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(44, 2);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(171, 47);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "DimStock";
-            // 
-            // BuniTransation
-            // 
-            this.BuniTransation.AnimationType = BunifuAnimatorNS.AnimationType.VertSlide;
-            this.BuniTransation.Cursor = null;
-            animation1.AnimateOnlyDifferences = true;
-            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
-            animation1.LeafCoeff = 0F;
-            animation1.MaxTime = 1F;
-            animation1.MinTime = 0F;
-            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
-            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
-            animation1.MosaicSize = 0;
-            animation1.Padding = new System.Windows.Forms.Padding(0);
-            animation1.RotateCoeff = 0F;
-            animation1.RotateLimit = 0F;
-            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
-            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
-            animation1.TimeCoeff = 0F;
-            animation1.TransparencyCoeff = 0F;
-            this.BuniTransation.DefaultAnimation = animation1;
             // 
             // HomeScreen
             // 
@@ -1011,7 +1007,6 @@
             this.Controls.Add(this.PanelMenuSide);
             this.Controls.Add(this.bunifuGradientPanel1);
             this.Controls.Add(this.bunifuGradientPanel2);
-            this.BuniTransation.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
@@ -1020,16 +1015,17 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.MenuContextRegistration.ResumeLayout(false);
             this.PanelMenuSide.ResumeLayout(false);
-            this.LowerMenuPanel.ResumeLayout(false);
-            this.LowerMenuPanel.PerformLayout();
+            this.bunifuGradientPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ButtonMenuExtender)).EndInit();
+            this.PanelMenuLower.ResumeLayout(false);
+            this.PanelMenuLower.PerformLayout();
             this.bunifuGradientPanel2.ResumeLayout(false);
             this.bunifuGradientPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ButtonMenuExtender)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ImageLogoBrand)).EndInit();
             this.ResumeLayout(false);
 
         }
         #endregion
-        private System.Windows.Forms.Label label1;
         private Syncfusion.Windows.Forms.Tools.ContextMenuStripEx MenuContextRegistration;
         private System.Windows.Forms.ToolStripMenuItem categoriaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem destinosToolStripMenuItem;
@@ -1042,11 +1038,16 @@
         private System.Windows.Forms.PictureBox ButtonMenuExtender;
         private Bunifu.Framework.UI.BunifuGradientPanel bunifuGradientPanel1;
         private Bunifu.Framework.UI.BunifuGradientPanel PanelMenuSide;
-        private Bunifu.Framework.UI.BunifuGradientPanel LowerMenuPanel;
+        private Bunifu.Framework.UI.BunifuGradientPanel PanelMenuLower;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton ButtonMenuGeneralRegistrations;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton ButtonMenuTechSupport;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton ButtonMenuSettings;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private Bunifu.Framework.UI.BunifuGradientPanel bunifuGradientPanel3;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton ButtonMenuProducts;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton ButtonMenuStocks;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton ButtonMenuMovements;
@@ -1054,11 +1055,9 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton ButtonMenuUsers;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton ButtonMenuSupplies;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton ButtonMenuCategorys;
-        private Bunifu.UI.WinForms.BunifuButton.BunifuButton ButtonMenuTechSupport;
-        private Bunifu.UI.WinForms.BunifuButton.BunifuButton ButtonMenuSettings;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private BunifuAnimatorNS.BunifuTransition BuniTransation;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.PictureBox ImageLogoBrand;
+        private System.Windows.Forms.Label label1;
     }
 }
 

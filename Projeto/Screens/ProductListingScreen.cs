@@ -85,7 +85,7 @@ namespace DimStock.Screens
                     ShowIcon = false;
                     ShowInTaskbar = false;
                     ControlBox = false;
-                    Owner = HomeScreen.GetInstance();
+                    Owner = HomeScreen.GetScreen();
                     ShowDialog();
                 };
             }

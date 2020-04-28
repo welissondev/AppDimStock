@@ -1,17 +1,18 @@
-﻿using DimStock.Properties;
+﻿using Bunifu.UI.WinForms.BunifuButton;
 using DimStock.AuxilyTools.AuxilyClasses;
+using DimStock.Properties;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using Bunifu.UI.WinForms.BunifuButton;
 
 namespace DimStock.Screens
 {
     public partial class HomeScreen : Form
     {
-        private static HomeScreen instance;
+        private static HomeScreen homeScreen;
+        private List<string> sideMenuNames;
     }
 }
 
@@ -24,12 +25,13 @@ namespace DimStock.Screens
             InitializeComponent();
             InitializeEvents();
             Mdi3dRemove.SetBevel(this, false, Color.White);
-            instance = this;
+            homeScreen = this;
         }
 
         private void ScreenLoad(object sender, EventArgs e)
         {
             SetScreenIcons();
+            SetSideMenuNames();
         }
 
         private void ShowCategoryAddScreen(object sender, EventArgs e)
@@ -45,32 +47,47 @@ namespace DimStock.Screens
             screen.Show();
         }
 
-        private void ShowContextMenuRegistration(object sender, EventArgs e)
+        private void ShowMenuGeneralRegistration(object sender, EventArgs e)
         {
             MenuContextRegistration.Show(this, MousePosition);
         }
 
         private void MenuExtenter(object sender, EventArgs e)
         {
-            var extended = 215;
-            var unexpanded = 80;
+            var expanded = 200;
+            var unexpanded = 65;
 
-            if (PanelMenuSide.Width == extended)
-                PanelMenuSide.Width = unexpanded;
-            else
-                PanelMenuSide.Width = extended;
-
-            foreach (BunifuButton ctl in PanelMenuSide.Controls.OfType<BunifuButton>())
+            if (PanelMenuSide.Width == expanded)
             {
-                ctl.Text = string.Empty;
+                PanelMenuSide.Width = unexpanded;
+                PanelMenuLower.Visible = false;
+                ButtonMenuExtender.Left = PanelMenuSide.Width / 2 - ButtonMenuExtender.Width / 2;
+
+                foreach (BunifuButton buttonMenu in PanelMenuSide.Controls.OfType<BunifuButton>())
+                    buttonMenu.Text = string.Empty;
             }
+            else
+            {
+                PanelMenuSide.Width = expanded;
+                ButtonMenuExtender.Location = new Point(163, 16);
+                PanelMenuLower.Visible = true;
+
+                var i = 0;
+                foreach (BunifuButton buttonMenu in PanelMenuSide.Controls.OfType<BunifuButton>())
+                {
+                    buttonMenu.Text = sideMenuNames[i].ToString();
+                    i += 1;
+                }
+            }
+
+
         }
 
         private void InitializeEvents()
         {
             Load += new EventHandler(ScreenLoad);
             ButtonMenuProducts.Click += new EventHandler(ShowCategoryAddScreen);
-            ButtonMenuGeneralRegistrations.Click += new EventHandler(ShowContextMenuRegistration);
+            ButtonMenuGeneralRegistrations.Click += new EventHandler(ShowMenuGeneralRegistration);
             ButtonMenuExtender.Click += new EventHandler(MenuExtenter);
         }
 
@@ -89,14 +106,9 @@ namespace DimStock.Screens
                 ButtonMenuTechSupport.IdleIconLeftImage = Resources.IconSupplier;
                 ButtonMenuSettings.IdleIconLeftImage = Resources.IconSettings;
                 ButtonMenuExtender.Image = Resources.IconExtendedMenu;
+                ImageLogoBrand.SizeMode = PictureBoxSizeMode.StretchImage;
+                ImageLogoBrand.Image = Resources.ImageLogoType;
 
-                //foreach (PictureBox ctl in PanelMenuSide.Controls.OfType<PictureBox>())
-                //{
-                //    if (ctl.Tag.ToString() == "ImageSeparator" && ctl.GetType() == typeof(PictureBox))
-                //    {
-                //        ctl.Image = Resources.ImageSeparator;
-                //    };
-                //}
             }
             catch (Exception ex)
             {
@@ -104,9 +116,17 @@ namespace DimStock.Screens
             }
         }
 
-        public static HomeScreen GetInstance()
+        private void SetSideMenuNames()
         {
-            return instance;
+            sideMenuNames = new List<string>();
+
+            foreach (BunifuButton buttonMenu in PanelMenuSide.Controls.OfType<BunifuButton>())
+                sideMenuNames.Add(buttonMenu.Text);
+        }
+
+        public static HomeScreen GetScreen()
+        {
+            return homeScreen;
         }
 
     }

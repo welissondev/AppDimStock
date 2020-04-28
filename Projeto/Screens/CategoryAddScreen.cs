@@ -77,7 +77,7 @@ namespace DimStock.Screens
                 {
                     ShowInTaskbar = false;
                     ControlBox = false;
-                    Owner = HomeScreen.GetInstance();
+                    Owner = HomeScreen.GetScreen();
                     ShowDialog();
                 };
             }
@@ -95,7 +95,7 @@ namespace DimStock.Screens
                     Id = view.Id;
                     Description = view.Description;
                     ControlBox = false;
-                    Owner = HomeScreen.GetInstance();
+                    Owner = HomeScreen.GetScreen();
                     ShowDialog();
                 };
             }
