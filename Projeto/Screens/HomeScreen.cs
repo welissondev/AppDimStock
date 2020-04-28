@@ -30,8 +30,9 @@ namespace DimStock.Screens
 
         private void ScreenLoad(object sender, EventArgs e)
         {
-            SetScreenIcons();
+            SetMenuIcons();
             SetSideMenuNames();
+            Text = "Sistema DimStock";
         }
 
         private void ShowCategoryAddScreen(object sender, EventArgs e)
@@ -62,6 +63,7 @@ namespace DimStock.Screens
                 PanelMenuSide.Width = unexpanded;
                 PanelMenuLower.Visible = false;
                 ButtonMenuExtender.Left = PanelMenuSide.Width / 2 - ButtonMenuExtender.Width / 2;
+                ButtonMenuExtender.Image = Resources.IconNext;
 
                 foreach (BunifuButton buttonMenu in PanelMenuSide.Controls.OfType<BunifuButton>())
                     buttonMenu.Text = string.Empty;
@@ -69,7 +71,8 @@ namespace DimStock.Screens
             else
             {
                 PanelMenuSide.Width = expanded;
-                ButtonMenuExtender.Location = new Point(163, 16);
+                ButtonMenuExtender.Left = PanelMenuSide.Left +165;
+                ButtonMenuExtender.Image = Resources.IconBack;
                 PanelMenuLower.Visible = true;
 
                 var i = 0;
@@ -79,8 +82,6 @@ namespace DimStock.Screens
                     i += 1;
                 }
             }
-
-
         }
 
         private void InitializeEvents()
@@ -91,23 +92,59 @@ namespace DimStock.Screens
             ButtonMenuExtender.Click += new EventHandler(MenuExtenter);
         }
 
-        private void SetScreenIcons()
+        private void SetMenuIcons()
         {
             try
             {
+                //Menus do panel lateral
+                var iconPadgingDefault = 10;
+
                 ButtonMenuCategorys.IdleIconLeftImage = Resources.IconCategory;
+                ButtonMenuCategorys.TextMarginLeft = -10;
+                ButtonMenuCategorys.IconPadding = iconPadgingDefault;
+
                 ButtonMenuProducts.IdleIconLeftImage = Resources.IconProduct;
+                ButtonMenuProducts.TextMarginLeft = -12;
+                ButtonMenuProducts.IconPadding = iconPadgingDefault;
+
                 ButtonMenuStocks.IdleIconLeftImage = Resources.IconStock;
+                ButtonMenuStocks.TextMarginLeft = -12;
+                ButtonMenuStocks.IconPadding = iconPadgingDefault;
+
                 ButtonMenuMovements.IdleIconLeftImage = Resources.IconMovementStock;
+                ButtonMenuMovements.TextMarginLeft = 8;
+                ButtonMenuMovements.IconPadding = iconPadgingDefault;
+
                 ButtonMenuDestinations.IdleIconLeftImage = Resources.IconDestination;
+                ButtonMenuDestinations.TextMarginLeft = -14;
+                ButtonMenuDestinations.IconPadding = iconPadgingDefault;
+
                 ButtonMenuSupplies.IdleIconLeftImage = Resources.IconSupplier;
+                ButtonMenuSupplies.IconPadding = iconPadgingDefault;
+
                 ButtonMenuUsers.IdleIconLeftImage = Resources.IconUser;
+                ButtonMenuUsers.TextMarginLeft = -15;
+                ButtonMenuUsers.IconPadding = iconPadgingDefault;
+
+                ButtonMenuExtender.Image = Resources.IconBack;
+
+                //Menu do panel do top
                 ButtonMenuGeneralRegistrations.IdleIconLeftImage = Resources.IconNew;
-                ButtonMenuTechSupport.IdleIconLeftImage = Resources.IconSupplier;
+                ButtonMenuGeneralRegistrations.TextMarginLeft = 12;
+                ButtonMenuGeneralRegistrations.IconPadding = iconPadgingDefault;
+
+                ButtonMenuTechSupport.IdleIconLeftImage = Resources.IconSupport;
+                ButtonMenuTechSupport.TextMarginLeft = 10;
+                ButtonMenuTechSupport.IconPadding = iconPadgingDefault;
+
                 ButtonMenuSettings.IdleIconLeftImage = Resources.IconSettings;
-                ButtonMenuExtender.Image = Resources.IconExtendedMenu;
-                ImageLogoBrand.SizeMode = PictureBoxSizeMode.StretchImage;
-                ImageLogoBrand.Image = Resources.ImageLogoType;
+                ButtonMenuSettings.TextMarginLeft = 6;
+                ButtonMenuSettings.IconPadding = iconPadgingDefault;
+
+                ButtonDimStockIcon.IdleIconLeftImage = Resources.ImageLogoType;
+                ButtonDimStockIcon.TextMarginLeft = -20;
+                ButtonDimStockIcon.IconPadding = 7;
+                ButtonDimStockIcon.IconMarginLeft = 1;
 
             }
             catch (Exception ex)

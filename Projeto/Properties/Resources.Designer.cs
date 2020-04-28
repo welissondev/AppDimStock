@@ -63,6 +63,16 @@ namespace DimStock.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap IconBack {
+            get {
+                object obj = ResourceManager.GetObject("IconBack", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IconCategory {
             get {
                 object obj = ResourceManager.GetObject("IconCategory", resourceCulture);
@@ -113,6 +123,16 @@ namespace DimStock.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap IconNext {
+            get {
+                object obj = ResourceManager.GetObject("IconNext", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IconProduct {
             get {
                 object obj = ResourceManager.GetObject("IconProduct", resourceCulture);
@@ -146,6 +166,16 @@ namespace DimStock.Properties {
         internal static System.Drawing.Bitmap IconSupplier {
             get {
                 object obj = ResourceManager.GetObject("IconSupplier", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconSupport {
+            get {
+                object obj = ResourceManager.GetObject("IconSupport", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

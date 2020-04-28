@@ -378,9 +378,6 @@
     <None Include="Resources\ImageLoading.gif" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ImageLogoType.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\IconCategory.png" />
   </ItemGroup>
   <ItemGroup>
@@ -408,8 +405,12 @@
     <None Include="Resources\ImageSeparator.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\IconBack.png" />
     <Content Include="Resources\IconNew.png" />
+    <Content Include="Resources\IconNext.png" />
     <Content Include="Resources\IconSupplier.png" />
+    <Content Include="Resources\IconSupport.png" />
+    <Content Include="Resources\ImageLogoType.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
