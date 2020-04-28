@@ -88,9 +88,8 @@
             this.bunifuGradientPanel3 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.ButtonMenuExtender = new System.Windows.Forms.PictureBox();
             this.PanelMenuLower = new Bunifu.Framework.UI.BunifuGradientPanel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.LinkLowerDiarioExcel = new System.Windows.Forms.LinkLabel();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.bunifuGradientPanel2 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.ButtonMenuSettings = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
@@ -767,9 +766,8 @@
             // 
             this.PanelMenuLower.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelMenuLower.BackgroundImage")));
             this.PanelMenuLower.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PanelMenuLower.Controls.Add(this.label4);
-            this.PanelMenuLower.Controls.Add(this.label3);
-            this.PanelMenuLower.Controls.Add(this.label2);
+            this.PanelMenuLower.Controls.Add(this.linkLabel1);
+            this.PanelMenuLower.Controls.Add(this.LinkLowerDiarioExcel);
             this.PanelMenuLower.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.PanelMenuLower.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
             this.PanelMenuLower.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
@@ -781,41 +779,31 @@
             this.PanelMenuLower.Size = new System.Drawing.Size(200, 62);
             this.PanelMenuLower.TabIndex = 23;
             // 
-            // label4
+            // linkLabel1
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(153, 26);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(42, 13);
-            this.label4.TabIndex = 25;
-            this.label4.Text = "Termos";
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
+            this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel1.LinkColor = System.Drawing.Color.White;
+            this.linkLabel1.Location = new System.Drawing.Point(110, 22);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(47, 17);
+            this.linkLabel1.TabIndex = 26;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Temos";
             // 
-            // label3
+            // LinkLowerDiarioExcel
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(89, 26);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 13);
-            this.label3.TabIndex = 24;
-            this.label3.Text = "Privacidade";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(12, 26);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 13);
-            this.label2.TabIndex = 23;
-            this.label2.Text = "Diário Excel";
+            this.LinkLowerDiarioExcel.AutoSize = true;
+            this.LinkLowerDiarioExcel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
+            this.LinkLowerDiarioExcel.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.LinkLowerDiarioExcel.LinkColor = System.Drawing.Color.Chartreuse;
+            this.LinkLowerDiarioExcel.Location = new System.Drawing.Point(27, 22);
+            this.LinkLowerDiarioExcel.Name = "LinkLowerDiarioExcel";
+            this.LinkLowerDiarioExcel.Size = new System.Drawing.Size(77, 17);
+            this.LinkLowerDiarioExcel.TabIndex = 25;
+            this.LinkLowerDiarioExcel.TabStop = true;
+            this.LinkLowerDiarioExcel.Text = "Diário Excel";
             // 
             // bunifuGradientPanel1
             // 
@@ -1098,7 +1086,7 @@
             this.ButtonDimStockIcon.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
             this.ButtonDimStockIcon.Dock = System.Windows.Forms.DockStyle.Left;
             this.ButtonDimStockIcon.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Disabled;
-            this.ButtonDimStockIcon.Font = new System.Drawing.Font("Segoe UI Black", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonDimStockIcon.Font = new System.Drawing.Font("Arial Black", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ButtonDimStockIcon.ForeColor = System.Drawing.Color.White;
             this.ButtonDimStockIcon.IconLeftCursor = System.Windows.Forms.Cursors.Hand;
             this.ButtonDimStockIcon.IconMarginLeft = 18;
@@ -1141,7 +1129,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(156)))), ((int)(((byte)(229)))));
             this.ClientSize = new System.Drawing.Size(960, 729);
             this.Controls.Add(this.PanelMenuSide);
             this.Controls.Add(this.bunifuGradientPanel1);
@@ -1176,9 +1163,6 @@
         private Bunifu.Framework.UI.BunifuGradientPanel bunifuGradientPanel1;
         private Bunifu.Framework.UI.BunifuGradientPanel PanelMenuSide;
         private Bunifu.Framework.UI.BunifuGradientPanel PanelMenuLower;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private Bunifu.Framework.UI.BunifuGradientPanel bunifuGradientPanel3;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton ButtonMenuCategorys;
         private System.Windows.Forms.Label LabelSeparator;
@@ -1200,6 +1184,8 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton ButtonMenuTechSupport;
         private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator7;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton ButtonMenuGeneralRegistrations;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel LinkLowerDiarioExcel;
     }
 }
 

@@ -93,6 +93,16 @@ namespace DimStock.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap IconExit {
+            get {
+                object obj = ResourceManager.GetObject("IconExit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IconExtendedMenu {
             get {
                 object obj = ResourceManager.GetObject("IconExtendedMenu", resourceCulture);

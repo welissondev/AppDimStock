@@ -18,7 +18,7 @@ namespace DimStock.Screens
 
 namespace DimStock.Screens
 {
-    public partial class HomeScreen : Form
+    public partial class HomeScreen 
     {
         public HomeScreen()
         {
@@ -71,7 +71,7 @@ namespace DimStock.Screens
             else
             {
                 PanelMenuSide.Width = expanded;
-                ButtonMenuExtender.Left = PanelMenuSide.Left +165;
+                ButtonMenuExtender.Left = PanelMenuSide.Left + 165;
                 ButtonMenuExtender.Image = Resources.IconBack;
                 PanelMenuLower.Visible = true;
 
@@ -142,9 +142,9 @@ namespace DimStock.Screens
                 ButtonMenuSettings.IconPadding = iconPadgingDefault;
 
                 ButtonDimStockIcon.IdleIconLeftImage = Resources.ImageLogoType;
-                ButtonDimStockIcon.TextMarginLeft = -20;
-                ButtonDimStockIcon.IconPadding = 7;
-                ButtonDimStockIcon.IconMarginLeft = 1;
+                ButtonDimStockIcon.TextMarginLeft = -10;
+                ButtonDimStockIcon.IconPadding = 10;
+                ButtonDimStockIcon.IconMarginLeft = 12;
 
             }
             catch (Exception ex)

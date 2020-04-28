@@ -85,6 +85,9 @@
   <PropertyGroup>
     <StartupObject>DimStock.Screens.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>IconTaskBar.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu.Core, Version=1.11.5.1, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9" />
     <Reference Include="Bunifu.UI.WinForm.BunifuShadowPanel, Version=1.11.5.1, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
@@ -405,7 +408,9 @@
     <None Include="Resources\ImageSeparator.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="IconTaskBar.ico" />
     <Content Include="Resources\IconBack.png" />
+    <Content Include="Resources\IconExit.png" />
     <Content Include="Resources\IconNew.png" />
     <Content Include="Resources\IconNext.png" />
     <Content Include="Resources\IconSupplier.png" />
