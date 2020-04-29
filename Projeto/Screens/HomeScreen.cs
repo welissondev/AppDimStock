@@ -69,15 +69,22 @@ namespace DimStock.Screens
             }
         }
 
-        private void ShowMenuGeneralRegistration(object sender, EventArgs e)
+        private void ShowMenuContext(object sender, EventArgs e)
         {
             try
             {
-                MenuContextRegistration.Show(this, MousePosition);
+                if (sender.Equals(ButtonMenuGeneralRegistrations))
+                {
+                    MenuContextRegistration.Show(this, MousePosition);
+                }
+                else if (sender.Equals(ButtonMenuSettings))
+                {
+                    MenuContextSettings.Show(this, MousePosition);
+                }
             }
             catch (Exception ex)
             {
-               ExceptionNotifier.ShowMessage(ex);
+                ExceptionNotifier.ShowMessage(ex);
             }
         }
 
@@ -140,7 +147,8 @@ namespace DimStock.Screens
             {
                 Load += new EventHandler(ScreenLoad);
                 ButtonMenuProducts.Click += new EventHandler(ShowCategoryAddScreen);
-                ButtonMenuGeneralRegistrations.Click += new EventHandler(ShowMenuGeneralRegistration);
+                ButtonMenuGeneralRegistrations.Click += new EventHandler(ShowMenuContext);
+                ButtonMenuSettings.Click += new EventHandler(ShowMenuContext);
                 ButtonMenuExtender.Click += new EventHandler(MenuExtenter);
             }
             catch (Exception ex)

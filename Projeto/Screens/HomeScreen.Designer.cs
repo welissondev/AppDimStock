@@ -98,12 +98,15 @@
             this.bunifuSeparator7 = new Bunifu.Framework.UI.BunifuSeparator();
             this.ButtonMenuGeneralRegistrations = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.ButtonDimStockIcon = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.MenuContextSettings = new Syncfusion.Windows.Forms.Tools.ContextMenuStripEx();
+            this.backupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuContextRegistration.SuspendLayout();
             this.PanelMenuSide.SuspendLayout();
             this.bunifuGradientPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ButtonMenuExtender)).BeginInit();
             this.PanelMenuLower.SuspendLayout();
             this.bunifuGradientPanel2.SuspendLayout();
+            this.MenuContextSettings.SuspendLayout();
             this.SuspendLayout();
             // 
             // MenuContextRegistration
@@ -1125,6 +1128,22 @@
             this.ButtonDimStockIcon.TextMarginLeft = 0;
             this.ButtonDimStockIcon.UseDefaultRadiusAndThickness = true;
             // 
+            // MenuContextSettings
+            // 
+            this.MenuContextSettings.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.backupToolStripMenuItem});
+            this.MenuContextSettings.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(236)))), ((int)(((byte)(249)))));
+            this.MenuContextSettings.Name = "MenuContextRegistration";
+            this.MenuContextSettings.Size = new System.Drawing.Size(114, 26);
+            this.MenuContextSettings.Style = Syncfusion.Windows.Forms.Tools.ContextMenuStripEx.ContextMenuStyle.Default;
+            this.MenuContextSettings.ThemeName = "Default";
+            // 
+            // backupToolStripMenuItem
+            // 
+            this.backupToolStripMenuItem.Name = "backupToolStripMenuItem";
+            this.backupToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.backupToolStripMenuItem.Text = "Backup";
+            // 
             // HomeScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1146,6 +1165,7 @@
             this.PanelMenuLower.ResumeLayout(false);
             this.PanelMenuLower.PerformLayout();
             this.bunifuGradientPanel2.ResumeLayout(false);
+            this.MenuContextSettings.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1186,6 +1206,8 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton ButtonMenuGeneralRegistrations;
         private System.Windows.Forms.LinkLabel LinkLowerTerm;
         private System.Windows.Forms.LinkLabel LinkLowerDiarioExcel;
+        private Syncfusion.Windows.Forms.Tools.ContextMenuStripEx MenuContextSettings;
+        private System.Windows.Forms.ToolStripMenuItem backupToolStripMenuItem;
     }
 }
 
