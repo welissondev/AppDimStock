@@ -1,15 +1,16 @@
-﻿using MetroFramework.Forms;
+﻿using System.Windows.Forms;
 using DimStock.Views;
 using DimStock.Presenters;
 using System;
 using DimStock.AuxilyTools.AuxilyClasses;
+using System.Drawing;
 
 namespace DimStock.Screens
 {
     /// <summary>
     /// Representa a tela de acesso do usuário
     /// </summary>
-    public partial class UserLoginAccessScreen : MetroForm, IUserLoginAccessView
+    public partial class UserLoginAccessScreen : Form, IUserLoginAccessView
     {
         private UserLoginAccessPresenter presenter;
 
@@ -27,13 +28,14 @@ namespace DimStock.Screens
 
 namespace DimStock.Screens
 {
-    public partial class UserLoginAccessScreen : MetroForm
+    public partial class UserLoginAccessScreen
     {
         public UserLoginAccessScreen()
         {
             InitializeComponent();
             InitializePresenter();
             InitializeEvents();
+            MaximizeScreen();
         }
 
         private void ScreenClose(object sender, EventArgs e)
@@ -69,6 +71,11 @@ namespace DimStock.Screens
             }
         }
 
+        private void MaximizeScreen()
+        {
+            Width = Screen.PrimaryScreen.Bounds.Width;
+            Height = Screen.PrimaryScreen.Bounds.Height - 40;
+        }
         private void InitializePresenter()
         {
             presenter = new UserLoginAccessPresenter(this);

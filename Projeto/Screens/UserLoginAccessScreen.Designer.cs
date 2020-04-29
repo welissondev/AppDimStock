@@ -37,17 +37,17 @@
             Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties11 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties12 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties9 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties10 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties11 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties12 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
             this.TextLogin = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             this.TextPassWord = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             this.bunifuShadowPanel1 = new Bunifu.UI.WinForm.BunifuShadowPanel.BunifuShadowPanel();
-            this.ButtonEnter = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.ButtonExit = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.ButtonEnter = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.bunifuShadowPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -177,7 +177,7 @@
             stateProperties8.ForeColor = System.Drawing.Color.Empty;
             stateProperties8.PlaceholderForeColor = System.Drawing.Color.Empty;
             this.TextPassWord.OnIdleState = stateProperties8;
-            this.TextPassWord.PasswordChar = '\0';
+            this.TextPassWord.PasswordChar = '*';
             this.TextPassWord.PlaceholderForeColor = System.Drawing.Color.Silver;
             this.TextPassWord.PlaceholderText = "*******";
             this.TextPassWord.ReadOnly = false;
@@ -212,69 +212,6 @@
             this.bunifuShadowPanel1.ShadowTopLeftVisible = false;
             this.bunifuShadowPanel1.Size = new System.Drawing.Size(443, 369);
             this.bunifuShadowPanel1.TabIndex = 2;
-            // 
-            // ButtonEnter
-            // 
-            this.ButtonEnter.AllowToggling = false;
-            this.ButtonEnter.AnimationSpeed = 200;
-            this.ButtonEnter.AutoGenerateColors = false;
-            this.ButtonEnter.BackColor = System.Drawing.Color.Transparent;
-            this.ButtonEnter.BackColor1 = System.Drawing.Color.DodgerBlue;
-            this.ButtonEnter.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonEnter.BackgroundImage")));
-            this.ButtonEnter.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.ButtonEnter.ButtonText = "Entrar";
-            this.ButtonEnter.ButtonTextMarginLeft = 0;
-            this.ButtonEnter.ColorContrastOnClick = 45;
-            this.ButtonEnter.ColorContrastOnHover = 45;
-            this.ButtonEnter.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges2.BottomLeft = true;
-            borderEdges2.BottomRight = true;
-            borderEdges2.TopLeft = true;
-            borderEdges2.TopRight = true;
-            this.ButtonEnter.CustomizableEdges = borderEdges2;
-            this.ButtonEnter.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.ButtonEnter.DisabledBorderColor = System.Drawing.Color.Empty;
-            this.ButtonEnter.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.ButtonEnter.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
-            this.ButtonEnter.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
-            this.ButtonEnter.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
-            this.ButtonEnter.ForeColor = System.Drawing.Color.White;
-            this.ButtonEnter.IconLeftCursor = System.Windows.Forms.Cursors.Hand;
-            this.ButtonEnter.IconMarginLeft = 11;
-            this.ButtonEnter.IconPadding = 10;
-            this.ButtonEnter.IconRightCursor = System.Windows.Forms.Cursors.Hand;
-            this.ButtonEnter.IdleBorderColor = System.Drawing.Color.DodgerBlue;
-            this.ButtonEnter.IdleBorderRadius = 3;
-            this.ButtonEnter.IdleBorderThickness = 1;
-            this.ButtonEnter.IdleFillColor = System.Drawing.Color.DodgerBlue;
-            this.ButtonEnter.IdleIconLeftImage = null;
-            this.ButtonEnter.IdleIconRightImage = null;
-            this.ButtonEnter.IndicateFocus = false;
-            this.ButtonEnter.Location = new System.Drawing.Point(29, 211);
-            this.ButtonEnter.Name = "ButtonEnter";
-            stateProperties11.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            stateProperties11.BorderRadius = 3;
-            stateProperties11.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            stateProperties11.BorderThickness = 1;
-            stateProperties11.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            stateProperties11.ForeColor = System.Drawing.Color.White;
-            stateProperties11.IconLeftImage = null;
-            stateProperties11.IconRightImage = null;
-            this.ButtonEnter.onHoverState = stateProperties11;
-            stateProperties12.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
-            stateProperties12.BorderRadius = 3;
-            stateProperties12.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            stateProperties12.BorderThickness = 1;
-            stateProperties12.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
-            stateProperties12.ForeColor = System.Drawing.Color.White;
-            stateProperties12.IconLeftImage = null;
-            stateProperties12.IconRightImage = null;
-            this.ButtonEnter.OnPressedState = stateProperties12;
-            this.ButtonEnter.Size = new System.Drawing.Size(188, 45);
-            this.ButtonEnter.TabIndex = 2;
-            this.ButtonEnter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.ButtonEnter.TextMarginLeft = 0;
-            this.ButtonEnter.UseDefaultRadiusAndThickness = true;
             // 
             // ButtonExit
             // 
@@ -339,16 +276,82 @@
             this.ButtonExit.TextMarginLeft = 0;
             this.ButtonExit.UseDefaultRadiusAndThickness = true;
             // 
+            // ButtonEnter
+            // 
+            this.ButtonEnter.AllowToggling = false;
+            this.ButtonEnter.AnimationSpeed = 200;
+            this.ButtonEnter.AutoGenerateColors = false;
+            this.ButtonEnter.BackColor = System.Drawing.Color.Transparent;
+            this.ButtonEnter.BackColor1 = System.Drawing.Color.DodgerBlue;
+            this.ButtonEnter.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonEnter.BackgroundImage")));
+            this.ButtonEnter.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.ButtonEnter.ButtonText = "Entrar";
+            this.ButtonEnter.ButtonTextMarginLeft = 0;
+            this.ButtonEnter.ColorContrastOnClick = 45;
+            this.ButtonEnter.ColorContrastOnHover = 45;
+            this.ButtonEnter.Cursor = System.Windows.Forms.Cursors.Hand;
+            borderEdges2.BottomLeft = true;
+            borderEdges2.BottomRight = true;
+            borderEdges2.TopLeft = true;
+            borderEdges2.TopRight = true;
+            this.ButtonEnter.CustomizableEdges = borderEdges2;
+            this.ButtonEnter.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.ButtonEnter.DisabledBorderColor = System.Drawing.Color.Empty;
+            this.ButtonEnter.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.ButtonEnter.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.ButtonEnter.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
+            this.ButtonEnter.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
+            this.ButtonEnter.ForeColor = System.Drawing.Color.White;
+            this.ButtonEnter.IconLeftCursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonEnter.IconMarginLeft = 11;
+            this.ButtonEnter.IconPadding = 10;
+            this.ButtonEnter.IconRightCursor = System.Windows.Forms.Cursors.Hand;
+            this.ButtonEnter.IdleBorderColor = System.Drawing.Color.DodgerBlue;
+            this.ButtonEnter.IdleBorderRadius = 3;
+            this.ButtonEnter.IdleBorderThickness = 1;
+            this.ButtonEnter.IdleFillColor = System.Drawing.Color.DodgerBlue;
+            this.ButtonEnter.IdleIconLeftImage = null;
+            this.ButtonEnter.IdleIconRightImage = null;
+            this.ButtonEnter.IndicateFocus = false;
+            this.ButtonEnter.Location = new System.Drawing.Point(29, 211);
+            this.ButtonEnter.Name = "ButtonEnter";
+            stateProperties11.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties11.BorderRadius = 3;
+            stateProperties11.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            stateProperties11.BorderThickness = 1;
+            stateProperties11.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties11.ForeColor = System.Drawing.Color.White;
+            stateProperties11.IconLeftImage = null;
+            stateProperties11.IconRightImage = null;
+            this.ButtonEnter.onHoverState = stateProperties11;
+            stateProperties12.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            stateProperties12.BorderRadius = 3;
+            stateProperties12.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            stateProperties12.BorderThickness = 1;
+            stateProperties12.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            stateProperties12.ForeColor = System.Drawing.Color.White;
+            stateProperties12.IconLeftImage = null;
+            stateProperties12.IconRightImage = null;
+            this.ButtonEnter.OnPressedState = stateProperties12;
+            this.ButtonEnter.Size = new System.Drawing.Size(188, 45);
+            this.ButtonEnter.TabIndex = 2;
+            this.ButtonEnter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ButtonEnter.TextMarginLeft = 0;
+            this.ButtonEnter.UseDefaultRadiusAndThickness = true;
+            // 
             // UserLoginAccessScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(959, 667);
             this.Controls.Add(this.bunifuShadowPanel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(959, 667);
             this.Name = "UserLoginAccessScreen";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.bunifuShadowPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

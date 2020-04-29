@@ -59,7 +59,6 @@ namespace DimStock.Screens
 
             var screen = new UserLoginAccessScreen();
             screen.Show();
-
         }
 
         private void MenuExtenter(object sender, EventArgs e)
