@@ -1,11 +1,18 @@
 ﻿using System;
 using MetroFramework.Forms;
 using DimStock.Views;
+using DimStock.Presenters;
+using System.Windows.Forms;
+using MetroFramework;
+using DimStock.AuxilyTools.AuxilyClasses;
 
 namespace DimStock.Screens
 {
     public partial class UserLoginAddScreen : IUserLoginAddView
     {
+        private UserLoginAddPresenter presenter;
+        private static MetroForm thisScreen;
+
         public int Id { get; set; }
         public string YourName { get => TextYourName.Text; set => TextYourName.Text = value; }
         public string Email { get => TextEmail.Text; set => TextEmail.Text = value; }
@@ -25,17 +32,99 @@ namespace DimStock.Screens
         public UserLoginAddScreen()
         {
             InitializeComponent();
+            InitializePresenter();
             InitializeEvents();
+            SetScreen();
         }
 
+        private void ScreenClose(object sender, EventArgs e)
+        {
+            try
+            {
+                Close();
+                thisScreen = null;
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
         private void ScreenResize(object sender, EventArgs e)
         {
-            Refresh();
+            try
+            {
+                Refresh();
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
         }
 
+        private void InitializePresenter()
+        {
+            presenter = new UserLoginAddPresenter(this);
+        }
         private void InitializeEvents()
         {
-            Resize += new EventHandler(ScreenResize);
+            try
+            {
+                ButtonClose.Click += new EventHandler(ScreenClose);
+                ButtonSave.Click += new EventHandler(presenter.InsertUpdate);
+                ButtonDelete.Click += new EventHandler(presenter.Delete);
+                ButtonClearView.Click += new EventHandler(presenter.ClearView);
+                Resize += new EventHandler(ScreenResize);
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+
+        private void SetScreen()
+        {
+            thisScreen = this;
+        }
+        public static MetroForm GetScreen()
+        {
+            return thisScreen;
+        }
+
+        public static void ShowScreen(Form fatherScreen = null)
+        {
+            try
+            {
+                var screen = new UserLoginAddScreen();
+
+                if (fatherScreen != null)
+                {
+                    screen.MdiParent = fatherScreen;
+                    screen.ShowInTaskbar = false;
+                    screen.ControlBox = false;
+                    screen.Dock = DockStyle.Fill;
+                    screen.Style = MetroColorStyle.White;
+                    screen.Movable = false;
+                    screen.Show();
+                }
+                else
+                {
+                    screen.ShowInTaskbar = false;
+                    screen.ControlBox = false;
+                    screen.ShowIcon = false;
+                    screen.Style = MetroColorStyle.Blue;
+
+                    //var listingScreen = CategoryListingScreen.GetScreen();
+                    //if (listingScreen != null)
+                    //    screen.Owner = listingScreen;
+
+                    screen.ShowDialog();
+                    screen.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
         }
     }
 }
