@@ -1,6 +1,7 @@
 ﻿using DimStock.AuxilyTools.AuxilyClasses;
 using DimStock.Presenters;
 using DimStock.Views;
+using MetroFramework;
 using MetroFramework.Forms;
 using System;
 using System.Drawing;
@@ -13,6 +14,8 @@ namespace DimStock.Screens
     /// </summary>
     public partial class ProductListingScreen : IProductListingView
     {
+        private static MetroForm thisScreen;
+
         private DataGridViewLinkColumn buttonView;
         private DataGridViewLinkColumn buttonDelete;
         private ProductListingPresenter presenter;
@@ -41,6 +44,7 @@ namespace DimStock.Screens
             InitializeComponent();
             InitializePrensenter();
             InitializeEvents();
+            SetScreen();
         }
 
         private void ScreenLoad(object sender, EventArgs e)
@@ -70,29 +74,18 @@ namespace DimStock.Screens
             try
             {
                 Close();
+                thisScreen = null;
             }
             catch (Exception ex)
             {
                 ExceptionNotifier.ShowMessage(ex);
             }
         }
-        public void ScreenShow(object sender, EventArgs e)
+
+        private void ShowChildScreen(object sender, EventArgs e)
         {
-            try
-            {
-                using (var screen = new ProductListingScreen())
-                {
-                    ShowIcon = false;
-                    ShowInTaskbar = false;
-                    ControlBox = false;
-                    Owner = HomeScreen.GetScreen();
-                    ShowDialog();
-                };
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
+            if (sender.Equals(ButtonNew))
+                ProductAddScreen.ShowScreen();
         }
 
         private void TextSearchKeyPress(object sender, KeyPressEventArgs e)
@@ -279,7 +272,7 @@ namespace DimStock.Screens
             {
                 Load += new EventHandler(ScreenLoad);
                 Resize += new EventHandler(ScreenResize);
-                ButtonNew.Click += new EventHandler(new ProductAddScreen().ScreenShow);
+                ButtonNew.Click += new EventHandler(ShowChildScreen);
                 ButtonUpdateGridList.Click += new EventHandler(presenter.SearchData);
                 ButtonClear.Click += new EventHandler(presenter.ClearView);
                 ButtonClose.Click += new EventHandler(ScreenClose);
@@ -304,6 +297,46 @@ namespace DimStock.Screens
             catch (Exception ex)
             {
                 ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+
+        private void SetScreen()
+        {
+            thisScreen = this;
+        }
+        public static MetroForm GetScreen()
+        {
+            return thisScreen;
+        }
+
+        public static void ShowScreen(Form fatherScreen = null)
+        {
+            MdiClosingAll.CloseAllForms();
+
+            var screen = new ProductListingScreen();
+
+            if (fatherScreen != null)
+            {
+                screen.MdiParent = fatherScreen;
+                screen.ShowInTaskbar = false;
+                screen.ControlBox = false;
+                screen.Dock = DockStyle.Fill;
+                screen.Style = MetroColorStyle.White;
+                screen.Show();
+            }
+            else
+            {
+                screen.ShowInTaskbar = false;
+                screen.ControlBox = false;
+                screen.ShowIcon = false;
+                screen.Style = MetroColorStyle.Blue;
+
+                var homeScreen = HomeScreen.GetScreen();
+                if (homeScreen != null)
+                    screen.Owner = homeScreen;
+
+                screen.ShowDialog();
+                screen.Dispose();
             }
         }
     }

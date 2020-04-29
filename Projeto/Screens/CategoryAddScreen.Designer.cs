@@ -75,14 +75,14 @@
             // 
             this.BuniCard.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.BuniCard.BorderColor = System.Drawing.Color.Transparent;
+            this.BuniCard.BorderColor = System.Drawing.Color.Gainsboro;
             this.BuniCard.Controls.Add(this.TextDescription);
             this.BuniCard.Controls.Add(this.label1);
             this.BuniCard.Location = new System.Drawing.Point(20, 69);
             this.BuniCard.Name = "BuniCard";
             this.BuniCard.PanelColor = System.Drawing.Color.Empty;
             this.BuniCard.ShadowDept = 2;
-            this.BuniCard.ShadowTopLeftVisible = true;
+            this.BuniCard.ShadowTopLeftVisible = false;
             this.BuniCard.Size = new System.Drawing.Size(869, 240);
             this.BuniCard.TabIndex = 241;
             // 
@@ -170,7 +170,7 @@
             // 
             this.bunifuShadowPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.bunifuShadowPanel1.BorderColor = System.Drawing.Color.Transparent;
+            this.bunifuShadowPanel1.BorderColor = System.Drawing.Color.Gainsboro;
             this.bunifuShadowPanel1.Controls.Add(this.ButtonClose);
             this.bunifuShadowPanel1.Controls.Add(this.ButtonClearView);
             this.bunifuShadowPanel1.Controls.Add(this.ButtonDelete);
@@ -179,7 +179,7 @@
             this.bunifuShadowPanel1.Name = "bunifuShadowPanel1";
             this.bunifuShadowPanel1.PanelColor = System.Drawing.Color.Empty;
             this.bunifuShadowPanel1.ShadowDept = 2;
-            this.bunifuShadowPanel1.ShadowTopLeftVisible = true;
+            this.bunifuShadowPanel1.ShadowTopLeftVisible = false;
             this.bunifuShadowPanel1.Size = new System.Drawing.Size(869, 86);
             this.bunifuShadowPanel1.TabIndex = 243;
             // 
@@ -247,7 +247,6 @@
             this.ButtonClose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonClose.TextMarginLeft = 0;
             this.ButtonClose.UseDefaultRadiusAndThickness = true;
-
             // 
             // ButtonClearView
             // 
@@ -312,7 +311,6 @@
             this.ButtonClearView.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonClearView.TextMarginLeft = 0;
             this.ButtonClearView.UseDefaultRadiusAndThickness = true;
-
             // 
             // ButtonDelete
             // 
@@ -377,7 +375,6 @@
             this.ButtonDelete.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonDelete.TextMarginLeft = 0;
             this.ButtonDelete.UseDefaultRadiusAndThickness = true;
-
             // 
             // ButtonSave
             // 
@@ -442,9 +439,8 @@
             this.ButtonSave.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonSave.TextMarginLeft = 0;
             this.ButtonSave.UseDefaultRadiusAndThickness = true;
-
             // 
-            // CategoryAddForm
+            // CategoryAddScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -452,7 +448,7 @@
             this.Controls.Add(this.bunifuShadowPanel1);
             this.Controls.Add(this.BuniCard);
             this.MinimumSize = new System.Drawing.Size(913, 493);
-            this.Name = "CategoryAddForm";
+            this.Name = "CategoryAddScreen";
             this.ShadowType = MetroFramework.Forms.MetroFormShadowType.DropShadow;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

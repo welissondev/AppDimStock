@@ -70,7 +70,7 @@
             this.bunifuShadowPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.bunifuShadowPanel2.BorderColor = System.Drawing.Color.Transparent;
+            this.bunifuShadowPanel2.BorderColor = System.Drawing.Color.Gainsboro;
             this.bunifuShadowPanel2.Controls.Add(this.ImageLoading);
             this.bunifuShadowPanel2.Controls.Add(this.TextSearchDescription);
             this.bunifuShadowPanel2.Controls.Add(this.GridList);
@@ -78,14 +78,13 @@
             this.bunifuShadowPanel2.Name = "bunifuShadowPanel2";
             this.bunifuShadowPanel2.PanelColor = System.Drawing.Color.Empty;
             this.bunifuShadowPanel2.ShadowDept = 2;
-            this.bunifuShadowPanel2.ShadowTopLeftVisible = true;
+            this.bunifuShadowPanel2.ShadowTopLeftVisible = false;
             this.bunifuShadowPanel2.Size = new System.Drawing.Size(977, 508);
             this.bunifuShadowPanel2.TabIndex = 238;
             // 
             // ImageLoading
             // 
             this.ImageLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
-
             this.ImageLoading.Location = new System.Drawing.Point(416, 200);
             this.ImageLoading.Name = "ImageLoading";
             this.ImageLoading.Size = new System.Drawing.Size(144, 135);
@@ -219,7 +218,6 @@
             this.GridList.EnableHeadersVisualStyles = false;
             this.GridList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.GridList.HeaderBackColor = System.Drawing.Color.DodgerBlue;
-
             this.GridList.HeaderForeColor = System.Drawing.Color.White;
             this.GridList.Location = new System.Drawing.Point(30, 85);
             this.GridList.Name = "GridList";
@@ -234,7 +232,7 @@
             // 
             this.bunifuShadowPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.bunifuShadowPanel1.BorderColor = System.Drawing.Color.Transparent;
+            this.bunifuShadowPanel1.BorderColor = System.Drawing.Color.Gainsboro;
             this.bunifuShadowPanel1.Controls.Add(this.ButtonCloseScreen);
             this.bunifuShadowPanel1.Controls.Add(this.ButtonScreenClear);
             this.bunifuShadowPanel1.Controls.Add(this.ButtonListGrid);
@@ -243,7 +241,7 @@
             this.bunifuShadowPanel1.Name = "bunifuShadowPanel1";
             this.bunifuShadowPanel1.PanelColor = System.Drawing.Color.Empty;
             this.bunifuShadowPanel1.ShadowDept = 2;
-            this.bunifuShadowPanel1.ShadowTopLeftVisible = true;
+            this.bunifuShadowPanel1.ShadowTopLeftVisible = false;
             this.bunifuShadowPanel1.Size = new System.Drawing.Size(977, 86);
             this.bunifuShadowPanel1.TabIndex = 237;
             // 

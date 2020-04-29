@@ -11,7 +11,7 @@ namespace DimStock.Screens
 {
     public partial class HomeScreen : Form
     {
-        private static HomeScreen homeScreen;
+        private static HomeScreen thisScreen;
         private List<string> listMenuNames;
     }
 }
@@ -49,24 +49,19 @@ namespace DimStock.Screens
             }
         }
 
-        private void ShowCategoryAddScreen(object sender, EventArgs e)
+        private void ShowChildScreen(object sender, EventArgs e)
         {
-            try
-            {
-                var screen = new ProductListingScreen()
-                {
-                    MdiParent = this,
-                    Dock = DockStyle.Fill,
-                    ControlBox = false,
-                    Movable = false,
-                    Style = MetroFramework.MetroColorStyle.White
-                };
-                screen.Show();
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
+            if (sender.Equals(ToolStripCategoyAddScreen))
+                CategoryAddScreen.ShowScreen(this);
+
+            if (sender.Equals(ButtonMenuCategorys))
+                CategoryListingScreen.ShowScreen(this);
+
+            if (sender.Equals(ToolStripProductAddScreen))
+                ProductAddScreen.ShowScreen(this);
+
+            if(sender.Equals(ButtonMenuProducts))
+                ProductListingScreen.ShowScreen(this);
         }
 
         private void ShowMenuContext(object sender, EventArgs e)
@@ -92,7 +87,7 @@ namespace DimStock.Screens
         {
             try
             {
-                homeScreen.Hide();
+                thisScreen.Hide();
 
                 var screen = new UserLoginAccessScreen();
                 screen.Show();
@@ -146,7 +141,10 @@ namespace DimStock.Screens
             try
             {
                 Load += new EventHandler(ScreenLoad);
-                ButtonMenuProducts.Click += new EventHandler(ShowCategoryAddScreen);
+                ButtonMenuProducts.Click += new EventHandler(ShowChildScreen);
+                ToolStripCategoyAddScreen.Click += new EventHandler(ShowChildScreen);
+                ToolStripProductAddScreen.Click += new EventHandler(ShowChildScreen);
+                ButtonMenuCategorys.Click += new EventHandler(ShowChildScreen);
                 ButtonMenuGeneralRegistrations.Click += new EventHandler(ShowMenuContext);
                 ButtonMenuSettings.Click += new EventHandler(ShowMenuContext);
                 ButtonMenuExtender.Click += new EventHandler(MenuExtenter);
@@ -162,54 +160,55 @@ namespace DimStock.Screens
             try
             {
                 //Menus do panel lateral
-                var iconPadgingDefault = 10;
+                var iconSidePadgingDefault = 10;
+                var iconTopPadginDefault = 10;
 
                 ButtonMenuCategorys.IdleIconLeftImage = Resources.IconCategory;
                 ButtonMenuCategorys.TextMarginLeft = -10;
-                ButtonMenuCategorys.IconPadding = iconPadgingDefault;
+                ButtonMenuCategorys.IconPadding = iconSidePadgingDefault;
 
                 ButtonMenuProducts.IdleIconLeftImage = Resources.IconProduct;
                 ButtonMenuProducts.TextMarginLeft = -12;
-                ButtonMenuProducts.IconPadding = iconPadgingDefault;
+                ButtonMenuProducts.IconPadding = iconSidePadgingDefault;
 
                 ButtonMenuStocks.IdleIconLeftImage = Resources.IconStock;
                 ButtonMenuStocks.TextMarginLeft = -12;
-                ButtonMenuStocks.IconPadding = iconPadgingDefault;
+                ButtonMenuStocks.IconPadding = iconSidePadgingDefault;
 
                 ButtonMenuMovements.IdleIconLeftImage = Resources.IconMovementStock;
                 ButtonMenuMovements.TextMarginLeft = 8;
-                ButtonMenuMovements.IconPadding = iconPadgingDefault;
+                ButtonMenuMovements.IconPadding = iconSidePadgingDefault;
 
                 ButtonMenuDestinations.IdleIconLeftImage = Resources.IconDestination;
                 ButtonMenuDestinations.TextMarginLeft = -14;
-                ButtonMenuDestinations.IconPadding = iconPadgingDefault;
+                ButtonMenuDestinations.IconPadding = iconSidePadgingDefault;
 
                 ButtonMenuSupplies.IdleIconLeftImage = Resources.IconSupplier;
-                ButtonMenuSupplies.IconPadding = iconPadgingDefault;
+                ButtonMenuSupplies.IconPadding = iconSidePadgingDefault;
 
                 ButtonMenuUsers.IdleIconLeftImage = Resources.IconUser;
                 ButtonMenuUsers.TextMarginLeft = -15;
-                ButtonMenuUsers.IconPadding = iconPadgingDefault;
+                ButtonMenuUsers.IconPadding = iconSidePadgingDefault;
 
                 ButtonMenuExtender.Image = Resources.IconBack;
 
                 //Menu do panel do top
                 ButtonMenuGeneralRegistrations.IdleIconLeftImage = Resources.IconNew;
                 ButtonMenuGeneralRegistrations.TextMarginLeft = 12;
-                ButtonMenuGeneralRegistrations.IconPadding = iconPadgingDefault;
+                ButtonMenuGeneralRegistrations.IconPadding = iconTopPadginDefault;
 
                 ButtonMenuTechSupport.IdleIconLeftImage = Resources.IconSupport;
                 ButtonMenuTechSupport.TextMarginLeft = 10;
-                ButtonMenuTechSupport.IconPadding = iconPadgingDefault;
+                ButtonMenuTechSupport.IconPadding = iconTopPadginDefault;
 
                 ButtonMenuSettings.IdleIconLeftImage = Resources.IconSettings;
                 ButtonMenuSettings.TextMarginLeft = 6;
-                ButtonMenuSettings.IconPadding = iconPadgingDefault;
+                ButtonMenuSettings.IconPadding = iconTopPadginDefault;
 
                 ButtonDimStockIcon.IdleIconLeftImage = Resources.ImageLogoType;
                 ButtonDimStockIcon.TextMarginLeft = -10;
-                ButtonDimStockIcon.IconPadding = 10;
-                ButtonDimStockIcon.IconMarginLeft = 12;
+                ButtonDimStockIcon.IconPadding = 7;
+                ButtonDimStockIcon.IconMarginLeft = 18;
 
             }
             catch (Exception ex)
@@ -234,11 +233,11 @@ namespace DimStock.Screens
 
         public static HomeScreen GetScreen()
         {
-            return homeScreen;
+            return thisScreen;
         }
         private void SetScreen()
         {
-            homeScreen = this;
+            thisScreen = this;
         }
 
     }

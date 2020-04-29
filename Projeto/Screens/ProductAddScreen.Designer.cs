@@ -276,7 +276,7 @@
             this.PanelShadow.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PanelShadow.BorderColor = System.Drawing.Color.Transparent;
+            this.PanelShadow.BorderColor = System.Drawing.Color.Gainsboro;
             this.PanelShadow.Controls.Add(this.ButtonShow_CategoryAddForm);
             this.PanelShadow.Controls.Add(this.BoxCategoryDescription);
             this.PanelShadow.Controls.Add(this.TextBarCode);
@@ -603,7 +603,7 @@
             // 
             this.bunifuShadowPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.bunifuShadowPanel1.BorderColor = System.Drawing.Color.Transparent;
+            this.bunifuShadowPanel1.BorderColor = System.Drawing.Color.Gainsboro;
             this.bunifuShadowPanel1.Controls.Add(this.ButtonClose);
             this.bunifuShadowPanel1.Controls.Add(this.ButtonClearView);
             this.bunifuShadowPanel1.Controls.Add(this.ButtonDelete);
