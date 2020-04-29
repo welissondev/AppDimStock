@@ -114,6 +114,7 @@ namespace DimStock.Screens
                     screen.ControlBox = false;
                     screen.Dock = DockStyle.Fill;
                     screen.Style = MetroColorStyle.White;
+                    screen.Movable = false;
                     screen.Show();
                 }
                 else

@@ -321,6 +321,7 @@ namespace DimStock.Screens
                 screen.ShowInTaskbar = false;
                 screen.ControlBox = false;
                 screen.Dock = DockStyle.Fill;
+                screen.Movable = false;
                 screen.Style = MetroColorStyle.White;
                 screen.Show();
             }
