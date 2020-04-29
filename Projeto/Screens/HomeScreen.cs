@@ -79,7 +79,7 @@ namespace DimStock.Screens
             else
             {
                 PanelMenuSide.Width = expanded;
-                ButtonMenuExtender.Left = PanelMenuSide.Left + 165;
+                ButtonMenuExtender.Left = PanelMenuSide.Left + 170;
                 ButtonMenuExtender.Image = Resources.IconBack;
                 PanelMenuLower.Visible = true;
 

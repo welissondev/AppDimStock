@@ -88,7 +88,7 @@
             this.bunifuGradientPanel3 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.ButtonMenuExtender = new System.Windows.Forms.PictureBox();
             this.PanelMenuLower = new Bunifu.Framework.UI.BunifuGradientPanel();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.LinkLowerTerm = new System.Windows.Forms.LinkLabel();
             this.LinkLowerDiarioExcel = new System.Windows.Forms.LinkLabel();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.bunifuGradientPanel2 = new Bunifu.Framework.UI.BunifuGradientPanel();
@@ -237,7 +237,7 @@
             this.ButtonMenuProducts.IdleIconLeftImage = null;
             this.ButtonMenuProducts.IdleIconRightImage = null;
             this.ButtonMenuProducts.IndicateFocus = false;
-            this.ButtonMenuProducts.Location = new System.Drawing.Point(0, 418);
+            this.ButtonMenuProducts.Location = new System.Drawing.Point(0, 404);
             this.ButtonMenuProducts.Name = "ButtonMenuProducts";
             stateProperties1.BorderColor = System.Drawing.Color.Transparent;
             stateProperties1.BorderRadius = 50;
@@ -269,7 +269,7 @@
             this.bunifuSeparator6.Dock = System.Windows.Forms.DockStyle.Top;
             this.bunifuSeparator6.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))));
             this.bunifuSeparator6.LineThickness = 1;
-            this.bunifuSeparator6.Location = new System.Drawing.Point(0, 408);
+            this.bunifuSeparator6.Location = new System.Drawing.Point(0, 394);
             this.bunifuSeparator6.Name = "bunifuSeparator6";
             this.bunifuSeparator6.Size = new System.Drawing.Size(200, 10);
             this.bunifuSeparator6.TabIndex = 41;
@@ -314,7 +314,7 @@
             this.ButtonMenuStocks.IdleIconLeftImage = null;
             this.ButtonMenuStocks.IdleIconRightImage = null;
             this.ButtonMenuStocks.IndicateFocus = false;
-            this.ButtonMenuStocks.Location = new System.Drawing.Point(0, 358);
+            this.ButtonMenuStocks.Location = new System.Drawing.Point(0, 344);
             this.ButtonMenuStocks.Name = "ButtonMenuStocks";
             stateProperties3.BorderColor = System.Drawing.Color.Transparent;
             stateProperties3.BorderRadius = 50;
@@ -346,7 +346,7 @@
             this.bunifuSeparator5.Dock = System.Windows.Forms.DockStyle.Top;
             this.bunifuSeparator5.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))));
             this.bunifuSeparator5.LineThickness = 1;
-            this.bunifuSeparator5.Location = new System.Drawing.Point(0, 348);
+            this.bunifuSeparator5.Location = new System.Drawing.Point(0, 334);
             this.bunifuSeparator5.Name = "bunifuSeparator5";
             this.bunifuSeparator5.Size = new System.Drawing.Size(200, 10);
             this.bunifuSeparator5.TabIndex = 39;
@@ -391,7 +391,7 @@
             this.ButtonMenuMovements.IdleIconLeftImage = null;
             this.ButtonMenuMovements.IdleIconRightImage = null;
             this.ButtonMenuMovements.IndicateFocus = false;
-            this.ButtonMenuMovements.Location = new System.Drawing.Point(0, 298);
+            this.ButtonMenuMovements.Location = new System.Drawing.Point(0, 284);
             this.ButtonMenuMovements.Name = "ButtonMenuMovements";
             stateProperties5.BorderColor = System.Drawing.Color.Transparent;
             stateProperties5.BorderRadius = 50;
@@ -423,7 +423,7 @@
             this.bunifuSeparator4.Dock = System.Windows.Forms.DockStyle.Top;
             this.bunifuSeparator4.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))));
             this.bunifuSeparator4.LineThickness = 1;
-            this.bunifuSeparator4.Location = new System.Drawing.Point(0, 288);
+            this.bunifuSeparator4.Location = new System.Drawing.Point(0, 274);
             this.bunifuSeparator4.Name = "bunifuSeparator4";
             this.bunifuSeparator4.Size = new System.Drawing.Size(200, 10);
             this.bunifuSeparator4.TabIndex = 37;
@@ -468,7 +468,7 @@
             this.ButtonMenuDestinations.IdleIconLeftImage = null;
             this.ButtonMenuDestinations.IdleIconRightImage = null;
             this.ButtonMenuDestinations.IndicateFocus = false;
-            this.ButtonMenuDestinations.Location = new System.Drawing.Point(0, 238);
+            this.ButtonMenuDestinations.Location = new System.Drawing.Point(0, 224);
             this.ButtonMenuDestinations.Name = "ButtonMenuDestinations";
             stateProperties7.BorderColor = System.Drawing.Color.Transparent;
             stateProperties7.BorderRadius = 50;
@@ -500,7 +500,7 @@
             this.bunifuSeparator3.Dock = System.Windows.Forms.DockStyle.Top;
             this.bunifuSeparator3.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))));
             this.bunifuSeparator3.LineThickness = 1;
-            this.bunifuSeparator3.Location = new System.Drawing.Point(0, 228);
+            this.bunifuSeparator3.Location = new System.Drawing.Point(0, 214);
             this.bunifuSeparator3.Name = "bunifuSeparator3";
             this.bunifuSeparator3.Size = new System.Drawing.Size(200, 10);
             this.bunifuSeparator3.TabIndex = 35;
@@ -545,7 +545,7 @@
             this.ButtonMenuUsers.IdleIconLeftImage = null;
             this.ButtonMenuUsers.IdleIconRightImage = null;
             this.ButtonMenuUsers.IndicateFocus = false;
-            this.ButtonMenuUsers.Location = new System.Drawing.Point(0, 178);
+            this.ButtonMenuUsers.Location = new System.Drawing.Point(0, 164);
             this.ButtonMenuUsers.Name = "ButtonMenuUsers";
             stateProperties9.BorderColor = System.Drawing.Color.Transparent;
             stateProperties9.BorderRadius = 50;
@@ -577,7 +577,7 @@
             this.bunifuSeparator2.Dock = System.Windows.Forms.DockStyle.Top;
             this.bunifuSeparator2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))));
             this.bunifuSeparator2.LineThickness = 1;
-            this.bunifuSeparator2.Location = new System.Drawing.Point(0, 168);
+            this.bunifuSeparator2.Location = new System.Drawing.Point(0, 154);
             this.bunifuSeparator2.Name = "bunifuSeparator2";
             this.bunifuSeparator2.Size = new System.Drawing.Size(200, 10);
             this.bunifuSeparator2.TabIndex = 33;
@@ -622,7 +622,7 @@
             this.ButtonMenuSupplies.IdleIconLeftImage = null;
             this.ButtonMenuSupplies.IdleIconRightImage = null;
             this.ButtonMenuSupplies.IndicateFocus = false;
-            this.ButtonMenuSupplies.Location = new System.Drawing.Point(0, 118);
+            this.ButtonMenuSupplies.Location = new System.Drawing.Point(0, 104);
             this.ButtonMenuSupplies.Name = "ButtonMenuSupplies";
             stateProperties11.BorderColor = System.Drawing.Color.Transparent;
             stateProperties11.BorderRadius = 50;
@@ -654,7 +654,7 @@
             this.bunifuSeparator1.Dock = System.Windows.Forms.DockStyle.Top;
             this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))));
             this.bunifuSeparator1.LineThickness = 1;
-            this.bunifuSeparator1.Location = new System.Drawing.Point(0, 108);
+            this.bunifuSeparator1.Location = new System.Drawing.Point(0, 94);
             this.bunifuSeparator1.Name = "bunifuSeparator1";
             this.bunifuSeparator1.Size = new System.Drawing.Size(200, 10);
             this.bunifuSeparator1.TabIndex = 27;
@@ -700,7 +700,7 @@
             this.ButtonMenuCategorys.IdleIconLeftImage = null;
             this.ButtonMenuCategorys.IdleIconRightImage = null;
             this.ButtonMenuCategorys.IndicateFocus = false;
-            this.ButtonMenuCategorys.Location = new System.Drawing.Point(0, 58);
+            this.ButtonMenuCategorys.Location = new System.Drawing.Point(0, 44);
             this.ButtonMenuCategorys.Name = "ButtonMenuCategorys";
             stateProperties13.BorderColor = System.Drawing.Color.Transparent;
             stateProperties13.BorderRadius = 50;
@@ -729,7 +729,7 @@
             // LabelSeparator
             // 
             this.LabelSeparator.Dock = System.Windows.Forms.DockStyle.Top;
-            this.LabelSeparator.Location = new System.Drawing.Point(0, 48);
+            this.LabelSeparator.Location = new System.Drawing.Point(0, 34);
             this.LabelSeparator.Name = "LabelSeparator";
             this.LabelSeparator.Size = new System.Drawing.Size(200, 10);
             this.LabelSeparator.TabIndex = 25;
@@ -747,7 +747,7 @@
             this.bunifuGradientPanel3.Location = new System.Drawing.Point(0, 0);
             this.bunifuGradientPanel3.Name = "bunifuGradientPanel3";
             this.bunifuGradientPanel3.Quality = 10;
-            this.bunifuGradientPanel3.Size = new System.Drawing.Size(200, 48);
+            this.bunifuGradientPanel3.Size = new System.Drawing.Size(200, 34);
             this.bunifuGradientPanel3.TabIndex = 24;
             // 
             // ButtonMenuExtender
@@ -755,10 +755,10 @@
             this.ButtonMenuExtender.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ButtonMenuExtender.BackColor = System.Drawing.Color.Transparent;
             this.ButtonMenuExtender.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ButtonMenuExtender.Location = new System.Drawing.Point(166, 9);
+            this.ButtonMenuExtender.Location = new System.Drawing.Point(171, 5);
             this.ButtonMenuExtender.Name = "ButtonMenuExtender";
-            this.ButtonMenuExtender.Size = new System.Drawing.Size(29, 30);
-            this.ButtonMenuExtender.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ButtonMenuExtender.Size = new System.Drawing.Size(19, 25);
+            this.ButtonMenuExtender.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ButtonMenuExtender.TabIndex = 23;
             this.ButtonMenuExtender.TabStop = false;
             // 
@@ -766,7 +766,7 @@
             // 
             this.PanelMenuLower.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelMenuLower.BackgroundImage")));
             this.PanelMenuLower.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PanelMenuLower.Controls.Add(this.linkLabel1);
+            this.PanelMenuLower.Controls.Add(this.LinkLowerTerm);
             this.PanelMenuLower.Controls.Add(this.LinkLowerDiarioExcel);
             this.PanelMenuLower.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.PanelMenuLower.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
@@ -779,18 +779,18 @@
             this.PanelMenuLower.Size = new System.Drawing.Size(200, 62);
             this.PanelMenuLower.TabIndex = 23;
             // 
-            // linkLabel1
+            // LinkLowerTerm
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
-            this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.linkLabel1.LinkColor = System.Drawing.Color.White;
-            this.linkLabel1.Location = new System.Drawing.Point(110, 22);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(47, 17);
-            this.linkLabel1.TabIndex = 26;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Temos";
+            this.LinkLowerTerm.AutoSize = true;
+            this.LinkLowerTerm.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
+            this.LinkLowerTerm.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.LinkLowerTerm.LinkColor = System.Drawing.Color.White;
+            this.LinkLowerTerm.Location = new System.Drawing.Point(110, 22);
+            this.LinkLowerTerm.Name = "LinkLowerTerm";
+            this.LinkLowerTerm.Size = new System.Drawing.Size(52, 17);
+            this.LinkLowerTerm.TabIndex = 26;
+            this.LinkLowerTerm.TabStop = true;
+            this.LinkLowerTerm.Text = "Termos";
             // 
             // LinkLowerDiarioExcel
             // 
@@ -1086,8 +1086,8 @@
             this.ButtonDimStockIcon.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
             this.ButtonDimStockIcon.Dock = System.Windows.Forms.DockStyle.Left;
             this.ButtonDimStockIcon.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Disabled;
-            this.ButtonDimStockIcon.Font = new System.Drawing.Font("Arial Black", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonDimStockIcon.ForeColor = System.Drawing.Color.YellowGreen;
+            this.ButtonDimStockIcon.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonDimStockIcon.ForeColor = System.Drawing.Color.White;
             this.ButtonDimStockIcon.IconLeftCursor = System.Windows.Forms.Cursors.Hand;
             this.ButtonDimStockIcon.IconMarginLeft = 18;
             this.ButtonDimStockIcon.IconPadding = 6;
@@ -1184,7 +1184,7 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton ButtonMenuTechSupport;
         private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator7;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton ButtonMenuGeneralRegistrations;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel LinkLowerTerm;
         private System.Windows.Forms.LinkLabel LinkLowerDiarioExcel;
     }
 }
