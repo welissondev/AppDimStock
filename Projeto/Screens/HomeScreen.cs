@@ -12,7 +12,7 @@ namespace DimStock.Screens
     public partial class HomeScreen : Form
     {
         private static HomeScreen homeScreen;
-        private List<string> sideMenuNames;
+        private List<string> listMenuNames;
     }
 }
 
@@ -22,85 +22,134 @@ namespace DimStock.Screens
     {
         public HomeScreen()
         {
-            InitializeComponent();
-            InitializeEvents();
-            Mdi3dRemove.SetBevel(this, false, Color.White);
-            homeScreen = this;
+            try
+            {
+                InitializeComponent();
+                InitializeEvents();
+                SetScreen();
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
         }
 
         private void ScreenLoad(object sender, EventArgs e)
         {
-            SetMenuIcons();
-            SetSideMenuNames();
-            ShowUserLoginAccessScreen();
+            try
+            {
+                SetTopSideMenuIcons();
+                GetSideMenuNames();
+                ShowUserLoginAccessScreen();
+                Mdi3dRemove.SetBevel(this, false, Color.White);
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
         }
 
         private void ShowCategoryAddScreen(object sender, EventArgs e)
         {
-            var screen = new ProductListingScreen()
+            try
             {
-                MdiParent = this,
-                Dock = DockStyle.Fill,
-                ControlBox = false,
-                Movable = false,
-                Style = MetroFramework.MetroColorStyle.White
-            };
-            screen.Show();
+                var screen = new ProductListingScreen()
+                {
+                    MdiParent = this,
+                    Dock = DockStyle.Fill,
+                    ControlBox = false,
+                    Movable = false,
+                    Style = MetroFramework.MetroColorStyle.White
+                };
+                screen.Show();
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
         }
 
         private void ShowMenuGeneralRegistration(object sender, EventArgs e)
         {
-            MenuContextRegistration.Show(this, MousePosition);
+            try
+            {
+                MenuContextRegistration.Show(this, MousePosition);
+            }
+            catch (Exception ex)
+            {
+               ExceptionNotifier.ShowMessage(ex);
+            }
         }
 
         private void ShowUserLoginAccessScreen()
         {
-            homeScreen.Hide();
+            try
+            {
+                homeScreen.Hide();
 
-            var screen = new UserLoginAccessScreen();
-            screen.Show();
+                var screen = new UserLoginAccessScreen();
+                screen.Show();
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
         }
 
         private void MenuExtenter(object sender, EventArgs e)
         {
-            var expanded = 200;
-            var unexpanded = 65;
-
-            if (PanelMenuSide.Width == expanded)
+            try
             {
-                PanelMenuSide.Width = unexpanded;
-                PanelMenuLower.Visible = false;
-                ButtonMenuExtender.Left = PanelMenuSide.Width / 2 - ButtonMenuExtender.Width / 2;
-                ButtonMenuExtender.Image = Resources.IconNext;
+                var expanded = 200;
+                var unexpanded = 65;
 
-                foreach (BunifuButton buttonMenu in PanelMenuSide.Controls.OfType<BunifuButton>())
-                    buttonMenu.Text = string.Empty;
-            }
-            else
-            {
-                PanelMenuSide.Width = expanded;
-                ButtonMenuExtender.Left = PanelMenuSide.Left + 170;
-                ButtonMenuExtender.Image = Resources.IconBack;
-                PanelMenuLower.Visible = true;
-
-                var i = 0;
-                foreach (BunifuButton buttonMenu in PanelMenuSide.Controls.OfType<BunifuButton>())
+                if (PanelMenuSide.Width == expanded)
                 {
-                    buttonMenu.Text = sideMenuNames[i].ToString();
-                    i += 1;
+                    PanelMenuSide.Width = unexpanded;
+                    PanelMenuLower.Visible = false;
+                    ButtonMenuExtender.Left = PanelMenuSide.Width / 2 - ButtonMenuExtender.Width / 2;
+                    ButtonMenuExtender.Image = Resources.IconNext;
+
+                    foreach (BunifuButton buttonMenu in PanelMenuSide.Controls.OfType<BunifuButton>())
+                        buttonMenu.Text = string.Empty;
                 }
+                else
+                {
+                    PanelMenuSide.Width = expanded;
+                    ButtonMenuExtender.Left = PanelMenuSide.Left + 170;
+                    ButtonMenuExtender.Image = Resources.IconBack;
+                    PanelMenuLower.Visible = true;
+
+                    var i = 0;
+                    foreach (BunifuButton buttonMenu in PanelMenuSide.Controls.OfType<BunifuButton>())
+                    {
+                        buttonMenu.Text = listMenuNames[i].ToString();
+                        i += 1;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
             }
         }
 
         private void InitializeEvents()
         {
-            Load += new EventHandler(ScreenLoad);
-            ButtonMenuProducts.Click += new EventHandler(ShowCategoryAddScreen);
-            ButtonMenuGeneralRegistrations.Click += new EventHandler(ShowMenuGeneralRegistration);
-            ButtonMenuExtender.Click += new EventHandler(MenuExtenter);
+            try
+            {
+                Load += new EventHandler(ScreenLoad);
+                ButtonMenuProducts.Click += new EventHandler(ShowCategoryAddScreen);
+                ButtonMenuGeneralRegistrations.Click += new EventHandler(ShowMenuGeneralRegistration);
+                ButtonMenuExtender.Click += new EventHandler(MenuExtenter);
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
         }
 
-        private void SetMenuIcons()
+        private void SetTopSideMenuIcons()
         {
             try
             {
@@ -160,18 +209,28 @@ namespace DimStock.Screens
                 MessageBox.Show(ex.ToString());
             }
         }
-
-        private void SetSideMenuNames()
+        private void GetSideMenuNames()
         {
-            sideMenuNames = new List<string>();
+            try
+            {
+                listMenuNames = new List<string>();
 
-            foreach (BunifuButton buttonMenu in PanelMenuSide.Controls.OfType<BunifuButton>())
-                sideMenuNames.Add(buttonMenu.Text);
+                foreach (BunifuButton buttonMenu in PanelMenuSide.Controls.OfType<BunifuButton>())
+                    listMenuNames.Add(buttonMenu.Text);
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
         }
 
         public static HomeScreen GetScreen()
         {
             return homeScreen;
+        }
+        private void SetScreen()
+        {
+            homeScreen = this;
         }
 
     }
