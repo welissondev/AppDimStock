@@ -1087,7 +1087,7 @@
             this.ButtonDimStockIcon.Dock = System.Windows.Forms.DockStyle.Left;
             this.ButtonDimStockIcon.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Disabled;
             this.ButtonDimStockIcon.Font = new System.Drawing.Font("Arial Black", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonDimStockIcon.ForeColor = System.Drawing.Color.White;
+            this.ButtonDimStockIcon.ForeColor = System.Drawing.Color.YellowGreen;
             this.ButtonDimStockIcon.IconLeftCursor = System.Windows.Forms.Cursors.Hand;
             this.ButtonDimStockIcon.IconMarginLeft = 18;
             this.ButtonDimStockIcon.IconPadding = 6;

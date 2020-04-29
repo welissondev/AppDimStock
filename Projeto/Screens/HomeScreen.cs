@@ -18,7 +18,7 @@ namespace DimStock.Screens
 
 namespace DimStock.Screens
 {
-    public partial class HomeScreen 
+    public partial class HomeScreen
     {
         public HomeScreen()
         {
@@ -32,7 +32,7 @@ namespace DimStock.Screens
         {
             SetMenuIcons();
             SetSideMenuNames();
-            Text = "Sistema DimStock";
+            ShowUserLoginAccessScreen();
         }
 
         private void ShowCategoryAddScreen(object sender, EventArgs e)
@@ -51,6 +51,15 @@ namespace DimStock.Screens
         private void ShowMenuGeneralRegistration(object sender, EventArgs e)
         {
             MenuContextRegistration.Show(this, MousePosition);
+        }
+
+        private void ShowUserLoginAccessScreen()
+        {
+            homeScreen.Hide();
+
+            var screen = new UserLoginAccessScreen();
+            screen.Show();
+
         }
 
         private void MenuExtenter(object sender, EventArgs e)

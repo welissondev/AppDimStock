@@ -40,6 +40,9 @@ namespace DimStock.Screens
         {
             try
             {
+                var homeScreen = HomeScreen.GetScreen();
+                homeScreen.Close();
+
                 Close();
             }
             catch (Exception ex)
@@ -54,6 +57,10 @@ namespace DimStock.Screens
             {
                 if (presenter.Access(sender, e) == true)
                 {
+                    var homeScreen = HomeScreen.GetScreen();
+                    homeScreen.Show();
+
+                    Close();
                 }
             }
             catch (Exception ex)

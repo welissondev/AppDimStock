@@ -296,7 +296,7 @@
             this.PanelShadow.PanelColor = System.Drawing.Color.Empty;
             this.PanelShadow.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.PanelShadow.ShadowDept = 2;
-            this.PanelShadow.ShadowTopLeftVisible = true;
+            this.PanelShadow.ShadowTopLeftVisible = false;
             this.PanelShadow.Size = new System.Drawing.Size(898, 418);
             this.PanelShadow.TabIndex = 9;
             // 
@@ -612,7 +612,7 @@
             this.bunifuShadowPanel1.Name = "bunifuShadowPanel1";
             this.bunifuShadowPanel1.PanelColor = System.Drawing.Color.Empty;
             this.bunifuShadowPanel1.ShadowDept = 2;
-            this.bunifuShadowPanel1.ShadowTopLeftVisible = true;
+            this.bunifuShadowPanel1.ShadowTopLeftVisible = false;
             this.bunifuShadowPanel1.Size = new System.Drawing.Size(898, 86);
             this.bunifuShadowPanel1.TabIndex = 244;
             // 
