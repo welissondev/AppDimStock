@@ -38,7 +38,7 @@ namespace DimStock.Presenters
         public void ClearView(object sender, EventArgs e)
         {
             view.Id = 0;
-            view.Description = string.Empty;
+            view.SearchDescription = string.Empty;
 
             SearchData(sender, e);
         }
@@ -47,7 +47,7 @@ namespace DimStock.Presenters
         {
             var category = new CategoryModel()
             {
-                Description = view.Description
+                Description = view.SearchDescription
             };
 
             var searchResult = category.SearchData();

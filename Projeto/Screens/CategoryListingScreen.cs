@@ -20,8 +20,12 @@ namespace DimStock.Screens
         private DataGridViewLinkColumn buttonView;
         private DataGridViewLinkColumn buttonDelete;
 
+        //Implementados pela interface de adição
         public int Id { get; set; }
-        public string Description { get => TextSearchDescription.Text; set => TextSearchDescription.Text = value; }
+        public string Description { get; set; }
+
+        //Implementados pela interface de listagem
+        public string SearchDescription { get => TextSearchDescription.Text; set => TextSearchDescription.Text = value; }
         public object DataList { get => GridList.DataSource; set => GridList.DataSource = value; }
     }
 }
