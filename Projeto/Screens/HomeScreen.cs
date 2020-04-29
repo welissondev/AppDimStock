@@ -60,7 +60,7 @@ namespace DimStock.Screens
             if (sender.Equals(ToolStripProductAddScreen))
                 ProductAddScreen.ShowScreen(this);
 
-            if(sender.Equals(ButtonMenuProducts))
+            if (sender.Equals(ButtonMenuProducts))
                 ProductListingScreen.ShowScreen(this);
         }
 
@@ -113,7 +113,10 @@ namespace DimStock.Screens
                     ButtonMenuExtender.Image = Resources.IconNext;
 
                     foreach (BunifuButton buttonMenu in PanelMenuSide.Controls.OfType<BunifuButton>())
+                    {
+                        buttonMenu.IdleBorderRadius = 45;
                         buttonMenu.Text = string.Empty;
+                    }
                 }
                 else
                 {
@@ -125,6 +128,7 @@ namespace DimStock.Screens
                     var i = 0;
                     foreach (BunifuButton buttonMenu in PanelMenuSide.Controls.OfType<BunifuButton>())
                     {
+                        buttonMenu.IdleBorderRadius = 50;
                         buttonMenu.Text = listMenuNames[i].ToString();
                         i += 1;
                     }
