@@ -43,7 +43,8 @@ namespace DimStock.Screens
             try
             {
                 var homeScreen = HomeScreen.GetScreen();
-                homeScreen.Close();
+                if (homeScreen != null)
+                    homeScreen.Close();
 
                 Close();
             }
@@ -60,7 +61,8 @@ namespace DimStock.Screens
                 if (presenter.Access(sender, e) == true)
                 {
                     var homeScreen = HomeScreen.GetScreen();
-                    homeScreen.Show();
+                    if (homeScreen != null)
+                        homeScreen.Show();
 
                     Close();
                 }
@@ -73,17 +75,40 @@ namespace DimStock.Screens
 
         private void MaximizeScreen()
         {
-            Width = Screen.PrimaryScreen.Bounds.Width;
-            Height = Screen.PrimaryScreen.Bounds.Height - 40;
+            try
+            {
+                Width = Screen.PrimaryScreen.Bounds.Width;
+                Height = Screen.PrimaryScreen.Bounds.Height - 40;
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
         }
+
         private void InitializePresenter()
         {
-            presenter = new UserLoginAccessPresenter(this);
+            try
+            {
+                presenter = new UserLoginAccessPresenter(this);
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
         }
+
         private void InitializeEvents()
         {
-            ButtonEnter.Click += new EventHandler(UserAccess);
-            ButtonExit.Click += new EventHandler(ScreenClose);
+            try
+            {
+                ButtonEnter.Click += new EventHandler(UserAccess);
+                ButtonExit.Click += new EventHandler(ScreenClose);
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
         }
     }
 }
