@@ -65,6 +65,9 @@ namespace DimStock.Screens
 
             if (sender.Equals(ToolStripUserAddScreen))
                 UserLoginAddScreen.ShowScreen(this);
+
+            if (sender.Equals(ButtonMenuUsers))
+                UserListingScreen.ShowScreen(this);
         }
 
         private void ShowMenuContext(object sender, EventArgs e)
@@ -153,6 +156,7 @@ namespace DimStock.Screens
                 ToolStripProductAddScreen.Click += new EventHandler(ShowChildScreen);
                 ToolStripUserAddScreen.Click += new EventHandler(ShowChildScreen);
                 ButtonMenuCategorys.Click += new EventHandler(ShowChildScreen);
+                ButtonMenuUsers.Click += new EventHandler(ShowChildScreen);
                 ButtonMenuGeneralRegistrations.Click += new EventHandler(ShowMenuContext);
                 ButtonMenuSettings.Click += new EventHandler(ShowMenuContext);
                 ButtonMenuExtender.Click += new EventHandler(MenuExtenter);
