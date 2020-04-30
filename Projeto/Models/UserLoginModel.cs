@@ -78,10 +78,9 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"INSERT INTO UserLogin (YourName, Email, Login, 
-                AccessPassWord, InsertAllowed, UpdateAllowed, DeleteAllowed)
-                VALUES(@YourName, @Email, @Login, @AccessPassWord, @InsertAllowed,
-                @UpdateAllowed, @DeleteAllowed";
+                sql = @"INSERT INTO UserLogin (YourName, Email, Login, AccessPassWord, 
+                InsertAllowed, UpdateAllowed, DeleteAllowed)VALUES(@YourName, @Email, @Login, @AccessPassWord, 
+                @InsertAllowed, @UpdateAllowed, @DeleteAllowed)";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@YourName", YourName);
