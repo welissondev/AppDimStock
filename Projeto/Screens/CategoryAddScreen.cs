@@ -13,11 +13,11 @@ namespace DimStock.Screens
     /// </summary>
     public partial class CategoryAddScreen : ICategoryAddView
     {
-        public int Id { get; set; }
-        public string Description { get => TextDescription.Text; set => TextDescription.Text = value; }
-
         private CategoryAddPresenter presenter;
         private static MetroForm thisScreen;
+
+        public int Id { get; set; }
+        public string Description { get => TextDescription.Text; set => TextDescription.Text = value; }
     }
 }
 
@@ -27,10 +27,17 @@ namespace DimStock.Screens
     {
         public CategoryAddScreen()
         {
-            InitializeComponent();
-            presenter = new CategoryAddPresenter(this);
-            InitializeEvents();
-            SetScreen();
+            try
+            {
+                InitializeComponent();
+                InitializePresenter();
+                InitializeEvents();
+                SetScreen();
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
         }
 
         private void ScreenResize(object sender, EventArgs e)
@@ -71,6 +78,10 @@ namespace DimStock.Screens
             {
                 ExceptionNotifier.ShowMessage(ex);
             }
+        }
+        private void InitializePresenter()
+        {
+            presenter = new CategoryAddPresenter(this);
         }
 
         public void SetDetails(ICategoryAddView view)
