@@ -163,17 +163,14 @@ namespace DimStock.Screens
 
                 GridList.Columns["Id"].Visible = false;
                 GridList.Columns["Id"].ReadOnly = true;
-                GridList.Columns["Id"].DisplayIndex = 0;
 
                 GridList.Columns["YourName"].HeaderText = "Nome";
                 GridList.Columns["YourName"].ReadOnly = true;
                 GridList.Columns["YourName"].Width = 280;
-                GridList.Columns["YourName"].DisplayIndex = 1;
 
                 GridList.Columns["Login"].HeaderText = "Login";
                 GridList.Columns["Login"].ReadOnly = true;
                 GridList.Columns["Login"].Width = 150;
-                GridList.Columns["Login"].DisplayIndex = 2;
 
                 GridList.Columns["Email"].HeaderText = "Email";
                 GridList.Columns["Email"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
