@@ -153,7 +153,7 @@ namespace DimStock.Models
                 sql = @"DELETE FROM UserLogin WHERE Id = @Id";
 
                 dataBase.ClearParameter();
-                dataBase.AddParameter("Id", Id);
+                dataBase.AddParameter("@Id", Id);
 
                 if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
@@ -205,23 +205,28 @@ namespace DimStock.Models
              login do usuário, porque a regra de negócio não
              permite dois usuários com o mesmo login
              */
-
             var registrationStatus = false;
-            var sql = string.Empty;
+            var sqlParameter = string.Empty;
+            var sqlSelect = string.Empty;
+            var query = string.Empty;
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"SELECT * FROM UserLogin WHERE 
-                Id = @Id OR Login = @Login";
+                sqlSelect = @"SELECT * FROM UserLogin 
+                WHERE Id = @Id ";
 
-                dataBase.ClearParameter();
                 dataBase.AddParameter("@Id", Id);
-                dataBase.AddParameter("Login", Login);
 
-                if (dataBase.ExecuteScalar(sql) == 0)
+                if (Login != string.Empty && Login != null)
                 {
-                    return registrationStatus;
+                    sqlParameter += @"OR Login = @Login";
+                    dataBase.AddParameter("@Login", Login);
                 }
+
+                query += sqlSelect + sqlParameter;
+
+                if (dataBase.ExecuteScalar(query) == 0)
+                    return registrationStatus;
             }
 
             return registrationStatus = true;

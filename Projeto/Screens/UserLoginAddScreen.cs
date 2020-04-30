@@ -90,6 +90,34 @@ namespace DimStock.Screens
             return thisScreen;
         }
 
+        public static void SetDetails(IUserLoginAddView view)
+        {
+            var screen = new UserLoginAddScreen()
+            {
+                Id = view.Id,
+                YourName = view.YourName,
+                Email = view.Email,
+                Login = view.Login,
+                AccessPassWord = view.AccessPassWord,
+                PassWordCheck = view.AccessPassWord,
+                InsertAllowed = view.InsertAllowed,
+                UpdateAllowed = view.UpdateAllowed,
+                DeleteAllowed = view.DeleteAllowed,
+                ShowInTaskbar = false,
+                ControlBox = false,
+                ShowIcon = false,
+                Style = MetroColorStyle.Blue
+
+            };
+
+            var listingScreen = UserListingScreen.GetScreen();
+            if (listingScreen != null)
+                screen.Owner = listingScreen;
+
+            screen.ShowDialog();
+            screen.Dispose();
+        }
+
         public static void ShowScreen(Form fatherScreen = null)
         {
             try
@@ -113,9 +141,9 @@ namespace DimStock.Screens
                     screen.ShowIcon = false;
                     screen.Style = MetroColorStyle.Blue;
 
-                    //var listingScreen = CategoryListingScreen.GetScreen();
-                    //if (listingScreen != null)
-                    //    screen.Owner = listingScreen;
+                    var listingScreen = UserListingScreen.GetScreen();
+                    if (listingScreen != null)
+                        screen.Owner = listingScreen;
 
                     screen.ShowDialog();
                     screen.Dispose();

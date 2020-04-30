@@ -19,19 +19,17 @@ namespace DimStock.Presenters
             try
             {
                 var user = new UserLoginModel() { Id = view.Id };
+                user.GetDetails();
 
-                if (user.GetDetails() == true)
-                {
-                    view.Id = user.Id;
-                    view.YourName = user.YourName;
-                    view.Email = user.Email;
-                    view.Login = user.Login;
-                    view.AccessPassWord = user.AccessPassWord;
-                    view.PassWordCheck = user.PassWordCheck;
-                    view.InsertAllowed = user.InsertAllowed;
-                    view.UpdateAllowed = user.UpdateAllowed;
-                    view.DeleteAllowed = user.DeleteAllowed;
-                }
+                view.Id = user.Id;
+                view.YourName = user.YourName;
+                view.Email = user.Email;
+                view.Login = user.Login;
+                view.AccessPassWord = user.AccessPassWord;
+                view.PassWordCheck = user.PassWordCheck;
+                view.InsertAllowed = user.InsertAllowed;
+                view.UpdateAllowed = user.UpdateAllowed;
+                view.DeleteAllowed = user.DeleteAllowed;
             }
             catch (Exception ex)
             {
@@ -58,9 +56,9 @@ namespace DimStock.Presenters
             {
                 var user = new UserLoginModel()
                 {
-                    YourName = view.YourName,
-                    Login = view.Login,
-                    Email = view.Email
+                    YourName = view.SearchYourName,
+                    Login = view.SearchLogin,
+                    Email = view.SearchEmail
                 };
 
                 view.DataList = user.SearchData();
@@ -79,6 +77,9 @@ namespace DimStock.Presenters
                 view.YourName = string.Empty;
                 view.Email = string.Empty;
                 view.Login = string.Empty;
+                view.SearchYourName = string.Empty;
+                view.SearchEmail = string.Empty;
+                view.SearchLogin = string.Empty;
                 view.AccessPassWord = string.Empty;
                 view.PassWordCheck = string.Empty;
                 view.InsertAllowed = false;
