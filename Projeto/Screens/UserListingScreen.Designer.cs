@@ -217,7 +217,7 @@
             this.TextSearchEmail.IconRight = null;
             this.TextSearchEmail.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.TextSearchEmail.Lines = new string[0];
-            this.TextSearchEmail.Location = new System.Drawing.Point(416, 37);
+            this.TextSearchEmail.Location = new System.Drawing.Point(416, 23);
             this.TextSearchEmail.MaxLength = 32767;
             this.TextSearchEmail.MinimumSize = new System.Drawing.Size(100, 35);
             this.TextSearchEmail.Modified = false;
@@ -290,7 +290,7 @@
             this.TextSearchLogin.IconRight = null;
             this.TextSearchLogin.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.TextSearchLogin.Lines = new string[0];
-            this.TextSearchLogin.Location = new System.Drawing.Point(220, 37);
+            this.TextSearchLogin.Location = new System.Drawing.Point(220, 23);
             this.TextSearchLogin.MaxLength = 32767;
             this.TextSearchLogin.MinimumSize = new System.Drawing.Size(100, 35);
             this.TextSearchLogin.Modified = false;
@@ -623,7 +623,7 @@
             this.TextSearchYourName.IconRight = null;
             this.TextSearchYourName.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.TextSearchYourName.Lines = new string[0];
-            this.TextSearchYourName.Location = new System.Drawing.Point(24, 37);
+            this.TextSearchYourName.Location = new System.Drawing.Point(24, 23);
             this.TextSearchYourName.MaxLength = 32767;
             this.TextSearchYourName.MinimumSize = new System.Drawing.Size(100, 35);
             this.TextSearchYourName.Modified = false;

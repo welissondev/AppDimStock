@@ -118,17 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="TextSearchDescription.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAA5kAAAAjCAYAAAAe786oAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAENSURBVHhe7dexDQIxAARB91+VXy6DMigAZMkJqdlwRrrk
-        OtgBAAAAqbXWa875MTMzMzMzM7vZ7sqTmGPsAwAAAG7trjyJKTIBAAD4j8gEAAAgIzIBAADIiEwAAAAy
-        IhMAAICMyAQAACAjMgEAAMiITAAAADIiEwAAgIzIBAAAICMyAQAAyIhMAAAAMiITAACAjMgEAAAgIzIB
-        AADIiEwAAAAyIhMAAICMyAQAACAjMgEAAMiITAAAADIiEwAAgIzIBAAAICMyAQAAyIhMAAAAMiITAACA
-        jMgEAAAgIzIBAADIiEwAAAAyIhMAAICMyAQAACDzE5nP87z3YWZmZmZmZnaz3ZUnMQEAAKAwxhfwSqJv
-        5lkJwQAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="ButtonCloseScreen.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAJAAAAAtCAYAAABBEuITAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -157,6 +146,17 @@
         STRKTaJRahKNUpNolJpEo9QkGqUm0Sg1iUapSTRKTaJRahKNUpNolJpEo9QkGqUm0Sg1iUapSTRKTaJR
         ahKNUpNolJpEo9QkGqUm0Sg1iUapSTRKTaJRahKNUpNolJpEo9QkGqUm0Sg1iUapSTRKTaJRahKNUpNo
         lJp0+vOXHkiXTOvPfj1b0+fjmJdvfCidOx3PfHzar8fs1sb4A1QSn/Px6U9HAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="TextSearchDescription.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAA1oAAAAjCAYAAACNZ3sKAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEFSURBVHhe7dexCQMxAARB9V+VHpXhMlyAH4ESp+91NgOX
+        XAc7AAAA+IO11mvO+TEzMzMzM7Pn2211MmuMfQAAAPCb3VYns4QWAABAQWgBAADEhBYAAEBMaAEAAMSE
+        FgAAQExoAQAAxIQWAABATGgBAADEhBYAAEBMaAEAAMSEFgAAQExoAQAAxIQWAABATGgBAADEhBYAAEBM
+        aAEAAMSEFgAAQExoAQAAxIQWAABATGgBAADEhBYAAEBMaAEAAMSEFgAAQExoAQAAxIQWAABATGgBAADE
+        hBYAAEBMaAEAAMSEFgAAQExoAQAAxL5C67qu9z7MzMzMzMzs+XZbncwCAACgM8YNQ9qiERMy66YAAAAA
+        SUVORK5CYII=
 </value>
   </data>
   <data name="ButtonNew.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

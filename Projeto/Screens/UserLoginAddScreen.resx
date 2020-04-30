@@ -142,11 +142,11 @@
   </data>
   <data name="TextLogin.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAASYAAAAjCAYAAAA5fqfdAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        iVBORw0KGgoAAAANSUhEUgAAASQAAAAjCAYAAAA9i3fgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACwSURBVHhe7dQxDQMxAARB80fll2EERgDkZclNEHiLGema
-        A7ADIGmt9Zlz/szMbm636GRpjH0A3LZbdLIkTECDMAE5wgTkCBOQI0xAjjABOcIE5AgTkCNMQI4wATnC
-        BOQIE5AjTECOMAE5wgTkCBOQI0xAjjABOcIE5AgTkCNMQI4wATnCBOQIE5AjTECOMAE5wgTkCBOQI0xA
-        jjABOX9hep7nuw8zs5vbLTpZAigZ4wXXsyTnl/+lMwAAAABJRU5ErkJggg==
+        A7ADIGWt9Zlz/szMbmw36ORojH0A3LIbdHIkSMBdggRkCBKQIUhAhiABGYIEZAgSkCFIQIYgARmCBGQI
+        EpAhSECGIAEZggRkCBKQIUhAhiABGYIEZAgSkCFIQIYgARmCBGQIEpAhSECGIAEZggRkCBKQIUhAhiAB
+        GYIEZPwF6Xme7z7MzG5sN+jkCKBgjBeTuiDUSe21EAAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="TextAccessPassWord.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

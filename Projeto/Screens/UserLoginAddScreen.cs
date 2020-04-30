@@ -106,6 +106,7 @@ namespace DimStock.Screens
                 ShowInTaskbar = false,
                 ControlBox = false,
                 ShowIcon = false,
+                ShadowType = MetroFormShadowType.DropShadow,
                 Style = MetroColorStyle.Blue
 
             };
@@ -132,6 +133,7 @@ namespace DimStock.Screens
                     screen.Dock = DockStyle.Fill;
                     screen.Style = MetroColorStyle.White;
                     screen.Movable = false;
+                    screen.ShadowType = MetroFormShadowType.DropShadow;
                     screen.Show();
                 }
                 else
@@ -140,6 +142,7 @@ namespace DimStock.Screens
                     screen.ControlBox = false;
                     screen.ShowIcon = false;
                     screen.Style = MetroColorStyle.Blue;
+                    screen.ShadowType = MetroFormShadowType.DropShadow;
 
                     var listingScreen = UserListingScreen.GetScreen();
                     if (listingScreen != null)
