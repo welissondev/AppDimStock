@@ -68,7 +68,7 @@ namespace DimStock.Screens
         {
             try
             {
-                ButtonSave.Click += new EventHandler(presenter.Update);
+                ButtonSave.Click += new EventHandler(presenter.InsertUpdate);
                 ButtonDelete.Click += new EventHandler(presenter.Delete);
                 ButtonClearView.Click += new EventHandler(presenter.ClearView);
                 ButtonClose.Click += new EventHandler(ScreenClose);

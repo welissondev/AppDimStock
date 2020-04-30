@@ -23,6 +23,7 @@ namespace DimStock.Screens
         public bool InsertAllowed { get; set; }
         public bool UpdateAllowed { get; set; }
         public bool DeleteAllowed { get; set; }
+        public bool AcessStatus { get; set; }
     }
 }
 
@@ -58,7 +59,9 @@ namespace DimStock.Screens
         {
             try
             {
-                if (presenter.Access(sender, e) == true)
+                presenter.Access(sender, e);
+
+                if (AcessStatus == true)
                 {
                     var homeScreen = HomeScreen.GetScreen();
                     if (homeScreen != null)

@@ -170,7 +170,7 @@ namespace DimStock.Screens
                 Click += new EventHandler(HideGridCategory);
                 Resize += new EventHandler(ScreenResize);
                 PanelShadow.Click += new EventHandler(HideGridCategory);
-                ButtonSave.Click += new EventHandler(presenter.Update);
+                ButtonSave.Click += new EventHandler(presenter.InsertUpdate);
                 ButtonDelete.Click += new EventHandler(presenter.Delete);
                 ButtonClearView.Click += new EventHandler(presenter.ClearView);
                 ButtonClearView.Click += new EventHandler(HideGridCategory);
