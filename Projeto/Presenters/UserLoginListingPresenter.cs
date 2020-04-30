@@ -1,6 +1,7 @@
 ﻿using DimStock.Views;
 using DimStock.Models;
 using System;
+using DimStock.AuxilyTools.AuxilyClasses;
 
 namespace DimStock.Presenters
 {
@@ -15,10 +16,11 @@ namespace DimStock.Presenters
 
         public void GetDetails(object sender, EventArgs e)
         {
-            var user = new UserLoginModel() { Id = view.Id };
-
-            if (user.GetDetails() == true)
+            try
             {
+                var user = new UserLoginModel() { Id = view.Id };
+                user.GetDetails();
+
                 view.Id = user.Id;
                 view.YourName = user.YourName;
                 view.Email = user.Email;
@@ -29,43 +31,67 @@ namespace DimStock.Presenters
                 view.UpdateAllowed = user.UpdateAllowed;
                 view.DeleteAllowed = user.DeleteAllowed;
             }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
         }
 
         public void Delete(object sender, EventArgs e)
         {
-            var user = new UserLoginModel() { Id = view.Id };
-
-            if (user.Delete() == true)
+            try
             {
-                ClearView(sender, e);
+                if (new UserLoginModel() { Id = view.Id }.Delete() == true)
+                    ClearView(sender, e);
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
             }
         }
 
         public void SearchData(object sender, EventArgs e)
         {
-            var user = new UserLoginModel()
+            try
             {
-                YourName = view.YourName,
-                Login = view.Login,
-                Email = view.Email
-            };
+                var user = new UserLoginModel()
+                {
+                    YourName = view.SearchYourName,
+                    Login = view.SearchLogin,
+                    Email = view.SearchEmail
+                };
 
-            view.DataList = user.SearchData();
+                view.DataList = user.SearchData();
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
         }
 
         public void ClearView(object sender, EventArgs e)
         {
-            view.Id = 0;
-            view.YourName = string.Empty;
-            view.Email = string.Empty;
-            view.Login = string.Empty;
-            view.AccessPassWord = string.Empty;
-            view.PassWordCheck = string.Empty;
-            view.InsertAllowed = false;
-            view.UpdateAllowed = false;
-            view.DeleteAllowed = false;
+            try
+            {
+                view.Id = 0;
+                view.YourName = string.Empty;
+                view.Email = string.Empty;
+                view.Login = string.Empty;
+                view.SearchYourName = string.Empty;
+                view.SearchEmail = string.Empty;
+                view.SearchLogin = string.Empty;
+                view.AccessPassWord = string.Empty;
+                view.PassWordCheck = string.Empty;
+                view.InsertAllowed = false;
+                view.UpdateAllowed = false;
+                view.DeleteAllowed = false;
 
-            SearchData(sender, e);
+                SearchData(sender, e);
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
         }
     }
 }

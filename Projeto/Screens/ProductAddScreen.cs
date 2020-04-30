@@ -1,6 +1,7 @@
 ﻿using DimStock.AuxilyTools.AuxilyClasses;
 using DimStock.Presenters;
 using DimStock.Views;
+using MetroFramework;
 using MetroFramework.Forms;
 using System;
 using System.Windows.Forms;
@@ -13,6 +14,7 @@ namespace DimStock.Screens
     public partial class ProductAddScreen : IProductAddView
     {
         private ProductAddPresenter presenter;
+        private static MetroForm thisScreen;
 
         public int Id { get; set; }
         public string InternalCode { get => TextInternalCode.Text; set => TextInternalCode.Text = value; }
@@ -35,6 +37,7 @@ namespace DimStock.Screens
             InitializeComponent();
             InitializePresenter();
             InitializeEvents();
+            SetScreen();
         }
 
         private void ScreenLoad(object sender, EventArgs e)
@@ -64,24 +67,7 @@ namespace DimStock.Screens
             try
             {
                 Close();
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
-        }
-        public void ScreenShow(object sender, EventArgs e)
-        {
-            try
-            {
-                using (var screen = new ProductAddScreen())
-                {
-                    ShowInTaskbar = false;
-                    ShowIcon = false;
-                    ControlBox = false;
-                    Owner = HomeScreen.He;
-                    ShowDialog();
-                };
+                thisScreen = null;
             }
             catch (Exception ex)
             {
@@ -184,7 +170,7 @@ namespace DimStock.Screens
                 Click += new EventHandler(HideGridCategory);
                 Resize += new EventHandler(ScreenResize);
                 PanelShadow.Click += new EventHandler(HideGridCategory);
-                ButtonSave.Click += new EventHandler(presenter.Update);
+                ButtonSave.Click += new EventHandler(presenter.InsertUpdate);
                 ButtonDelete.Click += new EventHandler(presenter.Delete);
                 ButtonClearView.Click += new EventHandler(presenter.ClearView);
                 ButtonClearView.Click += new EventHandler(HideGridCategory);
@@ -230,13 +216,52 @@ namespace DimStock.Screens
                     ShowIcon = false;
                     ShowInTaskbar = false;
                     ControlBox = false;
-                    Owner = HomeScreen.He;
+                    Owner = HomeScreen.GetScreen();
                     ShowDialog();
                 };
             }
             catch (Exception ex)
             {
                 ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+
+        public static MetroForm GetScreen()
+        {
+            return thisScreen;
+        }
+        private void SetScreen()
+        {
+            thisScreen = this;
+        }
+
+        public static void ShowScreen(Form fatherScreen = null)
+        {
+            var screen = new ProductAddScreen();
+
+            if (fatherScreen != null)
+            {
+                screen.MdiParent = fatherScreen;
+                screen.ShowInTaskbar = false;
+                screen.ControlBox = false;
+                screen.Dock = DockStyle.Fill;
+                screen.Style = MetroColorStyle.White;
+                screen.Movable = false;
+                screen.Show();
+            }
+            else
+            {
+                screen.ShowInTaskbar = false;
+                screen.ControlBox = false;
+                screen.ShowIcon = false;
+                screen.Style = MetroColorStyle.Blue;
+
+                var listingScreen = CategoryListingScreen.GetScreen();
+                if (listingScreen != null)
+                    screen.Owner = listingScreen;
+
+                screen.ShowDialog();
+                screen.Dispose();
             }
         }
     }

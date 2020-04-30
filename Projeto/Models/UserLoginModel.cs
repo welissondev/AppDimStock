@@ -44,21 +44,24 @@ namespace DimStock.Models
 
                 using (var reader = dataBase.ExecuteReader(sql))
                 {
-                    if (reader.Read() == false)
+                    while (reader.Read())
                     {
-                        MessageNotifier.Show("Usuário ou senha " +
-                        "incorretos!", "Não Encontrado", "?");
+                        Id = int.Parse(reader["Id"].ToString());
+                        YourName = reader["YourName"].ToString();
+                        Email = reader["Email"].ToString();
+                        Login = reader["Login"].ToString();
+                        AccessPassWord = reader["AccessPassWord"].ToString();
+                        InsertAllowed = bool.Parse(reader["InsertAllowed"].ToString());
+                        UpdateAllowed = bool.Parse(reader["UpdateAllowed"].ToString());
+                        DeleteAllowed = bool.Parse(reader["DeleteAllowed"].ToString());
+                        actionResult = true;
                     }
-                    else
-                    {
-                        while (reader.Read())
-                        {
-                            UserLoginState.Id = int.Parse(reader["Id"].ToString());
-                            UserLoginState.Name = reader["YourName"].ToString();
-                            UserLoginState.Login = reader["Login"].ToString();
-                            actionResult = true;
-                        }
-                    }
+                }
+
+                if (actionResult == false)
+                {
+                    MessageNotifier.Show("Senha ou login de usuário " +
+                    "incorretos!", "Não Encontrado", "?");
                 }
             }
 
@@ -75,10 +78,9 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"INSERT INTO UserLogin (YourName, Email, Login, 
-                AccessPassWord, InsertAllowed, UpdateAllowed, DeleteAllowed)
-                VALUES(@YourName, @Email, @Login, @AccessPassWord, @InsertAllowed,
-                @UpdateAllowed, @DeleteAllowed";
+                sql = @"INSERT INTO UserLogin (YourName, Email, Login, AccessPassWord, 
+                InsertAllowed, UpdateAllowed, DeleteAllowed)VALUES(@YourName, @Email, @Login, @AccessPassWord, 
+                @InsertAllowed, @UpdateAllowed, @DeleteAllowed)";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@YourName", YourName);
@@ -151,7 +153,7 @@ namespace DimStock.Models
                 sql = @"DELETE FROM UserLogin WHERE Id = @Id";
 
                 dataBase.ClearParameter();
-                dataBase.AddParameter("Id", Id);
+                dataBase.AddParameter("@Id", Id);
 
                 if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
@@ -172,26 +174,24 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"SELECT * FROM UserLogin WHERE Id = Id";
+                sql = @"SELECT * FROM UserLogin WHERE Id = @Id";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Id", Id);
 
                 using (var reader = dataBase.ExecuteReader(sql))
                 {
-                    if (reader.Read() == true)
+                    while (reader.Read())
                     {
-                        while (reader.Read())
-                        {
-                            Id = int.Parse(reader["Id"].ToString());
-                            YourName = reader["YourName"].ToString();
-                            Email = reader["Email"].ToString();
-                            AccessPassWord = reader["AccessPassWord"].ToString();
-                            InsertAllowed = bool.Parse(reader["InsertAllowed"].ToString());
-                            UpdateAllowed = bool.Parse(reader["UpdateAllowed"].ToString());
-                            DeleteAllowed = bool.Parse(reader["DeleteAllowed"].ToString());
-                            actionResult = true;
-                        }
+                        Id = int.Parse(reader["Id"].ToString());
+                        YourName = reader["YourName"].ToString();
+                        Email = reader["Email"].ToString();
+                        Login = reader["Login"].ToString();
+                        AccessPassWord = reader["AccessPassWord"].ToString();
+                        InsertAllowed = bool.Parse(reader["InsertAllowed"].ToString());
+                        UpdateAllowed = bool.Parse(reader["UpdateAllowed"].ToString());
+                        DeleteAllowed = bool.Parse(reader["DeleteAllowed"].ToString());
+                        actionResult = true;
                     }
                 }
             }
@@ -205,23 +205,28 @@ namespace DimStock.Models
              login do usuário, porque a regra de negócio não
              permite dois usuários com o mesmo login
              */
-
             var registrationStatus = false;
-            var sql = string.Empty;
+            var sqlParameter = string.Empty;
+            var sqlSelect = string.Empty;
+            var query = string.Empty;
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"SELECT * FROM UserLogin WHERE 
-                Id = @Id OR Login = @Login";
+                sqlSelect = @"SELECT * FROM UserLogin 
+                WHERE Id = @Id ";
 
-                dataBase.ClearParameter();
                 dataBase.AddParameter("@Id", Id);
-                dataBase.AddParameter("Login", Login);
 
-                if (dataBase.ExecuteScalar(sql) == 0)
+                if (Login != string.Empty && Login != null)
                 {
-                    return registrationStatus;
+                    sqlParameter += @"OR Login = @Login";
+                    dataBase.AddParameter("@Login", Login);
                 }
+
+                query += sqlSelect + sqlParameter;
+
+                if (dataBase.ExecuteScalar(query) == 0)
+                    return registrationStatus;
             }
 
             return registrationStatus = true;
@@ -229,23 +234,40 @@ namespace DimStock.Models
 
         public DataTable SearchData()
         {
-            var sql = string.Empty;
-            DataTable searchResult;
+            var sqlParameter = string.Empty;
+            var sqlSelect = string.Empty;
+            var sqlOderBy = string.Empty;
+            var query = string.Empty;
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"SELECT Id, Login, YourName, Email FROM UserLogin WHERE 
-                Login LIKE @Login OR YourName LIKE @YourName OR Email = LIKE @Email";
+                sqlSelect = @"SELECT Id, Login, YourName, Email 
+                FROM UserLogin WHERE Id > 0 ";
 
-                dataBase.ClearParameter();
-                dataBase.AddParameter("@Login", string.Format("%{0}%", Login));
-                dataBase.AddParameter("@YourName", string.Format("%{0}%", YourName));
-                dataBase.AddParameter("@Email", string.Format("%{0}%", Email));
+                sqlOderBy = @"ORDER BY YourName";
 
-                searchResult = dataBase.ExecuteDataAdapter(sql);
+                if (YourName != string.Empty && YourName != null)
+                {
+                    sqlParameter += @"AND YourName LIKE @YourName ";
+                    dataBase.AddParameter("@YourName", string.Format("%{0}%", YourName));
+                }
+
+                if (Login != string.Empty && Login != null)
+                {
+                    sqlParameter += @"AND Login LIKE @Login ";
+                    dataBase.AddParameter("@Login", string.Format("%{0}%", Login));
+                }
+
+                if (Email != string.Empty && Email != null)
+                {
+                    sqlParameter += @"AND Email LIKE @Email ";
+                    dataBase.AddParameter("@Email", string.Format("%{0}%", Email));
+                }
+
+                query += sqlSelect + sqlParameter + sqlOderBy;
+
+                return dataBase.ExecuteDataAdapter(query);
             }
-
-            return searchResult;
         }
     }
 }

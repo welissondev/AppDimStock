@@ -1,8 +1,10 @@
 ﻿using DimStock.AuxilyTools.AuxilyClasses;
 using DimStock.Presenters;
 using DimStock.Views;
+using MetroFramework;
 using MetroFramework.Forms;
 using System;
+using System.Windows.Forms;
 
 namespace DimStock.Screens
 {
@@ -11,10 +13,11 @@ namespace DimStock.Screens
     /// </summary>
     public partial class CategoryAddScreen : ICategoryAddView
     {
+        private CategoryAddPresenter presenter;
+        private static MetroForm thisScreen;
+
         public int Id { get; set; }
         public string Description { get => TextDescription.Text; set => TextDescription.Text = value; }
-
-        private CategoryAddPresenter presenter;
     }
 }
 
@@ -24,9 +27,17 @@ namespace DimStock.Screens
     {
         public CategoryAddScreen()
         {
-            InitializeComponent();
-            presenter = new CategoryAddPresenter(this);
-            InitializeEvents();
+            try
+            {
+                InitializeComponent();
+                InitializePresenter();
+                InitializeEvents();
+                SetScreen();
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
         }
 
         private void ScreenResize(object sender, EventArgs e)
@@ -44,7 +55,8 @@ namespace DimStock.Screens
         {
             try
             {
-                Close();
+                if (this != null)
+                    Close();
             }
             catch (Exception ex)
             {
@@ -56,7 +68,7 @@ namespace DimStock.Screens
         {
             try
             {
-                ButtonSave.Click += new EventHandler(presenter.Update);
+                ButtonSave.Click += new EventHandler(presenter.InsertUpdate);
                 ButtonDelete.Click += new EventHandler(presenter.Delete);
                 ButtonClearView.Click += new EventHandler(presenter.ClearView);
                 ButtonClose.Click += new EventHandler(ScreenClose);
@@ -67,24 +79,11 @@ namespace DimStock.Screens
                 ExceptionNotifier.ShowMessage(ex);
             }
         }
-
-        public void ShowScreen(object sender, EventArgs e)
+        private void InitializePresenter()
         {
-            try
-            {
-                using (var categoryForm = new CategoryAddScreen())
-                {
-                    ShowInTaskbar = false;
-                    ControlBox = false;
-                    Owner = HomeScreen.He;
-                    ShowDialog();
-                };
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
+            presenter = new CategoryAddPresenter(this);
         }
+
         public void SetDetails(ICategoryAddView view)
         {
             try
@@ -94,9 +93,55 @@ namespace DimStock.Screens
                     Id = view.Id;
                     Description = view.Description;
                     ControlBox = false;
-                    Owner = HomeScreen.He;
+                    Owner = HomeScreen.GetScreen();
                     ShowDialog();
                 };
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+
+        private void SetScreen()
+        {
+            thisScreen = this;
+        }
+        public static MetroForm GetScreen()
+        {
+            return thisScreen;
+        }
+
+        public static void ShowScreen(Form fatherScreen = null)
+        {
+            try
+            {
+                var screen = new CategoryAddScreen();
+
+                if (fatherScreen != null)
+                {
+                    screen.MdiParent = fatherScreen;
+                    screen.ShowInTaskbar = false;
+                    screen.ControlBox = false;
+                    screen.Dock = DockStyle.Fill;
+                    screen.Style = MetroColorStyle.White;
+                    screen.Movable = false;
+                    screen.Show();
+                }
+                else
+                {
+                    screen.ShowInTaskbar = false;
+                    screen.ControlBox = false;
+                    screen.ShowIcon = false;
+                    screen.Style = MetroColorStyle.Blue;
+
+                    var listingScreen = CategoryListingScreen.GetScreen();
+                    if (listingScreen != null)
+                        screen.Owner = listingScreen;
+
+                    screen.ShowDialog();
+                    screen.Dispose();
+                }
             }
             catch (Exception ex)
             {

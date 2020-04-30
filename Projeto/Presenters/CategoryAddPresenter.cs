@@ -1,4 +1,5 @@
-﻿using DimStock.Models;
+﻿using DimStock.AuxilyTools.AuxilyClasses;
+using DimStock.Models;
 using DimStock.Views;
 using System;
 
@@ -10,42 +11,53 @@ namespace DimStock.Presenters
 
         public CategoryAddPresenter(ICategoryAddView view) { this.view = view; }
 
-        public void Update(object sender, EventArgs e)
+        public void InsertUpdate(object sender, EventArgs e)
         {
-            var category = new CategoryModel()
+            try
             {
-                Id = view.Id,
-                Description = view.Description.TrimStart().TrimEnd()
-            };
+                var category = new CategoryModel()
+                {
+                    Id = view.Id,
+                    Description = view.Description.TrimStart().TrimEnd()
+                };
 
-            if (view.Id == 0)
-            {
-                if (category.Insert() == true)
-                    ClearView(sender, e);
+                if (view.Id == 0)
+                    if (category.Insert() == true)
+                        ClearView(sender, e);
+
+                if (view.Id > 0)
+                    category.Update();
             }
-            else
+            catch (Exception ex)
             {
-                category.Update();
+                ExceptionNotifier.ShowMessage(ex);
             }
         }
 
         public void Delete(object sender, EventArgs e)
         {
-            var category = new CategoryModel()
+            try
             {
-                Id = view.Id,
-            };
-
-            if (category.Delete() == true)
+                if (new CategoryModel() { Id = view.Id }.Delete() == true)
+                    ClearView(sender, e);
+            }
+            catch (Exception ex)
             {
-                ClearView(sender, e);
+                ExceptionNotifier.ShowMessage(ex);
             }
         }
 
         public void ClearView(object sender, EventArgs e)
         {
-            view.Id = 0;
-            view.Description = string.Empty;
+            try
+            {
+                view.Id = 0;
+                view.Description = string.Empty;
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
         }
     }
 }

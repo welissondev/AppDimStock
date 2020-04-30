@@ -1,6 +1,7 @@
 ﻿using DimStock.AuxilyTools.AuxilyClasses;
 using DimStock.Presenters;
 using DimStock.Views;
+using MetroFramework;
 using MetroFramework.Forms;
 using System;
 using System.Drawing;
@@ -13,12 +14,18 @@ namespace DimStock.Screens
     /// </summary>
     public partial class CategoryListingScreen : MetroForm, ICategoryListingView
     {
+        private static MetroForm thisScreen;
+
         private CategoryListingPresenter presenter;
         private DataGridViewLinkColumn buttonView;
         private DataGridViewLinkColumn buttonDelete;
 
+        //Implementados pela interface de adição
         public int Id { get; set; }
-        public string Description { get => TextSearchDescription.Text; set => TextSearchDescription.Text = value; }
+        public string Description { get; set; }
+
+        //Implementados pela interface de listagem
+        public string SearchDescription { get => TextSearchDescription.Text; set => TextSearchDescription.Text = value; }
         public object DataList { get => GridList.DataSource; set => GridList.DataSource = value; }
     }
 }
@@ -32,6 +39,7 @@ namespace DimStock.Screens
             InitializeComponent();
             InitializePresenter();
             InitializeEvents();
+            SetScreen();
         }
 
         private void ScreenLoad(object sender, EventArgs e)
@@ -50,6 +58,7 @@ namespace DimStock.Screens
             try
             {
                 Close();
+                thisScreen = null;
             }
             catch (Exception ex)
             {
@@ -67,24 +76,12 @@ namespace DimStock.Screens
                 ExceptionNotifier.ShowMessage(ex);
             }
         }
-        public void ScreenShow(object sender, EventArgs e)
+        private void ShowChildScreen(object sender, EventArgs e)
         {
-            try
+            if (sender.Equals(ButtonNew))
             {
-                using (var screen = new CategoryListingScreen())
-                {
-                    ShowIcon = false;
-                    ShowInTaskbar = false;
-                    ControlBox = false;
-                    Owner = HomeScreen.He;
-                    ShowDialog();
-                };
+                CategoryAddScreen.ShowScreen();
             }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
-
         }
 
         private void TimerTick(object sender, EventArgs e)
@@ -236,7 +233,6 @@ namespace DimStock.Screens
             {
                 ExceptionNotifier.ShowMessage(ex);
             }
-
         }
 
         private void InitializeEvents()
@@ -248,7 +244,7 @@ namespace DimStock.Screens
                 GridList.DataSourceChanged += new EventHandler(GridSourceChanged);
                 GridList.CellMouseEnter += new DataGridViewCellEventHandler(GridCellEnter);
                 GridList.CellClick += new DataGridViewCellEventHandler(GridCellClick);
-                ButtonNew.Click += new EventHandler(new CategoryAddScreen().ShowScreen);
+                ButtonNew.Click += new EventHandler(ShowChildScreen);
                 ButtonListGrid.Click += new EventHandler(TimerTick);
                 ButtonCloseScreen.Click += new EventHandler(ScreenClose);
                 ButtonScreenClear.Click += new EventHandler(presenter.ClearView);
@@ -266,6 +262,54 @@ namespace DimStock.Screens
             try
             {
                 presenter = new CategoryListingPresenter(this);
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+
+        public static MetroForm GetScreen()
+        {
+            return thisScreen;
+        }
+        private void SetScreen()
+        {
+            thisScreen = this;
+        }
+
+        public static void ShowScreen(Form fatherScreen = null)
+        {
+            try
+            {
+                MdiClosingAll.CloseAllForms();
+
+                var screen = new CategoryListingScreen();
+
+                if (fatherScreen != null)
+                {
+                    screen.MdiParent = fatherScreen;
+                    screen.ShowInTaskbar = false;
+                    screen.ControlBox = false;
+                    screen.Dock = DockStyle.Fill;
+                    screen.Style = MetroColorStyle.White;
+                    screen.Movable = false;
+                    screen.Show();
+                }
+                else
+                {
+                    screen.ShowInTaskbar = false;
+                    screen.ControlBox = false;
+                    screen.ShowIcon = false;
+                    screen.Style = MetroColorStyle.Blue;
+
+                    var homeScreen = HomeScreen.GetScreen();
+                    if (homeScreen != null)
+                        screen.Owner = homeScreen;
+
+                    screen.ShowDialog();
+                    screen.Dispose();
+                }
             }
             catch (Exception ex)
             {

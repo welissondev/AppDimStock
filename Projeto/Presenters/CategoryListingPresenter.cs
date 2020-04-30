@@ -1,4 +1,5 @@
-﻿using DimStock.Models;
+﻿using DimStock.AuxilyTools.AuxilyClasses;
+using DimStock.Models;
 using DimStock.Views;
 using System;
 
@@ -16,42 +17,61 @@ namespace DimStock.Presenters
 
         public void Delete(object sender, EventArgs e)
         {
-            var catgory = new CategoryModel() { Id = view.Id};
-            
-            if (catgory.Delete() == true)
+            try
             {
-                ClearView(sender, e);
+                if (new CategoryModel() { Id = view.Id }.Delete() == true)
+                    ClearView(sender, e);
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
             }
         }
 
         public void GetDetails(object sender, EventArgs e)
         {
-            var category = new CategoryModel() { Id = view.Id};
-
-            if (category.GetDetails() == true)
+            try
             {
-                view.Id= category.Id;
-                view.Description= category.Description;
+                var category = new CategoryModel() { Id = view.Id };
+
+                if (category.GetDetails() == true)
+                {
+                    view.Id = category.Id;
+                    view.Description = category.Description;
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
             }
         }
 
         public void ClearView(object sender, EventArgs e)
         {
-            view.Id = 0;
-            view.Description = string.Empty;
+            try
+            {
+                view.Id = 0;
+                view.SearchDescription = string.Empty;
 
-            SearchData(sender, e);
+                SearchData(sender, e);
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
         }
 
         public void SearchData(object sender, EventArgs e)
         {
-            var category = new CategoryModel()
+            try
             {
-                Description = view.Description
-            };
-
-            var searchResult = category.SearchData();
-            view.DataList = searchResult;
+                var searchResult = new CategoryModel() { Description = view.SearchDescription }.SearchData();
+                view.DataList = searchResult;
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
         }
     }
 }

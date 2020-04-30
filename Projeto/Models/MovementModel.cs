@@ -226,27 +226,24 @@ namespace DimStock.Models
 
                 using (var reader = dataBase.ExecuteReader(sql))
                 {
-                    if (reader.Read() == true)
+                    while (reader.Read())
                     {
-                        while (reader.Read())
-                        {
-                            Id = int.Parse(reader["Movement.Id"].ToString());
-                            OperationType = reader["OperationType"].ToString();
-                            OperationNumber = reader["OperationNumber"].ToString();
-                            StartDate = DateTime.Parse(reader["StartDate"].ToString());
-                            StartHour = DateTime.Parse(reader["StartHour"].ToString());
-                            FinishDate = DateTime.Parse(reader["FinishDate"].ToString());
-                            FinishHour = DateTime.Parse(reader["FinishHour"].ToString());
-                            Situation = reader["Situation"].ToString();
+                        Id = int.Parse(reader["Movement.Id"].ToString());
+                        OperationType = reader["OperationType"].ToString();
+                        OperationNumber = reader["OperationNumber"].ToString();
+                        StartDate = DateTime.Parse(reader["StartDate"].ToString());
+                        StartHour = DateTime.Parse(reader["StartHour"].ToString());
+                        FinishDate = DateTime.Parse(reader["FinishDate"].ToString());
+                        FinishHour = DateTime.Parse(reader["FinishHour"].ToString());
+                        Situation = reader["Situation"].ToString();
 
-                            if (reader["Destination.Id"] != DBNull.Value)
-                                Destination.Id = int.Parse(reader["Destination.Id"].ToString());
+                        if (reader["Destination.Id"] != DBNull.Value)
+                            Destination.Id = int.Parse(reader["Destination.Id"].ToString());
 
-                            if (reader["Destination.Location"] != DBNull.Value)
-                                Destination.Location = reader["Location"].ToString();
+                        if (reader["Destination.Location"] != DBNull.Value)
+                            Destination.Location = reader["Location"].ToString();
 
-                            actionResult = true;
-                        }
+                        actionResult = true;
                     }
                 }
             }

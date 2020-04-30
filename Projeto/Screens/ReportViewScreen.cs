@@ -59,7 +59,7 @@ namespace DimStock.Screens
             var form = new ReportViewScreen(path, reportName,
             isEmbeddedResource, dataSources)
             {
-                MdiParent = HomeScreen.He,
+                MdiParent = HomeScreen.GetScreen(),
                 FormBorderStyle = FormBorderStyle.None,
                 Dock = DockStyle.Fill,
                 ShowInTaskbar = false

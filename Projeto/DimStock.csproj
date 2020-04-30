@@ -85,6 +85,9 @@
   <PropertyGroup>
     <StartupObject>DimStock.Screens.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>IconTaskBar.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu.Core, Version=1.11.5.1, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9" />
     <Reference Include="Bunifu.UI.WinForm.BunifuShadowPanel, Version=1.11.5.1, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
@@ -98,6 +101,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Bunifu.UI.WinForms.BunifuDataGridView.dll</HintPath>
     </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuPictureBox">
+      <HintPath>..\..\..\Bunifu\Bunifu UI WinForms 1.11.5.1\Bunifu.UI.WinForms.BunifuPictureBox.dll</HintPath>
+    </Reference>
     <Reference Include="Bunifu.UI.WinForms.BunifuTextbox, Version=1.11.5.1, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Bunifu.UI.WinForms.BunifuTextbox.dll</HintPath>
@@ -105,6 +111,9 @@
     <Reference Include="Bunifu_UI_v1.5.3, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Bunifu_UI_v1.5.3.dll</HintPath>
+    </Reference>
+    <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
@@ -119,6 +128,7 @@
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1400.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Core.WinForms, Version=17.4460.0.46, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Grid.Base, Version=17.4460.0.46, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="Syncfusion.Grid.Windows, Version=17.4460.0.46, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.SfInput.WinForms, Version=17.3460.0.14, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\17.3.0.14\Assemblies\4.6\Syncfusion.SfInput.WinForms.dll</HintPath>
@@ -127,6 +137,9 @@
     <Reference Include="Syncfusion.SfListView.WinForms, Version=17.4460.0.46, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Shared.Base, Version=17.4460.0.46, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Shared.Windows, Version=17.4460.0.46, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.SpellChecker.Base, Version=17.4460.0.46, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Tools.Base, Version=17.4460.0.46, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="Syncfusion.Tools.Windows, Version=17.4460.0.46, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -143,6 +156,7 @@
     <Compile Include="AuxilyTools\AuxilyClasses\EmailAddressValidator.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\ExceptionNotifier.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\GuidGenerator.cs" />
+    <Compile Include="AuxilyTools\AuxilyClasses\Mdi3dRemove.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\MdiClosingAll.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\SingleCodeGenerator.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\UserLoginState.cs" />
@@ -361,22 +375,47 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\FotoNothing.jpg" />
+    <None Include="Resources\ImageNothing.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\BackGroudUserLogin.jpg" />
+    <None Include="Resources\ImageLoading.gif" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Loading.gif" />
+    <None Include="Resources\IconCategory.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\DimStockLogoType.png" />
+    <None Include="Resources\IconProduct.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Icon-Plus.png" />
+    <None Include="Resources\IconMovementStock.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\IconExit.png" />
+    <None Include="Resources\IconStock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconDestination.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconUser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconSettings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconExtendedMenu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ImageSeparator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="IconTaskBar.ico" />
+    <Content Include="Resources\IconBack.png" />
+    <Content Include="Resources\IconExit.png" />
+    <Content Include="Resources\IconNew.png" />
+    <Content Include="Resources\IconNext.png" />
+    <Content Include="Resources\IconSupplier.png" />
+    <Content Include="Resources\IconSupport.png" />
+    <Content Include="Resources\ImageLogoType.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -76,27 +76,25 @@
             this.TextBarCode = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             this.TextDescription = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             this.TextInternalCode = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
-            this.bunifuShadowPanel1 = new Bunifu.UI.WinForm.BunifuShadowPanel.BunifuShadowPanel();
             this.ButtonClose = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.ButtonClearView = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.ButtonDelete = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.ButtonSave = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.GridCategory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextSalePrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextCostPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).BeginInit();
             this.PanelShadow.SuspendLayout();
-            this.bunifuShadowPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ButtonShow_CategoryAddForm
             // 
-            this.ButtonShow_CategoryAddForm.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ButtonShow_CategoryAddForm.AutoSize = true;
             this.ButtonShow_CategoryAddForm.BackColor = System.Drawing.Color.Transparent;
             this.ButtonShow_CategoryAddForm.Font = new System.Drawing.Font("Calibri Light", 10F);
             this.ButtonShow_CategoryAddForm.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(118)))), ((int)(((byte)(190)))));
-            this.ButtonShow_CategoryAddForm.Location = new System.Drawing.Point(686, 164);
+            this.ButtonShow_CategoryAddForm.Location = new System.Drawing.Point(765, 163);
             this.ButtonShow_CategoryAddForm.Name = "ButtonShow_CategoryAddForm";
             this.ButtonShow_CategoryAddForm.Size = new System.Drawing.Size(93, 17);
             this.ButtonShow_CategoryAddForm.TabIndex = 221;
@@ -107,30 +105,28 @@
             // 
             this.GridCategory.AllowUserToAddRows = false;
             this.GridCategory.AllowUserToResizeRows = false;
-            this.GridCategory.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.GridCategory.BackgroundColor = System.Drawing.Color.White;
             this.GridCategory.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.GridCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridCategory.ColumnHeadersVisible = false;
             this.GridCategory.CustomSettings = false;
-            this.GridCategory.Location = new System.Drawing.Point(35, 190);
+            this.GridCategory.Location = new System.Drawing.Point(25, 189);
             this.GridCategory.MultiSelect = false;
             this.GridCategory.Name = "GridCategory";
             this.GridCategory.RowHeadersVisible = false;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri Light", 10F);
             this.GridCategory.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.GridCategory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.GridCategory.Size = new System.Drawing.Size(750, 10);
+            this.GridCategory.Size = new System.Drawing.Size(840, 10);
             this.GridCategory.TabIndex = 228;
             this.GridCategory.Visible = false;
             // 
             // label6
             // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
             this.label6.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label6.Location = new System.Drawing.Point(31, 316);
+            this.label6.Location = new System.Drawing.Point(21, 315);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(115, 17);
             this.label6.TabIndex = 238;
@@ -138,11 +134,10 @@
             // 
             // label5
             // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
             this.label5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label5.Location = new System.Drawing.Point(31, 257);
+            this.label5.Location = new System.Drawing.Point(21, 256);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(48, 17);
             this.label5.TabIndex = 237;
@@ -150,11 +145,10 @@
             // 
             // label4
             // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
             this.label4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label4.Location = new System.Drawing.Point(31, 201);
+            this.label4.Location = new System.Drawing.Point(21, 200);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 17);
             this.label4.TabIndex = 236;
@@ -162,11 +156,10 @@
             // 
             // label3
             // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
             this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label3.Location = new System.Drawing.Point(31, 139);
+            this.label3.Location = new System.Drawing.Point(21, 138);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 17);
             this.label3.TabIndex = 235;
@@ -174,11 +167,10 @@
             // 
             // label2
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
             this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label2.Location = new System.Drawing.Point(31, 81);
+            this.label2.Location = new System.Drawing.Point(21, 80);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 17);
             this.label2.TabIndex = 234;
@@ -186,19 +178,17 @@
             // 
             // label1
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(31, 23);
+            this.label1.Location = new System.Drawing.Point(21, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 17);
+            this.label1.Size = new System.Drawing.Size(103, 17);
             this.label1.TabIndex = 232;
-            this.label1.Text = "Código:";
+            this.label1.Text = "Código Interno:";
             // 
             // TextSalePrice
             // 
-            this.TextSalePrice.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.TextSalePrice.BackGroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.TextSalePrice.BeforeTouchSize = new System.Drawing.Size(270, 35);
             this.TextSalePrice.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
@@ -214,7 +204,7 @@
             131072});
             this.TextSalePrice.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F);
             this.TextSalePrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.TextSalePrice.Location = new System.Drawing.Point(35, 273);
+            this.TextSalePrice.Location = new System.Drawing.Point(25, 272);
             this.TextSalePrice.MinimumSize = new System.Drawing.Size(16, 29);
             this.TextSalePrice.Multiline = true;
             this.TextSalePrice.Name = "TextSalePrice";
@@ -231,7 +221,6 @@
             // 
             // TextCostPrice
             // 
-            this.TextCostPrice.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.TextCostPrice.BackGroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.TextCostPrice.BeforeTouchSize = new System.Drawing.Size(270, 35);
             this.TextCostPrice.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
@@ -247,7 +236,7 @@
             131072});
             this.TextCostPrice.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F);
             this.TextCostPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.TextCostPrice.Location = new System.Drawing.Point(35, 217);
+            this.TextCostPrice.Location = new System.Drawing.Point(25, 216);
             this.TextCostPrice.MinimumSize = new System.Drawing.Size(16, 29);
             this.TextCostPrice.Multiline = true;
             this.TextCostPrice.Name = "TextCostPrice";
@@ -276,7 +265,12 @@
             this.PanelShadow.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PanelShadow.BorderColor = System.Drawing.Color.Transparent;
+            this.PanelShadow.BorderColor = System.Drawing.Color.Gainsboro;
+            this.PanelShadow.Controls.Add(this.bunifuSeparator1);
+            this.PanelShadow.Controls.Add(this.ButtonClose);
+            this.PanelShadow.Controls.Add(this.ButtonClearView);
+            this.PanelShadow.Controls.Add(this.ButtonDelete);
+            this.PanelShadow.Controls.Add(this.ButtonSave);
             this.PanelShadow.Controls.Add(this.ButtonShow_CategoryAddForm);
             this.PanelShadow.Controls.Add(this.BoxCategoryDescription);
             this.PanelShadow.Controls.Add(this.TextBarCode);
@@ -291,20 +285,19 @@
             this.PanelShadow.Controls.Add(this.label3);
             this.PanelShadow.Controls.Add(this.label6);
             this.PanelShadow.Controls.Add(this.TextCostPrice);
-            this.PanelShadow.Location = new System.Drawing.Point(20, 62);
+            this.PanelShadow.Location = new System.Drawing.Point(27, 62);
             this.PanelShadow.Name = "PanelShadow";
             this.PanelShadow.PanelColor = System.Drawing.Color.Empty;
             this.PanelShadow.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.PanelShadow.ShadowDept = 2;
-            this.PanelShadow.ShadowTopLeftVisible = true;
-            this.PanelShadow.Size = new System.Drawing.Size(898, 418);
+            this.PanelShadow.ShadowTopLeftVisible = false;
+            this.PanelShadow.Size = new System.Drawing.Size(893, 505);
             this.PanelShadow.TabIndex = 9;
             // 
             // BoxCategoryDescription
             // 
             this.BoxCategoryDescription.AcceptsReturn = false;
             this.BoxCategoryDescription.AcceptsTab = false;
-            this.BoxCategoryDescription.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.BoxCategoryDescription.AnimationSpeed = 200;
             this.BoxCategoryDescription.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             this.BoxCategoryDescription.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
@@ -328,7 +321,7 @@
             this.BoxCategoryDescription.IconRight = null;
             this.BoxCategoryDescription.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.BoxCategoryDescription.Lines = new string[0];
-            this.BoxCategoryDescription.Location = new System.Drawing.Point(35, 156);
+            this.BoxCategoryDescription.Location = new System.Drawing.Point(25, 155);
             this.BoxCategoryDescription.MaxLength = 32767;
             this.BoxCategoryDescription.MinimumSize = new System.Drawing.Size(100, 35);
             this.BoxCategoryDescription.Modified = false;
@@ -363,7 +356,7 @@
             this.BoxCategoryDescription.SelectionLength = 0;
             this.BoxCategoryDescription.SelectionStart = 0;
             this.BoxCategoryDescription.ShortcutsEnabled = true;
-            this.BoxCategoryDescription.Size = new System.Drawing.Size(750, 35);
+            this.BoxCategoryDescription.Size = new System.Drawing.Size(840, 35);
             this.BoxCategoryDescription.Style = Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox._Style.Bunifu;
             this.BoxCategoryDescription.TabIndex = 2;
             this.BoxCategoryDescription.Tag = "required";
@@ -379,7 +372,6 @@
             // 
             this.TextBarCode.AcceptsReturn = false;
             this.TextBarCode.AcceptsTab = false;
-            this.TextBarCode.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.TextBarCode.AnimationSpeed = 200;
             this.TextBarCode.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             this.TextBarCode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
@@ -403,7 +395,7 @@
             this.TextBarCode.IconRight = null;
             this.TextBarCode.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.TextBarCode.Lines = new string[0];
-            this.TextBarCode.Location = new System.Drawing.Point(35, 333);
+            this.TextBarCode.Location = new System.Drawing.Point(25, 332);
             this.TextBarCode.MaxLength = 32767;
             this.TextBarCode.MinimumSize = new System.Drawing.Size(100, 35);
             this.TextBarCode.Modified = false;
@@ -438,7 +430,7 @@
             this.TextBarCode.SelectionLength = 0;
             this.TextBarCode.SelectionStart = 0;
             this.TextBarCode.ShortcutsEnabled = true;
-            this.TextBarCode.Size = new System.Drawing.Size(750, 35);
+            this.TextBarCode.Size = new System.Drawing.Size(840, 35);
             this.TextBarCode.Style = Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox._Style.Bunifu;
             this.TextBarCode.TabIndex = 5;
             this.TextBarCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -453,7 +445,6 @@
             // 
             this.TextDescription.AcceptsReturn = false;
             this.TextDescription.AcceptsTab = false;
-            this.TextDescription.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.TextDescription.AnimationSpeed = 200;
             this.TextDescription.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             this.TextDescription.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
@@ -477,7 +468,7 @@
             this.TextDescription.IconRight = null;
             this.TextDescription.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.TextDescription.Lines = new string[0];
-            this.TextDescription.Location = new System.Drawing.Point(35, 98);
+            this.TextDescription.Location = new System.Drawing.Point(25, 97);
             this.TextDescription.MaxLength = 32767;
             this.TextDescription.MinimumSize = new System.Drawing.Size(100, 35);
             this.TextDescription.Modified = false;
@@ -512,7 +503,7 @@
             this.TextDescription.SelectionLength = 0;
             this.TextDescription.SelectionStart = 0;
             this.TextDescription.ShortcutsEnabled = true;
-            this.TextDescription.Size = new System.Drawing.Size(750, 35);
+            this.TextDescription.Size = new System.Drawing.Size(840, 35);
             this.TextDescription.Style = Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox._Style.Bunifu;
             this.TextDescription.TabIndex = 1;
             this.TextDescription.Tag = "required";
@@ -528,7 +519,6 @@
             // 
             this.TextInternalCode.AcceptsReturn = false;
             this.TextInternalCode.AcceptsTab = false;
-            this.TextInternalCode.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.TextInternalCode.AnimationSpeed = 200;
             this.TextInternalCode.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             this.TextInternalCode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
@@ -552,7 +542,7 @@
             this.TextInternalCode.IconRight = null;
             this.TextInternalCode.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.TextInternalCode.Lines = new string[0];
-            this.TextInternalCode.Location = new System.Drawing.Point(35, 40);
+            this.TextInternalCode.Location = new System.Drawing.Point(25, 39);
             this.TextInternalCode.MaxLength = 32767;
             this.TextInternalCode.MinimumSize = new System.Drawing.Size(100, 35);
             this.TextInternalCode.Modified = false;
@@ -599,27 +589,10 @@
             this.TextInternalCode.UseSystemPasswordChar = false;
             this.TextInternalCode.WordWrap = true;
             // 
-            // bunifuShadowPanel1
-            // 
-            this.bunifuShadowPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.bunifuShadowPanel1.BorderColor = System.Drawing.Color.Transparent;
-            this.bunifuShadowPanel1.Controls.Add(this.ButtonClose);
-            this.bunifuShadowPanel1.Controls.Add(this.ButtonClearView);
-            this.bunifuShadowPanel1.Controls.Add(this.ButtonDelete);
-            this.bunifuShadowPanel1.Controls.Add(this.ButtonSave);
-            this.bunifuShadowPanel1.Location = new System.Drawing.Point(20, 479);
-            this.bunifuShadowPanel1.Name = "bunifuShadowPanel1";
-            this.bunifuShadowPanel1.PanelColor = System.Drawing.Color.Empty;
-            this.bunifuShadowPanel1.ShadowDept = 2;
-            this.bunifuShadowPanel1.ShadowTopLeftVisible = true;
-            this.bunifuShadowPanel1.Size = new System.Drawing.Size(898, 86);
-            this.bunifuShadowPanel1.TabIndex = 244;
-            // 
             // ButtonClose
             // 
             this.ButtonClose.AllowToggling = false;
-            this.ButtonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ButtonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ButtonClose.AnimationSpeed = 200;
             this.ButtonClose.AutoGenerateColors = false;
             this.ButtonClose.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
@@ -655,7 +628,7 @@
             this.ButtonClose.IdleIconLeftImage = null;
             this.ButtonClose.IdleIconRightImage = null;
             this.ButtonClose.IndicateFocus = false;
-            this.ButtonClose.Location = new System.Drawing.Point(728, 22);
+            this.ButtonClose.Location = new System.Drawing.Point(721, 433);
             this.ButtonClose.Name = "ButtonClose";
             stateProperties1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties1.BorderRadius = 3;
@@ -676,7 +649,7 @@
             stateProperties2.IconRightImage = null;
             this.ButtonClose.OnPressedState = stateProperties2;
             this.ButtonClose.Size = new System.Drawing.Size(144, 45);
-            this.ButtonClose.TabIndex = 14;
+            this.ButtonClose.TabIndex = 242;
             this.ButtonClose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonClose.TextMarginLeft = 0;
             this.ButtonClose.UseDefaultRadiusAndThickness = true;
@@ -684,6 +657,7 @@
             // ButtonClearView
             // 
             this.ButtonClearView.AllowToggling = false;
+            this.ButtonClearView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ButtonClearView.AnimationSpeed = 200;
             this.ButtonClearView.AutoGenerateColors = false;
             this.ButtonClearView.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
@@ -719,7 +693,7 @@
             this.ButtonClearView.IdleIconLeftImage = null;
             this.ButtonClearView.IdleIconRightImage = null;
             this.ButtonClearView.IndicateFocus = false;
-            this.ButtonClearView.Location = new System.Drawing.Point(330, 22);
+            this.ButtonClearView.Location = new System.Drawing.Point(323, 433);
             this.ButtonClearView.Name = "ButtonClearView";
             stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties3.BorderRadius = 3;
@@ -740,7 +714,7 @@
             stateProperties4.IconRightImage = null;
             this.ButtonClearView.OnPressedState = stateProperties4;
             this.ButtonClearView.Size = new System.Drawing.Size(144, 45);
-            this.ButtonClearView.TabIndex = 13;
+            this.ButtonClearView.TabIndex = 241;
             this.ButtonClearView.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonClearView.TextMarginLeft = 0;
             this.ButtonClearView.UseDefaultRadiusAndThickness = true;
@@ -748,6 +722,7 @@
             // ButtonDelete
             // 
             this.ButtonDelete.AllowToggling = false;
+            this.ButtonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ButtonDelete.AnimationSpeed = 200;
             this.ButtonDelete.AutoGenerateColors = false;
             this.ButtonDelete.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
@@ -783,7 +758,7 @@
             this.ButtonDelete.IdleIconLeftImage = null;
             this.ButtonDelete.IdleIconRightImage = null;
             this.ButtonDelete.IndicateFocus = false;
-            this.ButtonDelete.Location = new System.Drawing.Point(180, 22);
+            this.ButtonDelete.Location = new System.Drawing.Point(173, 433);
             this.ButtonDelete.Name = "ButtonDelete";
             stateProperties5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties5.BorderRadius = 3;
@@ -804,7 +779,7 @@
             stateProperties6.IconRightImage = null;
             this.ButtonDelete.OnPressedState = stateProperties6;
             this.ButtonDelete.Size = new System.Drawing.Size(144, 45);
-            this.ButtonDelete.TabIndex = 12;
+            this.ButtonDelete.TabIndex = 240;
             this.ButtonDelete.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonDelete.TextMarginLeft = 0;
             this.ButtonDelete.UseDefaultRadiusAndThickness = true;
@@ -812,6 +787,7 @@
             // ButtonSave
             // 
             this.ButtonSave.AllowToggling = false;
+            this.ButtonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ButtonSave.AnimationSpeed = 200;
             this.ButtonSave.AutoGenerateColors = false;
             this.ButtonSave.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
@@ -847,7 +823,7 @@
             this.ButtonSave.IdleIconLeftImage = null;
             this.ButtonSave.IdleIconRightImage = null;
             this.ButtonSave.IndicateFocus = false;
-            this.ButtonSave.Location = new System.Drawing.Point(30, 22);
+            this.ButtonSave.Location = new System.Drawing.Point(23, 433);
             this.ButtonSave.Name = "ButtonSave";
             stateProperties7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties7.BorderRadius = 3;
@@ -868,17 +844,30 @@
             stateProperties8.IconRightImage = null;
             this.ButtonSave.OnPressedState = stateProperties8;
             this.ButtonSave.Size = new System.Drawing.Size(144, 45);
-            this.ButtonSave.TabIndex = 11;
+            this.ButtonSave.TabIndex = 239;
             this.ButtonSave.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonSave.TextMarginLeft = 0;
             this.ButtonSave.UseDefaultRadiusAndThickness = true;
+            // 
+            // bunifuSeparator1
+            // 
+            this.bunifuSeparator1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.bunifuSeparator1.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))));
+            this.bunifuSeparator1.LineThickness = 1;
+            this.bunifuSeparator1.Location = new System.Drawing.Point(25, 406);
+            this.bunifuSeparator1.Name = "bunifuSeparator1";
+            this.bunifuSeparator1.Size = new System.Drawing.Size(840, 10);
+            this.bunifuSeparator1.TabIndex = 247;
+            this.bunifuSeparator1.Transparency = 100;
+            this.bunifuSeparator1.Vertical = false;
             // 
             // ProductAddScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(944, 590);
-            this.Controls.Add(this.bunifuShadowPanel1);
             this.Controls.Add(this.PanelShadow);
             this.MinimumSize = new System.Drawing.Size(944, 590);
             this.Name = "ProductAddScreen";
@@ -893,7 +882,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).EndInit();
             this.PanelShadow.ResumeLayout(false);
             this.PanelShadow.PerformLayout();
-            this.bunifuShadowPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -916,10 +904,10 @@
         private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox TextDescription;
         private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox TextInternalCode;
         private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox BoxCategoryDescription;
-        private Bunifu.UI.WinForm.BunifuShadowPanel.BunifuShadowPanel bunifuShadowPanel1;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton ButtonClose;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton ButtonClearView;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton ButtonDelete;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton ButtonSave;
+        private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator1;
     }
 }
