@@ -235,7 +235,7 @@ namespace DimStock.Models
             using (var dataBase = new ConnectionModel())
             {
                 sql = @"SELECT Id, Login, YourName, Email FROM UserLogin WHERE 
-                Login LIKE @Login OR YourName LIKE @YourName OR Email = LIKE @Email";
+                Login LIKE @Login OR YourName LIKE @YourName OR Email LIKE @Email";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Login", string.Format("%{0}%", Login));
