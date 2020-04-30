@@ -174,7 +174,7 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"SELECT * FROM UserLogin WHERE Id = Id";
+                sql = @"SELECT * FROM UserLogin WHERE Id = @Id";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Id", Id);
