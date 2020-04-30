@@ -69,7 +69,7 @@
             this.movimentaçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.destinoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fornecedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.usuárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripUserAddScreen = new System.Windows.Forms.ToolStripMenuItem();
             this.PanelMenuSide = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.ButtonMenuProducts = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.bunifuSeparator6 = new Bunifu.Framework.UI.BunifuSeparator();
@@ -116,7 +116,7 @@
             this.ToolStripProductAddScreen,
             this.usuáriosToolStripMenuItem,
             this.fornecedoresToolStripMenuItem,
-            this.usuárioToolStripMenuItem});
+            this.ToolStripUserAddScreen});
             this.MenuContextRegistration.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(236)))), ((int)(((byte)(249)))));
             this.MenuContextRegistration.Name = "MenuContextRegistration";
             this.MenuContextRegistration.Size = new System.Drawing.Size(135, 114);
@@ -162,11 +162,11 @@
             this.fornecedoresToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.fornecedoresToolStripMenuItem.Text = "Fornecedor";
             // 
-            // usuárioToolStripMenuItem
+            // ToolStripUserAddScreen
             // 
-            this.usuárioToolStripMenuItem.Name = "usuárioToolStripMenuItem";
-            this.usuárioToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
-            this.usuárioToolStripMenuItem.Text = "Usuário";
+            this.ToolStripUserAddScreen.Name = "ToolStripUserAddScreen";
+            this.ToolStripUserAddScreen.Size = new System.Drawing.Size(134, 22);
+            this.ToolStripUserAddScreen.Text = "Usuário";
             // 
             // PanelMenuSide
             // 
@@ -1177,7 +1177,7 @@
         private System.Windows.Forms.ToolStripMenuItem fornecedoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem movimentaçãoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem destinoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem usuárioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripUserAddScreen;
         private Bunifu.Framework.UI.BunifuGradientPanel bunifuGradientPanel2;
         private System.Windows.Forms.PictureBox ButtonMenuExtender;
         private Bunifu.Framework.UI.BunifuGradientPanel bunifuGradientPanel1;
