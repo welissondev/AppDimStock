@@ -229,23 +229,40 @@ namespace DimStock.Models
 
         public DataTable SearchData()
         {
-            var sql = string.Empty;
-            DataTable searchResult;
+            var sqlParameter = string.Empty;
+            var sqlSelect = string.Empty;
+            var sqlOderBy = string.Empty;
+            var query = string.Empty;
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"SELECT Id, Login, YourName, Email FROM UserLogin WHERE 
-                Login LIKE @Login OR YourName LIKE @YourName OR Email LIKE @Email";
+                sqlSelect = @"SELECT Id, Login, YourName, Email 
+                FROM UserLogin WHERE Id > 0 ";
 
-                dataBase.ClearParameter();
-                dataBase.AddParameter("@Login", string.Format("%{0}%", Login));
-                dataBase.AddParameter("@YourName", string.Format("%{0}%", YourName));
-                dataBase.AddParameter("@Email", string.Format("%{0}%", Email));
+                sqlOderBy = @"ORDER BY YourName";
 
-                searchResult = dataBase.ExecuteDataAdapter(sql);
+                if (YourName != string.Empty && YourName != null)
+                {
+                    sqlParameter += @"AND YourName LIKE @YourName ";
+                    dataBase.AddParameter("@YourName", string.Format("%{0}%", YourName));
+                }
+
+                if (Login != string.Empty && Login != null)
+                {
+                    sqlParameter += @"AND Login LIKE @Login ";
+                    dataBase.AddParameter("@Login", string.Format("%{0}%", Login));
+                }
+
+                if (Email != string.Empty && Email != null)
+                {
+                    sqlParameter += @"AND Email LIKE @Email ";
+                    dataBase.AddParameter("@Email", string.Format("%{0}%", Email));
+                }
+
+                query += sqlSelect + sqlParameter + sqlOderBy;
+
+                return dataBase.ExecuteDataAdapter(query);
             }
-
-            return searchResult;
         }
     }
 }
