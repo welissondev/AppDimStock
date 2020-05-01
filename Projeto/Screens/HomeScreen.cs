@@ -40,8 +40,8 @@ namespace DimStock.Screens
             {
                 SetTopSideMenuIcons();
                 GetSideMenuNames();
-                ShowUserLoginAccessScreen();
                 Mdi3dRemove.SetBevel(this, false, Color.White);
+                UserLoginAccessScreen.ShowScreen();
             }
             catch (Exception ex)
             {
@@ -49,7 +49,7 @@ namespace DimStock.Screens
             }
         }
 
-        private void ShowChildScreen(object sender, EventArgs e)
+        private void ShowRelatedScreen(object sender, EventArgs e)
         {
             if (sender.Equals(ToolStripCategoyAddScreen))
                 CategoryAddScreen.ShowScreen(this);
@@ -82,21 +82,6 @@ namespace DimStock.Screens
                 {
                     MenuContextSettings.Show(this, MousePosition);
                 }
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
-        }
-
-        private void ShowUserLoginAccessScreen()
-        {
-            try
-            {
-                thisScreen.Hide();
-
-                var screen = new UserLoginAccessScreen();
-                screen.Show();
             }
             catch (Exception ex)
             {
@@ -151,12 +136,12 @@ namespace DimStock.Screens
             try
             {
                 Load += new EventHandler(ScreenLoad);
-                ButtonMenuProducts.Click += new EventHandler(ShowChildScreen);
-                ToolStripCategoyAddScreen.Click += new EventHandler(ShowChildScreen);
-                ToolStripProductAddScreen.Click += new EventHandler(ShowChildScreen);
-                ToolStripUserAddScreen.Click += new EventHandler(ShowChildScreen);
-                ButtonMenuCategorys.Click += new EventHandler(ShowChildScreen);
-                ButtonMenuUsers.Click += new EventHandler(ShowChildScreen);
+                ButtonMenuProducts.Click += new EventHandler(ShowRelatedScreen);
+                ToolStripCategoyAddScreen.Click += new EventHandler(ShowRelatedScreen);
+                ToolStripProductAddScreen.Click += new EventHandler(ShowRelatedScreen);
+                ToolStripUserAddScreen.Click += new EventHandler(ShowRelatedScreen);
+                ButtonMenuCategorys.Click += new EventHandler(ShowRelatedScreen);
+                ButtonMenuUsers.Click += new EventHandler(ShowRelatedScreen);
                 ButtonMenuGeneralRegistrations.Click += new EventHandler(ShowMenuContext);
                 ButtonMenuSettings.Click += new EventHandler(ShowMenuContext);
                 ButtonMenuExtender.Click += new EventHandler(MenuExtenter);

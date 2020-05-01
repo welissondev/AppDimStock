@@ -82,7 +82,7 @@ namespace DimStock.Screens
             }
         }
 
-        private void ShowChildScreen(object sender, EventArgs e)
+        private void ShowRelatedScreen(object sender, EventArgs e)
         {
             if (sender.Equals(ButtonNew))
                 ProductAddScreen.ShowScreen();
@@ -272,7 +272,7 @@ namespace DimStock.Screens
             {
                 Load += new EventHandler(ScreenLoad);
                 Resize += new EventHandler(ScreenResize);
-                ButtonNew.Click += new EventHandler(ShowChildScreen);
+                ButtonNew.Click += new EventHandler(ShowRelatedScreen);
                 ButtonUpdateGridList.Click += new EventHandler(presenter.SearchData);
                 ButtonClear.Click += new EventHandler(presenter.ClearView);
                 ButtonClose.Click += new EventHandler(ScreenClose);

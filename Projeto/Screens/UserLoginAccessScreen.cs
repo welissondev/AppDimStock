@@ -23,7 +23,7 @@ namespace DimStock.Screens
         public bool InsertAllowed { get; set; }
         public bool UpdateAllowed { get; set; }
         public bool DeleteAllowed { get; set; }
-        public bool AcessStatus { get; set; }
+        public bool AcessStatus { get; set;}
     }
 }
 
@@ -39,6 +39,9 @@ namespace DimStock.Screens
             MaximizeScreen();
         }
 
+        private void ScreenLoad(object sender, EventArgs e)
+        {
+        }
         private void ScreenClose(object sender, EventArgs e)
         {
             try
@@ -54,20 +57,20 @@ namespace DimStock.Screens
                 ExceptionNotifier.ShowMessage(ex);
             }
         }
-
-        private void UserAccess(object sender, EventArgs e)
+        private void ShowRelatedScreen(object sender, EventArgs e)
         {
             try
             {
-                presenter.Access(sender, e);
-
-                if (AcessStatus == true)
+                if (sender.Equals(ButtonEnter))
                 {
-                    var homeScreen = HomeScreen.GetScreen();
-                    if (homeScreen != null)
-                        homeScreen.Show();
+                    if (AcessStatus == true)
+                    {
+                        var homeScreen = HomeScreen.GetScreen();
+                        if (homeScreen != null)
+                            homeScreen.Show();
 
-                    Close();
+                        Close();
+                    }
                 }
             }
             catch (Exception ex)
@@ -100,13 +103,32 @@ namespace DimStock.Screens
                 ExceptionNotifier.ShowMessage(ex);
             }
         }
-
         private void InitializeEvents()
         {
             try
             {
-                ButtonEnter.Click += new EventHandler(UserAccess);
+                Load += new EventHandler(ScreenLoad);
+                ButtonEnter.Click += new EventHandler(presenter.ResquestAccess);
+                ButtonEnter.Click += new EventHandler(ShowRelatedScreen);
                 ButtonExit.Click += new EventHandler(ScreenClose);
+
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+
+        public static void ShowScreen()
+        {
+            try
+            {
+                var homeScreen = HomeScreen.GetScreen();
+                if (homeScreen != null)
+                    homeScreen.Hide();
+
+                var screen = new UserLoginAccessScreen();
+                screen.Show();
             }
             catch (Exception ex)
             {

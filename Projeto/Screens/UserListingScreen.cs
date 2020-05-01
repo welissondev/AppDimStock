@@ -93,6 +93,12 @@ namespace DimStock.Screens
             }
         }
 
+        private void ShowRelatedScreen(object sender, EventArgs e)
+        {
+            if (sender.Equals(ButtonNew))
+                UserLoginAddScreen.ShowScreen();
+        }
+
         private void GridCellEnter(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -257,11 +263,6 @@ namespace DimStock.Screens
             }
         }
 
-        private void ShowParanteScreen(object sender, EventArgs e)
-        {
-            UserLoginAddScreen.ShowScreen();
-        }
-
         private void InitializeEvents()
         {
             try
@@ -269,7 +270,7 @@ namespace DimStock.Screens
 
                 Load += new EventHandler(ScreenLoad);
                 Resize += new EventHandler(ScreenResize);
-                ButtonNew.Click += new EventHandler(ShowParanteScreen);
+                ButtonNew.Click += new EventHandler(ShowRelatedScreen);
                 ButtonListGrid.Click += new EventHandler(presenter.SearchData);
                 ButtonScreenClear.Click += new EventHandler(presenter.ClearView);
                 ButtonCloseScreen.Click += new EventHandler(ScreenClose);

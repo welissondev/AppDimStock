@@ -76,12 +76,11 @@ namespace DimStock.Screens
                 ExceptionNotifier.ShowMessage(ex);
             }
         }
-        private void ShowChildScreen(object sender, EventArgs e)
+        
+        private void ShowRelatedForm(object sender, EventArgs e)
         {
             if (sender.Equals(ButtonNew))
-            {
                 CategoryAddScreen.ShowScreen();
-            }
         }
 
         private void TimerTick(object sender, EventArgs e)
@@ -244,7 +243,7 @@ namespace DimStock.Screens
                 GridList.DataSourceChanged += new EventHandler(GridSourceChanged);
                 GridList.CellMouseEnter += new DataGridViewCellEventHandler(GridCellEnter);
                 GridList.CellClick += new DataGridViewCellEventHandler(GridCellClick);
-                ButtonNew.Click += new EventHandler(ShowChildScreen);
+                ButtonNew.Click += new EventHandler(ShowRelatedForm);
                 ButtonListGrid.Click += new EventHandler(TimerTick);
                 ButtonCloseScreen.Click += new EventHandler(ScreenClose);
                 ButtonScreenClear.Click += new EventHandler(presenter.ClearView);

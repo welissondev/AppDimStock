@@ -75,6 +75,12 @@ namespace DimStock.Screens
             }
         }
 
+        private void ShowRelatedScreen(object sender, EventArgs e)
+        {
+            if (sender.Equals(LinkShowCategoryAddScreen))
+                CategoryAddScreen.ShowScreen();
+        }
+
         private void GridCategoryCellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -175,6 +181,7 @@ namespace DimStock.Screens
                 ButtonClearView.Click += new EventHandler(presenter.ClearView);
                 ButtonClearView.Click += new EventHandler(HideGridCategory);
                 ButtonClose.Click += new EventHandler(ScreenClose);
+                LinkShowCategoryAddScreen.Click += new EventHandler(ShowRelatedScreen);
                 GridCategory.CellClick += new DataGridViewCellEventHandler(GridCategoryCellClick);
                 GridCategory.DataSourceChanged += new EventHandler(GridCategorySourceChanged);
                 BoxCategoryDescription.Click += new EventHandler(presenter.ListCategory);
