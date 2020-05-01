@@ -14,7 +14,7 @@ namespace DimStock.Presenters
             this.view = view;
         }
 
-        public void Access(object sender, EventArgs e)
+        public void ResquestAccess(object sender, EventArgs e)
         {
             try
             {
@@ -24,7 +24,7 @@ namespace DimStock.Presenters
                     AccessPassWord = view.AccessPassWord
                 };
 
-                if (user.Access() == true)
+                if (user.RequestAccess() == true)
                 {
                     view.Id = user.Id;
                     view.YourName = user.YourName;

@@ -25,7 +25,7 @@ namespace DimStock.Models
         {
         }
 
-        public bool Access()
+        public bool RequestAccess()
         {
             var actionResult = false;
             var sql = string.Empty;
