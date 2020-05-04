@@ -78,7 +78,7 @@ namespace DimStock.Screens
         private void ShowRelatedScreen(object sender, EventArgs e)
         {
             if (sender.Equals(LinkShowCategoryAddScreen))
-                CategoryAddScreen.ShowScreen();
+                CategoryAddScreen.ShowScreen(null, this);
         }
         private void SetScreen()
         {
