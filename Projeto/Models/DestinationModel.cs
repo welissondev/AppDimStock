@@ -38,7 +38,7 @@ namespace DimStock.Models
                 if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
                     MessageNotifier.Show("Destino cadastrado " +
-                    "com sucesso!", "Sucesso");
+                    "com sucesso!", "Sucesso", "!");
 
                     actionResult = true;
                 }
@@ -67,7 +67,7 @@ namespace DimStock.Models
                 if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
                     MessageNotifier.Show("Destino editado " +
-                    "com sucesso!", "Sucesso");
+                    "com sucesso!", "Sucesso", "!");
 
                     actionResult = true;
                 }

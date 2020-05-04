@@ -34,7 +34,7 @@ namespace DimStock.Models
                 if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
                     MessageNotifier.Show("Categoria cadastrada " +
-                    "com sucesso", "Sucesso");
+                    "com sucesso", "Sucesso", "!");
 
                     actionResult = true;
                 }
@@ -43,7 +43,6 @@ namespace DimStock.Models
             return actionResult;
 
         }
-
         public bool Update()
         {
             var actionResult = false;
@@ -64,14 +63,13 @@ namespace DimStock.Models
                 if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
                     MessageNotifier.Show("Categoria alterada " +
-                    "com sucesso!", "Sucesso");
+                    "com sucesso!", "Sucesso", "!");
                     actionResult = true;
                 }
             }
 
             return actionResult;
         }
-
         public bool Delete()
         {
             var actionResult = false;
@@ -90,14 +88,13 @@ namespace DimStock.Models
                 if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
                     MessageNotifier.Show("Categoria deletada " +
-                    "com sucesso!", "Scuesso");
+                    "com sucesso!", "Scuesso", "!");
                     actionResult = true;
                 }
             }
 
             return actionResult;
         }
-
         public bool GetDetails()
         {
             var actionResult = false;
@@ -163,7 +160,6 @@ namespace DimStock.Models
 
             return registrationStatus = true;
         }
-
         public bool CheckRelationWithProduct()
         {
             return new ProductModel(this).CheckRelationWithCategory();
@@ -176,7 +172,7 @@ namespace DimStock.Models
             if (Description == string.Empty || Description == null)
             {
                 MessageNotifier.Show("Para obter o ID da categoria é " +
-                "preciso informar sua descrição!", "Obrigatório");
+                "preciso informar sua descrição!", "Obrigatório", "?");
             }
 
             using (var dataBase = new ConnectionModel())
@@ -216,7 +212,6 @@ namespace DimStock.Models
                 return dataBase.ExecuteDataAdapter(query);
             }
         }
-
         public DataTable ListData()
         {
             var searchResult = new DataTable();
