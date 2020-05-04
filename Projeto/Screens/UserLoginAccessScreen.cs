@@ -4,6 +4,7 @@ using DimStock.Presenters;
 using System;
 using DimStock.AuxilyTools.AuxilyClasses;
 using System.Drawing;
+using MetroFramework.Forms;
 
 namespace DimStock.Screens
 {

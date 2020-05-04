@@ -105,20 +105,21 @@ namespace DimStock.Screens
             return thisScreen;
         }
 
-        public static void ShowScreen(Form fatherScreen = null)
+        public static void ShowScreen(Form mdi = null, Form owner = null)
         {
             try
             {
                 var screen = new CategoryAddScreen();
 
-                if (fatherScreen != null)
+                if (mdi != null)
                 {
-                    screen.MdiParent = fatherScreen;
+                    screen.MdiParent = mdi;
                     screen.ShowInTaskbar = false;
                     screen.ControlBox = false;
                     screen.Dock = DockStyle.Fill;
                     screen.Style = MetroColorStyle.White;
                     screen.Movable = false;
+
                     screen.Show();
                 }
                 else
@@ -128,9 +129,8 @@ namespace DimStock.Screens
                     screen.ShowIcon = false;
                     screen.Style = MetroColorStyle.Blue;
 
-                    var listingScreen = CategoryListingScreen.GetScreen();
-                    if (listingScreen != null)
-                        screen.Owner = listingScreen;
+                    if (owner != null)
+                        screen.Owner = owner;
 
                     screen.ShowDialog();
                     screen.Dispose();

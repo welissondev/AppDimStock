@@ -86,7 +86,7 @@ namespace DimStock.Screens
         private void ShowRelatedScreen(object sender, EventArgs e)
         {
             if (sender.Equals(ButtonNew))
-                ProductAddScreen.ShowScreen();
+                ProductAddScreen.ShowScreen(null, this);
         }
 
         private void SetScreen()
@@ -98,15 +98,15 @@ namespace DimStock.Screens
         {
             return thisScreen;
         }
-        public static void ShowScreen(Form fatherScreen = null)
+        public static void ShowScreen(Form mdi = null)
         {
             MdiClosingAll.CloseAllForms();
 
             var screen = new ProductListingScreen();
 
-            if (fatherScreen != null)
+            if (mdi != null)
             {
-                screen.MdiParent = fatherScreen;
+                screen.MdiParent = mdi;
                 screen.ShowInTaskbar = false;
                 screen.ControlBox = false;
                 screen.Dock = DockStyle.Fill;

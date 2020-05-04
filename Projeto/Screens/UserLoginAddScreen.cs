@@ -97,15 +97,15 @@ namespace DimStock.Screens
             screen.Dispose();
         }
 
-        public static void ShowScreen(Form fatherScreen = null)
+        public static void ShowScreen(Form mdi = null, MetroForm owner = null)
         {
             try
             {
                 var screen = new UserLoginAddScreen();
 
-                if (fatherScreen != null)
+                if (mdi != null)
                 {
-                    screen.MdiParent = fatherScreen;
+                    screen.MdiParent = mdi;
                     screen.ShowInTaskbar = false;
                     screen.ControlBox = false;
                     screen.Dock = DockStyle.Fill;
@@ -122,9 +122,8 @@ namespace DimStock.Screens
                     screen.Style = MetroColorStyle.Blue;
                     screen.ShadowType = MetroFormShadowType.DropShadow;
 
-                    var listingScreen = UserListingScreen.GetScreen();
-                    if (listingScreen != null)
-                        screen.Owner = listingScreen;
+                    if (owner != null)
+                        screen.Owner = owner;
 
                     screen.ShowDialog();
                     screen.Dispose();

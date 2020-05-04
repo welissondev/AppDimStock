@@ -94,18 +94,18 @@ namespace DimStock.Screens
         private void ShowRelatedScreen(object sender, EventArgs e)
         {
             if (sender.Equals(ButtonNew))
-                UserLoginAddScreen.ShowScreen();
+                UserLoginAddScreen.ShowScreen(null, this);
         }
 
-        public static void ShowScreen(Form fatherScreen = null)
+        public static void ShowScreen(Form mdi = null, MetroForm owner = null)
         {
             try
             {
                 var screen = new UserListingScreen();
 
-                if (fatherScreen != null)
+                if (mdi != null)
                 {
-                    screen.MdiParent = fatherScreen;
+                    screen.MdiParent = mdi;
                     screen.ShowInTaskbar = false;
                     screen.ControlBox = false;
                     screen.Dock = DockStyle.Fill;
@@ -120,9 +120,8 @@ namespace DimStock.Screens
                     screen.ShowIcon = false;
                     screen.Style = MetroColorStyle.Blue;
 
-                    var homeScreen = HomeScreen.GetScreen();
-                    if (homeScreen != null)
-                        screen.Owner = homeScreen;
+                    if (owner != null)
+                        screen.Owner = owner;
 
                     screen.ShowDialog();
                     screen.Dispose();
