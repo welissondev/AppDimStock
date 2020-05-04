@@ -358,7 +358,7 @@ namespace DimStock.Screens
             try
             {
                 new UserLoginListingPresenter(this).GetDetails();
-                UserLoginAddScreen.SetDetails(this);
+                UserLoginAddScreen.SetDetails(this, this);
             }
             catch (Exception ex)
 

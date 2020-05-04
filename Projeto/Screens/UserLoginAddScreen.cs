@@ -68,7 +68,7 @@ namespace DimStock.Screens
             return thisScreen;
         }
 
-        public static void SetDetails(IUserLoginAddView view)
+        public static void SetDetails(IUserLoginAddView view, MetroForm owner = null)
         {
             var screen = new UserLoginAddScreen()
             {
@@ -86,12 +86,10 @@ namespace DimStock.Screens
                 ShowIcon = false,
                 ShadowType = MetroFormShadowType.DropShadow,
                 Style = MetroColorStyle.Blue
-
             };
 
-            var listingScreen = UserListingScreen.GetScreen();
-            if (listingScreen != null)
-                screen.Owner = listingScreen;
+            if (owner != null)
+                screen.Owner = owner;
 
             screen.ShowDialog();
             screen.Dispose();
