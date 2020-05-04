@@ -136,7 +136,7 @@
             this.GridList.RowTemplate.Height = 40;
             this.GridList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.GridList.Size = new System.Drawing.Size(849, 322);
-            this.GridList.TabIndex = 0;
+            this.GridList.TabIndex = 7;
             this.GridList.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             // 
             // bunifuShadowPanel1
@@ -161,7 +161,7 @@
             this.bunifuShadowPanel1.ShadowDept = 2;
             this.bunifuShadowPanel1.ShadowTopLeftVisible = false;
             this.bunifuShadowPanel1.Size = new System.Drawing.Size(898, 504);
-            this.bunifuShadowPanel1.TabIndex = 1;
+            this.bunifuShadowPanel1.TabIndex = 22;
             // 
             // ImageLoading
             // 
@@ -255,7 +255,7 @@
             this.TextSearchEmail.ShortcutsEnabled = true;
             this.TextSearchEmail.Size = new System.Drawing.Size(457, 35);
             this.TextSearchEmail.Style = Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox._Style.Bunifu;
-            this.TextSearchEmail.TabIndex = 20;
+            this.TextSearchEmail.TabIndex = 2;
             this.TextSearchEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.TextSearchEmail.TextMarginBottom = 0;
             this.TextSearchEmail.TextMarginLeft = 5;
@@ -328,7 +328,7 @@
             this.TextSearchLogin.ShortcutsEnabled = true;
             this.TextSearchLogin.Size = new System.Drawing.Size(190, 35);
             this.TextSearchLogin.Style = Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox._Style.Bunifu;
-            this.TextSearchLogin.TabIndex = 19;
+            this.TextSearchLogin.TabIndex = 1;
             this.TextSearchLogin.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.TextSearchLogin.TextMarginBottom = 0;
             this.TextSearchLogin.TextMarginLeft = 5;
@@ -397,7 +397,7 @@
             stateProperties10.IconRightImage = null;
             this.ButtonCloseScreen.OnPressedState = stateProperties10;
             this.ButtonCloseScreen.Size = new System.Drawing.Size(144, 45);
-            this.ButtonCloseScreen.TabIndex = 18;
+            this.ButtonCloseScreen.TabIndex = 6;
             this.ButtonCloseScreen.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonCloseScreen.TextMarginLeft = 0;
             this.ButtonCloseScreen.UseDefaultRadiusAndThickness = true;
@@ -462,7 +462,7 @@
             stateProperties12.IconRightImage = null;
             this.ButtonScreenClear.OnPressedState = stateProperties12;
             this.ButtonScreenClear.Size = new System.Drawing.Size(144, 45);
-            this.ButtonScreenClear.TabIndex = 17;
+            this.ButtonScreenClear.TabIndex = 5;
             this.ButtonScreenClear.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonScreenClear.TextMarginLeft = 0;
             this.ButtonScreenClear.UseDefaultRadiusAndThickness = true;
@@ -527,7 +527,7 @@
             stateProperties14.IconRightImage = null;
             this.ButtonListGrid.OnPressedState = stateProperties14;
             this.ButtonListGrid.Size = new System.Drawing.Size(144, 45);
-            this.ButtonListGrid.TabIndex = 16;
+            this.ButtonListGrid.TabIndex = 4;
             this.ButtonListGrid.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonListGrid.TextMarginLeft = 0;
             this.ButtonListGrid.UseDefaultRadiusAndThickness = true;
@@ -592,7 +592,7 @@
             stateProperties16.IconRightImage = null;
             this.ButtonNew.OnPressedState = stateProperties16;
             this.ButtonNew.Size = new System.Drawing.Size(144, 45);
-            this.ButtonNew.TabIndex = 15;
+            this.ButtonNew.TabIndex = 3;
             this.ButtonNew.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonNew.TextMarginLeft = 0;
             this.ButtonNew.UseDefaultRadiusAndThickness = true;
@@ -661,7 +661,7 @@
             this.TextSearchYourName.ShortcutsEnabled = true;
             this.TextSearchYourName.Size = new System.Drawing.Size(190, 35);
             this.TextSearchYourName.Style = Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox._Style.Bunifu;
-            this.TextSearchYourName.TabIndex = 1;
+            this.TextSearchYourName.TabIndex = 0;
             this.TextSearchYourName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.TextSearchYourName.TextMarginBottom = 0;
             this.TextSearchYourName.TextMarginLeft = 5;

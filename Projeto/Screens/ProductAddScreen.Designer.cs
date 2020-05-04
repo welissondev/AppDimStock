@@ -212,7 +212,7 @@
             this.TextSalePrice.Size = new System.Drawing.Size(270, 35);
             this.TextSalePrice.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016White;
             this.TextSalePrice.TabIndex = 4;
-            this.TextSalePrice.Text = "R$ 0,00";
+            this.TextSalePrice.Text = "$0.00";
             this.TextSalePrice.ThemeName = "Office2016White";
             this.TextSalePrice.ThemesEnabled = false;
             this.TextSalePrice.ZeroColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
@@ -245,7 +245,7 @@
             this.TextCostPrice.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Office2016White;
             this.TextCostPrice.TabIndex = 3;
             this.TextCostPrice.Tag = "required";
-            this.TextCostPrice.Text = "R$ 0,00";
+            this.TextCostPrice.Text = "$0.00";
             this.TextCostPrice.ThemeName = "Office2016White";
             this.TextCostPrice.ThemesEnabled = false;
             this.TextCostPrice.ZeroColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
@@ -362,7 +362,7 @@
             stateProperties2.IconRightImage = null;
             this.ButtonClose.OnPressedState = stateProperties2;
             this.ButtonClose.Size = new System.Drawing.Size(144, 45);
-            this.ButtonClose.TabIndex = 242;
+            this.ButtonClose.TabIndex = 9;
             this.ButtonClose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonClose.TextMarginLeft = 0;
             this.ButtonClose.UseDefaultRadiusAndThickness = true;
@@ -427,7 +427,7 @@
             stateProperties4.IconRightImage = null;
             this.ButtonClearView.OnPressedState = stateProperties4;
             this.ButtonClearView.Size = new System.Drawing.Size(144, 45);
-            this.ButtonClearView.TabIndex = 241;
+            this.ButtonClearView.TabIndex = 8;
             this.ButtonClearView.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonClearView.TextMarginLeft = 0;
             this.ButtonClearView.UseDefaultRadiusAndThickness = true;
@@ -492,7 +492,7 @@
             stateProperties6.IconRightImage = null;
             this.ButtonDelete.OnPressedState = stateProperties6;
             this.ButtonDelete.Size = new System.Drawing.Size(144, 45);
-            this.ButtonDelete.TabIndex = 240;
+            this.ButtonDelete.TabIndex = 7;
             this.ButtonDelete.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonDelete.TextMarginLeft = 0;
             this.ButtonDelete.UseDefaultRadiusAndThickness = true;
@@ -557,7 +557,7 @@
             stateProperties8.IconRightImage = null;
             this.ButtonSave.OnPressedState = stateProperties8;
             this.ButtonSave.Size = new System.Drawing.Size(144, 45);
-            this.ButtonSave.TabIndex = 239;
+            this.ButtonSave.TabIndex = 6;
             this.ButtonSave.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonSave.TextMarginLeft = 0;
             this.ButtonSave.UseDefaultRadiusAndThickness = true;

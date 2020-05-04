@@ -172,7 +172,7 @@
             stateProperties2.IconRightImage = null;
             this.ButtonCloseScreen.OnPressedState = stateProperties2;
             this.ButtonCloseScreen.Size = new System.Drawing.Size(144, 45);
-            this.ButtonCloseScreen.TabIndex = 14;
+            this.ButtonCloseScreen.TabIndex = 5;
             this.ButtonCloseScreen.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonCloseScreen.TextMarginLeft = 0;
             this.ButtonCloseScreen.UseDefaultRadiusAndThickness = true;
@@ -237,7 +237,7 @@
             stateProperties4.IconRightImage = null;
             this.ButtonScreenClear.OnPressedState = stateProperties4;
             this.ButtonScreenClear.Size = new System.Drawing.Size(144, 45);
-            this.ButtonScreenClear.TabIndex = 13;
+            this.ButtonScreenClear.TabIndex = 4;
             this.ButtonScreenClear.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonScreenClear.TextMarginLeft = 0;
             this.ButtonScreenClear.UseDefaultRadiusAndThickness = true;
@@ -302,7 +302,7 @@
             stateProperties6.IconRightImage = null;
             this.ButtonListGrid.OnPressedState = stateProperties6;
             this.ButtonListGrid.Size = new System.Drawing.Size(144, 45);
-            this.ButtonListGrid.TabIndex = 12;
+            this.ButtonListGrid.TabIndex = 3;
             this.ButtonListGrid.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonListGrid.TextMarginLeft = 0;
             this.ButtonListGrid.UseDefaultRadiusAndThickness = true;
@@ -373,7 +373,7 @@
             this.TextSearchDescription.ShortcutsEnabled = true;
             this.TextSearchDescription.Size = new System.Drawing.Size(858, 35);
             this.TextSearchDescription.Style = Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox._Style.Bunifu;
-            this.TextSearchDescription.TabIndex = 235;
+            this.TextSearchDescription.TabIndex = 0;
             this.TextSearchDescription.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.TextSearchDescription.TextMarginBottom = 0;
             this.TextSearchDescription.TextMarginLeft = 5;
@@ -442,7 +442,7 @@
             stateProperties12.IconRightImage = null;
             this.ButtonNew.OnPressedState = stateProperties12;
             this.ButtonNew.Size = new System.Drawing.Size(144, 45);
-            this.ButtonNew.TabIndex = 11;
+            this.ButtonNew.TabIndex = 2;
             this.ButtonNew.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonNew.TextMarginLeft = 0;
             this.ButtonNew.UseDefaultRadiusAndThickness = true;
