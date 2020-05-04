@@ -128,6 +128,7 @@
             this.GridList.EnableHeadersVisualStyles = false;
             this.GridList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.GridList.HeaderBackColor = System.Drawing.Color.DodgerBlue;
+            this.GridList.HeaderBgColor = System.Drawing.Color.Empty;
             this.GridList.HeaderForeColor = System.Drawing.Color.White;
             this.GridList.Location = new System.Drawing.Point(24, 78);
             this.GridList.Name = "GridList";
@@ -165,7 +166,8 @@
             // ImageLoading
             // 
             this.ImageLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ImageLoading.Location = new System.Drawing.Point(377, 185);
+            this.ImageLoading.Image = global::DimStock.Properties.Resources.ImageLoading;
+            this.ImageLoading.Location = new System.Drawing.Point(368, 146);
             this.ImageLoading.Name = "ImageLoading";
             this.ImageLoading.Size = new System.Drawing.Size(144, 135);
             this.ImageLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

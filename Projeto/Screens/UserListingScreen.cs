@@ -281,10 +281,12 @@ namespace DimStock.Screens
         private void TimerStart()
         {
             TimerSearch.Enabled = true;
+            ImageLoading.Visible = true;
         }
         private void TimerPause()
         {
             TimerSearch.Enabled = false;
+            ImageLoading.Visible = false;
         }
         private void TimerTick(object sender, EventArgs e)
         {
