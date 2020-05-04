@@ -1,8 +1,7 @@
-﻿using DimStock.Models;
+﻿using DimStock.AuxilyTools.AuxilyClasses;
+using DimStock.Models;
 using DimStock.Views;
-using System.Data;
 using System;
-using DimStock.AuxilyTools.AuxilyClasses;
 
 namespace DimStock.Presenters
 {
@@ -15,47 +14,45 @@ namespace DimStock.Presenters
             this.view = view;
         }
 
-        public void InsertUpdate(object sender, EventArgs e)
+        public bool Update()
         {
-            try
+            var actionResult = false;
+
+            var product = new ProductModel
             {
-                var product = new ProductModel();
+                Id = view.Id,
+                InternalCode = view.InternalCode,
+                Description = view.Description,
+                CostPrice = view.CostPrice,
+                SalePrice = view.SalePrice,
+                BarCode = view.BarCode
+            };
+            product.Category.Id = view.CategoryId;
+            product.Category.Description = view.CategoryDescription;
 
-                product.Id = view.Id;
-                product.InternalCode = view.InternalCode;
-                product.Description = view.Description;
-                product.CostPrice = view.CostPrice;
-                product.SalePrice = view.SalePrice;
-                product.BarCode = view.BarCode;
-                product.Category.Id = view.CategoryId;
-                product.Category.Description = view.CategoryDescription;
+            if (view.Id == 0)
+                actionResult = product.Insert();
 
-                if (view.Id == 0)
-                    product.Insert();
+            if (view.Id > 0)
+                actionResult = product.Update();
 
-                if (view.Id > 0)
-                    product.Update();
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
+            return actionResult;
         }
 
-        public void Delete(object sender, EventArgs e)
+        public bool Delete()
         {
-            try
+            var actionResult = false;
+
+            if (new ProductModel() { Id = view.Id }.Delete() == true)
             {
-                if (new ProductModel() { Id = view.Id }.Delete() == true)
-                    ClearView(sender, e);
+                actionResult = true;
+                Clear();
             }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
+
+            return actionResult;
         }
 
-        public void ClearView(object sender, EventArgs e)
+        public void Clear()
         {
             try
             {
@@ -74,43 +71,24 @@ namespace DimStock.Presenters
             }
         }
 
-        public void GetCategoryIdByDescription(object sender, EventArgs e)
+        public void GetCategoryIdByDescription()
         {
-            try
-            {
-                var product = new ProductModel();
-                product.Category.Description = view.CategoryDescription;
-                view.CategoryId = product.Category.GetIdByDescription();
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
+            var product = new ProductModel();
+            product.Category.Description = view.CategoryDescription;
+
+            view.CategoryId = product.Category.GetIdByDescription();
         }
-        public void SearchCategory(object sender, EventArgs e)
+        public void SearchCategory()
         {
-            try
-            {
-                var product = new ProductModel();
-                product.Category.Description = view.CategoryDescription;
-                view.CategoryDataList = product.Category.SearchData();
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
+            var product = new ProductModel();
+            product.Category.Description = view.CategoryDescription;
+
+            view.CategoryDataList = product.Category.SearchData();
         }
-        public void ListCategory(object sender, EventArgs e)
+        public void ListCategory()
         {
-            try
-            {
-                var product = new ProductModel();
-                product.Category.ListData();
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
+            var product = new ProductModel();
+            view.CategoryDataList = product.Category.ListData();
         }
     }
 }

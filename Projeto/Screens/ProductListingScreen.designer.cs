@@ -200,7 +200,7 @@
             this.TextSearchInternalCode.ShortcutsEnabled = true;
             this.TextSearchInternalCode.Size = new System.Drawing.Size(179, 35);
             this.TextSearchInternalCode.Style = Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox._Style.Bunifu;
-            this.TextSearchInternalCode.TabIndex = 235;
+            this.TextSearchInternalCode.TabIndex = 0;
             this.TextSearchInternalCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.TextSearchInternalCode.TextMarginBottom = 0;
             this.TextSearchInternalCode.TextMarginLeft = 5;
@@ -269,7 +269,7 @@
             stateProperties6.IconRightImage = null;
             this.ButtonNew.OnPressedState = stateProperties6;
             this.ButtonNew.Size = new System.Drawing.Size(144, 45);
-            this.ButtonNew.TabIndex = 11;
+            this.ButtonNew.TabIndex = 2;
             this.ButtonNew.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonNew.TextMarginLeft = 0;
             this.ButtonNew.UseDefaultRadiusAndThickness = true;
@@ -277,7 +277,8 @@
             // ImageLoading
             // 
             this.ImageLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ImageLoading.Location = new System.Drawing.Point(367, 169);
+            this.ImageLoading.Image = global::DimStock.Properties.Resources.ImageLoading;
+            this.ImageLoading.Location = new System.Drawing.Point(367, 139);
             this.ImageLoading.Name = "ImageLoading";
             this.ImageLoading.Size = new System.Drawing.Size(144, 135);
             this.ImageLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -345,7 +346,7 @@
             stateProperties8.IconRightImage = null;
             this.ButtonUpdateGridList.OnPressedState = stateProperties8;
             this.ButtonUpdateGridList.Size = new System.Drawing.Size(144, 45);
-            this.ButtonUpdateGridList.TabIndex = 12;
+            this.ButtonUpdateGridList.TabIndex = 3;
             this.ButtonUpdateGridList.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonUpdateGridList.TextMarginLeft = 0;
             this.ButtonUpdateGridList.UseDefaultRadiusAndThickness = true;
@@ -416,7 +417,7 @@
             this.TextSearchDescription.ShortcutsEnabled = true;
             this.TextSearchDescription.Size = new System.Drawing.Size(659, 35);
             this.TextSearchDescription.Style = Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox._Style.Bunifu;
-            this.TextSearchDescription.TabIndex = 237;
+            this.TextSearchDescription.TabIndex = 1;
             this.TextSearchDescription.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.TextSearchDescription.TextMarginBottom = 0;
             this.TextSearchDescription.TextMarginLeft = 5;
@@ -485,7 +486,7 @@
             stateProperties14.IconRightImage = null;
             this.ButtonClear.OnPressedState = stateProperties14;
             this.ButtonClear.Size = new System.Drawing.Size(144, 45);
-            this.ButtonClear.TabIndex = 13;
+            this.ButtonClear.TabIndex = 4;
             this.ButtonClear.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonClear.TextMarginLeft = 0;
             this.ButtonClear.UseDefaultRadiusAndThickness = true;
@@ -550,7 +551,7 @@
             stateProperties16.IconRightImage = null;
             this.ButtonClose.OnPressedState = stateProperties16;
             this.ButtonClose.Size = new System.Drawing.Size(144, 45);
-            this.ButtonClose.TabIndex = 14;
+            this.ButtonClose.TabIndex = 5;
             this.ButtonClose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonClose.TextMarginLeft = 0;
             this.ButtonClose.UseDefaultRadiusAndThickness = true;
@@ -561,12 +562,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.bunifuShadowPanel2.BorderColor = System.Drawing.Color.Gainsboro;
+            this.bunifuShadowPanel2.Controls.Add(this.ImageLoading);
             this.bunifuShadowPanel2.Controls.Add(this.bunifuSeparator1);
             this.bunifuShadowPanel2.Controls.Add(this.ButtonClose);
             this.bunifuShadowPanel2.Controls.Add(this.ButtonClear);
             this.bunifuShadowPanel2.Controls.Add(this.TextSearchDescription);
             this.bunifuShadowPanel2.Controls.Add(this.ButtonUpdateGridList);
-            this.bunifuShadowPanel2.Controls.Add(this.ImageLoading);
             this.bunifuShadowPanel2.Controls.Add(this.ButtonNew);
             this.bunifuShadowPanel2.Controls.Add(this.TextSearchInternalCode);
             this.bunifuShadowPanel2.Controls.Add(this.GridList);

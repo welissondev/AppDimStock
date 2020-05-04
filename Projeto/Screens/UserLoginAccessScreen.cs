@@ -4,6 +4,7 @@ using DimStock.Presenters;
 using System;
 using DimStock.AuxilyTools.AuxilyClasses;
 using System.Drawing;
+using MetroFramework.Forms;
 
 namespace DimStock.Screens
 {
@@ -12,8 +13,6 @@ namespace DimStock.Screens
     /// </summary>
     public partial class UserLoginAccessScreen : Form, IUserLoginAccessView
     {
-        private UserLoginAccessPresenter presenter;
-
         public int Id { get; set; }
         public string YourName { get; set; }
         public string Email { get; set; }
@@ -23,7 +22,6 @@ namespace DimStock.Screens
         public bool InsertAllowed { get; set; }
         public bool UpdateAllowed { get; set; }
         public bool DeleteAllowed { get; set; }
-        public bool AcessStatus { get; set; }
     }
 }
 
@@ -34,11 +32,13 @@ namespace DimStock.Screens
         public UserLoginAccessScreen()
         {
             InitializeComponent();
-            InitializePresenter();
             InitializeEvents();
             MaximizeScreen();
         }
 
+        private void ScreenLoad(object sender, EventArgs e)
+        {
+        }
         private void ScreenClose(object sender, EventArgs e)
         {
             try
@@ -54,21 +54,12 @@ namespace DimStock.Screens
                 ExceptionNotifier.ShowMessage(ex);
             }
         }
-
-        private void UserAccess(object sender, EventArgs e)
+        private void ShowRelatedScreen(object sender, EventArgs e)
         {
             try
             {
-                presenter.Access(sender, e);
-
-                if (AcessStatus == true)
-                {
-                    var homeScreen = HomeScreen.GetScreen();
-                    if (homeScreen != null)
-                        homeScreen.Show();
-
-                    Close();
-                }
+                if (sender.Equals(ButtonEnter))
+                    PresenterResquestAccess(sender, e);
             }
             catch (Exception ex)
             {
@@ -89,11 +80,13 @@ namespace DimStock.Screens
             }
         }
 
-        private void InitializePresenter()
+        private void InitializeEvents()
         {
             try
             {
-                presenter = new UserLoginAccessPresenter(this);
+                Load += new EventHandler(ScreenLoad);
+                ButtonEnter.Click += new EventHandler(ShowRelatedScreen);
+                ButtonExit.Click += new EventHandler(ScreenClose);
             }
             catch (Exception ex)
             {
@@ -101,16 +94,33 @@ namespace DimStock.Screens
             }
         }
 
-        private void InitializeEvents()
+        public static void ShowScreen()
         {
             try
             {
-                ButtonEnter.Click += new EventHandler(UserAccess);
-                ButtonExit.Click += new EventHandler(ScreenClose);
+                var homeScreen = HomeScreen.GetScreen();
+                if (homeScreen != null)
+                    homeScreen.Hide();
+
+                var screen = new UserLoginAccessScreen();
+                screen.Show();
             }
             catch (Exception ex)
             {
                 ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+
+        //Eventos para chamada dos métodos do apresentador
+        private void PresenterResquestAccess(object sender, EventArgs e)
+        {
+            if (new UserLoginAccessPresenter(this).ResquestAccess() == true)
+            {
+                var homeScreen = HomeScreen.GetScreen();
+                if (homeScreen != null)
+                    homeScreen.Show();
+
+                Close();
             }
         }
     }

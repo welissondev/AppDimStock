@@ -13,7 +13,6 @@ namespace DimStock.Screens
     /// </summary>
     public partial class CategoryAddScreen : ICategoryAddView
     {
-        private CategoryAddPresenter presenter;
         private static MetroForm thisScreen;
 
         public int Id { get; set; }
@@ -27,17 +26,9 @@ namespace DimStock.Screens
     {
         public CategoryAddScreen()
         {
-            try
-            {
-                InitializeComponent();
-                InitializePresenter();
-                InitializeEvents();
-                SetScreen();
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
+            InitializeComponent();
+            InitializeEvents();
+            SetScreen();
         }
 
         private void ScreenResize(object sender, EventArgs e)
@@ -68,9 +59,9 @@ namespace DimStock.Screens
         {
             try
             {
-                ButtonSave.Click += new EventHandler(presenter.InsertUpdate);
-                ButtonDelete.Click += new EventHandler(presenter.Delete);
-                ButtonClearView.Click += new EventHandler(presenter.ClearView);
+                ButtonSave.Click += new EventHandler(PresenterInsert);
+                ButtonDelete.Click += new EventHandler(PresenterUpdate);
+                ButtonClearView.Click += new EventHandler(PresenterClear);
                 ButtonClose.Click += new EventHandler(ScreenClose);
                 Resize += new EventHandler(ScreenResize);
             }
@@ -79,23 +70,25 @@ namespace DimStock.Screens
                 ExceptionNotifier.ShowMessage(ex);
             }
         }
-        private void InitializePresenter()
-        {
-            presenter = new CategoryAddPresenter(this);
-        }
 
-        public void SetDetails(ICategoryAddView view)
+        public static void SetDetails(ICategoryAddView view, MetroForm owner = null)
         {
             try
             {
-                using (var screen = new CategoryAddScreen())
+                var screen = new CategoryAddScreen()
                 {
-                    Id = view.Id;
-                    Description = view.Description;
-                    ControlBox = false;
-                    Owner = HomeScreen.GetScreen();
-                    ShowDialog();
+                    Id = view.Id,
+                    Description = view.Description,
+                    ShowIcon = false,
+                    ShowInTaskbar = false,
+                    ControlBox = false
                 };
+
+                if (owner != null)
+                    screen.Owner = owner;
+
+                screen.ShowDialog();
+                screen.Dispose();
             }
             catch (Exception ex)
             {
@@ -112,20 +105,21 @@ namespace DimStock.Screens
             return thisScreen;
         }
 
-        public static void ShowScreen(Form fatherScreen = null)
+        public static void ShowScreen(Form mdi = null, Form owner = null)
         {
             try
             {
                 var screen = new CategoryAddScreen();
 
-                if (fatherScreen != null)
+                if (mdi != null)
                 {
-                    screen.MdiParent = fatherScreen;
+                    screen.MdiParent = mdi;
                     screen.ShowInTaskbar = false;
                     screen.ControlBox = false;
                     screen.Dock = DockStyle.Fill;
                     screen.Style = MetroColorStyle.White;
                     screen.Movable = false;
+
                     screen.Show();
                 }
                 else
@@ -135,13 +129,58 @@ namespace DimStock.Screens
                     screen.ShowIcon = false;
                     screen.Style = MetroColorStyle.Blue;
 
-                    var listingScreen = CategoryListingScreen.GetScreen();
-                    if (listingScreen != null)
-                        screen.Owner = listingScreen;
+                    if (owner != null)
+                        screen.Owner = owner;
 
                     screen.ShowDialog();
                     screen.Dispose();
                 }
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+
+        private void PresenterInsert(object sender, EventArgs e)
+        {
+            try
+            {
+                new CategoryAddPresenter(this).Insert();
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+        private void PresenterUpdate(object sender, EventArgs e)
+        {
+            try
+            {
+                new CategoryAddPresenter(this).Update();
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+        private void PresenterDelete(object sender, EventArgs e)
+        {
+            try
+
+            {
+                new CategoryAddPresenter(this).Delete();
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+        private void PresenterClear(object sender, EventArgs e)
+        {
+            try
+            {
+                new CategoryAddPresenter(this).Clear();
             }
             catch (Exception ex)
             {

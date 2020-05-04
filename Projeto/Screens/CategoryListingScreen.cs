@@ -16,8 +16,8 @@ namespace DimStock.Screens
     {
         private static MetroForm thisScreen;
 
-        private CategoryListingPresenter presenter;
-        private DataGridViewLinkColumn buttonView;
+        //São "botões" de link adicionados na coluna do grid
+        private DataGridViewLinkColumn buttonViewDetails;
         private DataGridViewLinkColumn buttonDelete;
 
         //Implementados pela interface de adição
@@ -37,7 +37,6 @@ namespace DimStock.Screens
         public CategoryListingScreen()
         {
             InitializeComponent();
-            InitializePresenter();
             InitializeEvents();
             SetScreen();
         }
@@ -46,7 +45,18 @@ namespace DimStock.Screens
         {
             try
             {
-                presenter.SearchData(sender, e);
+                TimerStart();
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+        private void ScreenResize(object sender, EventArgs e)
+        {
+            try
+            {
+                Refresh();
             }
             catch (Exception ex)
             {
@@ -65,37 +75,11 @@ namespace DimStock.Screens
                 ExceptionNotifier.ShowMessage(ex);
             }
         }
-        private void ScreenResize(object sender, EventArgs e)
-        {
-            try
-            {
-                Refresh();
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
-        }
-        private void ShowChildScreen(object sender, EventArgs e)
+
+        private void ShowRelatedScreen(object sender, EventArgs e)
         {
             if (sender.Equals(ButtonNew))
-            {
-                CategoryAddScreen.ShowScreen();
-            }
-        }
-
-        private void TimerTick(object sender, EventArgs e)
-        {
-            try
-            {
-                TimerSearch.Enabled = false;
-                ImageLoading.Visible = false;
-                presenter.SearchData(sender, e);
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
+                CategoryAddScreen.ShowScreen(null, this);
         }
 
         private void GridCellEnter(object sender, DataGridViewCellEventArgs e)
@@ -127,13 +111,12 @@ namespace DimStock.Screens
 
                 switch (selectedButton)
                 {
-                    case "ButtonView":
-                        presenter.GetDetails(sender, e);
-                        new CategoryAddScreen().SetDetails(this);
+                    case "ButtonViewDetails":
+                        PresenterGetDetails(sender, e);
                         break;
 
                     case "ButtonDelete":
-                        presenter.Delete(sender, e);
+                        PresenterDelete(sender, e);
                         break;
                 }
             }
@@ -177,11 +160,11 @@ namespace DimStock.Screens
                 GridList.MultiSelect = false;
                 GridList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
 
-                if (buttonView == null)
+                if (buttonViewDetails == null)
                 {
-                    buttonView = new DataGridViewLinkColumn
+                    buttonViewDetails = new DataGridViewLinkColumn
                     {
-                        Name = "ButtonView",
+                        Name = "ButtonViewDetails",
                         Text = "Visualizar",
                         TrackVisitedState = false,
                         UseColumnTextForLinkValue = true,
@@ -190,7 +173,7 @@ namespace DimStock.Screens
                         AutoSizeMode = DataGridViewAutoSizeColumnMode.None,
                         Width = 100,
                     };
-                    GridList.Columns.Add(buttonView);
+                    GridList.Columns.Add(buttonViewDetails);
                 }
 
                 if (buttonDelete == null)
@@ -209,8 +192,8 @@ namespace DimStock.Screens
                     GridList.Columns.Add(buttonDelete);
                 }
 
-                GridList.Columns["ButtonView"].HeaderText = string.Empty;
-                GridList.Columns["ButtonView"].Width = 70;
+                GridList.Columns["ButtonViewDetails"].HeaderText = string.Empty;
+                GridList.Columns["ButtonViewDetails"].Width = 70;
 
                 GridList.Columns["ButtonDelete"].Width = 70;
                 GridList.Columns["ButtonDelete"].HeaderText = string.Empty;
@@ -225,9 +208,31 @@ namespace DimStock.Screens
         {
             try
             {
-                TimerSearch.Enabled = false;
-                TimerSearch.Enabled = true;
-                ImageLoading.Visible = true;
+                TimerPause();
+                TimerStart();
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+
+        private void TimerStart()
+        {
+            TimerSearch.Enabled = true;
+            ImageLoading.Visible = true;
+        }
+        private void TimerPause()
+        {
+            TimerSearch.Enabled = false;
+            ImageLoading.Visible = false;
+        }
+        private void TimerTick(object sender, EventArgs e)
+        {
+            try
+            {
+                TimerPause();
+                PresenterSearchData(sender, e);
             }
             catch (Exception ex)
             {
@@ -244,10 +249,11 @@ namespace DimStock.Screens
                 GridList.DataSourceChanged += new EventHandler(GridSourceChanged);
                 GridList.CellMouseEnter += new DataGridViewCellEventHandler(GridCellEnter);
                 GridList.CellClick += new DataGridViewCellEventHandler(GridCellClick);
-                ButtonNew.Click += new EventHandler(ShowChildScreen);
+                GridList.RowPrePaint += new DataGridViewRowPrePaintEventHandler(GridRowPrePaint);
+                ButtonNew.Click += new EventHandler(ShowRelatedScreen);
                 ButtonListGrid.Click += new EventHandler(TimerTick);
                 ButtonCloseScreen.Click += new EventHandler(ScreenClose);
-                ButtonScreenClear.Click += new EventHandler(presenter.ClearView);
+                ButtonScreenClear.Click += new EventHandler(PresenterClear);
                 TimerSearch.Tick += new EventHandler(TimerTick);
                 TextSearchDescription.KeyPress += new KeyPressEventHandler(TextKeyPress);
             }
@@ -256,17 +262,6 @@ namespace DimStock.Screens
                 ExceptionNotifier.ShowMessage(ex);
             }
 
-        }
-        private void InitializePresenter()
-        {
-            try
-            {
-                presenter = new CategoryListingPresenter(this);
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
         }
 
         public static MetroForm GetScreen()
@@ -278,17 +273,15 @@ namespace DimStock.Screens
             thisScreen = this;
         }
 
-        public static void ShowScreen(Form fatherScreen = null)
+        public static void ShowScreen(Form mdi = null, MetroForm owner = null)
         {
             try
             {
-                MdiClosingAll.CloseAllForms();
-
                 var screen = new CategoryListingScreen();
 
-                if (fatherScreen != null)
+                if (mdi != null)
                 {
-                    screen.MdiParent = fatherScreen;
+                    screen.MdiParent = mdi;
                     screen.ShowInTaskbar = false;
                     screen.ControlBox = false;
                     screen.Dock = DockStyle.Fill;
@@ -303,13 +296,59 @@ namespace DimStock.Screens
                     screen.ShowIcon = false;
                     screen.Style = MetroColorStyle.Blue;
 
-                    var homeScreen = HomeScreen.GetScreen();
-                    if (homeScreen != null)
-                        screen.Owner = homeScreen;
+                    if (owner != null)
+                        screen.Owner = owner;
 
                     screen.ShowDialog();
                     screen.Dispose();
                 }
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+
+        //Eventos que chamam métodos do apresentador
+        private void PresenterDelete(object sender, EventArgs e)
+        {
+            try
+            {
+                new CategoryListingPresenter(this).Delete();
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+        private void PresenterGetDetails(object sender, EventArgs e)
+        {
+            try
+            {
+                new CategoryListingPresenter(this).GetDetails();
+                CategoryAddScreen.SetDetails(this, this);
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+        private void PresenterClear(object sender, EventArgs e)
+        {
+            try
+            {
+                new CategoryListingPresenter(this).Clear();
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+        private void PresenterSearchData(object sender, EventArgs e)
+        {
+            try
+            {
+                new CategoryListingPresenter(this).SearchData();
             }
             catch (Exception ex)
             {

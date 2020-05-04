@@ -10,7 +10,6 @@ namespace DimStock.Screens
 {
     public partial class UserLoginAddScreen : IUserLoginAddView
     {
-        private UserLoginAddPresenter presenter;
         private static MetroForm thisScreen;
 
         public int Id { get; set; }
@@ -32,7 +31,6 @@ namespace DimStock.Screens
         public UserLoginAddScreen()
         {
             InitializeComponent();
-            InitializePresenter();
             InitializeEvents();
             SetScreen();
         }
@@ -54,26 +52,6 @@ namespace DimStock.Screens
             try
             {
                 Refresh();
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
-        }
-
-        private void InitializePresenter()
-        {
-            presenter = new UserLoginAddPresenter(this);
-        }
-        private void InitializeEvents()
-        {
-            try
-            {
-                ButtonClose.Click += new EventHandler(ScreenClose);
-                ButtonSave.Click += new EventHandler(presenter.InsertUpdate);
-                ButtonDelete.Click += new EventHandler(presenter.Delete);
-                ButtonClearView.Click += new EventHandler(presenter.ClearView);
-                Resize += new EventHandler(ScreenResize);
             }
             catch (Exception ex)
             {
@@ -119,15 +97,15 @@ namespace DimStock.Screens
             screen.Dispose();
         }
 
-        public static void ShowScreen(Form fatherScreen = null)
+        public static void ShowScreen(Form mdi = null, MetroForm owner = null)
         {
             try
             {
                 var screen = new UserLoginAddScreen();
 
-                if (fatherScreen != null)
+                if (mdi != null)
                 {
-                    screen.MdiParent = fatherScreen;
+                    screen.MdiParent = mdi;
                     screen.ShowInTaskbar = false;
                     screen.ControlBox = false;
                     screen.Dock = DockStyle.Fill;
@@ -144,13 +122,63 @@ namespace DimStock.Screens
                     screen.Style = MetroColorStyle.Blue;
                     screen.ShadowType = MetroFormShadowType.DropShadow;
 
-                    var listingScreen = UserListingScreen.GetScreen();
-                    if (listingScreen != null)
-                        screen.Owner = listingScreen;
+                    if (owner != null)
+                        screen.Owner = owner;
 
                     screen.ShowDialog();
                     screen.Dispose();
                 }
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+
+        private void InitializeEvents()
+        {
+            try
+            {
+                ButtonClose.Click += new EventHandler(ScreenClose);
+                ButtonSave.Click += new EventHandler(PresenterUpdate);
+                ButtonDelete.Click += new EventHandler(PresenterDelete);
+                ButtonClearView.Click += new EventHandler(PresenterClear);
+                Resize += new EventHandler(ScreenResize);
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+
+        //Eventos para chamada dos métodos do apresentador
+        private void PresenterUpdate(object sender, EventArgs e)
+        {
+            try
+            {
+                new UserLoginAddPresenter(this).Update();
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+        private void PresenterDelete(object sender, EventArgs e)
+        {
+            try
+            {
+                new UserLoginAddPresenter(this).Delete();
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+        private void PresenterClear(object sender, EventArgs e)
+        {
+            try
+            {
+                new UserLoginAddPresenter(this).Clear();
             }
             catch (Exception ex)
             {

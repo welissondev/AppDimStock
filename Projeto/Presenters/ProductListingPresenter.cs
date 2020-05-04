@@ -1,7 +1,5 @@
-﻿using DimStock.AuxilyTools.AuxilyClasses;
-using DimStock.Models;
+﻿using DimStock.Models;
 using DimStock.Views;
-using System;
 
 namespace DimStock.Presenters
 {
@@ -14,89 +12,75 @@ namespace DimStock.Presenters
             this.view = view;
         }
 
-        public void Delete(object sender, EventArgs e)
+        public bool Delete()
         {
-            try
+            var actionResult = false;
+
+            if (new ProductModel() { Id = view.Id }.Delete() == true)
             {
-                new ProductModel() { Id = view.Id }.Delete();
+                actionResult = true;
+                Clear();
             }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
+
+            return actionResult;
         }
 
-        public void GetDetails(object sender, EventArgs e)
+        public bool GetDetails()
         {
-            try
-            {
-                var product = new ProductModel
-                {
-                    Id = view.Id
-                };
+            var actionResult = false;
 
-                if (product.GetDetails() == true)
-                {
-                    view.Id = product.Id;
-                    view.InternalCode = product.InternalCode;
-                    view.Description = product.Description;
-                    view.CostPrice = product.CostPrice;
-                    view.SalePrice = product.SalePrice;
-                    view.BarCode = product.BarCode;
-                    view.CategoryId = product.Category.Id;
-                    view.CategoryDescription = product.Category.Description;
-                }
-            }
-            catch (Exception ex)
+            var product = new ProductModel
             {
-                ExceptionNotifier.ShowMessage(ex);
+                Id = view.Id
+            };
+
+            if (product.GetDetails() == true)
+            {
+                view.Id = product.Id;
+                view.InternalCode = product.InternalCode;
+                view.Description = product.Description;
+                view.CostPrice = product.CostPrice;
+                view.SalePrice = product.SalePrice;
+                view.BarCode = product.BarCode;
+                view.CategoryId = product.Category.Id;
+                view.CategoryDescription = product.Category.Description;
+
+                actionResult = true;
             }
+
+            return actionResult;
         }
 
-        public void ClearView(object sender, EventArgs e)
+        public void Clear()
         {
-            try
-            {
-                view.Id = 0;
-                view.InternalCode = string.Empty;
-                view.Description = string.Empty;
-                view.CostPrice = 0.00;
-                view.SalePrice = 0.00;
-                view.BarCode = string.Empty;
-                view.CategoryId = 0;
-                view.CategoryDescription = string.Empty;
-                view.InternalCode = string.Empty;
-                view.Description = string.Empty;
-                view.CategoryDataList = null;
-                view.ProductDataList = null;
-                view.SearchInternalCode = string.Empty;
-                view.SearchDescription = string.Empty;
+            view.Id = 0;
+            view.InternalCode = string.Empty;
+            view.Description = string.Empty;
+            view.CostPrice = 0.00;
+            view.SalePrice = 0.00;
+            view.BarCode = string.Empty;
+            view.CategoryId = 0;
+            view.CategoryDescription = string.Empty;
+            view.InternalCode = string.Empty;
+            view.Description = string.Empty;
+            view.CategoryDataList = null;
+            view.DataList = null;
+            view.SearchInternalCode = string.Empty;
+            view.SearchDescription = string.Empty;
 
-                SearchData(sender, e);
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
+            SearchData();
         }
 
-        public void SearchData(object sender, EventArgs e)
+        public void SearchData()
         {
-            try
+            var product = new ProductModel
             {
-                var product = new ProductModel
-                {
-                    InternalCode = view.SearchInternalCode,
-                    Description = view.SearchDescription
-                };
+                InternalCode = view.SearchInternalCode,
+                Description = view.SearchDescription
+            };
 
-                var searchResult = product.SearchData();
-                view.ProductDataList = searchResult;
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
+            var searchResult = product.SearchData();
+            view.DataList = searchResult;
         }
     }
 }

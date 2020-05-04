@@ -1,8 +1,5 @@
-﻿using DimStock.AuxilyTools.AuxilyClasses;
-using DimStock.Models;
+﻿using DimStock.Models;
 using DimStock.Views;
-using System;
-
 
 namespace DimStock.Presenters
 {
@@ -15,63 +12,47 @@ namespace DimStock.Presenters
             this.view = view;
         }
 
-        public void Delete(object sender, EventArgs e)
+        public bool Delete()
         {
-            try
+            var actionResult = false;
+
+            var category = new CategoryModel() { Id = view.Id };
+
+            if (category.Delete() == true)
             {
-                if (new CategoryModel() { Id = view.Id }.Delete() == true)
-                    ClearView(sender, e);
+                actionResult = true;
+                Clear();
             }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
+
+            return actionResult;
         }
 
-        public void GetDetails(object sender, EventArgs e)
+        public bool GetDetails()
         {
-            try
-            {
-                var category = new CategoryModel() { Id = view.Id };
+            var actionResult = false;
+            var category = new CategoryModel() { Id = view.Id };
 
-                if (category.GetDetails() == true)
-                {
-                    view.Id = category.Id;
-                    view.Description = category.Description;
-                }
-            }
-            catch (Exception ex)
+            if (category.GetDetails() == true)
             {
-                ExceptionNotifier.ShowMessage(ex);
+                view.Id = category.Id;
+                view.Description = category.Description;
+                actionResult = true;
             }
+
+            return actionResult;
         }
 
-        public void ClearView(object sender, EventArgs e)
+        public void Clear()
         {
-            try
-            {
-                view.Id = 0;
-                view.SearchDescription = string.Empty;
-
-                SearchData(sender, e);
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
+            view.Id = 0;
+            view.SearchDescription = string.Empty;
+            SearchData();
         }
 
-        public void SearchData(object sender, EventArgs e)
+        public void SearchData()
         {
-            try
-            {
-                var searchResult = new CategoryModel() { Description = view.SearchDescription }.SearchData();
-                view.DataList = searchResult;
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
+            var searchResult = new CategoryModel() { Description = view.SearchDescription }.SearchData();
+            view.DataList = searchResult;
         }
     }
 }

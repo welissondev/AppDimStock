@@ -261,7 +261,7 @@
             stateProperties2.IconRightImage = null;
             this.ButtonMenuProducts.OnPressedState = stateProperties2;
             this.ButtonMenuProducts.Size = new System.Drawing.Size(200, 50);
-            this.ButtonMenuProducts.TabIndex = 42;
+            this.ButtonMenuProducts.TabIndex = 6;
             this.ButtonMenuProducts.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonMenuProducts.TextMarginLeft = 0;
             this.ButtonMenuProducts.UseDefaultRadiusAndThickness = true;
@@ -338,7 +338,7 @@
             stateProperties4.IconRightImage = null;
             this.ButtonMenuStocks.OnPressedState = stateProperties4;
             this.ButtonMenuStocks.Size = new System.Drawing.Size(200, 50);
-            this.ButtonMenuStocks.TabIndex = 40;
+            this.ButtonMenuStocks.TabIndex = 5;
             this.ButtonMenuStocks.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonMenuStocks.TextMarginLeft = 0;
             this.ButtonMenuStocks.UseDefaultRadiusAndThickness = true;
@@ -415,7 +415,7 @@
             stateProperties6.IconRightImage = null;
             this.ButtonMenuMovements.OnPressedState = stateProperties6;
             this.ButtonMenuMovements.Size = new System.Drawing.Size(200, 50);
-            this.ButtonMenuMovements.TabIndex = 38;
+            this.ButtonMenuMovements.TabIndex = 4;
             this.ButtonMenuMovements.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonMenuMovements.TextMarginLeft = 0;
             this.ButtonMenuMovements.UseDefaultRadiusAndThickness = true;
@@ -492,7 +492,7 @@
             stateProperties8.IconRightImage = null;
             this.ButtonMenuDestinations.OnPressedState = stateProperties8;
             this.ButtonMenuDestinations.Size = new System.Drawing.Size(200, 50);
-            this.ButtonMenuDestinations.TabIndex = 36;
+            this.ButtonMenuDestinations.TabIndex = 3;
             this.ButtonMenuDestinations.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonMenuDestinations.TextMarginLeft = 0;
             this.ButtonMenuDestinations.UseDefaultRadiusAndThickness = true;
@@ -569,7 +569,7 @@
             stateProperties10.IconRightImage = null;
             this.ButtonMenuUsers.OnPressedState = stateProperties10;
             this.ButtonMenuUsers.Size = new System.Drawing.Size(200, 50);
-            this.ButtonMenuUsers.TabIndex = 34;
+            this.ButtonMenuUsers.TabIndex = 2;
             this.ButtonMenuUsers.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonMenuUsers.TextMarginLeft = 0;
             this.ButtonMenuUsers.UseDefaultRadiusAndThickness = true;
@@ -646,7 +646,7 @@
             stateProperties12.IconRightImage = null;
             this.ButtonMenuSupplies.OnPressedState = stateProperties12;
             this.ButtonMenuSupplies.Size = new System.Drawing.Size(200, 50);
-            this.ButtonMenuSupplies.TabIndex = 32;
+            this.ButtonMenuSupplies.TabIndex = 1;
             this.ButtonMenuSupplies.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonMenuSupplies.TextMarginLeft = 0;
             this.ButtonMenuSupplies.UseDefaultRadiusAndThickness = true;
@@ -724,7 +724,7 @@
             stateProperties14.IconRightImage = null;
             this.ButtonMenuCategorys.OnPressedState = stateProperties14;
             this.ButtonMenuCategorys.Size = new System.Drawing.Size(200, 50);
-            this.ButtonMenuCategorys.TabIndex = 26;
+            this.ButtonMenuCategorys.TabIndex = 0;
             this.ButtonMenuCategorys.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonMenuCategorys.TextMarginLeft = 0;
             this.ButtonMenuCategorys.UseDefaultRadiusAndThickness = true;
@@ -904,7 +904,7 @@
             stateProperties16.IconRightImage = null;
             this.ButtonMenuSettings.OnPressedState = stateProperties16;
             this.ButtonMenuSettings.Size = new System.Drawing.Size(165, 45);
-            this.ButtonMenuSettings.TabIndex = 32;
+            this.ButtonMenuSettings.TabIndex = 9;
             this.ButtonMenuSettings.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonMenuSettings.TextMarginLeft = 0;
             this.ButtonMenuSettings.UseDefaultRadiusAndThickness = true;
@@ -981,7 +981,7 @@
             stateProperties18.IconRightImage = null;
             this.ButtonMenuTechSupport.OnPressedState = stateProperties18;
             this.ButtonMenuTechSupport.Size = new System.Drawing.Size(165, 45);
-            this.ButtonMenuTechSupport.TabIndex = 30;
+            this.ButtonMenuTechSupport.TabIndex = 8;
             this.ButtonMenuTechSupport.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonMenuTechSupport.TextMarginLeft = 0;
             this.ButtonMenuTechSupport.UseDefaultRadiusAndThickness = true;
@@ -1058,7 +1058,7 @@
             stateProperties20.IconRightImage = null;
             this.ButtonMenuGeneralRegistrations.OnPressedState = stateProperties20;
             this.ButtonMenuGeneralRegistrations.Size = new System.Drawing.Size(165, 45);
-            this.ButtonMenuGeneralRegistrations.TabIndex = 29;
+            this.ButtonMenuGeneralRegistrations.TabIndex = 7;
             this.ButtonMenuGeneralRegistrations.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonMenuGeneralRegistrations.TextMarginLeft = 0;
             this.ButtonMenuGeneralRegistrations.UseDefaultRadiusAndThickness = true;

@@ -324,7 +324,7 @@
             this.TextLogin.ShortcutsEnabled = true;
             this.TextLogin.Size = new System.Drawing.Size(292, 35);
             this.TextLogin.Style = Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox._Style.Bunifu;
-            this.TextLogin.TabIndex = 235;
+            this.TextLogin.TabIndex = 2;
             this.TextLogin.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.TextLogin.TextMarginBottom = 0;
             this.TextLogin.TextMarginLeft = 5;
@@ -408,7 +408,7 @@
             this.TextAccessPassWord.ShortcutsEnabled = true;
             this.TextAccessPassWord.Size = new System.Drawing.Size(292, 35);
             this.TextAccessPassWord.Style = Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox._Style.Bunifu;
-            this.TextAccessPassWord.TabIndex = 237;
+            this.TextAccessPassWord.TabIndex = 3;
             this.TextAccessPassWord.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.TextAccessPassWord.TextMarginBottom = 0;
             this.TextAccessPassWord.TextMarginLeft = 5;
@@ -492,7 +492,7 @@
             this.TextPassWordCheck.ShortcutsEnabled = true;
             this.TextPassWordCheck.Size = new System.Drawing.Size(292, 35);
             this.TextPassWordCheck.Style = Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox._Style.Bunifu;
-            this.TextPassWordCheck.TabIndex = 239;
+            this.TextPassWordCheck.TabIndex = 4;
             this.TextPassWordCheck.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.TextPassWordCheck.TextMarginBottom = 0;
             this.TextPassWordCheck.TextMarginLeft = 5;
@@ -605,7 +605,7 @@
             stateProperties22.IconRightImage = null;
             this.ButtonClose.OnPressedState = stateProperties22;
             this.ButtonClose.Size = new System.Drawing.Size(144, 45);
-            this.ButtonClose.TabIndex = 14;
+            this.ButtonClose.TabIndex = 8;
             this.ButtonClose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonClose.TextMarginLeft = 0;
             this.ButtonClose.UseDefaultRadiusAndThickness = true;
@@ -670,7 +670,7 @@
             stateProperties24.IconRightImage = null;
             this.ButtonClearView.OnPressedState = stateProperties24;
             this.ButtonClearView.Size = new System.Drawing.Size(144, 45);
-            this.ButtonClearView.TabIndex = 13;
+            this.ButtonClearView.TabIndex = 7;
             this.ButtonClearView.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonClearView.TextMarginLeft = 0;
             this.ButtonClearView.UseDefaultRadiusAndThickness = true;
@@ -748,7 +748,7 @@
             stateProperties26.IconRightImage = null;
             this.ButtonDelete.OnPressedState = stateProperties26;
             this.ButtonDelete.Size = new System.Drawing.Size(144, 45);
-            this.ButtonDelete.TabIndex = 12;
+            this.ButtonDelete.TabIndex = 6;
             this.ButtonDelete.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonDelete.TextMarginLeft = 0;
             this.ButtonDelete.UseDefaultRadiusAndThickness = true;
@@ -813,7 +813,7 @@
             stateProperties28.IconRightImage = null;
             this.ButtonSave.OnPressedState = stateProperties28;
             this.ButtonSave.Size = new System.Drawing.Size(144, 45);
-            this.ButtonSave.TabIndex = 11;
+            this.ButtonSave.TabIndex = 5;
             this.ButtonSave.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ButtonSave.TextMarginLeft = 0;
             this.ButtonSave.UseDefaultRadiusAndThickness = true;

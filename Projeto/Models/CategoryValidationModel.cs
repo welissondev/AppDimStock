@@ -14,7 +14,7 @@ namespace DimStock.Models
             if (category.Description == string.Empty)
             {
                 MessageNotifier.Show("Informe a descrição " +
-                "da categoria!", "Campo Obrigatório");
+                "da categoria!", "Campo Obrigatório", "?");
 
                 return validationStatus;
             }
@@ -22,7 +22,7 @@ namespace DimStock.Models
             if (category.CheckIfRegister() == true)
             {
                 MessageNotifier.Show("Já existe uma categoria " +
-                "registrada com esse nome!", "Já Existe");
+                "registrada com esse nome!", "Já Existe", "?");
 
                 return validationStatus;
             }
@@ -37,7 +37,7 @@ namespace DimStock.Models
             if (category.Id == 0)
             {
                 MessageNotifier.Show("Selecione a categoria para " +
-                "atualizar!", "Não Selecionada");
+                "atualizar!", "Não Selecionada", "?");
 
                 return validationStatus;
             }
@@ -45,7 +45,7 @@ namespace DimStock.Models
             if (category.Description == string.Empty)
             {
                 MessageNotifier.Show("Informe a descrição " +
-                "da categoria!", "Campo Obrigatório");
+                "da categoria!", "Campo Obrigatório", "?");
 
                 return validationStatus;
             }
@@ -54,7 +54,7 @@ namespace DimStock.Models
             {
                 MessageNotifier.Show("Não é possivel atualizar " +
                 "essa categoria, porque ela foi excluida da sua" +
-                "base de dados!", "Atualize a Lista");
+                "base de dados!", "Atualize a Lista", "?");
 
                 return validationStatus;
             }
@@ -69,7 +69,7 @@ namespace DimStock.Models
             if (category.Id == 0)
             {
                 MessageNotifier.Show("Selecione uma categoria " +
-                "para deletar!", "Selecione");
+                "para deletar!", "Selecione", "?");
 
                 return validationStatus;
             }
@@ -78,7 +78,7 @@ namespace DimStock.Models
             {
                 MessageNotifier.Show("Não foi possivel excluir " +
                 "essa categoria, porque ela não esta mais registrada " +
-                "na sua base de dados!", "Atualize a Lista");
+                "na sua base de dados!", "Atualize a Lista", "?");
 
                 return validationStatus;
             }
@@ -105,7 +105,7 @@ namespace DimStock.Models
             if (category.Id == 0)
             {
                 MessageNotifier.Show("Selecione a categoria " +
-                "para visualizar!", "Não Selecionada");
+                "para visualizar!", "Não Selecionada", "?");
 
                 return validationStatus;
             }
@@ -114,7 +114,7 @@ namespace DimStock.Models
             {
                 MessageNotifier.Show("Não é possivel visualizar " +
                 "essa categoria, porque ela foi excluida da sua" +
-                "base de dados!", "Atualize a Lista");
+                "base de dados!", "Atualize a Lista", "?");
 
                 return validationStatus;
             }

@@ -38,7 +38,7 @@ namespace DimStock.Models
                 if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
                     MessageNotifier.Show("Destino cadastrado " +
-                    "com sucesso!", "Sucesso");
+                    "com sucesso!", "Sucesso", "!");
 
                     actionResult = true;
                 }
@@ -67,7 +67,7 @@ namespace DimStock.Models
                 if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
                     MessageNotifier.Show("Destino editado " +
-                    "com sucesso!", "Sucesso");
+                    "com sucesso!", "Sucesso", "!");
 
                     actionResult = true;
                 }
@@ -140,21 +140,27 @@ namespace DimStock.Models
              permiti dois destinos com o mesmo nome*/
 
             var registrationStatus = false;
-            var sql = string.Empty;
+            var sqlSelect = string.Empty;
+            var sqlParameter = string.Empty;
+            var query = string.Empty;
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"SELECT * FROM Destination WHERE Id = @Id
-                OR Location = @Location";
+                sqlSelect = @"SELECT * FROM Destination WHERE Id = @Id ";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Id", Id);
-                dataBase.AddParameter("@Location", Location);
 
-                if (dataBase.ExecuteScalar(sql) == 0)
+                if (Location != string.Empty && Location != null)
                 {
-                    return registrationStatus;
+                    sqlParameter += @"OR Location = @Location";
+                    dataBase.AddParameter("@Location", Location);
                 }
+
+                query += sqlSelect + sqlParameter;
+
+                if (dataBase.ExecuteScalar(query) == 0)
+                    return registrationStatus;
             }
 
             return registrationStatus = true;

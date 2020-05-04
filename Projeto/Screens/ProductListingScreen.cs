@@ -16,10 +16,10 @@ namespace DimStock.Screens
     {
         private static MetroForm thisScreen;
 
-        private DataGridViewLinkColumn buttonView;
+        private DataGridViewLinkColumn buttonViewDetails;
         private DataGridViewLinkColumn buttonDelete;
-        private ProductListingPresenter presenter;
 
+        //Implementados pela interface de adição
         public int Id { get; set; }
         public string InternalCode { get; set; }
         public string Description { get; set; }
@@ -29,9 +29,11 @@ namespace DimStock.Screens
         public int CategoryId { get; set; }
         public string CategoryDescription { get; set; }
         public object CategoryDataList { get; set; }
+
+        //Implementados pela interface de listagem
         public string SearchInternalCode { get => TextSearchInternalCode.Text; set => TextSearchInternalCode.Text = value; }
         public string SearchDescription { get => TextSearchDescription.Text; set => TextSearchDescription.Text = value; }
-        public object ProductDataList { get => GridList.DataSource; set => GridList.DataSource = value; }
+        public object DataList { get => GridList.DataSource; set => GridList.DataSource = value; }
     }
 }
 
@@ -42,7 +44,6 @@ namespace DimStock.Screens
         public ProductListingScreen()
         {
             InitializeComponent();
-            InitializePrensenter();
             InitializeEvents();
             SetScreen();
         }
@@ -51,7 +52,7 @@ namespace DimStock.Screens
         {
             try
             {
-                presenter.SearchData(sender, e);
+                TimerStart();
             }
             catch (Exception ex)
             {
@@ -82,24 +83,50 @@ namespace DimStock.Screens
             }
         }
 
-        private void ShowChildScreen(object sender, EventArgs e)
+        private void ShowRelatedScreen(object sender, EventArgs e)
         {
             if (sender.Equals(ButtonNew))
-                ProductAddScreen.ShowScreen();
+                ProductAddScreen.ShowScreen(null, this);
         }
 
-        private void TextSearchKeyPress(object sender, KeyPressEventArgs e)
+        private void SetScreen()
         {
-            try
-            {
-                ImageLoading.Visible = true;
-                TimerSearch.Enabled = false;
-                TimerSearch.Enabled = true;
+            thisScreen = this;
+        }
 
-            }
-            catch (Exception ex)
+        public static MetroForm GetScreen()
+        {
+            return thisScreen;
+        }
+        public static void ShowScreen(Form mdi = null)
+        {
+            MdiClosingAll.CloseAllForms();
+
+            var screen = new ProductListingScreen();
+
+            if (mdi != null)
             {
-                ExceptionNotifier.ShowMessage(ex);
+                screen.MdiParent = mdi;
+                screen.ShowInTaskbar = false;
+                screen.ControlBox = false;
+                screen.Dock = DockStyle.Fill;
+                screen.Movable = false;
+                screen.Style = MetroColorStyle.White;
+                screen.Show();
+            }
+            else
+            {
+                screen.ShowInTaskbar = false;
+                screen.ControlBox = false;
+                screen.ShowIcon = false;
+                screen.Style = MetroColorStyle.Blue;
+
+                var homeScreen = HomeScreen.GetScreen();
+                if (homeScreen != null)
+                    screen.Owner = homeScreen;
+
+                screen.ShowDialog();
+                screen.Dispose();
             }
         }
 
@@ -132,25 +159,21 @@ namespace DimStock.Screens
         {
             try
             {
-                if (GridList.Rows.Count != 0)
+                Id = int.Parse(GridList.CurrentRow.
+                Cells["Id"].Value.ToString());
+
+                var selectedButton = GridList.Columns
+                [e.ColumnIndex].Name;
+
+                switch (selectedButton)
                 {
-                    Id = int.Parse(GridList.CurrentRow.
-                    Cells["Id"].Value.ToString());
+                    case "ButtonViewDetails":
+                        PresenterGetDetails(sender, e);
+                        break;
 
-                    var selectedButton = GridList.Columns
-                    [e.ColumnIndex].Name;
-
-                    switch (selectedButton)
-                    {
-                        case "ButtonView":
-                            presenter.GetDetails(sender, e);
-                            new ProductAddScreen().SetDetail(this);
-                            break;
-
-                        case "ButtonDelete":
-                            presenter.Delete(sender, e);
-                            break;
-                    }
+                    case "ButtonDelete":
+                        PresenterDelete(sender, e);
+                        break;
                 }
             }
             catch (Exception ex)
@@ -163,13 +186,9 @@ namespace DimStock.Screens
             try
             {
                 var gridList = GridList;
-                gridList.Visible = true;
 
                 if (gridList.Rows.Count == 0)
-                {
-                    gridList.Visible = false;
                     return;
-                }
 
                 gridList.Columns["Id"].Visible = false;
                 gridList.Columns["Id"].ReadOnly = true;
@@ -196,11 +215,11 @@ namespace DimStock.Screens
                 gridList.Columns["SalePrice"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 gridList.Columns["SalePrice"].Width = 120;
 
-                if (buttonView == null && buttonDelete == null)
+                if (buttonViewDetails == null && buttonDelete == null)
                 {
-                    buttonView = new DataGridViewLinkColumn
+                    buttonViewDetails = new DataGridViewLinkColumn
                     {
-                        Name = "ButtonView",
+                        Name = "ButtonViewDetails",
                         Text = "Visualizar",
                         TrackVisitedState = false,
                         UseColumnTextForLinkValue = true,
@@ -209,7 +228,7 @@ namespace DimStock.Screens
                         AutoSizeMode = DataGridViewAutoSizeColumnMode.None,
                         Width = 100,
                     };
-                    GridList.Columns.Add(buttonView);
+                    GridList.Columns.Add(buttonViewDetails);
 
 
                     buttonDelete = new DataGridViewLinkColumn
@@ -226,14 +245,12 @@ namespace DimStock.Screens
                     GridList.Columns.Add(buttonDelete);
                 }
 
-                gridList.Columns["ButtonView"].HeaderText = string.Empty;
-                gridList.Columns["ButtonView"].Width = 100;
-                gridList.Columns["ButtonView"].DisplayIndex = 6;
-                gridList.Columns["ButtonView"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                gridList.Columns["ButtonViewDetails"].HeaderText = string.Empty;
+                gridList.Columns["ButtonViewDetails"].Width = 70;
+                gridList.Columns["ButtonViewDetails"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-                gridList.Columns["ButtonDelete"].Width = 100;
+                gridList.Columns["ButtonDelete"].Width = 70;
                 gridList.Columns["ButtonDelete"].HeaderText = string.Empty;
-                gridList.Columns["ButtonDelete"].DisplayIndex = 6;
                 gridList.Columns["ButtonDelete"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
                 gridList.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(38, 100, 148);
@@ -252,13 +269,35 @@ namespace DimStock.Screens
             }
         }
 
-        private void TimerSearchTitk(object sender, EventArgs e)
+        private void TimerStart()
+        {
+            TimerSearch.Enabled = true;
+            ImageLoading.Visible = true;
+        }
+        private void TimerPause()
+        {
+            TimerSearch.Enabled = false;
+            ImageLoading.Visible = false;
+        }
+        private void TimerTick(object sender, EventArgs e)
         {
             try
             {
-                TimerSearch.Enabled = false;
-                ImageLoading.Visible = false;
-                presenter.SearchData(sender, e);
+                TimerPause();
+                PresenterSearchData(sender, e);
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+
+        private void TextKeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                TimerPause();
+                TimerStart();
             }
             catch (Exception ex)
             {
@@ -272,72 +311,68 @@ namespace DimStock.Screens
             {
                 Load += new EventHandler(ScreenLoad);
                 Resize += new EventHandler(ScreenResize);
-                ButtonNew.Click += new EventHandler(ShowChildScreen);
-                ButtonUpdateGridList.Click += new EventHandler(presenter.SearchData);
-                ButtonClear.Click += new EventHandler(presenter.ClearView);
+                ButtonNew.Click += new EventHandler(ShowRelatedScreen);
+                ButtonUpdateGridList.Click += new EventHandler(PresenterSearchData);
+                ButtonClear.Click += new EventHandler(PresenterClear);
                 ButtonClose.Click += new EventHandler(ScreenClose);
                 GridList.DataSourceChanged += new EventHandler(GridListSourceChanged);
                 GridList.CellMouseEnter += new DataGridViewCellEventHandler(GridListCellMouseEnter);
                 GridList.CellClick += new DataGridViewCellEventHandler(GridListCellClick);
-                TimerSearch.Tick += new EventHandler(TimerSearchTitk);
-                TextSearchInternalCode.KeyPress += new KeyPressEventHandler(TextSearchKeyPress);
-                TextSearchDescription.KeyPress += new KeyPressEventHandler(TextSearchKeyPress);
+                GridList.RowPrePaint += new DataGridViewRowPrePaintEventHandler(GridListRowPrePaint);
+                TimerSearch.Tick += new EventHandler(TimerTick);
+                TextSearchInternalCode.KeyPress += new KeyPressEventHandler(TextKeyPress);
+                TextSearchDescription.KeyPress += new KeyPressEventHandler(TextKeyPress);
             }
             catch (Exception ex)
             {
                 ExceptionNotifier.ShowMessage(ex);
             }
         }
-        private void InitializePrensenter()
+
+        //Eventos para chamada dos métodos do apresentador
+        private void PresenterDelete(object sender, EventArgs e)
         {
             try
             {
-                presenter = new ProductListingPresenter(this);
+                new ProductListingPresenter(this).Delete();
             }
             catch (Exception ex)
             {
                 ExceptionNotifier.ShowMessage(ex);
             }
         }
-
-        private void SetScreen()
+        private void PresenterGetDetails(object sender, EventArgs e)
         {
-            thisScreen = this;
-        }
-        public static MetroForm GetScreen()
-        {
-            return thisScreen;
-        }
-
-        public static void ShowScreen(Form fatherScreen = null)
-        {
-            MdiClosingAll.CloseAllForms();
-
-            var screen = new ProductListingScreen();
-
-            if (fatherScreen != null)
+            try
             {
-                screen.MdiParent = fatherScreen;
-                screen.ShowInTaskbar = false;
-                screen.ControlBox = false;
-                screen.Dock = DockStyle.Fill;
-                screen.Movable = false;
-                screen.Style = MetroColorStyle.White;
-                screen.Show();
+                new ProductListingPresenter(this).GetDetails();
+                ProductAddScreen.SetDetails(this);
             }
-            else
+            catch (Exception ex)
             {
-                screen.ShowInTaskbar = false;
-                screen.ControlBox = false;
-                screen.ShowIcon = false;
-                screen.Style = MetroColorStyle.Blue;
-
-                var homeScreen = HomeScreen.GetScreen();
-                if (homeScreen != null)
-                    screen.Owner = homeScreen;
-
-                screen.ShowDialog();
-                screen.Dispose();
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+        private void PresenterClear(object sender, EventArgs e)
+        {
+            try
+            {
+                new ProductListingPresenter(this).Clear();
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+        private void PresenterSearchData(object sender, EventArgs e)
+        {
+            try
+            {
+                new ProductListingPresenter(this).SearchData();
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
             }
         }
     }

@@ -2,6 +2,5 @@
 {
     public interface IUserLoginAccessView : IUserLoginAddView
     {
-        bool AcessStatus { get; set; }
     }
 }
