@@ -128,7 +128,6 @@
             this.GridList.EnableHeadersVisualStyles = false;
             this.GridList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.GridList.HeaderBackColor = System.Drawing.Color.DodgerBlue;
-            this.GridList.HeaderBgColor = System.Drawing.Color.Empty;
             this.GridList.HeaderForeColor = System.Drawing.Color.White;
             this.GridList.Location = new System.Drawing.Point(24, 78);
             this.GridList.Name = "GridList";

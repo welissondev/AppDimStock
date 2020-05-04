@@ -1,7 +1,5 @@
-﻿using DimStock.Views;
-using DimStock.Models;
-using System;
-using DimStock.AuxilyTools.AuxilyClasses;
+﻿using DimStock.Models;
+using DimStock.Views;
 
 namespace DimStock.Presenters
 {
@@ -14,34 +12,31 @@ namespace DimStock.Presenters
             this.view = view;
         }
 
-        public void ResquestAccess(object sender, EventArgs e)
+        public bool ResquestAccess()
         {
-            try
-            {
-                var user = new UserLoginModel()
-                {
-                    Login = view.Login,
-                    AccessPassWord = view.AccessPassWord
-                };
+            var actionResult = false;
 
-                if (user.RequestAccess() == true)
-                {
-                    view.Id = user.Id;
-                    view.YourName = user.YourName;
-                    view.Email = user.Email;
-                    view.Login = user.Login;
-                    view.AccessPassWord = user.AccessPassWord;
-                    view.PassWordCheck = user.PassWordCheck;
-                    view.InsertAllowed = user.InsertAllowed;
-                    view.UpdateAllowed = user.UpdateAllowed;
-                    view.DeleteAllowed = user.DeleteAllowed;
-                    view.AcessStatus = true;
-                }
-            }
-            catch (Exception ex)
+            var user = new UserLoginModel()
             {
-                ExceptionNotifier.ShowMessage(ex);
+                Login = view.Login,
+                AccessPassWord = view.AccessPassWord
+            };
+
+            if (user.RequestAccess() == true)
+            {
+                view.Id = user.Id;
+                view.YourName = user.YourName;
+                view.Email = user.Email;
+                view.Login = user.Login;
+                view.AccessPassWord = user.AccessPassWord;
+                view.PassWordCheck = user.PassWordCheck;
+                view.InsertAllowed = user.InsertAllowed;
+                view.UpdateAllowed = user.UpdateAllowed;
+                view.DeleteAllowed = user.DeleteAllowed;
+                actionResult = true;
             }
+
+            return actionResult;
         }
     }
 }

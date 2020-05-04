@@ -1,7 +1,5 @@
-﻿using DimStock.AuxilyTools.AuxilyClasses;
-using DimStock.Models;
+﻿using DimStock.Models;
 using DimStock.Views;
-using System;
 
 namespace DimStock.Presenters
 {
@@ -11,53 +9,63 @@ namespace DimStock.Presenters
 
         public CategoryAddPresenter(ICategoryAddView view) { this.view = view; }
 
-        public void InsertUpdate(object sender, EventArgs e)
+        public bool Insert()
         {
-            try
-            {
-                var category = new CategoryModel()
-                {
-                    Id = view.Id,
-                    Description = view.Description.TrimStart().TrimEnd()
-                };
+            var actionResult = false;
 
-                if (view.Id == 0)
-                    if (category.Insert() == true)
-                        ClearView(sender, e);
-
-                if (view.Id > 0)
-                    category.Update();
-            }
-            catch (Exception ex)
+            var category = new CategoryModel()
             {
-                ExceptionNotifier.ShowMessage(ex);
+                Id = view.Id,
+                Description = view.Description.TrimStart().TrimEnd()
+            };
+
+            if (category.Insert() == true)
+            {
+                actionResult = true;
+                Clear();
             }
+
+            return actionResult;
         }
 
-        public void Delete(object sender, EventArgs e)
+        public bool Update()
         {
-            try
+            var actionResult = false;
+
+            var category = new CategoryModel()
             {
-                if (new CategoryModel() { Id = view.Id }.Delete() == true)
-                    ClearView(sender, e);
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
+                Id = view.Id,
+                Description = view.Description.TrimStart().TrimEnd()
+            };
+
+            if (category.Update() == true)
+                actionResult = true;
+
+            return actionResult;
         }
 
-        public void ClearView(object sender, EventArgs e)
+        public bool Delete()
         {
-            try
+            var actionResult = false;
+
+            var category = new CategoryModel
             {
-                view.Id = 0;
-                view.Description = string.Empty;
-            }
-            catch (Exception ex)
+                Id = view.Id
+            };
+
+            if (Delete() == true)
             {
-                ExceptionNotifier.ShowMessage(ex);
+                actionResult = true;
+                Clear();
             }
+
+            return actionResult;
+        }
+
+        public void Clear()
+        {
+            view.Id = 0;
+            view.Description = string.Empty;
         }
     }
 }

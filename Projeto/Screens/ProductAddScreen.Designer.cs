@@ -70,7 +70,6 @@
             this.TextSalePrice = new Syncfusion.Windows.Forms.Tools.CurrencyTextBox();
             this.TextCostPrice = new Syncfusion.Windows.Forms.Tools.CurrencyTextBox();
             this.TimerSearch = new System.Windows.Forms.Timer(this.components);
-            this.ErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.PanelShadow = new Bunifu.UI.WinForm.BunifuShadowPanel.BunifuShadowPanel();
             this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
             this.ButtonClose = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
@@ -84,7 +83,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.GridCategory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextSalePrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextCostPrice)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).BeginInit();
             this.PanelShadow.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -255,10 +253,6 @@
             // TimerSearch
             // 
             this.TimerSearch.Interval = 800;
-            // 
-            // ErrorProvider
-            // 
-            this.ErrorProvider.ContainerControl = this;
             // 
             // PanelShadow
             // 
@@ -879,7 +873,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.GridCategory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextSalePrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TextCostPrice)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).EndInit();
             this.PanelShadow.ResumeLayout(false);
             this.PanelShadow.PerformLayout();
             this.ResumeLayout(false);
@@ -890,7 +883,6 @@
         private System.Windows.Forms.LinkLabel LinkShowCategoryAddScreen;
         private AuxilyTools.AuxilyControls.CustomDataGridViewTwo GridCategory;
         private System.Windows.Forms.Timer TimerSearch;
-        private System.Windows.Forms.ErrorProvider ErrorProvider;
         public Syncfusion.Windows.Forms.Tools.CurrencyTextBox TextSalePrice;
         public Syncfusion.Windows.Forms.Tools.CurrencyTextBox TextCostPrice;
         private System.Windows.Forms.Label label1;

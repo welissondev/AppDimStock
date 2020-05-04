@@ -13,15 +13,17 @@ namespace DimStock.Screens
     /// </summary>
     public partial class ProductAddScreen : IProductAddView
     {
-        private ProductAddPresenter presenter;
         private static MetroForm thisScreen;
 
+        //Implementados pela interface de adição do produto
         public int Id { get; set; }
         public string InternalCode { get => TextInternalCode.Text; set => TextInternalCode.Text = value; }
         public string Description { get => TextDescription.Text; set => TextDescription.Text = value; }
         public double CostPrice { get => double.Parse(TextCostPrice.DecimalValue.ToString()); set => double.Parse(TextCostPrice.Text = value.ToString()); }
         public double SalePrice { get => double.Parse(TextSalePrice.DecimalValue.ToString()); set => double.Parse(TextSalePrice.Text = value.ToString()); }
         public string BarCode { get => TextBarCode.Text; set => TextBarCode.Text = value; }
+
+        //Implementados pela interface de adição da categoria
         public int CategoryId { get; set; }
         public string CategoryDescription { get => BoxCategoryDescription.Text; set => BoxCategoryDescription.Text = value; }
         public object CategoryDataList { get => GridCategory.DataSource; set => GridCategory.DataSource = value; }
@@ -35,7 +37,6 @@ namespace DimStock.Screens
         public ProductAddScreen()
         {
             InitializeComponent();
-            InitializePresenter();
             InitializeEvents();
             SetScreen();
         }
@@ -44,7 +45,6 @@ namespace DimStock.Screens
         {
             try
             {
-                TextInternalCode.Select();
             }
             catch (Exception ex)
             {
@@ -80,163 +80,6 @@ namespace DimStock.Screens
             if (sender.Equals(LinkShowCategoryAddScreen))
                 CategoryAddScreen.ShowScreen();
         }
-
-        private void GridCategoryCellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                CategoryDescription = GridCategory.CurrentRow.Cells["Description"].Value.ToString();
-                presenter.GetCategoryIdByDescription(sender, e);
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
-        }
-        private void GridCategorySourceChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                var gridList = GridCategory;
-                gridList.Visible = true;
-
-                if (gridList.Rows.Count == 0)
-                {
-                    HideGridCategory(sender, e);
-                    return;
-                }
-
-                gridList.Columns["Id"].Visible = false;
-
-                gridList.Columns["Description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                gridList.Columns["Description"].ReadOnly = true;
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
-        }
-
-        private void BoxCategoryDescriptionKeyPress(object sender, KeyPressEventArgs e)
-        {
-            try
-            {
-                TimerSearch.Enabled = false;
-                TimerSearch.Enabled = true;
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
-        }
-        private void BoxCategoryDescriptionChanger(object sender, EventArgs e)
-        {
-            try
-            {
-                if (BoxCategoryDescription.Text == string.Empty)
-                    GridCategory.Visible = false;
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
-        }
-
-        private void TimerSearchTick(object sender, EventArgs e)
-        {
-            try
-            {
-                TimerSearch.Enabled = false;
-                presenter.SearchCategory(sender, e);
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
-        }
-
-        private void HideGridCategory(object sender, EventArgs e)
-        {
-            try
-            {
-                GridCategory.Visible = false;
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
-
-        }
-
-        private void InitializeEvents()
-        {
-            try
-            {
-                Load += new EventHandler(ScreenLoad);
-                Click += new EventHandler(HideGridCategory);
-                Resize += new EventHandler(ScreenResize);
-                PanelShadow.Click += new EventHandler(HideGridCategory);
-                ButtonSave.Click += new EventHandler(presenter.InsertUpdate);
-                ButtonDelete.Click += new EventHandler(presenter.Delete);
-                ButtonClearView.Click += new EventHandler(presenter.ClearView);
-                ButtonClearView.Click += new EventHandler(HideGridCategory);
-                ButtonClose.Click += new EventHandler(ScreenClose);
-                LinkShowCategoryAddScreen.Click += new EventHandler(ShowRelatedScreen);
-                GridCategory.CellClick += new DataGridViewCellEventHandler(GridCategoryCellClick);
-                GridCategory.DataSourceChanged += new EventHandler(GridCategorySourceChanged);
-                BoxCategoryDescription.Click += new EventHandler(presenter.ListCategory);
-                BoxCategoryDescription.KeyPress += new KeyPressEventHandler(BoxCategoryDescriptionKeyPress);
-                BoxCategoryDescription.TextChange += new EventHandler(BoxCategoryDescriptionChanger);
-                TimerSearch.Tick += new EventHandler(TimerSearchTick);
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
-        }
-        private void InitializePresenter()
-        {
-            try
-            {
-                presenter = new ProductAddPresenter(this);
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
-        }
-
-        public void SetDetail(IProductAddView view)
-        {
-            try
-            {
-                using (var screen = new ProductAddScreen())
-                {
-                    Id = view.Id;
-                    InternalCode = view.InternalCode;
-                    Description = view.Description;
-                    CostPrice = view.CostPrice;
-                    SalePrice = view.SalePrice;
-                    BarCode = view.BarCode;
-                    CategoryId = view.CategoryId;
-                    CategoryDescription = view.CategoryDescription;
-                    ShowIcon = false;
-                    ShowInTaskbar = false;
-                    ControlBox = false;
-                    Owner = HomeScreen.GetScreen();
-                    ShowDialog();
-                };
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
-        }
-
-        public static MetroForm GetScreen()
-        {
-            return thisScreen;
-        }
         private void SetScreen()
         {
             thisScreen = this;
@@ -269,6 +112,230 @@ namespace DimStock.Screens
 
                 screen.ShowDialog();
                 screen.Dispose();
+            }
+        }
+        public static MetroForm GetScreen()
+        {
+            return thisScreen;
+        }
+        public static void SetDetails(IProductAddView view, MetroForm ownerScreen = null)
+        {
+            try
+            {
+                var screen = new ProductAddScreen
+                {
+                    Id = view.Id,
+                    InternalCode = view.InternalCode,
+                    Description = view.Description,
+                    CostPrice = view.CostPrice,
+                    SalePrice = view.SalePrice,
+                    BarCode = view.BarCode,
+                    CategoryId = view.CategoryId,
+                    CategoryDescription = view.CategoryDescription
+                };
+
+                if (ownerScreen != null)
+                    screen.Owner = ownerScreen;
+
+                screen.ShowIcon = false;
+                screen.ShowInTaskbar = false;
+                screen.ControlBox = false;
+
+                screen.ShowDialog();
+                screen.Dispose();
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+
+        private void GridCategoryCellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                CategoryDescription = GridCategory.CurrentRow.Cells["Description"].Value.ToString();
+                PresenterGetCategoryIdByDescription(sender, e);
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+        private void GridCategorySourceChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                var gridList = GridCategory;
+                gridList.Visible = true;
+
+                if (gridList.Rows.Count == 0)
+                {
+                    GridCategoryHide(sender, e);
+                    return;
+                }
+
+                gridList.Columns["Id"].Visible = false;
+
+                gridList.Columns["Description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                gridList.Columns["Description"].ReadOnly = true;
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+        private void GridCategoryHide(object sender, EventArgs e)
+        {
+            try
+            {
+                GridCategory.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+
+        private void BoxCategoryDescriptionKeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                TimerPause();
+                TimerStart();
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+        private void BoxCategoryDescriptionChanger(object sender, EventArgs e)
+        {
+            try
+            {
+                if (BoxCategoryDescription.Text == string.Empty)
+                    GridCategory.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+
+        private void InitializeEvents()
+        {
+            try
+            {
+                Load += new EventHandler(ScreenLoad);
+                Click += new EventHandler(GridCategoryHide);
+                Resize += new EventHandler(ScreenResize);
+                PanelShadow.Click += new EventHandler(GridCategoryHide);
+                ButtonSave.Click += new EventHandler(PresenterUpdate);
+                ButtonDelete.Click += new EventHandler(PresenterDelete);
+                ButtonClearView.Click += new EventHandler(PresenterClear);
+                ButtonClearView.Click += new EventHandler(GridCategoryHide);
+                ButtonClose.Click += new EventHandler(ScreenClose);
+                LinkShowCategoryAddScreen.Click += new EventHandler(ShowRelatedScreen);
+                GridCategory.CellClick += new DataGridViewCellEventHandler(GridCategoryCellClick);
+                GridCategory.DataSourceChanged += new EventHandler(GridCategorySourceChanged);
+                BoxCategoryDescription.Click += new EventHandler(PresenterSearchCategory);
+                BoxCategoryDescription.KeyPress += new KeyPressEventHandler(BoxCategoryDescriptionKeyPress);
+                BoxCategoryDescription.TextChange += new EventHandler(BoxCategoryDescriptionChanger);
+                TimerSearch.Tick += new EventHandler(TimerTick);
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+
+        private void TimerStart()
+        {
+            TimerSearch.Enabled = true;
+        }
+        private void TimerPause()
+        {
+            TimerSearch.Enabled = false;
+        }
+        private void TimerTick(object sender, EventArgs e)
+        {
+            try
+            {
+                TimerPause();
+                PresenterSearchCategory(sender, e);
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+
+        //Eventos para chamada dos métodos do apresentador
+        private void PresenterUpdate(object sender, EventArgs e)
+        {
+            try
+            {
+                new ProductAddPresenter(this).Update();
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+        private void PresenterDelete(object sender, EventArgs e)
+        {
+            try
+
+            {
+                new ProductAddPresenter(this).Delete();
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+        private void PresenterClear(object sender, EventArgs e)
+        {
+            try
+            {
+                new ProductAddPresenter(this).Clear();
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+        private void PresenterGetCategoryIdByDescription(object sender, EventArgs e)
+        {
+            try
+            {
+                new ProductAddPresenter(this).GetCategoryIdByDescription();
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+        private void PresenterSearchCategory(object sender, EventArgs e)
+        {
+            try
+            {
+                new ProductAddPresenter(this).SearchCategory();
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
+        private void PresenterListCategory(object sender, EventArgs e)
+        {
+            try
+            {
+                new ProductAddPresenter(this).ListCategory();
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
             }
         }
     }
