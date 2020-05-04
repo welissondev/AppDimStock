@@ -249,6 +249,7 @@ namespace DimStock.Screens
                 GridList.DataSourceChanged += new EventHandler(GridSourceChanged);
                 GridList.CellMouseEnter += new DataGridViewCellEventHandler(GridCellEnter);
                 GridList.CellClick += new DataGridViewCellEventHandler(GridCellClick);
+                GridList.RowPrePaint += new DataGridViewRowPrePaintEventHandler(GridRowPrePaint);
                 ButtonNew.Click += new EventHandler(ShowRelatedScreen);
                 ButtonListGrid.Click += new EventHandler(TimerTick);
                 ButtonCloseScreen.Click += new EventHandler(ScreenClose);

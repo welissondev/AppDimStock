@@ -318,6 +318,7 @@ namespace DimStock.Screens
                 GridList.DataSourceChanged += new EventHandler(GridListSourceChanged);
                 GridList.CellMouseEnter += new DataGridViewCellEventHandler(GridListCellMouseEnter);
                 GridList.CellClick += new DataGridViewCellEventHandler(GridListCellClick);
+                GridList.RowPrePaint += new DataGridViewRowPrePaintEventHandler(GridListRowPrePaint);
                 TimerSearch.Tick += new EventHandler(TimerTick);
                 TextSearchInternalCode.KeyPress += new KeyPressEventHandler(TextKeyPress);
                 TextSearchDescription.KeyPress += new KeyPressEventHandler(TextKeyPress);
