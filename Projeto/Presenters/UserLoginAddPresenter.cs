@@ -31,8 +31,11 @@ namespace DimStock.Presenters
 
             if (view.Id == 0)
             {
-                actionResult = user.Insert();
-                Clear();
+                if (user.Insert() == true)
+                {
+                    actionResult = true;
+                    Clear();
+                }
             }
 
             if (view.Id > 0)
