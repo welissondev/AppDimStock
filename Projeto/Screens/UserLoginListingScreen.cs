@@ -12,7 +12,7 @@ namespace DimStock.Screens
     /// <summary>
     /// Representa a tela de listagem de login dos usuários
     /// </summary>
-    public partial class UserListingScreen : IUserLoginListingView
+    public partial class UserLoginListingScreen : IUserLoginListingView
     {
         private DataGridViewLinkColumn buttonViewDetails;
         private DataGridViewLinkColumn buttonDelete;
@@ -39,9 +39,9 @@ namespace DimStock.Screens
 
 namespace DimStock.Screens
 {
-    public partial class UserListingScreen : MetroForm
+    public partial class UserLoginListingScreen : MetroForm
     {
-        public UserListingScreen()
+        public UserLoginListingScreen()
         {
             try
             {
@@ -101,7 +101,7 @@ namespace DimStock.Screens
         {
             try
             {
-                var screen = new UserListingScreen();
+                var screen = new UserLoginListingScreen();
 
                 if (mdi != null)
                 {

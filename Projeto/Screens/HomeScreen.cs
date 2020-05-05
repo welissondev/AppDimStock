@@ -11,8 +11,6 @@ namespace DimStock.Screens
 {
     public partial class HomeScreen : Form
     {
-        private bool menuSideExpanded = false;
-        private bool menuSideUnexpanded = false;
         private static HomeScreen thisScreen;
         private List<string> listMenuNames;
     }
@@ -89,7 +87,7 @@ namespace DimStock.Screens
                 UserLoginAddScreen.ShowScreen(this);
 
             if (sender.Equals(ButtonMenuUsers))
-                UserListingScreen.ShowScreen(this);
+                UserLoginListingScreen.ShowScreen(this);
         }
 
         private void ShowMenuContext(object sender, EventArgs e)

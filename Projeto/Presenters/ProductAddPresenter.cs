@@ -30,11 +30,22 @@ namespace DimStock.Presenters
             product.Category.Id = view.CategoryId;
             product.Category.Description = view.CategoryDescription;
 
+            //Insert register
             if (view.Id == 0)
-                actionResult = product.Insert();
+            {
+                if (product.Insert() == true)
+                {
+                    actionResult = true;
+                    Clear();
+                }
+            }
 
+            //Update register
             if (view.Id > 0)
-                actionResult = product.Update();
+            {
+                if (product.Update() == true)
+                    actionResult = true;
+            }
 
             return actionResult;
         }

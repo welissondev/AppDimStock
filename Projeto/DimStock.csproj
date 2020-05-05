@@ -282,11 +282,11 @@
     <Compile Include="Screens\MovementAddScreen.Designer.cs">
       <DependentUpon>MovementAddScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Screens\UserListingScreen.cs">
+    <Compile Include="Screens\UserLoginListingScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screens\UserListingScreen.Designer.cs">
-      <DependentUpon>UserListingScreen.cs</DependentUpon>
+    <Compile Include="Screens\UserLoginListingScreen.Designer.cs">
+      <DependentUpon>UserLoginListingScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Screens\UserLoginAccessScreen.cs">
       <SubType>Form</SubType>
@@ -350,8 +350,8 @@
     <EmbeddedResource Include="Screens\MovementAddScreen.resx">
       <DependentUpon>MovementAddScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Screens\UserListingScreen.resx">
-      <DependentUpon>UserListingScreen.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\UserLoginListingScreen.resx">
+      <DependentUpon>UserLoginListingScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\UserLoginAccessScreen.resx">
       <DependentUpon>UserLoginAccessScreen.cs</DependentUpon>

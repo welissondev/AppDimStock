@@ -59,8 +59,8 @@ namespace DimStock.Screens
         {
             try
             {
-                ButtonSave.Click += new EventHandler(PresenterInsert);
-                ButtonDelete.Click += new EventHandler(PresenterUpdate);
+                ButtonSave.Click += new EventHandler(PresenterUpdate);
+                ButtonDelete.Click += new EventHandler(PresenterDelete);
                 ButtonClearView.Click += new EventHandler(PresenterClear);
                 ButtonClose.Click += new EventHandler(ScreenClose);
                 Resize += new EventHandler(ScreenResize);
@@ -142,17 +142,7 @@ namespace DimStock.Screens
             }
         }
 
-        private void PresenterInsert(object sender, EventArgs e)
-        {
-            try
-            {
-                new CategoryAddPresenter(this).Insert();
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
-        }
+        //Eventos para chamada dos métodos do apresentador
         private void PresenterUpdate(object sender, EventArgs e)
         {
             try
@@ -167,7 +157,6 @@ namespace DimStock.Screens
         private void PresenterDelete(object sender, EventArgs e)
         {
             try
-
             {
                 new CategoryAddPresenter(this).Delete();
             }

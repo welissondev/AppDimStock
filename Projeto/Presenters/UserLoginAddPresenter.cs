@@ -21,7 +21,7 @@ namespace DimStock.Presenters
                 Id = view.Id,
                 YourName = view.YourName,
                 Email = view.Email,
-                Login = view.Login,
+                Login = view.Login.TrimStart().TrimEnd(),
                 AccessPassWord = view.AccessPassWord,
                 PassWordCheck = view.PassWordCheck,
                 InsertAllowed = view.InsertAllowed,

@@ -9,25 +9,6 @@ namespace DimStock.Presenters
 
         public CategoryAddPresenter(ICategoryAddView view) { this.view = view; }
 
-        public bool Insert()
-        {
-            var actionResult = false;
-
-            var category = new CategoryModel()
-            {
-                Id = view.Id,
-                Description = view.Description.TrimStart().TrimEnd()
-            };
-
-            if (category.Insert() == true)
-            {
-                actionResult = true;
-                Clear();
-            }
-
-            return actionResult;
-        }
-
         public bool Update()
         {
             var actionResult = false;
@@ -38,8 +19,22 @@ namespace DimStock.Presenters
                 Description = view.Description.TrimStart().TrimEnd()
             };
 
-            if (category.Update() == true)
-                actionResult = true;
+            //Insert register
+            if (view.Id == 0)
+            {
+                if (category.Insert() == true)
+                {
+                    actionResult = true;
+                    Clear();
+                }
+            }
+
+            //Update register
+            if (view.Id > 0)
+            {
+                if (category.Update() == true)
+                    actionResult = true;
+            }
 
             return actionResult;
         }
@@ -53,7 +48,7 @@ namespace DimStock.Presenters
                 Id = view.Id
             };
 
-            if (Delete() == true)
+            if (category.Delete() == true)
             {
                 actionResult = true;
                 Clear();

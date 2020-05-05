@@ -87,7 +87,7 @@
             this.BuniCard.PanelColor = System.Drawing.Color.Empty;
             this.BuniCard.ShadowDept = 2;
             this.BuniCard.ShadowTopLeftVisible = false;
-            this.BuniCard.Size = new System.Drawing.Size(706, 259);
+            this.BuniCard.Size = new System.Drawing.Size(1034, 259);
             this.BuniCard.TabIndex = 241;
             // 
             // bunifuSeparator1
@@ -99,7 +99,7 @@
             this.bunifuSeparator1.LineThickness = 1;
             this.bunifuSeparator1.Location = new System.Drawing.Point(30, 170);
             this.bunifuSeparator1.Name = "bunifuSeparator1";
-            this.bunifuSeparator1.Size = new System.Drawing.Size(641, 10);
+            this.bunifuSeparator1.Size = new System.Drawing.Size(969, 10);
             this.bunifuSeparator1.TabIndex = 248;
             this.bunifuSeparator1.Transparency = 100;
             this.bunifuSeparator1.Vertical = false;
@@ -143,7 +143,7 @@
             this.ButtonClose.IdleIconLeftImage = null;
             this.ButtonClose.IdleIconRightImage = null;
             this.ButtonClose.IndicateFocus = false;
-            this.ButtonClose.Location = new System.Drawing.Point(527, 191);
+            this.ButtonClose.Location = new System.Drawing.Point(855, 191);
             this.ButtonClose.Name = "ButtonClose";
             stateProperties1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties1.BorderRadius = 3;
@@ -298,7 +298,7 @@
             this.TextDescription.SelectionLength = 0;
             this.TextDescription.SelectionStart = 0;
             this.TextDescription.ShortcutsEnabled = true;
-            this.TextDescription.Size = new System.Drawing.Size(641, 35);
+            this.TextDescription.Size = new System.Drawing.Size(969, 35);
             this.TextDescription.Style = Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox._Style.Bunifu;
             this.TextDescription.TabIndex = 0;
             this.TextDescription.Tag = "required";
@@ -448,7 +448,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(750, 500);
+            this.ClientSize = new System.Drawing.Size(1078, 558);
             this.Controls.Add(this.BuniCard);
             this.MinimumSize = new System.Drawing.Size(750, 500);
             this.Name = "CategoryAddScreen";
