@@ -98,7 +98,7 @@ namespace DimStock.Screens
         {
             return thisScreen;
         }
-        public static void ShowScreen(Form mdi = null)
+        public static void ShowScreen(Form mdi = null, MetroForm owner = null)
         {
             MdiClosingAll.CloseAllForms();
 
@@ -121,9 +121,8 @@ namespace DimStock.Screens
                 screen.ShowIcon = false;
                 screen.Style = MetroColorStyle.Blue;
 
-                var homeScreen = HomeScreen.GetScreen();
-                if (homeScreen != null)
-                    screen.Owner = homeScreen;
+                if (owner != null)
+                    screen.Owner = owner;
 
                 screen.ShowDialog();
                 screen.Dispose();
