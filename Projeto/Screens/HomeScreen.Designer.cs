@@ -198,7 +198,7 @@
             this.PanelMenuSide.Location = new System.Drawing.Point(0, 50);
             this.PanelMenuSide.Name = "PanelMenuSide";
             this.PanelMenuSide.Quality = 10;
-            this.PanelMenuSide.Size = new System.Drawing.Size(200, 679);
+            this.PanelMenuSide.Size = new System.Drawing.Size(200, 631);
             this.PanelMenuSide.TabIndex = 23;
             this.PanelMenuSide.Tag = "ImageSeparator";
             // 
@@ -242,12 +242,12 @@
             this.ButtonMenuProducts.IndicateFocus = false;
             this.ButtonMenuProducts.Location = new System.Drawing.Point(0, 404);
             this.ButtonMenuProducts.Name = "ButtonMenuProducts";
-            stateProperties1.BorderColor = System.Drawing.Color.Transparent;
+            stateProperties1.BorderColor = System.Drawing.Color.SteelBlue;
             stateProperties1.BorderRadius = 50;
             stateProperties1.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             stateProperties1.BorderThickness = 1;
             stateProperties1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
-            stateProperties1.ForeColor = System.Drawing.Color.LawnGreen;
+            stateProperties1.ForeColor = System.Drawing.Color.GreenYellow;
             stateProperties1.IconLeftImage = null;
             stateProperties1.IconRightImage = null;
             this.ButtonMenuProducts.onHoverState = stateProperties1;
@@ -319,12 +319,12 @@
             this.ButtonMenuStocks.IndicateFocus = false;
             this.ButtonMenuStocks.Location = new System.Drawing.Point(0, 344);
             this.ButtonMenuStocks.Name = "ButtonMenuStocks";
-            stateProperties3.BorderColor = System.Drawing.Color.Transparent;
+            stateProperties3.BorderColor = System.Drawing.Color.SteelBlue;
             stateProperties3.BorderRadius = 50;
             stateProperties3.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             stateProperties3.BorderThickness = 1;
             stateProperties3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
-            stateProperties3.ForeColor = System.Drawing.Color.LawnGreen;
+            stateProperties3.ForeColor = System.Drawing.Color.GreenYellow;
             stateProperties3.IconLeftImage = null;
             stateProperties3.IconRightImage = null;
             this.ButtonMenuStocks.onHoverState = stateProperties3;
@@ -396,12 +396,12 @@
             this.ButtonMenuMovements.IndicateFocus = false;
             this.ButtonMenuMovements.Location = new System.Drawing.Point(0, 284);
             this.ButtonMenuMovements.Name = "ButtonMenuMovements";
-            stateProperties5.BorderColor = System.Drawing.Color.Transparent;
+            stateProperties5.BorderColor = System.Drawing.Color.SteelBlue;
             stateProperties5.BorderRadius = 50;
             stateProperties5.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             stateProperties5.BorderThickness = 1;
             stateProperties5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
-            stateProperties5.ForeColor = System.Drawing.Color.LawnGreen;
+            stateProperties5.ForeColor = System.Drawing.Color.GreenYellow;
             stateProperties5.IconLeftImage = null;
             stateProperties5.IconRightImage = null;
             this.ButtonMenuMovements.onHoverState = stateProperties5;
@@ -473,12 +473,12 @@
             this.ButtonMenuDestinations.IndicateFocus = false;
             this.ButtonMenuDestinations.Location = new System.Drawing.Point(0, 224);
             this.ButtonMenuDestinations.Name = "ButtonMenuDestinations";
-            stateProperties7.BorderColor = System.Drawing.Color.Transparent;
+            stateProperties7.BorderColor = System.Drawing.Color.SteelBlue;
             stateProperties7.BorderRadius = 50;
             stateProperties7.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             stateProperties7.BorderThickness = 1;
             stateProperties7.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
-            stateProperties7.ForeColor = System.Drawing.Color.LawnGreen;
+            stateProperties7.ForeColor = System.Drawing.Color.GreenYellow;
             stateProperties7.IconLeftImage = null;
             stateProperties7.IconRightImage = null;
             this.ButtonMenuDestinations.onHoverState = stateProperties7;
@@ -550,12 +550,12 @@
             this.ButtonMenuUsers.IndicateFocus = false;
             this.ButtonMenuUsers.Location = new System.Drawing.Point(0, 164);
             this.ButtonMenuUsers.Name = "ButtonMenuUsers";
-            stateProperties9.BorderColor = System.Drawing.Color.Transparent;
+            stateProperties9.BorderColor = System.Drawing.Color.SteelBlue;
             stateProperties9.BorderRadius = 50;
             stateProperties9.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             stateProperties9.BorderThickness = 1;
             stateProperties9.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
-            stateProperties9.ForeColor = System.Drawing.Color.LawnGreen;
+            stateProperties9.ForeColor = System.Drawing.Color.GreenYellow;
             stateProperties9.IconLeftImage = null;
             stateProperties9.IconRightImage = null;
             this.ButtonMenuUsers.onHoverState = stateProperties9;
@@ -627,12 +627,12 @@
             this.ButtonMenuSupplies.IndicateFocus = false;
             this.ButtonMenuSupplies.Location = new System.Drawing.Point(0, 104);
             this.ButtonMenuSupplies.Name = "ButtonMenuSupplies";
-            stateProperties11.BorderColor = System.Drawing.Color.Transparent;
+            stateProperties11.BorderColor = System.Drawing.Color.SteelBlue;
             stateProperties11.BorderRadius = 50;
             stateProperties11.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             stateProperties11.BorderThickness = 1;
             stateProperties11.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
-            stateProperties11.ForeColor = System.Drawing.Color.LawnGreen;
+            stateProperties11.ForeColor = System.Drawing.Color.GreenYellow;
             stateProperties11.IconLeftImage = null;
             stateProperties11.IconRightImage = null;
             this.ButtonMenuSupplies.onHoverState = stateProperties11;
@@ -705,12 +705,12 @@
             this.ButtonMenuCategorys.IndicateFocus = false;
             this.ButtonMenuCategorys.Location = new System.Drawing.Point(0, 44);
             this.ButtonMenuCategorys.Name = "ButtonMenuCategorys";
-            stateProperties13.BorderColor = System.Drawing.Color.Transparent;
+            stateProperties13.BorderColor = System.Drawing.Color.SteelBlue;
             stateProperties13.BorderRadius = 50;
             stateProperties13.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             stateProperties13.BorderThickness = 1;
             stateProperties13.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
-            stateProperties13.ForeColor = System.Drawing.Color.LawnGreen;
+            stateProperties13.ForeColor = System.Drawing.Color.GreenYellow;
             stateProperties13.IconLeftImage = null;
             stateProperties13.IconRightImage = null;
             this.ButtonMenuCategorys.onHoverState = stateProperties13;
@@ -776,7 +776,7 @@
             this.PanelMenuLower.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
             this.PanelMenuLower.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
             this.PanelMenuLower.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
-            this.PanelMenuLower.Location = new System.Drawing.Point(0, 617);
+            this.PanelMenuLower.Location = new System.Drawing.Point(0, 569);
             this.PanelMenuLower.Name = "PanelMenuLower";
             this.PanelMenuLower.Quality = 10;
             this.PanelMenuLower.Size = new System.Drawing.Size(200, 62);
@@ -814,14 +814,14 @@
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuGradientPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(181)))), ((int)(((byte)(228)))));
-            this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(181)))), ((int)(((byte)(228)))));
-            this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(181)))), ((int)(((byte)(228)))));
-            this.bunifuGradientPanel1.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(181)))), ((int)(((byte)(228)))));
+            this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            this.bunifuGradientPanel1.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
             this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, 45);
             this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
             this.bunifuGradientPanel1.Quality = 10;
-            this.bunifuGradientPanel1.Size = new System.Drawing.Size(960, 5);
+            this.bunifuGradientPanel1.Size = new System.Drawing.Size(944, 5);
             this.bunifuGradientPanel1.TabIndex = 22;
             // 
             // bunifuGradientPanel2
@@ -842,7 +842,7 @@
             this.bunifuGradientPanel2.Location = new System.Drawing.Point(0, 0);
             this.bunifuGradientPanel2.Name = "bunifuGradientPanel2";
             this.bunifuGradientPanel2.Quality = 10;
-            this.bunifuGradientPanel2.Size = new System.Drawing.Size(960, 45);
+            this.bunifuGradientPanel2.Size = new System.Drawing.Size(944, 45);
             this.bunifuGradientPanel2.TabIndex = 20;
             // 
             // ButtonMenuSettings
@@ -890,7 +890,7 @@
             stateProperties15.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             stateProperties15.BorderThickness = 1;
             stateProperties15.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
-            stateProperties15.ForeColor = System.Drawing.Color.LawnGreen;
+            stateProperties15.ForeColor = System.Drawing.Color.GreenYellow;
             stateProperties15.IconLeftImage = null;
             stateProperties15.IconRightImage = null;
             this.ButtonMenuSettings.onHoverState = stateProperties15;
@@ -967,7 +967,7 @@
             stateProperties17.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             stateProperties17.BorderThickness = 1;
             stateProperties17.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
-            stateProperties17.ForeColor = System.Drawing.Color.LawnGreen;
+            stateProperties17.ForeColor = System.Drawing.Color.GreenYellow;
             stateProperties17.IconLeftImage = null;
             stateProperties17.IconRightImage = null;
             this.ButtonMenuTechSupport.onHoverState = stateProperties17;
@@ -1044,7 +1044,7 @@
             stateProperties19.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             stateProperties19.BorderThickness = 1;
             stateProperties19.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
-            stateProperties19.ForeColor = System.Drawing.Color.LawnGreen;
+            stateProperties19.ForeColor = System.Drawing.Color.GreenYellow;
             stateProperties19.IconLeftImage = null;
             stateProperties19.IconRightImage = null;
             this.ButtonMenuGeneralRegistrations.onHoverState = stateProperties19;
@@ -1148,15 +1148,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(960, 729);
+            this.ClientSize = new System.Drawing.Size(944, 681);
             this.Controls.Add(this.PanelMenuSide);
             this.Controls.Add(this.bunifuGradientPanel1);
             this.Controls.Add(this.bunifuGradientPanel2);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
-            this.MinimumSize = new System.Drawing.Size(961, 571);
+            this.MinimumSize = new System.Drawing.Size(960, 720);
             this.Name = "HomeScreen";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.MenuContextRegistration.ResumeLayout(false);
             this.PanelMenuSide.ResumeLayout(false);

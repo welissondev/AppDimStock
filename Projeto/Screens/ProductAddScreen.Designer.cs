@@ -88,11 +88,12 @@
             // 
             // LinkShowCategoryAddScreen
             // 
+            this.LinkShowCategoryAddScreen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LinkShowCategoryAddScreen.AutoSize = true;
             this.LinkShowCategoryAddScreen.BackColor = System.Drawing.Color.Transparent;
             this.LinkShowCategoryAddScreen.Font = new System.Drawing.Font("Calibri Light", 10F);
             this.LinkShowCategoryAddScreen.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(118)))), ((int)(((byte)(190)))));
-            this.LinkShowCategoryAddScreen.Location = new System.Drawing.Point(765, 163);
+            this.LinkShowCategoryAddScreen.Location = new System.Drawing.Point(844, 164);
             this.LinkShowCategoryAddScreen.Name = "LinkShowCategoryAddScreen";
             this.LinkShowCategoryAddScreen.Size = new System.Drawing.Size(93, 17);
             this.LinkShowCategoryAddScreen.TabIndex = 221;
@@ -103,6 +104,8 @@
             // 
             this.GridCategory.AllowUserToAddRows = false;
             this.GridCategory.AllowUserToResizeRows = false;
+            this.GridCategory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.GridCategory.BackgroundColor = System.Drawing.Color.White;
             this.GridCategory.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.GridCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -115,7 +118,7 @@
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri Light", 10F);
             this.GridCategory.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.GridCategory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.GridCategory.Size = new System.Drawing.Size(840, 10);
+            this.GridCategory.Size = new System.Drawing.Size(919, 10);
             this.GridCategory.TabIndex = 228;
             this.GridCategory.Visible = false;
             // 
@@ -285,7 +288,7 @@
             this.PanelShadow.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.PanelShadow.ShadowDept = 2;
             this.PanelShadow.ShadowTopLeftVisible = false;
-            this.PanelShadow.Size = new System.Drawing.Size(893, 505);
+            this.PanelShadow.Size = new System.Drawing.Size(972, 515);
             this.PanelShadow.TabIndex = 9;
             // 
             // bunifuSeparator1
@@ -295,9 +298,9 @@
             this.bunifuSeparator1.BackColor = System.Drawing.Color.Transparent;
             this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))));
             this.bunifuSeparator1.LineThickness = 1;
-            this.bunifuSeparator1.Location = new System.Drawing.Point(25, 406);
+            this.bunifuSeparator1.Location = new System.Drawing.Point(25, 416);
             this.bunifuSeparator1.Name = "bunifuSeparator1";
-            this.bunifuSeparator1.Size = new System.Drawing.Size(840, 10);
+            this.bunifuSeparator1.Size = new System.Drawing.Size(919, 10);
             this.bunifuSeparator1.TabIndex = 247;
             this.bunifuSeparator1.Transparency = 100;
             this.bunifuSeparator1.Vertical = false;
@@ -341,7 +344,7 @@
             this.ButtonClose.IdleIconLeftImage = null;
             this.ButtonClose.IdleIconRightImage = null;
             this.ButtonClose.IndicateFocus = false;
-            this.ButtonClose.Location = new System.Drawing.Point(721, 433);
+            this.ButtonClose.Location = new System.Drawing.Point(800, 443);
             this.ButtonClose.Name = "ButtonClose";
             stateProperties1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties1.BorderRadius = 3;
@@ -406,7 +409,7 @@
             this.ButtonClearView.IdleIconLeftImage = null;
             this.ButtonClearView.IdleIconRightImage = null;
             this.ButtonClearView.IndicateFocus = false;
-            this.ButtonClearView.Location = new System.Drawing.Point(323, 433);
+            this.ButtonClearView.Location = new System.Drawing.Point(323, 443);
             this.ButtonClearView.Name = "ButtonClearView";
             stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties3.BorderRadius = 3;
@@ -471,7 +474,7 @@
             this.ButtonDelete.IdleIconLeftImage = null;
             this.ButtonDelete.IdleIconRightImage = null;
             this.ButtonDelete.IndicateFocus = false;
-            this.ButtonDelete.Location = new System.Drawing.Point(173, 433);
+            this.ButtonDelete.Location = new System.Drawing.Point(173, 443);
             this.ButtonDelete.Name = "ButtonDelete";
             stateProperties5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties5.BorderRadius = 3;
@@ -536,7 +539,7 @@
             this.ButtonSave.IdleIconLeftImage = null;
             this.ButtonSave.IdleIconRightImage = null;
             this.ButtonSave.IndicateFocus = false;
-            this.ButtonSave.Location = new System.Drawing.Point(23, 433);
+            this.ButtonSave.Location = new System.Drawing.Point(23, 443);
             this.ButtonSave.Name = "ButtonSave";
             stateProperties7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties7.BorderRadius = 3;
@@ -566,6 +569,8 @@
             // 
             this.BoxCategoryDescription.AcceptsReturn = false;
             this.BoxCategoryDescription.AcceptsTab = false;
+            this.BoxCategoryDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.BoxCategoryDescription.AnimationSpeed = 200;
             this.BoxCategoryDescription.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             this.BoxCategoryDescription.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
@@ -624,7 +629,7 @@
             this.BoxCategoryDescription.SelectionLength = 0;
             this.BoxCategoryDescription.SelectionStart = 0;
             this.BoxCategoryDescription.ShortcutsEnabled = true;
-            this.BoxCategoryDescription.Size = new System.Drawing.Size(840, 35);
+            this.BoxCategoryDescription.Size = new System.Drawing.Size(919, 35);
             this.BoxCategoryDescription.Style = Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox._Style.Bunifu;
             this.BoxCategoryDescription.TabIndex = 2;
             this.BoxCategoryDescription.Tag = "required";
@@ -640,6 +645,8 @@
             // 
             this.TextBarCode.AcceptsReturn = false;
             this.TextBarCode.AcceptsTab = false;
+            this.TextBarCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TextBarCode.AnimationSpeed = 200;
             this.TextBarCode.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             this.TextBarCode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
@@ -698,7 +705,7 @@
             this.TextBarCode.SelectionLength = 0;
             this.TextBarCode.SelectionStart = 0;
             this.TextBarCode.ShortcutsEnabled = true;
-            this.TextBarCode.Size = new System.Drawing.Size(840, 35);
+            this.TextBarCode.Size = new System.Drawing.Size(919, 35);
             this.TextBarCode.Style = Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox._Style.Bunifu;
             this.TextBarCode.TabIndex = 5;
             this.TextBarCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -713,6 +720,8 @@
             // 
             this.TextDescription.AcceptsReturn = false;
             this.TextDescription.AcceptsTab = false;
+            this.TextDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TextDescription.AnimationSpeed = 200;
             this.TextDescription.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             this.TextDescription.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
@@ -771,7 +780,7 @@
             this.TextDescription.SelectionLength = 0;
             this.TextDescription.SelectionStart = 0;
             this.TextDescription.ShortcutsEnabled = true;
-            this.TextDescription.Size = new System.Drawing.Size(840, 35);
+            this.TextDescription.Size = new System.Drawing.Size(919, 35);
             this.TextDescription.Style = Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox._Style.Bunifu;
             this.TextDescription.TabIndex = 1;
             this.TextDescription.Tag = "required";
@@ -861,9 +870,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(944, 590);
+            this.ClientSize = new System.Drawing.Size(1023, 600);
             this.Controls.Add(this.PanelShadow);
-            this.MinimumSize = new System.Drawing.Size(944, 590);
+            this.MinimumSize = new System.Drawing.Size(750, 500);
             this.Name = "ProductAddScreen";
             this.RightToLeftLayout = true;
             this.ShadowType = MetroFramework.Forms.MetroFormShadowType.DropShadow;

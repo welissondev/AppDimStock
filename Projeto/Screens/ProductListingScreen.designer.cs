@@ -132,7 +132,7 @@
             this.GridList.RowHeadersVisible = false;
             this.GridList.RowTemplate.Height = 40;
             this.GridList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.GridList.Size = new System.Drawing.Size(842, 322);
+            this.GridList.Size = new System.Drawing.Size(648, 232);
             this.GridList.TabIndex = 234;
             this.GridList.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             // 
@@ -248,7 +248,7 @@
             this.ButtonNew.IdleIconLeftImage = null;
             this.ButtonNew.IdleIconRightImage = null;
             this.ButtonNew.IndicateFocus = false;
-            this.ButtonNew.Location = new System.Drawing.Point(27, 435);
+            this.ButtonNew.Location = new System.Drawing.Point(27, 345);
             this.ButtonNew.Name = "ButtonNew";
             stateProperties5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties5.BorderRadius = 3;
@@ -278,7 +278,7 @@
             // 
             this.ImageLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ImageLoading.Image = global::DimStock.Properties.Resources.ImageLoading;
-            this.ImageLoading.Location = new System.Drawing.Point(367, 139);
+            this.ImageLoading.Location = new System.Drawing.Point(270, 94);
             this.ImageLoading.Name = "ImageLoading";
             this.ImageLoading.Size = new System.Drawing.Size(144, 135);
             this.ImageLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -325,7 +325,7 @@
             this.ButtonUpdateGridList.IdleIconLeftImage = null;
             this.ButtonUpdateGridList.IdleIconRightImage = null;
             this.ButtonUpdateGridList.IndicateFocus = false;
-            this.ButtonUpdateGridList.Location = new System.Drawing.Point(177, 435);
+            this.ButtonUpdateGridList.Location = new System.Drawing.Point(177, 345);
             this.ButtonUpdateGridList.Name = "ButtonUpdateGridList";
             stateProperties7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties7.BorderRadius = 3;
@@ -415,7 +415,7 @@
             this.TextSearchDescription.SelectionLength = 0;
             this.TextSearchDescription.SelectionStart = 0;
             this.TextSearchDescription.ShortcutsEnabled = true;
-            this.TextSearchDescription.Size = new System.Drawing.Size(659, 35);
+            this.TextSearchDescription.Size = new System.Drawing.Size(465, 35);
             this.TextSearchDescription.Style = Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox._Style.Bunifu;
             this.TextSearchDescription.TabIndex = 1;
             this.TextSearchDescription.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -465,7 +465,7 @@
             this.ButtonClear.IdleIconLeftImage = null;
             this.ButtonClear.IdleIconRightImage = null;
             this.ButtonClear.IndicateFocus = false;
-            this.ButtonClear.Location = new System.Drawing.Point(327, 435);
+            this.ButtonClear.Location = new System.Drawing.Point(327, 345);
             this.ButtonClear.Name = "ButtonClear";
             stateProperties13.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties13.BorderRadius = 3;
@@ -530,7 +530,7 @@
             this.ButtonClose.IdleIconLeftImage = null;
             this.ButtonClose.IdleIconRightImage = null;
             this.ButtonClose.IndicateFocus = false;
-            this.ButtonClose.Location = new System.Drawing.Point(725, 435);
+            this.ButtonClose.Location = new System.Drawing.Point(531, 345);
             this.ButtonClose.Name = "ButtonClose";
             stateProperties15.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties15.BorderRadius = 3;
@@ -576,7 +576,7 @@
             this.bunifuShadowPanel2.PanelColor = System.Drawing.Color.Empty;
             this.bunifuShadowPanel2.ShadowDept = 2;
             this.bunifuShadowPanel2.ShadowTopLeftVisible = false;
-            this.bunifuShadowPanel2.Size = new System.Drawing.Size(898, 504);
+            this.bunifuShadowPanel2.Size = new System.Drawing.Size(704, 414);
             this.bunifuShadowPanel2.TabIndex = 238;
             // 
             // bunifuSeparator1
@@ -586,9 +586,9 @@
             this.bunifuSeparator1.BackColor = System.Drawing.Color.Transparent;
             this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))));
             this.bunifuSeparator1.LineThickness = 1;
-            this.bunifuSeparator1.Location = new System.Drawing.Point(27, 412);
+            this.bunifuSeparator1.Location = new System.Drawing.Point(27, 322);
             this.bunifuSeparator1.Name = "bunifuSeparator1";
-            this.bunifuSeparator1.Size = new System.Drawing.Size(842, 10);
+            this.bunifuSeparator1.Size = new System.Drawing.Size(648, 10);
             this.bunifuSeparator1.TabIndex = 248;
             this.bunifuSeparator1.Transparency = 100;
             this.bunifuSeparator1.Vertical = false;
@@ -597,10 +597,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(944, 590);
+            this.ClientSize = new System.Drawing.Size(750, 500);
             this.Controls.Add(this.bunifuShadowPanel2);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(944, 590);
+            this.MinimumSize = new System.Drawing.Size(750, 500);
             this.Name = "ProductListingScreen";
             this.Text = "Listagem de Produtos";
             ((System.ComponentModel.ISupportInitialize)(this.GridList)).EndInit();

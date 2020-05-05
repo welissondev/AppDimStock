@@ -11,6 +11,8 @@ namespace DimStock.Screens
 {
     public partial class HomeScreen : Form
     {
+        private bool menuSideExpanded = false;
+        private bool menuSideUnexpanded = false;
         private static HomeScreen thisScreen;
         private List<string> listMenuNames;
     }
@@ -48,6 +50,26 @@ namespace DimStock.Screens
                 ExceptionNotifier.ShowMessage(ex);
             }
         }
+        private void ScreenResize(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Width < 1000)
+                {
+                    if (PanelMenuSide.Width >= 200)
+                        MenuExtenter(sender, e);
+                }
+                else if (Width >= 1000)
+                {
+                    if (PanelMenuSide.Width <= 65)
+                        MenuExtenter(sender, e);
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
+        }
 
         private void ShowRelatedScreen(object sender, EventArgs e)
         {
@@ -75,13 +97,10 @@ namespace DimStock.Screens
             try
             {
                 if (sender.Equals(ButtonMenuGeneralRegistrations))
-                {
-                    MenuContextRegistration.Show(this, MousePosition);
-                }
+                    MenuContextRegistration.Show(MousePosition);
+
                 else if (sender.Equals(ButtonMenuSettings))
-                {
-                    MenuContextSettings.Show(this, MousePosition);
-                }
+                    MenuContextSettings.Show(MousePosition);
             }
             catch (Exception ex)
             {
@@ -93,12 +112,9 @@ namespace DimStock.Screens
         {
             try
             {
-                var expanded = 200;
-                var unexpanded = 65;
-
-                if (PanelMenuSide.Width == expanded)
+                if (PanelMenuSide.Width == 200)
                 {
-                    PanelMenuSide.Width = unexpanded;
+                    PanelMenuSide.Width = 65;
                     PanelMenuLower.Visible = false;
                     ButtonMenuExtender.Left = PanelMenuSide.Width / 2 - ButtonMenuExtender.Width / 2;
                     ButtonMenuExtender.Image = Resources.IconNext;
@@ -109,9 +125,9 @@ namespace DimStock.Screens
                         buttonMenu.Text = string.Empty;
                     }
                 }
-                else
+                else if(PanelMenuSide.Width == 65)
                 {
-                    PanelMenuSide.Width = expanded;
+                    PanelMenuSide.Width = 200;
                     ButtonMenuExtender.Left = PanelMenuSide.Left + 170;
                     ButtonMenuExtender.Image = Resources.IconBack;
                     PanelMenuLower.Visible = true;
@@ -136,6 +152,7 @@ namespace DimStock.Screens
             try
             {
                 Load += new EventHandler(ScreenLoad);
+                Resize += new EventHandler(ScreenResize);
                 ButtonMenuProducts.Click += new EventHandler(ShowRelatedScreen);
                 ToolStripCategoyAddScreen.Click += new EventHandler(ShowRelatedScreen);
                 ToolStripProductAddScreen.Click += new EventHandler(ShowRelatedScreen);

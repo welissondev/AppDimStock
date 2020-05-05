@@ -152,12 +152,12 @@
   </data>
   <data name="TextSearchDescription.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAApMAAAAjCAYAAADIQ4GhAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADmSURBVHhe7daxCQMxAARB9V+VHpXhMlyAH4ESZ+91OgOX
-        XAU7AADgL2ut15zzY2ZmZmb2ZLsfT0qOsQ8AAHhq9+NJSTEJAMBvxCQAAJmYBAAgE5MAAGRiEgCATEwC
-        AJCJSQAAMjEJAEAmJgEAyMQkAACZmAQAIBOTAABkYhIAgExMAgCQiUkAADIxCQBAJiYBAMjEJAAAmZgE
-        ACATkwAAZGISAIBMTAIAkIlJAAAyMQkAQCYmAQDIxCQAAJmYBAAgE5MAAGRiEgCATEwCAJB9xeR1Xe99
-        mJmZmZk92e7Hk5IAAFCMcQPJn4yYbu+PLgAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAAdEAAAAjCAYAAADL7jA9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADGSURBVHhe7dWxDcMwAANB7T+VBY2RMTJAAgFuUjl+t3cA
+        Gy7wAwB4YK31Oo7jY2ZmZtfb3TwTOsY+AID/7G6eCRVRALhDRAEgElEAiEQUACIRBYBIRAEgElEAiEQU
+        ACIRBYBIRAEgElEAiEQUACIRBYBIRAEgElEAiEQUACIRBYBIRAEgElEAiEQUACIRBYBIRAEgElEAiEQU
+        ACIRBYBIRAEgElEAiEQUACIRBYBIRAEg+ononPO9DzMzM7ve7uaZUADgvjG+NPIBVprzJrcAAAAASUVO
+        RK5CYII=
 </value>
   </data>
   <data name="ButtonClear.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
