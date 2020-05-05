@@ -123,11 +123,11 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="TextSearchEmail.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAckAAAAjCAYAAAD/l/EhAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADBSURBVHhe7dXBCQIxAAXR9F9VQsqwDAtYCe5BkbGC9+Bf
-        fgMzAIA/9t6POedlZmZm8zpdvBM5xjkAgLfTxTuRIgkAn0QSAIJIAkAQSQAIIgkAQSQBIIgkAASRBIAg
-        kgAQRBIAgkgCQBBJAAgiCQBBJAEgiCQABJEEgCCSABBEEgCCSAJAEEkACCIJAEEkASCIJAAEkQSAIJIA
-        EEQSAIJIAkAQSQAIIgkAQSQBIHxFcq31PIeZmZnN63TxTiQA8GuMF4a58PsjkjzlAAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAANUAAAAjCAYAAAADi0+HAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACfSURBVHhe7dOxCQMxAARB9V+VHpXhMlyAH4ESp+91NgOX
+        XL4D+IO11mvO+TGz59sdnaTG2Afwm93RSUpUUBAVxEQFMVFBTFQQExXERAUxUUFMVBATFcREBTFRQUxU
+        EBMVxEQFMVFBTFQQExXERAUxUUFMVBATFcREBTFRQUxUEBMVxEQFMVFBTFQQExXEvqK6ruu9DzN7vt3R
+        SQrojHEDyXv/z5fMmRAAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="TextSearchLogin.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

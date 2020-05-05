@@ -139,6 +139,7 @@ namespace DimStock.Screens
                 screen.ShowIcon = false;
                 screen.ShowInTaskbar = false;
                 screen.ControlBox = false;
+                screen.Style = MetroColorStyle.Blue;
 
                 screen.ShowDialog();
                 screen.Dispose();

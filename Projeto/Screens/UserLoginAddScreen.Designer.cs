@@ -85,6 +85,8 @@
             // 
             this.TextYourName.AcceptsReturn = false;
             this.TextYourName.AcceptsTab = false;
+            this.TextYourName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TextYourName.AnimationSpeed = 200;
             this.TextYourName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             this.TextYourName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
@@ -143,7 +145,7 @@
             this.TextYourName.SelectionLength = 0;
             this.TextYourName.SelectionStart = 0;
             this.TextYourName.ShortcutsEnabled = true;
-            this.TextYourName.Size = new System.Drawing.Size(826, 35);
+            this.TextYourName.Size = new System.Drawing.Size(913, 35);
             this.TextYourName.Style = Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox._Style.Bunifu;
             this.TextYourName.TabIndex = 0;
             this.TextYourName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -158,6 +160,8 @@
             // 
             this.TextEmail.AcceptsReturn = false;
             this.TextEmail.AcceptsTab = false;
+            this.TextEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TextEmail.AnimationSpeed = 200;
             this.TextEmail.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             this.TextEmail.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
@@ -216,7 +220,7 @@
             this.TextEmail.SelectionLength = 0;
             this.TextEmail.SelectionStart = 0;
             this.TextEmail.ShortcutsEnabled = true;
-            this.TextEmail.Size = new System.Drawing.Size(826, 35);
+            this.TextEmail.Size = new System.Drawing.Size(913, 35);
             this.TextEmail.Style = Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox._Style.Bunifu;
             this.TextEmail.TabIndex = 1;
             this.TextEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -528,7 +532,7 @@
             this.bunifuShadowPanel1.PanelColor = System.Drawing.Color.Empty;
             this.bunifuShadowPanel1.ShadowDept = 2;
             this.bunifuShadowPanel1.ShadowTopLeftVisible = false;
-            this.bunifuShadowPanel1.Size = new System.Drawing.Size(882, 556);
+            this.bunifuShadowPanel1.Size = new System.Drawing.Size(969, 507);
             this.bunifuShadowPanel1.TabIndex = 241;
             // 
             // bunifuSeparator1
@@ -538,9 +542,9 @@
             this.bunifuSeparator1.BackColor = System.Drawing.Color.Transparent;
             this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))));
             this.bunifuSeparator1.LineThickness = 1;
-            this.bunifuSeparator1.Location = new System.Drawing.Point(27, 449);
+            this.bunifuSeparator1.Location = new System.Drawing.Point(27, 400);
             this.bunifuSeparator1.Name = "bunifuSeparator1";
-            this.bunifuSeparator1.Size = new System.Drawing.Size(826, 10);
+            this.bunifuSeparator1.Size = new System.Drawing.Size(913, 10);
             this.bunifuSeparator1.TabIndex = 246;
             this.bunifuSeparator1.Transparency = 100;
             this.bunifuSeparator1.Vertical = false;
@@ -584,7 +588,7 @@
             this.ButtonClose.IdleIconLeftImage = null;
             this.ButtonClose.IdleIconRightImage = null;
             this.ButtonClose.IndicateFocus = false;
-            this.ButtonClose.Location = new System.Drawing.Point(709, 478);
+            this.ButtonClose.Location = new System.Drawing.Point(796, 429);
             this.ButtonClose.Name = "ButtonClose";
             stateProperties21.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties21.BorderRadius = 3;
@@ -649,7 +653,7 @@
             this.ButtonClearView.IdleIconLeftImage = null;
             this.ButtonClearView.IdleIconRightImage = null;
             this.ButtonClearView.IndicateFocus = false;
-            this.ButtonClearView.Location = new System.Drawing.Point(328, 478);
+            this.ButtonClearView.Location = new System.Drawing.Point(328, 429);
             this.ButtonClearView.Name = "ButtonClearView";
             stateProperties23.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties23.BorderRadius = 3;
@@ -680,12 +684,12 @@
             this.bunifuShadowPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.bunifuShadowPanel2.BorderColor = System.Drawing.Color.Gainsboro;
-            this.bunifuShadowPanel2.Location = new System.Drawing.Point(0, 562);
+            this.bunifuShadowPanel2.Location = new System.Drawing.Point(0, 513);
             this.bunifuShadowPanel2.Name = "bunifuShadowPanel2";
             this.bunifuShadowPanel2.PanelColor = System.Drawing.Color.Empty;
             this.bunifuShadowPanel2.ShadowDept = 2;
             this.bunifuShadowPanel2.ShadowTopLeftVisible = false;
-            this.bunifuShadowPanel2.Size = new System.Drawing.Size(882, 86);
+            this.bunifuShadowPanel2.Size = new System.Drawing.Size(969, 86);
             this.bunifuShadowPanel2.TabIndex = 245;
             // 
             // ButtonDelete
@@ -727,7 +731,7 @@
             this.ButtonDelete.IdleIconLeftImage = null;
             this.ButtonDelete.IdleIconRightImage = null;
             this.ButtonDelete.IndicateFocus = false;
-            this.ButtonDelete.Location = new System.Drawing.Point(178, 478);
+            this.ButtonDelete.Location = new System.Drawing.Point(178, 429);
             this.ButtonDelete.Name = "ButtonDelete";
             stateProperties25.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties25.BorderRadius = 3;
@@ -792,7 +796,7 @@
             this.ButtonSave.IdleIconLeftImage = null;
             this.ButtonSave.IdleIconRightImage = null;
             this.ButtonSave.IndicateFocus = false;
-            this.ButtonSave.Location = new System.Drawing.Point(28, 478);
+            this.ButtonSave.Location = new System.Drawing.Point(28, 429);
             this.ButtonSave.Name = "ButtonSave";
             stateProperties27.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties27.BorderRadius = 3;
@@ -822,9 +826,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(944, 649);
+            this.ClientSize = new System.Drawing.Size(1031, 600);
             this.Controls.Add(this.bunifuShadowPanel1);
-            this.MinimumSize = new System.Drawing.Size(944, 590);
+            this.MinimumSize = new System.Drawing.Size(750, 600);
             this.Name = "UserLoginAddScreen";
             this.Text = "Cadastro de Usuários";
             this.bunifuShadowPanel1.ResumeLayout(false);
