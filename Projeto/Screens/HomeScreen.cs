@@ -71,6 +71,8 @@ namespace DimStock.Screens
 
         private void ShowRelatedScreen(object sender, EventArgs e)
         {
+            MdiClosingAll.CloseAllForms();
+
             if (sender.Equals(ToolStripCategoyAddScreen))
                 CategoryAddScreen.ShowScreen(this);
 
@@ -123,7 +125,7 @@ namespace DimStock.Screens
                         buttonMenu.Text = string.Empty;
                     }
                 }
-                else if(PanelMenuSide.Width == 65)
+                else if (PanelMenuSide.Width == 65)
                 {
                     PanelMenuSide.Width = 200;
                     ButtonMenuExtender.Left = PanelMenuSide.Left + 170;
