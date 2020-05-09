@@ -87,30 +87,37 @@ namespace DimStock.Screens
 
         public static void ShowScreen(Form mdi = null, MetroForm owner = null)
         {
-            var screen = new ProductAddScreen();
-
-            if (mdi != null)
+            try
             {
-                screen.MdiParent = mdi;
-                screen.ShowInTaskbar = false;
-                screen.ControlBox = false;
-                screen.Dock = DockStyle.Fill;
-                screen.Style = MetroColorStyle.White;
-                screen.Movable = false;
-                screen.Show();
+                var screen = new ProductAddScreen();
+
+                if (mdi != null)
+                {
+                    screen.MdiParent = mdi;
+                    screen.ShowInTaskbar = false;
+                    screen.ControlBox = false;
+                    screen.Dock = DockStyle.Fill;
+                    screen.Style = MetroColorStyle.White;
+                    screen.Movable = false;
+                    screen.Show();
+                }
+                else
+                {
+                    screen.ShowInTaskbar = false;
+                    screen.ControlBox = false;
+                    screen.ShowIcon = false;
+                    screen.Style = MetroColorStyle.Blue;
+
+                    if (owner != null)
+                        screen.Owner = owner;
+
+                    screen.ShowDialog();
+                    screen.Dispose();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                screen.ShowInTaskbar = false;
-                screen.ControlBox = false;
-                screen.ShowIcon = false;
-                screen.Style = MetroColorStyle.Blue;
-
-                if (owner != null)
-                    screen.Owner = owner;
-
-                screen.ShowDialog();
-                screen.Dispose();
+                ExceptionNotifier.ShowMessage(ex);
             }
         }
         public static MetroForm GetScreen()
