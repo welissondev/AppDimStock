@@ -1,10 +1,10 @@
-﻿using System.Windows.Forms;
-using DimStock.Views;
+﻿using DimStock.AuxilyTools.AuxilyClasses;
 using DimStock.Presenters;
-using System;
-using DimStock.AuxilyTools.AuxilyClasses;
-using System.Drawing;
+using DimStock.Views;
+using MetroFramework;
 using MetroFramework.Forms;
+using System;
+using System.Windows.Forms;
 
 namespace DimStock.Screens
 {
@@ -33,27 +33,8 @@ namespace DimStock.Screens
         {
             InitializeComponent();
             InitializeEvents();
-            MaximizeScreen();
         }
 
-        private void ScreenLoad(object sender, EventArgs e)
-        {
-        }
-        private void ScreenClose(object sender, EventArgs e)
-        {
-            try
-            {
-                var homeScreen = HomeScreen.GetScreen();
-                if (homeScreen != null)
-                    homeScreen.Close();
-
-                Close();
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
-        }
         private void ShowRelatedScreen(object sender, EventArgs e)
         {
             try
@@ -67,26 +48,11 @@ namespace DimStock.Screens
             }
         }
 
-        private void MaximizeScreen()
-        {
-            try
-            {
-                Width = Screen.PrimaryScreen.Bounds.Width;
-                Height = Screen.PrimaryScreen.Bounds.Height - 40;
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
-        }
-
         private void InitializeEvents()
         {
             try
             {
-                Load += new EventHandler(ScreenLoad);
                 ButtonEnter.Click += new EventHandler(ShowRelatedScreen);
-                ButtonExit.Click += new EventHandler(ScreenClose);
             }
             catch (Exception ex)
             {
@@ -94,16 +60,21 @@ namespace DimStock.Screens
             }
         }
 
-        public static void ShowScreen()
+        public static void ShowScreen(Form mdi = null, MetroForm owner = null)
         {
             try
             {
-                var homeScreen = HomeScreen.GetScreen();
-                if (homeScreen != null)
-                    homeScreen.Hide();
-
                 var screen = new UserLoginAccessScreen();
-                screen.Show();
+
+                if (mdi != null)
+                {
+                    screen.MdiParent = mdi;
+                    screen.ShowInTaskbar = false;
+                    screen.ControlBox = false;
+                    screen.Dock = DockStyle.Fill;
+                    screen.FormBorderStyle = FormBorderStyle.None;
+                    screen.Show();
+                }
             }
             catch (Exception ex)
             {
@@ -116,11 +87,8 @@ namespace DimStock.Screens
         {
             if (new UserLoginAccessPresenter(this).ResquestAccess() == true)
             {
-                var homeScreen = HomeScreen.GetScreen();
-                if (homeScreen != null)
-                    homeScreen.Show();
-
                 Close();
+                HomeScreen.GetScreen().ShowMenuPanel();
             }
         }
     }

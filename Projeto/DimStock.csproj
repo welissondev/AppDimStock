@@ -410,6 +410,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="IconTaskBar.ico" />
+    <None Include="Resources\ImageScreenLoginBackgroud.jpg" />
     <Content Include="Resources\IconBack.png" />
     <Content Include="Resources\IconExit.png" />
     <Content Include="Resources\IconNew.png" />

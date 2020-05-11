@@ -40,8 +40,8 @@ namespace DimStock.Screens
             {
                 SetTopSideMenuIcons();
                 GetSideMenuNames();
+                ShowRelatedScreen(sender, e);
                 Mdi3dRemove.SetBevel(this, false, Color.White);
-                UserLoginAccessScreen.ShowScreen();
             }
             catch (Exception ex)
             {
@@ -72,6 +72,12 @@ namespace DimStock.Screens
         private void ShowRelatedScreen(object sender, EventArgs e)
         {
             MdiClosingAll.CloseAllForms();
+
+            if (sender.Equals(this))
+            {
+                HideMenuPanel();
+                UserLoginAccessScreen.ShowScreen(this);
+            }
 
             if (sender.Equals(ToolStripCategoyAddScreen))
                 CategoryAddScreen.ShowScreen(this);
@@ -243,6 +249,19 @@ namespace DimStock.Screens
             {
                 ExceptionNotifier.ShowMessage(ex);
             }
+        }
+
+        public void HideMenuPanel()
+        {
+            PanelMenuTop.Visible = false;
+            PanelMenuSide.Visible = false;
+            PanelSeparatorTop.Visible = false;
+        }
+        public void ShowMenuPanel()
+        {
+            PanelMenuTop.Visible = true;
+            PanelMenuSide.Visible = true;
+            PanelSeparatorTop.Visible = true;
         }
 
         public static HomeScreen GetScreen()
