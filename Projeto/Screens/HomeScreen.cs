@@ -259,9 +259,13 @@ namespace DimStock.Screens
         }
         public void ShowMenuPanel()
         {
-            PanelMenuTop.Visible = true;
-            PanelMenuSide.Visible = true;
-            PanelSeparatorTop.Visible = true;
+            BuniTransation.AnimationType = BunifuAnimatorNS.AnimationType.Transparent;
+            BuniTransation.Show(PanelMenuTop);
+
+            BuniTransation.AnimationType = BunifuAnimatorNS.AnimationType.HorizSlide;
+            BuniTransation.Show(PanelMenuSide);
+
+            BuniTransation.Show(PanelSeparatorTop);
         }
 
         public static HomeScreen GetScreen()

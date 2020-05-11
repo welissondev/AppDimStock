@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeScreen));
+            this.components = new System.ComponentModel.Container();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
@@ -62,6 +62,8 @@
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges11 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties21 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties22 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
+            BunifuAnimatorNS.Animation animation1 = new BunifuAnimatorNS.Animation();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeScreen));
             this.MenuContextRegistration = new Syncfusion.Windows.Forms.Tools.ContextMenuStripEx();
             this.ToolStripCategoyAddScreen = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripProductAddScreen = new System.Windows.Forms.ToolStripMenuItem();
@@ -100,6 +102,7 @@
             this.ButtonDimStockIcon = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.MenuContextSettings = new Syncfusion.Windows.Forms.Tools.ContextMenuStripEx();
             this.backupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.BuniTransation = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.MenuContextRegistration.SuspendLayout();
             this.PanelMenuSide.SuspendLayout();
             this.bunifuGradientPanel3.SuspendLayout();
@@ -111,6 +114,7 @@
             // 
             // MenuContextRegistration
             // 
+            this.BuniTransation.SetDecoration(this.MenuContextRegistration, BunifuAnimatorNS.DecorationType.None);
             this.MenuContextRegistration.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripCategoyAddScreen,
             this.ToolStripProductAddScreen,
@@ -190,6 +194,7 @@
             this.PanelMenuSide.Controls.Add(this.LabelSeparator);
             this.PanelMenuSide.Controls.Add(this.bunifuGradientPanel3);
             this.PanelMenuSide.Controls.Add(this.PanelMenuLower);
+            this.BuniTransation.SetDecoration(this.PanelMenuSide, BunifuAnimatorNS.DecorationType.None);
             this.PanelMenuSide.Dock = System.Windows.Forms.DockStyle.Left;
             this.PanelMenuSide.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(70)))), ((int)(((byte)(110)))));
             this.PanelMenuSide.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(70)))), ((int)(((byte)(110)))));
@@ -221,6 +226,7 @@
             borderEdges1.TopLeft = true;
             borderEdges1.TopRight = true;
             this.ButtonMenuProducts.CustomizableEdges = borderEdges1;
+            this.BuniTransation.SetDecoration(this.ButtonMenuProducts, BunifuAnimatorNS.DecorationType.None);
             this.ButtonMenuProducts.DialogResult = System.Windows.Forms.DialogResult.None;
             this.ButtonMenuProducts.DisabledBorderColor = System.Drawing.Color.Empty;
             this.ButtonMenuProducts.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -269,6 +275,7 @@
             // bunifuSeparator6
             // 
             this.bunifuSeparator6.BackColor = System.Drawing.Color.Transparent;
+            this.BuniTransation.SetDecoration(this.bunifuSeparator6, BunifuAnimatorNS.DecorationType.None);
             this.bunifuSeparator6.Dock = System.Windows.Forms.DockStyle.Top;
             this.bunifuSeparator6.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))));
             this.bunifuSeparator6.LineThickness = 1;
@@ -298,6 +305,7 @@
             borderEdges2.TopLeft = true;
             borderEdges2.TopRight = true;
             this.ButtonMenuStocks.CustomizableEdges = borderEdges2;
+            this.BuniTransation.SetDecoration(this.ButtonMenuStocks, BunifuAnimatorNS.DecorationType.None);
             this.ButtonMenuStocks.DialogResult = System.Windows.Forms.DialogResult.None;
             this.ButtonMenuStocks.DisabledBorderColor = System.Drawing.Color.Empty;
             this.ButtonMenuStocks.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -346,6 +354,7 @@
             // bunifuSeparator5
             // 
             this.bunifuSeparator5.BackColor = System.Drawing.Color.Transparent;
+            this.BuniTransation.SetDecoration(this.bunifuSeparator5, BunifuAnimatorNS.DecorationType.None);
             this.bunifuSeparator5.Dock = System.Windows.Forms.DockStyle.Top;
             this.bunifuSeparator5.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))));
             this.bunifuSeparator5.LineThickness = 1;
@@ -375,6 +384,7 @@
             borderEdges3.TopLeft = true;
             borderEdges3.TopRight = true;
             this.ButtonMenuMovements.CustomizableEdges = borderEdges3;
+            this.BuniTransation.SetDecoration(this.ButtonMenuMovements, BunifuAnimatorNS.DecorationType.None);
             this.ButtonMenuMovements.DialogResult = System.Windows.Forms.DialogResult.None;
             this.ButtonMenuMovements.DisabledBorderColor = System.Drawing.Color.Empty;
             this.ButtonMenuMovements.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -423,6 +433,7 @@
             // bunifuSeparator4
             // 
             this.bunifuSeparator4.BackColor = System.Drawing.Color.Transparent;
+            this.BuniTransation.SetDecoration(this.bunifuSeparator4, BunifuAnimatorNS.DecorationType.None);
             this.bunifuSeparator4.Dock = System.Windows.Forms.DockStyle.Top;
             this.bunifuSeparator4.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))));
             this.bunifuSeparator4.LineThickness = 1;
@@ -452,6 +463,7 @@
             borderEdges4.TopLeft = true;
             borderEdges4.TopRight = true;
             this.ButtonMenuDestinations.CustomizableEdges = borderEdges4;
+            this.BuniTransation.SetDecoration(this.ButtonMenuDestinations, BunifuAnimatorNS.DecorationType.None);
             this.ButtonMenuDestinations.DialogResult = System.Windows.Forms.DialogResult.None;
             this.ButtonMenuDestinations.DisabledBorderColor = System.Drawing.Color.Empty;
             this.ButtonMenuDestinations.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -500,6 +512,7 @@
             // bunifuSeparator3
             // 
             this.bunifuSeparator3.BackColor = System.Drawing.Color.Transparent;
+            this.BuniTransation.SetDecoration(this.bunifuSeparator3, BunifuAnimatorNS.DecorationType.None);
             this.bunifuSeparator3.Dock = System.Windows.Forms.DockStyle.Top;
             this.bunifuSeparator3.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))));
             this.bunifuSeparator3.LineThickness = 1;
@@ -529,6 +542,7 @@
             borderEdges5.TopLeft = true;
             borderEdges5.TopRight = true;
             this.ButtonMenuUsers.CustomizableEdges = borderEdges5;
+            this.BuniTransation.SetDecoration(this.ButtonMenuUsers, BunifuAnimatorNS.DecorationType.None);
             this.ButtonMenuUsers.DialogResult = System.Windows.Forms.DialogResult.None;
             this.ButtonMenuUsers.DisabledBorderColor = System.Drawing.Color.Empty;
             this.ButtonMenuUsers.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -577,6 +591,7 @@
             // bunifuSeparator2
             // 
             this.bunifuSeparator2.BackColor = System.Drawing.Color.Transparent;
+            this.BuniTransation.SetDecoration(this.bunifuSeparator2, BunifuAnimatorNS.DecorationType.None);
             this.bunifuSeparator2.Dock = System.Windows.Forms.DockStyle.Top;
             this.bunifuSeparator2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))));
             this.bunifuSeparator2.LineThickness = 1;
@@ -606,6 +621,7 @@
             borderEdges6.TopLeft = true;
             borderEdges6.TopRight = true;
             this.ButtonMenuSupplies.CustomizableEdges = borderEdges6;
+            this.BuniTransation.SetDecoration(this.ButtonMenuSupplies, BunifuAnimatorNS.DecorationType.None);
             this.ButtonMenuSupplies.DialogResult = System.Windows.Forms.DialogResult.None;
             this.ButtonMenuSupplies.DisabledBorderColor = System.Drawing.Color.Empty;
             this.ButtonMenuSupplies.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -654,6 +670,7 @@
             // bunifuSeparator1
             // 
             this.bunifuSeparator1.BackColor = System.Drawing.Color.Transparent;
+            this.BuniTransation.SetDecoration(this.bunifuSeparator1, BunifuAnimatorNS.DecorationType.None);
             this.bunifuSeparator1.Dock = System.Windows.Forms.DockStyle.Top;
             this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))));
             this.bunifuSeparator1.LineThickness = 1;
@@ -684,6 +701,7 @@
             borderEdges7.TopLeft = true;
             borderEdges7.TopRight = true;
             this.ButtonMenuCategorys.CustomizableEdges = borderEdges7;
+            this.BuniTransation.SetDecoration(this.ButtonMenuCategorys, BunifuAnimatorNS.DecorationType.None);
             this.ButtonMenuCategorys.DialogResult = System.Windows.Forms.DialogResult.None;
             this.ButtonMenuCategorys.DisabledBorderColor = System.Drawing.Color.Empty;
             this.ButtonMenuCategorys.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -731,6 +749,7 @@
             // 
             // LabelSeparator
             // 
+            this.BuniTransation.SetDecoration(this.LabelSeparator, BunifuAnimatorNS.DecorationType.None);
             this.LabelSeparator.Dock = System.Windows.Forms.DockStyle.Top;
             this.LabelSeparator.Location = new System.Drawing.Point(0, 34);
             this.LabelSeparator.Name = "LabelSeparator";
@@ -742,6 +761,7 @@
             this.bunifuGradientPanel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel3.BackgroundImage")));
             this.bunifuGradientPanel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuGradientPanel3.Controls.Add(this.ButtonMenuExtender);
+            this.BuniTransation.SetDecoration(this.bunifuGradientPanel3, BunifuAnimatorNS.DecorationType.None);
             this.bunifuGradientPanel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.bunifuGradientPanel3.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
             this.bunifuGradientPanel3.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
@@ -758,6 +778,7 @@
             this.ButtonMenuExtender.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ButtonMenuExtender.BackColor = System.Drawing.Color.Transparent;
             this.ButtonMenuExtender.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BuniTransation.SetDecoration(this.ButtonMenuExtender, BunifuAnimatorNS.DecorationType.None);
             this.ButtonMenuExtender.Location = new System.Drawing.Point(171, 5);
             this.ButtonMenuExtender.Name = "ButtonMenuExtender";
             this.ButtonMenuExtender.Size = new System.Drawing.Size(19, 25);
@@ -771,6 +792,7 @@
             this.PanelMenuLower.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PanelMenuLower.Controls.Add(this.LinkLowerTerm);
             this.PanelMenuLower.Controls.Add(this.LinkLowerDiarioExcel);
+            this.BuniTransation.SetDecoration(this.PanelMenuLower, BunifuAnimatorNS.DecorationType.None);
             this.PanelMenuLower.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.PanelMenuLower.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
             this.PanelMenuLower.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
@@ -785,6 +807,7 @@
             // LinkLowerTerm
             // 
             this.LinkLowerTerm.AutoSize = true;
+            this.BuniTransation.SetDecoration(this.LinkLowerTerm, BunifuAnimatorNS.DecorationType.None);
             this.LinkLowerTerm.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
             this.LinkLowerTerm.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.LinkLowerTerm.LinkColor = System.Drawing.Color.White;
@@ -798,6 +821,7 @@
             // LinkLowerDiarioExcel
             // 
             this.LinkLowerDiarioExcel.AutoSize = true;
+            this.BuniTransation.SetDecoration(this.LinkLowerDiarioExcel, BunifuAnimatorNS.DecorationType.None);
             this.LinkLowerDiarioExcel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
             this.LinkLowerDiarioExcel.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.LinkLowerDiarioExcel.LinkColor = System.Drawing.Color.Chartreuse;
@@ -813,6 +837,7 @@
             this.PanelSeparatorTop.BackColor = System.Drawing.Color.Transparent;
             this.PanelSeparatorTop.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PanelSeparatorTop.BackgroundImage")));
             this.PanelSeparatorTop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BuniTransation.SetDecoration(this.PanelSeparatorTop, BunifuAnimatorNS.DecorationType.None);
             this.PanelSeparatorTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelSeparatorTop.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
             this.PanelSeparatorTop.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
@@ -834,6 +859,7 @@
             this.PanelMenuTop.Controls.Add(this.bunifuSeparator7);
             this.PanelMenuTop.Controls.Add(this.ButtonMenuGeneralRegistrations);
             this.PanelMenuTop.Controls.Add(this.ButtonDimStockIcon);
+            this.BuniTransation.SetDecoration(this.PanelMenuTop, BunifuAnimatorNS.DecorationType.None);
             this.PanelMenuTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelMenuTop.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(70)))), ((int)(((byte)(110)))));
             this.PanelMenuTop.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(70)))), ((int)(((byte)(110)))));
@@ -864,6 +890,7 @@
             borderEdges8.TopLeft = true;
             borderEdges8.TopRight = true;
             this.ButtonMenuSettings.CustomizableEdges = borderEdges8;
+            this.BuniTransation.SetDecoration(this.ButtonMenuSettings, BunifuAnimatorNS.DecorationType.None);
             this.ButtonMenuSettings.DialogResult = System.Windows.Forms.DialogResult.None;
             this.ButtonMenuSettings.DisabledBorderColor = System.Drawing.Color.Empty;
             this.ButtonMenuSettings.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -912,6 +939,7 @@
             // bunifuSeparator8
             // 
             this.bunifuSeparator8.BackColor = System.Drawing.Color.Transparent;
+            this.BuniTransation.SetDecoration(this.bunifuSeparator8, BunifuAnimatorNS.DecorationType.None);
             this.bunifuSeparator8.Dock = System.Windows.Forms.DockStyle.Left;
             this.bunifuSeparator8.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.bunifuSeparator8.LineThickness = 1;
@@ -941,6 +969,7 @@
             borderEdges9.TopLeft = true;
             borderEdges9.TopRight = true;
             this.ButtonMenuTechSupport.CustomizableEdges = borderEdges9;
+            this.BuniTransation.SetDecoration(this.ButtonMenuTechSupport, BunifuAnimatorNS.DecorationType.None);
             this.ButtonMenuTechSupport.DialogResult = System.Windows.Forms.DialogResult.None;
             this.ButtonMenuTechSupport.DisabledBorderColor = System.Drawing.Color.Empty;
             this.ButtonMenuTechSupport.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -989,6 +1018,7 @@
             // bunifuSeparator7
             // 
             this.bunifuSeparator7.BackColor = System.Drawing.Color.Transparent;
+            this.BuniTransation.SetDecoration(this.bunifuSeparator7, BunifuAnimatorNS.DecorationType.None);
             this.bunifuSeparator7.Dock = System.Windows.Forms.DockStyle.Left;
             this.bunifuSeparator7.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.bunifuSeparator7.LineThickness = 1;
@@ -1018,6 +1048,7 @@
             borderEdges10.TopLeft = true;
             borderEdges10.TopRight = true;
             this.ButtonMenuGeneralRegistrations.CustomizableEdges = borderEdges10;
+            this.BuniTransation.SetDecoration(this.ButtonMenuGeneralRegistrations, BunifuAnimatorNS.DecorationType.None);
             this.ButtonMenuGeneralRegistrations.DialogResult = System.Windows.Forms.DialogResult.None;
             this.ButtonMenuGeneralRegistrations.DisabledBorderColor = System.Drawing.Color.Empty;
             this.ButtonMenuGeneralRegistrations.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -1083,6 +1114,7 @@
             borderEdges11.TopLeft = true;
             borderEdges11.TopRight = true;
             this.ButtonDimStockIcon.CustomizableEdges = borderEdges11;
+            this.BuniTransation.SetDecoration(this.ButtonDimStockIcon, BunifuAnimatorNS.DecorationType.None);
             this.ButtonDimStockIcon.DialogResult = System.Windows.Forms.DialogResult.None;
             this.ButtonDimStockIcon.DisabledBorderColor = System.Drawing.Color.Empty;
             this.ButtonDimStockIcon.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -1130,6 +1162,7 @@
             // 
             // MenuContextSettings
             // 
+            this.BuniTransation.SetDecoration(this.MenuContextSettings, BunifuAnimatorNS.DecorationType.None);
             this.MenuContextSettings.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.backupToolStripMenuItem});
             this.MenuContextSettings.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(236)))), ((int)(((byte)(249)))));
@@ -1144,6 +1177,30 @@
             this.backupToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.backupToolStripMenuItem.Text = "Backup";
             // 
+            // BuniTransation
+            // 
+            this.BuniTransation.AnimationType = BunifuAnimatorNS.AnimationType.Custom;
+            this.BuniTransation.Cursor = null;
+            animation1.AnimateOnlyDifferences = true;
+            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
+            animation1.LeafCoeff = 0F;
+            animation1.MaxTime = 1F;
+            animation1.MinTime = 0F;
+            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
+            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
+            animation1.MosaicSize = 0;
+            animation1.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            animation1.RotateCoeff = 0F;
+            animation1.RotateLimit = 0F;
+            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
+            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
+            animation1.TimeCoeff = 0F;
+            animation1.TransparencyCoeff = 0F;
+            this.BuniTransation.DefaultAnimation = animation1;
+            this.BuniTransation.Interval = 15;
+            this.BuniTransation.MaxAnimationTime = 2000;
+            this.BuniTransation.TimeStep = 0.01F;
+            // 
             // HomeScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1152,6 +1209,7 @@
             this.Controls.Add(this.PanelMenuSide);
             this.Controls.Add(this.PanelSeparatorTop);
             this.Controls.Add(this.PanelMenuTop);
+            this.BuniTransation.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
@@ -1209,6 +1267,7 @@
         private System.Windows.Forms.LinkLabel LinkLowerDiarioExcel;
         private Syncfusion.Windows.Forms.Tools.ContextMenuStripEx MenuContextSettings;
         private System.Windows.Forms.ToolStripMenuItem backupToolStripMenuItem;
+        private BunifuAnimatorNS.BunifuTransition BuniTransation;
     }
 }
 
