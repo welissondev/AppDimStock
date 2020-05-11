@@ -260,12 +260,11 @@ namespace DimStock.Screens
         public void ShowMenuPanel()
         {
             BuniTransation.AnimationType = BunifuAnimatorNS.AnimationType.Transparent;
-            BuniTransation.Show(PanelMenuTop);
 
-            BuniTransation.AnimationType = BunifuAnimatorNS.AnimationType.HorizSlide;
+            BuniTransation.Show(PanelMenuTop);
+            BuniTransation.Show(PanelSeparatorTop);
             BuniTransation.Show(PanelMenuSide);
 
-            BuniTransation.Show(PanelSeparatorTop);
         }
 
         public static HomeScreen GetScreen()

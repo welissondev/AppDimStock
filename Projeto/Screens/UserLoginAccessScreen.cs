@@ -73,8 +73,8 @@ namespace DimStock.Screens
                     screen.ControlBox = false;
                     screen.Dock = DockStyle.Fill;
                     screen.FormBorderStyle = FormBorderStyle.None;
-                    screen.FormTransation.AnimationType = BunifuAnimatorNS.AnimationType.VertSlide;
-                    screen.FormTransation.Show(screen);
+                    screen.BuniTransation.AnimationType = BunifuAnimatorNS.AnimationType.Transparent;
+                    screen.BuniTransation.Show(screen);
                     screen.BackgroundImage = Properties.Resources.ImageScreenLoginBackgroud;
                 }
             }

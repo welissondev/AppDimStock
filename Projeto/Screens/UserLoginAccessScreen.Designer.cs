@@ -49,7 +49,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.TextLogin = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             this.TextPassWord = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
-            this.FormTransation = new BunifuAnimatorNS.BunifuTransition(this.components);
+            this.BuniTransation = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.bunifuCards1.SuspendLayout();
             this.bunifuGradientPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -65,7 +65,7 @@
             this.bunifuCards1.Controls.Add(this.bunifuGradientPanel1);
             this.bunifuCards1.Controls.Add(this.TextLogin);
             this.bunifuCards1.Controls.Add(this.TextPassWord);
-            this.FormTransation.SetDecoration(this.bunifuCards1, BunifuAnimatorNS.DecorationType.None);
+            this.BuniTransation.SetDecoration(this.bunifuCards1, BunifuAnimatorNS.DecorationType.None);
             this.bunifuCards1.LeftSahddow = true;
             this.bunifuCards1.Location = new System.Drawing.Point(218, 106);
             this.bunifuCards1.Name = "bunifuCards1";
@@ -93,7 +93,7 @@
             borderEdges1.TopLeft = true;
             borderEdges1.TopRight = true;
             this.ButtonEnter.CustomizableEdges = borderEdges1;
-            this.FormTransation.SetDecoration(this.ButtonEnter, BunifuAnimatorNS.DecorationType.None);
+            this.BuniTransation.SetDecoration(this.ButtonEnter, BunifuAnimatorNS.DecorationType.None);
             this.ButtonEnter.DialogResult = System.Windows.Forms.DialogResult.None;
             this.ButtonEnter.DisabledBorderColor = System.Drawing.Color.Empty;
             this.ButtonEnter.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -144,7 +144,7 @@
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuGradientPanel1.Controls.Add(this.label2);
             this.bunifuGradientPanel1.Controls.Add(this.label1);
-            this.FormTransation.SetDecoration(this.bunifuGradientPanel1, BunifuAnimatorNS.DecorationType.None);
+            this.BuniTransation.SetDecoration(this.bunifuGradientPanel1, BunifuAnimatorNS.DecorationType.None);
             this.bunifuGradientPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
             this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(88)))), ((int)(((byte)(137)))));
@@ -159,7 +159,7 @@
             // label2
             // 
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.FormTransation.SetDecoration(this.label2, BunifuAnimatorNS.DecorationType.None);
+            this.BuniTransation.SetDecoration(this.label2, BunifuAnimatorNS.DecorationType.None);
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(25, 73);
@@ -173,7 +173,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.FormTransation.SetDecoration(this.label1, BunifuAnimatorNS.DecorationType.None);
+            this.BuniTransation.SetDecoration(this.label1, BunifuAnimatorNS.DecorationType.None);
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 20F);
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(133, 41);
@@ -199,7 +199,7 @@
             this.TextLogin.BorderThickness = 1;
             this.TextLogin.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.TextLogin.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.FormTransation.SetDecoration(this.TextLogin, BunifuAnimatorNS.DecorationType.None);
+            this.BuniTransation.SetDecoration(this.TextLogin, BunifuAnimatorNS.DecorationType.None);
             this.TextLogin.DefaultFont = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
             this.TextLogin.DefaultText = "";
             this.TextLogin.FillColor = System.Drawing.Color.White;
@@ -273,7 +273,7 @@
             this.TextPassWord.BorderThickness = 1;
             this.TextPassWord.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.TextPassWord.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.FormTransation.SetDecoration(this.TextPassWord, BunifuAnimatorNS.DecorationType.None);
+            this.BuniTransation.SetDecoration(this.TextPassWord, BunifuAnimatorNS.DecorationType.None);
             this.TextPassWord.DefaultFont = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
             this.TextPassWord.DefaultText = "";
             this.TextPassWord.FillColor = System.Drawing.Color.White;
@@ -330,10 +330,10 @@
             this.TextPassWord.UseSystemPasswordChar = false;
             this.TextPassWord.WordWrap = true;
             // 
-            // FormTransation
+            // BuniTransation
             // 
-            this.FormTransation.AnimationType = BunifuAnimatorNS.AnimationType.Transparent;
-            this.FormTransation.Cursor = null;
+            this.BuniTransation.AnimationType = BunifuAnimatorNS.AnimationType.Transparent;
+            this.BuniTransation.Cursor = null;
             animation1.AnimateOnlyDifferences = true;
             animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
             animation1.LeafCoeff = 0F;
@@ -349,10 +349,10 @@
             animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
             animation1.TimeCoeff = 0F;
             animation1.TransparencyCoeff = 1F;
-            this.FormTransation.DefaultAnimation = animation1;
-            this.FormTransation.Interval = 15;
-            this.FormTransation.MaxAnimationTime = 2000;
-            this.FormTransation.TimeStep = 0.01F;
+            this.BuniTransation.DefaultAnimation = animation1;
+            this.BuniTransation.Interval = 15;
+            this.BuniTransation.MaxAnimationTime = 2000;
+            this.BuniTransation.TimeStep = 0.01F;
             // 
             // UserLoginAccessScreen
             // 
@@ -361,7 +361,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(943, 665);
             this.Controls.Add(this.bunifuCards1);
-            this.FormTransation.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
+            this.BuniTransation.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(959, 667);
@@ -381,7 +381,7 @@
         private Bunifu.Framework.UI.BunifuCards bunifuCards1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private BunifuAnimatorNS.BunifuTransition FormTransation;
+        private BunifuAnimatorNS.BunifuTransition BuniTransation;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton ButtonEnter;
     }
 }
