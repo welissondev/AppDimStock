@@ -123,11 +123,18 @@ namespace DimStock.Screens
 
         private void InitializeEvents()
         {
-            Resize += new EventHandler(ScreenResize);
-            ButtonSave.Click += new EventHandler(PresenterUpdate);
-            ButtonDelete.Click += new EventHandler(PresenterDelete);
-            ButtonClearView.Click += new EventHandler(PresenterClear);
-            ButtonClose.Click += new EventHandler(ScreenClose);
+            try
+            {
+                Resize += new EventHandler(ScreenResize);
+                ButtonSave.Click += new EventHandler(PresenterUpdate);
+                ButtonDelete.Click += new EventHandler(PresenterDelete);
+                ButtonClearView.Click += new EventHandler(PresenterClear);
+                ButtonClose.Click += new EventHandler(ScreenClose);
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
         }
 
         //Eventos para chamada dos métodos do apresentador
