@@ -88,7 +88,7 @@ namespace DimStock.Screens
             if (new UserLoginAccessPresenter(this).ResquestAccess() == true)
             {
                 Close();
-                HomeScreen.GetScreen().ShowMenuPanel();
+                HomeScreen.GetScreen().ShowMenuPanels();
             }
         }
     }

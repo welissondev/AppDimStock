@@ -52,7 +52,7 @@ namespace DimStock.Screens
         {
             try
             {
-                PanelMenuSide.SuspendLayout();
+                Refresh();
 
                 if (Width < 1000)
                 {
@@ -76,7 +76,7 @@ namespace DimStock.Screens
 
             if (sender.Equals(this))
             {
-                HideMenuPanel();
+                HideMenuPanels();
                 UserLoginAccessScreen.ShowScreen(this);
             }
 
@@ -251,25 +251,17 @@ namespace DimStock.Screens
             }
         }
 
-        public void HideMenuPanel()
+        public void HideMenuPanels()
         {
             PanelMenuTop.Visible = false;
             PanelMenuSide.Visible = false;
             PanelSeparatorTop.Visible = false;
         }
-        public void ShowMenuPanel()
+        public void ShowMenuPanels()
         {
             PanelMenuTop.Visible = true;
             PanelMenuSide.Visible = true;
             PanelSeparatorTop.Visible = true;
-        }
-
-        public void PanelMenuSideSuspendLayout()
-        {
-            foreach(Control control in PanelMenuSide.Controls)
-            {
-                control.SuspendLayout();
-            }
         }
 
         public static HomeScreen GetScreen()
