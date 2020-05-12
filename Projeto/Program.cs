@@ -18,7 +18,7 @@ namespace DimStock.Screens
 
             if (AppSettingModel.GetAppSettingsState() == true)
             {
-                Application.Run(new DestinationListingScreen());
+                Application.Run(new HomeScreen());
             }
             else
             {

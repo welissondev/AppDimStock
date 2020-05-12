@@ -73,7 +73,7 @@
             this.BuniCard.PanelColor = System.Drawing.Color.Empty;
             this.BuniCard.ShadowDept = 2;
             this.BuniCard.ShadowTopLeftVisible = false;
-            this.BuniCard.Size = new System.Drawing.Size(704, 259);
+            this.BuniCard.Size = new System.Drawing.Size(988, 259);
             this.BuniCard.TabIndex = 242;
             // 
             // bunifuSeparator1
@@ -85,7 +85,7 @@
             this.bunifuSeparator1.LineThickness = 1;
             this.bunifuSeparator1.Location = new System.Drawing.Point(30, 170);
             this.bunifuSeparator1.Name = "bunifuSeparator1";
-            this.bunifuSeparator1.Size = new System.Drawing.Size(639, 10);
+            this.bunifuSeparator1.Size = new System.Drawing.Size(923, 10);
             this.bunifuSeparator1.TabIndex = 248;
             this.bunifuSeparator1.Transparency = 100;
             this.bunifuSeparator1.Vertical = false;
@@ -129,7 +129,7 @@
             this.ButtonClose.IdleIconLeftImage = null;
             this.ButtonClose.IdleIconRightImage = null;
             this.ButtonClose.IndicateFocus = false;
-            this.ButtonClose.Location = new System.Drawing.Point(525, 191);
+            this.ButtonClose.Location = new System.Drawing.Point(809, 191);
             this.ButtonClose.Name = "ButtonClose";
             stateProperties1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties1.BorderRadius = 3;
@@ -284,7 +284,7 @@
             this.TextLocationDescription.SelectionLength = 0;
             this.TextLocationDescription.SelectionStart = 0;
             this.TextLocationDescription.ShortcutsEnabled = true;
-            this.TextLocationDescription.Size = new System.Drawing.Size(639, 35);
+            this.TextLocationDescription.Size = new System.Drawing.Size(923, 35);
             this.TextLocationDescription.Style = Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox._Style.Bunifu;
             this.TextLocationDescription.TabIndex = 0;
             this.TextLocationDescription.Tag = "required";
@@ -441,12 +441,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(750, 558);
+            this.ClientSize = new System.Drawing.Size(1034, 558);
             this.Controls.Add(this.BuniCard);
             this.MinimumSize = new System.Drawing.Size(750, 558);
             this.Name = "DestinationAddScreen";
             this.Text = "Cadastro de Destinos";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.BuniCard.ResumeLayout(false);
             this.BuniCard.PerformLayout();
             this.ResumeLayout(false);
