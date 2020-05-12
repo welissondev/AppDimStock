@@ -29,7 +29,7 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"INSERT INTO StockDestination
+                sql = @"INSERT INTO Destination
                 (LocationDescription)VALUES(@LocationDescription)";
 
                 dataBase.ClearParameter();
@@ -57,7 +57,7 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"UPDATE StockDestination SET 
+                sql = @"UPDATE Destination SET 
                 LocationDescription = @LocationDescription WHERE Id = @Id";
 
                 dataBase.ClearParameter();
@@ -113,7 +113,7 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"SELECT * FROM StockDestination 
+                sql = @"SELECT * FROM Destination 
                 WHERE Id = @Id";
 
                 dataBase.ClearParameter();
@@ -173,7 +173,7 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"SELECT * From StockDestination";
+                sql = @"SELECT * From Destination";
                 searchResult = dataBase.ExecuteDataAdapter(sql);
             }
 
