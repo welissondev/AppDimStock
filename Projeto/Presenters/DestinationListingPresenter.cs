@@ -43,6 +43,7 @@ namespace DimStock.Presenters
         public void Clear()
         {
             view.Id = 0;
+            view.SearchLocationDescription = string.Empty;
             view.LocationDescription = string.Empty;
 
             SearchData();
