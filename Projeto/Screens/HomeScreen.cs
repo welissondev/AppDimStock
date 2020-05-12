@@ -27,6 +27,9 @@ namespace DimStock.Screens
                 InitializeComponent();
                 InitializeEvents();
                 SetScreen();
+                SetTopSideMenuIcons();
+                GetSideMenuNames();
+                Mdi3dRemove.SetBevel(this, false, Color.White);
             }
             catch (Exception ex)
             {
@@ -38,10 +41,7 @@ namespace DimStock.Screens
         {
             try
             {
-                SetTopSideMenuIcons();
-                GetSideMenuNames();
                 ShowRelatedScreen(sender, e);
-                Mdi3dRemove.SetBevel(this, false, Color.White);
             }
             catch (Exception ex)
             {
@@ -52,6 +52,8 @@ namespace DimStock.Screens
         {
             try
             {
+                PanelMenuSide.SuspendLayout();
+
                 if (Width < 1000)
                 {
                     if (PanelMenuSide.Width >= 200)
@@ -68,7 +70,6 @@ namespace DimStock.Screens
                 ExceptionNotifier.ShowMessage(ex);
             }
         }
-
         private void ShowRelatedScreen(object sender, EventArgs e)
         {
             MdiClosingAll.CloseAllForms();
@@ -113,7 +114,6 @@ namespace DimStock.Screens
                 ExceptionNotifier.ShowMessage(ex);
             }
         }
-
         private void MenuExtenter(object sender, EventArgs e)
         {
             try
@@ -259,12 +259,17 @@ namespace DimStock.Screens
         }
         public void ShowMenuPanel()
         {
-            BuniTransation.AnimationType = BunifuAnimatorNS.AnimationType.Transparent;
+            PanelMenuTop.Visible = true;
+            PanelMenuSide.Visible = true;
+            PanelSeparatorTop.Visible = true;
+        }
 
-            BuniTransation.Show(PanelMenuTop);
-            BuniTransation.Show(PanelSeparatorTop);
-            BuniTransation.Show(PanelMenuSide);
-
+        public void PanelMenuSideSuspendLayout()
+        {
+            foreach(Control control in PanelMenuSide.Controls)
+            {
+                control.SuspendLayout();
+            }
         }
 
         public static HomeScreen GetScreen()
