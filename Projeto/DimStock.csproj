@@ -223,6 +223,12 @@
     <Compile Include="Screens\CategoryListingScreen.Designer.cs">
       <DependentUpon>CategoryListingScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Screens\DestinationListingScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\DestinationListingScreen.Designer.cs">
+      <DependentUpon>DestinationListingScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="Screens\BackupSaveScreen.cs">
       <SubType>Form</SubType>
@@ -326,6 +332,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\CategoryListingScreen.resx">
       <DependentUpon>CategoryListingScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\DestinationListingScreen.resx">
+      <DependentUpon>DestinationListingScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\HomeScreen.resx">
       <DependentUpon>HomeScreen.cs</DependentUpon>
