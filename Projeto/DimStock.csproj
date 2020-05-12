@@ -302,6 +302,7 @@
     </Compile>
     <Compile Include="Views\ICategoryAddView.cs" />
     <Compile Include="Views\ICategoryListingView.cs" />
+    <Compile Include="Views\IDestinationAddView.cs" />
     <Compile Include="Views\IProductAddView.cs" />
     <Compile Include="Views\IProductListingView.cs" />
     <Compile Include="Views\IUserLoginAddView.cs" />
