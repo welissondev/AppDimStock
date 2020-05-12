@@ -67,7 +67,7 @@
             this.ToolStripProductAddScreen = new System.Windows.Forms.ToolStripMenuItem();
             this.usuáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.movimentaçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.destinoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripDestinationAddScreen = new System.Windows.Forms.ToolStripMenuItem();
             this.fornecedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripUserAddScreen = new System.Windows.Forms.ToolStripMenuItem();
             this.PanelMenuSide = new Bunifu.Framework.UI.BunifuGradientPanel();
@@ -119,53 +119,53 @@
             this.ToolStripUserAddScreen});
             this.MenuContextRegistration.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(236)))), ((int)(((byte)(249)))));
             this.MenuContextRegistration.Name = "MenuContextRegistration";
-            this.MenuContextRegistration.Size = new System.Drawing.Size(135, 114);
+            this.MenuContextRegistration.Size = new System.Drawing.Size(181, 136);
             this.MenuContextRegistration.Style = Syncfusion.Windows.Forms.Tools.ContextMenuStripEx.ContextMenuStyle.Default;
             this.MenuContextRegistration.ThemeName = "Default";
             // 
             // ToolStripCategoyAddScreen
             // 
             this.ToolStripCategoyAddScreen.Name = "ToolStripCategoyAddScreen";
-            this.ToolStripCategoyAddScreen.Size = new System.Drawing.Size(134, 22);
+            this.ToolStripCategoyAddScreen.Size = new System.Drawing.Size(180, 22);
             this.ToolStripCategoyAddScreen.Text = "Categoria";
             // 
             // ToolStripProductAddScreen
             // 
             this.ToolStripProductAddScreen.Name = "ToolStripProductAddScreen";
-            this.ToolStripProductAddScreen.Size = new System.Drawing.Size(134, 22);
+            this.ToolStripProductAddScreen.Size = new System.Drawing.Size(180, 22);
             this.ToolStripProductAddScreen.Text = "Produto";
             // 
             // usuáriosToolStripMenuItem
             // 
             this.usuáriosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.movimentaçãoToolStripMenuItem,
-            this.destinoToolStripMenuItem});
+            this.ToolStripDestinationAddScreen});
             this.usuáriosToolStripMenuItem.Name = "usuáriosToolStripMenuItem";
-            this.usuáriosToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.usuáriosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.usuáriosToolStripMenuItem.Text = "Estoque";
             // 
             // movimentaçãoToolStripMenuItem
             // 
             this.movimentaçãoToolStripMenuItem.Name = "movimentaçãoToolStripMenuItem";
-            this.movimentaçãoToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.movimentaçãoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.movimentaçãoToolStripMenuItem.Text = "Movimentação";
             // 
-            // destinoToolStripMenuItem
+            // ToolStripDestinationAddScreen
             // 
-            this.destinoToolStripMenuItem.Name = "destinoToolStripMenuItem";
-            this.destinoToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
-            this.destinoToolStripMenuItem.Text = "Destino";
+            this.ToolStripDestinationAddScreen.Name = "ToolStripDestinationAddScreen";
+            this.ToolStripDestinationAddScreen.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripDestinationAddScreen.Text = "Destino";
             // 
             // fornecedoresToolStripMenuItem
             // 
             this.fornecedoresToolStripMenuItem.Name = "fornecedoresToolStripMenuItem";
-            this.fornecedoresToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.fornecedoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.fornecedoresToolStripMenuItem.Text = "Fornecedor";
             // 
             // ToolStripUserAddScreen
             // 
             this.ToolStripUserAddScreen.Name = "ToolStripUserAddScreen";
-            this.ToolStripUserAddScreen.Size = new System.Drawing.Size(134, 22);
+            this.ToolStripUserAddScreen.Size = new System.Drawing.Size(180, 22);
             this.ToolStripUserAddScreen.Text = "Usuário";
             // 
             // PanelMenuSide
@@ -1177,7 +1177,7 @@
         private System.Windows.Forms.ToolStripMenuItem usuáriosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fornecedoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem movimentaçãoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem destinoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripDestinationAddScreen;
         private System.Windows.Forms.ToolStripMenuItem ToolStripUserAddScreen;
         private Bunifu.Framework.UI.BunifuGradientPanel PanelMenuTop;
         private System.Windows.Forms.PictureBox ButtonMenuExtender;
