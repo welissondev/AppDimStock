@@ -195,6 +195,7 @@
     <Compile Include="Presenters\CategoryAddPresenter.cs" />
     <Compile Include="Presenters\CategoryListingPresenter.cs" />
     <Compile Include="Presenters\DestinationAddPresenter.cs" />
+    <Compile Include="Presenters\DestinationListingPresenter.cs" />
     <Compile Include="Presenters\ProductAddPresenter.cs" />
     <Compile Include="Presenters\ProductListingPresenter.cs" />
     <Compile Include="Presenters\UserLoginAddPresenter.cs" />
