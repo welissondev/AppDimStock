@@ -19,7 +19,7 @@ namespace DimStock.Presenters
             var destination = new DestinationModel()
             {
                 Id = view.Id,
-                Location = view.Location
+                LocationDescription = view.LocationDescription
             };
 
             if (view.Id == 0)
@@ -53,7 +53,7 @@ namespace DimStock.Presenters
         public void Clear()
         {
             view.Id = 0;
-            view.Location = string.Empty;
+            view.LocationDescription = string.Empty;
         }
     }
 }

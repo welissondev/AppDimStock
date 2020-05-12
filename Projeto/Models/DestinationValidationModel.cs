@@ -8,7 +8,7 @@ namespace DimStock.Models
         {
             var validationStatus = false;
 
-            if (destination.Location == string.Empty)
+            if (destination.LocationDescription == string.Empty)
             {
                 MessageNotifier.Show("O destino não foi " +
                 "informado!", "Obrigatório", "?");
@@ -31,7 +31,7 @@ namespace DimStock.Models
         {
             var validationStatus = false;
 
-            if (destination.Location == string.Empty)
+            if (destination.LocationDescription == string.Empty)
             {
                 MessageNotifier.Show("O destino não foi " +
                 "informado!", "Obrigatório", "?");

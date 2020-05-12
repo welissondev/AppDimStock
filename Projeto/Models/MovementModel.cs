@@ -241,7 +241,7 @@ namespace DimStock.Models
                             Destination.Id = int.Parse(reader["Destination.Id"].ToString());
 
                         if (reader["Destination.Location"] != DBNull.Value)
-                            Destination.Location = reader["Location"].ToString();
+                            Destination.LocationDescription = reader["Location"].ToString();
 
                         actionResult = true;
                     }

@@ -10,7 +10,7 @@ namespace DimStock.Models
     public partial class DestinationModel
     {
         public int Id { get; set; }
-        public string Location { get; set; }
+        public string LocationDescription { get; set; }
     }
 
     public partial class DestinationModel
@@ -30,10 +30,10 @@ namespace DimStock.Models
             using (var dataBase = new ConnectionModel())
             {
                 sql = @"INSERT INTO StockDestination
-                (Location)VALUES(@Location)";
+                (LocationDescription)VALUES(@LocationDescription)";
 
                 dataBase.ClearParameter();
-                dataBase.AddParameter("@Location", Location);
+                dataBase.AddParameter("@LocationDescription", LocationDescription);
 
                 if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
@@ -58,10 +58,10 @@ namespace DimStock.Models
             using (var dataBase = new ConnectionModel())
             {
                 sql = @"UPDATE StockDestination SET 
-                Location = @Location WHERE Id = @Id";
+                LocationDescription = @LocationDescription WHERE Id = @Id";
 
                 dataBase.ClearParameter();
-                dataBase.AddParameter("@Location", Location);
+                dataBase.AddParameter("@LocationDescription", LocationDescription);
                 dataBase.AddParameter("@Id", Id);
 
                 if (dataBase.ExecuteNonQuery(sql) > 0)
@@ -124,7 +124,7 @@ namespace DimStock.Models
                     while (reader.Read())
                     {
                         Id = Convert.ToInt32(reader["Id"]);
-                        Location = Convert.ToString(reader["Location"]);
+                        LocationDescription = Convert.ToString(reader["LocationDescription"]);
                         actionResult = true;
                     }
                 }
@@ -151,10 +151,10 @@ namespace DimStock.Models
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Id", Id);
 
-                if (Location != string.Empty && Location != null)
+                if (LocationDescription != string.Empty && LocationDescription != null)
                 {
-                    sqlParameter += @"OR Location = @Location";
-                    dataBase.AddParameter("@Location", Location);
+                    sqlParameter += @"OR LocationDescription = @LocationDescription";
+                    dataBase.AddParameter("@LocationDescription", LocationDescription);
                 }
 
                 query += sqlSelect + sqlParameter;

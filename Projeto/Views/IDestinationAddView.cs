@@ -3,6 +3,6 @@
     public interface IDestinationAddView
     {
         int Id { get; set; }
-        string Location { get; set; }
+        string LocationDescription { get; set; }
     }
 }
