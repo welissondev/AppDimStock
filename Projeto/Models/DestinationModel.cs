@@ -169,15 +169,17 @@ namespace DimStock.Models
         public DataTable SearchData()
         {
             var sql = string.Empty;
-            var searchResult = new DataTable();
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"SELECT * From Destination";
-                searchResult = dataBase.ExecuteDataAdapter(sql);
-            }
+                sql = @"SELECT * From Destination WHERE LocationDescription 
+                LIKE @LocationDescription";
 
-            return searchResult;
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@LocationDescription", string.Format("%{0}%", LocationDescription));
+
+                return dataBase.ExecuteDataAdapter(sql);
+            }
         }
     }
 }
