@@ -52,7 +52,7 @@ namespace DimStock.Presenters
         {
             var destination = new DestinationModel()
             {
-                LocationDescription = view.SearchDestinationDescription
+                LocationDescription = view.SearchLocationDescription
             };
 
             view.DataList = destination.SearchData();

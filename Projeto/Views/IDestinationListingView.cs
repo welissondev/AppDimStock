@@ -2,7 +2,7 @@
 {
     public interface IDestinationListingView : IDestinationAddView
     {
-        string SearchDestinationDescription { get; set; }
+        string SearchLocationDescription { get; set; }
         object DataList { get; set; }
     }
 }
