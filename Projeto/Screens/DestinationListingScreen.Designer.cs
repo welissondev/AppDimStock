@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DestinationListingScreen));
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties();
@@ -57,6 +58,7 @@
             this.TextSearchLoctionDescription = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             this.ButtonNew = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.GridList = new Bunifu.UI.WinForms.BunifuDataGridView();
+            this.TimerSearch = new System.Windows.Forms.Timer(this.components);
             this.bunifuShadowPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImageLoading)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridList)).BeginInit();
@@ -81,14 +83,14 @@
             this.bunifuShadowPanel2.PanelColor = System.Drawing.Color.Empty;
             this.bunifuShadowPanel2.ShadowDept = 2;
             this.bunifuShadowPanel2.ShadowTopLeftVisible = false;
-            this.bunifuShadowPanel2.Size = new System.Drawing.Size(866, 454);
+            this.bunifuShadowPanel2.Size = new System.Drawing.Size(866, 402);
             this.bunifuShadowPanel2.TabIndex = 239;
             // 
             // ImageLoading
             // 
             this.ImageLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ImageLoading.Image = global::DimStock.Properties.Resources.ImageLoading;
-            this.ImageLoading.Location = new System.Drawing.Point(344, 121);
+            this.ImageLoading.Location = new System.Drawing.Point(357, 117);
             this.ImageLoading.Name = "ImageLoading";
             this.ImageLoading.Size = new System.Drawing.Size(144, 135);
             this.ImageLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -103,7 +105,7 @@
             this.bunifuSeparator1.BackColor = System.Drawing.Color.Transparent;
             this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))));
             this.bunifuSeparator1.LineThickness = 1;
-            this.bunifuSeparator1.Location = new System.Drawing.Point(27, 366);
+            this.bunifuSeparator1.Location = new System.Drawing.Point(27, 314);
             this.bunifuSeparator1.Name = "bunifuSeparator1";
             this.bunifuSeparator1.Size = new System.Drawing.Size(810, 10);
             this.bunifuSeparator1.TabIndex = 248;
@@ -149,7 +151,7 @@
             this.ButtonCloseScreen.IdleIconLeftImage = null;
             this.ButtonCloseScreen.IdleIconRightImage = null;
             this.ButtonCloseScreen.IndicateFocus = false;
-            this.ButtonCloseScreen.Location = new System.Drawing.Point(693, 389);
+            this.ButtonCloseScreen.Location = new System.Drawing.Point(693, 337);
             this.ButtonCloseScreen.Name = "ButtonCloseScreen";
             stateProperties1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties1.BorderRadius = 3;
@@ -214,7 +216,7 @@
             this.ButtonScreenClear.IdleIconLeftImage = null;
             this.ButtonScreenClear.IdleIconRightImage = null;
             this.ButtonScreenClear.IndicateFocus = false;
-            this.ButtonScreenClear.Location = new System.Drawing.Point(327, 389);
+            this.ButtonScreenClear.Location = new System.Drawing.Point(327, 337);
             this.ButtonScreenClear.Name = "ButtonScreenClear";
             stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties3.BorderRadius = 3;
@@ -279,7 +281,7 @@
             this.ButtonListGrid.IdleIconLeftImage = null;
             this.ButtonListGrid.IdleIconRightImage = null;
             this.ButtonListGrid.IndicateFocus = false;
-            this.ButtonListGrid.Location = new System.Drawing.Point(177, 389);
+            this.ButtonListGrid.Location = new System.Drawing.Point(177, 337);
             this.ButtonListGrid.Name = "ButtonListGrid";
             stateProperties5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties5.BorderRadius = 3;
@@ -419,7 +421,7 @@
             this.ButtonNew.IdleIconLeftImage = null;
             this.ButtonNew.IdleIconRightImage = null;
             this.ButtonNew.IndicateFocus = false;
-            this.ButtonNew.Location = new System.Drawing.Point(27, 389);
+            this.ButtonNew.Location = new System.Drawing.Point(27, 337);
             this.ButtonNew.Name = "ButtonNew";
             stateProperties11.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties11.BorderRadius = 3;
@@ -502,17 +504,21 @@
             this.GridList.RowHeadersVisible = false;
             this.GridList.RowTemplate.Height = 40;
             this.GridList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.GridList.Size = new System.Drawing.Size(810, 273);
+            this.GridList.Size = new System.Drawing.Size(810, 221);
             this.GridList.TabIndex = 234;
             this.GridList.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
+            // 
+            // TimerSearch
+            // 
+            this.TimerSearch.Interval = 1000;
             // 
             // DestinationListingScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(912, 598);
+            this.ClientSize = new System.Drawing.Size(912, 500);
             this.Controls.Add(this.bunifuShadowPanel2);
-            this.MinimumSize = new System.Drawing.Size(750, 350);
+            this.MinimumSize = new System.Drawing.Size(750, 500);
             this.Name = "DestinationListingScreen";
             this.Text = "Lista de Destinos";
             this.bunifuShadowPanel2.ResumeLayout(false);
@@ -533,5 +539,6 @@
         private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox TextSearchLoctionDescription;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton ButtonNew;
         private Bunifu.UI.WinForms.BunifuDataGridView GridList;
+        private System.Windows.Forms.Timer TimerSearch;
     }
 }
