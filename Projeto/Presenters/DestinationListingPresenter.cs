@@ -25,7 +25,7 @@ namespace DimStock.Presenters
             return actionResult;
         }
 
-        public bool ViewDetails()
+        public bool GetDetails()
         {
             var actionResult = false;
 
