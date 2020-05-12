@@ -275,7 +275,7 @@ namespace DimStock.Screens
         {
             try
             {
-                var screen = new CategoryListingScreen();
+                var screen = new DestinationListingScreen();
 
                 if (mdi != null)
                 {
