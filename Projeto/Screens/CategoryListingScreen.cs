@@ -252,6 +252,7 @@ namespace DimStock.Screens
                 GridList.RowPrePaint += new DataGridViewRowPrePaintEventHandler(GridRowPrePaint);
                 ButtonNew.Click += new EventHandler(ShowRelatedScreen);
                 ButtonListGrid.Click += new EventHandler(TimerTick);
+                ButtonListGrid.Click += new EventHandler(PresenterClear);
                 ButtonCloseScreen.Click += new EventHandler(ScreenClose);
                 ButtonScreenClear.Click += new EventHandler(PresenterClear);
                 TimerSearch.Tick += new EventHandler(TimerTick);
