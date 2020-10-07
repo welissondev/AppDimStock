@@ -153,10 +153,8 @@
     <Compile Include="AuxilyTools\AuxilyClasses\AuxiliaryDataGridLealt.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\AuxiliaryDataPage.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\AuxiliaryDirectoryManager.cs" />
-    <Compile Include="AuxilyTools\AuxilyClasses\EmailAddressValidator.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\ExceptionNotifier.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\GuidGenerator.cs" />
-    <Compile Include="AuxilyTools\AuxilyClasses\LoginNameValidator.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\Mdi3dRemove.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\MdiClosingAll.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\SingleCodeGenerator.cs" />

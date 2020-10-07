@@ -1,4 +1,5 @@
 ﻿using DimStock.AuxilyTools.AuxilyClasses;
+using System.Text.RegularExpressions;
 
 namespace DimStock.Models
 {
@@ -47,7 +48,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (EmailAddressValidator.Validate(user.Email) == false)
+            if (StandardRegexValidator.ValidateEmail(user.Email) == false)
             {
                 MessageNotifier.Show("O endereço de email do usuário " +
                 "não é valido!", "Inválido", "?");
@@ -57,9 +58,16 @@ namespace DimStock.Models
 
             if (user.Login == string.Empty)
             {
-
                 MessageNotifier.Show("Login do usuário " +
                 "não informado!", "Obrigatório", "?");
+
+                return validationStatus;
+            }
+
+            if (StandardRegexValidator.ValidateLoginName(user.Login) == false)
+            {
+                MessageNotifier.Show("O nome de login não é válido!",
+                "Não Permitido", "?");
 
                 return validationStatus;
             }
@@ -119,7 +127,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (EmailAddressValidator.Validate(user.Email) == false)
+            if (StandardRegexValidator.ValidateEmail(user.Email) == false)
             {
                 MessageNotifier.Show("O endereço de email do usuário " +
                 "não é valido!", "Inválido", "?");
@@ -131,6 +139,14 @@ namespace DimStock.Models
             {
                 MessageNotifier.Show("Login do usuário " +
                 "não informado!", "Obrigatório", "?");
+
+                return validationStatus;
+            }
+
+            if (StandardRegexValidator.ValidateLoginName(user.Login) == false)
+            {
+                MessageNotifier.Show("O nome de login não é válido!",
+                "Não Permitido", "?");
 
                 return validationStatus;
             }
