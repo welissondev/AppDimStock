@@ -46,7 +46,7 @@ namespace DimStock.Screens
             try
             {
                 var appSetting = new AppSettingModel();
-                appSetting.SaveBackup();
+                //appSetting.SaveBackup();
 
                 MessageBox.Show("Backup gerado com sucesso!", "Sucesso");
             }

@@ -6,15 +6,10 @@ using System.Windows.Forms;
 
 namespace DimStock.Screens
 {
+
     public partial class AppSettingsScreen : Form
     {
-        #region Properties
-
         private AppSettingModel appSetting = new AppSettingModel();
-
-        #endregion
-
-        #region Builder
 
         public AppSettingsScreen()
         {
@@ -24,10 +19,6 @@ namespace DimStock.Screens
             MainTabControl.ItemSize = new Size(0, 1);
             MainTabControl.SizeMode = TabSizeMode.Fixed;
         }
-
-        #endregion
-
-        #region Button
 
         private void ButtonChooseMainDirectory_Click(object sender, EventArgs e)
         {
@@ -89,10 +80,6 @@ namespace DimStock.Screens
             }
         }
 
-        #endregion
-
-        #region PictureBox
-
         private void PictureCompanyLogo_Click(object sender, EventArgs e)
         {
             var logoType = new AuxiliaryFileManager();
@@ -104,10 +91,6 @@ namespace DimStock.Screens
 
             PictureCompanyLogo.ImageLocation = path;
         }
-
-        #endregion
-
-        #region LabelLink
 
         private void ButtonNextPage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -267,10 +250,6 @@ namespace DimStock.Screens
             }
         }
 
-        #endregion
-
-        #region Function
-
         private void Await(int time)
         {
             PictureLoading.Visible = true;
@@ -351,11 +330,9 @@ namespace DimStock.Screens
                 return itemSelected;
             }
 
-            appSetting.ImportBackUp(dataBaseName);
+            //appSetting.ImportBackUp(dataBaseName);
 
             return true;
         }
-
-        #endregion
     }
 }
