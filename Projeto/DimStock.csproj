@@ -323,6 +323,7 @@
     <Compile Include="Views\IUserLoginAddView.cs" />
     <Compile Include="Views\IUserLoginAccessView.cs" />
     <Compile Include="Views\IUserLoginListingView.cs" />
+    <Compile Include="Views\SupplierAddView.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
