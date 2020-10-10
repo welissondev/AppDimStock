@@ -153,21 +153,21 @@
     <Compile Include="AuxilyTools\AuxilyClasses\AuxiliaryDataGridLealt.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\AuxiliaryDataPage.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\AuxiliaryDirectoryManager.cs" />
-    <Compile Include="AuxilyTools\AuxilyClasses\EmailAddressValidator.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\ExceptionNotifier.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\GuidGenerator.cs" />
-    <Compile Include="AuxilyTools\AuxilyClasses\LoginNameValidator.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\Mdi3dRemove.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\MdiClosingAll.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\SingleCodeGenerator.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\UserLoginState.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\PageWebViewer.cs" />
+    <Compile Include="AuxilyTools\AuxilyClasses\StandardRegexValidator.cs" />
     <Compile Include="AuxilyTools\AuxilyControls\CustomComboBoxView.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="AuxilyTools\AuxilyControls\CustomDataGridViewTwo.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Models\BackupModel.cs" />
     <Compile Include="Models\ConnectionModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="AuxilyTools\AuxilyControls\CustomPictureBoxOne.cs">
@@ -192,6 +192,7 @@
     <Compile Include="Models\ConnectionTransactionModel.cs" />
     <Compile Include="Models\UserLoginModel.cs" />
     <Compile Include="Models\UserLoginValidationModel.cs" />
+    <Compile Include="Presenters\BackupSavePresenter.cs" />
     <Compile Include="Presenters\CategoryAddPresenter.cs" />
     <Compile Include="Presenters\CategoryListingPresenter.cs" />
     <Compile Include="Presenters\DestinationAddPresenter.cs" />
@@ -308,6 +309,7 @@
     <Compile Include="Screens\UserLoginAddScreen.Designer.cs">
       <DependentUpon>UserLoginAddScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\IBackupSaveView.cs" />
     <Compile Include="Views\ICategoryAddView.cs" />
     <Compile Include="Views\ICategoryListingView.cs" />
     <Compile Include="Views\IDestinationAddView.cs" />

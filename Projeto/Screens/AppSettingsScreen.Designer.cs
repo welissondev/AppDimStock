@@ -158,7 +158,7 @@
             this.CheckBoxNewConfiguration.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.CheckBoxNewConfiguration.Location = new System.Drawing.Point(65, 246);
             this.CheckBoxNewConfiguration.Name = "CheckBoxNewConfiguration";
-            this.CheckBoxNewConfiguration.Size = new System.Drawing.Size(391, 25);
+            this.CheckBoxNewConfiguration.Size = new System.Drawing.Size(461, 25);
             this.CheckBoxNewConfiguration.TabIndex = 1;
             this.CheckBoxNewConfiguration.Text = "Opção B: Não tenho um backup, desejo fazer uma nova configuração\r\n\r\n\r\n";
             this.CheckBoxNewConfiguration.UseCompatibleTextRendering = true;
@@ -341,7 +341,6 @@
             // 
             this.PictureCompanyLogo.BackColor = System.Drawing.Color.White;
             this.PictureCompanyLogo.Cursor = System.Windows.Forms.Cursors.Hand;
-
             this.PictureCompanyLogo.Location = new System.Drawing.Point(7, 16);
             this.PictureCompanyLogo.Name = "PictureCompanyLogo";
             this.PictureCompanyLogo.Size = new System.Drawing.Size(106, 96);
@@ -813,7 +812,6 @@
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Location = new System.Drawing.Point(419, 23);
             this.pictureBox1.Name = "pictureBox1";
@@ -889,7 +887,7 @@
             this.bunifuSeparator2.Transparency = 150;
             this.bunifuSeparator2.Vertical = false;
             // 
-            // AppSettingsForm
+            // AppSettingsScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -906,7 +904,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(944, 590);
-            this.Name = "AppSettingsForm";
+            this.Name = "AppSettingsScreen";
             this.Text = "Assistente de configuração da aplicação";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.MainTabControl.ResumeLayout(false);

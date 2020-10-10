@@ -29,6 +29,11 @@ namespace DimStock.Models
             Destination = new DestinationModel();
         }
 
+        public MovementModel(DestinationModel destination)
+        {
+            Destination = destination;
+        }
+
         public bool StartOperation()
         {
             var actionResult = false;
@@ -270,6 +275,27 @@ namespace DimStock.Models
             }
 
             return registrationStatus = true;
+        }
+        public bool CheckRelateWithDestination()
+        {
+            var relatedStatus = false;
+            var sql = string.Empty;
+
+            using (var dataBase = new ConnectionModel())
+            {
+                sql = @"SELECT m.* FROM Movement AS m WHERE 
+                m.DestinationId = @DestinationId";
+
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@DestinationId", Destination.Id);
+
+                if (dataBase.ExecuteScalar(sql) > 0)
+                {
+                    relatedStatus = true;
+                }
+            }
+
+            return relatedStatus;
         }
 
         public DataTable FetchData()
