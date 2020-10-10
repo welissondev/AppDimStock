@@ -215,17 +215,17 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (ValidateToUpdateStock(product) == false)
+            if (ValidateChangerInCostPrice(product) == false)
                 return validationStatus;
 
             return validationStatus = true;
         }
 
-        public static bool ValidateToUpdateStock(ProductModel product)
+        public static bool ValidateChangerInCostPrice(ProductModel product)
         {
             var validationStatus = false;
 
-            if (ValidateChangerInCostPrice(product) == true)
+            if (product.GetCostPrice() != product.CostPrice)
             {
                 if (product.GetQuantityInStock() > 0)
                 {
@@ -239,11 +239,6 @@ namespace DimStock.Models
             }
 
             return validationStatus = true;
-        }
-
-        public static bool ValidateChangerInCostPrice(ProductModel product)
-        {
-            return product.GetCostPrice() != product.CostPrice;
         }
 
         public static bool ValidateToGetDetails(ProductModel product)
