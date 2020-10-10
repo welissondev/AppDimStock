@@ -28,6 +28,9 @@ namespace DimStock.Models
             var sql = string.Empty;
             var actionResult = false;
 
+            if (SupplierValidationModel.ValidateToInsert(this) == false)
+                return actionResult;
+
             using (var dataBase = new ConnectionModel())
             {
                 sql = @"INSERT INTO Supplier(typeOfRegistration, companyName, fantasyName, indentyCard_stateRegister,
@@ -67,6 +70,9 @@ namespace DimStock.Models
         {
             var sql = string.Empty;
             var actionResult = false;
+
+            if (SupplierValidationModel.ValidateToUpdate(this) == false)
+                return actionResult;
 
             using (var dataBase = new ConnectionModel())
             {
@@ -109,6 +115,9 @@ namespace DimStock.Models
             var sql = string.Empty;
             var actionResult = false;
 
+            if (SupplierValidationModel.ValidateToDelete(this) == false)
+                return actionResult;
+
             using (var dataBase = new ConnectionModel())
             {
                 sql = @"DELET FROM Supplier WHERE id = @ID";
@@ -132,6 +141,9 @@ namespace DimStock.Models
         {
             var actionResult = false;
             var sql = string.Empty;
+
+            if (SupplierValidationModel.ValidateToGetDetails(this) == false)
+                return actionResult;
 
             using (var dataBase = new ConnectionModel())
             {

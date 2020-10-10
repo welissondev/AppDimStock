@@ -193,6 +193,7 @@
     <Compile Include="Models\StockValidationModel.cs" />
     <Compile Include="Models\ConnectionTransactionModel.cs" />
     <Compile Include="Models\SupplierModel.cs" />
+    <Compile Include="Models\SupplierValidationModel.cs" />
     <Compile Include="Models\UserLoginModel.cs" />
     <Compile Include="Models\UserLoginValidationModel.cs" />
     <Compile Include="Presenters\BackupSavePresenter.cs" />
