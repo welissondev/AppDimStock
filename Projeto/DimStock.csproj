@@ -203,6 +203,7 @@
     <Compile Include="Presenters\DestinationListingPresenter.cs" />
     <Compile Include="Presenters\ProductAddPresenter.cs" />
     <Compile Include="Presenters\ProductListingPresenter.cs" />
+    <Compile Include="Presenters\SupplierPresenter.cs" />
     <Compile Include="Presenters\UserLoginAddPresenter.cs" />
     <Compile Include="Presenters\UserLoginAccessPresenter.cs" />
     <Compile Include="Presenters\UserLoginListingPresenter.cs" />
@@ -320,10 +321,11 @@
     <Compile Include="Views\IDestinationListingView.cs" />
     <Compile Include="Views\IProductAddView.cs" />
     <Compile Include="Views\IProductListingView.cs" />
+    <Compile Include="Views\ISupplierListingView.cs" />
     <Compile Include="Views\IUserLoginAddView.cs" />
     <Compile Include="Views\IUserLoginAccessView.cs" />
     <Compile Include="Views\IUserLoginListingView.cs" />
-    <Compile Include="Views\SupplierAddView.cs" />
+    <Compile Include="Views\ISupplierAddView.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>

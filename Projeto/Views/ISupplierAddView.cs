@@ -8,7 +8,7 @@
         string FantasyName { get; set; }
         string IndentyCard_StateRegister { get; set; }
         string SocialSecurity_NationalRegister { get; set; }
-        string Description { get; set; }
+        string AddressDescription { get; set; }
         string District { get; set; }
         string City { get; set; }
         string StateLocation { get; set; }
