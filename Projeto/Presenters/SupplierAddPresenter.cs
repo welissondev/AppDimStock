@@ -5,11 +5,11 @@ using System;
 
 namespace DimStock.Presenters
 {
-    public class SupplierPresenter
+    public class SupplierAddPresenter
     {
         private ISupplierAddView view;
 
-        public SupplierPresenter(ISupplierAddView view)
+        public SupplierAddPresenter(ISupplierAddView view)
         {
             this.view = view;
         }
