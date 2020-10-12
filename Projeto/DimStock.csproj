@@ -101,6 +101,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Bunifu.UI.WinForms.BunifuDataGridView.dll</HintPath>
     </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuDropdown">
+      <HintPath>..\..\..\Bunifu\Bunifu UI WinForms 1.11.5.1\Bunifu.UI.WinForms.BunifuDropdown.dll</HintPath>
+    </Reference>
     <Reference Include="Bunifu.UI.WinForms.BunifuPictureBox">
       <HintPath>..\..\..\Bunifu\Bunifu UI WinForms 1.11.5.1\Bunifu.UI.WinForms.BunifuPictureBox.dll</HintPath>
     </Reference>
@@ -167,6 +170,7 @@
     <Compile Include="AuxilyTools\AuxilyControls\CustomDataGridViewTwo.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Models\AddressModel.cs" />
     <Compile Include="Models\BackupModel.cs" />
     <Compile Include="Models\ConnectionModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
@@ -178,6 +182,7 @@
     </Compile>
     <Compile Include="Models\AppSettingModel.cs" />
     <Compile Include="Models\CategoryValidationModel.cs" />
+    <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\DestinationValidationModel.cs" />
     <Compile Include="Models\MovementItemValidationModel.cs" />
     <Compile Include="Models\MovementValidationModel.cs" />
@@ -190,6 +195,8 @@
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\StockValidationModel.cs" />
     <Compile Include="Models\ConnectionTransactionModel.cs" />
+    <Compile Include="Models\SupplierModel.cs" />
+    <Compile Include="Models\SupplierValidationModel.cs" />
     <Compile Include="Models\UserLoginModel.cs" />
     <Compile Include="Models\UserLoginValidationModel.cs" />
     <Compile Include="Presenters\BackupSavePresenter.cs" />
@@ -199,6 +206,8 @@
     <Compile Include="Presenters\DestinationListingPresenter.cs" />
     <Compile Include="Presenters\ProductAddPresenter.cs" />
     <Compile Include="Presenters\ProductListingPresenter.cs" />
+    <Compile Include="Presenters\SupplierListingPresenter.cs" />
+    <Compile Include="Presenters\SupplierAddPresenter.cs" />
     <Compile Include="Presenters\UserLoginAddPresenter.cs" />
     <Compile Include="Presenters\UserLoginAccessPresenter.cs" />
     <Compile Include="Presenters\UserLoginListingPresenter.cs" />
@@ -229,6 +238,12 @@
     </Compile>
     <Compile Include="Screens\DestinationListingScreen.Designer.cs">
       <DependentUpon>DestinationListingScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\SupplierAddScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\SupplierAddScreen.Designer.cs">
+      <DependentUpon>SupplierAddScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="Screens\BackupSaveScreen.cs">
@@ -316,9 +331,11 @@
     <Compile Include="Views\IDestinationListingView.cs" />
     <Compile Include="Views\IProductAddView.cs" />
     <Compile Include="Views\IProductListingView.cs" />
+    <Compile Include="Views\ISupplierListingView.cs" />
     <Compile Include="Views\IUserLoginAddView.cs" />
     <Compile Include="Views\IUserLoginAccessView.cs" />
     <Compile Include="Views\IUserLoginListingView.cs" />
+    <Compile Include="Views\ISupplierAddView.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -364,6 +381,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\MovementAddScreen.resx">
       <DependentUpon>MovementAddScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\SupplierAddScreen.resx">
+      <DependentUpon>SupplierAddScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\UserLoginListingScreen.resx">
       <DependentUpon>UserLoginListingScreen.cs</DependentUpon>

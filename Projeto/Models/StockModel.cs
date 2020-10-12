@@ -20,6 +20,7 @@ namespace DimStock.Models
         public string Result { get; set; }
         public string Summary { get => summary; set => summary = value; }
         public ProductModel Product { get; set; }
+        public SupplierModel Supplier { get; set; }
     }
 
     public partial class StockModel
@@ -32,6 +33,10 @@ namespace DimStock.Models
         {
             Product = product;
         }
+        public StockModel(SupplierModel supplier)
+        {
+            Supplier = supplier;
+        }
         public StockModel(ConnectionTransactionModel dataBaseTransaction)
         {
             this.dataBaseTransaction = dataBaseTransaction;
@@ -41,6 +46,7 @@ namespace DimStock.Models
             this.dataBaseTransaction = dataBaseTransaction;
             Product = product;
         }
+        
 
         public bool GetDetails()
         {
@@ -219,6 +225,27 @@ namespace DimStock.Models
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("ProductId", Product.Id);
+
+                if (dataBase.ExecuteScalar(sql) > 0)
+                {
+                    relatedStatus = true;
+                }
+            }
+
+            return relatedStatus;
+        }
+        public bool CheckRelationWithSupplier()
+        {
+            var relatedStatus = false;
+            var sql = string.Empty;
+
+            using (var dataBase = new ConnectionModel())
+            {
+                sql = @"SELECT * FROM Stock WHERE 
+                SupplierId = @SupplierId";
+
+                dataBase.ClearParameter();
+                dataBase.AddParameter("SupplierId", Supplier.Id);
 
                 if (dataBase.ExecuteScalar(sql) > 0)
                 {
