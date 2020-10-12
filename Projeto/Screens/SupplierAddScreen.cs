@@ -168,7 +168,7 @@ namespace DimStock.Screens
         {
             try
             {
-                var screen = new ProductAddScreen();
+                var screen = new SupplierAddScreen();
 
                 if (mdi != null)
                 {
