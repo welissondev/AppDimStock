@@ -101,6 +101,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Bunifu.UI.WinForms.BunifuDataGridView.dll</HintPath>
     </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuDropdown">
+      <HintPath>..\..\..\Bunifu\Bunifu UI WinForms 1.11.5.1\Bunifu.UI.WinForms.BunifuDropdown.dll</HintPath>
+    </Reference>
     <Reference Include="Bunifu.UI.WinForms.BunifuPictureBox">
       <HintPath>..\..\..\Bunifu\Bunifu UI WinForms 1.11.5.1\Bunifu.UI.WinForms.BunifuPictureBox.dll</HintPath>
     </Reference>
@@ -235,6 +238,12 @@
     </Compile>
     <Compile Include="Screens\DestinationListingScreen.Designer.cs">
       <DependentUpon>DestinationListingScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\SupplierAddScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\SupplierAddScreen.Designer.cs">
+      <DependentUpon>SupplierAddScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="Screens\BackupSaveScreen.cs">
@@ -372,6 +381,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\MovementAddScreen.resx">
       <DependentUpon>MovementAddScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\SupplierAddScreen.resx">
+      <DependentUpon>SupplierAddScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\UserLoginListingScreen.resx">
       <DependentUpon>UserLoginListingScreen.cs</DependentUpon>
