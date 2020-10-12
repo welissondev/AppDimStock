@@ -18,8 +18,8 @@ namespace DimStock.Models
 
             if (supplier.CompyName == string.Empty)
             {
-                MessageNotifier.Show("Informe o nome da empresa!" +
-                "Obrigatório", "?");
+                MessageNotifier.Show("Informe o nome da empresa!"
+                ,"Obrigatório", "?");
 
                 return validationStatus;
             }
