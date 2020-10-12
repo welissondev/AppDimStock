@@ -120,7 +120,7 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"DELET FROM Supplier WHERE id = @ID";
+                sql = @"DELETE FROM Supplier WHERE id = @ID";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@ID", Id);
