@@ -10,7 +10,7 @@ namespace DimStock.Models
 
             if (supplier.TypeOfRegistration == string.Empty)
             {
-                MessageNotifier.Show("Selecione o tipo de cadastro!" +
+                MessageNotifier.Show("Selecione o tipo de cadastro!",
                 "Obrigatório", "?");
 
                 return validationStatus;
@@ -28,7 +28,7 @@ namespace DimStock.Models
             {
                 if (StandardRegexValidator.ValidateEmail(supplier.Contact.Email) == false)
                 {
-                    MessageNotifier.Show("O email informado não é válido!" +
+                    MessageNotifier.Show("O email informado não é válido!",
                     "Inválido", "?");
 
                     return validationStatus;
@@ -45,14 +45,14 @@ namespace DimStock.Models
             if (supplier.Id == 0)
             {
                 MessageNotifier.Show("Selecione um registro " +
-                "para editar!" + "Não Selecionado", "?");
+                "para editar!", "Não Selecionado", "?");
 
                 return validationStatus;
             }
 
             if (supplier.TypeOfRegistration == string.Empty)
             {
-                MessageNotifier.Show("Selecione o tipo de cadastro!" +
+                MessageNotifier.Show("Selecione o tipo de cadastro!",
                 "Obrigatório", "?");
 
                 return validationStatus;
@@ -60,7 +60,7 @@ namespace DimStock.Models
 
             if (supplier.CompyName == string.Empty)
             {
-                MessageNotifier.Show("Informe o nome da empresa!" +
+                MessageNotifier.Show("Informe o nome da empresa!",
                 "Obrigatório", "?");
 
                 return validationStatus;
@@ -70,7 +70,7 @@ namespace DimStock.Models
             {
                 if (StandardRegexValidator.ValidateEmail(supplier.Contact.Email) == false)
                 {
-                    MessageNotifier.Show("O email informado não é válido!" +
+                    MessageNotifier.Show("O email informado não é válido!",
                     "Inválido", "?");
 
                     return validationStatus;
@@ -87,7 +87,7 @@ namespace DimStock.Models
             if (supplier.Id == 0)
             {
                 MessageNotifier.Show("Selecione um registro " +
-                "para excluir!" + "Não Selecionado", "?");
+                "para excluir!" , "Não Selecionado", "?");
 
                 return validationStatus;
             }
