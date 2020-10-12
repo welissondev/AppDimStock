@@ -75,7 +75,7 @@ namespace DimStock.Presenters
             try
             {
                 view.Id = 0;
-                view.TypeOfRegistration = string.Empty;
+                view.TypeOfRegistration = "Física";
                 view.CompyName = string.Empty;
                 view.FantasyName = string.Empty;
                 view.IndentyCard_StateRegister = string.Empty;

@@ -118,60 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="TextSocialSecurity_NationalRegistration.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAPwAAAAjCAYAAACww2edAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACiSURBVHhe7dOxCQMxAARB9V+VHpXhMlyAH4ESt6CdgUsu
-        3wHErLU+c86fmd253fjJfYx9APfajZ/cBQ+3EzyECB5CBA8hgocQwUOI4CFE8BAieAgRPIQIHkIEDyGC
-        hxDBQ4jgIUTwECJ4CBE8hAgeQgQPIYKHEMFDiOAhRPAQIngIETyECB5CBA8hgocQwUPIX/DP83z3YWZ3
-        bjd+cgcaxngBRuPPSQRGFCQAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="TextIndentyCard_StateRegister.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAQ4AAAAjCAYAAABl9OT5AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACpSURBVHhe7dSxDQIxAARB91+VXy6DMigAZMkJycMSz0iX
-        XAE7AP6y1nrMOV9mZnfbrTjZGGMfAN/sVpxsCAfwG+EAMuEAMuEAMuEAMuEAMuEAMuEAMuEAMuEAMuEA
-        MuEAMuEAMuEAMuEAMuEAMuEAMuEAMuEAMuEAMuEAMuEAMuEAMuEAMuEAMuEAMuEAMuEAMuEAMuEAso9w
-        XNf13IeZ2d12K042AIox3tSk8/SOURg0AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="TextFantasyName.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAhIAAAAjCAYAAADBhOOeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADTSURBVHhe7daxCQMxAARB9V+VHpXhMlyAH4ESZ+91OgOX
-        XAU7AAD+stZ6zTk/ZmZmZk+22+FkxBj7AAB4arfDyQghAQD8RkgAAJmQAAAyIQEAZEICAMiEBACQCQkA
-        IBMSAEAmJACATEgAAJmQAAAyIQEAZEICAMiEBACQCQkAIBMSAEAmJACATEgAAJmQAAAyIQEAZEICAMiE
-        BACQCQkAIBMSAEAmJACATEgAAJmQAAAyIQEAZEICAMiEBACQfYXEdV3vfZiZmZk92W6HkxEAAMUYNykj
-        BceydyjrAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="TextCompanyName.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAhIAAAAjCAYAAADBhOOeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADTSURBVHhe7daxCQMxAARB9V+VHpXhMlyAH4ESZ+91OgOX
-        XAU7AAD+stZ6zTk/ZmZmZk+22+FkxBj7AAB4arfDyQghAQD8RkgAAJmQAAAyIQEAZEICAMiEBACQCQkA
-        IBMSAEAmJACATEgAAJmQAAAyIQEAZEICAMiEBACQCQkAIBMSAEAmJACATEgAAJmQAAAyIQEAZEICAMiE
-        BACQCQkAIBMSAEAmJACATEgAAJmQAAAyIQEAZEICAMiEBACQfYXEdV3vfZiZmZk92W6HkxEAAMUYNykj
-        BceydyjrAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="TextStreetNumber.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAANYAAAAjCAYAAADovPSEAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACfSURBVHhe7dOxDcMwAANB7T+VDI2RMTJADAFqUtvf3QFs
-        2P8AImutz5zzZ2bPtls6WY2xD+C53dLJSljwFmFBQFgQEBYEhAUBYUFAWBAQFgSEBQFhQUBYEBAWBIQF
-        AWFBQFgQEBYEhAUBYUFAWBAQFgSEBQFhQUBYEBAWBIQFAWFBQFgQEBYEhAUBYUHgL6zrur77MLNn2y2d
-        rIB3jXED1UGB4KYh4WIAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="TextZipCode.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAANYAAAAjCAYAAADovPSEAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACfSURBVHhe7dOxDcMwAANB7T+VDI2RMTJADAFqUtvf3QFs
+        iVBORw0KGgoAAAANSUhEUgAAANYAAAAkCAYAAAD1ucQ8AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAChSURBVHhe7dOxDcMwAANB7T+VDI2RMTJADAFqUtvf3QFs
         2P8AImutz5zzZ2bPtls6WY2xD+C53dLJSljwFmFBQFgQEBYEhAUBYUFAWBAQFgSEBQFhQUBYEBAWBIQF
-        AWFBQFgQEBYEhAUBYUFAWBAQFgSEBQFhQUBYEBAWBIQFAWFBQFgQEBYEhAUBYUHgL6zrur77MLNn2y2d
-        rIB3jXED1UGB4KYh4WIAAAAASUVORK5CYII=
+        AWFBQFgQEBYEhAUBYUFAWBAQFgSEBQFhQUBYEBAWBIQFAWFBQFgQEBYEhAUBYUFAWBD4C+u6ru8+zOzZ
+        dksnK+BdY9w3481Drfg/OAAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="TextStateLocation.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -207,39 +160,11 @@
   <data name="TextAddressDescription.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAkkAAAAjCAYAAACAcJ4hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADYSURBVHhe7dZBDcMwAARB80dlKzAKowBSuUofkbYIMiPd
-        5xDsAADgj+M4XnPO08zMzOzp2110JdIY+wAA4PyG0pVIIgkA4EckAQAEkQQAEEQSAEAQSQAAQSQBAASR
-        BAAQRBIAQBBJAABBJAEABJEEABBEEgBAEEkAAEEkAQAEkQQAEEQSAEAQSQAAQSQBAASRBAAQRBIAQBBJ
-        AABBJAEABJEEABBEEgBAEEkAAEEkAQAEkQQAEEQSAEAQSQAAQSQBAIRbJK213vswMzMze/p2F12JBADA
-        3RgfO3D1yj7iJJIAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="TextEmail.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAt4AAAAjCAYAAACjBw2xAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADzSURBVHhe7daxDcMwAANB7T+VDI2RMTJADAFq0ttf3QFs
-        OMEPAAAgstb6zDl/ZmZmZmb27HZrn+weYx8AAMDzdmuf7BbeAADwFuENAAAB4Q0AAAHhDQAAAeENAAAB
-        4Q0AAAHhDQAAAeENAAAB4Q0AAAHhDQAAAeENAAAB4Q0AAAHhDQAAAeENAAAB4Q0AAAHhDQAAAeENAAAB
-        4Q0AAAHhDQAAAeENAAAB4Q0AAAHhDQAAAeENAAAB4Q0AAAHhDQAAAeENAAAB4Q0AAAHhDQAAAeENAAAB
-        4Q0AAIG/8L6u67sPMzMzMzN7dru1T3YDAADvGuMGujKlaBpiXEoAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="TextMobilePhone.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAVMAAAAjCAYAAAApHukBAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC3SURBVHhe7dSxCQMxAARB9V+VHpXhMlyAH4ESh29vOAOX
-        XAE7AIistV5zzo+ZmT3b7udJ6Rj7AOC53c+TUjEF+JWYAgTEFCAgpgABMQUIiClAQEwBAmIKEBBTgICY
-        AgTEFCAgpgABMQUIiClAQEwBAmIKEBBTgICYAgTEFCAgpgABMQUIiClAQEwBAmIKEBBTgICYAgTEFCAg
-        pgABMQUIiClA4Cum13W992FmZs+2+3lSCsB/xrgBsIgAmjMvYTQAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="TextFixePhone.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAVMAAAAjCAYAAAApHukBAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC6SURBVHhe7dSxDQIxAARBV4JESLeQ0BxlkP8jS04IDRvO
-        SJdcATsAiNyex+tyP08zM9vb7OdK6RjzAGDf7OdKqZgC/EpMAQJiChAQU4CAmAIExBQgIKYAATEFCIgp
-        QEBMAQJiChAQU4CAmAIExBQgIKYAATEFCIgpQEBMAQJiChAQU4CAmAIExBQgIKYAATEFCIgpQEBMAQJi
-        ChAQU4CAmAIExBQg8BXT6+N4z8PMzPY2+7lSCsB/xvgA1BdZ6jnmjF8AAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADbSURBVHhe7daxDcJAAATBrwSJkG4hoTnKILfRiyewtFTg
+        GemSq2AHAAB/3J7b63LfdzMzM7Ozb3bRSqQx5gEAwDeUViKJJACAH5EEABBEEgBAEEkAAEEkAQAEkQQA
+        EEQSAEAQSQAAQSQBAASRBAAQRBIAQBBJAABBJAEABJEEABBEEgBAEEkAAEEkAQAEkQQAEEQSAEAQSQAA
+        QSQBAASRBAAQRBIAQBBJAABBJAEABJEEABBEEgBAEEkAAEEkAQAEkQQAEA6RdH1s73mYmZmZnX2zi1Yi
+        AQBwNMYHZy40lgSk8zkAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="ButtonClose.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -280,6 +205,72 @@
         STRKTaJRahKNUpNolJpEo9QkGqUm0Sg1iUapSTRKTaJRahKNUpNolJpEo9QkGqUm0Sg1iUapSTRKTaJR
         ahKNUpNolJpEo9QkGqUm0Sg1iUapSTRKTaJRahKNUpNolJpEo9QkGqUm0Sg1iUapSTRKTaJRahKNUpNo
         lJp0+vOXHkiXTOvPfj1b0+fjmJdvfCidOx3PfHzar8fs1sb4A1QSn/Px6U9HAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="TextSocialSecurity_NationalRegistration.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAPwAAAAjCAYAAACww2edAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACiSURBVHhe7dOxCQMxAARB9V+VHpXhMlyAH4ESt6CdgUsu
+        3wHErLU+c86fmd253fjJfYx9APfajZ/cBQ+3EzyECB5CBA8hgocQwUOI4CFE8BAieAgRPIQIHkIEDyGC
+        hxDBQ4jgIUTwECJ4CBE8hAgeQgQPIYKHEMFDiOAhRPAQIngIETyECB5CBA8hgocQwUPIX/DP83z3YWZ3
+        bjd+cgcaxngBRuPPSQRGFCQAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="TextIndentyCard_StateRegister.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAQ4AAAAjCAYAAABl9OT5AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACpSURBVHhe7dSxDQIxAARB91+VXy6DMigAZMkJycMSz0iX
+        XAE7AP6y1nrMOV9mZnfbrTjZGGMfAN/sVpxsCAfwG+EAMuEAMuEAMuEAMuEAMuEAMuEAMuEAMuEAMuEA
+        MuEAMuEAMuEAMuEAMuEAMuEAMuEAMuEAMuEAMuEAMuEAMuEAMuEAMuEAMuEAMuEAMuEAMuEAMuEAso9w
+        XNf13IeZ2d12K042AIox3tSk8/SOURg0AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="TextFantasyName.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAhIAAAAjCAYAAADBhOOeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADTSURBVHhe7daxCQMxAARB9V+VHpXhMlyAH4ESZ+91OgOX
+        XAU7AAD+stZ6zTk/ZmZmZk+22+FkxBj7AAB4arfDyQghAQD8RkgAAJmQAAAyIQEAZEICAMiEBACQCQkA
+        IBMSAEAmJACATEgAAJmQAAAyIQEAZEICAMiEBACQCQkAIBMSAEAmJACATEgAAJmQAAAyIQEAZEICAMiE
+        BACQCQkAIBMSAEAmJACATEgAAJmQAAAyIQEAZEICAMiEBACQfYXEdV3vfZiZmZk92W6HkxEAAMUYNykj
+        BceydyjrAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="TextCompanyName.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAhIAAAAjCAYAAADBhOOeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADTSURBVHhe7daxCQMxAARB9V+VHpXhMlyAH4ESZ+91OgOX
+        XAU7AAD+stZ6zTk/ZmZmZk+22+FkxBj7AAB4arfDyQghAQD8RkgAAJmQAAAyIQEAZEICAMiEBACQCQkA
+        IBMSAEAmJACATEgAAJmQAAAyIQEAZEICAMiEBACQCQkAIBMSAEAmJACATEgAAJmQAAAyIQEAZEICAMiE
+        BACQCQkAIBMSAEAmJACATEgAAJmQAAAyIQEAZEICAMiEBACQfYXEdV3vfZiZmZk92W6HkxEAAMUYNykj
+        BceydyjrAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="TextEmail.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAt4AAAAjCAYAAACjBw2xAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADzSURBVHhe7daxDcMwAANB7T+VDI2RMTJADAFq0ttf3QFs
+        OMEPAAAgstb6zDl/ZmZmZmb27HZrn+weYx8AAMDzdmuf7BbeAADwFuENAAAB4Q0AAAHhDQAAAeENAAAB
+        4Q0AAAHhDQAAAeENAAAB4Q0AAAHhDQAAAeENAAAB4Q0AAAHhDQAAAeENAAAB4Q0AAAHhDQAAAeENAAAB
+        4Q0AAAHhDQAAAeENAAAB4Q0AAAHhDQAAAeENAAAB4Q0AAAHhDQAAAeENAAAB4Q0AAAHhDQAAAeENAAAB
+        4Q0AAIG/8L6u67sPMzMzMzN7dru1T3YDAADvGuMGujKlaBpiXEoAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="TextMobilePhone.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAVMAAAAjCAYAAAApHukBAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC3SURBVHhe7dSxCQMxAARB9V+VHpXhMlyAH4ESh29vOAOX
+        XAE7AIistV5zzo+ZmT3b7udJ6Rj7AOC53c+TUjEF+JWYAgTEFCAgpgABMQUIiClAQEwBAmIKEBBTgICY
+        AgTEFCAgpgABMQUIiClAQEwBAmIKEBBTgICYAgTEFCAgpgABMQUIiClAQEwBAmIKEBBTgICYAgTEFCAg
+        pgABMQUIiClA4Cum13W992FmZs+2+3lSCsB/xrgBsIgAmjMvYTQAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="TextFixePhone.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAVMAAAAjCAYAAAApHukBAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC6SURBVHhe7dSxDQIxAARBV4JESLeQ0BxlkP8jS04IDRvO
+        SJdcATsAiNyex+tyP08zM9vb7OdK6RjzAGDf7OdKqZgC/EpMAQJiChAQU4CAmAIExBQgIKYAATEFCIgp
+        QEBMAQJiChAQU4CAmAIExBQgIKYAATEFCIgpQEBMAQJiChAQU4CAmAIExBQgIKYAATEFCIgpQEBMAQJi
+        ChAQU4CAmAIExBQg8BXT6+N4z8PMzPY2+7lSCsB/xvgA1BdZ6jnmjF8AAAAASUVORK5CYII=
 </value>
   </data>
 </root>
