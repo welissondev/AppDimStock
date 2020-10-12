@@ -219,22 +219,22 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sqlSelect = @"SELECT id, typelOfRegistration, companyName, indentyCard_stateRegister, 
-                socialSecurity_nationalRegister, email WHERE id > 0 ";
+                sqlSelect = @"SELECT id, typeOfRegistration, companyName, indentyCard_stateRegister, 
+                socialSecurity_nationalRegister, email FROM supplier WHERE id > 0 ";
 
                 sqlOderBy = "Order By Id Desc";
 
                 if (TypeOfRegistration != string.Empty)
                 {
-                    sqlParameter += "AND typelOfRegistration LIKE @typelOfRegistration ";
+                    sqlParameter += "AND typeOfRegistration LIKE @typeOfRegistration ";
 
-                    dataBase.AddParameter("@typelOfRegistration", string.
+                    dataBase.AddParameter("@typeOfRegistration", string.
                     Format("%{0}%", TypeOfRegistration));
                 }
 
                 if (CompyName != string.Empty)
                 {
-                    sqlParameter += "AND companyName LIKE @companyName";
+                    sqlParameter += "AND companyName LIKE @companyName ";
 
                     dataBase.AddParameter("@companyName", string.
                     Format("%{0}%", CompyName));
@@ -256,7 +256,15 @@ namespace DimStock.Models
                     Format("%{0}%", SocialSecurity_NationalRegister));
                 }
 
-                query += sqlSelect + sqlParameter + sqlOderBy;
+                if (Contact.Email != string.Empty)
+                {
+                    sqlParameter += "AND email LIKE @email ";
+
+                    dataBase.AddParameter("@email", string.
+                    Format("%{0}%", Contact.Email));
+                }
+
+                query = sqlSelect + sqlParameter + sqlOderBy;
 
                 return dataBase.ExecuteDataAdapter(query);
             }

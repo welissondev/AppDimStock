@@ -65,6 +65,8 @@ namespace DimStock.Presenters
                 TypeOfRegistration = view.SearchTypeOfRegistration
             };
 
+            supplier.Contact.Email = view.SearchEmail;
+
             view.DataList = supplier.SearchData();
         }
 
