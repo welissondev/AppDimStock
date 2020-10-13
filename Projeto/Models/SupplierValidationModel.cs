@@ -19,7 +19,7 @@ namespace DimStock.Models
             if (supplier.CompyName == string.Empty)
             {
                 MessageNotifier.Show("Informe o nome da empresa!"
-                ,"Obrigatório", "?");
+                , "Obrigatório", "?");
 
                 return validationStatus;
             }
@@ -87,7 +87,7 @@ namespace DimStock.Models
             if (supplier.Id == 0)
             {
                 MessageNotifier.Show("Selecione um registro " +
-                "para excluir!" , "Não Selecionado", "?");
+                "para excluir!", "Não Selecionado", "?");
 
                 return validationStatus;
             }
@@ -98,6 +98,9 @@ namespace DimStock.Models
                 "esse forncedor, porque ele possui registros " +
                 "relacionados ao estoque!", "Não Permitido", "?");
             }
+
+            if (MessageNotifier.Reply("Confirma mesmo a exclusão desse " +
+            "fornecedor?", "IMPORTANTE") == false) return validationStatus;
 
             return validationStatus = true;
         }
