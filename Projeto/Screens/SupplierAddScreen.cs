@@ -24,7 +24,7 @@ namespace DimStock.Screens
         public string City { get => TextCity.Text; set => TextCity.Text = value; }
         public string StateLocation { get => TextStateLocation.Text; set => TextStateLocation.Text = value; }
         public string ZipCode { get => TextZipCode.Text; set => TextZipCode.Text = value; }
-        public int StreetNumber { get => int.Parse(TextStreetNumber.Text); set => TextStreetNumber.Text = value.ToString(); }
+        public int StreetNumber { get => int.Parse(TextStreetNumber.Text); set => int.Parse(TextStreetNumber.Text = value.ToString()); }
         public string FixePhone { get => TextFixePhone.Text; set => TextFixePhone.Text = value; }
         public string MobilePhone { get => TextMobilePhone.Text; set => TextMobilePhone.Text = value; }
         public string Email { get => TextEmail.Text; set => TextEmail.Text = value; }
