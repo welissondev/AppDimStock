@@ -106,6 +106,9 @@ namespace DimStock.Screens
 
             if (sender.Equals(ToolStripSupplierAddScreen))
                 SupplierAddScreen.ShowScreen(this);
+
+            if (sender.Equals(ButtonMenuSupplies))
+                SupplierListingScreen.ShowScreen(this);
         }
 
         private void ShowMenuContext(object sender, EventArgs e)
@@ -172,7 +175,7 @@ namespace DimStock.Screens
                 ToolStripCategoyAddScreen.Click += new EventHandler(ShowRelatedScreen);
                 ToolStripProductAddScreen.Click += new EventHandler(ShowRelatedScreen);
                 ToolStripUserAddScreen.Click += new EventHandler(ShowRelatedScreen);
-                ToolStripSupplierAddScreen.Click +=  new EventHandler(ShowRelatedScreen);
+                ToolStripSupplierAddScreen.Click += new EventHandler(ShowRelatedScreen);
                 ButtonMenuDestinations.Click += new EventHandler(ShowRelatedScreen);
                 ToolStripDestinationAddScreen.Click += new EventHandler(ShowRelatedScreen);
                 ButtonMenuCategorys.Click += new EventHandler(ShowRelatedScreen);
@@ -180,6 +183,7 @@ namespace DimStock.Screens
                 ButtonMenuGeneralRegistrations.Click += new EventHandler(ShowMenuContext);
                 ButtonMenuSettings.Click += new EventHandler(ShowMenuContext);
                 ButtonMenuExtender.Click += new EventHandler(MenuExtenter);
+                ButtonMenuSupplies.Click += new EventHandler(ShowRelatedScreen);
             }
             catch (Exception ex)
             {
