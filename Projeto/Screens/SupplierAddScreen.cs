@@ -127,7 +127,7 @@ namespace DimStock.Screens
                     CompyName = view.CompyName,
                     FantasyName = view.FantasyName,
                     IndentyCard_StateRegister = view.IndentyCard_StateRegister,
-                    SocialSecurity_NationalRegister = view.AddressDescription,
+                    SocialSecurity_NationalRegister = view.SocialSecurity_NationalRegister,
                     AddressDescription = view.AddressDescription,
                     District = view.District,
                     City = view.City,
