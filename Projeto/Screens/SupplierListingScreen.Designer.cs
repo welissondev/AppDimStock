@@ -62,7 +62,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bunifuShadowPanel2 = new Bunifu.UI.WinForm.BunifuShadowPanel.BunifuShadowPanel();
-            this.TextSearchCompanyName = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
+            this.TextSearchYourName = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             this.TextSearchEmail = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             this.ImageLoading = new System.Windows.Forms.PictureBox();
             this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
@@ -85,7 +85,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.bunifuShadowPanel2.BorderColor = System.Drawing.Color.Gainsboro;
-            this.bunifuShadowPanel2.Controls.Add(this.TextSearchCompanyName);
+            this.bunifuShadowPanel2.Controls.Add(this.TextSearchYourName);
             this.bunifuShadowPanel2.Controls.Add(this.TextSearchEmail);
             this.bunifuShadowPanel2.Controls.Add(this.ImageLoading);
             this.bunifuShadowPanel2.Controls.Add(this.bunifuSeparator1);
@@ -104,80 +104,80 @@
             this.bunifuShadowPanel2.Size = new System.Drawing.Size(704, 473);
             this.bunifuShadowPanel2.TabIndex = 239;
             // 
-            // TextSearchCompanyName
+            // TextSearchYourName
             // 
-            this.TextSearchCompanyName.AcceptsReturn = false;
-            this.TextSearchCompanyName.AcceptsTab = false;
-            this.TextSearchCompanyName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.TextSearchYourName.AcceptsReturn = false;
+            this.TextSearchYourName.AcceptsTab = false;
+            this.TextSearchYourName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TextSearchCompanyName.AnimationSpeed = 200;
-            this.TextSearchCompanyName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
-            this.TextSearchCompanyName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.TextSearchCompanyName.BackColor = System.Drawing.Color.Transparent;
-            this.TextSearchCompanyName.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TextSearchCompanyName.BackgroundImage")));
-            this.TextSearchCompanyName.BorderColorActive = System.Drawing.Color.DodgerBlue;
-            this.TextSearchCompanyName.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(161)))), ((int)(((byte)(161)))), ((int)(((byte)(161)))));
-            this.TextSearchCompanyName.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            this.TextSearchCompanyName.BorderColorIdle = System.Drawing.Color.Silver;
-            this.TextSearchCompanyName.BorderRadius = 1;
-            this.TextSearchCompanyName.BorderThickness = 1;
-            this.TextSearchCompanyName.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.TextSearchCompanyName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.TextSearchCompanyName.DefaultFont = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
-            this.TextSearchCompanyName.DefaultText = "";
-            this.TextSearchCompanyName.FillColor = System.Drawing.Color.White;
-            this.TextSearchCompanyName.HideSelection = true;
-            this.TextSearchCompanyName.IconLeft = null;
-            this.TextSearchCompanyName.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
-            this.TextSearchCompanyName.IconPadding = 10;
-            this.TextSearchCompanyName.IconRight = null;
-            this.TextSearchCompanyName.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
-            this.TextSearchCompanyName.Lines = new string[0];
-            this.TextSearchCompanyName.Location = new System.Drawing.Point(27, 25);
-            this.TextSearchCompanyName.MaxLength = 32767;
-            this.TextSearchCompanyName.MinimumSize = new System.Drawing.Size(100, 32);
-            this.TextSearchCompanyName.Modified = false;
-            this.TextSearchCompanyName.Multiline = false;
-            this.TextSearchCompanyName.Name = "TextSearchCompanyName";
+            this.TextSearchYourName.AnimationSpeed = 200;
+            this.TextSearchYourName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.TextSearchYourName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.TextSearchYourName.BackColor = System.Drawing.Color.Transparent;
+            this.TextSearchYourName.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TextSearchYourName.BackgroundImage")));
+            this.TextSearchYourName.BorderColorActive = System.Drawing.Color.DodgerBlue;
+            this.TextSearchYourName.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(161)))), ((int)(((byte)(161)))), ((int)(((byte)(161)))));
+            this.TextSearchYourName.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.TextSearchYourName.BorderColorIdle = System.Drawing.Color.Silver;
+            this.TextSearchYourName.BorderRadius = 1;
+            this.TextSearchYourName.BorderThickness = 1;
+            this.TextSearchYourName.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.TextSearchYourName.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TextSearchYourName.DefaultFont = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
+            this.TextSearchYourName.DefaultText = "";
+            this.TextSearchYourName.FillColor = System.Drawing.Color.White;
+            this.TextSearchYourName.HideSelection = true;
+            this.TextSearchYourName.IconLeft = null;
+            this.TextSearchYourName.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
+            this.TextSearchYourName.IconPadding = 10;
+            this.TextSearchYourName.IconRight = null;
+            this.TextSearchYourName.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
+            this.TextSearchYourName.Lines = new string[0];
+            this.TextSearchYourName.Location = new System.Drawing.Point(27, 25);
+            this.TextSearchYourName.MaxLength = 32767;
+            this.TextSearchYourName.MinimumSize = new System.Drawing.Size(100, 32);
+            this.TextSearchYourName.Modified = false;
+            this.TextSearchYourName.Multiline = false;
+            this.TextSearchYourName.Name = "TextSearchYourName";
             stateProperties1.BorderColor = System.Drawing.Color.DodgerBlue;
             stateProperties1.FillColor = System.Drawing.Color.Empty;
             stateProperties1.ForeColor = System.Drawing.Color.Empty;
             stateProperties1.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.TextSearchCompanyName.OnActiveState = stateProperties1;
+            this.TextSearchYourName.OnActiveState = stateProperties1;
             stateProperties2.BorderColor = System.Drawing.Color.Empty;
             stateProperties2.FillColor = System.Drawing.Color.White;
             stateProperties2.ForeColor = System.Drawing.Color.Empty;
             stateProperties2.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.TextSearchCompanyName.OnDisabledState = stateProperties2;
+            this.TextSearchYourName.OnDisabledState = stateProperties2;
             stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
             stateProperties3.FillColor = System.Drawing.Color.Empty;
             stateProperties3.ForeColor = System.Drawing.Color.Empty;
             stateProperties3.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.TextSearchCompanyName.OnHoverState = stateProperties3;
+            this.TextSearchYourName.OnHoverState = stateProperties3;
             stateProperties4.BorderColor = System.Drawing.Color.Silver;
             stateProperties4.FillColor = System.Drawing.Color.White;
             stateProperties4.ForeColor = System.Drawing.Color.Empty;
             stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.TextSearchCompanyName.OnIdleState = stateProperties4;
-            this.TextSearchCompanyName.PasswordChar = '\0';
-            this.TextSearchCompanyName.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.TextSearchCompanyName.PlaceholderText = "Nome/Razão";
-            this.TextSearchCompanyName.ReadOnly = false;
-            this.TextSearchCompanyName.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.TextSearchCompanyName.SelectedText = "";
-            this.TextSearchCompanyName.SelectionLength = 0;
-            this.TextSearchCompanyName.SelectionStart = 0;
-            this.TextSearchCompanyName.ShortcutsEnabled = true;
-            this.TextSearchCompanyName.Size = new System.Drawing.Size(164, 34);
-            this.TextSearchCompanyName.Style = Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox._Style.Bunifu;
-            this.TextSearchCompanyName.TabIndex = 0;
-            this.TextSearchCompanyName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.TextSearchCompanyName.TextMarginBottom = 0;
-            this.TextSearchCompanyName.TextMarginLeft = 5;
-            this.TextSearchCompanyName.TextMarginTop = 0;
-            this.TextSearchCompanyName.TextPlaceholder = "Nome/Razão";
-            this.TextSearchCompanyName.UseSystemPasswordChar = false;
-            this.TextSearchCompanyName.WordWrap = true;
+            this.TextSearchYourName.OnIdleState = stateProperties4;
+            this.TextSearchYourName.PasswordChar = '\0';
+            this.TextSearchYourName.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.TextSearchYourName.PlaceholderText = "Nome/Razão";
+            this.TextSearchYourName.ReadOnly = false;
+            this.TextSearchYourName.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.TextSearchYourName.SelectedText = "";
+            this.TextSearchYourName.SelectionLength = 0;
+            this.TextSearchYourName.SelectionStart = 0;
+            this.TextSearchYourName.ShortcutsEnabled = true;
+            this.TextSearchYourName.Size = new System.Drawing.Size(164, 34);
+            this.TextSearchYourName.Style = Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox._Style.Bunifu;
+            this.TextSearchYourName.TabIndex = 0;
+            this.TextSearchYourName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextSearchYourName.TextMarginBottom = 0;
+            this.TextSearchYourName.TextMarginLeft = 5;
+            this.TextSearchYourName.TextMarginTop = 0;
+            this.TextSearchYourName.TextPlaceholder = "Nome/Razão";
+            this.TextSearchYourName.UseSystemPasswordChar = false;
+            this.TextSearchYourName.WordWrap = true;
             // 
             // TextSearchEmail
             // 
@@ -783,7 +783,7 @@
         private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox TextSearchIndentyCard_StateRegister;
         private Bunifu.UI.WinForms.BunifuDataGridView GridList;
         private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox TextSearchEmail;
-        private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox TextSearchCompanyName;
+        private Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox TextSearchYourName;
         private System.Windows.Forms.Timer TimerSearch;
     }
 }

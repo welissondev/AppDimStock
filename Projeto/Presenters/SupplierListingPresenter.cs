@@ -35,7 +35,7 @@ namespace DimStock.Presenters
             {
                 view.Id = supplier.Id;
                 view.TypeOfRegistration = supplier.TypeOfRegistration;
-                view.CompyName = supplier.CompyName;
+                view.YourName = supplier.YourName;
                 view.FantasyName = supplier.FantasyName;
                 view.IndentyCard_StateRegister = supplier.IndentyCard_StateRegister;
                 view.SocialSecurity_NationalRegister = supplier.SocialSecurity_NationalRegister;
@@ -59,7 +59,7 @@ namespace DimStock.Presenters
         {
             var supplier = new SupplierModel
             {
-                CompyName = view.SearchCompanyName,
+                YourName = view.SearchYourName,
                 IndentyCard_StateRegister = view.SearchIndentyCard_StateRegister,
                 SocialSecurity_NationalRegister = view.SearchSocialSecurity_NationalRegister,
                 TypeOfRegistration = view.SearchTypeOfRegistration
@@ -74,7 +74,7 @@ namespace DimStock.Presenters
         {
             view.Id = 0;
             view.TypeOfRegistration = string.Empty;
-            view.CompyName = string.Empty;
+            view.YourName = string.Empty;
             view.FantasyName = string.Empty;
             view.IndentyCard_StateRegister = string.Empty;
             view.SocialSecurity_NationalRegister = string.Empty;
@@ -87,7 +87,7 @@ namespace DimStock.Presenters
             view.FixePhone = string.Empty;
             view.MobilePhone = string.Empty;
             view.Email = string.Empty;
-            view.SearchCompanyName = string.Empty;
+            view.SearchYourName = string.Empty;
             view.SearchIndentyCard_StateRegister = string.Empty;
             view.SearchSocialSecurity_NationalRegister = string.Empty;
             view.SearchTypeOfRegistration = string.Empty;

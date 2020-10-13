@@ -15,7 +15,7 @@ namespace DimStock.Screens
 
         public int Id { get; set; }
         public string TypeOfRegistration { get => TextTypeOfRegistration.Text; set => TextTypeOfRegistration.Text = value; }
-        public string CompyName { get => TextCompanyName.Text; set => TextCompanyName.Text = value; }
+        public string YourName { get => TextYourName.Text; set => TextYourName.Text = value; }
         public string FantasyName { get => TextFantasyName.Text; set => TextFantasyName.Text = value; }
         public string IndentyCard_StateRegister { get => TextIndentyCard_StateRegister.Text; set => TextIndentyCard_StateRegister.Text = value; }
         public string SocialSecurity_NationalRegister { get => TextSocialSecurity_NationalRegistration.Text; set => TextSocialSecurity_NationalRegistration.Text = value; }
@@ -124,7 +124,7 @@ namespace DimStock.Screens
                 {
                     Id = view.Id,
                     TypeOfRegistration = view.TypeOfRegistration,
-                    CompyName = view.CompyName,
+                    YourName = view.YourName,
                     FantasyName = view.FantasyName,
                     IndentyCard_StateRegister = view.IndentyCard_StateRegister,
                     SocialSecurity_NationalRegister = view.SocialSecurity_NationalRegister,

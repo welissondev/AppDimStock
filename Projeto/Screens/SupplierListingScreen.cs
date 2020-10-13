@@ -18,7 +18,7 @@ namespace DimStock.Screens
 
         public int Id { get; set; }
         public string TypeOfRegistration { get; set; }
-        public string CompyName { get; set; }
+        public string YourName { get; set; }
         public string FantasyName { get; set; }
         public string IndentyCard_StateRegister { get; set; }
         public string SocialSecurity_NationalRegister { get; set; }
@@ -33,7 +33,7 @@ namespace DimStock.Screens
         public string Email { get; set; }
 
         public string SearchTypeOfRegistration { get; set; }
-        public string SearchCompanyName { get => TextSearchCompanyName.Text; set => TextSearchCompanyName.Text = value; }
+        public string SearchYourName { get => TextSearchYourName.Text; set => TextSearchYourName.Text = value; }
         public string SearchIndentyCard_StateRegister { get => TextSearchIndentyCard_StateRegister.Text; set => TextSearchIndentyCard_StateRegister.Text = value; }
         public string SearchSocialSecurity_NationalRegister { get => TextSearchSocialSecurity_NationalRegister.Text; set => TextSearchSocialSecurity_NationalRegister.Text = value; }
         public string SearchEmail { get => TextSearchEmail.Text; set => TextSearchEmail.Text = value; }
@@ -160,10 +160,10 @@ namespace DimStock.Screens
                 GridList.Columns["typeOfRegistration"].DisplayIndex = 1;
                 GridList.Columns["typeOfRegistration"].Width = 70;
 
-                GridList.Columns["CompanyName"].HeaderText = "Descrição";
-                GridList.Columns["CompanyName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                GridList.Columns["CompanyName"].ReadOnly = true;
-                GridList.Columns["CompanyName"].DisplayIndex = 2;
+                GridList.Columns["YourName"].HeaderText = "Descrição";
+                GridList.Columns["YourName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                GridList.Columns["YourName"].ReadOnly = true;
+                GridList.Columns["YourName"].DisplayIndex = 2;
 
                 GridList.Columns["indentyCard_stateRegister"].HeaderText = "RG/IE";
                 GridList.Columns["indentyCard_stateRegister"].ReadOnly = true;
@@ -286,7 +286,7 @@ namespace DimStock.Screens
                 ButtonClose.Click += new EventHandler(ScreenClose);
                 ButtonClose.Click += new EventHandler(PresenterClear);
                 TimerSearch.Tick += new EventHandler(TimerTick);
-                TextSearchCompanyName.KeyPress += new KeyPressEventHandler(TextKeyPress);
+                TextSearchYourName.KeyPress += new KeyPressEventHandler(TextKeyPress);
                 TextSearchEmail.KeyPress += new KeyPressEventHandler(TextKeyPress);
                 TextSearchIndentyCard_StateRegister.KeyPress += new KeyPressEventHandler(TextKeyPress);
                 TextSearchSocialSecurity_NationalRegister.KeyPress += new KeyPressEventHandler(TextKeyPress);

@@ -16,7 +16,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (supplier.CompyName == string.Empty)
+            if (supplier.YourName == string.Empty)
             {
                 MessageNotifier.Show("Informe o nome da empresa!"
                 , "Obrigatório", "?");
@@ -58,7 +58,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (supplier.CompyName == string.Empty)
+            if (supplier.YourName == string.Empty)
             {
                 MessageNotifier.Show("Informe o nome da empresa!",
                 "Obrigatório", "?");

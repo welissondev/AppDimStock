@@ -48,12 +48,12 @@
             this.TextSocialSecurity_NationalRegistration = new System.Windows.Forms.TextBox();
             this.TextIndentyCard_StateRegister = new System.Windows.Forms.TextBox();
             this.TextFantasyName = new System.Windows.Forms.TextBox();
-            this.TextCompanyName = new System.Windows.Forms.TextBox();
+            this.TextYourName = new System.Windows.Forms.TextBox();
             this.LabelSocialSecurity_NationalRegistration = new System.Windows.Forms.Label();
             this.LabelIndentyCard_StateRegister = new System.Windows.Forms.Label();
             this.LabelFantasyName = new System.Windows.Forms.Label();
             this.LabelTypeOfRegistration = new System.Windows.Forms.Label();
-            this.LabelCompanyName = new System.Windows.Forms.Label();
+            this.LabelYourName = new System.Windows.Forms.Label();
             this.TabPageAddress = new System.Windows.Forms.TabPage();
             this.TextStreetNumber = new System.Windows.Forms.TextBox();
             this.TextZipCode = new System.Windows.Forms.TextBox();
@@ -125,12 +125,12 @@
             this.TabPageCompany.Controls.Add(this.TextSocialSecurity_NationalRegistration);
             this.TabPageCompany.Controls.Add(this.TextIndentyCard_StateRegister);
             this.TabPageCompany.Controls.Add(this.TextFantasyName);
-            this.TabPageCompany.Controls.Add(this.TextCompanyName);
+            this.TabPageCompany.Controls.Add(this.TextYourName);
             this.TabPageCompany.Controls.Add(this.LabelSocialSecurity_NationalRegistration);
             this.TabPageCompany.Controls.Add(this.LabelIndentyCard_StateRegister);
             this.TabPageCompany.Controls.Add(this.LabelFantasyName);
             this.TabPageCompany.Controls.Add(this.LabelTypeOfRegistration);
-            this.TabPageCompany.Controls.Add(this.LabelCompanyName);
+            this.TabPageCompany.Controls.Add(this.LabelYourName);
             this.TabPageCompany.Location = new System.Drawing.Point(4, 22);
             this.TabPageCompany.Name = "TabPageCompany";
             this.TabPageCompany.Padding = new System.Windows.Forms.Padding(3);
@@ -174,15 +174,15 @@
             this.TextFantasyName.Size = new System.Drawing.Size(535, 32);
             this.TextFantasyName.TabIndex = 2;
             // 
-            // TextCompanyName
+            // TextYourName
             // 
-            this.TextCompanyName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.TextYourName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TextCompanyName.Font = new System.Drawing.Font("Segoe UI Semibold", 13.7F);
-            this.TextCompanyName.Location = new System.Drawing.Point(31, 114);
-            this.TextCompanyName.Name = "TextCompanyName";
-            this.TextCompanyName.Size = new System.Drawing.Size(535, 32);
-            this.TextCompanyName.TabIndex = 1;
+            this.TextYourName.Font = new System.Drawing.Font("Segoe UI Semibold", 13.7F);
+            this.TextYourName.Location = new System.Drawing.Point(31, 114);
+            this.TextYourName.Name = "TextYourName";
+            this.TextYourName.Size = new System.Drawing.Size(535, 32);
+            this.TextYourName.TabIndex = 1;
             // 
             // LabelSocialSecurity_NationalRegistration
             // 
@@ -229,16 +229,16 @@
             this.LabelTypeOfRegistration.TabIndex = 259;
             this.LabelTypeOfRegistration.Text = "Pessoa Tipo:";
             // 
-            // LabelCompanyName
+            // LabelYourName
             // 
-            this.LabelCompanyName.AutoSize = true;
-            this.LabelCompanyName.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
-            this.LabelCompanyName.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.LabelCompanyName.Location = new System.Drawing.Point(27, 94);
-            this.LabelCompanyName.Name = "LabelCompanyName";
-            this.LabelCompanyName.Size = new System.Drawing.Size(124, 17);
-            this.LabelCompanyName.TabIndex = 257;
-            this.LabelCompanyName.Text = "Nome/Razão Social";
+            this.LabelYourName.AutoSize = true;
+            this.LabelYourName.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
+            this.LabelYourName.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.LabelYourName.Location = new System.Drawing.Point(27, 94);
+            this.LabelYourName.Name = "LabelYourName";
+            this.LabelYourName.Size = new System.Drawing.Size(124, 17);
+            this.LabelYourName.TabIndex = 257;
+            this.LabelYourName.Text = "Nome/Razão Social";
             // 
             // TabPageAddress
             // 
@@ -753,7 +753,7 @@
         private System.Windows.Forms.Label LabelIndentyCard_StateRegister;
         private System.Windows.Forms.Label LabelFantasyName;
         private System.Windows.Forms.Label LabelTypeOfRegistration;
-        private System.Windows.Forms.Label LabelCompanyName;
+        private System.Windows.Forms.Label LabelYourName;
         private System.Windows.Forms.TabPage TabPageAddress;
         private System.Windows.Forms.Label LabelStateLocation;
         private System.Windows.Forms.Label LabelCity;
@@ -765,7 +765,7 @@
         private System.Windows.Forms.Label LabelEmail;
         private System.Windows.Forms.Label LabelMobilePhone;
         private System.Windows.Forms.Label LabelFixePhone;
-        private System.Windows.Forms.TextBox TextCompanyName;
+        private System.Windows.Forms.TextBox TextYourName;
         private System.Windows.Forms.TextBox TextFantasyName;
         private System.Windows.Forms.TextBox TextSocialSecurity_NationalRegistration;
         private System.Windows.Forms.TextBox TextIndentyCard_StateRegister;

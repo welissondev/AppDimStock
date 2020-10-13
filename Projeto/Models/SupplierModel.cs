@@ -10,7 +10,7 @@ namespace DimStock.Models
     {
         public int Id { get; set; }
         public string TypeOfRegistration { get; set; }
-        public string CompyName { get; set; }
+        public string YourName { get; set; }
         public string FantasyName { get; set; }
         public string IndentyCard_StateRegister { get; set; }
         public string SocialSecurity_NationalRegister { get; set; }
@@ -33,14 +33,14 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"INSERT INTO Supplier(typeOfRegistration, companyName, fantasyName, indentyCard_stateRegister,
+                sql = @"INSERT INTO Supplier(typeOfRegistration, yourName, fantasyName, indentyCard_stateRegister,
                 socialSecurity_nationalRegister, addressDescription, district, city, stateLocation, zipCode, streetNumber, fixePhone, 
-                mobilePhone, email)VALUES(@typeOfRegistration, @companyName, @fantasyName, @indentyCard_stateRegister, @socialSecurity_nationalRegister, 
+                mobilePhone, email)VALUES(@typeOfRegistration, @yourName, @fantasyName, @indentyCard_stateRegister, @socialSecurity_nationalRegister, 
                 @addressDescription, @district, @city, @stateLocation, @zipCode, @streetNumber, @fixePhone, @mobilePhone, @email)";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@typeOfRegistration", TypeOfRegistration);
-                dataBase.AddParameter("@compyName", CompyName);
+                dataBase.AddParameter("@yourName", YourName);
                 dataBase.AddParameter("@fantasyName", FantasyName);
                 dataBase.AddParameter("@indentyCard_StateRegister", IndentyCard_StateRegister);
                 dataBase.AddParameter("@socialSecurity_NationalRegister", SocialSecurity_NationalRegister);
@@ -76,14 +76,14 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"UPDATE Supplier set typeOfRegistration = @typeOfRegistration, compyName = @compyName, fantasyName = @fantasyName,
+                sql = @"UPDATE Supplier set typeOfRegistration = @typeOfRegistration, yourName = @yourName, fantasyName = @fantasyName,
                 indentyCard_StateRegister = @indentyCard_StateRegister, socialSecurity_NationalRegister = @socialSecurity_NationalRegister,
                 addressDescription = @addressDescription, district = @district, city = @city, stateLocation = @stateLocation, zipCode = @zipCode,
                 streetNumber = @streetNumber, fixePhone = @fixePhone, mobilePhone = @mobilePhone, email = @email WHERE id = @ID";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@typeOfRegistration", TypeOfRegistration);
-                dataBase.AddParameter("@compyName", CompyName);
+                dataBase.AddParameter("@yourName", YourName);
                 dataBase.AddParameter("@fantasyName", FantasyName);
                 dataBase.AddParameter("@indentyCard_StateRegister", IndentyCard_StateRegister);
                 dataBase.AddParameter("@socialSecurity_NationalRegister", SocialSecurity_NationalRegister);
@@ -158,7 +158,7 @@ namespace DimStock.Models
                     {
                         Id = int.Parse(reader["id"].ToString());
                         TypeOfRegistration = reader["typeOfRegistration"].ToString();
-                        CompyName = reader["companyName"].ToString();
+                        YourName = reader["yourName"].ToString();
                         FantasyName = reader["fantasyName"].ToString();
                         IndentyCard_StateRegister = reader["indentyCard_stateRegister"].ToString();
                         SocialSecurity_NationalRegister = reader["socialSecurity_nationalRegister"].ToString();
@@ -219,7 +219,7 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sqlSelect = @"SELECT id, typeOfRegistration, companyName, indentyCard_stateRegister, 
+                sqlSelect = @"SELECT id, typeOfRegistration, yourName, indentyCard_stateRegister, 
                 socialSecurity_nationalRegister, email FROM supplier WHERE id > 0 ";
 
                 sqlOderBy = "Order By Id Desc";
@@ -232,12 +232,12 @@ namespace DimStock.Models
                     Format("%{0}%", TypeOfRegistration));
                 }
 
-                if (CompyName != string.Empty)
+                if (YourName != string.Empty)
                 {
-                    sqlParameter += "AND companyName LIKE @companyName ";
+                    sqlParameter += "AND yourName LIKE @yourName ";
 
-                    dataBase.AddParameter("@companyName", string.
-                    Format("%{0}%", CompyName));
+                    dataBase.AddParameter("@yourName", string.
+                    Format("%{0}%", YourName));
                 }
 
                 if (IndentyCard_StateRegister != string.Empty)
