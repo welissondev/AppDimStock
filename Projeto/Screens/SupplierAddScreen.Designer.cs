@@ -594,7 +594,7 @@
             this.TabPageAddress.Location = new System.Drawing.Point(4, 22);
             this.TabPageAddress.Name = "TabPageAddress";
             this.TabPageAddress.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPageAddress.Size = new System.Drawing.Size(813, 352);
+            this.TabPageAddress.Size = new System.Drawing.Size(813, 387);
             this.TabPageAddress.TabIndex = 1;
             this.TabPageAddress.Text = "Endereço";
             this.TabPageAddress.UseVisualStyleBackColor = true;
@@ -1070,7 +1070,7 @@
             this.TabPageContact.Controls.Add(this.LabelFixePhone);
             this.TabPageContact.Location = new System.Drawing.Point(4, 22);
             this.TabPageContact.Name = "TabPageContact";
-            this.TabPageContact.Size = new System.Drawing.Size(813, 352);
+            this.TabPageContact.Size = new System.Drawing.Size(813, 387);
             this.TabPageContact.TabIndex = 2;
             this.TabPageContact.Text = "Contato";
             this.TabPageContact.UseVisualStyleBackColor = true;
@@ -1601,6 +1601,7 @@
             this.Controls.Add(this.PanelShadow);
             this.MinimumSize = new System.Drawing.Size(750, 500);
             this.Name = "SupplierAddScreen";
+            this.ShadowType = MetroFramework.Forms.MetroFormShadowType.DropShadow;
             this.Text = "Cadastro de Fornecedores";
             this.PanelShadow.ResumeLayout(false);
             this.MainTabControl.ResumeLayout(false);
