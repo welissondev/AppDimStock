@@ -3,7 +3,7 @@ using DimStock.Views;
 
 namespace DimStock.Screens
 {
-    public partial class SupplierListingScreen : MetroForm, ISupplierListingView
+    public partial class SupplierListingScreen : ISupplierListingView
     {
         public int Id { get; set; }
         public string TypeOfRegistration { get; set; }
@@ -25,13 +25,14 @@ namespace DimStock.Screens
         public string SearchCompanyName { get => TextSearchCompanyName.Text; set => TextSearchCompanyName.Text = value; }
         public string SearchIndentyCard_StateRegister { get => TextSearchIndentyCard_StateRegister.Text; set => TextSearchIndentyCard_StateRegister.Text = value; }
         public string SearchSocialSecurity_NationalRegister { get => TextSearchSocialSecurity_NationalRegister.Text; set => TextSearchSocialSecurity_NationalRegister.Text = value; }
+        public string SearchEmail { get => TextSearchEmail.Text; set => TextSearchEmail.Text = value; }
         public object DataList { get => GridList.DataSource; set => GridList.DataSource = value; }
     }
 }
 
 namespace DimStock.Screens
 {
-    public partial class SupplierListingScreen
+    public partial class SupplierListingScreen : MetroForm
     {
         public SupplierListingScreen()
         {
