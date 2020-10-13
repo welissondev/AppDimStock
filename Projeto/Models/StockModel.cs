@@ -186,7 +186,7 @@ namespace DimStock.Models
             Quantity WHERE ProductId = @ProductId";
 
             dataBaseTransaction.ClearParameter();
-            dataBaseTransaction.AddParameter("ProductCostPrice", Product.CostPrice);
+            dataBaseTransaction.AddParameter("@ProductCostPrice", Product.CostPrice);
             dataBaseTransaction.AddParameter("@ProductId", Product.Id);
 
             return dataBaseTransaction.ExecuteNonQuery(sql) > 0;
