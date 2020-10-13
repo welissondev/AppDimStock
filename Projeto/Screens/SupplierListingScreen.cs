@@ -158,7 +158,7 @@ namespace DimStock.Screens
                 GridList.Columns["typeOfRegistration"].HeaderText = "Tipo";
                 GridList.Columns["typeOfRegistration"].ReadOnly = true;
                 GridList.Columns["typeOfRegistration"].DisplayIndex = 1;
-                GridList.Columns["typeOfRegistration"].Width = 120;
+                GridList.Columns["typeOfRegistration"].Width = 70;
 
                 GridList.Columns["CompanyName"].HeaderText = "Descrição";
                 GridList.Columns["CompanyName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -177,6 +177,7 @@ namespace DimStock.Screens
                 GridList.Columns["socialSecurity_nationalRegister"].Width = 160;
 
                 GridList.Columns["email"].HeaderText = "Email";
+                GridList.Columns["email"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 GridList.Columns["email"].ReadOnly = true;
                 GridList.Columns["email"].DisplayIndex = 5;
                 GridList.Columns["email"].Width = 420;
