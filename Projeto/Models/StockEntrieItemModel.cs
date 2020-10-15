@@ -4,11 +4,12 @@ namespace DimStock.Models
 {
     public class StockEntrieItemModel : ItemModel
     {
-        public int StockEntrieId { get; set; }
+        private StockEntrieModel stockEntrie;
         public int ProductId{ get; set; }
 
-        public StockEntrieItemModel()
+        public StockEntrieItemModel(StockEntrieModel stockEntrie)
         {
+            this.stockEntrie = stockEntrie;
         }
 
         public bool Insert()
@@ -23,7 +24,7 @@ namespace DimStock.Models
                 @quantity, @unitaryValue, @totalValue)";
 
                 dataBase.ClearParameter();
-                dataBase.AddParameter("@stockEntrieId", StockEntrieId);
+                dataBase.AddParameter("@stockEntrieId", stockEntrie.Id);
                 dataBase.AddParameter("@productId", ProductId);
                 dataBase.AddParameter("@quantity", Quantity);
                 dataBase.AddParameter("@unitaryValue", UnitaryValue);
@@ -70,7 +71,7 @@ namespace DimStock.Models
                 product p ON i.productId = p.id WHERE i.stockEntrieId = @stockEntrieId";
 
                 dataBase.ClearParameter();
-                dataBase.AddParameter("@stockEntrieId", StockEntrieId);
+                dataBase.AddParameter("@stockEntrieId", stockEntrie.Id);
 
                 searchResult = dataBase.ExecuteDataAdapter(sql);
             }

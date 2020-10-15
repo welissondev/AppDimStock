@@ -62,15 +62,6 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (destination.CheckRelateWithMovement() == true)
-            {
-                MessageNotifier.Show("Não é possível deletar " +
-                "esse destino, porque ele possui registros " +
-                "relacionados uma movimentação!", "Não Permitido", "?");
-
-                return validationStatus;
-            }
-
             if (MessageNotifier.Reply("Confirma mesmo a exclusão " +
             "desse destino?", "IMPORTANTE") == false)
                 return validationStatus;

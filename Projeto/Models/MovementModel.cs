@@ -4,12 +4,9 @@ using System.Data;
 
 namespace DimStock.Models
 {
-    /// <summary>
-    /// Representa o modelo de movimentação do estoque
-    /// </summary>
     public partial class MovementModel
     {
-        private ConnectionTransactionModel transaction;
+        private ConnectionTransactionModel dataBaseTransaction;
 
         public int Id { get; set; }
         public string OperationType { get; set; }
@@ -19,19 +16,17 @@ namespace DimStock.Models
         public DateTime FinishDate { get; set; }
         public DateTime FinishHour { get; set; }
         public string Situation { get; set; }
-        public DestinationModel Destination { get; set; }
     }
 
     public partial class MovementModel
     {
         public MovementModel()
         {
-            Destination = new DestinationModel();
         }
 
-        public MovementModel(DestinationModel destination)
+        public MovementModel(ConnectionTransactionModel connectionTransaction)
         {
-            Destination = destination;
+            dataBaseTransaction = connectionTransaction;
         }
 
         public bool StartOperation()
@@ -42,18 +37,18 @@ namespace DimStock.Models
             if (MovementValidationModel.ValidateToStartOperation(this) == false)
                 return actionResult;
 
-            using (transaction = new ConnectionTransactionModel())
+            using (dataBaseTransaction = new ConnectionTransactionModel())
             {
                 sql = @"INSERT INTO Movement(OperationType)VALUES(@OperationType)";
 
-                transaction.ClearParameter();
-                transaction.AddParameter("@OperationType", OperationType);
+                dataBaseTransaction.ClearParameter();
+                dataBaseTransaction.AddParameter("@OperationType", OperationType);
 
-                if (transaction.ExecuteNonQuery(sql) > 0)
+                if (dataBaseTransaction.ExecuteNonQuery(sql) > 0)
                 {
                     if (SetOperationNumber() == true)
                     {
-                        transaction.Commit();
+                        dataBaseTransaction.Commit();
                         actionResult = true;
                     }
                 }
@@ -66,37 +61,23 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
-            if (MessageNotifier.Reply("Confirma essa operação?",
-            "IMPORTANTE") == false) return actionResult;
+            sql = @"UPDATE Movement Set FinishDate = @FinishDate, 
+                FinishHour = @FinishHour, Situation = @Situation
+                WHERE Id = @Id";
 
-            using (transaction = new ConnectionTransactionModel())
+            FinishDate = DateTime.Now;
+            FinishHour = DateTime.Now;
+            Situation = "Finalizada";
+
+            dataBaseTransaction.ClearParameter();
+            dataBaseTransaction.AddParameter("@FinishDate", FinishDate);
+            dataBaseTransaction.AddParameter("@FinishHour", FinishHour);
+            dataBaseTransaction.AddParameter("@Situation", Situation);
+            dataBaseTransaction.AddParameter("@Id", Id);
+
+            if (dataBaseTransaction.ExecuteNonQuery(sql) > 0)
             {
-                if (InsertStockPostings() == true)
-                {
-                    sql = @"UPDATE Movement Set FinishDate = @FinishDate, 
-                    FinishHour = @FinishHour, Situation = @Situation
-                    WHERE Id = @Id";
-
-                    FinishDate = DateTime.Now;
-                    FinishHour = DateTime.Now;
-                    Situation = "Finalizada";
-
-                    transaction.ClearParameter();
-                    transaction.AddParameter("@FinishDate", FinishDate);
-                    transaction.AddParameter("@FinishHour", FinishHour);
-                    transaction.AddParameter("@Situation", Situation);
-                    transaction.AddParameter("@Id", Id);
-
-                    if (transaction.ExecuteNonQuery(sql) > 0)
-                    {
-                        transaction.Commit();
-
-                        MessageNotifier.Show("Movimentação registrada " +
-                        "com sucesso!", "Sucesso", "!");
-
-                        actionResult = true;
-                    }
-                }
+                actionResult = true;
             }
 
             return actionResult;
@@ -110,74 +91,11 @@ namespace DimStock.Models
             var sql = @"UPDATE Movement SET OperationNumber = 
             @OperationNumber WHERE Id = @Id";
 
-            transaction.ClearParameter();
-            transaction.AddParameter("@OperationNumber", OperationNumber);
-            transaction.AddParameter("@Id", Id);
+            dataBaseTransaction.ClearParameter();
+            dataBaseTransaction.AddParameter("@OperationNumber", OperationNumber);
+            dataBaseTransaction.AddParameter("@Id", Id);
 
-            return transaction.ExecuteNonQuery(sql) > 0;
-        }
-
-        public bool SetDestinationId()
-        {
-            var actionResult = false;
-            var sql = string.Empty;
-
-            if (MovementValidationModel.ValidateToSetDestinationId(this) == false)
-                return actionResult;
-
-            using (var dataBase = new ConnectionModel())
-            {
-                sql = @"UPDATE Movement SET DestinationId = 
-                @DestinationId WHERE Id = @Id";
-
-                dataBase.ClearParameter();
-                dataBase.AddParameter("@DestinationId", Destination.Id);
-                dataBase.AddParameter("@Id", Id);
-
-                if (dataBase.ExecuteNonQuery(sql) > 0)
-                {
-                    actionResult = true;
-                }
-            }
-
-            return actionResult;
-        }
-
-        public bool InsertStockPostings()
-        {
-            var actionResult = false;
-            var postedItems = GetPostedItems();
-
-            switch (OperationType)
-            {
-                case "Entry":
-                    actionResult = new StockModel(transaction).InsertPostingOfEntries(postedItems);
-                    break;
-
-                case "OutPut":
-                    actionResult = new StockModel(transaction).InsertPostingOfOutPuts(postedItems);
-                    break;
-            }
-
-            return actionResult;
-        }
-        public bool CancelStockPostings()
-        {
-            var actionResult = false;
-            var postedItems = GetPostedItems();
-
-            switch (OperationType)
-            {
-                case "Entry":
-                    actionResult = new StockModel(transaction).CancelPostingOfEntries(postedItems);
-                    break;
-
-                case "OutPut":
-                    actionResult = new StockModel(transaction).CancelPostingOfOutPuts(postedItems);
-                    break;
-            }
-
-            return actionResult;
+            return dataBaseTransaction.ExecuteNonQuery(sql) > 0;
         }
 
         public bool Delete()
@@ -185,28 +103,14 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
-            if (MovementValidationModel.ValidateToDelete(this) == false)
-                return actionResult;
+            sql = @"DELETE FROM movement WHERE Id = @Id";
 
-            using (transaction = new ConnectionTransactionModel())
+            dataBaseTransaction.ClearParameter();
+            dataBaseTransaction.AddParameter("Id", Id);
+
+            if (dataBaseTransaction.ExecuteNonQuery(sql) > 0)
             {
-                if (CancelStockPostings() == true)
-                {
-                    sql = @"DELETE FROM Movement WHERE Id = @Id";
-
-                    transaction.ClearParameter();
-                    transaction.AddParameter("Id", Id);
-
-                    if (transaction.ExecuteNonQuery(sql) > 0)
-                    {
-                        transaction.Commit();
-
-                        MessageNotifier.Show("Movimentação excluida " +
-                        "com sucesso!", "Sucesso", "!");
-
-                        actionResult = true;
-                    }
-                }
+                actionResult = true;
             }
 
             return actionResult;
@@ -222,7 +126,7 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"SELECT Movement.*, Destination.* FROM Movement LEFT JOIN 
+                sql = @"SELECT * FROM Movement LEFT JOIN 
                 Destination ON Movement.DestinationId = Destination.Id WHERE 
                 Movement.Id = @Id";
 
@@ -241,12 +145,6 @@ namespace DimStock.Models
                         FinishDate = DateTime.Parse(reader["FinishDate"].ToString());
                         FinishHour = DateTime.Parse(reader["FinishHour"].ToString());
                         Situation = reader["Situation"].ToString();
-
-                        if (reader["Destination.Id"] != DBNull.Value)
-                            Destination.Id = int.Parse(reader["Destination.Id"].ToString());
-
-                        if (reader["Destination.Location"] != DBNull.Value)
-                            Destination.LocationDescription = reader["Location"].ToString();
 
                         actionResult = true;
                     }
@@ -275,27 +173,6 @@ namespace DimStock.Models
             }
 
             return registrationStatus = true;
-        }
-        public bool CheckRelateWithDestination()
-        {
-            var relatedStatus = false;
-            var sql = string.Empty;
-
-            using (var dataBase = new ConnectionModel())
-            {
-                sql = @"SELECT m.* FROM Movement AS m WHERE 
-                m.DestinationId = @DestinationId";
-
-                dataBase.ClearParameter();
-                dataBase.AddParameter("@DestinationId", Destination.Id);
-
-                if (dataBase.ExecuteScalar(sql) > 0)
-                {
-                    relatedStatus = true;
-                }
-            }
-
-            return relatedStatus;
         }
 
         public DataTable FetchData()
@@ -335,11 +212,6 @@ namespace DimStock.Models
 
                 return dataBase.ExecuteDataAdapter(Sql);
             }
-        }
-
-        public DataTable GetPostedItems()
-        {
-            return new MovementItemModel(this).ListItems();
         }
 
         public int GetLastId()

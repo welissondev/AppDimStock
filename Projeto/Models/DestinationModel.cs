@@ -133,11 +133,6 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public bool CheckRelateWithMovement()
-        {
-            return new MovementModel(this).CheckRelateWithDestination();
-        }
-
         public bool CheckIfRegister()
         {
             /*Essa verificação também precisou ser feita pelo 

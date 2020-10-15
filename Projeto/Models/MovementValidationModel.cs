@@ -20,23 +20,6 @@ namespace DimStock.Models
             return validationStatus = true;
         }
 
-        public static bool ValidateToSetDestinationId(MovementModel movement)
-        {
-            var validationStatus = false;
-
-            if (movement.Destination.Id == 0)
-            {
-                MessageNotifier.Show("Informe um destino para " +
-                "essa movimentação! Se a movimentação não tiver uma " +
-                "localização, cadastre um destino como por exemplo: " +
-                "'Sem Destino'", "Obrigatório", "?");
-
-                return validationStatus;
-            }
-
-            return validationStatus = true;
-        }
-
         public static bool ValidateToDelete(MovementModel movement)
         {
             var validationStatus = false;
