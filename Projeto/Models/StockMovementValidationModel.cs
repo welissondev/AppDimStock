@@ -2,9 +2,9 @@
 
 namespace DimStock.Models
 {
-    public class MovementValidationModel
+    public class StockMovementValidationModel
     {
-        public static bool ValidateToStartOperation(MovementModel movement)
+        public static bool ValidateToStartOperation(StockMovementModel movement)
         {
             var validationStatus = false;
 
@@ -20,7 +20,7 @@ namespace DimStock.Models
             return validationStatus = true;
         }
 
-        public static bool ValidateToDelete(MovementModel movement)
+        public static bool ValidateToDelete(StockMovementModel movement)
         {
             var validationStatus = false;
 
@@ -47,7 +47,7 @@ namespace DimStock.Models
             return validationStatus = true;
         }
 
-        public static bool ValidateToGetDetails(MovementModel movement)
+        public static bool ValidateToGetDetails(StockMovementModel movement)
         {
             var validationStatus = false;
 

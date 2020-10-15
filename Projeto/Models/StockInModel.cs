@@ -4,7 +4,7 @@ using System.Data;
 
 namespace DimStock.Models
 {
-    public class StockEntrieModel
+    public class StockInModel
     {
         ConnectionTransactionModel dataBaseTransaction;
 
@@ -13,12 +13,12 @@ namespace DimStock.Models
         public DateTime RegisterHour { get; set; }
         public string NFE { get; set; }
         public SupplierModel Supplier { get; set; }
-        public MovementModel Movement { get; set; }
+        public StockMovementModel Movement { get; set; }
 
-        public StockEntrieModel()
+        public StockInModel()
         {
             Supplier = new SupplierModel();
-            Movement = new MovementModel();
+            Movement = new StockMovementModel();
         }
 
         public bool Insert()
@@ -28,7 +28,7 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"INSET INTO stockEntrie(supplierId, movementId, registerDate, registerHour, nfe)
+                sql = @"INSET INTO stockIn(supplierId, movementId, registerDate, registerHour, nfe)
                 VALUES(@supplierId, @movementId, @registerDate, @registerHour, @nfe)";
 
                 dataBase.ClearParameter();
@@ -53,7 +53,7 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"UPDATE stockEntrie SET supplierId = @supplierId, movementId = @movementId,
+                sql = @"UPDATE stockIn SET supplierId = @supplierId, movementId = @movementId,
                 registerDate = @registerDate, registerHour = @registerHour, nfe = @nfe WHERE id = @id";
 
                 dataBase.ClearParameter();
@@ -83,7 +83,7 @@ namespace DimStock.Models
             {
                 if (RemovePosting() == true)
                 {
-                    if (new MovementModel(dataBaseTransaction) { Id = Movement.Id }.Delete() == true)
+                    if (new StockMovementModel(dataBaseTransaction) { Id = Movement.Id }.Delete() == true)
                     {
                         actionResult = true;
                         dataBaseTransaction.Commit();
@@ -106,7 +106,7 @@ namespace DimStock.Models
             {
                 if (InsertPosting() == true)
                 {
-                    if (new MovementModel(dataBaseTransaction) { Id = Movement.Id }.FinishOperation() == true)
+                    if (new StockMovementModel(dataBaseTransaction) { Id = Movement.Id }.FinishOperation() == true)
                     {
                         actionResult = true;
                         dataBaseTransaction.Commit();
@@ -128,7 +128,7 @@ namespace DimStock.Models
 
         public DataTable GetItems()
         {
-            return new StockEntrieItemModel(this).ListItems();
+            return new StockInItemModel(this).ListItems();
         }
 
         public int GetLastId()
@@ -137,7 +137,7 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"SELECT MAX(id) FROM stockEntrie";
+                sql = @"SELECT MAX(id) FROM stockIn";
                 Id = dataBase.ExecuteScalar(sql);
             }
 

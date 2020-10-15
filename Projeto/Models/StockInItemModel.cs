@@ -2,14 +2,20 @@
 
 namespace DimStock.Models
 {
-    public class StockEntrieItemModel : ItemModel
+    public class StockInItemModel : ItemModel
     {
-        private StockEntrieModel stockEntrie;
-        public int ProductId{ get; set; }
+        public StockInModel StockIn { get; set; }
+        public ProductModel Product { get; set; }
 
-        public StockEntrieItemModel(StockEntrieModel stockEntrie)
+        public StockInItemModel()
         {
-            this.stockEntrie = stockEntrie;
+            StockIn = new StockInModel();
+            Product = new ProductModel();
+        }
+
+        public StockInItemModel(StockInModel stockIn)
+        {
+            StockIn = stockIn;
         }
 
         public bool Insert()
@@ -19,13 +25,13 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"INSERT INTO stockEntrieItem (stockEntrieId, productId, 
-                quantity, unitaryValue, totalValue)VALUES(@stockEntrieId, @productId, 
+                sql = @"INSERT INTO stockInItem (stockInId, productId, 
+                quantity, unitaryValue, totalValue)VALUES(@stockInId, @productId, 
                 @quantity, @unitaryValue, @totalValue)";
 
                 dataBase.ClearParameter();
-                dataBase.AddParameter("@stockEntrieId", stockEntrie.Id);
-                dataBase.AddParameter("@productId", ProductId);
+                dataBase.AddParameter("@stockInId", StockIn.Id);
+                dataBase.AddParameter("@productId", Product.Id);
                 dataBase.AddParameter("@quantity", Quantity);
                 dataBase.AddParameter("@unitaryValue", UnitaryValue);
                 dataBase.AddParameter("@totalValue", TotalValue);
@@ -46,7 +52,7 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"DELETE FROM stockEntrieItem Where id = @id";
+                sql = @"DELETE FROM stockInItem Where id = @id";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@id", Id);
@@ -67,11 +73,11 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"SELECT i.*, p.description, p.internalCode FROM stockEntrieItem i INNER JOIN 
-                product p ON i.productId = p.id WHERE i.stockEntrieId = @stockEntrieId";
+                sql = @"SELECT i.*, p.description, p.internalCode FROM stockInItem i INNER JOIN 
+                product p ON i.productId = p.id WHERE i.stockInId = @stockInId";
 
                 dataBase.ClearParameter();
-                dataBase.AddParameter("@stockEntrieId", stockEntrie.Id);
+                dataBase.AddParameter("@stockInId", StockIn.Id);
 
                 searchResult = dataBase.ExecuteDataAdapter(sql);
             }

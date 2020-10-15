@@ -2,12 +2,16 @@
 
 namespace DimStock.Models
 {
-    public class StockExitItemModel : ItemModel
+    public class StockOutItemModel : ItemModel
     {
-        public int StockExitId { get; set; }
-        public int ProductId { get; set; }
+        public StockOutModel StockOut { get; set; }
+        public ProductModel Product { get; set; }
 
-        public StockExitItemModel()
+        public StockOutItemModel()
+        {
+        }
+
+        public StockOutItemModel(StockOutModel stockOut)
         {
         }
 
@@ -23,8 +27,8 @@ namespace DimStock.Models
                 @quantity, @unitaryValue, @totalValue)";
 
                 dataBase.ClearParameter();
-                dataBase.AddParameter("@stockExitId", StockExitId);
-                dataBase.AddParameter("@productId", ProductId);
+                dataBase.AddParameter("@stockExitId", StockOut.Id);
+                dataBase.AddParameter("@productId", Product.Id);
                 dataBase.AddParameter("@quantity", Quantity);
                 dataBase.AddParameter("@unitaryValue", UnitaryValue);
                 dataBase.AddParameter("@totalValue", TotalValue);
@@ -70,7 +74,7 @@ namespace DimStock.Models
                 product p ON i.productId = p.id WHERE i.stockExitId = @stockExitId";
 
                 dataBase.ClearParameter();
-                dataBase.AddParameter("@stockExitId", StockExitId);
+                dataBase.AddParameter("@stockExitId", StockOut.Id);
 
                 searchResult = dataBase.ExecuteDataAdapter(sql);
             }

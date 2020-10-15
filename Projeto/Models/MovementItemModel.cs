@@ -13,7 +13,7 @@ namespace DimStock.Models
         public double TotalValue { get; set; }
         public double SubTotal { get; set; }
         public StockModel Stock { get; set; }
-        public MovementModel Movement { get; set; }
+        public StockMovementModel Movement { get; set; }
     }
 
     public partial class MovementItemModel
@@ -21,9 +21,9 @@ namespace DimStock.Models
         public MovementItemModel()
         {
             Stock = new StockModel();
-            Movement = new MovementModel();
+            Movement = new StockMovementModel();
         }
-        public MovementItemModel(MovementModel movement)
+        public MovementItemModel(StockMovementModel movement)
         {
             Movement = movement;
         }

@@ -4,7 +4,7 @@ using System.Data;
 
 namespace DimStock.Models
 {
-    public partial class MovementModel
+    public partial class StockMovementModel
     {
         private ConnectionTransactionModel dataBaseTransaction;
 
@@ -18,13 +18,13 @@ namespace DimStock.Models
         public string Situation { get; set; }
     }
 
-    public partial class MovementModel
+    public partial class StockMovementModel
     {
-        public MovementModel()
+        public StockMovementModel()
         {
         }
 
-        public MovementModel(ConnectionTransactionModel connectionTransaction)
+        public StockMovementModel(ConnectionTransactionModel connectionTransaction)
         {
             dataBaseTransaction = connectionTransaction;
         }
@@ -34,15 +34,15 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
-            if (MovementValidationModel.ValidateToStartOperation(this) == false)
+            if (StockMovementValidationModel.ValidateToStartOperation(this) == false)
                 return actionResult;
 
             using (dataBaseTransaction = new ConnectionTransactionModel())
             {
-                sql = @"INSERT INTO Movement(OperationType)VALUES(@OperationType)";
+                sql = @"INSERT INTO stockMovement(operationType)VALUES(@operationType)";
 
                 dataBaseTransaction.ClearParameter();
-                dataBaseTransaction.AddParameter("@OperationType", OperationType);
+                dataBaseTransaction.AddParameter("@operationType", OperationType);
 
                 if (dataBaseTransaction.ExecuteNonQuery(sql) > 0)
                 {
@@ -61,19 +61,19 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
-            sql = @"UPDATE Movement Set FinishDate = @FinishDate, 
-                FinishHour = @FinishHour, Situation = @Situation
-                WHERE Id = @Id";
+            sql = @"UPDATE stockMovement Set finishDate = @finishDate, 
+                finishHour = @finishHour, situation = @situation
+                WHERE id = @id";
 
             FinishDate = DateTime.Now;
             FinishHour = DateTime.Now;
             Situation = "Finalizada";
 
             dataBaseTransaction.ClearParameter();
-            dataBaseTransaction.AddParameter("@FinishDate", FinishDate);
-            dataBaseTransaction.AddParameter("@FinishHour", FinishHour);
-            dataBaseTransaction.AddParameter("@Situation", Situation);
-            dataBaseTransaction.AddParameter("@Id", Id);
+            dataBaseTransaction.AddParameter("@finishDate", FinishDate);
+            dataBaseTransaction.AddParameter("@finishHour", FinishHour);
+            dataBaseTransaction.AddParameter("@fituation", Situation);
+            dataBaseTransaction.AddParameter("@id", Id);
 
             if (dataBaseTransaction.ExecuteNonQuery(sql) > 0)
             {
@@ -88,12 +88,12 @@ namespace DimStock.Models
             var seed = GetLastId();
             OperationNumber = new SingleCodeGenerator(seed).GetCode();
 
-            var sql = @"UPDATE Movement SET OperationNumber = 
-            @OperationNumber WHERE Id = @Id";
+            var sql = @"UPDATE stockMovement SET operationNumber = 
+            @operationNumber WHERE id = @id";
 
             dataBaseTransaction.ClearParameter();
-            dataBaseTransaction.AddParameter("@OperationNumber", OperationNumber);
-            dataBaseTransaction.AddParameter("@Id", Id);
+            dataBaseTransaction.AddParameter("@operationNumber", OperationNumber);
+            dataBaseTransaction.AddParameter("@id", Id);
 
             return dataBaseTransaction.ExecuteNonQuery(sql) > 0;
         }
@@ -103,7 +103,7 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
-            sql = @"DELETE FROM movement WHERE Id = @Id";
+            sql = @"DELETE FROM stockMovement WHERE id = @id";
 
             dataBaseTransaction.ClearParameter();
             dataBaseTransaction.AddParameter("Id", Id);
@@ -121,30 +121,28 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
-            if (MovementValidationModel.ValidateToGetDetails(this) == false)
+            if (StockMovementValidationModel.ValidateToGetDetails(this) == false)
                 return actionResult;
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"SELECT * FROM Movement LEFT JOIN 
-                Destination ON Movement.DestinationId = Destination.Id WHERE 
-                Movement.Id = @Id";
+                sql = @"SELECT * FROM stockMovement WHERE id = @id";
 
                 dataBase.ClearParameter();
-                dataBase.AddParameter("Id", Id);
+                dataBase.AddParameter("id", Id);
 
                 using (var reader = dataBase.ExecuteReader(sql))
                 {
                     while (reader.Read())
                     {
-                        Id = int.Parse(reader["Movement.Id"].ToString());
-                        OperationType = reader["OperationType"].ToString();
-                        OperationNumber = reader["OperationNumber"].ToString();
-                        StartDate = DateTime.Parse(reader["StartDate"].ToString());
-                        StartHour = DateTime.Parse(reader["StartHour"].ToString());
-                        FinishDate = DateTime.Parse(reader["FinishDate"].ToString());
-                        FinishHour = DateTime.Parse(reader["FinishHour"].ToString());
-                        Situation = reader["Situation"].ToString();
+                        Id = int.Parse(reader["id"].ToString());
+                        OperationType = reader["operationType"].ToString();
+                        OperationNumber = reader["operationNumber"].ToString();
+                        StartDate = DateTime.Parse(reader["startDate"].ToString());
+                        StartHour = DateTime.Parse(reader["startHour"].ToString());
+                        FinishDate = DateTime.Parse(reader["finishDate"].ToString());
+                        FinishHour = DateTime.Parse(reader["finishHour"].ToString());
+                        Situation = reader["situation"].ToString();
 
                         actionResult = true;
                     }
@@ -161,7 +159,7 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"SELECT * FROM Movement WHERE Id = @Id";
+                sql = @"SELECT * FROM stockMovement WHERE Id = @Id";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Id", Id);
@@ -184,28 +182,27 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                criterionSqlSelect = @"SELECT Movement.*, Destination.* FROM Movement
-                LEFT JOIN Destination On Movement.DestinationId = Destination.Id 
-                WHERE Movement.Id > 0 ";
+                criterionSqlSelect = @"SELECT * FROM stockMovement
+                WHERE stockMovement.Id > 0 ";
 
-                criterionSqlOderBy = @"ORDER BY Movement.Id DESC";
+                criterionSqlOderBy = @"ORDER BY id DESC";
 
                 if (OperationType != string.Empty && OperationType != null)
                 {
-                    criterionSqlParameter += @"AND OperationType LIKE @OperationType ";
-                    dataBase.AddParameter("@OperationType", string.Format("{0}", OperationType));
+                    criterionSqlParameter += @"AND operationType LIKE @operationType ";
+                    dataBase.AddParameter("@operationType", string.Format("{0}", OperationType));
                 }
 
                 if (OperationNumber != string.Empty && OperationNumber != null)
                 {
-                    criterionSqlParameter += @"AND OperationNumber LIKE @OperationNumber ";
-                    dataBase.AddParameter("@OperationNumber", string.Format("{0}", OperationNumber));
+                    criterionSqlParameter += @"AND operationNumber LIKE @operationNumber ";
+                    dataBase.AddParameter("@operationNumber", string.Format("{0}", OperationNumber));
                 }
 
                 if (Situation != string.Empty && Situation != null)
                 {
-                    criterionSqlParameter += @"AND Sitation LIKE @Sitation ";
-                    dataBase.AddParameter("@Sitation", string.Format("{0}", Situation));
+                    criterionSqlParameter += @"AND situation LIKE @situation ";
+                    dataBase.AddParameter("@situation", string.Format("{0}", Situation));
                 }
 
                 Sql += criterionSqlSelect + criterionSqlParameter + criterionSqlOderBy;
@@ -221,7 +218,7 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"SELECT MAX(Id) FROM Movement";
+                sql = @"SELECT MAX(Id) FROM stockMovement";
                 lastId = dataBase.ExecuteScalar(sql);
             }
 
