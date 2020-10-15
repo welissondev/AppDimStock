@@ -67,10 +67,10 @@ namespace DimStock.Models
             using (var dataBase = new ConnectionModel())
             {
                 sql = @"SELECT i.*, p.description, p.internalCode FROM stockExitItem i INNER JOIN 
-                product p ON i.productId = p.id WHERE i.stockEntrieId = @stockEntrieId";
+                product p ON i.productId = p.id WHERE i.stockExitId = @stockExitId";
 
                 dataBase.ClearParameter();
-                dataBase.AddParameter("@stockEntrieId", StockEntrieId);
+                dataBase.AddParameter("@stockExitId", StockExitId);
 
                 searchResult = dataBase.ExecuteDataAdapter(sql);
             }
