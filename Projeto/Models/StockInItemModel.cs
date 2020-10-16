@@ -48,6 +48,37 @@ namespace DimStock.Models
             return actionResult;
         }
 
+        public bool Update()
+        {
+            var actionResult = false;
+            var sql = string.Empty;
+
+            if (StockInItemValidationModel.ValidateToUpdate(this) == false)
+                return actionResult;
+
+            using (var dataBase = new ConnectionModel())
+            {
+                sql = @"UPDATE stockInItem SET stockInId = @stockInId, productId = @productId, 
+                quantity = @quantity, unitaryValue = @unitaryValue, totalValue = @totalValue 
+                WHERE id = @id";
+
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@stockInId", StockIn.Id);
+                dataBase.AddParameter("@productId", Product.Id);
+                dataBase.AddParameter("@quantity", Quantity);
+                dataBase.AddParameter("@unitaryValue", UnitaryValue);
+                dataBase.AddParameter("@totalValue", TotalValue);
+                dataBase.AddParameter("@id", Id);
+
+                if (dataBase.ExecuteNonQuery(sql) > 0)
+                {
+                    actionResult = true;
+                }
+            }
+
+            return actionResult;
+        }
+
         public bool Delete()
         {
             var actionResult = false;
