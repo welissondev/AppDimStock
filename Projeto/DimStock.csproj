@@ -199,6 +199,7 @@
     <Compile Include="Models\StockMovementModel.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\MessageNotifier.cs" />
     <Compile Include="Models\ProductModel.cs" />
+    <Compile Include="Models\StockOutValidationModel.cs" />
     <Compile Include="Models\StockValidationModel.cs" />
     <Compile Include="Models\ConnectionTransactionModel.cs" />
     <Compile Include="Models\SupplierModel.cs" />
