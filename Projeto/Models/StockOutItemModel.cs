@@ -23,6 +23,9 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
+            if (StockOutItemValidationModel.ValidateToInsert(this) == false)
+                return actionResult;
+
             using (var dataBase = new ConnectionModel())
             {
                 sql = @"INSERT INTO stockExitItem (stockExitId, productId, 
@@ -49,6 +52,9 @@ namespace DimStock.Models
         {
             var actionResult = false;
             var sql = string.Empty;
+
+            if (StockOutItemValidationModel.ValidateToDelete(this) == false)
+                return actionResult;
 
             using (var dataBase = new ConnectionModel())
             {
