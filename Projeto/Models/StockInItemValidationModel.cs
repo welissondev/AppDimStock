@@ -50,7 +50,7 @@ namespace DimStock.Models
             }
 
 
-            return validationStatus;
+            return validationStatus = true;
         }
 
         public static bool ValidateToUpdate(StockInItemModel stockInItem)
@@ -107,7 +107,7 @@ namespace DimStock.Models
             }
 
 
-            return validationStatus;
+            return validationStatus = true;
         }
 
         public static bool ValidateToDelete(StockInItemModel stockInItem)
@@ -122,7 +122,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            return validationStatus;
+            return validationStatus = true;
         }
     }
 }
