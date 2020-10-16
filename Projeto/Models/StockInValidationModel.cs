@@ -4,25 +4,97 @@ namespace DimStock.Models
 {
     public class StockInValidationModel
     {
-        public static bool ValidateToInsert(StockInModel stockEntrie)
+        public static bool ValidateToInsert(StockInModel stockIn)
         {
             var validationStatus = false;
 
-            if (stockEntrie.Supplier.Id == 0)
+            if (stockIn.Supplier.Id == 0)
             {
-                validationStatus = false;
                 MessageNotifier.Show("Informe o fornecedor!",
                 "Obrigatório", "!");
+
+                return validationStatus;
             }
 
-            if (stockEntrie.Movement.Id == 0)
+            if (stockIn.StockMovement.Id == 0)
             {
-                validationStatus = false;
                 MessageNotifier.Show("Selecione uma movimentação!",
                 "Obrigatório", "!");
+
+                return validationStatus;
             }
 
-            return validationStatus;
+            if (stockIn.RegisterDate == null)
+            {
+                MessageNotifier.Show("Informe a data de entrada!",
+                "Obrigatório", "!");
+
+                return validationStatus;
+            }
+
+            if (stockIn.RegisterHour == null)
+            {
+                MessageNotifier.Show("Informe a hora de entrada",
+                "Obrigatório", "!");
+
+                return validationStatus;
+            }
+
+            return validationStatus = true;
+        }
+
+        public static bool ValidateToUpdate(StockInModel stockIn)
+        {
+            var validationStatus = false;
+
+            if (stockIn.Supplier.Id == 0)
+            {
+                MessageNotifier.Show("Informe o fornecedor!",
+                "Obrigatório", "!");
+
+                return validationStatus;
+            }
+
+            if (stockIn.StockMovement.Id == 0)
+            {
+                MessageNotifier.Show("Selecione uma movimentação!",
+                "Obrigatório", "!");
+
+                return validationStatus;
+            }
+
+            if (stockIn.RegisterDate == null)
+            {
+                MessageNotifier.Show("Informe a data de entrada!",
+                "Obrigatório", "!");
+
+                return validationStatus;
+            }
+
+            if (stockIn.RegisterHour == null)
+            {
+                MessageNotifier.Show("Informe a hora de entrada",
+                "Obrigatório", "!");
+
+                return validationStatus;
+            }
+
+            return validationStatus = true;
+        }
+
+        public static bool ValidateToDelete(StockInModel stockIn)
+        {
+            var validationStatus = false;
+
+            if (stockIn.Id == 0)
+            {
+                MessageNotifier.Show("Selecione um registro para deletar!",
+                "Não Selecionado", "!");
+
+                return validationStatus;
+            }
+
+            return validationStatus = true;
         }
     }
 }
