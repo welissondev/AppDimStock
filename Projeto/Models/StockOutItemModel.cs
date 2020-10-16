@@ -9,10 +9,13 @@ namespace DimStock.Models
 
         public StockOutItemModel()
         {
+            StockOut = new StockOutModel();
+            Product = new ProductModel();
         }
 
         public StockOutItemModel(StockOutModel stockOut)
         {
+            StockOut = stockOut;
         }
 
         public bool Insert()
@@ -70,11 +73,11 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"SELECT i.*, p.description, p.internalCode FROM stockExitItem i INNER JOIN 
-                product p ON i.productId = p.id WHERE i.stockExitId = @stockExitId";
+                sql = @"SELECT i.*, p.description, p.internalCode FROM stockOutItem i INNER JOIN 
+                product p ON i.productId = p.id WHERE i.stockOutId = @stockOutId";
 
                 dataBase.ClearParameter();
-                dataBase.AddParameter("@stockExitId", StockOut.Id);
+                dataBase.AddParameter("@stockOutId", StockOut.Id);
 
                 searchResult = dataBase.ExecuteDataAdapter(sql);
             }
