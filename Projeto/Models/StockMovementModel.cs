@@ -29,7 +29,7 @@ namespace DimStock.Models
             dataBaseTransaction = connectionTransaction;
         }
 
-        public bool StartOperation()
+        public bool Start()
         {
             var actionResult = false;
             var sql = string.Empty;
@@ -56,7 +56,7 @@ namespace DimStock.Models
 
             return actionResult;
         }
-        public bool FinishOperation()
+        public bool Finish()
         {
             var actionResult = false;
             var sql = string.Empty;
@@ -82,6 +82,22 @@ namespace DimStock.Models
 
             return actionResult;
         }
+        public bool Cancel()
+        {
+            var sql = string.Empty;
+
+            sql = @"UPDATE stockMovement SET situation = 
+            @situation WHERE id = @id";
+
+            Situation = "Aberta";
+
+            dataBaseTransaction.ClearParameter();
+            dataBaseTransaction.AddParameter("@aberta", Situation);
+            dataBaseTransaction.AddParameter("@id", Id);
+
+            return dataBaseTransaction.ExecuteNonQuery(sql) > 0;
+
+        }
 
         public bool SetOperationNumber()
         {
@@ -100,20 +116,12 @@ namespace DimStock.Models
 
         public bool Delete()
         {
-            var actionResult = false;
-            var sql = string.Empty;
-
-            sql = @"DELETE FROM stockMovement WHERE id = @id";
+            var sql = @"DELETE FROM stockMovement WHERE id = @id";
 
             dataBaseTransaction.ClearParameter();
             dataBaseTransaction.AddParameter("Id", Id);
 
-            if (dataBaseTransaction.ExecuteNonQuery(sql) > 0)
-            {
-                actionResult = true;
-            }
-
-            return actionResult;
+            return dataBaseTransaction.ExecuteNonQuery(sql) > 0;
         }
 
         public bool GetDetails()
