@@ -13,12 +13,12 @@ namespace DimStock.Models
         public DateTime RegisterHour { get; set; }
         public string NFE { get; set; }
         public SupplierModel Supplier { get; set; }
-        public StockMovementModel Movement { get; set; }
+        public StockMovementModel StockMovement { get; set; }
 
         public StockInModel()
         {
             Supplier = new SupplierModel();
-            Movement = new StockMovementModel();
+            StockMovement = new StockMovementModel();
         }
 
         public bool Insert()
@@ -26,14 +26,17 @@ namespace DimStock.Models
             var sql = string.Empty;
             var actionResult = false;
 
+            if (StockInValidationModel.ValidateToInsert(this) == false)
+                return actionResult;
+
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"INSET INTO stockIn(supplierId, movementId, registerDate, registerHour, nfe)
-                VALUES(@supplierId, @movementId, @registerDate, @registerHour, @nfe)";
+                sql = @"INSERT INTO stockIn(supplierId, stockMovementId, registerDate, registerHour, nfe)
+                VALUES(@supplierId, @stockMovementId, @registerDate, @registerHour, @nfe)";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@supplierId", Supplier.Id);
-                dataBase.AddParameter("@movementId", Movement.Id);
+                dataBase.AddParameter("@stockMovementId", StockMovement.Id);
                 dataBase.AddParameter("@registerDate", RegisterDate);
                 dataBase.AddParameter("@registerHour", RegisterHour);
                 dataBase.AddParameter("@nfe", NFE);
@@ -51,14 +54,17 @@ namespace DimStock.Models
             var sql = string.Empty;
             var actionResult = false;
 
+            if (StockInValidationModel.ValidateToUpdate(this) == false)
+                return actionResult;
+
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"UPDATE stockIn SET supplierId = @supplierId, movementId = @movementId,
+                sql = @"UPDATE stockIn SET supplierId = @supplierId, stockMovementId = @stockMovementId,
                 registerDate = @registerDate, registerHour = @registerHour, nfe = @nfe WHERE id = @id";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@supplierId", Supplier.Id);
-                dataBase.AddParameter("@movementId", Movement.Id);
+                dataBase.AddParameter("@stockMovementId", StockMovement.Id);
                 dataBase.AddParameter("@registerDate", RegisterDate);
                 dataBase.AddParameter("@registerHour", RegisterHour);
                 dataBase.AddParameter("@nfe", NFE);
@@ -75,38 +81,51 @@ namespace DimStock.Models
         public bool Delete()
         {
             var actionResult = false;
+            var sql = string.Empty;
 
-            if (MessageNotifier.Reply("Confirma essa operação?",
-            "IMPORTANTE") == false) return actionResult;
+            if (StockInValidationModel.ValidateToDelete(this) == false)
+                return actionResult;
 
-            using (dataBaseTransaction = new ConnectionTransactionModel())
+            using (var dataBase = new ConnectionModel())
             {
-                if (RemovePosting() == true)
-                {
-                    if (new StockMovementModel(dataBaseTransaction) { Id = Movement.Id }.Delete() == true)
-                    {
-                        actionResult = true;
-                        dataBaseTransaction.Commit();
-                    }
-                }
+                sql = @"DELETE FROM stockIn WHERE id = @id";
 
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@id", Id);
+
+                actionResult = dataBase.ExecuteNonQuery(sql) > 0;
             }
 
             return actionResult;
         }
 
-        public bool Finisy()
+        public bool Finish()
         {
             var actionResult = false;
-
-            if (MessageNotifier.Reply("Confirma essa operação?",
-            "IMPORTANTE") == false) return actionResult;
 
             using (dataBaseTransaction = new ConnectionTransactionModel())
             {
                 if (InsertPosting() == true)
                 {
-                    if (new StockMovementModel(dataBaseTransaction) { Id = Movement.Id }.FinishOperation() == true)
+                    if (new StockMovementModel(dataBaseTransaction) { Id = StockMovement.Id }.Finish() == true)
+                    {
+                        actionResult = true;
+                        dataBaseTransaction.Commit();
+                    }
+                }
+            }
+
+            return actionResult;
+        }
+        public bool Cancel()
+        {
+            var actionResult = false;
+
+            using (dataBaseTransaction = new ConnectionTransactionModel())
+            {
+                if (RemovePosting() == true)
+                {
+                    if (new StockMovementModel(dataBaseTransaction) { Id = StockMovement.Id }.Cancel() == true)
                     {
                         actionResult = true;
                         dataBaseTransaction.Commit();
