@@ -28,12 +28,12 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"INSERT INTO stockExitItem (stockExitId, productId, 
-                quantity, unitaryValue, totalValue)VALUES(@stockExitId, @productId, 
+                sql = @"INSERT INTO stockOutItem (stockOutId, productId, 
+                quantity, unitaryValue, totalValue)VALUES(@stockOutId, @productId, 
                 @quantity, @unitaryValue, @totalValue)";
 
                 dataBase.ClearParameter();
-                dataBase.AddParameter("@stockExitId", StockOut.Id);
+                dataBase.AddParameter("@stockOutId", StockOut.Id);
                 dataBase.AddParameter("@productId", Product.Id);
                 dataBase.AddParameter("@quantity", Quantity);
                 dataBase.AddParameter("@unitaryValue", UnitaryValue);
@@ -58,7 +58,7 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"DELETE FROM stockExitItem Where id = @id";
+                sql = @"DELETE FROM stockOutItem Where id = @id";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@id", Id);

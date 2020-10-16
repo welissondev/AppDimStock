@@ -185,8 +185,10 @@
     <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\DestinationValidationModel.cs" />
     <Compile Include="Models\ItemModel.cs" />
+    <Compile Include="Models\StockInItemValidationModel.cs" />
     <Compile Include="Models\StockMovementValidationModel.cs" />
     <Compile Include="Models\ProductValidationModel.cs" />
+    <Compile Include="Models\StockOutItemValidationModel.cs" />
     <Compile Include="Models\StockOutModel.cs" />
     <Compile Include="Models\StockInItemModel.cs" />
     <Compile Include="Models\StockInModel.cs" />
