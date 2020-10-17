@@ -14,6 +14,7 @@ namespace DimStock.Models
         public string NFE { get; set; }
         public SupplierModel Supplier { get; set; }
         public StockMovementModel StockMovement { get; set; }
+        public DataTable Items { get; set;}
 
         public StockInModel()
         {
@@ -24,7 +25,6 @@ namespace DimStock.Models
         {
             StockMovement = stockMovement;
         }
-
 
         public bool Insert()
         {
@@ -108,9 +108,12 @@ namespace DimStock.Models
         {
             var actionResult = false;
 
+            if (StockInValidationModel.ValidateToFinisy(this) == false)
+                return actionResult;
+
             using (dataBaseTransaction = new ConnectionTransactionModel())
             {
-                if (InsertPosting() == true)
+                if (InsertPostingStock() == true)
                 {
                     if (new StockMovementModel(dataBaseTransaction) { Id = StockMovement.Id }.Finish() == true)
                     {
@@ -128,7 +131,7 @@ namespace DimStock.Models
 
             using (dataBaseTransaction = new ConnectionTransactionModel())
             {
-                if (RemovePosting() == true)
+                if (RemovePostingStock() == true)
                 {
                     if (new StockMovementModel(dataBaseTransaction) { Id = StockMovement.Id }.Cancel() == true)
                     {
@@ -164,13 +167,37 @@ namespace DimStock.Models
 
         }
 
-        private bool InsertPosting()
+        private bool InsertPostingStock()
         {
-            return new StockModel(dataBaseTransaction).InsertPostingOfEntries(GetItems());
+            var actionResult = false;
+
+            Items = GetItems();
+
+            if (StockInValidationModel.ValidatePostingItems(this) == false)
+                return actionResult;
+
+            if (new StockModel(dataBaseTransaction).InsertPostingOfEntries(Items) == true)
+            {
+                actionResult = true;
+            }
+
+            return actionResult;
         }
-        private bool RemovePosting()
+        private bool RemovePostingStock()
         {
-            return new StockModel(dataBaseTransaction).RemovePostingOfEntries(GetItems());
+            var actionResult = false;
+            
+            Items = GetItems();
+
+            if (StockInValidationModel.ValidatePostingItems(this) == false)
+                return actionResult;
+
+            if (new StockModel(dataBaseTransaction).RemovePostingOfEntries(Items) == true)
+            {
+                actionResult = true;
+            }
+
+            return actionResult;
         }
 
         public DataTable GetItems()

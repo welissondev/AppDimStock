@@ -47,6 +47,14 @@ namespace DimStock.Models
         {
             var validationStatus = false;
 
+            if (stockIn.Id == 0)
+            {
+                MessageNotifier.Show("Selecione uma entrada para " +
+                "atualizar!", "Obrigatório", "!");
+
+                return validationStatus;
+            }
+
             if (stockIn.Supplier.Id == 0)
             {
                 MessageNotifier.Show("Informe o fornecedor!",
@@ -79,6 +87,9 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
+            if (MessageNotifier.Reply("Você confirma essa operação?"
+            , "IMPORTANTE") == false) return validationStatus;
+
             return validationStatus = true;
         }
 
@@ -90,6 +101,42 @@ namespace DimStock.Models
             {
                 MessageNotifier.Show("Selecione um registro para deletar!",
                 "Não Selecionado", "!");
+
+                return validationStatus;
+            }
+
+            if (MessageNotifier.Reply("Você confirma a deleção dese registro?"
+            , "IMPORTANTE") == false) return validationStatus;
+
+            return validationStatus = true;
+        }
+
+        public static bool ValidateToFinisy(StockInModel stockIn)
+        {
+            var validationStatus = false;
+
+            if (stockIn.StockMovement.Id == 0)
+            {
+                MessageNotifier.Show("Selecione uma movimentação para " +
+                "finalizar!", "Obrigatório", "!");
+
+                return validationStatus;
+            }
+
+            if (MessageNotifier.Reply("Confirma essa operação?"
+            , "IMPORTANTE") == false) return validationStatus;
+
+            return validationStatus = true;
+        }
+
+        public static bool ValidatePostingItems(StockInModel stockIn)
+        {
+            var validationStatus = false;
+
+            if (stockIn.Items.Rows.Count == 0)
+            {
+                MessageNotifier.Show("Nenhuma item foi adicionado!",
+                "Obrigatório", "!");
 
                 return validationStatus;
             }
