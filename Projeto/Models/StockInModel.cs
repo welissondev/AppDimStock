@@ -144,7 +144,7 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public bool CheckRelatedWithStockMovement()
+        public bool CheckRelationWithStockMovement()
         {
             var relatedStatus = false;
             var sql = string.Empty;

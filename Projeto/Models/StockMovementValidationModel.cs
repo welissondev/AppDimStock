@@ -67,7 +67,7 @@ namespace DimStock.Models
             {
                 case "Entrada":
 
-                    if (new StockInModel(stockMovement).CheckRelatedWithStockMovement() == true &&
+                    if (new StockInModel(stockMovement).CheckRelationWithStockMovement() == true &&
                     stockMovement.Situation == "Finalizada")
                     {
                         MessageNotifier.Show("Não foi possível deletar essa movimentação, pois ela " +
