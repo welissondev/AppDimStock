@@ -217,6 +217,26 @@ namespace DimStock.Models
             return registrationStatus = true;
         }
 
+        public bool RelateProduct()
+        {
+            var actionResult = false;
+            var sql = string.Empty;
+
+            sql = @"INSERT INTO stock(productId, [min], [max])VALUES(@productId, @min, @max)";
+
+            dataBaseTransaction.ClearParameter();
+            dataBaseTransaction.AddParameter("@productId", Product.Id);
+            dataBaseTransaction.AddParameter("@min", Product.Stock.Min);
+            dataBaseTransaction.AddParameter("@max", Product.Stock.Max);
+
+            if (dataBaseTransaction.ExecuteNonQuery(sql) > 0)
+            {
+                actionResult = true;
+            }
+
+            return actionResult;
+        }
+
         public bool CheckRelationWithProduct()
         {
             var relatedStatus = false;
