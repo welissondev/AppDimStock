@@ -12,6 +12,7 @@ namespace DimStock.Models
         public DateTime RegisterHour { get; set; }
         public DestinationModel Destination { get; set; }
         public StockMovementModel StockMovement { get; set; }
+        public DataTable Items { get; set; }
 
         public StockOutModel()
         {
@@ -103,9 +104,12 @@ namespace DimStock.Models
         {
             var actionResult = false;
 
+            if (StockOutValidationModel.ValidateToFinisy(this) == false)
+                return actionResult;
+
             using (dataBaseTransaction = new ConnectionTransactionModel())
             {
-                if (InsertPosting() == true)
+                if (InsertPostingStock() == true)
                 {
                     if (new StockMovementModel(dataBaseTransaction) { Id = StockMovement.Id }.Finish() == true)
                     {
@@ -121,9 +125,12 @@ namespace DimStock.Models
         {
             var actionResult = false;
 
+            if (StockOutValidationModel.ValidateToCancel(this) == false)
+                return actionResult;
+
             using (dataBaseTransaction = new ConnectionTransactionModel())
             {
-                if (RemovePosting() == true)
+                if (RemovePostingStock() == true)
                 {
                     if (new StockMovementModel(dataBaseTransaction) { Id = StockMovement.Id }.Cancel() == true)
                     {
@@ -159,13 +166,37 @@ namespace DimStock.Models
 
         }
 
-        private bool InsertPosting()
+        private bool InsertPostingStock()
         {
-            return new StockModel(dataBaseTransaction).InsertPostingOfOutPuts(GetItems());
+            var actionResult = false;
+
+            Items = GetItems();
+
+            if (StockOutValidationModel.ValidatePostingItems(this) == false)
+                return actionResult;
+
+            if (new StockModel(dataBaseTransaction).InsertPostingOfOutPuts(Items) == true)
+            {
+                actionResult = true;
+            }
+
+            return actionResult;
         }
-        private bool RemovePosting()
+        private bool RemovePostingStock()
         {
-            return new StockModel(dataBaseTransaction).RemovePostingOfOutPuts(GetItems());
+            var actionResult = false;
+
+            Items = GetItems();
+
+            if (StockOutValidationModel.ValidatePostingItems(this) == false)
+                return actionResult;
+
+            if (new StockModel(dataBaseTransaction).RemovePostingOfOutPuts(Items) == true)
+            {
+                actionResult = true;
+            }
+
+            return actionResult;
         }
 
         public DataTable GetItems()

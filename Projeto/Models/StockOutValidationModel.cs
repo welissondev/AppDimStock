@@ -79,6 +79,9 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
+            if (MessageNotifier.Reply("Você confirma essa operação?"
+            , "IMPORTANTE") == false) return validationStatus;
+
             return validationStatus = true;
         }
 
@@ -90,6 +93,60 @@ namespace DimStock.Models
             {
                 MessageNotifier.Show("Selecione um registro para deletar!",
                 "Não Selecionado", "!");
+
+                return validationStatus;
+            }
+
+            if (MessageNotifier.Reply("Você confirma a deleção dese registro?"
+            , "IMPORTANTE") == false) return validationStatus;
+
+            return validationStatus = true;
+        }
+
+        public static bool ValidateToFinisy(StockOutModel stockOut)
+        {
+            var validationStatus = false;
+
+            if (stockOut.StockMovement.Id == 0)
+            {
+                MessageNotifier.Show("Selecione uma movimentação para " +
+                "finalizar!", "Obrigatório", "!");
+
+                return validationStatus;
+            }
+
+            if (MessageNotifier.Reply("Confirma essa operação?"
+            , "IMPORTANTE") == false) return validationStatus;
+
+            return validationStatus = true;
+        }
+
+        public static bool ValidateToCancel(StockOutModel stockOut)
+        {
+            var validationStatus = false;
+
+            if (stockOut.StockMovement.Id == 0)
+            {
+                MessageNotifier.Show("Selecione uma movimentação para " +
+                "cancelar!", "Obrigatório", "!");
+
+                return validationStatus;
+            }
+
+            if (MessageNotifier.Reply("Confirma essa operação?"
+            , "IMPORTANTE") == false) return validationStatus;
+
+            return validationStatus = true;
+        }
+
+        public static bool ValidatePostingItems(StockOutModel stockOut)
+        {
+            var validationStatus = false;
+
+            if (stockOut.Items.Rows.Count == 0)
+            {
+                MessageNotifier.Show("Nenhuma item foi adicionado!",
+                "Obrigatório", "!");
 
                 return validationStatus;
             }
