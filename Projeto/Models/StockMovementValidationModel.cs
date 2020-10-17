@@ -4,11 +4,11 @@ namespace DimStock.Models
 {
     public class StockMovementValidationModel
     {
-        public static bool ValidateToStartOperation(StockMovementModel movement)
+        public static bool ValidateToStartOperation(StockMovementModel stockMovement)
         {
             var validationStatus = false;
 
-            if (movement.OperationType == string.Empty)
+            if (stockMovement.OperationType == string.Empty)
             {
                 MessageNotifier.Show("Para iniciar uma operação " +
                 "de movimentação é obrigatório informar seu tipo!",
@@ -19,12 +19,34 @@ namespace DimStock.Models
 
             return validationStatus = true;
         }
-
-        public static bool ValidateToDelete(StockMovementModel movement)
+        public static bool ValidateToGetDetails(StockMovementModel stockMovement)
         {
             var validationStatus = false;
 
-            if (movement.Id == 0)
+            if (stockMovement.Id == 0)
+            {
+                MessageNotifier.Show("Selecione a movimentação " +
+                "para visualizar!", "Não Selecionada", "?");
+
+                return validationStatus;
+            }
+
+            if (stockMovement.CheckIfRegister() == false)
+            {
+                MessageNotifier.Show("Não é possivel visualizar " +
+                "porque esse registro foi excluido!",
+                "Atualize a Lista", "?");
+
+                return validationStatus;
+            }
+
+            return validationStatus = true;
+        }
+        public static bool ValidateToDelete(StockMovementModel stockMovement)
+        {
+            var validationStatus = false;
+
+            if (stockMovement.Id == 0)
             {
                 MessageNotifier.Show("Selecione a movimentação " +
                 "para excluir!", "Não Selecionada", "?");
@@ -32,7 +54,47 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (movement.CheckIfRegister() == false)
+            if (stockMovement.OperationType == string.Empty)
+            {
+                MessageNotifier.Show("Para deletar uma operação " +
+                "de movimentação é obrigatório informar seu tipo!",
+                "Obrigatório", "?");
+
+                return validationStatus;
+            }
+
+            switch (stockMovement.OperationType)
+            {
+                case "Entrada":
+
+                    if (new StockInModel(stockMovement).CheckRelatedWithStockMovement() == true &&
+                    stockMovement.Situation == "Finalizada")
+                    {
+                        MessageNotifier.Show("Não foi possível deletar essa movimentação, pois ela " +
+                        "ja foi finalizada, cancele a operação e tente excluir novamente!",
+                        "Não Permitido", "?");
+
+                        return validationStatus;
+                    }
+
+                    break;
+
+                case "Saída":
+
+                    if (new StockOutModel(stockMovement).CheckRelatedWithStockMovement() == true &&
+                    stockMovement.Situation == "Finalizada")
+                    {
+                        MessageNotifier.Show("Não foi possível deletar essa movimentação pois ela " +
+                        "ja foi finalizada, cancele a operação e tente excluir novamente!",
+                        "Não Permitido", "?");
+
+                        return validationStatus;
+                    }
+
+                    break;
+            }
+
+            if (stockMovement.CheckIfRegister() == false)
             {
                 MessageNotifier.Show("Não é possivel deletar " +
                 "porque esse registro já foi excluido!",
@@ -43,30 +105,6 @@ namespace DimStock.Models
 
             if (MessageNotifier.Reply("Confirma mesmo a exclusão dessa " +
             "movimentação?", "IMPORTANTE") == false) return validationStatus;
-
-            return validationStatus = true;
-        }
-
-        public static bool ValidateToGetDetails(StockMovementModel movement)
-        {
-            var validationStatus = false;
-
-            if (movement.Id == 0)
-            {
-                MessageNotifier.Show("Selecione a movimentação " +
-                "para visualizar!", "Não Selecionada", "?");
-
-                return validationStatus;
-            }
-
-            if (movement.CheckIfRegister() == false)
-            {
-                MessageNotifier.Show("Não é possivel visualizar " +
-                "porque esse registro foi excluido!",
-                "Atualize a Lista", "?");
-
-                return validationStatus;
-            }
 
             return validationStatus = true;
         }

@@ -116,12 +116,22 @@ namespace DimStock.Models
 
         public bool Delete()
         {
+            var actionResult = false;
+
+            if (StockMovementValidationModel.ValidateToDelete(this) == true)
+                return actionResult;
+
             var sql = @"DELETE FROM stockMovement WHERE id = @id";
 
             dataBaseTransaction.ClearParameter();
             dataBaseTransaction.AddParameter("Id", Id);
 
-            return dataBaseTransaction.ExecuteNonQuery(sql) > 0;
+            if (dataBaseTransaction.ExecuteNonQuery(sql) > 0)
+            {
+                actionResult = true;
+            }
+
+            return actionResult;
         }
 
         public bool GetDetails()

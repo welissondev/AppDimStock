@@ -18,6 +18,10 @@ namespace DimStock.Models
             Destination = new DestinationModel();
             StockMovement = new StockMovementModel();
         }
+        public StockOutModel(StockMovementModel stockMovement)
+        {
+            StockMovement = stockMovement;
+        }
 
         public bool Insert()
         {
@@ -130,6 +134,29 @@ namespace DimStock.Models
             }
 
             return actionResult;
+        }
+
+        public bool CheckRelatedWithStockMovement()
+        {
+            var relatedStatus = false;
+            var sql = string.Empty;
+
+            using (var dataBase = new ConnectionModel())
+            {
+                sql = @"SELECT * FROM stockOut WHERE 
+                stockMovementId = @stockMovementId";
+
+                dataBase.ClearParameter();
+                dataBase.AddParameter("stockMovementId", StockMovement.Id);
+
+                if (dataBase.ExecuteScalar(sql) > 0)
+                {
+                    relatedStatus = true;
+                }
+            }
+
+            return relatedStatus;
+
         }
 
         private bool InsertPosting()
