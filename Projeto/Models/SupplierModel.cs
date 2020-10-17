@@ -189,7 +189,7 @@ namespace DimStock.Models
             return new StockModel(this).CheckRelationWithSupplier();
         }
 
-        public bool CheckIfRegister()
+        public bool CheckRegisterStatus()
         {
             var registrationStatus = false;
             var sql = string.Empty;

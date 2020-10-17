@@ -102,7 +102,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (product.CheckIfRegister() == false)
+            if (product.CheckRegisterStatus() == false)
             {
                 MessageNotifier.Show("Esse registro já foi " +
                 "excluido, atualize a lista de produtos!",
@@ -206,7 +206,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (product.CheckIfRegister() == false)
+            if (product.CheckRegisterStatus() == false)
             {
                 MessageNotifier.Show("Esse registro foi " +
                 "excluido, atualize a lista de produtos!",
@@ -253,7 +253,7 @@ namespace DimStock.Models
                 return valitationStatus;
             }
 
-            if (product.CheckIfRegister() == false)
+            if (product.CheckRegisterStatus() == false)
             {
                 MessageNotifier.Show("Não é possivel visualizar " +
                 "porque esse registro foi excluido!",

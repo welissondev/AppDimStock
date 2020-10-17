@@ -125,7 +125,7 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public bool CheckIfRegister()
+        public bool CheckRegisterStatus()
         {
             /*Essa verificação também precisou ser feita pelo 
              nome da categoria, porque a regra de negócio não 

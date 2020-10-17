@@ -16,7 +16,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (destination.CheckIfRegister() == true)
+            if (destination.CheckRegisterStatus() == true)
             {
                 MessageNotifier.Show("Já existe um destino " +
                 "registrado com esse nome!", "Já Existe", "?");
@@ -54,7 +54,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (destination.CheckIfRegister() == false)
+            if (destination.CheckRegisterStatus() == false)
             {
                 MessageNotifier.Show("Esse registro já " +
                 "foi excluido!", "Atualize a Lista", "?");
@@ -81,7 +81,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (destination.CheckIfRegister() == false)
+            if (destination.CheckRegisterStatus() == false)
             {
                 MessageNotifier.Show("Não é possível visualizar " +
                 "porque esse registro foi excluido de sua " +

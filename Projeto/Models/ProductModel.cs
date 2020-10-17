@@ -131,7 +131,7 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public bool CheckIfRegister()
+        public bool CheckRegisterStatus()
         {
             var registrationStatus = false;
             var sql = string.Empty;

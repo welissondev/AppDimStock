@@ -199,7 +199,7 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public bool CheckIfRegister()
+        public bool CheckRegisterStatus()
         {
             /*Essa verificação também precisou ser feita pelo 
              login do usuário, porque a regra de negócio não

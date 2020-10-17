@@ -196,7 +196,7 @@ namespace DimStock.Models
             return dataBaseTransaction.ExecuteNonQuery(sql) > 0;
         }
 
-        public bool CheckIfRegister()
+        public bool CheckRegisterStatus()
         {
             var registrationStatus = false;
             var sql = string.Empty;

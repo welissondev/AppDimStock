@@ -133,7 +133,7 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public bool CheckIfRegister()
+        public bool CheckRegisterStatus()
         {
             /*Essa verificação também precisou ser feita pelo 
              nome do local de destino, porque a regra de negócio não 

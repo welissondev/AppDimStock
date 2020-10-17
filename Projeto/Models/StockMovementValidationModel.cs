@@ -31,7 +31,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (stockMovement.CheckIfRegister() == false)
+            if (stockMovement.CheckRegisterStatus() == false)
             {
                 MessageNotifier.Show("Não é possivel visualizar " +
                 "porque esse registro foi excluido!",
@@ -94,7 +94,7 @@ namespace DimStock.Models
                     break;
             }
 
-            if (stockMovement.CheckIfRegister() == false)
+            if (stockMovement.CheckRegisterStatus() == false)
             {
                 MessageNotifier.Show("Não é possivel deletar " +
                 "porque esse registro já foi excluido!",

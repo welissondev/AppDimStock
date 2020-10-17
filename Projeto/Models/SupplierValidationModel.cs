@@ -117,7 +117,7 @@ namespace DimStock.Models
                 return valitationStatus;
             }
 
-            if (supplier.CheckIfRegister() == false)
+            if (supplier.CheckRegisterStatus() == false)
             {
                 MessageNotifier.Show("Não é possivel visualizar " +
                 "porque esse registro foi excluido!",

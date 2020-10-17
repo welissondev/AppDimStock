@@ -64,7 +64,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (stock.CheckIfRegister() == false)
+            if (stock.CheckRegisterStatus() == false)
             {
                 MessageNotifier.Show("Não é possivel visualizar porque " +
                 "esse registro foi excluido!", "Atualize a Lista", "?");
