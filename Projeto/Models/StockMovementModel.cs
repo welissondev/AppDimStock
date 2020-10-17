@@ -191,7 +191,7 @@ namespace DimStock.Models
             return registrationStatus = true;
         }
 
-        public DataTable FetchData()
+        public DataTable SearchData()
         {
             var criterionSqlSelect = string.Empty;
             var criterionSqlParameter = string.Empty;
