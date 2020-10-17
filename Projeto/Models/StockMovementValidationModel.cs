@@ -4,7 +4,7 @@ namespace DimStock.Models
 {
     public class StockMovementValidationModel
     {
-        public static bool ValidateToStartOperation(StockMovementModel stockMovement)
+        public static bool ValidateToStart(StockMovementModel stockMovement)
         {
             var validationStatus = false;
 

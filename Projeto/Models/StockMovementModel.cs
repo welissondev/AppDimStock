@@ -34,7 +34,7 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
-            if (StockMovementValidationModel.ValidateToStartOperation(this) == false)
+            if (StockMovementValidationModel.ValidateToStart(this) == false)
                 return actionResult;
 
             using (dataBaseTransaction = new ConnectionTransactionModel())
