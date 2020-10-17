@@ -129,6 +129,24 @@ namespace DimStock.Models
             return validationStatus = true;
         }
 
+        public static bool ValidateToCancel(StockInModel stockIn)
+        {
+            var validationStatus = false;
+
+            if (stockIn.StockMovement.Id == 0)
+            {
+                MessageNotifier.Show("Selecione uma movimentação para " +
+                "cancelar!", "Obrigatório", "!");
+
+                return validationStatus;
+            }
+
+            if (MessageNotifier.Reply("Confirma essa operação?"
+            , "IMPORTANTE") == false) return validationStatus;
+
+            return validationStatus = true;
+        }
+
         public static bool ValidatePostingItems(StockInModel stockIn)
         {
             var validationStatus = false;

@@ -14,7 +14,7 @@ namespace DimStock.Models
         public string NFE { get; set; }
         public SupplierModel Supplier { get; set; }
         public StockMovementModel StockMovement { get; set; }
-        public DataTable Items { get; set;}
+        public DataTable Items { get; set; }
 
         public StockInModel()
         {
@@ -129,6 +129,9 @@ namespace DimStock.Models
         {
             var actionResult = false;
 
+            if (StockInValidationModel.ValidateToCancel(this) == false)
+                return actionResult;
+
             using (dataBaseTransaction = new ConnectionTransactionModel())
             {
                 if (RemovePostingStock() == true)
@@ -186,7 +189,7 @@ namespace DimStock.Models
         private bool RemovePostingStock()
         {
             var actionResult = false;
-            
+
             Items = GetItems();
 
             if (StockInValidationModel.ValidatePostingItems(this) == false)
