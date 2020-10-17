@@ -5,7 +5,7 @@ namespace DimStock.Models
 {
     public class StockOutModel
     {
-        ConnectionTransactionModel dataBaseTransaction;
+        private ConnectionTransactionModel dataBaseTransaction;
 
         public int Id { get; set; }
         public DateTime RegisterDate { get; set; }

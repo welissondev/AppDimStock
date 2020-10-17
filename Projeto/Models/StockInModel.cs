@@ -6,7 +6,7 @@ namespace DimStock.Models
 {
     public class StockInModel
     {
-        ConnectionTransactionModel dataBaseTransaction;
+        private ConnectionTransactionModel dataBaseTransaction;
 
         public int Id { get; set; }
         public DateTime RegisterDate { get; set; }
