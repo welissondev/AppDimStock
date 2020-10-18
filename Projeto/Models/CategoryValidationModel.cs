@@ -2,9 +2,6 @@
 
 namespace DimStock.Models
 {
-    /// <summary>
-    /// Representa o modelo de validação da categoria
-    /// </summary>
     public class CategoryValidationModel
     {
         public static bool ValidateToInsert(CategoryModel category)

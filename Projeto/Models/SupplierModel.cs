@@ -3,9 +3,6 @@ using System.Data;
 
 namespace DimStock.Models
 {
-    /// <summary>
-    /// Representa o modelo do fornecedor
-    /// </summary>
     public class SupplierModel
     {
         public int Id { get; set; }

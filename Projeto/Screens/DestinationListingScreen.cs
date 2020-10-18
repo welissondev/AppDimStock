@@ -13,24 +13,15 @@ namespace DimStock.Screens
     {
         private static MetroForm thisScreen;
 
-        //São "botões" de link adicionados na coluna do grid
+        //"Botões" de link adicionados na coluna do grid
         private DataGridViewLinkColumn buttonViewDetails;
         private DataGridViewLinkColumn buttonDelete;
 
-        //Implementado pela interface de listagem
+        public int Id { get; set; }
+        public string LocationDescription { get; set; }
         public string SearchLocationDescription { get => TextSearchLoctionDescription.Text; set => TextSearchLoctionDescription.Text = value; }
         public object DataList { get => GridList.DataSource; set => GridList.DataSource = value; }
 
-        //Implementado pela interface de adição
-        public int Id { get; set; }
-        public string LocationDescription { get; set; }
-    }
-}
-
-namespace DimStock.Screens
-{
-    public partial class DestinationListingScreen
-    {
         public DestinationListingScreen()
         {
             InitializeComponent();
@@ -307,7 +298,6 @@ namespace DimStock.Screens
             }
         }
 
-        //Eventos que chamam métodos do apresentador
         private void PresenterDelete(object sender, EventArgs e)
         {
             try

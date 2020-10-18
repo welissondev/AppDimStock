@@ -4,10 +4,7 @@ using System.Data;
 
 namespace DimStock.Models
 {
-    /// <summary>
-    /// Representa o modelo do estoque
-    /// </summary>
-    public partial class StockModel
+    public class StockModel
     {
         private string summary = "All";
         private ConnectionTransactionModel dataBaseTransaction;
@@ -21,10 +18,7 @@ namespace DimStock.Models
         public string Summary { get => summary; set => summary = value; }
         public ProductModel Product { get; set; }
         public SupplierModel Supplier { get; set; }
-    }
 
-    public partial class StockModel
-    {
         public StockModel()
         {
             Product = new ProductModel();
@@ -46,7 +40,6 @@ namespace DimStock.Models
             this.dataBaseTransaction = dataBaseTransaction;
             Product = product;
         }
-
 
         public bool GetDetails()
         {

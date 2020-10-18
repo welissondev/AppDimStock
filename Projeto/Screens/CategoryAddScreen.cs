@@ -8,27 +8,34 @@ using System.Windows.Forms;
 
 namespace DimStock.Screens
 {
-    /// <summary>
-    /// Representa um formulário de cadastro de categorias
-    /// </summary>
-    public partial class CategoryAddScreen : ICategoryAddView
+    public partial class CategoryAddScreen : MetroForm, ICategoryAddView
     {
         private static MetroForm thisScreen;
 
         public int Id { get; set; }
         public string Description { get => TextDescription.Text; set => TextDescription.Text = value; }
-    }
-}
 
-namespace DimStock.Screens
-{
-    public partial class CategoryAddScreen : MetroForm
-    {
         public CategoryAddScreen()
         {
             InitializeComponent();
             InitializeEvents();
             SetScreen();
+        }
+
+        private void InitializeEvents()
+        {
+            try
+            {
+                ButtonSave.Click += new EventHandler(PresenterUpdate);
+                ButtonDelete.Click += new EventHandler(PresenterDelete);
+                ButtonClearView.Click += new EventHandler(PresenterClear);
+                ButtonClose.Click += new EventHandler(ScreenClose);
+                Resize += new EventHandler(ScreenResize);
+            }
+            catch (Exception ex)
+            {
+                ExceptionNotifier.ShowMessage(ex);
+            }
         }
 
         private void ScreenResize(object sender, EventArgs e)
@@ -48,22 +55,6 @@ namespace DimStock.Screens
             {
                 if (this != null)
                     Close();
-            }
-            catch (Exception ex)
-            {
-                ExceptionNotifier.ShowMessage(ex);
-            }
-        }
-
-        private void InitializeEvents()
-        {
-            try
-            {
-                ButtonSave.Click += new EventHandler(PresenterUpdate);
-                ButtonDelete.Click += new EventHandler(PresenterDelete);
-                ButtonClearView.Click += new EventHandler(PresenterClear);
-                ButtonClose.Click += new EventHandler(ScreenClose);
-                Resize += new EventHandler(ScreenResize);
             }
             catch (Exception ex)
             {
@@ -95,16 +86,6 @@ namespace DimStock.Screens
                 ExceptionNotifier.ShowMessage(ex);
             }
         }
-
-        private void SetScreen()
-        {
-            thisScreen = this;
-        }
-        public static MetroForm GetScreen()
-        {
-            return thisScreen;
-        }
-
         public static void ShowScreen(Form mdi = null, Form owner = null)
         {
             try
@@ -142,7 +123,15 @@ namespace DimStock.Screens
             }
         }
 
-        //Eventos para chamada dos métodos do apresentador
+        public static MetroForm GetScreen()
+        {
+            return thisScreen;
+        }
+        private void SetScreen()
+        {
+            thisScreen = this;
+        }
+
         private void PresenterUpdate(object sender, EventArgs e)
         {
             try

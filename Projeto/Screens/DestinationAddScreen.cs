@@ -14,13 +14,7 @@ namespace DimStock.Screens
 
         public int Id { get; set; }
         public string LocationDescription { get => TextLocationDescription.Text; set => TextLocationDescription.Text = value; }
-    }
-}
 
-namespace DimStock.Screens
-{
-    public partial class DestinationAddScreen
-    {
         public DestinationAddScreen()
         {
             InitializeComponent();
@@ -137,7 +131,6 @@ namespace DimStock.Screens
             }
         }
 
-        //Eventos para chamada dos métodos do apresentador
         private void PresenterUpdate(object sender, EventArgs e)
         {
             try

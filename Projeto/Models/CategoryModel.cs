@@ -3,17 +3,11 @@ using System.Data;
 
 namespace DimStock.Models
 {
-    /// <summary>
-    /// Representa o modelo de uma categoria
-    /// </summary>
-    public partial class CategoryModel
+    public class CategoryModel
     {
         public int Id { get; set; }
         public string Description { get; set; }
-    }
 
-    public partial class CategoryModel
-    {
         public CategoryModel() { }
 
         public bool Insert()

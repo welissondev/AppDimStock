@@ -6,19 +6,13 @@ using System.Data.OleDb;
 
 namespace DimStock.Models
 {
-    /// <summary>
-    /// Representa o modelo que executa transações no banco de dados
-    /// </summary>
-    public partial class ConnectionTransactionModel : IDisposable
+    public class ConnectionTransactionModel : IDisposable
     {
         private bool disposed;
         private OleDbTransaction transaction = null;
         private OleDbConnection connection;
         private OleDbCommand command;
-    }
 
-    public partial class ConnectionTransactionModel
-    {
         public ConnectionTransactionModel(bool beginAutomaticTransaction = true)
         {
             command = new OleDbCommand();

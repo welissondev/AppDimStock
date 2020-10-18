@@ -1,17 +1,13 @@
 ﻿using DimStock.AuxilyTools.AuxilyClasses;
 using DimStock.Presenters;
 using DimStock.Views;
-using MetroFramework;
 using MetroFramework.Forms;
 using System;
 using System.Windows.Forms;
 
 namespace DimStock.Screens
 {
-    /// <summary>
-    /// Representa a tela de acesso do usuário
-    /// </summary>
-    public partial class UserLoginAccessScreen : Form, IUserLoginAccessView
+    public partial class UserLoginAccessScreen: Form, IUserLoginAccessView
     {
         public int Id { get; set; }
         public string YourName { get; set; }
@@ -22,13 +18,7 @@ namespace DimStock.Screens
         public bool InsertAllowed { get; set; }
         public bool UpdateAllowed { get; set; }
         public bool DeleteAllowed { get; set; }
-    }
-}
 
-namespace DimStock.Screens
-{
-    public partial class UserLoginAccessScreen
-    {
         public UserLoginAccessScreen()
         {
             InitializeComponent();
@@ -82,7 +72,6 @@ namespace DimStock.Screens
             }
         }
 
-        //Eventos para chamada dos métodos do apresentador
         private void PresenterResquestAccess(object sender, EventArgs e)
         {
             if (new UserLoginAccessPresenter(this).ResquestAccess() == true)

@@ -2,9 +2,6 @@
 
 namespace DimStock.Models
 {
-    /// <summary>
-    /// Representa o modelo de validação do produto
-    /// </summary>
     public class ProductValidationModel
     {
         public static bool ValidateToInsert(ProductModel product)

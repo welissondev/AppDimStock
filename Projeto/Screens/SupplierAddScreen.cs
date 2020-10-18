@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace DimStock.Screens
 {
-    public partial class SupplierAddScreen : MetroForm, ISupplierAddView
+    public partial class SupplierAddScreen: MetroForm, ISupplierAddView
     {
         private static MetroForm thisScreen;
 
@@ -28,13 +28,7 @@ namespace DimStock.Screens
         public string FixePhone { get => TextFixePhone.Text; set => TextFixePhone.Text = value; }
         public string MobilePhone { get => TextMobilePhone.Text; set => TextMobilePhone.Text = value; }
         public string Email { get => TextEmail.Text; set => TextEmail.Text = value; }
-    }
-}
 
-namespace DimStock.Screens
-{
-    public partial class SupplierAddScreen
-    {
         public SupplierAddScreen()
         {
             InitializeComponent();
@@ -201,7 +195,6 @@ namespace DimStock.Screens
             }
         }
 
-        //Eventos para chamada dos métodos do apresentador
         private void PresenterUpdate(object sender, EventArgs e)
         {
             try

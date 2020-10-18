@@ -8,7 +8,7 @@ using DimStock.AuxilyTools.AuxilyClasses;
 
 namespace DimStock.Screens
 {
-    public partial class UserLoginAddScreen : IUserLoginAddView
+    public partial class UserLoginAddScreen : MetroForm,  IUserLoginAddView
     {
         private static MetroForm thisScreen;
 
@@ -21,13 +21,7 @@ namespace DimStock.Screens
         public bool InsertAllowed { get => true; set => value = true; }
         public bool UpdateAllowed { get => true; set => value = true; }
         public bool DeleteAllowed { get => true; set => value = true; }
-    }
-}
 
-namespace DimStock.Screens
-{
-    public partial class UserLoginAddScreen : MetroForm
-    {
         public UserLoginAddScreen()
         {
             InitializeComponent();
@@ -149,7 +143,6 @@ namespace DimStock.Screens
             }
         }
 
-        //Eventos para chamada dos métodos do apresentador
         private void PresenterUpdate(object sender, EventArgs e)
         {
             try

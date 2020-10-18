@@ -4,7 +4,7 @@ using System.Data;
 
 namespace DimStock.Models
 {
-    public partial class StockMovementModel
+    public class StockMovementModel
     {
         private ConnectionTransactionModel dataBaseTransaction;
 
@@ -16,10 +16,7 @@ namespace DimStock.Models
         public DateTime FinishDate { get; set; }
         public DateTime FinishHour { get; set; }
         public string Situation { get; set; }
-    }
 
-    public partial class StockMovementModel
-    {
         public StockMovementModel()
         {
         }

@@ -3,10 +3,7 @@ using System.Data;
 
 namespace DimStock.Models
 {
-    /// <summary>
-    /// Representa o modelo de login do usuário
-    /// </summary>
-    public partial class UserLoginModel
+    public class UserLoginModel
     {
         public int Id { get; set; }
         public string YourName { get; set; }
@@ -17,10 +14,7 @@ namespace DimStock.Models
         public bool InsertAllowed { get; set; }
         public bool UpdateAllowed { get; set; }
         public bool DeleteAllowed { get; set; }
-    }
 
-    public partial class UserLoginModel
-    {
         public UserLoginModel()
         {
         }

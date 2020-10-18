@@ -1,5 +1,4 @@
-﻿using DimStock.AuxilyTools.AuxilyClasses;
-using System;
+﻿using System;
 using System.Data;
 
 namespace DimStock.Models

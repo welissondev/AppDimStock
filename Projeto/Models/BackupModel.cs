@@ -38,5 +38,6 @@ namespace DimStock.Models
         {
             Process.Start("Explorer", FolderPath);
         }
+
     }
 }

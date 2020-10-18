@@ -13,13 +13,7 @@ namespace DimStock.Screens
     {
         private static HomeScreen thisScreen;
         private List<string> listMenuNames;
-    }
-}
 
-namespace DimStock.Screens
-{
-    public partial class HomeScreen
-    {
         public HomeScreen()
         {
             try

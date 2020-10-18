@@ -9,10 +9,9 @@ using System.Drawing;
 
 namespace DimStock.Screens
 {
-    public partial class SupplierListingScreen : ISupplierListingView
+    public partial class SupplierListingScreen : MetroForm, ISupplierListingView
     {
         private static MetroForm thisScreen;
-
         private DataGridViewLinkColumn buttonViewDetails;
         private DataGridViewLinkColumn buttonDelete;
 
@@ -31,20 +30,13 @@ namespace DimStock.Screens
         public string FixePhone { get; set; }
         public string MobilePhone { get; set; }
         public string Email { get; set; }
-
         public string SearchTypeOfRegistration { get; set; }
         public string SearchYourName { get => TextSearchYourName.Text; set => TextSearchYourName.Text = value; }
         public string SearchIndentyCard_StateRegister { get => TextSearchIndentyCard_StateRegister.Text; set => TextSearchIndentyCard_StateRegister.Text = value; }
         public string SearchSocialSecurity_NationalRegister { get => TextSearchSocialSecurity_NationalRegister.Text; set => TextSearchSocialSecurity_NationalRegister.Text = value; }
         public string SearchEmail { get => TextSearchEmail.Text; set => TextSearchEmail.Text = value; }
         public object DataList { get => GridList.DataSource; set => GridList.DataSource = value; }
-    }
-}
 
-namespace DimStock.Screens
-{
-    public partial class SupplierListingScreen : MetroForm
-    {
         public SupplierListingScreen()
         {
             InitializeComponent();
@@ -343,7 +335,6 @@ namespace DimStock.Screens
             }
         }
 
-        //Eventos que chamam métodos do apresentador
         private void PresenterDelete(object sender, EventArgs e)
         {
             try

@@ -4,10 +4,7 @@ using System.Data;
 
 namespace DimStock.Models
 {
-    /// <summary>
-    /// Representa o modelo do produto
-    /// </summary>
-    public partial class ProductModel
+    public class ProductModel
     {
         private ConnectionTransactionModel dataBaseTransaction;
 
@@ -19,10 +16,7 @@ namespace DimStock.Models
         public string BarCode { get; set; }
         public CategoryModel Category { get; set; }
         public StockModel Stock { get; set; }
-    }
 
-    public partial class ProductModel
-    {
         public ProductModel()
         {
             Category = new CategoryModel();
@@ -243,7 +237,7 @@ namespace DimStock.Models
             sql = @"SELECT MAX(Id) FROM product";
 
             if (dataBaseTransaction != null)
-            {             
+            {
                 dataBaseTransaction.ClearParameter();
                 lastId = dataBaseTransaction.ExecuteScalar(sql);
             }

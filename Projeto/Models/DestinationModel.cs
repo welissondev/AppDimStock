@@ -4,17 +4,11 @@ using System.Data;
 
 namespace DimStock.Models
 {
-    /// <summary>
-    /// Representa o modelo de destino do estoque
-    /// </summary>
-    public partial class DestinationModel
+    public class DestinationModel
     {
         public int Id { get; set; }
         public string LocationDescription { get; set; }
-    }
 
-    public partial class DestinationModel
-    {
         public DestinationModel()
         {
         }
