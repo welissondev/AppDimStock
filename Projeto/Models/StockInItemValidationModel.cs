@@ -4,11 +4,11 @@ namespace DimStock.Models
 {
     public class StockInItemValidationModel
     {
-        public static bool ValidateToInsert(StockInItemModel stockInItem)
+        public static bool ValidateToInsert(StockInItemModel item)
         {
             var validationStatus = false;
 
-            if (stockInItem.Product.Id == 0)
+            if (item.Stock.Id == 0)
             {
                 MessageNotifier.Show("Selecione um produto!",
                 "Não Selecionado", "!");
@@ -16,7 +16,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (stockInItem.Quantity == 0)
+            if (item.Quantity == 0)
             {
                 MessageNotifier.Show("Informe a quantidade!",
                 "Não Informado", "!");
@@ -24,7 +24,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (stockInItem.Quantity <= 0)
+            if (item.Quantity <= 0)
             {
                 MessageNotifier.Show("A quantidade não é válida!",
                 "Não Permitido", "!");
@@ -33,7 +33,7 @@ namespace DimStock.Models
             }
 
 
-            if (stockInItem.UnitaryValue == 0.00)
+            if (item.UnitaryValue == 0.00)
             {
                 MessageNotifier.Show("Informe o valor unitário!",
                 "Não Informado", "!");
@@ -41,7 +41,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (stockInItem.UnitaryValue <= 0.00)
+            if (item.UnitaryValue <= 0.00)
             {
                 MessageNotifier.Show("O valor unitário não é válido!",
                 "Não Permitido", "!");
@@ -53,11 +53,11 @@ namespace DimStock.Models
             return validationStatus = true;
         }
 
-        public static bool ValidateToUpdate(StockInItemModel stockInItem)
+        public static bool ValidateToUpdate(StockInItemModel item)
         {
             var validationStatus = false;
 
-            if (stockInItem.Id == 0)
+            if (item.Id == 0)
             {
                 MessageNotifier.Show("Selecione um item para editar!",
                 "Não Selecionado", "!");
@@ -65,7 +65,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (stockInItem.Product.Id == 0)
+            if (item.Stock.Id == 0)
             {
                 MessageNotifier.Show("Selecione um produto!",
                 "Não Selecionado", "!");
@@ -73,7 +73,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (stockInItem.Quantity == 0)
+            if (item.Quantity == 0)
             {
                 MessageNotifier.Show("Informe a quantidade!",
                 "Não Informado", "!");
@@ -81,7 +81,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (stockInItem.Quantity <= 0)
+            if (item.Quantity <= 0)
             {
                 MessageNotifier.Show("A quantidade não é válida!",
                 "Não Permitido", "!");
@@ -90,7 +90,7 @@ namespace DimStock.Models
             }
 
 
-            if (stockInItem.UnitaryValue == 0.00)
+            if (item.UnitaryValue == 0.00)
             {
                 MessageNotifier.Show("Informe o valor unitário!",
                 "Não Informado", "!");
@@ -98,7 +98,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (stockInItem.UnitaryValue <= 0.00)
+            if (item.UnitaryValue <= 0.00)
             {
                 MessageNotifier.Show("O valor unitário não é válido!",
                 "Não Permitido", "!");
@@ -110,11 +110,11 @@ namespace DimStock.Models
             return validationStatus = true;
         }
 
-        public static bool ValidateToDelete(StockInItemModel stockInItem)
+        public static bool ValidateToDelete(StockInItemModel item)
         {
             var validationStatus = false;
 
-            if (stockInItem.Id == 0)
+            if (item.Id == 0)
             {
                 MessageNotifier.Show("Selecione um item para deletar!",
                 "Não Selecionado", "!");

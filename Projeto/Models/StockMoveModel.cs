@@ -4,7 +4,7 @@ using System.Data;
 
 namespace DimStock.Models
 {
-    public class StockMovementModel
+    public class StockMoveModel
     {
         private ConnectionTransactionModel dataBaseTransaction;
 
@@ -17,11 +17,11 @@ namespace DimStock.Models
         public DateTime FinishHour { get; set; }
         public string Situation { get; set; }
 
-        public StockMovementModel()
+        public StockMoveModel()
         {
         }
 
-        public StockMovementModel(ConnectionTransactionModel connectionTransaction)
+        public StockMoveModel(ConnectionTransactionModel connectionTransaction)
         {
             dataBaseTransaction = connectionTransaction;
         }
@@ -31,12 +31,12 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
-            if (StockMovementValidationModel.ValidateToStart(this) == false)
+            if (StockMoveValidationModel.ValidateToStart(this) == false)
                 return actionResult;
 
             using (dataBaseTransaction = new ConnectionTransactionModel())
             {
-                sql = @"INSERT INTO stockMovement(operationType)VALUES(@operationType)";
+                sql = @"INSERT INTO stockMove(operationType)VALUES(@operationType)";
 
                 dataBaseTransaction.ClearParameter();
                 dataBaseTransaction.AddParameter("@operationType", OperationType);
@@ -58,7 +58,7 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
-            sql = @"UPDATE stockMovement Set finishDate = @finishDate, 
+            sql = @"UPDATE stockMove Set finishDate = @finishDate, 
                 finishHour = @finishHour, situation = @situation
                 WHERE id = @id";
 
@@ -69,7 +69,7 @@ namespace DimStock.Models
             dataBaseTransaction.ClearParameter();
             dataBaseTransaction.AddParameter("@finishDate", FinishDate);
             dataBaseTransaction.AddParameter("@finishHour", FinishHour);
-            dataBaseTransaction.AddParameter("@fituation", Situation);
+            dataBaseTransaction.AddParameter("@situation", Situation);
             dataBaseTransaction.AddParameter("@id", Id);
 
             if (dataBaseTransaction.ExecuteNonQuery(sql) > 0)
@@ -83,7 +83,7 @@ namespace DimStock.Models
         {
             var sql = string.Empty;
 
-            sql = @"UPDATE stockMovement SET situation = 
+            sql = @"UPDATE stockMove SET situation = 
             @situation WHERE id = @id";
 
             Situation = "Aberta";
@@ -101,7 +101,7 @@ namespace DimStock.Models
             var seed = GetLastId();
             OperationNumber = new SingleCodeGenerator(seed).GetCode();
 
-            var sql = @"UPDATE stockMovement SET operationNumber = 
+            var sql = @"UPDATE stockMove SET operationNumber = 
             @operationNumber WHERE id = @id";
 
             dataBaseTransaction.ClearParameter();
@@ -115,10 +115,10 @@ namespace DimStock.Models
         {
             var actionResult = false;
 
-            if (StockMovementValidationModel.ValidateToDelete(this) == true)
+            if (StockMoveValidationModel.ValidateToDelete(this) == true)
                 return actionResult;
 
-            var sql = @"DELETE FROM stockMovement WHERE id = @id";
+            var sql = @"DELETE FROM stockMove WHERE id = @id";
 
             dataBaseTransaction.ClearParameter();
             dataBaseTransaction.AddParameter("Id", Id);
@@ -136,12 +136,12 @@ namespace DimStock.Models
             var actionResult = false;
             var sql = string.Empty;
 
-            if (StockMovementValidationModel.ValidateToGetDetails(this) == false)
+            if (StockMoveValidationModel.ValidateToGetDetails(this) == false)
                 return actionResult;
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"SELECT * FROM stockMovement WHERE id = @id";
+                sql = @"SELECT * FROM stockMove WHERE id = @id";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("id", Id);
@@ -174,7 +174,7 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"SELECT * FROM stockMovement WHERE Id = @Id";
+                sql = @"SELECT * FROM stockMove WHERE Id = @Id";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Id", Id);
@@ -197,8 +197,8 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                criterionSqlSelect = @"SELECT * FROM stockMovement
-                WHERE stockMovement.Id > 0 ";
+                criterionSqlSelect = @"SELECT * FROM stockMove
+                WHERE stockMove.Id > 0 ";
 
                 criterionSqlOderBy = @"ORDER BY id DESC";
 
@@ -233,7 +233,7 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"SELECT MAX(Id) FROM stockMovement";
+                sql = @"SELECT MAX(Id) FROM stockMove";
                 lastId = dataBase.ExecuteScalar(sql);
             }
 

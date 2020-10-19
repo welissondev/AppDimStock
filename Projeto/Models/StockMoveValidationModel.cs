@@ -2,13 +2,13 @@
 
 namespace DimStock.Models
 {
-    public class StockMovementValidationModel
+    public class StockMoveValidationModel
     {
-        public static bool ValidateToStart(StockMovementModel stockMovement)
+        public static bool ValidateToStart(StockMoveModel stockMove)
         {
             var validationStatus = false;
 
-            if (stockMovement.OperationType == string.Empty)
+            if (stockMove.OperationType == string.Empty)
             {
                 MessageNotifier.Show("Para iniciar uma operação " +
                 "de movimentação é obrigatório informar seu tipo!",
@@ -19,11 +19,11 @@ namespace DimStock.Models
 
             return validationStatus = true;
         }
-        public static bool ValidateToGetDetails(StockMovementModel stockMovement)
+        public static bool ValidateToGetDetails(StockMoveModel stockMove)
         {
             var validationStatus = false;
 
-            if (stockMovement.Id == 0)
+            if (stockMove.Id == 0)
             {
                 MessageNotifier.Show("Selecione a movimentação " +
                 "para visualizar!", "Não Selecionada", "?");
@@ -31,7 +31,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (stockMovement.CheckRegisterStatus() == false)
+            if (stockMove.CheckRegisterStatus() == false)
             {
                 MessageNotifier.Show("Não é possivel visualizar " +
                 "porque esse registro foi excluido!",
@@ -42,11 +42,11 @@ namespace DimStock.Models
 
             return validationStatus = true;
         }
-        public static bool ValidateToDelete(StockMovementModel stockMovement)
+        public static bool ValidateToDelete(StockMoveModel stockMove)
         {
             var validationStatus = false;
 
-            if (stockMovement.Id == 0)
+            if (stockMove.Id == 0)
             {
                 MessageNotifier.Show("Selecione a movimentação " +
                 "para excluir!", "Não Selecionada", "?");
@@ -54,7 +54,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (stockMovement.OperationType == string.Empty)
+            if (stockMove.OperationType == string.Empty)
             {
                 MessageNotifier.Show("Para deletar uma operação " +
                 "de movimentação é obrigatório informar seu tipo!",
@@ -63,12 +63,12 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            switch (stockMovement.OperationType)
+            switch (stockMove.OperationType)
             {
                 case "Entrada":
 
-                    if (new StockInModel(stockMovement).CheckRelationWithStockMovement() == true &&
-                    stockMovement.Situation == "Finalizada")
+                    if (new StockInModel(stockMove).CheckRelationWithStockMove() == true &&
+                    stockMove.Situation == "Finalizada")
                     {
                         MessageNotifier.Show("Não foi possível deletar essa movimentação, pois ela " +
                         "ja foi finalizada, cancele a operação e tente excluir novamente!",
@@ -81,8 +81,8 @@ namespace DimStock.Models
 
                 case "Saída":
 
-                    if (new StockOutModel(stockMovement).CheckRelationWithStockMovement() == true &&
-                    stockMovement.Situation == "Finalizada")
+                    if (new StockOutModel(stockMove).CheckRelationWithStockMove() == true &&
+                    stockMove.Situation == "Finalizada")
                     {
                         MessageNotifier.Show("Não foi possível deletar essa movimentação pois ela " +
                         "ja foi finalizada, cancele a operação e tente excluir novamente!",
@@ -94,7 +94,7 @@ namespace DimStock.Models
                     break;
             }
 
-            if (stockMovement.CheckRegisterStatus() == false)
+            if (stockMove.CheckRegisterStatus() == false)
             {
                 MessageNotifier.Show("Não é possivel deletar " +
                 "porque esse registro já foi excluido!",

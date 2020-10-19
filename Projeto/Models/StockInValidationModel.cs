@@ -16,7 +16,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (stockIn.StockMovement.Id == 0)
+            if (stockIn.StockMove.Id == 0)
             {
                 MessageNotifier.Show("Selecione uma movimentação!",
                 "Obrigatório", "!");
@@ -63,7 +63,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (stockIn.StockMovement.Id == 0)
+            if (stockIn.StockMove.Id == 0)
             {
                 MessageNotifier.Show("Selecione uma movimentação!",
                 "Obrigatório", "!");
@@ -115,7 +115,7 @@ namespace DimStock.Models
         {
             var validationStatus = false;
 
-            if (stockIn.StockMovement.Id == 0)
+            if (stockIn.StockMove.Id == 0)
             {
                 MessageNotifier.Show("Selecione uma movimentação para " +
                 "finalizar!", "Obrigatório", "!");
@@ -133,7 +133,7 @@ namespace DimStock.Models
         {
             var validationStatus = false;
 
-            if (stockIn.StockMovement.Id == 0)
+            if (stockIn.StockMove.Id == 0)
             {
                 MessageNotifier.Show("Selecione uma movimentação para " +
                 "cancelar!", "Obrigatório", "!");

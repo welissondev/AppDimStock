@@ -11,17 +11,17 @@ namespace DimStock.Models
         public DateTime RegisterDate { get; set; }
         public DateTime RegisterHour { get; set; }
         public DestinationModel Destination { get; set; }
-        public StockMovementModel StockMovement { get; set; }
+        public StockMoveModel StockMove { get; set; }
         public DataTable Items { get; set; }
 
         public StockOutModel()
         {
             Destination = new DestinationModel();
-            StockMovement = new StockMovementModel();
+            StockMove = new StockMoveModel();
         }
-        public StockOutModel(StockMovementModel stockMovement)
+        public StockOutModel(StockMoveModel stockMove)
         {
-            StockMovement = stockMovement;
+            StockMove = stockMove;
         }
 
         public bool Insert()
@@ -34,12 +34,12 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"INSERT INTO stockOut(destinationId, stockMovementId, registerDate, registerHour)
-                VALUES(@destinationId, @stockMovementId, @registerDate, @registerHour, @nfe)";
+                sql = @"INSERT INTO stockOut(destinationId, stockMoveId, registerDate, registerHour)
+                VALUES(@destinationId, @stockMoveId, @registerDate, @registerHour, @nfe)";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@destinationId", Destination.Id);
-                dataBase.AddParameter("@stockMovementId", StockMovement.Id);
+                dataBase.AddParameter("@stockMoveId", StockMove.Id);
                 dataBase.AddParameter("@registerDate", RegisterDate);
                 dataBase.AddParameter("@registerHour", RegisterHour);
 
@@ -61,12 +61,12 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"UPDATE stockOut SET destinationId = @destinationId, stockMovementId = @stockMovementId,
+                sql = @"UPDATE stockOut SET destinationId = @destinationId, stockMoveId = @stockMoveId,
                 registerDate = @registerDate, registerHour = @registerHour WHERE id = @id";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@destinationId", Destination.Id);
-                dataBase.AddParameter("@stockMovementId", StockMovement.Id);
+                dataBase.AddParameter("@stockMoveId", StockMove.Id);
                 dataBase.AddParameter("@registerDate", RegisterDate);
                 dataBase.AddParameter("@registerHour", RegisterHour);
                 dataBase.AddParameter("@id", Id);
@@ -111,7 +111,7 @@ namespace DimStock.Models
             {
                 if (InsertPostingStock() == true)
                 {
-                    if (new StockMovementModel(dataBaseTransaction) { Id = StockMovement.Id }.Finish() == true)
+                    if (new StockMoveModel(dataBaseTransaction) { Id = StockMove.Id }.Finish() == true)
                     {
                         actionResult = true;
                         dataBaseTransaction.Commit();
@@ -132,7 +132,7 @@ namespace DimStock.Models
             {
                 if (RemovePostingStock() == true)
                 {
-                    if (new StockMovementModel(dataBaseTransaction) { Id = StockMovement.Id }.Cancel() == true)
+                    if (new StockMoveModel(dataBaseTransaction) { Id = StockMove.Id }.Cancel() == true)
                     {
                         actionResult = true;
                         dataBaseTransaction.Commit();
@@ -143,7 +143,7 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public bool CheckRelationWithStockMovement()
+        public bool CheckRelationWithStockMove()
         {
             var relatedStatus = false;
             var sql = string.Empty;
@@ -151,10 +151,10 @@ namespace DimStock.Models
             using (var dataBase = new ConnectionModel())
             {
                 sql = @"SELECT * FROM stockOut WHERE 
-                stockMovementId = @stockMovementId";
+                stockMoveId = @stockMoveId";
 
                 dataBase.ClearParameter();
-                dataBase.AddParameter("stockMovementId", StockMovement.Id);
+                dataBase.AddParameter("stockMoveId", StockMove.Id);
 
                 if (dataBase.ExecuteScalar(sql) > 0)
                 {

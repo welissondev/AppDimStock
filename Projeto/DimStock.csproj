@@ -186,7 +186,7 @@
     <Compile Include="Models\DestinationValidationModel.cs" />
     <Compile Include="Models\ItemModel.cs" />
     <Compile Include="Models\StockInItemValidationModel.cs" />
-    <Compile Include="Models\StockMovementValidationModel.cs" />
+    <Compile Include="Models\StockMoveValidationModel.cs" />
     <Compile Include="Models\ProductValidationModel.cs" />
     <Compile Include="Models\StockOutItemValidationModel.cs" />
     <Compile Include="Models\StockOutModel.cs" />
@@ -196,7 +196,7 @@
     <Compile Include="Models\StockOutItemModel.cs" />
     <Compile Include="Models\StockModel.cs" />
     <Compile Include="Models\DestinationModel.cs" />
-    <Compile Include="Models\StockMovementModel.cs" />
+    <Compile Include="Models\StockMoveModel.cs" />
     <Compile Include="AuxilyTools\AuxilyClasses\MessageNotifier.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\StockOutValidationModel.cs" />
@@ -307,17 +307,17 @@
     <Compile Include="Screens\StockListingScreen.Designer.cs">
       <DependentUpon>StockListingScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Screens\MovementListingScreen.cs">
+    <Compile Include="Screens\StockMoveListingScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screens\MovementListingScreen.Designer.cs">
-      <DependentUpon>MovementListingScreen.cs</DependentUpon>
+    <Compile Include="Screens\StockMoveListingScreen.Designer.cs">
+      <DependentUpon>StockMoveListingScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Screens\MovementAddScreen.cs">
+    <Compile Include="Screens\StockMoveAddScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screens\MovementAddScreen.Designer.cs">
-      <DependentUpon>MovementAddScreen.cs</DependentUpon>
+    <Compile Include="Screens\StockMoveAddScreen.Designer.cs">
+      <DependentUpon>StockMoveAddScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Screens\UserLoginListingScreen.cs">
       <SubType>Form</SubType>
@@ -389,11 +389,11 @@
     <EmbeddedResource Include="Screens\StockListingScreen.resx">
       <DependentUpon>StockListingScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Screens\MovementListingScreen.resx">
-      <DependentUpon>MovementListingScreen.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\StockMoveListingScreen.resx">
+      <DependentUpon>StockMoveListingScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Screens\MovementAddScreen.resx">
-      <DependentUpon>MovementAddScreen.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\StockMoveAddScreen.resx">
+      <DependentUpon>StockMoveAddScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\SupplierAddScreen.resx">
       <DependentUpon>SupplierAddScreen.cs</DependentUpon>
