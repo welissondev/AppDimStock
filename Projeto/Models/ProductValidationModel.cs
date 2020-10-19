@@ -117,6 +117,15 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
+            if (product.GetQuantityInStock() < 0)
+            {
+                MessageNotifier.Show("Não é possível deletar " +
+                "esse produto, porque ele possui saídas " +
+                "no estoque!", "Não Permitido", "?");
+
+                return validationStatus;
+            }
+
             if (MessageNotifier.Reply("Confirma mesmo a exclusão desse " +
             "produto?", "IMPORTANTE") == false) return validationStatus;
 
