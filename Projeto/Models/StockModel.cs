@@ -86,13 +86,13 @@ namespace DimStock.Models
 
             foreach (DataRow item in items.Rows)
             {
-                sql = @"UPDATE stock SET quantity = quantity + @quantity, 
-                totalValue = totalValue + @totalValue WHERE productId = @productId";
+                sql = @"UPDATE stock SET quantity = quantity + @itemQuantity, 
+                totalValue = totalValue + @itemTotalValue WHERE id = @itemStockId";
 
                 dataBaseTransaction.ClearParameter();
                 dataBaseTransaction.AddParameter("@itemQuantity", item["quantity"]);
                 dataBaseTransaction.AddParameter("@itemTotalValue", item["totalValue"]);
-                dataBaseTransaction.AddParameter("@productId", item["productId"]);
+                dataBaseTransaction.AddParameter("@itemStockId", item["stockId"]);
 
                 if (dataBaseTransaction.ExecuteNonQuery(sql) > 0)
                     count += 1;
@@ -110,13 +110,13 @@ namespace DimStock.Models
 
             foreach (DataRow item in items.Rows)
             {
-                sql = @"UPDATE stock SET quantity = quantity - @quantity, 
-                totalValue = totalValue - @totalValue WHERE productId = @productId";
+                sql = @"UPDATE stock SET quantity = quantity - @itemQuantity, 
+                totalValue = totalValue - @itemTotalValue WHERE id = @itemStockId";
 
                 dataBaseTransaction.ClearParameter();
-                dataBaseTransaction.AddParameter("@quantity", item["quantity"].ToString());
-                dataBaseTransaction.AddParameter("@totalValue", item["totalValue"].ToString());
-                dataBaseTransaction.AddParameter("@productId", item["productId"].ToString());
+                dataBaseTransaction.AddParameter("@itemQuantity", item["quantity"].ToString());
+                dataBaseTransaction.AddParameter("@itemTotalValue", item["totalValue"].ToString());
+                dataBaseTransaction.AddParameter("@itemStockId", item["stockId"].ToString());
 
                 if (dataBaseTransaction.ExecuteNonQuery(sql) > 0)
                     count += 1;
@@ -135,13 +135,13 @@ namespace DimStock.Models
 
             foreach (DataRow item in items.Rows)
             {
-                sql = @"UPDATE stock SET quantity = quantity - @quantity, 
-                totalValue = totalValue - @totalValue WHERE productId = @productId";
+                sql = @"UPDATE stock SET quantity = quantity - @itemQuantity, 
+                totalValue = totalValue - @itemTotalValue WHERE id = @stockId";
 
                 dataBaseTransaction.ClearParameter();
-                dataBaseTransaction.AddParameter("@quantity", item["quantity"]);
-                dataBaseTransaction.AddParameter("@totalValue", item["totalValue"]);
-                dataBaseTransaction.AddParameter("@productId", item["productId"]);
+                dataBaseTransaction.AddParameter("@itemQuantity", item["quantity"]);
+                dataBaseTransaction.AddParameter("@itemTotalValue", item["totalValue"]);
+                dataBaseTransaction.AddParameter("@itemStockId", item["stockId"]);
 
                 if (dataBaseTransaction.ExecuteNonQuery(sql) > 0)
                     count += 1;
@@ -159,13 +159,13 @@ namespace DimStock.Models
 
             foreach (DataRow item in items.Rows)
             {
-                sql = @"UPDATE stock SET quantity = quantity + @quantity, 
-                totalValue = totalValue + @totalValue WHERE productId = @productId";
+                sql = @"UPDATE stock SET quantity = quantity + @itemQuantity, 
+                totalValue = totalValue + @itemTotalValue WHERE id = @itemStockId";
 
                 dataBaseTransaction.ClearParameter();
-                dataBaseTransaction.AddParameter("@quantity", item["quantity"]);
-                dataBaseTransaction.AddParameter("@totalValue", item["totalValue"]);
-                dataBaseTransaction.AddParameter("@productId", item["productId"]);
+                dataBaseTransaction.AddParameter("@itemQuantity", item["quantity"]);
+                dataBaseTransaction.AddParameter("@itemTotalValue", item["totalValue"]);
+                dataBaseTransaction.AddParameter("@itemStockId", item["stockId"]);
 
                 if (dataBaseTransaction.ExecuteNonQuery(sql) > 0)
                     count += 1;

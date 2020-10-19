@@ -8,7 +8,7 @@ namespace DimStock.Models
         {
             var validationStatus = false;
 
-            if (stockOut.Product.Id == 0)
+            if (stockOut.Stock.Id == 0)
             {
                 MessageNotifier.Show("Selecione um produto!",
                 "Não Selecionado", "!");
@@ -65,7 +65,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (stockOut.Product.Id == 0)
+            if (stockOut.Stock.Id == 0)
             {
                 MessageNotifier.Show("Selecione um produto!",
                 "Não Selecionado", "!");

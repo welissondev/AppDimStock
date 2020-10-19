@@ -4,13 +4,13 @@ namespace DimStock.Models
 {
     public class StockInItemModel : ItemModel
     {
+        public StockModel Stock { get; set; }
         public StockInModel StockIn { get; set; }
-        public ProductModel Product { get; set; }
 
         public StockInItemModel()
         {
             StockIn = new StockInModel();
-            Product = new ProductModel();
+            Stock = new StockModel();
         }
 
         public StockInItemModel(StockInModel stockIn)
@@ -28,13 +28,13 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"INSERT INTO stockInItem (stockInId, productId, 
-                quantity, unitaryValue, totalValue)VALUES(@stockInId, @productId, 
+                sql = @"INSERT INTO stockInItem (stockInId, stockId, 
+                quantity, unitaryValue, totalValue)VALUES(@stockInId, @stockId, 
                 @quantity, @unitaryValue, @totalValue)";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@stockInId", StockIn.Id);
-                dataBase.AddParameter("@productId", Product.Id);
+                dataBase.AddParameter("@stockId", Stock.Id);
                 dataBase.AddParameter("@quantity", Quantity);
                 dataBase.AddParameter("@unitaryValue", UnitaryValue);
                 dataBase.AddParameter("@totalValue", TotalValue);
@@ -58,13 +58,13 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"UPDATE stockInItem SET stockInId = @stockInId, productId = @productId, 
+                sql = @"UPDATE stockInItem SET stockInId = @stockInId, stockId = @stockId, 
                 quantity = @quantity, unitaryValue = @unitaryValue, totalValue = @totalValue 
                 WHERE id = @id";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@stockInId", StockIn.Id);
-                dataBase.AddParameter("@productId", Product.Id);
+                dataBase.AddParameter("@stockId", Stock.Id);
                 dataBase.AddParameter("@quantity", Quantity);
                 dataBase.AddParameter("@unitaryValue", UnitaryValue);
                 dataBase.AddParameter("@totalValue", TotalValue);
@@ -110,8 +110,9 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"SELECT i.*, p.description, p.internalCode FROM stockInItem i INNER JOIN 
-                product p ON i.productId = p.id WHERE i.stockInId = @stockInId";
+                sql = @"SELECT item.id, item.quantity, item.unitaryValue, item.totalValue ,
+                product.description FROM (stockInItem AS item INNER JOIN stock ON item.stockId = stock.id) 
+                INNER JOIN product ON product.id = stock.productId ";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@stockInId", StockIn.Id);
