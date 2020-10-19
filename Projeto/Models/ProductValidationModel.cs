@@ -108,11 +108,11 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (product.CheckRelationWithStock() == true)
+            if (product.GetQuantityInStock() > 0)
             {
                 MessageNotifier.Show("Não é possível deletar " +
-                "esse produto, porque ele possui registros " +
-                "relacionados ao estoque!", "Não Permitido", "?");
+                "esse produto, porque ele possui entradas " +
+                "no estoque!", "Não Permitido", "?");
 
                 return validationStatus;
             }
