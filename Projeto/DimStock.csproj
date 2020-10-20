@@ -345,6 +345,7 @@
     <Compile Include="Views\IDestinationListingView.cs" />
     <Compile Include="Views\IProductAddView.cs" />
     <Compile Include="Views\IProductListingView.cs" />
+    <Compile Include="Views\IStockMoveView.cs" />
     <Compile Include="Views\ISupplierListingView.cs" />
     <Compile Include="Views\IUserLoginAddView.cs" />
     <Compile Include="Views\IUserLoginAccessView.cs" />
