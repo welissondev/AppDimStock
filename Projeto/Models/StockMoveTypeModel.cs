@@ -17,8 +17,10 @@
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@description", Description);
 
-                return dataBase.ExecuteScalar(sql);
+                Id = dataBase.ExecuteScalar(sql);
             }
+
+            return Id;
         }
     }
 }

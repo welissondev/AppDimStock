@@ -8,7 +8,7 @@ namespace DimStock.Models
         {
             var validationStatus = false;
 
-            if (stockMove.MoveType.Description == string.Empty)
+            if (stockMove.StockMoveType.Description == string.Empty)
             {
                 MessageNotifier.Show("Para iniciar uma operação " +
                 "de movimentação é obrigatório informar seu tipo!",
@@ -54,7 +54,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (stockMove.MoveType.Description == string.Empty)
+            if (stockMove.StockMoveType.Description == string.Empty)
             {
                 MessageNotifier.Show("Para deletar uma operação " +
                 "de movimentação é obrigatório informar seu tipo!",
@@ -63,7 +63,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            switch (stockMove.MoveType.Description)
+            switch (stockMove.StockMoveType.Description)
             {
                 case "Entrada":
 

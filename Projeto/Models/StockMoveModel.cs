@@ -7,19 +7,22 @@ namespace DimStock.Models
     public class StockMoveModel
     {
         private ConnectionTransactionModel dataBaseTransaction;
+        private DateTime startDate;
+        private DateTime startHour;
+        private DateTime finishDate;
+        private DateTime finishHour;
 
         public int Id { get; set; }
-        public string IndentificationNumber { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime StartHour { get; set; }
-        public DateTime FinishDate { get; set; }
-        public DateTime FinishHour { get; set; }
+        public DateTime StartDate { get => startDate; }
+        public DateTime StartHour { get => startHour; }
+        public DateTime FinishDate { get => finishDate; }
+        public DateTime FinishHour { get => finishHour; }
         public string Situation { get; set; }
-        public StockMoveTypeModel MoveType { get; set; }
+        public StockMoveTypeModel StockMoveType { get; set; }
 
         public StockMoveModel()
         {
-            MoveType = new StockMoveTypeModel();
+            StockMoveType = new StockMoveTypeModel();
         }
 
         public StockMoveModel(ConnectionTransactionModel connectionTransaction)
@@ -35,22 +38,18 @@ namespace DimStock.Models
             if (StockMoveValidationModel.ValidateToStart(this) == false)
                 return actionResult;
 
-            using (dataBaseTransaction = new ConnectionTransactionModel())
+            using (var dataBase = new ConnectionModel())
             {
-                sql = @"INSERT INTO stockMove(stockMoveTypeId, startDate, startHour,
-                situation)VALUES(@stockMoveTypeId, @startDate, @startHour, @situation)";
+                sql = @"INSERT INTO stockMove(stockMoveTypeId)
+                VALUES(@stockMoveTypeId)";
 
-                dataBaseTransaction.ClearParameter();
-                dataBaseTransaction.AddParameter("@stockMoveTypeId", MoveType.Id);
-                dataBaseTransaction.AddParameter("@startDate", DateTime.Now.ToString("'dd'/'MM'/'yyyy'"));
-                dataBaseTransaction.AddParameter("@startHor", DateTime.Now.ToString("'HH':'mm':'ss"));
-                dataBaseTransaction.AddParameter("@situation", Situation);
+                dataBase.ClearParameter();
+                dataBase.AddParameter("@stockMoveTypeId", StockMoveType.GetIdByDescription());
 
-                if (dataBaseTransaction.ExecuteNonQuery(sql) > 0)
+                if (dataBase.ExecuteNonQuery(sql) > 0)
                 {
-                    if (SetIndentificationNumber() == true)
+                    if (GetLastId() > 0)
                     {
-                        dataBaseTransaction.Commit();
                         actionResult = true;
                     }
                 }
@@ -95,21 +94,6 @@ namespace DimStock.Models
 
         }
 
-        private bool SetIndentificationNumber()
-        {
-            var seed = GetLastId();
-            IndentificationNumber = new SingleCodeGenerator(seed).GetCode();
-
-            var sql = @"UPDATE stockMove SET indentificationNumber = 
-            @indentificationNumber WHERE id = @id";
-
-            dataBaseTransaction.ClearParameter();
-            dataBaseTransaction.AddParameter("@indentificationNumber", IndentificationNumber);
-            dataBaseTransaction.AddParameter("@id", Id);
-
-            return dataBaseTransaction.ExecuteNonQuery(sql) > 0;
-        }
-
         public bool Delete()
         {
             var actionResult = false;
@@ -150,13 +134,12 @@ namespace DimStock.Models
                     while (reader.Read())
                     {
                         Id = int.Parse(reader["id"].ToString());
-                        MoveType.Id = int.Parse(reader["operationTypeId"].ToString());
-                        IndentificationNumber = reader["operationNumber"].ToString();
-                        StartDate = DateTime.Parse(reader["startDate"].ToString());
-                        StartHour = DateTime.Parse(reader["startHour"].ToString());
-                        FinishDate = DateTime.Parse(reader["finishDate"].ToString());
-                        FinishHour = DateTime.Parse(reader["finishHour"].ToString());
+                        StockMoveType.Id = int.Parse(reader["operationTypeId"].ToString());
                         Situation = reader["situation"].ToString();
+                        startDate = DateTime.Parse(reader["startDate"].ToString());
+                        startHour = DateTime.Parse(reader["startHour"].ToString());
+                        finishDate = DateTime.Parse(reader["finishDate"].ToString());
+                        finishHour = DateTime.Parse(reader["finishHour"].ToString());
 
                         actionResult = true;
                     }
@@ -202,16 +185,10 @@ namespace DimStock.Models
 
                 criterionSqlOderBy = @"ORDER BY id DESC";
 
-                if (MoveType.Description != string.Empty && MoveType.Description != null)
+                if (StockMoveType.Description != string.Empty && StockMoveType.Description != null)
                 {
                     criterionSqlParameter += @"AND operationType.description LIKE @operationType.description ";
-                    dataBase.AddParameter("@operationType.description", string.Format("{0}", MoveType));
-                }
-
-                if (IndentificationNumber != string.Empty && IndentificationNumber != null)
-                {
-                    criterionSqlParameter += @"AND indentificationNumber LIKE @indentificationNumber ";
-                    dataBase.AddParameter("@indentificationNumber", string.Format("{0}", IndentificationNumber));
+                    dataBase.AddParameter("@operationType.description", string.Format("{0}", StockMoveType));
                 }
 
                 if (Situation != string.Empty && Situation != null)
@@ -229,15 +206,14 @@ namespace DimStock.Models
         public int GetLastId()
         {
             var sql = string.Empty;
-            int lastId;
 
             using (var dataBase = new ConnectionModel())
             {
                 sql = @"SELECT MAX(Id) FROM stockMove";
-                lastId = dataBase.ExecuteScalar(sql);
+                Id = dataBase.ExecuteScalar(sql);
             }
 
-            return lastId;
+            return Id;
         }
     }
 }
