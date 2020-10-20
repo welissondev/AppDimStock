@@ -8,7 +8,7 @@ namespace DimStock.Models
         {
             var validationStatus = false;
 
-            if (stockMove.OperationType == string.Empty)
+            if (stockMove.MoveType.Description == string.Empty)
             {
                 MessageNotifier.Show("Para iniciar uma operação " +
                 "de movimentação é obrigatório informar seu tipo!",
@@ -54,7 +54,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (stockMove.OperationType == string.Empty)
+            if (stockMove.MoveType.Description == string.Empty)
             {
                 MessageNotifier.Show("Para deletar uma operação " +
                 "de movimentação é obrigatório informar seu tipo!",
@@ -63,14 +63,14 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            switch (stockMove.OperationType)
+            switch (stockMove.MoveType.Description)
             {
                 case "Entrada":
 
                     if (new StockInModel(stockMove).CheckRelationWithStockMove() == true &&
                     stockMove.Situation == "Finalizada")
                     {
-                        MessageNotifier.Show("Não foi possível deletar essa movimentação, pois ela " +
+                        MessageNotifier.Show("Não foi possível deletar essa entrada pois ela " +
                         "ja foi finalizada, cancele a operação e tente excluir novamente!",
                         "Não Permitido", "?");
 
@@ -84,7 +84,7 @@ namespace DimStock.Models
                     if (new StockOutModel(stockMove).CheckRelationWithStockMove() == true &&
                     stockMove.Situation == "Finalizada")
                     {
-                        MessageNotifier.Show("Não foi possível deletar essa movimentação pois ela " +
+                        MessageNotifier.Show("Não foi possível deletar essa saída pois ela " +
                         "ja foi finalizada, cancele a operação e tente excluir novamente!",
                         "Não Permitido", "?");
 

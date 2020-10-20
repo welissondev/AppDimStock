@@ -9,16 +9,17 @@ namespace DimStock.Models
         private ConnectionTransactionModel dataBaseTransaction;
 
         public int Id { get; set; }
-        public string OperationType { get; set; }
-        public string OperationNumber { get; set; }
+        public string IndentificationNumber { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime StartHour { get; set; }
         public DateTime FinishDate { get; set; }
         public DateTime FinishHour { get; set; }
         public string Situation { get; set; }
+        public StockMoveTypeModel MoveType { get; set; }
 
         public StockMoveModel()
         {
+            MoveType = new StockMoveTypeModel();
         }
 
         public StockMoveModel(ConnectionTransactionModel connectionTransaction)
@@ -36,14 +37,18 @@ namespace DimStock.Models
 
             using (dataBaseTransaction = new ConnectionTransactionModel())
             {
-                sql = @"INSERT INTO stockMove(operationType)VALUES(@operationType)";
+                sql = @"INSERT INTO stockMove(stockMoveTypeId, startDate, startHour,
+                situation)VALUES(@stockMoveTypeId, @startDate, @startHour, @situation)";
 
                 dataBaseTransaction.ClearParameter();
-                dataBaseTransaction.AddParameter("@operationType", OperationType);
+                dataBaseTransaction.AddParameter("@stockMoveTypeId", MoveType.Id);
+                dataBaseTransaction.AddParameter("@startDate", DateTime.Now.ToString("'dd'/'MM'/'yyyy'"));
+                dataBaseTransaction.AddParameter("@startHor", DateTime.Now.ToString("'HH':'mm':'ss"));
+                dataBaseTransaction.AddParameter("@situation", Situation);
 
                 if (dataBaseTransaction.ExecuteNonQuery(sql) > 0)
                 {
-                    if (SetOperationNumber() == true)
+                    if (SetIndentificationNumber() == true)
                     {
                         dataBaseTransaction.Commit();
                         actionResult = true;
@@ -59,16 +64,12 @@ namespace DimStock.Models
             var sql = string.Empty;
 
             sql = @"UPDATE stockMove Set finishDate = @finishDate, 
-                finishHour = @finishHour, situation = @situation
-                WHERE id = @id";
-
-            FinishDate = DateTime.Now;
-            FinishHour = DateTime.Now;
-            Situation = "Finalizada";
+            finishHour = @finishHour, situation = @situation
+            WHERE id = @id";
 
             dataBaseTransaction.ClearParameter();
-            dataBaseTransaction.AddParameter("@finishDate", FinishDate);
-            dataBaseTransaction.AddParameter("@finishHour", FinishHour);
+            dataBaseTransaction.AddParameter("@finishDate", DateTime.Now.ToString("'dd'/'MM'/'yyyy'"));
+            dataBaseTransaction.AddParameter("@finishHour", DateTime.Now.ToString("'HH':'mm':'ss"));
             dataBaseTransaction.AddParameter("@situation", Situation);
             dataBaseTransaction.AddParameter("@id", Id);
 
@@ -86,26 +87,24 @@ namespace DimStock.Models
             sql = @"UPDATE stockMove SET situation = 
             @situation WHERE id = @id";
 
-            Situation = "Aberta";
-
             dataBaseTransaction.ClearParameter();
-            dataBaseTransaction.AddParameter("@aberta", Situation);
+            dataBaseTransaction.AddParameter("@situation", Situation);
             dataBaseTransaction.AddParameter("@id", Id);
 
             return dataBaseTransaction.ExecuteNonQuery(sql) > 0;
 
         }
 
-        public bool SetOperationNumber()
+        private bool SetIndentificationNumber()
         {
             var seed = GetLastId();
-            OperationNumber = new SingleCodeGenerator(seed).GetCode();
+            IndentificationNumber = new SingleCodeGenerator(seed).GetCode();
 
-            var sql = @"UPDATE stockMove SET operationNumber = 
-            @operationNumber WHERE id = @id";
+            var sql = @"UPDATE stockMove SET indentificationNumber = 
+            @indentificationNumber WHERE id = @id";
 
             dataBaseTransaction.ClearParameter();
-            dataBaseTransaction.AddParameter("@operationNumber", OperationNumber);
+            dataBaseTransaction.AddParameter("@indentificationNumber", IndentificationNumber);
             dataBaseTransaction.AddParameter("@id", Id);
 
             return dataBaseTransaction.ExecuteNonQuery(sql) > 0;
@@ -151,8 +150,8 @@ namespace DimStock.Models
                     while (reader.Read())
                     {
                         Id = int.Parse(reader["id"].ToString());
-                        OperationType = reader["operationType"].ToString();
-                        OperationNumber = reader["operationNumber"].ToString();
+                        MoveType.Id = int.Parse(reader["operationTypeId"].ToString());
+                        IndentificationNumber = reader["operationNumber"].ToString();
                         StartDate = DateTime.Parse(reader["startDate"].ToString());
                         StartHour = DateTime.Parse(reader["startHour"].ToString());
                         FinishDate = DateTime.Parse(reader["finishDate"].ToString());
@@ -197,21 +196,22 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                criterionSqlSelect = @"SELECT * FROM stockMove
-                WHERE stockMove.Id > 0 ";
+                criterionSqlSelect = @"SELECT stockMove.*, operationType.description FROM stockMove
+                INNER JOIN operationType ON stockMove.operationTypeId = operationType.id WHERE 
+                stockMove.Id > 0 ";
 
                 criterionSqlOderBy = @"ORDER BY id DESC";
 
-                if (OperationType != string.Empty && OperationType != null)
+                if (MoveType.Description != string.Empty && MoveType.Description != null)
                 {
-                    criterionSqlParameter += @"AND operationType LIKE @operationType ";
-                    dataBase.AddParameter("@operationType", string.Format("{0}", OperationType));
+                    criterionSqlParameter += @"AND operationType.description LIKE @operationType.description ";
+                    dataBase.AddParameter("@operationType.description", string.Format("{0}", MoveType));
                 }
 
-                if (OperationNumber != string.Empty && OperationNumber != null)
+                if (IndentificationNumber != string.Empty && IndentificationNumber != null)
                 {
-                    criterionSqlParameter += @"AND operationNumber LIKE @operationNumber ";
-                    dataBase.AddParameter("@operationNumber", string.Format("{0}", OperationNumber));
+                    criterionSqlParameter += @"AND indentificationNumber LIKE @indentificationNumber ";
+                    dataBase.AddParameter("@indentificationNumber", string.Format("{0}", IndentificationNumber));
                 }
 
                 if (Situation != string.Empty && Situation != null)
