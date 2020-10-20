@@ -93,7 +93,7 @@ namespace DimStock.Models
 
                 if (dataBaseTransaction.ExecuteNonQuery(sql) > 0)
                 {
-                    if (new StockModel(dataBaseTransaction, this).UpdateTotalValue() == true)
+                    if (new StockModel(dataBaseTransaction, this).Update() == true)
                     {
                         dataBaseTransaction.Commit();
                         MessageNotifier.Show("Produto atualizado " +
@@ -141,7 +141,7 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"SELECT * FROM Product WHERE Id = @Id";
+                sql = @"SELECT * FROM product WHERE id = @id";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Id", Id);
@@ -192,29 +192,35 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"SELECT Product.*, Category.* FROM Product
-                LEFT JOIN Category ON Product.CategoryId = Category.Id
-                WHERE Product.Id = @Id ";
+                sql = @"SELECT product.* , category.*, stock.min, stock.max FROM (product
+                LEFT JOIN category ON product.categoryId = category.id) LEFT JOIN 
+                stock ON stock.productId = product.id WHERE product.id = @id ";
 
                 dataBase.ClearParameter();
-                dataBase.AddParameter("@Id", Id);
+                dataBase.AddParameter("@id", Id);
 
                 using (var reader = dataBase.ExecuteReader(sql))
                 {
                     while (reader.Read())
                     {
-                        Id = int.Parse(reader["Product.Id"].ToString());
-                        InternalCode = reader["InternalCode"].ToString();
-                        Description = reader["Product.Description"].ToString();
-                        CostPrice = double.Parse(reader["CostPrice"].ToString());
-                        SalePrice = double.Parse(reader["SalePrice"].ToString());
-                        BarCode = reader["BarCode"].ToString();
+                        Id = int.Parse(reader["product.Id"].ToString());
+                        InternalCode = reader["internalCode"].ToString();
+                        Description = reader["product.description"].ToString();
+                        CostPrice = double.Parse(reader["costPrice"].ToString());
+                        SalePrice = double.Parse(reader["salePrice"].ToString());
+                        BarCode = reader["barCode"].ToString();
 
-                        if (reader["Category.Id"] != DBNull.Value)
-                            Category.Id = int.Parse(reader["Category.Id"].ToString());
+                        if (reader["category.id"].ToString() != "0" && reader["category.id"].ToString() != string.Empty)
+                            Category.Id = int.Parse(reader["category.id"].ToString());
 
-                        if (reader["Category.Description"] != DBNull.Value)
-                            Category.Description = reader["Category.Description"].ToString();
+                        if (reader["category.description"] != DBNull.Value)
+                            Category.Description = reader["category.description"].ToString();
+
+                        if (reader["min"].ToString() != "0" && reader["min"].ToString() != string.Empty)
+                            Stock.Min = int.Parse(reader["min"].ToString());
+
+                        if (reader["max"].ToString() != "0" && reader["min"].ToString() != string.Empty)
+                            Stock.Max = int.Parse(reader["max"].ToString());
 
                         actionResult = true;
                     }

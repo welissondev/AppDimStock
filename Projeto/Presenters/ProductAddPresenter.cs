@@ -29,6 +29,8 @@ namespace DimStock.Presenters
             };
             product.Category.Id = view.CategoryId;
             product.Category.Description = view.CategoryDescription;
+            product.Stock.Min = view.StockMin;
+            product.Stock.Max = view.StockMax;
 
             //Insert register
             if (view.Id == 0)
@@ -75,6 +77,9 @@ namespace DimStock.Presenters
                 view.BarCode = string.Empty;
                 view.CategoryId = 0;
                 view.CategoryDescription = string.Empty;
+                view.StockMin = 0;
+                view.StockMax = 0;
+                  
             }
             catch (Exception ex)
             {

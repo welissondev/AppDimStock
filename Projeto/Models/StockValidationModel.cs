@@ -20,7 +20,7 @@ namespace DimStock.Models
             return validationStatus = true;
         }
 
-        public static bool ValidateToUpdateTotalValue(StockModel stock)
+        public static bool ValidateToUpdate(StockModel stock)
         {
             var validationStatus = false;
 

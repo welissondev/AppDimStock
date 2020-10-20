@@ -84,6 +84,24 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
+            if (product.Stock.Min > product.Stock.Max)
+            {
+                MessageNotifier.Show("O estoque mínimo do produto " +
+                "não pode ser maior que o estoque máximo!",
+                "Não permitido", "?");
+
+                return validationStatus;
+            }
+
+            if (product.Stock.Min > 0 && product.Stock.Min == product.Stock.Max)
+            {
+                MessageNotifier.Show("O estoque mínimo do produto " +
+                "não pode ser igual ao estoque máximo!",
+                "Não permitido", "?");
+
+                return validationStatus;
+            }
+
             return validationStatus = true;
         }
 
@@ -217,6 +235,25 @@ namespace DimStock.Models
                 MessageNotifier.Show("Esse registro foi " +
                 "excluido, atualize a lista de produtos!",
                 "Atualize a Lista", "?");
+
+                return validationStatus;
+            }
+
+            
+            if (product.Stock.Min > product.Stock.Max)
+            {
+                MessageNotifier.Show("O estoque mínimo do produto " +
+                "não pode ser maior que o estoque máximo!",
+                "Não permitido", "?");
+
+                return validationStatus;
+            }
+
+            if (product.Stock.Min > 0 && product.Stock.Min == product.Stock.Max)
+            {
+                MessageNotifier.Show("O estoque mínimo do produto " +
+                "não pode ser igual ao estoque máximo!",
+                "Não permitido", "?");
 
                 return validationStatus;
             }

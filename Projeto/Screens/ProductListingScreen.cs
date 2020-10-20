@@ -21,12 +21,15 @@ namespace DimStock.Screens
         public double CostPrice { get; set; }
         public double SalePrice { get; set; }
         public string BarCode { get; set; }
+        public int StockMin { get ; set ; }
+        public int StockMax { get ; set ; }
         public int CategoryId { get; set; }
         public string CategoryDescription { get; set; }
         public object CategoryDataList { get; set; }
         public string SearchInternalCode { get => TextSearchInternalCode.Text; set => TextSearchInternalCode.Text = value; }
         public string SearchDescription { get => TextSearchDescription.Text; set => TextSearchDescription.Text = value; }
         public object DataList { get => GridList.DataSource; set => GridList.DataSource = value; }
+
 
         public ProductListingScreen()
         {

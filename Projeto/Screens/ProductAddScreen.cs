@@ -18,6 +18,8 @@ namespace DimStock.Screens
         public double CostPrice { get => double.Parse(TextCostPrice.DecimalValue.ToString()); set => double.Parse(TextCostPrice.Text = value.ToString()); }
         public double SalePrice { get => double.Parse(TextSalePrice.DecimalValue.ToString()); set => double.Parse(TextSalePrice.Text = value.ToString()); }
         public string BarCode { get => TextBarCode.Text; set => TextBarCode.Text = value; }
+        public int StockMin { get => int.Parse(TextStockMin.Text); set => TextStockMin.Text = value.ToString(); }
+        public int StockMax { get => int.Parse(TextStockMax.Text); set => TextStockMax.Text = value.ToString(); }
         public int CategoryId { get; set; }
         public string CategoryDescription { get => BoxCategoryDescription.Text; set => BoxCategoryDescription.Text = value; }
         public object CategoryDataList { get => GridCategory.DataSource; set => GridCategory.DataSource = value; }
@@ -125,7 +127,9 @@ namespace DimStock.Screens
                     SalePrice = view.SalePrice,
                     BarCode = view.BarCode,
                     CategoryId = view.CategoryId,
-                    CategoryDescription = view.CategoryDescription
+                    CategoryDescription = view.CategoryDescription,
+                    StockMin = view.StockMin,
+                    StockMax = view.StockMax                
                 };
 
                 if (ownerScreen != null)
@@ -163,6 +167,7 @@ namespace DimStock.Screens
             {
                 var gridList = GridCategory;
                 gridList.Visible = true;
+                gridList.SetControlSize(270);
 
                 if (gridList.Rows.Count == 0)
                 {
@@ -332,5 +337,6 @@ namespace DimStock.Screens
                 ExceptionNotifier.ShowMessage(ex);
             }
         }
+
     }
 }

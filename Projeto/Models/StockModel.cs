@@ -76,6 +76,23 @@ namespace DimStock.Models
             return actionResult;
         }
 
+        public bool Update()
+        {
+            if (StockValidationModel.ValidateToUpdate(this) == false)
+                return false;
+
+            var sql = @"UPDATE stock SET totalValue = @productCostPrice * 
+            quantity, [min] = @min, [max] = @max WHERE productId = @productId";
+
+            dataBaseTransaction.ClearParameter();
+            dataBaseTransaction.AddParameter("@productCostPrice", Product.CostPrice);
+            dataBaseTransaction.AddParameter("@min", Product.Stock.Min);
+            dataBaseTransaction.AddParameter("@max", Product.Stock.Max);
+            dataBaseTransaction.AddParameter("@productId", Product.Id);
+
+            return dataBaseTransaction.ExecuteNonQuery(sql) > 0;
+        }
+
         public bool InsertPostingOfEntries(DataTable items)
         {
             var count = 0;
@@ -172,21 +189,6 @@ namespace DimStock.Models
             }
 
             return count > 0;
-        }
-
-        public bool UpdateTotalValue()
-        {
-            if (StockValidationModel.ValidateToUpdateTotalValue(this) == false)
-                return false;
-
-            var sql = @"UPDATE Stock Set TotalValue = @ProductCostPrice * 
-            Quantity WHERE ProductId = @ProductId";
-
-            dataBaseTransaction.ClearParameter();
-            dataBaseTransaction.AddParameter("@ProductCostPrice", Product.CostPrice);
-            dataBaseTransaction.AddParameter("@ProductId", Product.Id);
-
-            return dataBaseTransaction.ExecuteNonQuery(sql) > 0;
         }
 
         public bool CheckRegisterStatus()
