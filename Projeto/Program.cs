@@ -1,8 +1,8 @@
-﻿using DimStock.Business;
+﻿using DimStock.Models;
 using System;
 using System.Windows.Forms;
 
-namespace DimStock.UserForms
+namespace DimStock.Screens
 {
     static class Program
     {
@@ -16,13 +16,13 @@ namespace DimStock.UserForms
 
             Application.SetCompatibleTextRenderingDefault(false);
 
-            if (AppSetting.GetAppSettingsState() == true)
+            if (AppSettingModel.GetAppSettingsState() == true)
             {
-                Application.Run(new HomeScreenForm());
+                Application.Run(new HomeScreen());
             }
             else
             {
-                Application.Run(new AppSettingsForm());
+                Application.Run(new AppSettingsScreen());
             }
         }
     }

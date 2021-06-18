@@ -8,5 +8,8 @@
     <Setting Name="AppSettingsState" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="DataBaseName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">dimstockdatabase.mdb</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -43,9 +43,9 @@
     <UpdateAssemblyVersion>True</UpdateAssemblyVersion>
     <UpdateAssemblyFileVersion>True</UpdateAssemblyFileVersion>
     <UpdateAssemblyInfoVersion>True</UpdateAssemblyInfoVersion>
-    <AssemblyVersionSettings>IncrementOnDemand.IncrementOnDemand.IncrementOnDemand.IncrementWithResetOnIncrease</AssemblyVersionSettings>
-    <AssemblyFileVersionSettings>IncrementOnDemand.IncrementOnDemand.IncrementOnDemand.IncrementWithResetOnIncrease</AssemblyFileVersionSettings>
-    <AssemblyInfoVersionSettings>IncrementOnDemand.IncrementOnDemand.IncrementOnDemand.IncrementWithResetOnIncrease</AssemblyInfoVersionSettings>
+    <AssemblyVersionSettings>IncrementOnDemand.IncrementOnDemand.IncrementOnDemand.IncrementOnDemand</AssemblyVersionSettings>
+    <AssemblyFileVersionSettings>IncrementOnDemand.IncrementOnDemand.IncrementOnDemand.IncrementOnDemand</AssemblyFileVersionSettings>
+    <AssemblyInfoVersionSettings>IncrementOnDemand.IncrementOnDemand.IncrementOnDemand.IncrementOnDemand</AssemblyInfoVersionSettings>
     <UpdatePackageVersion>False</UpdatePackageVersion>
     <AssemblyInfoVersionType>SettingsVersion</AssemblyInfoVersionType>
     <InheritWinAppVersionFrom>None</InheritWinAppVersionFrom>
@@ -83,256 +83,333 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>DimStock.UserForms.Program</StartupObject>
+    <StartupObject>DimStock.Screens.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>IconTaskBar.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bunifu.Core, Version=1.11.5.1, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9" />
+    <Reference Include="Bunifu.UI.WinForm.BunifuShadowPanel, Version=1.11.5.1, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Bunifu\Bunifu UI WinForms 1.11.5.1\Bunifu.UI.WinForm.BunifuShadowPanel.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuButton">
+      <HintPath>..\..\..\Bunifu\Bunifu UI WinForms 1.11.5.1\Bunifu.UI.WinForms.BunifuButton.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuDataGridView, Version=1.11.5.1, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Bunifu.UI.WinForms.BunifuDataGridView.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuDropdown">
+      <HintPath>..\..\..\Bunifu\Bunifu UI WinForms 1.11.5.1\Bunifu.UI.WinForms.BunifuDropdown.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuPictureBox">
+      <HintPath>..\..\..\Bunifu\Bunifu UI WinForms 1.11.5.1\Bunifu.UI.WinForms.BunifuPictureBox.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuTextbox, Version=1.11.5.1, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Bunifu.UI.WinForms.BunifuTextbox.dll</HintPath>
+    </Reference>
     <Reference Include="Bunifu_UI_v1.5.3, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Bunifu_UI_v1.5.3.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.900.148\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.900.148\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.900.148\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.900.148\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.WebDesign, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.900.148\lib\net40\Microsoft.ReportViewer.WebDesign.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.WebForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.900.148\lib\net40\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.900.148\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1400.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.Core.WinForms, Version=17.3460.0.14, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\17.3.0.14\Assemblies\4.6\Syncfusion.Core.WinForms.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Syncfusion.SfInput.WinForms, Version=17.3460.0.14, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\17.3.0.14\Assemblies\4.6\Syncfusion.SfInput.WinForms.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Syncfusion.SfListView.WinForms, Version=17.3460.0.14, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\17.3.0.14\Assemblies\4.6\Syncfusion.SfListView.WinForms.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Syncfusion.Shared.Base, Version=17.3460.0.14, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Windows\17.3.0.14\Assemblies\4.6\Syncfusion.Shared.Base.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
+    <Reference Include="Syncfusion.Core.WinForms, Version=18.4460.0.30, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Grid.Base, Version=18.4460.0.30, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Grid.Windows, Version=18.4460.0.30, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.SfInput.WinForms, Version=18.4460.0.30, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.SfListView.WinForms, Version=18.4460.0.30, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Shared.Base, Version=18.4460.0.30, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Shared.Windows, Version=18.4460.0.30, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.SpellChecker.Base, Version=18.4460.0.30, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Tools.Base, Version=18.4460.0.30, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Tools.Windows, Version=18.4460.0.30, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Auxiliarys\AxlDataGridLealt.cs" />
-    <Compile Include="Auxiliarys\AxlDataPagination.cs" />
-    <Compile Include="Auxiliarys\AxlDirectory.cs" />
-    <Compile Include="Auxiliarys\AxlEmailAdderess.cs" />
-    <Compile Include="Auxiliarys\AxlException.cs" />
-    <Compile Include="Auxiliarys\AxlMdiForm.cs" />
-    <Compile Include="Auxiliarys\AxlLogin.cs" />
-    <Compile Include="Auxiliarys\AxlPageWeb.cs" />
-    <Compile Include="Business\ProductCategory.cs" />
-    <Compile Include="Controls\CustomPictureBoxOne.cs">
+    <Compile Include="AuxilyTools\AuxilyClasses\AuxiliaryDataGridLealt.cs" />
+    <Compile Include="AuxilyTools\AuxilyClasses\AuxiliaryDataPage.cs" />
+    <Compile Include="AuxilyTools\AuxilyClasses\AuxiliaryDirectoryManager.cs" />
+    <Compile Include="AuxilyTools\AuxilyClasses\ExceptionNotifier.cs" />
+    <Compile Include="AuxilyTools\AuxilyClasses\GuidGenerator.cs" />
+    <Compile Include="AuxilyTools\AuxilyClasses\Mdi3dRemove.cs" />
+    <Compile Include="AuxilyTools\AuxilyClasses\MdiClosingAll.cs" />
+    <Compile Include="AuxilyTools\AuxilyClasses\SingleCodeGenerator.cs" />
+    <Compile Include="AuxilyTools\AuxilyClasses\UserLoginState.cs" />
+    <Compile Include="AuxilyTools\AuxilyClasses\PageWebViewer.cs" />
+    <Compile Include="AuxilyTools\AuxilyClasses\StandardRegexValidator.cs" />
+    <Compile Include="AuxilyTools\AuxilyControls\CustomComboBoxView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\CustomDataGridViewOne.cs">
+    <Compile Include="AuxilyTools\AuxilyControls\CustomDataGridViewTwo.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Business\AppSetting.cs" />
-    <Compile Include="Business\Company.cs" />
-    <Compile Include="Business\Connection.cs" />
-    <Compile Include="Business\StockDestination.cs" />
-    <Compile Include="Business\StockMovementItem.cs" />
-    <Compile Include="Business\StockProduct.cs" />
-    <Compile Include="Business\StockMovement.cs" />
-    <Compile Include="Auxiliarys\AxlMessageNotifier.cs" />
-    <Compile Include="Business\Product.cs" />
-    <Compile Include="Business\ProductPhoto.cs" />
-    <Compile Include="Business\Stock.cs" />
-    <Compile Include="Business\User.cs" />
-    <Compile Include="Business\UserHistory.cs" />
+    <Compile Include="Models\AddressModel.cs" />
+    <Compile Include="Models\BackupModel.cs" />
+    <Compile Include="Models\ConnectionModel.cs" />
+    <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="AuxilyTools\AuxilyControls\CustomPictureBoxOne.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AuxilyTools\AuxilyControls\CustomDataGridViewOne.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Models\AppSettingModel.cs" />
+    <Compile Include="Models\CategoryValidationModel.cs" />
+    <Compile Include="Models\ContactModel.cs" />
+    <Compile Include="Models\DestinationValidationModel.cs" />
+    <Compile Include="Models\ItemModel.cs" />
+    <Compile Include="Models\StockInItemValidationModel.cs" />
+    <Compile Include="Models\StockMoveTypeModel.cs" />
+    <Compile Include="Models\StockMoveValidationModel.cs" />
+    <Compile Include="Models\ProductValidationModel.cs" />
+    <Compile Include="Models\StockOutItemValidationModel.cs" />
+    <Compile Include="Models\StockOutModel.cs" />
+    <Compile Include="Models\StockInItemModel.cs" />
+    <Compile Include="Models\StockInModel.cs" />
+    <Compile Include="Models\StockInValidationModel.cs" />
+    <Compile Include="Models\StockOutItemModel.cs" />
+    <Compile Include="Models\StockModel.cs" />
+    <Compile Include="Models\DestinationModel.cs" />
+    <Compile Include="Models\StockMoveModel.cs" />
+    <Compile Include="AuxilyTools\AuxilyClasses\MessageNotifier.cs" />
+    <Compile Include="Models\ProductModel.cs" />
+    <Compile Include="Models\StockOutValidationModel.cs" />
+    <Compile Include="Models\StockValidationModel.cs" />
+    <Compile Include="Models\ConnectionTransactionModel.cs" />
+    <Compile Include="Models\SupplierModel.cs" />
+    <Compile Include="Models\SupplierValidationModel.cs" />
+    <Compile Include="Models\UserLoginModel.cs" />
+    <Compile Include="Models\UserLoginValidationModel.cs" />
+    <Compile Include="Presenters\BackupSavePresenter.cs" />
+    <Compile Include="Presenters\CategoryAddPresenter.cs" />
+    <Compile Include="Presenters\CategoryListingPresenter.cs" />
+    <Compile Include="Presenters\DestinationAddPresenter.cs" />
+    <Compile Include="Presenters\DestinationListingPresenter.cs" />
+    <Compile Include="Presenters\ProductAddPresenter.cs" />
+    <Compile Include="Presenters\ProductListingPresenter.cs" />
+    <Compile Include="Presenters\SupplierListingPresenter.cs" />
+    <Compile Include="Presenters\SupplierAddPresenter.cs" />
+    <Compile Include="Presenters\UserLoginAddPresenter.cs" />
+    <Compile Include="Presenters\UserLoginAccessPresenter.cs" />
+    <Compile Include="Presenters\UserLoginListingPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Auxiliarys\AxlFile.cs" />
+    <Compile Include="AuxilyTools\AuxilyClasses\AuxiliaryFileManager.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Reports\ReportProduct.cs" />
-    <Compile Include="UserForms\AppSettingsForm.cs">
+    <Compile Include="Reports\ProductReport.cs" />
+    <Compile Include="Screens\AppSettingsScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserForms\AppSettingsForm.Designer.cs">
-      <DependentUpon>AppSettingsForm.cs</DependentUpon>
+    <Compile Include="Screens\AppSettingsScreen.Designer.cs">
+      <DependentUpon>AppSettingsScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\ReportStockProduct.cs" />
+    <Compile Include="Reports\StockReport.cs" />
+    <Compile Include="Screens\CategoryListingScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\CategoryListingScreen.Designer.cs">
+      <DependentUpon>CategoryListingScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\DestinationListingScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\DestinationListingScreen.Designer.cs">
+      <DependentUpon>DestinationListingScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\SupplierAddScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\SupplierAddScreen.Designer.cs">
+      <DependentUpon>SupplierAddScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\SupplierListingScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\SupplierListingScreen.Designer.cs">
+      <DependentUpon>SupplierListingScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings.cs" />
-    <Compile Include="UserForms\BackupSaveForm.cs">
+    <Compile Include="Screens\BackupSaveScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserForms\BackupSaveForm.Designer.cs">
-      <DependentUpon>BackupSaveForm.cs</DependentUpon>
+    <Compile Include="Screens\BackupSaveScreen.Designer.cs">
+      <DependentUpon>BackupSaveScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserForms\HomeScreenForm.cs">
+    <Compile Include="Screens\HomeScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserForms\HomeScreenForm.Designer.cs">
-      <DependentUpon>HomeScreenForm.cs</DependentUpon>
+    <Compile Include="Screens\HomeScreen.Designer.cs">
+      <DependentUpon>HomeScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserForms\ProductCategoryListingForm.cs">
+    <Compile Include="Screens\CategoryAddScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserForms\ProductCategoryListingForm.Designer.cs">
-      <DependentUpon>ProductCategoryListingForm.cs</DependentUpon>
+    <Compile Include="Screens\CategoryAddScreen.Designer.cs">
+      <DependentUpon>CategoryAddScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserForms\ProductCategoryRegistrationForm.cs">
+    <Compile Include="Screens\ProductListingScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserForms\ProductCategoryRegistrationForm.Designer.cs">
-      <DependentUpon>ProductCategoryRegistrationForm.cs</DependentUpon>
+    <Compile Include="Screens\ProductListingScreen.designer.cs">
+      <DependentUpon>ProductListingScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserForms\ProductListingForm.cs">
+    <Compile Include="Screens\ProductAddScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserForms\ProductListingForm.designer.cs">
-      <DependentUpon>ProductListingForm.cs</DependentUpon>
+    <Compile Include="Screens\ProductAddScreen.Designer.cs">
+      <DependentUpon>ProductAddScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserForms\ProductRegistrationForm.cs">
+    <Compile Include="Screens\ReportViewScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserForms\ProductRegistrationForm.Designer.cs">
-      <DependentUpon>ProductRegistrationForm.cs</DependentUpon>
+    <Compile Include="Screens\ReportViewScreen.Designer.cs">
+      <DependentUpon>ReportViewScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserForms\ReportViewForm.cs">
+    <Compile Include="Screens\DestinationAddScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserForms\ReportViewForm.Designer.cs">
-      <DependentUpon>ReportViewForm.cs</DependentUpon>
+    <Compile Include="Screens\DestinationAddScreen.Designer.cs">
+      <DependentUpon>DestinationAddScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserForms\StockDestinationRegistrationForm.cs">
+    <Compile Include="Screens\StockListingScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserForms\StockDestinationRegistrationForm.Designer.cs">
-      <DependentUpon>StockDestinationRegistrationForm.cs</DependentUpon>
+    <Compile Include="Screens\StockListingScreen.Designer.cs">
+      <DependentUpon>StockListingScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserForms\StockListingForm.cs">
+    <Compile Include="Screens\StockMoveListingScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserForms\StockListingForm.Designer.cs">
-      <DependentUpon>StockListingForm.cs</DependentUpon>
+    <Compile Include="Screens\StockMoveListingScreen.Designer.cs">
+      <DependentUpon>StockMoveListingScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserForms\StockMovementListingForm.cs">
+    <Compile Include="Screens\StockMoveAddScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserForms\StockMovementListingForm.Designer.cs">
-      <DependentUpon>StockMovementListingForm.cs</DependentUpon>
+    <Compile Include="Screens\StockMoveAddScreen.Designer.cs">
+      <DependentUpon>StockMoveAddScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserForms\StockMovementResgistrationForm.cs">
+    <Compile Include="Screens\UserLoginListingScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserForms\StockMovementResgistrationForm.Designer.cs">
-      <DependentUpon>StockMovementResgistrationForm.cs</DependentUpon>
+    <Compile Include="Screens\UserLoginListingScreen.Designer.cs">
+      <DependentUpon>UserLoginListingScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserForms\UserHistoryListingForm.cs">
+    <Compile Include="Screens\UserLoginAccessScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserForms\UserHistoryListingForm.Designer.cs">
-      <DependentUpon>UserHistoryListingForm.cs</DependentUpon>
+    <Compile Include="Screens\UserLoginAccessScreen.Designer.cs">
+      <DependentUpon>UserLoginAccessScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserForms\UserListingForm.cs">
+    <Compile Include="Screens\UserLoginAddScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserForms\UserListingForm.Designer.cs">
-      <DependentUpon>UserListingForm.cs</DependentUpon>
+    <Compile Include="Screens\UserLoginAddScreen.Designer.cs">
+      <DependentUpon>UserLoginAddScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserForms\UserLoginForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UserForms\UserLoginForm.Designer.cs">
-      <DependentUpon>UserLoginForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserForms\UserResgistrationForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UserForms\UserResgistrationForm.Designer.cs">
-      <DependentUpon>UserResgistrationForm.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Views\IBackupSaveView.cs" />
+    <Compile Include="Views\ICategoryAddView.cs" />
+    <Compile Include="Views\ICategoryListingView.cs" />
+    <Compile Include="Views\IDestinationAddView.cs" />
+    <Compile Include="Views\IDestinationListingView.cs" />
+    <Compile Include="Views\IProductAddView.cs" />
+    <Compile Include="Views\IProductListingView.cs" />
+    <Compile Include="Views\IStockMoveView.cs" />
+    <Compile Include="Views\ISupplierListingView.cs" />
+    <Compile Include="Views\IUserLoginAddView.cs" />
+    <Compile Include="Views\IUserLoginAccessView.cs" />
+    <Compile Include="Views\IUserLoginListingView.cs" />
+    <Compile Include="Views\ISupplierAddView.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserForms\AppSettingsForm.resx">
-      <DependentUpon>AppSettingsForm.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\AppSettingsScreen.resx">
+      <DependentUpon>AppSettingsScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\StockProduct.rdlc" />
+    <EmbeddedResource Include="Reports\Stock.rdlc" />
     <EmbeddedResource Include="Reports\Product.rdlc" />
-    <EmbeddedResource Include="UserForms\BackupSaveForm.resx">
-      <DependentUpon>BackupSaveForm.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\BackupSaveScreen.resx">
+      <DependentUpon>BackupSaveScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserForms\HomeScreenForm.resx">
-      <DependentUpon>HomeScreenForm.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\CategoryListingScreen.resx">
+      <DependentUpon>CategoryListingScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserForms\ProductCategoryListingForm.resx">
-      <DependentUpon>ProductCategoryListingForm.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\DestinationListingScreen.resx">
+      <DependentUpon>DestinationListingScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserForms\ProductCategoryRegistrationForm.resx">
-      <DependentUpon>ProductCategoryRegistrationForm.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\HomeScreen.resx">
+      <DependentUpon>HomeScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserForms\ProductListingForm.resx">
-      <DependentUpon>ProductListingForm.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\CategoryAddScreen.resx">
+      <DependentUpon>CategoryAddScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserForms\ProductRegistrationForm.resx">
-      <DependentUpon>ProductRegistrationForm.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\ProductListingScreen.resx">
+      <DependentUpon>ProductListingScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserForms\ReportViewForm.resx">
-      <DependentUpon>ReportViewForm.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\ProductAddScreen.resx">
+      <DependentUpon>ProductAddScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserForms\StockDestinationRegistrationForm.resx">
-      <DependentUpon>StockDestinationRegistrationForm.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\ReportViewScreen.resx">
+      <DependentUpon>ReportViewScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserForms\StockListingForm.resx">
-      <DependentUpon>StockListingForm.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\DestinationAddScreen.resx">
+      <DependentUpon>DestinationAddScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserForms\StockMovementListingForm.resx">
-      <DependentUpon>StockMovementListingForm.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\StockListingScreen.resx">
+      <DependentUpon>StockListingScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserForms\StockMovementResgistrationForm.resx">
-      <DependentUpon>StockMovementResgistrationForm.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\StockMoveListingScreen.resx">
+      <DependentUpon>StockMoveListingScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserForms\UserHistoryListingForm.resx">
-      <DependentUpon>UserHistoryListingForm.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\StockMoveAddScreen.resx">
+      <DependentUpon>StockMoveAddScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserForms\UserListingForm.resx">
-      <DependentUpon>UserListingForm.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\SupplierAddScreen.resx">
+      <DependentUpon>SupplierAddScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserForms\UserLoginForm.resx">
-      <DependentUpon>UserLoginForm.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\SupplierListingScreen.resx">
+      <DependentUpon>SupplierListingScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserForms\UserResgistrationForm.resx">
-      <DependentUpon>UserResgistrationForm.cs</DependentUpon>
+    <EmbeddedResource Include="Screens\UserLoginListingScreen.resx">
+      <DependentUpon>UserLoginListingScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="DataSources\DimStock.Report.ReportProduct.datasource" />
+    <EmbeddedResource Include="Screens\UserLoginAccessScreen.resx">
+      <DependentUpon>UserLoginAccessScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\UserLoginAddScreen.resx">
+      <DependentUpon>UserLoginAddScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
-    <None Include="DataSources\DimStock.Report.ReportStockProduct.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -349,27 +426,48 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\FotoNothing.jpg" />
+    <None Include="Resources\ImageNothing.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <COMReference Include="stdole">
-      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
-      <VersionMajor>2</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
+    <None Include="Resources\ImageLoading.gif" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\BackGroudUserLogin.jpg" />
+    <None Include="Resources\IconCategory.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Loading.gif" />
+    <None Include="Resources\IconProduct.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\DimStockLogoType.png" />
+    <None Include="Resources\IconMovementStock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconStock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconDestination.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconUser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconSettings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconExtendedMenu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ImageSeparator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="IconTaskBar.ico" />
+    <None Include="Resources\ImageScreenLoginBackgroud.jpg" />
+    <Content Include="Resources\IconBack.png" />
+    <Content Include="Resources\IconExit.png" />
+    <Content Include="Resources\IconNew.png" />
+    <Content Include="Resources\IconNext.png" />
+    <Content Include="Resources\IconSupplier.png" />
+    <Content Include="Resources\IconSupport.png" />
+    <Content Include="Resources\ImageLogoType.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
