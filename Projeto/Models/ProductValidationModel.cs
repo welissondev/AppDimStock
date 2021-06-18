@@ -2,9 +2,6 @@
 
 namespace DimStock.Models
 {
-    /// <summary>
-    /// Representa o modelo de validação do produto
-    /// </summary>
     public class ProductValidationModel
     {
         public static bool ValidateToInsert(ProductModel product)
@@ -87,6 +84,24 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
+            if (product.Stock.Min > product.Stock.Max)
+            {
+                MessageNotifier.Show("O estoque mínimo do produto " +
+                "não pode ser maior que o estoque máximo!",
+                "Não permitido", "?");
+
+                return validationStatus;
+            }
+
+            if (product.Stock.Min > 0 && product.Stock.Min == product.Stock.Max)
+            {
+                MessageNotifier.Show("O estoque mínimo do produto " +
+                "não pode ser igual ao estoque máximo!",
+                "Não permitido", "?");
+
+                return validationStatus;
+            }
+
             return validationStatus = true;
         }
 
@@ -102,7 +117,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (product.CheckIfRegister() == false)
+            if (product.CheckRegisterStatus() == false)
             {
                 MessageNotifier.Show("Esse registro já foi " +
                 "excluido, atualize a lista de produtos!",
@@ -111,11 +126,20 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (product.CheckRelationWithStock() == true)
+            if (product.GetQuantityInStock() > 0)
             {
                 MessageNotifier.Show("Não é possível deletar " +
-                "esse produto, porque ele possui registros " +
-                "relacionados ao estoque!", "Não Permitido", "?");
+                "esse produto, porque ele possui entradas " +
+                "no estoque!", "Não Permitido", "?");
+
+                return validationStatus;
+            }
+
+            if (product.GetQuantityInStock() < 0)
+            {
+                MessageNotifier.Show("Não é possível deletar " +
+                "esse produto, porque ele possui saídas " +
+                "no estoque!", "Não Permitido", "?");
 
                 return validationStatus;
             }
@@ -206,11 +230,30 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (product.CheckIfRegister() == false)
+            if (product.CheckRegisterStatus() == false)
             {
                 MessageNotifier.Show("Esse registro foi " +
                 "excluido, atualize a lista de produtos!",
                 "Atualize a Lista", "?");
+
+                return validationStatus;
+            }
+
+            
+            if (product.Stock.Min > product.Stock.Max)
+            {
+                MessageNotifier.Show("O estoque mínimo do produto " +
+                "não pode ser maior que o estoque máximo!",
+                "Não permitido", "?");
+
+                return validationStatus;
+            }
+
+            if (product.Stock.Min > 0 && product.Stock.Min == product.Stock.Max)
+            {
+                MessageNotifier.Show("O estoque mínimo do produto " +
+                "não pode ser igual ao estoque máximo!",
+                "Não permitido", "?");
 
                 return validationStatus;
             }
@@ -253,7 +296,7 @@ namespace DimStock.Models
                 return valitationStatus;
             }
 
-            if (product.CheckIfRegister() == false)
+            if (product.CheckRegisterStatus() == false)
             {
                 MessageNotifier.Show("Não é possivel visualizar " +
                 "porque esse registro foi excluido!",

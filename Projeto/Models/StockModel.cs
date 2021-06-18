@@ -4,10 +4,7 @@ using System.Data;
 
 namespace DimStock.Models
 {
-    /// <summary>
-    /// Representa o modelo do estoque
-    /// </summary>
-    public partial class StockModel
+    public class StockModel
     {
         private string summary = "All";
         private ConnectionTransactionModel dataBaseTransaction;
@@ -21,10 +18,7 @@ namespace DimStock.Models
         public string Summary { get => summary; set => summary = value; }
         public ProductModel Product { get; set; }
         public SupplierModel Supplier { get; set; }
-    }
 
-    public partial class StockModel
-    {
         public StockModel()
         {
             Product = new ProductModel();
@@ -46,7 +40,6 @@ namespace DimStock.Models
             this.dataBaseTransaction = dataBaseTransaction;
             Product = product;
         }
-        
 
         public bool GetDetails()
         {
@@ -83,116 +76,122 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public bool InsertPostingOfEntries(DataTable postedItems)
+        public bool Update()
         {
-            var actionResult = false;
-            var sql = string.Empty;
-
-            if (StockValidationModel.ValidatePostingItems(postedItems) == false)
-                return actionResult;
-
-            foreach (DataRow item in postedItems.Rows)
-            {
-                sql = @"UPDATE Stock Set Quantity = Quantity + @ItemQuantity, 
-                TotalValue = TotalValue + @ItemTotalValue WHERE Id = @StockId";
-
-                dataBaseTransaction.ClearParameter();
-                dataBaseTransaction.AddParameter("@ItemQuantity", item["Quantity"]);
-                dataBaseTransaction.AddParameter("@ItemTotalValue", item["TotalValue"]);
-                dataBaseTransaction.AddParameter("@StockId", item["StockId"]);
-
-                actionResult = dataBaseTransaction.ExecuteNonQuery(sql) > 0;
-            }
-
-            return actionResult;
-        }
-        public bool InsertPostingOfOutPuts(DataTable postedItems)
-        {
-            var actionResult = false;
-            var sql = string.Empty;
-
-            if (StockValidationModel.ValidatePostingItems(postedItems) == false)
-                return actionResult;
-
-            foreach (DataRow item in postedItems.Rows)
-            {
-                sql = @"UPDATE Stock Set Quantity = Quantity - @ItemQuantity, 
-                TotalValue = TotalValue - @ItemTotalValue WHERE Id = @StockId";
-
-                dataBaseTransaction.ClearParameter();
-                dataBaseTransaction.AddParameter("@ItemQuantity", item["Quantity"]);
-                dataBaseTransaction.AddParameter("@ItemTotalValue", item["TotalValue"]);
-                dataBaseTransaction.AddParameter("@StockId", item["StockId"]);
-
-                actionResult = dataBaseTransaction.ExecuteNonQuery(sql) > 0;
-            }
-
-            return actionResult;
-        }
-
-        public bool CancelPostingOfEntries(DataTable postedItems)
-        {
-            var actionResult = false;
-            var sql = string.Empty;
-
-            if (StockValidationModel.ValidatePostingItems(postedItems) == false)
-                return actionResult;
-
-            foreach (DataRow item in postedItems.Rows)
-            {
-                sql = @"UPDATE Stock Set Quantity = Quantity - @ItemQuantity, 
-                TotalValue = TotalValue - @ItemTotalValue WHERE Id = @StockId";
-
-                dataBaseTransaction.ClearParameter();
-                dataBaseTransaction.AddParameter("@ItemQuantity", item["Quantity"]);
-                dataBaseTransaction.AddParameter("@ItemTotalValue", item["TotalValue"]);
-                dataBaseTransaction.AddParameter("@StockId", item["StockId"]);
-
-                actionResult = dataBaseTransaction.ExecuteNonQuery(sql) > 0;
-            }
-
-            return actionResult;
-        }
-        public bool CancelPostingOfOutPuts(DataTable postedItems)
-        {
-            var actionResult = false;
-            var sql = string.Empty;
-
-            if (StockValidationModel.ValidatePostingItems(postedItems) == false)
-                return actionResult;
-
-            foreach (DataRow item in postedItems.Rows)
-            {
-                sql = @"UPDATE Stock Set Quantity = Quantity + @ItemQuantity, 
-                TotalValue = TotalValue + @ItemTotalValue WHERE Id = @StockId";
-
-                dataBaseTransaction.ClearParameter();
-                dataBaseTransaction.AddParameter("@ItemQuantity", item["Quantity"]);
-                dataBaseTransaction.AddParameter("@ItemTotalValue", item["TotalValue"]);
-                dataBaseTransaction.AddParameter("@StockId", item["StockId"]);
-
-                actionResult = dataBaseTransaction.ExecuteNonQuery(sql) > 0;
-            }
-
-            return actionResult;
-        }
-
-        public bool UpdateTotalValue()
-        {
-            if (StockValidationModel.ValidateToUpdateTotalValue(this) == false)
+            if (StockValidationModel.ValidateToUpdate(this) == false)
                 return false;
 
-            var sql = @"UPDATE Stock Set TotalValue = @ProductCostPrice * 
-            Quantity WHERE ProductId = @ProductId";
+            var sql = @"UPDATE stock SET totalValue = @productCostPrice * 
+            quantity, [min] = @min, [max] = @max WHERE productId = @productId";
 
             dataBaseTransaction.ClearParameter();
-            dataBaseTransaction.AddParameter("ProductCostPrice", Product.CostPrice);
-            dataBaseTransaction.AddParameter("@ProductId", Product.Id);
+            dataBaseTransaction.AddParameter("@productCostPrice", Product.CostPrice);
+            dataBaseTransaction.AddParameter("@min", Product.Stock.Min);
+            dataBaseTransaction.AddParameter("@max", Product.Stock.Max);
+            dataBaseTransaction.AddParameter("@productId", Product.Id);
 
             return dataBaseTransaction.ExecuteNonQuery(sql) > 0;
         }
 
-        public bool CheckIfRegister()
+        public bool InsertPostingOfEntries(DataTable items)
+        {
+            var count = 0;
+            var sql = string.Empty;
+
+            if (StockValidationModel.ValidatePostingItems(items) == false)
+                return false;
+
+            foreach (DataRow item in items.Rows)
+            {
+                sql = @"UPDATE stock SET quantity = quantity + @itemQuantity, 
+                totalValue = totalValue + @itemTotalValue WHERE id = @itemStockId";
+
+                dataBaseTransaction.ClearParameter();
+                dataBaseTransaction.AddParameter("@itemQuantity", item["quantity"]);
+                dataBaseTransaction.AddParameter("@itemTotalValue", item["totalValue"]);
+                dataBaseTransaction.AddParameter("@itemStockId", item["stockId"]);
+
+                if (dataBaseTransaction.ExecuteNonQuery(sql) > 0)
+                    count += 1;
+            }
+
+            return count > 0;
+        }
+        public bool InsertPostingOfOutPuts(DataTable items)
+        {
+            var count = 0;
+            var sql = string.Empty;
+
+            if (StockValidationModel.ValidatePostingItems(items) == false)
+                return false;
+
+            foreach (DataRow item in items.Rows)
+            {
+                sql = @"UPDATE stock SET quantity = quantity - @itemQuantity, 
+                totalValue = totalValue - @itemTotalValue WHERE id = @itemStockId";
+
+                dataBaseTransaction.ClearParameter();
+                dataBaseTransaction.AddParameter("@itemQuantity", item["quantity"].ToString());
+                dataBaseTransaction.AddParameter("@itemTotalValue", item["totalValue"].ToString());
+                dataBaseTransaction.AddParameter("@itemStockId", item["stockId"].ToString());
+
+                if (dataBaseTransaction.ExecuteNonQuery(sql) > 0)
+                    count += 1;
+            }
+
+            return count > 0;
+        }
+
+        public bool RemovePostingOfEntries(DataTable items)
+        {
+            var count = 0;
+            var sql = string.Empty;
+
+            if (StockValidationModel.ValidatePostingItems(items) == false)
+                return false;
+
+            foreach (DataRow item in items.Rows)
+            {
+                sql = @"UPDATE stock SET quantity = quantity - @itemQuantity, 
+                totalValue = totalValue - @itemTotalValue WHERE id = @stockId";
+
+                dataBaseTransaction.ClearParameter();
+                dataBaseTransaction.AddParameter("@itemQuantity", item["quantity"]);
+                dataBaseTransaction.AddParameter("@itemTotalValue", item["totalValue"]);
+                dataBaseTransaction.AddParameter("@itemStockId", item["stockId"]);
+
+                if (dataBaseTransaction.ExecuteNonQuery(sql) > 0)
+                    count += 1;
+            }
+
+            return count > 0;
+        }
+        public bool RemovePostingOfOutPuts(DataTable items)
+        {
+            var count = 0;
+            var sql = string.Empty;
+
+            if (StockValidationModel.ValidatePostingItems(items) == false)
+                return false;
+
+            foreach (DataRow item in items.Rows)
+            {
+                sql = @"UPDATE stock SET quantity = quantity + @itemQuantity, 
+                totalValue = totalValue + @itemTotalValue WHERE id = @itemStockId";
+
+                dataBaseTransaction.ClearParameter();
+                dataBaseTransaction.AddParameter("@itemQuantity", item["quantity"]);
+                dataBaseTransaction.AddParameter("@itemTotalValue", item["totalValue"]);
+                dataBaseTransaction.AddParameter("@itemStockId", item["stockId"]);
+
+                if (dataBaseTransaction.ExecuteNonQuery(sql) > 0)
+                    count += 1;
+            }
+
+            return count > 0;
+        }
+
+        public bool CheckRegisterStatus()
         {
             var registrationStatus = false;
             var sql = string.Empty;
@@ -211,6 +210,26 @@ namespace DimStock.Models
             }
 
             return registrationStatus = true;
+        }
+
+        public bool RelateProduct()
+        {
+            var actionResult = false;
+            var sql = string.Empty;
+
+            sql = @"INSERT INTO stock(productId, [min], [max])VALUES(@productId, @min, @max)";
+
+            dataBaseTransaction.ClearParameter();
+            dataBaseTransaction.AddParameter("@productId", Product.Id);
+            dataBaseTransaction.AddParameter("@min", Product.Stock.Min);
+            dataBaseTransaction.AddParameter("@max", Product.Stock.Max);
+
+            if (dataBaseTransaction.ExecuteNonQuery(sql) > 0)
+            {
+                actionResult = true;
+            }
+
+            return actionResult;
         }
 
         public bool CheckRelationWithProduct()

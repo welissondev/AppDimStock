@@ -96,7 +96,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (user.CheckIfRegister() == true)
+            if (user.CheckRegisterStatus() == true)
             {
                 MessageNotifier.Show("Já existe um usuário " +
                 "registrado com esse login!", "Já Existe", "?");
@@ -190,7 +190,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (user.CheckIfRegister() == false)
+            if (user.CheckRegisterStatus() == false)
             {
                 MessageNotifier.Show("Esse usuário já " +
                 "foi excluido!", "Atualize a Lista", "?");

@@ -9,38 +9,28 @@ using System.Windows.Forms;
 
 namespace DimStock.Screens
 {
-    /// <summary>
-    /// Representa o formulário de listagem dos produtos
-    /// </summary>
-    public partial class ProductListingScreen : IProductListingView
+    public partial class ProductListingScreen : MetroForm, IProductListingView
     {
         private static MetroForm thisScreen;
-
         private DataGridViewLinkColumn buttonViewDetails;
         private DataGridViewLinkColumn buttonDelete;
 
-        //Implementados pela interface de adição
         public int Id { get; set; }
         public string InternalCode { get; set; }
         public string Description { get; set; }
         public double CostPrice { get; set; }
         public double SalePrice { get; set; }
         public string BarCode { get; set; }
+        public int StockMin { get ; set ; }
+        public int StockMax { get ; set ; }
         public int CategoryId { get; set; }
         public string CategoryDescription { get; set; }
         public object CategoryDataList { get; set; }
-
-        //Implementados pela interface de listagem
         public string SearchInternalCode { get => TextSearchInternalCode.Text; set => TextSearchInternalCode.Text = value; }
         public string SearchDescription { get => TextSearchDescription.Text; set => TextSearchDescription.Text = value; }
         public object DataList { get => GridList.DataSource; set => GridList.DataSource = value; }
-    }
-}
 
-namespace DimStock.Screens
-{
-    public partial class ProductListingScreen : MetroForm
-    {
+
         public ProductListingScreen()
         {
             InitializeComponent();
@@ -328,7 +318,6 @@ namespace DimStock.Screens
             }
         }
 
-        //Eventos para chamada dos métodos do apresentador
         private void PresenterDelete(object sender, EventArgs e)
         {
             try

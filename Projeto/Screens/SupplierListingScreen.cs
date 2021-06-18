@@ -1,28 +1,43 @@
-﻿using DimStock.AuxilyTools.AuxilyClasses;
-using DimStock.Presenters;
+﻿using MetroFramework.Forms;
 using DimStock.Views;
-using MetroFramework;
-using MetroFramework.Forms;
 using System;
-using System.Drawing;
+using MetroFramework;
+using DimStock.Presenters;
+using DimStock.AuxilyTools.AuxilyClasses;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace DimStock.Screens
 {
-    public partial class DestinationListingScreen : MetroForm, IDestinationListingView
+    public partial class SupplierListingScreen : MetroForm, ISupplierListingView
     {
         private static MetroForm thisScreen;
-
-        //"Botões" de link adicionados na coluna do grid
         private DataGridViewLinkColumn buttonViewDetails;
         private DataGridViewLinkColumn buttonDelete;
 
         public int Id { get; set; }
-        public string LocationDescription { get; set; }
-        public string SearchLocationDescription { get => TextSearchLoctionDescription.Text; set => TextSearchLoctionDescription.Text = value; }
+        public string TypeOfRegistration { get; set; }
+        public string YourName { get; set; }
+        public string FantasyName { get; set; }
+        public string IndentyCard_StateRegister { get; set; }
+        public string SocialSecurity_NationalRegister { get; set; }
+        public string AddressDescription { get; set; }
+        public string District { get; set; }
+        public string City { get; set; }
+        public string StateLocation { get; set; }
+        public string ZipCode { get; set; }
+        public int StreetNumber { get; set; }
+        public string FixePhone { get; set; }
+        public string MobilePhone { get; set; }
+        public string Email { get; set; }
+        public string SearchTypeOfRegistration { get; set; }
+        public string SearchYourName { get => TextSearchYourName.Text; set => TextSearchYourName.Text = value; }
+        public string SearchIndentyCard_StateRegister { get => TextSearchIndentyCard_StateRegister.Text; set => TextSearchIndentyCard_StateRegister.Text = value; }
+        public string SearchSocialSecurity_NationalRegister { get => TextSearchSocialSecurity_NationalRegister.Text; set => TextSearchSocialSecurity_NationalRegister.Text = value; }
+        public string SearchEmail { get => TextSearchEmail.Text; set => TextSearchEmail.Text = value; }
         public object DataList { get => GridList.DataSource; set => GridList.DataSource = value; }
 
-        public DestinationListingScreen()
+        public SupplierListingScreen()
         {
             InitializeComponent();
             InitializeEvents();
@@ -67,7 +82,7 @@ namespace DimStock.Screens
         private void ShowRelatedScreen(object sender, EventArgs e)
         {
             if (sender.Equals(ButtonNew))
-                DestinationAddScreen.ShowScreen(null, this);
+                SupplierAddScreen.ShowScreen(null, this);
         }
 
         private void GridCellEnter(object sender, DataGridViewCellEventArgs e)
@@ -90,9 +105,6 @@ namespace DimStock.Screens
             {
                 Id = int.Parse(GridList.CurrentRow.
                 Cells["Id"].Value.ToString());
-
-                LocationDescription = GridList.CurrentRow.
-                Cells["LocationDescription"].Value.ToString();
 
                 var selectedButton = GridList.Columns
                 [e.ColumnIndex].Name;
@@ -135,10 +147,32 @@ namespace DimStock.Screens
                 GridList.Columns["Id"].ReadOnly = true;
                 GridList.Columns["Id"].DisplayIndex = 0;
 
-                GridList.Columns["LocationDescription"].HeaderText = "Descrição";
-                GridList.Columns["LocationDescription"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                GridList.Columns["LocationDescription"].ReadOnly = true;
-                GridList.Columns["LocationDescription"].DisplayIndex = 1;
+                GridList.Columns["typeOfRegistration"].HeaderText = "Tipo";
+                GridList.Columns["typeOfRegistration"].ReadOnly = true;
+                GridList.Columns["typeOfRegistration"].DisplayIndex = 1;
+                GridList.Columns["typeOfRegistration"].Width = 70;
+
+                GridList.Columns["YourName"].HeaderText = "Descrição";
+                GridList.Columns["YourName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                GridList.Columns["YourName"].ReadOnly = true;
+                GridList.Columns["YourName"].DisplayIndex = 2;
+
+                GridList.Columns["indentyCard_stateRegister"].HeaderText = "RG/IE";
+                GridList.Columns["indentyCard_stateRegister"].ReadOnly = true;
+                GridList.Columns["indentyCard_stateRegister"].DisplayIndex = 3;
+                GridList.Columns["indentyCard_stateRegister"].Width = 160;
+
+
+                GridList.Columns["socialSecurity_nationalRegister"].HeaderText = "CPF/CNPJ";
+                GridList.Columns["socialSecurity_nationalRegister"].ReadOnly = true;
+                GridList.Columns["socialSecurity_nationalRegister"].DisplayIndex = 4;
+                GridList.Columns["socialSecurity_nationalRegister"].Width = 160;
+
+                GridList.Columns["email"].HeaderText = "Email";
+                GridList.Columns["email"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                GridList.Columns["email"].ReadOnly = true;
+                GridList.Columns["email"].DisplayIndex = 5;
+                GridList.Columns["email"].Width = 420;
 
                 GridList.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(38, 100, 148);
                 GridList.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(38, 100, 148);
@@ -192,7 +226,7 @@ namespace DimStock.Screens
             }
         }
 
-        private void TextSearchKeyPress(object sender, KeyPressEventArgs e)
+        private void TextKeyPress(object sender, KeyPressEventArgs e)
         {
             try
             {
@@ -239,12 +273,15 @@ namespace DimStock.Screens
                 GridList.CellClick += new DataGridViewCellEventHandler(GridCellClick);
                 GridList.RowPrePaint += new DataGridViewRowPrePaintEventHandler(GridRowPrePaint);
                 ButtonNew.Click += new EventHandler(ShowRelatedScreen);
-                ButtonListGrid.Click += new EventHandler(PresenterClear);
                 ButtonListGrid.Click += new EventHandler(TimerTick);
-                ButtonCloseScreen.Click += new EventHandler(ScreenClose);
-                ButtonScreenClear.Click += new EventHandler(PresenterClear);
+                ButtonListGrid.Click += new EventHandler(PresenterClear);
+                ButtonClose.Click += new EventHandler(ScreenClose);
+                ButtonClose.Click += new EventHandler(PresenterClear);
                 TimerSearch.Tick += new EventHandler(TimerTick);
-                TextSearchLoctionDescription.KeyPress += new KeyPressEventHandler(TextSearchKeyPress);
+                TextSearchYourName.KeyPress += new KeyPressEventHandler(TextKeyPress);
+                TextSearchEmail.KeyPress += new KeyPressEventHandler(TextKeyPress);
+                TextSearchIndentyCard_StateRegister.KeyPress += new KeyPressEventHandler(TextKeyPress);
+                TextSearchSocialSecurity_NationalRegister.KeyPress += new KeyPressEventHandler(TextKeyPress);
             }
             catch (Exception ex)
             {
@@ -266,7 +303,7 @@ namespace DimStock.Screens
         {
             try
             {
-                var screen = new DestinationListingScreen();
+                var screen = new SupplierListingScreen();
 
                 if (mdi != null)
                 {
@@ -302,7 +339,7 @@ namespace DimStock.Screens
         {
             try
             {
-                new DestinationListingPresenter(this).Delete();
+                new SupplierListingPresenter(this).Delete();
             }
             catch (Exception ex)
             {
@@ -313,8 +350,8 @@ namespace DimStock.Screens
         {
             try
             {
-                new DestinationListingPresenter(this).GetDetails();
-                DestinationAddScreen.SetDetails(this, this);
+                new SupplierListingPresenter(this).GetDetails();
+                SupplierAddScreen.SetDetails(this, this);
             }
             catch (Exception ex)
             {
@@ -325,7 +362,7 @@ namespace DimStock.Screens
         {
             try
             {
-                new DestinationListingPresenter(this).Clear();
+                new SupplierListingPresenter(this).Clear();
             }
             catch (Exception ex)
             {
@@ -336,7 +373,7 @@ namespace DimStock.Screens
         {
             try
             {
-                new DestinationListingPresenter(this).SearchData();
+                new SupplierListingPresenter(this).SearchData();
             }
             catch (Exception ex)
             {

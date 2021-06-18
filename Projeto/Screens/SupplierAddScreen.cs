@@ -9,13 +9,13 @@ using System.Collections.Generic;
 
 namespace DimStock.Screens
 {
-    public partial class SupplierAddScreen : MetroForm, ISupplierAddView
+    public partial class SupplierAddScreen: MetroForm, ISupplierAddView
     {
         private static MetroForm thisScreen;
 
         public int Id { get; set; }
         public string TypeOfRegistration { get => TextTypeOfRegistration.Text; set => TextTypeOfRegistration.Text = value; }
-        public string CompyName { get => TextCompanyName.Text; set => TextCompanyName.Text = value; }
+        public string YourName { get => TextYourName.Text; set => TextYourName.Text = value; }
         public string FantasyName { get => TextFantasyName.Text; set => TextFantasyName.Text = value; }
         public string IndentyCard_StateRegister { get => TextIndentyCard_StateRegister.Text; set => TextIndentyCard_StateRegister.Text = value; }
         public string SocialSecurity_NationalRegister { get => TextSocialSecurity_NationalRegistration.Text; set => TextSocialSecurity_NationalRegistration.Text = value; }
@@ -24,17 +24,11 @@ namespace DimStock.Screens
         public string City { get => TextCity.Text; set => TextCity.Text = value; }
         public string StateLocation { get => TextStateLocation.Text; set => TextStateLocation.Text = value; }
         public string ZipCode { get => TextZipCode.Text; set => TextZipCode.Text = value; }
-        public int StreetNumber { get => int.Parse(TextStreetNumber.Text); set => TextStreetNumber.Text = value.ToString(); }
+        public int StreetNumber { get => int.Parse(TextStreetNumber.Text); set => int.Parse(TextStreetNumber.Text = value.ToString()); }
         public string FixePhone { get => TextFixePhone.Text; set => TextFixePhone.Text = value; }
         public string MobilePhone { get => TextMobilePhone.Text; set => TextMobilePhone.Text = value; }
         public string Email { get => TextEmail.Text; set => TextEmail.Text = value; }
-    }
-}
 
-namespace DimStock.Screens
-{
-    public partial class SupplierAddScreen
-    {
         public SupplierAddScreen()
         {
             InitializeComponent();
@@ -124,10 +118,10 @@ namespace DimStock.Screens
                 {
                     Id = view.Id,
                     TypeOfRegistration = view.TypeOfRegistration,
-                    CompyName = view.CompyName,
+                    YourName = view.YourName,
                     FantasyName = view.FantasyName,
                     IndentyCard_StateRegister = view.IndentyCard_StateRegister,
-                    SocialSecurity_NationalRegister = view.AddressDescription,
+                    SocialSecurity_NationalRegister = view.SocialSecurity_NationalRegister,
                     AddressDescription = view.AddressDescription,
                     District = view.District,
                     City = view.City,
@@ -201,7 +195,6 @@ namespace DimStock.Screens
             }
         }
 
-        //Eventos para chamada dos métodos do apresentador
         private void PresenterUpdate(object sender, EventArgs e)
         {
             try

@@ -9,31 +9,19 @@ using System.Windows.Forms;
 
 namespace DimStock.Screens
 {
-    /// <summary>
-    /// Representa a tela de listagem das categorias
-    /// </summary>
-    public partial class CategoryListingScreen : MetroForm, ICategoryListingView
+    public partial class CategoryListingScreen :  MetroForm, ICategoryListingView
     {
         private static MetroForm thisScreen;
 
-        //São "botões" de link adicionados na coluna do grid
+        //"Botões" de link adicionados na coluna do grid
         private DataGridViewLinkColumn buttonViewDetails;
         private DataGridViewLinkColumn buttonDelete;
 
-        //Implementados pela interface de adição
         public int Id { get; set; }
         public string Description { get; set; }
-
-        //Implementados pela interface de listagem
         public string SearchDescription { get => TextSearchDescription.Text; set => TextSearchDescription.Text = value; }
         public object DataList { get => GridList.DataSource; set => GridList.DataSource = value; }
-    }
-}
 
-namespace DimStock.Screens
-{
-    public partial class CategoryListingScreen
-    {
         public CategoryListingScreen()
         {
             InitializeComponent();
@@ -310,7 +298,6 @@ namespace DimStock.Screens
             }
         }
 
-        //Eventos que chamam métodos do apresentador
         private void PresenterDelete(object sender, EventArgs e)
         {
             try

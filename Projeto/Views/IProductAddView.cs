@@ -9,6 +9,8 @@
         double SalePrice { get; set; }
         string BarCode { get; set; }
         int CategoryId { get; set; }
+        int StockMin { get; set; }
+        int StockMax { get; set; }
         string CategoryDescription { get; set; }
         object CategoryDataList { get; set; }
     }

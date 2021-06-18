@@ -5,11 +5,11 @@ namespace DimStock.Models
 {
     public class StockValidationModel
     {
-        public static bool ValidatePostingItems(DataTable postedItems)
+        public static bool ValidatePostingItems(DataTable items)
         {
             var validationStatus = false;
 
-            if (postedItems.Rows.Count == 0)
+            if (items.Rows.Count == 0)
             {
                 MessageNotifier.Show("Nenhum item foi adicionado para " +
                 "lançamento no estoque!", "Adicione Um Item", "?");
@@ -20,7 +20,7 @@ namespace DimStock.Models
             return validationStatus = true;
         }
 
-        public static bool ValidateToUpdateTotalValue(StockModel stock)
+        public static bool ValidateToUpdate(StockModel stock)
         {
             var validationStatus = false;
 
@@ -64,7 +64,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (stock.CheckIfRegister() == false)
+            if (stock.CheckRegisterStatus() == false)
             {
                 MessageNotifier.Show("Não é possivel visualizar porque " +
                 "esse registro foi excluido!", "Atualize a Lista", "?");

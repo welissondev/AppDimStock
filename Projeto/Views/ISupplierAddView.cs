@@ -4,7 +4,7 @@
     {
         int Id { get; set; }
         string TypeOfRegistration { get; set; }
-        string CompyName { get; set; }
+        string YourName { get; set; }
         string FantasyName { get; set; }
         string IndentyCard_StateRegister { get; set; }
         string SocialSecurity_NationalRegister { get; set; }

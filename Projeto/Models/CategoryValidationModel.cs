@@ -2,9 +2,6 @@
 
 namespace DimStock.Models
 {
-    /// <summary>
-    /// Representa o modelo de validação da categoria
-    /// </summary>
     public class CategoryValidationModel
     {
         public static bool ValidateToInsert(CategoryModel category)
@@ -19,7 +16,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (category.CheckIfRegister() == true)
+            if (category.CheckRegisterStatus() == true)
             {
                 MessageNotifier.Show("Já existe uma categoria " +
                 "registrada com esse nome!", "Já Existe", "?");
@@ -50,7 +47,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (category.CheckIfRegister() == false)
+            if (category.CheckRegisterStatus() == false)
             {
                 MessageNotifier.Show("Não é possivel atualizar " +
                 "essa categoria, porque ela foi excluida da sua" +
@@ -74,7 +71,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (category.CheckIfRegister() == false)
+            if (category.CheckRegisterStatus() == false)
             {
                 MessageNotifier.Show("Não foi possivel excluir " +
                 "essa categoria, porque ela não esta mais registrada " +
@@ -110,7 +107,7 @@ namespace DimStock.Models
                 return validationStatus;
             }
 
-            if (category.CheckIfRegister() == false)
+            if (category.CheckRegisterStatus() == false)
             {
                 MessageNotifier.Show("Não é possivel visualizar " +
                 "essa categoria, porque ela foi excluida da sua" +

@@ -8,32 +8,22 @@ using System.Windows.Forms;
 
 namespace DimStock.Screens
 {
-    /// <summary>
-    /// Representa o formulário de cadastro dos produtos
-    /// </summary>
-    public partial class ProductAddScreen : IProductAddView
+    public partial class ProductAddScreen : MetroForm, IProductAddView
     {
         private static MetroForm thisScreen;
 
-        //Implementados pela interface de adição do produto
         public int Id { get; set; }
         public string InternalCode { get => TextInternalCode.Text; set => TextInternalCode.Text = value; }
         public string Description { get => TextDescription.Text; set => TextDescription.Text = value; }
         public double CostPrice { get => double.Parse(TextCostPrice.DecimalValue.ToString()); set => double.Parse(TextCostPrice.Text = value.ToString()); }
         public double SalePrice { get => double.Parse(TextSalePrice.DecimalValue.ToString()); set => double.Parse(TextSalePrice.Text = value.ToString()); }
         public string BarCode { get => TextBarCode.Text; set => TextBarCode.Text = value; }
-
-        //Implementados pela interface de adição da categoria
+        public int StockMin { get => int.Parse(TextStockMin.Text); set => TextStockMin.Text = value.ToString(); }
+        public int StockMax { get => int.Parse(TextStockMax.Text); set => TextStockMax.Text = value.ToString(); }
         public int CategoryId { get; set; }
         public string CategoryDescription { get => BoxCategoryDescription.Text; set => BoxCategoryDescription.Text = value; }
         public object CategoryDataList { get => GridCategory.DataSource; set => GridCategory.DataSource = value; }
-    }
-}
 
-namespace DimStock.Screens
-{
-    public partial class ProductAddScreen : MetroForm
-    {
         public ProductAddScreen()
         {
             InitializeComponent();
@@ -137,7 +127,9 @@ namespace DimStock.Screens
                     SalePrice = view.SalePrice,
                     BarCode = view.BarCode,
                     CategoryId = view.CategoryId,
-                    CategoryDescription = view.CategoryDescription
+                    CategoryDescription = view.CategoryDescription,
+                    StockMin = view.StockMin,
+                    StockMax = view.StockMax                
                 };
 
                 if (ownerScreen != null)
@@ -175,6 +167,7 @@ namespace DimStock.Screens
             {
                 var gridList = GridCategory;
                 gridList.Visible = true;
+                gridList.SetControlSize(270);
 
                 if (gridList.Rows.Count == 0)
                 {
@@ -277,7 +270,6 @@ namespace DimStock.Screens
             }
         }
 
-        //Eventos para chamada dos métodos do apresentador
         private void PresenterUpdate(object sender, EventArgs e)
         {
             try
@@ -345,5 +337,6 @@ namespace DimStock.Screens
                 ExceptionNotifier.ShowMessage(ex);
             }
         }
+
     }
 }

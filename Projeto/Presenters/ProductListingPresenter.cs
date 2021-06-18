@@ -44,6 +44,8 @@ namespace DimStock.Presenters
                 view.BarCode = product.BarCode;
                 view.CategoryId = product.Category.Id;
                 view.CategoryDescription = product.Category.Description;
+                view.StockMin = product.Stock.Min;
+                view.StockMax = product.Stock.Max;
 
                 actionResult = true;
             }

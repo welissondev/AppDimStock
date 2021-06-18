@@ -7,16 +7,10 @@ using System.Windows.Forms;
 
 namespace DimStock.Screens
 {
-    public partial class BackupSaveScreen : Form, IBackupSaveView
+    public partial class BackupSaveScreen: Form, IBackupSaveView
     {
         public string FolderPath { get => TextFolderPath.Text; set => TextFolderPath.Text = value; }
-    }
-}
 
-namespace DimStock.Screens
-{
-    public partial class BackupSaveScreen
-    {
         public BackupSaveScreen()
         {
             InitializeComponent();

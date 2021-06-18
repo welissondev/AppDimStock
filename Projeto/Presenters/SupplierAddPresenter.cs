@@ -21,7 +21,7 @@ namespace DimStock.Presenters
 
             supplier.Id = view.Id;
             supplier.TypeOfRegistration = view.TypeOfRegistration;
-            supplier.CompyName = view.CompyName;
+            supplier.YourName = view.YourName;
             supplier.FantasyName = view.FantasyName;
             supplier.IndentyCard_StateRegister = view.IndentyCard_StateRegister;
             supplier.SocialSecurity_NationalRegister = view.SocialSecurity_NationalRegister;
@@ -76,7 +76,7 @@ namespace DimStock.Presenters
             {
                 view.Id = 0;
                 view.TypeOfRegistration = "Física";
-                view.CompyName = string.Empty;
+                view.YourName = string.Empty;
                 view.FantasyName = string.Empty;
                 view.IndentyCard_StateRegister = string.Empty;
                 view.SocialSecurity_NationalRegister = string.Empty;

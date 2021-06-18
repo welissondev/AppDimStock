@@ -4,17 +4,11 @@ using System.Data;
 
 namespace DimStock.Models
 {
-    /// <summary>
-    /// Representa o modelo de destino do estoque
-    /// </summary>
-    public partial class DestinationModel
+    public class DestinationModel
     {
         public int Id { get; set; }
         public string LocationDescription { get; set; }
-    }
 
-    public partial class DestinationModel
-    {
         public DestinationModel()
         {
         }
@@ -133,12 +127,7 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public bool CheckRelateWithMovement()
-        {
-            return new MovementModel(this).CheckRelateWithDestination();
-        }
-
-        public bool CheckIfRegister()
+        public bool CheckRegisterStatus()
         {
             /*Essa verificação também precisou ser feita pelo 
              nome do local de destino, porque a regra de negócio não 

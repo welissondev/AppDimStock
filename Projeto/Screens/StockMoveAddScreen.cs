@@ -2,11 +2,11 @@
 
 namespace DimStock.Screens
 {
-    public partial class MovementListingScreen : Form
+    public partial class StockMoveAddScreen : Form
     {
-        public MovementListingScreen()
+        public StockMoveAddScreen()
         {
             InitializeComponent();
-        }
+        }   
     }
 }

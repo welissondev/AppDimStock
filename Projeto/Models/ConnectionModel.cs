@@ -5,18 +5,12 @@ using System.Data.OleDb;
 
 namespace DimStock.Models
 {
-    /// <summary>
-    /// Representa o modelo de conexão com o banco de dados
-    /// </summary>
-    public partial class ConnectionModel
+    public class ConnectionModel : IDisposable
     {
         private bool disposed = false;
         private OleDbCommand command;
         private OleDbConnection connection;
-    }
 
-    public partial class ConnectionModel : IDisposable
-    {
         public ConnectionModel()
         {
             connection = new OleDbConnection(AppSettingModel.GetConnectionString());

@@ -9,16 +9,12 @@ using System.Drawing;
 
 namespace DimStock.Screens
 {
-    /// <summary>
-    /// Representa a tela de listagem de login dos usuários
-    /// </summary>
-    public partial class UserLoginListingScreen : IUserLoginListingView
+    public partial class UserLoginListingScreen : MetroForm, IUserLoginListingView
     {
         private DataGridViewLinkColumn buttonViewDetails;
         private DataGridViewLinkColumn buttonDelete;
         private static MetroForm thisScreen;
 
-        //Implementados pela interface de adição
         public int Id { get; set; }
         public string YourName { get; set; }
         public string Email { get; set; }
@@ -28,19 +24,11 @@ namespace DimStock.Screens
         public bool InsertAllowed { get; set; }
         public bool UpdateAllowed { get; set; }
         public bool DeleteAllowed { get; set; }
-
-        //Implementados pela interface de listagem
         public string SearchYourName { get => TextSearchYourName.Text; set => TextSearchYourName.Text = value; }
         public string SearchLogin { get => TextSearchLogin.Text; set => TextSearchLogin.Text = value; }
         public string SearchEmail { get => TextSearchEmail.Text; set => TextSearchEmail.Text = value; }
         public object DataList { get => GridList.DataSource; set => GridList.DataSource = value; }
-    }
-}
 
-namespace DimStock.Screens
-{
-    public partial class UserLoginListingScreen : MetroForm
-    {
         public UserLoginListingScreen()
         {
             try
@@ -340,7 +328,6 @@ namespace DimStock.Screens
             }
         }
 
-        //Eventos para chamada dos métodos do apresentador
         private void PresenterDelete(object sender, EventArgs e)
         {
             try

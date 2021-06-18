@@ -3,17 +3,11 @@ using System.Data;
 
 namespace DimStock.Models
 {
-    /// <summary>
-    /// Representa o modelo de uma categoria
-    /// </summary>
-    public partial class CategoryModel
+    public class CategoryModel
     {
         public int Id { get; set; }
         public string Description { get; set; }
-    }
 
-    public partial class CategoryModel
-    {
         public CategoryModel() { }
 
         public bool Insert()
@@ -125,7 +119,7 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public bool CheckIfRegister()
+        public bool CheckRegisterStatus()
         {
             /*Essa verificação também precisou ser feita pelo 
              nome da categoria, porque a regra de negócio não 

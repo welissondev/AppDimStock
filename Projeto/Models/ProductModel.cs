@@ -4,10 +4,7 @@ using System.Data;
 
 namespace DimStock.Models
 {
-    /// <summary>
-    /// Representa o modelo do produto
-    /// </summary>
-    public partial class ProductModel
+    public class ProductModel
     {
         private ConnectionTransactionModel dataBaseTransaction;
 
@@ -18,13 +15,12 @@ namespace DimStock.Models
         public double SalePrice { get; set; }
         public string BarCode { get; set; }
         public CategoryModel Category { get; set; }
-    }
+        public StockModel Stock { get; set; }
 
-    public partial class ProductModel
-    {
         public ProductModel()
         {
             Category = new CategoryModel();
+            Stock = new StockModel(this);
         }
 
         public ProductModel(CategoryModel category)
@@ -40,25 +36,32 @@ namespace DimStock.Models
             if (ProductValidationModel.ValidateToInsert(this) == false)
                 return actionResult;
 
-            using (var dataBase = new ConnectionModel())
+            using (dataBaseTransaction = new ConnectionTransactionModel())
             {
                 sql = @"INSERT INTO Product (CategoryId, InternalCode, Description, 
                 CostPrice, SalePrice, BarCode) VALUES (@CategoryId, @Code, @InternalCode, 
                 @CostPrice, @SalePrice, @BarCode)";
 
-                dataBase.ClearParameter();
-                dataBase.AddParameter("@CategoryId", Category.Id);
-                dataBase.AddParameter("@InternalCode", InternalCode);
-                dataBase.AddParameter("@Description", Description);
-                dataBase.AddParameter("@CostPrice", CostPrice);
-                dataBase.AddParameter("@SalePrice", SalePrice);
-                dataBase.AddParameter("@BarCode", BarCode);
+                dataBaseTransaction.ClearParameter();
+                dataBaseTransaction.AddParameter("@CategoryId", Category.Id);
+                dataBaseTransaction.AddParameter("@InternalCode", InternalCode);
+                dataBaseTransaction.AddParameter("@Description", Description);
+                dataBaseTransaction.AddParameter("@CostPrice", CostPrice);
+                dataBaseTransaction.AddParameter("@SalePrice", SalePrice);
+                dataBaseTransaction.AddParameter("@BarCode", BarCode);
 
-                if (dataBase.ExecuteNonQuery(sql) > 0)
+                if (dataBaseTransaction.ExecuteNonQuery(sql) > 0)
                 {
-                    MessageNotifier.Show("Produto cadastrado " +
-                    "com sucesso!", "Sucesso", "!");
-                    actionResult = true;
+                    Id = GetLastId();
+
+                    if (new StockModel(dataBaseTransaction, this).RelateProduct() == true)
+                    {
+                        actionResult = true;
+                        dataBaseTransaction.Commit();
+
+                        MessageNotifier.Show("Produto cadastrado " +
+                        "com sucesso!", "Sucesso", "!");
+                    }
                 }
             }
 
@@ -90,7 +93,7 @@ namespace DimStock.Models
 
                 if (dataBaseTransaction.ExecuteNonQuery(sql) > 0)
                 {
-                    if (new StockModel(dataBaseTransaction, this).UpdateTotalValue() == true)
+                    if (new StockModel(dataBaseTransaction, this).Update() == true)
                     {
                         dataBaseTransaction.Commit();
                         MessageNotifier.Show("Produto atualizado " +
@@ -131,14 +134,14 @@ namespace DimStock.Models
             return actionResult;
         }
 
-        public bool CheckIfRegister()
+        public bool CheckRegisterStatus()
         {
             var registrationStatus = false;
             var sql = string.Empty;
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"SELECT * FROM Product WHERE Id = @Id";
+                sql = @"SELECT * FROM product WHERE id = @id";
 
                 dataBase.ClearParameter();
                 dataBase.AddParameter("@Id", Id);
@@ -189,29 +192,35 @@ namespace DimStock.Models
 
             using (var dataBase = new ConnectionModel())
             {
-                sql = @"SELECT Product.*, Category.* FROM Product
-                LEFT JOIN Category ON Product.CategoryId = Category.Id
-                WHERE Product.Id = @Id ";
+                sql = @"SELECT product.* , category.*, stock.min, stock.max FROM (product
+                LEFT JOIN category ON product.categoryId = category.id) LEFT JOIN 
+                stock ON stock.productId = product.id WHERE product.id = @id ";
 
                 dataBase.ClearParameter();
-                dataBase.AddParameter("@Id", Id);
+                dataBase.AddParameter("@id", Id);
 
                 using (var reader = dataBase.ExecuteReader(sql))
                 {
                     while (reader.Read())
                     {
-                        Id = int.Parse(reader["Product.Id"].ToString());
-                        InternalCode = reader["InternalCode"].ToString();
-                        Description = reader["Product.Description"].ToString();
-                        CostPrice = double.Parse(reader["CostPrice"].ToString());
-                        SalePrice = double.Parse(reader["SalePrice"].ToString());
-                        BarCode = reader["BarCode"].ToString();
+                        Id = int.Parse(reader["product.Id"].ToString());
+                        InternalCode = reader["internalCode"].ToString();
+                        Description = reader["product.description"].ToString();
+                        CostPrice = double.Parse(reader["costPrice"].ToString());
+                        SalePrice = double.Parse(reader["salePrice"].ToString());
+                        BarCode = reader["barCode"].ToString();
 
-                        if (reader["Category.Id"] != DBNull.Value)
-                            Category.Id = int.Parse(reader["Category.Id"].ToString());
+                        if (reader["category.id"].ToString() != "0" && reader["category.id"].ToString() != string.Empty)
+                            Category.Id = int.Parse(reader["category.id"].ToString());
 
-                        if (reader["Category.Description"] != DBNull.Value)
-                            Category.Description = reader["Category.Description"].ToString();
+                        if (reader["category.description"] != DBNull.Value)
+                            Category.Description = reader["category.description"].ToString();
+
+                        if (reader["min"].ToString() != "0" && reader["min"].ToString() != string.Empty)
+                            Stock.Min = int.Parse(reader["min"].ToString());
+
+                        if (reader["max"].ToString() != "0" && reader["min"].ToString() != string.Empty)
+                            Stock.Max = int.Parse(reader["max"].ToString());
 
                         actionResult = true;
                     }
@@ -231,10 +240,20 @@ namespace DimStock.Models
             var sql = string.Empty;
             int lastId;
 
-            using (var dataBase = new ConnectionModel())
+            sql = @"SELECT MAX(Id) FROM product";
+
+            if (dataBaseTransaction != null)
             {
-                sql = @"SELECT MAX(Id) FROM Product";
-                lastId = dataBase.ExecuteScalar(sql);
+                dataBaseTransaction.ClearParameter();
+                lastId = dataBaseTransaction.ExecuteScalar(sql);
+            }
+            else
+            {
+                using (var dataBase = new ConnectionModel())
+                {
+                    dataBase.ClearParameter();
+                    lastId = dataBase.ExecuteScalar(sql);
+                }
             }
 
             return lastId;
